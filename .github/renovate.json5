@@ -3,9 +3,8 @@
   "enabledManagers": ["helm-values"],
   "detectHostRulesFromEnv": true,
   "platform": "github",
-  "repositories": ["elfhosted/charts"],
+  "repositories": ["elfhosted/myprecious"],
   "pinDigests": true,
-  "ignorePaths": ["charts/apps/**","charts/library/**","charts/other/app-template"],  
   "allowedPostUpgradeCommands": ["./scripts/bump-myprecious.sh"],
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
@@ -13,7 +12,7 @@
   "extends": [":semanticCommitTypeAll(fix)",":semanticCommitScope(app)"], // for release-please
   "postUpgradeTasks": {
     "commands": ["./scripts/bump-myprecious.sh"],
-    "fileFilters": ["charts/other/myprecious/Chart.yaml"],
+    "fileFilters": ["Chart.yaml"],
     "executionMode": "branch"
   },
   "automerge": false,

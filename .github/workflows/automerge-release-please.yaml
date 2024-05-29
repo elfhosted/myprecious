@@ -4,7 +4,7 @@ on:
   # Try enabling auto-merge for all open pull requests.
   schedule:
       # 9:55am UTC is 21h55 NZST, giving us 5 min to run before the maint window starts 10pm weekdays NZ time
-      - cron: '54 09 * * *'
+      - cron: '55 09 * * *'
 
   # Try enabling auto-merge for the specified pull request,
   # review or all open pull requests if none is specified.
@@ -30,7 +30,7 @@ jobs:
       - name: Check if safe to release (and we're on a -pre version currently)
         id: safe_to_release
         run: |
-          grep 'safeToRelease: true' charts/other/myprecious/values.yaml && (grep ^version charts/other/myprecious/Chart.yaml | grep pre)          
+          grep 'safeToRelease: true' values.yaml && (grep ^version Chart.yaml | grep pre)          
 
       - uses: reitermarkus/automerge@v2
         with:
