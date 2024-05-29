@@ -1,0 +1,14 @@
+{{ if .Values.emby.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-emby.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-emby.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: emby
+          kind: Service
+          port: 8096
+{{ end }}

@@ -1,0 +1,16 @@
+{{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deluge-elfscripts
+data:
+  # These are used by the PIA image
+  mam-cookies.sh: |
+    #!/usr/bin/with-contenv sh
+
+    # Special case for MAM users
+    if [[ -v $MAM_ID ]]; then
+        # Apply the dynamic seedbox request
+        /usr/local/bin/curl -b "mam_id=${MAM_ID}" https://t.myanonamouse.net/json/dynamicSeedbox.php -o /config/mam_id-curl-output.log
+    fi    
+{{ end }}

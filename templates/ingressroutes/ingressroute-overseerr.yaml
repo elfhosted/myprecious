@@ -1,0 +1,23 @@
+{{ if .Values.overseerr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-overseerr.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-overseerr.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: overseerr
+          kind: Service
+          port: 5055
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-overseerr.elfhosted.com`) && PathPrefix(`/logo_`)
+      kind: Rule
+      services:
+        - name: overseerr
+          kind: Service
+          port: 8080
+{{ end }}

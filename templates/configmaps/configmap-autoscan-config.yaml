@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: autoscan-config
+data:
+  config.yml: |
+    # port for Autoscan webhooks to listen on
+    port: 3030
+
+    # override the default minimum age of 30 minutes:
+    minimum-age: 1m
+
+    # Uncomment the streamer(s) you use, and set the necessary API token
+    # Ensure the indentation remains the same as the sample below - "url" and "token" vertically aligned
+    targets:
+      # plex:
+      #   - url: http://plex:32400
+      #     token: XXXX # Plex API Token
+      # emby:
+      #   - url: http://emby:8096
+      #     token: XXXX # Emby API Token 
+      # jellyfin:
+      #   - url: http://jellyfin:8096
+      #     token: XXXX # Jellyfin API Token      
+
+    triggers:
+
+      lidarr:
+        - name: lidarr   # /triggers/lidarr
+          priority: 1
+
+      radarr:
+        - name: radarr   # /triggers/radarr
+          priority: 2
+        - name: radarr4k # /triggers/radarr4k
+          priority: 5
+
+      readarr:
+        - name: readarr  # /triggers/readarr
+          priority: 1
+        - name: readarraudio  # /triggers/readarraudio
+          priority: 1
+
+      sonarr:
+        - name: sonarr  # /triggers/sonarr
+          priority: 1
+        - name: sonarr4k  # /triggers/sonarr4k
+          priority: 1          
+
+              

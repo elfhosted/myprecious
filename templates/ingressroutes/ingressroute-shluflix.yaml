@@ -1,0 +1,27 @@
+{{ if .Values.shluflix.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-shluflix.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-shluflix.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: shluflix
+          kind: Service
+          port: 8001
+      middlewares:
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-shluflix.elfhosted.com`) && PathPrefix(`/configure/`)
+      kind: Rule
+      services:
+        - name: shluflix
+          kind: Service
+          port: 8001
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+{{ end }}

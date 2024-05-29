@@ -1,0 +1,27 @@
+{{ if .Values.stremiojackett.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-stremio-jackett.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-stremio-jackett.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: stremio-jackett
+          kind: Service
+          port: 3000
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-stremio-jackett.elfhosted.com`) && PathPrefix(`/configure/`)
+      kind: Rule
+      services:
+        - name: stremio-jackett
+          kind: Service
+          port: 3000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}

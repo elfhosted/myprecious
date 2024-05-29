@@ -1,0 +1,20 @@
+{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-zurg.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-zurg.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: zurg
+          kind: Service
+          port: 9999
+      middlewares:  
+        {{- if not .Values.zurgexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ else }}
+        - name: {{ .Release.Name }}-zurg-basic-auth
+        {{ end }}
+{{ end }}

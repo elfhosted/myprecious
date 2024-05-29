@@ -1,0 +1,16 @@
+{{ if .Values.storageboxc.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: storagebox-c
+  labels:
+    velero.io/exclude-from-backup: "true"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: storagebox-{{ .Release.Name }}-c
+  storageClassName: smb
+{{ end }}

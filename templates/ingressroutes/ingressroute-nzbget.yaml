@@ -1,0 +1,20 @@
+{{ if .Values.nzbget.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-nzbget.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-nzbget.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: nzbget
+          kind: Service
+          port: 6789
+      middlewares:
+      {{- if not .Values.nzbgetexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+      {{- end }}
+        - name: error-pages
+          namespace: traefik
+{{ end }}

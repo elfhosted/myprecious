@@ -1,0 +1,12 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: elfbot
+rules:
+- apiGroups: [""]
+  resources: ["configmaps"]
+  verbs: ["*"]
+# Used for force-deletion
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["delete","list"]

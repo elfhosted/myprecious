@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: storageboss-config
+data:
+  config.yml: |
+    auth:
+      - user: {{ .Release.Name }}
+        group: {{ .Release.Name }}
+        uid: 568
+        gid: 568
+        password: blah
+
+
+    global:
+      - "force user = {{ .Release.Name }}"
+      - "force group = {{ .Release.Name }}"
+      - "unix extensions = No"
+      - "wide links = Yes"
+      - "allow insecure wide links = Yes"
+
+    share:
+      - name: symlinks
+        comment: symlinks
+        path: /storage/symlinks
+        browsable: yes
+        readonly: no
+        guestok: no
+        veto: no
+        recycle: no
+        follow symlinks: yes
+        wide links: yes
+
+    elfstorage:
+      - name: elfstorage
+        comment: symlinks
+        path: /storage/elfstorage
+        browsable: yes
+        readonly: no
+        guestok: no
+        veto: no
+        recycle: no
+        follow symlinks: yes
+        wide links: yes

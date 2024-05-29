@@ -1,0 +1,10 @@
+{{ if .Values.notifiarr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .Release.Name }}-add-x-webauth-user
+spec:
+  headers:
+    customRequestHeaders:
+      X-WebAuth-User: "{{ .Release.Name }}"
+{{ end }}

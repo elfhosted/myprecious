@@ -1,0 +1,25 @@
+{{- if .Values.overseerrcustomdomain.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.overseerrcustomdomain.cname }}
+spec:
+  routes:
+    - match: Host(`{{ .Values.overseerrcustomdomain.cname }}`)
+      kind: Rule
+      services:
+        - name: overseerr
+          kind: Service
+          port: 5055
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+    - match: Host(`{{ .Values.overseerrcustomdomain.cname }}`) && PathPrefix(`/logo_`)
+      kind: Rule
+      services:
+        - name: overseerr
+          kind: Service
+          port: 8080
+  tls:
+    secretName: cert-{{ .Values.overseerrcustomdomain.cname }}
+{{ end }}

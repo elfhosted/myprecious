@@ -1,0 +1,18 @@
+{{ if .Values.lazylibrarian.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-lazylibrarian.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-lazylibrarian.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: lazylibrarian
+          kind: Service
+          port: 5299
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}

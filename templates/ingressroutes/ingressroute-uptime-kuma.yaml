@@ -1,0 +1,17 @@
+{{ if .Values.uptimekuma.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-uptime-kuma.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-uptime-kuma.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: uptime-kuma
+          kind: Service
+          port: 3001
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+{{ end }}

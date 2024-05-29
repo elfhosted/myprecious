@@ -1,0 +1,47 @@
+{{ if .Values.mediafusion.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-mediafusion.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-mediafusion.elfhosted.com`) && (PathPrefix(`/streaming_provider`) || PathPrefix(`/poster`))
+      kind: Rule
+      services:
+        - name: mediafusion
+          kind: Service
+          port: 8000
+      middlewares:  
+        - name: chain-public-stremio-addon-static
+          namespace: traefik  
+    - match: Host(`{{ .Release.Name }}-mediafusion.elfhosted.com`) && Path(`/scraper`)
+      kind: Rule
+      services:
+        - name: mediafusion
+          kind: Service
+          port: 8000
+      middlewares:  
+        - name: error-pages
+          namespace: traefik
+        - name: protect-grafana-login # just prevent external access altogether, for now
+          namespace: kube-prometheus-stack
+    - match: Host(`{{ .Release.Name }}-mediafusion.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: mediafusion
+          kind: Service
+          port: 8000
+      middlewares:
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-mediafusion.elfhosted.com`) && PathPrefix(`/configure/`)
+      kind: Rule
+      services:
+        - name: mediafusion
+          kind: Service
+          port: 8000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+{{ end }}

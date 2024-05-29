@@ -1,0 +1,11 @@
+{{ if .Values.iceberg.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iceberg-config
+data:
+  # Overwrite API key with default
+  ORIGIN: "https://{{ .Release.Name }}-iceberg.elfhosted.com"
+  PUID: "568"
+  PGID: "568"
+{{ end }}

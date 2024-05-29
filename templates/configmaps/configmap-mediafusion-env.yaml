@@ -1,0 +1,19 @@
+{{ if .Values.mediafusion.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mediafusion-env
+data:
+  HOST_URL: https://{{ .Release.Name }}-mediafusion.elfhosted.com
+  ENABLE_RATE_LIMIT: "false"
+  PROWLARR_IMMEDIATE_MAX_PROCESS: "3"
+  PROWLARR_SEARCH_INTERVAL_HOUR: "24"
+  PROWLARR_URL: http://prowlarr.mediafusion:9696
+  IS_SCRAP_FROM_TORRENTIO: "true"
+  TORRENTIO_URL: http://elfhosted.torrentio
+  REDIS_URL: redis://redis-master.mediafusion:6379
+  prowlarr_immediate_max_process_time: "0"
+  validate_m3u8_urls_liveness: "true"
+  disable_all_scheduler: "true"
+  poster_host_url: https://mediafusion.elfhosted.com
+{{ end }}

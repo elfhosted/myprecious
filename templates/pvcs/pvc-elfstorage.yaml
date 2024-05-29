@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elfstorage
+  annotations:
+    helm.sh/resource-policy: keep
+  labels:
+    velero.io/exclude-from-backup: "true"
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      # default to 100Gi, but let users buy more in 1TB "chunks", or get some from a bundle
+      storage: {{ add 100 (mul 1000 .Values.elfstoragetb.quantity ) (mul 1000 .Values.elfstoragetbbundled.quantity) }}Gi 
+  storageClassName: {{ .Values.elfstorage.storageClassName | default "ceph-filesystem" }}

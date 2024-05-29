@@ -1,0 +1,57 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubernetes-dashboard
+rules:
+- apiGroups:
+  - "*"
+  resources:
+  - configmaps
+  - cronjobs
+  - daemonsets
+  - deployments
+  - events
+  - ingresses
+  - jobs
+  - persistentvolumeclaims
+  - persistentvolumes
+  - pods
+  - pods/log
+  - replicasets
+  - replicationcontrollers
+  - services
+  - statefulsets
+  verbs:
+  - describe
+  - get
+  - list
+  - watch
+# let kubernetes-dashboard access its prefs via a secret
+- apiGroups:
+  - "*"
+  resources:
+  - secrets
+  verbs:
+  - update
+  - get
+  resourceNames: 
+  - "kubernetes-dashboard-key-holder"
+  - "kubernetes-dashboard-csrf"
+# let tenants effect their own reboots by deleting pods
+- apiGroups:
+  - "*"
+  resources:
+  - pods
+  verbs:
+  - delete
+# let tenants edit their own configmaps - still a WIP
+# - apiGroups:
+#   - "*"
+#   resources:
+#   - configmaps
+#   verbs:
+#   - update
+#   resource_names:
+# {{ if .Values.plexmetamanager.enabled }}
+#   - elfbot-plexmetamanager
+# {{ end }}

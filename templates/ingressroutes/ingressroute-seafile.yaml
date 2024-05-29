@@ -1,0 +1,17 @@
+{{ if .Values.seafile.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-seafile.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-seafile.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: seafile
+          kind: Service
+          port: 80
+      middlewares:    
+        - name: error-pages
+          namespace: traefik
+{{ end }}

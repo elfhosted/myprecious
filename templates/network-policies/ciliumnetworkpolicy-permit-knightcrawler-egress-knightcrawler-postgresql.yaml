@@ -1,0 +1,21 @@
+{{ if or .Values.knightcrawler.enabled .Values.knightcrawlervpn.enabled .Values.torrentio.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-knightcrawler-egress-knightcrawler-postgresql"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: knightcrawler
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        k8s:io.kubernetes.pod.namespace: knightcrawler
+        # Disabled until we update cilium's recognized labels during maintenance
+        # cnpg.io/cluster: torrentio
+        # cnpg.io/instanceRole: replica
+    toPorts:
+      - ports:
+        - port: '5432'
+          protocol: TCP
+{{ end }}

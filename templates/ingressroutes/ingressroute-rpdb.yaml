@@ -1,0 +1,18 @@
+{{ if .Values.rpdb.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-rpdb.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-rpdb.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: rpdb
+          kind: Service
+          port: 8750
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik        
+{{ end }}

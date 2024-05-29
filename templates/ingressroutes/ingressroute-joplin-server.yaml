@@ -1,0 +1,17 @@
+{{ if .Values.joplinserver.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-joplin-server.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-joplin-server.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: joplinserver
+          kind: Service
+          port: 22300
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+{{ end }}

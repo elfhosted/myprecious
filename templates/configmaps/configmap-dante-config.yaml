@@ -1,0 +1,44 @@
+{{ if or .Values.rutorrentgluetun.enabled .Values.rutorrentpia.enabled .Values.qbittorrentgluetun.enabled .Values.qbittorrentpia.enabled .Values.delugegluetun.enabled .Values.delugepia.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dante-config
+data:
+  sockd.conf: |
+    logoutput: stderr
+    # debug: 1
+    internal: eth0 port = 2020
+    {{ if or .Values.delugepia.enabled .Values.rutorrentpia.enabled .Values.qbittorrentpia.enabled }}
+    external: wg0
+    {{ else }}
+    external: tun0
+    {{ end }}
+    # external.rotation: route
+
+    clientmethod: none
+    socksmethod: username none
+
+    user.privileged: elfie
+    user.notprivileged: elfie
+    user.unprivileged: elfie
+
+    # Allow everyone to connect to this server.
+    client pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        log: connect error  # disconnect
+    }
+
+    # Allow all operations for connected clients on this server.
+    socks pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        command: bind connect udpassociate
+        log: error  # connect disconnect iooperation
+        #socksmethod: username
+    }
+    # Allow all inbound packets.
+    socks pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        command: bindreply udpreply
+        log: error  # connect disconnect iooperation
+    }
+{{ end }}

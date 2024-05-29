@@ -1,0 +1,18 @@
+{{ if .Values.pyload.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-pyload.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-pyload.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: pyload
+          kind: Service
+          port: 8000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}

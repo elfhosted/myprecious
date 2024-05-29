@@ -1,0 +1,14 @@
+{{ if .Values.vaultwarden.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-vaultwarden.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-vaultwarden.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: vaultwarden
+          kind: Service
+          port: 8000
+{{ end }}

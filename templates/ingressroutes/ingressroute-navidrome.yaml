@@ -1,0 +1,17 @@
+{{ if .Values.navidrome.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-navidrome.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-navidrome.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: navidrome
+          kind: Service
+          port: 4533
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+{{ end }}

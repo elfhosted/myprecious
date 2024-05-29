@@ -1,0 +1,18 @@
+{{ if .Values.nzbhydra.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-nzbhydra.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-nzbhydra.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: nzbhydra
+          kind: Service
+          port: 5076
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}

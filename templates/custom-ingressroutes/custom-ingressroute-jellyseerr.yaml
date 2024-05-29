@@ -1,0 +1,25 @@
+{{- if .Values.jellyseerrcustomdomain.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.jellyseerrcustomdomain.cname }}
+spec:
+  routes:
+    - match: Host(`{{ .Values.jellyseerrcustomdomain.cname }}`)
+      kind: Rule
+      services:
+        - name: jellyseerr
+          kind: Service
+          port: 5055
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+    - match: Host(`{{ .Values.jellyseerrcustomdomain.cname }}`) && PathPrefix(`/logo_`)
+      kind: Rule
+      services:
+        - name: jellyseerr
+          kind: Service
+          port: 8080
+  tls:
+    secretName: cert-{{ .Values.jellyseerrcustomdomain.cname }}
+{{ end }}

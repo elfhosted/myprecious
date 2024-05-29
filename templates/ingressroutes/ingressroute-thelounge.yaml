@@ -1,0 +1,18 @@
+{{ if .Values.thelounge.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-thelounge.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-thelounge.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: {{ .Release.Name }}-thelounge
+          kind: Service
+          port: 9000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth      
+        - name: error-pages
+          namespace: traefik          
+{{ end }}

@@ -1,0 +1,14 @@
+{{ if .Values.calibreweb.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-calibre-web.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-calibre-web.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: calibreweb
+          kind: Service
+          port: 8083
+{{ end }}

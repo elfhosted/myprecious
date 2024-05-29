@@ -1,0 +1,18 @@
+{{ if .Values.mylar.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-mylar.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-mylar.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: mylar
+          kind: Service
+          port: 8090
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}

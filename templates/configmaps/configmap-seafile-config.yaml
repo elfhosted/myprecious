@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: seafile-config
+data:
+  # -- The initial admin user's email
+  SEAFILE_ADMIN_EMAIL: "{{ .Values.traefikforwardauth.whitelist }}"
+  ccnet.conf: |
+    [General]
+    SERVICE_URL=https://{{ .Release.Name }}-seafile.elfhosted.com

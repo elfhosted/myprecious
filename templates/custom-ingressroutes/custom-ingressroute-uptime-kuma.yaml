@@ -1,0 +1,19 @@
+{{- if .Values.uptimekumacustomdomain.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.uptimekumacustomdomain.cname }}
+spec:
+  routes:
+    - match: Host(`{{ .Values.uptimekumacustomdomain.cname }}`)
+      kind: Rule
+      services:
+        - name: uptime-kuma
+          kind: Service
+          port: 3001
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+  tls:
+    secretName: cert-{{ .Values.uptimekumacustomdomain.cname }}
+{{ end }}

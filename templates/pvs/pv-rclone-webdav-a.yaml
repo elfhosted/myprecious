@@ -1,0 +1,20 @@
+{{ if .Values.rclonemountwebdava.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rclone-{{ .Release.Name }}-webdav-a
+  labels:
+    name: rclone-{{ .Release.Name }}-webdav-a
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi # doesn't matter, is used to match with the PVC
+  storageClassName: rclone
+  persistentVolumeReclaimPolicy: Delete
+  csi:
+    driver: csi-rclone
+    volumeHandle: rclone-{{ .Release.Name }}-webdav-a
+    volumeAttributes:
+      secretName: "{{ .Release.Name }}-webdav-a"
+{{ end }}

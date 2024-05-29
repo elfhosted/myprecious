@@ -1,0 +1,27 @@
+{{ if .Values.torrentio.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-torrentio.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-torrentio.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: torrentio
+          kind: Service
+          port: 7000
+      middlewares:
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-torrentio.elfhosted.com`) && PathPrefix(`/configure/`)
+      kind: Rule
+      services:
+        - name: torrentio
+          kind: Service
+          port: 7000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+{{ end }}

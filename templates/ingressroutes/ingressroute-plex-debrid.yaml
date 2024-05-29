@@ -1,0 +1,16 @@
+{{ if .Values.plexdebrid.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-plex-debrid.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-plex-debrid.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: plex-debrid
+          kind: Service
+          port: 3000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+{{ end }}

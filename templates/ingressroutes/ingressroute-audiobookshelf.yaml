@@ -1,0 +1,21 @@
+{{ if .Values.audiobookshelf.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-audiobookshelf.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-audiobookshelf.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: audiobookshelf
+          kind: Service
+          port: 8000
+      middlewares:
+        - name: error-pages
+          namespace: traefik
+        # - name: redirect-scheme-https
+        #   namespace: traefik        
+        # - name: set-x-forwarded-proto-https
+        #   namespace: traefik
+{{ end }}

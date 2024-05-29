@@ -1,0 +1,20 @@
+{{ if .Values.xteve.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-xteve.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-xteve.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: xteve
+          kind: Service
+          port: 34400
+      middlewares:
+        {{- if not .Values.xteveexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}      
+        - name: error-pages
+          namespace: traefik
+{{ end }}

@@ -1,0 +1,17 @@
+{{ if .Values.gotify.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-gotify.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-gotify.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: gotify
+          kind: Service
+          port: 8080
+      middlewares:
+        - name: error-pages
+          namespace: traefik          
+{{ end }}

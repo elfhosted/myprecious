@@ -1,0 +1,16 @@
+{{ if .Values.smbmountc.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: smbmount-c
+  labels:
+    velero.io/exclude-from-backup: "true"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: smbmount-{{ .Release.Name }}-c
+  storageClassName: smb
+{{ end }}
