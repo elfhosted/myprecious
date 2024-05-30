@@ -2,7 +2,7 @@
 safeToRelease: true
 
 # This section just makes images easier to update / parse
-tooling_image: &tooling_image ghcr.io/geek-cookbook/tooling:focal-20240216@sha256:aa9430756b3245bb3f25591b0ec61499cb0b9e68b4671343bc5d0170a9c91b10
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240216@sha256:aa9430756b3245bb3f25591b0ec61499cb0b9e68b4671343bc5d0170a9c91b10
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -827,7 +827,7 @@ rutorrentgluetun: &rutorrent
     enabled: true
   automountServiceAccountToken: false
   image:
-      repository: ghcr.io/geek-cookbook/rutorrent
+      repository: ghcr.io/elfhosted/rutorrent
       tag: 4.2.9-0.9.8-0.13.8@sha256:4cb85f96f0945630ebac1f4c72fc38584846eb1acfbb4a26f91b3a45303bb82a
   priorityClassName: tenant-bulk
   podLabels:
@@ -1017,7 +1017,7 @@ rutorrentgluetun: &rutorrent
       type: gluetun
       gluetun:
         image:
-          repository: ghcr.io/geek-cookbook/gluetun
+          repository: ghcr.io/elfhosted/gluetun
           tag: 3.38.0@sha256:bfa60c589cb6c06fbf2f30696d9d2b5a0f7fcfbf3066ff85363a89b7fed869d8
       securityContext:
         runAsUser: 0
@@ -1049,7 +1049,7 @@ rutorrentgluetun: &rutorrent
   additionalContainers:
     # Use this to provied proxied access to arrs
     dante:
-      image: ghcr.io/geek-cookbook/dante:v1.4.3
+      image: ghcr.io/elfhosted/dante:v1.4.3
       env: *bootstrap_env
       securityContext: *default_securitycontext      
       volumeMounts:
@@ -1130,7 +1130,7 @@ delugegluetun: &deluge
     enabled: true
   automountServiceAccountToken: false
   image:
-    repository: ghcr.io/geek-cookbook/deluge
+    repository: ghcr.io/elfhosted/deluge
     tag: 2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
   priorityClassName: tenant-bulk
   securityContext:
@@ -1301,7 +1301,7 @@ delugegluetun: &deluge
       type: gluetun
       gluetun:
         image:
-          repository: ghcr.io/geek-cookbook/gluetun
+          repository: ghcr.io/elfhosted/gluetun
           tag: 3.38.0@sha256:bfa60c589cb6c06fbf2f30696d9d2b5a0f7fcfbf3066ff85363a89b7fed869d8
       securityContext:
         runAsUser: 0
@@ -1332,7 +1332,7 @@ delugegluetun: &deluge
           echo "disconnected" > /shared/vpnstatus
   additionalContainers:
     deluge-web:
-      image: ghcr.io/geek-cookbook/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
+      image: ghcr.io/elfhosted/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
       command:
       - /usr/bin/deluge-web
       - -L
@@ -1414,7 +1414,7 @@ delugepia:
       securityContext: *default_securitycontext       
   additionalContainers:
     deluge-web:
-      image: ghcr.io/geek-cookbook/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
+      image: ghcr.io/elfhosted/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
       command:
       - /usr/bin/deluge-web
       - -L
@@ -1431,7 +1431,7 @@ delugepia:
         PYTHON_EGG_CACHE: /tmp/.cache
     # Use this to provied proxied access to arrs
     dante:
-      image: ghcr.io/geek-cookbook/dante:v1.4.3
+      image: ghcr.io/elfhosted/dante:v1.4.3
       env: *bootstrap_env
       securityContext: *default_securitycontext   
       volumeMounts:
@@ -1618,7 +1618,7 @@ qbittorrentgluetun: &qbittorrent
   additionalContainers:
     # Use this to provied proxied access to arrs
     dante:
-      image: ghcr.io/geek-cookbook/dante:v1.4.3
+      image: ghcr.io/elfhosted/dante:v1.4.3
       env: *bootstrap_env
       securityContext: *default_securitycontext      
       volumeMounts:
@@ -1685,7 +1685,7 @@ qbittorrentgluetun: &qbittorrent
       type: gluetun
       gluetun:
         image:
-          repository: ghcr.io/geek-cookbook/gluetun
+          repository: ghcr.io/elfhosted/gluetun
           tag: 3.38.0@sha256:bfa60c589cb6c06fbf2f30696d9d2b5a0f7fcfbf3066ff85363a89b7fed869d8          
       securityContext:
         runAsUser: 0
@@ -1738,7 +1738,7 @@ qbittorrentpia:
   additionalContainers:
     # Use this to provied proxied access to arrs
     dante:
-      image: ghcr.io/geek-cookbook/dante:v1.4.3
+      image: ghcr.io/elfhosted/dante:v1.4.3
       env: *bootstrap_env
       securityContext: *default_securitycontext   
       volumeMounts:
@@ -1801,7 +1801,7 @@ nzbget:
   sso:
     enabled: true
   image:
-    repository: ghcr.io/geek-cookbook/nzbget
+    repository: ghcr.io/elfhosted/nzbget
     tag: 24.1@sha256:e5bac0b31cd47a896043327a3848b7f97c0c880b3698ad17934dec56b6511942
   priorityClassName: tenant-bulk
   podLabels:
@@ -2296,7 +2296,7 @@ radarr4k:
 ombi:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/ombi
+    repository: ghcr.io/elfhosted/ombi
     tag: 4.43.5@sha256:a8c2f64d4756c55a11db0fbec5c4c707f07940ed524ddf6e451cc0cba7fb65ce
   priorityClassName: tenant-normal
   controller:
@@ -2653,7 +2653,7 @@ autobrr:
     bootstrap: *bootstrap
   # additionalContainers:
   #   regbrr:
-  #     image: ghcr.io/geek-cookbook/docker-autobrr-helper:sha-0dcb44a
+  #     image: ghcr.io/elfhosted/docker-autobrr-helper:sha-0dcb44a
   #     imagePullPolicy: IfNotPresent
   #     command:
   #     - /bin/sh
@@ -2681,7 +2681,7 @@ filebrowser:
   podLabels:
     app.elfhosted.com/name: filebrowser
   image:
-    repository: ghcr.io/geek-cookbook/filebrowser
+    repository: ghcr.io/elfhosted/filebrowser
     tag: 2.23.0@sha256:b44792453980ab6fe59f14211024fcc5de24516112f62fb31ca1f3cc00c832c6
   envFrom:
   - configMapRef:
@@ -3286,7 +3286,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/geek-cookbook/filebrowser:2.23.0@sha256:b44792453980ab6fe59f14211024fcc5de24516112f62fb31ca1f3cc00c832c6
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:b44792453980ab6fe59f14211024fcc5de24516112f62fb31ca1f3cc00c832c6
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -3330,7 +3330,7 @@ filebrowser:
       resources: *default_resources
       securityContext: *default_securitycontext
     copy-recyclarr-example-config:
-      image: ghcr.io/geek-cookbook/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
+      image: ghcr.io/elfhosted/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -3436,7 +3436,7 @@ uptimekuma:
   sso:
     enabled: true
   image:
-    repository: ghcr.io/geek-cookbook/uptime-kuma
+    repository: ghcr.io/elfhosted/uptime-kuma
     tag: 1.23.13@sha256:0a687e0c8c86002d204a8c06ba7aeada7c13baa783dcf5d0c8c0e7c2e5eb180d
   priorityClassName: tenant-normal
   controller:
@@ -3665,7 +3665,7 @@ calibreweb:
     enabled: true
   priorityClassName: 
   image:
-    repository: ghcr.io/geek-cookbook/calibre-web
+    repository: ghcr.io/elfhosted/calibre-web
     tag: 0.6.21@sha256:8d9bb83dcd0a439d340de48e7d8743fb75e611e3b1f07e13970d7013afc62d47
   controller:
     annotations:
@@ -3723,7 +3723,7 @@ pyload:
     enabled: true
   priorityClassName: 
   image:
-    repository: ghcr.io/geek-cookbook/pyload-ng
+    repository: ghcr.io/elfhosted/pyload-ng
     tag: 0.5.0b3.dev71@sha256:17b0414059c2aad0ae0318244a4f024f3e54851430ad6d44bedba260466c78d2
   env:
     PUID: 568
@@ -3787,7 +3787,7 @@ lazylibrarian:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/lazylibrarian
+    repository: ghcr.io/elfhosted/lazylibrarian
     tag: rolling@sha256:8bdacb96f359c8f6f04cfd9a400821c833e015857da1bc877f11cb8c55e80587
   enabled: false
   controller:
@@ -3924,7 +3924,7 @@ komga:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/komga
+    repository: ghcr.io/elfhosted/komga
     tag: 1.11.1@sha256:4a3b8eae8383c0e40a660c347b219dffb9f958b35f2e3cef47625fb25226d1da
   env:
     KOMGA_CONFIGDIR: /config
@@ -3982,7 +3982,7 @@ kavita:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/kavita
+    repository: ghcr.io/elfhosted/kavita
     tag: 0.8.1@sha256:22413f18fa1fdb61e2b21426bc3fd66160ddb654bcf3143113aa1d9282104f5e
   securityContext:
     seccompProfile:
@@ -4314,7 +4314,7 @@ resiliosync:
     enabled: true
   priorityClassName: tenant-bulk
   image:
-    repository: ghcr.io/geek-cookbook/resilio-sync
+    repository: ghcr.io/elfhosted/resilio-sync
     tag: 2.8.0.1389-1@sha256:d904043b452285d37128461e9faa06fe96d442b4baf7a9f0e6a0b9242f7761a0
   env:
     PUID: 568
@@ -4570,7 +4570,7 @@ lidarr:
 navidrome:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/navidrome
+    repository: ghcr.io/elfhosted/navidrome
     tag: 0.52.5@sha256:c709433f284e2641706ddec8ca8045681c84e94f838c28cc2ccf1d82532a3597
   sso:
     enabled: true
@@ -5127,7 +5127,7 @@ plexgluetun:
       <<: *plex_addons_vpn
       gluetun:
         image:
-          repository: ghcr.io/geek-cookbook/gluetun
+          repository: ghcr.io/elfhosted/gluetun
           tag: 3.38.0@sha256:bfa60c589cb6c06fbf2f30696d9d2b5a0f7fcfbf3066ff85363a89b7fed869d8
       envFrom:
       - configMapRef:
@@ -5158,7 +5158,7 @@ plexpia:
 jellyfin:
   hostname: elfhosted
   image:
-    repository: ghcr.io/geek-cookbook/jellyfin
+    repository: ghcr.io/elfhosted/jellyfin
     tag: 10.9.3@sha256:aef1c253e5b4a9f9d711c49ad54bd33270ca9feb5411234fa96550f8c1172902
   enabled: false
   podLabels:
@@ -5533,7 +5533,7 @@ homer:
     fsGroupChangePolicy: "Always"
   automountServiceAccountToken: false
   image:
-    repository: ghcr.io/geek-cookbook/tooling
+    repository: ghcr.io/elfhosted/tooling
     tag: focal-20230605@sha256:dac41eb12f3762284fa6963ee5821688fdd40efdad710a2d9f8b3579fbc8f1cc
   ingress:
     main:
@@ -6074,7 +6074,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/geek-cookbook/homer:v24.05.1@sha256:a11fd11af98972f83876c5f44849e8f0cf1bd3a4f2d41698a08044c5211feb16
+      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:a11fd11af98972f83876c5f44849e8f0cf1bd3a4f2d41698a08044c5211feb16
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -6172,7 +6172,7 @@ traefikforwardauth:
       configmap.reloader.stakater.com/reload: traefik-forward-auth-config
     strategy: RollingUpdate
   image:
-    repository: ghcr.io/geek-cookbook/traefik-forward-auth
+    repository: ghcr.io/elfhosted/traefik-forward-auth
     pullPolicy: IfNotPresent
     tag: 3.1.0@sha256:568cca312839667daaf58ae4b9fcee9efc7c9ea2d96dd8005fed57d446b5dfeb     
 
@@ -6214,7 +6214,7 @@ traefikforwardauth:
 
 gatus:
   image:
-    repository: ghcr.io/geek-cookbook/gatus
+    repository: ghcr.io/elfhosted/gatus
     tag: 5.11.0@sha256:194609e534a7f4adc266f59184b0db28aa8b2697558fdb25110b6c1bf966be66
   priorityClassName: tenant-normal
   securityContext:
@@ -6294,7 +6294,7 @@ gotify:
     enabled: true
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/gotify
+    repository: ghcr.io/elfhosted/gotify
     tag: 2.4.0@sha256:ba635bebcbb625e17d5bf8d251be2c71f032ee80e77cbd4cbc1a6d93ee518523
   priorityClassName: tenant-normal
   securityContext:
@@ -6413,7 +6413,7 @@ seafile:
   sso:
     enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/seafile
+    repository: ghcr.io/elfhosted/seafile
     tag: 10.0.1@sha256:24e50c4601e4c86d1521354e4dee0db18120da72f8ebbc8c4de5aa29dc07ecdb
   priorityClassName: tenant-bulk
   securityContext:
@@ -6627,7 +6627,7 @@ youtubedl:
   sso:
     enabled: true
   image:
-    repository: ghcr.io/geek-cookbook/youtubedl-material-nightly
+    repository: ghcr.io/elfhosted/youtubedl-material-nightly
     tag: "4.3.2@sha256:057a172284fdb540a79e42a2afe92ac2431db53a7bbc126be1d2653b0ca46a07"
   priorityClassName: tenant-bulk
   securityContext:
@@ -6700,7 +6700,7 @@ thelounge:
   sso:
     enabled: true
   image:
-    repository: ghcr.io/geek-cookbook/thelounge
+    repository: ghcr.io/elfhosted/thelounge
     tag: "4.4.3@sha256:c34664387d9d5a65f4d72f71fbe6466da22a10e1ea07696d02d59bb06167bf10"
   priorityClassName: tenant-normal
   controller:
@@ -6758,7 +6758,7 @@ thelounge:
     a-migrate: *migrate_data
     bootstrap: *bootstrap
     create-user:
-      image: ghcr.io/geek-cookbook/thelounge:4.4.3@sha256:c34664387d9d5a65f4d72f71fbe6466da22a10e1ea07696d02d59bb06167bf10
+      image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:c34664387d9d5a65f4d72f71fbe6466da22a10e1ea07696d02d59bb06167bf10
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -6804,7 +6804,7 @@ unpackerr:
   sso:
     enabled: true
   image:
-    repository: ghcr.io/geek-cookbook/unpackerr
+    repository: ghcr.io/elfhosted/unpackerr
     tag: 0.13.1@sha256:8a1ea827aaa92a2c8d792c159b135af154fa00b286f421b897c4d511e6d5b761
   priorityClassName: tenant-bulk
   controller:
@@ -6868,7 +6868,7 @@ unpackerr:
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
-      image: ghcr.io/geek-cookbook/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
+      image: ghcr.io/elfhosted/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -6898,7 +6898,7 @@ unpackerr:
 overseerr:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/overseerr
+    repository: ghcr.io/elfhosted/overseerr
     tag: 1.33.2@sha256:07004541caa460eb70626dc73831032f35267eed98cbff5972b7b8ce5fe1a635
   priorityClassName: tenant-normal
   securityContext:
@@ -6940,7 +6940,7 @@ overseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/geek-cookbook/overseerr:1.33.2@sha256:07004541caa460eb70626dc73831032f35267eed98cbff5972b7b8ce5fe1a635
+      image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:07004541caa460eb70626dc73831032f35267eed98cbff5972b7b8ce5fe1a635
       command:
         - /bin/bash
         - -c
@@ -6984,7 +6984,7 @@ overseerr:
 jellyseerr:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/jellyseerr
+    repository: ghcr.io/elfhosted/jellyseerr
     tag: 1.8.1@sha256:0a272697c83247fe6ecd7cd86053ff33da19e02a7f485ffd78d053ba6dd3ef89
   priorityClassName: tenant-normal
   securityContext:
@@ -7026,7 +7026,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/geek-cookbook/jellyseerr:1.8.1@sha256:0a272697c83247fe6ecd7cd86053ff33da19e02a7f485ffd78d053ba6dd3ef89
+      image: ghcr.io/elfhosted/jellyseerr:1.8.1@sha256:0a272697c83247fe6ecd7cd86053ff33da19e02a7f485ffd78d053ba6dd3ef89
       command:
         - /bin/bash
         - -c
@@ -7070,7 +7070,7 @@ jellyseerr:
 audiobookshelf:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/audiobookshelf
+    repository: ghcr.io/elfhosted/audiobookshelf
     tag: 2.10.1@sha256:a2c4d3b595caf7707d4e3849c32cd2d675a7a30a66bbe3ab68821551d9c63800
   priorityClassName: tenant-streaming
   securityContext:
@@ -7141,7 +7141,7 @@ audiobookshelf:
 openbooks:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/openbooks
+    repository: ghcr.io/elfhosted/openbooks
     tag: 4.5.0@sha256:1bab9fbe69224c80f3a0fa8b715e4f708edbed49999e29b564f0b203de46a5b9
   priorityClassName: tenant-normal
   securityContext:
@@ -7217,7 +7217,7 @@ openbooks:
 vaultwarden:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/vaultwarden
+    repository: ghcr.io/elfhosted/vaultwarden
     tag: 1.30.5@sha256:5d53bfa6c6490231ab6b7b0eefb1c846558f21bca4c4c98c74d0a15730306f53
   priorityClassName: tenant-normal
   securityContext:
@@ -7285,7 +7285,7 @@ notifiarr:
     enabled: true
   hostname: elfhosted
   image:
-    repository: ghcr.io/geek-cookbook/notifiarr
+    repository: ghcr.io/elfhosted/notifiarr
     tag: 0.7.0@sha256:7cb46eccf4a57f329f4de970126de4ddbe5da3898836f293c69948d59260bea2
   priorityClassName: tenant-normal
   securityContext:
@@ -7345,7 +7345,7 @@ notifiarr:
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
-      image: ghcr.io/geek-cookbook/notifiarr:0.7.0@sha256:7cb46eccf4a57f329f4de970126de4ddbe5da3898836f293c69948d59260bea2
+      image: ghcr.io/elfhosted/notifiarr:0.7.0@sha256:7cb46eccf4a57f329f4de970126de4ddbe5da3898836f293c69948d59260bea2
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -7375,7 +7375,7 @@ shoko:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/shokoserver
+    repository: ghcr.io/elfhosted/shokoserver
     tag: v4.2.2@sha256:851c185c96dd0a05af2c73809748a96ebf5c7728e4d4dd175da7e80c4d61287b
   env:
     PUID: 568
@@ -7436,7 +7436,7 @@ filebot:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/filebot-node
+    repository: ghcr.io/elfhosted/filebot-node
     tag: 0.4.6@sha256:193acf0f5339df1f2ce713f4d42a7461bf5e566344594af3aa0f0be1471a5752
   env:
     PUID: 568
@@ -7503,7 +7503,7 @@ nextpvr:
     enabled: true
   priorityClassName: tenant-streaming
   image:
-    repository: ghcr.io/geek-cookbook/nextpvr
+    repository: ghcr.io/elfhosted/nextpvr
     tag: 10.9.3@sha256:9307c599f0844b136f3f0e09c7b90a2be4968f761d17a23762ca45381f7d1db9
   controller:
     annotations:
@@ -7571,7 +7571,7 @@ rpdb:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/rpdb
+    repository: ghcr.io/elfhosted/rpdb
     tag: 0.2.7@sha256:79df0fc8dc74918a3c09154fb759a509cab218e80794765b1b44d5ee4a8bbdb9
   controller:
     annotations:
@@ -7629,7 +7629,7 @@ plexmetamanager:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/plex-meta-manager
+    repository: ghcr.io/elfhosted/plex-meta-manager
     tag: v2.0.1@sha256:5ceaedbbafb0ff7f22a291a6834caf8e0580ecab9d19914a5865b62e78b4e885
   securityContext:
     seccompProfile:
@@ -7739,7 +7739,7 @@ kometa:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/plex-meta-manager
+    repository: ghcr.io/elfhosted/plex-meta-manager
     tag: v2.0.1@sha256:5ceaedbbafb0ff7f22a291a6834caf8e0580ecab9d19914a5865b62e78b4e885
   securityContext:
     seccompProfile:
@@ -7841,7 +7841,7 @@ rcloneui:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/rclone
+    repository: ghcr.io/elfhosted/rclone
     tag: 1.66.0@sha256:2267ddca4b6e9b1c49164ab78acbf1f39440c1cfea59cd457938b14c2a10b7aa
   command: 
   - /rcloneui.sh
@@ -7936,7 +7936,7 @@ rclonefm:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/rclone
+    repository: ghcr.io/elfhosted/rclone
     tag: 1.66.0@sha256:2267ddca4b6e9b1c49164ab78acbf1f39440c1cfea59cd457938b14c2a10b7aa
   command: 
   - /rclonefm.sh
@@ -8044,7 +8044,7 @@ webdav: &webdav
     kubernetes.io/egress-bandwidth: "40M"    
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/rclone
+    repository: ghcr.io/elfhosted/rclone
     tag: 1.66.0@sha256:2267ddca4b6e9b1c49164ab78acbf1f39440c1cfea59cd457938b14c2a10b7aa
   controller:
     annotations:
@@ -8133,7 +8133,7 @@ storageboss:
     kubernetes.io/egress-bandwidth: "150M"
   priorityClassName: tenant-critical
   image:
-    repository: ghcr.io/geek-cookbook/rclone
+    repository: ghcr.io/elfhosted/rclone
     tag: 1.66.0@sha256:2267ddca4b6e9b1c49164ab78acbf1f39440c1cfea59cd457938b14c2a10b7aa
   controller:
     annotations:
@@ -8343,7 +8343,7 @@ jfa:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/jfa-go
+    repository: ghcr.io/elfhosted/jfa-go
     tag: v1.19.1@sha256:6d632df6c28d310035ebfc58263586f223417f45ac29214ca23410ea4b12d331
   securityContext:
     seccompProfile:
@@ -8699,7 +8699,7 @@ rapidleech:
     enabled: true
   priorityClassName: tenant-bulk
   image:
-    repository: ghcr.io/geek-cookbook/rapidleech
+    repository: ghcr.io/elfhosted/rapidleech
     tag: rolling@sha256:c19229924e47f323a811e15d157a5c726d2d88e7ad7156622ef7fae2e9f78c53
   controller:
     annotations:
@@ -8791,7 +8791,7 @@ syncthing:
     enabled: true
   priorityClassName: tenant-bulk
   image:
-    repository: ghcr.io/geek-cookbook/syncthing
+    repository: ghcr.io/elfhosted/syncthing
     tag: 1.27.1@sha256:bfc16f5289e7591baad23ea0a47af9e6a591c2da0d2e81918b524daa3a3a718e
   controller:
     annotations:
@@ -8844,7 +8844,7 @@ syncthing:
   initContainers:
     bootstrap: *bootstrap
     setup:
-      image: ghcr.io/geek-cookbook/syncthing:1.27.1@sha256:bfc16f5289e7591baad23ea0a47af9e6a591c2da0d2e81918b524daa3a3a718e
+      image: ghcr.io/elfhosted/syncthing:1.27.1@sha256:bfc16f5289e7591baad23ea0a47af9e6a591c2da0d2e81918b524daa3a3a718e
       imagePullPolicy: IfNotPresent
       envFrom:
       - configMapRef:
@@ -8891,7 +8891,7 @@ rdtclient: &app_rdtclient
   podLabels:
     app.elfhosted.com/class: debrid  
   image:
-    repository: ghcr.io/geek-cookbook/rdtclient
+    repository: ghcr.io/elfhosted/rdtclient
     tag: v2.0.78@sha256:4ae546a1976fc018960bd4cfdfd5395118fd4f4f630b9a307edb120edd105d8e
   controller:
     annotations:
@@ -9066,7 +9066,7 @@ aria:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/aria2
+    repository: ghcr.io/elfhosted/aria2
     tag: 1.37.0@sha256:e41061373a300e2c03fc39ba9a44e77bce8c640f9a07761dab29a95325829e6e 
   controller:
     annotations:
@@ -9137,7 +9137,7 @@ aria:
     bootstrap: *bootstrap    
   additionalContainers:
     ariang:
-      image: ghcr.io/geek-cookbook/ariang:1.3.7@sha256:da5d39c1a718c6eeddeb68003a775fb6747fcb30ec5f9a3192d4191f46ca43c5
+      image: ghcr.io/elfhosted/ariang:1.3.7@sha256:da5d39c1a718c6eeddeb68003a775fb6747fcb30ec5f9a3192d4191f46ca43c5
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -9222,7 +9222,7 @@ miniflux:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/miniflux
+    repository: ghcr.io/elfhosted/miniflux
     tag: 2.1.3
   controller:
     annotations:
@@ -9333,7 +9333,7 @@ joplinserver:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/joplin-server
+    repository: ghcr.io/elfhosted/joplin-server
     tag: v2.14.2@sha256:b4f52bffce08541dd54e823b78bbfa18e091d53064ed507f69fe9e1ca92b719b
   controller:
     annotations:
@@ -9694,7 +9694,7 @@ wallabag:
       memory: 1Gi
   additionalContainers:
     ui:
-      image: ghcr.io/geek-cookbook/wallabag:2.6.9@sha256:977b207b290ac0c7f8bc9dfe55bc2914adfd0793eeb429f2262c86bcb1359373
+      image: ghcr.io/elfhosted/wallabag:2.6.9@sha256:977b207b290ac0c7f8bc9dfe55bc2914adfd0793eeb429f2262c86bcb1359373
       volumeMounts:
       - mountPath: /var/www/wallabag/data
         name: config
@@ -9723,7 +9723,7 @@ wallabag:
 autoscan:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/autoscan
+    repository: ghcr.io/elfhosted/autoscan
     tag: 1.4.0@sha256:814ee8a40831a44227cb362190d8b105797c608224ae2ef73a4c9058a9f102d3
   priorityClassName: tenant-normal
   controller:
@@ -9812,7 +9812,7 @@ autoscan:
 iceberg:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/iceberg
+    repository: ghcr.io/elfhosted/iceberg
     tag: rolling@sha256:a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3
     # a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3 is the last-known-working sha
   priorityClassName: tenant-normal
@@ -9881,7 +9881,7 @@ iceberg:
     bootstrap: *bootstrap
   additionalContainers:
     frontend:
-      image: ghcr.io/geek-cookbook/iceberg:rolling@sha256:a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3
+      image: ghcr.io/elfhosted/iceberg:rolling@sha256:a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3
       command:
       - node 
       - /iceberg/frontend/build               
@@ -9901,7 +9901,7 @@ iceberg:
 airdcpp: &app_airdcpp
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/airdcpp
+    repository: ghcr.io/elfhosted/airdcpp
     tag: 2.9.0@sha256:d9f6e597bcfc38946d0c4cafce775a559e7b8cf7c66397c9c506cb695ea01205
   priorityClassName: tenant-normal
   podLabels:
@@ -10028,7 +10028,7 @@ airdcppgluetun:
       enabled: true # in case we ever need it
       gluetun:
         image:
-          repository: ghcr.io/geek-cookbook/gluetun
+          repository: ghcr.io/elfhosted/gluetun
           tag: 3.38.0@sha256:bfa60c589cb6c06fbf2f30696d9d2b5a0f7fcfbf3066ff85363a89b7fed869d8
       envFrom:
       - configMapRef:
@@ -10055,7 +10055,7 @@ airdcppgluetun:
 jackett:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/jackett
+    repository: ghcr.io/elfhosted/jackett
     tag: 0.21.2831@sha256:9f3d68375674566fc7277f9297c46acd9f1526878c9135a0650fd0ddf71c4e73
   priorityClassName: tenant-normal
   controller:
@@ -10111,7 +10111,7 @@ jackett:
 stremioserver: &app_stremioserver
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/stremio-server
+    repository: ghcr.io/elfhosted/stremio-server
     tag: v4.20.8@sha256:fed9ce36dfaf02a4d1ba3de3db437cbd3df206ff0eefb931d60260ae904f54f8
   priorityClassName: tenant-normal
   podLabels:
@@ -10247,7 +10247,7 @@ stremioservergluetun:
       enabled: true # in case we ever need it
       gluetun:
         image:
-          repository: ghcr.io/geek-cookbook/gluetun
+          repository: ghcr.io/elfhosted/gluetun
           tag: 3.38.0@sha256:bfa60c589cb6c06fbf2f30696d9d2b5a0f7fcfbf3066ff85363a89b7fed869d8
       envFrom:
       - configMapRef:
@@ -10271,7 +10271,7 @@ stremioservergluetun:
 stremioweb:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/stremio-web
+    repository: ghcr.io/elfhosted/stremio-web
     tag: v5.0.0-beta.8@sha256:892ffcc84a0fa32e75f4953f50354c5020e2488dfefc8eaca8f0f0dcfe48dd49
   priorityClassName: tenant-normal
   podLabels:
@@ -10317,7 +10317,7 @@ stremioweb:
 stremiojackett:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/stremio-jackett
+    repository: ghcr.io/elfhosted/stremio-jackett
     tag: v4.1.6@sha256:f396624f5be314eb7d46432835fb3bc3cf3572e242ea78d54a24db0239638d71
   priorityClassName: tenant-normal
   controller:
@@ -10538,7 +10538,7 @@ mongoexpress:
 annatar:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/annatar
+    repository: ghcr.io/elfhosted/annatar
     tag: v0.12.8
   priorityClassName: tenant-normal
   controller:
@@ -10618,7 +10618,7 @@ annatar:
 jackettio:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/jackettio
+    repository: ghcr.io/elfhosted/jackettio
     tag: v1.2.0@sha256:cc9cf6efcaabb0f5862139903a6e90ed6759ffc8f8c3da1339e6e124478dca11
   priorityClassName: tenant-normal
   controller:
@@ -10674,7 +10674,7 @@ jackettio:
 davio:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/davio
+    repository: ghcr.io/elfhosted/davio
     tag: v1.0.4@sha256:af136e178043757c09a09f29d12cfd05de94d224d70e9f0476a7c6f86dce4187
   priorityClassName: tenant-normal
   controller:
@@ -10731,7 +10731,7 @@ davio:
 mediafusion:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/mediafusion
+    repository: ghcr.io/elfhosted/mediafusion
     tag: 3.9.4@sha256:bc4b393218ea6e0a8198c85fcab4323d4a03c982de4af380c1910e7a1d320968
   priorityClassName: tenant-normal
   controller:
@@ -10808,7 +10808,7 @@ stremiojackettcommunity: &stremiojackettcommunity
   podLabels: 
       app.elfhosted.com/name: stremio-jackett-community    
   image:
-    repository: ghcr.io/geek-cookbook/stremio-jackett
+    repository: ghcr.io/elfhosted/stremio-jackett
     tag: v4.1.6@sha256:f396624f5be314eb7d46432835fb3bc3cf3572e242ea78d54a24db0239638d71
   priorityClassName: tenant-normal
   # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"] # allow logs on private instances
@@ -10887,7 +10887,7 @@ stremiojackettcommunityalldebrid:
 xtremio:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/xtremio
+    repository: ghcr.io/elfhosted/xtremio
     tag: rolling@sha256:d95609bb1eb1279710bcc68bd747b8940d6f77968f4b2c7b68325f6caf33cdf1
   priorityClassName: tenant-normal
   controller:
@@ -10936,7 +10936,7 @@ xtremio:
 shluflix:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/shluflix
+    repository: ghcr.io/elfhosted/shluflix
     tag: rolling@sha256:1e889d411bf79693855379ddaf766640c5dba716efdff36f32f613e33366d462
   priorityClassName: tenant-normal
   controller:
@@ -10992,7 +10992,7 @@ shluflix:
 stremify:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/stremify
+    repository: ghcr.io/elfhosted/stremify
     tag: rolling@sha256:0b2a5f9a31432ded5d908ce369750c66f016ed80427ce25d14352f731a10f554
   priorityClassName: tenant-normal
   controller:
@@ -11116,7 +11116,7 @@ recyclarr:
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
-      image: ghcr.io/geek-cookbook/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
+      image: ghcr.io/elfhosted/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -11157,7 +11157,7 @@ recyclarr:
 knightcrawler: &app_knightcrawler
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/knightcrawler-addon
+    repository: ghcr.io/elfhosted/knightcrawler-addon
     tag: v2.0.26@sha256:03f0856d58384e96f5301e08f372867c7ce409ea9246dfb88c16d508206c1b5a
   priorityClassName: tenant-normal
   podLabels: 
@@ -11258,7 +11258,7 @@ zurg: &zurg
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
-    repository: ghcr.io/geek-cookbook/zurg
+    repository: ghcr.io/elfhosted/zurg
     tag: v0.9.3-hotfix.11@sha256:f3110e087387d0584700d43708121135f6b2880290711c682d9f817a0637a3f6
   priorityClassName: tenant-normal
   controller:
@@ -11491,7 +11491,7 @@ zurggluetun:
       <<: *zurg_addons_vpn
       gluetun:
         image:
-          repository: ghcr.io/geek-cookbook/gluetun
+          repository: ghcr.io/elfhosted/gluetun
           tag: 3.38.0@sha256:bfa60c589cb6c06fbf2f30696d9d2b5a0f7fcfbf3066ff85363a89b7fed869d8
       envFrom:
       - configMapRef:
@@ -11502,7 +11502,7 @@ plexdebrid:
   enabled: false
   # runtimeClassName: kata  
   image:
-    repository: ghcr.io/geek-cookbook/plex-debrid
+    repository: ghcr.io/elfhosted/plex-debrid
     tag: rolling@sha256:5a30f79628cd19fb9e88547b83388fdb055502da6fdd839f9a133c8c3950a9de
   priorityClassName: tenant-normal
   controller:
