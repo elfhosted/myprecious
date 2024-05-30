@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/elfhosted/myprecious/compare/v1.2.0...v1.2.1) (2024-05-30)
+
+
+### Bug Fixes
+
+* thelounge migration creating unnecessary error ([d7cfeae](https://github.com/elfhosted/myprecious/commit/d7cfeae7d61c2a7e5dd1a86ebdf1eb14085bc4c4))
+
 ## [1.2.0](https://github.com/elfhosted/myprecious/compare/v1.1.0...v1.2.0) (2024-05-30)
 
 
