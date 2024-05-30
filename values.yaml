@@ -3666,7 +3666,7 @@ calibreweb:
   priorityClassName: 
   image:
     repository: ghcr.io/elfhosted/calibre-web
-    tag: 0.6.21@sha256:8d9bb83dcd0a439d340de48e7d8743fb75e611e3b1f07e13970d7013afc62d47
+    tag: 0.6.21@sha256:34897aeb0332fd8f43c797d9f82118d1507e54a5077bc111a9155ce7fe16d298
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibreweb"
