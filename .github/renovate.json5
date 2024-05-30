@@ -23,32 +23,20 @@
     {
       "matchUpdateTypes": ["digest"],
       "automerge": true,
-      "automergeType": "branch",
-      "platformAutomerge": true,
-      "ignoreTests": true,
       "excludePackagePatterns": ["iceberg"]
     },
     {
       "matchUpdateTypes": ["nightly"],
       "automerge": true,
-      "automergeType": "branch",
-      "platformAutomerge": true,
-      "ignoreTests": true
     },
     {
       "matchUpdateTypes": ["patch"],
       "automerge": true,
-      "automergeType": "branch",
-      "platformAutomerge": true,
-      "ignoreTests": true,
       "excludePackagePatterns": ["filebrowser","qbittorrent","deluge","rutorrent"]
     },
     {
       "matchUpdateTypes": ["minor"],
       "automerge": true,
-      "automergeType": "branch",
-      "platformAutomerge": true,
-      "ignoreTests": true,
       "excludePackagePatterns": ["filebrowser","qbittorrent","deluge","rutorrent"]
     }     
   ],
