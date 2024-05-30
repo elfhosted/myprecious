@@ -1,0 +1,28 @@
+name: "Charts: Lint"
+
+on:
+  push:
+
+env:
+  HELM_VERSION: 3.15.1
+
+jobs:
+  lint-chart:
+    name: Lint chart
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # - name: Install Kubernetes tools
+      #   uses: yokawasa/action-setup-kube-tools@v0.8.2
+      #   with:
+      #     setup-tools: |
+      #       helm
+      #     helm: "${{ env.HELM_VERSION }}"
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@afea100a513515fbd68b0e72a7bb0ae34cb62aec # tag=v2.3.1
+
+      - name: Run chart-testing (install)
+        run: ct lint --config .ci/ct/ct.yaml
