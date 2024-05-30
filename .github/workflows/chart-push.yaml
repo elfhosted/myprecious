@@ -1,9 +1,11 @@
-name: "Charts: Release to GHCR OCI"
+name: "Push chart to ghcr.io"
 
 on:
   push:
     paths:
       - Chart.yaml
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
