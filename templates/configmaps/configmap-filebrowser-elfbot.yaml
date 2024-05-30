@@ -13,7 +13,7 @@ data:
         echo
         echo "valid commands are:"
         echo
-        echo "elfbot restart <app> [--force] [--yesiamsure] : restarts an app"
+        echo "elfbot restart <app>                          : restarts an app"
         echo "elfbot pause <app>                            : stop an app, wait 5 min, and restart it"
         echo "elfbot reset <app> [--yesiamsure]             : resets an app to defaults"
         echo "elfbot backup <app>                           : creates a dated backup folder in under /config/<app>"
