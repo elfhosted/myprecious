@@ -46,4 +46,4 @@ jobs:
         run: |
           CHART_VERSION=$(yq e '.version' Chart.yaml)
           helm package . --dependency-update --destination . --version "${CHART_VERSION}"
-          helm push myprecious-${CHART_VERSION}.tgz" oci://${{ env.TARGET_REGISTRY }}/${{ env.TARGET_REPO }}
+          helm push myprecious-${CHART_VERSION}.tgz oci://${{ env.TARGET_REGISTRY }}/${{ env.TARGET_REPO }}
