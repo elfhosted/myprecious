@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/elfhosted/myprecious/compare/v1.1.0...v1.2.0) (2024-05-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/autoscan:1.4.0 docker digest to 10cc43c ([71b1751](https://github.com/elfhosted/myprecious/commit/71b175141ca16966668c13c884e1b770a934d2be))
+* **app:** update ghcr.io/elfhosted/calibre-web:0.6.21 docker digest to 34897ae ([7af052c](https://github.com/elfhosted/myprecious/commit/7af052cddba3de1634151d484bb3ce89aa075790))
+
+
+### Bug Fixes
+
+* debug ([44bb610](https://github.com/elfhosted/myprecious/commit/44bb6108e11c8c3e75f1c989b7e53f61f1ba93e5))
+
 ## [1.1.0](https://github.com/elfhosted/myprecious/compare/v1.0.0...v1.1.0) (2024-05-30)
 
 
