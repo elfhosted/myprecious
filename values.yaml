@@ -9067,7 +9067,7 @@ aria:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/aria2
-    tag: 1.37.0@sha256:e41061373a300e2c03fc39ba9a44e77bce8c640f9a07761dab29a95325829e6e 
+    tag: 1.37.0@sha256:50360cd699e62071b012d366317f5c972c9536e0453aa4d67d4cd940a1289a7a 
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-aria"
