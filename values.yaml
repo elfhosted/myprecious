@@ -6755,7 +6755,6 @@ thelounge:
           name: elfbot-thelounge
           optional: true
   initContainers:
-    a-migrate: *migrate_data
     bootstrap: *bootstrap
     create-user:
       image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:c34664387d9d5a65f4d72f71fbe6466da22a10e1ea07696d02d59bb06167bf10
