@@ -828,7 +828,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.2-3.0@sha256:aa815690c26d877b262091d3bdc8a0d7a945a6ddf4ed2eb0500542412bcd21bd
+      tag: 4.3.2-3.0@sha256:f905840ba900df4be9b961d7d31112a8efc10e1152bc91c9d9057a839280bdce
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/name: rutorrent
@@ -6984,7 +6984,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:938425b91b495dd96507cb63fdb5e1d853c38c75bfa6c8a6493363115ca847d1
+    tag: 1.9.0@sha256:3397098dad1071971257f72a1f1bbf8175988e8902e308878bb748daa939e7f8
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7025,7 +7025,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:938425b91b495dd96507cb63fdb5e1d853c38c75bfa6c8a6493363115ca847d1
+      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:3397098dad1071971257f72a1f1bbf8175988e8902e308878bb748daa939e7f8
       command:
         - /bin/bash
         - -c
@@ -10055,7 +10055,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.21.2850@sha256:becd2ffbad0c1f7769cb9015abafff90f5d3bddb800581ecfd52ea45bfb5b251
+    tag: 0.21.2850@sha256:35e011e2ef6aa710eb5547c34c14f013f7ac8cbcb41666bbc963c04c48704ab5
   priorityClassName: tenant-normal
   controller:
     annotations:
