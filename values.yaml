@@ -828,7 +828,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.2-3.0@ansible-playbook -i hosts-g3rg-ci setup-k8s.yml -e kubernetes.version=v1.27.7
+      tag: 4.3.2-3.0@sha256:79f0998e77558815fbbdde0cfa31bc36b8f5b2ac84f7ceadff4f96955dde23e3
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/name: rutorrent
