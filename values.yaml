@@ -3666,7 +3666,7 @@ calibreweb:
   priorityClassName: 
   image:
     repository: ghcr.io/elfhosted/calibre-web
-    tag: 0.6.21@sha256:8d9bb83dcd0a439d340de48e7d8743fb75e611e3b1f07e13970d7013afc62d47
+    tag: 0.6.21@sha256:34897aeb0332fd8f43c797d9f82118d1507e54a5077bc111a9155ce7fe16d298
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibreweb"
@@ -9724,7 +9724,7 @@ autoscan:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/autoscan
-    tag: 1.4.0@sha256:814ee8a40831a44227cb362190d8b105797c608224ae2ef73a4c9058a9f102d3
+    tag: 1.4.0@sha256:10cc43cf2a574cdde8795ebb5747e05b1b18fa1738e2d34838d6762a8d3b7e83
   priorityClassName: tenant-normal
   controller:
     annotations:
