@@ -25,4 +25,4 @@ jobs:
         uses: helm/chart-testing-action@afea100a513515fbd68b0e72a7bb0ae34cb62aec # tag=v2.3.1
 
       - name: Run chart-testing (install)
-        run: ct lint --config .ci/ct/ct.yaml
+        run: ct lint
