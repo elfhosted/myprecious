@@ -15,4 +15,6 @@ spec:
         - name: {{ .Release.Name }}-traefik-forward-auth
         - name: error-pages
           namespace: traefik
+        - name: buffer-2g
+          namespace: traefik          
 {{ end }}
