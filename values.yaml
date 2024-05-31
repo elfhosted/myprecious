@@ -2627,6 +2627,14 @@ autobrr:
         configMap:
           name: elfbot-autobrr
           optional: true
+    autobrr-config:
+      enabled: true
+      mountPath: "/config/config.toml"
+      subPath: "config.toml"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: autobrr-config
   ingress:
     main:
       enabled: false
