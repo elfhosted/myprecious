@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.9.0](https://github.com/elfhosted/myprecious/compare/v1.8.0...v1.9.0) (2024-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.21.2855 ([0c0bd44](https://github.com/elfhosted/myprecious/commit/0c0bd44e1b004b86c1bdd90266a16025fca09d00))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 1261e1e ([e890b2e](https://github.com/elfhosted/myprecious/commit/e890b2ee8faf02e5303f5872aee68372c0208d54))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to b2e4090 ([e188cc9](https://github.com/elfhosted/myprecious/commit/e188cc9990076458968273fd19d2ab437c93a40e))
+* **app:** update ghcr.io/geek-cookbook/unpackerr:0.13.1 docker digest to 8a1ea82 ([bdd524f](https://github.com/elfhosted/myprecious/commit/bdd524f9678436b5fdb198faf19b7eabe50d3bc7))
+
+
+### Bug Fixes
+
+* enable discord notifications ([bd355f6](https://github.com/elfhosted/myprecious/commit/bd355f6aa6cafd5841b45af41d2dc7300b6b945b))
+* restore elfstorage access for jackett/nextpvr for backups ([52673ff](https://github.com/elfhosted/myprecious/commit/52673ff4f603e0e98e266159f53d6e9b8f8f6c8a))
+
 ## [1.8.0](https://github.com/elfhosted/myprecious/compare/v1.7.1...v1.8.0) (2024-05-31)
 
 
