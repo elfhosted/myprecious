@@ -25,7 +25,7 @@ jobs:
 
       - name: Fake chart path for chart-releaser
         run: |
-          mkdir charts/myprecious
+          mkdir -p charts/myprecious
           cp -rf * charts/myprecious/
 
         
