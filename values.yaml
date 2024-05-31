@@ -828,7 +828,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.2-3.0@sha256:7b9acc38ff65051fa53b1ea6cd18e20a4ba35463cc11db1d0b8d91af2354a6f6
+      tag: 4.3.2-3.0@sha256:bdd8dd207e5570adab8e753576d1911b4461fa1a9773e0b9ec520ae687aab92c
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/name: rutorrent
@@ -3927,7 +3927,7 @@ komga:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/komga
-    tag: 1.11.1@sha256:4a3b8eae8383c0e40a660c347b219dffb9f958b35f2e3cef47625fb25226d1da
+    tag: 1.11.1@sha256:7317be399b637e7c0855a7b9e6fdc5d0ba4060a6d57a502c24528ade8af777a9
   env:
     KOMGA_CONFIGDIR: /config
     KOMGA_REMEMBERME_KEY: yesplease
@@ -6828,7 +6828,7 @@ shoko:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/shokoserver
-    tag: v4.2.2@sha256:851c185c96dd0a05af2c73809748a96ebf5c7728e4d4dd175da7e80c4d61287b
+    tag: v4.2.2@sha256:8855b0a3481874f69a349d8128ba9fa2d1b516ef7d92ff6a89a8aa5fa33ace78
   env:
     PUID: 568
     PGID: 568
@@ -6956,7 +6956,7 @@ nextpvr:
   priorityClassName: tenant-streaming
   image:
     repository: ghcr.io/elfhosted/nextpvr
-    tag: 10.9.3@sha256:9307c599f0844b136f3f0e09c7b90a2be4968f761d17a23762ca45381f7d1db9
+    tag: 10.9.3@sha256:ae93a16e08b00f42f0816d5c4b43ba61f8cb529916375c080ff4d6b17c87a97a
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-nextpvr"
@@ -9558,7 +9558,7 @@ stremioserver: &app_stremioserver
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-server
-    tag: v4.20.8@sha256:fed9ce36dfaf02a4d1ba3de3db437cbd3df206ff0eefb931d60260ae904f54f8
+    tag: v4.20.8@sha256:8ee9c4bd711f4de002506de0c6931c83bf1a3ba93853001f1518e801b8228522
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: stremio-server
@@ -10604,7 +10604,7 @@ knightcrawler: &app_knightcrawler
   enabled: false
   image:
     repository: ghcr.io/elfhosted/knightcrawler-addon
-    tag: v2.0.26@sha256:03f0856d58384e96f5301e08f372867c7ce409ea9246dfb88c16d508206c1b5a
+    tag: v2.0.26@sha256:eb382f3e85e9c9d9404b6bdea8493062242435f4819ccc8eb17222ea3184ef92
   priorityClassName: tenant-normal
   podLabels: 
     app.elfhosted.com/name: knightcrawler  

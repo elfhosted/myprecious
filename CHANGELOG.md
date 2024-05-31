@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0](https://github.com/elfhosted/myprecious/compare/v1.6.0...v1.7.0) (2024-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon:v2.0.26 docker digest to eb382f3 ([1c32441](https://github.com/elfhosted/myprecious/commit/1c32441b74dc3effdc241325f0764a7402a9cbb5))
+* **app:** update ghcr.io/elfhosted/komga:1.11.1 docker digest to 7317be3 ([37d718c](https://github.com/elfhosted/myprecious/commit/37d718c57e0832f45bd90812078056352378e850))
+* **app:** update ghcr.io/elfhosted/nextpvr:10.9.3 docker digest to ae93a16 ([8019e07](https://github.com/elfhosted/myprecious/commit/8019e073b76f1b6ea7407de6ec02ae2d472a828c))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to bdd8dd2 ([1a7d45e](https://github.com/elfhosted/myprecious/commit/1a7d45eb36c570f10f8fbb3026bbe3f529264335))
+* **app:** update ghcr.io/elfhosted/shokoserver:v4.2.2 docker digest to 8855b0a ([85af3bc](https://github.com/elfhosted/myprecious/commit/85af3bc9a2d7613efafe5eb96ce28c02580030c2))
+* **app:** update ghcr.io/elfhosted/stremio-server:v4.20.8 docker digest to 8ee9c4b ([90b976d](https://github.com/elfhosted/myprecious/commit/90b976d9f2e49023d345e20394a3e0acece0b837))
+
 ## [1.6.0](https://github.com/elfhosted/myprecious/compare/v1.5.0...v1.6.0) (2024-05-31)
 
 
