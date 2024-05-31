@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/elfhosted/myprecious/compare/v1.7.0...v1.7.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* revert troublesome images to geek-cookbook for now ([c85a1c8](https://github.com/elfhosted/myprecious/commit/c85a1c8c944c50027dfcf2885ece8a6a71cd1498))
+
 ## [1.7.0](https://github.com/elfhosted/myprecious/compare/v1.6.0...v1.7.0) (2024-05-31)
 
 
