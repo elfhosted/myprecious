@@ -2,7 +2,7 @@
 safeToRelease: true
 
 # This section just makes images easier to update / parse
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240427@sha256:6088a1e9fc0ce83aec9910af0899661c23b5f2025428d7da631b9b9390241b6c
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240427@sha256:e094581eb3adc654f9df2903e2efef620e0161ba48328a313ad0794a581b3ebb
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
