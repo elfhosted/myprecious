@@ -3332,7 +3332,7 @@ filebrowser:
       resources: *default_resources
       securityContext: *default_securitycontext
     copy-recyclarr-example-config:
-      image: ghcr.io/geek-cookbook/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
+      image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -6320,7 +6320,7 @@ unpackerr:
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
-      image: ghcr.io/elfhosted/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
+      image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -10560,7 +10560,7 @@ recyclarr:
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
-      image: ghcr.io/elfhosted/unpackerr@sha256:014440a2a7e4499a9ce52be1388567d24fc515d8d00422434239b918c56a717a
+      image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
