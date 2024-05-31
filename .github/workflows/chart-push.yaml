@@ -26,7 +26,7 @@ jobs:
       - name: Fake chart path for chart-releaser
         run: |
           mkdir -p charts/myprecious
-          cp -rf * charts/myprecious/
+          cp -rf Chart.yaml values.yaml templates charts/myprecious/
 
         
       - name: Install Helm
