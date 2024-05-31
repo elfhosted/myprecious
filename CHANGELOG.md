@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/elfhosted/myprecious/compare/v1.4.0...v1.5.0) (2024-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2850 docker digest to 08bd497 ([70c66ce](https://github.com/elfhosted/myprecious/commit/70c66ce33278ad74a1f2eae0c381853d312575e0))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 92e71b7 ([e4cbbde](https://github.com/elfhosted/myprecious/commit/e4cbbdecb32ed274ae86c962fd99f1a74910a4f0))
+
 ## [1.4.0](https://github.com/elfhosted/myprecious/compare/v1.3.0...v1.4.0) (2024-05-31)
 
 
