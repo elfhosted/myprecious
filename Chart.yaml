@@ -181,8 +181,8 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: qbittorrentpia.enabled
     alias: qbittorrentpia
-  - name: app-template
-    version: ~0.2.1
+  - name: autobrr
+    version: ~1.1.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: autobrr.enabled
     alias: autobrr
