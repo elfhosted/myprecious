@@ -6973,7 +6973,6 @@ nextpvr:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
     config:
       enabled: true
       type: custom
@@ -7789,7 +7788,7 @@ jfa:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/jfa-go
+    repository: ghcr.io/geek-cookbook/jfa-go
     tag: v1.19.1@sha256:6d632df6c28d310035ebfc58263586f223417f45ac29214ca23410ea4b12d331
   securityContext:
     seccompProfile:
@@ -8779,7 +8778,7 @@ joplinserver:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/joplin-server
+    repository: ghcr.io/geek-cookbook/joplin-server
     tag: v2.14.2@sha256:b4f52bffce08541dd54e823b78bbfa18e091d53064ed507f69fe9e1ca92b719b
   controller:
     annotations:
@@ -9258,7 +9257,7 @@ autoscan:
 iceberg:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/iceberg
+    repository: ghcr.io/geek-cookbook/iceberg
     tag: rolling@sha256:a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3
     # a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3 is the last-known-working sha
   priorityClassName: tenant-normal
