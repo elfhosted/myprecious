@@ -5458,23 +5458,7 @@ emby:
       memory: 512Mi
     limits:
       cpu: 1
-      memory: 2048Mi
-  # probes:
-  #   liveness:
-  #     enabled: true
-  #     custom: true
-  #     spec:
-  #       exec:
-  #         command:
-  #         - /usr/bin/env
-  #         - bash
-  #         - -c
-  #         - ls /storage/* > /dev/null
-  #       failureThreshold: 5
-  #       initialDelaySeconds: 60
-  #       periodSeconds: 10
-  #       successThreshold: 1
-  #       timeoutSeconds: 10      
+      memory: 2048Mi   
 
 homer:
   priorityClassName: tenant-normal
