@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.6.0](https://github.com/elfhosted/myprecious/compare/v1.5.0...v1.6.0) (2024-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/calibre-web:0.6.21 docker digest to 5f9f0c8 ([5e5e8c4](https://github.com/elfhosted/myprecious/commit/5e5e8c45b257d5b542f6d845feb787bcd008f6a9))
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to 5ce0bab ([878a0fd](https://github.com/elfhosted/myprecious/commit/878a0fd1de6347ff9e86e012661b02e477d0844d))
+* **app:** update ghcr.io/elfhosted/gotify:2.4.0 docker digest to 68f9752 ([3efd86a](https://github.com/elfhosted/myprecious/commit/3efd86ac0e1d4e5674bada1a8720fee84aa52441))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2850 docker digest to 7c1ca8c ([178930a](https://github.com/elfhosted/myprecious/commit/178930a56a1d7d4036ff3ce4f1454efec27fe440))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.3 docker digest to 868b98f ([5a112f4](https://github.com/elfhosted/myprecious/commit/5a112f487cfdf9c7afa2e0bb72df76d25c64553f))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to be15b06 ([7246fbe](https://github.com/elfhosted/myprecious/commit/7246fbec71e939b3ce4e3eda2611974887b5a4cb))
+* **app:** update ghcr.io/elfhosted/kavita:0.8.1 docker digest to bd67108 ([ed3eda0](https://github.com/elfhosted/myprecious/commit/ed3eda01c275ba5b49e8c0e0cb6cf96c51e8a011))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 628e0de ([bfbe726](https://github.com/elfhosted/myprecious/commit/bfbe726eac88a3c324e3d34081598348e91ab4ef))
+* **app:** update ghcr.io/elfhosted/ombi:4.43.5 docker digest to adda0be ([60ed87c](https://github.com/elfhosted/myprecious/commit/60ed87c1ba86f69914c68e8c93af86268f83844c))
+* **app:** update ghcr.io/elfhosted/openbooks:4.5.0 docker digest to ad97a38 ([e5463f6](https://github.com/elfhosted/myprecious/commit/e5463f62b0c58beb176cb56536def4af782a0dde))
+* **app:** update ghcr.io/elfhosted/resilio-sync:2.8.0.1389-1 docker digest to 5c26a85 ([b4fef0f](https://github.com/elfhosted/myprecious/commit/b4fef0f94b61cef10db1a5d57a28af9d2dad68bb))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 7b9acc3 ([673fdf6](https://github.com/elfhosted/myprecious/commit/673fdf6a5c6c5dd04e42b0cc6eb8b5c3809195f6))
+* **app:** update ghcr.io/elfhosted/tooling:focal-20240427 docker digest to e094581 ([21aa52a](https://github.com/elfhosted/myprecious/commit/21aa52abe6072b45c134196bd8097e5b238afe44))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.12.0 ([d38c4d2](https://github.com/elfhosted/myprecious/commit/d38c4d215984e8a5e6e9f99c03fafe0a385c9d9b))
+
+
+### Bug Fixes
+
+* removed redundant content ([cfa81a2](https://github.com/elfhosted/myprecious/commit/cfa81a2aa3a451bc208b34c224aeee11e06fe979))
+
 ## [1.5.0](https://github.com/elfhosted/myprecious/compare/v1.4.0...v1.5.0) (2024-05-31)
 
 
