@@ -23,7 +23,7 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: "Fake" chart path for chart-releaser
+      - name: Fake chart path for chart-releaser
         run: |
           mkdir charts/myprecious
           cp -rf * charts/myprecious/
