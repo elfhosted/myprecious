@@ -6072,7 +6072,7 @@ youtubedl:
   sso:
     enabled: true
   image:
-    repository: ghcr.io/elfhosted/youtubedl-material-nightly
+    repository: ghcr.io/geek-cookbook/youtubedl-material-nightly
     tag: "4.3.2@sha256:057a172284fdb540a79e42a2afe92ac2431db53a7bbc126be1d2653b0ca46a07"
   priorityClassName: tenant-bulk
   securityContext:
@@ -9339,7 +9339,7 @@ iceberg:
 airdcpp: &app_airdcpp
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/airdcpp
+    repository: ghcr.io/geek-cookbook/airdcpp
     tag: 2.9.0@sha256:d9f6e597bcfc38946d0c4cafce775a559e7b8cf7c66397c9c506cb695ea01205
   priorityClassName: tenant-normal
   podLabels:
@@ -10430,7 +10430,7 @@ shluflix:
 stremify:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/stremify
+    repository: ghcr.io/geek-cookbook/stremify
     tag: rolling@sha256:0b2a5f9a31432ded5d908ce369750c66f016ed80427ce25d14352f731a10f554
   priorityClassName: tenant-normal
   controller:
