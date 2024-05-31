@@ -17,13 +17,18 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          path: chart
 
-      # - name: Configure Git
-      #   run: |
-      #     git config user.name "$GITHUB_ACTOR"
-      #     git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
+      - name: "Fake" chart path for chart-releaser
+        run: |
+          mkdir charts/myprecious
+          cp -rf * charts/myprecious/
+
+        
       - name: Install Helm
         uses: azure/setup-helm@v4
         env:
@@ -31,7 +36,5 @@ jobs:
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
-        with:
-          charts_dir: chart
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
