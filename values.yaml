@@ -2684,7 +2684,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:5ce0bab436efcd55dc48e36bac72e4b78f676c88e97277b6c27253edcfcf74e5
+    tag: 2.23.0@sha256:76815b3f491e2f249a04c8683c945d377d5aadd11d6f756d82768ecd896cbd53
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -3288,7 +3288,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:5ce0bab436efcd55dc48e36bac72e4b78f676c88e97277b6c27253edcfcf74e5
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:76815b3f491e2f249a04c8683c945d377d5aadd11d6f756d82768ecd896cbd53
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -6438,7 +6438,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:be15b065f5cf3001116d38f48e510e67c3fb8f44794ef5e5f58d434c2c409fcb
+    tag: 1.9.0@sha256:3cdde808da56433a27d596b96958d40b83580be981403f19ee5269a328ec923c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6479,7 +6479,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:be15b065f5cf3001116d38f48e510e67c3fb8f44794ef5e5f58d434c2c409fcb
+      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:3cdde808da56433a27d596b96958d40b83580be981403f19ee5269a328ec923c
       command:
         - /bin/bash
         - -c
@@ -9502,7 +9502,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.21.2850@sha256:7c1ca8c20b9d4accecdda6fe653fc8ee94c7ba6870f387317999dc1f830646f7
+    tag: 0.21.2850@sha256:b1dc8155ca6047c07803a086d5ba778050837721b004772e8c6d07d3cc87a411
   priorityClassName: tenant-normal
   controller:
     annotations:
