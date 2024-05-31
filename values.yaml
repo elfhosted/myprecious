@@ -9536,7 +9536,6 @@ jackett:
         http:
           port: 9117 
   persistence:
-    <<: *appmounts
     config:
       enabled: true
       type: custom
