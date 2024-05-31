@@ -9,33 +9,15 @@ jobs:
   sending:
     runs-on: ubuntu-latest
     steps:
-    - name: Discord notification
-      uses: LeGitHubDeTai/github-to-discord@main
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        DISCORD_USERNAME: .funkypenguin.co.nz
-        DISCORD_AVATAR: https://raw.githubusercontent.com/LeGitHubDeTai/github-to-discord/main/icon.png
-        MESSAGE_TITLE: New treats, y'all!
-        MESSAGE_DESCRIPTION: Github Action By Tai Studio
-        MESSAGE_URL: https://elfhosted.com
-        MESSAGE_COLOR: 5814783
-        CONTENT: Hello, I am content
-        SECTION_NAME: "ChangeLog"
-        AUTHOR_NAME: "Spanky the ElfBot"
-        AUTHOR_URL: "https://elfhosted.com/app/elfbot/"
-        AUTHOR_AVATAR: "https://tai-studio.ml/img/icons/Tai_Studio_discord.png"
-        FOOTER_TEXT: "- Tai Studio © 2021 -"
-        FOOTER_URL: "https://tai-studio.ml/img/icons/Tai_Studio_discord.png"
-        IMAGE: null; 
 
     - name: Github Releases To Discord
       uses: SethCohen/github-releases-to-discord@v1.13.1
       with:
         webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        color: "2105893"
-        username: "Release Changelog"
-        avatar_url: "https://cdn.discordapp.com/avatars/487431320314576937/bd64361e4ba6313d561d54e78c9e7171.png"
-        content: "||@everyone||"
-        footer_title: "Changelog"
-        footer_icon_url: "https://cdn.discordapp.com/avatars/487431320314576937/bd64361e4ba6313d561d54e78c9e7171.png"
+        color: "36511f"
+        username: "Spanky the ElfBot"
+        avatar_url: "https://github.com/spanky-the-elfbot.png"
+        content: "Hey <@&1119634168314343505>, got some new treetz for you!"
+        footer_title: "So this is what's up..."
+        footer_icon_url: "https://github.com/elfhosted.png"
         footer_timestamp: true        
