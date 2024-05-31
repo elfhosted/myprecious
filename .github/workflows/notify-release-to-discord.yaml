@@ -3,6 +3,7 @@ name: notify discord
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   sending:
@@ -12,20 +13,17 @@ jobs:
       uses: LeGitHubDeTai/github-to-discord@main
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        DISCORD_USERNAME: Tai Studio
+        DISCORD_USERNAME: .funkypenguin.co.nz
         DISCORD_AVATAR: https://raw.githubusercontent.com/LeGitHubDeTai/github-to-discord/main/icon.png
         MESSAGE_TITLE: New treats, y'all!
         MESSAGE_DESCRIPTION: Github Action By Tai Studio
         MESSAGE_URL: https://elfhosted.com
         MESSAGE_COLOR: 5814783
         CONTENT: Hello, I am content
-        MESSAGE_TITLE: "New Version"
-        MESSAGE_DESCRIPTION: "This is a new message, blah blah "
-        MESSAGE_URL: 'https://github.com/LeGitHubDeTai/github-to-discord'
         SECTION_NAME: "ChangeLog"
         AUTHOR_NAME: "Spanky the ElfBot"
         AUTHOR_URL: "https://elfhosted.com/app/elfbot/"
         AUTHOR_AVATAR: "https://tai-studio.ml/img/icons/Tai_Studio_discord.png"
         FOOTER_TEXT: "- Tai Studio © 2021 -"
         FOOTER_URL: "https://tai-studio.ml/img/icons/Tai_Studio_discord.png"
-        IMAGE: null;
+        IMAGE: null; 
