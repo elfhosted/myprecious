@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.10.0](https://github.com/elfhosted/myprecious/compare/v1.9.0...v1.10.0) (2024-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to 2563a87 ([bda635c](https://github.com/elfhosted/myprecious/commit/bda635c70404047fe304f52a45687ab01fda5729))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to a9a7e27 ([d253330](https://github.com/elfhosted/myprecious/commit/d2533309d273ebe2d45bcaf92bde626a5a95447c))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to e2313bc ([52ceeef](https://github.com/elfhosted/myprecious/commit/52ceeef8e262af9afef860fc314de950249e8cc8))
+
+
+### Bug Fixes
+
+* use correct image for pyload ([101d467](https://github.com/elfhosted/myprecious/commit/101d4679b90bd6bccf53ca27921f69e04042d479))
+
 ## [1.9.0](https://github.com/elfhosted/myprecious/compare/v1.8.0...v1.9.0) (2024-05-31)
 
 
