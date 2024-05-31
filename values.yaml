@@ -2230,13 +2230,7 @@ radarr4k:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr4k-block
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-radarr4k-ssd              
+          claimName: config-radarr4k-block           
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4242,13 +4236,7 @@ sonarr4k:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr4k-block
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr4k-ssd              
+          claimName: config-sonarr4k-block            
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4406,13 +4394,7 @@ prowlarr:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-prowlarr-block
-    migration: # migrating from cephfs
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-prowlarr-ssd            
+          claimName: config-prowlarr-block         
     run: # used for s6-init with non-root
       enabled: true
       type: emptyDir
@@ -4506,13 +4488,7 @@ lidarr:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-lidarr-block
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-lidarr-ssd          
+          claimName: config-lidarr-block      
     s6:
       enabled: true
       type: emptyDir
@@ -4678,13 +4654,7 @@ readarr:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarr-block
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-readarr-ssd              
+          claimName: config-readarr-block           
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -4768,13 +4738,7 @@ readarraudio:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarraudio-block
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-readarraudio-ssd              
+          claimName: config-readarraudio-block            
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -5381,13 +5345,7 @@ emby:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-emby-block
-    migration: # migrating from cephfs
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-emby-ssd            
+          claimName: config-emby-block         
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -6274,13 +6232,7 @@ gatus:
       mountPath: /data/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gatus-block  
-    migration: # migrating from cephfs
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gatus-ssd                
+          claimName: config-gatus-block                
   envFrom:
   - secretRef:
       name: gatus-smtp-config
@@ -7664,12 +7616,6 @@ plexmetamanager:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plexmetamanager
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plexmetamanager-ssd
     elfbot:
       enabled: "true"
       type: "custom"
