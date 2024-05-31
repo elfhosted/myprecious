@@ -1332,7 +1332,7 @@ delugegluetun: &deluge
           echo "disconnected" > /shared/vpnstatus
   additionalContainers:
     deluge-web:
-      image: ghcr.io/elfhosted/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
+      image: ghcr.io/geek-cookbook/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
       command:
       - /usr/bin/deluge-web
       - -L
@@ -1414,7 +1414,7 @@ delugepia:
       securityContext: *default_securitycontext       
   additionalContainers:
     deluge-web:
-      image: ghcr.io/elfhosted/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
+      image: ghcr.io/geek-cookbook/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
       command:
       - /usr/bin/deluge-web
       - -L
