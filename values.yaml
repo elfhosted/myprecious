@@ -6974,6 +6974,7 @@ nextpvr:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
+    elfstorage: *elfstorage
     config:
       enabled: true
       type: custom
@@ -7132,7 +7133,6 @@ plexmetamanager:
         configMap:
           name: plexmetamanager-config
   initContainers:
-    a-migrate: *migrate_data
     bootstrap: *bootstrap
     copy-example-config:
       image: *tooling_image
@@ -9536,6 +9536,7 @@ jackett:
         http:
           port: 9117 
   persistence:
+    elfstorage: *elfstorage
     config:
       enabled: true
       type: custom
