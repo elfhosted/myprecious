@@ -828,7 +828,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.2-3.0@sha256:92e71b791b739bd12444a249fbd38b9dbf7065086c75463f7a55426b6d9f5a10
+      tag: 4.3.2-3.0@sha256:7b9acc38ff65051fa53b1ea6cd18e20a4ba35463cc11db1d0b8d91af2354a6f6
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/name: rutorrent
