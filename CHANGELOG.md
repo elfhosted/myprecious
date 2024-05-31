@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.8.0](https://github.com/elfhosted/myprecious/compare/v1.7.1...v1.8.0) (2024-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to 76815b3 ([4769da7](https://github.com/elfhosted/myprecious/commit/4769da7335cae2e92b237ffa95485b562e968a50))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2850 docker digest to b1dc815 ([a788ddc](https://github.com/elfhosted/myprecious/commit/a788ddcb3a266dbc10e668fa0f19019ee8962f9e))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 3cdde80 ([85e47b8](https://github.com/elfhosted/myprecious/commit/85e47b80d9e20576c0189be6065848051b342d73))
+
+
+### Bug Fixes
+
+* jackett doesn't need to access storagebox! ([e91314c](https://github.com/elfhosted/myprecious/commit/e91314c3f2543d6494a875813cdf82252712ca53))
+* updated tooling images ([ea0e6f7](https://github.com/elfhosted/myprecious/commit/ea0e6f7ce00905329695d6db3ea2d69f0a1159e1))
+
 ## [1.7.1](https://github.com/elfhosted/myprecious/compare/v1.7.0...v1.7.1) (2024-05-31)
 
 
