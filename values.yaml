@@ -2,7 +2,7 @@
 safeToRelease: true
 
 # This section just makes images easier to update / parse
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240427@sha256:6088a1e9fc0ce83aec9910af0899661c23b5f2025428d7da631b9b9390241b6c
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240427@sha256:e094581eb3adc654f9df2903e2efef620e0161ba48328a313ad0794a581b3ebb
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -828,7 +828,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.2-3.0@sha256:92e71b791b739bd12444a249fbd38b9dbf7065086c75463f7a55426b6d9f5a10
+      tag: 4.3.2-3.0@sha256:7b9acc38ff65051fa53b1ea6cd18e20a4ba35463cc11db1d0b8d91af2354a6f6
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/name: rutorrent
@@ -2291,7 +2291,7 @@ ombi:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/ombi
-    tag: 4.43.5@sha256:e5fb0030940d86ab7ef47fdfd0af9302d49f4fae7e6e9b41d80af9646e88d1d4
+    tag: 4.43.5@sha256:adda0be8192f9b64251c9f69662e61fbfe190aee0aac83355dd9c336f705caf5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2676,7 +2676,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:fd349857f2d206ad19682ad74cc1ba5fce10b816470bc7dea790e76dc4e91d20
+    tag: 2.23.0@sha256:5ce0bab436efcd55dc48e36bac72e4b78f676c88e97277b6c27253edcfcf74e5
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -3280,7 +3280,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:fd349857f2d206ad19682ad74cc1ba5fce10b816470bc7dea790e76dc4e91d20
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:5ce0bab436efcd55dc48e36bac72e4b78f676c88e97277b6c27253edcfcf74e5
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -3660,7 +3660,7 @@ calibreweb:
   priorityClassName: 
   image:
     repository: ghcr.io/elfhosted/calibre-web
-    tag: 0.6.21@sha256:34897aeb0332fd8f43c797d9f82118d1507e54a5077bc111a9155ce7fe16d298
+    tag: 0.6.21@sha256:5f9f0c879cf05f355e1ffe364336c17ab787cd926e7af1e8fa55774a988f273d
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibreweb"
@@ -3782,7 +3782,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:573424da0c03a535a0a28421a195f781d255f370466a1d2f0fba389a4356b1dc
+    tag: rolling@sha256:628e0de8d4f6d35ba4fc8bd0119b74d5d9134e39e096d34d3c0190fa48dc7925
   enabled: false
   controller:
     annotations:
@@ -3977,7 +3977,7 @@ kavita:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kavita
-    tag: 0.8.1@sha256:fa9a4d292152ea1f2a8c0543e66bab7f09cb760f1cf0100ed3d45ebca1d47d0e
+    tag: 0.8.1@sha256:bd67108f5d5ce9c0342862a4d6b1f5c8f756d841c8a950ed1021bea4b68700d3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4032,7 +4032,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.11.0@sha256:c429ecd5eb61b28702b140e1a92b81150d1fd34800946215f115da93cf6bb6ea
+    tag: 7.12.0@sha256:b1a9e0b02c2cea42a67e9fabc7ee69fe4c6d0a662c2cdfb3f97428b84af65f43
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4303,7 +4303,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 2.8.0.1389-1@sha256:3d38d58c8984335bc8c8a824fe04bcdcbc41eab4f9b0b6b38e1bee8bb68ad708
+    tag: 2.8.0.1389-1@sha256:5c26a8576f4a4b2c6912fae16d8113bcaf0c30ab550c9da641b94794807fa7af
   env:
     PUID: 568
     GUID: 568
@@ -5123,7 +5123,7 @@ jellyfin:
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.3@sha256:6c148f7dfaa966b8648b3b2582d85f16e01cd8e4f8f0219900bfdaae6819c639
+    tag: 10.9.3@sha256:868b98fa7771f77feb6098ce47ba5e6f5ab0c9735229d8fabe346ef8b8ef00c9
   enabled: false
   podLabels:
     app.elfhosted.com/class: streaming  
@@ -5740,7 +5740,7 @@ gotify:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/gotify
-    tag: 2.4.0@sha256:5c17f5d3b7feb4a8e97cb880b584e73997b3b13e5dde136f376fc8a6a1f8e85b
+    tag: 2.4.0@sha256:68f975212e339094a8c28869fa9c2572837bbd5e07a5a4d888c5144839eb3bfa
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6429,7 +6429,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:c79b6853a582651862d70c9a7ad8cc46f4bc862d905adfe8f5f100ab891ae893
+    tag: 1.9.0@sha256:be15b065f5cf3001116d38f48e510e67c3fb8f44794ef5e5f58d434c2c409fcb
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6470,7 +6470,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:c79b6853a582651862d70c9a7ad8cc46f4bc862d905adfe8f5f100ab891ae893
+      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:be15b065f5cf3001116d38f48e510e67c3fb8f44794ef5e5f58d434c2c409fcb
       command:
         - /bin/bash
         - -c
@@ -6586,7 +6586,7 @@ openbooks:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/openbooks
-    tag: 4.5.0@sha256:0a59dd162e59e68537da6a8d3bf5e32ffca4fe689dc14221299bc5a941de9583
+    tag: 4.5.0@sha256:ad97a388b0d447a091d077036c33b420d566c27b991bdd2b44674b5d8ee9776c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9494,7 +9494,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.21.2850@sha256:08bd497bc77d17f00c35e7caadb3d13fc26313e1d001d9a522b75057bb2ba761
+    tag: 0.21.2850@sha256:7c1ca8c20b9d4accecdda6fe653fc8ee94c7ba6870f387317999dc1f830646f7
   priorityClassName: tenant-normal
   controller:
     annotations:
