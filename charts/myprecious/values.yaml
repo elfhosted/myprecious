@@ -6957,7 +6957,7 @@ nextpvr:
   priorityClassName: tenant-streaming
   image:
     repository: ghcr.io/elfhosted/nextpvr
-    tag: 10.9.3@sha256:ae93a16e08b00f42f0816d5c4b43ba61f8cb529916375c080ff4d6b17c87a97a
+    tag: 10.9.4@sha256:fbbd8f733ce247ccd63e7aff96c0ff9893aa2ecf41290567b17ed532fd411cdf
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-nextpvr"
