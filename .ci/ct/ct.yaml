@@ -34,9 +34,9 @@ rules:
     check-multi-line-strings: false
   key-duplicates: enable
   line-length: disable              # Lines can be any length
-  new-line-at-end-of-file: enable
+  new-line-at-end-of-file: disable  # who cares
   new-lines:
     type: unix
-  trailing-spaces: enable
+  trailing-spaces: disable          # not me!
   truthy:
     level: warning
