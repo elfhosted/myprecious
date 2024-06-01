@@ -47,3 +47,13 @@ jobs:
           CHART_VERSION=$(yq e '.version' charts/myprecious/Chart.yaml)
           helm package charts/myprecious --dependency-update --destination . --version "${CHART_VERSION}"
           helm push myprecious-${CHART_VERSION}.tgz oci://${{ env.TARGET_REGISTRY }}/${{ env.TARGET_REPO }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.6.0
+        env:
+            CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"          
