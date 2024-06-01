@@ -1,5 +1,46 @@
 # Changelog
 
+## [1.11.0](https://github.com/elfhosted/myprecious/compare/v1.10.0...v1.11.0) (2024-06-01)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.21.2899 ([a023711](https://github.com/elfhosted/myprecious/commit/a0237114448dfa71a471a06892ad96e9f325bed0))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to 107f6a8 ([5b0434b](https://github.com/elfhosted/myprecious/commit/5b0434b8cd7e184b7040fc1e4e62734cda830b60))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to 2c5fb73 ([0355097](https://github.com/elfhosted/myprecious/commit/0355097b27f3016931c25c3820520b4058898b8d))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to 4ad6aed ([b1e1b6f](https://github.com/elfhosted/myprecious/commit/b1e1b6f5c9ccca2a9ac641bb7e20d0b709e58a31))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to 4f0e28b ([977f055](https://github.com/elfhosted/myprecious/commit/977f05574fa7cb4b53acd34896901d76ed870444))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to 9340c72 ([b5ae4c9](https://github.com/elfhosted/myprecious/commit/b5ae4c9a4f75016f68020e16498cdcb36dda4f2b))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to abb0b71 ([e965c43](https://github.com/elfhosted/myprecious/commit/e965c430e1cd07c50026a9019374a90a51443fc3))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to d05015b ([c1645cd](https://github.com/elfhosted/myprecious/commit/c1645cd2bc43e6fe414ca1786d0a6fea6f4d0f0d))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to e5e527d ([0dbd6f4](https://github.com/elfhosted/myprecious/commit/0dbd6f41b687e5deb4dcbe950aae70ec5ae61e1b))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2855 docker digest to f8db80b ([b0fc2cb](https://github.com/elfhosted/myprecious/commit/b0fc2cbbf9bf8413942bbbe839fc75f0396a51db))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 084ee52 ([b8f24be](https://github.com/elfhosted/myprecious/commit/b8f24be68b720941ee736d03ab656f5e6b612f62))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 24d4590 ([c144570](https://github.com/elfhosted/myprecious/commit/c144570c7bc43ea7a0b46092bd1ce943c3356e27))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 25fa19f ([d07d75b](https://github.com/elfhosted/myprecious/commit/d07d75b59e80bbbe7a5e5b244caff963b12e5443))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 2879a7e ([22ad7d3](https://github.com/elfhosted/myprecious/commit/22ad7d307b483e55bd051844e72ca9718eb0c8fd))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 2e984de ([3066779](https://github.com/elfhosted/myprecious/commit/3066779652df17dbcf68af65759d5d5750214a8f))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 6c174ed ([af113d1](https://github.com/elfhosted/myprecious/commit/af113d12ef9dd17dbf0440f0a35098279aa2bc75))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to bfe2cd6 ([3705532](https://github.com/elfhosted/myprecious/commit/3705532a22f9b5d46aa5d3c8a03a09715a9edf98))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to c8f9eb9 ([e4110d0](https://github.com/elfhosted/myprecious/commit/e4110d0af030892fa6538c6618f314d2c506b992))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to dfa67d1 ([801ce39](https://github.com/elfhosted/myprecious/commit/801ce39e12211cbac818d2bc97ca3ef64679dfb1))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to ea3602d ([8773880](https://github.com/elfhosted/myprecious/commit/8773880ceb80c736cf34ee9b999e49a048f8a4bf))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to ee196e4 ([9553a77](https://github.com/elfhosted/myprecious/commit/9553a778eaab9cdd6f4cdf9141471d626da284f3))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to eebafc4 ([9cc1a3e](https://github.com/elfhosted/myprecious/commit/9cc1a3eb065720ceba698d2ada4c070a97c76e75))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 2caaee5 ([f306ca1](https://github.com/elfhosted/myprecious/commit/f306ca1ea4eb834bc0e00612dc90b760c14ad57b))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 2e921db ([3d375be](https://github.com/elfhosted/myprecious/commit/3d375be8930278f3ca0c1245cae8fb2833611a1e))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 3319a33 ([4c92db3](https://github.com/elfhosted/myprecious/commit/4c92db35a437947a9284549f25c141fadca41113))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 53be011 ([221c95c](https://github.com/elfhosted/myprecious/commit/221c95cce70ef2f0bb7ac224811893cfe10c41c6))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 5fb8e1b ([63834fa](https://github.com/elfhosted/myprecious/commit/63834fa8b030cea32a5f5789463022a4a9d10470))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to 8a62110 ([98001f0](https://github.com/elfhosted/myprecious/commit/98001f0bfd26710abf12b8b72df6adedddf19931))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to a2a730b ([b89b22e](https://github.com/elfhosted/myprecious/commit/b89b22edea33db94671eb24039c1580276d5dec9))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to cfe9fdb ([e273f0c](https://github.com/elfhosted/myprecious/commit/e273f0c25ac3e05ec414a2068ba10f54d87353bb))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to da0e8d8 ([1659a8f](https://github.com/elfhosted/myprecious/commit/1659a8f007d488262ee8d273c2599c26a95f2053))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to f11fbea ([76c14e0](https://github.com/elfhosted/myprecious/commit/76c14e098acb38279805e953f388ff7ae0ec4da3))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to f44a1a8 ([0ddca0a](https://github.com/elfhosted/myprecious/commit/0ddca0aaee0a210e4df9b0707a8314bacecf325a))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to f587555 ([ec39da7](https://github.com/elfhosted/myprecious/commit/ec39da796e07a540c4a95146fe87be50f289a23b))
+* **app:** update mattermost/mattermost-team-edition docker tag to v9.9.0 ([d66cf8c](https://github.com/elfhosted/myprecious/commit/d66cf8c66ed374959e3f2a426273f4f6a4c0bf9e))
+
 ## [1.10.0](https://github.com/elfhosted/myprecious/compare/v1.9.0...v1.10.0) (2024-05-31)
 
 
