@@ -23,7 +23,8 @@
     {
       "matchUpdateTypes": ["digest"],
       "automerge": true,
-      "excludePackagePatterns": ["iceberg"]
+      "excludePackagePatterns": ["iceberg"],
+      "extends": [":semanticCommitTypeAll(fix)], // for release-please
     },
     {
       "matchUpdateTypes": ["nightly"],
