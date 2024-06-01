@@ -2,7 +2,6 @@
 
 ## [1.11.0](https://github.com/elfhosted/myprecious/compare/v1.10.0...v1.11.0) (2024-06-01)
 
-
 ### Features
 
 * **app:** update ghcr.io/elfhosted/jackett docker tag to v0.21.2899 ([a023711](https://github.com/elfhosted/myprecious/commit/a0237114448dfa71a471a06892ad96e9f325bed0))
