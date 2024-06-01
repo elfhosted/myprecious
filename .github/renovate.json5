@@ -24,7 +24,7 @@
       "matchUpdateTypes": ["digest"],
       "automerge": true,
       "excludePackagePatterns": ["iceberg","alpine"],
-      "extends": [":semanticCommitTypeAll(fix)], // for release-please
+      "extends": [":semanticCommitTypeAll(fix)"], // for release-please
     },
     {
       "matchUpdateTypes": ["nightly"],
@@ -33,7 +33,7 @@
     {
       "matchUpdateTypes": ["patch"],
       "automerge": true,
-      "excludePackagePatterns": ["filebrowser","qbittorrent","deluge","rutorrent"]
+      "excludePackagePatterns": ["notqbittorrent","notdeluge","notrutorrent"]
     },
     {
       "matchUpdateTypes": ["minor"],
