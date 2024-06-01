@@ -1,1 +1,0 @@
-charts/myprecious/CHANGELOG.md
