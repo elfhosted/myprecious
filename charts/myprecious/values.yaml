@@ -9502,8 +9502,8 @@ airdcppgluetun:
 jackett:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/jackett
-    tag: 0.21.2943@sha256:b29c4fea8771a08e4636a742ced045ae69fad4166d33539e6717c7dccee82799
+    repository: ghcr.io/geek-cookbook/jackett
+    tag: 0.21.2831@sha256:9f3d68375674566fc7277f9297c46acd9f1526878c9135a0650fd0ddf71c4e73
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9538,6 +9538,7 @@ jackett:
           port: 9117 
   persistence:
     elfstorage: *elfstorage
+    tmp: *tmp
     config:
       enabled: true
       type: custom
