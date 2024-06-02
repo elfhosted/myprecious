@@ -5132,7 +5132,7 @@ jellyfin:
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.4@sha256:5740914a61923a85b5b8ad6c3e4cdf850e00d34e9280bc4653db1d0abc114dd9
+    tag: 10.9.4@sha256:9dbe321f076febe5fe3eb745f21b9f2a1fc090e43e93420f5c87b29f993bd978
   enabled: false
   podLabels:
     app.elfhosted.com/class: streaming  
@@ -6439,7 +6439,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:45ea7a1e386c1bf15c750eddd1e421e10395b412194e24467af73841df2d5e4f
+    tag: 1.9.0@sha256:37c46e5a328a2f4d724fa5efa1035e2fea7bc4c96b3c43f564ac787053233e6b
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6480,7 +6480,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:45ea7a1e386c1bf15c750eddd1e421e10395b412194e24467af73841df2d5e4f
+      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:37c46e5a328a2f4d724fa5efa1035e2fea7bc4c96b3c43f564ac787053233e6b
       command:
         - /bin/bash
         - -c
@@ -9503,7 +9503,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.21.2943@sha256:93f898dec2162223033f98cf5ab025f40a27ee385aee8aa2a5272e0d7e5a0797
+    tag: 0.21.2943@sha256:b29c4fea8771a08e4636a742ced045ae69fad4166d33539e6717c7dccee82799
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10706,7 +10706,7 @@ zurg: &zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg
-    tag: v0.9.3-hotfix.11@sha256:70eae7614790513c685f1c0f9dc49cb4aa6e576fb7073607ea4bab84fc97d741
+    tag: v0.9.3-hotfix.11@sha256:2ed52e386e8bf2d8f8b73878f489f5366ef68d31ca015d6114a618f492deaa85
   priorityClassName: tenant-normal
   controller:
     annotations:
