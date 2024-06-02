@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.12.0](https://github.com/elfhosted/myprecious/compare/v1.11.0...v1.12.0) (2024-06-01)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.4 ([90f13a6](https://github.com/elfhosted/myprecious/commit/90f13a64773cd6ee3514e0191e817d8b45529d96))
+* **app:** update ghcr.io/elfhosted/nextpvr docker tag to v10.9.4 ([995e505](https://github.com/elfhosted/myprecious/commit/995e5056e6f8cf46af414e27f5470c2c528ec957))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2899 docker digest to c309ec8 ([7752f70](https://github.com/elfhosted/myprecious/commit/7752f704b6243f474b19857915c9a86ddff0ec3d))
+* **app:** update ghcr.io/elfhosted/jackett:0.21.2899 docker digest to e4be42f ([db81561](https://github.com/elfhosted/myprecious/commit/db815615b78fe0fa167809a4608394174a49de7b))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to d64a8d6 ([4aff4e7](https://github.com/elfhosted/myprecious/commit/4aff4e70c978ed2e31dd2fb668f4a632eeed8185))
+* **app:** update ghcr.io/elfhosted/rutorrent:4.3.2-3.0 docker digest to b03ea9b ([24f34cf](https://github.com/elfhosted/myprecious/commit/24f34cf8a012e93dd28547f10bc3431c2c3240d0))
+* tweak release process ([32092f2](https://github.com/elfhosted/myprecious/commit/32092f26d67c11e7be53ef013694511e756b9e75))
+
 ## [1.11.0](https://github.com/elfhosted/myprecious/compare/v1.10.0...v1.11.0) (2024-06-01)
 
 ### Features
