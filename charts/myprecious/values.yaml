@@ -828,7 +828,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.2-3.0@sha256:2caaee50b7500ac912bf851c08f56c181a02f1d1099a95ec65c46ed08704afd1
+      tag: 4.3.2-3.0@sha256:b03ea9bebc1ada9fdee2fdeb41861844aabb98230e4e74f68b11fecafcd76a73
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/name: rutorrent
@@ -5131,7 +5131,7 @@ jellyfin:
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.3@sha256:868b98fa7771f77feb6098ce47ba5e6f5ab0c9735229d8fabe346ef8b8ef00c9
+    tag: 10.9.4@sha256:f16706d9286b9cc080cb9da1d32955e8c8c1d1852532fef1189f8aedb7712db3
   enabled: false
   podLabels:
     app.elfhosted.com/class: streaming  
@@ -6438,7 +6438,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:084ee5208cf3855d209cccc09b5e99a1a45b7e7c3014ff29d765513e00118caa
+    tag: 1.9.0@sha256:d64a8d60581d3e384fe27637d3577abd41b7bc03b62fd3f6fa6625c9465215dd
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6479,7 +6479,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:084ee5208cf3855d209cccc09b5e99a1a45b7e7c3014ff29d765513e00118caa
+      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:d64a8d60581d3e384fe27637d3577abd41b7bc03b62fd3f6fa6625c9465215dd
       command:
         - /bin/bash
         - -c
@@ -6957,7 +6957,7 @@ nextpvr:
   priorityClassName: tenant-streaming
   image:
     repository: ghcr.io/elfhosted/nextpvr
-    tag: 10.9.3@sha256:ae93a16e08b00f42f0816d5c4b43ba61f8cb529916375c080ff4d6b17c87a97a
+    tag: 10.9.4@sha256:fbbd8f733ce247ccd63e7aff96c0ff9893aa2ecf41290567b17ed532fd411cdf
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-nextpvr"
@@ -9502,7 +9502,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.21.2899@sha256:cb5d7bd3e97c0e962aa93e12dcb71e81e8b53c1933e63ba41483a92d8e795d38
+    tag: 0.21.2899@sha256:e4be42f61a84ad5c9579913862730de6914de522d2f2527e4a4bf4a488cc2f22
   priorityClassName: tenant-normal
   controller:
     annotations:
