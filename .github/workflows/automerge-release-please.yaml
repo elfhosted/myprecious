@@ -30,7 +30,7 @@ jobs:
       - name: Check if safe to release (and we're on a -pre version currently)
         id: safe_to_release
         run: |
-          grep 'safeToRelease: true' values.yaml && (grep ^version Chart.yaml | grep pre)          
+          grep 'safeToRelease: true' charts/myprecious/values.yaml && (grep ^version charts/myprecious/Chart.yaml | grep pre)          
 
       - uses: reitermarkus/automerge@v2
         with:
