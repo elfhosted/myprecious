@@ -1130,7 +1130,7 @@ delugegluetun: &deluge
     enabled: true
   automountServiceAccountToken: false
   image:
-    repository: ghcr.io/elfhosted/deluge
+    repository: ghcr.io/geek-cookbook/deluge
     tag: 2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
   priorityClassName: tenant-bulk
   securityContext:
