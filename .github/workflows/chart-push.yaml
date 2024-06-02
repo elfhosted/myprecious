@@ -56,4 +56,9 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         env:
-            CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"          
+            CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Trigger flux to reconcile HelmRepository
+        run: |
+          curl -X POST ${{ secrets.FLUX_WEBHOOK_URL }}
+    
