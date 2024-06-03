@@ -6439,7 +6439,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:52bbc9bafccbacc861961d0482003b40fb68af130b0bae55c2c518ecf925dacb
+    tag: 1.9.0@sha256:5804b0668ccbe3e6cb1bb7eaf8c04114879fdb6407841608d03d0537863e7f16
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6480,7 +6480,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:52bbc9bafccbacc861961d0482003b40fb68af130b0bae55c2c518ecf925dacb
+      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:5804b0668ccbe3e6cb1bb7eaf8c04114879fdb6407841608d03d0537863e7f16
       command:
         - /bin/bash
         - -c
