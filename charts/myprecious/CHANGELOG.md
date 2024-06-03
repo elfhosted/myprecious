@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/elfhosted/myprecious/compare/v1.14.0...v1.14.1) (2024-06-03)
+
+
+### Bug Fixes
+
+* avoid invalid image issue with notifiarr ([51b3571](https://github.com/elfhosted/myprecious/commit/51b357169458e38dc4f0193b036ae053daf9996b))
+
 ## [1.14.0](https://github.com/elfhosted/myprecious/compare/v1.13.0...v1.14.0) (2024-06-03)
 
 
