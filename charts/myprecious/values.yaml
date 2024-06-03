@@ -5132,7 +5132,7 @@ jellyfin:
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.4@sha256:140d890a93f6d95019f69cf0a97ab6d0028053d00d0e5588ffed65e8c4214d2c
+    tag: 10.9.4@sha256:04e6f9220ff39e781129ee8d4921c3dbccf19f8b3195a7aa6f7c44417dcff52b
   enabled: false
   podLabels:
     app.elfhosted.com/class: streaming  
