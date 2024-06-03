@@ -1,5 +1,59 @@
 # Changelog
 
+## [1.14.0](https://github.com/elfhosted/myprecious/compare/v1.13.0...v1.14.0) (2024-06-03)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.5 ([c2ad5b0](https://github.com/elfhosted/myprecious/commit/c2ad5b04b59e753aea58449d83cfe0800f64ff07))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.0 ([68c80c0](https://github.com/elfhosted/myprecious/commit/68c80c05332c5a721eac1d3e9b1b1d51a27dabaa))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 04e6f92 ([ea9fc7c](https://github.com/elfhosted/myprecious/commit/ea9fc7cb7dd1528290e44e52e4cce0647be7b785))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 140d890 ([b169764](https://github.com/elfhosted/myprecious/commit/b169764a8f2fcb9626da5edfac1c8b6049d03db3))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 19c19c3 ([3a5b6ff](https://github.com/elfhosted/myprecious/commit/3a5b6ff326da77e432deaad829414b3d4a62f5a3))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 30c626b ([7e58bc9](https://github.com/elfhosted/myprecious/commit/7e58bc91f1f9e8d4f38089753d1cca0892b00612))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 571df70 ([7442142](https://github.com/elfhosted/myprecious/commit/7442142999cc3d0238daa22815224957a1b738f3))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 6997472 ([6b0bcd3](https://github.com/elfhosted/myprecious/commit/6b0bcd3080fee1b34c44e7b1e703d1de513aadc5))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 7f6b8b0 ([36396a5](https://github.com/elfhosted/myprecious/commit/36396a55448dd95c957799585db16df4c1ee283e))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to 937245a ([cd4d8d4](https://github.com/elfhosted/myprecious/commit/cd4d8d4943f05a928473e4b15ac2e06027f8bd80))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to a1f8954 ([e25a03b](https://github.com/elfhosted/myprecious/commit/e25a03b69a454fc83aa151bf53bcc36bcfbee5f2))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to acc8ae0 ([850b4ff](https://github.com/elfhosted/myprecious/commit/850b4ff7992d209a538fface51114fd45638ced4))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to b592a47 ([3a1b384](https://github.com/elfhosted/myprecious/commit/3a1b3849db9b1c4d9a1700b64b259a84cd769d56))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to bc668b4 ([c48faca](https://github.com/elfhosted/myprecious/commit/c48facac9555ba9f07e1c55db9dc7f1dec20a148))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to c0dbde8 ([52fc392](https://github.com/elfhosted/myprecious/commit/52fc392c5af2506ea19a173c334eb966cd108185))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to d1aca2c ([d74fddd](https://github.com/elfhosted/myprecious/commit/d74fdddcd06bff9204fdb29f9db626e1c2a4acd7))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.4 docker digest to d7f1a44 ([7042175](https://github.com/elfhosted/myprecious/commit/704217516cb3f530374bf6cbf1e6b2f80ddce5f0))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 16afdc6 ([def698d](https://github.com/elfhosted/myprecious/commit/def698dff503986953910b39bf2c55f28ca76c17))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 1836dbe ([b371eff](https://github.com/elfhosted/myprecious/commit/b371effac3753845895a2b94d05e8458cdbbebc3))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 41613ee ([0b007e5](https://github.com/elfhosted/myprecious/commit/0b007e57e1e7796e4dada1d9fb9797a8a6aa14d9))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 4f90f55 ([39d6165](https://github.com/elfhosted/myprecious/commit/39d6165b7400b6c6371b3e1cda64c773f2e50ca4))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 52bbc9b ([d717585](https://github.com/elfhosted/myprecious/commit/d7175858b12b39189e1ef0b435a928c37e3fd825))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 5804b06 ([1f6bd26](https://github.com/elfhosted/myprecious/commit/1f6bd26e8b4ba958269490b76ccffa0874975233))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 5cb68d5 ([d787259](https://github.com/elfhosted/myprecious/commit/d787259950751f1dc9b3dd1b0f0468dca2fffcf7))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 5f5fe59 ([56fd586](https://github.com/elfhosted/myprecious/commit/56fd586cb8d3525932883149c2eb2666e90493d2))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 67379b8 ([44fda65](https://github.com/elfhosted/myprecious/commit/44fda650bfb5c913afb6bf0ad0c3e7961b72df7c))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 8666a67 ([34d3298](https://github.com/elfhosted/myprecious/commit/34d329804e7a3a8a3bee99d0c13e31969afca2ed))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to 8ef0802 ([f0cf389](https://github.com/elfhosted/myprecious/commit/f0cf3894493f351855c8045d3155bc2abc551864))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to acd1768 ([ffb12ac](https://github.com/elfhosted/myprecious/commit/ffb12aca56dc59145099968ef7bee112db32f68e))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to b3e7220 ([70ab32a](https://github.com/elfhosted/myprecious/commit/70ab32a6cb444e37728810df4231fbfc951a206d))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to cf795d9 ([caf8b98](https://github.com/elfhosted/myprecious/commit/caf8b98468b90f08729d7c93850562f97787f227))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.0 docker digest to fd2bf93 ([c78d4b0](https://github.com/elfhosted/myprecious/commit/c78d4b00969758945b6f33a410676b2842471c61))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.5 docker digest to 1f7d9ac ([fa9ba31](https://github.com/elfhosted/myprecious/commit/fa9ba3168ba30777f5a0c749ac70201986285989))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.5 docker digest to 63fd1e8 ([a2bff93](https://github.com/elfhosted/myprecious/commit/a2bff9332e8c9c518d7b78eab54fde115934f30c))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.5 docker digest to 7141938 ([5a4a71a](https://github.com/elfhosted/myprecious/commit/5a4a71a67f62140471eac52d06015467fa5144ef))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.5 docker digest to 75dd128 ([21cafec](https://github.com/elfhosted/myprecious/commit/21cafecd88126afb65d2e3f8be1ba9246d74ea37))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.5 docker digest to 7e401eb ([bef24f9](https://github.com/elfhosted/myprecious/commit/bef24f96c7ecb57181f3ee5e3404f72f6ef25be0))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.5 docker digest to 9630f36 ([b3f1c48](https://github.com/elfhosted/myprecious/commit/b3f1c480df7711dc2e381b24ccf0a050dd99edfe))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.5 docker digest to 98c5003 ([0d17daf](https://github.com/elfhosted/myprecious/commit/0d17daf616f189103a205fb3e1cec850b411ea1e))
+* **app:** update ghcr.io/elfhosted/zurg:v0.9.3-hotfix.11 docker digest to 51c7f19 ([38b0c7c](https://github.com/elfhosted/myprecious/commit/38b0c7c803c5a7361199f8f57f34d506c4f86aa0))
+* **app:** update ghcr.io/elfhosted/zurg:v0.9.3-hotfix.11 docker digest to 7c0952c ([dccc029](https://github.com/elfhosted/myprecious/commit/dccc0290434dd9b851d070fb7370979dd8d9bf08))
+* **app:** update ghcr.io/elfhosted/zurg:v0.9.3-hotfix.11 docker digest to 92b435a ([2284f51](https://github.com/elfhosted/myprecious/commit/2284f514cee211c92f74bfb57ac64e22b866e573))
+* avoid DEBUG logging in Zurg (eats disk space!) ([60e4f7a](https://github.com/elfhosted/myprecious/commit/60e4f7aa5e6f1fc3cf8073a7f51185550fd64da9))
+* missing /tmp causing Jackett dotNet errors ([e425b41](https://github.com/elfhosted/myprecious/commit/e425b4111e73d55c38fa557844ff6d442e4fdf6c))
+
 ## [1.13.0](https://github.com/elfhosted/myprecious/compare/v1.12.0...v1.13.0) (2024-06-02)
 
 
