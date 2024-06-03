@@ -6799,7 +6799,7 @@ notifiarr:
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
-      image: ghcr.io/elfhosted/notifiarr:0.7.0@sha256:7cb46eccf4a57f329f4de970126de4ddbe5da3898836f293c69948d59260bea2
+      image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
