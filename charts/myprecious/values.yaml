@@ -4311,7 +4311,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 2.8.0.1389-1@sha256:5c26a8576f4a4b2c6912fae16d8113bcaf0c30ab550c9da641b94794807fa7af
+    tag: 2.8.1.1390-1@sha256:28a815f4e934583caa4a449c5bce55e5c7c721f2d887a1d59ade860c1c34861c
   env:
     PUID: 568
     GUID: 568
@@ -5132,7 +5132,7 @@ jellyfin:
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.4@sha256:6b8be6ad4d19383522e2202a99ebef5e8445c4701cc6929ca85312c8bc2467b5
+    tag: 10.9.4@sha256:d731a930a9e758bc36cb84fff257497a19ca5a213ff832e6313adc7386937f88
   enabled: false
   podLabels:
     app.elfhosted.com/class: streaming  
@@ -6439,7 +6439,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:01d1ed0deab8b3e63252852ba75851e8d7c33933dd1b9d976ebbeab60bce9716
+    tag: 1.9.0@sha256:8f77ea18ec1fbe8143fa420871a529a8ca7d348a72e88e5d9c154eb06ba8d78c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6480,7 +6480,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:01d1ed0deab8b3e63252852ba75851e8d7c33933dd1b9d976ebbeab60bce9716
+      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:8f77ea18ec1fbe8143fa420871a529a8ca7d348a72e88e5d9c154eb06ba8d78c
       command:
         - /bin/bash
         - -c
@@ -8339,7 +8339,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid  
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.78@sha256:29976673d399939684b80ebd91e48cfa5099d06678675f91921d65c39c26a9f1
+    tag: v2.0.79@sha256:dea5311d0c55f57d9f98bf7dc2e5eb5cbf2fb2e03276ffc48b143cdaf375472d
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rdtclient"
@@ -8976,7 +8976,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.9.0
+    tag: v0.9.1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-homepage,homepage-config,homepage-env"
@@ -10180,7 +10180,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.5@sha256:fb6c6f6a59b62067c61a05bc9d9b92a9c26ee37451ce5aaa9ff75883a52c6161
+    tag: 3.9.5@sha256:c37ed22b80b13e8535a552428aaa85e773b51e14db92258ffe7fbd25a4d84c8c
   priorityClassName: tenant-normal
   controller:
     annotations:
