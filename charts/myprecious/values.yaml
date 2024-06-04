@@ -411,11 +411,11 @@ default_resources: &default_resources
   requests:
     cpu: 10m
     memory: 1Mi
-    ephemeral-storage: 50Mi
+    # ephemeral-storage: 50Mi
   limits:
     cpu: 1
     memory: 1024Mi # just a safety net against bugs!
-    ephemeral-storage: 2Gi # a safety net against node ephemeral space exhaustion
+    # ephemeral-storage: 2Gi # a safety net against node ephemeral space exhaustion
 
 default_securitycontext: &default_securitycontext
   seccompProfile:
