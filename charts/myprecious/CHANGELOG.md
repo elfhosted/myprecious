@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.1](https://github.com/elfhosted/myprecious/compare/v1.15.0...v1.15.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 76bbd01 ([b2fae66](https://github.com/elfhosted/myprecious/commit/b2fae66b6a71f97c3e3d2129201582399525f7c8))
+* **app:** update quay.io/linuxserver.io/calibre:7.12.0 docker digest to b82bfa1 ([03038c7](https://github.com/elfhosted/myprecious/commit/03038c73f0e44a70ee9fe410011b0f63d5836104))
+
 ## [1.15.0](https://github.com/elfhosted/myprecious/compare/v1.14.1...v1.15.0) (2024-06-04)
 
 
