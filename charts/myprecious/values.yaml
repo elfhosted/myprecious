@@ -10606,7 +10606,7 @@ knightcrawler: &app_knightcrawler
   enabled: false
   image:
     repository: ghcr.io/elfhosted/knightcrawler-addon
-    tag: v2.0.26@sha256:eb382f3e85e9c9d9404b6bdea8493062242435f4819ccc8eb17222ea3184ef92
+    tag: v2.0.26@sha256:9c65efc83afb89d0d8952a40ae2596bf7cd6004e2f4caa664b6b69676a0490fc
   priorityClassName: tenant-normal
   podLabels: 
     app.elfhosted.com/name: knightcrawler  
