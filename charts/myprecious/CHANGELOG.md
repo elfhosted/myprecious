@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.16.0](https://github.com/elfhosted/myprecious/compare/v1.15.1...v1.16.0) (2024-06-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.5 ([13fa729](https://github.com/elfhosted/myprecious/commit/13fa729c3a888d9cd8f65f900ca1137483e31e86))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.2 ([c25145a](https://github.com/elfhosted/myprecious/commit/c25145ad8ae1655f2ba7d2919e4bfd154a07aa39))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to 92014bd ([3c0e141](https://github.com/elfhosted/myprecious/commit/3c0e1414dd0b8e5937277decab4b176b521704bd))
+* **app:** update ghcr.io/elfhosted/homer:v24.05.1 docker digest to 894de99 ([48fa9ca](https://github.com/elfhosted/myprecious/commit/48fa9cabfc29a2d0bac28a2d00ee3b9303cbbad4))
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon:v2.0.26 docker digest to 9c65efc ([fa099bb](https://github.com/elfhosted/myprecious/commit/fa099bbb17f2a998aabdabd36c9902ebeb5f4178))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 46ea73d ([60451cc](https://github.com/elfhosted/myprecious/commit/60451cc538172034ea617aeaf1131a39993a8bb1))
+* **app:** update ghcr.io/elfhosted/nzbget:24.1 docker digest to 3d97ced ([74a9237](https://github.com/elfhosted/myprecious/commit/74a92371b2b81f019d3a4db9dd739a5ebb0af3e4))
+* **app:** update ghcr.io/elfhosted/uptime-kuma:1.23.13 docker digest to 2a375e3 ([b52c006](https://github.com/elfhosted/myprecious/commit/b52c0067fd1f2201582b34e4f0d8b5441a2f3a9b))
+* **app:** update ghcr.io/elfhosted/zurg:v0.9.3-hotfix.11 docker digest to 7c5ff8c ([6254960](https://github.com/elfhosted/myprecious/commit/62549605cd08c16093ce68c016dbcadc5b384163))
+
 ## [1.15.1](https://github.com/elfhosted/myprecious/compare/v1.15.0...v1.15.1) (2024-06-05)
 
 
