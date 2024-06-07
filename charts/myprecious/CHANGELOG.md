@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.0](https://github.com/elfhosted/myprecious/compare/v1.16.0...v1.17.0) (2024-06-06)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v8.8 ([77ef971](https://github.com/elfhosted/myprecious/commit/77ef9717496da894c3039cfc139ce1cc15367203))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.6 ([64f7db5](https://github.com/elfhosted/myprecious/commit/64f7db54e955295f0d8092c70cb1458dd82fe858))
+
 ## [1.16.0](https://github.com/elfhosted/myprecious/compare/v1.15.1...v1.16.0) (2024-06-06)
 
 
