@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.1](https://github.com/elfhosted/myprecious/compare/v1.18.0...v1.18.1) (2024-06-08)
+
+
+### Bug Fixes
+
+* update iceberg to latest ([372fe1c](https://github.com/elfhosted/myprecious/commit/372fe1cf26a15201a6d0c8e956f24ac4dd2a7ab2))
+
 ## [1.18.0](https://github.com/elfhosted/myprecious/compare/v1.17.0...v1.18.0) (2024-06-08)
 
 
