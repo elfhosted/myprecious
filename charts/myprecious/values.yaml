@@ -4132,7 +4132,7 @@ sonarr:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: geek-cookbook/sonarr-develop
+    repository: elfhosted/sonarr-develop
     tag: 4.0.4.1699@sha256:a36ea2a991077169ee9abb00352607c969126bc2ecea174924bad32abaa212e9
   securityContext:
     seccompProfile:
@@ -4218,7 +4218,7 @@ sonarr4k:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: geek-cookbook/sonarr-develop
+    repository: elfhosted/sonarr-develop
     tag: 4.0.4.1699@sha256:a36ea2a991077169ee9abb00352607c969126bc2ecea174924bad32abaa212e9
   securityContext:
     seccompProfile:
