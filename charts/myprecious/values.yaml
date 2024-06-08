@@ -9259,9 +9259,8 @@ autoscan:
 iceberg:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/iceberg
-    tag: rolling@sha256:a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3
-    # a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3 is the last-known-working sha
+    repository: ghcr.io/elfhosted/iceberg
+    tag: rolling@sha256:37f9a9cf0ff44cd05ff8eafe1f9cd6e182981e6faf23ead7393c92ee9ec26fca
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9280,18 +9279,7 @@ iceberg:
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
-      name: iceberg-config
-  command:
-  - /usr/bin/dumb-init
-  - /bin/bash
-  - -c
-  - |
-    set -e
-    set -x
-    
-    cd backend
-    source /venv/bin/activate
-    exec python /iceberg/backend/main.py   
+      name: iceberg-config 
   resources: 
     requests:
       cpu: 1m
@@ -9326,24 +9314,6 @@ iceberg:
           optional: true
   initContainers:
     bootstrap: *bootstrap
-  additionalContainers:
-    frontend:
-      image: ghcr.io/elfhosted/iceberg:rolling@sha256:a5f9514c4353fcf4b1a845e5dedb901435e37b653e071b158254b0baa2b131c3
-      command:
-      - node 
-      - /iceberg/frontend/build               
-      volumeMounts:
-      - mountPath: /iceberg/data
-        name: config
-        subPath: config
-      - mountPath: /storage/realdebrid-zurg
-        name: rclonemountrealdebridzurg
-      - mountPath: /storage/elfstorage
-        name: elfstorage
-      envFrom:
-      - configMapRef:
-          name: iceberg-config        
-      resources: *default_resources
 
 airdcpp: &app_airdcpp
   enabled: false
