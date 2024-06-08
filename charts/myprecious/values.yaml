@@ -8584,7 +8584,7 @@ aria:
     bootstrap: *bootstrap    
   additionalContainers:
     ariang:
-      image: ghcr.io/elfhosted/ariang:1.3.7@sha256:81761a5ab3739c5e512046011cea1c997a940c726cbbf1565091dd49a6fe774a
+      image: ghcr.io/elfhosted/ariang:1.3.7@sha256:4e4d1e12ebd65ef77aeba0b525c6ca209a67fb3b59016c973f16a1ecf830916c
       resources: *default_resources
       securityContext: *default_securitycontext
 
