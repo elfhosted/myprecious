@@ -1886,7 +1886,7 @@ sabnzbd:
     enabled: true
   image:
     registry: ghcr.io
-    repository: geek-cookbook/sabnzbd
+    repository: elfhosted/sabnzbd
     tag: 4.3.1@sha256:5fb15602857e8827358e70732cac7f2d21c304b8b68a9ef046c2a35dd5db5d0f
   priorityClassName: tenant-bulk
   affinity:
@@ -2051,7 +2051,7 @@ tautulli:
     enabled: true
   image:
     registry: ghcr.io
-    repository: geek-cookbook/tautulli
+    repository: elfhosted/tautulli
     tag: 2.14.2@sha256:ab4d60fb7ae115ce9e18339d7c497e57c5053bf4c1a6bff50230b6fb3a2a2222
   priorityClassName: tenant-normal
   controller:
@@ -2112,7 +2112,7 @@ radarr:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: geek-cookbook/radarr
+    repository: elfhosted/radarr
     tag: 5.6.0.8846@sha256:4ef89428cfb9dfe19db38ffa4515e3e5dcc7f65bf57ce70a7a598af3cceb7ce7
   securityContext:
     seccompProfile:
@@ -2202,7 +2202,7 @@ radarr4k:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: geek-cookbook/radarr
+    repository: elfhosted/radarr
     tag: 5.6.0.8846@sha256:4ef89428cfb9dfe19db38ffa4515e3e5dcc7f65bf57ce70a7a598af3cceb7ce7
   securityContext:
     seccompProfile:
@@ -2353,7 +2353,7 @@ scannarr: &app_scannarr
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: geek-cookbook/scannarr
+    repository: elfhosted/scannarr
     tag: rolling@sha256:47a9d79bcd56806efb0e79aa99f08c848067d1086f44bbdb77908358c30e03db   
   securityContext:
     seccompProfile:
@@ -2433,7 +2433,7 @@ bazarr:
     enabled: true
   image:
     registry: ghcr.io
-    repository: geek-cookbook/bazarr
+    repository: elfhosted/bazarr
     tag: 1.4.2@sha256:91c6ff4cda59743188cd0beb2d4d67278908437b3ff9731408881f84a6c37020
   priorityClassName: tenant-normal
   controller:
@@ -2512,7 +2512,7 @@ bazarr4k:
     enabled: true
   image:
     registry: ghcr.io
-    repository: geek-cookbook/bazarr
+    repository: elfhosted/bazarr
     tag: 1.4.2@sha256:91c6ff4cda59743188cd0beb2d4d67278908437b3ff9731408881f84a6c37020
   priorityClassName: tenant-normal
   controller:
@@ -2592,7 +2592,7 @@ autobrr:
     enabled: true
   image:
     registry: ghcr.io
-    repository: geek-cookbook/autobrr
+    repository: elfhosted/autobrr
     tag: 1.42.0@sha256:0c39c1123cbef40f0e1c412a40503b2e55ce56826eb48fc45805e2e3fe4a0247
   priorityClassName: tenant-normal
   controller:
@@ -4469,7 +4469,7 @@ lidarr:
     enabled: true
   image:
     registry: ghcr.io
-    repository: geek-cookbook/lidarr-develop
+    repository: elfhosted/lidarr-develop
     tag: 2.3.3.4204@sha256:b60b0bf9fd0f99e86a8cd5d31009029fee89179c6471519fdc0f4666ad38efdb
   priorityClassName: tenant-normal
   securityContext:
@@ -4634,7 +4634,7 @@ readarr:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: geek-cookbook/readarr-nightly
+    repository: elfhosted/readarr-nightly
     tag: 0.3.28.2548@sha256:553d5b209e1a806ebfe61a771cabc85d269a8fbc089eb478de0df035547e19ca
   securityContext:
     seccompProfile:
@@ -4718,7 +4718,7 @@ readarraudio:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: geek-cookbook/readarr-nightly
+    repository: elfhosted/readarr-nightly
     tag: 0.3.28.2548@sha256:553d5b209e1a806ebfe61a771cabc85d269a8fbc089eb478de0df035547e19ca
   securityContext:
     seccompProfile:
