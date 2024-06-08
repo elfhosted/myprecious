@@ -4933,7 +4933,7 @@ plex: &plex
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,plex-config" # Reload the deployment every time the rclones change   
   image:
     registry: ghcr.io
-    repository: geek-cookbook/plex
+    repository: elfhosted/plex
     tag: rolling@sha256:85b10a53d62274f958a263d6409c1935b29a64df0289ce81d3f26dce9178a9b8
   persistence:
     <<: *appmounts
@@ -5308,7 +5308,7 @@ emby:
   hostname: elfhosted
   image:
     registry: ghcr.io
-    repository: geek-cookbook/emby
+    repository: elfhosted/emby
     tag: 4.8.7.0@sha256:7c42d1e4b2cc1c268b81a2598b6ffa610d2e2d986a0a01c52dccd7fe6706376d
   enabled: false
   priorityClassName: tenant-streaming
