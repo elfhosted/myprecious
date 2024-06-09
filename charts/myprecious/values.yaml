@@ -9259,7 +9259,7 @@ autoscan:
 iceberg:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/iceberg
+    repository: ghcr.io/elfhosted/iceberg
     tag: rolling@sha256:37f9a9cf0ff44cd05ff8eafe1f9cd6e182981e6faf23ead7393c92ee9ec26fca
   priorityClassName: tenant-normal
   controller:
