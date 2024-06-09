@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.19.0](https://github.com/elfhosted/myprecious/compare/v1.18.1...v1.19.0) (2024-06-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.6 ([0fed1dc](https://github.com/elfhosted/myprecious/commit/0fed1dc4a3f59a032830c7f974eb7365dbfbb3d6))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.7 ([edd180f](https://github.com/elfhosted/myprecious/commit/edd180f919d7bef6bc7b07befb5186219e296d67))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.2.2 ([042f398](https://github.com/elfhosted/myprecious/commit/042f3989d2c8efd7e0e2985271cfc8bae795c9b9))
+* **app:** update ghcr.io/elfhosted/qbittorrent docker tag to v4.6.5 ([71829ed](https://github.com/elfhosted/myprecious/commit/71829ede2cb2115fd817ad47bc67cd49a74a3dfc))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mylar3:0.8.0 docker digest to 5908ea3 ([fb8b3b6](https://github.com/elfhosted/myprecious/commit/fb8b3b6b3bc057860358fbb257a3df2bcd002224))
+* qbittorrent image back to geek-cookbook repo until 4.6.5 build succeeds ([4c0d95d](https://github.com/elfhosted/myprecious/commit/4c0d95dcd728aaae12b9a26e395322c223b6f1c0))
+
 ## [1.18.1](https://github.com/elfhosted/myprecious/compare/v1.18.0...v1.18.1) (2024-06-08)
 
 
