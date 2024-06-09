@@ -9259,7 +9259,7 @@ autoscan:
 iceberg:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/iceberg
+    repository: ghcr.io/geek-cookbook/iceberg
     tag: rolling@sha256:37f9a9cf0ff44cd05ff8eafe1f9cd6e182981e6faf23ead7393c92ee9ec26fca
   priorityClassName: tenant-normal
   controller:
@@ -9279,7 +9279,14 @@ iceberg:
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
-      name: iceberg-config 
+      name: iceberg-config
+  command:
+  - /usr/bin/dumb-init
+  - /bin/bash
+  - -c
+  - |
+    cd /iceberg/backend; 
+    poetry run python3 main.py 
   resources: 
     requests:
       cpu: 1m
@@ -9312,29 +9319,26 @@ iceberg:
         configMap:
           name: elfbot-iceberg
           optional: true
-    command: 
   initContainers:
     bootstrap: *bootstrap
-  command:
-  - /bin/fish
-  - -c
-  - |
-    cd /iceberg/backend
-    poetry run python3 main.py
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/iceberg:rolling@sha256:37f9a9cf0ff44cd05ff8eafe1f9cd6e182981e6faf23ead7393c92ee9ec26fca
       command:
-      - /bin/fish
-      - -c
-      - |
-        node /iceberg/frontend/build
+      - node 
+      - /iceberg/frontend/build               
       volumeMounts:
       - mountPath: /config
         name: config
-    envFrom:
-    - configMapRef:
-        name: iceberg-config 
+        subPath: config
+      - mountPath: /storage/realdebrid-zurg
+        name: rclonemountrealdebridzurg
+      - mountPath: /storage/symlinks
+        name: symlinks
+      envFrom:
+      - configMapRef:
+          name: iceberg-config        
+      resources: *default_resources
 
 airdcpp: &app_airdcpp
   enabled: false
