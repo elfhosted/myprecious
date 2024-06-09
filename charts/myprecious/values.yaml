@@ -9301,7 +9301,7 @@ iceberg:
     config:
       enabled: true
       type: custom
-      mountPath: /iceberg/data
+      mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-iceberg-ssd
@@ -9312,8 +9312,29 @@ iceberg:
         configMap:
           name: elfbot-iceberg
           optional: true
+    command: 
   initContainers:
     bootstrap: *bootstrap
+  command:
+  - /bin/fish
+  - -c
+  - |
+    cd /iceberg/backend
+    poetry run python3 main.py
+  additionalContainers:
+    frontend:
+      image: ghcr.io/elfhosted/iceberg:rolling@sha256:37f9a9cf0ff44cd05ff8eafe1f9cd6e182981e6faf23ead7393c92ee9ec26fca
+      command:
+      - /bin/fish
+      - -c
+      - |
+        node /iceberg/frontend/build
+      volumeMounts:
+      - mountPath: /config
+        name: config
+    envFrom:
+    - configMapRef:
+        name: iceberg-config 
 
 airdcpp: &app_airdcpp
   enabled: false
