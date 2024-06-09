@@ -5,8 +5,8 @@ metadata:
   name: iceberg-config
 data:
   ORIGIN: "https://{{ .Release.Name }}-iceberg.elfhosted.com"
-  HOME: "/config"
-  XDG_CONFIG_HOME: "/config"
-  XDG_DATA_HOME: "/config"
+  HOME: "/iceberg/data/"
+  XDG_CONFIG_HOME: "/iceberg/data"
+  XDG_DATA_HOME: "/iceberg/data"
   POETRY_CACHE_DIR: "/tmp/.cache/pypoetry"
 {{ end }}

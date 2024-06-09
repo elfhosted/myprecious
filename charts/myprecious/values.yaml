@@ -9308,7 +9308,7 @@ iceberg:
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /iceberg/data
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-iceberg-ssd
@@ -9328,7 +9328,7 @@ iceberg:
       - node 
       - /iceberg/frontend/build               
       volumeMounts:
-      - mountPath: /config
+      - mountPath: /iceberg/data
         name: config
         subPath: config
       - mountPath: /storage/realdebrid-zurg
