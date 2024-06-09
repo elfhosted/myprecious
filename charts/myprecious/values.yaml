@@ -1480,7 +1480,6 @@ qbittorrentgluetun: &qbittorrent
   tolerations:
   - key: node-role.elfhosted.com/download-only
     operator: Exists  
-  # we need the injected initcontainer to run as root, so we can't change the pod-level uid/gid
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -1488,7 +1487,6 @@ qbittorrentgluetun: &qbittorrent
     runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
-
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-qbittorrent,qbittorrent-gluetun-config"
