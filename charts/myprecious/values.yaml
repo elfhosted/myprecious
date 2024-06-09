@@ -9282,7 +9282,7 @@ iceberg:
       name: iceberg-config
   command:
   - /usr/bin/dumb-init
-  - /bin/bash
+  - /bin/fish
   - -c
   - |
     cd /iceberg/backend; 
