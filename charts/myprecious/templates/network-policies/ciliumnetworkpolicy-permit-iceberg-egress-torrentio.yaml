@@ -10,24 +10,18 @@ spec:
   egress:
   - toEndpoints:
     - matchLabels:
-        app.kubernetes.io/name: torrentio-addon
-        k8s:io.kubernetes.pod.namespace: torrentio
+        app.kubernetes.io/name: knightcrawler-addon
+        k8s:io.kubernetes.pod.namespace: knightcrawler
     toPorts:
       - ports:
         - port: '7000'
           protocol: TCP
-      - ports:
-        - port: '7001'
-          protocol: TCP          
   - toEndpoints:
     - matchLabels:
-        app.kubernetes.io/name: torrentio-addon-internal
+        app.kubernetes.io/name: knightcrawler-addon-internal
         k8s:io.kubernetes.pod.namespace: torrentio
     toPorts:
       - ports:
         - port: '7000'
-          protocol: TCP
-      - ports:
-        - port: '7001'
           protocol: TCP
 {{ end }}
