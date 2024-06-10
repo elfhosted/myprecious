@@ -20,7 +20,7 @@ data:
     retain_rd_torrent_name: true # if true, it will strictly follow RD API torrent name property w/c should make this more compatible with rdt-client
     auto_delete_rar_torrents: true # if true, zurg will delete unstreamable rar files (these torrents will always be compressed in a rar archive no matter what files you select)
     use_download_cache: false # if true, during zurg initialization, it will fetch all downloads to unrestrict links faster
-    # Disabled by default, causes Plex scanning to get stuck on in-progress files
+
     enable_repair: true
     on_library_update: sh plex_update.sh "$@"
     ignore_renames: true
@@ -45,41 +45,50 @@ data:
     rate_limit_sleep_secs: 6 # wait time after getting a 429 from Real-Debrid API
     realdebrid_timeout_secs: 60 # api timeout
     retries_until_failed: 5 # api failures until considered failed
-    # preferred_hosts: # Run ./zurg network-test
-    #   - 20.download.real-debrid.com
-    #   - 21.download.real-debrid.com
-    #   - 22.download.real-debrid.com
-    #   - 23.download.real-debrid.com
-    #   - 30.download.real-debrid.com
-    #   - 31.download.real-debrid.com
-    #   - 32.download.real-debrid.com
-    #   - 34.download.real-debrid.com
-    #   - 40.download.real-debrid.com
+
+    rar_action: extract
+
+    addl_playable_extensions:
+    - mp3
+    - flac
+    - m4b    
 
     # List of directory definitions and their filtering rules
     directories:
-      # Configuration for anime shows
-      anime:
-        group: media # directories on different groups have duplicates of the same torrent
-        group_order: 10 # group order = priority, it defines who eats first on a group
+      audiobooks:
+        group_order: 5
+        group: media
         filters:
-          - and: # you can use nested 'and' & 'or' conditions
-            - has_episodes: true # intelligent detection of episode files inside a torrent
-            - any_file_inside_regex: /^\[/ # usually anime starts with [ e.g. [SubsPlease]
-            - any_file_inside_not_regex: /s\d\de\d\d/i # and usually anime doesn't use SxxExx
+          - and:
+            - is_music: true
+            - media_info_duration_gte: 600
+
+      music:
+        group_order: 10
+        group: media
+        filters:
+          - is_music: true
+
+      anime:
+        group_order: 15
+        group: media
+        filters:
+          - regex: /\b[a-fA-F0-9]{8}\b/
+          - any_file_inside_regex: /\b[a-fA-F0-9]{8}\b/
 
       shows:
-        group: media
         group_order: 20
+        group: media
         filters:
-          - has_episodes: true  # intelligent detection of episode files inside a torrent
+          - has_episodes: true
 
       movies:
-        group: media  # because anime, shows and movies are in the same group,
-        group_order: 30 # and anime and shows has a lower group_order number than movies, all torrents that doesn't fall into the previous 2 will fall into movies
-        only_show_the_biggest_file: true # let's not show the other files besides the movie itself
+        group_order: 25
+        group: media
+        only_show_the_biggest_file: true
         filters:
-          - regex: /.*/ # you cannot leave a directory without filters because it will not have any torrents in it
+          - regex: /.*/
+          
   plex_update.sh: |
     #!/bin/bash
 
