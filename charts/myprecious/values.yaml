@@ -2352,7 +2352,7 @@ scannarr: &app_scannarr
   image:
     registry: ghcr.io
     repository: elfhosted/scannarr
-    tag: rolling@sha256:47a9d79bcd56806efb0e79aa99f08c848067d1086f44bbdb77908358c30e03db   
+    tag: rolling@sha256:aa371c2ab44f134be539d653e32e6891ffb6f21166ebe1d72f1bc5b1c06d27b4   
   securityContext:
     seccompProfile:
       type: RuntimeDefault
