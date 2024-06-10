@@ -2,9 +2,7 @@ name: notify discord
 
 on:
   release:
-    types: [published]
-  workflow_dispatch:
-  push:
+    # types: [published]
 
 jobs:
   sending:
@@ -18,8 +16,7 @@ jobs:
         color: "36511f"
         username: "Spanky the ElfBot"
         avatar_url: "https://github.com/spanky-the-elfbot.png"
-        # content: "Hey <@&1119634168314343505>, got some new treetz for you!"
-        content: updates
+        content: "Hey <@&1119634168314343505>, got some new treetz for you!"
         footer_title: "So this is what's up..."
         footer_icon_url: "https://github.com/elfhosted.png"
         footer_timestamp: true        
