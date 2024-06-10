@@ -1450,7 +1450,7 @@ qbittorrentgluetun: &qbittorrent
   image:
     registry: ghcr.io
     repository: elfhosted/qbittorrent
-    tag: 4.6.4@sha256:95c5867b3352fe8cb385ca7418d7d34f6506aafd67cf4f09330bcedd7a13f64a
+    tag: 4.6.5@sha256:927621c2820d1f08561bb0584e43ccc494ed6c5fcb340a8a0f32ed8a90fadd39
   priorityClassName: tenant-bulk
   securityContext:
     runAsUser: 568
@@ -2050,7 +2050,7 @@ tautulli:
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
-    tag: 2.14.2@sha256:ab4d60fb7ae115ce9e18339d7c497e57c5053bf4c1a6bff50230b6fb3a2a2222
+    tag: 2.14.2@sha256:b820fda3975625762442c999d273acedc01c227a8931f6ed9c50825791e2af74
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2352,7 +2352,7 @@ scannarr: &app_scannarr
   image:
     registry: ghcr.io
     repository: elfhosted/scannarr
-    tag: rolling@sha256:47a9d79bcd56806efb0e79aa99f08c848067d1086f44bbdb77908358c30e03db   
+    tag: rolling@sha256:aa371c2ab44f134be539d653e32e6891ffb6f21166ebe1d72f1bc5b1c06d27b4   
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4633,7 +4633,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-nightly
-    tag: 0.3.28.2549@sha256:06446ad365099b9c21e1386c2b90fdfe5ce4b2fdb81997252f50d12588a003f2
+    tag: 0.3.29.2555@sha256:3856d3e6b2f3625cd72546e8c94f218e5519391c8f2d48233c4d1ae4aa585f93
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4717,7 +4717,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-nightly
-    tag: 0.3.28.2549@sha256:06446ad365099b9c21e1386c2b90fdfe5ce4b2fdb81997252f50d12588a003f2
+    tag: 0.3.29.2555@sha256:3856d3e6b2f3625cd72546e8c94f218e5519391c8f2d48233c4d1ae4aa585f93
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4932,7 +4932,7 @@ plex: &plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: rolling@sha256:85b10a53d62274f958a263d6409c1935b29a64df0289ce81d3f26dce9178a9b8
+    tag: rolling@sha256:4219220dd8eba3048ecbd0a4c90f21f67274f254e62ac137ab7542c87a77725c
   persistence:
     <<: *appmounts
     config:
