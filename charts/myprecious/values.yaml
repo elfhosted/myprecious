@@ -9341,8 +9341,8 @@ iceberg:
 riven:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/iceberg
-    tag: rolling@sha256:c8266bac0d344a4e3ac386d0dac2e5c73fd49c63820401c26491623680084cff
+    repository: ghcr.io/elfhosted/riven
+    tag: rolling@sha256:dc43d765b7aca2593a7721a6ec2cd5c5a031cdfa6e5aa80d024612384b4a8c01
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9362,13 +9362,6 @@ riven:
   envFrom:
   - configMapRef:
       name: riven-config
-  command:
-  - /usr/bin/dumb-init
-  - /usr/bin/fish
-  - -c
-  - |
-    cd /iceberg/backend; 
-    poetry run python3 main.py 
   resources: 
     requests:
       cpu: 1m
@@ -9405,7 +9398,7 @@ riven:
     bootstrap: *bootstrap
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/iceberg:rolling@sha256:c8266bac0d344a4e3ac386d0dac2e5c73fd49c63820401c26491623680084cff
+      image: ghcr.io/elfhosted/riven:sha256:dc43d765b7aca2593a7721a6ec2cd5c5a031cdfa6e5aa80d024612384b4a8c01
       command:
       - node 
       - /iceberg/frontend/build               
