@@ -1,0 +1,12 @@
+{{ if .Values.riven.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: riven-config
+data:
+  ORIGIN: "https://{{ .Release.Name }}-riven.elfhosted.com"
+  HOME: "/riven/data/"
+  XDG_CONFIG_HOME: "/riven/data"
+  XDG_DATA_HOME: "/riven/data"
+  POETRY_CACHE_DIR: "/tmp/.cache/pypoetry"
+{{ end }}

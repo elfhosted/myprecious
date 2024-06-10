@@ -1,9 +1,8 @@
-# This is simply a place to store iceberg's symlinks
-{{ if .Values.iceberg.enabled }}
+{{ if .Values.riven.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-iceberg-library-ssd
+  name: config-riven-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:

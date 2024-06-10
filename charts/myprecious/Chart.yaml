@@ -397,6 +397,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: iceberg
   - name: app-template
+    condition: riven.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: riven    
+  - name: app-template
     condition: airdcpppia.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

@@ -1,0 +1,18 @@
+{{ if .Values.riven.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-riven.elfhosted.com
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-riven.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: riven
+          kind: Service
+          port: 3000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}
