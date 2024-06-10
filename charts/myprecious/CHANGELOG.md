@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.20.0](https://github.com/elfhosted/myprecious/compare/v1.19.0...v1.20.0) (2024-06-10)
+
+
+### Features
+
+* add Riven ([d09b905](https://github.com/elfhosted/myprecious/commit/d09b905a49abf9b5c032cb1c9ffc4f4f686771e5))
+* **app:** update ghcr.io/elfhosted/bazarr docker tag to v1.4.3 ([09de01c](https://github.com/elfhosted/myprecious/commit/09de01cf8070352cc1c05b8b3ccfb7db47c840c0))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.8.8.0 ([451548c](https://github.com/elfhosted/myprecious/commit/451548c964339964dbda22095581aa4b1b49e9a7))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.18.0.4543 ([a660466](https://github.com/elfhosted/myprecious/commit/a66046623bd35c067e7099c5a470dfd23960ea0c))
+* **app:** update ghcr.io/elfhosted/qbittorrent docker tag to v4.6.5 ([67abcc3](https://github.com/elfhosted/myprecious/commit/67abcc3ff9fb8ca4a4ff27484d1672a12bc86e3c))
+* **app:** update ghcr.io/elfhosted/readarr-nightly docker tag to v0.3.28.2549 ([cecd4a8](https://github.com/elfhosted/myprecious/commit/cecd4a8d5ca1c9c3ba8a4a4711767498bf7c08a0))
+* **app:** update ghcr.io/elfhosted/readarr-nightly docker tag to v0.3.29.2555 ([32b0b9c](https://github.com/elfhosted/myprecious/commit/32b0b9cef7bf1d8942261e2e36860ab96632a324))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.5.1719 ([144f48d](https://github.com/elfhosted/myprecious/commit/144f48d9a4fd93f4da06bf6a16bb81c021f45f4f))
+* **app:** update ghcr.io/haveagitgat/tdarr docker tag to v2.20.01 ([d94a404](https://github.com/elfhosted/myprecious/commit/d94a4040e979fc6ce24f69cb4dc1479536338c97))
+* update zurg to v0.10-rc2 ([93e7c21](https://github.com/elfhosted/myprecious/commit/93e7c21c196fb05afba8c4eca0c3012419b1702f))
+
+
+### Bug Fixes
+
+* add unrar support to zurg defaults ([418aab8](https://github.com/elfhosted/myprecious/commit/418aab87cb6b835c592dcf9af56ab240d932960e))
+* **app:** update ghcr.io/elfhosted/plex:rolling docker digest to 4219220 ([d76ec85](https://github.com/elfhosted/myprecious/commit/d76ec850b7d5860131e4e83a2f2dea4c2c888b71))
+* **app:** update ghcr.io/elfhosted/qbittorrent:4.6.4 docker digest to 95c5867 ([58252eb](https://github.com/elfhosted/myprecious/commit/58252eb2e0c023ed99ddeddf15f1116eccb598b0))
+* **app:** update ghcr.io/elfhosted/scannarr:rolling docker digest to aa371c2 ([a5b1e44](https://github.com/elfhosted/myprecious/commit/a5b1e4438425931128aab2329fa6f58bd4ad8c4a))
+* **app:** update ghcr.io/elfhosted/tautulli:2.14.2 docker digest to b820fda ([30f739f](https://github.com/elfhosted/myprecious/commit/30f739fd98d1c6db38195283b1c714daeba48640))
+
 ## [1.19.0](https://github.com/elfhosted/myprecious/compare/v1.18.1...v1.19.0) (2024-06-09)
 
 
