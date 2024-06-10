@@ -10784,7 +10784,7 @@ zurg: &zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg
-    tag: v0.9.3-hotfix.11@sha256:51c7f1954b45e834e82d864e1dad14bf53651398188856fa3e314c0eeecd7050
+    tag: v0.10.0-rc.2@sha256:5ea46f7a984e68b984869a20eeeddf09e73595dea99a9269c9a876fc065cc39a  
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10942,7 +10942,7 @@ zurg: &zurg
         # Ensure download cache is disabled (works better when IPs change)
         sed -i  "s/use_download_cache: true/use_download_cache: false/" /config/config.yml
 
-        # Don't let this instance do repairs
+        # Allow repairs
         sed -i  "s/enable_repair: false/enable_repair: true/" /config/config.yml
 
         # Set to 32 workers
