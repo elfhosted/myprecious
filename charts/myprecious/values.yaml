@@ -2111,7 +2111,7 @@ radarr:
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.6.0.8846@sha256:4ef89428cfb9dfe19db38ffa4515e3e5dcc7f65bf57ce70a7a598af3cceb7ce7
+    tag: 5.6.0.8846@sha256:b914cf5c0331179ca9a3b74a05596e3941f125fadf3e15d10c37b498d7c6d497
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2201,7 +2201,7 @@ radarr4k:
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.6.0.8846@sha256:4ef89428cfb9dfe19db38ffa4515e3e5dcc7f65bf57ce70a7a598af3cceb7ce7
+    tag: 5.6.0.8846@sha256:b914cf5c0331179ca9a3b74a05596e3941f125fadf3e15d10c37b498d7c6d497
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2591,7 +2591,7 @@ autobrr:
   image:
     registry: ghcr.io
     repository: elfhosted/autobrr
-    tag: 1.42.0@sha256:0c39c1123cbef40f0e1c412a40503b2e55ce56826eb48fc45805e2e3fe4a0247
+    tag: 1.42.0@sha256:fdb7afcc399875ce8ad09fdc830c66a8603f26ee8980d9274ba0af7966e04291
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -4468,7 +4468,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.3.3.4204@sha256:b60b0bf9fd0f99e86a8cd5d31009029fee89179c6471519fdc0f4666ad38efdb
+    tag: 2.3.3.4204sha256:93347aac15ec0dd347f34c1621ecd2c31c3a77dc4b1a94874d4ea5889c0f5ba3
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
