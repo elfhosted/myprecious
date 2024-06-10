@@ -4994,7 +4994,7 @@ plex: &plex
       optional: true
   resources:
     requests:
-      cpu: "500m"
+      cpu: 250m
       memory: 2Gi
     limits:
       cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
@@ -5461,7 +5461,7 @@ emby:
         timeoutSeconds: 10
   resources:
     requests:
-      cpu: "500m"
+      cpu: 250m
       memory: 2Gi
     limits:
       cpu: 1
@@ -9377,7 +9377,7 @@ riven:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 8080 
+          port: 3000 
   persistence:
     <<: *appmounts  
     config:
