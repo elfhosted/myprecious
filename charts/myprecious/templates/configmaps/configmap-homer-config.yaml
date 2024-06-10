@@ -898,16 +898,13 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
-          {{ if .Values.iceberg.enabled }}
-          - name: "Iceberg"
-            # logo: "assets/png/real-debrid.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
+          {{ if .Values.riven.enabled }}
+          - name: "Riven"
             icon: "fas fa-mountain"
             subtitle: "Sync Plex / Jellyfin with Debrid services"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-iceberg.elfhosted.com"
+            url: "https://{{ .Release.Name }}-riven.elfhosted.com"
             target: "_blank" # optional html tag target attribute
           {{ end }}                    
 

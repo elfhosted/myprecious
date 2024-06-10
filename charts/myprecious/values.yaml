@@ -9396,24 +9396,24 @@ riven:
           optional: true
   initContainers:
     bootstrap: *bootstrap
-  additionalContainers:
-    frontend:
-      image: ghcr.io/elfhosted/riven:sha256:dc43d765b7aca2593a7721a6ec2cd5c5a031cdfa6e5aa80d024612384b4a8c01
-      command:
-      - node 
-      - /iceberg/frontend/build               
-      volumeMounts:
-      - mountPath: /riven/data
-        name: config
-        subPath: config
-      - mountPath: /storage/realdebrid-zurg
-        name: rclonemountrealdebridzurg
-      - mountPath: /storage/symlinks
-        name: symlinks
-      envFrom:
-      - configMapRef:
-          name: iceberg-riven        
-      resources: *default_resources
+  # additionalContainers:
+  #   frontend:
+  #     image: ghcr.io/elfhosted/riven:sha256:dc43d765b7aca2593a7721a6ec2cd5c5a031cdfa6e5aa80d024612384b4a8c01
+  #     command:
+  #     - node 
+  #     - /iceberg/frontend/build               
+  #     volumeMounts:
+  #     - mountPath: /riven/data
+  #       name: config
+  #       subPath: config
+  #     - mountPath: /storage/realdebrid-zurg
+  #       name: rclonemountrealdebridzurg
+  #     - mountPath: /storage/symlinks
+  #       name: symlinks
+  #     envFrom:
+  #     - configMapRef:
+  #         name: iceberg-riven        
+  #     resources: *default_resources
 
 airdcpp: &app_airdcpp
   enabled: false
