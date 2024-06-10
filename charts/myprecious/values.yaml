@@ -5284,8 +5284,8 @@ jellyfin:
         timeoutSeconds: 10
   resources:
     requests:
-      cpu: "200m"
-      memory: 512Mi
+      cpu: "500m"
+      memory: 2Gi
     limits:
       cpu: 2
       memory: 4Gi
@@ -5461,8 +5461,8 @@ emby:
         timeoutSeconds: 10
   resources:
     requests:
-      cpu: "200m"
-      memory: 512Mi
+      cpu: "500m"
+      memory: 2Gi
     limits:
       cpu: 1
       memory: 2048Mi   
