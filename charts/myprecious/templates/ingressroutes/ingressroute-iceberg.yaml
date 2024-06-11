@@ -1,14 +1,14 @@
-{{ if .Values.riven.enabled }}
+{{ if .Values.iceberg.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-riven.elfhosted.com
+  name: {{ .Release.Name }}-iceberg.elfhosted.com
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-riven.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-iceberg.elfhosted.com`)
       kind: Rule
       services:
-        - name: riven
+        - name: iceberg
           kind: Service
           port: 3001
       middlewares:

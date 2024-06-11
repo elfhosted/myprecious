@@ -1,10 +1,10 @@
-{{ if or .Values.riven.enabled }}
+{{ if .Values.iceberg.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: riven
+  name: iceberg
   labels:
-    app.kubernetes.io/name: riven
+    app.kubernetes.io/name: iceberg
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: riven
+    app.kubernetes.io/name: iceberg
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}

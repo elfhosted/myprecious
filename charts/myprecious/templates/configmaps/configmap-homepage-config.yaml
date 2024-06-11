@@ -577,13 +577,21 @@ data:
             siteMonitor: http://plex-debrid:3000            
         {{ end }}     
 
-        {{ if or .Values.riven.enabled .Values.iceberg.enabled }}
+        {{ if .Values.riven.enabled }}
         - Riven:
             icon: mdi-image-filter-hdr-outline
             href: https://{{ .Release.Name }}-riven.elfhosted.com
             description: Sync Plex/Jellyfin with Debrid services
             siteMonitor: http://riven:3001           
-        {{ end }}                  
+        {{ end }}    
+
+        {{ if .Values.iceberg.enabled }}
+        - Iceberg:
+            icon: mdi-image-filter-hdr-outline
+            href: https://{{ .Release.Name }}-iceberg.elfhosted.com
+            description: Sync Plex/Jellyfin with Debrid services
+            siteMonitor: http://iceberg:3001           
+        {{ end }}                          
 
     - Download Media:
         {{ if .Values.nzbget.enabled }}

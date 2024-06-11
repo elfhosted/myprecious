@@ -502,7 +502,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.riven.enabled .Values.iceberg.enabled }}
+      {{ if .Values.riven.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"
@@ -512,6 +512,17 @@ data:
         alerts:
           - type: email
       {{ end }}
+
+      {{ if .Values.iceberg.enabled }}
+      - name: iceberg
+        group: manage-media
+        url: "http://iceberg:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
 
       {{ if .Values.xteve.enabled }}
       - name: xteve
