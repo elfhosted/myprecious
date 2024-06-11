@@ -9328,7 +9328,7 @@ riven: &app_riven
         name: symlinks
       envFrom:
       - configMapRef:
-          name: iceberg-riven        
+          name: riven-config
       resources: *default_resources
 
 # Because we also want the old iceberg subs to work
