@@ -582,7 +582,7 @@ data:
             icon: mdi-image-filter-hdr-outline
             href: https://{{ .Release.Name }}-riven.elfhosted.com
             description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://riven:3000            
+            siteMonitor: http://riven:3001           
         {{ end }}                  
 
     - Download Media:

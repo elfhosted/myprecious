@@ -502,10 +502,10 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.iceberg.enabled }}
-      - name: iceberg
+      {{ if .Values.riven.enabled }}
+      - name: riven
         group: manage-media
-        url: "http://iceberg:3000"
+        url: "http://riven:3001"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
