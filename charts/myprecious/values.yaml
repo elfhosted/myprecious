@@ -2857,14 +2857,14 @@ filebrowser:
       mountPath: /storage/config/homer
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homer-ssd     
-    riven:
+          claimName: config-homer-ssd   
+    iceberg:
       enabled: false
       type: custom
-      mountPath: /storage/config/riven/
+      mountPath: /storage/config/iceberg/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-riven-ssd  
+          claimName: config-iceberg-ssd              
     jackett:
       enabled: false
       type: custom
@@ -3132,6 +3132,13 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-resiliosync-ssd
+    riven:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/riven/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-riven-ssd            
     rpdb:
       enabled: false
       type: custom
@@ -9299,7 +9306,7 @@ riven: &app_riven
     config:
       enabled: true
       type: custom
-      mountPath: /riven/data
+      mountPath: /iceberg/data
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-riven-ssd
@@ -9312,29 +9319,42 @@ riven: &app_riven
           optional: true
   initContainers:
     bootstrap: *bootstrap
-  additionalContainers:
-    frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:f4cdc48ec3002c7020f248986c98adbae54e702769375e027458e02394c7a7a1
-      command:
-      - node 
-      - /iceberg/frontend/build               
-      volumeMounts:
-      - mountPath: /riven/data
-        name: config
-        subPath: config
-      - mountPath: /storage/realdebrid-zurg
-        name: rclonemountrealdebridzurg
-      - mountPath: /storage/symlinks
-        name: symlinks
-      envFrom:
-      - configMapRef:
-          name: riven-config
-      resources: *default_resources
+  # additionalContainers:
+  #   frontend:
+  #     image: ghcr.io/elfhosted/riven:rolling@sha256:f4cdc48ec3002c7020f248986c98adbae54e702769375e027458e02394c7a7a1             
+  #     volumeMounts:
+  #     - mountPath: /iceberg/data
+  #       name: config
+  #       subPath: config
+  #     - mountPath: /storage/realdebrid-zurg
+  #       name: rclonemountrealdebridzurg
+  #     - mountPath: /storage/symlinks
+  #       name: symlinks
+  #     envFrom:
+  #     - configMapRef:
+  #         name: riven-config
+  #     resources: *default_resources
 
 # Because we also want the old iceberg subs to work
 iceberg:
   <<: *app_riven
   enabled: false
+  persistence:
+    <<: *appmounts  
+    config:
+      enabled: true
+      type: custom
+      mountPath: /iceberg/data
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-iceberg-ssd
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-riven
+          optional: true  
 
 airdcpp: &app_airdcpp
   enabled: false

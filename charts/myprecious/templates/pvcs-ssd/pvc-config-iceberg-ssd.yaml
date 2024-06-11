@@ -1,8 +1,8 @@
-{{ if .Values.riven.enabled }}
+{{ if .Values.iceberg.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-riven-ssd
+  name: config-iceberg-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:
