@@ -1,11 +1,9 @@
 name: "My Precious: Stable Release (Scheduled)"
 
-concurrency: helm-release
-
 on:
   schedule:
-    # 9:55am UTC is 21h55 NZST, giving us 5 min to run before the maint window starts 10pm weekdays NZ time
-    - cron: '55 09 * * *'
+    # 9:45am UTC is 21h45 NZST, giving us 15 min to run before the maint window starts 10pm weekdays NZ time
+    - cron: '45 09 * * *'
   workflow_dispatch:
 
 jobs:

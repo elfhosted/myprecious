@@ -502,7 +502,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.iceberg.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"
