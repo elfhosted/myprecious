@@ -898,7 +898,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
-          {{ if .Values.riven.enabled }}
+          {{ if or .Values.riven.enabled .Values.iceberg.enabled }}
           - name: "Riven"
             icon: "fas fa-mountain"
             subtitle: "Sync Plex / Jellyfin with Debrid services"

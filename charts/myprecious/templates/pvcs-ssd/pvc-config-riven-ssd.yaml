@@ -1,4 +1,4 @@
-{{ if .Values.riven.enabled }}
+{{ if or .Values.riven.enabled .Values.iceberg.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

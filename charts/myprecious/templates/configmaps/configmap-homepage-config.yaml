@@ -577,7 +577,7 @@ data:
             siteMonitor: http://plex-debrid:3000            
         {{ end }}     
 
-        {{ if .Values.riven.enabled }}
+        {{ if or .Values.riven.enabled .Values.iceberg.enabled }}
         - Riven:
             icon: mdi-image-filter-hdr-outline
             href: https://{{ .Release.Name }}-riven.elfhosted.com
