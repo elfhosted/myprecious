@@ -9333,7 +9333,7 @@ riven: &app_riven
 
 # Because we also want the old iceberg subs to work
 iceberg:
-  <<: *riven
+  <<: *app_riven
   enabled: false
 
 airdcpp: &app_airdcpp
