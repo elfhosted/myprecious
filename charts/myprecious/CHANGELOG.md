@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.21.0](https://github.com/elfhosted/myprecious/compare/v1.20.0...v1.21.0) (2024-06-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.2.3 ([b61e461](https://github.com/elfhosted/myprecious/commit/b61e4613402f4b4ab229c3f65df1722aa5ded653))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 5db1132 ([4c00c6f](https://github.com/elfhosted/myprecious/commit/4c00c6f12417be06fe037d0bd6b2d63131b8d91a))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 27399a4 ([4882a51](https://github.com/elfhosted/myprecious/commit/4882a515ae886a22c81ed4e884eaf90e5ba2dcab))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 3b63f78 ([9341537](https://github.com/elfhosted/myprecious/commit/9341537415bba397764a0d39a990bcebeed3ae9e))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 90ade76 ([c471209](https://github.com/elfhosted/myprecious/commit/c471209b9646ec04f810191249bd024b84c087ca))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to dc1c5df ([3ee92a2](https://github.com/elfhosted/myprecious/commit/3ee92a2676966e4c408b7ba8acfe4a608d12424e))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to f4cdc48 ([29a18eb](https://github.com/elfhosted/myprecious/commit/29a18ebd6ab22a3ab7887735610193568bb2cbd4))
+* provide UI for riven backend logs ([5d86b90](https://github.com/elfhosted/myprecious/commit/5d86b90f5b5ac7a5ef88f88161781fc65abffa5d))
+
 ## [1.20.0](https://github.com/elfhosted/myprecious/compare/v1.19.0...v1.20.0) (2024-06-10)
 
 
