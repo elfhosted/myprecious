@@ -367,7 +367,7 @@ tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we hav
   enabled: true
   mountPath: /tmp
   type: emptyDir
-  sizeLimit: 1Gi
+  sizeLimit: 2Gi
 
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
@@ -2191,7 +2191,7 @@ radarr:
       memory: 500Mi
     limits:
       cpu: 1
-      memory: 1Gi
+      memory: 2Gi
 
 radarr4k:
   enabled: false
