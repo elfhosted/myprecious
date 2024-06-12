@@ -3795,7 +3795,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:46ea73d4cbfe895e54bd0ace2cfb1b7bd791dc03e4b81d8a1411b37740998486
+    tag: rolling@sha256:93a51a5f1464454da5336e2f5fe8b7e7c264c5c0fd4bf5b131d90a18dff8d25b
   enabled: false
   controller:
     annotations:
@@ -4045,7 +4045,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.12.0@sha256:b82bfa1803a4191b7c4eac545dd82e6b9ca15ab006f979223a93eff1ff00fdba
+    tag: 7.12.0@sha256:06dea3ef2e60d055cebea101c3e64a924d822736e9a91e804599e1f8eaaebdf7
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6444,7 +6444,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.0@sha256:893b087a011ed4682637ae14927fba33763d192e51e718ed9ee8c033ac24b610
+    tag: 1.9.1@sha256:7ae50f32c84ec8c143a807c3b1c2771775893bff318c107ac19f4cbebb1260b9
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6485,7 +6485,7 @@ jellyseerr:
     bootstrap: *bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.0@sha256:893b087a011ed4682637ae14927fba33763d192e51e718ed9ee8c033ac24b610
+      image: ghcr.io/elfhosted/jellyseerr:1.9.1@sha256:7ae50f32c84ec8c143a807c3b1c2771775893bff318c107ac19f4cbebb1260b9
       command:
         - /bin/bash
         - -c
@@ -9265,7 +9265,7 @@ riven: &app_riven
   enabled: false
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:f4cdc48ec3002c7020f248986c98adbae54e702769375e027458e02394c7a7a1
+    tag: rolling@sha256:b1a1e2a656c029876bc7b86c6baa9c6322caf28f72b752c53987b87b713c0ec7
   priorityClassName: tenant-normal
   controller:
     annotations:
