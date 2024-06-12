@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.22.1](https://github.com/elfhosted/myprecious/compare/v1.22.0...v1.22.1) (2024-06-12)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 238ab7a ([c1b3e70](https://github.com/elfhosted/myprecious/commit/c1b3e703dc2da45843de798019090e55d3d083e8))
+* don't force zurg repairs anymore ([880020d](https://github.com/elfhosted/myprecious/commit/880020d7e430b3290ce72626f257947f2c5949c8))
+* update riven permissions on startup ([e890b18](https://github.com/elfhosted/myprecious/commit/e890b1820079ff0c80299be9941c8244d944bc03))
+
 ## [1.22.0](https://github.com/elfhosted/myprecious/compare/v1.21.0...v1.22.0) (2024-06-12)
 
 
