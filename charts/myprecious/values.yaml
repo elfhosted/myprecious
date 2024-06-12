@@ -10777,8 +10777,8 @@ zurg: &zurg
       cpu: 20m
       memory: 32Mi
     limits:
-      cpu: 200m
-      memory: 1024Mi
+      cpu: 1
+      memory: 2Gi
   ingress:
     main:
       enabled: false
