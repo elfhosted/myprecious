@@ -9319,6 +9319,22 @@ riven: &app_riven
           optional: true
   initContainers:
     bootstrap: *bootstrap
+    fixperms:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # permissions fix
+        chown elfie:elfie /config -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      securityContext:
+        runAsUser: 0        
   # additionalContainers:
   #   frontend:
   #     image: ghcr.io/elfhosted/riven:rolling@sha256:f4cdc48ec3002c7020f248986c98adbae54e702769375e027458e02394c7a7a1             
