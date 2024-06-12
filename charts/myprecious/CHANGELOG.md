@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.22.0](https://github.com/elfhosted/myprecious/compare/v1.21.0...v1.22.0) (2024-06-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v1.9.1 ([ab0b484](https://github.com/elfhosted/myprecious/commit/ab0b48445f41af774f09d332799636d6cbf2c130))
+* **app:** update ghcr.io/elfhosted/readarr-nightly docker tag to v0.3.29.2565 ([0c60273](https://github.com/elfhosted/myprecious/commit/0c60273100c5d835f329bb52fbb5164e823287d0))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.5.1740 ([84f5eb7](https://github.com/elfhosted/myprecious/commit/84f5eb79ab3b44a2e85c8bc97c45e86e18171a2c))
+
+
+### Bug Fixes
+
+* add port for riven backend to receive webhooks ([9b1227e](https://github.com/elfhosted/myprecious/commit/9b1227e6aef44c491a2f9a303575ae447fcdcab6))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 93a51a5 ([5d66aa3](https://github.com/elfhosted/myprecious/commit/5d66aa3123201398cc032f48503ecba325251d79))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to b1a1e2a ([390ae51](https://github.com/elfhosted/myprecious/commit/390ae51bcacd2cbc932cd22881bd7a85e025415b))
+* **app:** update quay.io/linuxserver.io/calibre:7.12.0 docker digest to 06dea3e ([a416abe](https://github.com/elfhosted/myprecious/commit/a416abe84492da46af14b6c968f4996cbf01eb89))
+* expand /config on nzbget from 2Gb to 3Gb ([9a0679b](https://github.com/elfhosted/myprecious/commit/9a0679b7620f81c69c6c846206492d97d8e019fc))
+* increase /tmp to 2Gi ([8467ff2](https://github.com/elfhosted/myprecious/commit/8467ff230664002ea814589db109d4a3f91f9808))
+* increase CPU/RAM limits for Zurg ([4ae6dc5](https://github.com/elfhosted/myprecious/commit/4ae6dc5967878dd8256e14a3141faedc40c51e35))
+* permit riven to egress to internal knightcrawler (un-rate-limited) ([dda483c](https://github.com/elfhosted/myprecious/commit/dda483c936228511edfb68c898e0b668ada624d8))
+
 ## [1.21.0](https://github.com/elfhosted/myprecious/compare/v1.20.0...v1.21.0) (2024-06-11)
 
 
