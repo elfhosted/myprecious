@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.23.0](https://github.com/elfhosted/myprecious/compare/v1.22.3...v1.23.0) (2024-06-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v1.9.2 ([fb0eb8e](https://github.com/elfhosted/myprecious/commit/fb0eb8e743cd3e7cf9bd1f3bdaf72d941d5ee77e))
+
+
+### Bug Fixes
+
+* update default resource limits for riven ([dbb8843](https://github.com/elfhosted/myprecious/commit/dbb88436ed2628022b2f566749653ef6aaf49463))
+
 ## [1.22.3](https://github.com/elfhosted/myprecious/compare/v1.22.2...v1.22.3) (2024-06-13)
 
 
