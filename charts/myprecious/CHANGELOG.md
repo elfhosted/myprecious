@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.22.2](https://github.com/elfhosted/myprecious/compare/v1.22.1...v1.22.2) (2024-06-13)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 257e872 ([3486e5f](https://github.com/elfhosted/myprecious/commit/3486e5f0f17d328e7783e95ee6a6ed6e4de17e7b))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to d038467 ([3ab4d5c](https://github.com/elfhosted/myprecious/commit/3ab4d5cd9967ba73d338824b72c0daeba0bd8dbf))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to f6ff616 ([6523f04](https://github.com/elfhosted/myprecious/commit/6523f04765806fed82db34b5ae0abce587d42287))
+* switch to A records for cloudflare proxy bypass ([69d43d2](https://github.com/elfhosted/myprecious/commit/69d43d2dcbb2b7272cafc2b15034eec0355bf69d))
+
 ## [1.22.1](https://github.com/elfhosted/myprecious/compare/v1.22.0...v1.22.1) (2024-06-12)
 
 
