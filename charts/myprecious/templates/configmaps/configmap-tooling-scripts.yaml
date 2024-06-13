@@ -51,17 +51,38 @@ data:
     if [[ $? -eq 0 ]]
     then
       # A record exists, so update it
-      cfcli edit -t A $MY_NAME $MY_NODE_IP
+      cfcli edit -t CNAME $MY_NAME $MY_NODE_NAME.elfhosted.com
 
     else
       # No record exists, so create it
-      cfcli add -t A $MY_NAME $MY_NODE_IP
+      cfcli add -t CNAME $MY_NAME $MY_NODE_NAME.elfhosted.com
     fi
+
+    # Enable proxying if we're not doing a custom URL (because of cloudflare cross-tenant rules)
+    case $ELF_APP_NAME in
+      {{- if .Values.embycustomdomain.enabled }}
+      *emby*)
+        # don't enable proxy
+        ;;
+      {{ end }}
+      {{- if .Values.plexcustomdomain.enabled }}
+      *plex*)
+        # don't enable proxy
+        ;;
+      {{ end }}
+      {{- if .Values.jellyfincustomdomain.enabled }}
+      *jellyfin*)
+        # don't enable proxy
+        ;;
+      {{ end }}
+      *)
+        cfcli disable $MY_NAME $MY_NODE_NAME.elfhosted.com # CHANGED on 13 May 2024
+        ;;
+    esac
 
   clean-up-dns-on-termination.sh: |
     #!/bin/bash
 
-    MY_NODE_IP=$(wget -qO- ipinfo.io/ip)
     function cleanup_dns_on_shutdown {
         echo "Received SIGTERM, cleaning up DNS entries..."
 
@@ -95,7 +116,7 @@ data:
         if [[ $? -eq 0 ]]
         then
           # A record exists, so update it
-          cfcli rm -t A $MY_NAME $MY_NODE_IP
+          cfcli rm -t CNAME $MY_NAME $MY_NODE_NAME.elfhosted.com
         fi
     }
 
