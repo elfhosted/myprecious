@@ -9290,8 +9290,8 @@ riven: &app_riven
       cpu: 1m
       memory: 80Mi
     limits:
-      cpu: 100m
-      memory: 512Mi
+      cpu: 1
+      memory: 1Gi
   ingress:
     main:
       enabled: false
