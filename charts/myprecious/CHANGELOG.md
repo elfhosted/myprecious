@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.3](https://github.com/elfhosted/myprecious/compare/v1.22.2...v1.22.3) (2024-06-13)
+
+
+### Bug Fixes
+
+* rollback DNS-breaking change ([c08a738](https://github.com/elfhosted/myprecious/commit/c08a73829424dafbb4c471ec496a29f009177056))
+
 ## [1.22.2](https://github.com/elfhosted/myprecious/compare/v1.22.1...v1.22.2) (2024-06-13)
 
 
