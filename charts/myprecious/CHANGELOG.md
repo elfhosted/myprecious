@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.23.1](https://github.com/elfhosted/myprecious/compare/v1.23.0...v1.23.1) (2024-06-14)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex:rolling docker digest to 06d7d71 ([8fa73ab](https://github.com/elfhosted/myprecious/commit/8fa73ab8a146fa594e4dfa34b9ebb3ff16711d1d))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to f741c9f ([b1a0d36](https://github.com/elfhosted/myprecious/commit/b1a0d360bccba7891bbcc2b6817c49c30cbe98e2))
+* support exposing xteve ([69d884f](https://github.com/elfhosted/myprecious/commit/69d884f0b8d34778f7dd067fcfe59d7e1597a3e1))
+
 ## [1.23.0](https://github.com/elfhosted/myprecious/compare/v1.22.3...v1.23.0) (2024-06-13)
 
 
