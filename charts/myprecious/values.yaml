@@ -180,7 +180,6 @@ rclonemountrealdebridzurg: &rclonemountrealdebridzurg
   volumeSpec:
     persistentVolumeClaim:
       claimName: realdebrid-zurg
-  readOnly: true
   mountPath: /storage/realdebrid-zurg
 rclonemountalldebridpia: &rclonemountalldebridpia
   enabled: false
@@ -6078,8 +6077,18 @@ xteve:
         configMap:
           name: elfbot-xteve
           optional: true
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts             
+          defaultMode: 0755               
   initContainers:
     bootstrap: *bootstrap
+    update-dns: *update_dns_on_init    
+  additionalContainers:
+    clean-up-dns: *clean_up_dns_on_termination 
 
 youtubedl:
   enabled: false
