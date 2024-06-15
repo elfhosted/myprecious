@@ -10756,16 +10756,6 @@ zurg: &zurg
               - zurg
           topologyKey: "kubernetes.io/hostname"
           namespaceSelector: {}
-    podAffinity: 
-      # require to be located with debrid tools
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"
   resources:
     requests:
       cpu: 20m
