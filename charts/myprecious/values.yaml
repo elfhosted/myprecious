@@ -8361,37 +8361,6 @@ rdtclient: &app_rdtclient
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists  
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - rdtclient
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}
-    podAffinity: # snuggle if you're in the same namespace
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists                
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
