@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.24.0](https://github.com/elfhosted/myprecious/compare/v1.23.1...v1.24.0) (2024-06-15)
+
+
+### Features
+
+* add code-server ([77fdef1](https://github.com/elfhosted/myprecious/commit/77fdef12d85ea0cd7ecfd944fdff2c14851989d3))
+
+
+### Bug Fixes
+
+* no more emptydir for /tmp ([33f0172](https://github.com/elfhosted/myprecious/commit/33f0172bde3afdf429b2dd60fb680d2938d9ac42))
+
 ## [1.23.1](https://github.com/elfhosted/myprecious/compare/v1.23.0...v1.23.1) (2024-06-14)
 
 
