@@ -1353,7 +1353,17 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-redisinsight.elfhosted.com"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                    
+          {{ end }}   
+
+          {{ if .Values.codeserver.enabled }}
+          - name: "Code Server"
+            logo: "assets/png/code-server.png"
+            subtitle: "Code Server"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-codeserver.elfhosted.com"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                              
 
       - name: "Rclone"
         icon: "fas fa-truck"

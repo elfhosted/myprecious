@@ -1111,3 +1111,14 @@ data:
         alerts:
           - type: email
       {{ end }}
+
+      {{ if .Values.codeserver.enabled }}
+      - name: codeserver
+        group: tools
+        url: "http://codeserver:8080"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      

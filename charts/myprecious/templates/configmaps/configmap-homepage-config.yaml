@@ -931,7 +931,15 @@ data:
             href: https://{{ .Release.Name }}-redisinsight.elfhosted.com
             description: PostgreSQL Admin
             siteMonitor: http://redisinsight:5540
-        {{ end }}                       
+        {{ end }} 
+
+        {{ if .Values.codeserver.enabled }}
+        - PGAdmin:
+            icon: codeserver.png
+            href: https://{{ .Release.Name }}-codeserver.elfhosted.com
+            description: Code Server
+            siteMonitor: http://code-server:8080
+        {{ end }}                               
 
     - Migration Tools:
         - Rclone UI:

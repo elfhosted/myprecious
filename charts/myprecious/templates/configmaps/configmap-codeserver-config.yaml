@@ -1,0 +1,12 @@
+{{ if .Values.codeserver.enabled  }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: codeserver-config
+data:
+  config.yaml: |
+    bind-addr: 0.0.0.0:8080 # don't change this, else you'll loose access!
+    auth: none
+    password: 89eu9oeudte23h434@$@nuantheuntoehuotuhdaor.37f
+    cert: false
+{{ end }}
