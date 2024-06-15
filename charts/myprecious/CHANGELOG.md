@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.24.1](https://github.com/elfhosted/myprecious/compare/v1.24.0...v1.24.1) (2024-06-15)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 7b80b08 ([f17b7c2](https://github.com/elfhosted/myprecious/commit/f17b7c278180773fac134b3a9b71ea0937cbf70b))
+* remove invalid podaffinity for zurg since it's now decoupled from rdtclient ([a59880f](https://github.com/elfhosted/myprecious/commit/a59880f08420a87972c54c570e0effe45451ba6f))
+
 ## [1.24.0](https://github.com/elfhosted/myprecious/compare/v1.23.1...v1.24.0) (2024-06-15)
 
 
