@@ -11075,8 +11075,8 @@ codeserver:
   enabled: false
   # runtimeClassName: kata  
   image:
-    repository: ghcr.io/coder/code-server
-    tag: v4.90.2@sha256:0f21d336db045b2f5f7fd8e118b85709beab8202bd2ff0c86db51650fb3ae82e
+    repository: ghcr.io/elfhosted/codeserver
+    tag: 4.90.2@sha256:425bd01f6d51c15e8bcdad33102c15b5afa959550379683760ef5d44c75491df
   priorityClassName: tenant-normal
   controller:
     annotations:
