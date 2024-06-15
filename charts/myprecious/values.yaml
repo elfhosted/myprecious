@@ -364,9 +364,9 @@ elfstorage: &elfstorage
   mountPath: /storage/elfstorage   
 tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
   enabled: true
+  type: custom
   mountPath: /tmp
-  type: emptyDir
-  sizeLimit: 2Gi
+  volumeSpec: *volumespec_ephemeral_volume_1g  
 
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
