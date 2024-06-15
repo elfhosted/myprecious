@@ -16,12 +16,4 @@ spec:
       - ports:
         - port: '7000'
           protocol: TCP
-  - toEndpoints:
-    - matchLabels:
-        app.kubernetes.io/name: knightcrawler-addon-internal
-        k8s:io.kubernetes.pod.namespace: torrentio
-    toPorts:
-      - ports:
-        - port: '7000'
-          protocol: TCP
 {{ end }}
