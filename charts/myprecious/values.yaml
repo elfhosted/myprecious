@@ -11071,7 +11071,7 @@ codeserver:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-code-server"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-codeserver"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11111,7 +11111,7 @@ codeserver:
       mountPath: /home/coder
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-code-server-ssd
+          claimName: config-codeserver-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -11119,9 +11119,39 @@ codeserver:
         configMap:
           name: elfbot-plex-debrid
           optional: true
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: codeserver-config          
   initContainers:
     bootstrap: *bootstrap
+    copy-example-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
 
+        # If we don't already have an example config, create one
+        mkdir -p /config/.config/code-server/
+        if [ ! -f /config/.config/code-server/config.yaml ];
+        then
+          cp /bootstrap/config.yaml /config/.config/code-server/
+        fi
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      - name: example-config
+        mountPath: "/bootstrap/"
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        readOnlyRootFilesystem: true
 
 kubernetesdashboard:
 

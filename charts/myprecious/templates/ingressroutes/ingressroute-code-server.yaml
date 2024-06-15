@@ -2,13 +2,13 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-code-server.elfhosted.com
+  name: {{ .Release.Name }}-codeserver.elfhosted.com
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-code-server.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-codeserver.elfhosted.com`)
       kind: Rule
       services:
-        - name: code-server
+        - name: codeserver
           kind: Service
           port: 8080
       middlewares:  
