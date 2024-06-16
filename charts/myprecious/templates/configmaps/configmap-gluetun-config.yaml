@@ -1,6 +1,6 @@
 
 {{ if .Values.gluetun.enabled }}
-{{ if not (lookup "v1" "ConfigMaps" "{{ .Release.Namespace }}" "gluetun-config") }}
+{{ if not (lookup "v1" "ConfigMap" "{{ .Release.Namespace }}" "gluetun-config") }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
