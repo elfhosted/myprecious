@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.24.2](https://github.com/elfhosted/myprecious/compare/v1.24.1...v1.24.2) (2024-06-16)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 0683e3e ([b19a044](https://github.com/elfhosted/myprecious/commit/b19a0444623021a70e0128f9372b76eec87f0311))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 4bd4b0a ([1ed1480](https://github.com/elfhosted/myprecious/commit/1ed1480863f9bb4d568ce45e557bd7df6a58d71f))
+* set zurg logs to info (not debug!) ([33599f9](https://github.com/elfhosted/myprecious/commit/33599f94f4b7d463a87ec40d037e0175ae59cbc6))
+
 ## [1.24.1](https://github.com/elfhosted/myprecious/compare/v1.24.0...v1.24.1) (2024-06-15)
 
 
