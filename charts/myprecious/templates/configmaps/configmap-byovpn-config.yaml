@@ -1,0 +1,33 @@
+
+{{ if .Values.byovpn.enabled }}
+{{ if not (lookup "v1" "ConfigMaps" "" byovpn-config) }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: byovpn-config
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/resource-policy: keep
+data:
+
+  # These are used by the gluetun image
+  DOT: "off" # don't change this, it'll break DNS
+  VPN_SERVICE_PROVIDER: 
+  VPN_TYPE: 
+  VPN_ENDPOINT_IP: 
+  VPN_ENDPOINT_PORT: 
+  OPENVPN_USER:
+  OPENVPN_PASSWORD:
+  WIREGUARD_PUBLIC_KEY:
+  WIREGUARD_PRIVATE_KEY:
+  WIREGUARD_PRESHARED_KEY:
+  WIREGUARD_ADDRESSES:
+  SERVER_COUNTRIES:
+  SERVER_CITIES:
+  OPENVPN_CUSTOM_CONFIG:
+  SERVER_REGIONS:
+
+  # Avoid breaking kube probes
+  FIREWALL_INPUT_PORTS: "9999" # 9999 is for zurg
+{{ end }}
+{{ end }}
