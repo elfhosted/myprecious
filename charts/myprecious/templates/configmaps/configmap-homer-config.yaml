@@ -1367,7 +1367,7 @@ data:
 
           {{ if .Values.gluetun.enabled }}
           - name: "Gluetun"
-            icon: "fab fa-lock
+            icon: "fab fa-lock"
             subtitle: "Configure your BYO VPN"
             tag: "protected"
             tagstyle: "is-success"
