@@ -1,10 +1,10 @@
 
-{{ if .Values.byovpn.enabled }}
-{{ if not (lookup "v1" "ConfigMaps" "byovpn-config") }}
+{{ if .Values.gluetun.enabled }}
+{{ if not (lookup "v1" "ConfigMaps" "gluetun-config") }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: byovpn-config
+  name: gluetun-config
   annotations:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/resource-policy: keep

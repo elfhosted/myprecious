@@ -52,6 +52,6 @@ rules:
   verbs:
   - update
   resource_names:
-{{ if .Values.byovpn.enabled }}
-  - byovpn-config
+{{ if .Values.gluetun.enabled }}
+  - gluetun-config
 {{ end }}

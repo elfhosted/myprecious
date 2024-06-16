@@ -1,7 +1,7 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
 safeToRelease: true
 
-byovpn:
+gluetun:
   enabled: false # just to avoid errors
 
 # This section just makes images easier to update / parse
@@ -4641,8 +4641,8 @@ readarr:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/readarr-nightly
-    tag: 0.3.29.2565@sha256:8c9df9b4dd3df9ea3a48df8084873aedbf0fc9ee3aa8e332aeee356fb7887d92
+    repository: elfhosted/readarr-develop
+    tag: 0.3.28.2554@sha256:564989cc71670b82164a3b47fd3267a5a9eed27463f6d20a9a82c451dea8c35a
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4725,8 +4725,8 @@ readarraudio:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/readarr-nightly
-    tag: 0.3.29.2565@sha256:8c9df9b4dd3df9ea3a48df8084873aedbf0fc9ee3aa8e332aeee356fb7887d92
+    repository: elfhosted/readarr-develop
+    tag: 0.3.28.2554@sha256:564989cc71670b82164a3b47fd3267a5a9eed27463f6d20a9a82c451dea8c35a
   securityContext:
     seccompProfile:
       type: RuntimeDefault
