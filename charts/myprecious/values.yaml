@@ -10887,13 +10887,14 @@ zurg: &zurg
       enabled: true # in case we ever need it
       gluetun:
         image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.38.0@sha256:18bdee79961ea8d3dc56a5321be7c53cb18d603050bc1c1e768f5973cab70e33
       envFrom:
       - configMapRef:
-          name: zurg-pia-config      
-      - secretRef:
-          name: zurg-vpn
+          name: gluetun-config
+      env:
+        DOT: "off"
+        FIREWALL_INPUT_PORTS: "9999" # 9999 is for zurg
       securityContext:
         runAsUser: 0
         capabilities:

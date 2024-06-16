@@ -9,9 +9,6 @@ metadata:
     helm.sh/hook: post-install,post-upgrade
     helm.sh/resource-policy: keep
 data:
-
-  # These are used by the gluetun image
-  DOT: "off" # don't change this, it'll break DNS
   VPN_SERVICE_PROVIDER: 
   VPN_TYPE: 
   VPN_ENDPOINT_IP: 
@@ -26,8 +23,5 @@ data:
   SERVER_CITIES:
   OPENVPN_CUSTOM_CONFIG:
   SERVER_REGIONS:
-
-  # Avoid breaking kube probes
-  FIREWALL_INPUT_PORTS: "9999" # 9999 is for zurg
 {{ end }}
 {{ end }}
