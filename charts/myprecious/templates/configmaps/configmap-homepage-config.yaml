@@ -934,12 +934,19 @@ data:
         {{ end }} 
 
         {{ if .Values.codeserver.enabled }}
-        - PGAdmin:
+        - Code Server:
             icon: codeserver.png
             href: https://{{ .Release.Name }}-codeserver.elfhosted.com
             description: Code Server
             siteMonitor: http://code-server:8080
         {{ end }}                               
+
+        {{ if .Values.gluetun.enabled }}
+        - Gluetun:
+            icon: mdi-lock
+            href: "https://{{ .Release.Name }}-kubernetes.elfhosted.com/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}
+            description: Configure your BYO VPN
+        {{ end }}                    
 
     - Migration Tools:
         - Rclone UI:

@@ -51,7 +51,8 @@ rules:
   - configmaps
   verbs:
   - update
-  resource_names:
+  - create
+  resourceNames:
 {{ if .Values.gluetun.enabled }}
   - gluetun-config
 {{ end }}
