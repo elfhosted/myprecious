@@ -2860,7 +2860,7 @@ filebrowser:
     iceberg:
       enabled: false
       type: custom
-      mountPath: /storage/config/iceberg/
+      mountPath: /storage/config/riven/
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-iceberg-ssd              
@@ -9284,7 +9284,7 @@ riven: &app_riven
     config:
       enabled: true
       type: custom
-      mountPath: /iceberg/data
+      mountPath: /riven/data
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-riven-ssd
@@ -9320,7 +9320,7 @@ riven: &app_riven
   #   frontend:
   #     image: ghcr.io/elfhosted/riven:rolling@sha256:f4cdc48ec3002c7020f248986c98adbae54e702769375e027458e02394c7a7a1             
   #     volumeMounts:
-  #     - mountPath: /iceberg/data
+  #     - mountPath: /riven/data
   #       name: config
   #       subPath: config
   #     - mountPath: /storage/realdebrid-zurg
@@ -9341,7 +9341,7 @@ iceberg:
     config:
       enabled: true
       type: custom
-      mountPath: /iceberg/data
+      mountPath: /riven/data
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-iceberg-ssd
