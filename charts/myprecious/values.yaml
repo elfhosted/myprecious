@@ -9247,16 +9247,16 @@ riven: &app_riven
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven"
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven,riven-config"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false
+    readOnlyRootFilesystem: true
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    # runAsUser: 568
-    # runAsGroup: 568
+    runAsUser: 568
+    runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
