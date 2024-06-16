@@ -44,15 +44,22 @@ rules:
   - pods
   verbs:
   - delete
-# let tenants edit their own configmaps - still a WIP
+# allow tenant to create (but not edit/delete) any configmaps in their ns
+- apiGroups:
+  - "*"
+  resources:
+  - configmaps
+  verbs:
+  - create
+# now allow them to edit configmaps for their specific apps
 - apiGroups:
   - "*"
   resources:
   - configmaps
   verbs:
   - update
-  - create
   resourceNames:
 {{ if .Values.gluetun.enabled }}
   - gluetun-config
 {{ end }}
+
