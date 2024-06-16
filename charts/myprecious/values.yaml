@@ -9266,9 +9266,9 @@ riven: &app_riven
   resources: 
     requests:
       cpu: 1m
-      memory: 80Mi
+      memory: 20Mi
     limits:
-      cpu: 500m
+      cpu: 100m
       memory: 1Gi
   ingress:
     main:
