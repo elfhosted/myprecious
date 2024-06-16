@@ -4,6 +4,7 @@ kind: ConfigMap
 metadata:
   name: riven-config
 data:
+  TZ: UTC
   ORIGIN: "https://{{ .Release.Name }}-riven.elfhosted.com"
   HOME: "/riven/data/"
   XDG_CONFIG_HOME: "/riven/data"
