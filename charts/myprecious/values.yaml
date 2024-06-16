@@ -9243,7 +9243,7 @@ riven: &app_riven
   enabled: false
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:20974e67cf920ac8f210344a92320b3805ee052e086588d38e7fe2cabeb4131c
+    tag: rolling@sha256:0683e3ee21a67e2d9aa08117442cdd102a89e7f35d9a4bfa1833944016a5fa39
   priorityClassName: tenant-normal
   controller:
     annotations:
