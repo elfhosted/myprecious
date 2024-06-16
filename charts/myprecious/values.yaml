@@ -9308,7 +9308,7 @@ riven: &app_riven
 
         # permissions fix
         chown elfie:elfie /config -R
-        chown elfie:elfie /storage/symlinks/riven -R
+        chown elfie:elfie /storage/symlinks -R
       volumeMounts:
       - mountPath: /config
         name: config
