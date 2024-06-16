@@ -1371,7 +1371,7 @@ data:
             subtitle: "Configure your BYO VPN"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kubernetes.elfhosted.com/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}
+            url: "https://{{ .Release.Name }}-kubernetes.elfhosted.com/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                     
 
