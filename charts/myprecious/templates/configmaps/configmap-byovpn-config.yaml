@@ -1,6 +1,6 @@
 
 {{ if .Values.byovpn.enabled }}
-{{ if not (lookup "v1" "ConfigMaps" "" byovpn-config) }}
+{{ if not (lookup "v1" "ConfigMaps" "byovpn-config") }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
