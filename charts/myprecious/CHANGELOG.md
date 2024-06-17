@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.24.3](https://github.com/elfhosted/myprecious/compare/v1.24.2...v1.24.3) (2024-06-17)
+
+
+### Bug Fixes
+
+* Add Riven frontend for onboarding ([d51cd2c](https://github.com/elfhosted/myprecious/commit/d51cd2ca9d9114194c24f15ab0c3bddee67180b6))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 2084854 ([5f9fae5](https://github.com/elfhosted/myprecious/commit/5f9fae5f13b3ce968a9c34e5b032b5d3666d603d))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 29e8f17 ([c1f89ff](https://github.com/elfhosted/myprecious/commit/c1f89ff4acc985b4c0b5268d467beb867bf6e4c5))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 3fcd04e ([ef0d2da](https://github.com/elfhosted/myprecious/commit/ef0d2dad24283870af2605844a955c2072dbe696))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to ae53ed0 ([d54de93](https://github.com/elfhosted/myprecious/commit/d54de93057abb528c62a9ed1bf38b7c93064e33f))
+* fix invalid env var for riven ([74fe692](https://github.com/elfhosted/myprecious/commit/74fe692fbe6832126929df0e8d9418dafce26476))
+
 ## [1.24.2](https://github.com/elfhosted/myprecious/compare/v1.24.1...v1.24.2) (2024-06-16)
 
 
