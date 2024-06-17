@@ -10864,6 +10864,9 @@ zurg: &zurg
         # Ensure download cache is disabled (works better when IPs change)
         sed -i  "s/use_download_cache: true/use_download_cache: false/" /config/config.yml
 
+        # Socks via WARP
+        grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
+
         # Allow repairs
         # sed -i  "s/enable_repair: false/enable_repair: true/" /config/config.yml
 
@@ -10900,9 +10903,12 @@ zurg: &zurg
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
+    warp:
+      image: caomingjun/warp
+      securityContext: *default_securitycontext
   addons:
     vpn: &zurg_addons_vpn
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
