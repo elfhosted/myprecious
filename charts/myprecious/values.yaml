@@ -10732,7 +10732,7 @@ zurg: &zurg
     readOnlyRootFilesystem: true
   env:
     LOG_LEVEL: info    
-    WAIT_FOR_VPN: "true"
+    # WAIT_FOR_VPN: "true"
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10905,7 +10905,22 @@ zurg: &zurg
     clean-up-dns: *clean_up_dns_on_termination
     warp:
       image: caomingjun/warp
-      securityContext: *default_securitycontext
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        privileged: false
+        capabilities:
+          add:
+          - NET_ADMIN    
+        sysctls:
+        - name: net.ipv6.conf.all.disable_ipv6
+          value: "0"
+        - name: net.ipv4.conf.all.src_valid_mark
+          value: "1"
+      volumeMounts:
+      - mountPath: /data
+        subPath: warp
+        name: config         
   addons:
     vpn: &zurg_addons_vpn
       enabled: false # in case we ever need it
