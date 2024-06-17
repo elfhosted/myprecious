@@ -10732,7 +10732,7 @@ zurg: &zurg
     readOnlyRootFilesystem: true
   env:
     LOG_LEVEL: info    
-    WAIT_FOR_VPN: "true"
+    # WAIT_FOR_VPN: "true"
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10812,7 +10812,7 @@ zurg: &zurg
       volumeSpec:
         configMap:
           name: tooling-scripts   
-          defaultMode: 0755                
+          defaultMode: 0755                       
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
@@ -10864,6 +10864,9 @@ zurg: &zurg
         # Ensure download cache is disabled (works better when IPs change)
         sed -i  "s/use_download_cache: true/use_download_cache: false/" /config/config.yml
 
+        # Socks via WARP
+        grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
+
         # Allow repairs
         # sed -i  "s/enable_repair: false/enable_repair: true/" /config/config.yml
 
@@ -10875,34 +10878,33 @@ zurg: &zurg
 
         # Check for changes every 10 sec
         sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
-
-        # Make gluetun work with DNS endpoints
-        # If the VPN_ENDPOINT_IP is set, but is not an IP address, then convert it to one
-        if [[ ! -z "$VPN_ENDPOINT_IP" ]]
-          then
-          if echo "$VPN_ENDPOINT_IP" | egrep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
-          then
-              echo "No changes, VPN_ENDPOINT_IP is an IP"
-          else
-              # only create the file if DNS lookup succeeds
-              dig +short $VPN_ENDPOINT_IP && dig +short $VPN_ENDPOINT_IP | tail -n1 > /shared/VPN_ENDPOINT_IP
-          fi
-        fi
-
-      envFrom:
-      - configMapRef:
-          name: gluetun-config   
       volumeMounts:
       - mountPath: /config
-        name: config
-      - mountPath: /shared
-        name: shared          
+        name: config       
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
+    warp:
+      image: caomingjun/warp
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        privileged: false
+        capabilities:
+          add:
+          - NET_ADMIN    
+        sysctls:
+        - name: net.ipv6.conf.all.disable_ipv6
+          value: "0"
+        - name: net.ipv4.conf.all.src_valid_mark
+          value: "1"
+      volumeMounts:
+      - mountPath: /data
+        subPath: warp
+        name: config       
   addons:
     vpn: &zurg_addons_vpn
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
