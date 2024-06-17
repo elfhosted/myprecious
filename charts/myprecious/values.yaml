@@ -10812,11 +10812,7 @@ zurg: &zurg
       volumeSpec:
         configMap:
           name: tooling-scripts   
-          defaultMode: 0755       
-    run: # used warp so we can run ro
-      enabled: true
-      type: emptyDir
-      sizeLimit: 1Gi                   
+          defaultMode: 0755                       
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
@@ -10906,8 +10902,6 @@ zurg: &zurg
       - mountPath: /data
         subPath: warp
         name: config       
-      - mountPath: /run
-        name: run  
   addons:
     vpn: &zurg_addons_vpn
       enabled: false # in case we ever need it
