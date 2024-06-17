@@ -9319,21 +9319,22 @@ riven: &app_riven
         name: symlinks        
       securityContext:
         runAsUser: 0        
-  # additionalContainers:
-  #   frontend:
-  #     image: ghcr.io/elfhosted/riven:rolling@sha256:f4cdc48ec3002c7020f248986c98adbae54e702769375e027458e02394c7a7a1             
-  #     volumeMounts:
-  #     - mountPath: /riven/data
-  #       name: config
-  #       subPath: config
-  #     - mountPath: /storage/realdebrid-zurg
-  #       name: rclonemountrealdebridzurg
-  #     - mountPath: /storage/symlinks
-  #       name: symlinks
-  #     envFrom:
-  #     - configMapRef:
-  #         name: riven-config
-  #     resources: *default_resources
+  additionalContainers:
+    frontend:
+      image: ghcr.io/elfhosted/riven:rolling@sha256:29e8f1763511439c39c5deaf67717f7a8e2b7548a8b77713474d9cc41af8afcd            
+      volumeMounts:
+      - mountPath: /riven/data
+        name: config
+        subPath: config
+      - mountPath: /storage/realdebrid-zurg
+        name: rclonemountrealdebridzurg
+      - mountPath: /storage/symlinks
+        name: symlinks
+      command: [ "node", "/riven/frontend/build"]
+      envFrom:
+      - configMapRef:
+          name: riven-config
+      resources: *default_resources
 
 # Because we also want the old iceberg subs to work
 iceberg:

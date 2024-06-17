@@ -581,8 +581,14 @@ data:
         - Riven:
             icon: mdi-image-filter-hdr-outline
             href: https://{{ .Release.Name }}-riven.elfhosted.com
-            description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://riven:3001           
+            description: All-in-one Debrid Media Management
+            siteMonitor: http://riven:3000
+
+        - Riven (Backend):
+            icon: mdi-image-filter-hdr-outline
+            href: https://{{ .Release.Name }}-riven-backend.elfhosted.com
+            description: Geek out over Riven's backend
+            siteMonitor: http://riven:3001                       
         {{ end }}    
 
         {{ if .Values.iceberg.enabled }}
