@@ -9322,7 +9322,7 @@ riven: &app_riven
         runAsUser: 0        
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:29e8f1763511439c39c5deaf67717f7a8e2b7548a8b77713474d9cc41af8afcd            
+      image: ghcr.io/elfhosted/riven:rolling@sha256:2084854c425293f6afa47a4cee4ee99199b7eb9e775772bfb946e9ef679c8a16            
       volumeMounts:
       - mountPath: /riven/data
         name: config
