@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.0](https://github.com/elfhosted/myprecious/compare/v1.24.3...v1.25.0) (2024-06-17)
+
+
+### Features
+
+* update riven color scheme ([9aa68fe](https://github.com/elfhosted/myprecious/commit/9aa68fea9492740e84995c4d070d7fb56b7f71ee))
+
 ## [1.24.3](https://github.com/elfhosted/myprecious/compare/v1.24.2...v1.24.3) (2024-06-17)
 
 
