@@ -9330,7 +9330,7 @@ riven: &app_riven
         name: rclonemountrealdebridzurg
       - mountPath: /storage/symlinks
         name: symlinks
-      command: [ "node /riven/frontend/build"]
+      command: [ "node", "/riven/frontend/build"]
       envFrom:
       - configMapRef:
           name: riven-config
