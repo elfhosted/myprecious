@@ -9309,9 +9309,10 @@ riven: &app_riven
         set -x
         set -e
 
-        # permissions fix
-        chown elfie:elfie /config -R
-        chown elfie:elfie /storage/symlinks -R
+        # get rid of old black hole directory we no longer use
+        if [ -d /storage/symlinks/real-debrid-blackhole ]; then
+          rm -rf /storage/symlinks/real-debrid-blackhole
+        fi
       volumeMounts:
       - mountPath: /config
         name: config
