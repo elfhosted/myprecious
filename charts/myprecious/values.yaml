@@ -2859,14 +2859,7 @@ filebrowser:
       mountPath: /storage/config/homer
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homer-ssd   
-    iceberg:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-iceberg-ssd              
+          claimName: config-homer-ssd              
     jackett:
       enabled: false
       type: custom
@@ -9336,27 +9329,6 @@ riven: &app_riven
       - configMapRef:
           name: riven-config
       resources: *default_resources
-
-# Because we also want the old iceberg subs to work
-iceberg:
-  <<: *app_riven
-  enabled: false
-  persistence:
-    <<: *appmounts  
-    config:
-      enabled: true
-      type: custom
-      mountPath: /riven/data
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-iceberg-ssd
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-riven
-          optional: true  
 
 airdcpp: &app_airdcpp
   enabled: false

@@ -914,17 +914,7 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-riven-backend.elfhosted.com"
             target: "_blank" # optional html tag target attribute
-          {{ end }}  
-
-          {{ if .Values.iceberg.enabled }}
-          - name: "Iceberg (backend)"
-            icon: "fas fa-mountain"
-            subtitle: "Sync Plex / Jellyfin with Debrid services"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-iceberg.elfhosted.com"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                              
+          {{ end }}                           
 
       - name: "Download Media"
         icon: "fas fa-cloud-arrow-down"

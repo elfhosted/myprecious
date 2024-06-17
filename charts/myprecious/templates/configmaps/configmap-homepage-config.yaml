@@ -589,15 +589,7 @@ data:
             href: https://{{ .Release.Name }}-riven-backend.elfhosted.com
             description: Geek out over Riven's backend
             siteMonitor: http://riven:3001                       
-        {{ end }}    
-
-        {{ if .Values.iceberg.enabled }}
-        - Iceberg:
-            icon: mdi-image-filter-hdr-outline
-            href: https://{{ .Release.Name }}-iceberg.elfhosted.com
-            description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://iceberg:3001           
-        {{ end }}                          
+        {{ end }}                     
 
     - Download Media:
         {{ if .Values.nzbget.enabled }}

@@ -23,7 +23,7 @@
     {
       "matchUpdateTypes": ["digest"],
       "automerge": true,
-      "excludePackagePatterns": ["iceberg","alpine"],
+      "excludePackagePatterns": ["alpine"],
       "extends": [":semanticCommitTypeAll(fix)"], // for release-please
     },
     {

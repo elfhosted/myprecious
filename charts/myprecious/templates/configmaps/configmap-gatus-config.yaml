@@ -513,17 +513,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.iceberg.enabled }}
-      - name: iceberg
-        group: manage-media
-        url: "http://iceberg:3001"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}      
-
       {{ if .Values.xteve.enabled }}
       - name: xteve
         group: consume-media
