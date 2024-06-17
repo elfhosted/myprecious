@@ -899,12 +899,20 @@ data:
           {{ end }}   
 
           {{ if .Values.riven.enabled }}
-          - name: "Riven (backend)"
+          - name: "Riven"
             icon: "fas fa-mountain"
-            subtitle: "Sync Plex / Jellyfin with Debrid services"
+            subtitle: "All-in-one Debrid Media Management"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-riven.elfhosted.com"
+            target: "_blank" # optional html tag target attribute
+
+          - name: "Riven (backend)"
+            icon: "fas fa-mountain"
+            subtitle: "Geek out over Riven's backend"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-riven-backend.elfhosted.com"
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
