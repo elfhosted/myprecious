@@ -9246,7 +9246,7 @@ riven: &app_riven
   enabled: false
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:2084854c425293f6afa47a4cee4ee99199b7eb9e775772bfb946e9ef679c8a16
+    tag: rolling@sha256:ae53ed0bb8add7cfc8ecaac85ee87f63662721690517e1c25d0dd64dfb1df780
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9309,10 +9309,10 @@ riven: &app_riven
         set -x
         set -e
 
-        # get rid of old black hole directory we no longer use
-        if [ -d /storage/symlinks/real-debrid-blackhole ]; then
-          rm -rf /storage/symlinks/real-debrid-blackhole
-        fi
+        # # get rid of old black hole directory we no longer use
+        # if [ -d /storage/symlinks/real-debrid-blackhole ]; then
+        #   rm -rf /storage/symlinks/real-debrid-blackhole
+        # fi
       volumeMounts:
       - mountPath: /config
         name: config
@@ -9322,7 +9322,7 @@ riven: &app_riven
         runAsUser: 0        
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:29e8f1763511439c39c5deaf67717f7a8e2b7548a8b77713474d9cc41af8afcd            
+      image: ghcr.io/elfhosted/riven:rolling@sha256:ae53ed0bb8add7cfc8ecaac85ee87f63662721690517e1c25d0dd64dfb1df780
       volumeMounts:
       - mountPath: /riven/data
         name: config
