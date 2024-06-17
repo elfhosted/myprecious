@@ -387,15 +387,15 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: zurg
   - name: app-template
+    condition: zurggluetun.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: zurggluetun
+  - name: app-template
     condition: plexdebrid.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebrid
-  - name: app-template
-    condition: iceberg.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: iceberg
   - name: app-template
     condition: riven.enabled
     version: ~0.2.1
