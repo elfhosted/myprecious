@@ -1,12 +1,9 @@
-{{ if .Values.codeserver.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-codeserver-egress-mediafusion"
+  name: "permit-any-egress-mediafusion"
 spec:
-  endpointSelector:
-    matchLabels:
-      app.kubernetes.io/name: codeserver
+  endpointSelector: {}
   egress:
   - toEndpoints:
     - matchLabels:
@@ -16,4 +13,3 @@ spec:
       - ports:
         - port: '8000'
           protocol: TCP
-{{ end }}

@@ -1,12 +1,9 @@
-{{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-riven-egress-annatar"
+  name: "permit-any-egress-annatar"
 spec:
-  endpointSelector:
-    matchLabels:
-      app.kubernetes.io/name: riven
+  endpointSelector: {}
   egress:
   - toEndpoints:
     - matchLabels:
@@ -16,4 +13,3 @@ spec:
       - ports:
         - port: '8000'
           protocol: TCP
-{{ end }}
