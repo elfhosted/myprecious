@@ -9430,7 +9430,7 @@ riven: &app_riven
       resources: *default_resources
 
 rivenplus:
-  <<: *app_plex
+  <<: *app_riven
   podLabels:
     app.elfhosted.com/name: riven
     app.elfhosted.com/class: dedicated
@@ -11082,7 +11082,7 @@ zurggluetun:
           name: gluetun-config
 
 zurgplus:
-  <<: *app_plex
+  <<: *app_zurg
   podLabels:
     app.elfhosted.com/name: zurg
     app.elfhosted.com/class: dedicated  
