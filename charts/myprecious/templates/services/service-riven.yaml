@@ -23,6 +23,6 @@ spec:
     protocol: TCP
     name: backend
   selector:
-    app.kubernetes.io/name: riven
+    app.elfhosted.com/name: riven
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
