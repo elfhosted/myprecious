@@ -5910,6 +5910,12 @@ flaresolverr:
         configMap:
           name: elfbot-flaresolverr
           optional: true
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
