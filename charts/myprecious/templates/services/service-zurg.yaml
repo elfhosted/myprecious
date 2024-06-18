@@ -1,4 +1,4 @@
-{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurggluetun.enabled }}
+{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
