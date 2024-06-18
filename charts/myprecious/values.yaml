@@ -3157,7 +3157,14 @@ filebrowser:
       mountPath: /storage/config/riven/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-riven-ssd            
+          claimName: config-riven-ssd  
+    rivenplus:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/riven/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-riven-ssd                      
     rpdb:
       enabled: false
       type: custom
@@ -3285,7 +3292,14 @@ filebrowser:
       mountPath: /storage/config/zurg/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-zurg-ssd          
+          claimName: config-zurg-ssd
+    zurgplus:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/zurg/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-zurg-ssd                    
     rdtclient:
       enabled: false
       type: custom
@@ -9421,9 +9435,6 @@ rivenplus:
     app.elfhosted.com/name: riven
     app.elfhosted.com/class: dedicated
   enabled: false
-  service:
-    main:
-      nameOverride: riven  
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -11076,9 +11087,6 @@ zurgplus:
     app.elfhosted.com/name: zurg
     app.elfhosted.com/class: dedicated  
   enabled: false
-  service:
-    main:
-      nameOverride: zurg  
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
