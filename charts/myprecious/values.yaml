@@ -4843,7 +4843,7 @@ readarraudio:
       cpu: 2
       memory: 1Gi
 
-plex: &plex
+plex: &app_plex
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -5131,7 +5131,7 @@ plex: &plex
 
 
 plexgluetun:
-  <<: *plex
+  <<: *app_plex
   enabled: false
   podLabels:
     app.elfhosted.com/name: plex
@@ -5155,26 +5155,37 @@ plexgluetun:
           name: plex-gluetun-config
 
 
-plexpia:
-  <<: *plex
+plexplus:
+  <<: *app_plex
+  podLabels:
+    app.elfhosted.com/name: plex
+    app.elfhosted.com/class: dedicated  
   enabled: false
+  service:
+    main:
+      nameOverride: plex  
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 2 
+      memory: 30Mi
+    limits:
+      cpu: 4
+      memory: 8Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-plex,plex-pia-config"
-  addons:
-    vpn:
-      <<: *plex_addons_vpn
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      envFrom:
-      - configMapRef:
-          name: plex-pia-config
-      - secretRef:
-          name: plex-vpn          
-  initContainers:
-    bootstrap: *bootstrap # avoid the setup pod, it's unnecessary          
+  
 
 jellyfin:
   hostname: elfhosted
@@ -9378,6 +9389,37 @@ riven: &app_riven
           name: riven-config
       resources: *default_resources
 
+rivenplus:
+  <<: *app_plex
+  podLabels:
+    app.elfhosted.com/name: riven
+    app.elfhosted.com/class: dedicated
+  enabled: false
+  service:
+    main:
+      nameOverride: riven  
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 2 
+      memory: 30Mi
+    limits:
+      cpu: 4
+      memory: 8Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config"
+
 airdcpp: &app_airdcpp
   enabled: false
   image:
@@ -11001,6 +11043,38 @@ zurggluetun:
       envFrom:
       - configMapRef:
           name: gluetun-config
+
+zurgplus:
+  <<: *app_plex
+  podLabels:
+    app.elfhosted.com/name: zurg
+    app.elfhosted.com/class: dedicated  
+  enabled: false
+  service:
+    main:
+      nameOverride: zurg  
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 2 
+      memory: 30Mi
+    limits:
+      cpu: 4
+      memory: 8Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-zurg"
+  
 
 plexdebrid:
   enabled: false
