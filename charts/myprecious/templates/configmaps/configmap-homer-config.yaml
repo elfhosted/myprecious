@@ -251,7 +251,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexpia.enabled }}
+          {{ if or .Values.plex.enabled .Values.plexplus.enabled }}
           - name: "Plex"
             logo: "assets/png/plex.png"
             # Alternatively a fa icon can be provided:
@@ -898,7 +898,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
-          {{ if .Values.riven.enabled }}
+          {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
           - name: "Riven"
             icon: "fas fa-mountain"
             subtitle: "All-in-one Debrid Media Management"
@@ -1105,7 +1105,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled }}
+          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
           - name: "Zurg"
             logo: "assets/png/real-debrid.png"
             subtitle: "Manage Real Debrid WebDAV proxy"

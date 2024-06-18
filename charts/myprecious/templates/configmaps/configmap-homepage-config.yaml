@@ -46,7 +46,7 @@ data:
               key: {{`{{HOMEPAGE_FILE_JELLYFIN_KEY}}`}} 
         {{ end }} 
 
-        {{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexpia.enabled }}
+        {{ if or .Values.plex.enabled .Values.plexplus.enabled }}
         - Plex:
             icon: plex.png
             href: https://{{ .Release.Name }}-plex.elfhosted.com
@@ -577,7 +577,7 @@ data:
             siteMonitor: http://plex-debrid:3000            
         {{ end }}     
 
-        {{ if .Values.riven.enabled }}
+        {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
         - Riven:
             icon: mdi-image-filter-hdr-outline
             href: https://{{ .Release.Name }}-riven.elfhosted.com
@@ -737,7 +737,7 @@ data:
             siteMonitor: http://rdtclient-alldebrid:6500
         {{ end }}            
 
-        {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled }}
+        {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
         - Zurg:
             icon: real-debrid.png
             href: https://{{ .Release.Name }}-zurg.elfhosted.com/http/

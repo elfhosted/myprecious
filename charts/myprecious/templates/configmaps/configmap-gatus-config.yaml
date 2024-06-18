@@ -72,7 +72,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexpia.enabled }}
+      {{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexplus.enabled }}
       - name: plex
         group: consume-media
         url: "http://plex:32400"
@@ -502,7 +502,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"
@@ -788,7 +788,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled }}
+      {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
       - name: zurg
         group: download-media
         url: "http://zurg:9999"
