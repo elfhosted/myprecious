@@ -5174,6 +5174,8 @@ plexplus:
   podLabels:
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: dedicated  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
   affinity:
     nodeAffinity:
@@ -11086,6 +11088,8 @@ zurgplus:
   podLabels:
     app.elfhosted.com/name: zurg
     app.elfhosted.com/class: dedicated  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
   affinity:
     nodeAffinity:
