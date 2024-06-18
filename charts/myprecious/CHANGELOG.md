@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.26.0](https://github.com/elfhosted/myprecious/compare/v1.25.0...v1.26.0) (2024-06-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.5.1760 ([8a68079](https://github.com/elfhosted/myprecious/commit/8a680799e08296050b0af2e0a5e3b0164e9dce9a))
+
+
+### Bug Fixes
+
+* add self-updating option to riven ([972e35d](https://github.com/elfhosted/myprecious/commit/972e35dbbfb1dff069c92265807ad96abfbbba49))
+* another broken YAML ([1a3e52a](https://github.com/elfhosted/myprecious/commit/1a3e52a7e23e675816a041eb1285ce9cfdfba26f))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 01699e6 ([3dca2af](https://github.com/elfhosted/myprecious/commit/3dca2afbcac9407651be7a751aacd0f419055b33))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to bb2cfda ([2bd1bd9](https://github.com/elfhosted/myprecious/commit/2bd1bd98cc5bd1e1f3f1c8adaf25c2151bd3a98b))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to f66775c ([90d0e18](https://github.com/elfhosted/myprecious/commit/90d0e1833d73c9b2291c5d3b845306af9f7ddd00))
+* bad YAML in riven config ([50350bb](https://github.com/elfhosted/myprecious/commit/50350bb4dc1c8a005ec4533ad2e04ea0743d8ce2))
+
 ## [1.25.0](https://github.com/elfhosted/myprecious/compare/v1.24.3...v1.25.0) (2024-06-17)
 
 
