@@ -1,4 +1,4 @@
-{{ if .Values.riven.enabled }}
+{{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

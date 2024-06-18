@@ -1,4 +1,4 @@
-{{ if .Values.riven.enabled }}
+{{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
