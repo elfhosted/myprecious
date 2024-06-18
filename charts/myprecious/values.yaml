@@ -5161,9 +5161,6 @@ plexplus:
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: dedicated  
   enabled: false
-  service:
-    main:
-      nameOverride: plex  
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
