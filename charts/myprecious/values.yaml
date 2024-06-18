@@ -5878,8 +5878,8 @@ flaresolverr:
   enabled: false
   image:
     registry: ghcr.io
-    repository: flaresolverr/flaresolverr
-    tag: v3.3.19
+    repository: elfhosted/flaresolverr
+    tag: 3.3.19@sha256:8a22152bebdb50670fb963f133b4b68eec145f4b45e6401ae091195edb7c38ec
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5932,6 +5932,8 @@ flaresolverr:
       ports:
         http:
           port: 8191
+  env:
+    WAIT_FOR_VPN: "true"          
   addons:
     vpn:
       enabled: true # in case we ever need it
