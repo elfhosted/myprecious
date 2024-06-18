@@ -5188,7 +5188,7 @@ plexplus:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 2 
+      cpu: 2500m
       memory: 30Mi
     limits:
       cpu: 4
@@ -9448,7 +9448,7 @@ rivenplus:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 2 
+      cpu: 1m
       memory: 30Mi
     limits:
       cpu: 4
@@ -11100,7 +11100,7 @@ zurgplus:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 2 
+      cpu: 1m
       memory: 30Mi
     limits:
       cpu: 4
