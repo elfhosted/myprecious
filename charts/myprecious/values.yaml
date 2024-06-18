@@ -2149,7 +2149,12 @@ radarr:
       volumeSpec:
         configMap:
           name: elfbot-radarr
-          optional: true    
+          optional: true
+    mediacover:
+      enabled: true
+      mountPath: /mediacover
+      type: custom
+      volumeSpec: *volumespec_ephemeral_volume_50g          
   ingress:
     main:
       enabled: false
@@ -2178,6 +2183,11 @@ radarr:
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies        
 
+        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        if [ -d "/config/MediaCover" ]; then
+          rm -rf "/config/MediaCover"
+          ln -s /mediacover '/config/MediaCover'
+        fi
       volumeMounts:
       - mountPath: /storage/elfstorage
         name: elfstorage
@@ -2185,8 +2195,10 @@ radarr:
         name: symlinks        
       - mountPath: /config
         name: config
+      - mountPath: /mediacover
+        name: mediacover        
       resources: *default_resources
-      securityContext: *default_securitycontext          
+      securityContext: *default_securitycontext
   resources:
     requests:
       cpu: 200m
@@ -2238,6 +2250,11 @@ radarr4k:
         configMap:
           name: elfbot-radarr4k
           optional: true
+    mediacover:
+      enabled: true
+      mountPath: /mediacover
+      type: custom
+      volumeSpec: *volumespec_ephemeral_volume_50g            
   ingress:
     main:
       enabled: false
@@ -2270,6 +2287,11 @@ radarr4k:
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
+        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        if [ -d "/config/MediaCover" ]; then
+          rm -rf "/config/MediaCover"
+          ln -s /mediacover '/config/MediaCover'
+        fi
       volumeMounts:
       - mountPath: /storage/elfstorage
         name: elfstorage
@@ -2277,6 +2299,8 @@ radarr4k:
         name: symlinks             
       - mountPath: /config
         name: config
+      - mountPath: /mediacover
+        name: mediacover        
       resources: *default_resources
       securityContext: *default_securitycontext    
   resources:
@@ -4166,6 +4190,11 @@ sonarr:
         configMap:
           name: elfbot-sonarr
           optional: true     
+    mediacover:
+      enabled: true
+      mountPath: /mediacover
+      type: custom
+      volumeSpec: *volumespec_ephemeral_volume_50g            
   ingress:
     main:
       enabled: false
@@ -4195,11 +4224,18 @@ sonarr:
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
 
+        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        if [ -d "/config/MediaCover" ]; then
+          rm -rf "/config/MediaCover"
+          ln -s /mediacover '/config/MediaCover'
+        fi
       volumeMounts:
       - mountPath: /storage/elfstorage
         name: elfstorage
       - mountPath: /storage/symlinks
-        name: symlinks             
+        name: symlinks  
+      - mountPath: /mediacover
+        name: mediacover                     
       resources: *default_resources
       securityContext: *default_securitycontext   
   resources:
@@ -4251,7 +4287,12 @@ sonarr4k:
       volumeSpec:
         configMap:
           name: elfbot-sonarr4k
-          optional: true       
+          optional: true      
+    mediacover:
+      enabled: true
+      mountPath: /mediacover
+      type: custom
+      volumeSpec: *volumespec_ephemeral_volume_50g           
   ingress:
     main:
       enabled: false
@@ -4281,11 +4322,18 @@ sonarr4k:
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
 
+        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        if [ -d "/config/MediaCover" ]; then
+          rm -rf "/config/MediaCover"
+          ln -s /mediacover '/config/MediaCover'
+        fi
       volumeMounts:
       - mountPath: /storage/elfstorage
         name: elfstorage
       - mountPath: /storage/symlinks
         name: symlinks
+      - mountPath: /mediacover
+        name: mediacover        
       resources: *default_resources
       securityContext: *default_securitycontext          
   resources:
