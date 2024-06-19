@@ -5967,7 +5967,15 @@ flaresolverr:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config    
-      
+      scripts:
+        up: |-
+          #!/bin/ash
+          echo "connected" > /shared/vpnstatus
+
+        down: |-
+          #!/bin/ash
+          echo "disconnected" > /shared/vpnstatus   
+                
 seafile:
   enabled: false
   # runtimeClassName: kata
@@ -11005,7 +11013,7 @@ zurg: &app_zurg
         name: config      
       envFrom:
       - configMapRef:
-          name: elfhosted-user-config # this is here so we can use env vars to detect whether to enable warp
+          name: gluetun-env # this is here so we can use env vars to detect whether to enable warp
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
@@ -11029,7 +11037,7 @@ zurg: &app_zurg
         name: config      
       envFrom:
       - configMapRef:
-          name: elfhosted-user-config # this is here so we can use env vars to detect whether to enable warp
+          name: gluetun-env # this is here so we can use env vars to detect whether to enable warp
   addons:
     vpn: &zurg_addons_vpn
       enabled: true # in case we ever need it
@@ -11041,7 +11049,7 @@ zurg: &app_zurg
       - configMapRef:
           name: gluetun-config
       - configMapRef:
-          name: elfhosted-user-config # this is here so we can use env vars to detect whether to enable warp
+          name: gluetun-env # this is here so we can use env vars to detect whether to enable warp
       env:
         DOT: "off"
         FIREWALL_INPUT_PORTS: "9999" # 9999 is for zurg
