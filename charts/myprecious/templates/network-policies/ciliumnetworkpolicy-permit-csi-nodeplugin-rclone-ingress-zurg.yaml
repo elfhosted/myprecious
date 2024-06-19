@@ -5,7 +5,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: zurg
+      app.elfhosted.com/name: zurg
   ingress:
   # - fromEndpoints:
   #   - matchLabels:

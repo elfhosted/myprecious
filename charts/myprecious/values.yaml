@@ -5184,6 +5184,15 @@ plexplus:
         - matchExpressions:
           - key: node-role.elfhosted.com/dedicated
             operator: Exists
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
@@ -9444,6 +9453,15 @@ rivenplus:
         - matchExpressions:
           - key: node-role.elfhosted.com/dedicated
             operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
@@ -11098,6 +11116,15 @@ zurgplus:
         - matchExpressions:
           - key: node-role.elfhosted.com/dedicated
             operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"         
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
