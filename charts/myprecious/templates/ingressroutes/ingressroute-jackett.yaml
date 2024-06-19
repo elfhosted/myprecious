@@ -21,4 +21,10 @@ spec:
         - name: jackett
           kind: Service
           port: 9117
+    - match: Host(`{{ .Release.Name }}-jackett.elfhosted.com`) && PathPrefix(`/dl/`)
+      kind: Rule
+      services:
+        - name: jackett
+          kind: Service
+          port: 9117
 {{ end }}
