@@ -5199,11 +5199,11 @@ plexplus:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 2500m
+      cpu: 3500m
       memory: 30Mi
     limits:
-      cpu: 4
-      memory: 8Gi  
+      cpu: 8
+      memory: 16Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-plex,plex-pia-config"
@@ -9492,8 +9492,8 @@ rivenplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 4
-      memory: 8Gi  
+      cpu: 8
+      memory: 16Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config"
@@ -11163,8 +11163,8 @@ zurgplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 4
-      memory: 8Gi  
+      cpu: 8
+      memory: 16Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-zurg"
