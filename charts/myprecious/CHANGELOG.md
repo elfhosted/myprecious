@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.28.0](https://github.com/elfhosted/myprecious/compare/v1.27.0...v1.28.0) (2024-06-19)
+
+
+### Features
+
+* support switching gluetun on and off ([0a712d0](https://github.com/elfhosted/myprecious/commit/0a712d05c79fc0d0c133222ddb06e1578c9bfc0c))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d411301 ([29abaad](https://github.com/elfhosted/myprecious/commit/29abaad6bfc003deb99692df173d006875777a5d))
+* **app:** update quay.io/linuxserver.io/calibre:7.12.0 docker digest to 7cef47b ([b0eb5a2](https://github.com/elfhosted/myprecious/commit/b0eb5a2100c0a00116ee523802f2efccaa49deee))
+* increase riven ILIKEDANGER timeout to 30s ([39b3b04](https://github.com/elfhosted/myprecious/commit/39b3b04f0b2d3cb77a862a449bbc75a9b8a59bd3))
+
 ## [1.27.0](https://github.com/elfhosted/myprecious/compare/v1.26.0...v1.27.0) (2024-06-19)
 
 
