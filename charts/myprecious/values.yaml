@@ -1020,7 +1020,7 @@ rutorrentgluetun: &rutorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       securityContext:
         runAsUser: 0
         capabilities:
@@ -1304,7 +1304,7 @@ delugegluetun: &deluge
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       securityContext:
         runAsUser: 0
         capabilities:
@@ -1686,7 +1686,7 @@ qbittorrentgluetun: &qbittorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a          
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5          
       securityContext:
         runAsUser: 0
         capabilities:
@@ -5163,7 +5163,7 @@ plexgluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: plex-gluetun-config
@@ -9608,7 +9608,7 @@ airdcppgluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: airdcpp-gluetun-config
@@ -9828,7 +9828,7 @@ stremioservergluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: stremioserver-gluetun-config
@@ -11044,7 +11044,7 @@ zurg: &app_zurg
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: gluetun-config
@@ -11100,7 +11100,7 @@ zurggluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: gluetun-config
