@@ -10978,7 +10978,7 @@ zurg: &app_zurg
 
         # Socks via WARP
         # Enable proxy only if gluetun vars are not present
-        if [[ -z "$GLUETUN_ENABLED" ]; then
+        if [[ -z "$GLUETUN_ENABLED" ]]; then
           grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
           sed -i  "s/^#proxy:/proxy/" /config/config.yml
         else
