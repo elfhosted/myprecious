@@ -11011,7 +11011,7 @@ zurg: &app_zurg
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:b60595430a455f30f3e8ee48d75c369bf83a94accf949a824c95783af5918246
+      image: ghcr.io/elfhosted/warp:rolling@sha256:b929fdc7bf5962cf9b5a71c73d7b6985cdd325c1fab7758d061fb92876bcbe74
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
