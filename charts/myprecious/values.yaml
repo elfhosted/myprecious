@@ -1020,7 +1020,7 @@ rutorrentgluetun: &rutorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       securityContext:
         runAsUser: 0
         capabilities:
@@ -1304,7 +1304,7 @@ delugegluetun: &deluge
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       securityContext:
         runAsUser: 0
         capabilities:
@@ -1686,7 +1686,7 @@ qbittorrentgluetun: &qbittorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a          
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5          
       securityContext:
         runAsUser: 0
         capabilities:
@@ -5163,7 +5163,7 @@ plexgluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: plex-gluetun-config
@@ -9599,7 +9599,7 @@ airdcppgluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: airdcpp-gluetun-config
@@ -9819,7 +9819,7 @@ stremioservergluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: stremioserver-gluetun-config
@@ -10978,7 +10978,7 @@ zurg: &app_zurg
 
         # Socks via WARP
         # Enable proxy only if gluetun vars are not present
-        if [ "$VPN_SERVICE_PROVIDER" == "" ]; then
+        if [[ -z "$GLUETUN_ENABLED" ]; then
           grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
           sed -i  "s/^#proxy:/proxy/" /config/config.yml
         else
@@ -11011,7 +11011,7 @@ zurg: &app_zurg
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:b929fdc7bf5962cf9b5a71c73d7b6985cdd325c1fab7758d061fb92876bcbe74
+      image: ghcr.io/elfhosted/warp:rolling@sha256:18f450b8a42f2e6742c6045606ab547b6f1dec3fac4afa072ab09341ebd5c8db
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -11030,15 +11030,14 @@ zurg: &app_zurg
         name: config      
       envFrom:
       - configMapRef:
-          name: gluetun-config # this is here so we can use env vars to detect whether to enable warp
-          optional: true             
+          name: elfhosted-user-config # this is here so we can use env vars to detect whether to enable warp
   addons:
     vpn: &zurg_addons_vpn
       enabled: true # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: gluetun-config
@@ -11080,7 +11079,7 @@ zurggluetun:
     app.elfhosted.com/class: streaming
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-zurg,zurg-gluetun-config"
+      configmap.reloader.stakater.com/reload: "elfbot-zurg,zurg-gluetun-config,zurg-env"
   service:
     main:
       nameOverride: zurg
@@ -11094,7 +11093,7 @@ zurggluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: gluetun-config
