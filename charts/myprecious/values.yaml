@@ -11027,7 +11027,11 @@ zurg: &app_zurg
       volumeMounts:
       - mountPath: /data
         subPath: warp
-        name: config       
+        name: config      
+      envFrom:
+      - configMapRef:
+          name: gluetun-config # this is here so we can use env vars to detect whether to enable warp
+          optional: true             
   addons:
     vpn: &zurg_addons_vpn
       enabled: true # in case we ever need it
