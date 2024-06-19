@@ -11068,6 +11068,7 @@ zurg: &app_zurg
       envFrom:
       - configMapRef:
           name: gluetun-config
+          optional: true
       - configMapRef:
           name: zurg-env # this is here so we can use env vars to detect whether to enable warp
       env:
