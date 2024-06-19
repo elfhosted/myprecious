@@ -3828,7 +3828,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:7b80b08222efe46d8945de13d5950734f0ef46e2717fc663f37ca688be29f967
+    tag: rolling@sha256:d411301cfa38e6d3a276f293e8112dad56494170f3f9e88fdb5bdd603bacc1ce
   enabled: false
   controller:
     annotations:
@@ -4078,7 +4078,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.12.0@sha256:06dea3ef2e60d055cebea101c3e64a924d822736e9a91e804599e1f8eaaebdf7
+    tag: 7.12.0@sha256:7cef47ba7fd105e2352b48fcff50c43a78415511beee2f742000cf9de5609331
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
