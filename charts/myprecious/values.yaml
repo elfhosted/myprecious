@@ -5939,11 +5939,11 @@ flaresolverr:
         http:
           port: 8191
   env:
-    WAIT_FOR_VPN: "true"
+    WAIT_FOR_VPN: "false"
     LOG_LEVEL: debug
   addons:
     vpn:
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: thrnz/docker-wireguard-pia
@@ -11020,7 +11020,7 @@ zurg: &app_zurg
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:18f450b8a42f2e6742c6045606ab547b6f1dec3fac4afa072ab09341ebd5c8db
+      image: ghcr.io/elfhosted/warp:rolling@sha256:9b7e2e5da5b1caab6bb1a4e450fc1a2cc7c99f162325901656d5bc9104439eb6
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
