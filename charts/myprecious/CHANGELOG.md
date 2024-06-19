@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.27.0](https://github.com/elfhosted/myprecious/compare/v1.26.0...v1.27.0) (2024-06-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/autobrr docker tag to v1.43.0 ([ffd6b69](https://github.com/elfhosted/myprecious/commit/ffd6b69e4bc28614535894a54b908e1cc736c347))
+* make gluetun a warp alternative ([b582656](https://github.com/elfhosted/myprecious/commit/b5826560306fb7e114584daffe3017519cf7ca33))
+
+
+### Bug Fixes
+
+* add VPN for flaresolverr, unprotect /scraper endpoint for mediafusion ([678f176](https://github.com/elfhosted/myprecious/commit/678f1765dfee7182b5019277126dca2badcbd7b3))
+* **app:** update ghcr.io/elfhosted/gluetun:3.38.0 docker digest to 2ac5c6e ([e297455](https://github.com/elfhosted/myprecious/commit/e2974554c4dfc3b2ee595950f933321f52688dbf))
+* **app:** update ghcr.io/elfhosted/gluetun:3.38.0 docker digest to 3e0a87b ([1e2072b](https://github.com/elfhosted/myprecious/commit/1e2072b4c0ec85366e97b4ffc4f4748a5a21ff2d))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to b98ca47 ([cfcadf8](https://github.com/elfhosted/myprecious/commit/cfcadf8b530ebabd36f275ccad2bb34532fdcfc0))
+* improve riven colors for program output ([8a6e03e](https://github.com/elfhosted/myprecious/commit/8a6e03e38448a5b61defddb40d3cb9ae5048e0de))
+
 ## [1.26.0](https://github.com/elfhosted/myprecious/compare/v1.25.0...v1.26.0) (2024-06-18)
 
 
