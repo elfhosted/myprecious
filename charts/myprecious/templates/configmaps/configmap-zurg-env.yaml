@@ -1,0 +1,13 @@
+{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zurg-env
+data:
+  # We use this configmap to let a user opt into/out of gluetun for zurg
+  {{ if .Values.gluetun.enabled }}
+  ZURG_GLUETUN_ENABLED: "true"
+  {{ else }}
+  ZURG_WARP_ENABLED: "true"
+  {{ end }}
+{{ end }}

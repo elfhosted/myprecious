@@ -1020,7 +1020,7 @@ rutorrentgluetun: &rutorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       securityContext:
         runAsUser: 0
         capabilities:
@@ -1304,7 +1304,7 @@ delugegluetun: &deluge
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       securityContext:
         runAsUser: 0
         capabilities:
@@ -1686,7 +1686,7 @@ qbittorrentgluetun: &qbittorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a          
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5          
       securityContext:
         runAsUser: 0
         capabilities:
@@ -5163,7 +5163,7 @@ plexgluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: plex-gluetun-config
@@ -5887,8 +5887,8 @@ flaresolverr:
   enabled: false
   image:
     registry: ghcr.io
-    repository: flaresolverr/flaresolverr
-    tag: v3.3.19
+    repository: elfhosted/flaresolverr
+    tag: 3.3.19@sha256:8a22152bebdb50670fb963f133b4b68eec145f4b45e6401ae091195edb7c38ec
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5919,6 +5919,12 @@ flaresolverr:
         configMap:
           name: elfbot-flaresolverr
           optional: true
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5931,7 +5937,7 @@ flaresolverr:
       memory: 64Mi
     limits:
       cpu: 600m
-      memory: 512Mi
+      memory: 1Gi
   ingress:
     main:
       enabled: false
@@ -5941,9 +5947,12 @@ flaresolverr:
       ports:
         http:
           port: 8191
+  env:
+    WAIT_FOR_VPN: "false"
+    LOG_LEVEL: debug
   addons:
     vpn:
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: thrnz/docker-wireguard-pia
@@ -5957,6 +5966,8 @@ flaresolverr:
         PORT_PERSIST: "1"
         NFTABLES: "1"    
         VPNDNS: "0"            
+        POST_UP: /gluetun/scripts/up.sh
+        PRE_DOWN: /gluetun/scripts/down.sh
       envFrom:
       - secretRef:
           name: flaresolverr-vpn
@@ -5967,7 +5978,15 @@ flaresolverr:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config    
-      
+      scripts:
+        up: |-
+          #!/bin/ash
+          echo "connected" > /shared/vpnstatus
+
+        down: |-
+          #!/bin/ash
+          echo "disconnected" > /shared/vpnstatus   
+
 seafile:
   enabled: false
   # runtimeClassName: kata
@@ -9608,7 +9627,7 @@ airdcppgluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: airdcpp-gluetun-config
@@ -9828,7 +9847,7 @@ stremioservergluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: stremioserver-gluetun-config
@@ -10843,7 +10862,7 @@ zurg: &app_zurg
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-pia-config,gluetun-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
   tolerations:
   - key: node-role.elfhosted.com/download-only
     operator: Exists            
@@ -10987,13 +11006,16 @@ zurg: &app_zurg
 
         # Socks via WARP
         # Enable proxy only if gluetun vars are not present
-        if [ "$VPN_SERVICE_PROVIDER" == "" ]; then
+        if [[ -z "$GLUETUN_ENABLED" ]]; then
           grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
           sed -i  "s/^#proxy:/proxy/" /config/config.yml
         else
           # remove proxy if found
           sed -i  "s/^proxy:/#proxy/" /config/config.yml
         fi
+
+        # Enable rar extraction if it's not already there
+        grep rar_action /config/config.yml || echo 'rar_action: extract' >> /config/config.yml
 
         # Allow repairs
         # sed -i  "s/enable_repair: false/enable_repair: true/" /config/config.yml
@@ -11011,13 +11033,12 @@ zurg: &app_zurg
         name: config      
       envFrom:
       - configMapRef:
-          name: gluetun-config # this is here so we can use env vars to detect whether to enable socks5
-          optional: true          
+          name: zurg-env # this is here so we can use env vars to detect whether to enable warp
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     warp:
-      image: caomingjun/warp
+      image: ghcr.io/elfhosted/warp:rolling@sha256:9b7e2e5da5b1caab6bb1a4e450fc1a2cc7c99f162325901656d5bc9104439eb6
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -11033,21 +11054,22 @@ zurg: &app_zurg
       volumeMounts:
       - mountPath: /data
         subPath: warp
-        name: config       
+        name: config      
       envFrom:
       - configMapRef:
-          name: gluetun-config # this is here so we can use env vars to detect whether to enable warp
-          optional: true
+          name: zurg-env # this is here so we can use env vars to detect whether to enable warp
   addons:
     vpn: &zurg_addons_vpn
-      enabled: false # in case we ever need it
+      enabled: true # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: gluetun-config
+      - configMapRef:
+          name: zurg-env # this is here so we can use env vars to detect whether to enable warp
       env:
         DOT: "off"
         FIREWALL_INPUT_PORTS: "9999" # 9999 is for zurg
@@ -11086,7 +11108,7 @@ zurggluetun:
     app.elfhosted.com/class: streaming
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-zurg,zurg-gluetun-config"
+      configmap.reloader.stakater.com/reload: "elfbot-zurg,zurg-gluetun-config,zurg-env"
   service:
     main:
       nameOverride: zurg
@@ -11100,7 +11122,7 @@ zurggluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.38.0@sha256:2ac5c6e5adaecdb2d7fd2b60738f20116292c2bb082490c6248f839db5d8586a
+          tag: 3.38.0@sha256:3e0a87b0c325a3d8818fa54fe3cd1af217606deab4693a17084a627323d340e5
       envFrom:
       - configMapRef:
           name: gluetun-config
