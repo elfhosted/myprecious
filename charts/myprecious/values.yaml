@@ -5957,6 +5957,8 @@ flaresolverr:
         PORT_PERSIST: "1"
         NFTABLES: "1"    
         VPNDNS: "0"            
+        POST_UP: /gluetun/scripts/up.sh
+        PRE_DOWN: /gluetun/scripts/down.sh
       envFrom:
       - secretRef:
           name: flaresolverr-vpn
@@ -5975,7 +5977,7 @@ flaresolverr:
         down: |-
           #!/bin/ash
           echo "disconnected" > /shared/vpnstatus   
-                
+
 seafile:
   enabled: false
   # runtimeClassName: kata
@@ -11013,7 +11015,7 @@ zurg: &app_zurg
         name: config      
       envFrom:
       - configMapRef:
-          name: gluetun-env # this is here so we can use env vars to detect whether to enable warp
+          name: zurg-env # this is here so we can use env vars to detect whether to enable warp
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
@@ -11037,7 +11039,7 @@ zurg: &app_zurg
         name: config      
       envFrom:
       - configMapRef:
-          name: gluetun-env # this is here so we can use env vars to detect whether to enable warp
+          name: zurg-env # this is here so we can use env vars to detect whether to enable warp
   addons:
     vpn: &zurg_addons_vpn
       enabled: true # in case we ever need it
@@ -11049,7 +11051,7 @@ zurg: &app_zurg
       - configMapRef:
           name: gluetun-config
       - configMapRef:
-          name: gluetun-env # this is here so we can use env vars to detect whether to enable warp
+          name: zurg-env # this is here so we can use env vars to detect whether to enable warp
       env:
         DOT: "off"
         FIREWALL_INPUT_PORTS: "9999" # 9999 is for zurg

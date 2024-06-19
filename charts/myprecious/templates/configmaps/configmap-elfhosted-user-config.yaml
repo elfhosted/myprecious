@@ -10,4 +10,3 @@ data:
   # If we haven't got a webdav password, leave it blank, which will break login (intentionally)
   WEBDAV_PASSWORD: {{ .Values.webdav.password | default }} # just a placeholder
 
-
