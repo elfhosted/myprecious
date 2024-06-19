@@ -9367,7 +9367,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:e6fd6bbc994a62a52dd39452aacdaaebac1cb614c9624a9c5fcc23a947a369c4
+    tag: rolling@sha256:5b856734539717b3550929f8dfdd90d9a32b37a239a9bef1ac9f39f0e63004a1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9446,7 +9446,7 @@ riven: &app_riven
         runAsUser: 0        
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:e6fd6bbc994a62a52dd39452aacdaaebac1cb614c9624a9c5fcc23a947a369c4
+      image: ghcr.io/elfhosted/riven:rolling@sha256:5b856734539717b3550929f8dfdd90d9a32b37a239a9bef1ac9f39f0e63004a1
       volumeMounts:
       - mountPath: /riven/data
         name: config
