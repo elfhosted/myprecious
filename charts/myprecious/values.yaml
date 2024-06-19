@@ -9363,6 +9363,8 @@ autoscan:
 
 riven: &app_riven
   enabled: false
+  podLabels:
+    app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
     tag: rolling@sha256:e6fd6bbc994a62a52dd39452aacdaaebac1cb614c9624a9c5fcc23a947a369c4
