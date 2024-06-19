@@ -11005,8 +11005,7 @@ zurg: &app_zurg
         name: config      
       envFrom:
       - configMapRef:
-          name: gluetun-config # this is here so we can use env vars to detect whether to enable socks5
-          optional: true          
+          name: elfhosted-user-config # this is here so we can use env vars to detect whether to enable warp
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
@@ -11041,6 +11040,8 @@ zurg: &app_zurg
       envFrom:
       - configMapRef:
           name: gluetun-config
+      - configMapRef:
+          name: elfhosted-user-config # this is here so we can use env vars to detect whether to enable warp
       env:
         DOT: "off"
         FIREWALL_INPUT_PORTS: "9999" # 9999 is for zurg
