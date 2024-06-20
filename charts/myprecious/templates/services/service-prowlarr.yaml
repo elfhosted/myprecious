@@ -1,10 +1,10 @@
-{{ if .Values.prowlarr.enabled }}
+{{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: prowlarr
   labels:
-    app.kubernetes.io/name: prowlarr
+    app.elfhosted.com/name: prowlarr
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: prowlarr
+    app.elfhosted.com/name: prowlarr
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}

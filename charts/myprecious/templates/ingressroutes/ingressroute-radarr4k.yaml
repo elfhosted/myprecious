@@ -1,4 +1,4 @@
-{{ if .Values.radarr4k.enabled }}
+{{ if or .Values.radarr4k.enabled or .Values.radarr4kplus.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

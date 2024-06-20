@@ -2105,10 +2105,10 @@ tautulli:
   initContainers:
     bootstrap: *bootstrap
 
-radarr:
+radarr: &app_radarr
   enabled: false
-  sso:
-    enabled: true
+  podLabels:
+    app.elfhosted.com/name: radarr
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -2207,10 +2207,48 @@ radarr:
       cpu: 1
       memory: 2Gi
 
-radarr4k:
+radarrplus:
+  <<: *app_radarr
+  podLabels:
+    app.elfhosted.com/name: radarr
+    app.elfhosted.com/class: dedicated
   enabled: false
-  sso:
-    enabled: true
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-radarr,radarr-env"
+
+
+radarr4k: &app_radarr4k
+  enabled: false
+  podLabels:
+    app.elfhosted.com/name: radarr4k
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -2310,6 +2348,45 @@ radarr4k:
     limits:
       cpu: 1
       memory: 1Gi
+
+
+radarr4kplus:
+  <<: *app_radarr4k
+  podLabels:
+    app.elfhosted.com/name: radarr4k
+    app.elfhosted.com/class: dedicated
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-radarr4k,radarr4k-env"
+
 
 ombi:
   enabled: false
@@ -4163,10 +4240,10 @@ calibre:
       resources: *default_resources
       securityContext: *default_securitycontext
 
-sonarr:
+sonarr: &app_sonarr
   enabled: false
-  sso:
-    enabled: true
+  podLabels:
+    app.elfhosted.com/name: sonarr
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -4260,11 +4337,47 @@ sonarr:
       cpu: 1
       memory: 1Gi
 
-
-sonarr4k:
+sonarrplus:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: sonarr
+    app.elfhosted.com/class: dedicated
   enabled: false
-  sso:
-    enabled: true
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-sonarr,sonarr-env"
+
+sonarr4k: &app_sonarr4k
+  enabled: false
+  podLabels:
+    app.elfhosted.com/name: sonarr4k
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -4358,6 +4471,44 @@ sonarr4k:
       cpu: 1
       memory: 1Gi
 
+sonarr4kplus:
+  <<: *app_sonarr4k
+  podLabels:
+    app.elfhosted.com/name: sonarr4k
+    app.elfhosted.com/class: dedicated
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-sonarr4k,sonarr4k-env"
+
+
 resiliosync:
   service:
     main:
@@ -4434,10 +4585,10 @@ resiliosync:
       cpu: 1
       memory: 1Gi
 
-prowlarr:
+prowlarr: &app_prowlarr
   enabled: false
-  sso:
-    enabled: true
+  podLabels:
+    app.elfhosted.com/name: prowlarr
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -4524,6 +4675,44 @@ prowlarr:
       memory: 1Gi
   env:
     S6_READ_ONLY_ROOT: 1
+
+
+prowlarrplus:
+  <<: *app_prowlarr
+  podLabels:
+    app.elfhosted.com/name: prowlarr
+    app.elfhosted.com/class: dedicated
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-prowlarr,prowlarr-env"
 
 lidarr:
   enabled: false
@@ -5200,8 +5389,10 @@ plexplus:
       configmap.reloader.stakater.com/reload: "elfbot-plex,plex-pia-config"
   
 
-jellyfin:
+jellyfin: &app_jellyfin
   hostname: elfhosted
+  podLabels:
+    app.elfhosted.com/name: jellyfin  
   image:
     repository: ghcr.io/elfhosted/jellyfin
     tag: 10.9.6@sha256:6124b34cf2fc990a91f46e962d9ab140ff79409a7b3e2ee4ddb923d650bb1a76
@@ -5374,10 +5565,50 @@ jellyfin:
         JELLYFIXER_INTERNAL_URL: http://jellyfin:8096
         JELLYFIXER_EXTERNAL_URL: https://{{ .Release.Name }}-jellyfin.elfhosted.com
       
+jellyfinplus:
+  <<: *app_jellyfin
+  podLabels:
+    app.elfhosted.com/name: jellyfin
+    app.elfhosted.com/class: dedicated  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "500M"    
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 3500m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-jellyfin"
 
 
-emby:
+emby: &app_emby
   hostname: elfhosted
+  podLabels:
+    app.elfhosted.com/name: emby  
   image:
     registry: ghcr.io
     repository: elfhosted/emby
@@ -5540,6 +5771,45 @@ emby:
     limits:
       cpu: 1
       memory: 2048Mi   
+
+embyplus:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: emby
+    app.elfhosted.com/class: dedicated  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "500M"    
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 3500m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-emby"
 
 homer:
   priorityClassName: tenant-normal

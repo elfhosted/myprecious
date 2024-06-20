@@ -34,7 +34,7 @@ data:
   services.yaml: |
     - Consume Media:
 
-        {{ if .Values.jellyfin.enabled }}
+        {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled }}
         - Jellyfin:
             icon: jellyfin.png
             href: https://{{ .Release.Name }}-jellyfin.elfhosted.com
@@ -58,7 +58,7 @@ data:
               key: {{`{{HOMEPAGE_FILE_PLEX_KEY}}`}} 
         {{ end }}
 
-        {{ if .Values.emby.enabled }}
+        {{ if or .Values.emby.enabled .Values.embyplus.enabled }}
         - Emby:
             icon: emby.png
             href: https://{{ .Release.Name }}-emby.elfhosted.com
@@ -273,7 +273,7 @@ data:
         {{ end }}             
 
     - Manage Media:
-        {{ if .Values.radarr.enabled }}
+        {{ if or .Values.radarr.enabled .Values.radarrplus.enabled  }}
         - Radarr:
             icon: radarr.png
             href: https://{{ .Release.Name }}-radarr.elfhosted.com
@@ -285,7 +285,7 @@ data:
               key: {{ .Values.radarrexposed.apikey }}
         {{ end }}  
 
-        {{ if .Values.radarr4k.enabled }}
+        {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled }}
         - Radarr 4K:
             icon: radarr.png
             href: https://{{ .Release.Name }}-radarr4k.elfhosted.com
@@ -297,7 +297,7 @@ data:
               key: {{ .Values.radarr4kexposed.apikey }}
         {{ end }}              
 
-        {{ if .Values.sonarr.enabled }}
+        {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled  }}
         - Sonarr:
             icon: sonarr.png
             href: https://{{ .Release.Name }}-sonarr.elfhosted.com
@@ -309,7 +309,7 @@ data:
               key: {{ .Values.sonarrexposed.apikey }}
         {{ end }}  
 
-        {{ if .Values.sonarr4k.enabled }}
+        {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled }}
         - Sonarr 4K:
             icon: sonarr.png
             href: https://{{ .Release.Name }}-sonarr4k.elfhosted.com
@@ -615,7 +615,7 @@ data:
               key: {{ .Values.sabnzbdexposed.apikey }} 
         {{ end }}
         
-        {{ if .Values.prowlarr.enabled }}
+        {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
         - Prowlarr:
             icon: prowlarr.png
             href: https://{{ .Release.Name }}-prowlarr.elfhosted.com

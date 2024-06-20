@@ -50,7 +50,7 @@ data:
 
     endpoints:
 
-      {{ if .Values.jellyfin.enabled }}
+      {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled }}
       - name: jellyfin
         group: consume-media
         url: "http://jellyfin:8096"
@@ -61,7 +61,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.emby.enabled }}
+      {{ if or .Values.emby.enabled .Values.embyplus.enabled }}
       - name: emby
         group: consume-media
         url: "http://emby:8096"
@@ -293,7 +293,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.radarr.enabled }}
+      {{ if or .Values.radarr.enabled .Values.radarrplus.enabled }}
       - name: radarr
         group: manage-media
         url: "http://radarr:7878"
@@ -304,7 +304,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.radarr4k.enabled }}
+      {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled }}
       - name: radarr4K
         group: manage-media
         url: "http://radarr4k:7878"
@@ -315,7 +315,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.sonarr.enabled }}
+      {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled }}
       - name: sonarr
         group: manage-media
         url: "http://sonarr:8989"
@@ -326,7 +326,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.sonarr4k.enabled }}
+      {{ if or .Values.sonarr4k.enabled  .Values.sonarr4kplus.enabled }}
       - name: sonarr4K
         group: manage-media
         url: "http://sonarr4k:8989"
@@ -667,7 +667,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.prowlarr.enabled }}
+      {{ if .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
       - name: prowlarr
         group: download-media
         url: "http://prowlarr:9696"

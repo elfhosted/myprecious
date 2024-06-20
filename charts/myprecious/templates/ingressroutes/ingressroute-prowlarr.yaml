@@ -1,4 +1,4 @@
-{{ if .Values.prowlarr.enabled }}
+{{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

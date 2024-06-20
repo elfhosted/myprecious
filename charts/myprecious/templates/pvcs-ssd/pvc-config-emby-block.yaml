@@ -1,4 +1,4 @@
-{{ if .Values.emby.enabled }}
+{{ if or .Values.emby.enabled .Values.embyplus.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

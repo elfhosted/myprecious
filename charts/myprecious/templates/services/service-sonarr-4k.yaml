@@ -1,10 +1,10 @@
-{{ if .Values.sonarr4k.enabled }}
+{{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: sonarr4k
   labels:
-    app.kubernetes.io/name: sonarr4k
+    app.elfhosted.com/name: sonarr4k
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: sonarr4k
+    app.elfhosted.com/name: sonarr4k
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
