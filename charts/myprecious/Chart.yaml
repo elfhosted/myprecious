@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.28.2-pre-01
+version: 1.29.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -57,7 +57,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfin.enabled
-    alias: jellyfin    
+    alias: jellyfin
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -87,7 +87,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: radarr4kplus.enabled
-    alias: radarr4kplus    
+    alias: radarr4kplus
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -97,7 +97,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: sonarrplus.enabled
-    alias: sonarrplus    
+    alias: sonarrplus
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -107,7 +107,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: sonarr4kplus.enabled
-    alias: sonarr4kplus    
+    alias: sonarr4kplus
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -352,7 +352,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: kometa.enabled
-    alias: kometa  
+    alias: kometa
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
