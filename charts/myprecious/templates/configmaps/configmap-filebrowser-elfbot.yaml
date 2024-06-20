@@ -90,12 +90,12 @@ data:
 
         "backup")   
 
-            if [[ $2 == "symlinks" ]]; then
+            if [[ "$2" == "symlinks" ]]; then
                 TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
                 echo "Backing up all symlinks to /storage/elfstorage/backup/symlinks-$TIMESTAMP.tar.gz"
-                tar -C /storage/symlinks czf /storage/elfstorage/backup/symlinks-$TIMESTAMP.tar.gz .
+                tar -C /storage/symlinks -czf /storage/elfstorage/backup/symlinks-$TIMESTAMP.tar.gz .
                 BACKUP_SIZE=$(du -sh /storage/elfstorage/backup/symlinks-$TIMESTAMP.tar.gz | awk '{print $1}')
-                echo "Done! (yes, it really was that fast) - total size $BACKUP_SIZE"
+                echo "Done! (yes, it really was that fast!) - total size 🔬 $BACKUP_SIZE "
                 exit 0
             fi
 
