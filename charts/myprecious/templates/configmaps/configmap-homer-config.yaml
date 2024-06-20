@@ -239,7 +239,7 @@ data:
         # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
         # logo: "path/to/logo"
         items:
-          {{ if .Values.jellyfin.enabled }}
+          {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled  }}
           - name: "Jellyfin"
             logo: "assets/png/jellyfin.png"
             # Alternatively a fa icon can be provided:
@@ -263,7 +263,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.emby.enabled }}
+          {{ if or .Values.emby.enabled .Values.embyplus.enabled }}
           - name: "Emby"
             logo: "assets/png/emby.png"
             # Alternatively a fa icon can be provided:
@@ -505,7 +505,7 @@ data:
       - name: "Manage Media"
         icon: "fas fa-photo-video"
         items:
-          {{ if .Values.radarr.enabled }}
+          {{ if or .Values.radarr.enabled .Values.radarrplus.enabled }}
           - name: "Radarr"
             logo: "assets/png/radarr.png"
             subtitle: "Manage Movies"
@@ -523,7 +523,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if .Values.radarr4k.enabled }}
+          {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled  }}
           - name: "Radarr 4K"
             logo: "assets/png/radarr.png"
             subtitle: "Manage Movies (4K)"
@@ -541,7 +541,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if .Values.sonarr.enabled }}
+          {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled }}
           - name: "Sonarr"
             logo: "assets/png/sonarr.png"
             subtitle: "Manage Series"
@@ -559,7 +559,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if .Values.sonarr4k.enabled }}
+          {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled }}
           - name: "Sonarr 4K"
             logo: "assets/png/sonarr.png"
             subtitle: "Manage Series (4K)"
@@ -840,7 +840,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.kometa.enabled }}
+          {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
           - name: "Kometa"
             logo: "assets/png/kometa.png"
             # Alternatively a fa icon can be provided:
@@ -953,7 +953,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if .Values.prowlarr.enabled }}
+          {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
           - name: "Prowlarr"
             logo: "assets/png/prowlarr.png"
             subtitle: "Manage Indexers"

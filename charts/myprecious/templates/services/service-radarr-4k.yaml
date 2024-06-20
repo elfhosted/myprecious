@@ -1,10 +1,10 @@
-{{ if .Values.radarr4k.enabled }}
+{{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: radarr4k
   labels:
-    app.kubernetes.io/name: radarr4k
+    app.elfhosted.com/name: radarr4k
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: radarr4k
+    app.elfhosted.com/name: radarr4k
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}    

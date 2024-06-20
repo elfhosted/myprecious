@@ -1,4 +1,4 @@
-{{ if .Values.emby.enabled }}
+{{ if or .Values.emby.enabled .Values.embyplus.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

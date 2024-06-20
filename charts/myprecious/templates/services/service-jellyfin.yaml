@@ -1,10 +1,10 @@
-{{ if .Values.jellyfin.enabled }}
+{{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: jellyfin
   labels:
-    app.kubernetes.io/name: jellyfin
+    app.elfhosted.com/name: jellyfin
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -19,6 +19,6 @@ spec:
     protocol: TCP
     name: jellyfixer
   selector:
-    app.kubernetes.io/name: jellyfin
+    app.elfhosted.com/name: jellyfin
     app.kubernetes.io/instance: {{ .Release.Name }}    
 {{ end }}    
