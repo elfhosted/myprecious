@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.29.0](https://github.com/elfhosted/myprecious/compare/v1.28.0...v1.29.0) (2024-06-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/tautulli docker tag to v2.14.3 ([444b958](https://github.com/elfhosted/myprecious/commit/444b95841b05e427d0e11f95b10440d7f845723e))
+* elfbot can backup symlinks now! ([7627f3b](https://github.com/elfhosted/myprecious/commit/7627f3b0e49ab31f841089c95d342fdf2cb0777f))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 5b85673 ([95fa81c](https://github.com/elfhosted/myprecious/commit/95fa81cf92968d3189ff741cdad4217c4f65b29a))
+* fix label for riven ([7f11ef4](https://github.com/elfhosted/myprecious/commit/7f11ef49d0c8db8db932ad4935e2e4a2014edc42))
+
 ## [1.28.0](https://github.com/elfhosted/myprecious/compare/v1.27.0...v1.28.0) (2024-06-19)
 
 
