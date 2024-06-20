@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.26.3-pre-173
+version: 1.26.3-pre-174
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -339,10 +339,15 @@ dependencies:
     condition: plexmetamanager.enabled
     alias: plexmetamanager
   - name: app-template
-    condition: kometa.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: kometa
+    condition: kometa.enabled
+    alias: kometa  
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: kometaplus.enabled
+    alias: kometaplus
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

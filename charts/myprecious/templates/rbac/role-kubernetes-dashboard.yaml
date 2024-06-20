@@ -62,4 +62,10 @@ rules:
 {{ if .Values.gluetun.enabled }}
   - gluetun-config
 {{ end }}
+{{ if .Values.riven.enabled }}
+  - elfbot-riven
+{{ end }}
+{{ if .Values.kometa.enabled }}
+  - elfbot-kometa
+{{ end }}
 

@@ -612,7 +612,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.kometa.enabled }}
+      {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
       - name: kometa
         group: manage-media
         url: "http://kometa:9898"
@@ -667,7 +667,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
+      {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
       - name: prowlarr
         group: download-media
         url: "http://prowlarr:9696"

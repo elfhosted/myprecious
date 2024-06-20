@@ -534,7 +534,7 @@ data:
             siteMonitor: http://plexmetamanager:9898
         {{ end }}   
 
-        {{ if .Values.kometa.enabled }}
+        {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
         - Kometa:
             icon: mdi-folder-information
             href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/kometa/

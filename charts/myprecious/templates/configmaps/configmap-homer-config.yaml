@@ -840,7 +840,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.kometa.enabled }}
+          {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
           - name: "Kometa"
             logo: "assets/png/kometa.png"
             # Alternatively a fa icon can be provided:

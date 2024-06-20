@@ -7577,7 +7577,7 @@ plexmetamanager:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
 
-kometa:
+kometa: &app_kometa
   enabled: false
   sso:
     enabled: true
@@ -7680,6 +7680,43 @@ kometa:
   additionalContainers:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
+
+kometaplus:
+  <<: *app_kometa
+  podLabels:
+    app.elfhosted.com/name: kometa
+    app.elfhosted.com/class: dedicated
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 8
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-kometa,kometa-env"      
 
 rcloneui:
   enabled: false
