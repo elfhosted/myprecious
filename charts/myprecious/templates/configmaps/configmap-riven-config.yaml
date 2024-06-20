@@ -31,6 +31,10 @@ data:
   RIVEN_SCRAPING_ANNATAR_ENABLED: "true"
   RIVEN_SCRAPING_ANNATAR_URL: http://elfhosted-internal.annatar
 
+  # For debugging and development
+  RIVEN_MAP_METADATA: "true"
+  RIVEN_TRACEMALLOC: "false"
+
   # Elf Branding
   # PROGRAM log level
   RIVEN_LOGGER_PROGRAM_FG: "EBE8E8"
