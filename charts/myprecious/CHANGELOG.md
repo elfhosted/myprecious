@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.30.0](https://github.com/elfhosted/myprecious/compare/v1.29.0...v1.30.0) (2024-06-20)
+
+
+### Features
+
+* update riven to v0.7.4 ([bbab46f](https://github.com/elfhosted/myprecious/commit/bbab46f867fd34c733ba5b39bc0fe6291a368935))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 6444082 ([8e40084](https://github.com/elfhosted/myprecious/commit/8e40084e86622fb65895b10ec2b00238fe3f598d))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 7af01c4 ([946efcc](https://github.com/elfhosted/myprecious/commit/946efccf12986511916b86ca605e48ee529d5d6a))
+* fix error in riven output ([8a6f0d0](https://github.com/elfhosted/myprecious/commit/8a6f0d025b09086132ef5a3c66abd5cb445bfe67))
+
 ## [1.29.0](https://github.com/elfhosted/myprecious/compare/v1.28.0...v1.29.0) (2024-06-20)
 
 
