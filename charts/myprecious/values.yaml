@@ -11182,7 +11182,6 @@ zurg: &app_zurg
     readOnlyRootFilesystem: true
   env:
     LOG_LEVEL: info    
-    # WAIT_FOR_VPN: "true"
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault

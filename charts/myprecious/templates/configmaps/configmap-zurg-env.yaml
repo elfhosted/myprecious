@@ -7,6 +7,7 @@ data:
   # We use this configmap to let a user opt into/out of gluetun for zurg
   {{ if .Values.gluetun.enabled }}
   ZURG_GLUETUN_ENABLED: "true"
+  WAIT_FOR_VPN: "true"
   {{ else }}
   ZURG_WARP_ENABLED: "true"
   PROXY: socks5://127.0.0.1:1080
