@@ -8,6 +8,7 @@ data:
   {{ if .Values.gluetun.enabled }}
   ZURG_GLUETUN_ENABLED: "true"
   WAIT_FOR_VPN: "true"
+  PUBLICIP_API_TOKEN: 55fe9f88aee13d # don't steal mine, get yours for free at https://ipinfo.io/account/token
   {{ else }}
   ZURG_WARP_ENABLED: "true"
   PROXY: socks5://127.0.0.1:1080
