@@ -18,7 +18,7 @@ data:
     # misc configs
     retain_folder_name_extension: false # if true, zurg won't modify the filenames from real-debrid
     retain_rd_torrent_name: true # if true, it will strictly follow RD API torrent name property w/c should make this more compatible with rdt-client
-    auto_delete_rar_torrents: true # if true, zurg will delete unstreamable rar files (these torrents will always be compressed in a rar archive no matter what files you select)
+    auto_delete_rar_torrents: false # if true, zurg will delete unstreamable rar files (these torrents will always be compressed in a rar archive no matter what files you select)
     use_download_cache: false # if true, during zurg initialization, it will fetch all downloads to unrestrict links faster
 
     enable_repair: true
@@ -107,11 +107,11 @@ data:
     for arg in "$@"
     do
         modified_arg="$zurg_mount/$arg"
-        echo "Detected update on: $arg"
-        echo "Absolute path: $modified_arg"
+        # echo "Detected update on: $arg"
+        # echo "Absolute path: $modified_arg"
 
         ##### START Added by ElfHosted for auto DMM symlinking ###
-        echo "Symlinking $modified_arg to /storage/symlinks/real-debrid-blackhole/$arg"
+        # echo "Symlinking $modified_arg to /storage/symlinks/real-debrid-blackhole/$arg"
 
         # Ensure blackhole exists
         mkdir -p /storage/symlinks/real-debrid-blackhole/movies

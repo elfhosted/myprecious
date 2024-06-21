@@ -6158,7 +6158,7 @@ flaresolverr:
   image:
     registry: ghcr.io
     repository: elfhosted/flaresolverr
-    tag: 3.3.19@sha256:8a22152bebdb50670fb963f133b4b68eec145f4b45e6401ae091195edb7c38ec
+    tag: rolling@sha256:3adeb864ef5071100f512cbe5ee318711362cc8cc3ceab39272b15f8ee2a8a39
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -11167,7 +11167,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.21-nightly@sha256:b7eeddec9268d0ab3312c30ec0b0ad8409cb134c2bad8af77b5abf62d52dfab5
+    tag: v0.10.0-rc.2@sha256:5ea46f7a984e68b984869a20eeeddf09e73595dea99a9269c9a876fc065cc39a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11180,8 +11180,6 @@ zurg: &app_zurg
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  env:
-    LOG_LEVEL: info    
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11261,7 +11259,10 @@ zurg: &app_zurg
       volumeSpec:
         configMap:
           name: tooling-scripts   
-          defaultMode: 0755                       
+          defaultMode: 0755    
+  envFrom:
+  - configMapRef:
+      name: zurg-env # this is here so we can use env vars to detect whether to enable warp                             
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:
@@ -11309,6 +11310,9 @@ zurg: &app_zurg
         # Disable native auth (we do it with traefik instead when necessary)
         sed -i  "s/^username:/#username/" /config/config.yml
         sed -i  "s/^password:/#password/" /config/config.yml
+
+        # breaks stuff with the rar extraction feature now
+        sed -i  "s/auto_delete_rar_torrents: true/auto_delete_rar_torrents: false/" /config/config.yml
 
         # Ensure download cache is disabled (works better when IPs change)
         sed -i  "s/use_download_cache: true/use_download_cache: false/" /config/config.yml
