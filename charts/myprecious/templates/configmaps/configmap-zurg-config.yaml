@@ -107,11 +107,11 @@ data:
     for arg in "$@"
     do
         modified_arg="$zurg_mount/$arg"
-        echo "Detected update on: $arg"
-        echo "Absolute path: $modified_arg"
+        # echo "Detected update on: $arg"
+        # echo "Absolute path: $modified_arg"
 
         ##### START Added by ElfHosted for auto DMM symlinking ###
-        echo "Symlinking $modified_arg to /storage/symlinks/real-debrid-blackhole/$arg"
+        # echo "Symlinking $modified_arg to /storage/symlinks/real-debrid-blackhole/$arg"
 
         # Ensure blackhole exists
         mkdir -p /storage/symlinks/real-debrid-blackhole/movies
