@@ -11180,8 +11180,6 @@ zurg: &app_zurg
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  env:
-    LOG_LEVEL: info    
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11261,7 +11259,10 @@ zurg: &app_zurg
       volumeSpec:
         configMap:
           name: tooling-scripts   
-          defaultMode: 0755                       
+          defaultMode: 0755    
+  envFrom:
+  - configMapRef:
+      name: zurg-env # this is here so we can use env vars to detect whether to enable warp                             
   initContainers:
     bootstrap: *bootstrap
     copy-example-config:

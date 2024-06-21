@@ -4,6 +4,7 @@ kind: ConfigMap
 metadata:
   name: zurg-env
 data:
+  LOG_LEVEL: info
   # We use this configmap to let a user opt into/out of gluetun for zurg
   {{ if .Values.gluetun.enabled }}
   ZURG_GLUETUN_ENABLED: "true"
