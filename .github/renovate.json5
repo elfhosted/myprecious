@@ -8,7 +8,7 @@
   "allowedPostUpgradeCommands": ["./scripts/bump-myprecious.sh"],
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
-  "ignoreDeps": ["filebrowser"],
+  "ignoreDeps": ["filebrowser","zurg"],
   "extends": [":semanticCommitTypeAll(feat)",":semanticCommitScope(app)"], // for release-please
   "postUpgradeTasks": {
     "commands": ["./scripts/bump-myprecious.sh"],
