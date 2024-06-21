@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.31.0](https://github.com/elfhosted/myprecious/compare/v1.30.0...v1.31.0) (2024-06-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.7.0.8882 ([c30bf59](https://github.com/elfhosted/myprecious/commit/c30bf59c76fdf4fdb3e3854e914c240e22f87c6f))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.06.21 ([6bc4c3e](https://github.com/elfhosted/myprecious/commit/6bc4c3e004f4981442bb0c3fb11d7786bc884847))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:rolling docker digest to 05af839 ([0af1707](https://github.com/elfhosted/myprecious/commit/0af170733397a73c2d60bd278f6e060026e40204))
+* **app:** update ghcr.io/elfhosted/zurg-rc:rolling docker digest to a95185e ([41581ff](https://github.com/elfhosted/myprecious/commit/41581ff00b7d8be93602290c4f31ecc0ce0e6bf1))
+* **app:** update ghcr.io/elfhosted/zurg-rc:rolling docker digest to d8ee97a ([df14a6c](https://github.com/elfhosted/myprecious/commit/df14a6c98c84e672f2c5bbcae72edcb532cb85d6))
+
 ## [1.30.0](https://github.com/elfhosted/myprecious/compare/v1.29.0...v1.30.0) (2024-06-20)
 
 
