@@ -11311,6 +11311,9 @@ zurg: &app_zurg
         sed -i  "s/^username:/#username/" /config/config.yml
         sed -i  "s/^password:/#password/" /config/config.yml
 
+        # breaks stuff with the rar extraction feature now
+        sed -i  "s/auto_delete_rar_torrents: true/auto_delete_rar_torrents: false/" /config/config.yml
+
         # Ensure download cache is disabled (works better when IPs change)
         sed -i  "s/use_download_cache: true/use_download_cache: false/" /config/config.yml
 
