@@ -12,5 +12,6 @@ data:
   {{ else }}
   ZURG_WARP_ENABLED: "true"
   PROXY: socks5://127.0.0.1:1080
+  WAIT_FOR_WARP: "true"
   {{ end }}
 {{ end }}
