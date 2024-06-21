@@ -6220,6 +6220,7 @@ flaresolverr:
   env:
     WAIT_FOR_VPN: "false"
     LOG_LEVEL: debug
+    DRIVER: nodriver
   addons:
     vpn:
       enabled: false # in case we ever need it
