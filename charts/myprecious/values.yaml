@@ -6158,7 +6158,7 @@ flaresolverr:
   image:
     registry: ghcr.io
     repository: elfhosted/flaresolverr
-    tag: rollingsha256:dcd7a08d4061c8b6eb787b88093ee3ea1c1321d2c4d96f465417dbc6c8fa0f32
+    tag: rolling@sha256:dcd7a08d4061c8b6eb787b88093ee3ea1c1321d2c4d96f465417dbc6c8fa0f32
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6223,7 +6223,7 @@ flaresolverr:
     DRIVER: nodriver
   addons:
     vpn:
-      enabled: false # in case we ever need it
+      enabled: true # in case we ever need it
       gluetun:
         image:
           repository: thrnz/docker-wireguard-pia
