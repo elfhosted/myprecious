@@ -6158,7 +6158,7 @@ flaresolverr:
   image:
     registry: ghcr.io
     repository: elfhosted/flaresolverr
-    tag: rolling@sha256:3adeb864ef5071100f512cbe5ee318711362cc8cc3ceab39272b15f8ee2a8a39
+    tag: rollingsha256:dcd7a08d4061c8b6eb787b88093ee3ea1c1321d2c4d96f465417dbc6c8fa0f32
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6218,7 +6218,7 @@ flaresolverr:
         http:
           port: 8191
   env:
-    WAIT_FOR_VPN: "false"
+    WAIT_FOR_VPN: "true"
     LOG_LEVEL: debug
     DRIVER: nodriver
   addons:
