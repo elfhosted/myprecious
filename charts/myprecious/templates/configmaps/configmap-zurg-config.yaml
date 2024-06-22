@@ -7,8 +7,13 @@ data:
   config.yml: |
     # Zurg configuration version
     zurg: v1
-    token: {{ .Values.zurg.token }} # https://real-debrid.com/apitoken
 
+  {{ if .Values.zurg.enabled }}
+    token: {{ .Values.zurg.token }} # https://real-debrid.com/apitoken
+  {{ else }}
+    token: {{ .Values.zurgplus.token }} # https://real-debrid.com/apitoken
+  {{ end }}
+  
     # basic functionality
     host: "[::]" # do not change this if you are running it inside a docker container
     port: 9999 # do not change this if you are running it inside a docker container
