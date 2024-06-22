@@ -272,6 +272,14 @@ rclonestorageboxencrypteda: &rclonestorageboxencrypteda
       claimName: storagebox-encrypted-a
   mountPath: /storage/storagebox-encrypted-a
   subaccount: false  
+rcloneb2encrypteda: &rcloneb2encrypteda
+  enabled: false
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: b2-encrypted-a
+  mountPath: /storage/b2-encrypted-a
+  subaccount: false
 rclonestorageboxencryptedb: &rclonestorageboxencryptedb
   enabled: false
   type: custom
@@ -399,7 +407,8 @@ appmounts: &appmounts
   storageboxc: *storageboxc
   rclonestorageboxencrypteda: *rclonestorageboxencrypteda
   rclonestorageboxencryptedb: *rclonestorageboxencryptedb
-  rclonestorageboxencryptedc: *rclonestorageboxencryptedc    
+  rclonestorageboxencryptedc: *rclonestorageboxencryptedc   
+  rcloneb2encrypteda: *rcloneb2encrypteda   
   rclonemountpremiumize: *rclonemountpremiumize
   b2: *b2
   smbmounta: *smbmounta
