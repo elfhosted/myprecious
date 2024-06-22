@@ -22,7 +22,11 @@ data:
 
   RIVEN_CONTENT_PLEX_WATCHLIST_ENABLED: "true"
   RIVEN_DOWNLOADERS_REAL_DEBRID_ENABLED: "1"
+{{ if .Values.zurg.enabled }}
   RIVEN_DOWNLOADERS_REAL_DEBRID_API_KEY: {{ .Values.zurg.token }}
+{{ else }}
+  RIVEN_DOWNLOADERS_REAL_DEBRID_API_KEY: {{ .Values.zurgplus.token }}
+{{ end }}
 
   RIVEN_SCRAPING_KNIGHTCRAWLER_ENABLED: "true"
   RIVEN_SCRAPING_KNIGHTCRAWLER_URL: http://elfhosted-internal.knightcrawler

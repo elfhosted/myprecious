@@ -7,8 +7,13 @@ data:
   config.yml: |
     # Zurg configuration version
     zurg: v1
-    token: {{ .Values.zurg.token }} # https://real-debrid.com/apitoken
 
+  {{ if .Values.zurg.enabled }}
+    token: {{ .Values.zurg.token }} # https://real-debrid.com/apitoken
+  {{ else }}
+    token: {{ .Values.zurgplus.token }} # https://real-debrid.com/apitoken
+  {{ end }}
+  
     # basic functionality
     host: "[::]" # do not change this if you are running it inside a docker container
     port: 9999 # do not change this if you are running it inside a docker container
@@ -39,7 +44,7 @@ data:
 
     # network configs
     network_buffer_size: 1048576 # 1 MiB
-    serve_from_rclone: false # serve file data from rclone, not from zurg (zurg will only provide rclone the link to download)
+    serve_from_rclone: true # serve file data from rclone, not from zurg (zurg will only provide rclone the link to download)
     verify_download_link: true # if true, zurg will check if the link is truly streamable; only relevant if serve_from_rclone is set to true (as it already does this all the time if serve_from_rclone is false)
     force_ipv6: false # force connect to real-debrid ipv6 addresses
     rate_limit_sleep_secs: 6 # wait time after getting a 429 from Real-Debrid API
