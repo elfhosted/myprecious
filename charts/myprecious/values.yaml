@@ -4958,9 +4958,15 @@ readarr:
 
         mkdir -p /storage/elfstorage/books
         mkdir -p /storage/elfstorage/backup/auto/readarr
+
+        # Set auth to external
+        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
+        
       volumeMounts:
       - mountPath: /storage/elfstorage
         name: elfstorage
+      - mountPath: /config
+        name: config        
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -5042,9 +5048,14 @@ readarraudio:
 
         mkdir -p /storage/elfstorage/audiobooks
         mkdir -p /storage/elfstorage/backup/auto/readarraudio
+
+        # Set auth to external
+        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
       volumeMounts:
       - mountPath: /storage/elfstorage
         name: elfstorage
+      - mountPath: /config
+        name: config        
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
