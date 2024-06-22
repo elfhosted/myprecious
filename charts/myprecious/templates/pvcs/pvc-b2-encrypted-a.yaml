@@ -1,4 +1,4 @@
-{{ if .Values.rcloneb2a.enabled }}
+{{ if .Values.rcloneb2encrypteda.enabled }}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
