@@ -2118,7 +2118,18 @@ radarr: &app_radarr
   enabled: false
   podLabels:
     app.elfhosted.com/name: radarr
+    app.elfhosted.com/class: debrid    
   priorityClassName: tenant-normal
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"      
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
@@ -2258,7 +2269,18 @@ radarr4k: &app_radarr4k
   enabled: false
   podLabels:
     app.elfhosted.com/name: radarr4k
+    app.elfhosted.com/class: debrid
   priorityClassName: tenant-normal
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
@@ -4253,7 +4275,18 @@ sonarr: &app_sonarr
   enabled: false
   podLabels:
     app.elfhosted.com/name: sonarr
+    app.elfhosted.com/class: debrid    
   priorityClassName: tenant-normal
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
@@ -4387,7 +4420,18 @@ sonarr4k: &app_sonarr4k
   enabled: false
   podLabels:
     app.elfhosted.com/name: sonarr4k
+    app.elfhosted.com/class: debrid
   priorityClassName: tenant-normal
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
@@ -5080,7 +5124,8 @@ plex: &app_plex
     app.elfhosted.com/anti-affinity-70: "plex"  
     app.elfhosted.com/anti-affinity-80: "plex"  
     app.elfhosted.com/anti-affinity-90: "plex"  
-    app.elfhosted.com/anti-affinity-100: "plex"   
+    app.elfhosted.com/anti-affinity-100: "plex"  
+    app.elfhosted.com/class: debrid
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   # use memory to force plex pod spread, rather than affinity
@@ -5186,7 +5231,15 @@ plex: &app_plex
               values:
               - plex
           topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}                                    
+          namespaceSelector: {}           
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"                                    
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -5420,15 +5473,23 @@ plexplus:
 
 jellyfin: &app_jellyfin
   hostname: elfhosted
-  podLabels:
-    app.elfhosted.com/name: jellyfin  
   image:
     repository: ghcr.io/elfhosted/jellyfin
     tag: 10.9.6@sha256:6124b34cf2fc990a91f46e962d9ab140ff79409a7b3e2ee4ddb923d650bb1a76
   enabled: false
   podLabels:
-    app.elfhosted.com/class: streaming  
+    app.elfhosted.com/class: debrid  
     app.elfhosted.com/name: jellyfin
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   priorityClassName: tenant-streaming
@@ -5636,8 +5697,6 @@ jellyfinplus:
 
 emby: &app_emby
   hostname: elfhosted
-  podLabels:
-    app.elfhosted.com/name: emby  
   image:
     registry: ghcr.io
     repository: elfhosted/emby
@@ -5645,8 +5704,18 @@ emby: &app_emby
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
-    app.elfhosted.com/class: streaming
+    app.elfhosted.com/class: debrid
     app.elfhosted.com/name: emby
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"    
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux    
   securityContext:
@@ -11194,6 +11263,16 @@ zurg: &app_zurg
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
     strategy: RollingUpdate      
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"     
   tolerations:
   - key: node-role.elfhosted.com/download-only
     operator: Exists            
@@ -11341,12 +11420,17 @@ zurg: &app_zurg
         # Socks via WARP
         # Enable proxy only if gluetun vars are not present
         if [[ ! -z "$ZURG_WARP_ENABLED" ]]; then
-          grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
-          sed -i  "s/^#proxy:/proxy/" /config/config.yml
+          echo "not enabling warp, we may no longer need it"
+          # grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
+          # sed -i  "s/^#proxy:/proxy/" /config/config.yml
         else
           # remove proxy if found
           sed -i  "s/^proxy:/#proxy/" /config/config.yml
         fi
+
+        # Try direct streaming
+        sed -i  "s/serve_from_rclone: false/serve_from_rclone: true/" /config/config.yml
+        # sed -i  "s/verify_download_link: false/verify_download_link: true/" /config/config.yml
 
         # Enable rar extraction if it's not already there
         grep rar_action /config/config.yml || echo 'rar_action: extract' >> /config/config.yml
@@ -11440,7 +11524,7 @@ zurggluetun:
   enabled: false
   podLabels:
     app.elfhosted.com/name: zurg
-    app.elfhosted.com/class: streaming
+    app.elfhosted.com/class: debrid
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-zurg,zurg-gluetun-config,zurg-env"
