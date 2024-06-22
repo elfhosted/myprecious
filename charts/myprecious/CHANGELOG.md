@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.33.0](https://github.com/elfhosted/myprecious/compare/v1.32.0...v1.33.0) (2024-06-22)
+
+
+### Features
+
+* add b2 encrypted (a) mount ([b0316cf](https://github.com/elfhosted/myprecious/commit/b0316cfec5cbe1f0bfe6dca6680c3c001bd41229))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 2c13620 ([147a49a](https://github.com/elfhosted/myprecious/commit/147a49a46fa7e3fc60d77a130a22e9638a927ea1))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 7f1d42f ([f08cac0](https://github.com/elfhosted/myprecious/commit/f08cac0c7ed5e0fb003a8d2acadcae488efb79dd))
+
+## [1.32.0](https://github.com/elfhosted/myprecious/compare/v1.31.0...v1.32.0) (2024-06-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.90.3 ([a698fd1](https://github.com/elfhosted/myprecious/commit/a698fd1630fb91f9c43cb3910d000c9b0799bd4f))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.2.1 ([af132e2](https://github.com/elfhosted/myprecious/commit/af132e2bb5740c487f45cbe41820137c5ef723a6))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.67.0 ([fe04cbf](https://github.com/elfhosted/myprecious/commit/fe04cbf3219de4999ac9e0afa423a3c7bb7346d5))
+* **app:** update ghcr.io/haveagitgat/tdarr docker tag to v2.21.01 ([136ce51](https://github.com/elfhosted/myprecious/commit/136ce51cf9224015bb45e48bb9a2c1dad243e1fd))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/flaresolverr:rolling docker digest to 1364469 ([7c7c3df](https://github.com/elfhosted/myprecious/commit/7c7c3df22aa11d05fbb5b9d2870bb67f2b5e450d))
+* **app:** update ghcr.io/elfhosted/flaresolverr:rolling docker digest to 4cc7e33 ([04b4b04](https://github.com/elfhosted/myprecious/commit/04b4b045fd34d74d926c469b6147bcd3cef94fde))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 3a4e793 ([ec5bd0c](https://github.com/elfhosted/myprecious/commit/ec5bd0ce37388434b9bfb31fc3541ba6536e7e15))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 88660c9 ([e81afbd](https://github.com/elfhosted/myprecious/commit/e81afbd44cc8b089ed2459fcee3808506f39617c))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 26a2490 ([dec4d46](https://github.com/elfhosted/myprecious/commit/dec4d46513a9f02b5ca93a6e04025ed64c73187c))
+
 ## [1.31.0](https://github.com/elfhosted/myprecious/compare/v1.30.0...v1.31.0) (2024-06-21)
 
 
