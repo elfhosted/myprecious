@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.33.0](https://github.com/elfhosted/myprecious/compare/v1.32.0...v1.33.0) (2024-06-22)
+
+
+### Features
+
+* add b2 encrypted (a) mount ([b0316cf](https://github.com/elfhosted/myprecious/commit/b0316cfec5cbe1f0bfe6dca6680c3c001bd41229))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 2c13620 ([147a49a](https://github.com/elfhosted/myprecious/commit/147a49a46fa7e3fc60d77a130a22e9638a927ea1))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 7f1d42f ([f08cac0](https://github.com/elfhosted/myprecious/commit/f08cac0c7ed5e0fb003a8d2acadcae488efb79dd))
+
 ## [1.32.0](https://github.com/elfhosted/myprecious/compare/v1.31.0...v1.32.0) (2024-06-22)
 
 
