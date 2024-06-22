@@ -11272,7 +11272,7 @@ zurg: &app_zurg
               operator: In
               values:
               - debrid
-          topologyKey: "kubernetes.io/hostname"     
+          topologyKey: "kubernetes.io/hostname"            
   tolerations:
   - key: node-role.elfhosted.com/download-only
     operator: Exists            
@@ -11288,25 +11288,6 @@ zurg: &app_zurg
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists  
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}
   resources:
     requests:
       cpu: 20m
