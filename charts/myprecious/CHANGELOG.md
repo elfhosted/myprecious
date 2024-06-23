@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.34.1](https://github.com/elfhosted/myprecious/compare/v1.34.0...v1.34.1) (2024-06-23)
+
+
+### Bug Fixes
+
+* allow zurg to restart ([1a5e3c4](https://github.com/elfhosted/myprecious/commit/1a5e3c4ccee613a1f81ee74ebe0c5f9a60daf7b2))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 134dc9a ([cef19f2](https://github.com/elfhosted/myprecious/commit/cef19f27e406e8ffb550fddfb40a4dd97fe7e7ef))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 23f7575 ([15fab03](https://github.com/elfhosted/myprecious/commit/15fab03533adee6a7758715da71ab1fbb0b44385))
+
 ## [1.34.0](https://github.com/elfhosted/myprecious/compare/v1.33.0...v1.34.0) (2024-06-23)
 
 
