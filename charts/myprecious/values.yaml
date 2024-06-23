@@ -11231,6 +11231,10 @@ zurg: &app_zurg
         then
           cp /bootstrap/plex_update.sh /config/
         fi
+
+        # Copy across latency files to avoid false crashloops on start
+        cp /bootstrap/latency* /config/data/
+        
       volumeMounts:
       - mountPath: /config
         name: config
@@ -11247,8 +11251,11 @@ zurg: &app_zurg
       - -c
       - |
         set -x
-        set -e
+        # set -
 
+
+        # Force a re-test of network connectivity
+        rm -rf /config/zurg/
         # Disable native auth (we do it with traefik instead when necessary)
         sed -i  "s/^username:/#username/" /config/config.yml
         sed -i  "s/^password:/#password/" /config/config.yml
