@@ -8059,8 +8059,8 @@ storageboss:
     app.elfhosted.com/name: storageboss
   priorityClassName: tenant-critical
   image:
-    repository: ghcr.io/servercontainers/samba
-    tag: smbd-only-a3.20.1-s4.19.6-r0sha256:d6dabcb034aec67ef81ca9b38ee7d2bd942bf031cedec53b766aa20e91ab9ab4
+    repository: quay.io/samba.org/samba-server
+    # tag: smbd-only-a3.20.1-s4.19.6-r0sha256:d6dabcb034aec67ef81ca9b38ee7d2bd942bf031cedec53b766aa20e91ab9ab4
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8073,7 +8073,7 @@ storageboss:
     shares:
       enabled: true
       type: custom
-      mountPath: /shares
+      mountPath: /share
       volumeSpec: *volumespec_ephemeral_volume_10g  
   service:
     main:
@@ -8091,11 +8091,11 @@ storageboss:
     limits:
       cpu: 150m
       memory: 512Mi
-  envFrom:
-  - configMapRef:
-      name: storageboss-env
-  - secretMapRef:    
-      name: storageboss-env  
+  # envFrom:
+  # - configMapRef:
+  #     name: storageboss-env
+  # - secretMapRef:    
+  #     name: storageboss-env  
   # initContainers:
   #   migrate-symlinks: 
   #     image: *tooling_image
