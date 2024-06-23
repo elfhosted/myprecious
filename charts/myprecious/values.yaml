@@ -5179,7 +5179,8 @@ plex: &app_plex
               values:
               - plex
           topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}           
+          namespaceSelector: {}   
+    podAffinity:        
       requiredDuringSchedulingIgnoredDuringExecution: 
         - labelSelector:
             matchExpressions:
@@ -5458,20 +5459,7 @@ jellyfin: &app_jellyfin
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyfin" # Reload the deployment every time the rclones change
-  affinity:
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - streaming
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}              
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyfin" # Reload the deployment every time the rclones change          
   persistence:
     <<: *appmounts
     config:
@@ -5682,19 +5670,6 @@ emby: &app_emby
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-emby" # Reload the deployment every time the rclones change
-  # affinity:
-  #   podAntiAffinity:
-  #     preferredDuringSchedulingIgnoredDuringExecution: 
-  #     - weight: 100  
-  #       podAffinityTerm:    
-  #         labelSelector:
-  #           matchExpressions:
-  #           - key: app.elfhosted.com/class
-  #             operator: In
-  #             values:
-  #             - streaming
-  #         topologyKey: "kubernetes.io/hostname"
-  #         namespaceSelector: {}
   persistence:
     <<: *appmounts
     config:
