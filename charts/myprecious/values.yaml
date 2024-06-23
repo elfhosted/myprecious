@@ -2771,6 +2771,7 @@ filebrowser:
               operator: In
               values:
               - debrid
+              - dedicated
           topologyKey: "kubernetes.io/hostname"    
   tolerations:
   - key: node-role.elfhosted.com/dedicated
