@@ -8037,8 +8037,8 @@ storageboss:
     app.elfhosted.com/name: storageboss
   priorityClassName: tenant-critical
   image:
-    repository: ghcr.io/servercontainers/samba
-    tag: smbd-only-a3.20.1-s4.19.6-r0sha256:d6dabcb034aec67ef81ca9b38ee7d2bd942bf031cedec53b766aa20e91ab9ab4
+    repository: quay.io/samba.org/samba-server
+    # tag: smbd-only-a3.20.1-s4.19.6-r0sha256:d6dabcb034aec67ef81ca9b38ee7d2bd942bf031cedec53b766aa20e91ab9ab4
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8051,7 +8051,7 @@ storageboss:
     shares:
       enabled: true
       type: custom
-      mountPath: /shares
+      mountPath: /share
       volumeSpec: *volumespec_ephemeral_volume_10g  
   service:
     main:
@@ -11104,7 +11104,7 @@ zurg: &app_zurg
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
-    strategy: Recreate      
+    strategy: RollingUpdate      
   affinity:
     podAffinity: 
       requiredDuringSchedulingIgnoredDuringExecution: 
@@ -11209,6 +11209,10 @@ zurg: &app_zurg
         then
           cp /bootstrap/plex_update.sh /config/
         fi
+
+        # Copy across latency files to avoid false crashloops on start
+        cp /bootstrap/latency* /config/data/
+        
       volumeMounts:
       - mountPath: /config
         name: config
@@ -11225,8 +11229,11 @@ zurg: &app_zurg
       - -c
       - |
         set -x
-        set -e
+        # set -
 
+
+        # Force a re-test of network connectivity
+        rm -rf /config/zurg/
         # Disable native auth (we do it with traefik instead when necessary)
         sed -i  "s/^username:/#username/" /config/config.yml
         sed -i  "s/^password:/#password/" /config/config.yml
@@ -11258,14 +11265,14 @@ zurg: &app_zurg
         # Enable rar extraction if it's not already there
         grep rar_action /config/config.yml || echo 'rar_action: extract' >> /config/config.yml
 
-        # Disable repairs until these can be throttled
-        sed -i  "s/enable_repair: true/enable_repair: false/" /config/config.yml
+        # Allow users to opt into/out of repairs
+        # sed -i  "s/enable_repair: true/enable_repair: false/" /config/config.yml
 
         # Set to 32 workers
         sed -i  "s/concurrent_workers:.*/concurrent_workers: 32/" /config/config.yml
 
-        # Use IPv6 
-        sed -i  "s/force_ipv6:.*/force_ipv6: true/" /config/config.yml
+        # No need to force IPv6 anymore
+        sed -i  "s/force_ipv6:.*/force_ipv6: false/" /config/config.yml
 
         # Check for changes every 10 sec
         sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
