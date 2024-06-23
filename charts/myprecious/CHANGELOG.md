@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.34.0](https://github.com/elfhosted/myprecious/compare/v1.33.0...v1.34.0) (2024-06-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.19.0.4568 ([cdf5d90](https://github.com/elfhosted/myprecious/commit/cdf5d9028edd760cd47fc975cb0e80fd29d77d83))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 110a5be ([773c054](https://github.com/elfhosted/myprecious/commit/773c0548a69ea41d286f2bb52edc9fa51bb6c928))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 2bbeda3 ([0cabb43](https://github.com/elfhosted/myprecious/commit/0cabb435946fe598cf8e7ce17c853852b45e4915))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 46d8f30 ([f98e93c](https://github.com/elfhosted/myprecious/commit/f98e93cee38cb7e12e995ffc90a7e8ce6968389d))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 56edbfe ([6b19273](https://github.com/elfhosted/myprecious/commit/6b19273229c5e4a5cbbf4af7a9bd8183f4340b40))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 582d4af ([cefcafe](https://github.com/elfhosted/myprecious/commit/cefcafeb9955c394708e80343a07b85271e33065))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 6275795 ([47dbfe0](https://github.com/elfhosted/myprecious/commit/47dbfe0b55706f1d796f507c16bedc8846056e05))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 6a10460 ([4303aef](https://github.com/elfhosted/myprecious/commit/4303aefd9165ef66c1b9eb429eaad3b6bc3c8aa3))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 882be35 ([5dd8245](https://github.com/elfhosted/myprecious/commit/5dd8245773230a6ce3fb707c9511c87ab75d8d91))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 8acdf60 ([5dccaaa](https://github.com/elfhosted/myprecious/commit/5dccaaa8949a0fc03d2c0fa54fe17a2b782fcede))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 8d70611 ([d357b71](https://github.com/elfhosted/myprecious/commit/d357b712a7a0e28d17b4aa7fa2d8baf93a4970fb))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 8e0df5c ([8cb02bc](https://github.com/elfhosted/myprecious/commit/8cb02bc8fef10be39bde36a49fc3ab9c14089077))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 8fce635 ([733c5a5](https://github.com/elfhosted/myprecious/commit/733c5a55ebc7658fd370f4a88b171fd966021c33))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to 992c93a ([d32f2b2](https://github.com/elfhosted/myprecious/commit/d32f2b2715f6a2720bba1b58f7b1afc112ccb0ba))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to ab43510 ([1dc4657](https://github.com/elfhosted/myprecious/commit/1dc465764a4f68f173b6b27cd55f6feffb9ec6b4))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to ba62a05 ([cf942a0](https://github.com/elfhosted/myprecious/commit/cf942a0851f1fb3609a75dac1752efbadfbf3097))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to cd024ff ([7519d22](https://github.com/elfhosted/myprecious/commit/7519d22c85725e124265e1e405bfcb71957bedbf))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to d56f244 ([d989770](https://github.com/elfhosted/myprecious/commit/d98977096bbcd8c4b8fc75cee398d55350dd178b))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to e190ea1 ([260d525](https://github.com/elfhosted/myprecious/commit/260d5251ed8868795b9a290b8a418c525843f58b))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to ee99458 ([be34097](https://github.com/elfhosted/myprecious/commit/be34097ff4a6d341d6e8a08551d7b40f6a632307))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.22-nightly docker digest to fe9dfa3 ([6177c8a](https://github.com/elfhosted/myprecious/commit/6177c8a5c8ec2c3501a65bc9d7765eb6e67b0d53))
+* disable VPN for flaresolverr again (still not working) ([810deb6](https://github.com/elfhosted/myprecious/commit/810deb65374a0d6b4f5165eb8214cfbcb1df3ba0))
+
 ## [1.33.0](https://github.com/elfhosted/myprecious/compare/v1.32.0...v1.33.0) (2024-06-22)
 
 
