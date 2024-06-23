@@ -4646,7 +4646,7 @@ prowlarr: &app_prowlarr
   image:
     registry: ghcr.io
     repository: elfhosted/prowlarr-develop
-    tag: 1.18.0.4543@sha256:fd1d85794369ab2095c52fe6b00b7f263562236a7181c2a161b5378d54547082
+    tag: 1.19.0.4568@sha256:2766a33f3602431010a16f50bff39839ca999baa9dd7eb080f1c240cfa03b85d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
