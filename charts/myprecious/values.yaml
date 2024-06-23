@@ -8053,52 +8053,16 @@ webdav: &webdav
       cpu: 150m
       memory: 512Mi
 
-storageboss:
+samba:
   enabled: false
   podLabels:
-    app.elfhosted.com/name: storageboss
+    app.elfhosted.com/name: samba
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
   priorityClassName: tenant-critical
   image:
-    repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:5c885d8805b78dfff146390e2cbdabc1c0bf7cd7b793a9d974ee5761d4d02b68
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "storageboss-config,elfbot-storageboss"
-  tolerations:
-  - key: node-role.elfhosted.com/download-only    
-    operator: Exists     
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists        
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  command:
-  - /usr/bin/dumb-init
-  - /bin/bash
-  - -c
-  - |    
-    /usr/bin/rclone serve webdav \
-    --config /config/rclone.conf \
-    --addr :5574 \
-    --max-header-bytes=8192 \
-    --no-modtime \
-    --vfs-read-chunk-size=10M \
-    --vfs-read-chunk-size-limit=10M \
-    --vfs-cache-mode=minimal \
-    --stats 60s \
-    --cache-dir /tmp \
-    --vfs-cache-max-size 10G \
-    --links \
-    -v \
-    /storage    
+    repository: ghcr.io/servercontainers/samba
+    tag: smbd-only-a3.20.1-s4.19.6-r0sha256:d6dabcb034aec67ef81ca9b38ee7d2bd942bf031cedec53b766aa20e91ab9ab4
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8107,33 +8071,13 @@ storageboss:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  # persistence:
-    # only keep this around until symlinks are migrated
-    # symlinks-cephfs:
-    #   enabled: true
-    #   type: custom
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: symlinks
-    #   mountPath: /migrate/symlinks
-    #   readOnly: true
-    # end only keep section
-
-    # uncomment this when we're ready to migrate again
-    # symlinks-block:
-    #   enabled: true
-    #   type: custom
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: symlinks-block
-    #   mountPath: /storage/symlinks
-    # elfstorage:
-    #   enabled: true # always enabled
-    #   type: custom
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: elfstorage
-    #   mountPath: /storage/elfstorage      
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      volumeSpec: *volumespec_ephemeral_volume_10g  
+   
   service:
     main:
       enabled: false # necessary for probes
@@ -11180,7 +11124,7 @@ zurg: &app_zurg
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
-    strategy: RollingUpdate      
+    strategy: Recreate      
   affinity:
     podAffinity: 
       requiredDuringSchedulingIgnoredDuringExecution: 
