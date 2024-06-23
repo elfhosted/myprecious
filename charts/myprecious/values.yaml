@@ -11334,7 +11334,7 @@ zurg: &app_zurg
         grep rar_action /config/config.yml || echo 'rar_action: extract' >> /config/config.yml
 
         # Disable repairs until these can be throttled
-        sed -i  "s/enable_repair: false/enable_repair: true/" /config/config.yml
+        sed -i  "s/enable_repair: true/enable_repair: false/" /config/config.yml
 
         # Set to 32 workers
         sed -i  "s/concurrent_workers:.*/concurrent_workers: 32/" /config/config.yml
