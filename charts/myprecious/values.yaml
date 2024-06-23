@@ -2772,6 +2772,9 @@ filebrowser:
               values:
               - debrid
           topologyKey: "kubernetes.io/hostname"    
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
