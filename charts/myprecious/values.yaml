@@ -2828,6 +2828,16 @@ filebrowser:
     allowPrivilegeEscalation: false
     runAsUser: 568
     runAsGroup: 568
+  affinity:
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"    
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
