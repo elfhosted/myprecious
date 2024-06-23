@@ -2764,15 +2764,18 @@ filebrowser:
     runAsGroup: 568
   affinity:
     podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
+      # prefer to be located with jackett
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
             matchExpressions:
-            - key: app.elfhosted.com/class
+            - key: app.kubernetes.io/name
               operator: In
               values:
               - debrid
               - dedicated
-          topologyKey: "kubernetes.io/hostname"    
+          topologyKey: "kubernetes.io/hostname"  
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists          
