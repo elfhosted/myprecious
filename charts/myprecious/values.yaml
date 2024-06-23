@@ -310,13 +310,6 @@ b2: &b2
     persistentVolumeClaim:
       claimName: b2
   mountPath: /storage/b2
-storageboss: &storageboss
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storageboss
-  mountPath: /storage/storageboss
 smbmounta: &smbmounta
   enabled: false
   type: custom
@@ -418,7 +411,6 @@ appmounts: &appmounts
   rcloneb2encrypteda: *rcloneb2encrypteda   
   rclonemountpremiumize: *rclonemountpremiumize
   b2: *b2
-  storageboss: *storageboss
   smbmounta: *smbmounta
   smbmountb: *smbmountb
   smbmountc: *smbmountc
@@ -2803,6 +2795,13 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *appmounts
+    storageboss:
+      enabled: false
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storageboss
+      mountPath: /storage/storageboss
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir

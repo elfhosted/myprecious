@@ -1,4 +1,4 @@
-{{ if or .Values.storageboss.enabled }}
+{{ if .Values.storageboss.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
