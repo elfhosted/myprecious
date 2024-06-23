@@ -8053,12 +8053,10 @@ webdav: &webdav
       cpu: 150m
       memory: 512Mi
 
-samba:
+storageboss:
   enabled: false
   podLabels:
-    app.elfhosted.com/name: samba
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M"
+    app.elfhosted.com/name: storageboss
   priorityClassName: tenant-critical
   image:
     repository: ghcr.io/servercontainers/samba
@@ -8072,18 +8070,17 @@ samba:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    config:
+    shares:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /shares
       volumeSpec: *volumespec_ephemeral_volume_10g  
-   
   service:
     main:
       enabled: false # necessary for probes
       ports:
         http:
-          port: 5574
+          port: 445
   ingress:
     main:
       enabled: false
@@ -8094,6 +8091,11 @@ samba:
     limits:
       cpu: 150m
       memory: 512Mi
+  envFrom:
+  - configMapRef:
+      name: storageboss-env
+  - secretMapRef:    
+      name: storageboss-env  
   # initContainers:
   #   migrate-symlinks: 
   #     image: *tooling_image
