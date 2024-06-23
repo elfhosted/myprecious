@@ -11409,15 +11409,18 @@ zurg: &app_zurg
         sed -i  "s/use_download_cache: true/use_download_cache: false/" /config/config.yml
 
         # Socks via WARP
-        # Enable proxy only if gluetun vars are not present
-        if [[ ! -z "$ZURG_WARP_ENABLED" ]]; then
-          echo "not enabling warp, we may no longer need it"
-          # grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
-          # sed -i  "s/^#proxy:/proxy/" /config/config.yml
-        else
-          # remove proxy if found
-          sed -i  "s/^proxy:/#proxy/" /config/config.yml
-        fi
+        # # Enable proxy only if gluetun vars are not present
+        # if [[ ! -z "$ZURG_WARP_ENABLED" ]]; then
+        #   echo "not enabling warp, we may no longer need it"
+        #   # grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
+        #   # sed -i  "s/^#proxy:/proxy/" /config/config.yml
+        # else
+        #   # remove proxy if found
+        #   sed -i  "s/^proxy:/#proxy/" /config/config.yml
+        # fi
+
+        # no more warp
+        sed -i  "s/^proxy:/#proxy/" /config/config.yml
 
         # Try direct streaming
         sed -i  "s/serve_from_rclone: false/serve_from_rclone: true/" /config/config.yml
@@ -11446,30 +11449,30 @@ zurg: &app_zurg
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
-    warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:9b7e2e5da5b1caab6bb1a4e450fc1a2cc7c99f162325901656d5bc9104439eb6
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        privileged: false
-        capabilities:
-          add:
-          - NET_ADMIN    
-        sysctls:
-        - name: net.ipv6.conf.all.disable_ipv6
-          value: "0"
-        - name: net.ipv4.conf.all.src_valid_mark
-          value: "1"
-      volumeMounts:
-      - mountPath: /data
-        subPath: warp
-        name: config      
-      envFrom:
-      - configMapRef:
-          name: zurg-env # this is here so we can use env vars to detect whether to enable warp
+    # warp:
+    #   image: ghcr.io/elfhosted/warp:rolling@sha256:9b7e2e5da5b1caab6bb1a4e450fc1a2cc7c99f162325901656d5bc9104439eb6
+    #   securityContext:
+    #     runAsUser: 1000
+    #     runAsGroup: 1000
+    #     privileged: false
+    #     capabilities:
+    #       add:
+    #       - NET_ADMIN    
+    #     sysctls:
+    #     - name: net.ipv6.conf.all.disable_ipv6
+    #       value: "0"
+    #     - name: net.ipv4.conf.all.src_valid_mark
+    #       value: "1"
+    #   volumeMounts:
+    #   - mountPath: /data
+    #     subPath: warp
+    #     name: config      
+    #   envFrom:
+    #   - configMapRef:
+    #       name: zurg-env # this is here so we can use env vars to detect whether to enable warp
   addons:
     vpn: &zurg_addons_vpn
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
