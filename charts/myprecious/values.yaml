@@ -2796,7 +2796,7 @@ filebrowser:
   persistence:
     <<: *appmounts
     storageboss:
-      enabled: false
+      enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
