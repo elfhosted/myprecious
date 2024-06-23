@@ -8038,6 +8038,7 @@ storageboss:
   priorityClassName: tenant-critical
   image:
     repository: quay.io/samba.org/samba-server
+    tag: latest
     # tag: smbd-only-a3.20.1-s4.19.6-r0sha256:d6dabcb034aec67ef81ca9b38ee7d2bd942bf031cedec53b766aa20e91ab9ab4
   podSecurityContext:
     seccompProfile:
