@@ -1,0 +1,16 @@
+{{ if .Values.storageboss.enabled }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: storageboss
+  labels:
+    velero.io/exclude-from-backup: "true"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: storageboss-{{ .Release.Name }}
+  storageClassName: smb
+{{ end }}

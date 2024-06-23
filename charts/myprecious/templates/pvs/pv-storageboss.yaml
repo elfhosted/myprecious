@@ -1,0 +1,33 @@
+{{ if .Values.storageboss.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: storageboss-{{ .Release.Name }}
+  labels:
+    name: storageboss-{{ .Release.Name }}
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi # doesn't matter, is used to match with the PVC
+  storageClassName: smb
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=0
+    - gid=0
+    - noperm
+    - mfsymlinks
+    - cache=strict
+    - noserverino  # required to prevent data corruption  
+  persistentVolumeReclaimPolicy: Delete
+  csi:
+    driver: smb.csi.k8s.io
+    readOnly: false
+    volumeHandle: storageboss.{{ .Release.Namespace }}.svc.cluster.local/share##
+    volumeAttributes:
+      source: "//storageboss.{{ .Release.Namespace }}.svc.cluster.local/share"
+    nodeStageSecretRef:
+      name: smbcreds-storageboss
+      namespace: {{ .Release.Namespace }}
+{{ end }}

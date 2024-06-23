@@ -310,6 +310,13 @@ b2: &b2
     persistentVolumeClaim:
       claimName: b2
   mountPath: /storage/b2
+storageboss: &storageboss
+  enabled: false
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: storageboss
+  mountPath: /storage/storageboss
 smbmounta: &smbmounta
   enabled: false
   type: custom
@@ -411,6 +418,7 @@ appmounts: &appmounts
   rcloneb2encrypteda: *rcloneb2encrypteda   
   rclonemountpremiumize: *rclonemountpremiumize
   b2: *b2
+  storageboss: *storageboss
   smbmounta: *smbmounta
   smbmountb: *smbmountb
   smbmountc: *smbmountc
@@ -5219,7 +5227,7 @@ plex: &app_plex
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-block                    
+          claimName: config-plex-block                             
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
