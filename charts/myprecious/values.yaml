@@ -857,29 +857,7 @@ rutorrentgluetun: &rutorrent
   envFrom:
   - configMapRef:
       name: elfbot-rutorrent
-      optional: true 
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - nzb
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}            
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists  
+      optional: true         
   # we need the injected initcontainer to run as root, so we can't change the pod-level uid/gid
   podSecurityContext:
     seccompProfile:
@@ -1148,28 +1126,6 @@ delugegluetun: &deluge
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - torrent
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}            
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists  
   # we need the injected initcontainer to run as root, so we can't change the pod-level uid/gid
   podSecurityContext:
     seccompProfile:
@@ -1469,28 +1425,6 @@ qbittorrentgluetun: &qbittorrent
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: false # doesn't seem to work well with entrypoint
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - torrent
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}            
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8259,16 +8193,6 @@ alldebridwebdavpia:
     app.elfhosted.com/name: alldebrid-webdav
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
-  tolerations:
-  - key: node-role.elfhosted.com/download-only    
-    operator: Exists     
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists  
   command:
   - /usr/bin/dumb-init
   - /bin/bash
@@ -8962,26 +8886,6 @@ rdtclientvpnpia:
   <<: *app_rdtclient
   podLabels:
     app.elfhosted.com/name: rdtclient-alldebrid  
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - rdtclient-alldebrid
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}
-    podAffinity: {} # we don't care about affinity for IP sharing sake, since we're on a VPN anyway  
   persistence:
     <<: *appmounts
     config:
@@ -11282,10 +11186,7 @@ zurg: &app_zurg
               operator: In
               values:
               - debrid
-          topologyKey: "kubernetes.io/hostname"            
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists            
+          topologyKey: "kubernetes.io/hostname"                     
   securityContext:
     seccompProfile:
       type: RuntimeDefault
