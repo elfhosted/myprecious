@@ -11126,7 +11126,7 @@ zurg: &app_zurg
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
-    strategy: Recreate      
+    strategy: RollingUpdate      
   affinity:
     podAffinity: 
       requiredDuringSchedulingIgnoredDuringExecution: 
