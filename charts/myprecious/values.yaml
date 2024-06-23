@@ -4656,7 +4656,7 @@ prowlarr: &app_prowlarr
   image:
     registry: ghcr.io
     repository: elfhosted/prowlarr-develop
-    tag: 1.18.0.4543@sha256:fd1d85794369ab2095c52fe6b00b7f263562236a7181c2a161b5378d54547082
+    tag: 1.19.0.4568@sha256:2766a33f3602431010a16f50bff39839ca999baa9dd7eb080f1c240cfa03b85d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11267,7 +11267,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.22-nightly@sha256:8e0df5c2490f1116d94d3c0a607a8f80bb8624e5e43e614ed24f97f0c17ee47b
+    tag: 2024.06.22-nightly@sha256:fe9dfa3b88610608fbb77c20ff728c34ea2c1051283dd6f4127953450946658b
   priorityClassName: tenant-normal
   controller:
     annotations:
