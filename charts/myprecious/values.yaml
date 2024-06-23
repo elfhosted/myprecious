@@ -8069,11 +8069,11 @@ storageboss:
     limits:
       cpu: 150m
       memory: 512Mi
-  envFrom:
-  - configMapRef:
-      name: storageboss-env
-  - secretMapRef:    
-      name: storageboss-env  
+  # envFrom:
+  # - configMapRef:
+  #     name: storageboss-env
+  # - secretMapRef:    
+  #     name: storageboss-env  
   # initContainers:
   #   migrate-symlinks: 
   #     image: *tooling_image
