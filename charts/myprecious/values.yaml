@@ -375,7 +375,6 @@ tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we hav
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
   tmp: *tmp
-  elfstorage: *elfstorage
   rclonecustoma: *rclonecustoma
   rclonea: *rclonea
   rcloneb: *rcloneb
@@ -7255,7 +7254,6 @@ nextpvr:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    elfstorage: *elfstorage
     config:
       enabled: true
       type: custom
@@ -8066,7 +8064,6 @@ jfa:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    elfstorage: *elfstorage
     config:
       enabled: true
       type: custom
@@ -9737,7 +9734,6 @@ jackett:
         http:
           port: 9117 
   persistence:
-    elfstorage: *elfstorage
     tmp: *tmp
     config:
       enabled: true
@@ -10073,7 +10069,6 @@ pgadmin:
         http:
           port: 80 
   persistence:
-    elfstorage: *elfstorage
     config:
       enabled: true
       type: custom
@@ -10129,7 +10124,6 @@ redisinsight:
         http:
           port: 5540
   persistence:
-    elfstorage: *elfstorage
     config:
       enabled: true
       type: custom
@@ -10953,7 +10947,6 @@ zurg: &app_zurg
           port: 9999 
   persistence:
     symlinks: *symlinks
-    elfstorage: *elfstorage
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     config:
       enabled: true
@@ -11269,7 +11262,6 @@ plexdebrid:
         http:
           port: 3000 
   persistence:
-    elfstorage: *elfstorage   
     config:
       enabled: true
       type: custom
@@ -11358,7 +11350,6 @@ codeserver:
           port: 8080 
   persistence:
     symlinks: *symlinks
-    elfstorage: *elfstorage
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg  
     config:
       enabled: true
