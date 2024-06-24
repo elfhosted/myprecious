@@ -23,6 +23,7 @@ data:
         echo "elfbot symlink <storage-mount>                : import remotely-mounted, read-only media as symlinks, or generate a report"
         echo "elfbot symlink report-broken                  : generate a report on all broken symlinks found under /storage/symlinks"
         echo "elfbot symlink delete-broken                  : delete (without confirmation!) all broken symlinks found under /storage/symlinks"
+        echo "elfbot elfstorage report                      : generate a report on elfstorage usage"
         echo "elfbot recyclarr <command>                    : run recyclarr (using config files in /storage/elfstorage/recyclarr)" 
 
         echo
@@ -164,7 +165,7 @@ data:
 
             echo "This may take a while..."
             HOME=/storage/elfstorage/recyclarr/ $@ --config /storage/config/recyclarr/recyclarr.yaml --app-data /storage/config/recyclarr/
-            ;;                  
+            ;;                          
 
         "blackhole")
 
@@ -205,6 +206,20 @@ data:
             echo "Done! 🎉"
 
             ;;
+
+        "elfstorage")
+
+            if [[ "$2" == "report" ]]; then
+                TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
+                echo "Generating elfstorage report, this may take ~5 min..."
+
+                tree --du -hF -s  /storage/elfstorage/ -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/elfstorage -T "🧝 ElfHosted [/storage/elfstorage] usage for {{ .Release.Name }}"> /storage/elfstorage/disk-usage-report-$TIMESTAMP.html
+                echo "Done! 🎉"
+                echo "Report generated at /elfstorage/disk-usage-report-$TIMESTAMP.html"
+                exit 0
+            fi
+
+            ;;            
 
         "symlink")
 
