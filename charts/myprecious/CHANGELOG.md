@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.35.1](https://github.com/elfhosted/myprecious/compare/v1.35.0...v1.35.1) (2024-06-24)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.24-nightly docker digest to 633d416 ([b251b92](https://github.com/elfhosted/myprecious/commit/b251b92e0936039925311217f8bcdaebdb59ae08))
+
 ## [1.35.0](https://github.com/elfhosted/myprecious/compare/v1.34.1...v1.35.0) (2024-06-24)
 
 
