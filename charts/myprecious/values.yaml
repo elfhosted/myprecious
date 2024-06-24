@@ -8057,6 +8057,14 @@ storageboss:
       type: custom
       mountPath: /share
       volumeSpec: *volumespec_ephemeral_volume_10g  
+    config:
+      enabled: "true"
+      subPath: "container.json"
+      mountPath: /etc/samba/container.json
+      type: "custom"
+      volumeSpec:
+        secret:
+          secretName: storageboss-config  
   service:
     main:
       enabled: false # necessary for probes
