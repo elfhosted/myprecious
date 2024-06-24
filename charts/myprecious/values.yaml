@@ -366,13 +366,6 @@ symlinks: &symlinks
 #     persistentVolumeClaim:
 #       claimName: storageboss-elfstorage
 #   mountPath: /storage/elfstorage    
-elfstorage: &elfstorage
-  enabled: true # always enabled
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: elfstorage
-  mountPath: /storage/elfstorage   
 tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
   enabled: true
   type: custom
@@ -644,8 +637,6 @@ bootstrap: &bootstrap
     name: elfbot
   - mountPath: /config
     name: config
-  - mountPath: /storage/elfstorage
-    name: elfstorage
   env: *bootstrap_env
   resources: *default_resources
   securityContext: *default_securitycontext
@@ -738,8 +729,6 @@ bootstrap_ssd: &bootstrap_ssd
     name: config
   - mountPath: /config-hdd
     name: confighdd
-  - mountPath: /storage/elfstorage
-    name: elfstorage
   env: *bootstrap_env
   resources: *default_resources
   securityContext: *default_securitycontext
@@ -1020,8 +1009,6 @@ rutorrentgluetun: &rutorrent
       additionalVolumeMounts:
       - mountPath: /config
         name: config
-      - mountPath: /storage/elfstorage
-        name: elfstorage  
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -1282,8 +1269,6 @@ delugegluetun: &deluge
       additionalVolumeMounts:
       - mountPath: /config
         name: config
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -1642,8 +1627,6 @@ qbittorrentgluetun: &qbittorrent
       additionalVolumeMounts:
       - mountPath: /config
         name: config
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -2143,8 +2126,6 @@ radarr: &app_radarr
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /storage/symlinks
         name: symlinks        
       - mountPath: /config
@@ -2296,8 +2277,6 @@ radarr4k: &app_radarr4k
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /storage/symlinks
         name: symlinks             
       - mountPath: /config
@@ -2559,9 +2538,6 @@ bazarr:
         set -e
 
         mkdir -p /storage/elfstorage/backup/auto/bazarr
-      volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -2627,22 +2603,6 @@ bazarr4k:
           port: 6767
   initContainers:
     bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /storage/elfstorage/backup/auto/bazarr4k
-      volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
-      resources: *default_resources
-      securityContext: *default_securitycontext
   resources:
     requests:
       cpu: 10m
@@ -3509,8 +3469,6 @@ filebrowser:
       volumeMounts:
       - mountPath: /elfbot
         name: elfbot
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /storage/symlinks
         name: symlinks        
       resources: *default_resources
@@ -3999,23 +3957,6 @@ mylar:
           port: 8090
   initContainers:
     bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /storage/elfstorage/comics
-        mkdir -p /storage/elfstorage/backup/auto/mylar
-      volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
-      resources: *default_resources
-      securityContext: *default_securitycontext
   resources:
     requests:
       cpu: 10m
@@ -4224,8 +4165,6 @@ calibre:
       volumeMounts:
       - mountPath: /config
         name: config
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -4321,8 +4260,6 @@ sonarr: &app_sonarr
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /storage/symlinks
         name: symlinks  
       - mountPath: /mediacover
@@ -4466,8 +4403,6 @@ sonarr4k: &app_sonarr4k
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /mediacover
@@ -4673,8 +4608,6 @@ prowlarr: &app_prowlarr
       volumeMounts:
       - mountPath: /config
         name: config
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -4799,8 +4732,6 @@ lidarr:
         mkdir -p /storage/elfstorage/music
         mkdir -p /storage/elfstorage/backup/auto/lidarr
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /config
         name: config        
       resources: *default_resources
@@ -4857,22 +4788,6 @@ navidrome:
           optional: true
   initContainers:
     bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /storage/elfstorage/music
-      volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
-      resources: *default_resources
-      securityContext: *default_securitycontext
   ingress:
     main:
       enabled: false
@@ -4958,15 +4873,9 @@ readarr:
         set -x
         set -e
 
-        mkdir -p /storage/elfstorage/books
-        mkdir -p /storage/elfstorage/backup/auto/readarr
-
         # Set auth to external
-        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
-        
+        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml        
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /config
         name: config        
       resources: *default_resources
@@ -5048,14 +4957,9 @@ readarraudio:
         set -x
         set -e
 
-        mkdir -p /storage/elfstorage/audiobooks
-        mkdir -p /storage/elfstorage/backup/auto/readarraudio
-
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       - mountPath: /config
         name: config        
       resources: *default_resources
@@ -5335,8 +5239,6 @@ plex: &app_plex
       additionalVolumeMounts:
       - mountPath: /config
         name: config
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       config: # We have to set this to null so that we can override with our own config
       scripts:
         up: |-
@@ -5924,50 +5826,6 @@ homer:
         readOnly: true        
       resources: *default_resources
       securityContext: *default_securitycontext
-
-  initContainers:
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # This needs to be refactored into each app
-        mkdir -p /storage/elfstorage/podcasts
-        mkdir -p /storage/elfstorage/video
-        mkdir -p /storage/elfstorage/audio
-        mkdir -p /storage/elfstorage/downloads/completed/Movies
-        mkdir -p /storage/elfstorage/downloads/completed/Series
-        mkdir -p /storage/elfstorage/downloads/completed/Music
-        mkdir -p /storage/elfstorage/downloads/completed/Books
-        mkdir -p /storage/elfstorage/downloads/completed/Comics
-        mkdir -p /storage/elfstorage/downloads/qbittorrent
-        mkdir -p /storage/elfstorage/downloads/completed/Comics
-        mkdir -p /config/filebrowser # we need this to avoid double-mounting a config file in filebrowser
-
-        # Download a public domain sample movie for users to test / get Plex tokens with
-        if [ ! -f /storage/elfstorage/video/bbb_sunflower_1080p_30fps_normal.mp4 ]
-        then
-          wget https://download.blender.org/demo/movies/BBB/bbb_sunflower_1080p_30fps_normal.mp4.zip -P /tmp
-          unzip /tmp/bbb_sunflower_1080p_30fps_normal.mp4.zip -d /storage/elfstorage/video
-        fi
-        
-        # And for any mess left lying around from the previous implementation:
-        rm -rf /storage/elfstorage/video/bbb_sunflower_1080p_30fps_normal.mp4.zip*
-
-      volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
-      - mountPath: /tmp
-        name: tmp
-      resources: *default_resources
-      securityContext: *default_securitycontext
-
-
   configmap:
     config:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
@@ -6387,9 +6245,6 @@ seafile:
       - name: backup-database-script
         configMap:
           name: seafile-backup
-      - name: elfstorage
-        persistentVolumeClaim:
-          claimName: elfstorage
       sidecars:
         - name: backup-database
           image: *tooling_image
@@ -6398,10 +6253,6 @@ seafile:
               value: wLu5UUuT@3Zu33eT
             - name: MYSQL_DATABASE
               value: seafile
-          volumeMounts:
-          - mountPath: /backup
-            name: elfstorage
-            subPath: backup/seafile
           command:
           - /usr/bin/dumb-init
           - /bin/bash
@@ -8405,9 +8256,6 @@ mattermost:
       - name: backup-database-script
         configMap:
           name: mattermost-backup
-      - name: elfstorage
-        persistentVolumeClaim:
-          claimName: elfstorage
       - name: confighdd
         persistentVolumeClaim:
           claimName: config-mattermost
@@ -8420,10 +8268,6 @@ mattermost:
               value: 3uAaJYGJLR3d2qbBM2FsSThJ
             - name: MYSQL_DATABASE
               value: mattermost
-          volumeMounts:
-          - mountPath: /backup
-            name: elfstorage
-            subPath: backup/mattermost
           command:
           - /usr/bin/dumb-init
           - /bin/bash
@@ -8579,14 +8423,6 @@ rapidleech:
           claimName: config-rapidleech-ssd
     data:
       enabled: false
-    elfstorage:
-      enabled: true
-      type: custom
-      mountPath: /var/www/html/files
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: elfstorage
-          subPath: downloads/completed
     var-run:
       enabled: true
       mountPath: /var/run/
@@ -8633,8 +8469,6 @@ rapidleech:
       volumeMounts:
       - mountPath: /config
         name: config
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -8815,8 +8649,6 @@ rdtclient: &app_rdtclient
         # permissions fix
         chown elfie:elfie /storage/elfstorage/downloads/completed -R
       volumeMounts:
-      - mountPath: /storage/elfstorage
-        name: elfstorage
       securityContext:
         runAsUser: 0        
 
@@ -8981,12 +8813,6 @@ jdownloader:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-jdownloader-ssd
-    elfstorage:
-      enabled: true # always enabled
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: elfstorage
       mountPath: /output
       subPath: downloads/completed/jdownloader
     elfbot:
@@ -9097,9 +8923,6 @@ miniflux:
       - name: tmp
         emptyDir:
           sizeLimit: 1Gi
-      - name: elfstorage
-        persistentVolumeClaim:
-          claimName: elfstorage
       - name: confighdd
         persistentVolumeClaim:
           claimName: config-miniflux
@@ -9113,10 +8936,6 @@ miniflux:
               value: miniflux
             - name: POSTGRES_USER
               value: miniflux
-          volumeMounts:
-          - mountPath: /backup
-            name: elfstorage
-            subPath: backup/miniflux
           command:
           - /usr/bin/dumb-init
           - /bin/bash
@@ -9217,9 +9036,6 @@ joplinserver:
       - name: tmp
         emptyDir:
           sizeLimit: 1Gi
-      - name: elfstorage
-        persistentVolumeClaim:
-          claimName: elfstorage
       sidecars:
         - name: backup-database
           image: *tooling_image
@@ -9230,10 +9046,6 @@ joplinserver:
               value: joplinserver
             - name: POSTGRES_USER
               value: joplin
-          volumeMounts:
-          - mountPath: /backup
-            name: elfstorage
-            subPath: backup/miniflux
           command:
           - /usr/bin/dumb-init
           - /bin/bash
@@ -9822,22 +9634,6 @@ airdcpp: &app_airdcpp
           optional: true
   initContainers:
     bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /storage/elfstorage/downloads/airdcpp
-        
-      volumeMounts:
-      - mountPath: /config
-        name: config    
-      - mountPath: /storage/elfstorage
-        name: elfstorage
   addons:
     vpn:
       enabled: true # in case we ever need it

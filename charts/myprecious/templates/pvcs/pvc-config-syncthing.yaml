@@ -11,5 +11,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: ceph-filesystem
+  storageClassName: ceph-filesystem-ssd
 {{ end }}
