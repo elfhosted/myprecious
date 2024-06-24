@@ -11223,6 +11223,7 @@ zurg: &app_zurg
         fi
 
         # Copy across latency files to avoid false crashloops on start
+        mkdir -p /config/data
         cp /bootstrap/ipv4-hosts.json /config/data/
         cp /bootstrap/ipv6-hosts.json /config/data/
 
