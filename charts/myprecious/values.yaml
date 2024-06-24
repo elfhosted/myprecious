@@ -3384,10 +3384,10 @@ filebrowser:
         set -x
         set -e
         # If we don't already have an example config, create one
-        if [ ! -f /storage/elfstorage/recyclarr/recyclarr.yaml ];
-        then
-          cp /bootstrap/recyclarr.yaml /storage/config/recyclarr/
-        fi
+        # if [ ! -f /storage/elfstorage/recyclarr/recyclarr.yaml ];
+        # then
+        #   cp /bootstrap/recyclarr.yaml /storage/config/recyclarr/
+        # fi
       volumeMounts:
       - mountPath: /storage/config/recyclarr/
         name: recyclarr
@@ -8602,20 +8602,6 @@ rdtclient: &app_rdtclient
       ephemeral-storage: 100Mi # a safety net against node ephemeral space exhaustion
   initContainers:
     bootstrap: *bootstrap
-    fixperms:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # permissions fix
-        chown elfie:elfie /storage/elfstorage/downloads/completed -R
-      volumeMounts:
-      securityContext:
-        runAsUser: 0        
 
 # Add a VPN option for rdtclient
 rdtclientvpnpia:
