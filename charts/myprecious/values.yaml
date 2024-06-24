@@ -8069,7 +8069,7 @@ storageboss:
   resources:
     requests:
       cpu: 1m
-      memory: 60Mi
+      memory: 10Mi
     limits:
       cpu: 150m
       memory: 512Mi
@@ -11215,7 +11215,11 @@ zurg: &app_zurg
         fi
 
         # Copy across latency files to avoid false crashloops on start
-        cp /bootstrap/latency* /config/data/
+        cp /bootstrap/ipv4-hosts.json /config/data/
+        cp /bootstrap/ipv6-hosts.json /config/data/
+
+        # Delete any logs
+        rm -rf /config/logs/*
         
       volumeMounts:
       - mountPath: /config
@@ -11269,8 +11273,8 @@ zurg: &app_zurg
         # Enable rar extraction if it's not already there
         grep rar_action /config/config.yml || echo 'rar_action: extract' >> /config/config.yml
 
-        # Allow users to opt into/out of repairs
-        # sed -i  "s/enable_repair: true/enable_repair: false/" /config/config.yml
+        # Repairs are fixed now
+        sed -i  "s/enable_repair: false/enable_repair: true/" /config/config.yml
 
         # Set to 32 workers
         sed -i  "s/concurrent_workers:.*/concurrent_workers: 32/" /config/config.yml

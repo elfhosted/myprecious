@@ -28,6 +28,6 @@ spec:
     volumeAttributes:
       source: "//storageboss.{{ .Release.Namespace }}.svc.cluster.local/share"
     nodeStageSecretRef:
-      name: smbcreds-storageboss
-      namespace: {{ .Release.Namespace }}
+      name: credentials-storageboss
+      namespace: csi-smb
 {{ end }}
