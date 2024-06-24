@@ -2750,7 +2750,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:92014bdd64c46daf5ae6f47f7503df5622b5da753557252d6836b23745ae6efd
+    tag: 2.23.0@sha256:e2b4be56822b8787d1749bd1b821bff42ecbcd85b6458024f75f72d7d5a58845
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -3392,7 +3392,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:92014bdd64c46daf5ae6f47f7503df5622b5da753557252d6836b23745ae6efd
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:e2b4be56822b8787d1749bd1b821bff42ecbcd85b6458024f75f72d7d5a58845
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -3894,7 +3894,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:2c1362004f538f73e41a3be0f2499a39deef758b018f2472fc3bc1d1ab2fc07f
+    tag: rolling@sha256:ed613bf77f88ece936eb6a0562b03a5c12e103fbb9f74c71c9b4d5358049f164
   enabled: false
   controller:
     annotations:
@@ -11111,7 +11111,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.24-nightly@sha256:a956f23e5382eeb1b55bd1760448cad06df318c616b8b778af8ef587210efbcd
+    tag: 2024.06.24-nightly@sha256:633d4163209f95b7724706eb08c3b8ed5b5a7f46e9bcda3bacd83623eb5d3971
   priorityClassName: tenant-normal
   controller:
     annotations:
