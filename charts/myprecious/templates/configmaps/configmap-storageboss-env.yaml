@@ -4,5 +4,5 @@ kind: ConfigMap
 metadata:
   name: storageboss-env
 data:
-  LOG_LEVEL: debug
+  S3_ENDPOINT_URL: https://s3.us-west-000.backblazeb2.com
 {{ end }}

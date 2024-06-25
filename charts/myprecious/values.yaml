@@ -7872,11 +7872,11 @@ storageboss:
     fsGroupChangePolicy: "OnRootMismatch"      
   automountServiceAccountToken: false
   persistence:
-    shares:
+    storageboss:
       enabled: true
       type: custom
       mountPath: /share
-      volumeSpec: *volumespec_ephemeral_volume_10g  
+      volumeSpec: *volumespec_ephemeral_volume_100g  
     config:
       enabled: "true"
       subPath: "container.json"
@@ -7901,38 +7901,31 @@ storageboss:
     limits:
       cpu: 150m
       memory: 512Mi
-  # envFrom:
-  # - configMapRef:
-  #     name: storageboss-env
-  # - secretMapRef:    
-  #     name: storageboss-env  
-  # initContainers:
-  #   migrate-symlinks: 
-  #     image: *tooling_image
-  #     imagePullPolicy: IfNotPresent
-  #     command:
-  #     - /bin/bash
-  #     - -c
-  #     - |
-  #       # set -e
+  envFrom:
+  - configMapRef:
+      name: storageboss-env
+  - secretMapRef:    
+      name: storageboss-env
+  initContainers:
+    restore: 
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
 
-  #       if [[ ! -f /storage/symlinks/i-am-migrated-to-samba ]]
-  #       then
-  #         echo "Migrating symlinks from /migrate/symlinks..."
-  #         cp -rf --preserve=links /migrate/symlinks/* /storage/symlinks/
-  #         touch /storage/symlinks/i-am-migrated-to-samba
-  #       fi    
+        sleep 1h
+        # set -e
+        # s5cmd pipe s3://bucket/{{ .Release.Name }}.gz | gunzip -c > /share/
+        # s5cmd sync s3://elfhosted-tenant-backup{{ .Release.Name }}/* /share/      
         
-  #     volumeMounts:
-  #     - mountPath: /storage/symlinks
-  #       name: symlinks-block
-  #     - mountPath: /migrate/symlinks
-  #       name: symlinks-cephfs
-        
-
-  #     env: *bootstrap_env
-  #     resources: *default_resources
-  #     securityContext: *default_securitycontext  
+      volumeMounts:
+      - mountPath: /share
+        name: storageboss
+      env: *bootstrap_env
+      resources: *default_resources
+      securityContext: *default_securitycontext  
 
 
 webdavplus: 
