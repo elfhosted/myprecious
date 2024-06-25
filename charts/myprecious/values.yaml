@@ -7868,6 +7868,8 @@ storageboss:
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"      
   automountServiceAccountToken: false
   persistence:
     shares:
