@@ -1,0 +1,16 @@
+{{ if .Values.storageboss.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-any-ingress-storageboss"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: storageboss
+  ingress:
+    - toPorts:
+        - ports:
+            - port: "139"
+        - ports:
+            - port: "445"  
+{{ end }}
