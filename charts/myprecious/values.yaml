@@ -2112,9 +2112,6 @@ radarr: &app_radarr
         set -x
         set -e
 
-        mkdir -p /storage/elfstorage/movies
-        mkdir -p /storage/elfstorage/downloads/completed/radarr
-
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies        
@@ -2258,10 +2255,6 @@ radarr4k: &app_radarr4k
       - |
         set -x
         set -e
-
-        mkdir -p /storage/elfstorage/movies-4k
-        mkdir -p /storage/elfstorage/backup/auto/radarr4k
-        mkdir -p /storage/elfstorage/downloads/completed/radarr4k
 
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/radarr4k
@@ -2526,19 +2519,6 @@ bazarr:
           port: 6767
   initContainers:
     bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /storage/elfstorage/backup/auto/bazarr
-      resources: *default_resources
-      securityContext: *default_securitycontext
   resources:
     requests:
       cpu: 10m
@@ -3404,10 +3384,10 @@ filebrowser:
         set -x
         set -e
         # If we don't already have an example config, create one
-        if [ ! -f /storage/elfstorage/recyclarr/recyclarr.yaml ];
-        then
-          cp /bootstrap/recyclarr.yaml /storage/config/recyclarr/
-        fi
+        # if [ ! -f /storage/elfstorage/recyclarr/recyclarr.yaml ];
+        # then
+        #   cp /bootstrap/recyclarr.yaml /storage/config/recyclarr/
+        # fi
       volumeMounts:
       - mountPath: /storage/config/recyclarr/
         name: recyclarr
@@ -4158,8 +4138,8 @@ calibre:
         if [ ! -f /storage/elfstorage/books/metadata.db ]
         then
           echo "Copying sample Calibre DB files to /storage/elfstorage/books/..."
-          mkdir -p /storage/elfstorage/books
-          cp /config/metadata* /storage/elfstorage/books/
+          # mkdir -p /storage/elfstorage/books
+          # cp /config/metadata* /storage/elfstorage/books/
         fi
       volumeMounts:
       - mountPath: /config
@@ -4244,10 +4224,6 @@ sonarr: &app_sonarr
       - |
         set -x
         set -e
-
-        mkdir -p /storage/elfstorage/series
-        mkdir -p /storage/elfstorage/backup/auto/sonarr
-        mkdir -p /storage/elfstorage/downloads/completed/sonarr
 
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/sonarr
@@ -4387,10 +4363,6 @@ sonarr4k: &app_sonarr4k
       - |
         set -x
         set -e
-
-        mkdir -p /storage/elfstorage/series-4k
-        mkdir -p /storage/elfstorage/backup/auto/sonarr4k
-        mkdir -p /storage/elfstorage/downloads/completed/sonarr4k
 
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/sonarr4k
@@ -4595,7 +4567,6 @@ prowlarr: &app_prowlarr
         set -e
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
-        mkdir -p /storage/elfstorage/backup/auto/prowlarr
 
         # Get custom torrent.io definition
         mkdir -p /config/Definitions/Custom
@@ -4728,8 +4699,6 @@ lidarr:
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
         
-        mkdir -p /storage/elfstorage/music
-        mkdir -p /storage/elfstorage/backup/auto/lidarr
       volumeMounts:
       - mountPath: /config
         name: config        
@@ -8462,7 +8431,6 @@ rapidleech:
 
         # We need this file to exist
         touch /config/files.lst
-        mkdir -p /storage/elfstorage/downloads/completed
       volumeMounts:
       - mountPath: /config
         name: config
@@ -8634,20 +8602,6 @@ rdtclient: &app_rdtclient
       ephemeral-storage: 100Mi # a safety net against node ephemeral space exhaustion
   initContainers:
     bootstrap: *bootstrap
-    fixperms:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # permissions fix
-        chown elfie:elfie /storage/elfstorage/downloads/completed -R
-      volumeMounts:
-      securityContext:
-        runAsUser: 0        
 
 # Add a VPN option for rdtclient
 rdtclientvpnpia:
@@ -10901,7 +10855,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.24-nightly@sha256:222810c495bbb4a17ee174e1c8fa9a1c402219f13f5129ec9a5cc6f56941580c
+    tag: 2024.06.24-nightly@sha256:9e649675da0646b1167cd5d189c8d13c2e5f18e3030857d8e32215011cc8bd45
   priorityClassName: tenant-normal
   controller:
     annotations:
