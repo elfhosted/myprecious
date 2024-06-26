@@ -10872,8 +10872,8 @@ zurg: &app_zurg
         # no more warp
         sed -i  "s/^proxy:/#proxy/" /config/config.yml
 
-        # Try direct streaming
-        sed -i  "s/serve_from_rclone: false/serve_from_rclone: true/" /config/config.yml
+        # Revert this, serve it all from zurg
+        sed -i  "s/serve_from_rclone: true/serve_from_rclone: false/" /config/config.yml
         # sed -i  "s/verify_download_link: false/verify_download_link: true/" /config/config.yml
 
         # Enable rar extraction if it's not already there
