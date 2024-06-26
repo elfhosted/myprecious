@@ -11,9 +11,6 @@ spec:
         - name: jellyseerr
           kind: Service
           port: 5055
-      middlewares:
-        - name: error-pages
-          namespace: traefik
     - match: Host(`{{ .Release.Name }}-jellyseerr.elfhosted.com`) && PathPrefix(`/logo_`)
       kind: Rule
       services:
