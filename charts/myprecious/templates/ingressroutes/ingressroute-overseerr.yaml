@@ -11,9 +11,6 @@ spec:
         - name: overseerr
           kind: Service
           port: 5055
-      middlewares:
-        - name: error-pages
-          namespace: traefik
     - match: Host(`{{ .Release.Name }}-overseerr.elfhosted.com`) && PathPrefix(`/logo_`)
       kind: Rule
       services:
