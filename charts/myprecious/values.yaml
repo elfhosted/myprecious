@@ -7939,7 +7939,7 @@ storageboss:
   envFrom:
   - configMapRef:
       name: storageboss-env
-  - secretMapRef:    
+  - secretRef:    
       name: storageboss-env
   initContainers:
     restore: 
