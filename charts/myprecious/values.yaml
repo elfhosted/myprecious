@@ -716,7 +716,7 @@ bootstrap_ssd: &bootstrap_ssd
 
       "reset")
         echo "Recent reset command found, resetting"
-        rm -rf /config/*
+        rm -rfv /config/*
         ;;
 
       "backup")
@@ -5326,7 +5326,7 @@ plexplus:
       memory: 16Gi  
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-plex,plex-pia-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,plex-pia-config"
   
 
 jellyfin: &app_jellyfin
@@ -5540,7 +5540,7 @@ jellyfinplus:
       memory: 16Gi  
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-jellyfin"
+      configmap.reloader.stakater.com/reload: "elfbot-jellyfin,elfbot-all"
 
 
 emby: &app_emby
@@ -5745,7 +5745,7 @@ embyplus:
       memory: 16Gi  
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-emby"
+      configmap.reloader.stakater.com/reload: "elfbot-emby,elfbot-all"
 
 homer:
   priorityClassName: tenant-normal
@@ -9456,7 +9456,7 @@ rivenplus:
       memory: 16Gi  
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config"
+      configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config,elfbot-all"
 
 airdcpp: &app_airdcpp
   enabled: false
