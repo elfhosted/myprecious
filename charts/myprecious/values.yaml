@@ -7787,10 +7787,12 @@ storageboss:
       - -c
       - |
 
-        sleep 1h
+
         # set -e
-        # s5cmd pipe s3://bucket/{{ .Release.Name }}.gz | gunzip -c > /share/
-        # s5cmd sync s3://elfhosted-tenant-backup{{ .Release.Name }}/* /share/      
+        s5cmd pipe s3://elfhosted-tenants/{{ .Release.Name }}.gz | tar xv -c > /share/
+        sleep 1h
+                
+        # s5cmd sync s3://elfhosted-tenants/{{ .Release.Name }}/* /share/      
         
       volumeMounts:
       - mountPath: /share
