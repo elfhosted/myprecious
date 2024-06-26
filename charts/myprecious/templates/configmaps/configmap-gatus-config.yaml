@@ -832,17 +832,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.aria.enabled }}
-      - name: aria
-        group: download-media
-        url: "http://aria:8000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.airdcpppia.enabled .Values.airdcppgluetun.enabled }}
       - name: airdcpp
         group: download-media
