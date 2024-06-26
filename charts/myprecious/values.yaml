@@ -7919,7 +7919,7 @@ storageboss:
       type: "custom"
       volumeSpec:
         secret:
-          secretName: storageboss-config  
+          secretName: storageboss-env  
   service:
     main:
       enabled: false # necessary for probes
@@ -9389,7 +9389,7 @@ riven: &app_riven
           optional: true
   initContainers:
     bootstrap: *bootstrap
-    fixperms:
+    setup:
       image: *tooling_image
       command:
       - /bin/bash
@@ -9398,17 +9398,12 @@ riven: &app_riven
         set -x
         set -e
 
-        # # get rid of old black hole directory we no longer use
-        # if [ -d /storage/symlinks/real-debrid-blackhole ]; then
-        #   rm -rf /storage/symlinks/real-debrid-blackhole
-        # fi
+        # make symlink directories if they don't exist, to make onboarding simpler
+        mkdir -p /storage/symlinks/movies
+        mkdir -p /storage/symlinks/shows
       volumeMounts:
-      - mountPath: /config
-        name: config
       - mountPath: /storage/symlinks
         name: symlinks        
-      securityContext:
-        runAsUser: 0        
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven:rolling@sha256:20f840f70e7a1756fbceea307ad978abadcbab73b86062707ab952f41a13ed8b
