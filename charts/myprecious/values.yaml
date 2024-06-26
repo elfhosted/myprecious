@@ -2059,17 +2059,7 @@ radarr: &app_radarr
   podLabels:
     app.elfhosted.com/name: radarr
     app.elfhosted.com/class: debrid    
-  priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"      
+  priorityClassName: tenant-normal 
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
@@ -2206,16 +2196,6 @@ radarr4k: &app_radarr4k
     app.elfhosted.com/name: radarr4k
     app.elfhosted.com/class: debrid
   priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
@@ -2725,25 +2705,6 @@ filebrowser:
     allowPrivilegeEscalation: false
     runAsUser: 568
     runAsGroup: 568
-  affinity:
-    podAffinity: 
-      # prefer to be located with jackett
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - debrid
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"            
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists          
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4179,16 +4140,6 @@ sonarr: &app_sonarr
     app.elfhosted.com/name: sonarr
     app.elfhosted.com/class: debrid    
   priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
@@ -4318,16 +4269,6 @@ sonarr4k: &app_sonarr4k
     app.elfhosted.com/name: sonarr4k
     app.elfhosted.com/class: debrid
   priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
