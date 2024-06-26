@@ -1805,7 +1805,7 @@ nzbget:
       enabled: true
       type: custom
       mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_1000g
+      volumeSpec: *volumespec_ephemeral_volume_500g
     elfbot:
       enabled: "true"
       type: "custom"
@@ -1892,7 +1892,7 @@ sabnzbd:
       enabled: true
       type: custom
       mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_1000g    
+      volumeSpec: *volumespec_ephemeral_volume_500g    
     elfbot:
       enabled: "true"
       type: "custom"
