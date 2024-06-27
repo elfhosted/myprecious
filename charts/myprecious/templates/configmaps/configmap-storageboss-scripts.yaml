@@ -30,16 +30,9 @@ data:
     
   restore.sh: |
 
+    echo "Attempting to restore any data in B2..."
     time (curl -L https://bagend.elfhosted.com/file/elfhosted-tenants/${USERID}.tar.gz \
       | gpg --batch --decrypt --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
       | tar zxvmf - -C /share)
-
-    # set -e
-    # s5cmd pipe s3://elfhosted-tenants/{{ .Release.Name }}.gz | tar xv -c > /share/
-    # sleep 1h
-
-    # # s5cmd sync s3://elfhosted-tenants/{{ .Release.Name }}/* /share/   
-
-    # tar -cvzf - honk-1.3.1 | gpg --batch --symmetric --cipher-algo AES256 --passphrase your_secret_passphrase > /dev/stdout | s5cmd pipe s3://elfhosted-tenants/honk.tar.gz
 
 {{ end }}

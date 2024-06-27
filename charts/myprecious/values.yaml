@@ -7807,7 +7807,7 @@ storageboss:
       - /bin/bash
       - -c
       - |
-
+        set +e # don't error on failure
         /storageboss-scripts/restore.sh
       envFrom:
       - configMapRef:
