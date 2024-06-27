@@ -5,7 +5,7 @@ gluetun:
   enabled: false # just to avoid errors
 
 # This section just makes images easier to update / parse
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240427@sha256:e094581eb3adc654f9df2903e2efef620e0161ba48328a313ad0794a581b3ebb
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e186fdb45c1e260218110013d1ef25659a9cda271508adfaae80376b0d0fa31e
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -2059,17 +2059,7 @@ radarr: &app_radarr
   podLabels:
     app.elfhosted.com/name: radarr
     app.elfhosted.com/class: debrid    
-  priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"      
+  priorityClassName: tenant-normal 
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
@@ -2206,16 +2196,6 @@ radarr4k: &app_radarr4k
     app.elfhosted.com/name: radarr4k
     app.elfhosted.com/class: debrid
   priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
@@ -2725,25 +2705,6 @@ filebrowser:
     allowPrivilegeEscalation: false
     runAsUser: 568
     runAsGroup: 568
-  affinity:
-    podAffinity: 
-      # prefer to be located with jackett
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - debrid
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"            
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists          
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4179,16 +4140,6 @@ sonarr: &app_sonarr
     app.elfhosted.com/name: sonarr
     app.elfhosted.com/class: debrid    
   priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
@@ -4318,16 +4269,6 @@ sonarr4k: &app_sonarr4k
     app.elfhosted.com/name: sonarr4k
     app.elfhosted.com/class: debrid
   priorityClassName: tenant-normal
-  affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"  
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
@@ -4971,132 +4912,22 @@ plex: &app_plex
   priorityClassName: tenant-streaming
   podLabels:
     app.elfhosted.com/name: plex
-    app.elfhosted.com/anti-affinity-10: "plex"  
-    app.elfhosted.com/anti-affinity-20: "plex"  
-    app.elfhosted.com/anti-affinity-30: "plex"  
-    app.elfhosted.com/anti-affinity-40: "plex"  
-    app.elfhosted.com/anti-affinity-50: "plex"  
-    app.elfhosted.com/anti-affinity-60: "plex"  
-    app.elfhosted.com/anti-affinity-70: "plex"  
-    app.elfhosted.com/anti-affinity-80: "plex"  
-    app.elfhosted.com/anti-affinity-90: "plex"  
-    app.elfhosted.com/anti-affinity-100: "plex"  
     app.elfhosted.com/class: debrid
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
-  # use memory to force plex pod spread, rather than affinity
+    kubernetes.io/egress-bandwidth: "1G" # tested with _kilos in Discord on a 97Mbit remux
   affinity:
-    podAntiAffinity:
+    podAffinity:
+      # prefer to be located with zurg, if tolerations permit
       preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 10
+      - weight: 100  
         podAffinityTerm:    
           labelSelector:
             matchExpressions:
-            - key: anti-affinity-10
+            - key: app.elfhosted.com/name
               operator: In
               values:
-              - plex
+              - zurg
           topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}
-      - weight: 20
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-20
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}     
-      - weight: 30
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-30
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}
-      - weight: 40
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-40
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}          
-      - weight: 50
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-50
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}    
-      - weight: 60
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-60
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}     
-      - weight: 70
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-70
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}         
-      - weight: 80
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-80
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}     
-      - weight: 90
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-90
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {} 
-      - weight: 100
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: anti-affinity-100
-              operator: In
-              values:
-              - plex
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}   
-    podAffinity:        
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"    
   tolerations:
   - key: node-role.elfhosted.com/download-only
     operator: Exists
@@ -5214,6 +5045,8 @@ plex: &app_plex
       securityContext: *default_securitycontext    
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
+    speedtest:
+      image: openspeedtest/latest
   addons:
     vpn: &plex_addons_vpn
       enabled: true
@@ -5339,18 +5172,21 @@ jellyfin: &app_jellyfin
     app.elfhosted.com/class: debrid  
     app.elfhosted.com/name: jellyfin
   affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
+    podAffinity:
+      # prefer to be located with zurg, if tolerations permit
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
             matchExpressions:
-            - key: app.elfhosted.com/class
+            - key: app.elfhosted.com/name
               operator: In
               values:
-              - debrid
+              - zurg
           topologyKey: "kubernetes.io/hostname"
   tolerations:
   - key: node-role.elfhosted.com/download-only
-    operator: Exists                
+    operator: Exists   
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   priorityClassName: tenant-streaming
@@ -5555,18 +5391,21 @@ emby: &app_emby
     app.elfhosted.com/class: debrid
     app.elfhosted.com/name: emby
   affinity:
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
+    podAffinity:
+      # prefer to be located with zurg, if tolerations permit
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
             matchExpressions:
-            - key: app.elfhosted.com/class
+            - key: app.elfhosted.com/name
               operator: In
               values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"    
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
   tolerations:
   - key: node-role.elfhosted.com/download-only
-    operator: Exists          
+    operator: Exists     
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux    
   securityContext:
@@ -7895,6 +7734,10 @@ storageboss:
   enabled: false
   podLabels:
     app.elfhosted.com/name: storageboss
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "storageboss-config,storageboss-env"  
+      secret.reloader.stakater.com/reload: "storageboss-env"    
   priorityClassName: tenant-critical
   image:
     repository: quay.io/samba.org/samba-server
@@ -7919,7 +7762,19 @@ storageboss:
       type: "custom"
       volumeSpec:
         secret:
-          secretName: storageboss-env  
+          secretName: storageboss-config  
+    storageboss-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: storageboss-scripts             
+          defaultMode: 0755    
+    tmp:
+      enabled: true
+      type: emptyDir
+      mountPath: /tmp
+      sizeLimit: 1Gi                   
   service:
     main:
       enabled: false # necessary for probes
@@ -7950,18 +7805,41 @@ storageboss:
       - -c
       - |
 
-        sleep 1h
-        # set -e
-        # s5cmd pipe s3://bucket/{{ .Release.Name }}.gz | gunzip -c > /share/
-        # s5cmd sync s3://elfhosted-tenant-backup{{ .Release.Name }}/* /share/      
-        
+        /storageboss-scripts/restore.sh
+      envFrom:
+      - configMapRef:
+          name: storageboss-env
+      - configMapRef:
+          name: elfhosted-user-config      
+      - secretRef:
+          name: storageboss-env
       volumeMounts:
-      - mountPath: /share
-        name: storageboss
-      env: *bootstrap_env
+      - mountPath: /storageboss-scripts
+        name: storageboss-scripts 
       resources: *default_resources
       securityContext: *default_securitycontext  
-
+  additionalContainers:
+    backup-on-termination:
+      image: *tooling_image
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - /storageboss-scripts/backup.sh
+      envFrom:
+      - configMapRef:
+          name: storageboss-env
+      - configMapRef:
+          name: elfhosted-user-config      
+      - secretRef:
+          name: storageboss-env
+      volumeMounts:
+      - mountPath: /storageboss-scripts
+        name: storageboss-scripts 
+      - mountPath: /home/elfie
+        name: tmp
+      - mountPath: /share
+        name: storageboss
 
 webdavplus: 
   enabled: false
@@ -10798,7 +10676,7 @@ zurg: &app_zurg
     app.elfhosted.com/class: debrid
     app.elfhosted.com/name: zurg  
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
+    kubernetes.io/egress-bandwidth: "1G" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
     tag: 2024.06.26-nightly@sha256:c299482c2def5557db590375351ba8a3ecfb5304443e9e322593524c272446aa
@@ -10808,11 +10686,20 @@ zurg: &app_zurg
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
     strategy: RollingUpdate      
   affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/download-only
+            operator: Exists
     podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
+      # prefer to be located with debrid class (plex/jelly/emby), but 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
             matchExpressions:
-            - key: app.elfhosted.com/class
+            - key: app.kubernetes.io/class
               operator: In
               values:
               - debrid
@@ -10967,8 +10854,8 @@ zurg: &app_zurg
         # no more warp
         sed -i  "s/^proxy:/#proxy/" /config/config.yml
 
-        # Try direct streaming
-        sed -i  "s/serve_from_rclone: false/serve_from_rclone: true/" /config/config.yml
+        # Revert this, serve it all from zurg
+        sed -i  "s/serve_from_rclone: true/serve_from_rclone: false/" /config/config.yml
         # sed -i  "s/verify_download_link: false/verify_download_link: true/" /config/config.yml
 
         # Enable rar extraction if it's not already there

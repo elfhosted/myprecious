@@ -10,5 +10,16 @@ spec:
       services:
         - name: plex
           kind: Service
-          port: 32400        
+          port: 32400
+    - match: Host(`{{ .Release.Name }}-plex.elfhosted.com`) && PathPrefix(`/speed`)
+      kind: Rule
+      services:
+        - name: plex
+          kind: Service
+          port: 3000 # openspeedtest
+      middlewares:
+        - name: stripprefix-speed
+          namespace: traefik
+        - name: buffer-2gb
+          namespace: traefik
 {{ end }}
