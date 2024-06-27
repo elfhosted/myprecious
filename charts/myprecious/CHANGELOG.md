@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.38.1](https://github.com/elfhosted/myprecious/compare/v1.38.0...v1.38.1) (2024-06-27)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.27-nightly docker digest to 1bc7b48 ([07a7bae](https://github.com/elfhosted/myprecious/commit/07a7baea327b3b9ede45341275c9b563b5167965))
+* missing M in plex bw limit! ([89dd6df](https://github.com/elfhosted/myprecious/commit/89dd6df366a37e38009ab51a997e7c3c4989e21f))
+
 ## [1.38.0](https://github.com/elfhosted/myprecious/compare/v1.37.0...v1.38.0) (2024-06-27)
 
 
