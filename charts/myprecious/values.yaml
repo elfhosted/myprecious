@@ -10412,8 +10412,8 @@ shluflix:
 stremify:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/stremify
-    tag: rolling@sha256:0b2a5f9a31432ded5d908ce369750c66f016ed80427ce25d14352f731a10f554
+    repository: ghcr.io/elfhosted/stremify
+    tag: rolling@sha256:7db79482d1993cd70b8fd1361ff19bf2cced0de26598859f99323f96e2dd64ad
   priorityClassName: tenant-normal
   controller:
     annotations:
