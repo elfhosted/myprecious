@@ -7808,7 +7808,7 @@ storageboss:
       resources: *default_resources
       securityContext: *default_securitycontext  
   additionalContainers:
-    backup_on_termination:
+    backup-on-termination:
       image: *tooling_image
       command:
       - /usr/bin/dumb-init
