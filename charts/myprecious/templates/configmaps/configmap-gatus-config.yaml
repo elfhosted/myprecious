@@ -494,7 +494,7 @@ data:
       {{ if .Values.plexdebrid.enabled }}
       - name: plex-debrid
         group: manage-media
-        url: "http://plex-debrid:3000"
+        url: "http://plex-debrid:3001"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

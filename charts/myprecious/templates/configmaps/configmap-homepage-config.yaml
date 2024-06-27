@@ -574,7 +574,7 @@ data:
             icon: real-debrid.png
             href: https://{{ .Release.Name }}-plex-debrid.elfhosted.com
             description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://plex-debrid:3000            
+            siteMonitor: http://plex-debrid:3001            
         {{ end }}     
 
         {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}

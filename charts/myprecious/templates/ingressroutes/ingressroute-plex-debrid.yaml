@@ -10,7 +10,7 @@ spec:
       services:
         - name: plex-debrid
           kind: Service
-          port: 3000
+          port: 3001
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
 {{ end }}
