@@ -4914,7 +4914,7 @@ plex: &app_plex
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: debrid
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "1G" # tested with _kilos in Discord on a 97Mbit remux
+    kubernetes.io/egress-bandwidth: "150" # tested with _kilos in Discord on a 97Mbit remux
   affinity:
     podAffinity:
       # prefer to be located with zurg, if tolerations permit
@@ -5332,7 +5332,9 @@ jellyfin: &app_jellyfin
   - configMapRef:
       name: jellyfin-config 
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination  
+    clean-up-dns: *clean_up_dns_on_termination
+    speedtest:
+      image: openspeedtest/latest    
     jellyfixer:
       image: quay.io/xsteadfastx/jellyfixer:latest
       env:
@@ -5499,6 +5501,8 @@ emby: &app_emby
       resources: *default_resources    
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination    
+    speedtest:
+      image: openspeedtest/latest    
   ingress:
     main:
       enabled: false
@@ -10675,7 +10679,7 @@ zurg: &app_zurg
     app.elfhosted.com/class: debrid
     app.elfhosted.com/name: zurg  
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "1G" # tested with _kilos in Discord on a 97Mbit remux
+    kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
     tag: 2024.06.25-nightly@sha256:a39c16a1f146cc2742a3f327a5284f930cd0e55372c87b7a3ca5fb8b196b4a62
@@ -11016,7 +11020,7 @@ plexdebrid:
   # runtimeClassName: kata  
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:5db113273c44e02c93fab42a95da727e75b40dfde4c57ef6b22f1f70ff53ce38
+    tag: rolling@sha256:5066b3e16fa10811acf266914f3254984a33efd7dcce366d6eaf49175e64bbd8
   priorityClassName: tenant-normal
   controller:
     annotations:

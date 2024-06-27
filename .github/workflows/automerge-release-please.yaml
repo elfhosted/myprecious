@@ -4,7 +4,7 @@ on:
   # Try enabling auto-merge for all open pull requests.
   schedule:
       # 9:55am UTC is 21h55 NZST, giving us 5 min to run before the maint window starts 10pm weekdays NZ time
-      - cron: '45 09 * * *'
+      - cron: '55 09 * * *'
 
   # Try enabling auto-merge for the specified pull request,
   # review or all open pull requests if none is specified.

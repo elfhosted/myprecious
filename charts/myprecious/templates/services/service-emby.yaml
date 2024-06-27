@@ -14,6 +14,10 @@ spec:
     targetPort: 8096
     protocol: TCP
     name: http
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: speedtest    
   selector:
     app.elfhosted.com/name: emby
     app.kubernetes.io/instance: {{ .Release.Name }}
