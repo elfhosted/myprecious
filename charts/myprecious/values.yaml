@@ -7756,7 +7756,14 @@ storageboss:
       type: "custom"
       volumeSpec:
         secret:
-          secretName: storageboss-env  
+          secretName: storageboss-config  
+    storageboss-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: storageboss-scripts             
+          defaultMode: 0755             
   service:
     main:
       enabled: false # necessary for probes
@@ -7787,20 +7794,37 @@ storageboss:
       - -c
       - |
 
-        echo "doing nothing yet"
-        # set -e
-        # s5cmd pipe s3://elfhosted-tenants/{{ .Release.Name }}.gz | tar xv -c > /share/
-        # sleep 1h
-
-        # # s5cmd sync s3://elfhosted-tenants/{{ .Release.Name }}/* /share/      
-        
+        /storageboss-scripts/restore.sh
+      envFrom:
+      - configMapRef:
+          name: storageboss-env
+      - configMapRef:
+          name: elfhosted-user-config      
+      - secretRef:
+          name: storageboss-env
       volumeMounts:
-      - mountPath: /share
-        name: storageboss
-      env: *bootstrap_env
+      - mountPath: /storageboss-scripts
+        name: storageboss-scripts 
       resources: *default_resources
       securityContext: *default_securitycontext  
-
+  additionalContainers:
+    backup_on_termination:
+      image: *tooling_image
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - /storageboss-scripts/backup.sh
+      envFrom:
+      - configMapRef:
+          name: storageboss-env
+      - configMapRef:
+          name: elfhosted-user-config      
+      - secretRef:
+          name: storageboss-env
+      volumeMounts:
+      - mountPath: /storageboss-scripts
+        name: storageboss-scripts 
 
 webdavplus: 
   enabled: false

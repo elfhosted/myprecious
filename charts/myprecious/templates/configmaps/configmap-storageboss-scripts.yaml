@@ -1,0 +1,40 @@
+{{ if .Values.storageboss.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: storageboss-scripts
+data:
+  backup.sh: |
+
+    #!/bin/bash
+
+    function cleanup_backup_on_shutdown {
+        echo "Received SIGTERM, doing backup..."
+
+        set -x
+
+        tar -cvzf - /share \
+          | gpg --batch --symmetric --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
+          > /dev/stdout \
+          | s5cmd pipe s3://elfhosted-tenants/${USER_ID}.tar.gz
+
+    # When we terminate, delete the DNS record
+    trap cleanup_backup_on_shutdown SIGTERM
+
+    # Hang around doing nothing until terminated
+    while true
+    do
+        echo "Waiting for SIGTERM to trigger backup"
+        sleep infinity
+    done
+    
+  restore.sh: |
+
+    echo "doing nothing yet"
+    # set -e
+    # s5cmd pipe s3://elfhosted-tenants/{{ .Release.Name }}.gz | tar xv -c > /share/
+    # sleep 1h
+
+    # # s5cmd sync s3://elfhosted-tenants/{{ .Release.Name }}/* /share/   
+
+    # tar -cvzf - honk-1.3.1 | gpg --batch --symmetric --cipher-algo AES256 --passphrase your_secret_passphrase > /dev/stdout | s5cmd pipe s3://elfhosted-tenants/honk.tar.gz
