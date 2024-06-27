@@ -14,6 +14,17 @@ spec:
       middlewares:
         - name: error-pages
           namespace: traefik  
+    - match: Host(`{{ .Release.Name }}-jellyfin.elfhosted.com`) && PathPrefix(`/speed`)
+      kind: Rule
+      services:
+        - name: jellyfin
+          kind: Service
+          port: 3000 # openspeedtest
+      middlewares:
+        - name: stripprefix-speed
+          namespace: traefik
+        - name: buffer-2gb
+          namespace: traefik          
     - match: Host(`{{ .Release.Name }}-jellyfin.elfhosted.com`)
       kind: Rule
       services:

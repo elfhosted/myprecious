@@ -4914,7 +4914,7 @@ plex: &app_plex
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: debrid
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "1G" # tested with _kilos in Discord on a 97Mbit remux
+    kubernetes.io/egress-bandwidth: "150" # tested with _kilos in Discord on a 97Mbit remux
   affinity:
     podAffinity:
       # prefer to be located with zurg, if tolerations permit
@@ -5332,7 +5332,9 @@ jellyfin: &app_jellyfin
   - configMapRef:
       name: jellyfin-config 
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination  
+    clean-up-dns: *clean_up_dns_on_termination
+    speedtest:
+      image: openspeedtest/latest    
     jellyfixer:
       image: quay.io/xsteadfastx/jellyfixer:latest
       env:
@@ -5499,6 +5501,8 @@ emby: &app_emby
       resources: *default_resources    
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination    
+    speedtest:
+      image: openspeedtest/latest    
   ingress:
     main:
       enabled: false
@@ -7736,13 +7740,12 @@ storageboss:
     app.elfhosted.com/name: storageboss
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "storageboss-config,storageboss-env"  
-      secret.reloader.stakater.com/reload: "storageboss-env"    
+      configmap.reloader.stakater.com/reload: "storageboss-scripts,storageboss-env"  
+      secret.reloader.stakater.com/reload: ",storageboss-config,storageboss-env"    
   priorityClassName: tenant-critical
   image:
     repository: quay.io/samba.org/samba-server
     tag: latest
-    # tag: smbd-only-a3.20.1-s4.19.6-r0sha256:d6dabcb034aec67ef81ca9b38ee7d2bd942bf031cedec53b766aa20e91ab9ab4
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10412,8 +10415,8 @@ shluflix:
 stremify:
   enabled: false
   image:
-    repository: ghcr.io/geek-cookbook/stremify
-    tag: rolling@sha256:0b2a5f9a31432ded5d908ce369750c66f016ed80427ce25d14352f731a10f554
+    repository: ghcr.io/elfhosted/stremify
+    tag: rolling@sha256:7db79482d1993cd70b8fd1361ff19bf2cced0de26598859f99323f96e2dd64ad
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10676,7 +10679,7 @@ zurg: &app_zurg
     app.elfhosted.com/class: debrid
     app.elfhosted.com/name: zurg  
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "1G" # tested with _kilos in Discord on a 97Mbit remux
+    kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
     tag: 2024.06.27-nightly@sha256:ef0bb80630f791cca3eaa6572bf7195b37c4fd56613a807e04286d4a9c493472
@@ -11017,7 +11020,7 @@ plexdebrid:
   # runtimeClassName: kata  
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:5db113273c44e02c93fab42a95da727e75b40dfde4c57ef6b22f1f70ff53ce38
+    tag: rolling@sha256:5066b3e16fa10811acf266914f3254984a33efd7dcce366d6eaf49175e64bbd8
   priorityClassName: tenant-normal
   controller:
     annotations:

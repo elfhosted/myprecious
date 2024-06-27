@@ -18,6 +18,10 @@ spec:
     targetPort: 8088
     protocol: TCP
     name: jellyfixer
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: speedtest    
   selector:
     app.elfhosted.com/name: jellyfin
     app.kubernetes.io/instance: {{ .Release.Name }}    
