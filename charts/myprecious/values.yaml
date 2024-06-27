@@ -7819,6 +7819,8 @@ storageboss:
       volumeMounts:
       - mountPath: /storageboss-scripts
         name: storageboss-scripts 
+      - mountPath: /home/elfie
+        name: tmp
       resources: *default_resources
       securityContext: *default_securitycontext  
   additionalContainers:
