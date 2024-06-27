@@ -5045,6 +5045,8 @@ plex: &app_plex
       securityContext: *default_securitycontext    
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
+    speedtest:
+      image: openspeedtest/latest
   addons:
     vpn: &plex_addons_vpn
       enabled: true

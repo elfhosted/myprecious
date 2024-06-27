@@ -18,6 +18,8 @@ data:
           > /dev/stdout \
           | s5cmd pipe s3://elfhosted-tenants/${USER_ID}.tar.gz
 
+    }
+    
     # When we terminate, delete the DNS record
     trap cleanup_backup_on_shutdown SIGTERM
 
