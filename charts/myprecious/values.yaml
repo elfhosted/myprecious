@@ -4914,7 +4914,7 @@ plex: &app_plex
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: debrid
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "150" # tested with _kilos in Discord on a 97Mbit remux
+    kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   affinity:
     podAffinity:
       # prefer to be located with zurg, if tolerations permit
@@ -7989,7 +7989,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 9.9.0@sha256:bb7523c532124a75d0704cebb9ba5a3323c1ff6e741cf014e7dffc1befb918a7
+    tag: 9.9.1@sha256:0f68caa9843c517d0f00391f4857a2626e9f435c67eb3a8a655eeb28bd110742
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10155,7 +10155,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.7@sha256:a7ac056cc830689300c6a2f86709e924af1f244e3369b00fe58e84638cca1a51
+    tag: 3.9.7@sha256:fa3f1ccad908c082591dab7e10d95f59a6c247ea1c6ca278beb68e222368b65f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10682,7 +10682,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.27-nightly@sha256:c37301f9d3a54e4243400a94c18c857f2fca92cda0e6285faa5e3e419d3bdf47
+    tag: 2024.06.27-nightly@sha256:1bc7b48feef9efa97052d5d84d15ae0e1aceddebbd68714e40ec0d12d16fedaa
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11053,7 +11053,7 @@ plexdebrid:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 3000 
+          port: 3001 
   persistence:
     config:
       enabled: true
