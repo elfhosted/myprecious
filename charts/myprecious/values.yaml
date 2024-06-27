@@ -7838,6 +7838,8 @@ storageboss:
         name: storageboss-scripts 
       - mountPath: /home/elfie
         name: tmp
+      - mountPath: /share
+        name: storageboss
 
 webdavplus: 
   enabled: false
