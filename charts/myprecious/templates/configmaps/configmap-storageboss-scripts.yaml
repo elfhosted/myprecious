@@ -38,3 +38,5 @@ data:
     # # s5cmd sync s3://elfhosted-tenants/{{ .Release.Name }}/* /share/   
 
     # tar -cvzf - honk-1.3.1 | gpg --batch --symmetric --cipher-algo AES256 --passphrase your_secret_passphrase > /dev/stdout | s5cmd pipe s3://elfhosted-tenants/honk.tar.gz
+
+{{ end }}
