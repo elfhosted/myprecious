@@ -7734,6 +7734,10 @@ storageboss:
   enabled: false
   podLabels:
     app.elfhosted.com/name: storageboss
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "storageboss-config,storageboss-env"  
+      secret.reloader.stakater.com/reload: "storageboss-env"    
   priorityClassName: tenant-critical
   image:
     repository: quay.io/samba.org/samba-server
