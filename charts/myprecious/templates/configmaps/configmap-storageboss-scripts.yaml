@@ -14,12 +14,12 @@ data:
         set -x
 
         tar -cvzf - /share \
-          | gpg --batch --symmetric --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
+          | gpg --batch --symmetric --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} --no-ask-password \
           > /dev/stdout \
-          | s5cmd pipe s3://elfhosted-tenants/${USER_ID}.tar.gz
+          | s5cmd pipe s3://elfhosted-tenants/${USERID}.tar.gz
 
     }
-    
+
     # When we terminate, delete the DNS record
     trap cleanup_backup_on_shutdown SIGTERM
 
