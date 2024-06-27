@@ -4914,7 +4914,7 @@ plex: &app_plex
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: debrid
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "150" # tested with _kilos in Discord on a 97Mbit remux
+    kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   affinity:
     podAffinity:
       # prefer to be located with zurg, if tolerations permit
