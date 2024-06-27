@@ -31,8 +31,8 @@ data:
   restore.sh: |
 
     echo "Attempting to restore any data in B2..."
-    time (curl -L https://bagend.elfhosted.com/file/elfhosted-tenants/${USERID}.tar.gz \
+    time ((curl -L https://bagend.elfhosted.com/file/elfhosted-tenants/${USERID}.tar.gz \
       | gpg --batch --decrypt --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
-      | tar zxvmf - -C /share)
+      | tar zxvmf - -C /share) || echo "Failed to restore, but starting anyway...")
 
 {{ end }}
