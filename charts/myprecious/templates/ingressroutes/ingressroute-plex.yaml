@@ -18,6 +18,8 @@ spec:
           kind: Service
           port: 3000 # openspeedtest
       middlewares:
+        - name: stripprefix-speed
+          namespace: traefik
         - name: buffer-2gb
           namespace: traefik
 {{ end }}

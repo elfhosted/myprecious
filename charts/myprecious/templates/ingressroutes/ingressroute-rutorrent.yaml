@@ -15,7 +15,8 @@ spec:
       middlewares:
         - name: {{ .Release.Name }}-add-cors-for-homer
         - name: {{ .Release.Name }}-traefik-forward-auth
-        - name: {{ .Release.Name }}-strip-gluetun-prefix
+        - name: stripprefix-gluetun
+          namespace: traefik
         - name: error-pages
           namespace: traefik
 {{ end }}  
