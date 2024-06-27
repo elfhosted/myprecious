@@ -11,12 +11,10 @@ data:
     function cleanup_backup_on_shutdown {
         echo "Received SIGTERM, doing backup..."
 
-        set -x
-
-        tar -cvzf - -C /share . \
+        time (tar -cvzf - -C /share . \
           | gpg --batch --symmetric --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
           > /dev/stdout \
-          | s5cmd pipe s3://elfhosted-tenants/${USERID}.tar.gz
+          | s5cmd pipe s3://elfhosted-tenants/${USERID}.tar.gz)
 
     }
 
@@ -32,9 +30,9 @@ data:
     
   restore.sh: |
 
-    curl -L https://bagend.elfhosted.com/file/elfhosted-tenants/${USERID}.tar.gz \
+    time (curl -L https://bagend.elfhosted.com/file/elfhosted-tenants/${USERID}.tar.gz \
       | gpg --batch --decrypt --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
-      | tar zxvmf - -C /share
+      | tar zxvmf - -C /share)
 
     # set -e
     # s5cmd pipe s3://elfhosted-tenants/{{ .Release.Name }}.gz | tar xv -c > /share/
