@@ -726,7 +726,7 @@ storageboss_bootstrap: &storageboss_bootstrap
     if [[ ! -f /config/${ELF_APP_NAME}/i-am-bootstrapped ]]
     then
       echo "Bootstrapping from goldilocks config..."
-      s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/
+      s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/${ELF_APP_NAME}/
       touch /config/${ELF_APP_NAME}/i-am-bootstrapped
     fi
 
@@ -5117,6 +5117,7 @@ plex: &app_plex
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: plex
       - mountPath: /phototranscoder
         name: phototranscoder        
       # can't use default resources because the ephemeral limit kicks out /phototranscoder later
