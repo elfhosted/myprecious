@@ -10858,7 +10858,6 @@ zurg: &app_zurg
           port: 9999 
   persistence:
     tmp: *tmp  
-    symlinks: *symlinks
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     config:
       enabled: true
