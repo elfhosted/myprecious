@@ -11,7 +11,7 @@ data:
     function cleanup_backup_on_shutdown {
         echo "Received SIGTERM, doing backup..."
 
-        time (tar -cvzf - -C /share . \
+        time (tar -cvzf - -C /ephemeral . \
           | gpg --batch --symmetric --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
           > /dev/stdout \
           | s5cmd pipe s3://elfhosted-tenants/${USERID}.tar.gz)
@@ -33,6 +33,6 @@ data:
     echo "Attempting to restore any data in B2..."
     time ((curl -L https://bagend.elfhosted.com/file/elfhosted-tenants/${USERID}.tar.gz \
       | gpg --batch --decrypt --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
-      | tar zxvmf - -C /share) || echo "Failed to restore, but starting anyway...")
+      | tar zxvmf - -C /ephemeral) || echo "Failed to restore, but starting anyway...")
 
 {{ end }}

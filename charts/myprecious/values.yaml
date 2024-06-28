@@ -7825,6 +7825,8 @@ storageboss:
         name: storageboss-scripts 
       - mountPath: /home/elfie
         name: tmp
+      - mountPath: /ephemeral
+        name: ephemeral
       resources: *default_resources
       securityContext: *default_securitycontext  
   additionalContainers:
@@ -7847,8 +7849,8 @@ storageboss:
         name: storageboss-scripts 
       - mountPath: /home/elfie
         name: tmp
-      - mountPath: /share
-        name: storageboss
+      - mountPath: /ephemeral
+        name: ephemeral
 
 webdavplus: 
   enabled: false
@@ -11064,6 +11066,7 @@ plexdebrid:
         http:
           port: 3001 
   persistence:
+    tmp: *tmp   
     config:
       enabled: true
       type: custom
