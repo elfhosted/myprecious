@@ -377,11 +377,11 @@ symlinks: &symlinks
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      # switch this around to move to storageboss
-      # claimName: storageboss-symlinks
-      claimName: symlinks
+      claimName: storageboss-symlinks
+      # old design below:
+      # claimName: symlinks
   mountPath: /storage/symlinks
-tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
+tmp: &tmp
   enabled: true
   type: custom
   mountPath: /tmp
@@ -2989,14 +2989,14 @@ filebrowser:
       volumeSpec:
         configMap:
           name: explain-migration  
-    # plex:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /storage/config/plex/
-    #   subPath: plex
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: storageboss-persistent            
+    plex:
+      enabled: true
+      type: custom
+      mountPath: /storage/config/plex/
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storageboss-persistent            
     plexdebrid:
       enabled: false
       type: custom
@@ -5022,21 +5022,21 @@ plex: &app_plex
     tag: rolling@sha256:06d7d71e5754d606edc6d5e8fea906406bbd027e9427d6cb56de368d877f8e98
   persistence:
     <<: *appmounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plex-block 
     # config:
     #   enabled: true
     #   type: custom
     #   mountPath: /config/
-    #   subPath: plex
     #   volumeSpec:
     #     persistentVolumeClaim:
-    #       claimName: storageboss-persistent                                       
+    #       claimName: config-plex-block 
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storageboss-persistent                                       
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
@@ -7867,13 +7867,13 @@ storageboss:
         persistentVolumeClaim:
           claimName: config-plex-block
       mountPath: /persistent/plex
-    # symlinks:
-    #   enabled: true
-    #   type: custom
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: symlinks
-    #   mountPath: /symlinks      
+    symlinks:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: symlinks
+      mountPath: /symlinks      
     config:
       enabled: "true"
       subPath: "container.json"
@@ -7964,10 +7964,10 @@ storageboss:
       - mountPath: /ephemeral
         name: ephemeral
       # need a folder here for each app. what a pita
-      # - mountPath: /persistent
-      #   name: persistent
-      # - mountPath: /symlinks
-      #   name: symlinks                
+      - mountPath: /persistent/plex
+        name: persistent-plex
+      - mountPath: /symlinks
+        name: symlinks                
   terminationGracePeriodSeconds: "3600" # take up to an hour to backup
 
 webdavplus: 
