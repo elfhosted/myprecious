@@ -2716,13 +2716,6 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *appmounts
-    storageboss:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: storageboss
-      mountPath: /storage/storageboss
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
