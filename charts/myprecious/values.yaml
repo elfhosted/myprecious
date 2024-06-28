@@ -380,13 +380,6 @@ symlinks: &symlinks
     persistentVolumeClaim:
       claimName: symlinks
   mountPath: /storage/symlinks
-# elfstorage: &elfstorage
-#   enabled: true
-#   type: custom
-#   volumeSpec:
-#     persistentVolumeClaim:
-#       claimName: storageboss-elfstorage
-#   mountPath: /storage/elfstorage    
 tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
   enabled: true
   type: custom
@@ -660,6 +653,8 @@ bootstrap: &bootstrap
     name: elfbot
   - mountPath: /config
     name: config
+  - mountPath: /tmp
+    name: tmp 
   env: *bootstrap_env
   resources: *default_resources
   securityContext: *default_securitycontext
@@ -2919,6 +2914,14 @@ filebrowser:
       volumeSpec:
         configMap:
           name: explain-migration  
+    plex:
+      enabled: true
+      type: custom
+      mountPath: /storage/config/plex/
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storageboss-persistent            
     plexdebrid:
       enabled: false
       type: custom
@@ -3052,15 +3055,7 @@ filebrowser:
       mountPath: /storage/config/privatebin/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-privatebin-ssd
-    plex:
-      enabled: "false"
-      subPath: "where-is-my-plex.txt"
-      mountPath: /storage/config/plex/where-is-my-plex.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration              
+          claimName: config-privatebin-ssd            
     prowlarr:
       enabled: "false"
       subPath: "where-is-my-prowlarr.txt"
@@ -4956,9 +4951,10 @@ plex: &app_plex
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: plex
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-block                             
+          claimName: storageboss-persistent                             
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
@@ -7753,11 +7749,18 @@ storageboss:
     fsGroupChangePolicy: "OnRootMismatch"      
   automountServiceAccountToken: false
   persistence:
-    storageboss:
+    ephemeral:
       enabled: true
       type: custom
-      mountPath: /share
+      mountPath: /ephemeral
       volumeSpec: *volumespec_ephemeral_volume_50g  
+    persistent-plex:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-plex-block
+      mountPath: /persistent/plex
     config:
       enabled: "true"
       subPath: "container.json"
