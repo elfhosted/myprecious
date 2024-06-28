@@ -7097,6 +7097,7 @@ nextpvr:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
+    tmp: *tmp   
     config:
       enabled: true
       type: custom
@@ -8296,6 +8297,7 @@ rapidleech:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   persistence:
+    tmp: *tmp   
     config:
       enabled: true
       type: custom
@@ -8594,6 +8596,7 @@ jdownloader:
   - configMapRef:
       name: jdownloader-config
   persistence:
+    tmp: *tmp   
     config:
       enabled: true
       type: custom
@@ -10744,6 +10747,7 @@ zurg: &app_zurg
         http:
           port: 9999 
   persistence:
+    tmp: *tmp  
     symlinks: *symlinks
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     config:
@@ -11148,6 +11152,7 @@ codeserver:
           port: 8080 
   persistence:
     symlinks: *symlinks
+    tmp: *tmp     
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg  
     config:
       enabled: true
