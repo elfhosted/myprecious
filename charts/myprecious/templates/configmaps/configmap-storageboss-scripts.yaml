@@ -16,6 +16,11 @@ data:
           > /dev/stdout \
           | s5cmd pipe s3://elfhosted-tenants/${USERID}.tar.gz)
 
+        time (tar -cvzf - -C /persistent . \
+          | gpg --batch --symmetric --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
+          > /dev/stdout \
+          | s5cmd pipe s3://elfhosted-tenants/${USERID}-persistent.tar.gz)          
+
     }
 
     # When we terminate, delete the DNS record
