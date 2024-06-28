@@ -10156,6 +10156,82 @@ annatar:
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config    
 
+comet:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/comet
+    tag: rolling@sha256:6e13c31d027d6efe0625b8b4ed11216b51c5e898f0c469fd96d41aabc08b267a
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-comet"
+    strategy:
+    rollingUpdate:
+      unavailable: 1      
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+  resources:
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8000    
+  envFrom:
+  - configMapRef:
+      name: comet-env 
+  - configMapRef:      
+      name: elfbot-comet
+      optional: true 
+  addons:
+    vpn:
+      enabled: false # in case we ever need it
+      gluetun:
+        image:
+          repository: thrnz/docker-wireguard-pia
+          tag: latest
+      env:
+        IPTABLES_BACKEND: nft
+        KILLSWITCH: "true"
+        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOC: de-frankfurt
+        PORT_FORWARDING: "0"
+        PORT_PERSIST: "1"
+        NFTABLES: "1"    
+        VPNDNS: "0"            
+      envFrom:
+      - secretRef:
+          name: comet-vpn
+      securityContext:
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config    
+
+
 jackettio:
   enabled: false
   image:
