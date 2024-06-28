@@ -1,0 +1,8 @@
+{{ if .Values.comet.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: comet-env
+data:
+  CUSTOM_HEADER_HTML: Welcome, {{ .Release.Name }}, to your Comet instance! ☄️
+{{ end }}
