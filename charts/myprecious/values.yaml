@@ -5007,8 +5007,8 @@ plex: &app_plex
       optional: true
   resources:
     requests:
-      cpu: 250m
-      memory: 2Gi
+      cpu: 50m
+      memory: 500mi
     limits:
       cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
@@ -5319,8 +5319,8 @@ jellyfin: &app_jellyfin
         timeoutSeconds: 10
   resources:
     requests:
-      cpu: "500m"
-      memory: 2Gi
+      cpu: 50m
+      memory: 500mi
     limits:
       cpu: 2
       memory: 4Gi
@@ -5541,8 +5541,8 @@ emby: &app_emby
         timeoutSeconds: 10
   resources:
     requests:
-      cpu: 250m
-      memory: 2Gi
+      cpu: 50m
+      memory: 500mi
     limits:
       cpu: 1
       memory: 2048Mi   
@@ -7738,7 +7738,29 @@ storageboss:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "storageboss-scripts,storageboss-env"  
-      secret.reloader.stakater.com/reload: ",storageboss-config,storageboss-env"    
+      secret.reloader.stakater.com/reload: ",storageboss-config,storageboss-env"  
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/download-only
+            operator: Exists
+    podAffinity: 
+      # prefer to be located with debrid class (plex/jelly/emby), but 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/class
+              operator: In
+              values:
+              - debrid
+          topologyKey: "kubernetes.io/hostname"   
+  tolerations:
+  - key: node-role.elfhosted.com/download-only
+    operator: Exists            
   priorityClassName: tenant-critical
   image:
     repository: quay.io/samba.org/samba-server
