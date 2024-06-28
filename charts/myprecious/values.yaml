@@ -376,10 +376,9 @@ rclonemountdebridlink: &rclonemountdebridlink
 symlinks: &symlinks
   enabled: true
   type: custom
-  subPath: symlinks
   volumeSpec:
     persistentVolumeClaim:
-      claimName: storageboss-persistent
+      claimName: storageboss-symlinks
   mountPath: /storage/symlinks
 tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
   enabled: true
@@ -7859,13 +7858,13 @@ storageboss:
         persistentVolumeClaim:
           claimName: config-plex-block
       mountPath: /persistent/plex
-    persistent-symlinks:
+    symlinks:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: symlinks-block
-      mountPath: /persistent/symlinks      
+          claimName: symlinks
+      mountPath: /symlinks      
     config:
       enabled: "true"
       subPath: "container.json"
@@ -7955,7 +7954,11 @@ storageboss:
         name: tmp
       - mountPath: /ephemeral
         name: ephemeral
-  # terminationGracePeriodSeconds: "3600" # take up to an hour to backup
+      - mountPath: /persistent
+        name: persistent
+      - mountPath: /symlinks
+        name: symlinks                
+  terminationGracePeriodSeconds: "3600" # take up to an hour to backup
 
 webdavplus: 
   enabled: false
