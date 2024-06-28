@@ -2996,7 +2996,7 @@ filebrowser:
       subPath: plex
       volumeSpec:
         persistentVolumeClaim:
-          claimName: storageboss-persistent            
+          claimName: storageboss    
     plexdebrid:
       enabled: false
       type: custom
@@ -5036,7 +5036,7 @@ plex: &app_plex
       subPath: plex
       volumeSpec:
         persistentVolumeClaim:
-          claimName: storageboss-persistent                                       
+          claimName: storageboss                                       
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
@@ -7856,12 +7856,14 @@ storageboss:
     fsGroupChangePolicy: "OnRootMismatch"      
   automountServiceAccountToken: false
   persistence:
-    ephemeral:
+    # this is an ephemeral volume
+    storage:
       enabled: true
       type: custom
-      mountPath: /ephemeral
+      mountPath: /storage
       volumeSpec: *volumespec_ephemeral_volume_50g  
-    persistent-plex:
+    # these are the persistent volumes we support currently
+    plex:
       enabled: true
       type: custom
       volumeSpec:
@@ -7874,7 +7876,8 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks
-      mountPath: /symlinks      
+      mountPath: /persistent/symlinks     
+    # samba config 
     config:
       enabled: "true"
       subPath: "container.json"
@@ -7916,60 +7919,61 @@ storageboss:
       name: storageboss-env
   - secretRef:    
       name: storageboss-env
-  initContainers:
-    restore: 
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set +e # don't error on failure
-        /storageboss-scripts/restore.sh
-      envFrom:
-      - configMapRef:
-          name: storageboss-env
-      - configMapRef:
-          name: elfhosted-user-config      
-      - secretRef:
-          name: storageboss-env
-      volumeMounts:
-      - mountPath: /storageboss-scripts
-        name: storageboss-scripts 
-      - mountPath: /home/elfie
-        name: tmp
-      - mountPath: /ephemeral
-        name: ephemeral
-      resources: *default_resources
-      securityContext: *default_securitycontext  
-  additionalContainers:
-    backup-on-termination:
-      image: *tooling_image
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - /storageboss-scripts/backup.sh
-      envFrom:
-      - configMapRef:
-          name: storageboss-env
-      - configMapRef:
-          name: elfhosted-user-config      
-      - secretRef:
-          name: storageboss-env
-      volumeMounts:
-      - mountPath: /storageboss-scripts
-        name: storageboss-scripts 
-      - mountPath: /home/elfie
-        name: tmp
-      - mountPath: /ephemeral
-        name: ephemeral
-      # need a folder here for each app. what a pita
-      - mountPath: /persistent/plex
-        name: persistent-plex
-      - mountPath: /symlinks
-        name: symlinks                
-  terminationGracePeriodSeconds: "3600" # take up to an hour to backup
+  # initContainers:
+  #   setup: 
+  #     image: *tooling_image
+  #     imagePullPolicy: IfNotPresent
+  #     command:
+  #     - /bin/bash
+  #     - -c
+  #     - |
+  #       set +e # don't error on failure
+  #       /storageboss-scripts/restore.sh
+  #     envFrom:
+  #     - configMapRef:
+  #         name: storageboss-env
+  #     - configMapRef:
+  #         name: elfhosted-user-config      
+  #     - secretRef:
+  #         name: storageboss-env
+  #     volumeMounts:
+  #     - mountPath: /storageboss-scripts
+  #       name: storageboss-scripts 
+  #     - mountPath: /home/elfie
+  #       name: tmp
+  #     # we mount this 
+  #     - mountPath: /storage
+  #       name: ephemeral
+  #     resources: *default_resources
+  #     securityContext: *default_securitycontext  
+  # additionalContainers:
+  #   backup-on-termination:
+  #     image: *tooling_image
+  #     command:
+  #     - /usr/bin/dumb-init
+  #     - /bin/bash
+  #     - -c
+  #     - /storageboss-scripts/backup.sh
+  #     envFrom:
+  #     - configMapRef:
+  #         name: storageboss-env
+  #     - configMapRef:
+  #         name: elfhosted-user-config      
+  #     - secretRef:
+  #         name: storageboss-env
+  #     volumeMounts:
+  #     - mountPath: /storageboss-scripts
+  #       name: storageboss-scripts 
+  #     - mountPath: /home/elfie
+  #       name: tmp
+  #     - mountPath: /ephemeral
+  #       name: ephemeral
+  #     # need a folder here for each app. what a pita
+  #     - mountPath: /persistent/plex
+  #       name: persistent-plex
+  #     - mountPath: /symlinks
+  #       name: symlinks                
+  # terminationGracePeriodSeconds: "3600" # take up to an hour to backup
 
 webdavplus: 
   enabled: false

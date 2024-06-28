@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: storageboss-ephemeral
+  name: storageboss
   labels:
     velero.io/exclude-from-backup: "true"
 spec:
@@ -11,6 +11,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: storageboss-{{ .Release.Name }}-ephemeral
+  volumeName: storageboss-{{ .Release.Name }}
   storageClassName: smb
 {{ end }}
