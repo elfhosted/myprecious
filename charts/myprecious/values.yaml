@@ -660,7 +660,7 @@ bootstrap: &bootstrap
   resources: *default_resources
   securityContext: *default_securitycontext
 
-storagebox_bootstrap: &storagebox_bootstrap
+storageboss_bootstrap: &storageboss_bootstrap
   image: *tooling_image
   imagePullPolicy: IfNotPresent
   command:
@@ -5088,7 +5088,7 @@ plex: &app_plex
       cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    bootstrap: *storagebox_bootstrap
+    bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
@@ -7955,7 +7955,7 @@ storageboss:
         name: tmp
       - mountPath: /ephemeral
         name: ephemeral
-  terminationGracePeriodSeconds: 3600 # take up to an hour to backup
+  # terminationGracePeriodSeconds: "3600" # take up to an hour to backup
 
 webdavplus: 
   enabled: false
