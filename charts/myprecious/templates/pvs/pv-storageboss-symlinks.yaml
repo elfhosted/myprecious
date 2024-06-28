@@ -20,7 +20,7 @@ spec:
     - mfsymlinks
     - cache=strict
     - noserverino  # required to prevent data corruption  
-  symlinksVolumeReclaimPolicy: Delete
+  persistentVolumeReclaimPolicy: Delete
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
