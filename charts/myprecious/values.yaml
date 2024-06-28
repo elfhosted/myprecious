@@ -7856,12 +7856,12 @@ storageboss:
     fsGroupChangePolicy: "OnRootMismatch"      
   automountServiceAccountToken: false
   persistence:
-    # this is an ephemeral volume
-    storage:
-      enabled: true
-      type: custom
-      mountPath: /storage
-      volumeSpec: *volumespec_ephemeral_volume_50g  
+    # # this is an ephemeral volume
+    # storage:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /storage
+    #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
     plex:
       enabled: true
@@ -7869,14 +7869,14 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plex-block
-      mountPath: /persistent/plex
+      mountPath: /storage/plex
     symlinks:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks
-      mountPath: /persistent/symlinks     
+      mountPath: /storage/symlinks     
     # samba config 
     config:
       enabled: "true"
