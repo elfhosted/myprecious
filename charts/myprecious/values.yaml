@@ -378,8 +378,6 @@ symlinks: &symlinks
   volumeSpec:
     persistentVolumeClaim:
       claimName: storageboss-symlinks
-      # old design below:
-      # claimName: symlinks
   mountPath: /storage/symlinks
 tmp: &tmp
   enabled: true
