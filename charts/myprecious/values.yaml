@@ -366,19 +366,14 @@ rclonemountdebridlink: &rclonemountdebridlink
     persistentVolumeClaim:
       claimName: debridlink
   mountPath: /storage/debridlink    
-# symlinks: &symlinks
-#   enabled: true
-#   type: custom
-#   volumeSpec:
-#     persistentVolumeClaim:
-#       claimName: storageboss-symlinks
-#   mountPath: /storage/symlinks  
 symlinks: &symlinks
   enabled: true
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: storageboss-symlinks
+      # switch this around to move to storageboss
+      # claimName: storageboss-symlinks
+      claimName: symlinks
   mountPath: /storage/symlinks
 tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
   enabled: true
@@ -2988,14 +2983,14 @@ filebrowser:
       volumeSpec:
         configMap:
           name: explain-migration  
-    plex:
-      enabled: true
-      type: custom
-      mountPath: /storage/config/plex/
-      subPath: plex
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: storageboss-persistent            
+    # plex:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /storage/config/plex/
+    #   subPath: plex
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: storageboss-persistent            
     plexdebrid:
       enabled: false
       type: custom
@@ -5025,10 +5020,17 @@ plex: &app_plex
       enabled: true
       type: custom
       mountPath: /config/
-      subPath: plex
       volumeSpec:
         persistentVolumeClaim:
-          claimName: storageboss-persistent                             
+          claimName: config-plex-block 
+    # config:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /config/
+    #   subPath: plex
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: storageboss-persistent                                       
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
@@ -5087,7 +5089,8 @@ plex: &app_plex
       cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    bootstrap: *storageboss_bootstrap
+    bootstrap: *bootstrap
+    # bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
@@ -7858,13 +7861,13 @@ storageboss:
         persistentVolumeClaim:
           claimName: config-plex-block
       mountPath: /persistent/plex
-    symlinks:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks
-      mountPath: /symlinks      
+    # symlinks:
+    #   enabled: true
+    #   type: custom
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: symlinks
+    #   mountPath: /symlinks      
     config:
       enabled: "true"
       subPath: "container.json"
@@ -7956,8 +7959,8 @@ storageboss:
         name: ephemeral
       - mountPath: /persistent
         name: persistent
-      - mountPath: /symlinks
-        name: symlinks                
+      # - mountPath: /symlinks
+      #   name: symlinks                
   terminationGracePeriodSeconds: "3600" # take up to an hour to backup
 
 webdavplus: 
@@ -10182,6 +10185,13 @@ comet:
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-comet-ssd
   resources:
     requests:
       cpu: 100m
@@ -10206,7 +10216,7 @@ comet:
       optional: true 
   addons:
     vpn:
-      enabled: false # in case we ever need it
+      enabled: true # in case we ever need it
       gluetun:
         image:
           repository: thrnz/docker-wireguard-pia
