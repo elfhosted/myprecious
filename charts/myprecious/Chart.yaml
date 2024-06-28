@@ -532,6 +532,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: annatar
   - name: app-template
+    condition: comet.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: comet    
+  - name: app-template
     condition: xtremio.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

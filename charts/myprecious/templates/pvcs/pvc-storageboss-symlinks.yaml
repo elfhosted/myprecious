@@ -1,18 +1,16 @@
 {{ if .Values.storageboss.enabled }}
-apiVersion: v1
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
   name: storageboss-symlinks
   labels:
     velero.io/exclude-from-backup: "true"
 spec:
   accessModes:
-  - ReadWriteMany
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
-  storageClassName: rclone
-  selector:
-    matchLabels:
-      name: rclone-{{ .Release.Name }}-storageboss-symlinks
+  volumeName: storageboss-{{ .Release.Name }}-symlinks
+  storageClassName: smb
 {{ end }}

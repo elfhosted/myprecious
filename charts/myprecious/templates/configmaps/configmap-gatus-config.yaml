@@ -216,6 +216,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.comet.enabled }}
+      - name: comet
+        group: consume-media
+        url: "http://comet:8000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.torrentio.enabled }}
       - name: torrentio
         group: consume-media

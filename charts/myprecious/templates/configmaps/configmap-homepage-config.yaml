@@ -182,7 +182,15 @@ data:
             href: https://{{ .Release.Name }}-annatar.elfhosted.com
             description: Use Jackett in Stremio
             siteMonitor: http://annatar:8000
-        {{ end }}  
+        {{ end }} 
+
+        {{ if .Values.comet.enabled }}
+        - Comet:
+            icon: mdi-meteor
+            href: https://{{ .Release.Name }}-comet.elfhosted.com
+            description: Stremio's fastest torrent/debrid search add-on
+            siteMonitor: http://comet:8000
+        {{ end }}          
 
         {{ if .Values.xtremio.enabled }}
         - Annatar:

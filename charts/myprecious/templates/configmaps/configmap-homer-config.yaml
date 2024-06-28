@@ -404,7 +404,17 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-annatar.elfhosted.com"
             target: "_blank" # optional html tag target attribute
-          {{ end }}           
+          {{ end }}  
+
+          {{ if .Values.comet.enabled }}
+          - name: "Comet"
+            icon: "fas fa-meteor"
+            subtitle: "Fast Jackett searches via Stremio"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-comet.elfhosted.com"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                     
 
           {{ if .Values.torrentio.enabled }}
           - name: "Torrentio"
