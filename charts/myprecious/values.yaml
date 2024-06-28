@@ -5095,8 +5095,8 @@ plex: &app_plex
       cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    bootstrap: *bootstrap
-    # bootstrap: *storageboss_bootstrap
+    # bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
