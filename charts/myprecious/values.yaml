@@ -4770,22 +4770,6 @@ jellyfin: &app_jellyfin
   podLabels:
     app.elfhosted.com/class: debrid  
     app.elfhosted.com/name: jellyfin
-  affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists   
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   priorityClassName: tenant-streaming
