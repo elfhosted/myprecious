@@ -396,12 +396,6 @@ dependencies:
     condition: joplinserver.enabled
     version: ~0.0.1
     repository: oci://ghcr.io/elfhosted/charts
-  # disabled for now
-  # - name: app-template
-  #   condition: tdarr.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: tdarr
   - name: app-template
     version: ~0.2.1
     condition: rdtclientvpnpia.enabled

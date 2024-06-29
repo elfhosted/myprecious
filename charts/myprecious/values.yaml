@@ -1198,7 +1198,7 @@ rutorrentpia:
       - configMapRef:
           name: rutorrent-pia-config
   initContainers:
-    bootstrap: *bootstrap # avoid adding setup
+    bootstrap: *storageboss_bootstrap # avoid adding setup
         
 delugegluetun: &deluge
   enabled: false
@@ -1375,6 +1375,7 @@ delugegluetun: &deluge
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -1423,7 +1424,7 @@ delugepia:
       - configMapRef:
           name: deluge-pia-config
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -1467,6 +1468,7 @@ delugepia:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /shared
         name: shared        
       env: *bootstrap_env
@@ -1484,6 +1486,7 @@ delugepia:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /tmp
         name: tmp
       env:
@@ -1782,7 +1785,7 @@ qbittorrentpia:
       - mountPath: /tmp
         name: tmp
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       command:
@@ -1828,6 +1831,7 @@ qbittorrentpia:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       - mountPath: /shared
         name: shared  
       securityContext: *default_securitycontext
@@ -2117,9 +2121,10 @@ tautulli:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: tautulli
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-tautulli-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2144,7 +2149,7 @@ tautulli:
       cpu: 1
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 radarr: &app_radarr
   enabled: false
@@ -2868,111 +2873,7 @@ filebrowser:
 
                  
 
-    seafile:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/seafile/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-seafile
-    shoko:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/shoko/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-shoko-ssd     
-    syncthing:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/syncthing/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-syncthing
-    tautulli:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/tautulli/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tautulli-ssd
-    tdarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/tdarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tdarr-ssd
-    thelounge:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/thelounge/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-thelounge
-    unpackerr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/unpackerr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-unpackerr-ssd          
-    uptimekuma:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/uptimekuma/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-uptimekuma-ssd          
-    vaultwarden:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/vaultwarden/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-vaultwarden-ssd
-    xteve:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/xteve/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-xteve-ssd
-    youtubedl:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/youtubedl/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-youtubedl-ssd
-    zurg:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/zurg/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd
-    zurgplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/zurg/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd                    
-    rdtclient:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rdtclient/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-ssd
-    rdtclientvpnpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rdtclient-alldebrid/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-alldebrid-ssd          
+      
   service:
     main:
       enabled: true # necessary for probes
@@ -3165,9 +3066,10 @@ uptimekuma:
       enabled: true
       type: custom
       mountPath: /app/data/
+      subPath: uptimekuma
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-uptimekuma-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3185,7 +3087,7 @@ uptimekuma:
         http:
           port: 3001
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 10m
@@ -3807,6 +3709,7 @@ calibre:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: calibre
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -4208,7 +4111,7 @@ prowlarr: &app_prowlarr
         http:
           port: 9696
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4231,6 +4134,7 @@ prowlarr: &app_prowlarr
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: prowlarr
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -4718,7 +4622,6 @@ plex: &app_plex
       cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    # bootstrap: *bootstrap
     bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init
     setup:
@@ -4772,6 +4675,7 @@ plex: &app_plex
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: plex
       config: # We have to set this to null so that we can override with our own config
       scripts:
         up: |-
@@ -5769,8 +5673,8 @@ seafile:
         enabled: false # probes can make helm fail/restart under some conditions. Either do or do not, there is no try
       persistence:
         enabled: true
-        existingClaim: config-seafile
-        subPath: database
+        existingClaim: storageboss
+        subPath: seafile/database
       resources:
         requests:
           cpu: 5m
@@ -5828,8 +5732,8 @@ seafile:
       mountPath: /shared/seafile
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-seafile
-      subPath: data
+          claimName: storageboss
+      subPath: seafile/data
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5838,7 +5742,7 @@ seafile:
           name: elfbot-seafile
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 xteve:
   enabled: false
@@ -5887,9 +5791,10 @@ xteve:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: xteve
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-xteve-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5905,7 +5810,7 @@ xteve:
           name: tooling-scripts             
           defaultMode: 0755               
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init    
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination 
@@ -5957,9 +5862,10 @@ youtubedl:
       enabled: true
       type: custom
       mountPath: /app/appdata
+      subPath: youtubedl
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-youtubedl-ssd
+          claimName: storageboss
     pm2:
       enabled: true
       mountPath: /app/pm2
@@ -5981,7 +5887,7 @@ youtubedl:
           optional: true
 
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 thelounge:
   enabled: false
@@ -6032,9 +5938,10 @@ thelounge:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: thelounge
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-thelounge
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6043,7 +5950,7 @@ thelounge:
           name: elfbot-thelounge
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     create-user:
       image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:e1b875be806d8e887404c62ec916def7da06ee150dd6884956e42d924a717e27
       imagePullPolicy: IfNotPresent
@@ -6070,6 +5977,7 @@ thelounge:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: thelounge
       env:
       - name: THELOUNGE_HOME
         value: /config/thelounge # avoids attempts to chown /config
@@ -6136,9 +6044,10 @@ unpackerr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: unpackerr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-unpackerr-ssd
+          claimName: storageboss
     example-config:
       enabled: "true"
       type: "custom"
@@ -6154,7 +6063,7 @@ unpackerr:
           optional: true
 
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -6173,6 +6082,7 @@ unpackerr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: unpackerr
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
@@ -6542,9 +6452,10 @@ vaultwarden:
       enabled: true
       type: custom
       mountPath: /data
+      subPath: vaultwarden
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-vaultwarden-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6554,7 +6465,7 @@ vaultwarden:
           optional: true
     tmp: *tmp
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -6697,9 +6608,10 @@ shoko:
       enabled: true
       type: custom
       mountPath: /home/shoko/.shoko/
+      subPath: shoko
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-shoko-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6708,7 +6620,7 @@ shoko:
           name: elfbot-shoko
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -7568,6 +7480,13 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-calibre-ssd
+    codeserver:
+      enabled: false
+      type: custom
+      mountPath: /storage/codeserver/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-codeserver-ssd          
     delugepia:
       enabled: false
       type: custom
@@ -7861,7 +7780,21 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-radarr4k-block
-      mountPath: /storage/radarr4k        
+      mountPath: /storage/radarr4k       
+    rdtclient:
+      enabled: false
+      type: custom
+      mountPath: /storage/rdtclient/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rdtclient-ssd
+    rdtclientvpnpia:
+      enabled: false
+      type: custom
+      mountPath: /storage/rdtclient-alldebrid/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rdtclient-alldebrid-ssd           
     recyclarr:
       enabled: true
       type: custom
@@ -7918,8 +7851,90 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-sabnzbd-ssd
-
-
+    shoko:
+      enabled: false
+      type: custom
+      mountPath: /storage/shoko/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-shoko-ssd     
+    syncthing:
+      enabled: false
+      type: custom
+      mountPath: /storage/syncthing/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-syncthing
+    tautulli:
+      enabled: false
+      type: custom
+      mountPath: /storage/tautulli/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-tautulli-ssd
+    thelounge:
+      enabled: false
+      type: custom
+      mountPath: /storage/thelounge/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-thelounge
+    unpackerr:
+      enabled: false
+      type: custom
+      mountPath: /storage/unpackerr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-unpackerr-ssd          
+    uptimekuma:
+      enabled: false
+      type: custom
+      mountPath: /storage/uptimekuma/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-uptimekuma-ssd          
+    vaultwarden:
+      enabled: false
+      type: custom
+      mountPath: /storage/vaultwarden/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-vaultwarden-ssd
+    seafile:
+      enabled: false
+      type: custom
+      mountPath: /storage/seafile/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-seafile
+    xteve:
+      enabled: false
+      type: custom
+      mountPath: /storage/xteve/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-xteve-ssd
+    youtubedl:
+      enabled: false
+      type: custom
+      mountPath: /storage/youtubedl/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-youtubedl-ssd
+    zurg:
+      enabled: false
+      type: custom
+      mountPath: /storage/zurg/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-zurg-ssd
+    zurgplus:
+      enabled: false
+      type: custom
+      mountPath: /storage/zurg/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-zurg-ssd                    
 
 
 
@@ -8572,6 +8587,7 @@ rapidleech:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: rapidleech
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -8605,9 +8621,10 @@ syncthing:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: syncthing
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-syncthing
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8633,7 +8650,7 @@ syncthing:
       cpu: 1
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: ghcr.io/elfhosted/syncthing:1.27.8@sha256:ee46afa49c0b1cfeb1de2eaef6d36ed10d9ada3a358ddbee664b3e981bbed04b
       imagePullPolicy: IfNotPresent
@@ -8670,6 +8687,7 @@ syncthing:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: syncthing
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -8705,9 +8723,10 @@ rdtclient: &app_rdtclient
       enabled: true
       type: custom
       mountPath: /data/db
+      subPath: rdtclient
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rdtclient-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8739,7 +8758,7 @@ rdtclient: &app_rdtclient
       memory: 2Gi
       ephemeral-storage: 100Mi # a safety net against node ephemeral space exhaustion
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 # Add a VPN option for rdtclient
 rdtclientvpnpia:
@@ -8753,9 +8772,10 @@ rdtclientvpnpia:
       enabled: true
       type: custom
       mountPath: /data/db
+      subPath: rdtclient-alldebrid
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rdtclient-alldebrid-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9072,84 +9092,6 @@ joplinserver:
               sleep 1d
             done
 
-tdarr:
-  enabled: false
-  priorityClassName: tenant-bulk
-  image:
-    repository: ghcr.io/haveagitgat/tdarr
-    tag: 2.22.01
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tdarr"
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: false
-    privileged: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    # runAsUser: 568
-    # runAsGroup: 568
-    fsGroup: 568 # need this so that the bootstrap can run
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  env:
-    PUID: 568
-    PGID: 109 # for access to the DRI
-    inContainer: "true"
-    internalNode: "true"
-    nodeName: elfnode
-  persistence:
-    <<: *appmounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /app/server
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tdarr-ssd
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-tdarr
-          optional: true
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
-    tmp: # in case users use /tmp
-      enabled: true
-      type: custom
-      mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_200g
-    transcode:
-      enabled: true
-      type: custom
-      mountPath: /transcode
-      volumeSpec: *volumespec_ephemeral_volume_200g
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8265
-  resources:
-    requests:
-      cpu: 150m
-      memory: 500Mi
-    limits:
-      cpu: 250m # deliberately hobble the CPU in favor of GPU transcoding
-      memory: 1Gi
-  initContainers:
-    bootstrap: *bootstrap
-
 homepage:
   enabled: false
   priorityClassName: tenant-normal
@@ -9431,6 +9373,7 @@ autoscan:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: autoscan
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
@@ -9664,7 +9607,8 @@ airdcpp: &app_airdcpp
       config: # We have to set this to null so that we can override with our own config   
       additionalVolumeMounts:
       - mountPath: /config
-        name: config      
+        name: config
+        subPath: airdcpp      
       scripts:
         up: |-
           #!/bin/ash
@@ -9700,7 +9644,8 @@ airdcppgluetun:
       config: # We have to set this to null so that we can override with our own config 
       additionalVolumeMounts:
       - mountPath: /config
-        name: config            
+        name: config
+        subPath: airdcpp            
       scripts:
         up: |-
           #!/bin/ash
@@ -10895,6 +10840,7 @@ recyclarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: recyclarr
 
 knightcrawler: &app_knightcrawler
   enabled: false
@@ -11064,9 +11010,10 @@ zurg: &app_zurg
       enabled: true
       type: custom
       mountPath: /config
+      subPath: zurg
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-zurg-ssd
+          claimName: storageboss
     example-config:
       enabled: "true"
       type: "custom"
@@ -11097,7 +11044,7 @@ zurg: &app_zurg
   - configMapRef:
       name: zurg-env # this is here so we can use env vars to detect whether to enable warp                             
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -11134,6 +11081,7 @@ zurg: &app_zurg
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: zurg
       - name: example-config
         mountPath: "/bootstrap/"      
       securityContext:
@@ -11196,7 +11144,8 @@ zurg: &app_zurg
         sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
       volumeMounts:
       - mountPath: /config
-        name: config      
+        name: config     
+        subPath: zurg 
       envFrom:
       - configMapRef:
           name: zurg-env # this is here so we can use env vars to detect whether to enable warp
@@ -11471,9 +11420,10 @@ codeserver:
       enabled: true
       type: custom
       mountPath: /home/coder
+      subPath: codeserver
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-codeserver-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -11488,7 +11438,7 @@ codeserver:
         configMap:
           name: codeserver-config          
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -11508,6 +11458,7 @@ codeserver:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: codeserver
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
