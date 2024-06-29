@@ -2191,7 +2191,7 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -2326,7 +2326,7 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -2909,15 +2909,7 @@ filebrowser:
       mountPath: /storage/config/deluge/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-deluge-ssd
-    emby:
-      enabled: "false"
-      subPath: "where-is-my-emby.txt"
-      mountPath: /storage/config/emby/where-is-my-emby.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration    
+          claimName: config-deluge-ssd  
     filebot:
       enabled: false
       type: custom
@@ -2981,22 +2973,6 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-jdownloader-ssd
-    jellyfin:
-      enabled: "false"
-      subPath: "where-is-my-jellyfin.txt"
-      mountPath: /storage/config/jellyfin/where-is-my-jellyfin.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    plex:
-      enabled: true
-      type: custom
-      mountPath: /storage/config/plex/
-      subPath: plex
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: storageboss    
     plexdebrid:
       enabled: false
       type: custom
@@ -3153,22 +3129,6 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-qbittorrent-ssd
-    radarr:
-      enabled: "false"
-      subPath: "where-is-my-radarr.txt"
-      mountPath: /storage/config/radarr/where-is-my-radarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration   
-    radarr4k:
-      enabled: "false"
-      subPath: "where-is-my-radarr4k.txt"
-      mountPath: /storage/config/radarr4k/where-is-my-radarr4k.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
     rapidleech:
       enabled: false
       type: custom
@@ -3268,23 +3228,7 @@ filebrowser:
       mountPath: /storage/config/shoko/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-shoko-ssd
-    sonarr:
-      enabled: "false"
-      subPath: "where-is-my-sonarr.txt"
-      mountPath: /storage/config/sonarr/where-is-my-sonarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    sonarr4k:
-      enabled: "false"
-      subPath: "where-is-my-sonarr4k.txt"
-      mountPath: /storage/config/sonarr4k/where-is-my-sonarr4k.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration           
+          claimName: config-shoko-ssd     
     syncthing:
       enabled: false
       type: custom
@@ -4262,7 +4206,7 @@ sonarr: &app_sonarr
         http:
           port: 8989      
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4392,7 +4336,7 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989      
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5296,9 +5240,10 @@ jellyfin: &app_jellyfin
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jellyfin
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jellyfin-block            
+          claimName: storageboss         
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -5324,7 +5269,7 @@ jellyfin: &app_jellyfin
           name: tooling-scripts      
           defaultMode: 0755          
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init  
     setup:
       image: *tooling_image
@@ -5514,9 +5459,10 @@ emby: &app_emby
       enabled: true
       type: custom
       mountPath: /config/
+      mouthPath: emby
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-emby-block         
+          claimName: storageboss     
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -5542,7 +5488,7 @@ emby: &app_emby
           name: tooling-scripts      
           defaultMode: 0755          
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
@@ -7865,6 +7811,20 @@ storageboss:
     #   mountPath: /storage
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
+    emby:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-emby-block
+      mountPath: /storage/plex
+    jellyfin:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storageboss
+      mountPath: /storage/jellyfin
     plex:
       enabled: true
       type: custom
