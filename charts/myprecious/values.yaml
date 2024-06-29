@@ -7868,12 +7868,19 @@ storageboss:
         persistentVolumeClaim:
           claimName: config-plex-block
       mountPath: /storage/plex
+    # needed for the migration
+    symlinks-old:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: symlinks 
     symlinks:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: symlinks
+          claimName: symlinks-block-ssd
       mountPath: /storage/symlinks     
     # samba config 
     config:
@@ -7917,33 +7924,47 @@ storageboss:
       name: storageboss-env
   - secretRef:    
       name: storageboss-env
-  # initContainers:
-  #   setup: 
-  #     image: *tooling_image
-  #     imagePullPolicy: IfNotPresent
-  #     command:
-  #     - /bin/bash
-  #     - -c
-  #     - |
-  #       set +e # don't error on failure
-  #       /storageboss-scripts/restore.sh
-  #     envFrom:
-  #     - configMapRef:
-  #         name: storageboss-env
-  #     - configMapRef:
-  #         name: elfhosted-user-config      
-  #     - secretRef:
-  #         name: storageboss-env
-  #     volumeMounts:
-  #     - mountPath: /storageboss-scripts
-  #       name: storageboss-scripts 
-  #     - mountPath: /home/elfie
-  #       name: tmp
-  #     # we mount this 
-  #     - mountPath: /storage
-  #       name: ephemeral
-  #     resources: *default_resources
-  #     securityContext: *default_securitycontext  
+  initContainers:
+    setup: 
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        # don't error on failure
+        # not doing this yet
+        # /storageboss-scripts/restore.sh
+
+        if [[ ! -f /storage/symlinks/i-am-migrated ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Migrating from /migration/..."
+            cp -rfp --preserve=links /migration/* /storage/symlinks/
+            touch /storage/symlinks/i-am-migrated
+          fi
+        fi   
+                
+      envFrom:
+      - configMapRef:
+          name: storageboss-env
+      - configMapRef:
+          name: elfhosted-user-config      
+      - secretRef:
+          name: storageboss-env
+      volumeMounts:
+      - mountPath: /storageboss-scripts
+        name: storageboss-scripts 
+      - mountPath: /home/elfie
+        name: tmp
+      # we mount this 
+      - mountPath: /migration
+        name: symlinks-old
+      - mountPath: /storage/symlinks
+        name: symlinks        
+      resources: *default_resources
+      securityContext: *default_securitycontext  
   # additionalContainers:
   #   backup-on-termination:
   #     image: *tooling_image
