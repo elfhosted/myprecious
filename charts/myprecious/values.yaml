@@ -723,7 +723,7 @@ storageboss_bootstrap: &storageboss_bootstrap
 
     # In case the directory doesn't exist yet (this is the first time starting)
     mkdir -p /config/${ELF_APP_NAME}
-    
+
     if [[ ! -f /config/${ELF_APP_NAME}/i-am-bootstrapped ]]
     then
       echo "Bootstrapping from goldilocks config..."
@@ -968,9 +968,10 @@ rutorrentgluetun: &rutorrent
       enabled: true
       type: custom
       mountPath: /data/rtorrent/
+      subPath: rutorrent
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -1061,7 +1062,7 @@ rutorrentgluetun: &rutorrent
     PORT_FILE: /data/rtorrent/forwarded-port
     WAN_IP_CMD: 'curl -s ifconfig.me'
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       command:
@@ -1110,6 +1111,7 @@ rutorrentgluetun: &rutorrent
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: rutorrent
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -1174,6 +1176,7 @@ rutorrentgluetun: &rutorrent
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: rutorrent
       - mountPath: /shared
         name: shared        
       resources: *default_resources
@@ -1971,9 +1974,10 @@ sabnzbd:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: sabnzbd
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sabnzbd-ssd
+          claimName: storageboss
     tmp:
       enabled: true
       type: custom
@@ -1998,7 +2002,7 @@ sabnzbd:
         http:
           port: 8080
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -2023,6 +2027,7 @@ sabnzbd:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: sabnzbd
       - mountPath: /tmp
         name: tmp        
       env: *bootstrap_env
@@ -2069,6 +2074,7 @@ sabnzbd:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: sabnzbd
       - mountPath: /tmp
         name: tmp
       env: *bootstrap_env
@@ -2859,92 +2865,9 @@ filebrowser:
 
         
 
-    rapidleech:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rapidleech/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rapidleech-ssd
-    rclonebrowser:
-      enabled: true # this is always on
-      type: custom
-      mountPath: /storage/config/rclonebrowser/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rclonebrowser-ssd
-    readarr:
-      enabled: "false"
-      subPath: "where-is-my-readarr.txt"
-      mountPath: /storage/config/readarr/where-is-my-readarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    readarraudio:
-      enabled: "false"
-      subPath: "where-is-my-readarraudio.txt"
-      mountPath: /storage/config/readarraudio/where-is-my-readarraudio.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    recyclarr:
-      enabled: true
-      type: custom
-      mountPath: /storage/config/recyclarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-recyclarr-ssd
-    resiliosync:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/resiliosync/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-resiliosync-ssd
-    riven:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd  
-    rivenplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd                      
-    rpdb:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rpdb/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rpdb-ssd
-    rutorrentpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rutorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
-    rutorrentgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rutorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
-    sabnzbd:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/sabnzbd/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sabnzbd-ssd
+
+                 
+
     seafile:
       enabled: false
       type: custom
@@ -4193,9 +4116,10 @@ resiliosync:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: resiliosync
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-resiliosync-ssd
+          claimName: storageboss
     setup-config:
       enabled: "true"
       mountPath: "/sync.conf"
@@ -4218,7 +4142,7 @@ resiliosync:
           optional: true
 
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -4537,9 +4461,10 @@ readarr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: readarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarr-block           
+          claimName: storageboss     
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -4562,7 +4487,7 @@ readarr:
         http:
           port: 8787
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4577,7 +4502,8 @@ readarr:
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml        
       volumeMounts:
       - mountPath: /config
-        name: config        
+        name: config      
+        subPath: readarr  
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -4621,9 +4547,10 @@ readarraudio:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: readarraudio
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarraudio-block            
+          claimName: storageboss       
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -4646,7 +4573,7 @@ readarraudio:
         http:
           port: 8787
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4661,7 +4588,8 @@ readarraudio:
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
       volumeMounts:
       - mountPath: /config
-        name: config        
+        name: config    
+        subPath: readarraudio    
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -6964,9 +6892,10 @@ rpdb:
       enabled: true
       type: custom
       mountPath: /.config
+      subPath: rpdb
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rpdb-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6975,7 +6904,7 @@ rpdb:
           name: elfbot-rpdb
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -7277,9 +7206,10 @@ rcloneui:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: rclonebrowser
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rclonebrowser-ssd
+          claimName: storageboss
     rclone-remote-storage:
       enabled: "true"
       subPath: "rclone-remote-storage"
@@ -7295,7 +7225,7 @@ rcloneui:
           name: elfbot-rclonebrowser
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7312,6 +7242,7 @@ rcloneui:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: rclonebrowser
       - mountPath: /tmp # need this for cating into a file
         name: tmp        
       - mountPath: /rclone-remote-storage
@@ -7372,9 +7303,10 @@ rclonefm:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: rclonebrowser
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rclonebrowser-ssd
+          claimName: storageboss
     rclonefm-config:
       enabled: "true"
       mountPath: /var/lib/rclonefm/js/settings.js
@@ -7398,7 +7330,7 @@ rclonefm:
           name: elfbot-rclonefm
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7415,6 +7347,7 @@ rclonefm:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: rclonebrowser
       - mountPath: /tmp # need this for cating into a file
         name: tmp        
       - mountPath: /rclone-remote-storage
@@ -7852,6 +7785,13 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-overseerr-ssd
+    plex:
+      enabled: false
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-plex-block
+      mountPath: /storage/plex          
     privatebin:
       enabled: false
       type: custom
@@ -7880,17 +7820,34 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-qbittorrent-ssd
-
-
-
-
-    plex:
+    rapidleech:
+      enabled: false
+      type: custom
+      mountPath: /storage/rapidleech/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rapidleech-ssd
+    rclonebrowser:
+      enabled: true # this is always on
+      type: custom
+      mountPath: /storage/rclonebrowser/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rclonebrowser-ssd
+    readarr:
       enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-block
-      mountPath: /storage/plex
+          claimName: config-readarr-block
+      mountPath: /storage/readarr
+    radarraudio:
+      enabled: false
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-readarraudio-block
+      mountPath: /storage/radarraudio
     radarr:
       enabled: false
       type: custom
@@ -7905,6 +7862,72 @@ storageboss:
         persistentVolumeClaim:
           claimName: config-radarr4k-block
       mountPath: /storage/radarr4k        
+    recyclarr:
+      enabled: true
+      type: custom
+      mountPath: /storage/recyclarr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-recyclarr-ssd
+    resiliosync:
+      enabled: false
+      type: custom
+      mountPath: /storage/resiliosync/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-resiliosync-ssd
+    riven:
+      enabled: false
+      type: custom
+      mountPath: /storage/riven/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-riven-ssd  
+    rivenplus:
+      enabled: false
+      type: custom
+      mountPath: /storage/riven/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-riven-ssd     
+    rpdb:
+      enabled: false
+      type: custom
+      mountPath: /storage/rpdb/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rpdb-ssd
+    rutorrentpia:
+      enabled: false
+      type: custom
+      mountPath: /storage/rutorrent/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rutorrent-ssd
+    rutorrentgluetun:
+      enabled: false
+      type: custom
+      mountPath: /storage/rutorrent/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rutorrent-ssd
+    sabnzbd:
+      enabled: false
+      type: custom
+      mountPath: /storage/sabnzbd/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sabnzbd-ssd
+
+
+
+
+
+
+
+
+
+
     sonarr:
       enabled: false
       type: custom
@@ -8498,9 +8521,10 @@ rapidleech:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: rapidleech
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rapidleech-ssd
+          claimName: storageboss
     data:
       enabled: false
     var-run:
@@ -8532,7 +8556,7 @@ rapidleech:
       cpu: 10m
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -9465,9 +9489,10 @@ riven: &app_riven
       enabled: true
       type: custom
       mountPath: /riven/data
+      subPath: riven
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-riven-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9476,7 +9501,7 @@ riven: &app_riven
           name: elfbot-riven
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       command:
@@ -9498,7 +9523,7 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /riven/data
         name: config
-        subPath: config
+        subPath: riven/config
       - mountPath: /storage/realdebrid-zurg
         name: rclonemountrealdebridzurg
       - mountPath: /storage/symlinks
@@ -10812,9 +10837,10 @@ recyclarr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: recyclarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-recyclarr-ssd
+          claimName: storageboss
     example-config:
       enabled: "true"
       type: "custom"
@@ -10829,7 +10855,7 @@ recyclarr:
           name: elfbot-recyclarr
           optional: true   
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -10848,6 +10874,7 @@ recyclarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: recyclarr
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
