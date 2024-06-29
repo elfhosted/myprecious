@@ -2739,7 +2739,7 @@ autobrr:
       cpu: 3
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   # additionalContainers:
   #   regbrr:
   #     image: ghcr.io/elfhosted/docker-autobrr-helper:sha-0dcb44a
@@ -2834,21 +2834,6 @@ filebrowser:
           name: recyclarr-config          
 
     # We need one of these per-app. The global section will override the false enablement       
-
-    autoscan:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/autoscan/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-autoscan-ssd              
-    audiobookshelf:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/audiobookshelf/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-audiobookshelf-ssd
     bazarr:
       enabled: false
       type: custom
@@ -5285,6 +5270,7 @@ jellyfin: &app_jellyfin
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: jellyfin
       - mountPath: /transcode
         name: transcode  
       securityContext: *default_securitycontext
@@ -5504,6 +5490,7 @@ emby: &app_emby
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: emby
       - mountPath: /transcode
         name: transcode  
       securityContext: *default_securitycontext
@@ -6688,9 +6675,10 @@ audiobookshelf:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: audiobookshelf
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-audiobookshelf-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6706,7 +6694,7 @@ audiobookshelf:
           name: tooling-scripts             
           defaultMode: 0755               
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init    
   ingress:
     main:
@@ -7805,7 +7793,23 @@ storageboss:
       mountPath: /storage/autobrr/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-autobrr-ssd      
+          claimName: config-autobrr-ssd
+    autoscan:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/autoscan/
+      subPath: autoscan
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-autoscan-ssd              
+    audiobookshelf:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/audiobookshelf/
+      subPath: audiobookshelf
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-audiobookshelf-ssd          
     emby:
       enabled: false
       type: custom
@@ -9302,9 +9306,10 @@ autoscan:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: autoscan
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-autoscan-ssd
+          claimName: storageboss
     example-config:
       enabled: "true"
       type: "custom"
@@ -9320,7 +9325,7 @@ autoscan:
           optional: true
 
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -9551,7 +9556,7 @@ airdcpp: &app_airdcpp
           name: elfbot-airdcpp
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   addons:
     vpn:
       enabled: true # in case we ever need it
