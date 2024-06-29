@@ -2844,34 +2844,7 @@ filebrowser:
 
 
     
-    joplinserver:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/joplin-server/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-joplinserver
-    jfa:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jfa/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jfa-ssd
-    kavita:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/kavita/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kavita-ssd
-    komga:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/komga/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-komga-ssd
+
     lazylibrarian:
       enabled: false
       type: custom
@@ -3835,9 +3808,10 @@ komga:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: komga
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-komga-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3855,7 +3829,7 @@ komga:
         http:
           port: 25600
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 10m
@@ -3889,9 +3863,10 @@ kavita:
       enabled: true
       type: custom
       mountPath: /kavita/config
+      subPath: kavita
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kavita-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3900,7 +3875,7 @@ kavita:
           name: elfbot-kavita
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -7830,6 +7805,34 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-jdownloader-ssd
+    joplinserver:
+      enabled: false
+      type: custom
+      mountPath: /storage/joplin-server/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-joplinserver
+    jfa:
+      enabled: false
+      type: custom
+      mountPath: /storage/jfa/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jfa-ssd   
+    kavita:
+      enabled: false
+      type: custom
+      mountPath: /storage/kavita/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kavita-ssd
+    komga:
+      enabled: false
+      type: custom
+      mountPath: /storage/komga/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-komga-ssd                 
     plexdebrid:
       enabled: false
       type: custom
@@ -7851,6 +7854,12 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plexmetamanager    
+
+
+
+
+
+
 
 
     plex:
@@ -8118,9 +8127,10 @@ jfa:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jfa
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jfa-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8134,7 +8144,7 @@ jfa:
       mountPath: /tmp
       sizeLimit: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -8941,9 +8951,10 @@ joplinserver:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: joplin-server
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-joplinserver
+          claimName: storageboss
       subPath: data
   postgresql:
     enabled: true
