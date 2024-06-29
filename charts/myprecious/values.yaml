@@ -2219,6 +2219,7 @@ radarr: &app_radarr
         name: symlinks        
       - mountPath: /config
         name: config
+        subPath: radarr
       - mountPath: /mediacover
         name: mediacover        
       resources: *default_resources
@@ -2357,6 +2358,7 @@ radarr4k: &app_radarr4k
         name: symlinks             
       - mountPath: /config
         name: config
+        subPath: radarr4k
       - mountPath: /mediacover
         name: mediacover        
       resources: *default_resources
@@ -2840,27 +2842,6 @@ filebrowser:
 
     # We need one of these per-app. The global section will override the false enablement       
 
-    filebot:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/filebot/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-filebot-ssd
-    gotify:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/gotify/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gotify-ssd                    
-    homepage:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/homepage/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-homepage-ssd
     homer:
       enabled: true
       type: custom
@@ -4162,7 +4143,10 @@ sonarr: &app_sonarr
       - mountPath: /storage/symlinks
         name: symlinks  
       - mountPath: /mediacover
-        name: mediacover                     
+        name: mediacover
+      - mountPath: /config
+        subPat: sonarr
+        name: config
       resources: *default_resources
       securityContext: *default_securitycontext   
   resources:
@@ -4293,6 +4277,9 @@ sonarr4k: &app_sonarr4k
         name: symlinks
       - mountPath: /mediacover
         name: mediacover        
+      - mountPath: /config
+        subPat: sonarr
+        name: config        
       resources: *default_resources
       securityContext: *default_securitycontext          
   resources:
@@ -5827,9 +5814,10 @@ gotify:
       enabled: true
       type: custom
       mountPath: /app/data/
+      subPath: gotify
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gotify-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7005,9 +6993,10 @@ filebot:
       enabled: true
       type: custom
       mountPath: /data
+      subPath: filebot
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-filebot-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7022,7 +7011,7 @@ filebot:
       mountPath: /home/seedy
       sizeLimit: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -7818,7 +7807,27 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-deluge-ssd  
-
+    filebot:
+      enabled: false
+      type: custom
+      mountPath: /storage/filebot/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-filebot-ssd
+    gotify:
+      enabled: false
+      type: custom
+      mountPath: /storage/gotify/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-gotify-ssd                    
+    homepage:
+      enabled: false
+      type: custom
+      mountPath: /storage/homepage/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-homepage-ssd
 
 
 
@@ -9120,9 +9129,10 @@ homepage:
       enabled: true
       type: custom
       mountPath: /app/config
+      subPath: homepage
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homepage-ssd
+          claimName: storageboss
     config-default:
       enabled: "true"
       type: "custom"
@@ -9153,7 +9163,7 @@ homepage:
       cpu: 250m # deliberately hobble the CPU in favor of GPU transcoding
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -9197,6 +9207,7 @@ homepage:
       volumeMounts:
       - mountPath: /app/config
         name: config
+        subPath: homepage
       - name: config-default
         mountPath: "/bootstrap/"
       securityContext:
