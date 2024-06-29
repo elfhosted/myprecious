@@ -2579,9 +2579,10 @@ bazarr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: bazarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-bazarr-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2599,7 +2600,7 @@ bazarr:
         http:
           port: 6767
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 10m
@@ -2642,9 +2643,10 @@ bazarr4k:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: bazarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-bazarr4k-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2662,7 +2664,7 @@ bazarr4k:
         http:
           port: 6767
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 10m
@@ -2834,20 +2836,6 @@ filebrowser:
           name: recyclarr-config          
 
     # We need one of these per-app. The global section will override the false enablement       
-    bazarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/bazarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-bazarr-ssd
-    bazarr4k:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/bazarr4k/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-bazarr4k-ssd
     calibreweb:
       enabled: false
       type: custom
@@ -7797,7 +7785,7 @@ storageboss:
     autoscan:
       enabled: false
       type: custom
-      mountPath: /storage/config/autoscan/
+      mountPath: /storage/autoscan/
       subPath: autoscan
       volumeSpec:
         persistentVolumeClaim:
@@ -7805,11 +7793,25 @@ storageboss:
     audiobookshelf:
       enabled: false
       type: custom
-      mountPath: /storage/config/audiobookshelf/
+      mountPath: /storage/audiobookshelf/
       subPath: audiobookshelf
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-audiobookshelf-ssd          
+    bazarr:
+      enabled: false
+      type: custom
+      mountPath: /storage/bazarr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-bazarr-ssd
+    bazarr4k:
+      enabled: false
+      type: custom
+      mountPath: /storage/bazarr4k/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-bazarr4k-ssd
     emby:
       enabled: false
       type: custom
