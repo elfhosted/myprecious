@@ -2843,41 +2843,7 @@ filebrowser:
     # We need one of these per-app. The global section will override the false enablement       
 
 
-    kometa:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/kometa/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kometa              
-    pyload:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/pyload/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-pyload-ssd
-    jdownloader:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jdownloader/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jdownloader-ssd
-    plexdebrid:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/plex-debrid/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plex-debrid-ssd
-    plexmetamanager:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/plexmetamanager/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plexmetamanager        
+    
     joplinserver:
       enabled: false
       type: custom
@@ -3696,11 +3662,12 @@ pyload:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: pyload
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-pyload-ssd
+          claimName: storageboss
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -7176,9 +7143,10 @@ plexmetamanager:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: plexmetamanager
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plexmetamanager
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7194,7 +7162,7 @@ plexmetamanager:
         configMap:
           name: plexmetamanager-config
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7213,6 +7181,7 @@ plexmetamanager:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: plexmetamanager
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
@@ -7281,9 +7250,10 @@ kometa: &app_kometa
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: kometa
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kometa
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7298,7 +7268,7 @@ kometa: &app_kometa
         configMap:
           name: kometa-config
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7317,6 +7287,7 @@ kometa: &app_kometa
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: kometa
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
@@ -7845,7 +7816,41 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-jellyseerr-ssd
-
+    kometa:
+      enabled: false
+      type: custom
+      mountPath: /storage/kometa/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kometa              
+    jdownloader:
+      enabled: false
+      type: custom
+      mountPath: /storage/jdownloader/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jdownloader-ssd
+    plexdebrid:
+      enabled: false
+      type: custom
+      mountPath: /storage/plex-debrid/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-plex-debrid-ssd
+    pyload:
+      enabled: false
+      type: custom
+      mountPath: /storage/pyload/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-pyload-ssd          
+    plexmetamanager:
+      enabled: false
+      type: custom
+      mountPath: /storage/plexmetamanager/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-plexmetamanager    
 
 
     plex:
@@ -8760,11 +8765,10 @@ jdownloader:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: jdownloader/downloads/completed/jdownloader
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jdownloader-ssd
-      mountPath: /output
-      subPath: downloads/completed/jdownloader
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8789,7 +8793,7 @@ jdownloader:
       cpu: 0.5
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   additionalContainers:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
@@ -11315,9 +11319,10 @@ plexdebrid:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: plexdebrid
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-debrid-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -11332,7 +11337,7 @@ plexdebrid:
         configMap:
           name: plexdebrid-config
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -11351,6 +11356,7 @@ plexdebrid:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: plexdebrid
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
