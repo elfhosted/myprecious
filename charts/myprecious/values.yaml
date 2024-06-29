@@ -7702,266 +7702,13 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plex-block
-      mountPath: /storage/plex          
-    privatebin:
-      enabled: false
-      type: custom
-      mountPath: /storage/privatebin/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-privatebin-ssd            
-    prowlarr:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-prowlarr-block
-      mountPath: /storage/prowlarr
-    qbittorrentpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/qbittorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
-    qbittorrentgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/qbittorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
-    rapidleech:
-      enabled: false
-      type: custom
-      mountPath: /storage/rapidleech/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rapidleech-ssd
-    rclonebrowser:
-      enabled: true # this is always on
-      type: custom
-      mountPath: /storage/rclonebrowser/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rclonebrowser-ssd
-    readarr:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-readarr-block
-      mountPath: /storage/readarr
-    radarraudio:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-readarraudio-block
-      mountPath: /storage/readarraudio
-    radarr:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-radarr-block
-      mountPath: /storage/radarr    
-    radarr4k:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-radarr4k-block
-      mountPath: /storage/radarr4k       
-    rdtclient:
-      enabled: false
-      type: custom
-      mountPath: /storage/rdtclient/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-ssd
-    rdtclientvpnpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/rdtclient-alldebrid/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-alldebrid-ssd           
-    recyclarr:
-      enabled: true
-      type: custom
-      mountPath: /storage/recyclarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-recyclarr-ssd
-    resiliosync:
-      enabled: false
-      type: custom
-      mountPath: /storage/resiliosync/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-resiliosync-ssd
-    riven:
-      enabled: false
-      type: custom
-      mountPath: /storage/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd  
-    rivenplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd     
-    rpdb:
-      enabled: false
-      type: custom
-      mountPath: /storage/rpdb/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rpdb-ssd
-    rutorrentpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/rutorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
-    rutorrentgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/rutorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
-    sabnzbd:
-      enabled: false
-      type: custom
-      mountPath: /storage/sabnzbd/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sabnzbd-ssd
-    shoko:
-      enabled: false
-      type: custom
-      mountPath: /storage/shoko/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-shoko-ssd     
-    syncthing:
-      enabled: false
-      type: custom
-      mountPath: /storage/syncthing/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-syncthing
-    tautulli:
-      enabled: false
-      type: custom
-      mountPath: /storage/tautulli/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tautulli-ssd
-    thelounge:
-      enabled: false
-      type: custom
-      mountPath: /storage/thelounge/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-thelounge
-    unpackerr:
-      enabled: false
-      type: custom
-      mountPath: /storage/unpackerr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-unpackerr-ssd          
-    uptimekuma:
-      enabled: false
-      type: custom
-      mountPath: /storage/uptimekuma/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-uptimekuma-ssd          
-    vaultwarden:
-      enabled: false
-      type: custom
-      mountPath: /storage/vaultwarden/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-vaultwarden-ssd
-    seafile:
-      enabled: false
-      type: custom
-      mountPath: /storage/seafile/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-seafile
-    xteve:
-      enabled: false
-      type: custom
-      mountPath: /storage/xteve/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-xteve-ssd
-    youtubedl:
-      enabled: false
-      type: custom
-      mountPath: /storage/youtubedl/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-youtubedl-ssd
-    zurg:
-      enabled: false
-      type: custom
-      mountPath: /storage/zurg/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd
-    zurgplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/zurg/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd                    
-
-
-
-
-
-
-
-
-    sonarr:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr-block
-      mountPath: /storage/sonarr
-    sonarr4k:
-      enabled: false
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr4k-block
-      mountPath: /storage/sonarr4k      
-    # needed for the migration
-    symlinks-old:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks 
+      mountPath: /storage/plex
     symlinks:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: symlinks-block-ssd
+          claimName: symlinks
       mountPath: /storage/symlinks     
     # samba config 
     config:
@@ -8005,47 +7752,33 @@ storageboss:
       name: storageboss-env
   - secretRef:    
       name: storageboss-env
-  initContainers:
-    setup: 
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        # don't error on failure
-        # not doing this yet
-        # /storageboss-scripts/restore.sh
-
-        if [[ ! -f /storage/symlinks/i-am-migrated ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Migrating from /migration/..."
-            cp -rfp --preserve=links /migration/* /storage/symlinks/
-            touch /storage/symlinks/i-am-migrated
-          fi
-        fi   
-                
-      envFrom:
-      - configMapRef:
-          name: storageboss-env
-      - configMapRef:
-          name: elfhosted-user-config      
-      - secretRef:
-          name: storageboss-env
-      volumeMounts:
-      - mountPath: /storageboss-scripts
-        name: storageboss-scripts 
-      - mountPath: /home/elfie
-        name: tmp
-      # we mount this 
-      - mountPath: /migration
-        name: symlinks-old
-      - mountPath: /storage/symlinks
-        name: symlinks        
-      resources: *default_resources
-      securityContext: *default_securitycontext  
+  # initContainers:
+  #   setup: 
+  #     image: *tooling_image
+  #     imagePullPolicy: IfNotPresent
+  #     command:
+  #     - /bin/bash
+  #     - -c
+  #     - |
+  #       set +e # don't error on failure
+  #       /storageboss-scripts/restore.sh
+  #     envFrom:
+  #     - configMapRef:
+  #         name: storageboss-env
+  #     - configMapRef:
+  #         name: elfhosted-user-config      
+  #     - secretRef:
+  #         name: storageboss-env
+  #     volumeMounts:
+  #     - mountPath: /storageboss-scripts
+  #       name: storageboss-scripts 
+  #     - mountPath: /home/elfie
+  #       name: tmp
+  #     # we mount this 
+  #     - mountPath: /storage
+  #       name: ephemeral
+  #     resources: *default_resources
+  #     securityContext: *default_securitycontext  
   # additionalContainers:
   #   backup-on-termination:
   #     image: *tooling_image
