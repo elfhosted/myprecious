@@ -2859,21 +2859,13 @@ filebrowser:
       volumeSpec:
         configMap:
           name: recyclarr-config          
-
-    # We need one of these per-app. The global section will override the false enablement       
-
-
-    
-
-
-
-
-        
-
-
-                 
-
-      
+    storageboss:
+      enabled: false
+      type: custom
+      mountPath: /storage
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storageboss
   service:
     main:
       enabled: true # necessary for probes
@@ -2945,7 +2937,8 @@ filebrowser:
         # fi
       volumeMounts:
       - mountPath: /storage/config/recyclarr/
-        name: recyclarr
+        name: storageboss
+        subPath: recyclarr
       - name: recyclarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext       
