@@ -1876,9 +1876,10 @@ nzbget:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: nzbget
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-nzbget-ssd          
+          claimName: storageboss       
     tmp:
       enabled: true
       type: custom
@@ -1902,7 +1903,7 @@ nzbget:
         http:
           port: 6789
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 sabnzbd:
   enabled: false
@@ -2845,69 +2846,8 @@ filebrowser:
 
     
 
-    lazylibrarian:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/lazylibrarian/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-lazylibrarian-ssd
-    lidarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/lidarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-lidarr-ssd
-    mattermost:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/mattermost/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-mattermost-ssd
-    mylar:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/mylar/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-mylar-ssd
-    navidrome:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/navidrome/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-navidrome-ssd
-    nextpvr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/nextpvr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-nextpvr-ssd
-    notifiarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/notifiarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-notifiarr-ssd
-    nzbget:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/nzbget/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-nzbget-ssd
-    nzbhydra:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/nzbhydra/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-nzbhydra-ssd
+
+
     ombi:
       enabled: false
       type: custom
@@ -3503,9 +3443,10 @@ nzbhydra:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: nzbhydra
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-nzbhydra-ssd          
+          claimName: storageboss       
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3531,7 +3472,7 @@ nzbhydra:
       cpu: 1
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 calibreweb:
   enabled: false
@@ -3687,9 +3628,10 @@ lazylibrarian:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: lazylibrarian
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-lazylibrarian-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3707,7 +3649,7 @@ lazylibrarian:
         http:
           port: 5299
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 10m
@@ -3747,9 +3689,10 @@ mylar:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: mylar
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-mylar-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3768,7 +3711,7 @@ mylar:
         http:
           port: 8090
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 10m
@@ -4483,9 +4426,10 @@ lidarr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: lidarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-lidarr-block      
+          claimName: storageboss   
     s6:
       enabled: true
       type: emptyDir
@@ -4509,7 +4453,7 @@ lidarr:
         http:
           port: 8686
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4525,7 +4469,8 @@ lidarr:
         
       volumeMounts:
       - mountPath: /config
-        name: config        
+        name: config  
+        subPath: lidarr      
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -4568,9 +4513,10 @@ navidrome:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: navidrome
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-navidrome-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4579,7 +4525,7 @@ navidrome:
           name: elfbot-navidrome
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -6781,9 +6727,10 @@ notifiarr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: notifiarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-notifiarr-ssd
+          claimName: storageboss
     example-config:
       enabled: "true"
       type: "custom"
@@ -6798,7 +6745,7 @@ notifiarr:
           name: elfbot-notifiarr
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -6817,6 +6764,7 @@ notifiarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: notifiarr
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
@@ -6982,9 +6930,10 @@ nextpvr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: nextpvr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-nextpvr-ssd
+          claimName: storageboss
     recordings:
       enabled: true
       type: emptyDir
@@ -7019,7 +6968,7 @@ nextpvr:
       cpu: 2
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 rpdb:
   enabled: false
@@ -7854,8 +7803,69 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plexmetamanager    
-
-
+    lazylibrarian:
+      enabled: false
+      type: custom
+      mountPath: /storage/lazylibrarian/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-lazylibrarian-ssd
+    lidarr:
+      enabled: false
+      type: custom
+      mountPath: /storage/lidarr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-lidarr-ssd
+    mattermost:
+      enabled: false
+      type: custom
+      mountPath: /storage/mattermost/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-mattermost-ssd
+    mylar:
+      enabled: false
+      type: custom
+      mountPath: /storage/mylar/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-mylar-ssd
+    navidrome:
+      enabled: false
+      type: custom
+      mountPath: /storage/navidrome/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-navidrome-ssd
+    nextpvr:
+      enabled: false
+      type: custom
+      mountPath: /storage/nextpvr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-nextpvr-ssd
+    notifiarr:
+      enabled: false
+      type: custom
+      mountPath: /storage/notifiarr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-notifiarr-ssd
+    nzbget:
+      enabled: false
+      type: custom
+      mountPath: /storage/nzbget/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-nzbget-ssd
+    nzbhydra:
+      enabled: false
+      type: custom
+      mountPath: /storage/nzbhydra/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-nzbhydra-ssd
 
 
 
@@ -8206,8 +8216,8 @@ mattermost:
       ##
       # storageClass:
       accessMode: ReadWriteOnce
-      existingClaim: "config-mattermost-ssd"
-      subPath: data
+      existingClaim: "storageboss"
+      subPath: mattermost/data
     plugins:
       enabled: false # these just end up under data anyway
 
@@ -8283,8 +8293,8 @@ mattermost:
         enabled: false # probes can make helm fail/restart under some conditions. Either do or do not, there is no try
       persistence:
         enabled: true
-        existingClaim: config-mattermost-ssd
-        subPath: database
+        existingClaim: storageboss
+        subPath: mattermost/database
       resources:
         requests:
           cpu: 5m
