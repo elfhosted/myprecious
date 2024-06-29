@@ -1233,9 +1233,10 @@ delugegluetun: &deluge
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: deluge
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-deluge-ssd
+          claimName: storageboss
     shared:
       enabled: true
       mountPath: /shared
@@ -1289,7 +1290,7 @@ delugegluetun: &deluge
         key: PORT_FILE
     optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -1333,6 +1334,7 @@ delugegluetun: &deluge
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /shared
         name: shared        
       env: *bootstrap_env
@@ -1393,6 +1395,7 @@ delugegluetun: &deluge
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /tmp
         name: tmp
       env:
@@ -2836,20 +2839,7 @@ filebrowser:
           name: recyclarr-config          
 
     # We need one of these per-app. The global section will override the false enablement       
-    delugepia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/deluge/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-deluge-ssd
-    delugegluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/deluge/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-deluge-ssd  
+
     filebot:
       enabled: false
       type: custom
@@ -7814,7 +7804,20 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-calibre-ssd
-
+    delugepia:
+      enabled: false
+      type: custom
+      mountPath: /storage/deluge/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-deluge-ssd
+    delugegluetun:
+      enabled: false
+      type: custom
+      mountPath: /storage/deluge/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-deluge-ssd  
 
 
 
