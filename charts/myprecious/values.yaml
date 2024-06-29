@@ -381,9 +381,8 @@ symlinks: &symlinks
   mountPath: /storage/symlinks
 tmp: &tmp
   enabled: true
-  type: custom
+  type: emptyDir
   mountPath: /tmp
-  volumeSpec: *volumespec_ephemeral_volume_1g  
 
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
