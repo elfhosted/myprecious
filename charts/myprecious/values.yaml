@@ -1532,9 +1532,10 @@ qbittorrentgluetun: &qbittorrent
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: qbittorrent
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
+          claimName: storageboss
     shared:
       enabled: true
       mountPath: /shared
@@ -1591,7 +1592,7 @@ qbittorrentgluetun: &qbittorrent
         key: PORT_FILE
     optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       command:
@@ -1637,6 +1638,7 @@ qbittorrentgluetun: &qbittorrent
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       - mountPath: /shared
         name: shared  
       securityContext: *default_securitycontext
@@ -1695,6 +1697,7 @@ qbittorrentgluetun: &qbittorrent
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       - mountPath: /shared
         name: shared
       resources: *default_resources
@@ -1728,6 +1731,7 @@ qbittorrentgluetun: &qbittorrent
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -2441,9 +2445,10 @@ ombi:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: ombi
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-ombi-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2461,7 +2466,7 @@ ombi:
         http:
           port: 5000
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 3m
@@ -2848,57 +2853,9 @@ filebrowser:
 
 
 
-    ombi:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/ombi/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-ombi-ssd
-    openbooks:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/openbooks/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-openbooks-ssd
-    overseerr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/overseerr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-overseerr-ssd
+
         
-    privatebin:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/privatebin/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-privatebin-ssd            
-    prowlarr:
-      enabled: "false"
-      subPath: "where-is-my-prowlarr.txt"
-      mountPath: /storage/config/emby/where-is-my-prowlarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration    
-    qbittorrentpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/qbittorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
-    qbittorrentgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/qbittorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
+
     rapidleech:
       enabled: false
       type: custom
@@ -3339,9 +3296,10 @@ privatebin:
       enabled: true
       type: custom
       mountPath: /srv/data
+      subPath: privatebin
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-privatebin-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3403,7 +3361,7 @@ privatebin:
       limit: 10
       # exemptedIp: "1.2.3.4,10.10.10/24"
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 nzbhydra:
   enabled: false
@@ -4297,9 +4255,10 @@ prowlarr: &app_prowlarr
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: prowlarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-prowlarr-block         
+          claimName: storageboss  
     run: # used for s6-init with non-root
       enabled: true
       type: emptyDir
@@ -6323,9 +6282,10 @@ overseerr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: overseerr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-overseerr-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6335,7 +6295,7 @@ overseerr:
           optional: true
     tmp: *tmp
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
       image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:f3e05673cd8d6e244e4fea09f01b0246df143afd7803124c0cc46af61916ab07
@@ -6348,6 +6308,7 @@ overseerr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: storageboss
       resources: *default_resources
       securityContext: *default_securitycontext     
   ingress:
@@ -6586,9 +6547,10 @@ openbooks:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: openbooks
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-openbooks-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6597,7 +6559,7 @@ openbooks:
           name: elfbot-openbooks
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   ingress:
     main:
       enabled: false
@@ -7866,8 +7828,55 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-nzbhydra-ssd
-
-
+    ombi:
+      enabled: false
+      type: custom
+      mountPath: /storage/ombi/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-ombi-ssd
+    openbooks:
+      enabled: false
+      type: custom
+      mountPath: /storage/openbooks/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-openbooks-ssd
+    overseerr:
+      enabled: false
+      type: custom
+      mountPath: /storage/overseerr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-overseerr-ssd
+    privatebin:
+      enabled: false
+      type: custom
+      mountPath: /storage/privatebin/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-privatebin-ssd            
+    prowlarr:
+      enabled: false
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-prowlarr-block
+      mountPath: /storage/prowlarr
+    qbittorrentpia:
+      enabled: false
+      type: custom
+      mountPath: /storage/qbittorrent/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-qbittorrent-ssd
+    qbittorrentgluetun:
+      enabled: false
+      type: custom
+      mountPath: /storage/qbittorrent/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-qbittorrent-ssd
 
 
 
