@@ -7414,7 +7414,7 @@ storageboss:
     #   mountPath: /storage
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
-    airdcpp:
+    airdcpppia:
       enabled: false
       type: custom
       volumeSpec:
