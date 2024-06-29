@@ -2842,27 +2842,7 @@ filebrowser:
 
     # We need one of these per-app. The global section will override the false enablement       
 
-    homer:
-      enabled: true
-      type: custom
-      mountPath: /storage/config/homer
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-homer-ssd              
-    jackett:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jackett/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jackett-ssd                           
-    jellyseerr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jellyseerr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jellyseerr-ssd
+
     kometa:
       enabled: false
       type: custom
@@ -5594,10 +5574,10 @@ homer:
       enabled: true
       type: custom
       mountPath: /www/assets/backgrounds
-      subPath: backgrounds
+      subPath: homer/backgrounds
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homer-ssd      
+          claimName: storageboss  
 
   command:
   - /bin/bash
@@ -5617,7 +5597,7 @@ homer:
         name: message
       - mountPath: /www/assets/backgrounds
         name: homer
-        subPath: backgrounds
+        subPath: homer/backgrounds
         readOnly: true        
       resources: *default_resources
       securityContext: *default_securitycontext
@@ -6541,9 +6521,10 @@ jellyseerr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jellyseerr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jellyseerr-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6553,7 +6534,7 @@ jellyseerr:
           optional: true
     tmp: *tmp
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
       image: ghcr.io/elfhosted/jellyseerr:1.9.2@sha256:28303d6f77b62fff92e34fce2d482ad80d053323176748545eca0fc8aa5d2e79
@@ -6566,6 +6547,7 @@ jellyseerr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: jellyseerr
       resources: *default_resources
       securityContext: *default_securitycontext        
   ingress:
@@ -7807,6 +7789,13 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-deluge-ssd  
+    emby:
+      enabled: false
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-emby-block
+      mountPath: /storage/plex          
     filebot:
       enabled: false
       type: custom
@@ -7828,18 +7817,20 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-homepage-ssd
-
-
-
-
-
-    emby:
-      enabled: false
+    homer:
+      enabled: true
       type: custom
+      mountPath: /storage/homer
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-emby-block
-      mountPath: /storage/plex
+          claimName: config-homer-ssd              
+    jackett:
+      enabled: false
+      type: custom
+      mountPath: /storage/jackett/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jackett-ssd                           
     jellyfin:
       enabled: false
       type: custom
@@ -7847,6 +7838,16 @@ storageboss:
         persistentVolumeClaim:
           claimName: config-jellyfin-block
       mountPath: /storage/jellyfin
+    jellyseerr:
+      enabled: false
+      type: custom
+      mountPath: /storage/jellyseerr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jellyseerr-ssd
+
+
+
     plex:
       enabled: false
       type: custom
@@ -9690,9 +9691,10 @@ jackett:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jackett
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jackett-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9701,7 +9703,7 @@ jackett:
           name: elfbot-jackett
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
 
 stremioserver: &app_stremioserver
   enabled: false
