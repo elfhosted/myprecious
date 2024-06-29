@@ -2165,9 +2165,10 @@ radarr: &app_radarr
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: radarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr-block            
+          claimName: storageboss           
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2299,9 +2300,10 @@ radarr4k: &app_radarr4k
       enabled: true
       type: custom
       mountPath: /config/
+      subpath: radarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr4k-block           
+          claimName: storageboss      
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4234,9 +4236,10 @@ sonarr: &app_sonarr
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: sonarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr-block          
+          claimName: storageboss        
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4363,9 +4366,10 @@ sonarr4k: &app_sonarr4k
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: sonarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr4k-block            
+          claimName: storageboss          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7868,6 +7872,34 @@ storageboss:
         persistentVolumeClaim:
           claimName: config-plex-block
       mountPath: /storage/plex
+    radarr:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-radarr-block
+      mountPath: /storage/radarr    
+    radarr4k:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-radarr4k-block
+      mountPath: /storage/radarr4k        
+    sonarr:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sonarr-block
+      mountPath: /storage/sonarr
+    sonarr4k:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sonarr4k-block
+      mountPath: /storage/sonarr4k      
     # needed for the migration
     symlinks-old:
       enabled: true
