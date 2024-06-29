@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.40.0](https://github.com/elfhosted/myprecious/compare/v1.39.0...v1.40.0) (2024-06-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.8 ([9047fd9](https://github.com/elfhosted/myprecious/commit/9047fd9e0eaf700f550799cb81c9f351865afe5b))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.9 ([00dae08](https://github.com/elfhosted/myprecious/commit/00dae0838db18d1e190276fdb5c76e764ce9f530))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.5.1791 ([653dc6f](https://github.com/elfhosted/myprecious/commit/653dc6ff7e9e8f4ced1ef244cd27fdf6f8f49f1a))
+* **app:** update mattermost/mattermost-team-edition docker tag to v9.10.0 ([5db231d](https://github.com/elfhosted/myprecious/commit/5db231dbf7e59cb349d42537485cf6ffb46e3e9a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet:rolling docker digest to bf5913e ([925d669](https://github.com/elfhosted/myprecious/commit/925d669370a0fea01594343fda2447f073a973f1))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.9 docker digest to 9e3c4f0 ([6bb5758](https://github.com/elfhosted/myprecious/commit/6bb5758d99e22d7480a2a7fb16220df50cef7815))
+* **app:** update ghcr.io/elfhosted/openbooks:4.5.0 docker digest to 0b499fb ([464beac](https://github.com/elfhosted/myprecious/commit/464beacb84831762373bdb5ce549470cc2476bcc))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 0ce5bbd ([828f3e4](https://github.com/elfhosted/myprecious/commit/828f3e46c8f7b585db92765728c9583ce67c2cac))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 9787e8b ([9978ae3](https://github.com/elfhosted/myprecious/commit/9978ae3619806210e81eaf70d1de092495080204))
+* revert jellyfin / emby back to elves for performance reasons ([503055c](https://github.com/elfhosted/myprecious/commit/503055caf72a6ba54b4fca9c2d6b915e0a098250))
+
 ## [1.39.0](https://github.com/elfhosted/myprecious/compare/v1.38.1...v1.39.0) (2024-06-28)
 
 
