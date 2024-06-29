@@ -2836,20 +2836,6 @@ filebrowser:
           name: recyclarr-config          
 
     # We need one of these per-app. The global section will override the false enablement       
-    calibreweb:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/calibreweb/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-calibreweb-ssd
-    calibre:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/calibre/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-calibre-ssd
     delugepia:
       enabled: false
       type: custom
@@ -3687,9 +3673,10 @@ calibreweb:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: calibreweb
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-calibreweb-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3706,7 +3693,7 @@ calibreweb:
         http:
           port: 8083
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
   resources:
     requests:
       cpu: 10m
@@ -4043,9 +4030,10 @@ calibre:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: calibre
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-calibre-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4080,7 +4068,7 @@ calibre:
       cpu: 1
       memory: 4Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7812,6 +7800,27 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-bazarr4k-ssd
+    calibreweb:
+      enabled: false
+      type: custom
+      mountPath: /storage/calibreweb/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-calibreweb-ssd
+    calibre:
+      enabled: false
+      type: custom
+      mountPath: /storage/calibre/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-calibre-ssd
+
+
+
+
+
+
+
     emby:
       enabled: false
       type: custom
