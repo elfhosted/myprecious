@@ -7818,7 +7818,7 @@ storageboss:
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: storageboss
+          claimName: config-jellyfin-block
       mountPath: /storage/jellyfin
     plex:
       enabled: false
