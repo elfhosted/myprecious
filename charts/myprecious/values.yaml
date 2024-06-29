@@ -2703,9 +2703,10 @@ autobrr:
       enabled: true
       type: custom
       mountPath: /config/
+      subpath: autobrr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-autobrr-ssd
+          claimName: storageboss
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2832,28 +2833,8 @@ filebrowser:
         configMap:
           name: recyclarr-config          
 
-    # We need one of these per-app. The global section will override the false enablement
-    airdcpppia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/airdcpp/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-airdcpp-ssd
-    airdcppgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/airdcpp/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-airdcpp-ssd          
-    autobrr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/autobrr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-autobrr-ssd
+    # We need one of these per-app. The global section will override the false enablement       
+
     autoscan:
       enabled: false
       type: custom
@@ -7811,50 +7792,64 @@ storageboss:
     #   mountPath: /storage
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
+    airdcpp:
+      enabled: false
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-airdcpp-ssd
+      mountPath: /storage/airdcpp
+    autobrr:
+      enabled: false
+      type: custom
+      mountPath: /storage/autobrr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-autobrr-ssd      
     emby:
-      enabled: true
+      enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-emby-block
       mountPath: /storage/plex
     jellyfin:
-      enabled: true
+      enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: storageboss
       mountPath: /storage/jellyfin
     plex:
-      enabled: true
+      enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plex-block
       mountPath: /storage/plex
     radarr:
-      enabled: true
+      enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-radarr-block
       mountPath: /storage/radarr    
     radarr4k:
-      enabled: true
+      enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-radarr4k-block
       mountPath: /storage/radarr4k        
     sonarr:
-      enabled: true
+      enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-sonarr-block
       mountPath: /storage/sonarr
     sonarr4k:
-      enabled: true
+      enabled: false
       type: custom
       volumeSpec:
         persistentVolumeClaim:
@@ -9538,9 +9533,10 @@ airdcpp: &app_airdcpp
       enabled: true
       type: custom
       mountPath: /.airdcpp/
+      subPath: airdcpp
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-airdcpp-ssd
+          claimName: storageboss
     shared:
       enabled: true
       mountPath: /shared
