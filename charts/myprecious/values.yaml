@@ -377,11 +377,9 @@ symlinks: &symlinks
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      # switch this around to move to storageboss
-      # claimName: storageboss-symlinks
-      claimName: symlinks
+      claimName: storageboss-symlinks
   mountPath: /storage/symlinks
-tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
+tmp: &tmp
   enabled: true
   type: emptyDir
   mountPath: /tmp  
@@ -725,7 +723,7 @@ storageboss_bootstrap: &storageboss_bootstrap
     if [[ ! -f /config/${ELF_APP_NAME}/i-am-bootstrapped ]]
     then
       echo "Bootstrapping from goldilocks config..."
-      s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/
+      s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/${ELF_APP_NAME}/
       touch /config/${ELF_APP_NAME}/i-am-bootstrapped
     fi
 
@@ -2995,7 +2993,7 @@ filebrowser:
     #   subPath: plex
     #   volumeSpec:
     #     persistentVolumeClaim:
-    #       claimName: storageboss-persistent            
+    #       claimName: storageboss    
     plexdebrid:
       enabled: false
       type: custom
@@ -5033,14 +5031,11 @@ plex: &app_plex
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plex-block 
-    # config:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /config/
-    #   subPath: plex
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: storageboss-persistent                                       
+    tmp:
+      enabled: true
+      type: custom
+      mountPath: /tmp
+      volumeSpec: *volumespec_ephemeral_volume_1g                                              
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
@@ -5099,8 +5094,8 @@ plex: &app_plex
       cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    bootstrap: *bootstrap
-    # bootstrap: *storageboss_bootstrap
+    # bootstrap: *bootstrap
+    bootstrap: *storageboss_bootstrap
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
@@ -5121,6 +5116,7 @@ plex: &app_plex
       volumeMounts:
       - mountPath: /config
         name: config
+        # subPath: plex
       - mountPath: /phototranscoder
         name: phototranscoder        
       # can't use default resources because the ephemeral limit kicks out /phototranscoder later
@@ -5249,7 +5245,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.7@sha256:bafaf459152cee096a8658cc333e014b50e26cd128a1f82b3a8e3b940adc5157
+    tag: 10.9.5@sha256:6124b34cf2fc990a91f46e962d9ab140ff79409a7b3e2ee4ddb923d650bb1a76
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid  
@@ -5863,7 +5859,7 @@ gatus:
       mountPath: /data/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gatus-block                
+          claimName: config-gatus-block         
   envFrom:
   - secretRef:
       name: gatus-smtp-config
@@ -6797,7 +6793,7 @@ openbooks:
     sleep 5s
     USER=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13 ; echo '')
     ./openbooks server \
-      --dir /storage/elfstorage/downloads/completed \
+      --dir $DATA_DIR \
       --port 8000 \
       --name $USER \
       --tls=false \
@@ -6805,6 +6801,12 @@ openbooks:
       --server irc.irchighway.net:6661 \
       --no-browser-downloads \
       --debug
+  env:
+    DATA_DIR: /tmp # this can be overridden by elfbot
+  envFrom:
+  - configMapRef:
+      name: elfbot-openbooks
+      optional: true    
   automountServiceAccountToken: false
   controller:
     annotations:
@@ -7828,25 +7830,28 @@ storageboss:
     fsGroupChangePolicy: "OnRootMismatch"      
   automountServiceAccountToken: false
   persistence:
-    ephemeral:
-      enabled: true
-      type: custom
-      mountPath: /ephemeral
-      volumeSpec: *volumespec_ephemeral_volume_50g  
-    persistent-plex:
+    # # this is an ephemeral volume
+    # storage:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /storage
+    #   volumeSpec: *volumespec_ephemeral_volume_50g  
+    # these are the persistent volumes we support currently
+    # needed for the migration
+    symlinks-old:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-block
-      mountPath: /persistent/plex
-    # symlinks:
-    #   enabled: true
-    #   type: custom
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: symlinks
-    #   mountPath: /symlinks      
+          claimName: symlinks 
+    symlinks:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: symlinks-block-ssd
+      mountPath: /storage/symlinks     
+    # samba config 
     config:
       enabled: "true"
       subPath: "container.json"
@@ -7889,15 +7894,27 @@ storageboss:
   - secretRef:    
       name: storageboss-env
   initContainers:
-    restore: 
+    setup: 
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
       - -c
       - |
-        set +e # don't error on failure
-        /storageboss-scripts/restore.sh
+        # don't error on failure
+        # not doing this yet
+        # /storageboss-scripts/restore.sh
+
+        if [[ ! -f /storage/symlinks/i-am-migrated ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Migrating from /migration/..."
+            cp -rfp --preserve=links /migration/* /storage/symlinks/
+            touch /storage/symlinks/i-am-migrated
+          fi
+        fi   
+                
       envFrom:
       - configMapRef:
           name: storageboss-env
@@ -7910,38 +7927,41 @@ storageboss:
         name: storageboss-scripts 
       - mountPath: /home/elfie
         name: tmp
-      - mountPath: /ephemeral
-        name: ephemeral
+      # we mount this 
+      - mountPath: /migration
+        name: symlinks-old
+      - mountPath: /storage/symlinks
+        name: symlinks        
       resources: *default_resources
       securityContext: *default_securitycontext  
-  additionalContainers:
-    backup-on-termination:
-      image: *tooling_image
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - /storageboss-scripts/backup.sh
-      envFrom:
-      - configMapRef:
-          name: storageboss-env
-      - configMapRef:
-          name: elfhosted-user-config      
-      - secretRef:
-          name: storageboss-env
-      volumeMounts:
-      - mountPath: /storageboss-scripts
-        name: storageboss-scripts 
-      - mountPath: /home/elfie
-        name: tmp
-      - mountPath: /ephemeral
-        name: ephemeral
-      # need a folder here for each app. what a pita
-      # - mountPath: /persistent
-      #   name: persistent
-      # - mountPath: /symlinks
-      #   name: symlinks                
-  terminationGracePeriodSeconds: "3600" # take up to an hour to backup
+  # additionalContainers:
+  #   backup-on-termination:
+  #     image: *tooling_image
+  #     command:
+  #     - /usr/bin/dumb-init
+  #     - /bin/bash
+  #     - -c
+  #     - /storageboss-scripts/backup.sh
+  #     envFrom:
+  #     - configMapRef:
+  #         name: storageboss-env
+  #     - configMapRef:
+  #         name: elfhosted-user-config      
+  #     - secretRef:
+  #         name: storageboss-env
+  #     volumeMounts:
+  #     - mountPath: /storageboss-scripts
+  #       name: storageboss-scripts 
+  #     - mountPath: /home/elfie
+  #       name: tmp
+  #     - mountPath: /ephemeral
+  #       name: ephemeral
+  #     # need a folder here for each app. what a pita
+  #     - mountPath: /persistent/plex
+  #       name: persistent-plex
+  #     - mountPath: /symlinks
+  #       name: symlinks                
+  # terminationGracePeriodSeconds: "3600" # take up to an hour to backup
 
 webdavplus: 
   enabled: false
