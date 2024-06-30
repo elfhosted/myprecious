@@ -7841,6 +7841,7 @@ storageboss:
     symlinks:
       enabled: true
       type: custom
+      mountPath: /storage/symlinks
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks 
