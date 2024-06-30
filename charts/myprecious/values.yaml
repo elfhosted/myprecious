@@ -383,9 +383,8 @@ symlinks: &symlinks
   mountPath: /storage/symlinks
 tmp: &tmp # not using ephemeral volumes anymore, too much overhead, pluse we have ephemeral limits now
   enabled: true
-  type: custom
-  mountPath: /tmp
-  volumeSpec: *volumespec_ephemeral_volume_1g  
+  type: emptyDir
+  mountPath: /tmp  
 
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
@@ -5022,6 +5021,11 @@ plex: &app_plex
     tag: rolling@sha256:06d7d71e5754d606edc6d5e8fea906406bbd027e9427d6cb56de368d877f8e98
   persistence:
     <<: *appmounts
+    tmp: # deal with plex's bad /tmp behaviour
+      enabled: true
+      type: custom
+      mountPath: /tmp
+      volumeSpec: *volumespec_ephemeral_volume_1g      
     config:
       enabled: true
       type: custom
