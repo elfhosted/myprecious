@@ -7791,7 +7791,7 @@ webdav: &webdav
       memory: 512Mi
 
 storageboss:
-  enabled: false # everyone gets storageboss
+  enabled: true # everyone gets storageboss
   podLabels:
     app.elfhosted.com/name: storageboss
   controller:
@@ -7839,20 +7839,20 @@ storageboss:
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
     # needed for the migration
+    # symlinks:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /storage/symlinks
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: symlinks 
     symlinks:
-      enabled: true
-      type: custom
-      mountPath: /storage/symlinks
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks 
-    symlinks-new:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks-block-ssd
-      mountPath: /storage/new-symlinks     
+      mountPath: /storage/symlinks     
     # samba config 
     config:
       enabled: "true"
