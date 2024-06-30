@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.41.0](https://github.com/elfhosted/myprecious/compare/v1.40.0...v1.41.0) (2024-06-30)
+
+
+### Features
+
+* add support for zilean to riven ([3bb87e4](https://github.com/elfhosted/myprecious/commit/3bb87e4ef6328f9b68b28935258190b1f61da54f))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.4.0.4222 ([c6cfaa0](https://github.com/elfhosted/myprecious/commit/c6cfaa06e1d6b458d6a51cb7e76e492674c0aaa3))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.3.29.2565 ([306ed8d](https://github.com/elfhosted/myprecious/commit/306ed8d59a34063508512d716ec9979d22bd097b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.06.29 ([3e2e5e4](https://github.com/elfhosted/myprecious/commit/3e2e5e446db04b0033af5c4500843380f6d33547))
+
+
+### Bug Fixes
+
+* add CORS-enabling middleware to "plus" aars ([4f2e3c7](https://github.com/elfhosted/myprecious/commit/4f2e3c793a8b84fa5fbc21fc41dc20b3fcbf9dd3))
+* **app:** update ghcr.io/elfhosted/comet:rolling docker digest to 9191620 ([9458554](https://github.com/elfhosted/myprecious/commit/9458554ebc1ad825976c1f8bb05be46f3d2a8925))
+* **app:** update ghcr.io/elfhosted/comet:rolling docker digest to bf21371 ([35109d4](https://github.com/elfhosted/myprecious/commit/35109d449ea9752c08fd3ae11d415787007f630c))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 4974d70 ([dbd93af](https://github.com/elfhosted/myprecious/commit/dbd93af7b2b559aeb27fc4725f536d6526af6ff1))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.29-nightly docker digest to 3042db5 ([1e3ddd4](https://github.com/elfhosted/myprecious/commit/1e3ddd476893d403b8bff97dc0498a3f8455f29d))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.29-nightly docker digest to 3635157 ([ead3652](https://github.com/elfhosted/myprecious/commit/ead3652c0558262587811ffb3a6a26601a0ada22))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.29-nightly docker digest to 72f29a1 ([128942a](https://github.com/elfhosted/myprecious/commit/128942a5a73c9a30d98d779d3fd9f41420cd27b8))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.29-nightly docker digest to b2e1937 ([f8c43f9](https://github.com/elfhosted/myprecious/commit/f8c43f9eceb47d9c2a5dbacb918a25f9e5fed9cb))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.29-nightly docker digest to ecb7c85 ([5f6b940](https://github.com/elfhosted/myprecious/commit/5f6b94052cd22f9b8e79760cf6136c13fccb975a))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.29-nightly docker digest to f25c7e6 ([b2d92b0](https://github.com/elfhosted/myprecious/commit/b2d92b0a8854c9916acae367fd7b931b5177c25b))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.06.29-nightly docker digest to fe2550c ([9d2d91f](https://github.com/elfhosted/myprecious/commit/9d2d91feb9f9d1bf7462ba23286dfbe92bc069fd))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 88d7ef8 ([055d96c](https://github.com/elfhosted/myprecious/commit/055d96cac5d76333166ebf972d6ed58344704cb7))
+* replace ephemeralvolumes with emptydir for /tmp for everything except plex ([6c4d67a](https://github.com/elfhosted/myprecious/commit/6c4d67a62fb53ea9769dc24da7e398b89e09bf42))
+* update mediafusion premuimize oauth details for tenant compatibility ([b568981](https://github.com/elfhosted/myprecious/commit/b568981d5e0fc6ec312b6851f7ee72a593d87679))
+* update to latest comet image ([1c260b4](https://github.com/elfhosted/myprecious/commit/1c260b402b9843f77273a852f9eb1a2a6db384b2))
+
 ## [1.40.0](https://github.com/elfhosted/myprecious/compare/v1.39.0...v1.40.0) (2024-06-29)
 
 
