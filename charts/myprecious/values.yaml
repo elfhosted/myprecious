@@ -377,7 +377,8 @@ symlinks: &symlinks
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: storageboss-symlinks
+      claimName: symlinks
+      # claimName: storageboss-symlinks
   mountPath: /storage/symlinks
 tmp: &tmp
   enabled: true
@@ -7790,7 +7791,7 @@ webdav: &webdav
       memory: 512Mi
 
 storageboss:
-  enabled: true # everyone gets storageboss
+  enabled: false # everyone gets storageboss
   podLabels:
     app.elfhosted.com/name: storageboss
   controller:
@@ -7838,20 +7839,20 @@ storageboss:
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
     # needed for the migration
-    symlinks-old:
+    symlinks:
       enabled: true
       type: custom
-      mountPath: /symlinks-old
+      mountPath: /storage/symlinks
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks 
-    symlinks:
+    symlinks-new:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks-block-ssd
-      mountPath: /storage/symlinks     
+      mountPath: /storage/new-symlinks     
     # samba config 
     config:
       enabled: "true"
@@ -7906,15 +7907,15 @@ storageboss:
         # not doing this yet
         # /storageboss-scripts/restore.sh
 
-        if [[ ! -f /storage/symlinks/i-am-tar-migrated ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Tar-migrating from /migration/..."
-            tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/i-am-tar-migrated
-          fi
-        fi   
+        # if [[ ! -f /storage/symlinks/i-am-tar-migrated ]]
+        # then
+        #   if [[ ! -z "$(ls -A /migration)" ]]    
+        #   then
+        #     echo "Tar-migrating from /migration/..."
+        #     tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+        #     touch /storage/symlinks/i-am-tar-migrated
+        #   fi
+        # fi   
                 
       envFrom:
       - configMapRef:
