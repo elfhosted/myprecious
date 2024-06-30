@@ -33,12 +33,12 @@
     {
       "matchUpdateTypes": ["patch"],
       "automerge": true,
-      "excludePackagePatterns": ["notqbittorrent","notdeluge","notrutorrent"]
+      "excludePackagePatterns": ["notqbittorrent","notdeluge","notrutorrent","jellyfin"]
     },
     {
       "matchUpdateTypes": ["minor"],
       "automerge": true,
-      "excludePackagePatterns": ["filebrowser","qbittorrent","deluge","rutorrent"]
+      "excludePackagePatterns": ["filebrowser","qbittorrent","deluge","rutorrent", "jellyfin"]
     }     
   ],
   // since we version by bumping, each PR needs to be rebased every time we merge
