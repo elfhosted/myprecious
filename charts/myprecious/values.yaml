@@ -5886,13 +5886,13 @@ gatus:
       mountPath: /data/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gatus-block-ssd
+          claimName: config-gatus-block
     migration:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gatus-block
+          claimName: config-gatus
   additionalContainers:
     migration: *migrate_data           
   envFrom:
