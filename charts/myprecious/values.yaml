@@ -7930,8 +7930,8 @@ storageboss:
       - mountPath: /home/elfie
         name: tmp
       # we mount this 
-      - mountPath: /migration
-        name: symlinks-old
+      # - mountPath: /migration
+      #   name: symlinks-old
       - mountPath: /storage/symlinks
         name: symlinks        
       resources: *default_resources
