@@ -1,0 +1,19 @@
+{{ if or .Values.riven.enabled or .Values.rivenplus.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-riven-egress-zilean"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: riven
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: zilean
+        k8s:io.kubernetes.pod.namespace: zilean
+    toPorts:
+      - ports:
+        - port: '8181'
+          protocol: TCP
+{{ end }}

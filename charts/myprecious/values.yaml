@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 gluetun:
   enabled: false # just to avoid errors
@@ -381,9 +381,8 @@ symlinks: &symlinks
   mountPath: /storage/symlinks
 tmp: &tmp
   enabled: true
-  type: custom
-  mountPath: /tmp
-  volumeSpec: *volumespec_ephemeral_volume_1g  
+  type: emptyDir
+  mountPath: /tmp  
 
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
@@ -4211,7 +4210,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.5.1782@sha256:0933db110da70fe39fd7dccfd26c006e6d1f0e53a6fc89fbadcd4afdc24ccd21
+    tag: 4.0.5.1791@sha256:65c4477fe73666bffbfd133b0b7701631a83d0f2cf74655918a6a91732f5fe99
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4340,7 +4339,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.5.1782@sha256:0933db110da70fe39fd7dccfd26c006e6d1f0e53a6fc89fbadcd4afdc24ccd21
+    tag: 4.0.5.1791@sha256:65c4477fe73666bffbfd133b0b7701631a83d0f2cf74655918a6a91732f5fe99
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4670,7 +4669,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.3.3.4204@sha256:d0261872294f53629cebf51f6403660e2598a049e7d24876d55a272f96c9bb34
+    tag: 2.4.0.4222@sha256:31c4fb5054e6310c16c649a0d73c88dffde451a32f7ea377f8078bd9217aaed3
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4815,7 +4814,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.28.2554@sha256:564989cc71670b82164a3b47fd3267a5a9eed27463f6d20a9a82c451dea8c35a
+    tag: 0.3.29.2565@sha256:a846dd9526e863417736fa5ddde78f093cc39a911cf7afd1c71ec45db461d0b9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4899,7 +4898,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.28.2554@sha256:564989cc71670b82164a3b47fd3267a5a9eed27463f6d20a9a82c451dea8c35a
+    tag: 0.3.29.2565@sha256:a846dd9526e863417736fa5ddde78f093cc39a911cf7afd1c71ec45db461d0b9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5020,6 +5019,11 @@ plex: &app_plex
     tag: rolling@sha256:06d7d71e5754d606edc6d5e8fea906406bbd027e9427d6cb56de368d877f8e98
   persistence:
     <<: *appmounts
+    tmp: # deal with plex's bad /tmp behaviour
+      enabled: true
+      type: custom
+      mountPath: /tmp
+      volumeSpec: *volumespec_ephemeral_volume_1g      
     config:
       enabled: true
       type: custom
@@ -5246,22 +5250,6 @@ jellyfin: &app_jellyfin
   podLabels:
     app.elfhosted.com/class: debrid  
     app.elfhosted.com/name: jellyfin
-  affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists   
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   priorityClassName: tenant-streaming
@@ -5468,21 +5456,6 @@ emby: &app_emby
     app.elfhosted.com/class: debrid
     app.elfhosted.com/name: emby
   affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists     
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux    
   securityContext:
@@ -6797,7 +6770,7 @@ openbooks:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/openbooks
-    tag: 4.5.0@sha256:ad97a388b0d447a091d077036c33b420d566c27b991bdd2b44674b5d8ee9776c
+    tag: 4.5.0@sha256:0b499fb215c4be6a0c25cc54b30bb9fe1add4b938efedf47a5572516f9f181de
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -8129,7 +8102,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 9.9.1@sha256:0f68caa9843c517d0f00391f4857a2626e9f435c67eb3a8a655eeb28bd110742
+    tag: 9.10.0@sha256:82a9f7595b25b25b3c02bfbf66cd15616566d08065604678a4739cbd6684b291
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10184,7 +10157,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: rolling@sha256:6e13c31d027d6efe0625b8b4ed11216b51c5e898f0c469fd96d41aabc08b267a
+    tag: rolling@sha256:f1b8c21750fa5072c448132f6497a672796d4653a69d5cdfec597683124cf2e6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10380,7 +10353,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.7@sha256:da0a299f93b9f586c519e798dec68b6d9d359105f8708372f08e168d912ca43b
+    tag: 3.9.9@sha256:9e3c4f053c027c2dc9a282f7c7ced8b5d0b884e577d1570ebc66d34ffa2c614d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10641,7 +10614,7 @@ stremify:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremify
-    tag: rolling@sha256:0fa65735cb2189cfcb0a246a67e14c015412b78bd86980446e749d4daf80ea86
+    tag: rolling@sha256:4974d708dbb703cf24f32eb8a689aa8b8ee7fb1513e6dc27b079c926089485a6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10703,7 +10676,7 @@ recyclarr:
   enabled: false
   image:
     repository: ghcr.io/recyclarr/recyclarr
-    tag: latest@sha256:71993e3c91789b973aeba934dd574789799dffad94c53d8280e6be4ad788d85b
+    tag: latest@sha256:88d7ef8feb313398a98aafbc2966959f1689191864247f8be15572d5c67641d5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10791,7 +10764,7 @@ recyclarr:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
     sync:
-      image: ghcr.io/recyclarr/recyclarr:latest@sha256:71993e3c91789b973aeba934dd574789799dffad94c53d8280e6be4ad788d85b      
+      image: ghcr.io/recyclarr/recyclarr:latest@sha256:88d7ef8feb313398a98aafbc2966959f1689191864247f8be15572d5c67641d5      
       command:
       - /bin/bash
       - -c
@@ -10907,7 +10880,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.27-nightly@sha256:1bc7b48feef9efa97052d5d84d15ae0e1aceddebbd68714e40ec0d12d16fedaa
+    tag: 2024.06.29-nightly@sha256:36351579b8771d057dacd0a435c14b419e02b0881b2346d317c3d46fde20dcce
   priorityClassName: tenant-normal
   controller:
     annotations:
