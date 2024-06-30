@@ -4671,7 +4671,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.3.3.4204@sha256:d0261872294f53629cebf51f6403660e2598a049e7d24876d55a272f96c9bb34
+    tag: 2.4.0.4222@sha256:31c4fb5054e6310c16c649a0d73c88dffde451a32f7ea377f8078bd9217aaed3
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4816,7 +4816,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.28.2554@sha256:564989cc71670b82164a3b47fd3267a5a9eed27463f6d20a9a82c451dea8c35a
+    tag: 0.3.29.2565@sha256:a846dd9526e863417736fa5ddde78f093cc39a911cf7afd1c71ec45db461d0b9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4900,7 +4900,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.28.2554@sha256:564989cc71670b82164a3b47fd3267a5a9eed27463f6d20a9a82c451dea8c35a
+    tag: 0.3.29.2565@sha256:a846dd9526e863417736fa5ddde78f093cc39a911cf7afd1c71ec45db461d0b9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10866,7 +10866,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.29-nightly@sha256:ecb7c854156717385323b6e4c3be9f44724d61209ad55077288acd091fe6114c
+    tag: 2024.06.29-nightly@sha256:3042db56ac456a3e330f2454e2735e0d2db5a5bb72198fd9857a1c3c6621094a
   priorityClassName: tenant-normal
   controller:
     annotations:
