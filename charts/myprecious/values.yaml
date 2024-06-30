@@ -5887,12 +5887,6 @@ gatus:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-gatus-block
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gatus
   additionalContainers:
     migration: *migrate_data           
   envFrom:
