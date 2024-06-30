@@ -7790,7 +7790,7 @@ webdav: &webdav
       memory: 512Mi
 
 storageboss:
-  enabled: false
+  enabled: true # everyone gets storageboss
   podLabels:
     app.elfhosted.com/name: storageboss
   controller:
