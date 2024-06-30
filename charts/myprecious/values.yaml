@@ -7838,19 +7838,19 @@ storageboss:
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
     # needed for the migration
-    symlinks-old:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks 
     symlinks:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
+          claimName: symlinks 
+    symlinks-new:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
           claimName: symlinks-block-ssd
-      mountPath: /storage/symlinks     
+      mountPath: /symlinks-new    
     # samba config 
     config:
       enabled: "true"
@@ -7905,15 +7905,16 @@ storageboss:
         # not doing this yet
         # /storageboss-scripts/restore.sh
 
-        if [[ ! -f /storage/symlinks/i-am-migrated ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Migrating from /migration/..."
-            cp -rfp --preserve=links /migration/* /storage/symlinks/
-            touch /storage/symlinks/i-am-migrated
-          fi
-        fi   
+        echo "doing nothing currently"
+        # if [[ ! -f /storage/symlinks/i-am-migrated ]]
+        # then
+        #   if [[ ! -z "$(ls -A /migration)" ]]    
+        #   then
+        #     echo "Migrating from /migration/..."
+        #     cp -rfp --preserve=links /migration/* /storage/symlinks/
+        #     touch /storage/symlinks/i-am-migrated
+        #   fi
+        # fi   
                 
       envFrom:
       - configMapRef:
