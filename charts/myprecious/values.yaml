@@ -5886,9 +5886,7 @@ gatus:
       mountPath: /data/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gatus-block
-  additionalContainers:
-    migration: *migrate_data           
+          claimName: config-gatus-block         
   envFrom:
   - secretRef:
       name: gatus-smtp-config
