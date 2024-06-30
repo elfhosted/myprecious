@@ -564,7 +564,18 @@ data:
             href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/recyclarr/
             description: Configure Recyclarr  
             siteMonitor: http://recyclarr:9898
-        {{ end }}
+        {{ end }}    
+
+        {{ if .Values.tdarr.enabled }}
+        - Tdarr:
+            icon: tdarr.png
+            href: https://{{ .Release.Name }}-tdarr.elfhosted.com
+            description: Automate Media Transcoding  
+            siteMonitor: http://tdarr:8265
+            widget:
+              type: tdarr
+              url: http://tdarr:8265
+        {{ end }}   
 
         {{ if .Values.plexdebrid.enabled }}
         - plex-debrid:
