@@ -5112,7 +5112,7 @@ plex: &app_plex
       volumeMounts:
       - mountPath: /config
         name: config
-        subPath: plex
+        # subPath: plex
       - mountPath: /phototranscoder
         name: phototranscoder        
       # can't use default resources because the ephemeral limit kicks out /phototranscoder later
