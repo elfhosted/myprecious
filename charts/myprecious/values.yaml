@@ -2987,14 +2987,14 @@ filebrowser:
       volumeSpec:
         configMap:
           name: explain-migration  
-    plex:
-      enabled: true
-      type: custom
-      mountPath: /storage/config/plex/
-      subPath: plex
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: storageboss    
+    # plex:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /storage/config/plex/
+    #   subPath: plex
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: storageboss    
     plexdebrid:
       enabled: false
       type: custom
@@ -5020,21 +5020,18 @@ plex: &app_plex
     tag: rolling@sha256:06d7d71e5754d606edc6d5e8fea906406bbd027e9427d6cb56de368d877f8e98
   persistence:
     <<: *appmounts
-    # config:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /config/
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: config-plex-block 
     config:
       enabled: true
       type: custom
       mountPath: /config/
-      subPath: plex
       volumeSpec:
         persistentVolumeClaim:
-          claimName: storageboss                                       
+          claimName: config-plex-block 
+    tmp:
+      enabled: true
+      type: custom
+      mountPath: /tmp
+      volumeSpec: *volumespec_ephemeral_volume_1g                                              
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
@@ -7861,13 +7858,6 @@ storageboss:
     #   mountPath: /storage
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
-    plex:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plex-block
-      mountPath: /storage/plex
     # needed for the migration
     symlinks-old:
       enabled: true
