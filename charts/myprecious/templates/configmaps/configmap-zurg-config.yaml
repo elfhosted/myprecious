@@ -14,6 +14,12 @@ data:
     token: {{ .Values.zurgplus.token }} # https://real-debrid.com/apitoken
   {{ end }}
   
+    # additional download tokens - uncomment and populate this with your additional tokens to auto-overcome bandwidth limitation issues
+    # download_tokens:
+    # - "iamtoken1"
+    # - "iamtoken2"
+
+
     # basic functionality
     host: "[::]" # do not change this if you are running it inside a docker container
     port: 9999 # do not change this if you are running it inside a docker container
