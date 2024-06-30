@@ -5245,7 +5245,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.5@sha256:fe9f55b57c9333d5df37afc47a226ad63a3c32fe4cd1bd4c81bb1c009cb3faa3
+    tag: 10.9.5@sha256:6124b34cf2fc990a91f46e962d9ab140ff79409a7b3e2ee4ddb923d650bb1a76
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid  
@@ -7838,20 +7838,20 @@ storageboss:
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
     # needed for the migration
-    symlinks:
+    symlinks-old:
       enabled: true
       type: custom
-      mountPath: /storage/symlinks
+      mountPath: /symlinks-old
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks 
-    symlinks-new:
+    symlinks:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks-block-ssd
-      mountPath: /symlinks-new    
+      mountPath: /storage/symlinks     
     # samba config 
     config:
       enabled: "true"
@@ -7906,16 +7906,15 @@ storageboss:
         # not doing this yet
         # /storageboss-scripts/restore.sh
 
-        echo "doing nothing currently"
-        # if [[ ! -f /storage/symlinks/i-am-migrated ]]
-        # then
-        #   if [[ ! -z "$(ls -A /migration)" ]]    
-        #   then
-        #     echo "Migrating from /migration/..."
-        #     cp -rfp --preserve=links /migration/* /storage/symlinks/
-        #     touch /storage/symlinks/i-am-migrated
-        #   fi
-        # fi   
+        if [[ ! -f /storage/symlinks/i-am-tar-migrated ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Tar-migrating from /migration/..."
+            tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            touch /storage/symlinks/i-am-tar-migrated
+          fi
+        fi   
                 
       envFrom:
       - configMapRef:
@@ -10165,7 +10164,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: rolling@sha256:a177371b279f069f85febe0d5e2948f5fc0714e59182f68943a7f82147a1a8b6
+    tag: rolling@sha256:f1b8c21750fa5072c448132f6497a672796d4653a69d5cdfec597683124cf2e6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10888,7 +10887,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.06.29-nightly@sha256:494717d9ec0fc5f25458b7ab7a6e0491310b705cb8ca93b5d4bd69f19c5efcef
+    tag: 2024.06.29-nightly@sha256:fe2550cbdd3b63b2d54c7c97fe914c14d0be85b3542867ee97acd63a77a8f628
   priorityClassName: tenant-normal
   controller:
     annotations:
