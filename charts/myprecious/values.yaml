@@ -6793,7 +6793,7 @@ openbooks:
     sleep 5s
     USER=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13 ; echo '')
     ./openbooks server \
-      --dir /storage/elfstorage/downloads/completed \
+      --dir $DATA_DIR \
       --port 8000 \
       --name $USER \
       --tls=false \
@@ -6801,6 +6801,12 @@ openbooks:
       --server irc.irchighway.net:6661 \
       --no-browser-downloads \
       --debug
+  env:
+    DATA_DIR: /tmp # this can be overridden by elfbot
+  envFrom:
+  - configMapRef:
+      name: elfbot-openbooks
+      optional: true    
   automountServiceAccountToken: false
   controller:
     annotations:
