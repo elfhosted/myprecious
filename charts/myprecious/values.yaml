@@ -120,26 +120,26 @@ rclonec: &rclonec
     persistentVolumeClaim:
       claimName: rclone-c
   mountPath: /storage/rclone-c
-s3a: &s3a
+rclonemounts3a: &rclonemounts3a
   enabled: false
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: s3-a
+      claimName: rclone-s3-a
   mountPath: /storage/s3-a
-s3b: &s3b
+rclonemounts3b: &rclonemounts3b
   enabled: false
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: s3-b
+      claimName: rclone-s3-b
   mountPath: /storage/s3-b  
-s3c: &s3c
+rclonemounts3c: &rclonemounts3c
   enabled: false
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: s3-c
+      claimName: rclone-s3-c
   mountPath: /storage/s3-c 
 gdrivea: &gdrivea
   enabled: false
@@ -392,9 +392,9 @@ appmounts: &appmounts
   rclonea: *rclonea
   rcloneb: *rcloneb
   rclonec: *rclonec
-  # s3a: *s3a
-  # s3b: *s3b
-  # s3c: *s3c
+  rclonemounts3a: *rclonemounts3a
+  rclonemounts3b: *rclonemounts3b
+  rclonemounts3c: *rclonemounts3c
   gdrivea: *gdrivea
   gdriveb: *gdriveb
   gdrivec: *gdrivec
@@ -9336,7 +9336,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:34088b6f95f1f23186f305ce06e5c6f0f8c4b15bcf5a7fb8c8782f923553f671
+    tag: rolling@sha256:41bca3b24c68b822786603931580cad2567f809d04cc19c515f2fff189875a9c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10165,7 +10165,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: rolling@sha256:34005c2956812ea5196da8686a8e5329e8ec45a79b34411375959ecc2fc1375e
+    tag: rolling@sha256:2b391a5d72adc71d2f6eaf4789b9d9ec3999ce6127ed5fb4cd5dee541207a6da
   priorityClassName: tenant-normal
   controller:
     annotations:

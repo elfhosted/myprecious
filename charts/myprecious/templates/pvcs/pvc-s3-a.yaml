@@ -1,8 +1,8 @@
-{{ if .Values.s3a.enabled }}
+{{ if .Values.rclonemounts3a.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: s3-a
+  name: rclone-s3-a
   labels:
     velero.io/exclude-from-backup: "true"
 spec:
