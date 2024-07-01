@@ -125,21 +125,21 @@ rclonemounts3a: &rclonemounts3a
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: s3-a
+      claimName: rclone-s3-a
   mountPath: /storage/s3-a
-s3b: &s3b
+rclonemounts3b: &rclonemounts3b
   enabled: false
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: s3-b
-  mountPath: /storage/s3-b  
-s3c: &s3c
+      claimName: rclone-s3-b
+  mountPath: /storage/s3-b
+rclonemounts3c: &rclonemounts3c
   enabled: false
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: s3-c
+      claimName: rclone-s3-c
   mountPath: /storage/s3-c 
 gdrivea: &gdrivea
   enabled: false
