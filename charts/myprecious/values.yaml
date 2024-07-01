@@ -392,9 +392,9 @@ appmounts: &appmounts
   rclonea: *rclonea
   rcloneb: *rcloneb
   rclonec: *rclonec
-  # s3a: *s3a
-  # s3b: *s3b
-  # s3c: *s3c
+  s3a: *s3a
+  s3b: *s3b
+  s3c: *s3c
   gdrivea: *gdrivea
   gdriveb: *gdriveb
   gdrivec: *gdrivec
