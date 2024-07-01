@@ -120,7 +120,7 @@ rclonec: &rclonec
     persistentVolumeClaim:
       claimName: rclone-c
   mountPath: /storage/rclone-c
-s3a: &s3a
+rclonemounts3a: &rclonemounts3a
   enabled: false
   type: custom
   volumeSpec:
@@ -392,7 +392,7 @@ appmounts: &appmounts
   rclonea: *rclonea
   rcloneb: *rcloneb
   rclonec: *rclonec
-  s3a: *s3a
+  rclonemounts3a: *rclonemounts3a
   s3b: *s3b
   s3c: *s3c
   gdrivea: *gdrivea
