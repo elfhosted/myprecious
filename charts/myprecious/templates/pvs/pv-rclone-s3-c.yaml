@@ -1,4 +1,4 @@
-{{ if .Values.s3c.enabled }}
+{{ if .Values.rclonemounts3c.enabled }}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
