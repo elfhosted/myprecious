@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.43.0](https://github.com/elfhosted/myprecious/compare/v1.42.0...v1.43.0) (2024-07-01)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon docker tag to v2.0.27 ([f58617b](https://github.com/elfhosted/myprecious/commit/f58617bcc7807aaaca724078329439099bab9268))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 41bca3b ([4c9bd12](https://github.com/elfhosted/myprecious/commit/4c9bd1270c8a3098f26d2b496479af06eae59cb7))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.01-nightly docker digest to 8b18b62 ([b5feaa5](https://github.com/elfhosted/myprecious/commit/b5feaa5f982a9e181ab1c8753464c37266354294))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.01-nightly docker digest to 8ec6a8d ([079dcd2](https://github.com/elfhosted/myprecious/commit/079dcd2597194e8d6469ceb6f16f004081689e0d))
+
 ## [1.42.0](https://github.com/elfhosted/myprecious/compare/v1.41.0...v1.42.0) (2024-07-01)
 
 
