@@ -16,5 +16,5 @@ spec:
     driver: csi-rclone
     volumeHandle: rclone-{{ .Release.Name }}-s3-c
     volumeAttributes:
-      secretName: "{{ .Release.Name }}-s3-c"
+      secretName: "{{ .Release.Name }}-s3-a-credentials"
 {{ end }}
