@@ -3,7 +3,7 @@ name: "My Precious: Stable Release (Scheduled)"
 on:
   schedule:
     # 9:45am UTC is 21h45 NZST, giving us 15 min to run before the maint window starts 10pm weekdays NZ time
-    - cron: '45 09 * * *'
+    - cron: '0 10 * * *'
   workflow_dispatch:
 
 jobs:
