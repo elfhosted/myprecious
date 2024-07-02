@@ -4545,7 +4545,7 @@ prowlarr: &app_prowlarr
   image:
     registry: ghcr.io
     repository: elfhosted/prowlarr-develop
-    tag: 1.19.0.4568@sha256:2766a33f3602431010a16f50bff39839ca999baa9dd7eb080f1c240cfa03b85d
+    tag: 1.20.0.4590@sha256:62f1a124d8c123e6be72f532bf1ec6b2adfe0dcc21a64ba6e568da4d2700f2fc
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4670,7 +4670,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.4.0.4222@sha256:31c4fb5054e6310c16c649a0d73c88dffde451a32f7ea377f8078bd9217aaed3
+    tag: 2.4.1.4234@sha256:19a2cd7d2f648afba74746097f1e51d07204c17516e420882065c132350d6d5d
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9410,7 +9410,7 @@ riven: &app_riven
         name: symlinks        
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:ef8221a92ffa5415db994d6adb0920bf07c166a20fee4aa8705c4e671ff2f2e8
+      image: ghcr.io/elfhosted/riven:rolling@sha256:6370b112b30afb44f13fa68472d15679c00eafdfb07666ab2314c1178d65427f
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -10888,7 +10888,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.02-nightly@sha256:0bb515f7bdc309eb203084abb2e6e516a50d6f6dc8c850ce9050e9768fa264c5
+    tag: 2024.07.02-nightly@sha256:44000c24af22b42d22c49856905bec62ce10cabbdfcc71ada926da7a58cfb61e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11226,7 +11226,7 @@ plexdebrid:
   # runtimeClassName: kata  
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:0a754e966ab989599a22a1a49a2ccf717663a91e176cd018f2196ca355194024
+    tag: rolling@sha256:fa9e2aad2e91a8dd00a1cd4f036519948e98e4e6138f23e61c4c1ec1a0dfba20
   priorityClassName: tenant-normal
   controller:
     annotations:
