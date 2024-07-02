@@ -587,10 +587,31 @@ data:
 
         {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
         - Riven:
-            icon: mdi-image-filter-hdr-outline
+            icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
             href: https://{{ .Release.Name }}-riven.elfhosted.com
             description: All-in-one Debrid Media Management
             siteMonitor: http://riven:3000
+            widget:
+                type: customapi
+                url: http://riven:8080/stats
+                refreshInterval: 10000
+                method: GET
+                mappings:
+                - field:
+                    data: total_movies
+                    label: Movies
+                    format: number
+
+                - field:
+                    data: total_shows
+                    label: Shows
+                    format: number
+
+                - field:
+                    data: incomplete_items
+                    label: Incomplete
+                    format: number
+                                
 
         - Riven (Backend):
             icon: mdi-image-filter-hdr-outline

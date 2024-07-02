@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true
+safeToRelease: false # waiting on riven release
 
 gluetun:
   enabled: false # just to avoid errors
@@ -132,9 +132,9 @@ rclonemounts3b: &rclonemounts3b
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: rclone-s3-b
-  mountPath: /storage/s3-b
-rclonemounts3c: &rclonemounts3c
+      claimName: s3-b
+  mountPath: /storage/s3-b  
+s3c: &s3c
   enabled: false
   type: custom
   volumeSpec:
@@ -392,9 +392,9 @@ appmounts: &appmounts
   rclonea: *rclonea
   rcloneb: *rcloneb
   rclonec: *rclonec
-  rclonemounts3a: *rclonemounts3a
-  s3b: *s3b
-  s3c: *s3c
+  # s3a: *s3a
+  # s3b: *s3b
+  # s3c: *s3c
   gdrivea: *gdrivea
   gdriveb: *gdriveb
   gdrivec: *gdrivec
@@ -9336,7 +9336,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:34088b6f95f1f23186f305ce06e5c6f0f8c4b15bcf5a7fb8c8782f923553f671
+    tag: rolling@sha256:ef8221a92ffa5415db994d6adb0920bf07c166a20fee4aa8705c4e671ff2f2e8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9410,7 +9410,7 @@ riven: &app_riven
         name: symlinks        
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:34088b6f95f1f23186f305ce06e5c6f0f8c4b15bcf5a7fb8c8782f923553f671
+      image: ghcr.io/elfhosted/riven:rolling@sha256:ef8221a92ffa5415db994d6adb0920bf07c166a20fee4aa8705c4e671ff2f2e8
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -10165,7 +10165,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: rolling@sha256:34005c2956812ea5196da8686a8e5329e8ec45a79b34411375959ecc2fc1375e
+    tag: rolling@sha256:f5a4fc218e7e11efbd4d4b1ae0497d14098228f3c56133e1036707d8f051ef86
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10888,7 +10888,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.01-nightly@sha256:42b8f19f1fc4eb8d4f9e0eaddf4e8a6d8c5de4870dc7fa917361d79490b2c6e0
+    tag: 2024.07.02-nightly@sha256:0bb515f7bdc309eb203084abb2e6e516a50d6f6dc8c850ce9050e9768fa264c5
   priorityClassName: tenant-normal
   controller:
     annotations:
