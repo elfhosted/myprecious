@@ -9336,7 +9336,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:6370b112b30afb44f13fa68472d15679c00eafdfb07666ab2314c1178d65427f
+    tag: rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9410,7 +9410,7 @@ riven: &app_riven
         name: symlinks        
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:6370b112b30afb44f13fa68472d15679c00eafdfb07666ab2314c1178d65427f
+      image: ghcr.io/elfhosted/riven:rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -10165,7 +10165,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.0.0@sha256:282ec5d43ce9d8df8794585a6002f28bcb8eef7cd8ddb08decc583934737c8e4
+    tag: v1.1.0@sha256:f2f52abcd6ea131e31e7e81811538aa04f74bcd06eac8174fe682760530d9123
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10888,7 +10888,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.02-nightly@sha256:44000c24af22b42d22c49856905bec62ce10cabbdfcc71ada926da7a58cfb61e
+    tag: 2024.07.02-nightly@sha256:acc3ab8a2bff39ff7a0fc940a61bb597d88fcd3417a8377cd97878e8cf44c982
   priorityClassName: tenant-normal
   controller:
     annotations:
