@@ -4119,7 +4119,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.13.0@sha256:4a1f1f9adcee133b374dc9ea783b6b735844313f99c65fb62cb15cc0089d1948
+    tag: 7.13.0@sha256:ab3c6fb537e1b3085963c7407a4971e7e535812341eb65b10b42691389697292
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10888,7 +10888,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.02-nightly@sha256:1f5db2ecd54d3fba9f0a16e7c79545d8d832f341c2d35e3fa9c956a3a15558bf
+    tag: 2024.07.02-nightly@sha256:dd9b9254c954f411b84fef689fc3ad08b9e620974a1c44d165e131dbd2804aa4
   priorityClassName: tenant-normal
   controller:
     annotations:
