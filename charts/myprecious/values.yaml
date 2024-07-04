@@ -2776,7 +2776,6 @@ filebrowser:
     name: filebrowser
   automountServiceAccountToken: true
   persistence:
-    <<: *appmounts
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
