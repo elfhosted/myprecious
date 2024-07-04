@@ -372,14 +372,30 @@ rclonemountdebridlink: &rclonemountdebridlink
     persistentVolumeClaim:
       claimName: debridlink
   mountPath: /storage/debridlink    
+# symlinks: &symlinks
+#   enabled: true
+#   type: custom
+#   volumeSpec:
+#     persistentVolumeClaim:
+#       claimName: symlinks
+#       # claimName: storageboss-symlinks
+#   mountPath: /storage/symlinks
 symlinks: &symlinks
   enabled: true
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: symlinks
-      # claimName: storageboss-symlinks
-  mountPath: /storage/symlinks
+      claimName: symlinks-block-ssd
+  mountPath: /storage/symlinks   
+
+# these two are copied to every pod
+storageboss: &storageboss
+  enabled: true
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: storageboss-storage
+  mountPath: /storage/       
 tmp: &tmp
   enabled: true
   type: emptyDir
@@ -388,42 +404,8 @@ tmp: &tmp
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
   tmp: *tmp
-  rclonecustoma: *rclonecustoma
-  rclonea: *rclonea
-  rcloneb: *rcloneb
-  rclonec: *rclonec
-  rclonemounts3a: *rclonemounts3a
-  rclonemounts3b: *rclonemounts3b
-  rclonemounts3c: *rclonemounts3c
-  gdrivea: *gdrivea
-  gdriveb: *gdriveb
-  gdrivec: *gdrivec
-  gdrived: *gdrived
-  rclonegdriveencrypteda: *rclonegdriveencrypteda
-  rclonegdriveencryptedb: *rclonegdriveencryptedb
-  rclonegdriveencryptedc: *rclonegdriveencryptedc    
-  onedrivea: *onedrivea
-  rclonemountwebdava: *rclonemountwebdava
-  rclonemountrealdebridzurg: *rclonemountrealdebridzurg
-  rclonemountalldebridpia: *rclonemountalldebridpia
-  rclonemountputio: *rclonemountputio
-  rclonemountpikpak: *rclonemountpikpak
-  rclonemountssha: *rclonemountssha
-  rclonemountdebridlink: *rclonemountdebridlink
-  storageboxa: *storageboxa
-  storageboxb: *storageboxb
-  storageboxc: *storageboxc
-  rclonestorageboxencrypteda: *rclonestorageboxencrypteda
-  rclonestorageboxencryptedb: *rclonestorageboxencryptedb
-  rclonestorageboxencryptedc: *rclonestorageboxencryptedc   
-  rcloneb2encrypteda: *rcloneb2encrypteda   
-  rclonemountpremiumize: *rclonemountpremiumize
-  b2: *b2
-  smbmounta: *smbmounta
-  smbmountb: *smbmountb
-  smbmountc: *smbmountc
-  rclonesmbencrypteda: *rclonesmbencrypteda
-  symlinks: *symlinks
+  storageboss: *storageboss
+
 
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
@@ -7839,20 +7821,53 @@ storageboss:
     #   volumeSpec: *volumespec_ephemeral_volume_50g  
     # these are the persistent volumes we support currently
     # needed for the migration
-    # symlinks:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /storage/symlinks
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: symlinks 
-    symlinks:
+
+    # this is the old symlinks on HDD
+    migration:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: symlinks-block-ssd
-      mountPath: /storage/symlinks     
+          claimName: symlinks 
+
+
+    rclonecustoma: *rclonecustoma
+    rclonea: *rclonea
+    rcloneb: *rcloneb
+    rclonec: *rclonec
+    rclonemounts3a: *rclonemounts3a
+    rclonemounts3b: *rclonemounts3b
+    rclonemounts3c: *rclonemounts3c
+    gdrivea: *gdrivea
+    gdriveb: *gdriveb
+    gdrivec: *gdrivec
+    gdrived: *gdrived
+    rclonegdriveencrypteda: *rclonegdriveencrypteda
+    rclonegdriveencryptedb: *rclonegdriveencryptedb
+    rclonegdriveencryptedc: *rclonegdriveencryptedc    
+    onedrivea: *onedrivea
+    rclonemountwebdava: *rclonemountwebdava
+    rclonemountrealdebridzurg: *rclonemountrealdebridzurg
+    rclonemountalldebridpia: *rclonemountalldebridpia
+    rclonemountputio: *rclonemountputio
+    rclonemountpikpak: *rclonemountpikpak
+    rclonemountssha: *rclonemountssha
+    rclonemountdebridlink: *rclonemountdebridlink
+    storageboxa: *storageboxa
+    storageboxb: *storageboxb
+    storageboxc: *storageboxc
+    rclonestorageboxencrypteda: *rclonestorageboxencrypteda
+    rclonestorageboxencryptedb: *rclonestorageboxencryptedb
+    rclonestorageboxencryptedc: *rclonestorageboxencryptedc   
+    rcloneb2encrypteda: *rcloneb2encrypteda   
+    rclonemountpremiumize: *rclonemountpremiumize
+    b2: *b2
+    smbmounta: *smbmounta
+    smbmountb: *smbmountb
+    smbmountc: *smbmountc
+    rclonesmbencrypteda: *rclonesmbencrypteda
+    symlinks: *symlinks
+  
     # samba config 
     config:
       enabled: "true"
@@ -7907,15 +7922,15 @@ storageboss:
         # not doing this yet
         # /storageboss-scripts/restore.sh
 
-        # if [[ ! -f /storage/symlinks/i-am-tar-migrated ]]
-        # then
-        #   if [[ ! -z "$(ls -A /migration)" ]]    
-        #   then
-        #     echo "Tar-migrating from /migration/..."
-        #     tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-        #     touch /storage/symlinks/i-am-tar-migrated
-        #   fi
-        # fi   
+        if [[ ! -f /storage/symlinks/i-am-tar-migrated ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Tar-migrating from /migration/..."
+            tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            touch /storage/symlinks/i-am-tar-migrated
+          fi
+        fi   
                 
       envFrom:
       - configMapRef:
@@ -7929,9 +7944,8 @@ storageboss:
         name: storageboss-scripts 
       - mountPath: /home/elfie
         name: tmp
-      # we mount this 
-      # - mountPath: /migration
-      #   name: symlinks-old
+      - mountPath: /migration
+        name: migration
       - mountPath: /storage/symlinks
         name: symlinks        
       resources: *default_resources
@@ -10888,7 +10902,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.04-nightly@sha256:66295278d95298d40f4beae606dc223295b5ac86ab563fdda7daa00dc768aba7
+    tag: 2024.07.02-nightly@sha256:37bbe99d4bae25d1fb5de52760c4c8f9489d734497e1f96d369140e7094e1927
   priorityClassName: tenant-normal
   controller:
     annotations:
