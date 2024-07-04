@@ -11360,9 +11360,7 @@ codeserver:
         http:
           port: 8080 
   persistence:
-    symlinks: *symlinks
     tmp: *tmp     
-    rclonemountrealdebridzurg: *rclonemountrealdebridzurg  
     config:
       enabled: true
       type: custom
