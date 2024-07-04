@@ -24,9 +24,9 @@ spec:
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
-    volumeHandle: storageboss.{{ .Release.Namespace }}.svc.cluster.local/storage/storage##
+    volumeHandle: storageboss.{{ .Release.Namespace }}.svc.cluster.local/storage##
     volumeAttributes:
-      source: "//storageboss.{{ .Release.Namespace }}.svc.cluster.local/storage/storage"
+      source: "//storageboss.{{ .Release.Namespace }}.svc.cluster.local/storage"
     nodeStageSecretRef:
       name: credentials-storageboss
       namespace: csi-smb
