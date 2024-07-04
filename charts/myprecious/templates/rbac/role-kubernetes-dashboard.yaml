@@ -68,4 +68,7 @@ rules:
 {{ if .Values.kometa.enabled }}
   - elfbot-kometa
 {{ end }}
+{{ if .Values.comet.enabled }}
+  - elfbot-comet
+{{ end }}
 
