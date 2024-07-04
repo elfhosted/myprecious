@@ -404,8 +404,7 @@ tmp: &tmp
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
   tmp: *tmp
-  storageboss: *storageboss
-
+  storageboss-storage: *storageboss-storage
 
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
