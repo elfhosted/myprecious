@@ -389,7 +389,7 @@ symlinks: &symlinks
   mountPath: /storage/symlinks   
 
 # these two are copied to every pod
-storageboss: &storageboss
+storageboss-storage: &storageboss-storage
   enabled: true
   type: custom
   volumeSpec:
@@ -2193,8 +2193,8 @@ radarr: &app_radarr
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks        
+      - mountPath: /storage
+        name: storageboss-storage      
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -2330,8 +2330,8 @@ radarr4k: &app_radarr4k
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks             
+      - mountPath: /storage
+        name: storageboss-storage       
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -3485,8 +3485,8 @@ filebrowser:
       volumeMounts:
       - mountPath: /elfbot
         name: elfbot
-      - mountPath: /storage/symlinks
-        name: symlinks        
+      - mountPath: /storage
+        name: storageboss-storage
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -4262,8 +4262,8 @@ sonarr: &app_sonarr
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks  
+      - mountPath: /storage
+        name: storageboss-storage  
       - mountPath: /mediacover
         name: mediacover                     
       resources: *default_resources
@@ -4391,8 +4391,8 @@ sonarr4k: &app_sonarr4k
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks
+      - mountPath: /storage
+        name: storageboss-storage
       - mountPath: /mediacover
         name: mediacover        
       resources: *default_resources
@@ -9420,8 +9420,8 @@ riven: &app_riven
         mkdir -p /storage/symlinks/movies
         mkdir -p /storage/symlinks/shows
       volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks        
+      - mountPath: /storage
+        name: storageboss-storage     
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven:rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
@@ -9429,10 +9429,8 @@ riven: &app_riven
       - mountPath: /riven/data
         name: config
         subPath: config
-      - mountPath: /storage/realdebrid-zurg
-        name: rclonemountrealdebridzurg
-      - mountPath: /storage/symlinks
-        name: symlinks
+      - mountPath: /storage
+        name: storageboss-storage
       command: [ "node", "/riven/frontend/build"]
       envFrom:
       - configMapRef:
