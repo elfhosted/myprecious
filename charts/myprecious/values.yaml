@@ -7831,6 +7831,7 @@ storageboss:
     migration:
       enabled: true
       type: custom
+      mountPath: /storage/old-symlinks
       volumeSpec:
         persistentVolumeClaim:
           claimName: symlinks 
