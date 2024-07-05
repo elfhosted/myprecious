@@ -4429,8 +4429,9 @@ sonarr4k: &app_sonarr4k
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage
+      - mountPath: /storage/symlinks
         name: storagehub
+        subPath: symlinks
       - mountPath: /mediacover
         name: mediacover        
       resources: *default_resources
@@ -9440,8 +9441,9 @@ riven: &app_riven
       - mountPath: /riven/data
         name: config
         subPath: config
-      - mountPath: /storage
+      - mountPath: /storage/symlinks
         name: storagehub
+        subPath: symlinks
       command: [ "node", "/riven/frontend/build"]
       envFrom:
       - configMapRef:
