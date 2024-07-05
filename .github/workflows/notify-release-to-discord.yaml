@@ -4,19 +4,44 @@ on:
   release:
     types: [published]
 
-jobs:
-  sending:
-    runs-on: ubuntu-latest
-    steps:
+# jobs:
+#   sending:
+#     runs-on: ubuntu-latest
+#     steps:
 
-    - name: Github Releases To Discord
-      uses: SethCohen/github-releases-to-discord@v1.15.0
+#     - name: Github Releases To Discord
+#       uses: SethCohen/github-releases-to-discord@v1.13.1
+#       with:
+#         webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+#         # color: "36511f"
+#         username: "Spanky the ElfBot"
+#         avatar_url: "https://github.com/spanky-the-elfbot.png"
+#         # content: "Hey <@&1119634168314343505>, got some new treetz for you!"
+#         footer_title: "So this is what's up..."
+#         footer_icon_url: "https://github.com/elfhosted.png"
+#         footer_timestamp: true        
+
+
+#         name: "CD: Crosspost Changelog"
+# on:
+#   release:
+#     types: [published]
+jobs:
+  crosspost:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: "Parse release name"
+      id: get-release-name
+      run: "echo ::set-output name=name::${RELEASE:-$TAG}"
+      env:
+        RELEASE: ${{ github.event.release.name }}
+        TAG: ${{ github.event.release.tag_name }}
+    - name: "Crosspost changelog to Discord"
+      uses: kludge-cs/gitcord-release-changelogger@v3.0.0
       with:
-        webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        # color: "36511f"
-        username: "Spanky the ElfBot"
-        avatar_url: "https://github.com/spanky-the-elfbot.png"
-        # content: "Hey <@&1119634168314343505>, got some new treetz for you!"
-        footer_title: "So this is what's up..."
-        footer_icon_url: "https://github.com/elfhosted.png"
-        footer_timestamp: true        
+        release-body: ${{ github.event.release.body }}
+        release-name: ${{ steps.get-release-name.outputs.name }}
+        webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
