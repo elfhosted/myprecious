@@ -2810,13 +2810,13 @@ filebrowser:
         configMap:
           name: recyclarr-config
     storageboss-storage:
-      enabled: false
+      enabled: true
       type: custom
       mountPath: /storage/storage/
       volumeSpec:
         persistentVolumeClaim:
           claimName: storageboss-storage
-
+    tmp: *tmp
     # We need one of these per-app. The global section will override the false enablement
     airdcpppia:
       enabled: false
@@ -3109,13 +3109,13 @@ filebrowser:
         persistentVolumeClaim:
           claimName: config-overseerr-ssd
         
-    # privatebin:
-    #   enabled: false
-    #   type: custom
-    #   mountPath: /storage/config/privatebin/
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: config-privatebin-ssd            
+    privatebin:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/privatebin/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-privatebin-ssd            
     prowlarr:
       enabled: "false"
       subPath: "where-is-my-prowlarr.txt"

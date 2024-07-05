@@ -1,4 +1,3 @@
-{{ if .Values.storageboss.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
@@ -16,4 +15,3 @@ spec:
       - ports:
         - port: '5574'
           protocol: TCP
-{{ end }}
