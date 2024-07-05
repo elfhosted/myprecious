@@ -2230,8 +2230,9 @@ radarr: &app_radarr
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage
-        name: storagehub      
+      - mountPath: /storage/symlinks
+        name: storagehub-symlinks
+        subPath: symlinks
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -2367,8 +2368,9 @@ radarr4k: &app_radarr4k
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage
-        name: storagehub       
+      - mountPath: /storage/symlinks
+        name: storagehub-symlinks
+        subPath: symlinks
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -4299,8 +4301,9 @@ sonarr: &app_sonarr
           ln -s /mediacover '/config/MediaCover'
         fi
       volumeMounts:
-      - mountPath: /storage
-        name: storagehub  
+      - mountPath: /storage/symlinks
+        name: storagehub-symlinks
+        subPath: symlinks
       - mountPath: /mediacover
         name: mediacover                     
       resources: *default_resources
@@ -9429,8 +9432,9 @@ riven: &app_riven
         mkdir -p /storage/symlinks/movies
         mkdir -p /storage/symlinks/shows
       volumeMounts:
-      - mountPath: /storage
-        name: storagehub     
+      - mountPath: /storage/symlinks
+        name: storagehub-symlinks
+        subPath: symlinks
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven:rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
