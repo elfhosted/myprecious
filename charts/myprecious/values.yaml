@@ -7255,27 +7255,23 @@ storagehub:
       configmap.reloader.stakater.com/reload: "storagehub-scripts,storagehub-env"  
       secret.reloader.stakater.com/reload: ",storagehub-config,storagehub-env"  
   affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
-    podAffinity: 
-      # prefer to be located with debrid class (plex/jelly/emby), but 
+    podAffinity:
+      # prefer to be located with zurg, if tolerations permit
       preferredDuringSchedulingIgnoredDuringExecution: 
       - weight: 100  
         podAffinityTerm:    
           labelSelector:
             matchExpressions:
-            - key: app.kubernetes.io/class
+            - key: app.elfhosted.com/name
               operator: In
               values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"   
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
   tolerations:
   - key: node-role.elfhosted.com/download-only
-    operator: Exists            
+    operator: Exists     
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists           
   priorityClassName: tenant-critical
   image:
     repository: quay.io/samba.org/samba-server
