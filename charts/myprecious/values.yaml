@@ -7174,28 +7174,28 @@ webdav: &webdav
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - bulk
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}            
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists      
+  # affinity:
+  #   nodeAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       nodeSelectorTerms:
+  #       - matchExpressions:
+  #         - key: node-role.elfhosted.com/download-only
+  #           operator: Exists
+  #   podAntiAffinity:
+  #     preferredDuringSchedulingIgnoredDuringExecution: 
+  #     - weight: 100  
+  #       podAffinityTerm:    
+  #         labelSelector:
+  #           matchExpressions:
+  #           - key: app.elfhosted.com/class
+  #             operator: In
+  #             values:
+  #             - bulk
+  #         topologyKey: "kubernetes.io/hostname"
+  #         namespaceSelector: {}            
+  # tolerations:
+  # - key: node-role.elfhosted.com/download-only
+  #   operator: Exists      
   command:
   - /webdav.sh
   podSecurityContext:
@@ -10198,6 +10198,8 @@ comet:
     repository: ghcr.io/elfhosted/comet
     tag: v1.4.0@sha256:4d41b34958c49bdd7bcc0d55d840b5a4f9d84c862e336ee874e667f5c553a072
   priorityClassName: tenant-normal
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "150M"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-comet"
