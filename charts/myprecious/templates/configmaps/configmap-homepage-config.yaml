@@ -545,9 +545,9 @@ data:
         {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
         - Kometa:
             icon: mdi-folder-information
-            href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/kometa/
+            href: https://{{ .Release.Name }}-kometa.elfhosted.com
             description: Manage Plex Metadata   
-            siteMonitor: http://kometa:9898
+            siteMonitor: http://kometa:3001
         {{ end }}           
 
         {{ if or .Values.autoscan.enabled }}

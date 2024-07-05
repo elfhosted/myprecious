@@ -1,0 +1,19 @@
+{{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-kometa.elfhosted.com
+spec:
+  entryPoints:
+  - websecure
+  - web
+  routes:
+    - match: Host(`{{ .Release.Name }}-kometa.elfhosted.com`)
+      kind: Rule
+      services:
+        - name: kometa
+          kind: Service
+          port: 3001
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+{{ end }}

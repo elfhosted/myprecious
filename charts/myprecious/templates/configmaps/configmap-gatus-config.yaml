@@ -626,7 +626,7 @@ data:
       {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
       - name: kometa
         group: manage-media
-        url: "http://kometa:9898"
+        url: "http://kometa:3001"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
