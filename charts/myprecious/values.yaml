@@ -2816,6 +2816,13 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: storageboss-storage
+    recyclarr:
+      enabled: true
+      type: custom
+      # mountPath: /storage/config/recyclarr/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-recyclarr-ssd          
     tmp: *tmp
     # We need one of these per-app. The global section will override the false enablement    
   service:
@@ -7877,8 +7884,8 @@ storageboss:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-rdtclient-alldebrid-ssd      
-          
-              
+
+
     # samba config 
     config:
       enabled: "true"
