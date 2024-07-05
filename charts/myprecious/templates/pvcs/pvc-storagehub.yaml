@@ -10,5 +10,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: storagehub-{{ .Release.Name }}-storage
+  volumeName: storagehub-{{ .Release.Name }}
   storageClassName: smb
