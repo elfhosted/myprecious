@@ -401,23 +401,19 @@ symlinks: &symlinks
       claimName: symlinks-block-ssd
   mountPath: /storage/symlinks   
 
-# these two are copied to every pod
-storagehub: &storagehub
-  enabled: true
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storagehub
-  mountPath: /storage/       
-tmp: &tmp
-  enabled: true
-  type: emptyDir
-  mountPath: /tmp  
-
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
-  tmp: *tmp
-  storagehub: *storagehub
+  tmp: &tmp
+    enabled: true
+    type: emptyDir
+    mountPath: /tmp  
+  storagehub: &storagehub
+    enabled: true
+    type: custom
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: storagehub
+    mountPath: /storage/      
 
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
@@ -7937,7 +7933,7 @@ storagehub:
       cpu: 1m
       memory: 10Mi
     limits:
-      cpu: 150m
+      cpu: 200m
       memory: 512Mi
   envFrom:
   - configMapRef:
