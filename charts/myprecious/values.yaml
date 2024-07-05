@@ -941,7 +941,7 @@ rutorrentgluetun: &rutorrent
       enabled: true
       type: custom
       mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_1000g
+      volumeSpec: *volumespec_ephemeral_volume_100g
     config:
       enabled: true
       type: custom
@@ -1209,7 +1209,7 @@ delugegluetun: &deluge
       enabled: true
       type: custom
       mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_1000g      
+      volumeSpec: *volumespec_ephemeral_volume_100g      
     config:
       enabled: true
       type: custom
@@ -1505,7 +1505,7 @@ qbittorrentgluetun: &qbittorrent
       enabled: true
       type: custom
       mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_1000g 
+      volumeSpec: *volumespec_ephemeral_volume_100g 
     config:
       enabled: true
       type: custom
@@ -10880,14 +10880,12 @@ knightcrawler: &app_knightcrawler
           optional: true      
     npm: 
       enabled: true
-      type: custom
+      type: emptyDir
       mountPath: /.npm
-      volumeSpec: *volumespec_ephemeral_volume_1g
     pm2: 
       enabled: true
-      type: custom
       mountPath: /.pm2
-      volumeSpec: *volumespec_ephemeral_volume_1g                          
+      type: emptyDir                       
   envFrom:
   - configMapRef:
       name: knightcrawler-env     
