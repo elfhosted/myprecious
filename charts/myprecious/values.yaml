@@ -3524,8 +3524,6 @@ filebrowser:
       volumeMounts:
       - mountPath: /elfbot
         name: elfbot
-      - mountPath: /storage
-        name: storagehub
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
