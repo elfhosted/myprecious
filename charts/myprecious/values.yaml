@@ -3994,9 +3994,12 @@ prowlarr: &app_prowlarr
     app.elfhosted.com/name: prowlarr
   priorityClassName: tenant-normal
   image:
-    registry: ghcr.io
-    repository: elfhosted/prowlarr-develop
-    tag: 1.20.0.4590@sha256:62f1a124d8c123e6be72f532bf1ec6b2adfe0dcc21a64ba6e568da4d2700f2fc
+    repository: ghcr.io/elfhosted/lazylibrarian
+    tag: rolling@sha256:fd696ccd9aca1d20132d8eca594d15ce03a46cf5f2e5214a6202c48c5b58a1bd
+  enabled: false
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lazylibrarian"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10195,7 +10198,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.3.3@sha256:4f40cc37fd2f0f1576ea077ee7c9300d4bbc8d6403724928b85f3fabcc8f601e
+    tag: v1.4.0@sha256:4d41b34958c49bdd7bcc0d55d840b5a4f9d84c862e336ee874e667f5c553a072
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10918,7 +10921,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.02-nightly@sha256:37bbe99d4bae25d1fb5de52760c4c8f9489d734497e1f96d369140e7094e1927
+    tag: 2024.07.04-nightly@sha256:f56a0344670d2e2e2c1bd950e452a0e64708272ab65322398bf9580ec7b465a9
   priorityClassName: tenant-normal
   controller:
     annotations:

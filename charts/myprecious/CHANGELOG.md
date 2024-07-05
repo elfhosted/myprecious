@@ -1,5 +1,47 @@
 # Changelog
 
+## [1.46.0](https://github.com/elfhosted/myprecious/compare/v1.45.0...v1.46.0) (2024-07-04)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.2.1 ([5f78528](https://github.com/elfhosted/myprecious/commit/5f785281c2da6a8969d2d658281183975336a2e5))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.2.2 ([59e0a24](https://github.com/elfhosted/myprecious/commit/59e0a246cf3d106cb76d3eb5c6e963ca37bbb16a))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.3.0 ([2266a12](https://github.com/elfhosted/myprecious/commit/2266a12e42dae4730a07983f3adfa72125e13d4b))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.3.2 ([979debb](https://github.com/elfhosted/myprecious/commit/979debbc98e683c75f63034c0c08d54edeb5c7d5))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.3.3 ([da2fd31](https://github.com/elfhosted/myprecious/commit/da2fd319eeed183d9b1b92f0860cde155e72877b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.04 ([2d55751](https://github.com/elfhosted/myprecious/commit/2d5575184e2de6db977bcc6c4ad92c4db1dd6715))
+* **app:** update jlesage/jdownloader-2 docker tag to v24.07.1 ([bec238e](https://github.com/elfhosted/myprecious/commit/bec238eb51016de6908c3ddcd93af84a393e466c))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.10 docker digest to 55b9f6c ([b3a3884](https://github.com/elfhosted/myprecious/commit/b3a3884afc5ab793416674ea1f8cf4b95a380363))
+* **app:** update ghcr.io/elfhosted/stremio-jackett:v4.1.6 docker digest to 2b95a30 ([02c21fb](https://github.com/elfhosted/myprecious/commit/02c21fbff35c027ea9fa371053c9077db8db1b6e))
+* **app:** update ghcr.io/elfhosted/xtremio:rolling docker digest to 6b76090 ([03d620a](https://github.com/elfhosted/myprecious/commit/03d620a4bc4905f2552abc6b89816049be255e42))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 01540ba ([408b3c8](https://github.com/elfhosted/myprecious/commit/408b3c8c9e4488132084f7765f9fa8c9a3232152))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 061d0aa ([f4e90d9](https://github.com/elfhosted/myprecious/commit/f4e90d95fd832c43057a2ddaecbe57552154a3e9))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 0dbcfb9 ([764b6c4](https://github.com/elfhosted/myprecious/commit/764b6c47f7f68b9d82481671bce0ebad6701d878))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 17a13d9 ([906c65a](https://github.com/elfhosted/myprecious/commit/906c65a2c9b940ae09a2d20105a0b8e38d2e7bc5))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 37bbe99 ([057bd13](https://github.com/elfhosted/myprecious/commit/057bd13b1de624415cbfb0a8e4b7a88cbd8e465d))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 425a337 ([09e1b2f](https://github.com/elfhosted/myprecious/commit/09e1b2f73e65cdcbe2299c50d7173c0f453c7d6c))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 4f5ef16 ([506d3e1](https://github.com/elfhosted/myprecious/commit/506d3e1274b5ef9baf5b137069ff7d7faf0b964f))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 600e4cb ([2043b0d](https://github.com/elfhosted/myprecious/commit/2043b0df766a6a86454bb23b7b649c940b47c770))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 7cbf564 ([02edadb](https://github.com/elfhosted/myprecious/commit/02edadbe75f7563627a2af731c8c9ebb5388d5ad))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 8551dc0 ([b69acad](https://github.com/elfhosted/myprecious/commit/b69acad7353916bafe2d48e3a58eb07579432155))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to 8bc04cf ([ce14991](https://github.com/elfhosted/myprecious/commit/ce14991625705bf96d17de14bb040bd5c91a2af0))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to bacf474 ([a8653b0](https://github.com/elfhosted/myprecious/commit/a8653b0324c9d7f78feb5dda7bc729218e2b2eb5))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to c910a78 ([ad7ba86](https://github.com/elfhosted/myprecious/commit/ad7ba8609ac9e6ca3fd1ec671e494428eddbf326))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to e3ed176 ([ea5fd94](https://github.com/elfhosted/myprecious/commit/ea5fd944118056bdc28e17827c24bf549e7e96d4))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.02-nightly docker digest to ef745f2 ([273144c](https://github.com/elfhosted/myprecious/commit/273144c676d5c7b72ddcfa5c7c7ed8690a10f007))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.04-nightly docker digest to 50b960b ([a3b8b59](https://github.com/elfhosted/myprecious/commit/a3b8b593e8bf7f6fb427ca20c3bea19cf936b26d))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.04-nightly docker digest to 5f1ea46 ([dff1f69](https://github.com/elfhosted/myprecious/commit/dff1f69aaa8a8b917dd13c2794e7b68ef4eb930b))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.04-nightly docker digest to 61739d4 ([1f25c37](https://github.com/elfhosted/myprecious/commit/1f25c37bb38c817e97a58f4abcd75ddbc14cc6c3))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.04-nightly docker digest to 6629527 ([ac9bce0](https://github.com/elfhosted/myprecious/commit/ac9bce07f83e1de3cafc18dbbba92f3130b4bda2))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.04-nightly docker digest to 75926c3 ([8e4fe19](https://github.com/elfhosted/myprecious/commit/8e4fe194eca5a4fe637cd29f182088f90e672286))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.04-nightly docker digest to 9bdd4da ([0b55a99](https://github.com/elfhosted/myprecious/commit/0b55a9961a9f2a63820cc983f20540b4205024d7))
+* remove default riven ratelimits for all scrapers excl mediafusion ([f10a948](https://github.com/elfhosted/myprecious/commit/f10a948d5cd77f3d55cd890ac6013c6cc1422ecd))
+
 ## [1.45.0](https://github.com/elfhosted/myprecious/compare/v1.44.0...v1.45.0) (2024-07-03)
 
 
