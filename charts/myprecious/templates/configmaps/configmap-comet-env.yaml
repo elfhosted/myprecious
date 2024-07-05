@@ -9,5 +9,5 @@ data:
   ADDON_ID: {{ .Release.Name }}-comet.elfhosted.com
   ADDON_NAME: Comet | {{ .Release.Name }}
   PROXY_DEBRID_STREAM: "true" # enable the feature
-  PROXY_DEBRID_STREAM_PASSWORD: {{ .Values.comet.PROXY_DEBRID_STREAM_PASSWORD }}
+  PROXY_DEBRID_STREAM_PASSWORD: {{ .Values.comet.PROXY_DEBRID_STREAM_PASSWORD | default }}
 {{ end }}
