@@ -10215,20 +10215,24 @@ comet:
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-comet-ssd
     tooling-scripts:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
           name: tooling-scripts   
-          defaultMode: 0755          
+          defaultMode: 0755
+      config:
+        enabled: true
+        type: custom
+        mountPath: /app/data
+        volumeSpec:
+          persistentVolumeClaim:
+            claimName: config-comet-ssd    
+      cache: 
+        enabled: true
+        type: emptyDir
+        mountPath: /.cache               
   resources:
     requests:
       cpu: 100m
