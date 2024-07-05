@@ -378,7 +378,7 @@ rclonemountdebridlink: &rclonemountdebridlink
 #   volumeSpec:
 #     persistentVolumeClaim:
 #       claimName: symlinks
-#       # claimName: storageboss-symlinks
+#       # claimName: storagehub-symlinks
 #   mountPath: /storage/symlinks
 symlinks: &symlinks
   enabled: true
@@ -389,12 +389,12 @@ symlinks: &symlinks
   mountPath: /storage/symlinks   
 
 # these two are copied to every pod
-storageboss-storage: &storageboss-storage
+storagehub: &storagehub
   enabled: true
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: storageboss-storage
+      claimName: storagehub
   mountPath: /storage/       
 tmp: &tmp
   enabled: true
@@ -404,7 +404,7 @@ tmp: &tmp
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
   tmp: *tmp
-  storageboss-storage: *storageboss-storage
+  storagehub: *storagehub
 
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
@@ -639,7 +639,7 @@ bootstrap: &bootstrap
   resources: *default_resources
   securityContext: *default_securitycontext
 
-storageboss_bootstrap: &storageboss_bootstrap
+storagehub_bootstrap: &storagehub_bootstrap
   image: *tooling_image
   imagePullPolicy: IfNotPresent
   command:
@@ -2193,7 +2193,7 @@ radarr: &app_radarr
         fi
       volumeMounts:
       - mountPath: /storage
-        name: storageboss-storage      
+        name: storagehub      
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -2330,7 +2330,7 @@ radarr4k: &app_radarr4k
         fi
       volumeMounts:
       - mountPath: /storage
-        name: storageboss-storage       
+        name: storagehub       
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -2809,13 +2809,13 @@ filebrowser:
       volumeSpec:
         configMap:
           name: recyclarr-config
-    storageboss-storage:
+    storagehub:
       enabled: true
       type: custom
       mountPath: /storage/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: storageboss-storage
+          claimName: storagehub
     recyclarr:
       enabled: true
       type: custom
@@ -2955,7 +2955,7 @@ filebrowser:
       - mountPath: /elfbot
         name: elfbot
       - mountPath: /storage
-        name: storageboss-storage
+        name: storagehub
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -3732,7 +3732,7 @@ sonarr: &app_sonarr
         fi
       volumeMounts:
       - mountPath: /storage
-        name: storageboss-storage  
+        name: storagehub  
       - mountPath: /mediacover
         name: mediacover                     
       resources: *default_resources
@@ -3861,7 +3861,7 @@ sonarr4k: &app_sonarr4k
         fi
       volumeMounts:
       - mountPath: /storage
-        name: storageboss-storage
+        name: storagehub
       - mountPath: /mediacover
         name: mediacover        
       resources: *default_resources
@@ -4547,7 +4547,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     # bootstrap: *bootstrap
-    bootstrap: *storageboss_bootstrap
+    bootstrap: *storagehub_bootstrap
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
@@ -7241,14 +7241,14 @@ webdav: &webdav
       cpu: 150m
       memory: 512Mi
 
-storageboss:
-  enabled: true # everyone gets storageboss
+storagehub:
+  enabled: true # everyone gets storagehub
   podLabels:
-    app.elfhosted.com/name: storageboss
+    app.elfhosted.com/name: storagehub
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "storageboss-scripts,storageboss-env"  
-      secret.reloader.stakater.com/reload: ",storageboss-config,storageboss-env"  
+      configmap.reloader.stakater.com/reload: "storagehub-scripts,storagehub-env"  
+      secret.reloader.stakater.com/reload: ",storagehub-config,storagehub-env"  
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -7504,7 +7504,7 @@ storageboss:
     #   subPath: plex
     #   volumeSpec:
     #     persistentVolumeClaim:
-    #       claimName: storageboss    
+    #       claimName: storagehub    
     plexdebrid:
       enabled: false
       type: custom
@@ -7894,13 +7894,13 @@ storageboss:
       type: "custom"
       volumeSpec:
         secret:
-          secretName: storageboss-config  
-    storageboss-scripts:
+          secretName: storagehub-config  
+    storagehub-scripts:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
-          name: storageboss-scripts             
+          name: storagehub-scripts             
           defaultMode: 0755    
     tmp:
       enabled: true
@@ -7925,9 +7925,9 @@ storageboss:
       memory: 512Mi
   envFrom:
   - configMapRef:
-      name: storageboss-env
+      name: storagehub-env
   - secretRef:    
-      name: storageboss-env
+      name: storagehub-env
   initContainers:
     setup: 
       image: *tooling_image
@@ -7938,7 +7938,7 @@ storageboss:
       - |
         # don't error on failure
         # not doing this yet
-        # /storageboss-scripts/restore.sh
+        # /storagehub-scripts/restore.sh
 
         if [[ ! -f /storage/symlinks/i-am-tar-migrated ]]
         then
@@ -7952,14 +7952,14 @@ storageboss:
                 
       envFrom:
       - configMapRef:
-          name: storageboss-env
+          name: storagehub-env
       - configMapRef:
           name: elfhosted-user-config      
       - secretRef:
-          name: storageboss-env
+          name: storagehub-env
       volumeMounts:
-      - mountPath: /storageboss-scripts
-        name: storageboss-scripts 
+      - mountPath: /storagehub-scripts
+        name: storagehub-scripts 
       - mountPath: /home/elfie
         name: tmp
       - mountPath: /migration
@@ -7975,17 +7975,17 @@ storageboss:
   #     - /usr/bin/dumb-init
   #     - /bin/bash
   #     - -c
-  #     - /storageboss-scripts/backup.sh
+  #     - /storagehub-scripts/backup.sh
   #     envFrom:
   #     - configMapRef:
-  #         name: storageboss-env
+  #         name: storagehub-env
   #     - configMapRef:
   #         name: elfhosted-user-config      
   #     - secretRef:
-  #         name: storageboss-env
+  #         name: storagehub-env
   #     volumeMounts:
-  #     - mountPath: /storageboss-scripts
-  #       name: storageboss-scripts 
+  #     - mountPath: /storagehub-scripts
+  #       name: storagehub-scripts 
   #     - mountPath: /home/elfie
   #       name: tmp
   #     - mountPath: /ephemeral
@@ -9439,7 +9439,7 @@ riven: &app_riven
         mkdir -p /storage/symlinks/shows
       volumeMounts:
       - mountPath: /storage
-        name: storageboss-storage     
+        name: storagehub     
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven:rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
@@ -9448,7 +9448,7 @@ riven: &app_riven
         name: config
         subPath: config
       - mountPath: /storage
-        name: storageboss-storage
+        name: storagehub
       command: [ "node", "/riven/frontend/build"]
       envFrom:
       - configMapRef:
@@ -10207,6 +10207,8 @@ comet:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+  initContainers:
+    update-dns: *update_dns_on_init
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10224,6 +10226,13 @@ comet:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-comet-ssd
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts   
+          defaultMode: 0755          
   resources:
     requests:
       cpu: 100m
@@ -10246,6 +10255,8 @@ comet:
   - configMapRef:      
       name: elfbot-comet
       optional: true 
+  additionalContainers:
+    clean-up-dns: *clean_up_dns_on_termination      
   addons:
     vpn:
       enabled: true # in case we ever need it

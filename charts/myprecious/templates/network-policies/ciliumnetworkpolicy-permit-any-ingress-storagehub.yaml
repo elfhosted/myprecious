@@ -1,11 +1,11 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-any-ingress-storageboss"
+  name: "permit-any-ingress-storagehub"
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: storageboss
+      app.kubernetes.io/name: storagehub
   ingress:
     - toPorts:
         - ports:

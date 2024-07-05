@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: storageboss-{{ .Release.Name }}-storage
+  name: storagehub-{{ .Release.Name }}
   labels:
-    name: storageboss-{{ .Release.Name }}-storage
+    name: storagehub-{{ .Release.Name }}
 spec:
   accessModes:
   - ReadWriteMany
@@ -23,9 +23,9 @@ spec:
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
-    volumeHandle: storageboss.{{ .Release.Namespace }}.svc.cluster.local/storage##
+    volumeHandle: storagehub.{{ .Release.Namespace }}.svc.cluster.local/storage##
     volumeAttributes:
-      source: "//storageboss.{{ .Release.Namespace }}.svc.cluster.local/storage"
+      source: "//storagehub.{{ .Release.Namespace }}.svc.cluster.local/storage"
     nodeStageSecretRef:
-      name: credentials-storageboss
+      name: credentials-storagehub
       namespace: csi-smb

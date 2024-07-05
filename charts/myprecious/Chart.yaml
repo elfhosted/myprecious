@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.46.0
+version: 1.47.0-pre-02
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -514,7 +514,7 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: storageboss
+    alias: storagehub
   - name: app-template
     condition: scannarr.enabled
     version: ~0.2.1

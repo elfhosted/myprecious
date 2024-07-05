@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: storageboss-storage
+  name: storagehub
   labels:
     velero.io/exclude-from-backup: "true"
 spec:
@@ -10,5 +10,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: storageboss-{{ .Release.Name }}-storage
+  volumeName: storagehub-{{ .Release.Name }}-storage
   storageClassName: smb
