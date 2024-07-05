@@ -2812,7 +2812,7 @@ filebrowser:
     storageboss-storage:
       enabled: true
       type: custom
-      mountPath: /storage/storage/
+      mountPath: /storage/
       volumeSpec:
         persistentVolumeClaim:
           claimName: storageboss-storage
