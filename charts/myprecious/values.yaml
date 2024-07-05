@@ -2816,6 +2816,7 @@ filebrowser:
     name: filebrowser
   automountServiceAccountToken: true
   persistence:
+    appmounts: *appmounts
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -10194,7 +10195,7 @@ comet:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-comet"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-comet,comet-env"
     strategy:
     rollingUpdate:
       unavailable: 1      
