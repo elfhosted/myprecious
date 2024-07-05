@@ -4430,7 +4430,7 @@ sonarr4k: &app_sonarr4k
         fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: storagehub
+        name: storagehub-symlinks
         subPath: symlinks
       - mountPath: /mediacover
         name: mediacover        
@@ -9442,7 +9442,7 @@ riven: &app_riven
         name: config
         subPath: config
       - mountPath: /storage/symlinks
-        name: storagehub
+        name: storagehub-symlinks
         subPath: symlinks
       command: [ "node", "/riven/frontend/build"]
       envFrom:
