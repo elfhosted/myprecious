@@ -1,4 +1,3 @@
-{{ if .Values.storageboss.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -45,4 +44,3 @@ data:
       | gpg --batch --decrypt --cipher-algo AES256 --passphrase ${GPG_PASSPHRASE} \
       | tar zxvmf - -C /ephemeral) || echo "Failed to restore, but starting anyway...")
 
-{{ end }}
