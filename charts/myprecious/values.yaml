@@ -7820,24 +7820,24 @@ storagehub:
     annotations:
       configmap.reloader.stakater.com/reload: "storagehub-scripts,storagehub-env"  
       secret.reloader.stakater.com/reload: ",storagehub-config,storagehub-env"  
-  affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists     
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists           
+  # affinity:
+  #   podAffinity:
+  #     # prefer to be located with zurg, if tolerations permit
+  #     preferredDuringSchedulingIgnoredDuringExecution: 
+  #     - weight: 100  
+  #       podAffinityTerm:    
+  #         labelSelector:
+  #           matchExpressions:
+  #           - key: app.elfhosted.com/name
+  #             operator: In
+  #             values:
+  #             - zurg
+  #         topologyKey: "kubernetes.io/hostname"
+  # tolerations:
+  # - key: node-role.elfhosted.com/download-only
+  #   operator: Exists     
+  # - key: node-role.elfhosted.com/dedicated
+  #   operator: Exists           
   priorityClassName: tenant-critical
   image:
     repository: quay.io/samba.org/samba-server
