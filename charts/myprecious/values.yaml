@@ -5052,8 +5052,8 @@ plex: &app_plex
               - zurg
           topologyKey: "kubernetes.io/hostname"
   tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists
+  # - key: node-role.elfhosted.com/download-only
+  #   operator: Exists
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -10965,12 +10965,12 @@ zurg: &app_zurg
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
     strategy: RollingUpdate      
   affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
+    # nodeAffinity:
+    #   requiredDuringSchedulingIgnoredDuringExecution:
+    #     nodeSelectorTerms:
+    #     - matchExpressions:
+    #       - key: node-role.elfhosted.com/download-only
+    #         operator: Exists
     podAffinity: 
       # prefer to be located with debrid class (plex/jelly/emby), but 
       preferredDuringSchedulingIgnoredDuringExecution: 
@@ -10983,9 +10983,9 @@ zurg: &app_zurg
               values:
               - debrid
           topologyKey: "kubernetes.io/hostname"   
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists                            
+  # tolerations:
+  # - key: node-role.elfhosted.com/download-only
+  #   operator: Exists                            
   securityContext:
     seccompProfile:
       type: RuntimeDefault
