@@ -7940,47 +7940,47 @@ storagehub:
       name: storagehub-env
   - secretRef:    
       name: storagehub-env
-  initContainers:
-    setup: 
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        # don't error on failure
-        # not doing this yet
-        # /storagehub-scripts/restore.sh
+  # initContainers:
+    # setup: 
+    #   image: *tooling_image
+    #   imagePullPolicy: IfNotPresent
+    #   command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
+    #     # don't error on failure
+    #     # not doing this yet
+    #     # /storagehub-scripts/restore.sh
 
-        echo nothing
-        # if [[ ! -f /storage/symlinks/i-was-migrated-to-storagehub ]]
-        # then
-        #   if [[ ! -z "$(ls -A /migration)" ]]    
-        #   then
-        #     echo "Tar-migrating from /migration/..."
-        #     tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-        #     touch /storage/symlinks/i-was-migrated-to-storagehub
-        #   fi
-        # fi   
+    #     echo nothing
+    #     # if [[ ! -f /storage/symlinks/i-was-migrated-to-storagehub ]]
+    #     # then
+    #     #   if [[ ! -z "$(ls -A /migration)" ]]    
+    #     #   then
+    #     #     echo "Tar-migrating from /migration/..."
+    #     #     tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+    #     #     touch /storage/symlinks/i-was-migrated-to-storagehub
+    #     #   fi
+    #     # fi   
                 
-      envFrom:
-      - configMapRef:
-          name: storagehub-env
-      - configMapRef:
-          name: elfhosted-user-config      
-      - secretRef:
-          name: storagehub-env
-      volumeMounts:
-      - mountPath: /storagehub-scripts
-        name: storagehub-scripts 
-      - mountPath: /home/elfie
-        name: tmp
-      - mountPath: /migration
-        name: migration
-      - mountPath: /storage/symlinks
-        name: symlinks        
-      resources: *default_resources
-      securityContext: *default_securitycontext  
+    #   envFrom:
+    #   - configMapRef:
+    #       name: storagehub-env
+    #   - configMapRef:
+    #       name: elfhosted-user-config      
+    #   - secretRef:
+    #       name: storagehub-env
+    #   volumeMounts:
+    #   - mountPath: /storagehub-scripts
+    #     name: storagehub-scripts 
+    #   - mountPath: /home/elfie
+    #     name: tmp
+    #   - mountPath: /migration
+    #     name: migration
+    #   - mountPath: /storage/symlinks
+    #     name: symlinks        
+    #   resources: *default_resources
+    #   securityContext: *default_securitycontext  
   # additionalContainers:
   #   backup-on-termination:
   #     image: *tooling_image
