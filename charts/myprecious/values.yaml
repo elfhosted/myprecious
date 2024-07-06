@@ -3474,7 +3474,7 @@ filebrowser:
           if [[ ! -z "$(ls -A /migration)" ]]    
           then
             echo "Tar-migrating from /migration/..." 
-            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
             touch /storage/symlinks/i-was-migrated-to-storagehub
           fi
         fi   
@@ -7450,7 +7450,7 @@ kometa: &app_kometa
       enabled: true # necessary for probes
       ports:
         http:
-          port: 3001 # doesn't matter this doesn,t actually use ports
+          port: 3001
   envFrom:
   - configMapRef:
       name: elfbot-kometa
@@ -7479,7 +7479,7 @@ kometa: &app_kometa
           name: kometa-config
   initContainers:
     bootstrap: *bootstrap
-    copy-example-config:
+    setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -7494,6 +7494,14 @@ kometa: &app_kometa
         then
           cp /bootstrap/config.yml /config/
         fi
+
+        # Create directories we need by default
+        mkdir -p /config/kometa/assets
+        mkdir -p /config/kometa/logs
+        mkdir -p /config/kometa/metadata
+        mkdir -p /config/kometa/missing
+        mkdir -p /config/kometa/overlays
+
       volumeMounts:
       - mountPath: /config
         name: config
@@ -7513,13 +7521,7 @@ kometa: &app_kometa
     limits:
       cpu: 1
       memory: 2Gi
-  probes:
-    liveness:
-      enabled: false
-    readiness:
-      enabled: false
-    startup:
-      enabled: falses
+
 
 kometaplus:
   <<: *app_kometa

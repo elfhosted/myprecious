@@ -16,7 +16,7 @@ spec:
     - uid=0
     - gid=0
     - noperm
-    # - mfsymlinks
+    - mfsymlinks
     - cache=none
     - noserverino  # required to prevent data corruption  
   persistentVolumeReclaimPolicy: Delete
