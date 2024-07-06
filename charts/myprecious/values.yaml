@@ -7861,6 +7861,7 @@ storagehub:
     # these are the persistent volumes we support currently
     # needed for the migration
 
+    rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     # this is the old symlinks on HDD
     migration:
       enabled: true
