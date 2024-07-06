@@ -7425,7 +7425,7 @@ kometa: &app_kometa
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kometa
-    tag: v2.0.2@sha256:3663fb2803bade62534a7319a9e1a4f4c369c31cae729978c2d29dbe2ff8fe50
+    tag: v2.0.2@sha256:96d272c99684e2a67fe239e75b5223e02a4daac867ec1b3c2bd8f2076d0eec51
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10960,7 +10960,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.06-nightly@sha256:4970008ab40f6bac5eeb635bd99a2529452b87eaa22da0291f748b8e49bdfce4
+    tag: 2024.07.06-nightly@sha256:e437776a05a64b8f0961b4300db0c7cfed99b7acc1bb65ebe505777a2e3e82e7
   priorityClassName: tenant-normal
   controller:
     annotations:
