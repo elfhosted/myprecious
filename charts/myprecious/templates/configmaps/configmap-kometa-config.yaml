@@ -40,7 +40,7 @@ data:
     settings:
       cache: true                          # Allow Kometa to create and maintain a local cache database for faster subsequent processing.
       cache_expiration: 60                 # Set the number of days before each cache mapping expires and has to be re-cached.
-      asset_directory: config/assets       # Specify the directories where assets (posters, backgrounds, etc) are located.
+      asset_directory: config/kometa/assets       # Specify the directories where assets (posters, backgrounds, etc) are located.
       asset_folders: true                  # While true, Kometa will search the asset_directory for a dedicated folder per item vs while false will look for an image.
       asset_depth: 3                       # Specify how many folder levels to scan for an item within the asset directory.
       create_asset_folders: true           # Whilst searching for assets, if an asset folder cannot be found within the asset_directory one will be created.
@@ -90,7 +90,7 @@ data:
       verify_ssl:                         # Turns SSL verification on/off for only Plex.
       db_cache: 2048
     gotify:
-      url: https//gotify:8080
+      url: http://gotify:8080
       token: ##########
     webhooks:                             # Can be individually specified per library as well.
       error: ##########
@@ -129,13 +129,13 @@ data:
         created_at: 
     radarr:                          # Can be individually specified per library as well.
       url: http://radarr:7878        # Change this to either 'radarr4k' or 'radarr' # You can only link one.
-      token: {{ .Values.radarrexposed.apikey }}              # Radarr API Token.
+      token: ##########              # Radarr API Token.
       add_missing: false             # If you set this to 'true' then PMM/Kometa will scan your collections and add any movies missing from them to radarr/radarr4k.
       add_existing: false            # If you set this to 'true' then PMM/Kometa will scan your collections and add all movies to radarr/radarr4k for monitoring.
-      root_folder_path: /storage/symlinks/movies     # Change to your root path from radarr or radarr4k.
+      root_folder_path: symlinks/movies     # Change to your root path from radarr or radarr4k.
       monitor: true                  # Monitor the movie when adding new movies.
       availability: announced        # Default Minimum Availability to use when adding new movies.
-      quality_profile: 1080p         # You must input the exact name of the quality profile you want used from radarr/radarr4 without typos.
+      quality_profile: <profile>         # You must input the exact name of the quality profile you want used from radarr/radarr4 without typos.
       tag: kometa                    # Default list or comma-separated string of tags to use when adding new movies.
       search: false                  # Start search for missing movie when adding new movies.
       radarr_path:                   # This can remain blank without issue.
@@ -145,12 +145,12 @@ data:
       ignore_cache: false            # Ignores Kometa's cache when adding items to Radarr.
     sonarr:                          # Can be individually specified per library as well.
       url: http://sonarr:8989        # Change this to either 'sonarr4k' or 'sonarr'. You can only link one or the other.
-      token: {{ .Values.sonarrexposed.apikey }}              # Sonarr API Token.
+      token: ##########              # Sonarr API Token.
       add_missing: false             # If you set this to 'true' then PMM/Kometa will scan your collections and add any movies missing from them to sonarr/sonarr4k.
       add_existing: false            # If you set this to 'true' then PMM/Kometa will scan your collections and add any movies missing from them to sonarr/sonarr4k.
-      root_folder_path: /storage/symlinks/series     # Change to your root path from sonarr or sonarr4k.
+      root_folder_path: symlinks/series     # Change to your root path from sonarr or sonarr4k.
       monitor: all                   # Default Monitor to use when adding new shows.
-      quality_profile: 1080p         # You must input the exact name of the quality profile you want used from sonarr/sonarr4k without typos.
+      quality_profile: <profile>         # You must input the exact name of the quality profile you want used from sonarr/sonarr4k without typos.
       language_profile: English      # Default Language Profile to use when adding new shows.
       series_type: standard          # Default Series Type to use when adding new shows.
       season_folder: true            # Use the Season Folder Option when adding new shows.

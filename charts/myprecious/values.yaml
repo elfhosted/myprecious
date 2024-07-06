@@ -2816,8 +2816,7 @@ filebrowser:
     name: filebrowser
   automountServiceAccountToken: true
   persistence:
-    appmounts: *appmounts
-    rclonemountrealdebridzurg: *rclonemountrealdebridzurg
+    <<: *appmounts
     migration:
       enabled: true
       type: custom
