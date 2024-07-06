@@ -7882,8 +7882,10 @@ storagehub:
   #   operator: Exists           
   priorityClassName: tenant-critical
   image:
-    repository: quay.io/samba.org/samba-server
+    repository: itsthenetwork/nfs-server-alpine
     tag: latest
+  env:
+    SHARED_DIRECTORY: /storage
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7904,21 +7906,21 @@ storagehub:
     # this is the old symlinks on HDD
     symlinks: *symlinks # these only get mounted on storagehub. Everything else accesses symlinks **through** storagehub
     # samba config 
-    config:
-      enabled: "true"
-      subPath: "container.json"
-      mountPath: /etc/samba/container.json
-      type: "custom"
-      volumeSpec:
-        secret:
-          secretName: storagehub-config  
-    storagehub-scripts:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: storagehub-scripts             
-          defaultMode: 0755    
+    # config:
+    #   enabled: "true"
+    #   subPath: "container.json"
+    #   mountPath: /etc/samba/container.json
+    #   type: "custom"
+    #   volumeSpec:
+    #     secret:
+    #       secretName: storagehub-config  
+    # storagehub-scripts:
+    #   enabled: "true"
+    #   type: "custom"
+    #   volumeSpec:
+    #     configMap:
+    #       name: storagehub-scripts             
+    #       defaultMode: 0755    
     tmp:
       enabled: true
       type: emptyDir
@@ -7929,7 +7931,7 @@ storagehub:
       enabled: false # necessary for probes
       ports:
         http:
-          port: 445
+          port: 2049
   ingress:
     main:
       enabled: false
@@ -7940,11 +7942,11 @@ storagehub:
     limits:
       cpu: 200m
       memory: 512Mi
-  envFrom:
-  - configMapRef:
-      name: storagehub-env
-  - secretRef:    
-      name: storagehub-env
+  # envFrom:
+  # - configMapRef:
+  #     name: storagehub-env
+  # - secretRef:    
+  #     name: storagehub-env
   # initContainers:
     # setup: 
     #   image: *tooling_image
