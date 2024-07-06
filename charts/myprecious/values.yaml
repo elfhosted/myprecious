@@ -3480,7 +3480,7 @@ filebrowser:
         fi   
       volumeMounts:
       - mountPath: /migration
-        name: symlinks-old
+        name: migration
       - name: storagehub-symlinks
         mountPath: /storage/symlinks
         subPath: symlinks
