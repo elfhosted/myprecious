@@ -7479,7 +7479,7 @@ kometa: &app_kometa
           name: kometa-config
   initContainers:
     bootstrap: *bootstrap
-    copy-example-config:
+    setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -7494,6 +7494,14 @@ kometa: &app_kometa
         then
           cp /bootstrap/config.yml /config/
         fi
+
+        # Create directories we need by default
+        mkdir -p /config/kometa/assets
+        mkdir -p /config/kometa/logs
+        mkdir -p /config/kometa/metadata
+        mkdir -p /config/kometa/missing
+        mkdir -p /config/kometa/overlays
+
       volumeMounts:
       - mountPath: /config
         name: config
