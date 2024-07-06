@@ -7426,8 +7426,8 @@ kometa: &app_kometa
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/plex-meta-manager
-    tag: v2.0.1@sha256:5ceaedbbafb0ff7f22a291a6834caf8e0580ecab9d19914a5865b62e78b4e885
+    repository: ghcr.io/elfhosted/kometa
+    tag: v2.0.2@sha256:3663fb2803bade62534a7319a9e1a4f4c369c31cae729978c2d29dbe2ff8fe50
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7520,9 +7520,6 @@ kometa: &app_kometa
       enabled: false
     startup:
       enabled: false
-  additionalContainers:
-    podinfo:
-      image: stefanprodan/podinfo # used to run probes from gatus
 
 kometaplus:
   <<: *app_kometa
