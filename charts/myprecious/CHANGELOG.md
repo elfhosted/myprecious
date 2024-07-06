@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.47.1](https://github.com/elfhosted/myprecious/compare/v1.47.0...v1.47.1) (2024-07-06)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.06-nightly docker digest to c0991f7 ([0a1c324](https://github.com/elfhosted/myprecious/commit/0a1c324bda7d9a61dd275e1df10a3ab9d196b632))
+* un-break prowlarr (bad merge messed up image) ([0be90a8](https://github.com/elfhosted/myprecious/commit/0be90a80f5ab9052c4566c6ce9b4e6de7e411a2b))
+
 ## [1.47.0](https://github.com/elfhosted/myprecious/compare/v1.46.0...v1.47.0) (2024-07-06)
 
 
