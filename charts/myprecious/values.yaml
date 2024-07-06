@@ -2817,6 +2817,14 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     appmounts: *appmounts
+    rclonemountrealdebridzurg: *rclonemountrealdebridzurg
+    migration:
+      enabled: true
+      type: custom
+      mountPath: /storage/old-symlinks
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: symlinks
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -3451,6 +3459,32 @@ filebrowser:
         name: dummy-storage
       resources: *default_resources
       securityContext: *default_securitycontext
+
+    migrate-symlinks:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+        if [[ ! -f /storage/symlinks/i-was-migrated-to-storagehub-via-filebrowser ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Tar-migrating from /migration/..."
+            tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            touch /storage/symlinks/i-was-migrated-to-storagehub
+          fi
+        fi   
+      volumeMounts:
+      - mountPath: /migration
+        name: symlinks-old
+      - name: storagehub-symlinks
+        mountPath: /storage/symlinks
+        subPath: symlinks
+      securityContext: *default_securitycontext  
     copy-recyclarr-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7863,24 +7897,7 @@ storagehub:
 
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     # this is the old symlinks on HDD
-    migration:
-      enabled: true
-      type: custom
-      mountPath: /storage/old-symlinks
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks 
-
-
-
-    symlinks: *symlinks
-  
-
-    # and config volumes
-
-    
-
-
+    symlinks: *symlinks # these only get mounted on storagehub. Everything else accesses symlinks **through** storagehub
     # samba config 
     config:
       enabled: "true"
@@ -7935,15 +7952,16 @@ storagehub:
         # not doing this yet
         # /storagehub-scripts/restore.sh
 
-        if [[ ! -f /storage/symlinks/i-was-migrated-to-storagehub ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Tar-migrating from /migration/..."
-            tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/i-was-migrated-to-storagehub
-          fi
-        fi   
+        echo nothing
+        # if [[ ! -f /storage/symlinks/i-was-migrated-to-storagehub ]]
+        # then
+        #   if [[ ! -z "$(ls -A /migration)" ]]    
+        #   then
+        #     echo "Tar-migrating from /migration/..."
+        #     tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+        #     touch /storage/symlinks/i-was-migrated-to-storagehub
+        #   fi
+        # fi   
                 
       envFrom:
       - configMapRef:
