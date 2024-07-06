@@ -386,13 +386,13 @@ rclonemountdebridlink: &rclonemountdebridlink
 #       claimName: symlinks
 #       # claimName: storagehub-symlinks
 #   mountPath: /storage/symlinks
-symlinks: &symlinks
-  enabled: true
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: symlinks-block-ssd
-  mountPath: /storage/symlinks   
+# symlinks: &symlinks
+#   enabled: true
+#   type: custom
+#   volumeSpec:
+#     persistentVolumeClaim:
+#       claimName: symlinks-block-ssd
+#   mountPath: /storage/symlinks   
 
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
@@ -2817,13 +2817,13 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *appmounts
-    migration:
-      enabled: true
-      type: custom
-      mountPath: /storage/old-symlinks
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks
+    # migration:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /storage/old-symlinks
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: symlinks
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
