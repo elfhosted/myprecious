@@ -4,28 +4,31 @@ metadata:
   name: storagehub-{{ .Release.Name }}
   labels:
     name: storagehub-{{ .Release.Name }}
+  annotations:
+    pv.kubernetes.io/provisioned-by: nfs.csi.k8s.io
 spec:
   accessModes:
   - ReadWriteMany
   capacity:
     storage: 1Gi # doesn't matter, is used to match with the PVC
-  storageClassName: smb
+  storageClassName: nfs-csi
   mountOptions:
-    - dir_mode=0777
-    - file_mode=0777
-    - uid=0
-    - gid=0
-    - noperm
-    - mfsymlinks
-    - cache=none
-    - noserverino  # required to prevent data corruption  
+    - nfsvers=4.1
   persistentVolumeReclaimPolicy: Delete
   csi:
-    driver: smb.csi.k8s.io
-    readOnly: false
+    driver: nfs.csi.k8s.io
+    # volumeHandle format: {nfs-server-address}#{sub-dir-name}#{share-name}
+    # make sure this value is unique for every share in the cluster
     volumeHandle: storagehub.{{ .Release.Namespace }}.svc.cluster.local/storage##
     volumeAttributes:
-      source: "//storagehub.{{ .Release.Namespace }}.svc.cluster.local/storage"
-    nodeStageSecretRef:
-      name: credentials-storagehub
-      namespace: csi-smb
+      server: storagehub.{{ .Release.Namespace }}.svc.cluster.local
+      share: /
+
+    # driver: smb.csi.k8s.io
+    # readOnly: false
+    # volumeHandle: storagehub.{{ .Release.Namespace }}.svc.cluster.local/storage##
+    # volumeAttributes:
+    #   source: "//storagehub.{{ .Release.Namespace }}.svc.cluster.local/storage"
+    # nodeStageSecretRef:
+    #   name: credentials-storagehub
+    #   namespace: csi-smb

@@ -124,16 +124,16 @@ data:
         # echo "Detected update on: $arg"
         # echo "Absolute path: $modified_arg"
 
-        ##### START Added by ElfHosted for auto DMM symlinking ###
-        # echo "Symlinking $modified_arg to /storage/symlinks/real-debrid-blackhole/$arg"
+        # ##### START Added by ElfHosted for auto DMM symlinking ###
+        # # echo "Symlinking $modified_arg to /storage/symlinks/real-debrid-blackhole/$arg"
 
-        # Ensure blackhole exists
-        mkdir -p /storage/symlinks/real-debrid-blackhole/movies
-        mkdir -p /storage/symlinks/real-debrid-blackhole/shows
+        # # Ensure blackhole exists
+        # mkdir -p /storage/symlinks/real-debrid-blackhole/movies
+        # mkdir -p /storage/symlinks/real-debrid-blackhole/shows
 
-        # Copy to the RD blackhole, preserving the directory structure
-        cp -rs "$modified_arg/"* "/storage/symlinks/real-debrid-blackhole/$(echo $arg | cut -f1 -d/)/"
-        ##### END Added by ElfHosted for auto DMM symlinking ###
+        # # Copy to the RD blackhole, preserving the directory structure
+        # cp -rs "$modified_arg/"* "/storage/symlinks/real-debrid-blackhole/$(echo $arg | cut -f1 -d/)/"
+        # ##### END Added by ElfHosted for auto DMM symlinking ###
 
         encoded_arg=$(echo -n "$modified_arg" | python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.stdin.read()))")
 

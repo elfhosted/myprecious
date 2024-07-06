@@ -9,6 +9,6 @@ spec:
   ingress:
     - toPorts:
         - ports:
-            - port: "139"
+            - port: "2049"
         - ports:
-            - port: "445"  
+            - port: "111"  

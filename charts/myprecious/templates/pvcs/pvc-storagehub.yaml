@@ -11,4 +11,4 @@ spec:
     requests:
       storage: 1Gi
   volumeName: storagehub-{{ .Release.Name }}
-  storageClassName: smb
+  storageClassName: nfs-csi
