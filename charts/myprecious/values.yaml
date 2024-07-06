@@ -4265,7 +4265,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.5.1801@sha256:166031c1c253dba7d3e7107f016b092a79bc7d89311e3eef7293121160258ee9
+    tag: 4.0.6.1820@sha256:d7441c9340cfee6c9c2c7c6c5b4e3dc833cd2fbf12be767368b8f973141ee843
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4395,7 +4395,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.5.1801@sha256:166031c1c253dba7d3e7107f016b092a79bc7d89311e3eef7293121160258ee9
+    tag: 4.0.6.1820@sha256:d7441c9340cfee6c9c2c7c6c5b4e3dc833cd2fbf12be767368b8f973141ee843
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10947,7 +10947,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.05-nightly@sha256:80ac80ab52ff9c36b6725e501d16017da05e6337df673571fd2390e88d13a6e9
+    tag: 2024.07.05-nightly@sha256:32eac53edeeb63c615fb3eda335436bf8eaf854e775c08752e210e47506c4a13
   priorityClassName: tenant-normal
   controller:
     annotations:
