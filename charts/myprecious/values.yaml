@@ -5301,7 +5301,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.5@sha256:6124b34cf2fc990a91f46e962d9ab140ff79409a7b3e2ee4ddb923d650bb1a76
+    tag: 10.9.7@sha256:bafaf459152cee096a8658cc333e014b50e26cd128a1f82b3a8e3b940adc5157
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid  
@@ -10218,7 +10218,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.9.0@sha256:2510efc26d1585b897cfc11e81fb4190933eb28125c0c44154c7a78b1984e476
+    tag: v1.9.1@sha256:11f46c8696e427eaefea14bd8070f687600e0fea01425a2056c43e34a2abaf61
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10958,7 +10958,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.06-nightly@sha256:819dfea8a7c846d5ca1ec16df715f80c63b7406193cba64becb6b8afb70aeb74
+    tag: 2024.07.06-nightly@sha256:9d458b9f7c9e872888e303027f192dcd011a54645158638686139018b456f188
   priorityClassName: tenant-normal
   controller:
     annotations:
