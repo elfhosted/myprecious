@@ -22,7 +22,7 @@ spec:
     volumeHandle: storagehub.{{ .Release.Namespace }}.svc.cluster.local/storage##
     volumeAttributes:
       server: storagehub.{{ .Release.Namespace }}.svc.cluster.local
-      share: /storage
+      share: /
 
     # driver: smb.csi.k8s.io
     # readOnly: false

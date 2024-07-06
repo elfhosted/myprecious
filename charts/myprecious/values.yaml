@@ -7885,7 +7885,7 @@ storagehub:
     repository: itsthenetwork/nfs-server-alpine
     tag: latest
   env:
-    SHARED_DIRECTORY: /storage
+    SHARED_DIRECTORY: /export
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7908,7 +7908,14 @@ storagehub:
 
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     # this is the old symlinks on HDD
-    symlinks: *symlinks # these only get mounted on storagehub. Everything else accesses symlinks **through** storagehub
+    storagehub-export:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storagehub-export
+      mountPath: /export
+    # symlinks: *symlinks # these only get mounted on storagehub. Everything else accesses symlinks **through** storagehub
     # samba config 
     # config:
     #   enabled: "true"
