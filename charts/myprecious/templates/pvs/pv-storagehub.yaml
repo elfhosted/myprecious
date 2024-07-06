@@ -14,6 +14,8 @@ spec:
   storageClassName: nfs-csi
   mountOptions:
     - nfsvers=4.1
+    - soft
+    - nolock
   persistentVolumeReclaimPolicy: Delete
   csi:
     driver: nfs.csi.k8s.io
