@@ -7889,7 +7889,6 @@ storagehub:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
     privileged: true    
   podSecurityContext:
     seccompProfile:
