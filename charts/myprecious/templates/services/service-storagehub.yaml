@@ -12,9 +12,11 @@ spec:
   - port: 2049
     targetPort: 2049
     protocol: TCP
+    name: tcp2049
   - port: 111
     targetPort: 111
     protocol: TCP
+    name: udp11
   selector:
     app.kubernetes.io/name: storagehub
     app.kubernetes.io/instance: {{ .Release.Name }}
