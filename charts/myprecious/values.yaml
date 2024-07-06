@@ -3469,12 +3469,12 @@ filebrowser:
       - |
         set -x
         set -e
-        if [[ ! -f /storage/symlinks/i-was-migrated-to-storagehub-via-filebrowser ]]
+        if [[ ! -f /storage/symlinks/.i-was-migrated-to-storagehub-via-filebrowser ]]
         then
           if [[ ! -z "$(ls -A /migration)" ]]    
           then
-            echo "Tar-migrating from /migration/..."
-            tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            echo "Tar-migrating from /migration/..." 
+            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
             touch /storage/symlinks/i-was-migrated-to-storagehub
           fi
         fi   

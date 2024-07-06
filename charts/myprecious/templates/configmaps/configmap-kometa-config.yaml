@@ -1,0 +1,165 @@
+{{ if .Values.kometa.enabled  }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kometa-config
+data:
+  config.yml: |
+    ## This file is a template and can be customized to meet your needs. 
+
+    libraries:                             # This is called out once within the config.yml file.
+      Movies:                              # Each library must match the Plex library name.
+        collection_files:
+          - default: basic                 # This is a file within the defaults folder in the Repository.
+          - default: imdb                  # This is a file within the defaults folder in the Repository.
+          # see the wiki for how to use local files, folders, URLs, or files from git.
+        remove_overlays: false             # Set this to true to remove all overlays.
+        overlay_files:
+          - default: ribbon                # This is a file within the defaults folder in the Repository.
+          # see the wiki for how to use local files, folders, URLs, or files from git.
+      TV Shows:
+        collection_files:
+          - default: basic                 # This is a file within the defaults folder in the Repository.
+          - default: imdb                  # This is a file within the defaults folder in the Repository.
+          # see the wiki for how to use local files, folders, URLs, or files from git.
+        remove_overlays: false             # Set this to true to remove all overlays.
+        overlay_files:
+          - default: ribbon                # This is a file within the defaults folder in the Repository.
+          # see the wiki for how to use local files, folders, URLs, or files from git.
+      Anime:
+        collection_files:
+          - default: basic                 # This is a file within the defaults folder in the Repository.
+          - default: anilist               # This is a file within the defaults folder in the Repository.
+          # see the wiki for how to use local files, folders, URLs, or files from git.
+      Music:
+        collection_files:
+          - file: config/Music.yml         # This is a local file THAT YOU MIGHT CREATE.
+    playlist_files:
+      - default: playlist                  # This is a file within Kometa's defaults folder.
+      # see the wiki for how to use local files, folders, URLs, or files from git.
+    settings:
+      cache: true                          # Allow Kometa to create and maintain a local cache database for faster subsequent processing.
+      cache_expiration: 60                 # Set the number of days before each cache mapping expires and has to be re-cached.
+      asset_directory: config/assets       # Specify the directories where assets (posters, backgrounds, etc) are located.
+      asset_folders: true                  # While true, Kometa will search the asset_directory for a dedicated folder per item vs while false will look for an image.
+      asset_depth: 3                       # Specify how many folder levels to scan for an item within the asset directory.
+      create_asset_folders: true           # Whilst searching for assets, if an asset folder cannot be found within the asset_directory one will be created.
+      prioritize_assets: true              # When determining which image to use on an item prioritize the asset_directory over all other images types.
+      dimensional_asset_rename: true       # Whilst searching for assets, scan the folders within the asset_directory and if an asset poster was not found.
+      download_url_assets: false           # Whilst searching for assets, download images set within Collection/Metadata/Playlist files.
+      show_missing_season_assets: false    # Whilst searching for assets, notify the user of any seasons which do not have an asset image.
+      show_missing_episode_assets: false   # Whilst searching for assets, notify the user of any episodes which do not have an asset image.
+      show_asset_not_needed: true          # Whilst searching for assets, show or hide the update not needed messages.
+      sync_mode: append                    # Sets the sync_mode for collections and playlists.
+      minimum_items: 2                     # Set the minimum number of items that must be found in order to build or update a collection/playlist.
+      default_collection_order:            # Set the collection_order for every collection run by Kometa unless the collection has a specific collection_order.
+      run_again_delay: 2                   # Set the number of minutes to delay running run_again collections after daily run is finished.
+      missing_only_released: false         # Whilst running a collection or playlist, send missing items to either report it to the user, a file, or send it to Radarr/Sonarr.
+      only_filter_missing: false           # Only items missing from a collection will be filtered.
+      show_unmanaged: true                 # List all collections not managed by Kometa at the end of each run.
+      show_unconfigured: true              # List all collections not configured in the current Kometa run at the end of each run.
+      show_filtered: true                  # List all items which have been filtered out of a collection or playlist.
+      show_options: true                   # While show_options is true the available options for an attribute when using plex_search, smart_filter or filters will be shown.
+      show_missing: false                  # While show_missing is true items missing from collections or playlists will be displayed.
+      show_missing_assets: false           # Display missing asset warnings for items, collections, and playlists.
+      save_report: false                   # Save a report of the items added, removed, filtered, or missing from collections to a YAML file in the same directory as the file run.
+      tvdb_language: eng                   # Specify the language to query TVDb in.
+      ignore_ids:                          # Set a list or comma-separated string of TMDb/TVDb IDs to ignore in all collections.
+      ignore_imdb_ids:                     # Set a list or comma-separated string of IMDb IDs to ignore in all collections.
+      item_refresh_delay: 0                # Specify the number of seconds to wait between each item_refresh of every movie/show in a collection/playlist.
+      playlist_sync_to_users: all          # Set the default playlist sync_to_users. To Sync a playlist to only yourself leave playlist_sync_to_users blank.
+      playlist_exclude_users:              # Set the default playlist exclude_users.
+      playlist_report: false               # Set playlist_report to true to print out a playlist report at the end of the log.
+      custom_repo:                         # Specify where the repo attribute's base is when defining collection_files, metadata_files, playlist_file and overlay_files.
+      run_order:                           # Specify the run order of the library components [Library Operations, Collection Files and Overlay Files].
+      - operations
+      - metadata
+      - collections
+      - overlays
+      overlay_artwork_filetype: jpg       # Used to control the filetype used with overlay images.
+      overlay_artwork_quality:            # Used to control the JPG or Lossy WEBP quality used with overlay images. When no value is provided the standard 75 is used.
+      delete_below_minimum: false         # When a collection is run, delete the collection if it is below the minimum number specified by minimum_items.
+      delete_not_scheduled: false         # If a collection is skipped due to it not being scheduled, delete the collection.
+    plex:                                 # Can be individually specified per library as well; REQUIRED for the script to run.
+      url: http://plex:32400
+      token: ##########
+      timeout: 60
+      clean_bundles: true
+      empty_trash: false
+      optimize: false
+      verify_ssl:                         # Turns SSL verification on/off for only Plex.
+      db_cache: 2048
+    gotify:
+      url: https//gotify:8080
+      token: ##########
+    webhooks:                             # Can be individually specified per library as well.
+      error: ##########
+      version: ##########
+      run_start: ##########
+      run_end: ##########
+      changes: ##########
+      delete: ##########
+    tmdb:                                # REQUIRED for the script to run.
+      apikey: 0095192b8ceb2b5a44015e97f0afcc9c
+      language: en
+      cache_expiration: 60
+      region:
+    tautulli:                            # Can be individually specified per library as well.
+      url: http://tautulli:8181
+      apikey: ##########
+    notifiarr:
+      apikey: ##########
+    mdblist:
+      apikey: ##########
+      cache_expiration: 60
+    omdb:
+      apikey: ##########
+      cache_expiration: 60
+    trakt:
+      client_id: ##########
+      client_secret: ##########
+      pin: ##########
+      authorization:
+        # Everything below is autofilled by the script.
+        access_token: 
+        token_type: 
+        expires_in: 
+        refresh_token: 
+        scope: 
+        created_at: 
+    radarr:                          # Can be individually specified per library as well.
+      url: http://radarr:7878        # Change this to either 'radarr4k' or 'radarr' # You can only link one.
+      token: {{ .Values.radarrexposed.apikey }}              # Radarr API Token.
+      add_missing: false             # If you set this to 'true' then PMM/Kometa will scan your collections and add any movies missing from them to radarr/radarr4k.
+      add_existing: false            # If you set this to 'true' then PMM/Kometa will scan your collections and add all movies to radarr/radarr4k for monitoring.
+      root_folder_path: /storage/symlinks/movies     # Change to your root path from radarr or radarr4k.
+      monitor: true                  # Monitor the movie when adding new movies.
+      availability: announced        # Default Minimum Availability to use when adding new movies.
+      quality_profile: 1080p         # You must input the exact name of the quality profile you want used from radarr/radarr4 without typos.
+      tag: kometa                    # Default list or comma-separated string of tags to use when adding new movies.
+      search: false                  # Start search for missing movie when adding new movies.
+      radarr_path:                   # This can remain blank without issue.
+      plex_path:                     # This can remain blank without issue.
+      upgrade_existing: false        # Upgrades all existing movies in collections to match the Quality Profile of the collection.
+      monitor_existing: false        # Ensures all existing movies in collections match your monitor setting.
+      ignore_cache: false            # Ignores Kometa's cache when adding items to Radarr.
+    sonarr:                          # Can be individually specified per library as well.
+      url: http://sonarr:8989        # Change this to either 'sonarr4k' or 'sonarr'. You can only link one or the other.
+      token: {{ .Values.sonarrexposed.apikey }}              # Sonarr API Token.
+      add_missing: false             # If you set this to 'true' then PMM/Kometa will scan your collections and add any movies missing from them to sonarr/sonarr4k.
+      add_existing: false            # If you set this to 'true' then PMM/Kometa will scan your collections and add any movies missing from them to sonarr/sonarr4k.
+      root_folder_path: /storage/symlinks/series     # Change to your root path from sonarr or sonarr4k.
+      monitor: all                   # Default Monitor to use when adding new shows.
+      quality_profile: 1080p         # You must input the exact name of the quality profile you want used from sonarr/sonarr4k without typos.
+      language_profile: English      # Default Language Profile to use when adding new shows.
+      series_type: standard          # Default Series Type to use when adding new shows.
+      season_folder: true            # Use the Season Folder Option when adding new shows.
+      tag: kometa                    # Default list or comma-separated string of tags to use when adding new shows.
+      search: false                  # Start search for missing episodes when adding new shows.
+      cutoff_search: false           # Start search for cutoff unmet episodes when adding new shows.
+      sonarr_path:                   # This can remain blank without issue.
+      plex_path:                     # This can remain blank without issue.
+      upgrade_existing: false        # Upgrades all existing shows in collections to match the Quality Profile of the collection.
+      monitor_existing: false        # Ensures all existing shows in collections match your monitor setting.
+      ignore_cache: false            #Ignores Kometa's cache when adding items to Sonarr.
+{{ end }}
