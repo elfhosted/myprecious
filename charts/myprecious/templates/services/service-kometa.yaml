@@ -1,4 +1,4 @@
-{{ if .Values.kometa.enabled }}
+{{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -10,8 +10,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 9898
-    targetPort: 9898
+  - port: 3001
+    targetPort: 3001
     protocol: TCP
     name: http
   selector:

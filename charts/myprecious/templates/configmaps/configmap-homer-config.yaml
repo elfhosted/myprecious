@@ -858,7 +858,7 @@ data:
             subtitle: "Manage Plex Metadata"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/kometa/"
+            url: "https://{{ .Release.Name }}-kometa.elfhosted.com"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
