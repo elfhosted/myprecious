@@ -10218,7 +10218,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.8.1@sha256:f6963d3652397334b70afba33cb6d555530969d982333843665944f389aa6820
+    tag: v1.9.0@sha256:2510efc26d1585b897cfc11e81fb4190933eb28125c0c44154c7a78b1984e476
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10958,7 +10958,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.06-nightly@sha256:cc4afb6b0a20ecfd6c77b8c3fff50d558af3e7ffc939048bce43d7bd5b90dbe4
+    tag: 2024.07.06-nightly@sha256:819dfea8a7c846d5ca1ec16df715f80c63b7406193cba64becb6b8afb70aeb74
   priorityClassName: tenant-normal
   controller:
     annotations:
