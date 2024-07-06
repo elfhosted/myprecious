@@ -5144,10 +5144,10 @@ plex: &app_plex
       optional: true
   resources:
     requests:
-      cpu: 50m
-      memory: 500Mi
+      cpu: "2"
+      memory: 4Gi
     limits:
-      cpu: "2.5" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
+      cpu: "2" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
     # bootstrap: *bootstrap
@@ -5442,8 +5442,8 @@ jellyfin: &app_jellyfin
         timeoutSeconds: 10
   resources:
     requests:
-      cpu: 50m
-      memory: 500Mi
+      cpu: "2"
+      memory: 4Gi
     limits:
       cpu: 2
       memory: 4Gi
@@ -5649,11 +5649,11 @@ emby: &app_emby
         timeoutSeconds: 10
   resources:
     requests:
-      cpu: 50m
-      memory: 500Mi
+      cpu: "2"
+      memory: 4Gi
     limits:
-      cpu: 1
-      memory: 2048Mi   
+      cpu: 2
+      memory: 4Gi   
 
 embyplus:
   <<: *app_emby
