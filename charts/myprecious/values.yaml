@@ -3473,7 +3473,7 @@ filebrowser:
           then
             echo "Tar-migrating from /migration/..." 
             tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/i-was-migrated-to-storagehub
+            touch /storage/symlinks/.i-was-migrated-to-storagehub-via-filebrowser
           fi
         fi   
       volumeMounts:
