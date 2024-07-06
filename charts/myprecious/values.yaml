@@ -7886,6 +7886,11 @@ storagehub:
     tag: latest
   env:
     SHARED_DIRECTORY: /storage
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+    privileged: true    
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
