@@ -10425,7 +10425,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.10@sha256:55b9f6c58f4975f89c3d2ec61a14d2a2da5fc30e30c5e47b2881ad2ed687a407
+    tag: 3.9.11@sha256:d3ff33984422accc4a0d88382d765cf60a2434194d33379fff2f67362d20ced9
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10950,7 +10950,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.07-nightly@sha256:1e835cea0f5fa366a52345aeecd0f7c9bb4e8d65f66eef8b8aa47be477d7a489
+    tag: 2024.07.07-nightly@sha256:3dc8016ccea23ae23c8a246a799e978c04dbc4ee957692c75928f4838b0e6af1
   priorityClassName: tenant-normal
   controller:
     annotations:
