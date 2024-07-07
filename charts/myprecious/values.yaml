@@ -2805,10 +2805,12 @@ filebrowser:
     type: Recreate
     rollingUpdate: null
   controller:
-    replicas: 1
+    replicas: 1 # not sure we need 2 replicas anymore
+    strategy: Recreate
+    # rollingUpdate:
+    #   unavailable: 1  
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,filebrowser-elfbot-script,elfbot-filebrowser" # Reload the deployment every time the rclones change
-    strategy: RollingUpdate           
   # We will use this to alter configmaps to trigger pod restarts
   serviceAccount:
     create: true
@@ -3491,13 +3493,13 @@ filebrowser:
       - -c
       - |
         set -x
-        if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs ]]
+        if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs-b ]]
         then
           if [[ ! -z "$(ls -A /migration)" ]]    
           then
             echo "Tar-migrating from /migration/..." 
             tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/.i-was-migrated-to-cephfs
+            touch /storage/symlinks/.i-was-migrated-to-cephfs-b
           fi
         fi   
       volumeMounts:
