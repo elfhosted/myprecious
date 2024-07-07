@@ -9698,6 +9698,12 @@ jackett:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
+          claimName: config-jackett-block
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
           claimName: config-jackett-ssd
     elfbot:
       enabled: "true"
@@ -9707,6 +9713,7 @@ jackett:
           name: elfbot-jackett
           optional: true
   initContainers:
+    migrate-data: *migrate_data
     bootstrap: *bootstrap
 
 stremioserver: &app_stremioserver
