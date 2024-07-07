@@ -3788,7 +3788,7 @@ calibreweb:
   priorityClassName: 
   image:
     repository: ghcr.io/elfhosted/calibre-web
-    tag: 0.6.21@sha256:5f9f0c879cf05f355e1ffe364336c17ab787cd926e7af1e8fa55774a988f273d
+    tag: 0.6.22@sha256:6ae8b2948b9a2c938464d5a7fff3406414e92dd81c17c2690f291e840d2bbd4a
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibreweb"
@@ -4088,7 +4088,7 @@ kavita:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kavita
-    tag: 0.8.1@sha256:bd67108f5d5ce9c0342862a4d6b1f5c8f756d841c8a950ed1021bea4b68700d3
+    tag: 0.8.2@sha256:d10c9c9783d971d921b03abdecadbda58165a58f9024fef5f53f4782136790ce
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4570,7 +4570,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.20.0.4590@sha256:62f1a124d8c123e6be72f532bf1ec6b2adfe0dcc21a64ba6e568da4d2700f2fc
+    tag: 1.20.1.4603@sha256:3c0b6b1adf191bf8ddb4ddfa4a6f802a83e73866b12741bfb4956dca8096df56
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lazylibrarian"
@@ -10189,7 +10189,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.9.1@sha256:11f46c8696e427eaefea14bd8070f687600e0fea01425a2056c43e34a2abaf61
+    tag: v1.10.0@sha256:f16e1bd2f01f28ca50def1a2d922e5a7244894cdf7ba2753285fd57e303496ae
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10198,6 +10198,7 @@ comet:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-comet,comet-env"
+      secret.reloader.stakater.com/reload: "comet-env"
     strategy:
     rollingUpdate:
       unavailable: 1      
@@ -10254,37 +10255,30 @@ comet:
   envFrom:
   - configMapRef:
       name: comet-env 
+  - secretRef:
+      name: comet-env       
   - configMapRef:      
       name: elfbot-comet
       optional: true 
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination      
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      env:
-        IPTABLES_BACKEND: nft
-        KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
-        LOC: de-frankfurt
-        PORT_FORWARDING: "0"
-        PORT_PERSIST: "1"
-        NFTABLES: "1"    
-        VPNDNS: "0"            
-      envFrom:
-      - secretRef:
-          name: comet-vpn
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config    
+    additionalContainers:
+      warp:
+        image: ghcr.io/elfhosted/warp:rolling@sha256:16b7d9aa9032df602a3c620f4e2d57c9edc9ace7143c17c2325a678ddb02d8a5
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          privileged: false
+          capabilities:
+            add:
+            - NET_ADMIN    
+        envFrom:
+        - secretRef:
+            name: comet-env            
+        volumeMounts:
+        - mountPath: /data
+          subPath: warp
+          name: config
 
 
 jackettio:
@@ -10929,7 +10923,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.06-nightly@sha256:9d458b9f7c9e872888e303027f192dcd011a54645158638686139018b456f188
+    tag: 2024.07.07-nightly@sha256:966ccf567d2a2ade0c532e1a627dccf92a3aab30a580474149136bf0a1ab3502
   priorityClassName: tenant-normal
   controller:
     annotations:
