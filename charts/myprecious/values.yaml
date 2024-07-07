@@ -1,8 +1,29 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
 safeToRelease: true # waiting on riven release
 
+# optional but disabled by default to prevent errors
 gluetun:
   enabled: false # just to avoid errors
+hobbitplexarr:
+  enabled: false
+hobbitjellyfinarr:
+  enabled: false
+hobbitembyarr:
+  enabled: false
+hobbitplexpd:
+  enabled: false
+hobbitplexriven:
+  enabled: false
+rangerplexarr:
+  enabled: false
+rangerjellyfinarr:
+  enabled: false
+rangerembyarr:
+  enabled: false
+rangerplexpd:
+  enabled: false
+rangerplexriven:
+  enabled: false
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e186fdb45c1e260218110013d1ef25659a9cda271508adfaae80376b0d0fa31e
 
