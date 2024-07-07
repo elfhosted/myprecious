@@ -10262,23 +10262,22 @@ comet:
       optional: true 
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination      
-    additionalContainers:
-      warp:
-        image: ghcr.io/elfhosted/warp:rolling@sha256:16b7d9aa9032df602a3c620f4e2d57c9edc9ace7143c17c2325a678ddb02d8a5
-        securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-          privileged: false
-          capabilities:
-            add:
-            - NET_ADMIN    
-        envFrom:
-        - secretRef:
-            name: comet-env            
-        volumeMounts:
-        - mountPath: /data
-          subPath: warp
-          name: config
+    warp:
+      image: ghcr.io/elfhosted/warp:rolling@sha256:16b7d9aa9032df602a3c620f4e2d57c9edc9ace7143c17c2325a678ddb02d8a5
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        privileged: false
+        capabilities:
+          add:
+          - NET_ADMIN    
+      envFrom:
+      - secretRef:
+          name: comet-env            
+      volumeMounts:
+      - mountPath: /data
+        subPath: warp
+        name: config
 
 
 jackettio:
