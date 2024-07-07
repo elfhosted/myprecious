@@ -3788,7 +3788,7 @@ calibreweb:
   priorityClassName: 
   image:
     repository: ghcr.io/elfhosted/calibre-web
-    tag: 0.6.21@sha256:5f9f0c879cf05f355e1ffe364336c17ab787cd926e7af1e8fa55774a988f273d
+    tag: 0.6.22@sha256:6ae8b2948b9a2c938464d5a7fff3406414e92dd81c17c2690f291e840d2bbd4a
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibreweb"
@@ -4570,7 +4570,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.20.0.4590@sha256:62f1a124d8c123e6be72f532bf1ec6b2adfe0dcc21a64ba6e568da4d2700f2fc
+    tag: 1.20.1.4603@sha256:3c0b6b1adf191bf8ddb4ddfa4a6f802a83e73866b12741bfb4956dca8096df56
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lazylibrarian"
@@ -10188,7 +10188,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.9.1@sha256:11f46c8696e427eaefea14bd8070f687600e0fea01425a2056c43e34a2abaf61
+    tag: v1.10.0@sha256:f16e1bd2f01f28ca50def1a2d922e5a7244894cdf7ba2753285fd57e303496ae
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10928,7 +10928,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.06-nightly@sha256:9d458b9f7c9e872888e303027f192dcd011a54645158638686139018b456f188
+    tag: 2024.07.07-nightly@sha256:49b888454b96b99a3400c20800062845e19dad95dd69571d969f2a48c7c24535
   priorityClassName: tenant-normal
   controller:
     annotations:
