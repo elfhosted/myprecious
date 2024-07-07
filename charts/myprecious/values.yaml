@@ -435,7 +435,6 @@ appmounts: &appmounts
   symlinks: &symlinks
     enabled: true
     type: custom
-    subPath: symlinks
     volumeSpec:
       persistentVolumeClaim:
         claimName: symlinks-ssd
