@@ -5054,12 +5054,7 @@ plex: &app_plex
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-block 
-    tmp:
-      enabled: true
-      type: custom
-      mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_1g                                              
+          claimName: config-plex-block                                            
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
