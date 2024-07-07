@@ -432,13 +432,13 @@ appmounts: &appmounts
     enabled: true
     type: emptyDir
     mountPath: /tmp  
-  storagehub-symlinks: &storagehub_symlinks
+  symlinks: &symlinks
     enabled: true
     type: custom
     subPath: symlinks
     volumeSpec:
       persistentVolumeClaim:
-        claimName: storagehub
+        claimName: symlinks-ssd
     mountPath: /storage/symlinks     
 
 # The entire bootstrap sidecar/additionalcontainer
@@ -2228,8 +2228,7 @@ radarr: &app_radarr
         fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: storagehub-symlinks
-        subPath: symlinks
+        name: symlinks
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -2366,8 +2365,7 @@ radarr4k: &app_radarr4k
         fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: storagehub-symlinks
-        subPath: symlinks
+        name: symlinks
       - mountPath: /config
         name: config
       - mountPath: /mediacover
@@ -2821,6 +2819,12 @@ filebrowser:
     #   volumeSpec:
     #     persistentVolumeClaim:
     #       claimName: symlinks
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: storagehub-export # migrating away from block device back to cephfs 
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -2854,7 +2858,7 @@ filebrowser:
       volumeSpec:
         configMap:
           name: recyclarr-config
-    storagehub-symlinks: *storagehub_symlinks
+    symlinks: *symlinks
     airdcpppia:
       enabled: false
       type: custom
@@ -3531,6 +3535,29 @@ filebrowser:
         name: elfbot
       resources: *default_resources
       securityContext: *default_securitycontext
+    migrate-symlinks:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Tar-migrating from /migration/..." 
+            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            touch /storage/symlinks/.i-was-migrated-to-cephfs
+          fi
+        fi   
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+        subPath: symlinks
+      - name: symlinks
+        mountPath: /storage/symlinks
+      securityContext: *default_securitycontext       
   resources:
     requests:
       cpu: 10m
@@ -4305,8 +4332,7 @@ sonarr: &app_sonarr
         fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: storagehub-symlinks
-        subPath: symlinks
+        name: symlinks
       - mountPath: /mediacover
         name: mediacover                     
       resources: *default_resources
@@ -4435,8 +4461,7 @@ sonarr4k: &app_sonarr4k
         fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: storagehub-symlinks
-        subPath: symlinks
+        name: symlinks
       - mountPath: /mediacover
         name: mediacover        
       resources: *default_resources
@@ -5114,8 +5139,7 @@ plex: &app_plex
       cpu: "2" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    # bootstrap: *bootstrap
-    bootstrap: *storagehub_bootstrap
+    bootstrap: *bootstrap
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
@@ -7809,7 +7833,7 @@ webdav: &webdav
       memory: 512Mi
 
 storagehub:
-  enabled: true # everyone gets storagehub
+  enabled: false # down for now
   podLabels:
     app.elfhosted.com/name: storagehub
   controller:
@@ -9424,8 +9448,7 @@ riven: &app_riven
         mkdir -p /storage/symlinks/shows
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: storagehub-symlinks
-        subPath: symlinks
+        name: symlinks
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven:rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
@@ -9434,8 +9457,7 @@ riven: &app_riven
         name: config
         subPath: config
       - mountPath: /storage/symlinks
-        name: storagehub-symlinks
-        subPath: symlinks
+        name: symlinks
       command: [ "node", "/riven/frontend/build"]
       envFrom:
       - configMapRef:
