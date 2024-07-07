@@ -629,11 +629,3 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: kubernetesdashboard
     version: 5.x
-
-
-## These support bundles
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: hobbitplexarr.enabled
-    alias: hobbitplexarr

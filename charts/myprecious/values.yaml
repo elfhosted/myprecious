@@ -3455,30 +3455,6 @@ filebrowser:
         name: dummy-storage
       resources: *default_resources
       securityContext: *default_securitycontext
-
-    migrate-symlinks:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        if [[ ! -f /storage/symlinks/.i-was-migrated-to-storagehub-via-filebrowser ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Tar-migrating from /migration/..." 
-            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/.i-was-migrated-to-storagehub-via-filebrowser
-          fi
-        fi   
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - name: storagehub-symlinks
-        mountPath: /storage/symlinks
-        subPath: symlinks
-      securityContext: *default_securitycontext  
     copy-recyclarr-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -11551,27 +11527,38 @@ kubernetesdashboard:
     name: kubernetes-dashboard
 
 # optional but disabled by default to prevent errors
+
+hobbit_affinity: &hobbit_affinity
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-role.elfhosted.com/hobbit
+          operator: Exists    
+  podAffinity: 
+    requiredDuringSchedulingIgnoredDuringExecution: 
+      - labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/class
+            operator: In
+            values:
+            - hobbit
+        topologyKey: "kubernetes.io/hostname"  
+
+hobbit_tolerations: &hobbit_tolerations
+- key: node-role.elfhosted.com/hobbit
+  operator: Exists          
+
+hobbit_streamer_resources: &hobbit_streamer_resources
+  resources:
+    requests:
+      cpu: "1.8"
+      memory: 30Mi
+    limits:
+      cpu: "2"
+      memory: 4Gi     
+        
 gluetun:
   enabled: false # just to avoid errors
-hobbitplexarr:
-  enabled: false
-hobbitjellyfinarr:
-  enabled: false
-hobbitembyarr:
-  enabled: false
-hobbitplexpd:
-  enabled: false
-hobbitplexriven:
-  enabled: false
-rangerplexarr:
-  enabled: false
-rangerjellyfinarr:
-  enabled: false
-rangerembyarr:
-  enabled: false
-rangerplexpd:
-  enabled: false
-rangerplexriven:
-  enabled: false
-  
+
 # This file must end on a single newline
