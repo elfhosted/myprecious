@@ -2805,7 +2805,7 @@ filebrowser:
     type: Recreate
     rollingUpdate: null
   controller:
-    replicas: 0
+    replicas: 1
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,filebrowser-elfbot-script,elfbot-filebrowser" # Reload the deployment every time the rclones change
     strategy: RollingUpdate           
