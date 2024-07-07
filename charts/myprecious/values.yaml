@@ -2801,6 +2801,9 @@ filebrowser:
       type: RuntimeDefault
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
+  deploymentStrategy:
+    type: Recreate
+    rollingUpdate: null
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,filebrowser-elfbot-script,elfbot-filebrowser" # Reload the deployment every time the rclones change
@@ -3478,7 +3481,31 @@ filebrowser:
         name: recyclarr
       - name: recyclarr-config
         mountPath: "/bootstrap/"
-      securityContext: *default_securitycontext       
+      securityContext: *default_securitycontext   
+    migrate-symlinks:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Tar-migrating from /migration/..." 
+            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            touch /storage/symlinks/.i-was-migrated-to-cephfs
+          fi
+        fi   
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+        subPath: symlinks
+      - name: symlinks
+        mountPath: /storage/symlinks
+      securityContext: *default_securitycontext             
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
@@ -3534,30 +3561,7 @@ filebrowser:
       - mountPath: /elfbot
         name: elfbot
       resources: *default_resources
-      securityContext: *default_securitycontext
-    migrate-symlinks:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Tar-migrating from /migration/..." 
-            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/.i-was-migrated-to-cephfs
-          fi
-        fi   
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-        subPath: symlinks
-      - name: symlinks
-        mountPath: /storage/symlinks
-      securityContext: *default_securitycontext       
+      securityContext: *default_securitycontext    
   resources:
     requests:
       cpu: 10m
