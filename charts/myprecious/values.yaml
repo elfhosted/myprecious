@@ -10225,17 +10225,17 @@ comet:
         configMap:
           name: tooling-scripts   
           defaultMode: 0755
-      config:
-        enabled: true
-        type: custom
-        mountPath: /app/data
-        volumeSpec:
-          persistentVolumeClaim:
-            claimName: config-comet-ssd    
-      cache: 
-        enabled: true
-        type: emptyDir
-        mountPath: /.cache               
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/data
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-comet-ssd    
+    cache: 
+      enabled: true
+      type: emptyDir
+      mountPath: /.cache               
   resources:
     requests:
       cpu: 100m
