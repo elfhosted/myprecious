@@ -10290,7 +10290,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.11.2@sha256:de3e3e591fe4d0f0ba25694f713d35ce7a4c3c0e4cc10a7c3debb5410874268f
+    tag: v1.12.0@sha256:f0a36e1ccbde7f9adc62de1e1195c4ec790ed967a1e1fdff89be9a730572c8d0
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10362,7 +10362,9 @@ comet:
       name: elfbot-comet
       optional: true 
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination      
+    clean-up-dns: *clean_up_dns_on_termination    
+    speedtest:
+      image: openspeedtest/latest      
     warp:
       image: ghcr.io/elfhosted/warp:rolling@sha256:16b7d9aa9032df602a3c620f4e2d57c9edc9ace7143c17c2325a678ddb02d8a5
       securityContext:
