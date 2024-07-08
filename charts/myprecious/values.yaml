@@ -7628,7 +7628,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:296dc565ad2b2df9695ae78908221b51006c75878f19c10d1073a4a21816ea72
+    tag: 1.67.0@sha256:760a20a25634824deb3466c6deb59f9978a63018281f58401ddd6f3fbd607380
   command: 
   - /rcloneui.sh
   controller:
@@ -7723,7 +7723,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:296dc565ad2b2df9695ae78908221b51006c75878f19c10d1073a4a21816ea72
+    tag: 1.67.0@sha256:760a20a25634824deb3466c6deb59f9978a63018281f58401ddd6f3fbd607380
   command: 
   - /rclonefm.sh
   controller:
@@ -7831,7 +7831,7 @@ webdav: &webdav
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:296dc565ad2b2df9695ae78908221b51006c75878f19c10d1073a4a21816ea72
+    tag: 1.67.0@sha256:760a20a25634824deb3466c6deb59f9978a63018281f58401ddd6f3fbd607380
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus"
@@ -9456,7 +9456,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
+    tag: rolling@sha256:db43a2b066dab0e3690d3881ae0aa2cbb06e4eb86befba06cfbd697d0acb1420
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9530,7 +9530,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:aadc2fc31b869e554bc575cbfa3c3924c706299afe4db05cda62357f0e7c1a03
+      image: ghcr.io/elfhosted/riven:rolling@sha256:db43a2b066dab0e3690d3881ae0aa2cbb06e4eb86befba06cfbd697d0acb1420
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11023,7 +11023,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.08-nightly@sha256:5e7f2eb1d3dc2389d370a0b05aa26050851065f77b511966225befc2a2c1c8bd
+    tag: 2024.07.08-nightly@sha256:d881e9e841f1f300b268e7e83584a7087a34bfdeb54fe71a964b80662f8927cb
   priorityClassName: tenant-normal
   controller:
     annotations:
