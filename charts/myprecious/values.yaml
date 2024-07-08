@@ -448,7 +448,7 @@ default_resources: &default_resources
     # ephemeral-storage: 50Mi
   limits:
     cpu: 1
-    memory: 2Gi # just a safety net against bugs!
+    memory: 1Gi # just a safety net against bugs!
     # ephemeral-storage: 2Gi # a safety net against node ephemeral space exhaustion
 
 default_securitycontext: &default_securitycontext
@@ -662,6 +662,79 @@ bootstrap: &bootstrap
       touch /config/i-am-bootstrapped
     fi
 
+  volumeMounts:
+  - mountPath: /etc/elfbot
+    name: elfbot
+  - mountPath: /config
+    name: config
+  - mountPath: /tmp
+    name: tmp 
+  env: *bootstrap_env
+  resources: *default_resources
+  securityContext: *default_securitycontext
+
+bootstrap_elfbot: &bootstrap_elfbot
+  image: *tooling_image
+  imagePullPolicy: IfNotPresent
+  command:
+  - /bin/bash
+  - -c
+  - |
+    set -e
+
+    # Allows us to use app.elfhosted.com/name, but fall back to app.kubernetes.io/name if the former doesn't exist
+    if [[ -z "$ELF_APP_NAME" ]]; then
+      ELF_APP_NAME=$K8S_APP_NAME
+    fi
+
+    # look for commands - we match specific names in order of least-destructive
+    TIMESTAMP_NOW=$(date +%s)
+    if [[ -f /etc/elfbot/pause ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/pause)
+      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
+      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
+        COMMAND=pause
+      fi
+    fi
+
+    # If no command is set, then move onto the next possibility
+    if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
+      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
+      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
+        COMMAND=backup
+      fi
+    fi
+
+    # If no command is set, then move onto the next possibility
+    if [[ -f /etc/elfbot/reset && -z "$COMMAND" ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/reset)
+      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
+      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
+        COMMAND=reset
+      fi
+    fi
+
+    case $COMMAND in
+
+      "pause")
+        echo "Recent pause command found, sleeping 5m.."
+        sleep 300
+        ;;
+
+      "reset")
+        echo "Recent reset command found, resetting"
+        rm -rf /config/*
+        ;;
+
+      "backup")
+        echo "Recent backup command found, backing up to /storage/elfstorage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
+        mkdir -p /storage/elfstorage/backup
+        TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
+        cp -rfp /config /storage/elfstorage/backup/$ELF_APP_NAME-$TIMESTAMP
+        ;;
+
+    esac
   volumeMounts:
   - mountPath: /etc/elfbot
     name: elfbot
@@ -5145,7 +5218,7 @@ plex: &app_plex
       cpu: "2" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap-elfbot: *bootstrap_elfbot
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
