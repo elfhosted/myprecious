@@ -1,4 +1,4 @@
-{{ if .Values.comt.enabled }}
+{{ if .Values.comet.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
