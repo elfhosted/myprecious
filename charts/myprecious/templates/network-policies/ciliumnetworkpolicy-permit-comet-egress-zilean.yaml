@@ -1,0 +1,19 @@
+{{ if .Values.comt.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-comet-egress-zilean"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: comet
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: zilean
+        k8s:io.kubernetes.pod.namespace: zilean
+    toPorts:
+      - ports:
+        - port: '8181'
+          protocol: TCP
+{{ end }}
