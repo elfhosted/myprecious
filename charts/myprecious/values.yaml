@@ -7555,7 +7555,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:5c885d8805b78dfff146390e2cbdabc1c0bf7cd7b793a9d974ee5761d4d02b68
+    tag: 1.67.0@sha256:296dc565ad2b2df9695ae78908221b51006c75878f19c10d1073a4a21816ea72
   command: 
   - /rcloneui.sh
   controller:
@@ -7650,7 +7650,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:5c885d8805b78dfff146390e2cbdabc1c0bf7cd7b793a9d974ee5761d4d02b68
+    tag: 1.67.0@sha256:296dc565ad2b2df9695ae78908221b51006c75878f19c10d1073a4a21816ea72
   command: 
   - /rclonefm.sh
   controller:
@@ -7758,7 +7758,7 @@ webdav: &webdav
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:5c885d8805b78dfff146390e2cbdabc1c0bf7cd7b793a9d974ee5761d4d02b68
+    tag: 1.67.0@sha256:296dc565ad2b2df9695ae78908221b51006c75878f19c10d1073a4a21816ea72
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus"
@@ -9097,7 +9097,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.9.2
+    tag: v0.9.3
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-homepage,homepage-config,homepage-env"
@@ -10217,7 +10217,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.11.0@sha256:8957b071aefebe623e1a5f0ea003a6d7b3ab6244c8deebf38394ef8bb3fac260
+    tag: v1.11.2@sha256:1c422aa2384c1ea0dd47ef0e010607d2a6a4625b607b215187bd0967f359f935
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10950,7 +10950,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.07-nightly@sha256:3dc8016ccea23ae23c8a246a799e978c04dbc4ee957692c75928f4838b0e6af1
+    tag: 2024.07.08-nightly@sha256:5e7f2eb1d3dc2389d370a0b05aa26050851065f77b511966225befc2a2c1c8bd
   priorityClassName: tenant-normal
   controller:
     annotations:
