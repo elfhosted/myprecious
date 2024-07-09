@@ -691,6 +691,7 @@ bootstrap: &bootstrap
       echo "Bootstrapping from goldilocks config..."
       s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/
       touch /config/i-am-bootstrapped
+      
     fi
 
   volumeMounts:
