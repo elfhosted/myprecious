@@ -4808,7 +4808,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.4.1.4234@sha256:19a2cd7d2f648afba74746097f1e51d07204c17516e420882065c132350d6d5d
+    tag: 2.4.2.4238@sha256:8cac8a871093293e5d78f4cd30adcee5ae39b4a53a97416b4d957ed1729ba60f
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4953,7 +4953,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.29.2565@sha256:a846dd9526e863417736fa5ddde78f093cc39a911cf7afd1c71ec45db461d0b9
+    tag: 0.3.30.2576@sha256:c5f7aac6894df5f6ec46c9f4a02f72177fe4f795662d7c2e7416523f4e83b1cf
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5037,7 +5037,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.29.2565@sha256:a846dd9526e863417736fa5ddde78f093cc39a911cf7afd1c71ec45db461d0b9
+    tag: 0.3.30.2576@sha256:c5f7aac6894df5f6ec46c9f4a02f72177fe4f795662d7c2e7416523f4e83b1cf
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6981,7 +6981,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.30.5@sha256:eb29bfb148c6bdfaeb3d4edb829b46c09227d191be40da49b94c56f0cba446aa
+    tag: 1.31.0@sha256:ebc07ce21437977ec187b5e75e472d8b6844b4e53882d4807b666f1e487570c2
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7496,7 +7496,7 @@ kometa: &app_kometa
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kometa
-    tag: v2.0.2@sha256:f3ab65f183f130d6e244696bb3515db5ddaead465cdc1637b5aad53aa126ece8
+    tag: v2.0.2@sha256:ab8d84fea0548e40e5d00d10526a8d452072da4b1b5c06c7c8b73a42e0c7028d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9997,7 +9997,7 @@ stremiojackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.1.6@sha256:2b95a300c74a0e2f09fe9c17e176ed56de375cdfc30ba1e76b602ec277ff5439
+    tag: v4.1.6@sha256:48ec3e609a2853b9cddc1c97168fa22d870bc290f3724fce188c655d39296e3d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10506,7 +10506,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.11@sha256:d3ff33984422accc4a0d88382d765cf60a2434194d33379fff2f67362d20ced9
+    tag: 3.9.13@sha256:3748ac38fa412563e8e4535923ed1cf0ad5adeb05b8803d1e2d9550eff30ea91
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10583,7 +10583,7 @@ stremiojackettcommunity: &stremiojackettcommunity
       app.elfhosted.com/name: stremio-jackett-community    
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.1.6@sha256:2b95a300c74a0e2f09fe9c17e176ed56de375cdfc30ba1e76b602ec277ff5439
+    tag: v4.1.6@sha256:48ec3e609a2853b9cddc1c97168fa22d870bc290f3724fce188c655d39296e3d
   priorityClassName: tenant-normal
   # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"] # allow logs on private instances
   controller:
@@ -10662,7 +10662,7 @@ xtremio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/xtremio
-    tag: rolling@sha256:6b760901764ea20c058483b2b990172330287adcb829e68e1970093518b98325
+    tag: rolling@sha256:e4db60aa3db91e6eddc75b6574479b4f83be61d526abdbc4c03d89351291dcfa
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11031,7 +11031,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.08-nightly@sha256:ddae884f829453c2af5d705ef3d0d1a887f34a67f2a6c21141b293ce60d70d25
+    tag: 2024.07.09-nightly@sha256:d6e6650c5c1eb09836d9925b754d5e12c8e54cd6090e7b4728687a2de8a55aaf
   priorityClassName: tenant-normal
   controller:
     annotations:
