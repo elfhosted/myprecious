@@ -409,7 +409,7 @@ data:
           {{ if .Values.comet.enabled }}
           - name: "Comet"
             icon: "fas fa-meteor"
-            subtitle: "Fast Jackett searches via Stremio"
+            subtitle: "Proxy-Stream from DMM & Jackett/Prowlarr with Stremio"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-comet.elfhosted.com"
