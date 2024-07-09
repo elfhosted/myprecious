@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true # waiting on riven release
+safeToRelease: false # waiting on riven release
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e186fdb45c1e260218110013d1ef25659a9cda271508adfaae80376b0d0fa31e
 
@@ -11716,7 +11716,7 @@ sonarr4khobbit:
 prowlarrhobbit:
   <<: *app_sonarr
   podLabels:
-    app.elfhosted.com/name: rdtclient
+    app.elfhosted.com/name: prowlarr
     app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
@@ -11726,6 +11726,15 @@ rdtclienthobbit:
   <<: *app_sonarr
   podLabels:
     app.elfhosted.com/name: rdtclient
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+rivenhobbit:
+  <<: *app_riven
+  podLabels:
+    app.elfhosted.com/name: riven
     app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
