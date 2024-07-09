@@ -5,9 +5,9 @@ metadata:
 data:
   recyclarr.yaml: |
 
-    {{ if or .Values.sonarr.enabled .Values.sonarr4k.enabled }}
+    {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
     sonarr:
-      {{ if .Values.sonarr.enabled }}
+      {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
       sonarr_hd:
         base_url: http://sonarr:8989
         api_key: !env_var SONARR_API_KEY
@@ -215,7 +215,7 @@ data:
               - name: TRaSH <= 4K
 
       {{ end }}
-      {{ if .Values.sonarr4k.enabled }}
+      {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
       sonarr_4k:
         base_url: http://sonarr4k:8989
         api_key: !env_var SONARR4K_API_KEY
@@ -441,9 +441,9 @@ data:
       {{ end }}     
     {{ end }}
 
-    {{ if or .Values.radarr.enabled .Values.radarr4k.enabled }}
+    {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled .Values.radarr4.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
     radarr:
-      {{ if .Values.radarr.enabled }}
+      {{ if or .Values.radarr4.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
       radarr_hd:
         base_url: http://radarr:7878
         api_key: !env_var RADARR_API_KEY
@@ -676,7 +676,7 @@ data:
               - name: TRaSH <= 4K
 
       {{ end }}
-      {{ if .Values.radarr4k.enabled }}
+      {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
       radarr_4k:
         base_url: http://radarr4k:7878
         api_key: !env_var RADARR4K_API_KEY
