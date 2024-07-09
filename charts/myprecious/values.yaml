@@ -11713,7 +11713,7 @@ sonarr4khobbit:
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  
 
-prowlarrrhobbit:
+prowlarrhobbit:
   <<: *app_sonarr
   podLabels:
     app.elfhosted.com/name: rdtclient
