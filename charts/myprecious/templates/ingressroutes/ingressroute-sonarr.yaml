@@ -1,4 +1,4 @@
-{{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled }}
+{{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

@@ -305,7 +305,7 @@ data:
               key: {{ .Values.radarr4kexposed.apikey }}
         {{ end }}              
 
-        {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled  }}
+        {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled  }}
         - Sonarr:
             icon: sonarr.png
             href: https://{{ .Release.Name }}-sonarr.elfhosted.com

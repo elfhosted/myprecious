@@ -326,7 +326,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled }}
+      {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
       - name: sonarr
         group: manage-media
         url: "http://sonarr:8989"

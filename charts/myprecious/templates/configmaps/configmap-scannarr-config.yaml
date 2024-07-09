@@ -19,7 +19,7 @@ data:
       "APIKey": "{{ .Values.radarrexposed.apikey }}"
     }
   {{ end }}
-  {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
+  {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled .Values.sonarrhobbit.enabled }}
   settings_sonarr.json: |
     {
       "URL": "http://sonarr:8989",

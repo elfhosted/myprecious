@@ -557,7 +557,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled }}
+          {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
           - name: "Sonarr"
             logo: "assets/png/sonarr.png"
             subtitle: "Manage Series"
