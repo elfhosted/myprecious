@@ -3,6 +3,37 @@ safeToRelease: true # waiting on riven release
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e186fdb45c1e260218110013d1ef25659a9cda271508adfaae80376b0d0fa31e
 
+
+hobbit_affinity: &hobbit_affinity
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-role.elfhosted.com/hobbit
+          operator: Exists    
+  podAffinity: 
+    requiredDuringSchedulingIgnoredDuringExecution: 
+      - labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/class
+            operator: In
+            values:
+            - hobbit
+        topologyKey: "kubernetes.io/hostname"  
+
+hobbit_tolerations: &hobbit_tolerations
+- key: node-role.elfhosted.com/hobbit
+  operator: Exists          
+
+hobbit_streamer_resources: &hobbit_streamer_resources
+  resources:
+    requests:
+      cpu: "1.8"
+      memory: 30Mi
+    limits:
+      cpu: "2"
+      memory: 4Gi     
+      
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
     volumeClaimTemplate:
@@ -11729,35 +11760,6 @@ kubernetesdashboard:
 
 # optional but disabled by default to prevent errors
 
-hobbit_affinity: &hobbit_affinity
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: node-role.elfhosted.com/hobbit
-          operator: Exists    
-  podAffinity: 
-    requiredDuringSchedulingIgnoredDuringExecution: 
-      - labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/class
-            operator: In
-            values:
-            - hobbit
-        topologyKey: "kubernetes.io/hostname"  
-
-hobbit_tolerations: &hobbit_tolerations
-- key: node-role.elfhosted.com/hobbit
-  operator: Exists          
-
-hobbit_streamer_resources: &hobbit_streamer_resources
-  resources:
-    requests:
-      cpu: "1.8"
-      memory: 30Mi
-    limits:
-      cpu: "2"
-      memory: 4Gi     
         
 gluetun:
   enabled: false # just to avoid errors
