@@ -1,4 +1,4 @@
-{{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled }}
+{{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

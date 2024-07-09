@@ -1,4 +1,4 @@
-{{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
+{{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
 apiVersion: v1
 kind: Service
 metadata:

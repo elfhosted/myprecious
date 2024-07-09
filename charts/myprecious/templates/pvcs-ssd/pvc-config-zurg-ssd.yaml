@@ -1,4 +1,4 @@
-{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
+{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

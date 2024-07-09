@@ -50,7 +50,7 @@ data:
 
     endpoints:
 
-      {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled }}
+      {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled }}
       - name: jellyfin
         group: consume-media
         url: "http://jellyfin:8096"
@@ -61,7 +61,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.emby.enabled .Values.embyplus.enabled }}
+      {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled }}
       - name: emby
         group: consume-media
         url: "http://emby:8096"
@@ -72,7 +72,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexplus.enabled }}
+      {{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
       - name: plex
         group: consume-media
         url: "http://plex:32400"
@@ -304,7 +304,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.radarr.enabled .Values.radarrplus.enabled }}
+      {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
       - name: radarr
         group: manage-media
         url: "http://radarr:7878"
@@ -315,7 +315,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled }}
+      {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
       - name: radarr4K
         group: manage-media
         url: "http://radarr4k:7878"
@@ -337,7 +337,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.sonarr4k.enabled  .Values.sonarr4kplus.enabled }}
+      {{ if or .Values.sonarr4k.enabled  .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
       - name: sonarr4K
         group: manage-media
         url: "http://sonarr4k:8989"
@@ -623,7 +623,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
+      {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
       - name: kometa
         group: manage-media
         url: "http://kometa:3001"
@@ -678,7 +678,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
+      {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
       - name: prowlarr
         group: download-media
         url: "http://prowlarr:9696"
@@ -799,7 +799,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
+      {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
       - name: zurg
         group: download-media
         url: "http://zurg:9999"
