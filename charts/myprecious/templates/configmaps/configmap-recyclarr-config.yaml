@@ -441,9 +441,9 @@ data:
       {{ end }}     
     {{ end }}
 
-    {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled .Values.radarr4.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
+    {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled .Values.radarr4k.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
     radarr:
-      {{ if or .Values.radarr4.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
+      {{ if or .Values.radarr4k.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
       radarr_hd:
         base_url: http://radarr:7878
         api_key: !env_var RADARR_API_KEY
