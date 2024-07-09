@@ -2921,19 +2921,6 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *appmounts
-    # migration:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /storage/old-symlinks
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: symlinks
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: storagehub-export # migrating away from block device back to cephfs 
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -3588,30 +3575,30 @@ filebrowser:
       - name: recyclarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext   
-    migrate-symlinks:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs-b ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Tar-migrating from /migration/..." 
-            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/.i-was-migrated-to-cephfs-b
-          fi
-        fi   
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-        subPath: symlinks
-      - name: symlinks
-        mountPath: /storage/symlinks
-      securityContext: *default_securitycontext             
+    # migrate-symlinks:
+    #   image: *tooling_image
+    #   imagePullPolicy: IfNotPresent
+    #   command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
+    #     set -x
+    #     if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs-b ]]
+    #     then
+    #       if [[ ! -z "$(ls -A /migration)" ]]    
+    #       then
+    #         echo "Tar-migrating from /migration/..." 
+    #         tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+    #         touch /storage/symlinks/.i-was-migrated-to-cephfs-b
+    #       fi
+    #     fi   
+    #   volumeMounts:
+    #   - mountPath: /migration
+    #     name: migration
+    #     subPath: symlinks
+    #   - name: symlinks
+    #     mountPath: /storage/symlinks
+    #   securityContext: *default_securitycontext             
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
@@ -3675,19 +3662,6 @@ filebrowser:
     limits:
       cpu: 200m
       memory: 514Mi
-
-  # # not used currently
-  # config: |
-  #   {
-  #     "port": 8080,
-  #     "baseURL": "",
-  #     "address": "0.0.0.0",
-  #     "log": "stdout",
-  #     "database": "/tmp/filebrowser.db",
-  #     "root": "/elfhosted",
-  #     "enableExec": "true"
-  #   }
-
 
 
 uptimekuma:
