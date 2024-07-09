@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false # waiting on riven release
+safeToRelease: true
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e186fdb45c1e260218110013d1ef25659a9cda271508adfaae80376b0d0fa31e
 
