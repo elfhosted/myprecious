@@ -513,7 +513,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"
