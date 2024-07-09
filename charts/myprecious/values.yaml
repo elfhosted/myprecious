@@ -33,7 +33,7 @@ hobbit_streamer_resources: &hobbit_streamer_resources
     limits:
       cpu: "2"
       memory: 4Gi     
-      
+
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
     volumeClaimTemplate:
@@ -5394,115 +5394,7 @@ plexplus:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,plex-pia-config"
   
-plexhobbit:
-  <<: *app_plex
-  podLabels:
-    app.elfhosted.com/name: plex
-    app.elfhosted.com/class: hobbit  
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "250M"    
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
-  resources: *hobbit_streamer_resources
 
-jellyfinhobbit:
-  <<: *app_jellyfin
-  podLabels:
-    app.elfhosted.com/name: jellyfin
-    app.elfhosted.com/class: hobbit  
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "250M"    
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
-  resources: *hobbit_streamer_resources
-
-embyhobbit:
-  <<: *app_emby
-  podLabels:
-    app.elfhosted.com/name: emby
-    app.elfhosted.com/class: hobbit  
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "250M"    
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
-  resources: *hobbit_streamer_resources
-
-zurghobbit:
-  <<: *app_emby
-  podLabels:
-    app.elfhosted.com/name: zurg
-    app.elfhosted.com/class: hobbit  
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "250M"    
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
-
-radarrhobbit:
-  <<: *app_emby
-  podLabels:
-    app.elfhosted.com/name: radarr
-    app.elfhosted.com/class: hobbit   
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
-
-radarr4khobbit:
-  <<: *app_emby
-  podLabels:
-    app.elfhosted.com/name: radarr4k
-    app.elfhosted.com/class: hobbit   
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations  
-
-sonarrhobbit:
-  <<: *app_sonarr
-  podLabels:
-    app.elfhosted.com/name: sonarr
-    app.elfhosted.com/class: hobbit   
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
-
-sonarr4khobbit:
-  <<: *app_sonarr
-  podLabels:
-    app.elfhosted.com/name: sonarr4k
-    app.elfhosted.com/class: hobbit   
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations  
-
-prowlarrrhobbit:
-  <<: *app_sonarr
-  podLabels:
-    app.elfhosted.com/name: rdtclient
-    app.elfhosted.com/class: hobbit   
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations 
-
-rdtclienthobbit:
-  <<: *app_sonarr
-  podLabels:
-    app.elfhosted.com/name: rdtclient
-    app.elfhosted.com/class: hobbit   
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
-
-kometahobbit:
-  <<: *app_sonarr
-  podLabels:
-    app.elfhosted.com/name: kometa
-    app.elfhosted.com/class: hobbit   
-  enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations  
 
 jellyfin: &app_jellyfin
   hostname: elfhosted
@@ -11763,5 +11655,115 @@ kubernetesdashboard:
         
 gluetun:
   enabled: false # just to avoid errors
+
+plexhobbit:
+  <<: *app_plex
+  podLabels:
+    app.elfhosted.com/name: plex
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+  resources: *hobbit_streamer_resources
+
+jellyfinhobbit:
+  <<: *app_jellyfin
+  podLabels:
+    app.elfhosted.com/name: jellyfin
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+  resources: *hobbit_streamer_resources
+
+embyhobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: emby
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+  resources: *hobbit_streamer_resources
+
+zurghobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: zurg
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+radarrhobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: radarr
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+radarr4khobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: radarr4k
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations  
+
+sonarrhobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: sonarr
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+sonarr4khobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: sonarr4k
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations  
+
+prowlarrrhobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: rdtclient
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations 
+
+rdtclienthobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: rdtclient
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+kometahobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: kometa
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations  
 
 # This file must end on a single newline
