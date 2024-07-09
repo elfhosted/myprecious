@@ -34,7 +34,7 @@ data:
   services.yaml: |
     - Consume Media:
 
-        {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled }}
+        {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled }}
         - Jellyfin:
             icon: jellyfin.png
             href: https://{{ .Release.Name }}-jellyfin.elfhosted.com
@@ -46,7 +46,7 @@ data:
               key: {{`{{HOMEPAGE_FILE_JELLYFIN_KEY}}`}} 
         {{ end }} 
 
-        {{ if or .Values.plex.enabled .Values.plexplus.enabled }}
+        {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
         - Plex:
             icon: plex.png
             href: https://{{ .Release.Name }}-plex.elfhosted.com
@@ -58,7 +58,7 @@ data:
               key: {{`{{HOMEPAGE_FILE_PLEX_KEY}}`}} 
         {{ end }}
 
-        {{ if or .Values.emby.enabled .Values.embyplus.enabled }}
+        {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled }}
         - Emby:
             icon: emby.png
             href: https://{{ .Release.Name }}-emby.elfhosted.com
@@ -281,7 +281,7 @@ data:
         {{ end }}             
 
     - Manage Media:
-        {{ if or .Values.radarr.enabled .Values.radarrplus.enabled  }}
+        {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled  }}
         - Radarr:
             icon: radarr.png
             href: https://{{ .Release.Name }}-radarr.elfhosted.com
@@ -293,7 +293,7 @@ data:
               key: {{ .Values.radarrexposed.apikey }}
         {{ end }}  
 
-        {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled }}
+        {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
         - Radarr 4K:
             icon: radarr.png
             href: https://{{ .Release.Name }}-radarr4k.elfhosted.com
@@ -317,7 +317,7 @@ data:
               key: {{ .Values.sonarrexposed.apikey }}
         {{ end }}  
 
-        {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled }}
+        {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
         - Sonarr 4K:
             icon: sonarr.png
             href: https://{{ .Release.Name }}-sonarr4k.elfhosted.com
@@ -542,7 +542,7 @@ data:
             siteMonitor: http://plexmetamanager:9898
         {{ end }}   
 
-        {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
+        {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
         - Kometa:
             icon: mdi-folder-information
             href: https://{{ .Release.Name }}-kometa.elfhosted.com
@@ -644,7 +644,7 @@ data:
               key: {{ .Values.sabnzbdexposed.apikey }} 
         {{ end }}
         
-        {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
+        {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
         - Prowlarr:
             icon: prowlarr.png
             href: https://{{ .Release.Name }}-prowlarr.elfhosted.com
@@ -766,7 +766,7 @@ data:
             siteMonitor: http://rdtclient-alldebrid:6500
         {{ end }}            
 
-        {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
+        {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
         - Zurg:
             icon: real-debrid.png
             href: https://{{ .Release.Name }}-zurg.elfhosted.com/http/

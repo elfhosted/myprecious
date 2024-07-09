@@ -1,7 +1,38 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true # waiting on riven release
+safeToRelease: true
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e186fdb45c1e260218110013d1ef25659a9cda271508adfaae80376b0d0fa31e
+
+
+hobbit_affinity: &hobbit_affinity
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-role.elfhosted.com/hobbit
+          operator: Exists    
+  podAffinity: 
+    requiredDuringSchedulingIgnoredDuringExecution: 
+      - labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/class
+            operator: In
+            values:
+            - hobbit
+        topologyKey: "kubernetes.io/hostname"  
+
+hobbit_tolerations: &hobbit_tolerations
+- key: node-role.elfhosted.com/hobbit
+  operator: Exists          
+
+hobbit_streamer_resources: &hobbit_streamer_resources
+  resources:
+    requests:
+      cpu: "1.8"
+      memory: 30Mi
+    limits:
+      cpu: "2"
+      memory: 4Gi     
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -2890,19 +2921,6 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *appmounts
-    # migration:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /storage/old-symlinks
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: symlinks
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: storagehub-export # migrating away from block device back to cephfs 
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -3557,30 +3575,30 @@ filebrowser:
       - name: recyclarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext   
-    migrate-symlinks:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs-b ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]    
-          then
-            echo "Tar-migrating from /migration/..." 
-            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/.i-was-migrated-to-cephfs-b
-          fi
-        fi   
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-        subPath: symlinks
-      - name: symlinks
-        mountPath: /storage/symlinks
-      securityContext: *default_securitycontext             
+    # migrate-symlinks:
+    #   image: *tooling_image
+    #   imagePullPolicy: IfNotPresent
+    #   command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
+    #     set -x
+    #     if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs-b ]]
+    #     then
+    #       if [[ ! -z "$(ls -A /migration)" ]]    
+    #       then
+    #         echo "Tar-migrating from /migration/..." 
+    #         tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+    #         touch /storage/symlinks/.i-was-migrated-to-cephfs-b
+    #       fi
+    #     fi   
+    #   volumeMounts:
+    #   - mountPath: /migration
+    #     name: migration
+    #     subPath: symlinks
+    #   - name: symlinks
+    #     mountPath: /storage/symlinks
+    #   securityContext: *default_securitycontext             
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
@@ -3644,19 +3662,6 @@ filebrowser:
     limits:
       cpu: 200m
       memory: 514Mi
-
-  # # not used currently
-  # config: |
-  #   {
-  #     "port": 8080,
-  #     "baseURL": "",
-  #     "address": "0.0.0.0",
-  #     "log": "stdout",
-  #     "database": "/tmp/filebrowser.db",
-  #     "root": "/elfhosted",
-  #     "enableExec": "true"
-  #   }
-
 
 
 uptimekuma:
@@ -5357,12 +5362,13 @@ plexplus:
       cpu: 3500m
       memory: 30Mi
     limits:
-      cpu: 8
+      cpu: 4
       memory: 16Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,plex-pia-config"
   
+
 
 jellyfin: &app_jellyfin
   hostname: elfhosted
@@ -5560,8 +5566,8 @@ jellyfinplus:
       cpu: 3500m
       memory: 30Mi
     limits:
-      cpu: 8
-      memory: 16Gi  
+      cpu: 4
+      memory: 4Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-jellyfin,elfbot-all"
@@ -5755,8 +5761,8 @@ embyplus:
       cpu: 3500m
       memory: 30Mi
     limits:
-      cpu: 8
-      memory: 16Gi  
+      cpu: 4
+      memory: 8Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-emby,elfbot-all"
@@ -5826,7 +5832,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:d376ea3ab391c988c20d3af943cf26247d0841058550289bcde9f6296c435824
+      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:4b6adbbe1b3674486ec76d5e9b52ea4483b72d4b32a2e21ca3afa9706454561d
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -9574,8 +9580,8 @@ rivenplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 8
-      memory: 16Gi  
+      cpu: 2
+      memory: 8Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config,elfbot-all"
@@ -10362,7 +10368,9 @@ comet:
       name: elfbot-comet
       optional: true 
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination      
+    clean-up-dns: *clean_up_dns_on_termination    
+    speedtest:
+      image: openspeedtest/latest      
     warp:
       image: ghcr.io/elfhosted/warp:rolling@sha256:16b7d9aa9032df602a3c620f4e2d57c9edc9ace7143c17c2325a678ddb02d8a5
       securityContext:
@@ -11618,37 +11626,127 @@ kubernetesdashboard:
 
 # optional but disabled by default to prevent errors
 
-hobbit_affinity: &hobbit_affinity
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: node-role.elfhosted.com/hobbit
-          operator: Exists    
-  podAffinity: 
-    requiredDuringSchedulingIgnoredDuringExecution: 
-      - labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/class
-            operator: In
-            values:
-            - hobbit
-        topologyKey: "kubernetes.io/hostname"  
-
-hobbit_tolerations: &hobbit_tolerations
-- key: node-role.elfhosted.com/hobbit
-  operator: Exists          
-
-hobbit_streamer_resources: &hobbit_streamer_resources
-  resources:
-    requests:
-      cpu: "1.8"
-      memory: 30Mi
-    limits:
-      cpu: "2"
-      memory: 4Gi     
         
 gluetun:
   enabled: false # just to avoid errors
+
+plexhobbit:
+  <<: *app_plex
+  podLabels:
+    app.elfhosted.com/name: plex
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+  resources: *hobbit_streamer_resources
+
+jellyfinhobbit:
+  <<: *app_jellyfin
+  podLabels:
+    app.elfhosted.com/name: jellyfin
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+  resources: *hobbit_streamer_resources
+
+embyhobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: emby
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+  resources: *hobbit_streamer_resources
+
+zurghobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: zurg
+    app.elfhosted.com/class: hobbit  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "250M"    
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+radarrhobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: radarr
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+radarr4khobbit:
+  <<: *app_emby
+  podLabels:
+    app.elfhosted.com/name: radarr4k
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations  
+
+sonarrhobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: sonarr
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+sonarr4khobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: sonarr4k
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations  
+
+prowlarrhobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: prowlarr
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations 
+
+rdtclienthobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: rdtclient
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+rivenhobbit:
+  <<: *app_riven
+  podLabels:
+    app.elfhosted.com/name: riven
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations
+
+kometahobbit:
+  <<: *app_sonarr
+  podLabels:
+    app.elfhosted.com/name: kometa
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations  
 
 # This file must end on a single newline

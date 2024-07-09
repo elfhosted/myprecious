@@ -1,4 +1,4 @@
-{{ if or .Values.radarr.enabled .Values.radarrplus.enabled }}
+{{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

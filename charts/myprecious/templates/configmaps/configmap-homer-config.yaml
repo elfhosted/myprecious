@@ -239,7 +239,7 @@ data:
         # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
         # logo: "path/to/logo"
         items:
-          {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled  }}
+          {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled  }}
           - name: "Jellyfin"
             logo: "assets/png/jellyfin.png"
             # Alternatively a fa icon can be provided:
@@ -251,7 +251,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.plex.enabled .Values.plexplus.enabled }}
+          {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
           - name: "Plex"
             logo: "assets/png/plex.png"
             # Alternatively a fa icon can be provided:
@@ -263,7 +263,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.emby.enabled .Values.embyplus.enabled }}
+          {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled }}
           - name: "Emby"
             logo: "assets/png/emby.png"
             # Alternatively a fa icon can be provided:
@@ -409,7 +409,13 @@ data:
           {{ if .Values.comet.enabled }}
           - name: "Comet"
             icon: "fas fa-meteor"
-            subtitle: "Fast Jackett searches via Stremio"
+            {{ if .Values.prowlarr.enabled }}            
+            subtitle: "Proxy-Stremio from DMM & Jackett"
+            {{ else if .Values.prowlarr.enabled }}            
+            subtitle: "Proxy-Stremio from DMM & Prowlarr"
+            {{ else }}            
+            subtitle: "Proxy-Stremio from DMM"
+            {{ end }}
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-comet.elfhosted.com"
@@ -515,7 +521,7 @@ data:
       - name: "Manage Media"
         icon: "fas fa-photo-video"
         items:
-          {{ if or .Values.radarr.enabled .Values.radarrplus.enabled }}
+          {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
           - name: "Radarr"
             logo: "assets/png/radarr.png"
             subtitle: "Manage Movies"
@@ -533,7 +539,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled  }}
+          {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled  }}
           - name: "Radarr 4K"
             logo: "assets/png/radarr.png"
             subtitle: "Manage Movies (4K)"
@@ -569,7 +575,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled }}
+          {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
           - name: "Sonarr 4K"
             logo: "assets/png/sonarr.png"
             subtitle: "Manage Series (4K)"
@@ -850,7 +856,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.kometa.enabled .Values.kometaplus.enabled }}
+          {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
           - name: "Kometa"
             logo: "assets/png/kometa.png"
             # Alternatively a fa icon can be provided:
@@ -963,7 +969,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled }}
+          {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
           - name: "Prowlarr"
             logo: "assets/png/prowlarr.png"
             subtitle: "Manage Indexers"
@@ -1115,7 +1121,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
+          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
           - name: "Zurg"
             logo: "assets/png/real-debrid.png"
             subtitle: "Manage Real Debrid WebDAV proxy"

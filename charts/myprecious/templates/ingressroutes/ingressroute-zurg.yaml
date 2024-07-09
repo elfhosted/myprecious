@@ -1,4 +1,4 @@
-{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled }}
+{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

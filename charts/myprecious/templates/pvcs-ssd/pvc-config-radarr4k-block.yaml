@@ -1,4 +1,4 @@
-{{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled }}
+{{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

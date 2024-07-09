@@ -1,4 +1,4 @@
-{{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled }}
+{{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
