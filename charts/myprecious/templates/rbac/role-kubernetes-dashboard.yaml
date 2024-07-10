@@ -65,7 +65,7 @@ rules:
 {{ if .Values.riven.enabled }}
   - elfbot-riven
 {{ end }}
-{{ if .Values.kometa.enabled }}
+{{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
   - elfbot-kometa
 {{ end }}
 {{ if .Values.comet.enabled }}
