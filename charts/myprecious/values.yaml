@@ -1951,28 +1951,28 @@ nzbget:
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/class: nzb
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists 
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - nzb
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}            
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists       
+  # affinity:
+  #   nodeAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       nodeSelectorTerms:
+  #       - matchExpressions:
+  #         - key: node-role.elfhosted.com/download-only
+  #           operator: Exists 
+    # podAntiAffinity:
+    #   preferredDuringSchedulingIgnoredDuringExecution: 
+    #   - weight: 100  
+    #     podAffinityTerm:    
+    #       labelSelector:
+    #         matchExpressions:
+    #         - key: app.elfhosted.com/class
+    #           operator: In
+    #           values:
+    #           - nzb
+    #       topologyKey: "kubernetes.io/hostname"
+    #       namespaceSelector: {}            
+  # tolerations:
+  # - key: node-role.elfhosted.com/download-only
+  #   operator: Exists       
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2034,28 +2034,28 @@ sabnzbd:
     repository: elfhosted/sabnzbd
     tag: 4.3.2@sha256:e32a1f91dab7760bdf9b37f13783bec7f74d74e613b19655425e4e6c094023fe
   priorityClassName: tenant-bulk
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/download-only
-            operator: Exists
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - nzb
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}            
-  tolerations:
-  - key: node-role.elfhosted.com/download-only
-    operator: Exists  
+  # affinity:
+  #   nodeAffinity:
+  #     requiredDuringSchedulingIgnoredDuringExecution:
+  #       nodeSelectorTerms:
+  #       - matchExpressions:
+  #         - key: node-role.elfhosted.com/download-only
+  #           operator: Exists
+    # podAntiAffinity:
+    #   preferredDuringSchedulingIgnoredDuringExecution: 
+    #   - weight: 100  
+    #     podAffinityTerm:    
+    #       labelSelector:
+    #         matchExpressions:
+    #         - key: app.elfhosted.com/class
+    #           operator: In
+    #           values:
+    #           - nzb
+    #       topologyKey: "kubernetes.io/hostname"
+    #       namespaceSelector: {}            
+  # tolerations:
+  # - key: node-role.elfhosted.com/download-only
+  #   operator: Exists  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-sabnzbd"
@@ -5181,7 +5181,7 @@ plex: &app_plex
               values:
               - zurg
           topologyKey: "kubernetes.io/hostname"
-  tolerations:
+  # tolerations:
   # - key: node-role.elfhosted.com/download-only
   #   operator: Exists
   securityContext:
