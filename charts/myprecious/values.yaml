@@ -691,7 +691,7 @@ bootstrap: &bootstrap
       echo "Bootstrapping from goldilocks config..."
       s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/
       touch /config/i-am-bootstrapped
-      
+
     fi
 
   volumeMounts:
@@ -11668,7 +11668,7 @@ embyhobbit:
   resources: *hobbit_streamer_resources
 
 zurghobbit:
-  <<: *app_emby
+  <<: *app_zurg
   podLabels:
     app.elfhosted.com/name: zurg
     app.elfhosted.com/class: hobbit  
@@ -11679,7 +11679,7 @@ zurghobbit:
   tolerations: *hobbit_tolerations
 
 radarrhobbit:
-  <<: *app_emby
+  <<: *app_radarr
   podLabels:
     app.elfhosted.com/name: radarr
     app.elfhosted.com/class: hobbit   
@@ -11688,7 +11688,7 @@ radarrhobbit:
   tolerations: *hobbit_tolerations
 
 radarr4khobbit:
-  <<: *app_emby
+  <<: *app_radar4k
   podLabels:
     app.elfhosted.com/name: radarr4k
     app.elfhosted.com/class: hobbit   
@@ -11706,7 +11706,7 @@ sonarrhobbit:
   tolerations: *hobbit_tolerations
 
 sonarr4khobbit:
-  <<: *app_sonarr
+  <<: *app_sonarr4k
   podLabels:
     app.elfhosted.com/name: sonarr4k
     app.elfhosted.com/class: hobbit   
@@ -11715,7 +11715,7 @@ sonarr4khobbit:
   tolerations: *hobbit_tolerations  
 
 prowlarrhobbit:
-  <<: *app_sonarr
+  <<: *app_prowlarr
   podLabels:
     app.elfhosted.com/name: prowlarr
     app.elfhosted.com/class: hobbit   
@@ -11724,7 +11724,7 @@ prowlarrhobbit:
   tolerations: *hobbit_tolerations 
 
 rdtclienthobbit:
-  <<: *app_sonarr
+  <<: *app_rdtclient
   podLabels:
     app.elfhosted.com/name: rdtclient
     app.elfhosted.com/class: hobbit   
@@ -11742,7 +11742,7 @@ rivenhobbit:
   tolerations: *hobbit_tolerations
 
 kometahobbit:
-  <<: *app_sonarr
+  <<: *app_kometa
   podLabels:
     app.elfhosted.com/name: kometa
     app.elfhosted.com/class: hobbit   
