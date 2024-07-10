@@ -1,4 +1,4 @@
-{{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
+{{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

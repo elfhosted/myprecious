@@ -305,7 +305,7 @@ data:
               key: {{ .Values.radarr4kexposed.apikey }}
         {{ end }}              
 
-        {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled  }}
+        {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled  }}
         - Sonarr:
             icon: sonarr.png
             href: https://{{ .Release.Name }}-sonarr.elfhosted.com
@@ -585,7 +585,7 @@ data:
             siteMonitor: http://plex-debrid:3001            
         {{ end }}     
 
-        {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
+        {{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
         - Riven:
             icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
             href: https://{{ .Release.Name }}-riven.elfhosted.com

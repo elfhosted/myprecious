@@ -1,4 +1,4 @@
-{{ if .Values.kometa.enabled  }}
+{{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:

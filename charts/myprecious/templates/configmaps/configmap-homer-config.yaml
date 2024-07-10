@@ -557,7 +557,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled }}
+          {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
           - name: "Sonarr"
             logo: "assets/png/sonarr.png"
             subtitle: "Manage Series"
@@ -915,13 +915,13 @@ data:
           {{ end }}   
 
           {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
-          # - name: "Riven"
-          #   icon: "fas fa-mountain"
-          #   subtitle: "All-in-one Debrid Media Management"
-          #   tag: "protected"
-          #   tagstyle: "is-success"
-          #   url: "https://{{ .Release.Name }}-riven.elfhosted.com"
-          #   target: "_blank" # optional html tag target attribute
+          - name: "Riven"
+            icon: "fas fa-mountain"
+            subtitle: "All-in-one Debrid Media Management"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-riven.elfhosted.com"
+            target: "_blank" # optional html tag target attribute
 
           - name: "Riven (backend)"
             icon: "fas fa-mountain"
