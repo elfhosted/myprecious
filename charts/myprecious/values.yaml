@@ -3090,7 +3090,21 @@ filebrowser:
       mountPath: /storage/config/kometa/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kometa              
+          claimName: config-kometa    
+    kometaplus:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/kometa/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kometa    
+    kometahobbit:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/kometa/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kometa                                  
     pyload:
       enabled: false
       type: custom
@@ -3350,7 +3364,14 @@ filebrowser:
       mountPath: /storage/config/riven/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-riven-ssd                      
+          claimName: config-riven-ssd  
+    rivenhobbit:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/riven/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-riven-ssd                                
     rpdb:
       enabled: false
       type: custom
@@ -3485,7 +3506,14 @@ filebrowser:
       mountPath: /storage/config/zurg/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-zurg-ssd                    
+          claimName: config-zurg-ssd   
+    zurghobbit:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/zurg/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-zurg-ssd                              
     rdtclient:
       enabled: false
       type: custom
@@ -3493,6 +3521,20 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-rdtclient-ssd
+    rdtclientplus:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/rdtclient/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rdtclient-ssd      
+    rdtclienthobbit:
+      enabled: false
+      type: custom
+      mountPath: /storage/config/rdtclient/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rdtclient-ssd              
     rdtclientvpnpia:
       enabled: false
       type: custom
