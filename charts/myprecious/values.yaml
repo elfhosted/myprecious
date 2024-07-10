@@ -11689,7 +11689,7 @@ radarrhobbit:
   tolerations: *hobbit_tolerations
 
 radarr4khobbit:
-  <<: *app_radar4k
+  <<: *app_radarr4k
   podLabels:
     app.elfhosted.com/name: radarr4k
     app.elfhosted.com/class: hobbit   
