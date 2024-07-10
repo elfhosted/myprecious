@@ -5202,7 +5202,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: rolling@sha256:06d7d71e5754d606edc6d5e8fea906406bbd027e9427d6cb56de368d877f8e98
+    tag: rolling@sha256:f6e16069212cf9758997b9def7de6d6fda90ec0ec4f9c960499e9d46d1299b8a
   persistence:
     <<: *appmounts    
     config:
