@@ -3690,6 +3690,7 @@ filebrowser:
                     ;;
                 esac
 
+
                 # patch the configmap with the latest key/value
                 kubectl patch configmap -n {{ .Release.Namespace }} elfbot-${APP} -p "{\"data\":{\"${KEY}\":\"${VALUE}\"}}"
               fi
