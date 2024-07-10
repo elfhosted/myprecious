@@ -11078,7 +11078,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.10-nightly@sha256:fbea73ec6a39b7f9d0c1c4c63eaba96ecfca569a7348afc747fabcd2f2d6f890
+    tag: 2024.07.10-nightly@sha256:718c4a5ff66e311e9a16a21a18c5cf47702ecdfafc166caae640a7cea5aa2047
   priorityClassName: tenant-normal
   controller:
     annotations:
