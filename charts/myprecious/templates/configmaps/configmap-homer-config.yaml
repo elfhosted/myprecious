@@ -914,7 +914,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
-          {{ if or .Values.riven.enabled .Values.rivenplus.enabled }}
+          {{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
           - name: "Riven"
             icon: "fas fa-mountain"
             subtitle: "All-in-one Debrid Media Management"
