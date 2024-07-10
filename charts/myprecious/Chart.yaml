@@ -42,7 +42,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexhobbit.enabled
-    alias: plexhobbit    
+    alias: plexhobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -57,7 +57,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: embyhobbit.enabled
-    alias: embyhobbit    
+    alias: embyhobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -67,7 +67,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfinhobbit.enabled
-    alias: jellyfinhobbit    
+    alias: jellyfinhobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -97,7 +97,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: radarrhobbit.enabled
-    alias: radarrhobbit    
+    alias: radarrhobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -107,7 +107,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: radarr4khobbit.enabled
-    alias: radarr4khobbit    
+    alias: radarr4khobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -127,7 +127,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: sonarrhobbit.enabled
-    alias: sonarrhobbit    
+    alias: sonarrhobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -142,7 +142,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: sonarr4khobbit.enabled
-    alias: sonarr4khobbit    
+    alias: sonarr4khobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -179,7 +179,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: prowlarrhobbit.enabled
-    alias: prowlarrhobbit    
+    alias: prowlarrhobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -402,7 +402,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: kometahobbit.enabled
-    alias: kometahobbit    
+    alias: kometahobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -510,7 +510,7 @@ dependencies:
     condition: rivenhobbit.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: rivenhobbit    
+    alias: rivenhobbit
   - name: app-template
     condition: airdcpppia.enabled
     version: ~0.2.1
