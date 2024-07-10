@@ -3645,8 +3645,10 @@ filebrowser:
     #   securityContext: *default_securitycontext             
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
+    elfterm:
+      image: *tooling_image # launches ttyd with tmux
     elfbot:
-      image: *tooling_image
+      image: *tooling_image 
       imagePullPolicy: IfNotPresent
       command:
       - /usr/bin/dumb-init
