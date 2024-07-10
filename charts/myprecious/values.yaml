@@ -729,6 +729,7 @@ bootstrap_elfbot: &bootstrap_elfbot
       fi
     fi
 
+
     # If no command is set, then move onto the next possibility
     if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
       TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
