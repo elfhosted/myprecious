@@ -2890,7 +2890,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:33b7c56c18a541947d289de9506aa850a069626239c4fbfa8705dd6058992bf8
+    tag: 2.23.0@sha256:490b97bfdd9367b57a771a81b8c92aa5b30e5f938832eb2931d831235c5d4b69
   envFrom:
   - configMapRef:
       name: filebrowser-env      
