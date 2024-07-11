@@ -2927,12 +2927,7 @@ filebrowser:
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
-      sizeLimit: 1Gi
-    dummy-storage: # so auto-provisioning doesn't break
-      enabled: true
-      type: emptyDir
-      mountPath: /run
-      sizeLimit: 1Gi      
+      sizeLimit: 1Gi  
     elfbot:
       enabled: true
       type: emptyDir
