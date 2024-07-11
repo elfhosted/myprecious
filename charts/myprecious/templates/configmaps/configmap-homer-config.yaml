@@ -1187,13 +1187,13 @@ data:
             url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com"
             target: "_blank" # optional html tag target attribute
 
-          # - name: "ElfTerm"
-          #   icon: "fas fa-terminal"
-          #   subtitle: "Elf CLI Magic 🪄"
-          #   tag: "protected"
-          #   tagstyle: "is-success"
-          #   url: "https://{{ .Release.Name }}-elfterm.elfhosted.com"
-          #   target: "_blank" # optional html tag target attribute            
+          - name: "ElfTerm"
+            icon: "fas fa-terminal"
+            subtitle: "Enter the ElfTerm.. 🪄"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-elfterm.elfhosted.com"
+            target: "_blank" # optional html tag target attribute            
 
           - name: "Kubernetes Dashboard"
             logo: "assets/png/kubernetes.png"

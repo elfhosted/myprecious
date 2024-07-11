@@ -2884,12 +2884,13 @@ autobrr:
   #       subPath: autobrr
 
 filebrowser:
+  hostname: elfhosted
   enabled: true
   podLabels:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:e2b4be56822b8787d1749bd1b821bff42ecbcd85b6458024f75f72d7d5a58845
+    tag: 2.23.0@sha256:33b7c56c18a541947d289de9506aa850a069626239c4fbfa8705dd6058992bf8
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -3645,8 +3646,6 @@ filebrowser:
     #   securityContext: *default_securitycontext             
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
-    elfterm:
-      image: *tooling_image # launches ttyd with tmux
     elfbot:
       image: *tooling_image 
       imagePullPolicy: IfNotPresent
@@ -6544,13 +6543,19 @@ thelounge:
           port: 9000
   persistence:
     <<: *appmounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-thelounge
     config:
       enabled: true
       type: custom
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-thelounge
+          claimName: config-thelounge-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6560,6 +6565,7 @@ thelounge:
           optional: true
   initContainers:
     bootstrap: *bootstrap
+    migrate-data: *migrate_data
     create-user:
       image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:e1b875be806d8e887404c62ec916def7da06ee150dd6884956e42d924a717e27
       imagePullPolicy: IfNotPresent
@@ -8669,13 +8675,19 @@ syncthing:
   automountServiceAccountToken: false
   persistence:
     <<: *appmounts
+    migration:
+      enabled: true
+      mountPath: /config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-syncthing
     config:
       enabled: true
       type: custom
       mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-syncthing
+          claimName: config-syncthing-ssd          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8701,6 +8713,7 @@ syncthing:
       cpu: 1
       memory: 1Gi
   initContainers:
+    migrate-data: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: ghcr.io/elfhosted/syncthing:1.27.8@sha256:ee46afa49c0b1cfeb1de2eaef6d36ed10d9ada3a358ddbee664b3e981bbed04b
@@ -9068,7 +9081,7 @@ joplinserver:
       mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-joplinserver
+          claimName: config-joplinserver-ssd
       subPath: data
   postgresql:
     enabled: true
@@ -9083,7 +9096,7 @@ joplinserver:
     primary:
       persistence:
         enabled: true
-        existingClaim: config-joplinserver
+        existingClaim: config-joplinserver-ssd
         subPath: database
       resources:
         requests:

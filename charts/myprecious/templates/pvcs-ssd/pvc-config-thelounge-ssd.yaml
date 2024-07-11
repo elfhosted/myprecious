@@ -1,7 +1,8 @@
+{{ if .Values.thelounge.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: symlinks
+  name: config-thelounge-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:
@@ -9,5 +10,6 @@ spec:
   - ReadWriteMany
   resources:
     requests:
-      storage: 100Gi
-  storageClassName: ceph-filesystem # deliberately not using SSD here
+      storage: 10Gi
+  storageClassName: ceph-filesystem-ssd
+{{ end }}
