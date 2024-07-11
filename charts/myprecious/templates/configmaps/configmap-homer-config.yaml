@@ -408,7 +408,7 @@ data:
 
           {{ if .Values.comet.enabled }}
           - name: "Comet"
-            logo: "assets/png/comet.png"
+            icon: "fas fa-meteor"
             {{ if .Values.prowlarr.enabled }}            
             subtitle: "Proxy-Stremio from DMM & Jackett"
             {{ else if .Values.prowlarr.enabled }}            
@@ -858,7 +858,7 @@ data:
 
           {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
           - name: "Kometa"
-            logo: "assets/png/kometa.png"
+            icon: "fas fa-meteor"
             # Alternatively a fa icon can be provided:
             # icon: "fas fa-photo-film"
             subtitle: "Manage Plex Metadata"
