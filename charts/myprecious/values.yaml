@@ -8675,12 +8675,6 @@ syncthing:
   automountServiceAccountToken: false
   persistence:
     <<: *appmounts
-    migration:
-      enabled: true
-      mountPath: /config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-syncthing
     config:
       enabled: true
       type: custom
@@ -8713,7 +8707,6 @@ syncthing:
       cpu: 1
       memory: 1Gi
   initContainers:
-    migrate-data: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: ghcr.io/elfhosted/syncthing:1.27.8@sha256:ee46afa49c0b1cfeb1de2eaef6d36ed10d9ada3a358ddbee664b3e981bbed04b
