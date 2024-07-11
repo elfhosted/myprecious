@@ -2890,7 +2890,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:490b97bfdd9367b57a771a81b8c92aa5b30e5f938832eb2931d831235c5d4b69
+    tag: 2.23.0@sha256:dbc8951d06e9eea956006cca730e05d566770dd675a94ca4e20586457117e908
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -2898,7 +2898,7 @@ filebrowser:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false
+    readOnlyRootFilesystem: true
     allowPrivilegeEscalation: false
     runAsUser: 568
     runAsGroup: 568
@@ -2928,6 +2928,11 @@ filebrowser:
       enabled: true
       type: emptyDir
       sizeLimit: 1Gi
+    dummy-storage: # so auto-provisioning doesn't break
+      enabled: true
+      type: emptyDir
+      mountPath: /run
+      sizeLimit: 1Gi      
     elfbot:
       enabled: true
       type: emptyDir

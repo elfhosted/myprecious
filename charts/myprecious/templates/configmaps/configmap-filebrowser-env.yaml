@@ -6,6 +6,7 @@ data:
   FB_DATABASE: /tmp/filebrowser.db
   FB_CONFIG: /etc/filebrowser/.filebrowser.json # this would work implicitly anyway, but this way it's clear what's happening
   FB_ADDRESS: 0.0.0.0
+  S6_READ_ONLY_ROOT: "1"
   RADARR_API_KEY: "{{ .Values.radarrexposed.apikey }}"
   RADARR4K_API_KEY: "{{ .Values.radarr4kexposed.apikey }}"
   SONARR_API_KEY: "{{ .Values.sonarrexposed.apikey }}"  
