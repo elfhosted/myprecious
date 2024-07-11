@@ -3156,7 +3156,7 @@ filebrowser:
       mountPath: /storage/config/joplin-server/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-joplinserver
+          claimName: config-joplinserver-ssd
     jfa:
       enabled: false
       type: custom
