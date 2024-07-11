@@ -1,7 +1,7 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true
+safeToRelease: false
 
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:4d56a42f3d8d76bc45fcdcd7ce84e566b703f6ecfceabe9b87826724cfe1121f
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:4bd3ee9c2128fb7cb60510fc9f09a7a8fb79d1614391ff7f16acb872c9a629c2
 
 
 hobbit_affinity: &hobbit_affinity
@@ -2889,7 +2889,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:33b7c56c18a541947d289de9506aa850a069626239c4fbfa8705dd6058992bf8
+    tag: 2.23.0@sha256:e2b4be56822b8787d1749bd1b821bff42ecbcd85b6458024f75f72d7d5a58845
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -3556,7 +3556,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:33b7c56c18a541947d289de9506aa850a069626239c4fbfa8705dd6058992bf8
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:e2b4be56822b8787d1749bd1b821bff42ecbcd85b6458024f75f72d7d5a58845
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -4393,7 +4393,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.6.1847@sha256:6cbdb6337c4b95e46eb5568a6144330ab3258cc9925f6e761e2e9f7541764c2b
+    tag: 4.0.6.1820@sha256:d7441c9340cfee6c9c2c7c6c5b4e3dc833cd2fbf12be767368b8f973141ee843
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4522,7 +4522,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.6.1847@sha256:6cbdb6337c4b95e46eb5568a6144330ab3258cc9925f6e761e2e9f7541764c2b
+    tag: 4.0.6.1820@sha256:d7441c9340cfee6c9c2c7c6c5b4e3dc833cd2fbf12be767368b8f973141ee843
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5202,7 +5202,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: rolling@sha256:f6e16069212cf9758997b9def7de6d6fda90ec0ec4f9c960499e9d46d1299b8a
+    tag: rolling@sha256:06d7d71e5754d606edc6d5e8fea906406bbd027e9427d6cb56de368d877f8e98
   persistence:
     <<: *appmounts    
     config:
@@ -5879,7 +5879,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:3cfb88442117bccd2746b4d4f730748d91f47dd316c4665dce580e11a31c5d24
+      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:4b6adbbe1b3674486ec76d5e9b52ea4483b72d4b32a2e21ca3afa9706454561d
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -9509,7 +9509,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:34c7c18cf1c0185e5ff0f82bf1c655f28999eb94593e1323a2c5493dca733274
+    tag: rolling@sha256:006f53a6193650eb3aac8e3ddfa14bea66708f94b5b8a68d9b849240d8043690
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9583,7 +9583,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:34c7c18cf1c0185e5ff0f82bf1c655f28999eb94593e1323a2c5493dca733274
+      image: ghcr.io/elfhosted/riven:rolling@sha256:006f53a6193650eb3aac8e3ddfa14bea66708f94b5b8a68d9b849240d8043690
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -10343,7 +10343,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.12.4@sha256:4ecfc3d56bb2cc52bbb951fc66f0e9513ee90c4c7d45dc443a4a3e80fb56619e
+    tag: v1.12.3@sha256:ba1c79c5c090ddbe324e894da3014873d3433dbd69aec85ed6160d93971916ca
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10553,7 +10553,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.14@sha256:c635ebeee1893e38e50459aed69d6553da9e8d9e9a2b24df951a7149d3d38a47
+    tag: 3.9.13@sha256:3748ac38fa412563e8e4535923ed1cf0ad5adeb05b8803d1e2d9550eff30ea91
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10814,7 +10814,7 @@ stremify:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremify
-    tag: rolling@sha256:e15f0e70b3389723ca424775859f105f22bcedce83162be18eaa3ab53eeffb67
+    tag: rolling@sha256:a69bccf81f13e0cb6838a73d396dc97ca141af7fad53f7841b8880cdf3fb4e9b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10876,7 +10876,7 @@ recyclarr:
   enabled: false
   image:
     repository: ghcr.io/recyclarr/recyclarr
-    tag: latest@sha256:81ba81657ab75e9fe38e570141e5445d820dbbbae7012b2e7246b5f17b4abe8f
+    tag: latest@sha256:88d7ef8feb313398a98aafbc2966959f1689191864247f8be15572d5c67641d5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10964,7 +10964,7 @@ recyclarr:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
     sync:
-      image: ghcr.io/recyclarr/recyclarr:latest@sha256:81ba81657ab75e9fe38e570141e5445d820dbbbae7012b2e7246b5f17b4abe8f      
+      image: ghcr.io/recyclarr/recyclarr:latest@sha256:88d7ef8feb313398a98aafbc2966959f1689191864247f8be15572d5c67641d5      
       command:
       - /bin/bash
       - -c
@@ -11078,7 +11078,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.11-nightly@sha256:3d01b5807d44e0d2ea3dd49fd6785bde8318ae6d4ef945b0e56c2b45077fa9e6
+    tag: 2024.07.10-nightly@sha256:fbea73ec6a39b7f9d0c1c4c63eaba96ecfca569a7348afc747fabcd2f2d6f890
   priorityClassName: tenant-normal
   controller:
     annotations:
