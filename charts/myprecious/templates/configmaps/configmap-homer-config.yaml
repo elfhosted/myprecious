@@ -408,7 +408,7 @@ data:
 
           {{ if .Values.comet.enabled }}
           - name: "Comet"
-            icon: "fas fa-meteor"
+            logo: "assets/png/comet.png"
             {{ if .Values.prowlarr.enabled }}            
             subtitle: "Proxy-Stremio from DMM & Jackett"
             {{ else if .Values.prowlarr.enabled }}            
