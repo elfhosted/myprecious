@@ -8,13 +8,11 @@ spec:
     - match: Host(`{{ .Release.Name }}-elfterm.elfhosted.com`)
       kind: Rule
       services:
-        - name: filebrowser
+        - name: elfterm
           kind: Service
           port: 3001
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
         - name: error-pages
           namespace: traefik
-        # - name: buffer-2g
-        #   namespace: traefik
 {{ end }}

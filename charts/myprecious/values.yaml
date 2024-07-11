@@ -2884,12 +2884,13 @@ autobrr:
   #       subPath: autobrr
 
 filebrowser:
+  hostname: elfhosted
   enabled: true
   podLabels:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:e2b4be56822b8787d1749bd1b821bff42ecbcd85b6458024f75f72d7d5a58845
+    tag: 2.23.0@sha256:dbc8951d06e9eea956006cca730e05d566770dd675a94ca4e20586457117e908
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -2897,7 +2898,7 @@ filebrowser:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
     runAsUser: 568
     runAsGroup: 568
@@ -2926,7 +2927,7 @@ filebrowser:
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
-      sizeLimit: 1Gi
+      sizeLimit: 1Gi  
     elfbot:
       enabled: true
       type: emptyDir
@@ -3645,8 +3646,6 @@ filebrowser:
     #   securityContext: *default_securitycontext             
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
-    elfterm:
-      image: *tooling_image # launches ttyd with tmux
     elfbot:
       image: *tooling_image 
       imagePullPolicy: IfNotPresent
@@ -6544,13 +6543,19 @@ thelounge:
           port: 9000
   persistence:
     <<: *appmounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-thelounge
     config:
       enabled: true
       type: custom
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-thelounge
+          claimName: config-thelounge-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6560,6 +6565,7 @@ thelounge:
           optional: true
   initContainers:
     bootstrap: *bootstrap
+    migrate-data: *migrate_data
     create-user:
       image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:e1b875be806d8e887404c62ec916def7da06ee150dd6884956e42d924a717e27
       imagePullPolicy: IfNotPresent
@@ -8675,7 +8681,7 @@ syncthing:
       mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-syncthing
+          claimName: config-syncthing-ssd          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9068,7 +9074,7 @@ joplinserver:
       mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-joplinserver
+          claimName: config-joplinserver-ssd
       subPath: data
   postgresql:
     enabled: true
@@ -9083,7 +9089,7 @@ joplinserver:
     primary:
       persistence:
         enabled: true
-        existingClaim: config-joplinserver
+        existingClaim: config-joplinserver-ssd
         subPath: database
       resources:
         requests:
@@ -11786,6 +11792,13 @@ rivenhobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 500m
+      memory: 8Gi    
 
 kometahobbit:
   <<: *app_kometa
