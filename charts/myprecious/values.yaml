@@ -11786,6 +11786,13 @@ rivenhobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
+  resources:
+    requests:
+      cpu: 1m
+      memory: 30Mi
+    limits:
+      cpu: 500m
+      memory: 8Gi    
 
 kometahobbit:
   <<: *app_kometa
