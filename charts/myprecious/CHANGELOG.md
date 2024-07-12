@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.54.0](https://github.com/elfhosted/myprecious/compare/v1.53.1...v1.54.0) (2024-07-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.15 ([762f9cc](https://github.com/elfhosted/myprecious/commit/762f9ccaba329bbe942cdd6abcef7899994e349a))
+
+
+### Bug Fixes
+
+* add zilean indexer to Prowlarr ([628a454](https://github.com/elfhosted/myprecious/commit/628a45427a23e038646548af63ba0cf4de046a47))
+* update zurg-rc to v0.10.0-rc.4 to deal with RD API changes ([4706553](https://github.com/elfhosted/myprecious/commit/47065533743b9b9a8bb2f6a27318d53874d84e4b))
+
 ## [1.53.1](https://github.com/elfhosted/myprecious/compare/v1.53.0...v1.53.1) (2024-07-12)
 
 
