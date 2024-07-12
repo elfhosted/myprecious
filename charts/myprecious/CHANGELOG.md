@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.53.1](https://github.com/elfhosted/myprecious/compare/v1.53.0...v1.53.1) (2024-07-12)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 25185a6 ([5e898a0](https://github.com/elfhosted/myprecious/commit/5e898a0d36df328e3fd17e97308efa3c336cedd6))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 541f376 ([0d2af73](https://github.com/elfhosted/myprecious/commit/0d2af737be99e38cbc5d385a77d134b1ecd5844b))
+* un-break bug which prevented rollout ([4f6d260](https://github.com/elfhosted/myprecious/commit/4f6d260ffcb398689ecfe106e13633e8079fdba8))
+
 ## [1.53.0](https://github.com/elfhosted/myprecious/compare/v1.52.0...v1.53.0) (2024-07-12)
 
 
