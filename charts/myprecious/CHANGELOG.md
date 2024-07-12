@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.55.0](https://github.com/elfhosted/myprecious/compare/v1.54.0...v1.55.0) (2024-07-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.14.0 ([f47c62c](https://github.com/elfhosted/myprecious/commit/f47c62c18f8da0a895dc16a74dc297aa15a3a66e))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:v0.10.0-rc.4 docker digest to 592e29b ([5cea04f](https://github.com/elfhosted/myprecious/commit/5cea04f757a9975dd14adbb645df4059389eaf46))
+* **app:** update ghcr.io/elfhosted/zurg-rc:v0.10.0-rc.4 docker digest to a5587c1 ([4d0aefe](https://github.com/elfhosted/myprecious/commit/4d0aefed43798a16f37d4f8c0ff4611d9b7d2a96))
+* **app:** update ghcr.io/elfhosted/zurg-rc:v0.10.0-rc.4 docker digest to d170de0 ([0cd29c5](https://github.com/elfhosted/myprecious/commit/0cd29c5786990da9c329ae5b15fa172c6b975840))
+* **app:** update ghcr.io/elfhosted/zurg-rc:v0.10.0-rc.4 docker digest to f06c33e ([0ecbe34](https://github.com/elfhosted/myprecious/commit/0ecbe34dfe68428c78068527d3f2d15a2fac7b4f))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 3bc426b ([9bad367](https://github.com/elfhosted/myprecious/commit/9bad367b21fa7c62970e61982034eb44f05e535a))
+* bump zurg to v0.10.0-rc.4-1 for more fixes ([acce968](https://github.com/elfhosted/myprecious/commit/acce9680979903ac464bd0cad4b5bdb34ac66f54))
+
 ## [1.54.0](https://github.com/elfhosted/myprecious/compare/v1.53.1...v1.54.0) (2024-07-12)
 
 
