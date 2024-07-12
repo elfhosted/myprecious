@@ -11470,6 +11470,9 @@ plexdebrid:
   ingress:
     main:
       enabled: false
+  envFrom:
+  - secretRef:
+      name: plex-debrid-env         
   service:
     main:
       enabled: true # necessary for probes
