@@ -364,6 +364,13 @@ rclonemountpremiumize: &rclonemountpremiumize
     persistentVolumeClaim:
       claimName: premiumize
   mountPath: /storage/premiumize
+rclonemounttorbox: &rclonemounttorbox
+  enabled: false
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: torbox
+  mountPath: /storage/torbox  
 b2: &b2
   enabled: false
   type: custom
@@ -454,6 +461,7 @@ appmounts: &appmounts
   rclonestorageboxencryptedc: *rclonestorageboxencryptedc   
   rcloneb2encrypteda: *rcloneb2encrypteda   
   rclonemountpremiumize: *rclonemountpremiumize
+  rclonemounttorbox: *rclonemounttorbox
   b2: *b2
   smbmounta: *smbmounta
   smbmountb: *smbmountb
