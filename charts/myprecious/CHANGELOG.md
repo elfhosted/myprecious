@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.53.0](https://github.com/elfhosted/myprecious/compare/v1.52.0...v1.53.0) (2024-07-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.13.0 ([428a5e2](https://github.com/elfhosted/myprecious/commit/428a5e2fd89f69ad26bcda4610c842bf4a857807))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.14 ([6d553a4](https://github.com/elfhosted/myprecious/commit/6d553a47c167e25792ba3b7221f42c60886894d1))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.6.1847 ([4772521](https://github.com/elfhosted/myprecious/commit/4772521a04a381b0513a78774804aaf354f72667))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.12 ([3106610](https://github.com/elfhosted/myprecious/commit/3106610f5057622ebebcf8320d3f0cbad2395bf2))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.14.0 ([b4f9ced](https://github.com/elfhosted/myprecious/commit/b4f9ced3f81ef62db1c9c85e8a70f3448f4491b5))
+* fix plex_debrid trakt auth issue ([d8dc31d](https://github.com/elfhosted/myprecious/commit/d8dc31deeacb9cc21cc838978c37908b9374c522))
+* upgrade Plex to 1.40.4.8679 ([817582c](https://github.com/elfhosted/myprecious/commit/817582c4eda2e85cc094089f28ffd53e058e6b7e))
+
+
+### Bug Fixes
+
+* add VPN to stremify ([73c0027](https://github.com/elfhosted/myprecious/commit/73c00275682e82a227864d5f664e8c983181673a))
+* **app:** update ghcr.io/elfhosted/homer:v24.05.1 docker digest to 0f0b0d7 ([03c7f90](https://github.com/elfhosted/myprecious/commit/03c7f9074725ac83a9dd99330f1a2e67a929b8b7))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 28b8f6c ([73b2bf9](https://github.com/elfhosted/myprecious/commit/73b2bf9f2f82d97edd39273e75f091546611ffb8))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to ccee001 ([5dc1974](https://github.com/elfhosted/myprecious/commit/5dc1974e0c38c4dbc2348d863f09d5c82ed0ed3e))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to e93e53f ([f122bd1](https://github.com/elfhosted/myprecious/commit/f122bd1dc9da20d206a71a401a4701321f29884c))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 10f7022 ([8f44af2](https://github.com/elfhosted/myprecious/commit/8f44af278e16956e0446d585147a94db1327be6e))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 07ab8c8 ([53a393d](https://github.com/elfhosted/myprecious/commit/53a393d21135e2f9a61a33b393553eb55dadf23d))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 3c20e50 ([17e3c7d](https://github.com/elfhosted/myprecious/commit/17e3c7d0a5c04d73876d389a907ccc8f6bc62612))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 49d46ed ([db1d106](https://github.com/elfhosted/myprecious/commit/db1d1067da1ccee8286d0998e2857b7757a16ab9))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 63c364b ([3f52639](https://github.com/elfhosted/myprecious/commit/3f526391c93a94992cd28b2a36c47cbcab308e92))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 6b05d0c ([0b450d0](https://github.com/elfhosted/myprecious/commit/0b450d0df56a02e60617d38b22498e9a16eebce8))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to 9034b53 ([ef96e07](https://github.com/elfhosted/myprecious/commit/ef96e0793567fef38234de63e720ec675e8d4ced))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.12-nightly docker digest to e2aca79 ([64f1cf2](https://github.com/elfhosted/myprecious/commit/64f1cf20e941c2992509011c6f88db3f9c4c9cfa))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 2638a93 ([e1a7000](https://github.com/elfhosted/myprecious/commit/e1a7000f19a2872f7ae3369c7fcea52b6ab0fb27))
+* update stremify to latest commit ([e6cc716](https://github.com/elfhosted/myprecious/commit/e6cc716f160cf15136ef9c5420af3f0da58c02e2))
+
 ## [1.52.0](https://github.com/elfhosted/myprecious/compare/v1.51.0...v1.52.0) (2024-07-11)
 
 
