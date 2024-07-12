@@ -5209,7 +5209,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: plex:1.40.4.8679-424562606@sha256:f6e16069212cf9758997b9def7de6d6fda90ec0ec4f9c960499e9d46d1299b8a
+    tag: 1.40.4.8679-424562606@sha256:f6e16069212cf9758997b9def7de6d6fda90ec0ec4f9c960499e9d46d1299b8a
   persistence:
     <<: *appmounts    
     config:
