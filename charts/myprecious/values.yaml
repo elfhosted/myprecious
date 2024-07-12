@@ -3466,7 +3466,7 @@ filebrowser:
       mountPath: /storage/config/thelounge/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-thelounge
+          claimName: config-thelounge-ssd
     unpackerr:
       enabled: false
       type: custom
@@ -6551,12 +6551,6 @@ thelounge:
           port: 9000
   persistence:
     <<: *appmounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-thelounge
     config:
       enabled: true
       type: custom
@@ -6573,7 +6567,6 @@ thelounge:
           optional: true
   initContainers:
     bootstrap: *bootstrap
-    migrate-data: *migrate_data
     create-user:
       image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:e1b875be806d8e887404c62ec916def7da06ee150dd6884956e42d924a717e27
       imagePullPolicy: IfNotPresent
@@ -9831,12 +9824,6 @@ jackett:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-jackett-block
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jackett-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9845,7 +9832,6 @@ jackett:
           name: elfbot-jackett
           optional: true
   initContainers:
-    migrate-data: *migrate_data
     bootstrap: *bootstrap
 
 stremioserver: &app_stremioserver
