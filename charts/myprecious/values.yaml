@@ -5188,9 +5188,6 @@ plex: &app_plex
               values:
               - zurg
           topologyKey: "kubernetes.io/hostname"
-  # tolerations:
-  # - key: node-role.elfhosted.com/download-only
-  #   operator: Exists
   securityContext:
     runAsUser: 568
     runAsGroup: 568
