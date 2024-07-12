@@ -4802,6 +4802,7 @@ prowlarr: &app_prowlarr
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfhosted-internal.yml > /config/Definitions/Custom/elfhosted-internal.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/annatar.yml > /config/Definitions/Custom/elfhosted-annatar.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
+        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
       volumeMounts:
       - mountPath: /config
         name: config
