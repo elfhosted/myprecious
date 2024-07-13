@@ -3580,6 +3580,7 @@ filebrowser:
         then
           rm /tmp/filebrowser.db
         fi
+        
 
         /filebrowser config init \
           --disable-preview-resize \
