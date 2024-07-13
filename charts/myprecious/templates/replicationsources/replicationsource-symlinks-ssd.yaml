@@ -1,0 +1,22 @@
+{{ if .Values.volsync.enabled }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: symlinks-ssd
+spec:
+  sourcePVC: symlinks-ssd
+  trigger:
+    schedule: "0 9 * * *" # 1h before maintenance
+    manual: tbc
+  restic:
+    pruneIntervalDays: 7
+    repository: symlinks-ssd-volsync-restic-config
+    retain:
+      daily: 2
+    copyMethod: Snapshot
+    cacheCapacity: 2Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: ceph-filesystem
+{{ end }}

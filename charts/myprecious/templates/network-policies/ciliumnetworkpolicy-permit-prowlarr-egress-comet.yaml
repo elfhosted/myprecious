@@ -1,0 +1,19 @@
+{{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-prowlarr-egress-comet"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: prowlarr
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        app.kubernetes.io/name: comet
+        k8s:io.kubernetes.pod.namespace: comet
+    toPorts:
+      - ports:
+        - port: '8000'
+          protocol: TCP
+{{ end }}
