@@ -12,24 +12,12 @@ spec:
     schedule: "0 9 * * *" # 1h before maintenance
     manual: tbc
   restic:
-    # Prune the repository (repack to free space) every 2 weeks
     pruneIntervalDays: 7
-    # Name of the Secret with the connection information
     repository: config-plex-block-volsync-restic-config
-    # Retention policy for backups
     retain:
       daily: 2
-    # Clone the source volume prior to taking a backup to ensure a
-    # point-in-time image.
     copyMethod: Clone
-    # The StorageClass to use when creating the PiT copy (same as source PVC if omitted)
-    # storageClassName: topolvm-provisioner-thin
-    accessModes: 
-    - ReadWriteOnce
-    # cache using topolvm
     cacheCapacity: 20Gi
-    # cacheStorageClassName: topolvm-provisioner-thin
-    # The VSC to use if the copy method is Snapshot (default if omitted)
-    #volumeSnapshotClassName: my-vsc-name
+    cacheStorageClassName: topolvm-provisioner-thin
 {{ end }}
 {{ end }}
