@@ -4806,6 +4806,7 @@ prowlarr: &app_prowlarr
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfhosted-internal.yml > /config/Definitions/Custom/elfhosted-internal.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/annatar.yml > /config/Definitions/Custom/elfhosted-annatar.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
+        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
       volumeMounts:
       - mountPath: /config
         name: config
@@ -5192,9 +5193,6 @@ plex: &app_plex
               values:
               - zurg
           topologyKey: "kubernetes.io/hostname"
-  # tolerations:
-  # - key: node-role.elfhosted.com/download-only
-  #   operator: Exists
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -9520,7 +9518,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:ccee0011e18e0c847ab683a2cd3778bc3facf194d8d0dcdfa59dd063dbdcaffd
+    tag: rolling@sha256:28b8f6c28c3873a99d8c86b25d4182858a9b41c0a72b5bc685cc5ea6c5f9fca8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9594,7 +9592,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:ccee0011e18e0c847ab683a2cd3778bc3facf194d8d0dcdfa59dd063dbdcaffd
+      image: ghcr.io/elfhosted/riven:rolling@sha256:28b8f6c28c3873a99d8c86b25d4182858a9b41c0a72b5bc685cc5ea6c5f9fca8
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -10347,7 +10345,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.13.0@sha256:dc3adff20679f449970d060559995bba071442d3a661cf3b7bef47e4f1a06b0f
+    tag: v1.14.1@sha256:edbfe64c1aae1fe1e153ddc8e38b7b4f6be6771158abd026ea24fb63597d7c62
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -10557,7 +10555,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.14@sha256:c635ebeee1893e38e50459aed69d6553da9e8d9e9a2b24df951a7149d3d38a47
+    tag: 3.9.15@sha256:768d94d26fd955ed64efaa4a4c6a4d02a1d3c35131eeeba399aa477596322a87
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10906,7 +10904,7 @@ recyclarr:
   enabled: false
   image:
     repository: ghcr.io/recyclarr/recyclarr
-    tag: latest@sha256:2638a9333ebd8e1cba99cdbb49f035344455e62e5f1539b315a5889a0bc748a8
+    tag: latest@sha256:3bc426b72453e76767a7f2144ebcea2870cdf1ecfef6886ee1115c88890f9091
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10994,7 +10992,7 @@ recyclarr:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
     sync:
-      image: ghcr.io/recyclarr/recyclarr:latest@sha256:2638a9333ebd8e1cba99cdbb49f035344455e62e5f1539b315a5889a0bc748a8      
+      image: ghcr.io/recyclarr/recyclarr:latest@sha256:3bc426b72453e76767a7f2144ebcea2870cdf1ecfef6886ee1115c88890f9091      
       command:
       - /bin/bash
       - -c
@@ -11108,7 +11106,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.12-nightly@sha256:6b05d0c4bc597b1f28437e6d7f29fdd3bb64b49402273f5cd19f9ae706d71aac
+    tag: v0.10.0-rc.4-1@sha256:aa1c96b603aa6a3ac8cd8de85514218481d99de40f7f47c359cdcccd71bab21b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11443,7 +11441,6 @@ zurgplus:
 
 plexdebrid:
   enabled: false
-  # runtimeClassName: kata  
   image:
     repository: ghcr.io/elfhosted/plex-debrid
     tag: rolling@sha256:96db306ced6c71f8d02c384779e1f0fac14a8c767891e34da46987a635c91694
