@@ -1,12 +1,12 @@
-{{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
+{{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-sonarr4k-block
+  name: config-sonarr-block
 spec:
   # The PVC to be backed up
-  sourcePVC: config-sonarr4k-block
+  sourcePVC: config-sonarr-block
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
     manual: tbc
@@ -14,7 +14,7 @@ spec:
     # Prune the repository (repack to free space) every 2 weeks
     pruneIntervalDays: 7
     # Name of the Secret with the connection information
-    repository: config-sonarr4k-block-volsync-restic-config
+    repository: config-sonarr-block-volsync-restic-config
     # Retention policy for backups
     retain:
       daily: 2
@@ -22,12 +22,12 @@ spec:
     # point-in-time image.
     copyMethod: Clone
     # The StorageClass to use when creating the PiT copy (same as source PVC if omitted)
-    storageClassName: topolvm-provisioner-thin
+    # storageClassName: topolvm-provisioner-thin
     accessModes: 
     - ReadWriteOnce
     # cache using topolvm
     cacheCapacity: 20Gi
-    cacheStorageClassName: topolvm-provisioner-thin
+    # cacheStorageClassName: topolvm-thin
     # The VSC to use if the copy method is Snapshot (default if omitted)
     #volumeSnapshotClassName: my-vsc-name
 {{ end }}
