@@ -28,7 +28,7 @@ spec:
     - ReadWriteOnce
     # cache using topolvm
     cacheCapacity: 20Gi
-    cacheStorageClassName: topolvm-thin
+    cacheStorageClassName: topolvm-provisioner-thin
     # The VSC to use if the copy method is Snapshot (default if omitted)
     #volumeSnapshotClassName: my-vsc-name
 {{ end }}

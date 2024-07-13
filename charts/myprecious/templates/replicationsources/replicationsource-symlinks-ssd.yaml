@@ -24,7 +24,7 @@ spec:
     # The StorageClass to use when creating the PiT copy (same as source PVC if omitted)
     # cache using topolvm
     cacheCapacity: 1Gi
-    cacheStorageClassName: topolvm-thin
+    cacheStorageClassName: topolvm-provisioner-thin
     # The VSC to use if the copy method is Snapshot (default if omitted)
     #volumeSnapshotClassName: my-vsc-name
 {{ end }}
