@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.56.0](https://github.com/elfhosted/myprecious/compare/v1.55.0...v1.56.0) (2024-07-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.14.1 ([eaffaf5](https://github.com/elfhosted/myprecious/commit/eaffaf54c61787fd43936e3effe685d0c8b99999))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:v0.10.0-rc.4-1 docker digest to 020cbfa ([b35b81c](https://github.com/elfhosted/myprecious/commit/b35b81ca1c2e286c4ce8546303d8994963296426))
+* **app:** update ghcr.io/elfhosted/zurg-rc:v0.10.0-rc.4-1 docker digest to d5242f5 ([dd8086e](https://github.com/elfhosted/myprecious/commit/dd8086e9456d9b9f9a61fc26443c248d473f866c))
+* **app:** update ghcr.io/elfhosted/zurg-rc:v0.10.0-rc.4-1 docker digest to f26ebbd ([06b8441](https://github.com/elfhosted/myprecious/commit/06b8441a336b6e97d5d9718cc1052efc6394aa75))
+
 ## [1.55.0](https://github.com/elfhosted/myprecious/compare/v1.54.0...v1.55.0) (2024-07-12)
 
 
