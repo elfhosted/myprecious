@@ -3,10 +3,10 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: plex-config-block
+  name: config-plex-block
 spec:
   # The PVC to be backed up
-  sourcePVC: plex-config-block
+  sourcePVC: config-plex-block
   trigger:
     # Take a backup every 30 minutes
     schedule: "0 9 * * *" # 1h before maintenance
