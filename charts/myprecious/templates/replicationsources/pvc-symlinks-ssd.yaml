@@ -5,7 +5,7 @@ metadata:
   name: symlinks
 spec:
   # The PVC to be backed up
-  sourcePVC: symlinks
+  sourcePVC: symlinks-ssd
   trigger:
     # Take a backup every 30 minutes
     # schedule: "*/30 * * * *"

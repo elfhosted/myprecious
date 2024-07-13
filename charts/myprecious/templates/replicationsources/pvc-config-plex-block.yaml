@@ -1,12 +1,12 @@
-{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
+{{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: zurg
+  name: plex
 spec:
   # The PVC to be backed up
-  sourcePVC: zurg-config-ssd
+  sourcePVC: plex-config-block
   trigger:
     # Take a backup every 30 minutes
     # schedule: "*/30 * * * *"
@@ -15,7 +15,7 @@ spec:
     # Prune the repository (repack to free space) every 2 weeks
     pruneIntervalDays: 7
     # Name of the Secret with the connection information
-    repository: zurg-volsync-restic-config
+    repository: plex-volsync-restic-config
     # Retention policy for backups
     retain:
       daily: 2
