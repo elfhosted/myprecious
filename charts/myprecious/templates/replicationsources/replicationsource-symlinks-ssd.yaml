@@ -28,4 +28,4 @@ spec:
     cacheCapacity: 1Gi
     # The VSC to use if the copy method is Snapshot (default if omitted)
     #volumeSnapshotClassName: my-vsc-name
-{{ if .Values.volsync.enabled }}
+{{ end }}
