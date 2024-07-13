@@ -1,21 +1,21 @@
-{{ if or .Values.plex.enabled .Values.plexgluetun.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
+{{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: plex
+  name: plex-config-block
 spec:
   # The PVC to be backed up
   sourcePVC: plex-config-block
   trigger:
     # Take a backup every 30 minutes
-    # schedule: "*/30 * * * *"
-    manual: david-1
+    schedule: "0 9 * * *" # 1h before maintenance
+    manual: tbc
   restic:
     # Prune the repository (repack to free space) every 2 weeks
     pruneIntervalDays: 7
     # Name of the Secret with the connection information
-    repository: plex-volsync-restic-config
+    repository: config-plex-block-volsync-restic-config
     # Retention policy for backups
     retain:
       daily: 2
