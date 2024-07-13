@@ -17,5 +17,6 @@ spec:
     copyMethod: Snapshot
     cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
+    volumeSnapshotClassName: ceph-filesystem
 {{ end }}
 {{ end }}
