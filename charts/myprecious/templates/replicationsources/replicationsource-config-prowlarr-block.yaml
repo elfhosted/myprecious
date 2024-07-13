@@ -15,7 +15,7 @@ spec:
     repository: config-prowlarr-block-volsync-restic-config
     retain:
       daily: 2
-    copyMethod: Clone
+    copyMethod: Snapshot
     cacheCapacity: 20Gi
     cacheStorageClassName: topolvm-provisioner-thin
 {{ end }}
