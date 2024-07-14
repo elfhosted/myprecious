@@ -18,7 +18,7 @@ spec:
     cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:
-    - ReadWriteMany  
+    - ReadWriteOnce
     volumeSnapshotClassName: ceph-filesystem
 {{ end }}
 {{ end }}
