@@ -4742,7 +4742,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.20.1.4603@sha256:3c0b6b1adf191bf8ddb4ddfa4a6f802a83e73866b12741bfb4956dca8096df56
+    tag: 1.21.0.4615@sha256:bf6430a90c21e179920e410f42ff3104cdb9764b9281c2dca5d335a661d111e1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lazylibrarian"
@@ -4873,7 +4873,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.4.2.4238@sha256:8cac8a871093293e5d78f4cd30adcee5ae39b4a53a97416b4d957ed1729ba60f
+    tag: 2.4.3.4248@sha256:78f8d767f25cdcd4505e939dbc7a2d9365aa64c1eee91b946f40fd2f7cda5f00
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5018,7 +5018,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.30.2576@sha256:c5f7aac6894df5f6ec46c9f4a02f72177fe4f795662d7c2e7416523f4e83b1cf
+    tag: 0.3.31.2578@sha256:adc1000b3422672c46b669d3ddebf79d8823661b89be43a2586b60dd0b5aebc4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5102,7 +5102,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.3.30.2576@sha256:c5f7aac6894df5f6ec46c9f4a02f72177fe4f795662d7c2e7416523f4e83b1cf
+    tag: 0.3.31.2578@sha256:adc1000b3422672c46b669d3ddebf79d8823661b89be43a2586b60dd0b5aebc4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9524,7 +9524,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:d22a34f7aed6389cec9735cb9627d7faa785bd7365362261d2899873ae14a9eb
+    tag: rolling@sha256:375293374f73c46af85f4fca48a684933feb498c66dc4a9825b53fa08987ada1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9598,7 +9598,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven:rolling@sha256:d22a34f7aed6389cec9735cb9627d7faa785bd7365362261d2899873ae14a9eb
+      image: ghcr.io/elfhosted/riven:rolling@sha256:375293374f73c46af85f4fca48a684933feb498c66dc4a9825b53fa08987ada1
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11112,7 +11112,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.14-nightly@sha256:bb036bdcc4dcd844267d4c6ac6d9d4ab53aec4b2183b204e099c566c8483ecb0
+    tag: 2024.07.14-nightly@sha256:8d4204845262ce235562fc6d13e5decde267488caf00dc6e8c4cb5ba6b34b414
   priorityClassName: tenant-normal
   controller:
     annotations:
