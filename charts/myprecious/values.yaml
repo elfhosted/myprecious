@@ -8766,7 +8766,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid  
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.79@sha256:ceff566841647510eeb0011dd311110d4d93d5e1247b63e4d0e3a0a61ead71a8
+    tag: v2.0.80@sha256:2ab4d516d760500dfad1e1573a7a0eadeae621cd6e09a7faecfe293fc4d38709
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rdtclient"
@@ -11112,7 +11112,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.14-nightly@sha256:8d4204845262ce235562fc6d13e5decde267488caf00dc6e8c4cb5ba6b34b414
+    tag: 2024.07.14-nightly@sha256:90542314ef9e30d358083b5cea9d8f36aefd6def21ec0657f10e7d2a3a8df423
   priorityClassName: tenant-normal
   controller:
     annotations:
