@@ -1,0 +1,24 @@
+{{ if .Values.bazarr.enabled }}
+{{ if .Values.volsync.enabled }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: config-bazarr-ssd
+spec:
+  sourcePVC: config-bazarr-ssd
+  trigger:
+    schedule: "0 9 * * *" # 1h before maintenance
+    manual: tbc
+  restic:
+    pruneIntervalDays: 7
+    repository: config-bazarr-ssd-volsync-restic-config
+    retain:
+      daily: 2
+    copyMethod: Snapshot
+    cacheCapacity: 1Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    cacheAccessModes:
+    - ReadWriteMany  
+    volumeSnapshotClassName: ceph-filesystem
+{{ end }}
+{{ end }}
