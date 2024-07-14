@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.57.0](https://github.com/elfhosted/myprecious/compare/v1.56.0...v1.57.0) (2024-07-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.14.2 ([9356fc6](https://github.com/elfhosted/myprecious/commit/9356fc6db32a6317021994128d2c46cbb956da72))
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon docker tag to v2.0.27 ([1a75a39](https://github.com/elfhosted/myprecious/commit/1a75a3949617dd9c6f7ace118d3c4e6122841807))
+
+
+### Bug Fixes
+
+* add comet and zilean indexers to prowlarr ([0f4ae6e](https://github.com/elfhosted/myprecious/commit/0f4ae6e89c45d419bff8f1bce1eebf45569a52c6))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to d22a34f ([a3e83d0](https://github.com/elfhosted/myprecious/commit/a3e83d0aadf14a4fbb466f5e1f6a00aa23d8a77e))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to bb036bd ([19ce7d6](https://github.com/elfhosted/myprecious/commit/19ce7d6af26686548f3f049d566610862de89db8))
+* prepare for riven sqlite support ([e64687a](https://github.com/elfhosted/myprecious/commit/e64687a4db75161695023d4a1e0713c71af4c684))
+
 ## [1.56.0](https://github.com/elfhosted/myprecious/compare/v1.55.0...v1.56.0) (2024-07-13)
 
 
