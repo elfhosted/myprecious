@@ -3,15 +3,15 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-joplin-server-ssd
+  name: config-joplinserver-ssd
 spec:
-  sourcePVC: config-joplin-server-ssd
+  sourcePVC: config-joplinserver-ssd
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
     manual: tbc
   restic:
     pruneIntervalDays: 7
-    repository: config-joplin-server-ssd-volsync-restic-config
+    repository: config-joplinserver-ssd-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot
