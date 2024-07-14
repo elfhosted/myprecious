@@ -802,7 +802,7 @@ data:
       {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
       - name: zurg
         group: download-media
-        url: "http://zurg:9999"
+        url: "http://zurg:9999/http/version.txt"
         interval: 5m
         conditions:
         - "[STATUS] == 200"
