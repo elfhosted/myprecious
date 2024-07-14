@@ -4803,6 +4803,7 @@ prowlarr: &app_prowlarr
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
+
         # Get custom torrent.io definition
         mkdir -p /config/Definitions/Custom
         
