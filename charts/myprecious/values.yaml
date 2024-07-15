@@ -3093,7 +3093,7 @@ filebrowser:
       mountPath: /storage/config/jackett/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jackett-ssd                           
+          claimName: config-jackett-block # misnamed, I know                           
     jellyseerr:
       enabled: false
       type: custom
