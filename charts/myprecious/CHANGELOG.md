@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.59.0](https://github.com/elfhosted/myprecious/compare/v1.58.0...v1.59.0) (2024-07-15)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.15 ([76fb9e9](https://github.com/elfhosted/myprecious/commit/76fb9e9109660a4d288c4b4ce37bc9e8ed590308))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 32863f9 ([a5aa9b8](https://github.com/elfhosted/myprecious/commit/a5aa9b89db84a6e0df4ec7241ecb422308628c62))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 6656a28 ([8979aa4](https://github.com/elfhosted/myprecious/commit/8979aa46461be5570b2185ed6ab7ef570e892a7b))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 8dd90cb ([53fd01e](https://github.com/elfhosted/myprecious/commit/53fd01ef1f980cdadf30a898adf2de17fb3ed617))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to c98aa7b ([f59dc22](https://github.com/elfhosted/myprecious/commit/f59dc2296c10b99a52b05a4e5d6362abcc6887ce))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to 0d12c49 ([50ee3a8](https://github.com/elfhosted/myprecious/commit/50ee3a8123fe16adad46dd39525b360dd41e3c81))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to 406fdf5 ([7e1ba78](https://github.com/elfhosted/myprecious/commit/7e1ba78f854a4642e4aa4c5c61c444393b70289a))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to 89eefc3 ([3c7afa6](https://github.com/elfhosted/myprecious/commit/3c7afa61402aa0b9fc4e18395143dbe49b4b0705))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to 91ed504 ([6c0314e](https://github.com/elfhosted/myprecious/commit/6c0314eda4d6e04eb7bd7f7fe3a3c24902782669))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to a4ded8a ([6378b1b](https://github.com/elfhosted/myprecious/commit/6378b1bf9f566c93570afde84f69f0685581d25d))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to d6ba51f ([10379c0](https://github.com/elfhosted/myprecious/commit/10379c0bc997cce3803d0e028cf1f923f1c54b9f))
+
 ## [1.58.0](https://github.com/elfhosted/myprecious/compare/v1.57.0...v1.58.0) (2024-07-14)
 
 
