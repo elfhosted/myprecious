@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.58.0](https://github.com/elfhosted/myprecious/compare/v1.57.0...v1.58.0) (2024-07-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.4.3.4248 ([2ed9829](https://github.com/elfhosted/myprecious/commit/2ed98294b7619b99cdc97b9c7a43fe9907c72303))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.80 ([011a544](https://github.com/elfhosted/myprecious/commit/011a5449411410e65b172b519aa116e015cadf71))
+
+
+### Bug Fixes
+
+* add BACKEND_URL for Riven frontend UI ([a4bf5b6](https://github.com/elfhosted/myprecious/commit/a4bf5b65e07c8a693c7322e5b048b9d5580ddcd0))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 3752933 ([5d1fd8d](https://github.com/elfhosted/myprecious/commit/5d1fd8dfa0d2daf234592208ae2ede36a8ce0f8f))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 3930c1c ([af4f41a](https://github.com/elfhosted/myprecious/commit/af4f41a05596e204f198657b0919fcefa53090b6))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 42e0166 ([8da0be3](https://github.com/elfhosted/myprecious/commit/8da0be3aef6cd0a4f007c1dd1ad8d91c99fabb22))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 4399637 ([18726b7](https://github.com/elfhosted/myprecious/commit/18726b7a37c089b0f4aa0881f11527f84f9c9efd))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 6355945 ([ec5fc06](https://github.com/elfhosted/myprecious/commit/ec5fc060bfccf98f539b8ca96833bc628e2794e2))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 6e5a3c8 ([8e72540](https://github.com/elfhosted/myprecious/commit/8e72540031c0c9298f6afaf7fe4775c51ae73c68))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 7af64b3 ([2076248](https://github.com/elfhosted/myprecious/commit/207624839bdf10d460f3b4064df4b7df2d3bfa13))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 85a4f18 ([ed60b28](https://github.com/elfhosted/myprecious/commit/ed60b2896d5fa4ed6be2aa34c65582d2e28e1033))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 8d42048 ([31be1c9](https://github.com/elfhosted/myprecious/commit/31be1c9a6cbab8349c8a752c7b95baaec9a616da))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 9054231 ([c6f0505](https://github.com/elfhosted/myprecious/commit/c6f0505bb31a36a11cd7f3d97554390e450c0870))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.14-nightly docker digest to 9376446 ([ac09089](https://github.com/elfhosted/myprecious/commit/ac09089b0f72a6f7169d571ca8cc9dbf55612436))
+* make gatus health checks work for zurg without RD API implications ([6057d07](https://github.com/elfhosted/myprecious/commit/6057d079d9f482f34a17d479bc92d96e75211da2))
+
 ## [1.57.0](https://github.com/elfhosted/myprecious/compare/v1.56.0...v1.57.0) (2024-07-14)
 
 
