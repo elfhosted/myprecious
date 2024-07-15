@@ -7371,6 +7371,13 @@ nextpvr:
         configMap:
           name: elfbot-nextpvr
           optional: true
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts             
+          defaultMode: 0755           
   ingress:
     main:
       enabled: false
@@ -7389,6 +7396,9 @@ nextpvr:
       memory: 1Gi
   initContainers:
     bootstrap: *bootstrap
+    update-dns: *update_dns_on_init
+  additionalContainers:
+    clean-up-dns: *clean_up_dns_on_termination   
 
 rpdb:
   enabled: false
