@@ -3087,13 +3087,13 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-homer-ssd              
-    jackett:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jackett/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jackett-block # misnamed, I know                           
+    # jackett:
+    #   enabled: false
+    #   type: custom
+    #   mountPath: /storage/config/jackett/
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: config-jackett-block # misnamed, I know                           
     jellyseerr:
       enabled: false
       type: custom
