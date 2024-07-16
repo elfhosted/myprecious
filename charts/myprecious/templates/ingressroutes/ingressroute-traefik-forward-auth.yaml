@@ -10,7 +10,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-auth-me.elfhosted.com`)
       kind: Rule
       services:
-      - name: homer
+      - name: {{ .Release.Name }}-traefikforwardauth
         port: 4181
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
