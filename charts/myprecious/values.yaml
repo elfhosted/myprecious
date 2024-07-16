@@ -5905,7 +5905,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     gatus:
-      image: ghcr.io/elfhosted/gatus@5.11.0@sha256:e54b379efadcaefca18c72d70f9d6c70b19e3ae88e9dcacca931c6906aa96e75
+      image: ghcr.io/elfhosted/gatus:5.11.0@sha256:e54b379efadcaefca18c72d70f9d6c70b19e3ae88e9dcacca931c6906aa96e75
       volumeMounts:
       - mountPath: /config
         name: gatus-config
