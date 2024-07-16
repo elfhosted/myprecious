@@ -3632,8 +3632,8 @@ filebrowser:
           cp /bootstrap/recyclarr.yaml /config/
         fi
       volumeMounts:
-      - mountPath: /configr/
-        name: config-homer
+      - mountPath: /config/
+        name: homer
         subPath: recyclarr
       - name: recyclarr-config
         mountPath: "/bootstrap/"
