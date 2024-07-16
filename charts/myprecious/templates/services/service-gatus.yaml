@@ -9,10 +9,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 8081
+    targetPort: 8081
     protocol: TCP
-    name: http
+    name: gatus
   selector:
-    app.kubernetes.io/name: gatus
+    app.kubernetes.io/name: homer
     app.kubernetes.io/instance: {{ .Release.Name }}

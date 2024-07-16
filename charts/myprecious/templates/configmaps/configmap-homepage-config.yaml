@@ -9,7 +9,7 @@ data:
 
   settings.yaml: |
     title: {{.Release.Name}}'s ElfHosted Services
-    background: https://unsplash.com/photos/fX-qWsXl5x8/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTB8fGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTcwMDY0MzMzN3ww&force=true&w=1920
+    background: https://picsum.photos/seed/{{ .Release.Name }}/1920/1080
     favicon: https://elfhosted.com/images/logo.png
     
 
