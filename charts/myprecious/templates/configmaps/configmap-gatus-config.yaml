@@ -23,6 +23,9 @@ data:
       - name: Discord
         link: https://discord.elfhosted.com
 
+    web:
+      port: 8081
+      
     alerting:
       email:
         from: "${SMTP_FROM}"

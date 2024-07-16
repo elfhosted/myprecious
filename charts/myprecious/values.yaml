@@ -5868,6 +5868,18 @@ homer:
       volumeSpec:
         configMap:
           name: homer-config
+    gatus-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: gatus-config
+    gatus:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-gatus-block             
     disk-usage:
       enabled: "true"
       mountPath: "/usr/local/bin/disk_usage.sh"
@@ -5888,11 +5900,24 @@ homer:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-homer-ssd      
-
   command:
   - /bin/bash
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
+    gatus:
+      image: ghcr.io/elfhosted/gatus@5.11.0@sha256:e54b379efadcaefca18c72d70f9d6c70b19e3ae88e9dcacca931c6906aa96e75
+      volumeMounts:
+      - mountPath: /config
+        name: gatus-config
+      - mountPath: /data
+        name: gatus
+      env:
+        GATUS_CONFIG_PATH: /config/config.yaml
+        SMTP_FROM: 'health@elfhosted.com'
+        SMTP_PORT: 587        
+      envFrom:
+      - secretRef:
+          name: gatus-smtp-config
     ui:
       image: ghcr.io/elfhosted/homer:v24.05.1@sha256:0f0b0d7ebfe2e0f7d0d2aee990d337e3145bdb7a5d7955568372686e93f44b71
       imagePullPolicy: IfNotPresent
@@ -5921,7 +5946,7 @@ homer:
     # rollingUpdate:
     #   unavailable: 1
     annotations:
-      configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer" # Reload the deployment every time the yaml config changes
+      configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer,gatus-config" # Reload the deployment every time the yaml config changes
   resources:
     requests:
       cpu: 10m
