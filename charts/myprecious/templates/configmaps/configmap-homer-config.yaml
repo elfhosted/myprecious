@@ -22,18 +22,14 @@ data:
     do
 
     # disabled this until migrations are done - remove the next 2 lines to restore
-    sleep $(shuf -i 1800-5400 -n 1)
-    done
-
 
       # Once for all of /config...
-      # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
-      # tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
+      tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
 
       for STORAGE_PATH in $(ls /config); do
         # And again per-app /config...
         # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
-        # tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
+        tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
 
         df -Ph /config/${STORAGE_PATH} | sed s/%//g > /www/assets/message/disk_space_${STORAGE_PATH}.txt
         PERCENTAGE_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | sed s/%//g | awk '{print $5}' | tail -n1)
@@ -65,31 +61,6 @@ data:
 
 
       cat /dev/null > /www/assets/message/message_details.html
-      # And once for everything else...
-      for STORAGE_PATH in $(ls /storage | grep -v encrypted | grep -E 'elfstorage|storagebox|smb'); do
-        # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
-        # tree --du -hF -s  /storage/$STORAGE_PATH/  -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/$STORAGE_PATH -T "🧝 ElfHosted [/storage/$STORAGE_PATH] usage for {{ .Release.Name }}" > /www/assets/message/disk-usage-$STORAGE_PATH.html
-
-        # Summarize
-        df -Ph /storage/${STORAGE_PATH} | sed s/%//g > /www/assets/message/disk_space_${STORAGE_PATH}.txt
-        PERCENTAGE_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | sed s/%//g | awk '{print $5}' | tail -n1)
-        DISK_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $3}' | tail -n1)
-        DISK_TOTAL=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $2}' | tail -n1)
-        DISK_FREE=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $4}' | tail -n1)
-        PERCENTAGE_FREE=$(echo $((100-${PERCENTAGE_USED})))
-
-        # Keep the highest percentage used number
-        if [[ -f /www/assets/message/disk_space_percent_used ]]; then
-          EXISTING_USAGE=$(cat /www/assets/message/disk_space_percent_used)
-          if [[ "$PERCENTAGE_USED" -gt "$EXISTING_USAGE" ]]; then
-            echo $PERCENTAGE_USED > /www/assets/message/disk_space_percent_used
-          fi
-        else
-          echo $PERCENTAGE_USED > /www/assets/message/disk_space_percent_used
-        fi
-
-        echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/${STORAGE_PATH}/' TARGET='_blank'>/storage/${STORAGE_PATH}</A>: ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" >> /www/assets/message/message_details.html
-      done
 
       PERCENTAGE_USED=$(cat /www/assets/message/disk_space_percent_used)
       if [[ "$PERCENTAGE_USED" -ge 90 || "$CONFIG_PERCENTAGE_USED" -ge 90 ]]; then
@@ -114,11 +85,23 @@ data:
         MESSAGE="Gigabytes everywhere! 🥳"
       fi
 
-      MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
-      echo "{ \"title\":\"Storage usage: ${MESSAGE}\", \"content\":\"${MESSAGE_DETAILS}(<I>Updated roughly hourly</I>)\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
+      {{ if .Values.zurg.enabled }}
+      RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq .user_info.premium) # days
+      RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
+      ZURG_MESSAGE="$RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days"
+      {{ end }}
 
-      # Remove any files > 5M from /storage/symlinks (symlinks will be safe, as will .nfo or .srts)
-      find /storage/symlinks -size +5M -delete
+      {{ if .Values.riven.enabled }}
+      RIVEN_TOTAL_ITEMS=$(curl -s http://riven:8080/stats | jq .data.total_items) # items
+      RIVEN_TOTAL_MOVIES=$(curl -s http://riven:8080/stats | jq .data.total_movies) # items
+      RIVEN_TOTAL_SHOWS=$(curl -s http://riven:8080/stats | jq .data.total_shows) # items
+      RIVEN_TOTAL_SEASONS=$(curl -s http://riven:8080/stats | jq .data.total_seasons) # items
+      RIVEN_TOTAL_EPISODES=$(curl -s http://riven:8080/stats | jq .data.total_episodes) # items
+      RIVEN_MESSAGE="🗻 $RIVEN_TOTAL_ITEMS total items ($RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes)"
+      {{ end }}
+
+      MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
+      echo "{ \"title\":\"Storage usage: ${MESSAGE}\", \"content\":\"${MESSAGE_DETAILS} ${ZURG_MESSAGE} ${RIVEN_MESSAGE} (<I>Updated roughly hourly</I>)\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
             
       sleep $(shuf -i 1800-5400 -n 1)
     done

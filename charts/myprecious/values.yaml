@@ -5941,8 +5941,8 @@ homer:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
       enabled: false
   controller:
-    replicas: 1 # not sure we need 2 replicas anymore
-    strategy: RollingUpdate
+    # replicas: 1 # not sure we need 2 replicas anymore
+    # strategy: RollingUpdate # can't do this because we run gatus in homer now
     # rollingUpdate:
     #   unavailable: 1
     annotations:
