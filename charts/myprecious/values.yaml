@@ -5947,6 +5947,12 @@ homer:
         readOnly: true        
       resources: *default_resources
       securityContext: *default_securitycontext
+    traefik-forward-auth:
+      image: ghcr.io/elfhosted/traefik-forward-auth:3.1.0@sha256:74add5bd5e9d22bcc8629d7975cb57e97f7ba5b2e2e8d0131dfd480dc74917da     
+      envFrom:
+      - configMapRef:
+          name: traefik-forward-auth-config
+
   configmap:
     config:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
