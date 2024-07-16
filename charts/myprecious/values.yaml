@@ -5851,9 +5851,18 @@ homer:
       enabled: false
   service:
     main:
-      enabled: true # necessary for probes     
+      enabled: true # necessary for probes   
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/observability
+            operator: Exists    
+  tolerations:
+  - key: node-role.elfhosted.com/observability
+    operator: Exists        
   persistence:
-    <<: *appmounts
     config-yml:
       enabled: "true"
       subPath: "config.yml"
