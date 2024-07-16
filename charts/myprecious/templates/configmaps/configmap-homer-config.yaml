@@ -8,20 +8,16 @@ data:
 
     # # Un-break permissions on config PVCs, if attaching them here has caused a problem
     # chown 568:568 /config/* # if this pod (which runs as root) starts first, it can set config volumes to be owned by root
-
-    URI="https://www.reddit.com/r/wallpapers/new.json?limit=25"
-    USERAGENT="Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0"
-    IMGURL=$(curl -H "User-Agent: $USERAGENT" $URI   | jq '.data.children' | jq '.[].data.url' | egrep "(jpe?g|png)\"$" | sed s/\"//g | sort -R | head -1)
     
-    if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
-      # curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080' -L --output /www/assets/backgrounds/background-dark.jpg
-      curl $IMGURL -o /www/assets/backgrounds/background-dark.jpg
-    fi
-
-    # if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
-      # curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080?grayscale' -L --output /www/assets/backgrounds/background-light.jpg
-      curl $IMGURL -o /www/assets/backgrounds/background-light.jpg
+    # if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
+      curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080' -L --output /www/assets/backgrounds/background-dark.jpg
+      # curl $IMGURL -o /www/assets/backgrounds/background-dark.jpg
     # fi
+
+    if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
+      curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080?grayscale' -L --output /www/assets/backgrounds/background-light.jpg
+      # curl $IMGURL -o /www/assets/backgrounds/background-light.jpg
+    fi
     
     while true
     do
@@ -91,8 +87,8 @@ data:
       # fi
 
       STYLE="is-success"
-      ICON="fa fa-thermometer-empty"
-      MESSAGE="Gigabytes everywhere! 🥳"
+      ICON="fa fa-magic"
+      MESSAGE="App hosting that works like magic! (<I>Stats updated roughly hourly</I>)"
 
       {{ if .Values.zurg.enabled }}
       RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq .user_info.premium) # days
@@ -110,7 +106,7 @@ data:
       {{ end }}
 
       # MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
-      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${ZURG_MESSAGE} ${RIVEN_MESSAGE} (<I>Updated roughly hourly</I>)\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
+      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
             
       sleep $(shuf -i 1800-5400 -n 1)
     done
