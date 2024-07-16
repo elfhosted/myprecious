@@ -10,13 +10,13 @@ data:
     # chown 568:568 /config/* # if this pod (which runs as root) starts first, it can set config volumes to be owned by root
 
     now get a random dark/light background...
-    if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
+    # if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
       curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080' -L --output /www/assets/backgrounds/background-dark.jpg
-    fi
+    # fi
 
-    if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
+    # if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
       curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080?grayscale' -L --output /www/assets/backgrounds/background-light.jpg
-    fi
+    # fi
     
     while true
     do
