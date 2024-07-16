@@ -9,14 +9,14 @@ data:
     # # Un-break permissions on config PVCs, if attaching them here has caused a problem
     # chown 568:568 /config/* # if this pod (which runs as root) starts first, it can set config volumes to be owned by root
 
-    # now get a random dark/light background...
-    # if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
-    #   curl -s 'https://source.unsplash.com/random/?dark' -L --output /www/assets/backgrounds/background-dark.jpg
-    # fi
+    now get a random dark/light background...
+    if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
+      curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080' -L --output /www/assets/backgrounds/background-dark.jpg
+    fi
 
-    # if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
-    #   curl -s 'https://source.unsplash.com/random/?monochrome' -L --output /www/assets/backgrounds/background-light.jpg
-    # fi
+    if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
+      curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080?grayscale' -L --output /www/assets/backgrounds/background-light.jpg
+    fi
     
     while true
     do
