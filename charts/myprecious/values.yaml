@@ -34,13 +34,12 @@ hobbit_tolerations: &hobbit_tolerations
   operator: Exists          
 
 hobbit_streamer_resources: &hobbit_streamer_resources
-  resources:
-    requests:
-      cpu: "1.8"
-      memory: 30Mi
-    limits:
-      cpu: "2"
-      memory: 4Gi     
+  requests:
+    cpu: "1.8"
+    memory: 30Mi
+  limits:
+    cpu: "2"
+    memory: 4Gi     
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -4411,7 +4410,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.6.1847@sha256:6cbdb6337c4b95e46eb5568a6144330ab3258cc9925f6e761e2e9f7541764c2b
+    tag: 4.0.7.1868@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4540,7 +4539,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.6.1847@sha256:6cbdb6337c4b95e46eb5568a6144330ab3258cc9925f6e761e2e9f7541764c2b
+    tag: 4.0.7.1868@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4815,6 +4814,7 @@ prowlarr: &app_prowlarr
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/annatar.yml > /config/Definitions/Custom/elfhosted-annatar.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
+        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/torbox.yml > /config/Definitions/Custom/torbox.yml
       volumeMounts:
       - mountPath: /config
         name: config
@@ -7362,6 +7362,8 @@ nextpvr:
   sso:
     enabled: true
   priorityClassName: tenant-streaming
+  podLabels:
+    app.elfhosted.com/name: nextpvr
   image:
     repository: ghcr.io/elfhosted/nextpvr
     tag: 10.9.4@sha256:fbbd8f733ce247ccd63e7aff96c0ff9893aa2ecf41290567b17ed532fd411cdf
@@ -10396,7 +10398,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.14.2@sha256:57d1855cc47569fa976a664d8ceeef41aa1e6452d1e02c98e5cefa102aeaa753
+    tag: v1.15.3@sha256:72fa179cda3124d9867d38a3a3d0cd42c6860045370374df1d19f811e5f8af8d
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -11157,7 +11159,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.15-nightly@sha256:0dc51c6c45c56e304004a8ee7db7ddc2c9f08d4386233a38dc32ac59529fbd8b
+    tag: 2024.07.15-nightly@sha256:3026c2b160b36d6e7fadf1199cc216b179c7bd3955ea9da0b5f72625f6a137c5
   priorityClassName: tenant-normal
   controller:
     annotations:
