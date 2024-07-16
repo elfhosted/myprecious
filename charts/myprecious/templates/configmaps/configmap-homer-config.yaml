@@ -11,12 +11,10 @@ data:
     
     if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
       curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080' -L --output /www/assets/backgrounds/background-dark.jpg
-      # curl $IMGURL -o /www/assets/backgrounds/background-dark.jpg
     fi
 
     if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
       curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080?grayscale' -L --output /www/assets/backgrounds/background-light.jpg
-      # curl $IMGURL -o /www/assets/backgrounds/background-light.jpg
     fi
     
     while true
