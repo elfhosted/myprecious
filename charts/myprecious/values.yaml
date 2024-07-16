@@ -3628,7 +3628,6 @@ filebrowser:
         # If we don't already have an example config, create one
         if [ ! -f /config/recyclarr.yaml ];
         then
-          mkdir -p 
           cp /bootstrap/recyclarr.yaml /config/
         fi
       volumeMounts:
