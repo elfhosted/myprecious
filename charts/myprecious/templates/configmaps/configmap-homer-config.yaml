@@ -88,7 +88,7 @@ data:
       {{ if .Values.zurg.enabled }}
       RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq .user_info.premium) # days
       RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
-      ZURG_MESSAGE="$RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days"
+      ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days</br>"
       {{ end }}
 
       {{ if .Values.riven.enabled }}
@@ -97,7 +97,7 @@ data:
       RIVEN_TOTAL_SHOWS=$(curl -s http://riven:8080/stats | jq .data.total_shows) # items
       RIVEN_TOTAL_SEASONS=$(curl -s http://riven:8080/stats | jq .data.total_seasons) # items
       RIVEN_TOTAL_EPISODES=$(curl -s http://riven:8080/stats | jq .data.total_episodes) # items
-      RIVEN_MESSAGE="🗻 $RIVEN_TOTAL_ITEMS total items ($RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes)"
+      RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes</I>)"
       {{ end }}
 
       MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
