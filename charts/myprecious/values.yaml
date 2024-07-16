@@ -34,13 +34,12 @@ hobbit_tolerations: &hobbit_tolerations
   operator: Exists          
 
 hobbit_streamer_resources: &hobbit_streamer_resources
-  resources:
-    requests:
-      cpu: "1.8"
-      memory: 30Mi
-    limits:
-      cpu: "2"
-      memory: 4Gi     
+  requests:
+    cpu: "1.8"
+    memory: 30Mi
+  limits:
+    cpu: "2"
+    memory: 4Gi     
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
