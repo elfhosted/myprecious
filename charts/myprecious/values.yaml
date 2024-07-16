@@ -3626,13 +3626,14 @@ filebrowser:
         set -x
         set -e
         # If we don't already have an example config, create one
-        # if [ ! -f /storage/elfstorage/recyclarr/recyclarr.yaml ];
-        # then
-        #   cp /bootstrap/recyclarr.yaml /storage/config/recyclarr/
-        # fi
+        if [ ! -f /config/recyclarr.yaml ];
+        then
+          cp /bootstrap/recyclarr.yaml /config/
+        fi
       volumeMounts:
-      - mountPath: /storage/config/recyclarr/
-        name: recyclarr
+      - mountPath: /config/
+        name: homer
+        subPath: recyclarr
       - name: recyclarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext   

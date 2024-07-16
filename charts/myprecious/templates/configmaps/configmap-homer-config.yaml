@@ -88,13 +88,13 @@ data:
       ICON="fa fa-magic"
       MESSAGE="App hosting that works like magic! (<I>Stats updated roughly hourly</I>)"
 
-      {{ if .Values.zurg.enabled }}
+      {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgplus.enabled }}
       RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq .user_info.premium) # days
       RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
       ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days</br>"
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenplus.enabled }}
       RIVEN_TOTAL_ITEMS=$(curl -s http://riven:8080/stats | jq .data.total_items) # items
       RIVEN_TOTAL_MOVIES=$(curl -s http://riven:8080/stats | jq .data.total_movies) # items
       RIVEN_TOTAL_SHOWS=$(curl -s http://riven:8080/stats | jq .data.total_shows) # items
