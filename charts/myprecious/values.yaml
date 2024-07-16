@@ -7327,6 +7327,8 @@ nextpvr:
   sso:
     enabled: true
   priorityClassName: tenant-streaming
+  podLabels:
+    app.elfhosted.com/name: nextpvr
   image:
     repository: ghcr.io/elfhosted/nextpvr
     tag: 10.9.4@sha256:fbbd8f733ce247ccd63e7aff96c0ff9893aa2ecf41290567b17ed532fd411cdf
