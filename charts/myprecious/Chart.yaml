@@ -161,10 +161,10 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: ombi.enabled
     alias: ombi
-  - name: traefik-forward-auth
-    version: ~2.2.0
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: traefikforwardauth
+  # - name: traefik-forward-auth
+  #   version: ~2.2.0
+  #   repository: oci://ghcr.io/elfhosted/charts
+  #   alias: traefikforwardauth
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
