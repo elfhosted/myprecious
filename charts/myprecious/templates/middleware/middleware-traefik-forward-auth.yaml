@@ -4,6 +4,6 @@ metadata:
   name: {{ .Release.Name }}-traefik-forward-auth
 spec:
   forwardAuth:
-    address: http://traefikforwardauth.{{ .Release.Namespace }}:4181
+    address: http://{{ .Release.Name }}-traefikforwardauth.{{ .Release.Namespace }}:4181
     authResponseHeaders:
     - X-Forwarded-User

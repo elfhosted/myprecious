@@ -5946,15 +5946,7 @@ homer:
         subPath: backgrounds
         readOnly: true        
       resources: *default_resources
-      securityContext: *default_securitycontext
-    traefik-forward-auth:
-      image: ghcr.io/elfhosted/traefik-forward-auth:3.1.0@sha256:74add5bd5e9d22bcc8629d7975cb57e97f7ba5b2e2e8d0131dfd480dc74917da     
-      envFrom:
-      - configMapRef:
-          name: traefik-forward-auth-env
-      - secretRef:
-          name: traefik-forward-auth-env          
-
+      securityContext: *default_securitycontext     
   configmap:
     config:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
@@ -5975,7 +5967,16 @@ homer:
       memory: 128Mi
 
 traefikforwardauth:
-  type: wordpress
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/observability
+            operator: Exists    
+  tolerations:
+  - key: node-role.elfhosted.com/observability
+    operator: Exists
   whitelist: admin@elfhosted.com
   priorityClassName: tenant-normal
   securityContext:
@@ -6020,88 +6021,76 @@ traefikforwardauth:
       cpu: 1
       memory: 32Mi
 
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchExpressions:
-          - key: app.kubernetes.io/name
-            operator: In
-            values:
-            - traefik-forward-auth
-        topologyKey: "kubernetes.io/hostname"
-
-
-gatus:
-  image:
-    repository: ghcr.io/elfhosted/gatus
-    tag: 5.11.0@sha256:e54b379efadcaefca18c72d70f9d6c70b19e3ae88e9dcacca931c6906aa96e75
-  priorityClassName: tenant-normal
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    fsGroup: 568
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/observability
-            operator: Exists    
-  tolerations:
-  - key: node-role.elfhosted.com/observability
-    operator: Exists    
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 20m
-      memory: 20Mi
-    limits:
-      cpu: 200m
-      memory: 128Mi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8080
-  controller:
-    # strategy: RollingUpdate
-    annotations:
-      configmap.reloader.stakater.com/reload: "gatus-config"        
-  env:
-    GATUS_CONFIG_PATH: /config/config.yaml
-    SMTP_FROM: 'health@elfhosted.com'
-    SMTP_PORT: 587
-  persistence:
-    gatus-config:
-      enabled: "true"
-      mountPath: /config
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: gatus-config
-    config:
-      enabled: true
-      type: custom
-      mountPath: /data/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gatus-block         
-  envFrom:
-  - secretRef:
-      name: gatus-smtp-config
-  configmap:
-    config:
-      # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
-      enabled: false
+# gatus:
+#   image:
+#     repository: ghcr.io/elfhosted/gatus
+#     tag: 5.11.0@sha256:e54b379efadcaefca18c72d70f9d6c70b19e3ae88e9dcacca931c6906aa96e75
+#   priorityClassName: tenant-normal
+#   securityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     readOnlyRootFilesystem: true
+#   podSecurityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     fsGroup: 568
+#   affinity:
+#     nodeAffinity:
+#       requiredDuringSchedulingIgnoredDuringExecution:
+#         nodeSelectorTerms:
+#         - matchExpressions:
+#           - key: node-role.elfhosted.com/observability
+#             operator: Exists    
+#   tolerations:
+#   - key: node-role.elfhosted.com/observability
+#     operator: Exists    
+#   automountServiceAccountToken: false
+#   resources:
+#     requests:
+#       cpu: 20m
+#       memory: 20Mi
+#     limits:
+#       cpu: 200m
+#       memory: 128Mi
+#   ingress:
+#     main:
+#       enabled: false
+#   service:
+#     main:
+#       enabled: true # necessary for probes
+#       ports:
+#         http:
+#           port: 8080
+#   controller:
+#     # strategy: RollingUpdate
+#     annotations:
+#       configmap.reloader.stakater.com/reload: "gatus-config"        
+#   env:
+#     GATUS_CONFIG_PATH: /config/config.yaml
+#     SMTP_FROM: 'health@elfhosted.com'
+#     SMTP_PORT: 587
+#   persistence:
+#     gatus-config:
+#       enabled: "true"
+#       mountPath: /config
+#       type: "custom"
+#       volumeSpec:
+#         configMap:
+#           name: gatus-config
+#     config:
+#       enabled: true
+#       type: custom
+#       mountPath: /data/
+#       volumeSpec:
+#         persistentVolumeClaim:
+#           claimName: config-gatus-block         
+#   envFrom:
+#   - secretRef:
+#       name: gatus-smtp-config
+#   configmap:
+#     config:
+#       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
+#       enabled: false
 
 gotify:
   sso:
