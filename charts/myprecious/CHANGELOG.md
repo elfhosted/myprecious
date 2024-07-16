@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.60.0](https://github.com/elfhosted/myprecious/compare/v1.59.0...v1.60.0) (2024-07-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.15.2 ([d1b8375](https://github.com/elfhosted/myprecious/commit/d1b8375f74ab6208018524f07449a3761e7cf5f0))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.15.3 ([2604533](https://github.com/elfhosted/myprecious/commit/260453355c979576b2cd26500f8715e64c405770))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.7.1868 ([ae44405](https://github.com/elfhosted/myprecious/commit/ae44405251f328cde044b1a7417484d70c99d5a3))
+* bring back dashboard backgrounds! ([7434b57](https://github.com/elfhosted/myprecious/commit/7434b57797a003aba153c0e5e9c39cc6d4797cb8))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to 0dc51c6 ([f87209b](https://github.com/elfhosted/myprecious/commit/f87209bf62161f3331d364de9f69c53697c040cf))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to 3026c2b ([562286b](https://github.com/elfhosted/myprecious/commit/562286b0450a0a7877abbb20130adef9cb907cd2))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to 3338bf8 ([d998666](https://github.com/elfhosted/myprecious/commit/d998666ec525b51f3c3275c6275970e1bb2ff5b1))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to d6e9321 ([a3a2ee2](https://github.com/elfhosted/myprecious/commit/a3a2ee2a20df421d67a62c1c3c739c60e573ccd8))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2024.07.15-nightly docker digest to f612955 ([ad3426c](https://github.com/elfhosted/myprecious/commit/ad3426c1c6294bdc683aadfdb559309e2fd024e6))
+
 ## [1.59.0](https://github.com/elfhosted/myprecious/compare/v1.58.0...v1.59.0) (2024-07-15)
 
 
