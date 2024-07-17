@@ -9,15 +9,13 @@ data:
     # # Un-break permissions on config PVCs, if attaching them here has caused a problem
     # chown 568:568 /config/* # if this pod (which runs as root) starts first, it can set config volumes to be owned by root
     
-    if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
-      curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080' -L --output /www/assets/backgrounds/background-dark.jpg
-      # curl $IMGURL -o /www/assets/backgrounds/background-dark.jpg
-    fi
+    # if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
+      curl -s 'https://images.unsplash.com/photo-1545486332-9e0999c535b2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=adrien-olichon-_GH9LwhlSO4-unsplash.jpg&w=640' -L --output /www/assets/backgrounds/background-dark.jpg
+    # fi
 
-    if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
-      curl -s 'https://picsum.photos/seed/{{ .Release.Name }}/1920/1080?grayscale' -L --output /www/assets/backgrounds/background-light.jpg
-      # curl $IMGURL -o /www/assets/backgrounds/background-light.jpg
-    fi
+    # if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
+      curl -s 'https://unsplash.com/photos/kO1G3neRA2o/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fGxpZ2h0JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3MjExNzAzMzd8MA&force=true&w=640' -L --output /www/assets/backgrounds/background-light.jpg
+    # fi
     
     while true
     do
