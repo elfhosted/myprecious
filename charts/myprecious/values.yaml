@@ -11758,6 +11758,8 @@ kubernetesdashboard:
         
 gluetun:
   enabled: false # just to avoid errors
+cometproxystream:
+  enabled: false
 
 plexhobbit:
   <<: *app_plex
