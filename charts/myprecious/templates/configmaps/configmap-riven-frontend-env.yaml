@@ -6,4 +6,5 @@ metadata:
 data:
   ORIGIN: "https://{{ .Release.Name }}-riven.elfhosted.com"
   BACKEND_URL: http://127.0.0.1:8080
+  RIVEN_DATABASE_HOST: sqlite://riven/data/riven.db
 {{ end }}
