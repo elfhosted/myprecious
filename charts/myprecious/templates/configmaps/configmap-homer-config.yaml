@@ -171,7 +171,7 @@ data:
         link-hover: "#ffdd57"
         background-image: /assets/backgrounds/background-dark.jpg
 
-
+    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgplus.enabled .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenplus.enabled }}
     # Optional message
     message:
       url: https://{{ .Release.Name }}.elfhosted.com/assets/message/message.json
@@ -181,7 +181,8 @@ data:
       #   title: 'title'
       refreshInterval: 30000
       # icon: "fa fa-seedling"
-
+    {{ end }}
+    
     # Optional navbar
     # links: [] # Allows for navbar (dark mode, layout, and search) without any links
     links:
