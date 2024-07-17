@@ -6010,7 +6010,7 @@ traefikforwardauth:
   image:
     repository: ghcr.io/elfhosted/traefik-forward-auth
     pullPolicy: IfNotPresent
-    tag: 3.1.0@sha256:74add5bd5e9d22bcc8629d7975cb57e97f7ba5b2e2e8d0131dfd480dc74917da     
+    tag: 3.1.0@sha256:86fff8beda875b6094210cdce530769fdb6a1919dee3e5c03ae09d2bd1aeb819     
 
   middleware:
     # middleware.enabled -- Enable to deploy a preconfigured middleware
