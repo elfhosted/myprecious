@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.62.0](https://github.com/elfhosted/myprecious/compare/v1.61.0...v1.62.0) (2024-07-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.1893 ([73d27be](https://github.com/elfhosted/myprecious/commit/73d27be9927e53a8e49495ade5e00a0af5ee889e))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.17 ([fe16b92](https://github.com/elfhosted/myprecious/commit/fe16b922a6cf44dd5e656432b59bc5397bb3cf0f))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 4afc49e ([529d79a](https://github.com/elfhosted/myprecious/commit/529d79ab9f38e4409e2624a163b2e83a29da8dd5))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to fc60059 ([1da7fe0](https://github.com/elfhosted/myprecious/commit/1da7fe0f7f54fe34f989a775e9f7284aa48e098e))
+* **app:** update quay.io/linuxserver.io/calibre:7.14.0 docker digest to 70be7cd ([4261006](https://github.com/elfhosted/myprecious/commit/4261006998f360954d0e0aeacd43e67455f3a43e))
+* permit mediafusion to egress to zilean ([4c0aff2](https://github.com/elfhosted/myprecious/commit/4c0aff225d19cadf12cd331d41484647804a5df0))
+
 ## [1.61.0](https://github.com/elfhosted/myprecious/compare/v1.60.0...v1.61.0) (2024-07-16)
 
 
