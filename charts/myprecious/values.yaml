@@ -4322,7 +4322,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.14.0@sha256:afd005e6e065913e9e20e3ac098decf3f79495f3300215acf03f2537a6c0ac6a
+    tag: 7.14.0@sha256:70be7cdb6eb010e9101e83e2731b2c4859ddcfd682049b80a7ba73508d948c1e
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4414,7 +4414,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.7.1868@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
+    tag: 4.0.8.1893@sha256:698d3fc93068b63dec893604228960d2f2aaa0fa0f27bdce0afe0d2f29a466df
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4543,7 +4543,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.7.1868@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
+    tag: 4.0.8.1893@sha256:698d3fc93068b63dec893604228960d2f2aaa0fa0f27bdce0afe0d2f29a466df
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9211,7 +9211,7 @@ tdarr:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/haveagitgat/tdarr
-    tag: 2.22.01
+    tag: 2.23.01
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tdarr"
@@ -10398,7 +10398,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.15.3@sha256:72fa179cda3124d9867d38a3a3d0cd42c6860045370374df1d19f811e5f8af8d
+    tag: v1.15.5@sha256:e95e4097e6e8dd2899e1a777a6c9a05727b4e1a8cb38620b0d6ec98576a98700
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -11159,7 +11159,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.15-nightly@sha256:3026c2b160b36d6e7fadf1199cc216b179c7bd3955ea9da0b5f72625f6a137c5
+    tag: 2024.07.17-nightly@sha256:09432b20c52a33e8620b5a41f71dea4c10fb520bfdc770693b25108c071296a3
   priorityClassName: tenant-normal
   controller:
     annotations:

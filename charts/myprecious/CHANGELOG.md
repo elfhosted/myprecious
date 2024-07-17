@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.61.0](https://github.com/elfhosted/myprecious/compare/v1.60.0...v1.61.0) (2024-07-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.15.4 ([3b9a754](https://github.com/elfhosted/myprecious/commit/3b9a754c1674c3868656c712aaf32c3b9ba5c66e))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.15.5 ([070dc1d](https://github.com/elfhosted/myprecious/commit/070dc1de30b6e4613b8a58cb8856769d35cbce4b))
+* **app:** update ghcr.io/haveagitgat/tdarr docker tag to v2.23.01 ([a745fe7](https://github.com/elfhosted/myprecious/commit/a745fe70417db1269a5b0beabb5049cda30985a5))
+
+
+### Bug Fixes
+
+* add torbox indexer to prowlarr ([1299b84](https://github.com/elfhosted/myprecious/commit/1299b849f4b80b064c055178c4d989dedf4b7f47))
+* make elfbot recyclarr sync work again ([8c6e60e](https://github.com/elfhosted/myprecious/commit/8c6e60ec7ad8534f88bf04db79025a50f5c21260))
+
 ## [1.60.0](https://github.com/elfhosted/myprecious/compare/v1.59.0...v1.60.0) (2024-07-16)
 
 
