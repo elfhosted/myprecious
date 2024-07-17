@@ -5945,7 +5945,7 @@ homer:
       - secretRef:
           name: gatus-smtp-config
     ui:
-      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:0f0b0d7ebfe2e0f7d0d2aee990d337e3145bdb7a5d7955568372686e93f44b71
+      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:7e2dba1a1c5370cb57c7b8ebb0d7b5ac43c0ce940393b1fa25dac9e9422cc5a3
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
