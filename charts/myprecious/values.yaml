@@ -7,7 +7,12 @@ volsync:
   restic_repository: 
   restic_password: 
   aws_access_key_id: 
-  aws_secret_access_key: 
+  aws_secret_access_key:
+
+# Set these to the default if nothing else is set
+storageclass:
+  rwx: ceph-filesystem-ssd
+  rwo: ceph-block-ssd
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:4bd3ee9c2128fb7cb60510fc9f09a7a8fb79d1614391ff7f16acb872c9a629c2
 

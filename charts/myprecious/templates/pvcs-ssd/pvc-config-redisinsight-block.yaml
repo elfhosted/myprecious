@@ -11,5 +11,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: ceph-block-ssd
+  storageClassName: {{ .Values.storageclass.rwo }}
 {{ end }}
