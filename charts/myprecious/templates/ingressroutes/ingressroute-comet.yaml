@@ -15,7 +15,12 @@ spec:
         - name: chain-hosted-stremio-addon
           namespace: traefik
         - name: headers-add-cors-for-stremio
-          namespace: traefik          
+          namespace: traefik
+    # restrict proxy streaming if cometproxystream not enabled
+    {{ if not .Values.cometproxystream.enabled }}
+        - name: redirectregex-proxy-streaming-requires-addon-comet
+          namespace: traefik
+    {{ end }}
     - match: Host(`{{ .Release.Name }}-comet.elfhosted.com`) && PathPrefix(`/configure/`)
       kind: Rule
       services:
@@ -25,7 +30,7 @@ spec:
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
         - name: chain-hosted-stremio-addon
-          namespace: traefik
+          namespace: traefik          
     - match: Host(`{{ .Release.Name }}-comet.elfhosted.com`) && PathPrefix(`/speed`)
       kind: Rule
       services:
@@ -37,17 +42,4 @@ spec:
           namespace: traefik
         - name: buffer-2gb
           namespace: traefik
-    # restrict proxy streaming if cometproxystream not enabled
-    - match: Host(`{{ .Release.Name }}-comet.elfhosted.com`) && (PathPrefix(`/{something:.*}/playback/{else:.*}`))
-      kind: Rule
-      services:
-        - name: comet
-          kind: Service
-          port: 3000
-      middlewares:
-        - name: {{ .Release.Name }}-add-cors-for-homer
-    {{ if not .Values.cometproxystream.enabled }}
-        - name: protect-grafana-login
-          namespace: kube-prometheus-stack
-    {{ end }}
 {{ end }}

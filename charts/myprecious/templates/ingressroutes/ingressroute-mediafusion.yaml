@@ -23,6 +23,11 @@ spec:
       middlewares:
         - name: chain-hosted-stremio-addon
           namespace: traefik
+    # restrict proxy streaming if mediafusionproxystream not enabled
+    {{ if not .Values.mediafusionproxystream.enabled }}
+        - name: redirectregex-proxy-streaming-requires-addon-mediafusion
+          namespace: traefik
+    {{ end }}
     - match: Host(`{{ .Release.Name }}-mediafusion.elfhosted.com`) && PathPrefix(`/configure/`)
       kind: Rule
       services:
