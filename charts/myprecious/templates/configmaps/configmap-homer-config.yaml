@@ -103,8 +103,10 @@ data:
       RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes!</I>)"
       {{ end }}
 
+      COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments)
+
       # MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
-      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments)\n${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
+      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${COMPLIMENT}\n${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
             
       sleep $(shuf -i 1800-5400 -n 1)
     done
