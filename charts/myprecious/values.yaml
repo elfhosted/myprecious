@@ -40,7 +40,7 @@ hobbit_tolerations: &hobbit_tolerations
 
 hobbit_streamer_resources: &hobbit_streamer_resources
   requests:
-    cpu: "1.8"
+    cpu: "1.6"
     memory: 30Mi
   limits:
     cpu: "2"
