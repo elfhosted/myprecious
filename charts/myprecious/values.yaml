@@ -2919,7 +2919,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:dbc8951d06e9eea956006cca730e05d566770dd675a94ca4e20586457117e908
+    tag: 2.23.0@sha256:d1b438092e97ba329a8a53280f316697ae4268a61839d85c7aa812719c1960bd
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -3586,7 +3586,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:dbc8951d06e9eea956006cca730e05d566770dd675a94ca4e20586457117e908
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:d1b438092e97ba329a8a53280f316697ae4268a61839d85c7aa812719c1960bd
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
