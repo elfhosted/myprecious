@@ -9650,12 +9650,9 @@ riven: &app_riven
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:a64de4558f8aa56c596653215ed0aefd2b580688d6712c43a8cd6a3448ff0783
-      # volumeMounts:
-      # - mountPath: /riven/data
-      #   name: config
-      #   subPath: config
-      # - mountPath: /storage/symlinks
-      #   name: symlinks
+      volumeMounts:
+      - mountPath: /riven/data
+        name: config
       envFrom:
       - configMapRef:
           name: riven-frontend-env
