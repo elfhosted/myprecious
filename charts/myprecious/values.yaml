@@ -46,6 +46,15 @@ hobbit_streamer_resources: &hobbit_streamer_resources
     cpu: "2"
     memory: 4Gi     
 
+# Set minimal requests so that pods can co-exist with streamers
+hobbit_resources: &hobbit_resources
+  requests:
+    cpu: "1m"
+    memory: "16Mi"
+  limits:
+    cpu: "2"
+    memory: 4Gi     
+
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
     volumeClaimTemplate:
@@ -11808,6 +11817,7 @@ zurghobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
+  resources: *hobbit_resources
 
 radarrhobbit:
   <<: *app_radarr
@@ -11817,6 +11827,7 @@ radarrhobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
+  resources: *hobbit_resources
 
 radarr4khobbit:
   <<: *app_radarr4k
@@ -11826,6 +11837,7 @@ radarr4khobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  
+  resources: *hobbit_resources
 
 sonarrhobbit:
   <<: *app_sonarr
@@ -11835,6 +11847,7 @@ sonarrhobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
+  resources: *hobbit_resources
 
 sonarr4khobbit:
   <<: *app_sonarr4k
@@ -11844,6 +11857,7 @@ sonarr4khobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  
+  resources: *hobbit_resources
 
 prowlarrhobbit:
   <<: *app_prowlarr
@@ -11853,6 +11867,7 @@ prowlarrhobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations 
+  resources: *hobbit_resources
 
 rdtclienthobbit:
   <<: *app_rdtclient
@@ -11862,6 +11877,7 @@ rdtclienthobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
+  resources: *hobbit_resources
 
 rivenhobbit:
   <<: *app_riven
@@ -11887,5 +11903,7 @@ kometahobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  
+  resources: *hobbit_resources
+
 
 # This file must end on a single newline
