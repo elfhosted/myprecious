@@ -9594,7 +9594,7 @@ riven: &app_riven
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
-      name: riven-config
+      name: riven-env
   - configMapRef:      
       name: elfbot-riven
       optional: true       
@@ -9650,16 +9650,15 @@ riven: &app_riven
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:a64de4558f8aa56c596653215ed0aefd2b580688d6712c43a8cd6a3448ff0783
-      volumeMounts:
-      - mountPath: /riven/data
-        name: config
-        subPath: config
-      - mountPath: /storage/symlinks
-        name: symlinks
-      command: [ "node", "/riven/frontend/build"]
+      # volumeMounts:
+      # - mountPath: /riven/data
+      #   name: config
+      #   subPath: config
+      # - mountPath: /storage/symlinks
+      #   name: symlinks
       envFrom:
       - configMapRef:
-          name: riven-config
+          name: riven-frontend-env
       resources: *default_resources
 
 rivenplus:
