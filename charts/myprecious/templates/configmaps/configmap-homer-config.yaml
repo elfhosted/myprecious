@@ -106,7 +106,7 @@ data:
       COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments | tr -d '"')
 
       # MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
-      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${COMPLIMENT}\n${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
+      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${COMPLIMENT}</BR>${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
             
       sleep $(shuf -i 1800-5400 -n 1)
     done
