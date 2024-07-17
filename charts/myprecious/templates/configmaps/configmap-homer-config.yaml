@@ -9,13 +9,13 @@ data:
     # # Un-break permissions on config PVCs, if attaching them here has caused a problem
     # chown 568:568 /config/* # if this pod (which runs as root) starts first, it can set config volumes to be owned by root
     
-    # if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
+    if [ ! -f /www/assets/backgrounds/background-dark.jpg ]; then
       curl -s 'https://images.unsplash.com/photo-1545486332-9e0999c535b2?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=adrien-olichon-_GH9LwhlSO4-unsplash.jpg&w=640' -L --output /www/assets/backgrounds/background-dark.jpg
-    # fi
+    fi
 
-    # if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
+    if [ ! -f /www/assets/backgrounds/background-light.jpg ]; then
       curl -s 'https://unsplash.com/photos/kO1G3neRA2o/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fGxpZ2h0JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3MjExNzAzMzd8MA&force=true&w=640' -L --output /www/assets/backgrounds/background-light.jpg
-    # fi
+    fi
     
     while true
     do
@@ -103,7 +103,7 @@ data:
       RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes!</I>)"
       {{ end }}
 
-      COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments)
+      COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments | tr -d '"')
 
       # MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
       echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${COMPLIMENT}\n${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
