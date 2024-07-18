@@ -12198,11 +12198,10 @@ codeserver:
     seccompProfile:
       type: RuntimeDefault
     fsGroup: 568
+    runAsUser: 568
+    runAsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  env:
-    PUID: 568
-    PGID: 568
   resources:
     requests:
       cpu: 15m
