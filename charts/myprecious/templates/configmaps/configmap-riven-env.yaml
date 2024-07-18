@@ -11,7 +11,7 @@ data:
   XDG_CONFIG_HOME: "/riven/data"
   XDG_DATA_HOME: "/riven/data"
   POETRY_CACHE_DIR: "/tmp/.cache/pypoetry"
-  RIVEN_DATABASE_HOST: sqlite://riven/data/riven.db
+  RIVEN_DATABASE_HOST: sqlite:///riven/data/riven.db
 
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
   RIVEN_SYMLINK_LIBRARY_PATH: /storage/symlinks
