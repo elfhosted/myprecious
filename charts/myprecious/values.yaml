@@ -7664,7 +7664,7 @@ audiobookshelf:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookshelf
-    tag: 2.10.1@sha256:f90b267576c138ce76debf65ff84d02e1541e686c6b2b599c2546f3abed8213b
+    tag: 2.11.0@sha256:a31bd1604eebad8feaa0d3e9ea31c5a5040ec038002504d7d4acc86708deb9f9
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -9084,7 +9084,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 9.10.0@sha256:82a9f7595b25b25b3c02bfbf66cd15616566d08065604678a4739cbd6684b291
+    tag: 9.10.1@sha256:d2fafab2decfa6d0d6cf6796962c23563263e210b23b3c18ca3f81efc712a850
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10024,7 +10024,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.9.4
+    tag: v0.9.5
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-homepage,homepage-config,homepage-env"
@@ -10384,7 +10384,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:8656de466afeec4927eac48044b5c260648c488a2e322d940f2bec228f4e8f26
+      image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:090eddc1e3f9629d3953f69a449303240eb9968ff836e2c48ccf8a5b0922ca38
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11133,7 +11133,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.15.5@sha256:51b5a4cd3b7dcb8836d9de2f4265beb1e642c80cb5c4d27c35102affd5d0ebaf
+    tag: v1.17.2@sha256:efd819f960969b325fdebadca6730105c41e12a168a2972811b81d0be1be07d4
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
