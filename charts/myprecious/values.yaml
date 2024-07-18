@@ -2958,6 +2958,32 @@ radarr: &app_radarr
         name: mediacover        
       resources: *default_resources
       securityContext: *default_securitycontext
+  additionalContainers:
+    settings:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - |
+        set -e
+        set -x
+
+        # Apply our settings regularly
+        mkdir -p /config/mam
+        while [ 1 ]; do
+          curl 'http://localhost:7878/api/v3/config/mediamanagement' \
+          -X PUT \
+          -H 'X-Api-Key: $RADARR__API_KEY' \
+          --data-raw '{"enableMediaInfo":false}'
+          sleep 1h
+        done
+      envFrom:
+      - configMapRef:
+          name: radarr-env
+      resources: *default_resources
+      securityContext: *default_securitycontext           
   resources:
     requests:
       cpu: 200m
@@ -3095,6 +3121,32 @@ radarr4k: &app_radarr4k
         name: mediacover        
       resources: *default_resources
       securityContext: *default_securitycontext    
+  additionalContainers:
+    settings:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - |
+        set -e
+        set -x
+
+        # Apply our settings regularly
+        mkdir -p /config/mam
+        while [ 1 ]; do
+          curl 'http://localhost:7878/api/v3/config/mediamanagement' \
+          -X PUT \
+          -H 'X-Api-Key: $RADARR__API_KEY' \
+          --data-raw '{"enableMediaInfo":false}'
+          sleep 1h
+        done
+      envFrom:
+      - configMapRef:
+          name: radarr4k-env
+      resources: *default_resources
+      securityContext: *default_securitycontext      
   resources:
     requests:
       cpu: 200m
@@ -5087,6 +5139,32 @@ sonarr: &app_sonarr
         name: mediacover                     
       resources: *default_resources
       securityContext: *default_securitycontext   
+  additionalContainers:
+    settings:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - |
+        set -e
+        set -x
+
+        # Apply our settings regularly
+        mkdir -p /config/mam
+        while [ 1 ]; do
+          curl 'http://localhost:8989/api/v3/config/mediamanagement' \
+          -X PUT \
+          -H 'X-Api-Key: $SONARR__API_KEY' \
+          --data-raw '{"enableMediaInfo":false}'
+          sleep 1h
+        done
+      envFrom:
+      - configMapRef:
+          name: sonarr-env
+      resources: *default_resources
+      securityContext: *default_securitycontext            
   resources:
     requests:
       cpu: 200m
@@ -5215,7 +5293,33 @@ sonarr4k: &app_sonarr4k
       - mountPath: /mediacover
         name: mediacover        
       resources: *default_resources
-      securityContext: *default_securitycontext          
+      securityContext: *default_securitycontext       
+  additionalContainers:
+    settings:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - |
+        set -e
+        set -x
+
+        # Apply our settings regularly
+        mkdir -p /config/mam
+        while [ 1 ]; do
+          curl 'http://localhost:8989/api/v3/config/mediamanagement' \
+          -X PUT \
+          -H 'X-Api-Key: $SONARR__API_KEY' \
+          --data-raw '{"enableMediaInfo":false}'
+          sleep 1h
+        done
+      envFrom:
+      - configMapRef:
+          name: sonarr4k-env
+      resources: *default_resources
+      securityContext: *default_securitycontext            
   resources:
     requests:
       cpu: 10m
