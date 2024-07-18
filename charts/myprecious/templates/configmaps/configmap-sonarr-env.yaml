@@ -1,11 +1,11 @@
-{{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
+{{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }} 
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: sonarr4k-config
+  name: sonarr-env
 data:
   # Overwrite API key with default
-  SONARR__API_KEY: "{{ .Values.sonarr4kexposed.apikey }}"
+  SONARR__API_KEY: "{{ .Values.sonarrexposed.apikey }}"
   scannarr-settings_sonarr.json: |
     {
       "URL": "http://localhost:8989",
@@ -16,6 +16,6 @@ data:
       "ForceImport": false,
       "ForceImportInterval": 1,
       "ForceImportMode": "Copy",
-      "APIKey": "{{ .Values.sonarr4kexposed.apikey }}"
+      "APIKey": "{{ .Values.sonarrexposed.apikey }}"
     }
 {{ end }}

@@ -2971,7 +2971,6 @@ radarr: &app_radarr
         set -x
 
         # Apply our settings regularly
-        mkdir -p /config/mam
         while [ 1 ]; do
           curl 'http://localhost:7878/api/v3/config/mediamanagement' \
           -X PUT \
@@ -3134,7 +3133,6 @@ radarr4k: &app_radarr4k
         set -x
 
         # Apply our settings regularly
-        mkdir -p /config/mam
         while [ 1 ]; do
           curl 'http://localhost:7878/api/v3/config/mediamanagement' \
           -X PUT \
@@ -5080,7 +5078,7 @@ sonarr: &app_sonarr
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
-      name: sonarr-config     
+      name: sonarr-env     
   persistence:
     <<: *appmounts
     config:
@@ -5152,7 +5150,6 @@ sonarr: &app_sonarr
         set -x
 
         # Apply our settings regularly
-        mkdir -p /config/mam
         while [ 1 ]; do
           curl 'http://localhost:8989/api/v3/config/mediamanagement' \
           -X PUT \
@@ -5219,7 +5216,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4\.0\.8\.1892@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
+    tag: 4.0.8.1892@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5235,7 +5232,7 @@ sonarr4k: &app_sonarr4k
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
-      name: sonarr4k-config     
+      name: sonarr4k-env     
   persistence:
     <<: *appmounts
     config:
@@ -5307,7 +5304,6 @@ sonarr4k: &app_sonarr4k
         set -x
 
         # Apply our settings regularly
-        mkdir -p /config/mam
         while [ 1 ]; do
           curl 'http://localhost:8989/api/v3/config/mediamanagement' \
           -X PUT \
@@ -10277,7 +10273,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:9ded633209b1ad1b2ff7a4a4de21743d26c77b01ddcc98ee007acacc4c255c44
+    tag: rolling@sha256:beb089de068d955e6bffd3287390f7dba074883cb1f867e3c7eaa89d24b8bd08
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10285,7 +10281,7 @@ riven: &app_riven
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # doesn't work with ilikedanger currently
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
