@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: radarr4k-config
+  name: radarr4k-env
 data:
   # Overwrite API key with default
   RADARR__API_KEY: "{{ .Values.radarr4kexposed.apikey }}"

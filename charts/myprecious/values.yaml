@@ -2974,7 +2974,7 @@ radarr: &app_radarr
         while [ 1 ]; do
           curl 'http://localhost:7878/api/v3/config/mediamanagement' \
           -X PUT \
-          -H 'X-Api-Key: $RADARR__API_KEY' \
+          -H "X-Api-Key: $RADARR__API_KEY" \
           --data-raw '{"enableMediaInfo":false}'
           sleep 1h
         done
@@ -3136,7 +3136,7 @@ radarr4k: &app_radarr4k
         while [ 1 ]; do
           curl 'http://localhost:7878/api/v3/config/mediamanagement' \
           -X PUT \
-          -H 'X-Api-Key: $RADARR__API_KEY' \
+          -H "X-Api-Key: $RADARR__API_KEY" \
           --data-raw '{"enableMediaInfo":false}'
           sleep 1h
         done
@@ -5153,7 +5153,7 @@ sonarr: &app_sonarr
         while [ 1 ]; do
           curl 'http://localhost:8989/api/v3/config/mediamanagement' \
           -X PUT \
-          -H 'X-Api-Key: $SONARR__API_KEY' \
+          -H "X-Api-Key: $SONARR__API_KEY" \
           --data-raw '{"enableMediaInfo":false}'
           sleep 1h
         done
@@ -5307,7 +5307,7 @@ sonarr4k: &app_sonarr4k
         while [ 1 ]; do
           curl 'http://localhost:8989/api/v3/config/mediamanagement' \
           -X PUT \
-          -H 'X-Api-Key: $SONARR__API_KEY' \
+          -H "X-Api-Key: $SONARR__API_KEY" \
           --data-raw '{"enableMediaInfo":false}'
           sleep 1h
         done
