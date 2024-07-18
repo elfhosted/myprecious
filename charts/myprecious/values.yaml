@@ -10310,7 +10310,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: sha256:90980fa0cfb71d25f3e1370eeaa326f4dbb22d2ff2d268a8a85901dd98419ad3
+    tag: rolling:sha256:90980fa0cfb71d25f3e1370eeaa326f4dbb22d2ff2d268a8a85901dd98419ad3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12335,8 +12335,8 @@ codeserver:
     seccompProfile:
       type: RuntimeDefault
     fsGroup: 568
-    runAsUser: 568
-    runAsGroup: 568
+    # runAsUser: 568
+    # runAsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   resources:
@@ -12357,7 +12357,7 @@ codeserver:
           port: 8080 
   persistence:
     tmp: *tmp     
-    <<: *config_mounts
+    # <<: *config_mounts
     config:
       enabled: true
       type: custom
