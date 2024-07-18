@@ -10384,7 +10384,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:8656de466afeec4927eac48044b5c260648c488a2e322d940f2bec228f4e8f26
+      image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:090eddc1e3f9629d3953f69a449303240eb9968ff836e2c48ccf8a5b0922ca38
       volumeMounts:
       - mountPath: /riven/data
         name: config
