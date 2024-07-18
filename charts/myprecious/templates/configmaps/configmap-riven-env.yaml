@@ -11,25 +11,16 @@ data:
   XDG_CONFIG_HOME: "/riven/data"
   XDG_DATA_HOME: "/riven/data"
   POETRY_CACHE_DIR: "/tmp/.cache/pypoetry"
-  RIVEN_DATABASE_HOST: sqlite:///riven/data/riven.db
+  RIVEN_DATABASE_HOST: sqlite:////riven/data/riven.db
+  RIVEN_FORCE_ENV: 'true'
 
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
   RIVEN_SYMLINK_LIBRARY_PATH: /storage/symlinks
 
   RIVEN_UPDATERS_PLEX_URL: http://plex:32400
-  RIVEN_UPDATERS_PLEX_ENABLED: "true"
-  RIVEN_CONTENT_OVERSEERR_ENABLED: "true"
   RIVEN_CONTENT_OVERSEERR_URL: http://overseerr:5055
   RIVEN_SCRAPING_JACKETT_URL: http://jackett:9117
   RIVEN_SCRAPING_PROWLARR_URL: http://prowlarr:9696
-
-  RIVEN_CONTENT_PLEX_WATCHLIST_ENABLED: "true"
-  RIVEN_DOWNLOADERS_REAL_DEBRID_ENABLED: "1"
-{{ if .Values.zurg.enabled }}
-  RIVEN_DOWNLOADERS_REAL_DEBRID_API_KEY: {{ .Values.zurg.token }}
-{{ else }}
-  RIVEN_DOWNLOADERS_REAL_DEBRID_API_KEY: {{ .Values.zurgplus.token }}
-{{ end }}
 
   RIVEN_SCRAPING_KNIGHTCRAWLER_ENABLED: "true"
   RIVEN_SCRAPING_KNIGHTCRAWLER_URL: http://elfhosted-internal.knightcrawler
@@ -43,7 +34,6 @@ data:
   RIVEN_SCRAPING_ZILEAN_ENABLED: "true"
   RIVEN_SCRAPING_ZILEAN_URL: http://zilean.zilean:8181
   RIVEN_SCRAPING_ZILEAN_RATELIMIT: "false"
-
 
   # For debugging and development
   RIVEN_MAP_METADATA: "true"
