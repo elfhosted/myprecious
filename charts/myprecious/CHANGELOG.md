@@ -1,5 +1,73 @@
 # Changelog
 
+## [1.63.0](https://github.com/elfhosted/myprecious/compare/v1.62.0...v1.63.0) (2024-07-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.11.0 ([9bc8be2](https://github.com/elfhosted/myprecious/commit/9bc8be2484f8d62f429ba45a273ab10ef23192be))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.91.1 ([470e06c](https://github.com/elfhosted/myprecious/commit/470e06ca409f2f1da728b47b053d9b498c98b02e))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.4 ([f989912](https://github.com/elfhosted/myprecious/commit/f989912be2822f05ced4a9eb05b3e8a5be3be432))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.5 ([1d51ae0](https://github.com/elfhosted/myprecious/commit/1d51ae03df3a400e07f7ae5c015f130001797b24))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/autobrr:1.43.0 docker digest to 9ec0156 ([ff23640](https://github.com/elfhosted/myprecious/commit/ff236404188800e1392beb58366efa5bef043b96))
+* **app:** update ghcr.io/elfhosted/autoscan:1.4.0 docker digest to 64b2301 ([ec2b831](https://github.com/elfhosted/myprecious/commit/ec2b8316fd3a4ddcc844c5c70b49bac81d75ae0a))
+* **app:** update ghcr.io/elfhosted/comet:v1.15.5 docker digest to 51b5a4c ([4bbbd54](https://github.com/elfhosted/myprecious/commit/4bbbd54e03d7cfe25878eecb4ab4b945af39f91d))
+* **app:** update ghcr.io/elfhosted/davio:v1.0.4 docker digest to 2cb9c20 ([ce0def1](https://github.com/elfhosted/myprecious/commit/ce0def134a81f3c047229ac81527349f796b3d3b))
+* **app:** update ghcr.io/elfhosted/emby:4.8.8.0 docker digest to b96ee63 ([b411e34](https://github.com/elfhosted/myprecious/commit/b411e34965710ee97b95d823424464cebdc5166f))
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to d1b4380 ([1b5b5dd](https://github.com/elfhosted/myprecious/commit/1b5b5dd322eb04cf3d2540b7916790c74fec11c7))
+* **app:** update ghcr.io/elfhosted/gatus:5.11.0 docker digest to ae18633 ([a79e781](https://github.com/elfhosted/myprecious/commit/a79e781664c8387dd1701e72048aa2300a9fe3b3))
+* **app:** update ghcr.io/elfhosted/gluetun:3.38.0 docker digest to a5a6673 ([9497f87](https://github.com/elfhosted/myprecious/commit/9497f871e72c5f69f74b8f78435f02af5638860d))
+* **app:** update ghcr.io/elfhosted/gotify:2.5.0 docker digest to 669f502 ([4a07bf9](https://github.com/elfhosted/myprecious/commit/4a07bf996edfa3021970e90e310c63daa0819401))
+* **app:** update ghcr.io/elfhosted/homer:v24.05.1 docker digest to 7e2dba1 ([368ceb6](https://github.com/elfhosted/myprecious/commit/368ceb616bb0dfc9e32763feb32c83c072cc6d9e))
+* **app:** update ghcr.io/elfhosted/jackettio:v1.2.1 docker digest to 6e7d00e ([13e7e3f](https://github.com/elfhosted/myprecious/commit/13e7e3f5858d30782300efbdebf56f6836984404))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.9.7 docker digest to 09c31b4 ([e3c0cb4](https://github.com/elfhosted/myprecious/commit/e3c0cb409e5adf5b4f24dc1d68a50f939875bb11))
+* **app:** update ghcr.io/elfhosted/jellyseerr:1.9.2 docker digest to b572050 ([60e56ce](https://github.com/elfhosted/myprecious/commit/60e56ce5456b1795611530cacb8f65c3a422f416))
+* **app:** update ghcr.io/elfhosted/kavita:0.8.2 docker digest to 6a21abd ([e4de78e](https://github.com/elfhosted/myprecious/commit/e4de78ed61e19b2774812710365326f9b18f2481))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 0066a01 ([11f93c8](https://github.com/elfhosted/myprecious/commit/11f93c80e4e92f517770435173c59a366aec4bd6))
+* **app:** update ghcr.io/elfhosted/lidarr-develop:2.4.3.4248 docker digest to 2228e6a ([4cec45b](https://github.com/elfhosted/myprecious/commit/4cec45bd5a979653089f991528ac1b42315e35ea))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.15 docker digest to ace0f21 ([1fba873](https://github.com/elfhosted/myprecious/commit/1fba873044e06d271a0d9fb5bf1ecc7924fb4c43))
+* **app:** update ghcr.io/elfhosted/navidrome:0.52.5 docker digest to b91866e ([cf8a492](https://github.com/elfhosted/myprecious/commit/cf8a492a141db70f83bfbbada540d70eb9e38edf))
+* **app:** update ghcr.io/elfhosted/nzbget:24.1 docker digest to 2deef6f ([c9bda16](https://github.com/elfhosted/myprecious/commit/c9bda16b8c5739a4e23e489e46237e3f7324a82d))
+* **app:** update ghcr.io/elfhosted/ombi:4.43.5 docker digest to 7a62710 ([1324711](https://github.com/elfhosted/myprecious/commit/13247114fb4d164707f6a4853e21cd871378ebd7))
+* **app:** update ghcr.io/elfhosted/openbooks:4.5.0 docker digest to 9457a47 ([2a979fa](https://github.com/elfhosted/myprecious/commit/2a979fa67842a5cb4e2973c9830a16425adb5651))
+* **app:** update ghcr.io/elfhosted/overseerr:1.33.2 docker digest to c580421 ([0b15bbd](https://github.com/elfhosted/myprecious/commit/0b15bbd74d06c99f212385459ccb3fe06c95d31c))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 68500ce ([4bb5e5a](https://github.com/elfhosted/myprecious/commit/4bb5e5a059ab80bf5e329547cf2bd46724213127))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop:1.21.0.4615 docker digest to df4cfb7 ([9c4857f](https://github.com/elfhosted/myprecious/commit/9c4857f5263d4d188c7bb208e82023cad28a7e3e))
+* **app:** update ghcr.io/elfhosted/radarr:5.7.0.8882 docker digest to eebc2da ([42c0669](https://github.com/elfhosted/myprecious/commit/42c0669fa72d1b9c1d2c5a38446db1dc5dda4372))
+* **app:** update ghcr.io/elfhosted/rdtclient:v2.0.80 docker digest to 1ed6e17 ([5b4ee4c](https://github.com/elfhosted/myprecious/commit/5b4ee4c33e2deb658e54f396281403b1d6757f4d))
+* **app:** update ghcr.io/elfhosted/readarr-develop:0.3.31.2578 docker digest to a8bc961 ([fb2eed6](https://github.com/elfhosted/myprecious/commit/fb2eed6839994bf43d7918684be543187bdf7be2))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 8656de4 ([d23a647](https://github.com/elfhosted/myprecious/commit/d23a647ffd38976e582b6e2da4596237c3ffc936))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 8ce87d4 ([13e84ba](https://github.com/elfhosted/myprecious/commit/13e84bae9451dd597f7fc6e7d84fc7ea100863c5))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to b14d519 ([86f61a0](https://github.com/elfhosted/myprecious/commit/86f61a0b4886677cfbdb8e0c17f951722f74c959))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 2cde81d ([56649f3](https://github.com/elfhosted/myprecious/commit/56649f3f530d7eea4006359bb4bc293177b0b08b))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 2da8058 ([2e0e17d](https://github.com/elfhosted/myprecious/commit/2e0e17d49a139cbd21148e18883c80b0fc70e32f))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 90980fa ([acea438](https://github.com/elfhosted/myprecious/commit/acea43854ad6649d43bd8934e51e3a0babf0644e))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 9205f6d ([99c5b90](https://github.com/elfhosted/myprecious/commit/99c5b90251373628fc1fc8760f17153f73c95459))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 9ded633 ([f9a0131](https://github.com/elfhosted/myprecious/commit/f9a0131f860e03c18860a30728e8efee80a556a4))
+* **app:** update ghcr.io/elfhosted/sabnzbd:4.3.2 docker digest to 2a20f26 ([a9d9311](https://github.com/elfhosted/myprecious/commit/a9d93113b984fd5d088ee600224c39025eaa62bf))
+* **app:** update ghcr.io/elfhosted/scannarr:rolling docker digest to c9cbc74 ([97454ad](https://github.com/elfhosted/myprecious/commit/97454adea0a90322d8f6009ce447128eb5d4ce35))
+* **app:** update ghcr.io/elfhosted/seafile:10.0.1 docker digest to 9513eb3 ([fc3aa9d](https://github.com/elfhosted/myprecious/commit/fc3aa9d61f38dd65edafd6d36ae87a4e991d05c3))
+* **app:** update ghcr.io/elfhosted/shokoserver:v4.2.2 docker digest to 055e4a0 ([a638c2f](https://github.com/elfhosted/myprecious/commit/a638c2f37a53dc0925bbe11954805f92c9d663f6))
+* **app:** update ghcr.io/elfhosted/sonarr-develop:4.0.8.1893 docker digest to d06c3f9 ([30d3462](https://github.com/elfhosted/myprecious/commit/30d34623ba3552148cf4f240cf57b702cb9564ad))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 3e0f9e9 ([7ae9b21](https://github.com/elfhosted/myprecious/commit/7ae9b21698c0d7ec6118fec6595f0b4beea38a9d))
+* **app:** update ghcr.io/elfhosted/stremio-jackett:v4.1.6 docker digest to 62f9936 ([c7674d7](https://github.com/elfhosted/myprecious/commit/c7674d72c7f2a6adc6e6bc3b8185fc1f70b2f6dc))
+* **app:** update ghcr.io/elfhosted/stremio-server:v4.20.8 docker digest to 53d851c ([72b24d8](https://github.com/elfhosted/myprecious/commit/72b24d88a63b1469e66cc2aa9e974c15565b18ab))
+* **app:** update ghcr.io/elfhosted/stremio-web:v5.0.0-beta.8 docker digest to b13d7b4 ([8dc607b](https://github.com/elfhosted/myprecious/commit/8dc607b159b55c015993588754fd8e7645204cfb))
+* **app:** update ghcr.io/elfhosted/tautulli:2.14.3 docker digest to be5b41b ([6f18efa](https://github.com/elfhosted/myprecious/commit/6f18efa418345215d9c2038c0cc2bf5da95594d1))
+* **app:** update ghcr.io/elfhosted/thelounge:4.4.3 docker digest to 58d4c49 ([7c24614](https://github.com/elfhosted/myprecious/commit/7c2461449c135a3c106472f3f343ab097cff854d))
+* **app:** update ghcr.io/elfhosted/tooling:focal-20240530 docker digest to b95fa96 ([1bd6ec3](https://github.com/elfhosted/myprecious/commit/1bd6ec3b6b22bbe8cce0e3f6973d99fb426023c2))
+* **app:** update ghcr.io/elfhosted/traefik-forward-auth:3.1.0 docker digest to 86fff8b ([041c8d8](https://github.com/elfhosted/myprecious/commit/041c8d8d611a63456011e7f018741762d21ab6eb))
+* **app:** update ghcr.io/elfhosted/uptime-kuma:1.23.13 docker digest to 56042a3 ([5aaa957](https://github.com/elfhosted/myprecious/commit/5aaa9570e94d748963dec7d8fe72a8517fe428b7))
+* **app:** update ghcr.io/elfhosted/vaultwarden:1.31.0 docker digest to e5fc21a ([d276d72](https://github.com/elfhosted/myprecious/commit/d276d72ec9e39006d0c088d0d2b5b2a6d52a4a20))
+* **app:** update ghcr.io/elfhosted/wallabag:2.6.9 docker digest to 82b5d3f ([362feb0](https://github.com/elfhosted/myprecious/commit/362feb0bf63150939ea6585e3782f7748873af06))
+* **app:** update ghcr.io/elfhosted/warp:rolling docker digest to 182c5a3 ([8bb282f](https://github.com/elfhosted/myprecious/commit/8bb282f993f36b320ee565181e266b7d7d73fd71))
+* **app:** update ghcr.io/elfhosted/xtremio:rolling docker digest to ae4c070 ([d5a7c17](https://github.com/elfhosted/myprecious/commit/d5a7c1788117bfc2057eb471daa5c46def6fcd48))
+* improve hobbit resource reservations ([252f9e7](https://github.com/elfhosted/myprecious/commit/252f9e77c4f60e4b65b68875a38670473cb5c489))
+
 ## [1.62.0](https://github.com/elfhosted/myprecious/compare/v1.61.0...v1.62.0) (2024-07-17)
 
 
