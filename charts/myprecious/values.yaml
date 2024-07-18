@@ -6051,7 +6051,40 @@ plex: &app_plex
         down: |-
           #!/bin/ash
           echo "disconnected" > /shared/vpnstatus
-
+  probes:
+    liveness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /web/index.html
+          port: 32400
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 10            
+    readiness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /web/index.html
+          port: 32400
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 10
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /web/index.html
+          port: 32400
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 10
   # probes:
   #   liveness:
   #     enabled: true
