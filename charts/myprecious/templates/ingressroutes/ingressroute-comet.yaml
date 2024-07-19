@@ -17,7 +17,7 @@ spec:
         - name: headers-add-cors-for-stremio
           namespace: traefik
     # restrict proxy streaming if cometproxystream not enabled
-    {{ if not .Values.cometproxystream.enabled }}
+    {{ if not .Values.cometproxystreaming.enabled }}
         - name: redirectregex-proxy-streaming-requires-addon-comet
           namespace: traefik
     {{ end }}
