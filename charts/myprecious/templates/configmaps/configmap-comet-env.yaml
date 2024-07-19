@@ -8,7 +8,7 @@ data:
   ZILEAN_URL: http://zilean.zilean:8181
   ADDON_ID: {{ .Release.Name }}-comet.elfhosted.com
   ADDON_NAME: Comet | {{ .Release.Name }}
-  {{ if .Values.cometproxystream.enabled }}
+  {{ if .Values.cometproxystreaming.enabled }}
   PROXY_DEBRID_STREAM: "true" # enable the feature
   PROXY_DEBRID_STREAM_PASSWORD: {{ .Values.comet.PROXY_DEBRID_STREAM_PASSWORD | default }}
   {{ end }}
