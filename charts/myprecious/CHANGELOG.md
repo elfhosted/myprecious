@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.64.0](https://github.com/elfhosted/myprecious/compare/v1.63.0...v1.64.0) (2024-07-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.16.0 ([40abdee](https://github.com/elfhosted/myprecious/commit/40abdeef4b3be474311e71099b7819ddb76bb8b9))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.17.0 ([f29fb28](https://github.com/elfhosted/myprecious/commit/f29fb284f2c5a228b7fc774fa1d9950fa0be5b79))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.17.1 ([904070f](https://github.com/elfhosted/myprecious/commit/904070fd0b310a3dfc6c5bd0485ee781b2f409e2))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.17.2 ([9568820](https://github.com/elfhosted/myprecious/commit/9568820eec39a3c0b84baf29522576229aa24956))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.18.0 ([92b7f1f](https://github.com/elfhosted/myprecious/commit/92b7f1f56c637e1a07d6269085a941bcacc03e89))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.19 ([7a5b5b9](https://github.com/elfhosted/myprecious/commit/7a5b5b90c7fe6a7c65e55ac38bcfadc35fda0df2))
+* **app:** update mattermost/mattermost-team-edition docker tag to v9.10.1 ([c1c8ed1](https://github.com/elfhosted/myprecious/commit/c1c8ed19a00f6d21498f2a58c0e03c7a15d26b82))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.15.0 ([a913a00](https://github.com/elfhosted/myprecious/commit/a913a00cacd2b532553e73e3b3a8cc315930fe44))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 090eddc ([2a9e2db](https://github.com/elfhosted/myprecious/commit/2a9e2db9807faa056e62caa0dbc6900a4909a8f1))
+* increase storage for homer/recyclarr from 100Mi to 1Gi ([50472d3](https://github.com/elfhosted/myprecious/commit/50472d363b85a799a5e3a38f079e63546501d616))
+* split comet and cometproxystream addon ([8e88846](https://github.com/elfhosted/myprecious/commit/8e88846b897cbb405812d87b1d83b2983850453b))
+
 ## [1.63.0](https://github.com/elfhosted/myprecious/compare/v1.62.0...v1.63.0) (2024-07-18)
 
 
