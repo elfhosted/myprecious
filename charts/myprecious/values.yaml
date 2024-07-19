@@ -4972,7 +4972,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.14.0@sha256:70be7cdb6eb010e9101e83e2731b2c4859ddcfd682049b80a7ba73508d948c1e
+    tag: 7.15.0@sha256:8db829132ee053bfdb0fd5835c25d357af396048ea2d4666ca1e21a715a3b45e
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -11133,7 +11133,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.17.2@sha256:efd819f960969b325fdebadca6730105c41e12a168a2972811b81d0be1be07d4
+    tag: v1.18.0@sha256:931082e37bde04cad58db1a503681a62b2690eb26969cef8dc5870f4ca320d2c
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -11894,7 +11894,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.17-nightly@sha256:09432b20c52a33e8620b5a41f71dea4c10fb520bfdc770693b25108c071296a3
+    tag: 2024.07.19-nightly@sha256:9f7083216ef35601ed5af992f453c2d2fd67c59133a895cd2bddc0c167682dbd
   priorityClassName: tenant-normal
   controller:
     annotations:
