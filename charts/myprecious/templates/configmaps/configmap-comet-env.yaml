@@ -10,7 +10,7 @@ data:
   ADDON_NAME: Comet | {{ .Release.Name }}
   {{ if .Values.cometproxystreaming.enabled }}
   PROXY_DEBRID_STREAM: "true" # enable the feature
-  PROXY_DEBRID_STREAM_PASSWORD: {{ .Values.comet.PROXY_DEBRID_STREAM_PASSWORD | default }}
+  PROXY_DEBRID_STREAM_PASSWORD: {{ .Values.cometproxystreaming.PROXY_DEBRID_STREAM_PASSWORD | default }}
   {{ end }}
   DEBRID_PROXY_URL: http://127.0.0.1:1080
 {{ end }}
