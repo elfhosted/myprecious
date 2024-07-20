@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app.elfhosted.com/name: mediafusion
+      app.kubernetes.io/name: mediafusion
   egress:
   - toEndpoints:
     - matchLabels:
