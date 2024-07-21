@@ -5449,7 +5449,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.21.0.4615@sha256:df4cfb704f32930d127a8228bc4b1bcaee678ac7ee8b227da8284e03fc016e9d
+    tag: 1.21.1.4631@sha256:7aea3e0a7993fb1d2cfaf0bf7aade4f19e3106908d4c7ed67304e70736be1df8
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lazylibrarian"
