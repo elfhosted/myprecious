@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.65.0](https://github.com/elfhosted/myprecious/compare/v1.64.0...v1.65.0) (2024-07-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/autobrr docker tag to v1.44.0 ([bc7a41d](https://github.com/elfhosted/myprecious/commit/bc7a41dc5e683414f8b1197617d19d400207d443))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.18.1 ([9e27b0c](https://github.com/elfhosted/myprecious/commit/9e27b0ce5a972d2e632af32f9ef5cce9b69914c0))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.18.2 ([1415c53](https://github.com/elfhosted/myprecious/commit/1415c531344b8ac207514d0d68051b9c825c94d4))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.18.3 ([3641c27](https://github.com/elfhosted/myprecious/commit/3641c27cd196b0bdfb3a0a0cb42c604e6d3cdc23))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.19.0 ([38d3327](https://github.com/elfhosted/myprecious/commit/38d33272545150e0a42b8dfb1f16bd1a5e0b8bd4))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.19.2 ([56bc47f](https://github.com/elfhosted/myprecious/commit/56bc47f8985db129187d9e9c652a2d68522cd6a5))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.8 ([7890f59](https://github.com/elfhosted/myprecious/commit/7890f5939eaa6a7f074e781b55798af75fcb425c))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.5.0.4277 ([3919a45](https://github.com/elfhosted/myprecious/commit/3919a45bbe7c862919e2c211ef6ac5fbfdf6dbd4))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.21.1.4631 ([34b87bd](https://github.com/elfhosted/myprecious/commit/34b87bd42c4002eaf220ad0c2996367aa2d86fc5))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.3.32.2587 ([995e8d6](https://github.com/elfhosted/myprecious/commit/995e8d66c24ffc01a9a239a0a04748098d0219d3))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.20 ([fe84f80](https://github.com/elfhosted/myprecious/commit/fe84f8056c8b1f60e3ff02f33f45a952e4c070bd))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.21 ([a27ed18](https://github.com/elfhosted/myprecious/commit/a27ed187137774a404424010b9a67c77e1f63084))
+
 ## [1.64.0](https://github.com/elfhosted/myprecious/compare/v1.63.0...v1.64.0) (2024-07-19)
 
 

@@ -2877,7 +2877,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.7.0.8882@sha256:eebc2da86d6c3e92179f190e2925386d4b2508332886ba233ed1ca6605dfd9b7
+    tag: 5.8.3.8933@sha256:9dea1d4bef785b5427407789cd2b866723db8b7a4b0005f59e5832df6cbf3144
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3039,7 +3039,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.7.0.8882@sha256:eebc2da86d6c3e92179f190e2925386d4b2508332886ba233ed1ca6605dfd9b7
+    tag: 5.8.3.8933@sha256:9dea1d4bef785b5427407789cd2b866723db8b7a4b0005f59e5832df6cbf3144
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6177,7 +6177,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.7@sha256:09c31b46ed08b29fc13efb6c4818a1e192f43ab896e4cb465029c855a16878d8
+    tag: 10.9.8@sha256:d5c748ec4e9f2ddfef45b212b7dac84d8aecd20b67f14eefa603dedcd96bb283
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid  
@@ -11133,7 +11133,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.19.2@sha256:89630729843bb13fb06e2a85b9b3c06a1d651157de1919854c0adb390181e4fe
+    tag: v1.19.5@sha256:5ef62dbc998dcc34e384694b0d27afd8b4ff72ca6e122db8bc7f9bac62def302
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
