@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.67.0](https://github.com/elfhosted/myprecious/compare/v1.66.0...v1.67.0) (2024-07-22)
+
+
+### Features
+
+* last-min Riven v0.8.0 release! ([1898a86](https://github.com/elfhosted/myprecious/commit/1898a86d05207badfe749a8d52d8e0ee52297db6))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to b914e42 ([c6d2b64](https://github.com/elfhosted/myprecious/commit/c6d2b645891b60e8dcd37edea405c7d0d9941970))
+
 ## [1.66.0](https://github.com/elfhosted/myprecious/compare/v1.65.0...v1.66.0) (2024-07-22)
 
 
