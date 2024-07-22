@@ -437,23 +437,8 @@ rclonemountdebridlink: &rclonemountdebridlink
   volumeSpec:
     persistentVolumeClaim:
       claimName: debridlink
-  mountPath: /storage/debridlink    
-# symlinks: &symlinks
-#   enabled: true
-#   type: custom
-#   volumeSpec:
-#     persistentVolumeClaim:
-#       claimName: symlinks
-#       # claimName: storagehub-symlinks
-#   mountPath: /storage/symlinks
-# symlinks: &symlinks
-#   enabled: true
-#   type: custom
-#   volumeSpec:
-#     persistentVolumeClaim:
-#       claimName: symlinks-block-ssd
-#   mountPath: /storage/symlinks   
-
+  mountPath: /storage/debridlink
+  
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
   rclonecustoma: *rclonecustoma
