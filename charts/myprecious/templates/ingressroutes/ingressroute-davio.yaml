@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-davio.elfhosted.com
+  name: {{ .Release.Name }}-davio.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-davio.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-davio.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: davio
@@ -14,7 +14,7 @@ spec:
       middlewares:
         - name: chain-hosted-stremio-addon
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-davio.elfhosted.com`) && PathPrefix(`/configure/`)
+    - match: Host(`{{ .Release.Name }}-davio.{{ .Values.dns_domain }}`) && PathPrefix(`/configure/`)
       kind: Rule
       services:
         - name: davio

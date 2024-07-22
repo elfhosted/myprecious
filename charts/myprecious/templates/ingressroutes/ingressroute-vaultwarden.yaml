@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-vaultwarden.elfhosted.com
+  name: {{ .Release.Name }}-vaultwarden.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-vaultwarden.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-vaultwarden.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: vaultwarden

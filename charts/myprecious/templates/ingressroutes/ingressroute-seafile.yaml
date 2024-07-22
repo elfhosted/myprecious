@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-seafile.elfhosted.com
+  name: {{ .Release.Name }}-seafile.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-seafile.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-seafile.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: seafile

@@ -4,5 +4,5 @@ kind: ConfigMap
 metadata:
   name: wallabag-config
 data:
-  SYMFONY__ENV__DOMAIN_NAME: https://{{ .Release.Name }}-wallabag.elfhosted.com
+  SYMFONY__ENV__DOMAIN_NAME: https://{{ .Release.Name }}-wallabag.{{ .Values.dns_domain }}
 {{ end }}

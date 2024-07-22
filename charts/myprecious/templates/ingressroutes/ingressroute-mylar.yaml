@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-mylar.elfhosted.com
+  name: {{ .Release.Name }}-mylar.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-mylar.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-mylar.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: mylar

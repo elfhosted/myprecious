@@ -37,7 +37,7 @@ data:
         {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled }}
         - Jellyfin:
             icon: jellyfin.png
-            href: https://{{ .Release.Name }}-jellyfin.elfhosted.com
+            href: https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}
             description: Stream Media
             siteMonitor: http://jellyfin:8096
             widget:
@@ -49,7 +49,7 @@ data:
         {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
         - Plex:
             icon: plex.png
-            href: https://{{ .Release.Name }}-plex.elfhosted.com
+            href: https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}
             description: Stream Media
             siteMonitor: http://plex:32400
             widget:
@@ -61,7 +61,7 @@ data:
         {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled }}
         - Emby:
             icon: emby.png
-            href: https://{{ .Release.Name }}-emby.elfhosted.com
+            href: https://{{ .Release.Name }}-emby.{{ .Values.dns_domain }}
             description: Stream Media
             siteMonitor: http://emby:8096
             widget:
@@ -73,7 +73,7 @@ data:
         {{ if .Values.navidrome.enabled }}
         - Navidrome:
             icon: navidrome.png
-            href: https://{{ .Release.Name }}-navidrome.elfhosted.com
+            href: https://{{ .Release.Name }}-navidrome.{{ .Values.dns_domain }}
             description: Stream Music
             siteMonitor: http://navidrome:4533
             widget:
@@ -87,7 +87,7 @@ data:
         {{ if .Values.calibreweb.enabled }}
         - Calibre Web:
             icon: calibre-web.png
-            href: https://{{ .Release.Name }}-calibre-web.elfhosted.com
+            href: https://{{ .Release.Name }}-calibre-web.{{ .Values.dns_domain }}
             description: Consume eBooks
             siteMonitor: http://calibreweb:8083
             # not supported in our version yet
@@ -101,7 +101,7 @@ data:
         {{ if .Values.calibre.enabled }}
         - Calibre:
             icon: calibre.png
-            href: https://{{ .Release.Name }}-calibre.elfhosted.com
+            href: https://{{ .Release.Name }}-calibre.{{ .Values.dns_domain }}
             description: Manage eBooks
             siteMonitor: http://calibre:8080
         {{ end }}             
@@ -109,7 +109,7 @@ data:
         {{ if .Values.komga.enabled }}
         - Komga:
             icon: komga.png
-            href: https://{{ .Release.Name }}-komga.elfhosted.com
+            href: https://{{ .Release.Name }}-komga.{{ .Values.dns_domain }}
             description: Manage Comics
             siteMonitor: http://komga:25600
             widget:
@@ -122,7 +122,7 @@ data:
         {{ if .Values.kavita.enabled }}
         - Kavita:
             icon: kavita.png
-            href: https://{{ .Release.Name }}-kavita.elfhosted.com
+            href: https://{{ .Release.Name }}-kavita.{{ .Values.dns_domain }}
             description: Manage Comics / Books
             siteMonitor: http://kavita:5000
             widget:
@@ -135,7 +135,7 @@ data:
         {{ if .Values.audiobookshelf.enabled }}
         - Audio Bookshelf:
             icon: audiobookshelf.png
-            href: https://{{ .Release.Name }}-audiobookshelf.elfhosted.com
+            href: https://{{ .Release.Name }}-audiobookshelf.{{ .Values.dns_domain }}
             description: Consume Audio Books / Podcasts
             siteMonitor: http://audiobookshelf:8000
             widget:
@@ -147,7 +147,7 @@ data:
         {{ if .Values.stremiojackett.enabled }}
         - Stremio-Jackett:
             icon: jackett.png
-            href: https://{{ .Release.Name }}-stremio-jackett.elfhosted.com
+            href: https://{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}
             description: Use Jackett in Stremio
             siteMonitor: http://stremio-jackett:3000
         {{ end }}  
@@ -155,7 +155,7 @@ data:
         {{ if or .Values.stremiojackettcommunity.enabled .Values.stremiojackettcommunityalldebrid.enabled }}
         - Stremio-Jackett-Community:
             icon: jackett.png
-            href: https://{{ .Release.Name }}-stremio-jackett-community.elfhosted.com
+            href: https://{{ .Release.Name }}-stremio-jackett-community.{{ .Values.dns_domain }}
             description: Stremio-Jackett AddOn with community cache
             siteMonitor: http://stremio-jackett-community:3000
         {{ end }}  
@@ -163,7 +163,7 @@ data:
         {{ if .Values.jackettio.enabled }}
         - Jackettio:
             icon: jackett.png
-            href: https://{{ .Release.Name }}-jackettio.elfhosted.com
+            href: https://{{ .Release.Name }}-jackettio.{{ .Values.dns_domain }}
             description: Stremio Addon supporting private trackers
             siteMonitor: http://jackettio:4000
         {{ end }}     
@@ -171,7 +171,7 @@ data:
         {{ if .Values.davio.enabled }}
         - Davio:
             icon: webdav.png
-            href: https://{{ .Release.Name }}-davio.elfhosted.com
+            href: https://{{ .Release.Name }}-davio.{{ .Values.dns_domain }}
             description: Stremio Addon to serve your WebDAV content
             siteMonitor: http://davio:4000
         {{ end }}                           
@@ -179,7 +179,7 @@ data:
         {{ if .Values.annatar.enabled }}
         - Annatar:
             icon: jackett.png
-            href: https://{{ .Release.Name }}-annatar.elfhosted.com
+            href: https://{{ .Release.Name }}-annatar.{{ .Values.dns_domain }}
             description: Use Jackett in Stremio
             siteMonitor: http://annatar:8000
         {{ end }} 
@@ -187,7 +187,7 @@ data:
         {{ if .Values.comet.enabled }}
         - Comet:
             icon: mdi-meteor
-            href: https://{{ .Release.Name }}-comet.elfhosted.com
+            href: https://{{ .Release.Name }}-comet.{{ .Values.dns_domain }}
             description: Stremio's fastest torrent/debrid search add-on
             siteMonitor: http://comet:8000
         {{ end }}          
@@ -195,7 +195,7 @@ data:
         {{ if .Values.xtremio.enabled }}
         - Annatar:
             icon: mdi-tv
-            href: https://{{ .Release.Name }}-xtremio.elfhosted.com
+            href: https://{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}
             description: Watch IPTV in Stremio
             siteMonitor: http://xtremio:3649
         {{ end }}                   
@@ -203,7 +203,7 @@ data:
         {{ if .Values.torrentio.enabled }}
         - Torrentio:
             icon: mdi-water
-            href: https://{{ .Release.Name }}-torrentio.elfhosted.com
+            href: https://{{ .Release.Name }}-torrentio.{{ .Values.dns_domain }}
             description: Torrent indexer for Stremio
             siteMonitor: http://torrentio:7000
         {{ end }}    
@@ -211,7 +211,7 @@ data:
         {{ if .Values.knightcrawler.enabled }}
         - Knightcrawler:
             icon: mdi-chess-knight
-            href: https://{{ .Release.Name }}-knightcrawler.elfhosted.com
+            href: https://{{ .Release.Name }}-knightcrawler.{{ .Values.dns_domain }}
             description: Torrent indexer for Stremio
             siteMonitor: http://knightcrawler:7000
         {{ end }}      
@@ -219,7 +219,7 @@ data:
         {{ if .Values.knightcrawlervpn.enabled }}
         - Knightcrawler (VPN):
             icon: mdi-chess-knight
-            href: https://{{ .Release.Name }}-knightcrawler-vpn.elfhosted.com
+            href: https://{{ .Release.Name }}-knightcrawler-vpn.{{ .Values.dns_domain }}
             description: Torrent indexer for Stremio (VPN)
             siteMonitor: http://knightcrawler-vpn:7000
         {{ end }}
@@ -227,7 +227,7 @@ data:
         {{ if .Values.mediafusion.enabled }}
         - MediaFusion:
             icon: mdi-atom
-            href: https://{{ .Release.Name }}-mediafusion.elfhosted.com
+            href: https://{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}
             description: Multi-source AddOn for Stremio
             siteMonitor: http://mediafusion:8000
         {{ end }}    
@@ -235,7 +235,7 @@ data:
         {{ if .Values.shluflix.enabled }}
         - Shluflix:
             icon: mdi-tv
-            href: https://{{ .Release.Name }}-shluflix.elfhosted.com
+            href: https://{{ .Release.Name }}-shluflix.{{ .Values.dns_domain }}
             description: Watch HTTP streams in Stremio
             siteMonitor: http://shluflix:8001
         {{ end }}     
@@ -243,7 +243,7 @@ data:
         {{ if .Values.stremify.enabled }}
         - Stremify:
             icon: mdi-tv
-            href: https://{{ .Release.Name }}-stremify.elfhosted.com
+            href: https://{{ .Release.Name }}-stremify.{{ .Values.dns_domain }}
             description: Watch HTTP streams in Stremio
             siteMonitor: http://stremify:3000
         {{ end }}                        
@@ -253,19 +253,19 @@ data:
             icon: mdi-tv
             {{ if .Values.stremioweb.enabled }}
               {{ if .Values.stremioserver.enabled }}
-            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.elfhosted.com#/"
+            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
-            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.elfhosted.com#/"
+            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioservergluetun.enabled }}
-            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.elfhosted.com#/"
+            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ end }}            
             {{ else }}
               {{ if .Values.stremioserver.enabled }}
-            href: "https://{{ .Release.Name }}-stremio-web.elfhosted.com/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.elfhosted.com#/"
+            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
-            href: "https://{{ .Release.Name }}-stremio-web.elfhosted.com/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.elfhosted.com#/"
+            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioservergluetun.enabled }}
-            href: "https://{{ .Release.Name }}-stremio-web.elfhosted.com/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.elfhosted.com#/"
+            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ end }}            
             {{ end }}
             description: Stremio Server
@@ -275,7 +275,7 @@ data:
         {{ if .Values.stremioweb.enabled }}
         - Stremio:
             icon: mdi-tv
-            href: "https://{{ .Release.Name }}-stremio-web.elfhosted.com"
+            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}"
             description: Stremio Web
             siteMonitor: http://stremio-web:8080
         {{ end }}             
@@ -284,7 +284,7 @@ data:
         {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled  }}
         - Radarr:
             icon: radarr.png
-            href: https://{{ .Release.Name }}-radarr.elfhosted.com
+            href: https://{{ .Release.Name }}-radarr.{{ .Values.dns_domain }}
             description: Manage Movies
             siteMonitor: http://radarr:7878
             widget:
@@ -296,7 +296,7 @@ data:
         {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
         - Radarr 4K:
             icon: radarr.png
-            href: https://{{ .Release.Name }}-radarr4k.elfhosted.com
+            href: https://{{ .Release.Name }}-radarr4k.{{ .Values.dns_domain }}
             description: Manage 4K Movies
             siteMonitor: http://radarr4k:7878
             widget:
@@ -308,7 +308,7 @@ data:
         {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled  }}
         - Sonarr:
             icon: sonarr.png
-            href: https://{{ .Release.Name }}-sonarr.elfhosted.com
+            href: https://{{ .Release.Name }}-sonarr.{{ .Values.dns_domain }}
             description: Manage Series
             siteMonitor: http://sonarr:8989
             widget:
@@ -320,7 +320,7 @@ data:
         {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
         - Sonarr 4K:
             icon: sonarr.png
-            href: https://{{ .Release.Name }}-sonarr4k.elfhosted.com
+            href: https://{{ .Release.Name }}-sonarr4k.{{ .Values.dns_domain }}
             description: Manage 4K Series
             siteMonitor: http://sonarr4k:8989
             widget:
@@ -332,7 +332,7 @@ data:
         {{ if .Values.lidarr.enabled }}
         - Lidarr:
             icon: lidarr.png
-            href: https://{{ .Release.Name }}-lidarr.elfhosted.com
+            href: https://{{ .Release.Name }}-lidarr.{{ .Values.dns_domain }}
             description: Manage Music
             siteMonitor: http://lidarr:8686
             widget:
@@ -344,7 +344,7 @@ data:
         {{ if .Values.readarr.enabled }}
         - Readarr:
             icon: readarr.png
-            href: https://{{ .Release.Name }}-readarr.elfhosted.com
+            href: https://{{ .Release.Name }}-readarr.{{ .Values.dns_domain }}
             description: Manage eBooks
             siteMonitor: http://readarr:8787
             widget:
@@ -356,7 +356,7 @@ data:
         {{ if .Values.readarraudio.enabled }}
         - Readarr Audio:
             icon: readarr.png
-            href: https://{{ .Release.Name }}-readarraudio.elfhosted.com
+            href: https://{{ .Release.Name }}-readarraudio.{{ .Values.dns_domain }}
             description: Manage AudioBooks
             siteMonitor: http://readarraudio:8787
             widget:
@@ -368,7 +368,7 @@ data:
         {{ if .Values.lazylibrarian.enabled }}
         - Lazy Librarian:
             icon: lazylibrarian.png
-            href: https://{{ .Release.Name }}-lazylibrarian.elfhosted.com
+            href: https://{{ .Release.Name }}-lazylibrarian.{{ .Values.dns_domain }}
             description: Manage eBooks  
             siteMonitor: http://lazylibrarian:5299
         {{ end }}  
@@ -376,7 +376,7 @@ data:
         {{ if .Values.bazarr.enabled }}
         - Bazarr:
             icon: bazarr.png
-            href: https://{{ .Release.Name }}-bazarr.elfhosted.com
+            href: https://{{ .Release.Name }}-bazarr.{{ .Values.dns_domain }}
             description: Manage Subtitles
             siteMonitor: http://bazarr:6767
             widget:
@@ -388,7 +388,7 @@ data:
         {{ if .Values.bazarr4k.enabled }}
         - Bazarr 4K:
             icon: bazarr.png
-            href: https://{{ .Release.Name }}-bazarr4k.elfhosted.com
+            href: https://{{ .Release.Name }}-bazarr4k.{{ .Values.dns_domain }}
             description: Manage Subtitles (4K)
             siteMonitor: http://bazarr4k:6767
             widget:
@@ -400,7 +400,7 @@ data:
         {{ if .Values.mylar.enabled }}
         - Mylar:
             icon: mylar.png
-            href: https://{{ .Release.Name }}-mylar.elfhosted.com
+            href: https://{{ .Release.Name }}-mylar.{{ .Values.dns_domain }}
             description: Manage Comics
             siteMonitor: http://mylar:8090
             widget:
@@ -412,7 +412,7 @@ data:
         {{ if .Values.rpdb.enabled }}
         - RPDB:
             icon: mdi-star-half-full
-            href: https://{{ .Release.Name }}-rpdb.elfhosted.com
+            href: https://{{ .Release.Name }}-rpdb.{{ .Values.dns_domain }}
             description: Manage Rating Posters  
             siteMonitor: http://rpdb:8750    
         {{ end }}   
@@ -420,7 +420,7 @@ data:
         {{ if .Values.ombi.enabled }}
         - Ombi:
             icon: ombi.png
-            href: https://{{ .Release.Name }}-ombi.elfhosted.com
+            href: https://{{ .Release.Name }}-ombi.{{ .Values.dns_domain }}
             description: Manage Requests   
             siteMonitor: http://ombi:5000  
             widget:
@@ -435,7 +435,7 @@ data:
             {{- if .Values.overseerrcustomdomain.enabled }}
             href: "https://{{ .Values.overseerrcustomdomain.cname }}"
             {{- else }}
-            href: "https://{{ .Release.Name }}-overseerr.elfhosted.com"
+            href: "https://{{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}"
             {{- end }}
             description: Manage Requests  
             siteMonitor: http://overseerr:5055   
@@ -451,7 +451,7 @@ data:
             {{- if .Values.jellyseerrcustomdomain.enabled }}
             href: "https://{{ .Values.jellyseerrcustomdomain.cname }}"
             {{- else }}
-            href: "https://{{ .Release.Name }}-jellyseerr.elfhosted.com"
+            href: "https://{{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}"
             {{- end }}
             description: Manage Requests  
             siteMonitor: http://jellyseerr:5055   
@@ -464,7 +464,7 @@ data:
         {{ if .Values.jfa.enabled }}
         - Jellyfin Accounts:
             icon: mdi-account-group
-            href: https://{{ .Release.Name }}-jfa.elfhosted.com
+            href: https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}
             description: Manage Jellyfin Accounts   
             siteMonitor: http://jfa:8056      
         {{ end }}      
@@ -472,7 +472,7 @@ data:
         {{ if .Values.tautulli.enabled }}
         - Tautulli:
             icon: tautulli.png
-            href: https://{{ .Release.Name }}-tautulli.elfhosted.com
+            href: https://{{ .Release.Name }}-tautulli.{{ .Values.dns_domain }}
             description: Plex Statistics  
             siteMonitor: http://tautulli:8181  
             widget:
@@ -484,7 +484,7 @@ data:
         {{ if .Values.xteve.enabled }}
         - Xteve:
             icon: xteve.png
-            href: https://{{ .Release.Name }}-xteve.elfhosted.com
+            href: https://{{ .Release.Name }}-xteve.{{ .Values.dns_domain }}
             description: Live TV Proxy for Plex/Emby
             siteMonitor: http://xteve:34400    
             widget:
@@ -497,7 +497,7 @@ data:
         {{ if .Values.nextpvr.enabled }}
         - NextPVR:
             icon: nextpvr.png
-            href: https://{{ .Release.Name }}-nextpvr.elfhosted.com
+            href: https://{{ .Release.Name }}-nextpvr.{{ .Values.dns_domain }}
             description: Live TV Proxy     
             siteMonitor: http://nextpvr:8866               
         {{ end }}   
@@ -505,7 +505,7 @@ data:
         {{ if .Values.notifiarr.enabled }}
         - Notifiarr:
             icon: notifiarr.png
-            href: https://{{ .Release.Name }}-notifiarr.elfhosted.com
+            href: https://{{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}
             description: Manage Discord-based Notifications 
             siteMonitor: http://notifiarr:5454                
         {{ end }}   
@@ -513,7 +513,7 @@ data:
         {{ if .Values.shoko.enabled }}
         - Shoko:
             icon: shoko.png
-            href: https://{{ .Release.Name }}-shoko.elfhosted.com
+            href: https://{{ .Release.Name }}-shoko.{{ .Values.dns_domain }}
             description: Manage Anime      
             siteMonitor: http://shoko:8111   
         {{ end }}      
@@ -521,7 +521,7 @@ data:
         {{ if .Values.filebot.enabled }}
         - Filebot:
             icon: filebot.png
-            href: https://{{ .Release.Name }}-filebot.elfhosted.com
+            href: https://{{ .Release.Name }}-filebot.{{ .Values.dns_domain }}
             description: Automate Media Management  
             siteMonitor: http://filebot:5452       
         {{ end }}        
@@ -529,7 +529,7 @@ data:
         {{ if .Values.unpackerr.enabled }}
         - Unpackerr:
             icon: mdi-gift-open
-            href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/unpackerr/
+            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/unpackerr/
             description: Automatically Unpack Media      
             siteMonitor: http://unpackerr:9898
         {{ end }}       
@@ -537,7 +537,7 @@ data:
         {{ if .Values.plexmetamanager.enabled }}
         - Plex Meta Manager:
             icon: mdi-folder-information
-            href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/plex-meta-manager/
+            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/plex-meta-manager/
             description: Manage Plex Metadata     
             siteMonitor: http://plexmetamanager:9898
         {{ end }}   
@@ -545,7 +545,7 @@ data:
         {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
         - Kometa:
             icon: mdi-folder-information
-            href: https://{{ .Release.Name }}-kometa.elfhosted.com
+            href: https://{{ .Release.Name }}-kometa.{{ .Values.dns_domain }}
             description: Manage Plex Metadata   
             siteMonitor: http://kometa:3001
         {{ end }}           
@@ -553,7 +553,7 @@ data:
         {{ if or .Values.autoscan.enabled }}
         - Autoscan:
             icon: mdi-magnify-scan
-            href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/autoscan/
+            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/autoscan/
             description: Configure Autoscan  
             # siteMonitor: http://autoscan:3030
         {{ end }}    
@@ -561,7 +561,7 @@ data:
         {{ if or .Values.recyclarr.enabled }}
         - Recyclarr:
             icon: mdi-recycle
-            href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/recyclarr/
+            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/recyclarr/
             description: Configure Recyclarr  
             siteMonitor: http://recyclarr:9898
         {{ end }}    
@@ -569,7 +569,7 @@ data:
         {{ if .Values.tdarr.enabled }}
         - Tdarr:
             icon: tdarr.png
-            href: https://{{ .Release.Name }}-tdarr.elfhosted.com
+            href: https://{{ .Release.Name }}-tdarr.{{ .Values.dns_domain }}
             description: Automate Media Transcoding  
             siteMonitor: http://tdarr:8265
             widget:
@@ -580,7 +580,7 @@ data:
         {{ if .Values.plexdebrid.enabled }}
         - plex-debrid:
             icon: real-debrid.png
-            href: https://{{ .Release.Name }}-plex-debrid.elfhosted.com
+            href: https://{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}
             description: Sync Plex/Jellyfin with Debrid services
             siteMonitor: http://plex-debrid:3001            
         {{ end }}     
@@ -588,7 +588,7 @@ data:
         {{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
         - Riven:
             icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
-            href: https://{{ .Release.Name }}-riven.elfhosted.com
+            href: https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}
             description: All-in-one Debrid Media Management
             siteMonitor: http://riven:3000
             widget:
@@ -615,7 +615,7 @@ data:
 
         - Riven (Backend):
             icon: mdi-image-filter-hdr-outline
-            href: https://{{ .Release.Name }}-riven-backend.elfhosted.com
+            href: https://{{ .Release.Name }}-riven-backend.{{ .Values.dns_domain }}
             description: Geek out over Riven's backend
             siteMonitor: http://riven:3001                       
         {{ end }}                     
@@ -624,7 +624,7 @@ data:
         {{ if .Values.nzbget.enabled }}
         - NZBGet:
             icon: nzbget.png
-            href: https://{{ .Release.Name }}-nzbget.elfhosted.com
+            href: https://{{ .Release.Name }}-nzbget.{{ .Values.dns_domain }}
             description: Usenet Client  
             siteMonitor: http://nzbget:6789
             widget:
@@ -635,7 +635,7 @@ data:
         {{ if .Values.sabnzbd.enabled }}
         - SABnzbd:
             icon: sabnzbd.png
-            href: https://{{ .Release.Name }}-sabnzbd.elfhosted.com
+            href: https://{{ .Release.Name }}-sabnzbd.{{ .Values.dns_domain }}
             description: Usenet Client  
             siteMonitor: http://sabnzbd:8080
             widget:
@@ -647,7 +647,7 @@ data:
         {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
         - Prowlarr:
             icon: prowlarr.png
-            href: https://{{ .Release.Name }}-prowlarr.elfhosted.com
+            href: https://{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}
             description: Manage Indexers  
             siteMonitor: http://prowlarr:9696
             widget:
@@ -659,7 +659,7 @@ data:
         {{ if .Values.jackett.enabled }}
         - Jackett:
             icon: jackett.png
-            href: https://{{ .Release.Name }}-jackett.elfhosted.com
+            href: https://{{ .Release.Name }}-jackett.{{ .Values.dns_domain }}
             description: Manage Indexers  
             siteMonitor: http://jackett:9117
             widget:
@@ -670,7 +670,7 @@ data:
         {{ if .Values.nzbhydra.enabled }}
         - NZBHydra:
             icon: nzbhydra.png
-            href: https://{{ .Release.Name }}-nzbhydra.elfhosted.com
+            href: https://{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}
             description: Manage Indexers
             siteMonitor: http://nzbhydra:5076
         {{ end }}           
@@ -678,7 +678,7 @@ data:
         {{ if .Values.autobrr.enabled }}
         - Autobrr:
             icon: autobrr.png
-            href: https://{{ .Release.Name }}-autobrr.elfhosted.com
+            href: https://{{ .Release.Name }}-autobrr.{{ .Values.dns_domain }}
             description: Manage torrent automation 
             siteMonitor: http://autobrr:7474
             widget:
@@ -690,7 +690,7 @@ data:
         {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
         - Deluge:
             icon: deluge.png
-            href: https://{{ .Release.Name }}-deluge.elfhosted.com
+            href: https://{{ .Release.Name }}-deluge.{{ .Values.dns_domain }}
             description: Bittorrent Client
             siteMonitor: http://deluge:8112
             widget:
@@ -702,7 +702,7 @@ data:
         {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
         - qBittorrent:
             icon: qbittorrent.png
-            href: https://{{ .Release.Name }}-qbittorrent.elfhosted.com
+            href: https://{{ .Release.Name }}-qbittorrent.{{ .Values.dns_domain }}
             description: Bittorrent Client
             siteMonitor: http://qbittorrent:8080
             widget:
@@ -713,7 +713,7 @@ data:
         {{ if or .Values.rutorrentpia.enabled .Values.rutorrentgluetun.enabled }}
         - ruTorrent:
             icon: rutorrent.png
-            href: https://{{ .Release.Name }}-rutorrent.elfhosted.com
+            href: https://{{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}
             description: Bittorrent Client
             siteMonitor: http://rutorrent:8080
             widget:
@@ -724,7 +724,7 @@ data:
         {{ if .Values.pyload.enabled }}
         - pyLoad:
             icon: pyload.png
-            href: https://{{ .Release.Name }}-pyload.elfhosted.com
+            href: https://{{ .Release.Name }}-pyload.{{ .Values.dns_domain }}
             description: Manage downloads
             siteMonitor: http://pyload:8000
             # not working currently
@@ -737,7 +737,7 @@ data:
         {{ if .Values.youtubedl.enabled }}
         - YouTubeDL:
             icon: youtubedl.png
-            href: https://{{ .Release.Name }}-youtubedl.elfhosted.com
+            href: https://{{ .Release.Name }}-youtubedl.{{ .Values.dns_domain }}
             description: Manage YouTube Downloads
             siteMonitor: http://youtubedl:17442
         {{ end }}  
@@ -745,7 +745,7 @@ data:
         {{ if .Values.rapidleech.enabled }}
         - RapidLeech:
             icon: mdi-flash
-            href: https://{{ .Release.Name }}-rapidleech.elfhosted.com
+            href: https://{{ .Release.Name }}-rapidleech.{{ .Values.dns_domain }}
             description: Rapidly Leech
             siteMonitor: http://rapidleech:8080
         {{ end }}      
@@ -753,7 +753,7 @@ data:
         {{ if .Values.rdtclient.enabled }}
         - RDT Client:
             icon: rdt-client.png
-            href: https://{{ .Release.Name }}-rdtclient.elfhosted.com
+            href: https://{{ .Release.Name }}-rdtclient.{{ .Values.dns_domain }}
             description: Manage real debrid(-like) services
             siteMonitor: http://rdtclient:6500
         {{ end }}   
@@ -761,7 +761,7 @@ data:
         {{ if .Values.rdtclientvpnpia.enabled }}
         - RDT Client (AllDebrid):
             icon: mdi-home-floor-a
-            href: https://{{ .Release.Name }}-rdtclient-alldebrid.elfhosted.com
+            href: https://{{ .Release.Name }}-rdtclient-alldebrid.{{ .Values.dns_domain }}
             description: Manage AllDebrid Downloads
             siteMonitor: http://rdtclient-alldebrid:6500
         {{ end }}            
@@ -769,7 +769,7 @@ data:
         {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
         - Zurg:
             icon: real-debrid.png
-            href: https://{{ .Release.Name }}-zurg.elfhosted.com/http/
+            href: https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/
             description: Manage real debrid(-like) services
             siteMonitor: http://zurg:9999
         {{ end }} 
@@ -777,7 +777,7 @@ data:
         {{ if .Values.rclonemountalldebridpia.enabled }}
         - AllDebrid:
             icon: webdav.png
-            href: https://{{ .Release.Name }}-alldebrid.elfhosted.com/
+            href: https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}/
             description: Manage AllDebrid files
             siteMonitor: http://alldebrid-webdav:9999
         {{ end }}                     
@@ -785,7 +785,7 @@ data:
         {{ if .Values.openbooks.enabled }}
         - OpenBooks:
             icon: mdi-book-open-variant
-            href: https://{{ .Release.Name }}-openbooks.elfhosted.com
+            href: https://{{ .Release.Name }}-openbooks.{{ .Values.dns_domain }}
             description: Manage eBooks Downloads
             siteMonitor: http://openbooks:8000
         {{ end }}      
@@ -793,20 +793,20 @@ data:
         {{ if .Values.jdownloader.enabled }}
         - jDownloader:
             icon: jdownloader.png
-            href: https://{{ .Release.Name }}-jdownloader.elfhosted.com
+            href: https://{{ .Release.Name }}-jdownloader.{{ .Values.dns_domain }}
             description: Manage Downloads
             siteMonitor: http://jdownloader:9898
             widget:
               type: jdownloader
               username: {{ .Values.jdownloader.MYJDOWNLOADER_EMAIL | default }}
               password: {{ .Values.jdownloader.MYJDOWNLOADER_PASSWORD | default }}
-              client: {{ .Release.Name }}.elfhosted.com
+              client: {{ .Release.Name }}.{{ .Values.dns_domain }}
         {{ end }}         
 
         {{ if or .Values.airdcpppia.enabled .Values.airdcppgluetun.enabled }}
         - AirDC++:
             icon: mdi-image-chart-bubble
-            href: https://{{ .Release.Name }}-airdcpp.elfhosted.com
+            href: https://{{ .Release.Name }}-airdcpp.{{ .Values.dns_domain }}
             description: Manage DC++ Sharing
             siteMonitor: http://airdcpp:5600
         {{ end }}                   
@@ -814,20 +814,20 @@ data:
     - General Tools:
         - File Browser:
             icon: filebrowser.png
-            href: https://{{ .Release.Name }}-filebrowser.elfhosted.com
+            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}
             description: Manage Files
             siteMonitor: http://filebrowser:8080
 
         - Kubernetes Dashboard:
             icon: kubernetes.png
-            href: https://{{ .Release.Name }}-kubernetes.elfhosted.com
+            href: https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}
             description: Kubernetes Resources
             siteMonitor: http://kubernetes-dashboard:9090
 
         {{ if .Values.privatebin.enabled }}
         - PrivateBin:
             icon: privatebin.png
-            href: https://{{ .Release.Name }}-privatebin.elfhosted.com
+            href: https://{{ .Release.Name }}-privatebin.{{ .Values.dns_domain }}
             description: Securely Share Snippets
             siteMonitor: http://privatebin:8080
         {{ end }}
@@ -835,7 +835,7 @@ data:
         {{ if .Values.miniflux.enabled }}
         - MiniFlux:
             icon: miniflux.png
-            href: https://{{ .Release.Name }}-miniflux.elfhosted.com
+            href: https://{{ .Release.Name }}-miniflux.{{ .Values.dns_domain }}
             description: Minimalist RSS client
             siteMonitor: http://miniflux:8080
             widget:
@@ -850,7 +850,7 @@ data:
             {{- if .Values.uptimekumacustomdomain.enabled }}
             href: "https://{{ .Values.uptimekumacustomdomain.cname }}"
             {{- else }}
-            href: "https://{{ .Release.Name }}-uptime-kuma.elfhosted.com"
+            href: "https://{{ .Release.Name }}-uptime-kuma.{{ .Values.dns_domain }}"
             {{- end }}
             description: Uptime Monitor
             siteMonitor: http://uptime-kuma:3001
@@ -863,7 +863,7 @@ data:
         {{ if .Values.gotify.enabled }}
         - Gotify:
             icon: gotify.png
-            href: https://{{ .Release.Name }}-gotify.elfhosted.com
+            href: https://{{ .Release.Name }}-gotify.{{ .Values.dns_domain }}
             description: Aggregate your notifications
             siteMonitor: http://gotify:8080
             widget:
@@ -875,7 +875,7 @@ data:
         {{ if .Values.seafile.enabled }}
         - Seafile:
             icon: seafile.png
-            href: https://{{ .Release.Name }}-seafile.elfhosted.com
+            href: https://{{ .Release.Name }}-seafile.{{ .Values.dns_domain }}
             description: Securely Sync your Stuff
             siteMonitor: http://seafile:80
         {{ end }}
@@ -883,7 +883,7 @@ data:
         {{ if .Values.syncthing.enabled }}
         - Syncthing:
             icon: syncthing.png
-            href: https://{{ .Release.Name }}-syncthing.elfhosted.com
+            href: https://{{ .Release.Name }}-syncthing.{{ .Values.dns_domain }}
             description: Securely Sync your Stuff
             siteMonitor: http://syncthing:8384
         {{ end }}        
@@ -891,7 +891,7 @@ data:
         {{ if .Values.resiliosync.enabled }}
         - Resilio Sync:
             icon: resiliosync.png
-            href: https://{{ .Release.Name }}-resiliosync.elfhosted.com
+            href: https://{{ .Release.Name }}-resiliosync.{{ .Values.dns_domain }}
             description: Securely Sync your Stuff
             siteMonitor: http://resilio-sync:8888
         {{ end }}   
@@ -899,7 +899,7 @@ data:
         {{ if .Values.thelounge.enabled }}
         - TheLounge:
             icon: thelounge.png
-            href: https://{{ .Release.Name }}-thelounge.elfhosted.com
+            href: https://{{ .Release.Name }}-thelounge.{{ .Values.dns_domain }}
             description: Modern IRC client
             siteMonitor: http://thelounge:9000
         {{ end }}             
@@ -907,7 +907,7 @@ data:
         {{ if .Values.vaultwarden.enabled }}
         - Vaultwarden:
             icon: vaultwarden.png
-            href: https://{{ .Release.Name }}-vaultwarden.elfhosted.com
+            href: https://{{ .Release.Name }}-vaultwarden.{{ .Values.dns_domain }}
             description: Securely manage passwords / secrets
             siteMonitor: http://vaultwarden:8000
         {{ end }}     
@@ -915,7 +915,7 @@ data:
         {{ if .Values.mattermost.enabled }}
         - Mattermost:
             icon: mattermost.png
-            href: https://{{ .Release.Name }}-mattermost.elfhosted.com
+            href: https://{{ .Release.Name }}-mattermost.{{ .Values.dns_domain }}
             description: Team group chat
             siteMonitor: http://mattermost:8065
         {{ end }}   
@@ -923,7 +923,7 @@ data:
         {{ if .Values.joplinserver.enabled }}
         - Joplin Server:
             icon: joplin.png
-            href: https://{{ .Release.Name }}-joplin-server.elfhosted.com
+            href: https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}
             description: Manage Joplin Sync
             siteMonitor: http://joplinserver:22300
         {{ end }}                    
@@ -931,7 +931,7 @@ data:
         {{ if .Values.wallabag.enabled }}
         - Wallabag:
             icon: wallabag.png
-            href: https://{{ .Release.Name }}-wallabag.elfhosted.com
+            href: https://{{ .Release.Name }}-wallabag.{{ .Values.dns_domain }}
             description: Read it Later
             siteMonitor: http://wallabag:8000
         {{ end }}   
@@ -939,7 +939,7 @@ data:
         {{ if .Values.pgadmin.enabled }}
         - PGAdmin:
             icon: pgadmin.png
-            href: https://{{ .Release.Name }}-pgadmin.elfhosted.com
+            href: https://{{ .Release.Name }}-pgadmin.{{ .Values.dns_domain }}
             description: PostgreSQL Admin
             siteMonitor: http://pgadmin:80
         {{ end }}    
@@ -947,7 +947,7 @@ data:
         {{ if .Values.redisinsight.enabled }}
         - PGAdmin:
             icon: redis.png
-            href: https://{{ .Release.Name }}-redisinsight.elfhosted.com
+            href: https://{{ .Release.Name }}-redisinsight.{{ .Values.dns_domain }}
             description: PostgreSQL Admin
             siteMonitor: http://redisinsight:5540
         {{ end }} 
@@ -955,7 +955,7 @@ data:
         {{ if .Values.codeserver.enabled }}
         - Code Server:
             icon: codeserver.png
-            href: https://{{ .Release.Name }}-codeserver.elfhosted.com
+            href: https://{{ .Release.Name }}-codeserver.{{ .Values.dns_domain }}
             description: Code Server
             siteMonitor: http://code-server:8080
         {{ end }}                               
@@ -963,7 +963,7 @@ data:
         {{ if .Values.gluetun.enabled }}
         - Gluetun:
             icon: mdi-lock
-            href: "https://{{ .Release.Name }}-kubernetes.elfhosted.com/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}
+            href: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}
             description: Configure your BYO VPN
         {{ end }}                    
 
@@ -971,7 +971,7 @@ data:
         - Rclone UI:
             icon: rclone.png
             {{ if .Values.rclonefm.enabled }}
-            href: "https://{{ .Release.Name }}-rcloneui.elfhosted.com"
+            href: "https://{{ .Release.Name }}-rcloneui.{{ .Values.dns_domain }}"
             siteMonitor: http://rcloneui:5572
             {{ else }}
             href: https://store.elfhosted.com/product/rcloneui
@@ -981,7 +981,7 @@ data:
         - Rclone FM:
             icon: rclone.png
             {{ if .Values.rclonefm.enabled }}
-            href: "https://{{ .Release.Name }}-rclonefm.elfhosted.com"
+            href: "https://{{ .Release.Name }}-rclonefm.{{ .Values.dns_domain }}"
             siteMonitor: http://rclonefm:5573
             {{ else }}
             href: https://store.elfhosted.com/product/rclonefm
@@ -990,14 +990,14 @@ data:
 
         - Rclone Remotes:
             icon: rclone.png
-            href: https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/rclonebrowser/rclone.conf
+            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/rclonebrowser/rclone.conf
             description: Your configured Rclone remotes  
             siteMonitor: http://filebrowser:8080     
 
         {{ if .Values.webdav.enabled }}
         - WebDAV:
             icon: webdav.png
-            href: https://{{ .Release.Name }}-webdav.elfhosted.com
+            href: https://{{ .Release.Name }}-webdav.{{ .Values.dns_domain }}
             description: Your WebDAV endpoint for migration
             siteMonitor: http://rclonebrowser:5574
         {{ end }}
@@ -1005,7 +1005,7 @@ data:
         {{ if .Values.webdavplus.enabled }}
         - WebDAV Plus:
             icon: webdav.png
-            href: https://{{ .Release.Name }}-webdav-plus.elfhosted.com
+            href: https://{{ .Release.Name }}-webdav-plus.{{ .Values.dns_domain }}
             description: Your WebDAV Plus endpoint for migration at 150Mbps
             siteMonitor: http://webdav-plus:5574
         {{ end }}        
@@ -1046,7 +1046,7 @@ data:
     - Links:
         - App Health:
             - abbr: GA
-              href: "https://{{ .Release.Name }}-health.elfhosted.com"
+              href: "https://{{ .Release.Name }}-health.{{ .Values.dns_domain }}"
               icon: gatus.png
               description: Health stats
         - My Account:
@@ -1061,7 +1061,7 @@ data:
               description: Join us!
         - Docs:
             - abbr: DO
-              href: https://elfhosted.com
+              href: https://{{ .Values.dns_domain }}
               icon: mdi-lifebuoy
               description: Documentation         
 

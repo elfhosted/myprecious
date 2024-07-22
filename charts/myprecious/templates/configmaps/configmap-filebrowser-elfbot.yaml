@@ -213,7 +213,7 @@ data:
                 TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
                 echo "Generating elfstorage report, this may take ~5 min..."
 
-                tree --du -hF -s  /storage/elfstorage/ -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/elfstorage -T "🧝 ElfHosted [/storage/elfstorage] usage for {{ .Release.Name }}"> /storage/elfstorage/disk-usage-report-$TIMESTAMP.html
+                tree --du -hF -s  /storage/elfstorage/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/elfstorage -T "🧝 ElfHosted [/storage/elfstorage] usage for {{ .Release.Name }}"> /storage/elfstorage/disk-usage-report-$TIMESTAMP.html
                 echo "Done! 🎉"
                 echo "Report generated at /elfstorage/disk-usage-report-$TIMESTAMP.html"
                 exit 0

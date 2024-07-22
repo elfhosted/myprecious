@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-miniflux.elfhosted.com
+  name: {{ .Release.Name }}-miniflux.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-miniflux.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-miniflux.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: miniflux

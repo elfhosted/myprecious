@@ -18,6 +18,9 @@ storageclass:
     name: ceph-block-ssd
     accessMode: ReadWriteOnce
 
+# sets the user's base dns domain
+dns_domain: elfhosted.com
+
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:b95fa963587172989389ae57ac4292b0a3c630b542c66d827ccac23fc7a418b3
 
 

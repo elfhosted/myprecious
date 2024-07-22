@@ -8,7 +8,7 @@ data:
   {{ if .Values.stremiowebcustomdomain.enabled }}
   WEBUI_LOCATION: https://{{ .Values.stremiowebcustomdomain.cname }}
   {{ else }}
-  WEBUI_LOCATION: https://{{ .Release.Name }}-stremio-web.elfhosted.com
+  WEBUI_LOCATION: https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}
   {{ end }}
   {{ else }}
   WEBUI_LOCATION: https://web.strem.io

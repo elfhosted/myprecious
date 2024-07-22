@@ -6,6 +6,6 @@ metadata:
 data:
   MYJDOWNLOADER_EMAIL: {{ .Values.jdownloader.MYJDOWNLOADER_EMAIL | default }}
   MYJDOWNLOADER_PASSWORD: {{ .Values.jdownloader.MYJDOWNLOADER_PASSWORD | default }}
-  MYJDOWNLOADER_DEVICE_NAME: {{ .Release.Name }}.elfhosted.com
+  MYJDOWNLOADER_DEVICE_NAME: {{ .Release.Name }}.{{ .Values.dns_domain }}
   XDG_DOWNLOAD_DIR: /storage/elfstorage/downloads/completed
 {{ end }}

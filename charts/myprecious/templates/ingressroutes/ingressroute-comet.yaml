@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-comet.elfhosted.com
+  name: {{ .Release.Name }}-comet.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-comet.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-comet.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: comet
@@ -21,7 +21,7 @@ spec:
         - name: redirectregex-proxy-streaming-requires-addon-comet
           namespace: traefik
     {{ end }}
-    - match: Host(`{{ .Release.Name }}-comet.elfhosted.com`) && PathPrefix(`/configure/`)
+    - match: Host(`{{ .Release.Name }}-comet.{{ .Values.dns_domain }}`) && PathPrefix(`/configure/`)
       kind: Rule
       services:
         - name: comet
@@ -31,7 +31,7 @@ spec:
         - name: {{ .Release.Name }}-traefik-forward-auth
         - name: chain-hosted-stremio-addon
           namespace: traefik          
-    - match: Host(`{{ .Release.Name }}-comet.elfhosted.com`) && PathPrefix(`/speed`)
+    - match: Host(`{{ .Release.Name }}-comet.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
       kind: Rule
       services:
         - name: comet

@@ -5,7 +5,7 @@ metadata:
   name: joplinserver-config
 data:
   APP_PORT: '22300'
-  APP_BASE_URL: https://{{ .Release.Name}}-joplin-server.elfhosted.com
+  APP_BASE_URL: https://{{ .Release.Name}}-joplin-server.{{ .Values.dns_domain }}
   DB_CLIENT: pg
   POSTGRES_PASSWORD: joplinserver
   POSTGRES_DATABASE: joplinserver

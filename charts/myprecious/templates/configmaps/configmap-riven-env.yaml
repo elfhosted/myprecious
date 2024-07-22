@@ -5,7 +5,7 @@ metadata:
   name: riven-env
 data:
   TZ: UTC
-  ORIGIN: "https://{{ .Release.Name }}-riven.elfhosted.com"
+  ORIGIN: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
   BACKEND_URL: http://127.0.0.1:8080
   HOME: "/riven/data/"
   XDG_CONFIG_HOME: "/riven/data"
