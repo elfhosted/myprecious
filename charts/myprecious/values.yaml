@@ -1210,7 +1210,9 @@ update_dns_on_init: &update_dns_on_init
     - name: ELF_TENANT_NAME
       valueFrom:
         fieldRef:
-          fieldPath: metadata.labels['app.kubernetes.io/instance']        
+          fieldPath: metadata.labels['app.kubernetes.io/instance'] 
+    - name: CF_API_DOMAIN
+      value: elfhosted.com          
   envFrom:
   - secretRef:
       name: cloudflare-api-token
@@ -3188,7 +3190,7 @@ ombi:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/ombi
-    tag: 4.43.5@sha256:7a62710c54275a72e4d77660c6c978a344298649314012b1a05501c883117fab
+    tag: 4.44.1@sha256:0e26054ef1797a0c51a1f19bd7e571e69e35eb27836a769b4ad660183f01b6bb
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10293,7 +10295,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:b914e427db0cafb1aa76bbe02218d793dfe05def706396657168ce547376d7ae
+    tag: rolling@sha256:efb6702d18db48f0f64219a1d13853f243a62880655a35731073ccfd3ed3464f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10367,7 +10369,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:090eddc1e3f9629d3953f69a449303240eb9968ff836e2c48ccf8a5b0922ca38
+      image: ghcr.io/elfhosted/riven-frontend:rolling@sha256:7c33d0ff8391648ccd297bd6e1a0aefd5ece8937f3342286a4c1268792c15f97
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11116,7 +11118,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.19.5@sha256:5ef62dbc998dcc34e384694b0d27afd8b4ff72ca6e122db8bc7f9bac62def302
+    tag: v1.21.0@sha256:6abab4ce0a82dbfffafed47fc3939e700595ee8fa05217e26a5bf408e1268f04
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -11913,7 +11915,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.21-nightly@sha256:40580e26cf560be4db6e4513a77beb3289494f71feaa6e2653c86fd3197c32b0
+    tag: 2024.07.22-nightly@sha256:96e4de6416acb91bad017491f666c15bed0ccadab491a1e0ffe7ff9e6c2023f5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12515,7 +12517,7 @@ gluetun:
   enabled: false # just to avoid errors
 cometproxystreaming:
   enabled: false
-mediafusionproxystream:
+mediafusionproxystreaming:
   enabled: false  
 
 plexhobbit:

@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.67.0](https://github.com/elfhosted/myprecious/compare/v1.66.0...v1.67.0) (2024-07-22)
+
+
+### Features
+
+* last-min Riven v0.8.0 release! ([1898a86](https://github.com/elfhosted/myprecious/commit/1898a86d05207badfe749a8d52d8e0ee52297db6))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to b914e42 ([c6d2b64](https://github.com/elfhosted/myprecious/commit/c6d2b645891b60e8dcd37edea405c7d0d9941970))
+
+## [1.66.0](https://github.com/elfhosted/myprecious/compare/v1.65.0...v1.66.0) (2024-07-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.19.3 ([ecccc7a](https://github.com/elfhosted/myprecious/commit/ecccc7aab18f2486151296a398c6e9af1e3bb640))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.19.5 ([9a939a5](https://github.com/elfhosted/myprecious/commit/9a939a5b6f18971d605943651a932a2aea8f6032))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.20.0 ([fbb64b7](https://github.com/elfhosted/myprecious/commit/fbb64b7a4187fcdd8f43f59c092466db5853a8a5))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.8.3.8933 ([f5617da](https://github.com/elfhosted/myprecious/commit/f5617da317835abcf9bbc0954b8ca12e51fb569a))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.07.22 ([f5242ae](https://github.com/elfhosted/myprecious/commit/f5242aedf5234f83c08e9a186b1e67b3f7843b69))
+
+
+### Bug Fixes
+
+* co-locate comet with zurg for simultaneous streaming ([3f8ef03](https://github.com/elfhosted/myprecious/commit/3f8ef0348d5d6330054d196ca4a46512cca18c09))
+* have mediafusion snuggle with zurg too ([0f05fb2](https://github.com/elfhosted/myprecious/commit/0f05fb238d4fbac7f12f74e3085d4d4c77237fa1))
+
 ## [1.65.0](https://github.com/elfhosted/myprecious/compare/v1.64.0...v1.65.0) (2024-07-21)
 
 

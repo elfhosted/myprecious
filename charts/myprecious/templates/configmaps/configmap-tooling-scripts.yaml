@@ -3,8 +3,6 @@ kind: ConfigMap
 metadata:
   name: tooling-scripts
 data:
-  # Use this dns_domain to substitute in elfhosted.com/us/whatever domain
-  dns_domain: {{ .Values.dns_domain }}
   update-dns-on-init.sh: |
     # Detect external address
 
