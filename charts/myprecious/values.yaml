@@ -1210,7 +1210,9 @@ update_dns_on_init: &update_dns_on_init
     - name: ELF_TENANT_NAME
       valueFrom:
         fieldRef:
-          fieldPath: metadata.labels['app.kubernetes.io/instance']        
+          fieldPath: metadata.labels['app.kubernetes.io/instance'] 
+    - name: CF_API_DOMAIN
+      value: elfhosted.com          
   envFrom:
   - secretRef:
       name: cloudflare-api-token
