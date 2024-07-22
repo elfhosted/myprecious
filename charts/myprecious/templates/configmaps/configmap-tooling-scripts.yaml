@@ -10,7 +10,7 @@ data:
 
     set -x
     MY_NODE_IP=$(wget -qO- ipinfo.io/ip)
-    CF_API_DOMAIN={{ .Values.dns_domain}}
+    export CF_API_DOMAIN={{ .Values.dns_domain }}
 
     # Does a DNS entry exist for my node?
     cfcli find $MY_NODE_NAME | grep $MY_NODE_NAME.{{ .Values.dns_domain }}
@@ -114,7 +114,7 @@ data:
 
 
         # Does a DNS entry exist for me?
-        CF_API_DOMAIN={{ .Values.dns_domain}}
+        export CF_API_DOMAIN={{ .Values.dns_domain }}
         cfcli find $MY_NAME | grep $MY_NAME
 
         if [[ $? -eq 0 ]]
