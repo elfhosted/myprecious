@@ -15,7 +15,7 @@ data:
       title: Health | ElfHosted
       buttons:
       - name: Dashboard
-        link: https://{{ .Release.Name }}.elfhosted.com
+        link: https://{{ .Release.Name }}.{{ .Values.dns_domain }}
       - name: Account
         link: https://store.elfhosted.com/my-account
       - name: Docs
@@ -38,7 +38,7 @@ data:
           description: |
 
 
-            See https://{{ .Release.Name }}-health.elfhosted.com for details, or
+            See https://{{ .Release.Name }}-health.{{ .Values.dns_domain }} for details, or
             visit https://discord.elfhosted.com for status updates / help.
 
             -- Sent with ❤️ from your friends at ElfHosted 🧝
@@ -1052,7 +1052,7 @@ data:
       {{ if .Values.joplinserver.enabled }}
       - name: joplinserver
         group: tools
-        url: "https://{{ .Release.Name }}-joplin-server.elfhosted.com"
+        url: "https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-plex-debrid.elfhosted.com
+  name: {{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-plex-debrid.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: plex-debrid

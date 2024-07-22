@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-filebot.elfhosted.com
+  name: {{ .Release.Name }}-filebot.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-filebot.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-filebot.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: filebot
@@ -15,7 +15,7 @@ spec:
         - name: {{ .Release.Name }}-traefik-forward-auth 
         - name: error-pages
           namespace: traefik        
-    - match: Host(`{{ .Release.Name }}-filebot.elfhosted.com`) && PathPrefix(`/task`)
+    - match: Host(`{{ .Release.Name }}-filebot.{{ .Values.dns_domain }}`) && PathPrefix(`/task`)
       kind: Rule
       services:
         - name: filebot

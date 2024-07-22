@@ -17,7 +17,7 @@ data:
     * 🧠 Stream your ElfHosted-managed media from [ElfStorage](https://store.elfhosted.com/product/elfstorage) via Stremio
     * 🤯 [Mount any rclone-compatible storage](https://store.elfhosted.com/product-category/storage) (*Dropbox, Google Drive, SSH, SMB, etc*), expose it via [WebDAV](https://store.elfhosted.com/product/webdav-access-plus), and stream it with Stremio!
 
-  ADDON_ID: {{ .Release.Name }}-davio.elfhosted.com  
+  ADDON_ID: {{ .Release.Name }}-davio.{{ .Values.dns_domain }}  
   ADDON_NAME: {{ .Release.Name }} ElfHosted Davio |
   ADDON_ICON: https://elfhosted.com/images/davio.png
 {{ end }}

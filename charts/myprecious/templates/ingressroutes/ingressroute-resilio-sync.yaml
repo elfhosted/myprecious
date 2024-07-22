@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-resilio-sync.elfhosted.com
+  name: {{ .Release.Name }}-resilio-sync.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-resilio-sync.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-resilio-sync.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: resilio-sync

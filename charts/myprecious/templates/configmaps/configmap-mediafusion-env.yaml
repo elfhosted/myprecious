@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: mediafusion-env
 data:
-  HOST_URL: https://{{ .Release.Name }}-mediafusion.elfhosted.com
+  HOST_URL: https://{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}
   ENABLE_RATE_LIMIT: "false"
   PROWLARR_IMMEDIATE_MAX_PROCESS: "3"
   PROWLARR_SEARCH_INTERVAL_HOUR: "24"
@@ -15,5 +15,5 @@ data:
   prowlarr_immediate_max_process_time: "0"
   validate_m3u8_urls_liveness: "true"
   disable_all_scheduler: "true"
-  poster_host_url: https://mediafusion.elfhosted.com
+  poster_host_url: https://mediafusion.{{ .Values.dns_domain }}
 {{ end }}

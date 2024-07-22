@@ -10,7 +10,7 @@ data:
     MY_NODE_IP=$(wget -qO- ipinfo.io/ip)
 
     # Does a DNS entry exist for my node?
-    cfcli find $MY_NODE_NAME | grep $MY_NODE_NAME.elfhosted.com
+    cfcli find $MY_NODE_NAME | grep $MY_NODE_NAME.{{ .Values.dns_domain }}
 
     if [[ $? -eq 0 ]]
     then
@@ -51,11 +51,11 @@ data:
     if [[ $? -eq 0 ]]
     then
       # A record exists, so update it
-      cfcli edit -t CNAME $MY_NAME $MY_NODE_NAME.elfhosted.com
+      cfcli edit -t CNAME $MY_NAME $MY_NODE_NAME.{{ .Values.dns_domain }}
 
     else
       # No record exists, so create it
-      cfcli add -t CNAME $MY_NAME $MY_NODE_NAME.elfhosted.com
+      cfcli add -t CNAME $MY_NAME $MY_NODE_NAME.{{ .Values.dns_domain }}
     fi
 
     # Enable proxying if we're not doing a custom URL (because of cloudflare cross-tenant rules)
@@ -76,7 +76,7 @@ data:
         ;;
       {{ end }}
       *)
-        cfcli disable $MY_NAME $MY_NODE_NAME.elfhosted.com # CHANGED on 13 May 2024
+        cfcli disable $MY_NAME $MY_NODE_NAME.{{ .Values.dns_domain }} # CHANGED on 13 May 2024
         ;;
     esac
 
@@ -116,7 +116,7 @@ data:
         if [[ $? -eq 0 ]]
         then
           # A record exists, so update it
-          cfcli rm -t CNAME $MY_NAME $MY_NODE_NAME.elfhosted.com
+          cfcli rm -t CNAME $MY_NAME $MY_NODE_NAME.{{ .Values.dns_domain }}
         fi
     }
 

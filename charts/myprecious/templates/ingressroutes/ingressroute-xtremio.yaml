@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-xtremio.elfhosted.com
+  name: {{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-xtremio.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: xtremio
@@ -14,7 +14,7 @@ spec:
       middlewares:
         - name: chain-hosted-stremio-addon
           namespace: traefik                 
-    - match: Host(`{{ .Release.Name }}-xtremio.elfhosted.com`) && PathPrefix(`/configure/`)
+    - match: Host(`{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}`) && PathPrefix(`/configure/`)
       kind: Rule
       services:
         - name: xtremio

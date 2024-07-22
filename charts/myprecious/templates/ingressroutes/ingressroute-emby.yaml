@@ -2,16 +2,16 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-emby.elfhosted.com
+  name: {{ .Release.Name }}-emby.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-emby.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-emby.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: emby
           kind: Service
           port: 8096
-    - match: Host(`{{ .Release.Name }}-emby.elfhosted.com`) && PathPrefix(`/speed`)
+    - match: Host(`{{ .Release.Name }}-emby.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
       kind: Rule
       services:
         - name: emby

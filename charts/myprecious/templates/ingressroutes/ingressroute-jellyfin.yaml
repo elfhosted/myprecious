@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-jellyfin.elfhosted.com
+  name: {{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-jellyfin.elfhosted.com`) && Path(`/System/Info/Public`)
+    - match: Host(`{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}`) && Path(`/System/Info/Public`)
       kind: Rule
       services:
         - name: jellyfin
@@ -14,7 +14,7 @@ spec:
       middlewares:
         - name: error-pages
           namespace: traefik  
-    - match: Host(`{{ .Release.Name }}-jellyfin.elfhosted.com`) && PathPrefix(`/speed`)
+    - match: Host(`{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
       kind: Rule
       services:
         - name: jellyfin
@@ -25,7 +25,7 @@ spec:
           namespace: traefik
         - name: buffer-2gb
           namespace: traefik          
-    - match: Host(`{{ .Release.Name }}-jellyfin.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: jellyfin

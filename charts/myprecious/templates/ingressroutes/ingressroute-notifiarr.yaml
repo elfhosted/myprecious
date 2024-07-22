@@ -2,22 +2,22 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-notifiarr.elfhosted.com
+  name: {{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-notifiarr.elfhosted.com`) && PathPrefix(`/api/`)
+    - match: Host(`{{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}`) && PathPrefix(`/api/`)
       kind: Rule
       services:
         - name: notifiarr
           kind: Service
           port: 5454      
-    - match: Host(`{{ .Release.Name }}-notifiarr.elfhosted.com`) && PathPrefix(`/plex/`)
+    - match: Host(`{{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}`) && PathPrefix(`/plex/`)
       kind: Rule
       services:
         - name: notifiarr
           kind: Service
           port: 5454      
-    - match: Host(`{{ .Release.Name }}-notifiarr.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: notifiarr

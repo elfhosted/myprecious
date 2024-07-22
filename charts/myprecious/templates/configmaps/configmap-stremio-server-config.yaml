@@ -26,11 +26,11 @@ data:
         "btMinPeersForStable": 5
         {{ end }}
         {{ if .Values.stremioserver.enabled }}
-        "remoteHttps": "{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.elfhosted.com",
+        "remoteHttps": "{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}",
         {{ else if .Values.stremioserverpia.enabled }}
-        "remoteHttps": "{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.elfhosted.com",
+        "remoteHttps": "{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}",
         {{ else if .Values.stremioservergluetun.enabled }}
-        "remoteHttps": "{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.elfhosted.com",
+        "remoteHttps": "{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}",
         {{ end }}
         "localAddonEnabled": false,
         "transcodeHorsepower": 0.75,

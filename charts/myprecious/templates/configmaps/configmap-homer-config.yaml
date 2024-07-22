@@ -23,12 +23,12 @@ data:
     # # disabled this until migrations are done - remove the next 2 lines to restore
 
     #   # Once for all of /config...
-    #   # tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
+    #   # tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
 
     #   for STORAGE_PATH in $(ls /config); do
     #     # And again per-app /config...
     #     # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
-    #     tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
+    #     tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
 
     #     df -Ph /config/${STORAGE_PATH} | sed s/%//g > /www/assets/message/disk_space_${STORAGE_PATH}.txt
     #     PERCENTAGE_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | sed s/%//g | awk '{print $5}' | tail -n1)
@@ -46,7 +46,7 @@ data:
     #         CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
     #         CONFIG_DISK_TOTAL=$DISK_TOTAL
     #         # echo -n "<A HREF='/assets/message/disk-usage-config.html' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='/assets/message/disk-usage-config-${CONFIG_BIGGEST_CONSUMER}.html' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
-    #         echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
+    #         echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
     #       fi
     #     else
     #       EXISTING_USAGE=$PERCENTAGE_USED
@@ -54,7 +54,7 @@ data:
     #       CONFIG_DISK_FREE=$DISK_FREE
     #       CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
     #       CONFIG_DISK_TOTAL=$DISK_TOTAL
-    #       echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
+    #       echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
     #     fi
     #   done
 
@@ -174,7 +174,7 @@ data:
     {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgplus.enabled .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenplus.enabled }}
     # Optional message
     message:
-      url: https://{{ .Release.Name }}.elfhosted.com/assets/message/message.json
+      url: https://{{ .Release.Name }}.{{ .Values.dns_domain }}/assets/message/message.json
       # mapping:
       #   content: 'message'
       #   style: 'style'
@@ -197,12 +197,12 @@ data:
 
       - name: "Health"
         icon: "fas fa-heartbeat"
-        url: "https://{{ .Release.Name }}-health.elfhosted.com"
+        url: "https://{{ .Release.Name }}-health.{{ .Values.dns_domain }}"
         target: "_blank" # optional html tag target attribute
 
       - name: "Docs"
         icon: "fas fa-book"
-        url: "https://elfhosted.com"
+        url: "https://{{ .Values.dns_domain }}"
         target: "_blank" # optional html tag target attribute
 
       - name: "Subscription"
@@ -217,7 +217,7 @@ data:
 
       - name: "Logout"
         icon: "fas fa-lock"
-        url: https://{{ .Release.Name }}-auth-me.elfhosted.com/_oauth/logout
+        url: https://{{ .Release.Name }}-auth-me.{{ .Values.dns_domain }}/_oauth/logout
 
     # Services
     # First level array represents a group.
@@ -236,7 +236,7 @@ data:
             subtitle: "Watch Movies/TV"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-jellyfin.elfhosted.com"
+            url: "https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -248,7 +248,7 @@ data:
             subtitle: "Watch Movies/TV"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-plex.elfhosted.com"
+            url: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -260,7 +260,7 @@ data:
             subtitle: "Watch Movies/TV"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-emby.elfhosted.com"
+            url: "https://{{ .Release.Name }}-emby.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -272,7 +272,7 @@ data:
             subtitle: "Listen to Music"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-navidrome.elfhosted.com"
+            url: "https://{{ .Release.Name }}-navidrome.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -284,7 +284,7 @@ data:
             subtitle: "Read Books"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-calibre-web.elfhosted.com"
+            url: "https://{{ .Release.Name }}-calibre-web.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -295,7 +295,7 @@ data:
             # icon: "fab fa-photo-video"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-calibre.elfhosted.com"
+            url: "https://{{ .Release.Name }}-calibre.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -307,7 +307,7 @@ data:
             subtitle: "Read Comics / Books"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-komga.elfhosted.com"
+            url: "https://{{ .Release.Name }}-komga.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -319,7 +319,7 @@ data:
             subtitle: "Read Comics / Books"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-kavita.elfhosted.com"
+            url: "https://{{ .Release.Name }}-kavita.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -331,7 +331,7 @@ data:
             subtitle: "Listen to Books/Podcasts"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-audiobookshelf.elfhosted.com"
+            url: "https://{{ .Release.Name }}-audiobookshelf.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -341,7 +341,7 @@ data:
             subtitle: "Watch IPTV in Stremio"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-xtremio.elfhosted.com"
+            url: "https://{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}     
 
@@ -351,7 +351,7 @@ data:
             subtitle: "Access Jackett via Stremio"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-stremio-jackett.elfhosted.com"
+            url: "https://{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }} 
 
@@ -361,7 +361,7 @@ data:
             subtitle: "Addon with community cache"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-stremio-jackett-community.elfhosted.com"
+            url: "https://{{ .Release.Name }}-stremio-jackett-community.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }} 
 
@@ -371,7 +371,7 @@ data:
             subtitle: "Stremio Addon supporting private trackers"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-jackettio.elfhosted.com"
+            url: "https://{{ .Release.Name }}-jackettio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                     
 
@@ -381,7 +381,7 @@ data:
             subtitle: "Stremio Addon to stream your WebDAV content"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-davio.elfhosted.com"
+            url: "https://{{ .Release.Name }}-davio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                     
 
@@ -391,7 +391,7 @@ data:
             subtitle: "Fast Jackett searches via Stremio"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-annatar.elfhosted.com"
+            url: "https://{{ .Release.Name }}-annatar.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
@@ -407,7 +407,7 @@ data:
             {{ end }}
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-comet.elfhosted.com"
+            url: "https://{{ .Release.Name }}-comet.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                     
 
@@ -417,7 +417,7 @@ data:
             subtitle: "Torrent indexer for Stremio"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-torrentio.elfhosted.com"
+            url: "https://{{ .Release.Name }}-torrentio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}    
 
@@ -427,7 +427,7 @@ data:
             subtitle: "Torrent indexer for Stremio"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-knightcrawler.elfhosted.com"
+            url: "https://{{ .Release.Name }}-knightcrawler.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}     
 
@@ -437,7 +437,7 @@ data:
             subtitle: "Torrent indexer for Stremio (VPN)"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-knightcrawler-vpn.elfhosted.com"
+            url: "https://{{ .Release.Name }}-knightcrawler-vpn.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -447,7 +447,7 @@ data:
             subtitle: "Multi-source AddOn for Stremio"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-mediafusion.elfhosted.com"
+            url: "https://{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
@@ -457,7 +457,7 @@ data:
             subtitle: "Watch HTTP streams with Stremio"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-shluflix.elfhosted.com"
+            url: "https://{{ .Release.Name }}-shluflix.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
@@ -467,7 +467,7 @@ data:
             subtitle: "Watch HTTP streams with Stremio"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-stremify.elfhosted.com"
+            url: "https://{{ .Release.Name }}-stremify.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}            
 
@@ -479,19 +479,19 @@ data:
             tagstyle: "is-danger"
             {{ if not .Values.stremioweb.enabled }}
               {{ if .Values.stremioserver.enabled }}
-            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.elfhosted.com#/"
+            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
-            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.elfhosted.com#/"
+            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioservergluetun.enabled }}
-            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.elfhosted.com#/"
+            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ end }}            
             {{ else }}
               {{ if .Values.stremioserver.enabled }}
-            url: "https://{{ .Release.Name }}-stremio-web.elfhosted.com/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.elfhosted.com#/"
+            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
-            url: "https://{{ .Release.Name }}-stremio-web.elfhosted.com/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.elfhosted.com#/"
+            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioservergluetun.enabled }}
-            url: "https://{{ .Release.Name }}-stremio-web.elfhosted.com/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.elfhosted.com#/"
+            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ end }}            
             {{ end }}
             target: "_blank" # optional html tag target attribute
@@ -503,7 +503,7 @@ data:
             subtitle: "Stremio Web"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-stremio-web.elfhosted.com"
+            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                      
 
@@ -521,7 +521,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-radarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-radarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Radarr"
             apikey: "{{ .Values.radarrexposed.apikey }}"
@@ -539,7 +539,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-radarr4k.elfhosted.com"
+            url: "https://{{ .Release.Name }}-radarr4k.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Radarr"
             apikey: "{{ .Values.radarr4kexposed.apikey }}"
@@ -557,7 +557,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-sonarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-sonarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Sonarr"
             apikey: "{{ .Values.sonarrexposed.apikey }}"
@@ -575,7 +575,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-sonarr4k.elfhosted.com"
+            url: "https://{{ .Release.Name }}-sonarr4k.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Sonarr"
             apikey: "{{ .Values.sonarr4kexposed.apikey }}"
@@ -593,7 +593,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-lidarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-lidarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Lidarr"
             apikey: "{{ .Values.lidarrexposed.apikey }}"
@@ -611,7 +611,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-readarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-readarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Readarr"
             apikey: "{{ .Values.readarrexposed.apikey }}"
@@ -629,7 +629,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-readarraudio.elfhosted.com"
+            url: "https://{{ .Release.Name }}-readarraudio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Readarr"
             apikey: "{{ .Values.readarraudioexposed.apikey }}"
@@ -642,7 +642,7 @@ data:
             subtitle: "Manage Books"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-lazylibrarian.elfhosted.com"
+            url: "https://{{ .Release.Name }}-lazylibrarian.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             {{ end }}
 
@@ -657,7 +657,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-bazarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-bazarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -672,7 +672,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-bazarr4k.elfhosted.com"
+            url: "https://{{ .Release.Name }}-bazarr4k.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -682,7 +682,7 @@ data:
             subtitle: "Manage Comics"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-mylar.elfhosted.com"
+            url: "https://{{ .Release.Name }}-mylar.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -692,7 +692,7 @@ data:
             subtitle: "Manage Media Ratings Posters"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rpdb.elfhosted.com"
+            url: "https://{{ .Release.Name }}-rpdb.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -702,7 +702,7 @@ data:
             subtitle: "Manage Requests"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-ombi.elfhosted.com"
+            url: "https://{{ .Release.Name }}-ombi.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -715,7 +715,7 @@ data:
             {{- if .Values.overseerrcustomdomain.enabled }}
             url: "https://{{ .Values.overseerrcustomdomain.cname }}"
             {{- else }}
-            url: "https://{{ .Release.Name }}-overseerr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}"
             {{- end }}
             target: "_blank" # optional html tag target attribute
           {{ end }}
@@ -729,7 +729,7 @@ data:
             {{- if .Values.jellyseerrcustomdomain.enabled }}
             url: "https://{{ .Values.jellyseerrcustomdomain.cname }}"
             {{- else }}
-            url: "https://{{ .Release.Name }}-jellyseerr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}"
             {{- end }}
             target: "_blank" # optional html tag target attribute
           {{ end }}
@@ -740,7 +740,7 @@ data:
             subtitle: "Manage Requests"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-jfa.elfhosted.com"
+            url: "https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -752,7 +752,7 @@ data:
             subtitle: "Plex Statistics"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-tautulli.elfhosted.com"
+            url: "https://{{ .Release.Name }}-tautulli.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -769,7 +769,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-xteve.elfhosted.com/web/"
+            url: "https://{{ .Release.Name }}-xteve.{{ .Values.dns_domain }}/web/"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -781,7 +781,7 @@ data:
             subtitle: "Live TV Proxy"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-nextpvr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-nextpvr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -793,7 +793,7 @@ data:
             subtitle: "Discord-based notifications"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-notifiarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -805,7 +805,7 @@ data:
             subtitle: "Manage Anime"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-shoko.elfhosted.com"
+            url: "https://{{ .Release.Name }}-shoko.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -817,7 +817,7 @@ data:
             subtitle: "Automate Media Management"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebot.elfhosted.com"
+            url: "https://{{ .Release.Name }}-filebot.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -829,7 +829,7 @@ data:
             subtitle: "Unpack Media"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/unpackerr/"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/unpackerr/"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -841,7 +841,7 @@ data:
             subtitle: "Manage Plex Libraries"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/plexmetamanager/"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/plexmetamanager/"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -853,7 +853,7 @@ data:
             subtitle: "Manage Plex Metadata"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kometa.elfhosted.com"
+            url: "https://{{ .Release.Name }}-kometa.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
@@ -865,7 +865,7 @@ data:
             subtitle: "Configure Autoscan"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/autoscan/"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/autoscan/"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
@@ -875,7 +875,7 @@ data:
             subtitle: "Configure Recyclarr"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/recyclarr/"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/recyclarr/"
             target: "_blank" # optional html tag target attribute
           {{ end }}                    
 
@@ -887,7 +887,7 @@ data:
             subtitle: "Transcode Media"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-tdarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-tdarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -899,7 +899,7 @@ data:
             subtitle: "Sync Plex / Jellyfin with Debrid services"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-plex-debrid.elfhosted.com"
+            url: "https://{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
@@ -909,7 +909,7 @@ data:
             subtitle: "All-in-one Debrid Media Management"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-riven.elfhosted.com"
+            url: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
 
           - name: "Riven (backend)"
@@ -917,7 +917,7 @@ data:
             subtitle: "Geek out over Riven's backend"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-riven-backend.elfhosted.com"
+            url: "https://{{ .Release.Name }}-riven-backend.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                           
 
@@ -935,7 +935,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-nzbget.elfhosted.com"
+            url: "https://{{ .Release.Name }}-nzbget.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -950,7 +950,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-sabnzbd.elfhosted.com"
+            url: "https://{{ .Release.Name }}-sabnzbd.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "SABnzbd"
             apikey: "{{ .Values.sabnzbdexposed.apikey }}"
@@ -969,7 +969,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-prowlarr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "Prowlarr"
             apikey: "{{ .Values.prowlarrexposed.apikey }}"
@@ -982,7 +982,7 @@ data:
             subtitle: "Manage Indexers / Trackers"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-jackett.elfhosted.com"
+            url: "https://{{ .Release.Name }}-jackett.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                             
 
@@ -992,7 +992,7 @@ data:
             subtitle: "Manage Indexers"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-nzbhydra.elfhosted.com"
+            url: "https://{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1002,7 +1002,7 @@ data:
             subtitle: "Manage Torrent Automation"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-autobrr.elfhosted.com"
+            url: "https://{{ .Release.Name }}-autobrr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1017,7 +1017,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-deluge.elfhosted.com"
+            url: "https://{{ .Release.Name }}-deluge.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1032,7 +1032,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-qbittorrent.elfhosted.com"
+            url: "https://{{ .Release.Name }}-qbittorrent.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
             type: "qBittorrent"
             rateInterval: 30000 # Interval for updating the download and upload rates.
@@ -1051,9 +1051,9 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-rutorrent.elfhosted.com"
+            url: "https://{{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-            # xmlrpc: "https://{{ .Release.Name }}-rutorrent.elfhosted.com" # Homer will automatically suffix /RPC2 to this, which we catch in our ingressroute.
+            # xmlrpc: "https://{{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}" # Homer will automatically suffix /RPC2 to this, which we catch in our ingressroute.
             # type: "Rtorrent"
             # rateInterval: 30000 # Interval for updating the download and upload rates.
             # torrentInterval: 60000 # Interval for updating the torrent count.
@@ -1066,7 +1066,7 @@ data:
             subtitle: "Manage Downloads"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-pyload.elfhosted.com"
+            url: "https://{{ .Release.Name }}-pyload.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1076,7 +1076,7 @@ data:
             subtitle: "Download Youtube Videos"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-youtubedl.elfhosted.com"
+            url: "https://{{ .Release.Name }}-youtubedl.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1086,7 +1086,7 @@ data:
             subtitle: "Rapidly Leech"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rapidleech.elfhosted.com"
+            url: "https://{{ .Release.Name }}-rapidleech.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1096,7 +1096,7 @@ data:
             subtitle: "Manage Real Debrid services"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rdtclient.elfhosted.com"
+            url: "https://{{ .Release.Name }}-rdtclient.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1106,7 +1106,7 @@ data:
             subtitle: "Download from AllDebrid"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rdtclient-alldebrid.elfhosted.com"
+            url: "https://{{ .Release.Name }}-rdtclient-alldebrid.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1116,7 +1116,7 @@ data:
             subtitle: "Manage Real Debrid WebDAV proxy"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-zurg.elfhosted.com/http/"
+            url: "https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/"
             target: "_blank" # optional html tag target attribute
           {{ end }}       
 
@@ -1126,7 +1126,7 @@ data:
             subtitle: "Manage AllDebrid via WebDAV"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-alldebrid.elfhosted.com"
+            url: "https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                    
 
@@ -1136,7 +1136,7 @@ data:
             subtitle: "Manage Book Downloads"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-openbooks.elfhosted.com"
+            url: "https://{{ .Release.Name }}-openbooks.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1146,7 +1146,7 @@ data:
             subtitle: "Manage Downloads"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/jdownloader/"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/jdownloader/"
             target: "_blank" # optional html tag target attribute
           {{ end }}      
 
@@ -1156,7 +1156,7 @@ data:
             subtitle: "Manage DC++ Sharing"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-airdcpp.elfhosted.com"
+            url: "https://{{ .Release.Name }}-airdcpp.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
@@ -1173,7 +1173,7 @@ data:
             subtitle: "Manage Files"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
 
           - name: "ElfTerm"
@@ -1181,7 +1181,7 @@ data:
             subtitle: "Enter the ElfTerm.. 🪄"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-elfterm.elfhosted.com"
+            url: "https://{{ .Release.Name }}-elfterm.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute            
 
           - name: "Kubernetes Dashboard"
@@ -1189,7 +1189,7 @@ data:
             subtitle: "Kubernetes Resources"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kubernetes.elfhosted.com"
+            url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
 
           {{ if .Values.privatebin.enabled }}
@@ -1198,7 +1198,7 @@ data:
             subtitle: "Minimalistic pastebin"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-privatebin.elfhosted.com"
+            url: "https://{{ .Release.Name }}-privatebin.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1208,7 +1208,7 @@ data:
             subtitle: "Minimalistic RSS reader"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-miniflux.elfhosted.com"
+            url: "https://{{ .Release.Name }}-miniflux.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1221,7 +1221,7 @@ data:
             {{- if .Values.uptimekumacustomdomain.enabled }}
             url: "https://{{ .Values.uptimekumacustomdomain.cname }}"
             {{- else }}
-            url: "https://{{ .Release.Name }}-uptime-kuma.elfhosted.com"
+            url: "https://{{ .Release.Name }}-uptime-kuma.{{ .Values.dns_domain }}"
             {{- end }}
             target: "_blank" # optional html tag target attribute
           {{ end }}
@@ -1232,7 +1232,7 @@ data:
             subtitle: "Gotify"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-gotify.elfhosted.com"
+            url: "https://{{ .Release.Name }}-gotify.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1242,7 +1242,7 @@ data:
             subtitle: "Collaborate in the Cloud"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-nextcloud.elfhosted.com"
+            url: "https://{{ .Release.Name }}-nextcloud.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1252,7 +1252,7 @@ data:
             subtitle: "Securely sync data"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-seafile.elfhosted.com"
+            url: "https://{{ .Release.Name }}-seafile.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1262,7 +1262,7 @@ data:
             subtitle: "Securely sync data"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-resilio-sync.elfhosted.com"
+            url: "https://{{ .Release.Name }}-resilio-sync.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1272,7 +1272,7 @@ data:
             subtitle: "Securely sync data"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-syncthing.elfhosted.com"
+            url: "https://{{ .Release.Name }}-syncthing.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1282,7 +1282,7 @@ data:
             subtitle: "IRC client"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-thelounge.elfhosted.com"
+            url: "https://{{ .Release.Name }}-thelounge.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1292,7 +1292,7 @@ data:
             subtitle: "Securely manage passwords / secrets"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-vaultwarden.elfhosted.com"
+            url: "https://{{ .Release.Name }}-vaultwarden.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1302,7 +1302,7 @@ data:
             subtitle: "Team group chat"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-mattermost.elfhosted.com"
+            url: "https://{{ .Release.Name }}-mattermost.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1312,7 +1312,7 @@ data:
             subtitle: "Manage Joplin Sync"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-joplin-server.elfhosted.com"
+            url: "https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1322,7 +1322,7 @@ data:
             subtitle: "Beautiful Homepage"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-homepage.elfhosted.com"
+            url: "https://{{ .Release.Name }}-homepage.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1332,7 +1332,7 @@ data:
             subtitle: "Read it Later"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-wallabag.elfhosted.com"
+            url: "https://{{ .Release.Name }}-wallabag.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1342,7 +1342,7 @@ data:
             subtitle: "PostgreSQL Admin"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-pgadmin.elfhosted.com"
+            url: "https://{{ .Release.Name }}-pgadmin.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
@@ -1352,7 +1352,7 @@ data:
             subtitle: "Redis UI"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-redisinsight.elfhosted.com"
+            url: "https://{{ .Release.Name }}-redisinsight.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
@@ -1362,7 +1362,7 @@ data:
             subtitle: "Code Server"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-codeserver.elfhosted.com"
+            url: "https://{{ .Release.Name }}-codeserver.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
@@ -1372,7 +1372,7 @@ data:
             subtitle: "Configure your BYO VPN"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kubernetes.elfhosted.com/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}"
+            url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                     
 
@@ -1385,7 +1385,7 @@ data:
             subtitle: "Rclone remotes"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/rclonebrowser/rclone.conf"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/rclonebrowser/rclone.conf"
             target: "_blank" # optional html tag target attribute
 
           - name: "Rclone UI"
@@ -1394,7 +1394,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ if .Values.rcloneui.enabled }}
-            url: "https://{{ .Release.Name }}-rcloneui.elfhosted.com"
+            url: "https://{{ .Release.Name }}-rcloneui.{{ .Values.dns_domain }}"
             {{ else }}
             url: https://store.elfhosted.com/product/rcloneui
             {{ end }}
@@ -1406,7 +1406,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             {{ if .Values.rclonefm.enabled }}
-            url: "https://{{ .Release.Name }}-rclonefm.elfhosted.com"
+            url: "https://{{ .Release.Name }}-rclonefm.{{ .Values.dns_domain }}"
             {{ else }}
             url: https://store.elfhosted.com/product/rclonefm
             {{ end }}
@@ -1418,7 +1418,7 @@ data:
             subtitle: "WebDAV"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-webdav.elfhosted.com"
+            url: "https://{{ .Release.Name }}-webdav.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1428,7 +1428,7 @@ data:
             subtitle: "WebDAV Plus"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-webdav-plus.elfhosted.com"
+            url: "https://{{ .Release.Name }}-webdav-plus.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 

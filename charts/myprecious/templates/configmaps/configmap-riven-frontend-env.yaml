@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: riven-frontend-env
 data:
-  ORIGIN: "https://{{ .Release.Name }}-riven.elfhosted.com"
+  ORIGIN: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
   BACKEND_URL: http://127.0.0.1:8080
   RIVEN_DATABASE_HOST: sqlite://riven/data/riven.db
 {{ end }}

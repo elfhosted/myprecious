@@ -2,10 +2,10 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-bazarr4k.elfhosted.com
+  name: {{ .Release.Name }}-bazarr4k.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-bazarr4k.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-bazarr4k.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: bazarr4k

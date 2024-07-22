@@ -7,4 +7,4 @@ data:
   SEAFILE_ADMIN_EMAIL: "{{ .Values.traefikforwardauth.whitelist }}"
   ccnet.conf: |
     [General]
-    SERVICE_URL=https://{{ .Release.Name }}-seafile.elfhosted.com
+    SERVICE_URL=https://{{ .Release.Name }}-seafile.{{ .Values.dns_domain }}

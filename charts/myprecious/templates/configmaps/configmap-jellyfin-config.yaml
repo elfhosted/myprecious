@@ -8,6 +8,6 @@ data:
   {{- if .Values.plexcustomdomain.enabled }}
   JELLYFIN_PublishedServerUrl: "https://{{ .Values.jellyfincustomdomain.cname }}"
   {{ else }}
-  JELLYFIN_PublishedServerUrl: "https://{{ .Release.Name }}-jellyfin.elfhosted.com"
+  JELLYFIN_PublishedServerUrl: "https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}"
   {{ end }}
 {{ end }}

@@ -2,11 +2,11 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-prowlarr.elfhosted.com
+  name: {{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}
 spec:
   routes:
     {{ if .Values.prowlarrexposed.enabled }}
-    - match: Host(`{{ .Release.Name }}-prowlarr.elfhosted.com`) && (PathPrefix(`/{something:.*}/api{else:.*}`) || PathPrefix(`/{something:.*}/download{else:.*}`) || PathPrefix(`/api/`))
+    - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`) && (PathPrefix(`/{something:.*}/api{else:.*}`) || PathPrefix(`/{something:.*}/download{else:.*}`) || PathPrefix(`/api/`))
       kind: Rule
       services:
         - name: prowlarr
@@ -17,7 +17,7 @@ spec:
         - name: error-pages
           namespace: traefik
       {{ end }}  
-    - match: Host(`{{ .Release.Name }}-prowlarr.elfhosted.com`)
+    - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
         - name: prowlarr

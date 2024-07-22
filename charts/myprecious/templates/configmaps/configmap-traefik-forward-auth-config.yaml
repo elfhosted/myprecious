@@ -3,10 +3,10 @@ kind: ConfigMap
 metadata:
   name: traefik-forward-auth-config
 data:
-  AUTH_HOST: "{{ .Release.Name }}-auth-me.elfhosted.com"
+  AUTH_HOST: "{{ .Release.Name }}-auth-me.{{ .Values.dns_domain }}"
   LIFETIME: '2764800' # 32 days
   COOKIE_DOMAIN: "elfhosted.com"
-  COOKIE_NAME: "{{ .Release.Name }}-auth-me.elfhosted.com"
+  COOKIE_NAME: "{{ .Release.Name }}-auth-me.{{ .Values.dns_domain }}"
   LOGOUT_REDIRECT: 'https://store.elfhosted.com/my-account/customer-logout/'
   SCOPE: openid email
   WHITELIST: "legolas@elfhosted.com,layezee@elfhosted.com,chris@elfhosted.com,erythro@elfhosted.com,bsm@elfhosted.com,fingerz@elfhosted.com,mxrcy@elfhosted.com,{{ .Values.traefikforwardauth.whitelist }}"
