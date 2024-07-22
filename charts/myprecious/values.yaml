@@ -438,7 +438,7 @@ rclonemountdebridlink: &rclonemountdebridlink
     persistentVolumeClaim:
       claimName: debridlink
   mountPath: /storage/debridlink
-  
+
 # This simplfies the process of adding all the optional mounts to every app
 appmounts: &appmounts
   rclonecustoma: *rclonecustoma
@@ -8808,13 +8808,6 @@ storagehub:
 
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     # this is the old symlinks on HDD
-    storagehub-export:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: storagehub-export
-      mountPath: /export
     # symlinks: *symlinks # these only get mounted on storagehub. Everything else accesses symlinks **through** storagehub
     # samba config 
     # config:
