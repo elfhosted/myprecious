@@ -7,9 +7,9 @@ metadata:
     helm.sh/resource-policy: delete
 spec:
   accessModes:
-  - ReadWriteMany
+  - {{ .Values.storageclass.rwx.accessMode }}
   resources:
     requests:
       storage: 20Gi
-  storageClassName: {{ .Values.storageclass.rwx }}
+  storageClassName: {{ .Values.storageclass.rwx.name }}
 {{ end }}

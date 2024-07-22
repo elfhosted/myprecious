@@ -6,8 +6,8 @@ metadata:
     helm.sh/resource-policy: keep
 spec:
   accessModes:
-  - ReadWriteMany
+  - {{ .Values.storageclass.rwx.accessMode }}
   resources:
     requests:
       storage: 2Gi
-  storageClassName: {{ .Values.storageclass.rwx }}
+  storageClassName: {{ .Values.storageclass.rwx.name }}

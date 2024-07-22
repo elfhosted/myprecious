@@ -11,8 +11,12 @@ volsync:
 
 # Set these to the default if nothing else is set
 storageclass:
-  rwx: ceph-filesystem-ssd
-  rwo: ceph-block-ssd
+  rwx: 
+    name: ceph-filesystem-ssd
+    accessMode: ReadWriteMany
+  rwo: 
+    name: ceph-block-ssd
+    accessMode: ReadWriteOnce
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:b95fa963587172989389ae57ac4292b0a3c630b542c66d827ccac23fc7a418b3
 
@@ -62,7 +66,7 @@ volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
         labels:
           velero.io/exclude-from-backup: "true"       
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "{{ .Values.storageclass.rwo.accessMode }}" ]
         storageClassName: "topolvm-provisioner-thin"
         resources:
           requests:
@@ -75,7 +79,7 @@ volumespec_ephemeral_volume_100g: &volumespec_ephemeral_volume_100g
         labels:
           velero.io/exclude-from-backup: "true"       
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "{{ .Values.storageclass.rwo.accessMode }}" ]
         storageClassName: "topolvm-provisioner-thin"
         resources:
           requests:
@@ -88,7 +92,7 @@ volumespec_ephemeral_volume_1g: &volumespec_ephemeral_volume_1g
         labels:
           velero.io/exclude-from-backup: "true"       
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "{{ .Values.storageclass.rwo.accessMode }}" ]
         storageClassName: "topolvm-provisioner-thin"
         resources:
           requests:
@@ -101,7 +105,7 @@ volumespec_ephemeral_volume_10g: &volumespec_ephemeral_volume_10g
         labels:
           velero.io/exclude-from-backup: "true"       
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "{{ .Values.storageclass.rwo.accessMode }}" ]
         storageClassName: "topolvm-provisioner-thin"
         resources:
           requests:
@@ -114,7 +118,7 @@ volumespec_ephemeral_volume_50g: &volumespec_ephemeral_volume_50g
         labels:
           velero.io/exclude-from-backup: "true"       
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "{{ .Values.storageclass.rwo.accessMode }}" ]
         storageClassName: "topolvm-provisioner-thin"
         resources:
           requests:
@@ -127,7 +131,7 @@ volumespec_ephemeral_volume_200g: &volumespec_ephemeral_volume_200g
         labels:
           velero.io/exclude-from-backup: "true"       
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "{{ .Values.storageclass.rwo.accessMode }}" ]
         storageClassName: "topolvm-provisioner-thin"
         resources:
           requests:
@@ -140,7 +144,7 @@ volumespec_ephemeral_volume_500g: &volumespec_ephemeral_volume_500g
         labels:
           velero.io/exclude-from-backup: "true"       
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: [ "{{ .Values.storageclass.rwo.accessMode }}" ]
         storageClassName: "topolvm-provisioner-thin"
         resources:
           requests:
@@ -9120,7 +9124,7 @@ mattermost:
       ## Default: volume.alpha.kubernetes.io/storage-class: default
       ##
       # storageClass:
-      accessMode: ReadWriteOnce
+      accessMode: {{ .Values.storageclass.rwo.accessMode }}
       existingClaim: "config-mattermost-ssd"
       subPath: data
     plugins:

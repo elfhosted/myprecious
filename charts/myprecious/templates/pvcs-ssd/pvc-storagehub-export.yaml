@@ -6,8 +6,8 @@ metadata:
     helm.sh/resource-policy: delete
 spec:
   accessModes:
-  - ReadWriteOnce
+  - {{ .Values.storageclass.rwo.accessMode }}
   resources:
     requests:
       storage: 2Gi
-  storageClassName: {{ .Values.storageclass.rwo }}
+  storageClassName: {{ .Values.storageclass.rwo.name }}

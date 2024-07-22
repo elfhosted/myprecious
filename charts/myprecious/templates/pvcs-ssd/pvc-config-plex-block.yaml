@@ -7,9 +7,9 @@ metadata:
     helm.sh/resource-policy: keep
 spec:
   accessModes:
-  - ReadWriteOnce
+  - {{ .Values.storageclass.rwo.accessMode }}
   resources:
     requests:
       storage: 100Gi
-  storageClassName: {{ .Values.storageclass.rwo }}
+  storageClassName: {{ .Values.storageclass.rwo.name }}
 {{ end }}
