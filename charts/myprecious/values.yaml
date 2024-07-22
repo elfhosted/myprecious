@@ -11364,6 +11364,24 @@ mediafusion:
       type: RuntimeDefault
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
+  affinity:
+    podAffinity:
+      # prefer to be located with zurg, if tolerations permit
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"     
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists               
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists  
   persistence:
     tmp: *tmp
   resources:
