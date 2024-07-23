@@ -1,3 +1,4 @@
+{{ if .Values.autoscan.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -11,3 +12,4 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: {{ .Values.storageclass.rwx.name }}
+{{ end }}
