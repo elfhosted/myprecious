@@ -50,9 +50,9 @@ data:
         "Trakt ignore user": "",
         "Local ignore list path": "",
         "Jellyfin API Key": "",
-        "Jellyfin server address": "http://localhost:8096",
+        "Jellyfin server address": "http://jellyfin:8096",
         "Sources": [
-            "torrentio"
+            "torrentio","zilean"
         ],
         "Versions": [
             [
@@ -284,6 +284,7 @@ data:
         "Nyaa sleep time": "5",
         "Nyaa proxy": "nyaa.si",
         "Torrentio Scraper Parameters": "https://torrentio.strem.fun/sort=qualitysize|qualityfilter=480p,scr,cam/manifest.json",
+        "Zilean Base URL": "http://zilean.zilean:8181",
         "Debrid Services": [
             "Real Debrid"
         ],
@@ -296,8 +297,9 @@ data:
         "Show Menu on Startup": "false",
         "Debug printing": "false",
         "Log to file": "false",
+        "Watchlist loop interval (sec)": "30",
         "version": [
-            "2.95",
+            "2.96",
             "Settings compatible update",
             []
         ]
