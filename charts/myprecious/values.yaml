@@ -3553,6 +3553,8 @@ filebrowser:
   image:
     repository: ghcr.io/elfhosted/filebrowser
     tag: 2.23.0@sha256:d1b438092e97ba329a8a53280f316697ae4268a61839d85c7aa812719c1960bd
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   envFrom:
   - configMapRef:
       name: filebrowser-env      
