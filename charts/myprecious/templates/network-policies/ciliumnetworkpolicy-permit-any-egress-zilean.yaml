@@ -1,12 +1,9 @@
-{{ if .Values.mediafusion.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-mediafusion-egress-zilean"
+  name: "permit-any-egress-zilean"
 spec:
-  endpointSelector:
-    matchLabels:
-      app.kubernetes.io/name: mediafusion
+  endpointSelector: {}
   egress:
   - toEndpoints:
     - matchLabels:
@@ -16,4 +13,3 @@ spec:
       - ports:
         - port: '8181'
           protocol: TCP
-{{ end }}
