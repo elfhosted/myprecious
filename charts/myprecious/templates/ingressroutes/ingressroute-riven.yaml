@@ -15,4 +15,14 @@ spec:
         - name: {{ .Release.Name }}-traefik-forward-auth
         - name: error-pages
           namespace: traefik
+    - match: Host(`{{ .Release.Name }}-riven.{{ .Values.dns_domain }}`) && PathPrefix(`/stats`)
+      kind: Rule
+      services:
+        - name: riven
+          kind: Service
+          port: 8080
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
 {{ end }}
