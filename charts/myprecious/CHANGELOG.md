@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.68.0](https://github.com/elfhosted/myprecious/compare/v1.67.0...v1.68.0) (2024-07-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.21.0 ([5f0924a](https://github.com/elfhosted/myprecious/commit/5f0924a8c4c599236330cd8d6a21fc52e8a3d8c6))
+* **app:** update ghcr.io/elfhosted/ombi docker tag to v4.44.1 ([6fa4e1b](https://github.com/elfhosted/myprecious/commit/6fa4e1b788cdee967725440dd3d140357cb0dceb))
+
+
+### Bug Fixes
+
+* allow editing of elfbot-riven by ranger/hobbit users again! ([b0e9965](https://github.com/elfhosted/myprecious/commit/b0e9965afba73f3bddbdaabb3548275236347c1a))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 3650f4c ([df8837f](https://github.com/elfhosted/myprecious/commit/df8837f2565c70f42812727670c3057b1d307db2))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to c034ee6 ([fb6ad32](https://github.com/elfhosted/myprecious/commit/fb6ad324bd2e971b794386405f2e7d861a5237a0))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 7b35af4 ([32d8e21](https://github.com/elfhosted/myprecious/commit/32d8e2143bed0ee30de6d5f89ba77ad92d9bedac))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 7c33d0f ([2d3e808](https://github.com/elfhosted/myprecious/commit/2d3e808898921612250ce2675bef879a6b966484))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 05f6c82 ([3062968](https://github.com/elfhosted/myprecious/commit/306296812eb9c988090ce5b322132719dbd15252))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to 4df1a2d ([7f59144](https://github.com/elfhosted/myprecious/commit/7f591442c874b40ac3be52ba7329cfdb3136cb3c))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to cab559f ([957f49f](https://github.com/elfhosted/myprecious/commit/957f49fdf86ed1b8c1b7a07ebe7d1d484e1a6e24))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to efb6702 ([002794b](https://github.com/elfhosted/myprecious/commit/002794b1ee00afe20ee7b03b4b75e380a507aaaa))
+* **app:** update ghcr.io/elfhosted/riven:rolling docker digest to f506a5d ([17e868f](https://github.com/elfhosted/myprecious/commit/17e868f9b01035550d78e67c3f4b40a67b8b32f3))
+* update plex-debrid defaults for zilean, watchlist interval ([7d55c13](https://github.com/elfhosted/myprecious/commit/7d55c13a1ae7e76c18a563ed8350b1c051b1d624))
+
 ## [1.67.0](https://github.com/elfhosted/myprecious/compare/v1.66.0...v1.67.0) (2024-07-22)
 
 
