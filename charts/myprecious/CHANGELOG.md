@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.69.1](https://github.com/elfhosted/myprecious/compare/v1.69.0...v1.69.1) (2024-07-24)
+
+
+### Bug Fixes
+
+* bad riven v0.8.2 build ([b3c9863](https://github.com/elfhosted/myprecious/commit/b3c986301cc04e473a54b7738b3dcba93a1501c3))
+
 ## [1.69.0](https://github.com/elfhosted/myprecious/compare/v1.68.0...v1.69.0) (2024-07-24)
 
 
