@@ -8723,6 +8723,7 @@ webdav: &webdav
   - configMapRef:
       name: webdav-config
   persistence:
+    <<: *config_mounts
     <<: *appmounts
     elfbot:
       enabled: "true"
