@@ -10391,7 +10391,7 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config      
-        subPath: database    
+        subPath: postgresql/database
     backup-database:
       image: *tooling_image
       env:
@@ -10418,7 +10418,7 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /backup
         name: config      
-        subPath: database/backups
+        subPath: postgresql/backups
 
 rivenplus:
   <<: *app_riven
