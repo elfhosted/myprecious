@@ -9,6 +9,9 @@ spec:
     - matchLabels:
         app.kubernetes.io/name: comet
         k8s:io.kubernetes.pod.namespace: comet
+    - matchLabels:
+        app.kubernetes.io/name: comet-riven
+        k8s:io.kubernetes.pod.namespace: comet
     toPorts:
       - ports:
         - port: '8000'
