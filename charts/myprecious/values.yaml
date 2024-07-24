@@ -10416,9 +10416,9 @@ riven: &app_riven
       image: *tooling_image
       env:
         - name: POSTGRES_PASSWORD
-          value: riven
+          value: postgres
         - name: POSTGRES_DATABASE
-          value: riven
+          value: postgres
         - name: POSTGRES_USER
           value: riven
       command:
