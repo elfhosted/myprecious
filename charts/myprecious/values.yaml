@@ -10301,7 +10301,7 @@ riven: &app_riven
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven,riven-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven,riven-env"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
