@@ -10354,6 +10354,26 @@ riven: &app_riven
           optional: true
   initContainers:
     bootstrap: *bootstrap
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # make symlink directories if they don't exist, to make onboarding simpler
+        mkdir -p /config/postgresql/database
+        mkdir -p /config/postgresql/backups
+        chown elfie:elfie /config/postgresql -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault      
     setup:
       image: *tooling_image
       command:
