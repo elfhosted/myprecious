@@ -10297,7 +10297,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: rolling@sha256:4df1a2ddd40f837378685250c5f586af1337271526c9606ba40eaa7ebcb88834
+    tag: v0.8.2@sha256:a2a3d7684c1697090e59417ffb6669692cb50936cb8ce50326c275933b494f26
   priorityClassName: tenant-normal
   controller:
     annotations:
