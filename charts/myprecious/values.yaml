@@ -4733,7 +4733,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:0066a01413424f0aa26cbaeee49b2b6c6525868c672d135a71c171cdaa4bf36a
+    tag: rolling@sha256:9f773870a4a767541fca41bf99af843f0c36dec79ba2d0fe4e8d350ab08376ff
   enabled: false
   controller:
     annotations:
@@ -11120,7 +11120,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.21.0@sha256:6abab4ce0a82dbfffafed47fc3939e700595ee8fa05217e26a5bf408e1268f04
+    tag: v1.21.0@sha256:c8444e8b634abffec72328ceb6166c022739f3e2a51fba80b3b9b2eef1dc83e3
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
