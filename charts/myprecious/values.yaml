@@ -4966,7 +4966,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.15.0@sha256:8db829132ee053bfdb0fd5835c25d357af396048ea2d4666ca1e21a715a3b45e
+    tag: 7.15.0@sha256:9d769fe402690da7f3ca750a925859ef99b4e5bec86d4739f87c7cd43e18a246
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10391,7 +10391,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.2.2@sha256:e449ab58738e85bceb4e2b7088ca8ac38df1a3a1cba5cf960c997082e173425b
+      image: ghcr.io/elfhosted/riven-frontend:v0.2.5@sha256:65666274242280a2419ea338a46d201294b0c035ac81baac8cfb9de41e6d508b
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11180,7 +11180,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.21.0@sha256:c8444e8b634abffec72328ceb6166c022739f3e2a51fba80b3b9b2eef1dc83e3
+    tag: v1.21.1@sha256:d5f5d987d2c922f50286252cd21636389559109d5adc87f304d0554aeaa248a7
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
