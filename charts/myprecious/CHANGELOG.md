@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.69.0](https://github.com/elfhosted/myprecious/compare/v1.68.0...v1.69.0) (2024-07-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.21.1 ([679b339](https://github.com/elfhosted/myprecious/commit/679b3393dae223b757484a36ea1b55ceafca91fa))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.21.2 ([809e41a](https://github.com/elfhosted/myprecious/commit/809e41a7be2a5e008fc8a4a91e2da4d33135f8f7))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.2.5 ([8aaea77](https://github.com/elfhosted/myprecious/commit/8aaea77f787ef09d1c0b602e7fd7500ee12d2388))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet:v1.21.0 docker digest to c8444e8 ([0ba1873](https://github.com/elfhosted/myprecious/commit/0ba18739509ff9154059c8365de95db1461d3a69))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 9f77387 ([99a9060](https://github.com/elfhosted/myprecious/commit/99a9060287bc1f51c3482fecdddae1459ed1e06f))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 27d315e ([b1eed0b](https://github.com/elfhosted/myprecious/commit/b1eed0b5b151e067115c9fcc995103c13977b23b))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 6aefc87 ([cf7c0f0](https://github.com/elfhosted/myprecious/commit/cf7c0f07989e790790d7522fc0c67bb69f9f2ed1))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 04983e8 ([5b93737](https://github.com/elfhosted/myprecious/commit/5b93737944111d5642b1c5973751b059dd378fed))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 0d47a49 ([fea73d7](https://github.com/elfhosted/myprecious/commit/fea73d7942e0dd1785ae13ab02f9f2ccbaf6d424))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to 1e6ca97 ([491d084](https://github.com/elfhosted/myprecious/commit/491d08421badafb17d920386d3e8f8f963b32937))
+* **app:** update ghcr.io/elfhosted/riven-frontend:rolling docker digest to e449ab5 ([025a70d](https://github.com/elfhosted/myprecious/commit/025a70d93d864407395527aa96baa6587d7906e4))
+* **app:** update quay.io/linuxserver.io/calibre:7.15.0 docker digest to 9d769fe ([6c454a0](https://github.com/elfhosted/myprecious/commit/6c454a05458ebfcb5dcef100b7f8e388d0ea4df5))
+* don't deploy PVC for autoscan unless enabled ([f29b2ec](https://github.com/elfhosted/myprecious/commit/f29b2ece431826bdefcf7a4d2fc5f5e8a4e78d0c))
+* rate-limit filebrowser to 5Mbit to prevent accidental video streaming through cloudflare ([d9781c6](https://github.com/elfhosted/myprecious/commit/d9781c68479d9319c4c655c74efb877aacf5a809))
+* switch riven-frontend to versioned releases ([d0747e8](https://github.com/elfhosted/myprecious/commit/d0747e837738c59c44abd80a3042bc1185461bc9))
+* update Riven to v0.8.2 ([b62955e](https://github.com/elfhosted/myprecious/commit/b62955e7a3decee318c67b6e35b917ab8f4f9c7d))
+
 ## [1.68.0](https://github.com/elfhosted/myprecious/compare/v1.67.0...v1.68.0) (2024-07-23)
 
 
