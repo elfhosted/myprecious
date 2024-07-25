@@ -4251,7 +4251,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:d1b438092e97ba329a8a53280f316697ae4268a61839d85c7aa812719c1960bd
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:34f20ab897f26d59f915298c496540f467e50c5e54a1309f80dc331ddea794ca
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -5088,7 +5088,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.8.1892@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
+    tag: 4.0.8.1929@sha256:4f3aa2143fe302379ab2dea238e58d8eaef27c9c0303651b6c65632408cb9b89
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5243,7 +5243,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.8.1892@sha256:6f2cff3e0e045e9ead92a82ad28874b0b9bc9b4634eafd27081c16bb050f627e
+    tag: 4.0.8.1929@sha256:4f3aa2143fe302379ab2dea238e58d8eaef27c9c0303651b6c65632408cb9b89
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10340,7 +10340,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.8.2@sha256:4e896cb20e30e493bce0e7c9a29e9e2d12cb6f5b3af479bdd652b00858ca1a5d
+    tag: v0.8.4@sha256:6999cd3d27640da7d604cae0fe437c8dadb4dc963f56e2a37958f03f8501c1dc
   priorityClassName: tenant-normal
   controller:
     annotations:

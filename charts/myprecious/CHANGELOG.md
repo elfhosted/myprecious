@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.70.0](https://github.com/elfhosted/myprecious/compare/v1.69.1...v1.70.0) (2024-07-25)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.22.0 ([6a77a0e](https://github.com/elfhosted/myprecious/commit/6a77a0e9b68dda4f94fa8f12cb6f5b1c5943dd0a))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.23.1 ([ca8ccb0](https://github.com/elfhosted/myprecious/commit/ca8ccb03907d2fc19694948f25b6fdb1d12f1bba))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.8.3 ([63ab3e2](https://github.com/elfhosted/myprecious/commit/63ab3e22e28796306fd384b623344f99973644ac))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.8.4 ([c1a5e57](https://github.com/elfhosted/myprecious/commit/c1a5e577e99a2d92583f75145337417ed40a1d9c))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.1929 ([cb04510](https://github.com/elfhosted/myprecious/commit/cb04510d3c25f7c4c94f845047472e5f18594288))
+* expose config volumes to webdav ([0632866](https://github.com/elfhosted/myprecious/commit/0632866487102f544a1759925a3cef77ad474c8d))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to 34f20ab ([ae779f8](https://github.com/elfhosted/myprecious/commit/ae779f8b8c686125d4531cca874febda2adbc50d))
+* **app:** update ghcr.io/elfhosted/riven:v0.8.2 docker digest to 289f964 ([aaf6ec7](https://github.com/elfhosted/myprecious/commit/aaf6ec73ef39c75f0254c668a8f1adfee0fb46b7))
+* **app:** update ghcr.io/elfhosted/riven:v0.8.2 docker digest to 4e896cb ([269bf56](https://github.com/elfhosted/myprecious/commit/269bf5616c29d1204038cc099d4607bfeaf7d3d0))
+* **app:** update ghcr.io/elfhosted/riven:v0.8.2 docker digest to 700d558 ([c549724](https://github.com/elfhosted/myprecious/commit/c54972467ed33d83f670fbeb79222be9ad81012a))
+* rate-limit riven towards comet ([1248d91](https://github.com/elfhosted/myprecious/commit/1248d91bf10988c505eaa8a739d85e16f02776d9))
+
 ## [1.69.1](https://github.com/elfhosted/myprecious/compare/v1.69.0...v1.69.1) (2024-07-24)
 
 
