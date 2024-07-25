@@ -12,6 +12,8 @@ spec:
     copyMethod: Snapshot
     cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
     cacheAccessModes:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
