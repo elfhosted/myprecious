@@ -12,7 +12,7 @@ data:
   XDG_DATA_HOME: "/riven/data"
   POETRY_CACHE_DIR: "/tmp/.cache/pypoetry"
   RIVEN_DATABASE_HOST: postgresql+psycopg2://postgres:postgres@localhost/riven
-  RIVEN_FORCE_ENV: 'true' # allow users to override values from env vars
+  RIVEN_FORCE_ENV: 'false' # allow users to override values from env vars
 
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
   RIVEN_SYMLINK_LIBRARY_PATH: /storage/symlinks
