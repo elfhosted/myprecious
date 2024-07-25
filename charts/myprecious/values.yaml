@@ -443,7 +443,7 @@ rclonemountdebridlink: &rclonemountdebridlink
   mountPath: /storage/debridlink
 
 # This simplfies the process of adding all the optional mounts to every app
-appmounts: &appmounts
+storagemounts: &storagemounts
   rclonecustoma: *rclonecustoma
   rclonea: *rclonea
   rcloneb: *rcloneb
@@ -2274,7 +2274,7 @@ rutorrentgluetun: &rutorrent
     fsGroupChangePolicy: "OnRootMismatch"
 
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     tmp:
       enabled: true
       type: custom
@@ -2542,7 +2542,7 @@ delugegluetun: &deluge
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-deluge,deluge-gluetun-config"
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     tmp:
       enabled: true
       type: custom
@@ -2838,7 +2838,7 @@ qbittorrentgluetun: &qbittorrent
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-qbittorrent,qbittorrent-gluetun-config"
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     tmp:
       enabled: true
       type: custom
@@ -3187,7 +3187,7 @@ nzbget:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-nzbget"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -3274,7 +3274,7 @@ sabnzbd:
 
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -3414,7 +3414,7 @@ tautulli:
 
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -3479,7 +3479,7 @@ radarr: &app_radarr
   - secretRef:
       name: radarr-env      
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -3639,7 +3639,7 @@ radarr4k: &app_radarr4k
   - configMapRef:
       name: radarr4k-env
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -3799,7 +3799,7 @@ ombi:
   sso:
     enabled: true
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -3943,7 +3943,7 @@ bazarr:
   - configMapRef:
       name: bazarr-config     
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4006,7 +4006,7 @@ bazarr4k:
   - configMapRef:
       name: bazarr4k-config     
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4067,7 +4067,7 @@ autobrr:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4175,7 +4175,7 @@ filebrowser:
     name: filebrowser
   automountServiceAccountToken: true
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     <<: *storageconfigmounts
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
@@ -4412,7 +4412,7 @@ uptimekuma:
     operator: Exists
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4469,7 +4469,7 @@ privatebin:
 
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4573,7 +4573,7 @@ nzbhydra:
       enabled: false
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4633,7 +4633,7 @@ calibreweb:
   environment:
     CALIBRE_DBPATH: /config
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4692,7 +4692,7 @@ pyload:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     run: # used for s6-init with non-root
       enabled: true
       type: emptyDir
@@ -4755,7 +4755,7 @@ lazylibrarian:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4815,7 +4815,7 @@ mylar:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-mylar" # Reload the deployment every time the rclones change
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4876,7 +4876,7 @@ komga:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-komga" # Reload the deployment every time the rclones change
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4930,7 +4930,7 @@ kavita:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-kavita" # Reload the deployment every time the rclones change
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -4989,7 +4989,7 @@ calibre:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibre"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5080,7 +5080,7 @@ sonarr: &app_sonarr
   - configMapRef:
       name: sonarr-env     
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5235,7 +5235,7 @@ sonarr4k: &app_sonarr4k
   - configMapRef:
       name: sonarr4k-env     
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5398,7 +5398,7 @@ resiliosync:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5465,7 +5465,7 @@ prowlarr: &app_prowlarr
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-prowlarr"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5598,7 +5598,7 @@ lidarr:
   - configMapRef:
       name: lidarr-config  
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5683,7 +5683,7 @@ navidrome:
     ND_MUSICFOLDER: /storage/elfstorage/music
     ND_DATAFOLDER: /config
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5744,7 +5744,7 @@ readarr:
   - configMapRef:
       name: readarr-config  
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5828,7 +5828,7 @@ readarraudio:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-readarraudio" # Reload the deployment every time the rclones change
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -5925,7 +5925,7 @@ plex: &app_plex
     repository: elfhosted/plex
     tag: 1.40.4.8679-424562606@sha256:f6e16069212cf9758997b9def7de6d6fda90ec0ec4f9c960499e9d46d1299b8a
   persistence:
-    <<: *appmounts    
+    <<: *storagemounts    
     config:
       enabled: true
       type: custom
@@ -6202,7 +6202,7 @@ jellyfin: &app_jellyfin
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyfin" # Reload the deployment every time the rclones change          
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -6405,7 +6405,7 @@ emby: &app_emby
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-emby" # Reload the deployment every time the rclones change
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -6871,7 +6871,7 @@ gotify:
         http:
           port: 8080
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7124,7 +7124,7 @@ seafile:
               sleep 1d
             done
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7185,7 +7185,7 @@ xteve:
         http:
           port: 34400
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7255,7 +7255,7 @@ youtubedl:
         http:
           port: 17442
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7330,7 +7330,7 @@ thelounge:
         http:
           port: 9000
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7434,7 +7434,7 @@ unpackerr:
         http:
           port: 9898 # doesn't matter this doesn,t actually use ports
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7511,7 +7511,7 @@ overseerr:
   sso:
     enabled: true
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7597,7 +7597,7 @@ jellyseerr:
   sso:
     enabled: true
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7685,7 +7685,7 @@ audiobookshelf:
   sso:
     enabled: true
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7777,7 +7777,7 @@ openbooks:
   sso:
     enabled: true
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7840,7 +7840,7 @@ vaultwarden:
       name: elfbot-vaultwarden
       optional: true
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7918,7 +7918,7 @@ notifiarr:
         http:
           port: 5454
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -7993,7 +7993,7 @@ shoko:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -8054,7 +8054,7 @@ filebot:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -8198,7 +8198,7 @@ rpdb:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -8266,7 +8266,7 @@ plexmetamanager:
       name: elfbot-plexmetamanager
       optional: true          
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -8371,7 +8371,7 @@ kometa: &app_kometa
       name: elfbot-kometa
       optional: true          
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -8501,7 +8501,7 @@ rcloneui:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     cache:
       enabled: true
       type: emptyDir
@@ -8596,7 +8596,7 @@ rclonefm:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     cache:
       enabled: true
       type: emptyDir
@@ -8727,6 +8727,7 @@ webdav: &webdav
   - configMapRef:
       name: webdav-config
   persistence:
+    <<: *storagemounts
     <<: *storageconfigmounts
     elfbot:
       enabled: "true"
@@ -9460,7 +9461,7 @@ syncthing:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -9560,7 +9561,7 @@ rdtclient: &app_rdtclient
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -9608,7 +9609,7 @@ rdtclientvpnpia:
   podLabels:
     app.elfhosted.com/name: rdtclient-alldebrid  
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -9961,7 +9962,7 @@ tdarr:
     internalNode: "true"
     nodeName: elfnode
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -10046,7 +10047,7 @@ homepage:
       name: homepage-env
       optional: true      
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -10246,7 +10247,7 @@ autoscan:
         http:
           port: 3030 
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -10341,7 +10342,7 @@ riven: &app_riven
         http:
           port: 3001
   persistence:
-    <<: *appmounts  
+    <<: *storagemounts  
     config:
       enabled: true
       type: custom
@@ -10531,7 +10532,7 @@ airdcpp: &app_airdcpp
     startup:
       enabled: false 
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
@@ -11816,7 +11817,7 @@ recyclarr:
         http:
           port: 9898    
   persistence:
-    <<: *appmounts
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
