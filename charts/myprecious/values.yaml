@@ -4194,10 +4194,15 @@ filebrowser:
     elfterm:
       enabled: true
       type: custom
-      mountPath: /home/elfie
+      mountPath: /home/elfie/.config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-elfterm-ssd    
+          claimName: config-elfterm-ssd 
+    elfterm-state: # so auto-provisioning doesn't break
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi
+      mouthPath: /home/elfie/.local/state            
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
