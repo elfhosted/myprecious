@@ -1081,6 +1081,594 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-rdtclient-alldebrid-ssd   
 
+# And this is for mounting the volumes into `/storage/config/`
+storageconfigmounts: &storageconfigmounts
+  airdcpppia:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/airdcpp/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-airdcpp-ssd
+  airdcppgluetun:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/airdcpp/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-airdcpp-ssd          
+  autobrr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/autobrr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-autobrr-ssd
+  autoscan:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/autoscan/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-autoscan-ssd              
+  audiobookshelf:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/audiobookshelf/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-audiobookshelf-ssd
+  bazarr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/bazarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-bazarr-ssd
+  bazarr4k:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/bazarr4k/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-bazarr4k-ssd
+  calibreweb:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/calibreweb/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-calibreweb-ssd
+  calibre:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/calibre/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-calibre-ssd
+  delugepia:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/deluge/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-deluge-ssd
+  delugegluetun:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/deluge/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-deluge-ssd
+  emby:
+    enabled: "false"
+    subPath: "where-is-my-emby.txt"
+    mountPath: /storage/config/emby/where-is-my-emby.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration    
+  filebot:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/filebot/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-filebot-ssd
+  gotify:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/gotify/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-gotify-ssd                    
+  homepage:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/homepage/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-homepage-ssd
+  homer:
+    enabled: true
+    type: custom
+    mountPath: /storage/config/homer
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-homer-ssd              
+  # jackett:
+  #   enabled: false
+  #   type: custom
+  #   mountPath: /storage/config/jackett/
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-jackett-block # misnamed, I know                           
+  jellyseerr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/jellyseerr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-jellyseerr-ssd
+  kometa:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/kometa/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-kometa    
+  kometaplus:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/kometa/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-kometa    
+  kometahobbit:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/kometa/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-kometa                                  
+  pyload:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/pyload/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-pyload-ssd
+  jdownloader:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/jdownloader/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-jdownloader-ssd
+  jellyfin:
+    enabled: "false"
+    subPath: "where-is-my-jellyfin.txt"
+    mountPath: /storage/config/jellyfin/where-is-my-jellyfin.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration  
+  # plex:
+  #   enabled: true
+  #   type: custom
+  #   mountPath: /storage/config/plex/
+  #   subPath: plex
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: storagehub    
+  plexdebrid:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd
+  plexmetamanager:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/plexmetamanager/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plexmetamanager        
+  joplinserver:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/joplin-server/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-joplinserver-ssd
+  jfa:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/jfa/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-jfa-ssd
+  kavita:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/kavita/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-kavita-ssd
+  komga:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/komga/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-komga-ssd
+  lazylibrarian:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/lazylibrarian/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-lazylibrarian-ssd
+  lidarr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/lidarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-lidarr-ssd
+  mattermost:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/mattermost/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-mattermost-ssd
+  mylar:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/mylar/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-mylar-ssd
+  navidrome:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/navidrome/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-navidrome-ssd
+  nextpvr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/nextpvr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-nextpvr-ssd
+  notifiarr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/notifiarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-notifiarr-ssd
+  nzbget:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/nzbget/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-nzbget-ssd
+  nzbhydra:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/nzbhydra/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-nzbhydra-ssd
+  ombi:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/ombi/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-ombi-ssd
+  openbooks:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/openbooks/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-openbooks-ssd
+  overseerr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/overseerr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-overseerr-ssd
+      
+  privatebin:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/privatebin/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-privatebin-ssd            
+  prowlarr:
+    enabled: "false"
+    subPath: "where-is-my-prowlarr.txt"
+    mountPath: /storage/config/emby/where-is-my-prowlarr.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration    
+  qbittorrentpia:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/qbittorrent/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-qbittorrent-ssd
+  qbittorrentgluetun:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/qbittorrent/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-qbittorrent-ssd
+  radarr:
+    enabled: "false"
+    subPath: "where-is-my-radarr.txt"
+    mountPath: /storage/config/radarr/where-is-my-radarr.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration   
+  radarr4k:
+    enabled: "false"
+    subPath: "where-is-my-radarr4k.txt"
+    mountPath: /storage/config/radarr4k/where-is-my-radarr4k.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration  
+  rapidleech:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rapidleech/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rapidleech-ssd
+  rclonebrowser:
+    enabled: true # this is always on
+    type: custom
+    mountPath: /storage/config/rclonebrowser/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rclonebrowser-ssd
+  readarr:
+    enabled: "false"
+    subPath: "where-is-my-readarr.txt"
+    mountPath: /storage/config/readarr/where-is-my-readarr.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration  
+  readarraudio:
+    enabled: "false"
+    subPath: "where-is-my-readarraudio.txt"
+    mountPath: /storage/config/readarraudio/where-is-my-readarraudio.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration  
+  recyclarr:
+    enabled: true
+    type: custom
+    mountPath: /storage/config/recyclarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-recyclarr-ssd
+  resiliosync:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/resiliosync/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-resiliosync-ssd
+  riven:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/riven/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-riven-ssd  
+  rivenplus:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/riven/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-riven-ssd  
+  rivenhobbit:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/riven/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-riven-ssd                                
+  rpdb:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rpdb/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rpdb-ssd
+  rutorrentpia:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rutorrent/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rutorrent-ssd
+  rutorrentgluetun:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rutorrent/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rutorrent-ssd
+  sabnzbd:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/sabnzbd/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-sabnzbd-ssd
+  seafile:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/seafile/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-seafile
+  shoko:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/shoko/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-shoko-ssd
+  sonarr:
+    enabled: "false"
+    subPath: "where-is-my-sonarr.txt"
+    mountPath: /storage/config/sonarr/where-is-my-sonarr.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration  
+  sonarr4k:
+    enabled: "false"
+    subPath: "where-is-my-sonarr4k.txt"
+    mountPath: /storage/config/sonarr4k/where-is-my-sonarr4k.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration           
+  syncthing:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/syncthing/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-syncthing
+  tautulli:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/tautulli/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-tautulli-ssd
+  tdarr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/tdarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-tdarr-ssd
+  thelounge:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/thelounge/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-thelounge-ssd
+  unpackerr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/unpackerr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-unpackerr-ssd          
+  uptimekuma:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/uptimekuma/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-uptimekuma-ssd          
+  vaultwarden:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/vaultwarden/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-vaultwarden-ssd
+  xteve:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/xteve/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-xteve-ssd
+  youtubedl:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/youtubedl/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-youtubedl-ssd
+  zurg:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/zurg/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-zurg-ssd
+  zurgplus:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/zurg/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-zurg-ssd   
+  zurghobbit:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/zurg/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-zurg-ssd                              
+  rdtclient:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rdtclient/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rdtclient-ssd
+  rdtclientplus:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rdtclient/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rdtclient-ssd      
+  rdtclienthobbit:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rdtclient/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rdtclient-ssd              
+  rdtclientvpnpia:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/rdtclient-alldebrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-rdtclient-alldebrid-ssd   
+        
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
   requests:
@@ -3588,6 +4176,7 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *appmounts
+    <<: *storageconfigmounts
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -3621,592 +4210,7 @@ filebrowser:
       volumeSpec:
         configMap:
           name: recyclarr-config
-    symlinks: *symlinks
-    airdcpppia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/airdcpp/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-airdcpp-ssd
-    airdcppgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/airdcpp/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-airdcpp-ssd          
-    autobrr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/autobrr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-autobrr-ssd
-    autoscan:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/autoscan/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-autoscan-ssd              
-    audiobookshelf:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/audiobookshelf/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-audiobookshelf-ssd
-    bazarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/bazarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-bazarr-ssd
-    bazarr4k:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/bazarr4k/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-bazarr4k-ssd
-    calibreweb:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/calibreweb/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-calibreweb-ssd
-    calibre:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/calibre/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-calibre-ssd
-    delugepia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/deluge/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-deluge-ssd
-    delugegluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/deluge/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-deluge-ssd
-    emby:
-      enabled: "false"
-      subPath: "where-is-my-emby.txt"
-      mountPath: /storage/config/emby/where-is-my-emby.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration    
-    filebot:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/filebot/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-filebot-ssd
-    gotify:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/gotify/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gotify-ssd                    
-    homepage:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/homepage/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-homepage-ssd
-    homer:
-      enabled: true
-      type: custom
-      mountPath: /storage/config/homer
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-homer-ssd              
-    # jackett:
-    #   enabled: false
-    #   type: custom
-    #   mountPath: /storage/config/jackett/
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: config-jackett-block # misnamed, I know                           
-    jellyseerr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jellyseerr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jellyseerr-ssd
-    kometa:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/kometa/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kometa    
-    kometaplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/kometa/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kometa    
-    kometahobbit:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/kometa/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kometa                                  
-    pyload:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/pyload/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-pyload-ssd
-    jdownloader:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jdownloader/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jdownloader-ssd
-    jellyfin:
-      enabled: "false"
-      subPath: "where-is-my-jellyfin.txt"
-      mountPath: /storage/config/jellyfin/where-is-my-jellyfin.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    # plex:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /storage/config/plex/
-    #   subPath: plex
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: storagehub    
-    plexdebrid:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/plex-debrid/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plex-debrid-ssd
-    plexmetamanager:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/plexmetamanager/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plexmetamanager        
-    joplinserver:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/joplin-server/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-joplinserver-ssd
-    jfa:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/jfa/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jfa-ssd
-    kavita:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/kavita/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kavita-ssd
-    komga:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/komga/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-komga-ssd
-    lazylibrarian:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/lazylibrarian/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-lazylibrarian-ssd
-    lidarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/lidarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-lidarr-ssd
-    mattermost:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/mattermost/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-mattermost-ssd
-    mylar:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/mylar/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-mylar-ssd
-    navidrome:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/navidrome/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-navidrome-ssd
-    nextpvr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/nextpvr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-nextpvr-ssd
-    notifiarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/notifiarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-notifiarr-ssd
-    nzbget:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/nzbget/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-nzbget-ssd
-    nzbhydra:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/nzbhydra/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-nzbhydra-ssd
-    ombi:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/ombi/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-ombi-ssd
-    openbooks:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/openbooks/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-openbooks-ssd
-    overseerr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/overseerr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-overseerr-ssd
-        
-    privatebin:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/privatebin/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-privatebin-ssd            
-    prowlarr:
-      enabled: "false"
-      subPath: "where-is-my-prowlarr.txt"
-      mountPath: /storage/config/emby/where-is-my-prowlarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration    
-    qbittorrentpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/qbittorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
-    qbittorrentgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/qbittorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
-    radarr:
-      enabled: "false"
-      subPath: "where-is-my-radarr.txt"
-      mountPath: /storage/config/radarr/where-is-my-radarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration   
-    radarr4k:
-      enabled: "false"
-      subPath: "where-is-my-radarr4k.txt"
-      mountPath: /storage/config/radarr4k/where-is-my-radarr4k.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    rapidleech:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rapidleech/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rapidleech-ssd
-    rclonebrowser:
-      enabled: true # this is always on
-      type: custom
-      mountPath: /storage/config/rclonebrowser/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rclonebrowser-ssd
-    readarr:
-      enabled: "false"
-      subPath: "where-is-my-readarr.txt"
-      mountPath: /storage/config/readarr/where-is-my-readarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    readarraudio:
-      enabled: "false"
-      subPath: "where-is-my-readarraudio.txt"
-      mountPath: /storage/config/readarraudio/where-is-my-readarraudio.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    recyclarr:
-      enabled: true
-      type: custom
-      mountPath: /storage/config/recyclarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-recyclarr-ssd
-    resiliosync:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/resiliosync/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-resiliosync-ssd
-    riven:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd  
-    rivenplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd  
-    rivenhobbit:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/riven/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd                                
-    rpdb:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rpdb/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rpdb-ssd
-    rutorrentpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rutorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
-    rutorrentgluetun:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rutorrent/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
-    sabnzbd:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/sabnzbd/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sabnzbd-ssd
-    seafile:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/seafile/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-seafile
-    shoko:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/shoko/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-shoko-ssd
-    sonarr:
-      enabled: "false"
-      subPath: "where-is-my-sonarr.txt"
-      mountPath: /storage/config/sonarr/where-is-my-sonarr.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration  
-    sonarr4k:
-      enabled: "false"
-      subPath: "where-is-my-sonarr4k.txt"
-      mountPath: /storage/config/sonarr4k/where-is-my-sonarr4k.txt
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: explain-migration           
-    syncthing:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/syncthing/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-syncthing
-    tautulli:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/tautulli/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tautulli-ssd
-    tdarr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/tdarr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tdarr-ssd
-    thelounge:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/thelounge/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-thelounge-ssd
-    unpackerr:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/unpackerr/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-unpackerr-ssd          
-    uptimekuma:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/uptimekuma/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-uptimekuma-ssd          
-    vaultwarden:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/vaultwarden/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-vaultwarden-ssd
-    xteve:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/xteve/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-xteve-ssd
-    youtubedl:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/youtubedl/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-youtubedl-ssd
-    zurg:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/zurg/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd
-    zurgplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/zurg/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd   
-    zurghobbit:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/zurg/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd                              
-    rdtclient:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rdtclient/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-ssd
-    rdtclientplus:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rdtclient/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-ssd      
-    rdtclienthobbit:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rdtclient/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-ssd              
-    rdtclientvpnpia:
-      enabled: false
-      type: custom
-      mountPath: /storage/config/rdtclient-alldebrid/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-alldebrid-ssd               
+    symlinks: *symlinks            
     tmp: *tmp
     # We need one of these per-app. The global section will override the false enablement    
   service:
@@ -8723,8 +8727,7 @@ webdav: &webdav
   - configMapRef:
       name: webdav-config
   persistence:
-    <<: *config_mounts
-    <<: *appmounts
+    <<: *storageconfigmounts
     elfbot:
       enabled: "true"
       type: "custom"
