@@ -14,9 +14,11 @@ storageclass:
   rwx: 
     name: ceph-filesystem-ssd
     accessMode: ReadWriteMany
+    volumeSnapshotClassName: ceph-filesystem
   rwo: 
     name: ceph-block-ssd
     accessMode: ReadWriteOnce
+    volumeSnapshotClassName: ceph-block
 
 # sets the user's base dns domain
 dns_domain: elfhosted.com

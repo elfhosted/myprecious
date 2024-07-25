@@ -18,6 +18,6 @@ spec:
     copyMethod: Snapshot
     cacheCapacity: 20Gi
     cacheStorageClassName: topolvm-provisioner-thin
-    volumeSnapshotClassName: ceph-block
+    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
 {{ end }}
 {{ end }}

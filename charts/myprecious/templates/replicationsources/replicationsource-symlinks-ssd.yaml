@@ -18,5 +18,5 @@ spec:
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:
     - ReadWriteOnce
-    volumeSnapshotClassName: ceph-filesystem
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{ end }}
