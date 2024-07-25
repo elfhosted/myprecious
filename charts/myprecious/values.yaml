@@ -4246,7 +4246,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:d1b438092e97ba329a8a53280f316697ae4268a61839d85c7aa812719c1960bd
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:34f20ab897f26d59f915298c496540f467e50c5e54a1309f80dc331ddea794ca
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
