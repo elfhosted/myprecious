@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config-elfterm-ssd
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  accessModes:
+  - {{ .Values.storageclass.rwx.accessMode }}
+  resources:
+    requests:
+      storage: 100Mi
+  storageClassName: {{ .Values.storageclass.rwx.name }}

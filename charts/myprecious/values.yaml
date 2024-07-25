@@ -572,6 +572,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-deluge-ssd
+  elfterm:
+    enabled: true
+    type: custom
+    mountPath: /config/elfterm
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-elfterm-ssd           
   emby:
     enabled: "false"
     subPath: "where-is-my-emby.txt"
@@ -1160,6 +1167,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-deluge-ssd
+  elfterm:
+    enabled: true
+    type: custom
+    mountPath: /storage/config/elfterm
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-elfterm-ssd          
   emby:
     enabled: "false"
     subPath: "where-is-my-emby.txt"
@@ -4140,7 +4154,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:d1b438092e97ba329a8a53280f316697ae4268a61839d85c7aa812719c1960bd
+    tag: 2.23.0@sha256:34f20ab897f26d59f915298c496540f467e50c5e54a1309f80dc331ddea794ca
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   envFrom:
@@ -4177,6 +4191,13 @@ filebrowser:
   persistence:
     <<: *storagemounts
     <<: *storageconfigmounts
+    elfterm:
+      enabled: true
+      type: custom
+      mountPath: /home/elfie
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-elfterm-ssd    
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -5923,7 +5944,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.40.4.8679-424562606@sha256:f6e16069212cf9758997b9def7de6d6fda90ec0ec4f9c960499e9d46d1299b8a
+    tag: 1.40.4.8679-424562606@sha256:e8801168ebca33f3f183304db406ed6d0a8fe50eca0da4aaca5616ab1a3cc5e9
   persistence:
     <<: *storagemounts    
     config:
