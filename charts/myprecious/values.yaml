@@ -6018,7 +6018,14 @@ plex: &app_plex
       image: ghcr.io/elfhosted/plex:1.40.4.8679-424562606@sha256:e8801168ebca33f3f183304db406ed6d0a8fe50eca0da4aaca5616ab1a3cc5e9
       command: 
       - /usr/local/bin/DBRepair.sh
+      - --sqlite 
+      - /usr/lib/plexmediaserver 
+      - --databases
+      - '/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases'
       - auto
+      volumeMounts:
+      - mountPath: /config
+        name: config      
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
