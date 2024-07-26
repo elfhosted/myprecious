@@ -1,0 +1,18 @@
+{{- if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-comet-egress-tailscale"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: riven
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        k8s:io.kubernetes.pod.namespace: tailscale
+    toPorts:
+      - ports:
+        - port: '80'
+          protocol: TCP
+{{- end }}

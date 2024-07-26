@@ -1,0 +1,18 @@
+{{- if or .Values.mediafusion.enabled .Values.mediafusionplus.enabled .Values.mediafusionhobbit.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-comet-egress-tailscale"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: mediafusion
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        k8s:io.kubernetes.pod.namespace: tailscale
+    toPorts:
+      - ports:
+        - port: '80'
+          protocol: TCP
+{{- end }}
