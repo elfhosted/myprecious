@@ -5,13 +5,13 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := lookup "v1" "PersistentVolumeClaim" "{{ .Release.Namespace }}" "symlinks-ssd" -}}
-  {{- if not $pvc }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "symlinks-ssd" ) -}}
+  {{- if not $pvc -}}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
     name: symlinks-ssd
-  {{- end }}
+  {{- end -}}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}
   resources:
