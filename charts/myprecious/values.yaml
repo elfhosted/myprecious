@@ -6023,13 +6023,20 @@ plex: &app_plex
     update-dns: *update_dns_on_init
     repair-db:
       image: ghcr.io/elfhosted/plex:1.40.4.8679-424562606@sha256:e8801168ebca33f3f183304db406ed6d0a8fe50eca0da4aaca5616ab1a3cc5e9
-      command: 
-      - /usr/local/bin/DBRepair.sh
-      - --sqlite 
-      - /usr/lib/plexmediaserver 
-      - --databases
-      - '/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases'
-      - auto
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        grep -q PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
+          echo "Plex is not claimed yet, no point repairing" && exit 0)
+
+        # If the DB directory exists, then repair 
+        if [ -d "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases" ]; then
+          /usr/local/bin/DBRepair.sh --sqlite /usr/lib/plexmediaserver --databases '/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases' auto          
+        fi
       volumeMounts:
       - mountPath: /config
         name: config      
