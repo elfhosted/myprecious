@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: config-airdcpp-ssd
+  name: rd-config-airdcpp-ssd
 spec:
   trigger:
     manual: runonce

@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: config-riven-ssd
+  name: rd-config-riven-ssd
 spec:
   trigger:
     manual: runonce
