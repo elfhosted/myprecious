@@ -1,22 +1,21 @@
-{{ if .Values.autobrr.enabled }}
+{{ if .Values.bazarr.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
-kind: ReplicationSource
+kind: ReplicationDestination
 metadata:
-  name: config-autobrr-ssd
+  name: config-bazarr-ssd
 spec:
-  sourcePVC: config-autobrr-ssd
   trigger:
-    schedule: "0 9 * * *" # 1h before maintenance
-    manual: tbc
+    manual: runonce
   restic:
-    pruneIntervalDays: 7
-    repository: config-autobrr-ssd-volsync-restic-config
-    retain:
-      daily: 2
+    repository: config-bazarr-ssd-volsync-restic-config
     copyMethod: Snapshot
     cacheCapacity: 1Gi
+    capacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
     cacheAccessModes:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
