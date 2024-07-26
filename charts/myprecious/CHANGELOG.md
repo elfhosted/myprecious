@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.70.1](https://github.com/elfhosted/myprecious/compare/v1.70.0...v1.70.1) (2024-07-26)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to e75446a ([333ae45](https://github.com/elfhosted/myprecious/commit/333ae45cb4c2287a8f3e43b6073760fd291457f7))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 84360ba ([7d7046a](https://github.com/elfhosted/myprecious/commit/7d7046a978b8e370ff7610b7e5bfd1011d193ff2))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 849d7f1 ([bde1f2c](https://github.com/elfhosted/myprecious/commit/bde1f2ccd3dcb3ee4a7715aa0c1b7d7b3ffaa3c3))
+
 ## [1.70.0](https://github.com/elfhosted/myprecious/compare/v1.69.1...v1.70.0) (2024-07-25)
 
 
