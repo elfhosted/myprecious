@@ -11,7 +11,7 @@ spec:
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
-    name: config-plex-block
+    name: rd-config-plex-block
   {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwo.accessMode }}

@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-audiobookshelf-ssd
+  name: rs-config-audiobookshelf-ssd
 spec:
   sourcePVC: config-audiobookshelf-ssd
   trigger:

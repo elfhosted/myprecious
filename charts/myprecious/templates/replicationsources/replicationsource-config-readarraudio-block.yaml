@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-readarraudio-block
+  name: rs-config-readarraudio-block
 spec:
   sourcePVC: config-readarraudio-block
   trigger:

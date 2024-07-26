@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-radarr4k-block
+  name: rs-config-radarr4k-block
 spec:
   # The PVC to be backed up
   sourcePVC: config-radarr4k-block

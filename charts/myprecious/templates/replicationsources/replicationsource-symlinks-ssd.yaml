@@ -2,7 +2,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: symlinks-ssd
+  name: rs-symlinks-ssd
 spec:
   sourcePVC: symlinks-ssd
   trigger:

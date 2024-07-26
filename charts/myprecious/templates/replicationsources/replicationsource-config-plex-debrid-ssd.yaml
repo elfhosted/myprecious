@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-plex-debrid-ssd
+  name: rs-config-plex-debrid-ssd
 spec:
   sourcePVC: config-plex-debrid-ssd
   trigger:

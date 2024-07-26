@@ -2,7 +2,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-homer-ssd
+  name: rs-config-homer-ssd
 spec:
   sourcePVC: config-homer-ssd
   trigger:

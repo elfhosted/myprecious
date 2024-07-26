@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-jackettio-ssd
+  name: rs-config-jackettio-ssd
 spec:
   sourcePVC: config-jackettio-ssd
   trigger:

@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-filebot-ssd
+  name: rs-config-filebot-ssd
 spec:
   sourcePVC: config-filebot-ssd
   trigger:

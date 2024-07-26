@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-shoko-ssd
+  name: rs-config-shoko-ssd
 spec:
   sourcePVC: config-shoko-ssd
   trigger:

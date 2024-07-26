@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-bazarr-ssd
+  name: rs-config-bazarr-ssd
 spec:
   sourcePVC: config-bazarr-ssd
   trigger:

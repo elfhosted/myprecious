@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-sonarr4k-block
+  name: rs-config-sonarr4k-block
 spec:
   sourcePVC: config-sonarr-block
   trigger:

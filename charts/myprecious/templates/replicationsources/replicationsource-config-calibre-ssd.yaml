@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-calibre-ssd
+  name: rs-config-calibre-ssd
 spec:
   sourcePVC: config-calibre-ssd
   trigger:

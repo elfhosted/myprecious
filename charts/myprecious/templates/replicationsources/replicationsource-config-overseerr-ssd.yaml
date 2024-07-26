@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: config-overseerr-ssd
+  name: rs-config-overseerr-ssd
 spec:
   sourcePVC: config-overseerr-ssd
   trigger:
