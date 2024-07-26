@@ -6,10 +6,13 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
 spec:
+{{- $pvc := lookup "v1" "PersistentVolumeClaim" "{{ .Release.Namespace }}" "config-comet-ssd" -}}
+  {{- if not $pvc }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
     name: config-comet-ssd
+  {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}
   resources:

@@ -1,0 +1,23 @@
+{{ if .Values.riven.enabled }}
+{{ if .Values.volsync.enabled }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: config-riven-ssd
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-riven-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 1Gi
+    capacity: 1Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{ end }}
+{{ end }}

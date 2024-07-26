@@ -1,0 +1,21 @@
+{{ if .Values.volsync.enabled }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: symlinks-ssd
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: symlinks-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 2Gi
+    capacity: 2Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{ end }}
