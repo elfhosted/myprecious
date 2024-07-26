@@ -5,7 +5,7 @@ metadata:
   name: comet-env
 data:
   CUSTOM_HEADER_HTML: Welcome, {{ .Release.Name }}, to your Comet instance!
-  ZILEAN_URL: http://zilean.zilean:8181
+  ZILEAN_URL: http://elfhosted-internal.zilean
   ADDON_ID: {{ .Release.Name }}-comet.{{ .Values.dns_domain }}
   ADDON_NAME: Comet | {{ .Release.Name }}
   SCRAPE_TORRENTIO: "True"
