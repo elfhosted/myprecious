@@ -18,6 +18,5 @@ spec:
     cacheAccessModes:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
-    destinationPVC: config-comet-ssd
 {{ end }}
 {{ end }}
