@@ -2,7 +2,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-comet-egress-tailscale"
+  name: "permit-mediafusion-egress-tailscale"
 spec:
   endpointSelector:
     matchLabels:

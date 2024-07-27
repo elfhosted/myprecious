@@ -2,7 +2,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-comet-egress-tailscale"
+  name: "permit-prowlarr-egress-tailscale"
 spec:
   endpointSelector:
     matchLabels:

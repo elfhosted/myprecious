@@ -1,18 +1,21 @@
-{{- if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+{{- if .Values.knightcrawler.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-riven-egress-tailscale"
+  name: "permit-knightcrawler-egress-tailscale"
 spec:
   endpointSelector:
     matchLabels:
-      app.elfhosted.com/name: riven
+      app.elfhosted.com/name: knightcrawler
   egress:
   - toEndpoints:
     - matchLabels:
         k8s:io.kubernetes.pod.namespace: tailscale
     toPorts:
       - ports:
-        - port: '80'
+        - port: '6379'
+          protocol: TCP
+      - ports:
+        - port: '5432'
           protocol: TCP
 {{- end }}

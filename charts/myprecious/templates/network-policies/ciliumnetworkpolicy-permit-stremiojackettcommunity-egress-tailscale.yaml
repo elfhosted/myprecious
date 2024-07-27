@@ -1,18 +1,18 @@
-{{- if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+{{- if .Values.stremiojackettcommunity.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-riven-egress-tailscale"
+  name: "permit-stremiojackettcommunity-egress-tailscale"
 spec:
   endpointSelector:
     matchLabels:
-      app.elfhosted.com/name: riven
+      app.kubernetes.io/name: stremiojackettcommunity
   egress:
   - toEndpoints:
     - matchLabels:
         k8s:io.kubernetes.pod.namespace: tailscale
     toPorts:
       - ports:
-        - port: '80'
+        - port: '8080'
           protocol: TCP
 {{- end }}

@@ -1,18 +1,18 @@
-{{- if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+{{- if .Values.annatar.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-riven-egress-tailscale"
+  name: "permit-annatar-egress-tailscale"
 spec:
   endpointSelector:
     matchLabels:
-      app.elfhosted.com/name: riven
+      app.elfhosted.com/name: annatar
   egress:
   - toEndpoints:
     - matchLabels:
         k8s:io.kubernetes.pod.namespace: tailscale
     toPorts:
       - ports:
-        - port: '80'
+        - port: '6789'
           protocol: TCP
 {{- end }}
