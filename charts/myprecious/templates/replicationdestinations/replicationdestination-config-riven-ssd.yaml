@@ -1,4 +1,4 @@
-{{ if .Values.riven.enabled }}
+{{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
