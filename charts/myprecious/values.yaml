@@ -6030,7 +6030,7 @@ plex: &app_plex
         set -x
         set -e
 
-        grep -q PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
+        grep -q -v PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
           echo "Plex is not claimed yet, no point repairing" && exit 0)
 
         # If the DB directory exists, then repair 
