@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.72.0](https://github.com/elfhosted/myprecious/compare/v1.71.0...v1.72.0) (2024-07-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.9.0 ([2465594](https://github.com/elfhosted/myprecious/commit/2465594a853ac9fe693d3acf051bf7b4b52a70ed))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to 38aebc3 ([753c277](https://github.com/elfhosted/myprecious/commit/753c277215784a76b50fd58a913ce4b6a9152b82))
+* Upgrade Riven to v0.9.0 ([6db7248](https://github.com/elfhosted/myprecious/commit/6db7248a34acf66c216039202545583fbc609e53))
+
 ## [1.71.0](https://github.com/elfhosted/myprecious/compare/v1.70.1...v1.71.0) (2024-07-27)
 
 
