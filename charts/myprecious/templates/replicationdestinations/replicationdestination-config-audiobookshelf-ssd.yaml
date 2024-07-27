@@ -5,6 +5,8 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-audiobookshelf-ssd
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade  
 spec:
   trigger:
     manual: runonce
