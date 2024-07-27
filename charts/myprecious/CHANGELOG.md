@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.71.0](https://github.com/elfhosted/myprecious/compare/v1.70.1...v1.71.0) (2024-07-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.21.2.4649 ([47182f4](https://github.com/elfhosted/myprecious/commit/47182f420770c74192feff673bb97548710610e5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to b7f51f3 ([d4ed629](https://github.com/elfhosted/myprecious/commit/d4ed629df2bfcf8b6fb86f6fe9dbf284daab2213))
+* **app:** update ghcr.io/elfhosted/riven:v0.8.4 docker digest to 8a6235c ([b28c417](https://github.com/elfhosted/myprecious/commit/b28c417e15734bc36be1d8da71a75e37c775bcac))
+* make ILIKEDANGER work on dev branch ([ca1f6d7](https://github.com/elfhosted/myprecious/commit/ca1f6d7e1cecb9f6039b88d80c497415be6c63a4))
+
 ## [1.70.1](https://github.com/elfhosted/myprecious/compare/v1.70.0...v1.70.1) (2024-07-26)
 
 
