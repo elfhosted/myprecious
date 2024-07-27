@@ -5,8 +5,7 @@ metadata:
 spec:
   endpointSelector: {}
   ingress:
-    - fromEndpoints:
-        - {}
+    - fromEndpoints: {}
     - fromEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: csi-rclone
