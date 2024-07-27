@@ -2,7 +2,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-mediafusion-egress-tailscale"
+  name: "permit-mediafusion-egress-mediafusino"
 spec:
   endpointSelector:
     matchLabels:
@@ -10,7 +10,7 @@ spec:
   egress:
   - toEndpoints:
     - matchLabels:
-        k8s:io.kubernetes.pod.namespace: tailscale
+        k8s:io.kubernetes.pod.namespace: mediafusion
     toPorts:
       - ports:
         - port: '27017'
