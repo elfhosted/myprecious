@@ -17,6 +17,8 @@ spec:
     - toEntities:
         - world
     - toEndpoints:
+        - {} # anything in namespace        
+    - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
             k8s-app: kube-dns
