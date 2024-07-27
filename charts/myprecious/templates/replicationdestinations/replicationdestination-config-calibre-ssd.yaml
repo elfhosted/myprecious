@@ -1,0 +1,24 @@
+{{- if and .Values.calibre.enabled .Values.volsync.enabled }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-calibre-ssd" ) }}
+{{- if not $pvc }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-calibre-ssd
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-calibre-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 1Gi
+    capacity: 1Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{ end }}
+{{ end }}

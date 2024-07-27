@@ -1,0 +1,24 @@
+{{- if and .Values.comet.enabled .Values.volsync.enabled }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-comet-ssd" ) }}
+{{- if not $pvc }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-comet-ssd
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-comet-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 1Gi
+    capacity: 100Mi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{- end }}
+{{- end }}

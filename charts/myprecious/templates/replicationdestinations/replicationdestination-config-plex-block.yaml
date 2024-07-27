@@ -1,0 +1,26 @@
+{{- if or .Values.plex.enabled .Values.plexhobbit.enabled .Values.plexplus.enabled }}
+{{- if .Values.volsync.enabled }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-plex-block" ) }}
+{{- if not $pvc }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-plex-block
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-plex-block-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 100Gi
+    capacity: 100Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwo.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwo.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+{{- end }}
+{{- end }}
+{{- end }}
