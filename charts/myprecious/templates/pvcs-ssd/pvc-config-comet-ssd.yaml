@@ -8,10 +8,10 @@ metadata:
 spec:
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-comet-ssd" ) }}
   {{- if not $pvc }}
-  dataSourceRef:
-    kind: ReplicationDestination
-    apiGroup: volsync.backube
-    name: rd-config-comet-ssd
+  # dataSourceRef:
+  #   kind: ReplicationDestination
+  #   apiGroup: volsync.backube
+  #   name: rd-config-comet-ssd
   {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}

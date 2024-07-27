@@ -8,10 +8,10 @@ metadata:
 spec:
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-bazarr-ssd" ) }}
   {{- if not $pvc }}
-  dataSourceRef:
-    kind: ReplicationDestination
-    apiGroup: volsync.backube
-    name: rd-config-bazarr-ssd
+  # dataSourceRef:
+  #   kind: ReplicationDestination
+  #   apiGroup: volsync.backube
+  #   name: rd-config-bazarr-ssd
   {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}
