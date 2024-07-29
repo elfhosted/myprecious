@@ -1,4 +1,5 @@
-{{- if and .Values.rutorrent.enabled .Values.volsync.enabled }}
+{{- if .Values.volsync.enabled }}
+{{ if or .Values.rutorrentgluetun.enabled .Values.rutorrentpia.enabled }}
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-rutorrent-ssd" ) }}
 {{- if not $pvc }}
 apiVersion: volsync.backube/v1alpha1
@@ -22,5 +23,6 @@ spec:
     cacheAccessModes:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{- end }}
 {{- end }}
 {{- end }}
