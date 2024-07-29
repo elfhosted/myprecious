@@ -13,7 +13,7 @@ spec:
   restic:
     repository: config-comet-ssd-volsync-restic-config
     copyMethod: Snapshot
-    cacheCapacity: 1Gi
+    cacheCapacity: 100Mi
     capacity: 100Mi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
