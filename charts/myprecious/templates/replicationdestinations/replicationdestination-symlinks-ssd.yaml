@@ -5,13 +5,11 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-symlinks-ssd
-  # annotations:
-  #   helm.sh/hook: pre-install,pre-upgrade
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
 spec:
   trigger:
-    # manual: runonce
-    trigger:
-      schedule: "0 * 31 2 *"
+    manual: runonce
   restic:
     repository: symlinks-ssd-volsync-restic-config
     copyMethod: Snapshot
