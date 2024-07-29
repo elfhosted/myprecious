@@ -28,6 +28,20 @@ spec:
         - name: redirectregex-proxy-streaming-requires-addon-mediafusion
           namespace: traefik
     {{ end }}
+    - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && (PathPrefix(`/streaming_provider`) && PathPrefix(`/{something:.*}/live_stream_proxy{else:.*}`))
+      kind: Rule
+      services:
+        - name: mediafusion
+          kind: Service
+          port: 8000
+      middlewares:
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+    # restrict proxy streaming if mediafusionproxystreaming not enabled
+    {{ if not .Values.mediafusionproxystreaming.enabled }}
+        - name: redirectregex-proxy-streaming-requires-addon-mediafusion
+          namespace: traefik
+    {{ end }}    
     - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
