@@ -5,6 +5,18 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: filebrowser
+- kind: ServiceAccount
+  name: filebrowser
+  namespace: aa-bsm
+- kind: ServiceAccount
+  name: filebrowser
+  namespace: aa-fingerz
+- kind: ServiceAccount
+  name: filebrowser
+  namespace: aa-layezeeelf
+- kind: ServiceAccount
+  name: filebrowser
+  namespace: aa-ybasteven
 roleRef:
   kind: Role
   name: kubernetes-dashboard
