@@ -1,4 +1,5 @@
-{{- if and .Values.kometa.enabled .Values.volsync.enabled }}
+{{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
+{{ if .Values.volsync.enabled }}
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-kometa-ssd" ) }}
 {{- if not $pvc }}
 apiVersion: volsync.backube/v1alpha1
@@ -22,5 +23,6 @@ spec:
     cacheAccessModes:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{- end }}
 {{- end }}
 {{- end }}
