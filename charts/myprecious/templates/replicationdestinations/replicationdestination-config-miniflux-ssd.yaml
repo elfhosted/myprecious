@@ -1,0 +1,26 @@
+{{- if and .Values.miniflux.enabled .Values.volsync.enabled }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-miniflux-ssd" ) }}
+{{- if not $pvc }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-miniflux-ssd
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade  
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-miniflux-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 1Gi
+    capacity: 1Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{- end }}
+{{- end }}

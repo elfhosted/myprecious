@@ -6,6 +6,13 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
 spec:
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-sonarr-block" ) }}
+  {{- if not $pvc }}
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: rd-config-sonarr-block
+  {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwo.accessMode }}
   resources:

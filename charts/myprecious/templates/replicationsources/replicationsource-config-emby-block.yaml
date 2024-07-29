@@ -16,7 +16,7 @@ spec:
     retain:
       daily: 2
     copyMethod: Snapshot
-    cacheCapacity: 20Gi
+    cacheCapacity: 10Gi
     cacheStorageClassName: topolvm-provisioner-thin
     volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
 {{ end }}
