@@ -1,4 +1,4 @@
-{{- if and .Values.plex-debrid.enabled .Values.volsync.enabled }}
+{{- if and .Values.plexdebrid.enabled .Values.volsync.enabled }}
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-plex-debrid-ssd" ) }}
 {{- if not $pvc }}
 apiVersion: volsync.backube/v1alpha1
