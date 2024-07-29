@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.73.0](https://github.com/elfhosted/myprecious/compare/v1.72.0...v1.73.0) (2024-07-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.81 ([6c50ec0](https://github.com/elfhosted/myprecious/commit/6c50ec085fe9aaf031c757a2ec0a6c03b54424d0))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.1967 ([95ffa28](https://github.com/elfhosted/myprecious/commit/95ffa2861234c40b681c046849fe40d6b3a9ee40))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to 484ecb9 ([207cb4a](https://github.com/elfhosted/myprecious/commit/207cb4a094848b2c96a445b66dd86d204f28f64e))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 9045407 ([c0baae9](https://github.com/elfhosted/myprecious/commit/c0baae9d402c47b1a3c3671426d30d0716f60a67))
+* **app:** update ghcr.io/elfhosted/riven:v0.9.0 docker digest to 764a4d0 ([6b48912](https://github.com/elfhosted/myprecious/commit/6b48912ecd73323b10d0cab1fd6a8aedaee71788))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to bc7a7b9 ([87ff418](https://github.com/elfhosted/myprecious/commit/87ff4186c2f631aa5c85f154be381b9d48fd21e5))
+* disable comet by default in Riven ([6491f1a](https://github.com/elfhosted/myprecious/commit/6491f1a71ce38514aac4e48d23ee227b510b6ee8))
+* prepare mediafusion for live proxy streaming, permit private instances to scrape torrentio ([c633532](https://github.com/elfhosted/myprecious/commit/c633532ddf5c19f8710bdd13fc01da3a3a43c553))
+* switch Riven's Zilean URL to elfhosted-internal.zilean for consistency ([3404e9c](https://github.com/elfhosted/myprecious/commit/3404e9cda2537bb35c6488b70d97479caa8e1bcd))
+
 ## [1.72.0](https://github.com/elfhosted/myprecious/compare/v1.71.0...v1.72.0) (2024-07-27)
 
 
