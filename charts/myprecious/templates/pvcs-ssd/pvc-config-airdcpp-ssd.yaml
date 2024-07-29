@@ -8,10 +8,10 @@ metadata:
 spec:
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-airdcpp-ssd" ) }}
   {{- if not $pvc }}
-  # dataSourceRef:
-  #   kind: ReplicationDestination
-  #   apiGroup: volsync.backube
-  #   name: config-airdcpp-ssd
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: config-airdcpp-ssd
   {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}

@@ -1,0 +1,28 @@
+{{- if or .Values.readarraudio.enabled }}
+{{- if .Values.volsync.enabled }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-readarraudio-block" ) }}
+{{- if not $pvc }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-readarraudio-block
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade  
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-readarraudio-block-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 2Gi
+    capacity: 2Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwo.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwo.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+{{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,26 @@
+{{- if and .Values.thelounge.enabled .Values.volsync.enabled }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-thelounge-ssd" ) }}
+{{- if not $pvc }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-thelounge-ssd
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade  
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-thelounge-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 10Gi
+    capacity: 10Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{- end }}
+{{- end }}

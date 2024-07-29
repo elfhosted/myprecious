@@ -6,6 +6,13 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
 spec:
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-sabnzbbd-ssd" ) }}
+  {{- if not $pvc }}
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: rd-config-sabnzbd-ssd
+  {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}
   resources:
