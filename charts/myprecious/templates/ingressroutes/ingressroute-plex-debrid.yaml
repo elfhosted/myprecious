@@ -1,4 +1,4 @@
-{{ if .Values.plexdebrid.enabled }}
+{{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

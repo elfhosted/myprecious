@@ -505,7 +505,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.plexdebrid.enabled }}
+      {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
       - name: plex-debrid
         group: manage-media
         url: "http://plex-debrid:3001"

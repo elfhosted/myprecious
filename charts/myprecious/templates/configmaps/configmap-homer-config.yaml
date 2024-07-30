@@ -891,7 +891,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.plexdebrid.enabled }}
+          {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
           - name: "plex-debrid"
             logo: "assets/png/real-debrid.png"
             # Alternatively a fa icon can be provided:

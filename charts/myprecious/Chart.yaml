@@ -497,6 +497,16 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebrid
   - name: app-template
+    condition: plexdebridplus.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: plexdebridplus
+  - name: app-template
+    condition: plexdebridhobbit.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: plexdebridhobbit    
+  - name: app-template
     condition: riven.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

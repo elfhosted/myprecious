@@ -3626,6 +3626,7 @@ radarrplus:
       configmap.reloader.stakater.com/reload: "elfbot-radarr,radarr-env"
 
 
+
 radarr4k: &app_radarr4k
   enabled: false
   podLabels:
@@ -12363,7 +12364,7 @@ zurgplus:
       configmap.reloader.stakater.com/reload: "elfbot-zurg"
   
 
-plexdebrid:
+plexdebrid: &app_plexdebrid
   enabled: false
   image:
     repository: ghcr.io/elfhosted/plex-debrid
@@ -12452,6 +12453,33 @@ plexdebrid:
         seccompProfile:
           type: RuntimeDefault
         readOnlyRootFilesystem: true    
+
+plexdebridplus:
+  <<: *app_plexdebrid
+  podLabels:
+    app.elfhosted.com/name: plexdebrid
+    app.elfhosted.com/class: dedicated
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
 
 codeserver:
   enabled: false
@@ -12721,6 +12749,16 @@ sonarr4khobbit:
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  
+  resources: *hobbit_resources
+
+plexdebridhobbit:
+  <<: *app_plexdebrid
+  podLabels:
+    app.elfhosted.com/name: plexdebrid
+    app.elfhosted.com/class: hobbit   
+  enabled: false
+  affinity: *hobbit_affinity              
+  tolerations: *hobbit_tolerations 
   resources: *hobbit_resources
 
 prowlarrhobbit:
