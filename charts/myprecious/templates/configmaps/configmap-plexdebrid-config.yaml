@@ -1,4 +1,4 @@
-{{ if .Values.plexdebrid.enabled }}
+{{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:

@@ -577,7 +577,7 @@ data:
               url: http://tdarr:8265
         {{ end }}   
 
-        {{ if .Values.plexdebrid.enabled }}
+        {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
         - plex-debrid:
             icon: real-debrid.png
             href: https://{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}
