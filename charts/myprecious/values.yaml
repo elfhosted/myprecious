@@ -6031,7 +6031,7 @@ plex: &app_plex
         set -x
         set -e
 
-        grep -q -v PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
+        grep -q PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
           echo "Plex is not claimed yet, no point repairing" && exit 0)
 
         # If the DB directory exists, then repair 
@@ -7016,7 +7016,7 @@ flaresolverr:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
@@ -11213,7 +11213,7 @@ annatar:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
@@ -11534,7 +11534,7 @@ mediafusion:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
@@ -11615,7 +11615,7 @@ stremiojackettcommunityalldebrid:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
@@ -11808,7 +11808,7 @@ stremify:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
