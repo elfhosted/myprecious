@@ -12364,8 +12364,7 @@ zurgplus:
       configmap.reloader.stakater.com/reload: "elfbot-zurg"
   
 
-plexdebrid:
-  <<: *app_plexdebrid
+plexdebrid: &app_plexdebrid
   enabled: false
   image:
     repository: ghcr.io/elfhosted/plex-debrid
