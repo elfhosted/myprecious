@@ -23,7 +23,7 @@ storageclass:
 # sets the user's base dns domain
 dns_domain: elfhosted.com
 
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:b95fa963587172989389ae57ac4292b0a3c630b542c66d827ccac23fc7a418b3
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e077b37e235c6c08ed23a9b387d1cc252a86e97bf485e50b0926aad58c630aa3
 
 
 hobbit_affinity: &hobbit_affinity
@@ -6895,30 +6895,51 @@ flaresolverr: &app_flaresolverr
         http:
           port: 8191
   env:
-    WAIT_FOR_VPN: "false"
+    WAIT_FOR_VPN: "true"
     LOG_LEVEL: debug
     # DRIVER: nodriver
+  initContainers:
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # Create cloudflare account
+        wgcf register --accept-tos
+
+        # Create gluetun config
+        wgcf generate -p /shared/wg0.conf
+
+      volumeMounts:
+      - mountPath: /shared
+        name: shared
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        readOnlyRootFilesystem: false    
   addons:
     vpn:
-      enabled: false # in case we ever need it
+      enabled: true # in case we ever need it
       gluetun:
         image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.38.0@sha256:a5a667327cc3b1a48fec2eba0fc2141268e343ef2573a096675d6d593049bc80
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
         LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
-        LOC: de-frankfurt
-        PORT_FORWARDING: "0"
-        PORT_PERSIST: "1"
         NFTABLES: "1"    
         VPNDNS: "0"            
         POST_UP: /gluetun/scripts/up.sh
         PRE_DOWN: /gluetun/scripts/down.sh
-      envFrom:
-      - secretRef:
-          name: flaresolverr-vpn
+        WIREGUARD_CONF_SECRETFILE: /shared/wg0.conf
+        FIREWALL_INPUT_PORTS: "8191"
+        DOT: "off"
       securityContext:
         runAsUser: 0
         capabilities:
