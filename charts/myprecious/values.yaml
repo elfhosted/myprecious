@@ -4241,7 +4241,6 @@ filebrowser:
           name: recyclarr-config
     symlinks: *symlinks            
     tmp: *tmp
-    # We need one of these per-app. The global section will override the false enablement    
   service:
     main:
       enabled: true # necessary for probes
@@ -4399,7 +4398,19 @@ filebrowser:
       - mountPath: /elfbot
         name: elfbot
       resources: *default_resources
-      securityContext: *default_securitycontext    
+      securityContext: *default_securitycontext
+    rcloneui:
+      image: ghcr.io/elfhosted/rclone:1.67.0@sha256:760a20a25634824deb3466c6deb59f9978a63018281f58401ddd6f3fbd607380
+      command: 
+      - /rcloneui.sh
+    rclonefm:
+      image: ghcr.io/elfhosted/rclone:1.67.0@sha256:760a20a25634824deb3466c6deb59f9978a63018281f58401ddd6f3fbd607380
+      command: 
+      - /rclonefm.sh   
+    rclonewebdav:
+      image: ghcr.io/elfhosted/rclone:1.67.0@sha256:760a20a25634824deb3466c6deb59f9978a63018281f58401ddd6f3fbd607380
+      command: 
+      - /webdav.sh            
   resources:
     requests:
       cpu: 10m
