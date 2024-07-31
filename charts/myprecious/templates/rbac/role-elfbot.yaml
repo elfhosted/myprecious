@@ -12,5 +12,5 @@ rules:
   verbs: ["delete","list"]
 # Used to trigger backups
 - apiGroups: ["volsync.backube"]
-  resources: ["ReplicationSource"]
+  resources: ["replicationsources"]
   verbs: ["list","get","update"]
