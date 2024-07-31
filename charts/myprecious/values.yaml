@@ -689,6 +689,20 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd
+  plexdebridhobbit:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd     
+  plexdebridplus:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd           
   plexmetamanager:
     enabled: false
     type: custom
