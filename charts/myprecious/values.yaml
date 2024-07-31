@@ -6909,6 +6909,8 @@ flaresolverr: &app_flaresolverr
         set -x
         set -e
 
+        cd /shared
+        
         # Create cloudflare account
         wgcf register --accept-tos
 
