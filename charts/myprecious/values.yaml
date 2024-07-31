@@ -689,6 +689,20 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd
+  plexdebridhobbit:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd     
+  plexdebridplus:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd           
   plexmetamanager:
     enabled: false
     type: custom
@@ -4241,7 +4255,6 @@ filebrowser:
           name: recyclarr-config
     symlinks: *symlinks            
     tmp: *tmp
-    # We need one of these per-app. The global section will override the false enablement    
   service:
     main:
       enabled: true # necessary for probes
@@ -4399,7 +4412,7 @@ filebrowser:
       - mountPath: /elfbot
         name: elfbot
       resources: *default_resources
-      securityContext: *default_securitycontext    
+      securityContext: *default_securitycontext
   resources:
     requests:
       cpu: 10m
