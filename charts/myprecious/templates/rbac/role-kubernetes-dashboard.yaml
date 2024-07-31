@@ -71,4 +71,10 @@ rules:
 {{ if .Values.comet.enabled }}
   - elfbot-comet
 {{ end }}
+{{ if .Values.calibre.enabled }}
+  - elfbot-calibre
+{{ end }}
+{{ if .Values.calibreweb.enabled }}
+  - elfbot-calibreweb
+{{ end }}
 

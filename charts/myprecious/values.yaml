@@ -4672,8 +4672,9 @@ calibreweb:
     fsGroupChangePolicy: "OnRootMismatch"
 
   automountServiceAccountToken: false
-  environment:
-    CALIBRE_DBPATH: /config
+  envFrom:
+  - configMapRef:
+      name: elfbot-calibreweb
   persistence:
     <<: *storagemounts
     config:
@@ -5056,7 +5057,7 @@ calibre:
     PGID: 568
     TITLE: Calibre | ElfHosted
     START_DOCKER: false
-    # CLI_ARGS: "--with-library=/storage/elfstorage/books"
+    CLI_ARGS: "--with-library=$CALIBRE_DBPATH"
   ingress:
     main:
       enabled: false
@@ -5074,26 +5075,9 @@ calibre:
       memory: 4Gi
   initContainers:
     bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/sh
-      - -c
-      - |
-        set -x
-        set -e
-        if [ ! -f /storage/elfstorage/books/metadata.db ]
-        then
-          echo "Copying sample Calibre DB files to /storage/elfstorage/books/..."
-          # mkdir -p /storage/elfstorage/books
-          # cp /config/metadata* /storage/elfstorage/books/
-        fi
-      volumeMounts:
-      - mountPath: /config
-        name: config
-      resources: *default_resources
-      securityContext: *default_securitycontext
+  envFrom:
+  - configMapRef:
+      name: elfbot-calibre   
 
 sonarr: &app_sonarr
   enabled: false
