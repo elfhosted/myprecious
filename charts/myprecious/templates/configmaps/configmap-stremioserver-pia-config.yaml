@@ -7,7 +7,7 @@ data:
   # These are used by the PIA image
   IPTABLES_BACKEND: nft
   KILLSWITCH: "true"
-  LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+  LOCAL_NETWORK: 10.0.0.0/8
   USER: "{{ .Values.stremioserverpia.PIA_USERNAME | default }}"
   PASS: "{{ .Values.stremioserverpia.PIA_PASSWORD | default }}"
   # LOC: nl_amsterdam

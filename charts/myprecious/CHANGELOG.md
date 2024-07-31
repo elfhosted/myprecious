@@ -1,5 +1,40 @@
 # Changelog
 
+## [1.75.1](https://github.com/elfhosted/myprecious/compare/v1.75.0...v1.75.1) (2024-07-31)
+
+
+### Bug Fixes
+
+* last-minute Riven bugfix! 🐛 ([6aa681e](https://github.com/elfhosted/myprecious/commit/6aa681e327eee52ce992363d36b801a2f027ab59))
+
+## [1.75.0](https://github.com/elfhosted/myprecious/compare/v1.74.0...v1.75.0) (2024-07-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.9.1 ([c2bb21d](https://github.com/elfhosted/myprecious/commit/c2bb21d047f4c3888601b7f1d6b3662be786312a))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.16.0 ([e658129](https://github.com/elfhosted/myprecious/commit/e658129fa1882e5804b218717031916983d7da07))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to bd0f396 ([3896faa](https://github.com/elfhosted/myprecious/commit/3896faaa182c46d60de282d3ad0cff44d8b3534f))
+* **app:** update ghcr.io/elfhosted/riven:v0.9.0 docker digest to 511fc99 ([cb654fd](https://github.com/elfhosted/myprecious/commit/cb654fdc2527e4ff12b774c4d590c35a5d4c31e9))
+
+## [1.74.0](https://github.com/elfhosted/myprecious/compare/v1.73.0...v1.74.0) (2024-07-30)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v8.10 ([c395196](https://github.com/elfhosted/myprecious/commit/c3951969b780156c16a860e9808547bb4ce43ede))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.23.2 ([e00f57b](https://github.com/elfhosted/myprecious/commit/e00f57bbff6a10c46ef0790e123f469f340dddcd))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 4b3e870 ([96b616d](https://github.com/elfhosted/myprecious/commit/96b616d5f89af48be3d72ef168afc7f4adf639e6))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to de3b035 ([68eb07f](https://github.com/elfhosted/myprecious/commit/68eb07f188e0c2117f392589b8e92ac84f6fe2b5))
+
 ## [1.73.0](https://github.com/elfhosted/myprecious/compare/v1.72.0...v1.73.0) (2024-07-29)
 
 

@@ -6,7 +6,7 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-sabnzbbd-ssd" ) }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-sabnzbd-ssd" ) }}
   {{- if not $pvc }}
   dataSourceRef:
     kind: ReplicationDestination

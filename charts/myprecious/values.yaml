@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true
+safeToRelease: false
 
 # false by default
 volsync:
@@ -4670,7 +4670,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:4b3e8708f0a29d8747144997c5eeab26624405d0cd89e4aa693243687855d16e
+    tag: rolling@sha256:bd0f39681be0a40ec11f12615ca079d4beef4e2b44216405a0ae747ff301aaec
   enabled: false
   controller:
     annotations:
@@ -4903,7 +4903,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.15.0@sha256:9d769fe402690da7f3ca750a925859ef99b4e5bec86d4739f87c7cd43e18a246
+    tag: 7.16.0@sha256:e179e32b1ed42814816e5379d08ee9d9f957f6e704c8695bd1ffece9668a9192
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5921,7 +5921,7 @@ plex: &app_plex
         set -x
         set -e
 
-        grep -q -v PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
+        grep -q PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
           echo "Plex is not claimed yet, no point repairing" && exit 0)
 
         # If the DB directory exists, then repair 
@@ -10291,7 +10291,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.9.0@sha256:764a4d0cafc3fca215f81ef13963da2b802b2af973b6725de94bf2f221f6ec37
+    tag: v0.9.2@sha256:35512779e64dc166db1f47d6c617f4eac44b129edf13907aefafab9944b5eedd
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11153,7 +11153,7 @@ annatar:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
@@ -11474,7 +11474,7 @@ mediafusion:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
@@ -11555,7 +11555,7 @@ stremiojackettcommunityalldebrid:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
@@ -11748,7 +11748,7 @@ stremify:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.2.0.0/15,10.43.0.0/16
+        LOCAL_NETWORK: 10.0.0.0/8
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
