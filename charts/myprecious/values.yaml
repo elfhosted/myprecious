@@ -4675,6 +4675,7 @@ calibreweb:
   envFrom:
   - configMapRef:
       name: elfbot-calibreweb
+      optional: true
   persistence:
     <<: *storagemounts
     config:
@@ -5078,6 +5079,7 @@ calibre:
   envFrom:
   - configMapRef:
       name: elfbot-calibre   
+      optional: true
 
 sonarr: &app_sonarr
   enabled: false
