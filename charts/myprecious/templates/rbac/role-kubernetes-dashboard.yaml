@@ -51,6 +51,10 @@ rules:
   - configmaps
   verbs:
   - create
+# Used to trigger backups
+- apiGroups: ["volsync.backube"]
+  resources: ["replicationsources"]
+  verbs: ["list","get","update"]
 # now allow them to edit configmaps for their specific apps
 - apiGroups:
   - "*"
@@ -70,5 +74,11 @@ rules:
 {{ end }}
 {{ if .Values.comet.enabled }}
   - elfbot-comet
+{{ end }}
+{{ if .Values.calibre.enabled }}
+  - elfbot-calibre
+{{ end }}
+{{ if .Values.calibreweb.enabled }}
+  - elfbot-calibreweb
 {{ end }}
 

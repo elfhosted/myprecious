@@ -10,3 +10,7 @@ rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["delete","list"]
+# Used to trigger backups
+- apiGroups: ["volsync.backube"]
+  resources: ["replicationsources"]
+  verbs: ["list","get","update"]

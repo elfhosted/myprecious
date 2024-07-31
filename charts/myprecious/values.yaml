@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true
+safeToRelease: false
 
 # false by default
 volsync:
@@ -689,6 +689,20 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd
+  plexdebridhobbit:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd     
+  plexdebridplus:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd           
   plexmetamanager:
     enabled: false
     type: custom
@@ -3572,7 +3586,8 @@ radarr: &app_radarr
           -X PUT \
           -H "X-Api-Key: $RADARR__API_KEY" \
           -s \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":null,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          -H 'Content-Type: application/json' \
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
           sleep 1h
         done
       envFrom:
@@ -3736,7 +3751,8 @@ radarr4k: &app_radarr4k
           -X PUT \
           -H "X-Api-Key: $RADARR__API_KEY" \
           -s \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":null,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          -H 'Content-Type: application/json' \
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
           sleep 1h
         done
       envFrom:
@@ -4241,7 +4257,6 @@ filebrowser:
           name: recyclarr-config
     symlinks: *symlinks            
     tmp: *tmp
-    # We need one of these per-app. The global section will override the false enablement    
   service:
     main:
       enabled: true # necessary for probes
@@ -4399,7 +4414,7 @@ filebrowser:
       - mountPath: /elfbot
         name: elfbot
       resources: *default_resources
-      securityContext: *default_securitycontext    
+      securityContext: *default_securitycontext
   resources:
     requests:
       cpu: 10m
@@ -4659,8 +4674,10 @@ calibreweb:
     fsGroupChangePolicy: "OnRootMismatch"
 
   automountServiceAccountToken: false
-  environment:
-    CALIBRE_DBPATH: /config
+  envFrom:
+  - configMapRef:
+      name: elfbot-calibreweb
+      optional: true
   persistence:
     <<: *storagemounts
     config:
@@ -5043,7 +5060,7 @@ calibre:
     PGID: 568
     TITLE: Calibre | ElfHosted
     START_DOCKER: false
-    # CLI_ARGS: "--with-library=/storage/elfstorage/books"
+    CLI_ARGS: "--with-library=$CALIBRE_DBPATH"
   ingress:
     main:
       enabled: false
@@ -5061,26 +5078,10 @@ calibre:
       memory: 4Gi
   initContainers:
     bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/sh
-      - -c
-      - |
-        set -x
-        set -e
-        if [ ! -f /storage/elfstorage/books/metadata.db ]
-        then
-          echo "Copying sample Calibre DB files to /storage/elfstorage/books/..."
-          # mkdir -p /storage/elfstorage/books
-          # cp /config/metadata* /storage/elfstorage/books/
-        fi
-      volumeMounts:
-      - mountPath: /config
-        name: config
-      resources: *default_resources
-      securityContext: *default_securitycontext
+  envFrom:
+  - configMapRef:
+      name: elfbot-calibre   
+      optional: true
 
 sonarr: &app_sonarr
   enabled: false
@@ -5184,7 +5185,8 @@ sonarr: &app_sonarr
           -X PUT \
           -H "X-Api-Key: $SONARR__API_KEY" \
           -s \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":null,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          -H 'Content-Type: application/json' \
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
           sleep 1h
         done
       envFrom:
@@ -5339,7 +5341,8 @@ sonarr4k: &app_sonarr4k
           -X PUT \
           -H "X-Api-Key: $SONARR__API_KEY" \
           -s \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":null,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          -H 'Content-Type: application/json' \
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
           sleep 1h
         done
       envFrom:
