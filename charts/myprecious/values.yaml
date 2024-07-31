@@ -12369,6 +12369,8 @@ zurgplus:
 
 plexdebrid: &app_plexdebrid
   enabled: false
+  podLabels:
+    app.elfhosted.com/name: plexdebrid  
   image:
     repository: ghcr.io/elfhosted/plex-debrid
     tag: rolling@sha256:6aefc87680282cd06cfb0f6e4ea07c81ddf68b4c9b249f8baa249853d01c756e
@@ -12379,7 +12381,7 @@ plexdebrid: &app_plexdebrid
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false # doesn't work because of s6
+    readOnlyRootFilesystem: true # doesn't work because of s6
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
