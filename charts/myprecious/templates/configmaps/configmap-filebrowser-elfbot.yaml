@@ -110,7 +110,7 @@ data:
 
                 while [ "$LAST_MANUAL_SYNC" != "$MANUAL" ]
                 do
-                    LAST_MANUAL_SYNC=$(kubectl -n aa-funkypenguin get replicationsource $RS --template={{.status.lastManualSync}})
+                    LAST_MANUAL_SYNC=$(kubectl -n aa-funkypenguin get replicationsource $RS --template=\{\{.status.lastManualSync}})
                     echo -n '💾'
                     sleep 10
                 done
