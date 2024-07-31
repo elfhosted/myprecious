@@ -6910,7 +6910,7 @@ flaresolverr: &app_flaresolverr
         set -e
 
         cd /shared
-        
+
         # Create cloudflare account
         wgcf register --accept-tos
 
@@ -6940,6 +6940,7 @@ flaresolverr: &app_flaresolverr
         POST_UP: /gluetun/scripts/up.sh
         PRE_DOWN: /gluetun/scripts/down.sh
         WIREGUARD_CONF_SECRETFILE: /shared/wg0.conf
+        VPN_TYPE: wireguard
         FIREWALL_INPUT_PORTS: "8191"
         DOT: "off"
       securityContext:
