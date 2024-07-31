@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.75.0](https://github.com/elfhosted/myprecious/compare/v1.74.0...v1.75.0) (2024-07-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.9.1 ([c2bb21d](https://github.com/elfhosted/myprecious/commit/c2bb21d047f4c3888601b7f1d6b3662be786312a))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.16.0 ([e658129](https://github.com/elfhosted/myprecious/commit/e658129fa1882e5804b218717031916983d7da07))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to bd0f396 ([3896faa](https://github.com/elfhosted/myprecious/commit/3896faaa182c46d60de282d3ad0cff44d8b3534f))
+* **app:** update ghcr.io/elfhosted/riven:v0.9.0 docker digest to 511fc99 ([cb654fd](https://github.com/elfhosted/myprecious/commit/cb654fdc2527e4ff12b774c4d590c35a5d4c31e9))
+
 ## [1.74.0](https://github.com/elfhosted/myprecious/compare/v1.73.0...v1.74.0) (2024-07-30)
 
 
