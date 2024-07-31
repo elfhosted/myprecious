@@ -747,17 +747,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.autobrr.enabled }}
-      - name: autobrr
-        group: download-media
-        url: "http://autobrr:7474"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.pyload.enabled }}
       - name: pyload
         group: download-media

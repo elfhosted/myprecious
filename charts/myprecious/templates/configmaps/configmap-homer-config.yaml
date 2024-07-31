@@ -996,16 +996,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.autobrr.enabled }}
-          - name: "Autobrr"
-            logo: "assets/png/autobrr.png"
-            subtitle: "Manage Torrent Automation"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-autobrr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
           - name: "Deluge"
             logo: "assets/png/deluge.png"

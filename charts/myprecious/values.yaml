@@ -511,13 +511,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-airdcpp-ssd          
-  autobrr:
-    enabled: false
-    type: custom
-    mountPath: /config/autobrr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-autobrr-ssd
   autoscan:
     enabled: false
     type: custom
@@ -1120,13 +1113,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-airdcpp-ssd          
-  autobrr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/autobrr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-autobrr-ssd
   autoscan:
     enabled: false
     type: custom
@@ -2651,9 +2637,6 @@ delugegluetun: &deluge
 
         mkdir -p /config/deluge/torrent_files
 
-        # Setup autobrr access to daemon
-        grep -q autobrr /config/auth || echo 'autobrr:c7RJKKt#KBcM5Z?a:10' >> /config/auth
-
         JQ_FILTER=".listen_random_port=false"
         JQ_FILTER="${JQ_FILTER} | .pre_allocate_storage=false"
         JQ_FILTER="${JQ_FILTER} | .stop_seed_ratio=2"
@@ -2775,9 +2758,6 @@ delugepia:
         set -e
 
         mkdir -p /config/deluge/torrent_files
-
-        # Setup autobrr access to daemon
-        grep -q autobrr /config/auth || echo 'autobrr:c7RJKKt#KBcM5Z?a:10' >> /config/auth
 
         JQ_FILTER=".listen_random_port=false"
         JQ_FILTER="${JQ_FILTER} | .pre_allocate_storage=false"
@@ -4072,99 +4052,6 @@ bazarr4k:
     limits:
       cpu: 1
       memory: 1Gi
-
-
-autobrr:
-  enabled: false
-  sso:
-    enabled: true
-  image:
-    registry: ghcr.io
-    repository: elfhosted/autobrr
-    tag: 1.44.0@sha256:8d70c35ac692f2b745b1c5cc56505e4f93d11fffb153140240664661fa074bad
-  priorityClassName: tenant-normal
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-autobrr"
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true # doesn't seem to work with upgrades
-    allowPrivilegeEscalation: false
-    runAsUser: 568
-    runAsGroup: 568
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-autobrr-ssd
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-autobrr
-          optional: true
-    autobrr-config:
-      enabled: true
-      mountPath: "/config/config.toml"
-      subPath: "config.toml"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: autobrr-config
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 7474
-  resources:
-    requests:
-      cpu: 10m
-      memory: 32Mi
-    limits:
-      cpu: 3
-      memory: 1Gi
-  initContainers:
-    bootstrap: *bootstrap
-  # additionalContainers:
-  #   regbrr:
-  #     image: ghcr.io/elfhosted/docker-autobrr-helper:sha-0dcb44a
-  #     imagePullPolicy: IfNotPresent
-  #     command:
-  #     - /bin/sh
-  #     - -c
-  #     - |
-  #       while true
-  #       do
-  #         /regbrr.sh
-  #         sleep 1d
-  #       done
-  #     securityContext:
-  #       seccompProfile:
-  #         type: RuntimeDefault
-  #       readOnlyRootFilesystem: true # doesn't seem to work with upgrades
-  #       allowPrivilegeEscalation: false
-  #       runAsUser: 568
-  #       runAsGroup: 568
-  #     volumeMounts:
-  #     - mountPath: /config
-  #       name: config
-  #       subPath: autobrr
 
 filebrowser:
   hostname: elfhosted
@@ -6941,8 +6828,10 @@ gotify:
   initContainers:
     bootstrap: *bootstrap
 
-flaresolverr:
-  enabled: false
+flaresolverr: &app_flaresolverr
+  enabled: false  
+  podLabels:
+    app.elfhosted.com/name: flaresolverr   
   image:
     registry: ghcr.io
     repository: elfhosted/flaresolverr
@@ -7011,7 +6900,7 @@ flaresolverr:
     # DRIVER: nodriver
   addons:
     vpn:
-      enabled: false # in case we ever need it
+      enabled: true # in case we ever need it
       gluetun:
         image:
           repository: thrnz/docker-wireguard-pia
@@ -7045,6 +6934,34 @@ flaresolverr:
         down: |-
           #!/bin/ash
           echo "disconnected" > /shared/vpnstatus   
+
+flaresolverrplus:
+  <<: *app_flaresolverr
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists    
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-flaresolverr,flaresolverr-env"
+
 
 seafile:
   enabled: false
@@ -10167,7 +10084,6 @@ homepage:
         touch /app/config/user-change-these/TAUTULLI_KEY
         touch /app/config/user-change-these/XTEVE_USERNAME
         touch /app/config/user-change-these/XTEVE_PASSWORD
-        touch /app/config/user-change-these/AUTOBRR_KEY
         touch /app/config/user-change-these/MINIFLUX_KEY
         touch /app/config/user-change-these/UPTIMEKUMA_SLUG
         touch /app/config/user-change-these/GOTIFY_KEY

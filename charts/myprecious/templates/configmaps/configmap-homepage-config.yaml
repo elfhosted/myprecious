@@ -675,18 +675,6 @@ data:
             siteMonitor: http://nzbhydra:5076
         {{ end }}           
 
-        {{ if .Values.autobrr.enabled }}
-        - Autobrr:
-            icon: autobrr.png
-            href: https://{{ .Release.Name }}-autobrr.{{ .Values.dns_domain }}
-            description: Manage torrent automation 
-            siteMonitor: http://autobrr:7474
-            widget:
-              type: autobrr
-              url: http://autobrr:7474
-              key: {{`{{HOMEPAGE_FILE_AUTOBRR_KEY}}`}}       
-        {{ end }}   
-
         {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
         - Deluge:
             icon: deluge.png
