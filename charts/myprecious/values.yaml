@@ -23,7 +23,7 @@ storageclass:
 # sets the user's base dns domain
 dns_domain: elfhosted.com
 
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:b95fa963587172989389ae57ac4292b0a3c630b542c66d827ccac23fc7a418b3
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e077b37e235c6c08ed23a9b387d1cc252a86e97bf485e50b0926aad58c630aa3
 
 
 hobbit_affinity: &hobbit_affinity
