@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.75.1](https://github.com/elfhosted/myprecious/compare/v1.75.0...v1.75.1) (2024-07-31)
+
+
+### Bug Fixes
+
+* last-minute Riven bugfix! 🐛 ([6aa681e](https://github.com/elfhosted/myprecious/commit/6aa681e327eee52ce992363d36b801a2f027ab59))
+
 ## [1.75.0](https://github.com/elfhosted/myprecious/compare/v1.74.0...v1.75.0) (2024-07-31)
 
 
