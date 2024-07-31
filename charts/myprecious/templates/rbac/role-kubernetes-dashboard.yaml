@@ -51,6 +51,10 @@ rules:
   - configmaps
   verbs:
   - create
+# Used to trigger backups
+- apiGroups: ["volsync.backube"]
+  resources: ["ReplicationSource"]
+  verbs: ["list","get","update"]
 # now allow them to edit configmaps for their specific apps
 - apiGroups:
   - "*"
