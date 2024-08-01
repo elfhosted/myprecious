@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.75.2-pre-13
+version: 1.75.2
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -293,7 +293,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: flaresolverrplus.enabled
-    alias: flaresolverrplus    
+    alias: flaresolverrplus
   - name: rtorrent-rutorrent
     version: 1.1.x
     repository: oci://ghcr.io/elfhosted/charts
