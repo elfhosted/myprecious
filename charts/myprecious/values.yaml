@@ -6917,9 +6917,9 @@ flaresolverr: &app_flaresolverr
         wgcf generate -p /shared/wg0.conf
 
         # grab the values from the profile and put them into env vars for gluetun to consume
-        echo "export WIREGUARD_PRIVATE_KEY=$(grep PrivateKey /shared/wg0.conf | cut -f3 -d' ') > /shared/env
-        echo "export WIREGUARD_PUBLIC_KEY=$(grep PublicKey /shared/wg0.conf | cut -f3 -d' ') >> /shared/env
-        echo "export VPN_ENDPOINT_IP=$(dig +short dig +short engage.cloudflareclient.com) >> /shared/env
+        echo "export WIREGUARD_PRIVATE_KEY=$(grep PrivateKey /shared/wg0.conf | cut -f3 -d' ')" > /shared/env
+        echo "export WIREGUARD_PUBLIC_KEY=$(grep PublicKey /shared/wg0.conf | cut -f3 -d' ')" >> /shared/env
+        echo "export VPN_ENDPOINT_IP=$(dig +short dig +short engage.cloudflareclient.com)" >> /shared/env
 
       volumeMounts:
       - mountPath: /shared
