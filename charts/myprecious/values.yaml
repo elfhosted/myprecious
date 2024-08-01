@@ -1377,21 +1377,21 @@ storageconfigmounts: &storageconfigmounts
   plexdebrid:
     enabled: false
     type: custom
-    mountPath: /config/plex-debrid/
+    mountPath: /storage/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd
   plexdebridhobbit:
     enabled: false
     type: custom
-    mountPath: /config/plex-debrid/
+    mountPath: /storage/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd     
   plexdebridplus:
     enabled: false
     type: custom
-    mountPath: /config/plex-debrid/
+    mountPath: /storage/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd
