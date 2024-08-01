@@ -534,14 +534,6 @@ data:
             siteMonitor: http://unpackerr:9898
         {{ end }}       
 
-        {{ if .Values.plexmetamanager.enabled }}
-        - Plex Meta Manager:
-            icon: mdi-folder-information
-            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/plex-meta-manager/
-            description: Manage Plex Metadata     
-            siteMonitor: http://plexmetamanager:9898
-        {{ end }}   
-
         {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
         - Kometa:
             icon: mdi-folder-information

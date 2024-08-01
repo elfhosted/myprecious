@@ -695,14 +695,7 @@ configmounts: &config_mounts
     mountPath: /config/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd           
-  plexmetamanager:
-    enabled: false
-    type: custom
-    mountPath: /config/plexmetamanager/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plexmetamanager        
+        claimName: config-plex-debrid-ssd                
   joplinserver:
     enabled: false
     type: custom
@@ -1268,29 +1261,7 @@ storageconfigmounts: &storageconfigmounts
     type: "custom"
     volumeSpec:
       configMap:
-        name: explain-migration  
-  # plex:
-  #   enabled: true
-  #   type: custom
-  #   mountPath: /storage/config/plex/
-  #   subPath: plex
-  #   volumeSpec:
-  #     persistentVolumeClaim:
-  #       claimName: storagehub    
-  plexdebrid:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd
-  plexmetamanager:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/plexmetamanager/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plexmetamanager        
+        name: explain-migration        
   joplinserver:
     enabled: false
     type: custom
@@ -1403,7 +1374,27 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-overseerr-ssd
-      
+  plexdebrid:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd
+  plexdebridhobbit:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd     
+  plexdebridplus:
+    enabled: false
+    type: custom
+    mountPath: /config/plex-debrid/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-plex-debrid-ssd
   privatebin:
     enabled: false
     type: custom
@@ -8226,109 +8217,6 @@ rpdb:
     limits:
       cpu: 1
       memory: 1Gi
-
-plexmetamanager:
-  enabled: false
-  sso:
-    enabled: true
-  priorityClassName: tenant-normal
-  image:
-    repository: ghcr.io/geek-cookbook/plex-meta-manager
-    tag: v2.0.1@sha256:5ceaedbbafb0ff7f22a291a6834caf8e0580ecab9d19914a5865b62e78b4e885
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plexmetamanager"
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 9898 # doesn't matter this doesn,t actually use ports
-  envFrom:
-  - configMapRef:
-      name: elfbot-plexmetamanager
-      optional: true          
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plexmetamanager
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-plexmetamanager
-          optional: true
-
-    example-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: plexmetamanager-config
-  initContainers:
-    bootstrap: *bootstrap
-    copy-example-config:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # If we don't already have an example config, create one
-        if [ ! -f /config/config.yml ];
-        then
-          cp /bootstrap/config.yml /config/
-        fi
-      volumeMounts:
-      - mountPath: /config
-        name: config
-      - name: example-config
-        mountPath: "/bootstrap/"
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
-        readOnlyRootFilesystem: true
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 10m
-      memory: 64Mi
-    limits:
-      cpu: 1
-      memory: 2Gi
-  probes:
-    liveness:
-      enabled: false
-    readiness:
-      enabled: false
-    startup:
-      enabled: false
-  additionalContainers:
-    podinfo:
-      image: stefanprodan/podinfo # used to run probes from gatus
 
 kometa: &app_kometa
   enabled: false

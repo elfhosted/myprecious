@@ -615,17 +615,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.plexmetamanager.enabled }}
-      - name: plexmetamanager
-        group: manage-media
-        url: "http://plexmetamanager:9898"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
       - name: kometa
         group: manage-media
