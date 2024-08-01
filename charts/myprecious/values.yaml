@@ -6871,7 +6871,13 @@ flaresolverr: &app_flaresolverr
       mountPath: /shared
       type: emptyDir
       volumeSpec:
-        medium: Memory          
+        medium: Memory  
+    wireguard:
+      enabled: true
+      mountPath: /gluetun/wireguard
+      type: emptyDir
+      volumeSpec:
+        medium: Memory                  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6917,6 +6923,10 @@ flaresolverr: &app_flaresolverr
         # Create gluetun config
         wgcf generate -p /shared/wg0.conf
 
+        # gluetun doesn't like DNS names
+        CF_ENGAGE=$(dig +short dig +short engage.cloudflareclient.com)
+        sed -i -E "s/engage.cloudflareclient.com/$CF_ENGAGE/" /shared/wg0.conf
+
       volumeMounts:
       - mountPath: /shared
         name: shared
@@ -6939,7 +6949,8 @@ flaresolverr: &app_flaresolverr
         VPNDNS: "0"            
         HTTP_CONTROL_SERVER_PORT: "8000"
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-        WIREGUARD_CONF_SECRETFILE: /shared/wg0.conf
+        # see https://github.com/qdm12/gluetun/issues/2183
+        WIREGUARD_CONF_SECRETFILE: /shared/gluetun/wg0.conf
         VPN_TYPE: wireguard
         VPN_SERVICE_PROVIDER: custom
         FIREWALL_INPUT_PORTS: "8191"
@@ -6951,6 +6962,9 @@ flaresolverr: &app_flaresolverr
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
+      volumeMounts:
+      - mountPath: /gluetun/wireguard
+        name: wireguard
 
 flaresolverrplus:
   <<: *app_flaresolverr
