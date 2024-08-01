@@ -833,18 +833,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.plexmetamanager.enabled }}
-          - name: "Plex Meta Manager"
-            # logo: "assets/png/unpackerr.png"
-            # Alternatively a fa icon can be provided:
-            icon: "fas fa-photo-film"
-            subtitle: "Manage Plex Libraries"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/plexmetamanager/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
           - name: "Kometa"
             icon: "fas fa-meteor"
@@ -993,16 +981,6 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.autobrr.enabled }}
-          - name: "Autobrr"
-            logo: "assets/png/autobrr.png"
-            subtitle: "Manage Torrent Automation"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-autobrr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 

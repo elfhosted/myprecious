@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.75.2-pre-02
+version: 1.75.2-pre-13
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -261,11 +261,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: qbittorrentpia.enabled
     alias: qbittorrentpia
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: autobrr.enabled
-    alias: autobrr
   - name: filebrowser
     version: ~1.4.0
     repository: oci://ghcr.io/elfhosted/charts
@@ -294,6 +289,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: flaresolverr.enabled
     alias: flaresolverr
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: flaresolverrplus.enabled
+    alias: flaresolverrplus    
   - name: rtorrent-rutorrent
     version: 1.1.x
     repository: oci://ghcr.io/elfhosted/charts
@@ -383,11 +383,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: shoko.enabled
     alias: shoko
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: plexmetamanager.enabled
-    alias: plexmetamanager
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

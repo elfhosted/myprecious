@@ -615,17 +615,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.plexmetamanager.enabled }}
-      - name: plexmetamanager
-        group: manage-media
-        url: "http://plexmetamanager:9898"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
       - name: kometa
         group: manage-media
@@ -740,17 +729,6 @@ data:
       - name: rutorrent
         group: download-media
         url: "http://rutorrent:8080"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.autobrr.enabled }}
-      - name: autobrr
-        group: download-media
-        url: "http://autobrr:7474"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
