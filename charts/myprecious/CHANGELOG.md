@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.76.0](https://github.com/elfhosted/myprecious/compare/v1.75.2...v1.76.0) (2024-08-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.4.2 ([e5c1f5f](https://github.com/elfhosted/myprecious/commit/e5c1f5ff76a769447f7a59632fd5cb4157d7fa87))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.2008 ([13beb62](https://github.com/elfhosted/myprecious/commit/13beb62250a50399e12875bd2ad5ab6cc21f2e71))
+
+
+### Bug Fixes
+
+* switch Plex VPN from PIA to WARP ([ff0b6ca](https://github.com/elfhosted/myprecious/commit/ff0b6ca0f1a19145c951642125cddaf2c2c21a2b))
+
 ## [1.75.2](https://github.com/elfhosted/myprecious/compare/v1.75.1...v1.75.2) (2024-08-01)
 
 
