@@ -8557,33 +8557,11 @@ webdav: &webdav
     tag: 1.67.0@sha256:760a20a25634824deb3466c6deb59f9978a63018281f58401ddd6f3fbd607380
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus"
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus,elfbot-webdav"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  # affinity:
-  #   nodeAffinity:
-  #     requiredDuringSchedulingIgnoredDuringExecution:
-  #       nodeSelectorTerms:
-  #       - matchExpressions:
-  #         - key: node-role.elfhosted.com/download-only
-  #           operator: Exists
-  #   podAntiAffinity:
-  #     preferredDuringSchedulingIgnoredDuringExecution: 
-  #     - weight: 100  
-  #       podAffinityTerm:    
-  #         labelSelector:
-  #           matchExpressions:
-  #           - key: app.elfhosted.com/class
-  #             operator: In
-  #             values:
-  #             - bulk
-  #         topologyKey: "kubernetes.io/hostname"
-  #         namespaceSelector: {}            
-  # tolerations:
-  # - key: node-role.elfhosted.com/download-only
-  #   operator: Exists      
+    readOnlyRootFilesystem: true  
   command:
   - /webdav.sh
   podSecurityContext:
@@ -8597,6 +8575,9 @@ webdav: &webdav
   envFrom:
   - configMapRef:
       name: webdav-config
+  - configMapRef:
+      name: elfbot-webdav
+      optional: true      
   persistence:
     <<: *storagemounts
     <<: *storageconfigmounts

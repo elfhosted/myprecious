@@ -81,4 +81,7 @@ rules:
 {{ if .Values.calibreweb.enabled }}
   - elfbot-calibreweb
 {{ end }}
+{{ if .Values.webdav.enabled }}
+  - elfbot-webdav
+{{ end }}
 
