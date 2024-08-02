@@ -6047,22 +6047,47 @@ plex: &app_plex
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
-  # probes:
-  #   liveness:
-  #     enabled: true
-  #     custom: true
-  #     spec:
-  #       exec:
-  #         command:
-  #         - /usr/bin/env
-  #         - bash
-  #         - -c
-  #         - ls /storage/* > /dev/null
-  #       failureThreshold: 5
-  #       initialDelaySeconds: 60
-  #       periodSeconds: 10
-  #       successThreshold: 1
-  #       timeoutSeconds: 10
+
+plexplus:
+  <<: *app_plex
+  podLabels:
+    app.elfhosted.com/name: plex
+    app.elfhosted.com/class: dedicated  
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "500M"    
+  enabled: false
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: Exists
+    podAffinity: 
+      requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/class
+              operator: In
+              values:
+              - dedicated
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists    
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 3500m
+      memory: 30Mi
+    limits:
+      cpu: 4
+      memory: 16Gi  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,plex-pia-config"
+  
+
 
 jellyfin: &app_jellyfin
   hostname: elfhosted
