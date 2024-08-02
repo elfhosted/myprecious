@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.75.2](https://github.com/elfhosted/myprecious/compare/v1.75.1...v1.75.2) (2024-08-01)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/gluetun:3.38.0 docker digest to 58e9aa1 ([b36fb22](https://github.com/elfhosted/myprecious/commit/b36fb223ae630f980692219b7b633addbc323fcb))
+* **app:** update ghcr.io/elfhosted/tooling:focal-20240530 docker digest to e077b37 ([4ac8c06](https://github.com/elfhosted/myprecious/commit/4ac8c06fd8c199977dfdde597b118d3f8d583f2f))
+* bundle flaresolverr with Ranger plans ([20a17e5](https://github.com/elfhosted/myprecious/commit/20a17e5004c655fd94564e2acad6d3e7b32931e9))
+* make elfbot backup offsite work ([54f9676](https://github.com/elfhosted/myprecious/commit/54f96762b338046636c4169c1b22b9fccf6a22ab))
+
 ## [1.75.1](https://github.com/elfhosted/myprecious/compare/v1.75.0...v1.75.1) (2024-07-31)
 
 
