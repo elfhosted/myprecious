@@ -27,7 +27,7 @@ data:
     check_for_changes_every_secs: 10
 
     # misc configs
-    retain_folder_name_extension: false # if true, zurg won't modify the filenames from real-debrid
+    retain_folder_name_extension: true # if true, zurg won't modify the filenames from real-debrid
     retain_rd_torrent_name: true # if true, it will strictly follow RD API torrent name property w/c should make this more compatible with rdt-client
     auto_delete_rar_torrents: false # if true, zurg will delete unstreamable rar files (these torrents will always be compressed in a rar archive no matter what files you select)
     use_download_cache: false # if true, during zurg initialization, it will fetch all downloads to unrestrict links faster
@@ -56,6 +56,7 @@ data:
     rate_limit_sleep_secs: 6 # wait time after getting a 429 from Real-Debrid API
     realdebrid_timeout_secs: 60 # api timeout
     retries_until_failed: 5 # api failures until considered failed
+    get_torrents_count: 5000
 
     rar_action: extract
 
