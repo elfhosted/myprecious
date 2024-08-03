@@ -4550,6 +4550,9 @@ calibreweb:
     fsGroupChangePolicy: "OnRootMismatch"
 
   automountServiceAccountToken: false
+  env:
+    UID: 568
+    GID: 568
   envFrom:
   - configMapRef:
       name: elfbot-calibreweb
