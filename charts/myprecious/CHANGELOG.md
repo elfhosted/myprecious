@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.77.0](https://github.com/elfhosted/myprecious/compare/v1.76.0...v1.77.0) (2024-08-03)
+
+
+### Features
+
+* **app:** update jlesage/jdownloader-2 docker tag to v24.08.1 ([51254d2](https://github.com/elfhosted/myprecious/commit/51254d264fe7b25fc4b4b039cb5288309aa7d728))
+* **app:** update mattermost/mattermost-team-edition docker tag to v9.11.0 ([693e42f](https://github.com/elfhosted/myprecious/commit/693e42f5049e322a22f2086253de2d143ef75fd6))
+
+
+### Bug Fixes
+
+* Make Riven frontend library view work! ([b1cdd66](https://github.com/elfhosted/myprecious/commit/b1cdd66749b61f2bbf4d38d4427ce41e04197917))
+* Set retain_folder_name_extension in zurg for optimum Riven results ([52da608](https://github.com/elfhosted/myprecious/commit/52da608b2ddbfe91d0a66ed5937f731515424f08))
+
 ## [1.76.0](https://github.com/elfhosted/myprecious/compare/v1.75.2...v1.76.0) (2024-08-02)
 
 
