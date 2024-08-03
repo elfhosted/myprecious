@@ -7737,7 +7737,7 @@ openbooks:
     sleep 5s
     USER=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 13 ; echo '')
     ./openbooks server \
-      --dir $DATA_DIR \
+      --dir ${DATA_DIR-/tmp} \
       --port 8000 \
       --name $USER \
       --tls=false \
@@ -7745,8 +7745,6 @@ openbooks:
       --server irc.irchighway.net:6661 \
       --no-browser-downloads \
       --debug
-  env:
-    DATA_DIR: /tmp # this can be overridden by elfbot
   envFrom:
   - configMapRef:
       name: elfbot-openbooks
@@ -10165,7 +10163,7 @@ riven: &app_riven
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven,riven-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven,riven-env,riven-frontend-env"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
