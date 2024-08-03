@@ -5,13 +5,13 @@ kind: ReplicationSource
 metadata:
   name: rs-config-sonarr4k-block
 spec:
-  sourcePVC: config-sonarr-block
+  sourcePVC: config-sonarr4k-block
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
     manual: tbc
   restic:
     pruneIntervalDays: 7
-    repository: config-sonarr-block-volsync-restic-config
+    repository: config-sonarr4k-block-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot
