@@ -6,6 +6,6 @@ metadata:
 data:
   ORIGIN: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
   BACKEND_URL: http://127.0.0.1:8080
-  RIVEN_DATABASE_HOST: postgresql+psycopg2://postgres:postgres@localhost/riven
+  DATABASE_URL: postgresql+psycopg2://postgres:postgres@localhost/riven
   DIALECT: postgres
 {{ end }}
