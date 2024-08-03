@@ -4553,6 +4553,7 @@ calibreweb:
   env:
     PUID: 568
     PGID: 568
+    DOCKER_MODS: linuxserver/mods:universal-calibre
   envFrom:
   - configMapRef:
       name: elfbot-calibreweb
