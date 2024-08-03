@@ -4532,8 +4532,6 @@ nzbhydra:
 
 calibreweb:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: 
   image:
     repository: ghcr.io/elfhosted/calibre-web
@@ -4565,6 +4563,13 @@ calibreweb:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-calibreweb-ssd
+    config-calibre:
+      enabled: true
+      type: custom
+      mountPath: /calibre/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-calibre-ssd          
     elfbot:
       enabled: "true"
       type: "custom"
