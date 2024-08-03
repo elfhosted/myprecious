@@ -19,6 +19,6 @@ spec:
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:
     - ReadWriteOnce
-    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
 {{ end }}
 {{ end }}
