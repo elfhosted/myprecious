@@ -10160,7 +10160,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.9.2@sha256:35512779e64dc166db1f47d6c617f4eac44b129edf13907aefafab9944b5eedd
+    tag: v0.9.2@sha256:78706e5e41ef22b50641e8ac96b5ac80c38b525cfbf715745a0a51875a795423
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11638,7 +11638,7 @@ recyclarr:
   enabled: false
   image:
     repository: ghcr.io/recyclarr/recyclarr
-    tag: latest@sha256:bc7a7b940e9f42b9ee7df31d85e180b13a968f0a86ce58838376c052db381b05
+    tag: latest@sha256:c293cc988c5123899ed4d42b31f227b986d36357688106effdb44e83a3bb9f5a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11726,7 +11726,7 @@ recyclarr:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
     sync:
-      image: ghcr.io/recyclarr/recyclarr:latest@sha256:bc7a7b940e9f42b9ee7df31d85e180b13a968f0a86ce58838376c052db381b05      
+      image: ghcr.io/recyclarr/recyclarr:latest@sha256:c293cc988c5123899ed4d42b31f227b986d36357688106effdb44e83a3bb9f5a      
       command:
       - /bin/bash
       - -c
