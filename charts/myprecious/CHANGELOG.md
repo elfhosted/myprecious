@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.77.1](https://github.com/elfhosted/myprecious/compare/v1.77.0...v1.77.1) (2024-08-04)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:v0.9.2 docker digest to 78706e5 ([9b902ed](https://github.com/elfhosted/myprecious/commit/9b902ed4279f82ae75d7f31f69ce0eb0e33d7c0f))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to c293cc9 ([7cd5e48](https://github.com/elfhosted/myprecious/commit/7cd5e48c9ecba433c1ce77bc8b3649b6c7df4335))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to d2850aa ([944dc53](https://github.com/elfhosted/myprecious/commit/944dc53d6af745ef86421afba21352076cec2aae))
+
 ## [1.77.0](https://github.com/elfhosted/myprecious/compare/v1.76.0...v1.77.0) (2024-08-03)
 
 
