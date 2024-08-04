@@ -2360,7 +2360,14 @@ rutorrentgluetun: &rutorrent
       type: "custom"
       volumeSpec:
         configMap:
-          name: dante-config    
+          name: dante-config  
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts   
+          defaultMode: 0755              
   ingress:
     main:
       enabled: false
@@ -2385,6 +2392,7 @@ rutorrentgluetun: &rutorrent
     WAN_IP_CMD: 'curl -s ifconfig.me'
   initContainers:
     bootstrap: *bootstrap
+    update-dns: *update_dns_on_init    
     setup:
       image: *tooling_image
       command:
@@ -2500,7 +2508,8 @@ rutorrentgluetun: &rutorrent
       - mountPath: /shared
         name: shared        
       resources: *default_resources
-      securityContext: *default_securitycontext          
+      securityContext: *default_securitycontext      
+    clean-up-dns: *clean_up_dns_on_termination          
 
 rutorrentpia:
   <<: *rutorrent
