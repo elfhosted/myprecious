@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.78.0](https://github.com/elfhosted/myprecious/compare/v1.77.1...v1.78.0) (2024-08-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.9 ([f94b64f](https://github.com/elfhosted/myprecious/commit/f94b64f825b7341abdf668882d135b4b817b3bc7))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to bec7859 ([9c184d4](https://github.com/elfhosted/myprecious/commit/9c184d46124f89014d3d26ed1c4be426fa6cd58b))
+* prevent Plex from generating video preview thumbnalis and eating RD bandwidth ([fe5723f](https://github.com/elfhosted/myprecious/commit/fe5723f7ea4810bd3627803013d24a08ca0d7737))
+
 ## [1.77.1](https://github.com/elfhosted/myprecious/compare/v1.77.0...v1.77.1) (2024-08-04)
 
 
