@@ -3146,7 +3146,7 @@ nzbget:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/nzbget
-    tag: 24.1@sha256:2deef6fc351063ac26d664db124489c37f3446be86927c5e45b85f4816a43510
+    tag: 24.2@sha256:5fc439bb2d178c2cbc360fd28fe375a800b8c178a272a2a0959d336cf917f2e3
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/class: nzb
