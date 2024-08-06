@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.79.0](https://github.com/elfhosted/myprecious/compare/v1.78.0...v1.79.0) (2024-08-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.24.0 ([51b015f](https://github.com/elfhosted/myprecious/commit/51b015f69e1810c2faad8c99813573673062fe90))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v24.2 ([efd3551](https://github.com/elfhosted/myprecious/commit/efd3551c55c130791c92ac83f795f11d162042f0))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d226dbd ([ac94315](https://github.com/elfhosted/myprecious/commit/ac94315c09e8755dc571001189081a0d9d96e6fb))
+* **app:** update ghcr.io/elfhosted/shluflix:rolling docker digest to 4880fe5 ([981e4b7](https://github.com/elfhosted/myprecious/commit/981e4b7b1d0e6df96456ad47338c8a9e04af7f99))
+* **app:** update ghcr.io/elfhosted/xtremio:rolling docker digest to 189d837 ([e4faaa8](https://github.com/elfhosted/myprecious/commit/e4faaa8cecec0472f9cf634e65367f2466ef5daa))
+
 ## [1.78.0](https://github.com/elfhosted/myprecious/compare/v1.77.1...v1.78.0) (2024-08-05)
 
 
