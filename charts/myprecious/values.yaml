@@ -11280,7 +11280,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.15@sha256:ace0f21a40a2ccb7596ba441ac3bd45c50fd5a29a838f5dce17b997709e9d054
+    tag: 3.9.15@sha256:8926ee73e133f4f88b14b813332ee9c3b4c062e573953e1d3e48ad448c369922
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11750,7 +11750,7 @@ knightcrawler: &app_knightcrawler
   enabled: false
   image:
     repository: ghcr.io/elfhosted/knightcrawler-addon
-    tag: v2.0.27@sha256:2a986de4a46efc1ea5c1e7be578e3a58793264886f677da01c6986289fa5fbad
+    tag: v2.0.27@sha256:4095b77202ed089fe46f14b5b0d5eba6bb652cd094cffb96dc4f665bc850a30f
   priorityClassName: tenant-normal
   podLabels: 
     app.elfhosted.com/name: knightcrawler  
