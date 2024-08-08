@@ -13,4 +13,4 @@ rules:
 # Used to trigger backups
 - apiGroups: ["volsync.backube"]
   resources: ["replicationsources"]
-  verbs: ["list","get","update"]
+  verbs: ["list","get","update","patch"]
