@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.80.0](https://github.com/elfhosted/myprecious/compare/v1.79.1...v1.80.0) (2024-08-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.5.0 ([65a37c2](https://github.com/elfhosted/myprecious/commit/65a37c299ca86d8185820bf21d1d71f087825ce9))
+* **app:** update postgres docker tag to v16.4 ([95c7d47](https://github.com/elfhosted/myprecious/commit/95c7d473707bee616e54fe76de58b90f3958c357))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 6a44f22 ([a949148](https://github.com/elfhosted/myprecious/commit/a94914825a7a11e7741d090b5895d22dc88e6843))
+* **app:** update ghcr.io/elfhosted/rclone:1.67.0 docker digest to 8390ed8 ([874e753](https://github.com/elfhosted/myprecious/commit/874e7531ee3c6d2e5874ed02b5690afd674b3b76))
+
 ## [1.79.1](https://github.com/elfhosted/myprecious/compare/v1.79.0...v1.79.1) (2024-08-07)
 
 
