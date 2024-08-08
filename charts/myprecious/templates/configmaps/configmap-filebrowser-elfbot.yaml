@@ -104,18 +104,21 @@ data:
             if [[ "$2" == "offsite" ]]; then
                 for RS in $(kubectl  get replicationsource -o=name | cut -f2 -d/); do
 
-                echo "$(date '+%H:%M:%S') Triggering manual backup of $RS..."
-                MANUAL=$(date +%s)
-                kubectl patch replicationsource $RS --type merge -p '{"spec":{"trigger":{"manual":"'$MANUAL'"}}}' > /dev/null 2>&1 &
+                    echo "$(date '+%H:%M:%S') Triggering manual backup of $RS..."
+                    MANUAL=$(date +%s)
+                    kubectl patch replicationsource $RS --type merge -p '{"spec":{"trigger":{"manual":"'$MANUAL'"}}}' > /dev/null 2>&1 &
 
-                while [ "$LAST_MANUAL_SYNC" != "$MANUAL" ]
-                do
-                    LAST_MANUAL_SYNC=$(kubectl get replicationsource $RS --template=\{\{.status.lastManualSync}})
-                    echo -n '💾'
-                    sleep 10
+                    while [ "$LAST_MANUAL_SYNC" != "$MANUAL" ]
+                    do
+                        LAST_MANUAL_SYNC=$(kubectl get replicationsource $RS --template=\{\{.status.lastManualSync}})
+                        echo -n '💾'
+                        sleep 10
+                    done
+                echo "✅ Done!"
                 done
-                echo "✅ Completed!"
-                done
+                exit 0
+                echo "Backups triggered. Use ElfTerm to run 'kubectl get replicationsource' to confirm, current status:"
+                kubectl get replicationsource
             fi
 
             if [[ ! -d "/storage/config/$2" && $2 -ne "all" ]]; then
