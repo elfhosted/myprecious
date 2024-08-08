@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.79.1](https://github.com/elfhosted/myprecious/compare/v1.79.0...v1.79.1) (2024-08-07)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon:v2.0.27 docker digest to 4095b77 ([02c79de](https://github.com/elfhosted/myprecious/commit/02c79de2084617a9e1f2ce3306155098e374f33a))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.15 docker digest to 8926ee7 ([55a9aa4](https://github.com/elfhosted/myprecious/commit/55a9aa4b7aaed72f0f3cbe117c163827898ac7d5))
+* **app:** update quay.io/linuxserver.io/calibre:7.16.0 docker digest to 346da07 ([dd81080](https://github.com/elfhosted/myprecious/commit/dd8108087096a8b645b94e657c08e7ea076493d5))
+* remove simultaneous limit from proxystreaming stremio addons ([c7e306e](https://github.com/elfhosted/myprecious/commit/c7e306e4bf2526e61ce1f3f444295498cbcb70d0))
+* speedtests from plex work again (appending /speed/ to plex URL) ([a3a8428](https://github.com/elfhosted/myprecious/commit/a3a842893360c6be8db6e4fa0f33c48deb02c1f4))
+
 ## [1.79.0](https://github.com/elfhosted/myprecious/compare/v1.78.0...v1.79.0) (2024-08-06)
 
 
