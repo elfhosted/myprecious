@@ -1,6 +1,10 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
 safeToRelease: true
 
+# false by default means the FSN cluster (so no migrations)
+location:
+  enabled: false
+
 # false by default
 volsync:
   enabled: false
