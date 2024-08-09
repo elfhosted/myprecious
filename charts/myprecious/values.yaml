@@ -732,12 +732,13 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-lazylibrarian-ssd
   lidarr:
-    enabled: false
-    type: custom
-    mountPath: /config/lidarr/
+    enabled: "false"
+    subPath: "where-is-my-lidarr.txt"
+    mountPath: /config/lidarr/where-is-my-lidarr.txt
+    type: "custom"
     volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-lidarr-ssd
+      configMap:
+        name: explain-migration           
   mattermost:
     enabled: false
     type: custom
@@ -1298,12 +1299,13 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-lazylibrarian-ssd
   lidarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/lidarr/
+    enabled: "false"
+    subPath: "where-is-my-lidarr.txt"
+    mountPath: /storage/config/lidarr/where-is-my-lidarr.txt
+    type: "custom"
     volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-lidarr-ssd
+      configMap:
+        name: explain-migration     
   mattermost:
     enabled: false
     type: custom
@@ -10242,6 +10244,11 @@ riven: &app_riven
         configMap:
           name: elfbot-riven
           optional: true
+    dev-shm:
+      enabled: "true"
+      type: emptyDir
+      volumeSpec:
+        medium: Memory  
   initContainers:
     bootstrap: *bootstrap
     setup-postgres:
@@ -10302,6 +10309,8 @@ riven: &app_riven
       - mountPath: /var/lib/postgresql/data
         name: config      
         subPath: postgresql/database
+      - mountPath: /dev/shm
+        name: dev-shm
     backup-database:
       image: *tooling_image
       env:
@@ -11990,7 +11999,7 @@ zurg: &app_zurg
         fi
 
         # Copy across latency files to avoid false crashloops on start
-        mkdir -p /config/data
+        # mkdir -p /config/data
         # cp /bootstrap/ipv4-hosts.json /config/data/
         # cp /bootstrap/ipv6-hosts.json /config/data/
 
@@ -12038,6 +12047,10 @@ zurg: &app_zurg
         #   # remove proxy if found
         #   sed -i  "s/^proxy:/#proxy/" /config/config.yml
         # fi
+
+        # don't cache network test results
+        grep cache_network_test_results /config/config.yml \
+          || echo 'cache_network_test_results: false' >> /config/config.yml
 
         # no more warp
         sed -i  "s/^proxy:/#proxy/" /config/config.yml
