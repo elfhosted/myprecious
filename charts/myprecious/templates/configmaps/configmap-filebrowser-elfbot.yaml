@@ -116,6 +116,7 @@ data:
                 done
                 echo "✅ Completed!"
                 done
+                exit 0
             fi
 
             if [[ ! -d "/storage/config/$2" && $2 -ne "all" ]]; then
