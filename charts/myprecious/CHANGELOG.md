@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.82.0](https://github.com/elfhosted/myprecious/compare/v1.81.0...v1.82.0) (2024-08-09)
+
+
+### Features
+
+* **app:** update postgres docker tag to v16.4 ([ad9fe26](https://github.com/elfhosted/myprecious/commit/ad9fe26e4cee0af06835bd8c4304a469683d1f1e))
+
 ## [1.81.0](https://github.com/elfhosted/myprecious/compare/v1.80.0...v1.81.0) (2024-08-09)
 
 
