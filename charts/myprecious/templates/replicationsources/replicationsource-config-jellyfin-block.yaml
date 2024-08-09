@@ -8,7 +8,6 @@ spec:
   sourcePVC: config-jellyfin-block
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
-    manual: tbc
   restic:
     pruneIntervalDays: 7
     repository: config-jellyfin-block-volsync-restic-config

@@ -8,7 +8,6 @@ spec:
   sourcePVC: config-jellyseerr-ssd
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
-    manual: tbc
   restic:
     pruneIntervalDays: 7
     repository: config-jellyseerr-ssd-volsync-restic-config

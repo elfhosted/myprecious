@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 # false by default
 volsync:
@@ -49,7 +49,7 @@ hobbit_tolerations: &hobbit_tolerations
 
 hobbit_streamer_resources: &hobbit_streamer_resources
   requests:
-    cpu: "1.6"
+    cpu: "1.8"
     memory: 30Mi
   limits:
     cpu: "2"
@@ -3157,7 +3157,7 @@ nzbget:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/nzbget
-    tag: 24.1@sha256:2deef6fc351063ac26d664db124489c37f3446be86927c5e45b85f4816a43510
+    tag: 24.2@sha256:5fc439bb2d178c2cbc360fd28fe375a800b8c178a272a2a0959d336cf917f2e3
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/class: nzb
@@ -4681,7 +4681,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:bd0f39681be0a40ec11f12615ca079d4beef4e2b44216405a0ae747ff301aaec
+    tag: rolling@sha256:6a44f22760b1b1c98228c9d9fb5437533909e30e6ce155fc0c3548a07264fe52
   enabled: false
   controller:
     annotations:
@@ -4914,7 +4914,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.16.0@sha256:e179e32b1ed42814816e5379d08ee9d9f957f6e704c8695bd1ffece9668a9192
+    tag: 7.16.0@sha256:346da07a914182b444da9ce90d6e4c70df8e8695a1d9466d170ef8edbe3a99a5
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6112,7 +6112,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.8@sha256:d5c748ec4e9f2ddfef45b212b7dac84d8aecd20b67f14eefa603dedcd96bb283
+    tag: 10.9.9@sha256:86c1bcf421b99aba6796fbe79fd382e669f35d520eee3399caf722dc8372c1f2
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid  
@@ -7520,8 +7520,16 @@ overseerr:
           name: elfbot-overseerr
           optional: true
     tmp: *tmp
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts             
+          defaultMode: 0755      
   initContainers:
     bootstrap: *bootstrap
+    update-dns: *update_dns_on_init 
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
       image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:c5804210e6efce88d179a981850e7c86e1b21715f3f467185d027210913cb2ca
@@ -7564,6 +7572,7 @@ overseerr:
         name: tmp
       resources: *default_resources
       securityContext: *default_securitycontext   
+    clean-up-dns: *clean_up_dns_on_termination  
 
 jellyseerr:
   enabled: false
@@ -7606,8 +7615,16 @@ jellyseerr:
           name: elfbot-jellyseerr
           optional: true
     tmp: *tmp
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts             
+          defaultMode: 0755    
   initContainers:
     bootstrap: *bootstrap
+    update-dns: *update_dns_on_init 
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
       image: ghcr.io/elfhosted/jellyseerr:1.9.2@sha256:b5720501c644c924ddd18a21b8f744afb290b2923d4dff7bb759b5cef637a78f
@@ -7649,7 +7666,8 @@ jellyseerr:
       - mountPath: /tmp
         name: tmp        
       resources: *default_resources
-      securityContext: *default_securitycontext      
+      securityContext: *default_securitycontext    
+    clean-up-dns: *clean_up_dns_on_termination          
 
 audiobookshelf:
   enabled: false
@@ -8945,7 +8963,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 9.10.1@sha256:d2fafab2decfa6d0d6cf6796962c23563263e210b23b3c18ca3f81efc712a850
+    tag: 9.11.0@sha256:a0e07f940e79eea6864cd845b8fdad9bdef302018fa2d5faa3436d46b9764418
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -9523,7 +9541,7 @@ jdownloader:
   priorityClassName: tenant-bulk
   image:
     repository: jlesage/jdownloader-2
-    tag: v24.07.1
+    tag: v24.08.1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jdownloader"
@@ -10171,7 +10189,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.9.2@sha256:35512779e64dc166db1f47d6c617f4eac44b129edf13907aefafab9944b5eedd
+    tag: v0.9.2@sha256:78706e5e41ef22b50641e8ac96b5ac80c38b525cfbf715745a0a51875a795423
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10265,7 +10283,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.4.2@sha256:02ebf55b1d08af22b82f8a38fa4edaaeab83aed14c25f7a6e75961c0b1eab291
+      image: ghcr.io/elfhosted/riven-frontend:v0.5.0@sha256:24b73e0c6b3f83a9ea4b6d7a260ffe2f47a8ab892c81d097ab689be5fa44f3f4
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11054,7 +11072,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.23.2@sha256:6d586eceeae865a1ee23771754df9a2095da443cee5ccc6177fb8da6f8b3af27
+    tag: v1.24.0@sha256:743be6907462cfd5da90e4867ca326c947e254c9025d17117ca5dc7231257f56
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -11282,7 +11300,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.15@sha256:ace0f21a40a2ccb7596ba441ac3bd45c50fd5a29a838f5dce17b997709e9d054
+    tag: 3.9.15@sha256:78dfdac61e1870bcae7e8bf5d35dc3ebb468df28fab7ea4aa10c9642ce145707
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11456,7 +11474,7 @@ xtremio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/xtremio
-    tag: rolling@sha256:ae4c07062d271218803371ea4454b3206e760e6a1d14a0c16dcd500a94c11978
+    tag: rolling@sha256:189d837c3e33a4e6823f471fb4513cfe56d133c14f416ae9f0d4b38686522dc8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11505,7 +11523,7 @@ shluflix:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/shluflix
-    tag: rolling@sha256:58fb6960da81193de7c063915d90e1164f8675b8213d82b5f0966831582e9de5
+    tag: rolling@sha256:4880fe509752ee2f3fcef15561a8499c1e35057475d086299a62721b9e6426b3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11649,7 +11667,7 @@ recyclarr:
   enabled: false
   image:
     repository: ghcr.io/recyclarr/recyclarr
-    tag: latest@sha256:bc7a7b940e9f42b9ee7df31d85e180b13a968f0a86ce58838376c052db381b05
+    tag: latest@sha256:c293cc988c5123899ed4d42b31f227b986d36357688106effdb44e83a3bb9f5a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11737,7 +11755,7 @@ recyclarr:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
     sync:
-      image: ghcr.io/recyclarr/recyclarr:latest@sha256:bc7a7b940e9f42b9ee7df31d85e180b13a968f0a86ce58838376c052db381b05      
+      image: ghcr.io/recyclarr/recyclarr:latest@sha256:c293cc988c5123899ed4d42b31f227b986d36357688106effdb44e83a3bb9f5a      
       command:
       - /bin/bash
       - -c
@@ -11752,7 +11770,7 @@ knightcrawler: &app_knightcrawler
   enabled: false
   image:
     repository: ghcr.io/elfhosted/knightcrawler-addon
-    tag: v2.0.27@sha256:2a986de4a46efc1ea5c1e7be578e3a58793264886f677da01c6986289fa5fbad
+    tag: v2.0.27@sha256:4095b77202ed089fe46f14b5b0d5eba6bb652cd094cffb96dc4f665bc850a30f
   priorityClassName: tenant-normal
   podLabels: 
     app.elfhosted.com/name: knightcrawler  
@@ -12493,7 +12511,7 @@ plexhobbit:
   <<: *app_plex
   podLabels:
     app.elfhosted.com/name: plex
-    app.elfhosted.com/class: hobbit  
+    app.elfhosted.com/class: hobbit # this affects the podaffinity for other hobbit services
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
@@ -12505,7 +12523,7 @@ jellyfinhobbit:
   <<: *app_jellyfin
   podLabels:
     app.elfhosted.com/name: jellyfin
-    app.elfhosted.com/class: hobbit  
+    app.elfhosted.com/class: hobbit # this affects the podaffinity for other hobbit services
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
@@ -12517,7 +12535,7 @@ embyhobbit:
   <<: *app_emby
   podLabels:
     app.elfhosted.com/name: emby
-    app.elfhosted.com/class: hobbit  
+    app.elfhosted.com/class: hobbit # this affects the podaffinity for other hobbit services
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
@@ -12529,7 +12547,6 @@ zurghobbit:
   <<: *app_zurg
   podLabels:
     app.elfhosted.com/name: zurg
-    app.elfhosted.com/class: hobbit  
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
@@ -12541,7 +12558,6 @@ radarrhobbit:
   <<: *app_radarr
   podLabels:
     app.elfhosted.com/name: radarr
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
@@ -12551,7 +12567,6 @@ radarr4khobbit:
   <<: *app_radarr4k
   podLabels:
     app.elfhosted.com/name: radarr4k
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  
@@ -12561,7 +12576,6 @@ sonarrhobbit:
   <<: *app_sonarr
   podLabels:
     app.elfhosted.com/name: sonarr
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
@@ -12571,7 +12585,6 @@ sonarr4khobbit:
   <<: *app_sonarr4k
   podLabels:
     app.elfhosted.com/name: sonarr4k
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  
@@ -12581,7 +12594,6 @@ plexdebridhobbit:
   <<: *app_plexdebrid
   podLabels:
     app.elfhosted.com/name: plexdebrid
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations 
@@ -12591,7 +12603,6 @@ prowlarrhobbit:
   <<: *app_prowlarr
   podLabels:
     app.elfhosted.com/name: prowlarr
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations 
@@ -12601,7 +12612,6 @@ rdtclienthobbit:
   <<: *app_rdtclient
   podLabels:
     app.elfhosted.com/name: rdtclient
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
@@ -12611,7 +12621,6 @@ rivenhobbit:
   <<: *app_riven
   podLabels:
     app.elfhosted.com/name: riven
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations
@@ -12627,7 +12636,6 @@ kometahobbit:
   <<: *app_kometa
   podLabels:
     app.elfhosted.com/name: kometa
-    app.elfhosted.com/class: hobbit   
   enabled: false
   affinity: *hobbit_affinity              
   tolerations: *hobbit_tolerations  

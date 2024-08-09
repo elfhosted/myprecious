@@ -32,3 +32,6 @@ data:
     storageboxa: {{ tpl (toYaml .Values.storageboxa) . | sha256sum }}
     storageboxb: {{ tpl (toYaml .Values.storageboxb) . | sha256sum }}
     storageboxc: {{ tpl (toYaml .Values.storageboxc) . | sha256sum }}
+    {{- if .Values.rclonemounttorbox.enabled }}
+    rclonemounttorbox: {{ tpl (toYaml .Values.rclonemounttorbox) . | sha256sum }}
+    {{- end }}

@@ -1,5 +1,81 @@
 # Changelog
 
+## [1.80.0](https://github.com/elfhosted/myprecious/compare/v1.79.1...v1.80.0) (2024-08-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.5.0 ([65a37c2](https://github.com/elfhosted/myprecious/commit/65a37c299ca86d8185820bf21d1d71f087825ce9))
+* **app:** update postgres docker tag to v16.4 ([95c7d47](https://github.com/elfhosted/myprecious/commit/95c7d473707bee616e54fe76de58b90f3958c357))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 6a44f22 ([a949148](https://github.com/elfhosted/myprecious/commit/a94914825a7a11e7741d090b5895d22dc88e6843))
+* **app:** update ghcr.io/elfhosted/rclone:1.67.0 docker digest to 8390ed8 ([874e753](https://github.com/elfhosted/myprecious/commit/874e7531ee3c6d2e5874ed02b5690afd674b3b76))
+
+## [1.79.1](https://github.com/elfhosted/myprecious/compare/v1.79.0...v1.79.1) (2024-08-07)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon:v2.0.27 docker digest to 4095b77 ([02c79de](https://github.com/elfhosted/myprecious/commit/02c79de2084617a9e1f2ce3306155098e374f33a))
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.15 docker digest to 8926ee7 ([55a9aa4](https://github.com/elfhosted/myprecious/commit/55a9aa4b7aaed72f0f3cbe117c163827898ac7d5))
+* **app:** update quay.io/linuxserver.io/calibre:7.16.0 docker digest to 346da07 ([dd81080](https://github.com/elfhosted/myprecious/commit/dd8108087096a8b645b94e657c08e7ea076493d5))
+* remove simultaneous limit from proxystreaming stremio addons ([c7e306e](https://github.com/elfhosted/myprecious/commit/c7e306e4bf2526e61ce1f3f444295498cbcb70d0))
+* speedtests from plex work again (appending /speed/ to plex URL) ([a3a8428](https://github.com/elfhosted/myprecious/commit/a3a842893360c6be8db6e4fa0f33c48deb02c1f4))
+
+## [1.79.0](https://github.com/elfhosted/myprecious/compare/v1.78.0...v1.79.0) (2024-08-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.24.0 ([51b015f](https://github.com/elfhosted/myprecious/commit/51b015f69e1810c2faad8c99813573673062fe90))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v24.2 ([efd3551](https://github.com/elfhosted/myprecious/commit/efd3551c55c130791c92ac83f795f11d162042f0))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d226dbd ([ac94315](https://github.com/elfhosted/myprecious/commit/ac94315c09e8755dc571001189081a0d9d96e6fb))
+* **app:** update ghcr.io/elfhosted/shluflix:rolling docker digest to 4880fe5 ([981e4b7](https://github.com/elfhosted/myprecious/commit/981e4b7b1d0e6df96456ad47338c8a9e04af7f99))
+* **app:** update ghcr.io/elfhosted/xtremio:rolling docker digest to 189d837 ([e4faaa8](https://github.com/elfhosted/myprecious/commit/e4faaa8cecec0472f9cf634e65367f2466ef5daa))
+
+## [1.78.0](https://github.com/elfhosted/myprecious/compare/v1.77.1...v1.78.0) (2024-08-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.9 ([f94b64f](https://github.com/elfhosted/myprecious/commit/f94b64f825b7341abdf668882d135b4b817b3bc7))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to bec7859 ([9c184d4](https://github.com/elfhosted/myprecious/commit/9c184d46124f89014d3d26ed1c4be426fa6cd58b))
+* prevent Plex from generating video preview thumbnalis and eating RD bandwidth ([fe5723f](https://github.com/elfhosted/myprecious/commit/fe5723f7ea4810bd3627803013d24a08ca0d7737))
+
+## [1.77.1](https://github.com/elfhosted/myprecious/compare/v1.77.0...v1.77.1) (2024-08-04)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:v0.9.2 docker digest to 78706e5 ([9b902ed](https://github.com/elfhosted/myprecious/commit/9b902ed4279f82ae75d7f31f69ce0eb0e33d7c0f))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to c293cc9 ([7cd5e48](https://github.com/elfhosted/myprecious/commit/7cd5e48c9ecba433c1ce77bc8b3649b6c7df4335))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to d2850aa ([944dc53](https://github.com/elfhosted/myprecious/commit/944dc53d6af745ef86421afba21352076cec2aae))
+
+## [1.77.0](https://github.com/elfhosted/myprecious/compare/v1.76.0...v1.77.0) (2024-08-03)
+
+
+### Features
+
+* **app:** update jlesage/jdownloader-2 docker tag to v24.08.1 ([51254d2](https://github.com/elfhosted/myprecious/commit/51254d264fe7b25fc4b4b039cb5288309aa7d728))
+* **app:** update mattermost/mattermost-team-edition docker tag to v9.11.0 ([693e42f](https://github.com/elfhosted/myprecious/commit/693e42f5049e322a22f2086253de2d143ef75fd6))
+
+
+### Bug Fixes
+
+* Make Riven frontend library view work! ([b1cdd66](https://github.com/elfhosted/myprecious/commit/b1cdd66749b61f2bbf4d38d4427ce41e04197917))
+* Set retain_folder_name_extension in zurg for optimum Riven results ([52da608](https://github.com/elfhosted/myprecious/commit/52da608b2ddbfe91d0a66ed5937f731515424f08))
+
 ## [1.76.0](https://github.com/elfhosted/myprecious/compare/v1.75.2...v1.76.0) (2024-08-02)
 
 
