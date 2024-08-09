@@ -1,12 +1,9 @@
 {{- if and .Values.jackett.enabled .Values.volsync.enabled }}
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-jackett-block" ) }}
-{{- if not $pvc }}
+{{ if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-jackett-block
-  annotations:
-    helm.sh/hook: pre-install,pre-upgrade  
 spec:
   trigger:
     manual: runonce

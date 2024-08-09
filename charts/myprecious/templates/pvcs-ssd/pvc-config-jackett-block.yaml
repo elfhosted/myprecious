@@ -5,8 +5,7 @@ metadata:
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-jackett-block" ) }}
-  {{- if not $pvc }}
+{{ if .Values.location.enabled }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
