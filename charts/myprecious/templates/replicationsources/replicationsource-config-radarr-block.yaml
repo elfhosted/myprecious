@@ -9,7 +9,6 @@ spec:
   sourcePVC: config-radarr-block
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
-    manual: tbc
   restic:
     pruneIntervalDays: 7
     repository: config-radarr-block-volsync-restic-config

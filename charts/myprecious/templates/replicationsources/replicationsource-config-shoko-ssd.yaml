@@ -8,7 +8,6 @@ spec:
   sourcePVC: config-shoko-ssd
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
-    manual: tbc
   restic:
     pruneIntervalDays: 7
     repository: config-shoko-ssd-volsync-restic-config

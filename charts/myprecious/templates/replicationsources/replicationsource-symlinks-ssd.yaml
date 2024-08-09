@@ -7,7 +7,6 @@ spec:
   sourcePVC: symlinks-ssd
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
-    manual: tbc
   restic:
     pruneIntervalDays: 7
     repository: symlinks-ssd-volsync-restic-config
