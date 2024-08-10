@@ -7770,12 +7770,8 @@ audiobookshelf:
           claimName: config-audiobookshelf-ssd
     metadata:
       enabled: true
-      type: custom
-      mountPath: /metadata/
-      subpath: metadata
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-audiobookshelf-ssd          
+      type: emptyDir    
+      mountPath: /metadata   
     elfbot:
       enabled: "true"
       type: "custom"
