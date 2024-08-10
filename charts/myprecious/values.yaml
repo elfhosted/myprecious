@@ -6874,29 +6874,32 @@ flaresolverr: &app_flaresolverr
   image:
     registry: ghcr.io
     repository: elfhosted/flaresolverr
-    tag: 3.3.21@sha256:4e717e62d397e6c1990fbc268f44b72501a9db8e3d2b88fb30fd8ddfd62b1621
+    tag: 3.3.21@sha256:2c3c7087eaf809f2b032fb9df28cf8884546463a1c532c9dd3b244f424bfd6ad
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: false # makes node unhappy
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-flaresolverr"
   affinity:
     podAffinity: 
-      # prefer to be located with jackett
       preferredDuringSchedulingIgnoredDuringExecution: 
       - weight: 100  
         podAffinityTerm:    
           labelSelector:
             matchExpressions:
-            - key: app.kubernetes.io/name
+            - key: app.elfhosted.com/name
               operator: In
               values:
-              - jackett
-              - prowlarr
-          topologyKey: "kubernetes.io/hostname"
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-flaresolverr"
   persistence:
     elfbot:
       enabled: "true"
