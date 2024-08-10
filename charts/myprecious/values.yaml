@@ -3416,6 +3416,24 @@ tautulli:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tautulli"
+  # Always prefer to cohabit with zurg
+  affinity:
+    podAffinity: 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists            
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4069,6 +4087,24 @@ filebrowser:
     tag: 2.23.0@sha256:7d557ac349f77f55bfb8272a3a306e32551e27d7834e16136e3638de5d109465
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
+  # Always prefer to cohabit with zurg
+  affinity:
+    podAffinity: 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists    
   envFrom:
   - configMapRef:
       name: filebrowser-env      
@@ -7496,6 +7532,24 @@ overseerr:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-overseerr"
+  # Always prefer to cohabit with zurg
+  affinity:
+    podAffinity: 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists      
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8397,7 +8451,25 @@ rcloneui:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rcloneui,elfhosted-user-config"
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "40M"     
+    kubernetes.io/egress-bandwidth: "40M" 
+  # Always prefer to cohabit with zurg
+  affinity:
+    podAffinity: 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8492,7 +8564,25 @@ rclonefm:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rclonefm,rclonefm-config"
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "40M"     
+    kubernetes.io/egress-bandwidth: "40M"    
+  # Always prefer to cohabit with zurg
+  affinity:
+    podAffinity: 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists           
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8591,6 +8681,24 @@ webdav: &webdav
   podAnnotations:
     kubernetes.io/egress-bandwidth: "40M"    
   priorityClassName: tenant-normal
+  # Always prefer to cohabit with zurg
+  affinity:
+    podAffinity: 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists         
   image:
     repository: ghcr.io/elfhosted/rclone
     tag: 1.67.0@sha256:f4f1afa5f1b4528ae21f12e0ec8a284cd5c1ce5b7fb32b9268c7b5a56357eb4e
@@ -10531,6 +10639,24 @@ jackett:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+  # Always prefer to cohabit with zurg
+  affinity:
+    podAffinity: 
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"                 
+  tolerations:
+  - key: node-role.elfhosted.com/dedicated
+    operator: Exists   
+  - key: node-role.elfhosted.com/hobbit
+    operator: Exists          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
