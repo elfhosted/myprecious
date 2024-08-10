@@ -1,7 +1,6 @@
 {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
 {{- if .Values.volsync.enabled }}
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-zurg-ssd" ) }}
-{{- if not $pvc }}
+{{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:

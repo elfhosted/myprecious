@@ -1,7 +1,6 @@
 {{- if or .Values.radarr.enabled .Values.radarrhobbit.enabled .Values.radarrplus.enabled }}
 {{- if .Values.volsync.enabled }}
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-radarr-block" ) }}
-{{- if not $pvc }}
+{{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:

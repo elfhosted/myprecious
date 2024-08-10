@@ -1,6 +1,5 @@
 {{- if and .Values.vaultwarden.enabled .Values.volsync.enabled }}
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-vaultwarden-ssd" ) }}
-{{- if not $pvc }}
+{{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:

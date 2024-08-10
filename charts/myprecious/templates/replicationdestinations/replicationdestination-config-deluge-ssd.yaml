@@ -1,7 +1,6 @@
 {{- if .Values.volsync.enabled }}
 {{ if or .Values.delugegluetun.enabled .Values.delugepia.enabled }}
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-deluge-ssd" ) }}
-{{- if not $pvc }}
+{{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
