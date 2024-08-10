@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.81.0](https://github.com/elfhosted/myprecious/compare/v1.80.0...v1.81.0) (2024-08-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gluetun docker tag to v3.39.0 ([07a0fbd](https://github.com/elfhosted/myprecious/commit/07a0fbdade064e125763f48288fc2c4114a4d388))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediafusion:3.9.15 docker digest to 78dfdac ([3e7e1fc](https://github.com/elfhosted/myprecious/commit/3e7e1fc2cc3bc4626467b6089cc2a3ff6c2289a0))
+* **app:** update ghcr.io/elfhosted/warp:rolling docker digest to dab08a1 ([b3d1ad9](https://github.com/elfhosted/myprecious/commit/b3d1ad921f6d24a7a92c679f203340e4587a060f))
+
 ## [1.80.0](https://github.com/elfhosted/myprecious/compare/v1.79.1...v1.80.0) (2024-08-08)
 
 
