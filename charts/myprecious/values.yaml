@@ -7768,6 +7768,11 @@ audiobookshelf:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-audiobookshelf-ssd
+    # never used, just satisfies startup scripts
+    metadata:
+      enabled: true
+      type: emptyDir    
+      mountPath: /metadata   
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7781,9 +7786,9 @@ audiobookshelf:
       volumeSpec:
         configMap:
           name: tooling-scripts             
-          defaultMode: 0755           
+          defaultMode: 0755               
   env:
-    METADATA_PATH: /config/metadata    
+    METADATA_PATH: /config/metadata             
   initContainers:
     bootstrap: *bootstrap
     update-dns: *update_dns_on_init    
