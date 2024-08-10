@@ -7788,7 +7788,8 @@ audiobookshelf:
           name: tooling-scripts             
           defaultMode: 0755               
   env:
-    METADATA_PATH: /config/metadata             
+    METADATA_PATH: /config/metadata    
+    SOURCE: ElfHosted         
   initContainers:
     bootstrap: *bootstrap
     update-dns: *update_dns_on_init    
