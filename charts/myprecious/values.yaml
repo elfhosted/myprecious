@@ -27,7 +27,7 @@ storageclass:
 # sets the user's base dns domain
 dns_domain: elfhosted.com
 
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:e077b37e235c6c08ed23a9b387d1cc252a86e97bf485e50b0926aad58c630aa3
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
 
 
 hobbit_affinity: &hobbit_affinity
@@ -6675,7 +6675,7 @@ traefikforwardauth:
   image:
     repository: ghcr.io/elfhosted/traefik-forward-auth
     pullPolicy: IfNotPresent
-    tag: 3.1.0@sha256:86fff8beda875b6094210cdce530769fdb6a1919dee3e5c03ae09d2bd1aeb819     
+    tag: 3.1.0@sha256:19cd990fae90c544100676bc049f944becc8c454639e57d20f6f48e27de90776     
 
   middleware:
     # middleware.enabled -- Enable to deploy a preconfigured middleware
@@ -7828,7 +7828,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.31.0@sha256:e5fc21a00e55b94dd7d19b82dbe7572b2a4c776220126d1fb89e3e1c146bc808
+    tag: 1.31.0@sha256:e91aa82573496f1d416c52361a8faea0d1207772df5ec5f98983fd8e827e875f
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9335,7 +9335,7 @@ syncthing:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/syncthing
-    tag: 1.27.8@sha256:ee46afa49c0b1cfeb1de2eaef6d36ed10d9ada3a358ddbee664b3e981bbed04b
+    tag: 1.27.10@sha256:e97e468c112cafb92e89c1a00d6793d0f869e780b98830ad19de8b9a08071574
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-syncthing"
@@ -9387,7 +9387,7 @@ syncthing:
   initContainers:
     bootstrap: *bootstrap
     setup:
-      image: ghcr.io/elfhosted/syncthing:1.27.8@sha256:ee46afa49c0b1cfeb1de2eaef6d36ed10d9ada3a358ddbee664b3e981bbed04b
+      image: ghcr.io/elfhosted/syncthing:1.27.10@sha256:e97e468c112cafb92e89c1a00d6793d0f869e780b98830ad19de8b9a08071574
       imagePullPolicy: IfNotPresent
       envFrom:
       - configMapRef:
@@ -11177,7 +11177,7 @@ comet:
     speedtest:
       image: openspeedtest/latest      
     warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:dab08a130ceba75a7782cc142f86899c424f0b919ce81033d12766fef982d3cc
+      image: ghcr.io/elfhosted/warp:rolling@sha256:fbb62450640544de4974e1e424b13bf30f6e4683b55faef4b4c5f13e7c78c083
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
