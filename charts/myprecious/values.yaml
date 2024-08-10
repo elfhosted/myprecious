@@ -11173,7 +11173,7 @@ comet:
     speedtest:
       image: openspeedtest/latest      
     warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:dab08a130ceba75a7782cc142f86899c424f0b919ce81033d12766fef982d3cc
+      image: ghcr.io/elfhosted/warp:rolling@sha256:fbb62450640544de4974e1e424b13bf30f6e4683b55faef4b4c5f13e7c78c083
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
