@@ -7483,7 +7483,7 @@ overseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/overseerr
-    tag: 1.33.2@sha256:c5804210e6efce88d179a981850e7c86e1b21715f3f467185d027210913cb2ca
+    tag: 1.33.2@sha256:51e1c93d68eb4aed7631ea6a10d5a5244841e3b66f04c5b1d3bc03cfa08a6729
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7532,7 +7532,7 @@ overseerr:
     update-dns: *update_dns_on_init 
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:c5804210e6efce88d179a981850e7c86e1b21715f3f467185d027210913cb2ca
+      image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:51e1c93d68eb4aed7631ea6a10d5a5244841e3b66f04c5b1d3bc03cfa08a6729
       command:
         - /bin/bash
         - -c
