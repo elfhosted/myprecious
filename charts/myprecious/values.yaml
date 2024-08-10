@@ -7285,7 +7285,7 @@ thelounge:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/thelounge
-    tag: "4.4.3@sha256:58d4c493b1785a95b61854629965f51cf287dbb9f367d1f02c059820b8871af6"
+    tag: "4.4.3@sha256:92d172b18085509de57442a31d9f29d60e1f0f0dc3cf2d3c05e4406cfc543b70"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7341,7 +7341,7 @@ thelounge:
   initContainers:
     bootstrap: *bootstrap
     create-user:
-      image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:58d4c493b1785a95b61854629965f51cf287dbb9f367d1f02c059820b8871af6
+      image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:92d172b18085509de57442a31d9f29d60e1f0f0dc3cf2d3c05e4406cfc543b70
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
