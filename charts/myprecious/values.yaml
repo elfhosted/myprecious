@@ -3440,7 +3440,7 @@ tautulli:
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
-    tag: 2.14.3@sha256:3ec6d626d090801ccf425108af3831abc61ba64e4177988fee7c9a801c1ce875
+    tag: 2.14.4@sha256:8fc0fba9887f39368b2ee0e370894bf64ed14ce6864ecee0d1c9bce36a0635e8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -4724,7 +4724,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:c5b7e756c9b3bd8e05e067f65a3f9b65ebb998ac0b74c263d75c61d8ca9f1fd1
+    tag: rolling@sha256:da0f9415d0a55bb3a45c947b0c2b11578cb1c24f21916be1adc50adb7ab2afa3
   enabled: false
   controller:
     annotations:
