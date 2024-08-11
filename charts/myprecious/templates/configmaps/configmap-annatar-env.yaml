@@ -10,7 +10,7 @@ data:
   DISABLE_OTEL: "true"
   LISTEN_PORT: "8000"
   LISTEN_HOST: "0.0.0.0"
-  REDIS_URL: "redis-master.annatar" # don't change this, it's the shared cache
+  REDIS_URL: "localhost"
   JACKETT_TIMEOUT: "5"
   JACKETT_MAX_RESULTS: "10" 
   JACKETT_URL: http://jackett:9117
