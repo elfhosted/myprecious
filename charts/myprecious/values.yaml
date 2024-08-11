@@ -3907,6 +3907,8 @@ scannarr: &app_scannarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-scannarr"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations       
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp  
@@ -3946,6 +3948,8 @@ scannarr4k:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-scannarr4k"     
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations       
   persistence:
     tmp: *tmp  
     sonarr-settings:
@@ -6151,9 +6155,7 @@ plexplus:
       memory: 16Gi  
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,plex-pia-config"
-  
-
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,plex-config"
 
 jellyfin: &app_jellyfin
   hostname: elfhosted
@@ -9515,6 +9517,8 @@ rdtclient: &app_rdtclient
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rdtclient"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations       
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10182,6 +10186,8 @@ autoscan:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-autoscan"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations       
   securityContext:
     seccompProfile:
       type: RuntimeDefault
