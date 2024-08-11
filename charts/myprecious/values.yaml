@@ -11088,11 +11088,11 @@ annatar:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/annatar
-    tag: v0.12.8
+    tag: rolling@sha256:752a687a08609790790c23db67527df5b305dfe703ea9e5e5772ef2435ecd799
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-annatar"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-annatar,annatar-env"
     strategy:
     rollingUpdate:
       unavailable: 1      
