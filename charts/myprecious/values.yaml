@@ -12322,6 +12322,8 @@ plexdebrid: &app_plexdebrid
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
