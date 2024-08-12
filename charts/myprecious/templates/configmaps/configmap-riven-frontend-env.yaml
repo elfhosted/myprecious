@@ -4,7 +4,9 @@ kind: ConfigMap
 metadata:
   name: riven-frontend-env
 data:
-  ORIGIN: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
+  # ORIGIN: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
+  PROTOCOL_HEADER: x-forwarded-proto
+  HOST_HEADER: x-forwarded-host
   BACKEND_URL: http://127.0.0.1:8080
   DATABASE_URL: postgres://postgres:postgres@localhost/riven
   DIALECT: postgres
