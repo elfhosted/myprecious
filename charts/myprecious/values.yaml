@@ -7885,7 +7885,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.31.0@sha256:e91aa82573496f1d416c52361a8faea0d1207772df5ec5f98983fd8e827e875f
+    tag: 1.32.0@sha256:165e9af55c26301969b51f9dcdd3c85c0f4f2b43017484a9f361b82c263fc166
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9940,7 +9940,7 @@ tdarr:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/haveagitgat/tdarr
-    tag: 2.23.01
+    tag: 2.24.01
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tdarr"
@@ -10018,7 +10018,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.9.5
+    tag: v0.9.6
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-homepage,homepage-config,homepage-env"
@@ -10304,7 +10304,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.10.0@sha256:799fe6fdc962d59b678b71be46136b575716842a8f705632ce45ad65c90b4f55
+    tag: v0.10.1@sha256:af90354f5cd1b93bffad0551ec8a5ae3a46dcdc7649d92bb8e12ef398e1e74db
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10403,7 +10403,7 @@ riven: &app_riven
         name: symlinks
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.7.0@sha256:b66abd4927fcfa1a5617cd01562cfaa87be4eb93a1dbee7996b4c11624583454
+      image: ghcr.io/elfhosted/riven-frontend:v0.8.1@sha256:471312b435379f93066182ea527507965717b9a3fd3fcac662e9a021eca2e26f
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11614,7 +11614,7 @@ xtremio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/xtremio
-    tag: rolling@sha256:189d837c3e33a4e6823f471fb4513cfe56d133c14f416ae9f0d4b38686522dc8
+    tag: rolling@sha256:9dbdb4336d0d32183168573e0d321ecc4a306838b6d0c900fc83e1640d59c2a7
   priorityClassName: tenant-normal
   controller:
     annotations:
