@@ -908,14 +908,14 @@ configmounts: &config_mounts
     type: "custom"
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-readarrr-ssd
+        claimName: config-readarr-ssd
   readarraudio:
     enabled: "false"
     mountPath: /config/readarraudio/
     type: "custom"
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-readarrraudio-ssd
+        claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -1493,14 +1493,14 @@ storageconfigmounts: &storageconfigmounts
     type: "custom"
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-readarrr-ssd
+        claimName: config-readarr-ssd
   readarraudio:
     enabled: "false"
     mountPath: /storage/config/readarraudio/
     type: "custom"
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-readarrraudio-ssd
+        claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
