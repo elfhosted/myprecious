@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.84.0](https://github.com/elfhosted/myprecious/compare/v1.83.0...v1.84.0) (2024-08-13)
+
+
+### Features
+
+* **app:** update ghcr.io/haveagitgat/tdarr docker tag to v2.24.02 ([e896ac1](https://github.com/elfhosted/myprecious/commit/e896ac1071b8c8a3da165af5bc183b181dfe21dd))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:v0.10.1 docker digest to d321b0e ([e455b88](https://github.com/elfhosted/myprecious/commit/e455b8823dec67593181d051494ba8d8c2ad8e74))
+* **app:** update ghcr.io/elfhosted/riven:v0.10.1 docker digest to d474329 ([fbe42be](https://github.com/elfhosted/myprecious/commit/fbe42be2462b1821a159ee0f8506d2955541ce48))
+* **app:** update ghcr.io/elfhosted/riven:v0.10.1 docker digest to ef783cc ([f01b04e](https://github.com/elfhosted/myprecious/commit/f01b04e4fe06320183c657f9f0b51e03aa943dd6))
+
 ## [1.83.0](https://github.com/elfhosted/myprecious/compare/v1.82.0...v1.83.0) (2024-08-12)
 
 
