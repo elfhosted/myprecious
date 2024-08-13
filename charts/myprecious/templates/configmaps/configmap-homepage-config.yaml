@@ -558,17 +558,6 @@ data:
             siteMonitor: http://recyclarr:9898
         {{ end }}    
 
-        {{ if .Values.tdarr.enabled }}
-        - Tdarr:
-            icon: tdarr.png
-            href: https://{{ .Release.Name }}-tdarr.{{ .Values.dns_domain }}
-            description: Automate Media Transcoding  
-            siteMonitor: http://tdarr:8265
-            widget:
-              type: tdarr
-              url: http://tdarr:8265
-        {{ end }}   
-
         {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
         - plex-debrid:
             icon: real-debrid.png

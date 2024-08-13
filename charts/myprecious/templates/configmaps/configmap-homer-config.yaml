@@ -867,18 +867,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                    
 
-          {{ if .Values.tdarr.enabled }}
-          - name: "Tdarr"
-            logo: "assets/png/tdarr.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fas fa-photo-film"
-            subtitle: "Transcode Media"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-tdarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
           - name: "plex-debrid"
             logo: "assets/png/real-debrid.png"
