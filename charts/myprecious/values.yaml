@@ -902,20 +902,20 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
-  readarr:
-    enabled: "false"
-    mountPath: /config/readarr/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarr-ssd
-  readarraudio:
-    enabled: "false"
-    mountPath: /config/readarraudio/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarraudio-ssd
+  # readarr:
+  #   enabled: "false"
+  #   mountPath: /config/readarr/
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-readarr-ssd
+  # readarraudio:
+  #   enabled: "false"
+  #   mountPath: /config/readarraudio/
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -1480,20 +1480,20 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
-  readarr:
-    enabled: "false"
-    mountPath: /storage/config/readarr/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarr-ssd
-  readarraudio:
-    enabled: "false"
-    mountPath: /storage/config/readarraudio/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarraudio-ssd
+  # readarr:
+  #   enabled: "false"
+  #   mountPath: /storage/config/readarr/
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-readarr-ssd
+  # readarraudio:
+  #   enabled: "false"
+  #   mountPath: /storage/config/readarraudio/
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
