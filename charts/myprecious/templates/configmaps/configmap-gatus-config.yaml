@@ -494,17 +494,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.tdarr.enabled }}
-      - name: tdarr
-        group: manage-media
-        url: "http://tdarr:8265"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
       - name: plex-debrid
         group: manage-media
