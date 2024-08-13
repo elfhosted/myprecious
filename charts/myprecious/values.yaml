@@ -904,20 +904,18 @@ configmounts: &config_mounts
         claimName: config-rclonebrowser-ssd
   readarr:
     enabled: "false"
-    subPath: "where-is-my-readarr.txt"
-    mountPath: /config/readarr/where-is-my-readarr.txt
+    mountPath: /config/readarr/
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-readarrr-ssd
   readarraudio:
     enabled: "false"
-    subPath: "where-is-my-readarraudio.txt"
-    mountPath: /config/readarraudio/where-is-my-readarraudio.txt
+    mountPath: /config/readarraudio/
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-readarrraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -1491,20 +1489,18 @@ storageconfigmounts: &storageconfigmounts
         claimName: config-rclonebrowser-ssd
   readarr:
     enabled: "false"
-    subPath: "where-is-my-readarr.txt"
-    mountPath: /storage/config/readarr/where-is-my-readarr.txt
+    mountPath: /storage/config/readarr/
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-readarrr-ssd
   readarraudio:
     enabled: "false"
-    subPath: "where-is-my-readarraudio.txt"
-    mountPath: /storage/config/readarraudio/where-is-my-readarraudio.txt
+    mountPath: /storage/config/readarraudio/
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-readarrraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -5729,7 +5725,7 @@ readarr:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarr-block           
+          claimName: config-readarr-ssd           
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -5815,7 +5811,7 @@ readarraudio:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarraudio-block            
+          claimName: config-readarraudio-ssd            
     tmp-readarr-backup:
       enabled: true
       type: emptyDir

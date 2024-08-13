@@ -1,22 +1,22 @@
-{{ if .Values.readarr.enabled }}
+{{ if .Values.readarraudio.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-readarr-block
+  name: config-readarraudio-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-readarr-block" ) }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-readarraudio-ssd" ) }}
   {{- if and (not $pvc) (.Values.location.enabled) }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
-    name: rd-config-readarr-block
+    name: rd-config-readarraudio-ssd
   {{- end }}
   accessModes:
-  - {{ .Values.storageclass.rwo.accessMode }}
+  - {{ .Values.storageclass.rwx.accessMode }}
   resources:
     requests:
       storage: 2Gi
-  storageClassName: {{ .Values.storageclass.rwo.name }}
+  storageClassName: {{ .Values.storageclass.rwx.name }}
 {{ end }}

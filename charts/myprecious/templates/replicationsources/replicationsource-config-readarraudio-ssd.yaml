@@ -1,21 +1,21 @@
-{{ if .Values.readarr.enabled }}
+{{ if .Values.readarraudio.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: rs-config-readarr-block
+  name: rs-config-readarraudio-ssd
 spec:
-  sourcePVC: config-readarr-block
+  sourcePVC: config-readarraudio-ssd
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
   restic:
     pruneIntervalDays: 7
-    repository: config-readarr-block-volsync-restic-config
+    repository: config-readarraudio-ssd-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot
-    cacheCapacity: 20Gi
+    cacheCapacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
-    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{ end }}
 {{ end }}
