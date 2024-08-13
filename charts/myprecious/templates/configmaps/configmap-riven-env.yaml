@@ -11,7 +11,7 @@ data:
   XDG_CONFIG_HOME: "/riven/data"
   XDG_DATA_HOME: "/riven/data"
   POETRY_CACHE_DIR: "/tmp/.cache/pypoetry"
-  RIVEN_DATABASE_HOST: postgresql://postgres:postgres@localhost/riven
+  RIVEN_DATABASE_HOST: postgresql+psycopg2://postgres:postgres@localhost/riven
   RIVEN_FORCE_ENV: 'false' # allow users to override values from env vars
 
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
