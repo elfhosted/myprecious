@@ -10275,7 +10275,9 @@ riven: &app_riven
         mkdir -p /storage/symlinks/shows
 
         # if user has bad postgresql string, replace it with a good one
-        sed -i  "s/postgresql:/postgresql+psycopg2:/" /riven/data/settings.json
+        if [[ -f /riven/data/settings.json ]]; then
+          sed -i  "s/postgresql:/postgresql+psycopg2:/" /riven/data/settings.json
+        fi
 
       volumeMounts:
       - mountPath: /storage/symlinks
