@@ -10365,9 +10365,15 @@ riven: &app_riven
         # make symlink directories if they don't exist, to make onboarding simpler
         mkdir -p /storage/symlinks/movies
         mkdir -p /storage/symlinks/shows
+
+        # if user has bad postgresql string, replace it with a good one
+        sed -i  "s/postgresql:/postgresql+psycopg2:/" /riven/data/settings.json
+
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
+      - mountPath: /riven/data
+        name: config
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven-frontend:v0.8.1@sha256:471312b435379f93066182ea527507965717b9a3fd3fcac662e9a021eca2e26f
