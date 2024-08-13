@@ -3,10 +3,6 @@ kind: ConfigMap
 metadata:
   name: explain-migration
 data:
-  where-is-my-readarr.txt: |
-    Looking for Readarr config? We recently migrated it to ceph block storage for performance reasons, but this means it's no longer available to expose to Filebrowser. I'm working on a solution for this! - David
-  where-is-my-readarraudio.txt: |
-    Looking for ReadarrAudio config? We recently migrated it to ceph block storage for performance reasons, but this means it's no longer available to expose to Filebrowser. I'm working on a solution for this! - David
   where-is-my-radarr.txt: |
     Looking for Radarr config? We recently migrated it to ceph block storage for performance reasons, but this means it's no longer available to expose to Filebrowser. I'm working on a solution for this! - David
   where-is-my-radarr4k.txt: |
