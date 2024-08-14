@@ -12488,7 +12488,6 @@ channelsdvr:
           port: 8089 
   persistence:
     # tmp: *tmp     
-    # <<: *config_mounts
     config:
       enabled: true
       type: custom
