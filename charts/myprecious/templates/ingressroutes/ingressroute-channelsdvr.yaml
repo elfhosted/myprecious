@@ -12,7 +12,7 @@ spec:
           kind: Service
           port: 8089
       middlewares:  
-        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: {{ .Release.Name }}-add-x-dvr-forceauth
         - name: error-pages
           namespace: traefik
 {{ end }}

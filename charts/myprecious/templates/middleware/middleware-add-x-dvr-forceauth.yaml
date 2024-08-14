@@ -1,0 +1,10 @@
+{{ if .Values.channelsdvr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .Release.Name }}-add-x-dvr-forceauth
+spec:
+  headers:
+    customRequestHeaders:
+      X-DVR-ForceAuth: "true"
+{{ end }}
