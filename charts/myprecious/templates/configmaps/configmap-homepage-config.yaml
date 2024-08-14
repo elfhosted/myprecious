@@ -504,7 +504,7 @@ data:
 
         {{ if .Values.channelsdvr.enabled }}
         - Channels DVR:
-            icon: channelsdvr.png
+            icon: channels.png
             href: https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}
             description: Channels. DVR.  
             siteMonitor: http://channelsdvr:8089               

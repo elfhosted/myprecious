@@ -787,10 +787,8 @@ data:
 
           {{ if .Values.channelsdvr.enabled }}
           - name: "Channels DRV"
-            logo: "assets/png/channels-dvr.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Channels. DVR."
+            logo: "assets/png/channels.png"
+            subtitle: "Watch TV your way"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}"
