@@ -6,13 +6,16 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: mediafusion
+      app.elfhosted.com/name: mediafusion
   egress:
   - toEndpoints:
     - matchLabels:
         k8s:io.kubernetes.pod.namespace: tailscale
     toPorts:
       - ports:
-        - port: '27017'
+        - port: '27017' # mongo
+          protocol: TCP
+      - ports:
+        - port: '6379' # redis
           protocol: TCP
 {{- end }}
