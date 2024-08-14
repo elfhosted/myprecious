@@ -502,6 +502,14 @@ data:
             siteMonitor: http://nextpvr:8866               
         {{ end }}   
 
+        {{ if .Values.channelsdvr.enabled }}
+        - Channels DVR:
+            icon: channelsdvr.png
+            href: https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}
+            description: Channels. DVR.  
+            siteMonitor: http://channelsdvr:8089               
+        {{ end }}           
+
         {{ if .Values.notifiarr.enabled }}
         - Notifiarr:
             icon: notifiarr.png

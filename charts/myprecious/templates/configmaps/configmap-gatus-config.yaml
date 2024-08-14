@@ -538,6 +538,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.channelsdvr.enabled }}
+      - name: channels-dvr
+        group: consume-media
+        url: "http://channelsdvr:8089"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.lazylibrarian.enabled }}
       - name: lazylibrarian
         group: manage-media

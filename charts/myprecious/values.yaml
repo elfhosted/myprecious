@@ -586,6 +586,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-calibre-ssd
+  channelsdvr:
+    enabled: false
+    type: custom
+    mountPath: /config/channelsdvr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-channelsdvr-ssd        
   delugepia:
     enabled: false
     type: custom
@@ -1173,6 +1180,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-calibre-ssd
+  channelsdvr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/channelsdvr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-channelsdvr-ssd         
   delugepia:
     enabled: false
     type: custom
@@ -12434,6 +12448,63 @@ codeserver:
         seccompProfile:
           type: RuntimeDefault
         readOnlyRootFilesystem: true
+
+channelsdvr:
+  enabled: false
+  image:
+    repository: fancybits/channels-dvr
+    tag: latest@sha256:f6b5a737781d679d14ca55f176425a2cb766add038471f9cfb1b32f8f26033da
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr"
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 568
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 15m
+      memory: 200Mi
+    limits:
+      cpu: 2
+      memory: 4Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8089 
+  persistence:
+    # tmp: *tmp     
+    # <<: *config_mounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /channels-dvr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-channelsdvr-ssd
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-channelsdvr
+          optional: true      
+  initContainers:
+    bootstrap: *bootstrap
 
 kubernetesdashboard:
 

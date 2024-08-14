@@ -1,0 +1,18 @@
+{{ if .Values.channelsdvr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: channelsdvr
+          kind: Service
+          port: 8089
+      middlewares:  
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}

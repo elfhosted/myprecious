@@ -785,6 +785,18 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.channelsdvr.enabled }}
+          - name: "Channels DRV"
+            logo: "assets/png/channels-dvr.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Channels. DVR."
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.notifiarr.enabled }}
           - name: "Notifiarr"
             logo: "assets/png/notifiarr.png"
