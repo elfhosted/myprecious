@@ -12487,6 +12487,7 @@ channelsdvr:
         http:
           port: 8089 
   persistence:
+    <<: *storagemounts    
     tmp: *tmp
     config:
       enabled: true
