@@ -9,10 +9,9 @@ data:
 
   settings.yaml: |
     title: {{.Release.Name}}'s ElfHosted Services
-    background: https://picsum.photos/seed/{{ .Release.Name }}/1920/1080
+    background: https://{{ .Release.Name }}.elfhosted.com/assets/backgrounds/background-dark.jpg
     favicon: https://elfhosted.com/images/logo.png
     
-
     statusStyle: "basic"
     hideErrors: false # We want to be advised to our API errors
     layout:
