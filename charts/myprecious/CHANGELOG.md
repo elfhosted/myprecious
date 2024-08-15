@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.86.0](https://github.com/elfhosted/myprecious/compare/v1.85.0...v1.86.0) (2024-08-15)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.10.2 ([3f140e3](https://github.com/elfhosted/myprecious/commit/3f140e396442a6b56e13fc82652007dfcdd6f713))
+* update plex to 1.40.5.8854 ([2ba744b](https://github.com/elfhosted/myprecious/commit/2ba744b4ffc6c763511afea7884978253b839835))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:v0.10.1 docker digest to 896cd11 ([f7a386d](https://github.com/elfhosted/myprecious/commit/f7a386dd0614510f197c90ba9b61497a4c945109))
+* syntax issue affecting homepage ([ae0eee3](https://github.com/elfhosted/myprecious/commit/ae0eee3efed72940eaaa714ef1d5dada49783171))
+
 ## [1.85.0](https://github.com/elfhosted/myprecious/compare/v1.84.0...v1.85.0) (2024-08-14)
 
 
