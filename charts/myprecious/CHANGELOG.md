@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.85.0](https://github.com/elfhosted/myprecious/compare/v1.84.0...v1.85.0) (2024-08-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.25.0 ([5933641](https://github.com/elfhosted/myprecious/commit/593364193124f1fd42637adc447ff96e1e01f80e))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.9.0 ([a493fef](https://github.com/elfhosted/myprecious/commit/a493fefcee46270c775a370be9b34f2b5915d88a))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.16.0 docker digest to b15e0c3 ([20ce161](https://github.com/elfhosted/myprecious/commit/20ce1617aacbe122268682db24769578abec1a4e))
+
 ## [1.84.0](https://github.com/elfhosted/myprecious/compare/v1.83.0...v1.84.0) (2024-08-13)
 
 
