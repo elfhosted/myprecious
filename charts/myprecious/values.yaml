@@ -5899,7 +5899,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.40.4.8679-424562606@sha256:85b0149c360f73c8da854b1d0a1f59ae1721dd210a887e79179d6f86b259c28d
+    tag: 1.40.5.8854-f36c552fd@sha256:e0db5541c362de33b7d7ba30fd3ada3648c083c294f6b8097ace0d5df5fc46b5
   persistence:
     <<: *storagemounts    
     config:
@@ -11103,7 +11103,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.25.0@sha256:210c6a61cb5a608caed333b0248bf29b6e1b414b77b5a7eb6fbc0871d0d33c91
+    tag: v1.25.0@sha256:b4808dc456461ee3caf03f2b44b17f0e940e25668ee450f3d51ab5fbd7723c91
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
