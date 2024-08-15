@@ -615,7 +615,7 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-elfterm-ssd           
   emby:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-emby.txt"
     mountPath: /config/emby/where-is-my-emby.txt
     type: "custom"
@@ -700,7 +700,7 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-jdownloader-ssd
   jellyfin:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-jellyfin.txt"
     mountPath: /config/jellyfin/where-is-my-jellyfin.txt
     type: "custom"
@@ -772,7 +772,7 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-lazylibrarian-ssd
   lidarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-lidarr.txt"
     mountPath: /config/lidarr/where-is-my-lidarr.txt
     type: "custom"
@@ -858,7 +858,7 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
   prowlarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-prowlarr.txt"
     mountPath: /config/emby/where-is-my-prowlarr.txt
     type: "custom"
@@ -880,7 +880,7 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-qbittorrent-ssd
   radarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-radarr.txt"
     mountPath: /config/radarr/where-is-my-radarr.txt
     type: "custom"
@@ -888,7 +888,7 @@ configmounts: &config_mounts
       configMap:
         name: explain-migration   
   radarr4k:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-radarr4k.txt"
     mountPath: /config/radarr4k/where-is-my-radarr4k.txt
     type: "custom"
@@ -910,16 +910,16 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
   readarr:
-    enabled: "false"
+    enabled: false
     mountPath: /config/readarr/
-    type: "custom"
+    type: custom
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-readarr-ssd
   readarraudio:
-    enabled: "false"
+    enabled: false
     mountPath: /config/readarraudio/
-    type: "custom"
+    type: custom
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-readarraudio-ssd
@@ -1001,7 +1001,7 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-shoko-ssd
   sonarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-sonarr.txt"
     mountPath: /config/sonarr/where-is-my-sonarr.txt
     type: "custom"
@@ -1009,7 +1009,7 @@ configmounts: &config_mounts
       configMap:
         name: explain-migration  
   sonarr4k:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-sonarr4k.txt"
     mountPath: /config/sonarr4k/where-is-my-sonarr4k.txt
     type: "custom"
@@ -1209,7 +1209,7 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-elfterm-ssd          
   emby:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-emby.txt"
     mountPath: /storage/config/emby/where-is-my-emby.txt
     type: "custom"
@@ -1294,7 +1294,7 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-jdownloader-ssd
   jellyfin:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-jellyfin.txt"
     mountPath: /storage/config/jellyfin/where-is-my-jellyfin.txt
     type: "custom"
@@ -1337,7 +1337,7 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-lazylibrarian-ssd
   lidarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-lidarr.txt"
     mountPath: /storage/config/lidarr/where-is-my-lidarr.txt
     type: "custom"
@@ -1443,7 +1443,7 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
   prowlarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-prowlarr.txt"
     mountPath: /storage/config/emby/where-is-my-prowlarr.txt
     type: "custom"
@@ -1465,7 +1465,7 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-qbittorrent-ssd
   radarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-radarr.txt"
     mountPath: /storage/config/radarr/where-is-my-radarr.txt
     type: "custom"
@@ -1473,7 +1473,7 @@ storageconfigmounts: &storageconfigmounts
       configMap:
         name: explain-migration   
   radarr4k:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-radarr4k.txt"
     mountPath: /storage/config/radarr4k/where-is-my-radarr4k.txt
     type: "custom"
@@ -1495,14 +1495,14 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
   readarr:
-    enabled: "false"
+    enabled: false
     mountPath: /storage/config/readarr/
     type: "custom"
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-readarr-ssd
   readarraudio:
-    enabled: "false"
+    enabled: false
     mountPath: /storage/config/readarraudio/
     type: "custom"
     volumeSpec:
@@ -1586,7 +1586,7 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-shoko-ssd
   sonarr:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-sonarr.txt"
     mountPath: /storage/config/sonarr/where-is-my-sonarr.txt
     type: "custom"
@@ -1594,7 +1594,7 @@ storageconfigmounts: &storageconfigmounts
       configMap:
         name: explain-migration  
   sonarr4k:
-    enabled: "false"
+    enabled: false
     subPath: "where-is-my-sonarr4k.txt"
     mountPath: /storage/config/sonarr4k/where-is-my-sonarr4k.txt
     type: "custom"
