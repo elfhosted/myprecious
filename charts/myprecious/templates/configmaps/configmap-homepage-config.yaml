@@ -996,13 +996,7 @@ data:
     - greeting:
         text_size: 2xl
         text: ElfHosted / {{ .Release.Name }}
-
-  {{ if .Values.zurg.enabled }}
-    - resources:
-        label: /storage/realdebrid-zurg
-        disk: /storage/realdebrid-zurg
-  {{ end }}
-
+        
   {{ if .Values.storageboxa.enabled }}
     - resources:
         label: /storage/storagebox-a
