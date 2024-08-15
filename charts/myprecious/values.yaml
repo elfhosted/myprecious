@@ -7961,7 +7961,7 @@ notifiarr:
     enabled: true
   hostname: elfhosted
   image:
-    repository: ghcr.io/geek-cookbook/notifiarr
+    repository: ghcr.io/elfhosted/notifiarr
     tag: 0.7.0@sha256:7cb46eccf4a57f329f4de970126de4ddbe5da3898836f293c69948d59260bea2
   priorityClassName: tenant-normal
   securityContext:
@@ -8112,7 +8112,7 @@ filebot:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/filebot-node
+    repository: ghcr.io/elfhosted/filebot-node
     tag: 0.4.6@sha256:193acf0f5339df1f2ce713f4d42a7461bf5e566344594af3aa0f0be1471a5752
   env:
     PUID: 568
@@ -8259,7 +8259,7 @@ rpdb:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/rpdb
+    repository: ghcr.io/elfhosted/rpdb
     tag: 0.2.7@sha256:79df0fc8dc74918a3c09154fb759a509cab218e80794765b1b44d5ee4a8bbdb9
   controller:
     annotations:
@@ -8978,7 +8978,7 @@ jfa:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/geek-cookbook/jfa-go
+    repository: ghcr.io/elfhosted/jfa-go
     tag: v1.19.1@sha256:6d632df6c28d310035ebfc58263586f223417f45ac29214ca23410ea4b12d331
   securityContext:
     seccompProfile:
