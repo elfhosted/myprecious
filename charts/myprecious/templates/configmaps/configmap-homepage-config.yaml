@@ -940,7 +940,7 @@ data:
         {{ if .Values.gluetun.enabled }}
         - Gluetun:
             icon: mdi-lock
-            href: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}
+            href: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}"
             description: Configure your BYO VPN
         {{ end }}                    
 
@@ -997,9 +997,11 @@ data:
         text_size: 2xl
         text: ElfHosted / {{ .Release.Name }}
 
+  {{ if .Values.zurg.enabled }}
     - resources:
-        label: /storage/elfstorage
-        disk: /storage/elfstorage
+        label: /storage/realdebrid-zurg
+        disk: /storage/realdebrid-zurg
+  {{ end }}
 
   {{ if .Values.storageboxa.enabled }}
     - resources:
