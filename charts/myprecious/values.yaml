@@ -5032,7 +5032,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.8.2008@sha256:691eba91e444743cb082028f641f9a67e163f98d88780b769e966fd4f9b3e3bb
+    tag: 4.0.8.2158@sha256:5e654e93446f42dc2df476100ff6390059874ab4702911252ca28fd084c16595
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5188,7 +5188,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.8.2008@sha256:691eba91e444743cb082028f641f9a67e163f98d88780b769e966fd4f9b3e3bb
+    tag: 4.0.8.2158@sha256:5e654e93446f42dc2df476100ff6390059874ab4702911252ca28fd084c16595
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10300,7 +10300,7 @@ riven: &app_riven
         name: config
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.9.0@sha256:b99ab9b5b51a3defc46686906f9a06f94785452dcaf13055b9adeb8329f16ed6
+      image: ghcr.io/elfhosted/riven-frontend:v0.9.1@sha256:2da7b9f9c4c6f43d7d9d41d09bffcbba0470dd3f027e32461213a0ef9dcb70ff
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -11103,7 +11103,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.25.1@sha256:581fcd81d8e47b9759cc220413ddca315d1067f65791938fa7dc6d87e4f4ea84
+    tag: v1.25.1@sha256:c2fd9cb3c6f165b522a49eefa6c4e54ff4792ef90f4380e62439816e887abc00
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
@@ -12245,7 +12245,7 @@ plexdebrid: &app_plexdebrid
     app.elfhosted.com/name: plexdebrid  
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:6aefc87680282cd06cfb0f6e4ea07c81ddf68b4c9b249f8baa249853d01c756e
+    tag: rolling@sha256:d234b06e14608bd9160d86d9d17aff50c6cafcdc2d80f20885d04ba3b2350861
   priorityClassName: tenant-normal
   controller:
     annotations:
