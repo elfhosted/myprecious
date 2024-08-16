@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.87.0](https://github.com/elfhosted/myprecious/compare/v1.86.0...v1.87.0) (2024-08-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.25.1 ([3cebd7d](https://github.com/elfhosted/myprecious/commit/3cebd7d95ccaca8a8b0feb3992ac2c70a497ff51))
+* **app:** update ghcr.io/elfhosted/filebot-node docker tag to v0.4.7 ([920e76f](https://github.com/elfhosted/myprecious/commit/920e76fe0c6697a0cc86742e452f8c490c005a8a))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.457 ([f88f4bb](https://github.com/elfhosted/myprecious/commit/f88f4bbec8bb2712363a0f1fafd9b2ac5d75652d))
+* **app:** update ghcr.io/elfhosted/notifiarr docker tag to v0.8.1 ([94473aa](https://github.com/elfhosted/myprecious/commit/94473aab3ae748c98561e52b3c5870f23d46555c))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.9.1 ([4148307](https://github.com/elfhosted/myprecious/commit/4148307c93f0714664da168bc1debac706e47c2d))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.2158 ([2b94b57](https://github.com/elfhosted/myprecious/commit/2b94b571f0d18fdf96fc21339cfaab8fa87d9095))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet:v1.25.1 docker digest to 4f6e45e ([2cf71e7](https://github.com/elfhosted/myprecious/commit/2cf71e7e729866bbbc105d35cfdb7e740139cfb4))
+* **app:** update ghcr.io/elfhosted/comet:v1.25.1 docker digest to c2fd9cb ([3677abe](https://github.com/elfhosted/myprecious/commit/3677abe8d9d085f7fd0e97720ac8a1877845fff1))
+* **app:** update ghcr.io/elfhosted/filebot-node:0.4.6 docker digest to 00f9d08 ([7e95518](https://github.com/elfhosted/myprecious/commit/7e95518bd326dc8d05e308f00cbd69aaa2b84d03))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to d234b06 ([0be7327](https://github.com/elfhosted/myprecious/commit/0be73279af545a36f8ffc9f9ba03ae7f27bba028))
+* **app:** update ghcr.io/elfhosted/rpdb:0.2.7 docker digest to 9a4378c ([98532a0](https://github.com/elfhosted/myprecious/commit/98532a011bec3c61fd49324bd156afd707f55686))
+* update Comet to v1.25.2 (fixes DMM / Zilean support) ([c66fa3b](https://github.com/elfhosted/myprecious/commit/c66fa3b1eeba3eab20d50bc97e40770108d1862f))
+
 ## [1.86.0](https://github.com/elfhosted/myprecious/compare/v1.85.0...v1.86.0) (2024-08-15)
 
 
