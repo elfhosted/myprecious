@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.88.0](https://github.com/elfhosted/myprecious/compare/v1.87.0...v1.88.0) (2024-08-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.468 ([48cc58a](https://github.com/elfhosted/myprecious/commit/48cc58a9f5c44d6e0e64d8b737dc1ace8b4cba45))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.10.0 ([e985ae2](https://github.com/elfhosted/myprecious/commit/e985ae276f0b8075ad90103ee86fa4c8a3f884d1))
+
+
+### Bug Fixes
+
+* quote comet proxystream password to avoid accidentally treating it as an integer ([da46734](https://github.com/elfhosted/myprecious/commit/da467345f2ed01c6010e7450e85b482cf2e4ab5f))
+
 ## [1.87.0](https://github.com/elfhosted/myprecious/compare/v1.86.0...v1.87.0) (2024-08-16)
 
 
