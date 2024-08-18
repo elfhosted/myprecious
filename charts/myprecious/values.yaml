@@ -9691,7 +9691,7 @@ miniflux:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/miniflux
-    tag: 2.1.4
+    tag: 2.2.0
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-miniflux,miniflux-config"
