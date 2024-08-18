@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.89.0](https://github.com/elfhosted/myprecious/compare/v1.88.0...v1.89.0) (2024-08-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.470 ([c39a373](https://github.com/elfhosted/myprecious/commit/c39a373d3f81468565d54beaded1a12a89890e03))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v3.9.16 ([0d3c112](https://github.com/elfhosted/myprecious/commit/0d3c112d44f3e2e3fbeb93b789d47213b40636ca))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.10.3 ([38f74a1](https://github.com/elfhosted/myprecious/commit/38f74a13213c7c83db4062e90d8d636f6ba9cbcb))
+
 ## [1.88.0](https://github.com/elfhosted/myprecious/compare/v1.87.0...v1.88.0) (2024-08-17)
 
 
