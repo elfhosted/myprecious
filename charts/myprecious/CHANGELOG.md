@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.90.0](https://github.com/elfhosted/myprecious/compare/v1.89.0...v1.90.0) (2024-08-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.474 ([7000db5](https://github.com/elfhosted/myprecious/commit/7000db5b4c4aa9f52d02a3b7b6123355a1d2e6d1))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.5.1.4311 ([937ddc8](https://github.com/elfhosted/myprecious/commit/937ddc8d7d685ad2a6a331d606b133cf111306de))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.0 ([16d7a94](https://github.com/elfhosted/myprecious/commit/16d7a942681174ec48b03c166fce47c3e3ca8934))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.2208 ([4ad7dcd](https://github.com/elfhosted/myprecious/commit/4ad7dcd171486f3bbc7efe9e614b3a927a7a57b5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to e9ded45 ([88f55e3](https://github.com/elfhosted/myprecious/commit/88f55e3c07be35f31b754e5326030ece0d510f2e))
+
 ## [1.89.0](https://github.com/elfhosted/myprecious/compare/v1.88.0...v1.89.0) (2024-08-18)
 
 
