@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.91.0](https://github.com/elfhosted/myprecious/compare/v1.90.0...v1.91.0) (2024-08-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.92.2 ([014f6b0](https://github.com/elfhosted/myprecious/commit/014f6b0c649dbc0f1a233408e9911941d644480f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.490 ([63dbe47](https://github.com/elfhosted/myprecious/commit/63dbe470c179b6e88b18a6c7c2b70c463b1d2624))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.10.4 ([42ec91c](https://github.com/elfhosted/myprecious/commit/42ec91ce1dd3c4de7d6ed718ee81cf9e095b04a2))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.10.5 ([4fbc211](https://github.com/elfhosted/myprecious/commit/4fbc211951f9bcf355d9bffe7ad6da8ccee0bbcf))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.11.0 ([7eaa900](https://github.com/elfhosted/myprecious/commit/7eaa90035e27cd0e6afdfab8e3628bb4d5c2d691))
+
 ## [1.90.0](https://github.com/elfhosted/myprecious/compare/v1.89.0...v1.90.0) (2024-08-19)
 
 
