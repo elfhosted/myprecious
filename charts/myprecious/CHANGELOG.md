@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.92.0](https://github.com/elfhosted/myprecious/compare/v1.91.0...v1.92.0) (2024-08-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.497 ([85a10ae](https://github.com/elfhosted/myprecious/commit/85a10ae78c3b0d41d2d5bc8acb3fb0f6dc78f914))
+* **app:** update ghcr.io/elfhosted/qbittorrent docker tag to v4.6.6 ([a55a9d6](https://github.com/elfhosted/myprecious/commit/a55a9d6f3e47a00f83126e0b34596314d9cff6ba))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.9.1.9070 ([fd5a9ea](https://github.com/elfhosted/myprecious/commit/fd5a9ea1eb9f65c26d1082d1c8eb4fc81c5e0a34))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.2223 ([885b221](https://github.com/elfhosted/myprecious/commit/885b2210693706a1ef0b5dbacfe7048996145a9a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 8320b38 ([d8836b2](https://github.com/elfhosted/myprecious/commit/d8836b2d5046a87df388399539f86e7b64cf42e4))
+* **app:** update quay.io/linuxserver.io/calibre:7.16.0 docker digest to a07966c ([bb42b74](https://github.com/elfhosted/myprecious/commit/bb42b74b0ce818a482581a6ad3a276e6b5393582))
+
 ## [1.91.0](https://github.com/elfhosted/myprecious/compare/v1.90.0...v1.91.0) (2024-08-20)
 
 
