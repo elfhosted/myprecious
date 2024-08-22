@@ -12078,6 +12078,10 @@ zurg: &app_zurg
         grep cache_network_test_results /config/config.yml \
           || echo 'cache_network_test_results: false' >> /config/config.yml
 
+        # only repair once a day
+        grep repair_every_mins /config/config.yml \
+          || echo 'repair_every_mins: 1440' >> /config/config.yml
+
         # no more warp
         sed -i  "s/^proxy:/#proxy/" /config/config.yml
 

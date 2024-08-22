@@ -32,7 +32,9 @@ data:
     auto_delete_rar_torrents: false # if true, zurg will delete unstreamable rar files (these torrents will always be compressed in a rar archive no matter what files you select)
     use_download_cache: false # if true, during zurg initialization, it will fetch all downloads to unrestrict links faster
 
-    enable_repair: false # currently this is known to cause 503 / cooldown periods, use at your peril!
+    enable_repair: true 
+    repair_every_mins: 1440 # 24h
+
     on_library_update: sh plex_update.sh "$@"
     ignore_renames: true
 
