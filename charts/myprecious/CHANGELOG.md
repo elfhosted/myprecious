@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.93.0](https://github.com/elfhosted/myprecious/compare/v1.92.0...v1.93.0) (2024-08-22)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v8.11 ([4d2695f](https://github.com/elfhosted/myprecious/commit/4d2695f3c1ea3ac0c8132541e34c43c3be74a13d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.501 ([bc4cc9d](https://github.com/elfhosted/myprecious/commit/bc4cc9db95f0c562c8e24fc010044941b298e257))
+* **app:** update ghcr.io/elfhosted/sabnzbd docker tag to v4.3.3 ([deb1792](https://github.com/elfhosted/myprecious/commit/deb1792c25c35371b30e33a22ddeae3dbe223e0d))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.08.22 ([e40ba8b](https://github.com/elfhosted/myprecious/commit/e40ba8bb13bb19ae1b0965a703e3cbcadb7b0a02))
+* **app:** update mattermost/mattermost-team-edition docker tag to v9.11.1 ([12137ed](https://github.com/elfhosted/myprecious/commit/12137ede9f1a80d03a3460b382cfc30bbc7b0743))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebot-node:0.4.7 docker digest to 439e360 ([fa72a2b](https://github.com/elfhosted/myprecious/commit/fa72a2bcc94ff8a6d083da9ddf8e30ee6c3b2bd6))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to f3d2c66 ([77c4465](https://github.com/elfhosted/myprecious/commit/77c446568c9311f54230df078df1f13af827320b))
+* only let zurg repair once a day ([03efd00](https://github.com/elfhosted/myprecious/commit/03efd0006f0ca20baf0a4ce6edeecaf7edcfbc8f))
+
 ## [1.92.0](https://github.com/elfhosted/myprecious/compare/v1.91.0...v1.92.0) (2024-08-21)
 
 
