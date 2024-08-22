@@ -1,5 +1,47 @@
 # Changelog
 
+## [1.92.0](https://github.com/elfhosted/myprecious/compare/v1.91.0...v1.92.0) (2024-08-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.497 ([85a10ae](https://github.com/elfhosted/myprecious/commit/85a10ae78c3b0d41d2d5bc8acb3fb0f6dc78f914))
+* **app:** update ghcr.io/elfhosted/qbittorrent docker tag to v4.6.6 ([a55a9d6](https://github.com/elfhosted/myprecious/commit/a55a9d6f3e47a00f83126e0b34596314d9cff6ba))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.9.1.9070 ([fd5a9ea](https://github.com/elfhosted/myprecious/commit/fd5a9ea1eb9f65c26d1082d1c8eb4fc81c5e0a34))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.2223 ([885b221](https://github.com/elfhosted/myprecious/commit/885b2210693706a1ef0b5dbacfe7048996145a9a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 8320b38 ([d8836b2](https://github.com/elfhosted/myprecious/commit/d8836b2d5046a87df388399539f86e7b64cf42e4))
+* **app:** update quay.io/linuxserver.io/calibre:7.16.0 docker digest to a07966c ([bb42b74](https://github.com/elfhosted/myprecious/commit/bb42b74b0ce818a482581a6ad3a276e6b5393582))
+
+## [1.91.0](https://github.com/elfhosted/myprecious/compare/v1.90.0...v1.91.0) (2024-08-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.92.2 ([014f6b0](https://github.com/elfhosted/myprecious/commit/014f6b0c649dbc0f1a233408e9911941d644480f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.490 ([63dbe47](https://github.com/elfhosted/myprecious/commit/63dbe470c179b6e88b18a6c7c2b70c463b1d2624))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.10.4 ([42ec91c](https://github.com/elfhosted/myprecious/commit/42ec91ce1dd3c4de7d6ed718ee81cf9e095b04a2))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.10.5 ([4fbc211](https://github.com/elfhosted/myprecious/commit/4fbc211951f9bcf355d9bffe7ad6da8ccee0bbcf))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.11.0 ([7eaa900](https://github.com/elfhosted/myprecious/commit/7eaa90035e27cd0e6afdfab8e3628bb4d5c2d691))
+
+## [1.90.0](https://github.com/elfhosted/myprecious/compare/v1.89.0...v1.90.0) (2024-08-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.474 ([7000db5](https://github.com/elfhosted/myprecious/commit/7000db5b4c4aa9f52d02a3b7b6123355a1d2e6d1))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.5.1.4311 ([937ddc8](https://github.com/elfhosted/myprecious/commit/937ddc8d7d685ad2a6a331d606b133cf111306de))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.0 ([16d7a94](https://github.com/elfhosted/myprecious/commit/16d7a942681174ec48b03c166fce47c3e3ca8934))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.8.2208 ([4ad7dcd](https://github.com/elfhosted/myprecious/commit/4ad7dcd171486f3bbc7efe9e614b3a927a7a57b5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to e9ded45 ([88f55e3](https://github.com/elfhosted/myprecious/commit/88f55e3c07be35f31b754e5326030ece0d510f2e))
+
 ## [1.89.0](https://github.com/elfhosted/myprecious/compare/v1.88.0...v1.89.0) (2024-08-18)
 
 
