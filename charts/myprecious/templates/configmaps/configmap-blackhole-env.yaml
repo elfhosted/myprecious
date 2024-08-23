@@ -1,0 +1,21 @@
+{{ if .Values.blackhole.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blackhole-env
+data:
+  # This is for hard-coded values
+  SERVER_DOMAIN: dunno
+  PLEX_HOST: http://plex:32400
+  OVERSEERR_HOST: http://overseerr:5055
+  SONARR_HOST: http://sonarr:8989
+  SONARR_API_KEY: {{ .Values.sonarrexposed.apikey }}
+  RADARR_HOST: http://radarr:8989
+  RADARR_API_KEY: {{ .Values.radarrexposed.apikey }}
+  REALDEBRID_MOUNT_TORRENTS_PATH: /storage/realdebrid-zurg/__all__/
+  TORBOX_MOUNT_TORRENTS_PATH: /storage/torbox
+  BLACKHOLE_BASE_WATCH_PATH: /storage/symlinks/blackhole
+  BLACKHOLE_RADARR_PATH: radarr
+  BLACKHOLE_SONARR_PATH: sonarr
+    
+{{ end }}

@@ -732,7 +732,23 @@ data:
             href: https://{{ .Release.Name }}-rdtclient.{{ .Values.dns_domain }}
             description: Manage real debrid(-like) services
             siteMonitor: http://rdtclient:6500
-        {{ end }}   
+        {{ end }}  
+
+        {{ if .Values.blackhole.enabled }}
+        - Blackhole:
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-blackhole.{{ .Values.dns_domain }}
+            description: West's blackhole script
+            siteMonitor: http://blackhole:3001
+        {{ end }}    
+
+        {{ if .Values.blackhole4k.enabled }}
+        - Blackhole 4K:
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-blackhole4k.{{ .Values.dns_domain }}
+            description: West's blackhole script (4K)
+            siteMonitor: http://blackhole4k:3001
+        {{ end }}                   
 
         {{ if .Values.rdtclientvpnpia.enabled }}
         - RDT Client (AllDebrid):

@@ -572,6 +572,20 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-bazarr4k-ssd
+  blackhole:
+    enabled: false
+    type: custom
+    mountPath: /config/blackhole/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole-ssd   
+  blackhole4k:
+    enabled: false
+    type: custom
+    mountPath: /config/blackhole4k/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole4k-ssd               
   calibreweb:
     enabled: false
     type: custom
@@ -1166,6 +1180,20 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-bazarr4k-ssd
+  blackhole:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/blackhole/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole-ssd   
+  blackhole4k:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/blackhole4k/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole4k-ssd           
   calibreweb:
     enabled: false
     type: custom
@@ -12451,6 +12479,86 @@ codeserver:
         seccompProfile:
           type: RuntimeDefault
         readOnlyRootFilesystem: true
+
+blackhole: &app_blackhole
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/wests-blackhole-script
+    tag: v1.4.4@sha256:d9a63d7bdbd48eff897c85d0b9ccac1b73e98fad76832732720efefbf920fbea
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-env"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 1m
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001 
+  persistence:
+    <<: *storagemounts   
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-blackhole-ssd    
+  initContainers:
+    setup:
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.4.4@sha256:d9a63d7bdbd48eff897c85d0b9ccac1b73e98fad76832732720efefbf920fbea    
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+        
+        # If we don't already have an env file, then copy the default
+        if [[ ! -f "/config/blackhole.env" ]]
+          then
+          cp /app/.env.template /config/blackhole.env
+        fi
+      volumeMounts:
+      - mountPath: /config
+        name: config  
+      securityContext: *default_securitycontext
+      resources: *default_resources
+
+blackhole4k:
+  <<: *app_blackhole
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole4k,blackhole4k-env"
+  persistence:
+    <<: *storagemounts   
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-blackhole4k-ssd    
 
 channelsdvr:
   enabled: false
