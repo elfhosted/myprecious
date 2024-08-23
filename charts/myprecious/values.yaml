@@ -12452,8 +12452,16 @@ blackhole: &app_blackhole
       type: "custom"
       volumeSpec:
         configMap:
-          name: blackhole-config          
+          name: blackhole-config      
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-blackhole
+          optional: true              
   initContainers:
+    bootstrap: *bootstrap
     setup:
       image: *tooling_image
       command:
