@@ -12024,10 +12024,9 @@ zurg: &app_zurg
           cp /bootstrap/plex_update.sh /config/
         fi
 
-        # Copy across latency files to avoid false crashloops on start
-        # mkdir -p /config/data
-        # cp /bootstrap/ipv4-hosts.json /config/data/
-        # cp /bootstrap/ipv6-hosts.json /config/data/
+        # Avoid cached network tests
+        rm /config/data/ipv4-hosts.json || echo 'no file to delete'
+        rm /config/data/ipv6-hosts.json || echo 'no file to delete'
 
         # Delete any logs
         rm -rf /config/logs/*
