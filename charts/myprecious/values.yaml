@@ -578,14 +578,7 @@ configmounts: &config_mounts
     mountPath: /config/blackhole/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-blackhole-ssd   
-  blackhole4k:
-    enabled: false
-    type: custom
-    mountPath: /config/blackhole4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-blackhole4k-ssd               
+        claimName: config-blackhole-ssd                
   calibreweb:
     enabled: false
     type: custom
@@ -1186,14 +1179,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/blackhole/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-blackhole-ssd   
-  blackhole4k:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/blackhole4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-blackhole4k-ssd           
+        claimName: config-blackhole-ssd          
   calibreweb:
     enabled: false
     type: custom
@@ -12463,10 +12449,16 @@ blackhole: &app_blackhole
       mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-blackhole-ssd    
+          claimName: config-blackhole-ssd
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: blackhole-config          
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.4.4@sha256:d9a63d7bdbd48eff897c85d0b9ccac1b73e98fad76832732720efefbf920fbea    
+      image: *tooling_image
       command:
       - /bin/bash
       - -c
@@ -12477,31 +12469,15 @@ blackhole: &app_blackhole
         # If we don't already have an env file, then copy the default
         if [[ ! -f "/config/blackhole.env" ]]
           then
-          cp /app/.env.template /config/blackhole.env
+          cp /bootstrap/blackhole.env /config/
         fi
       volumeMounts:
       - mountPath: /config
         name: config  
+      - mountPath: /bootstrap
+        name: example-config          
       securityContext: *default_securitycontext
-      resources: *default_resources
-
-blackhole4k:
-  <<: *app_blackhole
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole4k,blackhole4k-env"
-  envFrom:
-  - configMapRef:
-      name: blackhole-env
-  persistence:
-    <<: *storagemounts   
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-blackhole4k-ssd    
+      resources: *default_resources  
 
 channelsdvr:
   enabled: false
