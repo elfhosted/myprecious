@@ -4,6 +4,56 @@ kind: ConfigMap
 metadata:
   name: zurg-config
 data:
+  setup.sh: |
+    #!/bin/bash
+
+    # Avoid cached network tests
+    rm /config/data/ipv4-hosts.json || echo 'no file to delete'
+    rm /config/data/ipv6-hosts.json || echo 'no file to delete'
+
+    # Delete any logs to keep it clean
+    rm -rf /config/logs/*
+
+    # Disable native auth (we do it with traefik instead when necessary)
+    sed -i  "s/^username:/#username/" /config/config.yml
+    sed -i  "s/^password:/#password/" /config/config.yml
+
+    # Socks via WARP
+    # # Enable proxy only if gluetun vars are not present
+    # if [[ ! -z "$ZURG_WARP_ENABLED" ]]; then
+    #   echo "not enabling warp, we may no longer need it"
+    #   # grep proxy /config/config.yml || echo 'proxy: socks5://127.0.0.1:1080' >> /config/config.yml
+    #   # sed -i  "s/^#proxy:/proxy/" /config/config.yml
+    # else
+    #   # remove proxy if found
+    #   sed -i  "s/^proxy:/#proxy/" /config/config.yml
+    # fi
+
+    # don't cache network test results
+    grep cache_network_test_results /config/config.yml \
+      || echo 'cache_network_test_results: false' >> /config/config.yml
+
+    # only repair once a day
+    grep repair_every_mins /config/config.yml \
+      || echo 'repair_every_mins: 1440' >> /config/config.yml
+
+    # Enable rar extraction if it's not already there
+    grep rar_action /config/config.yml || echo 'rar_action: extract' >> /config/config.yml
+
+    # Check for changes every 10 sec
+    sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
+      
+    # Disable plex_update.sh unless user uses plexdebrid
+    {{- if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
+      # we need the script
+      sed -i  "s/#on_library_update/on_library_update/" /config/config.yml
+    {{- else }}
+      # we don't need the script
+      sed -i  "s/on_library_update/#on_library_update/" /config/config.yml
+    {{- end }}
+
+    sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
+
   config.yml: |
     # Zurg configuration version
     zurg: v1
