@@ -12411,7 +12411,7 @@ blackhole: &app_blackhole
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-config"
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -12431,10 +12431,7 @@ blackhole: &app_blackhole
       memory: 1Gi
   ingress:
     main:
-      enabled: false
-  envFrom:
-  - configMapRef:
-      name: blackhole-env      
+      enabled: false   
   service:
     main:
       enabled: true # necessary for probes
