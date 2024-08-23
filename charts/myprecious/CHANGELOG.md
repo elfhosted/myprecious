@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.94.0](https://github.com/elfhosted/myprecious/compare/v1.93.0...v1.94.0) (2024-08-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.507 ([5737d26](https://github.com/elfhosted/myprecious/commit/5737d26204f4198ebfa8f8c65e9823a549b81b2b))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.17.0 ([a4753f7](https://github.com/elfhosted/myprecious/commit/a4753f70ca39fb1c92f367746d8a90bea6fecb31))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to dab15d1 ([e6dd778](https://github.com/elfhosted/myprecious/commit/e6dd778c4611c7b700f54b36dbe2954c2b3d2eca))
+
 ## [1.93.0](https://github.com/elfhosted/myprecious/compare/v1.92.0...v1.93.0) (2024-08-22)
 
 
