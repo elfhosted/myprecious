@@ -4957,7 +4957,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.16.0@sha256:a07966cceb513493052df9baafdb0dca0c7858041841bc0f8fc74bd86ae41512
+    tag: 7.17.0@sha256:0a153477b5307e4f34c4c0261ffa336f1199d8e5b7466295285a08509068b26c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10530,7 +10530,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.497@sha256:f038cd47d6485ea606f1630cbf40f9619d0e76145e51569d0fecded96bf3e373
+    tag: 0.22.507@sha256:9f857dda1db30c66a3281efb92b0f3331377d531ebb54250c18944c4d4b9446a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10857,7 +10857,7 @@ pgadmin:
   enabled: false
   image:
     repository: dpage/pgadmin4
-    tag: "8.10"
+    tag: "8.11"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11612,7 +11612,7 @@ stremify:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremify
-    tag: rolling@sha256:f3d2c66738e1e52ed49f4b1121d9cf2ab39415b9ba3ab40d22777e9e3f3ca882
+    tag: rolling@sha256:dab15d1f4b5982e962e48a708fdaea04ab7e0c1a83bb4e56572f1375b5e17203
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11902,7 +11902,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.07.22-nightly@sha256:96e4de6416acb91bad017491f666c15bed0ccadab491a1e0ffe7ff9e6c2023f5
+    tag: 2024.08.22-nightly@sha256:c0476c44097b4824b2dbb46875fb4501eecf251aaa8e39c9798d6b7421fc351d
   priorityClassName: tenant-normal
   controller:
     annotations:
