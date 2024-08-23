@@ -12446,6 +12446,9 @@ blackhole: &app_blackhole
   ingress:
     main:
       enabled: false
+  envFrom:
+  - configMapRef:
+      name: blackhole-env      
   service:
     main:
       enabled: true # necessary for probes
@@ -12487,6 +12490,9 @@ blackhole4k:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole4k,blackhole4k-env"
+  envFrom:
+  - configMapRef:
+      name: blackhole-env
   persistence:
     <<: *storagemounts   
     config:
