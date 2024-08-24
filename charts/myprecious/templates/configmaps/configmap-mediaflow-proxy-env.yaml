@@ -1,0 +1,8 @@
+{{ if .Values.mediaflowproxy.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mediaflow-proxy-env
+data:
+  API_PASSWORD: "{{ .Values.mediaflowproxy.API_PASSWORD | default }}"
+{{ end }}
