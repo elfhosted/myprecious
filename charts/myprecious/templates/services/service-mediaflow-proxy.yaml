@@ -1,0 +1,20 @@
+{{ if .Values.mediafusionproxy.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: mediafusion
+  labels:
+    app.kubernetes.io/name: mediaflow-proxy
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8888
+    targetPort: 8888
+    protocol: TCP
+    name: http
+  selector:
+    app.elfhosted.com/name: mediaflow-proxy
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}
