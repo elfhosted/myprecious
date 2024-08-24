@@ -1710,7 +1710,7 @@ storageconfigmounts: &storageconfigmounts
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
   requests:
-    cpu: 10m
+    cpu: 1m
     memory: 1Mi
     # ephemeral-storage: 50Mi
   limits:
@@ -3379,7 +3379,7 @@ sabnzbd:
       resources: *default_resources
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
@@ -3484,7 +3484,7 @@ tautulli:
           port: 8181
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 1
@@ -4024,7 +4024,7 @@ bazarr:
     bootstrap: *bootstrap
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -4089,7 +4089,7 @@ bazarr4k:
     bootstrap: *bootstrap
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -4349,7 +4349,7 @@ filebrowser:
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 6Mi
     limits:
       cpu: 200m
@@ -4416,7 +4416,7 @@ uptimekuma:
     bootstrap: *bootstrap
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 100m
@@ -4471,7 +4471,7 @@ privatebin:
           port: 8080
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
       ephemeral-storage: 50Mi
     limits:
@@ -4576,7 +4576,7 @@ nzbhydra:
           port: 5076
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -4647,7 +4647,7 @@ calibreweb:
     bootstrap: *bootstrap
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 10
@@ -4712,7 +4712,7 @@ pyload:
           port: 8000
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 40Mi
     limits:
       cpu: 1
@@ -4770,7 +4770,7 @@ lazylibrarian:
     bootstrap: *bootstrap
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 96Mi
     limits:
       cpu: 1
@@ -4831,7 +4831,7 @@ mylar:
     bootstrap: *bootstrap
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -4891,7 +4891,7 @@ komga:
     bootstrap: *bootstrap
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -4944,7 +4944,7 @@ kavita:
           port: 5000
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 256Mi
     limits:
       cpu: 2
@@ -5011,7 +5011,7 @@ calibre:
           port: 8080
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 1Gi
     limits:
       cpu: 1
@@ -5292,7 +5292,7 @@ sonarr4k: &app_sonarr4k
       securityContext: *default_securitycontext            
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 256Mi
     limits:
       cpu: 1
@@ -5682,7 +5682,7 @@ navidrome:
           port: 4533
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 32Mi
     limits:
       cpu: 2
@@ -6681,7 +6681,7 @@ homer:
       configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer,gatus-config" # Reload the deployment every time the yaml config changes
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 1Mi
     limits:
       cpu: 100m
@@ -6736,7 +6736,7 @@ traefikforwardauth:
 
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 6Mi
     limits:
       cpu: 1
@@ -6838,7 +6838,7 @@ gotify:
     GOTIFY_SERVER_PORT: 8080
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 32Mi
     limits:
       cpu: 1
@@ -6936,7 +6936,7 @@ flaresolverr: &app_flaresolverr
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 600m
@@ -7069,7 +7069,7 @@ seafile:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-seafile"
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1024m
@@ -7220,7 +7220,7 @@ xteve:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 256Mi
     limits:
       cpu: 1
@@ -7290,7 +7290,7 @@ youtubedl:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 10
@@ -7365,7 +7365,7 @@ thelounge:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 40Mi
     limits:
       cpu: 100m
@@ -7469,7 +7469,7 @@ unpackerr:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 16Mi
     limits:
       cpu: 500m
@@ -7615,7 +7615,7 @@ overseerr:
           port: 5055
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 175Mi
     limits:
       cpu: 2
@@ -7710,7 +7710,7 @@ jellyseerr:
           port: 5055
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 160Mi
     limits:
       cpu: 2
@@ -7802,7 +7802,7 @@ audiobookshelf:
           port: 8000
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 2
@@ -7884,7 +7884,7 @@ openbooks:
           port: 8000
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 2
@@ -7948,7 +7948,7 @@ vaultwarden:
           port: 8000
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 16Mi
     limits:
       cpu: 1
@@ -7982,7 +7982,7 @@ notifiarr:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 16Mi
     limits:
       cpu: 2
@@ -8100,7 +8100,7 @@ shoko:
           port: 8111
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 1
@@ -8167,7 +8167,7 @@ filebot:
           port: 5452
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 16Mi
     limits:
       cpu: 2
@@ -8242,7 +8242,7 @@ nextpvr:
           port: 8866
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 2
@@ -8305,7 +8305,7 @@ rpdb:
           port: 8750
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 40Mi
     limits:
       cpu: 1
@@ -8407,7 +8407,7 @@ kometa: &app_kometa
       enabled: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 1
@@ -9028,7 +9028,7 @@ jfa:
           port: 8056
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 150Mi
     limits:
       cpu: 2
@@ -9376,10 +9376,10 @@ rapidleech:
           port: 8080
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 96Mi
     limits:
-      cpu: 10m
+      cpu: 1m
       memory: 1Gi
   initContainers:
     bootstrap: *bootstrap
@@ -9453,7 +9453,7 @@ syncthing:
           port: 8384
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 70Mi
     limits:
       cpu: 1
@@ -9672,7 +9672,7 @@ jdownloader:
           port: 9898
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 10Mi
     limits:
       cpu: 0.5
@@ -9709,7 +9709,7 @@ miniflux:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
@@ -9813,7 +9813,7 @@ joplinserver:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
@@ -9968,7 +9968,7 @@ homepage:
           port: 3000
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 250m # deliberately hobble the CPU in favor of GPU transcoding
@@ -10062,7 +10062,7 @@ wallabag:
           port: 8000
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 32Mi
     limits:
       cpu: 100m 
@@ -10122,7 +10122,7 @@ autoscan:
      AUTOSCAN_VERBOSITY: 1
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 16Mi
     limits:
       cpu: 100m
@@ -10415,7 +10415,7 @@ airdcpp: &app_airdcpp
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 16Mi
     limits:
       cpu: 2
@@ -10552,7 +10552,7 @@ jackett:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10776,7 +10776,7 @@ stremioweb:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 2
@@ -10820,7 +10820,7 @@ stremiojackett:
       name: stremio-jackett-env       
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10887,7 +10887,7 @@ pgadmin:
       name: pgadmin-env   
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10942,7 +10942,7 @@ redisinsight:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10991,7 +10991,7 @@ mongoexpress:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 1
@@ -11249,7 +11249,7 @@ jackettio:
           claimName: config-jackettio-ssd    
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11304,7 +11304,7 @@ davio:
       volumeSpec: *volumespec_ephemeral_volume_1g
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11373,7 +11373,7 @@ mediafusion:
     tmp: *tmp
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11453,7 +11453,7 @@ stremiojackettcommunity: &stremiojackettcommunity
     tmp: *tmp
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11533,7 +11533,7 @@ xtremio:
     tmp: *tmp
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11587,7 +11587,7 @@ shluflix:
       sizeLimit: 1Gi    
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11647,7 +11647,7 @@ stremify:
       mountPath: /home/node/app/.nitro
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11722,7 +11722,7 @@ recyclarr:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11828,7 +11828,7 @@ knightcrawler: &app_knightcrawler
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 128Mi
     limits:
       cpu: 100m
@@ -12522,7 +12522,7 @@ kubernetesdashboard:
   ## Pod resource requests & limits
   resources:
     requests:
-      cpu: 10m
+      cpu: 1m
       memory: 64Mi
     limits:
       cpu: 1
