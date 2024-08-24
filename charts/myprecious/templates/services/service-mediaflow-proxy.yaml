@@ -1,4 +1,4 @@
-{{ if .Values.mediafusionproxy.enabled }}
+{{ if .Values.mediaflowproxy.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
