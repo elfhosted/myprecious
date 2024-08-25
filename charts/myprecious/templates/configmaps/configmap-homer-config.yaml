@@ -1096,6 +1096,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.blackhole4k.enabled }}
+          - name: "Blackhole (4K)"
+            icon: "fas fa-circle"
+            subtitle: "West's Blackhole Script (4K)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-blackhole4k.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+          
           {{ if .Values.rdtclientvpnpia.enabled }}
           - name: "RDT Client (AllDebrid)"
             logo: "assets/png/real-debrid.png"

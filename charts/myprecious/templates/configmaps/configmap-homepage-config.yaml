@@ -748,7 +748,15 @@ data:
             href: https://{{ .Release.Name }}-blackhole.{{ .Values.dns_domain }}
             description: West's blackhole script
             siteMonitor: http://blackhole:3001
-        {{ end }}                 
+        {{ end }}  
+
+        {{ if .Values.blackhole4k.enabled }}
+        - Blackhole (4K):
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-blackhole4k.{{ .Values.dns_domain }}
+            description: West's blackhole script (4K)
+            siteMonitor: http://blackhole:3001
+        {{ end }}                         
 
         {{ if .Values.rdtclientvpnpia.enabled }}
         - RDT Client (AllDebrid):

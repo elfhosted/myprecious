@@ -12545,6 +12545,21 @@ blackhole: &app_blackhole
       securityContext: *default_securitycontext
       resources: *default_resources  
 
+blackhole4k: 
+  <<: *app_blackhole
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole4k,blackhole4k-config" 
+  persistence:
+    <<: *storagemounts   
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-blackhole4k-ssd
+
 channelsdvr:
   enabled: false
   image:

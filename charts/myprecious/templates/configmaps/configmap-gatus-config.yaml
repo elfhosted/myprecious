@@ -789,7 +789,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}         
+      {{ end }}  
+
+      {{ if .Values.blackhole4k.enabled }}
+      - name: blackhole4k
+        group: download-media
+        url: "http://blackhole4k:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}               
 
       {{ if .Values.rdtclientvpnpia.enabled }}
       - name: rdtclient-alldebrid
