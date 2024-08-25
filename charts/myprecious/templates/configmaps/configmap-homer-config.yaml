@@ -451,6 +451,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
+          {{ if .Values.mediaflowproxy.enabled }}
+          - name: "MediaFlow Proxy"
+            icon: "fas fa-copy"
+            subtitle: "Video Streaming Proxy"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}            
+
           {{ if .Values.shluflix.enabled }}
           - name: "Shluflix"
             icon: "fas fa-tv"

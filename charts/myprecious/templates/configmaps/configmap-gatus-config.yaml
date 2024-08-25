@@ -274,6 +274,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.mediaflowproxy.enabled }}
+      - name: mediaflow-proxy
+        group: consume-media
+        url: "http://mediaflow-proxy:8888"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.shluflix.enabled }}
       - name: shluflix
         group: consume-media

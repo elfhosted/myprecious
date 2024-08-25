@@ -229,7 +229,15 @@ data:
             href: https://{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}
             description: Multi-source AddOn for Stremio
             siteMonitor: http://mediafusion:8000
-        {{ end }}    
+        {{ end }}   
+
+        {{ if .Values.mediaflowproxy.enabled }}
+        - Mediaflow Proxy:
+            icon: mdi-content-copy
+            href: https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
+            description: Streaming Video Proxy
+            siteMonitor: http://mediaflow-proxy:8888
+        {{ end }}            
 
         {{ if .Values.shluflix.enabled }}
         - Shluflix:
