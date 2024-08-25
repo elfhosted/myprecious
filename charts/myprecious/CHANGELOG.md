@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.96.0](https://github.com/elfhosted/myprecious/compare/v1.95.0...v1.96.0) (2024-08-25)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.515 ([7c2d42d](https://github.com/elfhosted/myprecious/commit/7c2d42d757695d6d97d9f15ea7d9875b41536ab2))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.10 ([ee592c0](https://github.com/elfhosted/myprecious/commit/ee592c03a7a5eb24c64536d45b3ee9dec9fcb611))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.5.2.4316 ([1cec8ac](https://github.com/elfhosted/myprecious/commit/1cec8ac520ba20117bdf4cd132f6ea3a99697f82))
+
+
+### Bug Fixes
+
+* add mediaflow-proxy ([29ec333](https://github.com/elfhosted/myprecious/commit/29ec3337a8e4b87005ac643b2471fc0365b7d48a))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 32d3b38 ([1734e04](https://github.com/elfhosted/myprecious/commit/1734e04cfef25b79baafe4380122ebbdabea281d))
+* **app:** update ghcr.io/elfhosted/plex:rolling docker digest to 5076152 ([527fb29](https://github.com/elfhosted/myprecious/commit/527fb2997a2266f89c7cf2b872170b5e38fdbd24))
+* update mediaflow-proxy to 1.2.0 ([2607f59](https://github.com/elfhosted/myprecious/commit/2607f59823d4675a0906744610f088637abfc637))
+
 ## [1.95.0](https://github.com/elfhosted/myprecious/compare/v1.94.0...v1.95.0) (2024-08-24)
 
 

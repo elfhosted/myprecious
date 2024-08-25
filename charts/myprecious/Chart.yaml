@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.95.1-pre-12
+version: 1.96.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -327,7 +327,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: threadfin.enabled
-    alias: threadfin    
+    alias: threadfin
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -603,7 +603,7 @@ dependencies:
     condition: blackhole4k.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: blackhole4k    
+    alias: blackhole4k
   - name: app-template
     condition: channelsdvr.enabled
     version: ~0.2.1
@@ -633,7 +633,7 @@ dependencies:
     condition: mediaflowproxy.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: mediaflowproxy    
+    alias: mediaflowproxy
   - name: app-template
     condition: stremiojackettcommunity.enabled
     version: ~0.2.1
