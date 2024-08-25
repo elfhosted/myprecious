@@ -11463,6 +11463,17 @@ mediaflowproxy:
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts   
+          defaultMode: 0755     
+  initContainers:
+    update-dns: *update_dns_on_init
+  additionalContainers:
+    clean-up-dns: *clean_up_dns_on_termination    
   resources:
     requests:
       cpu: 1m
