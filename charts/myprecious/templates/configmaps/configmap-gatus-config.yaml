@@ -277,7 +277,7 @@ data:
       {{ if .Values.mediaflowproxy.enabled }}
       - name: mediaflow-proxy
         group: consume-media
-        url: "http://mediaflow-proxy:8888"
+        url: "http://mediaflow-proxy:8888/health"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
