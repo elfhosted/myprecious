@@ -1044,6 +1044,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-thelounge-ssd
+  threadfin:
+    enabled: false
+    type: custom
+    mountPath: /config/threadfin/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-threadfin-ssd        
   unpackerr:
     enabled: false
     type: custom
@@ -1636,6 +1643,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-thelounge-ssd
+  threadfin:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/threadfin/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-threadfin-ssd        
   unpackerr:
     enabled: false
     type: custom
@@ -7275,7 +7289,76 @@ xteve:
     bootstrap: *bootstrap
     update-dns: *update_dns_on_init    
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination 
+    clean-up-dns: *clean_up_dns_on_termination
+
+threadfin:
+  enabled: false
+  sso:
+    enabled: true
+  image:
+    registry: ghcr.io
+    repository: elfhosted/threadfin
+    tag: v2.2.0.200
+  priorityClassName: tenant-normal
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-threadfin"
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 256Mi
+    limits:
+      cpu: 1
+      memory: 2Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 34400
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-threadfin-ssd
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-xteve
+          optional: true
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts             
+          defaultMode: 0755               
+  initContainers:
+    bootstrap: *bootstrap
+    update-dns: *update_dns_on_init    
+  additionalContainers:
+    clean-up-dns: *clean_up_dns_on_termination     
 
 youtubedl:
   enabled: false

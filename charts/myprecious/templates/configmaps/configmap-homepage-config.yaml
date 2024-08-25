@@ -501,6 +501,19 @@ data:
               password: {{`{{HOMEPAGE_FILE_XTEVE_PASSWORD}}`}}                 
         {{ end }}   
 
+        {{ if .Values.threadfin.enabled }}
+        - Threadfin:
+            icon: threadfin.png
+            href: https://{{ .Release.Name }}-threadfin.{{ .Values.dns_domain }}
+            description: Live TV Proxy for Plex/Jellyfin/Emby
+            siteMonitor: http://threadfin:34400    
+            widget:
+              type: threadfin
+              url: http://threadfin:34400
+              username: {{`{{HOMEPAGE_FILE_THREADFIN_USERNAME}}`}} 
+              password: {{`{{HOMEPAGE_FILE_THREADFIN_PASSWORD}}`}}                 
+        {{ end }}           
+
         {{ if .Values.nextpvr.enabled }}
         - NextPVR:
             icon: nextpvr.png

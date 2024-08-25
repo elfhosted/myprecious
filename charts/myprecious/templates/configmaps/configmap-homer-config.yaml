@@ -783,6 +783,23 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.threadfin.enabled }}
+          - name: "Threadfin"
+            logo: "assets/png/threadfin.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Live TV Proxy for Plex/Jellyfin/Emby"
+            {{ if .Values.threadfinexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-threadfin.{{ .Values.dns_domain }}/web/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.nextpvr.enabled }}
           - name: "NextPVR"
             # logo: "assets/png/nextpvr.png"
@@ -1105,7 +1122,7 @@ data:
             url: "https://{{ .Release.Name }}-blackhole4k.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
-          
+
           {{ if .Values.rdtclientvpnpia.enabled }}
           - name: "RDT Client (AllDebrid)"
             logo: "assets/png/real-debrid.png"

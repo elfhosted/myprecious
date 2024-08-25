@@ -538,6 +538,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.threadfin.enabled }}
+      - name: threadfin
+        group: consume-media
+        url: "http://threadfin:34400"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.nextpvr.enabled }}
       - name: nextpvr
         group: consume-media
