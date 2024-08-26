@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.97.0](https://github.com/elfhosted/myprecious/compare/v1.96.0...v1.97.0) (2024-08-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.517 ([02b5716](https://github.com/elfhosted/myprecious/commit/02b571698ff69acdd5c3c5f6530ccf7d6478767a))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.3.0 ([88d51ef](https://github.com/elfhosted/myprecious/commit/88d51efde6770020cd507c819f235e5e067e65be))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2257 ([3ad6743](https://github.com/elfhosted/myprecious/commit/3ad6743882c698037aa685c2cecb991f21351e9d))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.08.26 ([0df721d](https://github.com/elfhosted/myprecious/commit/0df721d2ffa3dfd61f4b4dbb513c77716ab42b66))
+
+
+### Bug Fixes
+
+* add ygg-api.yml indexer to Prowlarr ([88e8e1c](https://github.com/elfhosted/myprecious/commit/88e8e1c2082b7cd390598feadd35384966e04708))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.4.4 docker digest to 20431a1 ([ae94467](https://github.com/elfhosted/myprecious/commit/ae94467eb3ca9a109ef134b8fa121493f8014e7c))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.4.4 docker digest to 3cb2ba6 ([baa9244](https://github.com/elfhosted/myprecious/commit/baa92440237a52ed7ab58e9a610f4180cee5e0e2))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 033b1ec ([8b29f18](https://github.com/elfhosted/myprecious/commit/8b29f18cb0db23031b8237297befee8091514dd2))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 149eacf ([e91a4cd](https://github.com/elfhosted/myprecious/commit/e91a4cd6801868570d26ca050a19844c3f24bb27))
+
 ## [1.96.0](https://github.com/elfhosted/myprecious/compare/v1.95.0...v1.96.0) (2024-08-25)
 
 
