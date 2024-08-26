@@ -7317,7 +7317,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.2@sha256:ac635b6a1decb054af101fbee6fa62d667fa06fe57bd698e711c1102ce14104c
+    tag: 1.2.3@sha256:6b377354d52d5284061336e97facda77d7fa51328928ee7eb728cbc5f3839d79
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -11334,7 +11334,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.2.1@sha256:6e7d00ef905cc8ad5d87e21f9c99f4603d4cea4e2713cc0bb48e07c357371fe5
+    tag: v1.2.2@sha256:5252fa8582881f1ba397faad07747a3d011da1ae9013957899830d42a0d914b8
   priorityClassName: tenant-normal
   controller:
     annotations:
