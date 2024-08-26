@@ -11817,10 +11817,14 @@ stremify:
       enabled: true
       type: emptyDir
       mountPath: /tmp
-    output: 
+    nuxt-node-modules: 
       enabled: true
       type: emptyDir
-      mountPath: /home/node/app/.output
+      mountPath: /nuxt/node_modules  
+    nuxt: 
+      enabled: true
+      type: emptyDir
+      mountPath: /nuxt/.nuxt              
     nitro: 
       enabled: true
       type: emptyDir
