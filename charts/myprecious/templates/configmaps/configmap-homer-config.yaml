@@ -785,9 +785,8 @@ data:
 
           {{ if .Values.threadfin.enabled }}
           - name: "Threadfin"
-            logo: "assets/png/threadfin.png"
             # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
+            icon: "fab fa-tv"
             subtitle: "Live TV Proxy for Plex/Jellyfin/Emby"
             {{ if .Values.threadfinexposed.enabled }}
             tag: "public"

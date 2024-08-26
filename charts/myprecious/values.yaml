@@ -12549,11 +12549,58 @@ codeserver:
           type: RuntimeDefault
         readOnlyRootFilesystem: true
 
+doplarr:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/doplarr
+    tag: TBC
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-doplarr,doplarr-env"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 1m
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false   
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001 
+  persistence:   
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-doplarr
+          optional: true              
+  initContainers:
+    bootstrap: *bootstrap
+
+
 blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.4@sha256:3cb2ba6b71901261f0a3880419e74ebcf4a2a7462da72159329897b50588154a
+    tag: v1.4.4@sha256:20431a12f06cca1365fff92a2b432e44e4efb08ecda8e8c199177e598c5904d4
   priorityClassName: tenant-normal
   controller:
     annotations:
