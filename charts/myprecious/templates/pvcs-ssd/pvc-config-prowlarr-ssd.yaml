@@ -4,7 +4,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: config-prowlarr-ssd
   annotations:
-    helm.sh/resource-policy: keep
+    helm.sh/resource-policy: delete
 spec:
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-prowlarr-ssd" ) }}
   {{- if and (not $pvc) (.Values.location.enabled) }}

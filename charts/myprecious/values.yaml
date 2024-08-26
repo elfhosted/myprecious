@@ -871,13 +871,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
-  prowlarr:
-    enabled: false
-    mountPath: /config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd    
+  # prowlarr:
+  #   enabled: false
+  #   mountPath: /config/prowlarr
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-prowlarr-ssd    
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1476,13 +1476,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
-  prowlarr:
-    enabled: false
-    mountPath: /storage/config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd   
+  # prowlarr:
+  #   enabled: false
+  #   mountPath: /storage/config/prowlarr
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-prowlarr-ssd   
   qbittorrentpia:
     enabled: false
     type: custom
