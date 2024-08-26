@@ -871,13 +871,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
-  prowlarr:
-    enabled: false
-    mountPath: /config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd    
+  # prowlarr:
+  #   enabled: false
+  #   mountPath: /config/prowlarr
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-prowlarr-ssd    
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1476,13 +1476,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
-  prowlarr:
-    enabled: false
-    mountPath: /storage/config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd   
+  # prowlarr:
+  #   enabled: false
+  #   mountPath: /storage/config/prowlarr
+  #   type: "custom"
+  #   volumeSpec:
+  #     persistentVolumeClaim:
+  #       claimName: config-prowlarr-ssd   
   qbittorrentpia:
     enabled: false
     type: custom
@@ -5480,19 +5480,19 @@ prowlarr: &app_prowlarr
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-prowlarr-block   
+    # migration:
+    #   enabled: true
+    #   type: custom
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: config-prowlarr-block   
     config:
       enabled: true
       type: custom
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-prowlarr-ssd                   
+          claimName: config-prowlarr-block                   
     run: # used for s6-init with non-root
       enabled: true
       type: emptyDir
@@ -5515,7 +5515,7 @@ prowlarr: &app_prowlarr
         http:
           port: 9696
   initContainers:
-    migrate-data: *migrate_data 
+    # migrate-data: *migrate_data 
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -11814,10 +11814,14 @@ stremify:
       enabled: true
       type: emptyDir
       mountPath: /tmp
-    output: 
+    nuxt-node-modules: 
       enabled: true
       type: emptyDir
-      mountPath: /home/node/app/.output
+      mountPath: /nuxt/node_modules  
+    nuxt: 
+      enabled: true
+      type: emptyDir
+      mountPath: /nuxt/.nuxt              
     nitro: 
       enabled: true
       type: emptyDir
