@@ -1186,7 +1186,7 @@ data:
           {{ if or .Values.doplarr.enabled }}
           - name: "Doplarr"
             icon: "fas fa-comments"
-            subtitle: "Manage Aar requests via Discord"
+            subtitle: "Manage media requests via Discord"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-doplarr.{{ .Values.dns_domain }}"

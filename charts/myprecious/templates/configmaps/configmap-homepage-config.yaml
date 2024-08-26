@@ -828,7 +828,7 @@ data:
         - AirDC++:
             icon: mdi-image-chat-bubble
             href: https://{{ .Release.Name }}-doplarr.{{ .Values.dns_domain }}
-            description: Manage Radarr/Sonarr requests via Discord
+            description: Manage media requests via Discord
             siteMonitor: http://doplarr:3001
         {{ end }}                           
 
