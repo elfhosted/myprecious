@@ -866,12 +866,11 @@ configmounts: &config_mounts
         claimName: config-privatebin-ssd            
   prowlarr:
     enabled: false
-    subPath: "where-is-my-prowlarr.txt"
-    mountPath: /config/emby/where-is-my-prowlarr.txt
+    mountPath: /config/prowlarr
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration    
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd    
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1465,12 +1464,11 @@ storageconfigmounts: &storageconfigmounts
         claimName: config-privatebin-ssd            
   prowlarr:
     enabled: false
-    subPath: "where-is-my-prowlarr.txt"
-    mountPath: /storage/config/emby/where-is-my-prowlarr.txt
+    mountPath: /storage/config/prowlarr
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration    
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd   
   qbittorrentpia:
     enabled: false
     type: custom
