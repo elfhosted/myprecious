@@ -12696,7 +12696,20 @@ blackhole4k:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-blackhole4k-ssd
-
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: blackhole-config      
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-blackhole
+          optional: true        
+          
 channelsdvr:
   enabled: false
   image:
