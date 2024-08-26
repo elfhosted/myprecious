@@ -5480,19 +5480,19 @@ prowlarr: &app_prowlarr
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    # migration:
-    #   enabled: true
-    #   type: custom
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: config-prowlarr-block   
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-prowlarr-block   
     config:
       enabled: true
       type: custom
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-prowlarr-block                   
+          claimName: config-prowlarr-ssd                   
     run: # used for s6-init with non-root
       enabled: true
       type: emptyDir
@@ -5515,7 +5515,7 @@ prowlarr: &app_prowlarr
         http:
           port: 9696
   initContainers:
-    # migrate-data: *migrate_data 
+    a-migrate-data: *migrate_data 
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
