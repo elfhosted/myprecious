@@ -6628,6 +6628,13 @@ homer:
       volumeSpec:
         configMap:
           name: homer-config
+    custom-css:
+      enabled: "true"
+      subPath: "custom-css"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: homer-config          
     gatus-config:
       enabled: "true"
       type: "custom"
@@ -6685,6 +6692,9 @@ homer:
       - mountPath: /www/assets/config.yml
         name: config-yml
         subPath: "config.yml"
+      - mountPath: /www/assets/custom.css
+        name: custom-css
+        subPath: "custom.css"        
       - mountPath: /www/assets/message
         name: message
       - mountPath: /www/assets/backgrounds
