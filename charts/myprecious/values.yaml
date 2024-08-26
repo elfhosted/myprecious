@@ -6623,13 +6623,6 @@ homer:
       volumeSpec:
         configMap:
           name: homer-config
-    tools-yml:
-      enabled: "true"
-      subPath: "tools.yml"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: homer-config
     gatus-config:
       enabled: "true"
       type: "custom"

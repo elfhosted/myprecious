@@ -1192,11 +1192,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}    
 
-  tools.yml: |
-    ---
-    services:
-
-      - name: "General"
+      - name: "Tools"
         icon: "fas fa-toolbox"
         items:
 
