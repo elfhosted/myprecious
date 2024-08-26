@@ -327,7 +327,12 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: threadfin.enabled
-    alias: threadfin
+    alias: threadfin 
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: doplarr.enabled
+    alias: doplarr
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

@@ -578,7 +578,14 @@ configmounts: &config_mounts
     mountPath: /config/blackhole/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-blackhole-ssd                
+        claimName: config-blackhole-ssd  
+  blackhole4k:
+    enabled: false
+    type: custom
+    mountPath: /config/blackhole/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole4k-ssd                        
   calibreweb:
     enabled: false
     type: custom
@@ -866,12 +873,11 @@ configmounts: &config_mounts
         claimName: config-privatebin-ssd            
   prowlarr:
     enabled: false
-    subPath: "where-is-my-prowlarr.txt"
-    mountPath: /config/emby/where-is-my-prowlarr.txt
+    mountPath: /config/prowlarr
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration    
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd    
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1186,7 +1192,14 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/blackhole/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-blackhole-ssd          
+        claimName: config-blackhole-ssd  
+  blackhole:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/blackhole4k/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole4k-ssd                  
   calibreweb:
     enabled: false
     type: custom
@@ -1465,12 +1478,11 @@ storageconfigmounts: &storageconfigmounts
         claimName: config-privatebin-ssd            
   prowlarr:
     enabled: false
-    subPath: "where-is-my-prowlarr.txt"
-    mountPath: /storage/config/emby/where-is-my-prowlarr.txt
+    mountPath: /storage/config/prowlarr
     type: "custom"
     volumeSpec:
-      configMap:
-        name: explain-migration    
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd   
   qbittorrentpia:
     enabled: false
     type: custom
@@ -2282,6 +2294,8 @@ mylarrexposed:
   apikey: 0f97f6a7f352c63eb43fcb7e53ea9d8f
 xteveexposed:
   enabled: false
+threadfinexposed:
+  enabled: false  
 zurgexposed:
   enabled: false
 
@@ -5466,13 +5480,19 @@ prowlarr: &app_prowlarr
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-prowlarr-block   
     config:
       enabled: true
       type: custom
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-prowlarr-block         
+          claimName: config-prowlarr-ssd                   
     run: # used for s6-init with non-root
       enabled: true
       type: emptyDir
@@ -5495,6 +5515,7 @@ prowlarr: &app_prowlarr
         http:
           port: 9696
   initContainers:
+    migrate-data: *migrate_data 
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -6622,13 +6643,13 @@ homer:
       volumeSpec:
         configMap:
           name: homer-config
-    tools-yml:
+    custom-css:
       enabled: "true"
-      subPath: "tools.yml"
+      subPath: "custom-css"
       type: "custom"
       volumeSpec:
         configMap:
-          name: homer-config
+          name: homer-config          
     gatus-config:
       enabled: "true"
       type: "custom"
@@ -6686,9 +6707,9 @@ homer:
       - mountPath: /www/assets/config.yml
         name: config-yml
         subPath: "config.yml"
-      - mountPath: /www/assets/tools.yml
-        name: tools-yml
-        subPath: "tools.yml"
+      - mountPath: /www/assets/custom.css
+        name: custom-css
+        subPath: "custom.css"        
       - mountPath: /www/assets/message
         name: message
       - mountPath: /www/assets/backgrounds
@@ -12548,6 +12569,56 @@ codeserver:
           type: RuntimeDefault
         readOnlyRootFilesystem: true
 
+doplarr: &app_doplarr
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/doplarr
+    tag: v3.6.3@sha256:15a969e65cd07dc310ff3a3b8352d53eba084bc98a940137d9050eb6e467fba2
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-doplarr,doplarr-env"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 1m
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false   
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001 
+  persistence:   
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-doplarr
+          optional: true              
+  initContainers:
+    bootstrap: *bootstrap
+  envFrom:   
+  - configMapRef:      
+      name: elfbot-doplarr
+      optional: true     
+
 blackhole: &app_blackhole
   enabled: false
   image:
@@ -12643,6 +12714,19 @@ blackhole4k:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-blackhole4k-ssd
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: blackhole-config      
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-blackhole
+          optional: true        
 
 channelsdvr:
   enabled: false
