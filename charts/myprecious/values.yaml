@@ -6685,9 +6685,6 @@ homer:
       - mountPath: /www/assets/config.yml
         name: config-yml
         subPath: "config.yml"
-      - mountPath: /www/assets/tools.yml
-        name: tools-yml
-        subPath: "tools.yml"
       - mountPath: /www/assets/message
         name: message
       - mountPath: /www/assets/backgrounds
