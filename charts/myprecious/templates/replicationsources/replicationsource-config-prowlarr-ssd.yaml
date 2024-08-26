@@ -3,20 +3,20 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: rs-config-prowlarr-block
+  name: rs-config-prowlarr-ssd
 spec:
   # The PVC to be backed up
-  sourcePVC: config-prowlarr-block
+  sourcePVC: config-prowlarr-ssd
   trigger:
     schedule: "0 9 * * *" # 1h before maintenance
   restic:
     pruneIntervalDays: 7
-    repository: config-prowlarr-block-volsync-restic-config
+    repository: config-prowlarr-ssd-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot
-    cacheCapacity: 20Gi
+    cacheCapacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
-    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{ end }}
 {{ end }}

@@ -4,24 +4,24 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: rd-config-prowlarr-block
+  name: rd-config-prowlarr-ssd
   annotations:
     helm.sh/hook: pre-install,pre-upgrade  
 spec:
   trigger:
     manual: runonce
   restic:
-    repository: config-prowlarr-block-volsync-restic-config
+    repository: config-prowlarr-ssd-volsync-restic-config
     copyMethod: Snapshot
     cacheCapacity: 2Gi
     capacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
-    - {{ .Values.storageclass.rwo.accessMode }}
-    storageClassName: {{ .Values.storageclass.rwo.name }}
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
     cacheAccessModes:
     - ReadWriteOnce
-    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{- end }}
 {{- end }}
 {{- end }}
