@@ -578,7 +578,14 @@ configmounts: &config_mounts
     mountPath: /config/blackhole/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-blackhole-ssd                
+        claimName: config-blackhole-ssd  
+  blackhole4k:
+    enabled: false
+    type: custom
+    mountPath: /config/blackhole/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole4k-ssd                        
   calibreweb:
     enabled: false
     type: custom
@@ -1185,7 +1192,14 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/blackhole/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-blackhole-ssd          
+        claimName: config-blackhole-ssd  
+  blackhole:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/blackhole4k/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-blackhole4k-ssd                  
   calibreweb:
     enabled: false
     type: custom
@@ -12554,7 +12568,7 @@ codeserver:
           type: RuntimeDefault
         readOnlyRootFilesystem: true
 
-doplarr:
+doplarr: &app_doplarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/doplarr
@@ -12599,7 +12613,24 @@ doplarr:
           optional: true              
   initContainers:
     bootstrap: *bootstrap
+  envFrom:
+  - configMapRef:
+      name: doplarr-env     
+  - configMapRef:      
+      name: elfbot-doplarr
+      optional: true     
 
+doplarr4k: 
+  <<: *app_doplarr
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-doplarr4k,doplarr4k-env" 
+  envFrom:
+  - configMapRef:
+      name: doplarr4k-env     
+  - configMapRef:      
+      name: elfbot-doplarr4k
+      optional: true    
 
 blackhole: &app_blackhole
   enabled: false
@@ -12709,7 +12740,7 @@ blackhole4k:
         configMap:
           name: elfbot-blackhole
           optional: true        
-          
+
 channelsdvr:
   enabled: false
   image:
