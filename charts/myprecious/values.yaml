@@ -5540,7 +5540,7 @@ prowlarr: &app_prowlarr
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/torbox.yml > /config/Definitions/Custom/torbox.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/ygg-api.yml > /config/Definitions/Custom/ygg-api.yml
+        # curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/ygg-api.yml > /config/Definitions/Custom/ygg-api.yml
       volumeMounts:
       - mountPath: /config
         name: config
@@ -12573,7 +12573,7 @@ doplarr: &app_doplarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/doplarr
-    tag: v3.6.3@sha256:15a969e65cd07dc310ff3a3b8352d53eba084bc98a940137d9050eb6e467fba2
+    tag: v3.6.3@sha256:a90869078a366121ca3f7d852d674e83de57ef19869796cc19ede3ef11a6a890
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12603,17 +12603,7 @@ doplarr: &app_doplarr
       enabled: true # necessary for probes
       ports:
         http:
-          port: 3001 
-  persistence:   
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-doplarr
-          optional: true              
-  initContainers:
-    bootstrap: *bootstrap
+          port: 3001           
   envFrom:   
   - configMapRef:      
       name: elfbot-doplarr
