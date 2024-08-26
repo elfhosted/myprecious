@@ -879,6 +879,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if or .Values.doplarr.enabled }}
+      - name: doplarr
+        group: download-media
+        url: "http://doplarr:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       - name: filebrowser
         group: tools
         url: "http://filebrowser:8080"

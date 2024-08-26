@@ -786,7 +786,7 @@ data:
           {{ if .Values.threadfin.enabled }}
           - name: "Threadfin"
             # Alternatively a fa icon can be provided:
-            icon: "fab fa-tv"
+            icon: "fas fa-tv"
             subtitle: "Live TV Proxy for Plex/Jellyfin/Emby"
             {{ if .Values.threadfinexposed.enabled }}
             tag: "public"
@@ -1180,7 +1180,17 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-airdcpp.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}          
+          {{ end }}    
+
+          {{ if or .Values.doplarr.enabled }}
+          - name: "Doplarr"
+            icon: "fas fa-comments"
+            subtitle: "Manage Aar requests via Discord"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-doplarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}    
 
   tools.yml: |
     ---
