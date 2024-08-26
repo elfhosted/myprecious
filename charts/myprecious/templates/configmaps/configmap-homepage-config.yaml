@@ -822,7 +822,15 @@ data:
             href: https://{{ .Release.Name }}-airdcpp.{{ .Values.dns_domain }}
             description: Manage DC++ Sharing
             siteMonitor: http://airdcpp:5600
-        {{ end }}                   
+        {{ end }}  
+
+        {{ if or .Values.doplarr.enabled }}
+        - AirDC++:
+            icon: mdi-image-chat-bubble
+            href: https://{{ .Release.Name }}-doplarr.{{ .Values.dns_domain }}
+            description: Manage media requests via Discord
+            siteMonitor: http://doplarr:3001
+        {{ end }}                           
 
     - General Tools:
         - File Browser:
