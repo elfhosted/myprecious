@@ -336,11 +336,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: doplarr4k.enabled
-    alias: doplarr4k
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: youtubedl.enabled
     alias: youtubedl
   - name: app-template

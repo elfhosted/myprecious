@@ -12613,24 +12613,10 @@ doplarr: &app_doplarr
           optional: true              
   initContainers:
     bootstrap: *bootstrap
-  envFrom:
-  - configMapRef:
-      name: doplarr-env     
+  envFrom:   
   - configMapRef:      
       name: elfbot-doplarr
       optional: true     
-
-doplarr4k: 
-  <<: *app_doplarr
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-doplarr4k,doplarr4k-env" 
-  envFrom:
-  - configMapRef:
-      name: doplarr4k-env     
-  - configMapRef:      
-      name: elfbot-doplarr4k
-      optional: true    
 
 blackhole: &app_blackhole
   enabled: false
