@@ -12612,8 +12612,6 @@ doplarr: &app_doplarr
         configMap:
           name: elfbot-doplarr
           optional: true              
-  initContainers:
-    bootstrap: *bootstrap
   envFrom:   
   - configMapRef:      
       name: elfbot-doplarr
