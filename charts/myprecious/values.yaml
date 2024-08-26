@@ -5074,7 +5074,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.8.2223@sha256:df505073e674f9714a7d5f6cf496c3df874cf03c3b1e2e98d1c23c85d56d9e16
+    tag: 4.0.9.2257@sha256:63763e7a024c740266919efc9e3f4b58a7733526fd97f82209720689fa243dbc
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5230,7 +5230,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.8.2223@sha256:df505073e674f9714a7d5f6cf496c3df874cf03c3b1e2e98d1c23c85d56d9e16
+    tag: 4.0.9.2257@sha256:63763e7a024c740266919efc9e3f4b58a7733526fd97f82209720689fa243dbc
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10649,7 +10649,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.515@sha256:a8429ce4073141d0cf1158a9acecaf0a301418a59f67d72b897e1fa7d1d6bd4b
+    tag: 0.22.517@sha256:57d41894215b48f3814be2d3d53237b6c3c79742ec024c681a4e3e5f79e5a966
   priorityClassName: tenant-normal
   controller:
     annotations:
