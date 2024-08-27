@@ -871,13 +871,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
-  # prowlarr:
-  #   enabled: false
-  #   mountPath: /config/prowlarr
-  #   type: "custom"
-  #   volumeSpec:
-  #     persistentVolumeClaim:
-  #       claimName: config-prowlarr-ssd    
+  prowlarr:
+    enabled: false
+    mountPath: /config/prowlarr
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd    
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1476,13 +1476,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-privatebin-ssd            
-  # prowlarr:
-  #   enabled: false
-  #   mountPath: /storage/config/prowlarr
-  #   type: "custom"
-  #   volumeSpec:
-  #     persistentVolumeClaim:
-  #       claimName: config-prowlarr-ssd   
+  prowlarr:
+    enabled: false
+    mountPath: /storage/config/prowlarr
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd   
   qbittorrentpia:
     enabled: false
     type: custom
@@ -5462,9 +5462,6 @@ prowlarr: &app_prowlarr
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
     tag: 1.21.2.4649@sha256:d8f1b6ba2579a0e31f37a92971702b85ead00e10965072f195f001123b8b52a0
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lazylibrarian"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
