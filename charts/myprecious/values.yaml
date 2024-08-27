@@ -878,6 +878,20 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd    
+  prowlarrhobbit:
+    enabled: false
+    mountPath: /config/prowlarr
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd    
+  prowlarrplus:
+    enabled: false
+    mountPath: /config/prowlarr
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd                
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1483,6 +1497,20 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd   
+  prowlarrhobbit:
+    enabled: false
+    mountPath: /storage/config/prowlarr
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd  
+  prowlarrplus:
+    enabled: false
+    mountPath: /storage/config/prowlarr
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-prowlarr-ssd                    
   qbittorrentpia:
     enabled: false
     type: custom
