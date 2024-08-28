@@ -11281,6 +11281,18 @@ comet:
     readOnlyRootFilesystem: true
   initContainers:
     update-dns: *update_dns_on_init
+    bootstrap: *bootstrap
+    setup:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        # zap DB
+        rm -rf /config/*
+      volumeMounts:
+      - mountPath: /config
+        name: config   
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11308,7 +11320,14 @@ comet:
     cache: 
       enabled: true
       type: emptyDir
-      mountPath: /.cache               
+      mountPath: /.cache     
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-comet
+          optional: true                
   resources:
     requests:
       cpu: 100m
