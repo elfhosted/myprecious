@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.99.0](https://github.com/elfhosted/myprecious/compare/v1.98.0...v1.99.0) (2024-08-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.27.1 ([9a7b848](https://github.com/elfhosted/myprecious/commit/9a7b84846866f484d335cd5101d104a22329c03f))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.28.0 ([d6bcf14](https://github.com/elfhosted/myprecious/commit/d6bcf1430be92c127a3795e6e292ed9728bf9620))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.28.1 ([726b3f5](https://github.com/elfhosted/myprecious/commit/726b3f5a192681fca967c72691c8d76c46158823))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.529 ([425bfc5](https://github.com/elfhosted/myprecious/commit/425bfc5c4292e59773a058c48da02b8616fd6dac))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.2.3 ([e7b80f1](https://github.com/elfhosted/myprecious/commit/e7b80f129fb5e45cae91ed84bf61f163daee78a8))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.08.28 ([5d981ce](https://github.com/elfhosted/myprecious/commit/5d981ce08af56de0a530dbd264702f1694d4def2))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.17.0 docker digest to 74520d0 ([52bd907](https://github.com/elfhosted/myprecious/commit/52bd9076e41d97ee9c5261c8fe8b3e56c4718275))
+* prowlarr mounts for hobbits/rangers ([5579c35](https://github.com/elfhosted/myprecious/commit/5579c35cfc8551b600da68ac4397dc8b393b13b0))
+
 ## [1.98.0](https://github.com/elfhosted/myprecious/compare/v1.97.0...v1.98.0) (2024-08-27)
 
 
