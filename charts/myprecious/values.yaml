@@ -606,7 +606,14 @@ configmounts: &config_mounts
     mountPath: /config/channelsdvr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-channelsdvr-ssd        
+        claimName: config-channelsdvr-ssd   
+  comet:
+    enabled: false
+    type: custom
+    mountPath: /config/comet/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-comet-ssd             
   delugepia:
     enabled: false
     type: custom
@@ -1234,7 +1241,14 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/channelsdvr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-channelsdvr-ssd         
+        claimName: config-channelsdvr-ssd     
+  comet:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/calibreweb/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-comet-ssd            
   delugepia:
     enabled: false
     type: custom
