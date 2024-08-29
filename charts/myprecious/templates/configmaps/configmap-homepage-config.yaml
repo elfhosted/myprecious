@@ -785,6 +785,32 @@ data:
             href: https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/
             description: Manage real debrid(-like) services
             siteMonitor: http://zurg:9999
+
+
+        - Zurg:
+            icon: real-debrid.png
+            href: https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/
+            description: Manage real debrid(-like) services
+            siteMonitor: http://zurg:9999
+            widget:
+              type: customapi
+              url: http://zurg:9999/stats
+              refreshInterval: 10000
+              mappings:
+                - field: version
+                  label: Version
+                  format: text
+                - field: library_size
+                  label: Library Size
+                  format: number
+                - field:
+                    user_info: premium
+                  label: Days Remaining
+                  format: number
+                - field:
+                    user_info: points
+                  label: Points
+                  format: number    
         {{ end }} 
 
         {{ if .Values.rclonemountalldebridpia.enabled }}
