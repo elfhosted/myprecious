@@ -6723,7 +6723,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     gatus:
-      image: ghcr.io/elfhosted/gatus:5.12.0@sha256:ec1856ad27366894d508e2c682ba97abb434bc6b45bc15b56068340f01fb977a
+      image: ghcr.io/elfhosted/gatus:5.12.1@sha256:806a7bf6ee46cf1790c7144c1ec5a856e551a60dd3f23af474b3de2cdfa99a2e
       volumeMounts:
       - mountPath: /config
         name: gatus-config
@@ -11392,7 +11392,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.2.3@sha256:3c110d076f41016f8b6d0e3cd2695571f38ea76297df61e0533102db01c300f0
+    tag: v1.2.4@sha256:3e6c642e1cdfcd10f112358b539fc911b77c49ea7ab4c64d755b4665fda85df9
   priorityClassName: tenant-normal
   controller:
     annotations:
