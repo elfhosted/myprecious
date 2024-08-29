@@ -6723,7 +6723,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     gatus:
-      image: ghcr.io/elfhosted/gatus:5.12.0@sha256:ec1856ad27366894d508e2c682ba97abb434bc6b45bc15b56068340f01fb977a
+      image: ghcr.io/elfhosted/gatus:5.12.1@sha256:806a7bf6ee46cf1790c7144c1ec5a856e551a60dd3f23af474b3de2cdfa99a2e
       volumeMounts:
       - mountPath: /config
         name: gatus-config
