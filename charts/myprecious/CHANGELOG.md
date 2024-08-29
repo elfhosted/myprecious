@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.100.0](https://github.com/elfhosted/myprecious/compare/v1.99.0...v1.100.0) (2024-08-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.28.3 ([8bcc891](https://github.com/elfhosted/myprecious/commit/8bcc891a79d3b8105d911efe38b23ed3b7f3c737))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.28.4 ([da2538e](https://github.com/elfhosted/myprecious/commit/da2538eccb5c57fd10154dfaba18a68ed55cbd8c))
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.12.1 ([a4ff825](https://github.com/elfhosted/myprecious/commit/a4ff825814666ceb1656394f4b7c34121946f4ea))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.534 ([7121d03](https://github.com/elfhosted/myprecious/commit/7121d03d982a242f5aed47c8f3162b0fe9d1f4eb))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.2.4 ([eed3a3e](https://github.com/elfhosted/myprecious/commit/eed3a3e09b3a92c6ae795851f90b5abb555401b4))
+
+
+### Bug Fixes
+
+* add zurg stats to homepage ([a8a252b](https://github.com/elfhosted/myprecious/commit/a8a252b2d0c943ea68035d6fc8e1fdd6f55b5164))
+* **app:** update ghcr.io/elfhosted/plex:rolling docker digest to 03ad526 ([faa5d01](https://github.com/elfhosted/myprecious/commit/faa5d01f1d7c70a996dfa6cdddf382a64f768244))
+
 ## [1.99.0](https://github.com/elfhosted/myprecious/compare/v1.98.0...v1.99.0) (2024-08-28)
 
 
