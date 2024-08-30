@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.101.0](https://github.com/elfhosted/myprecious/compare/v1.100.0...v1.101.0) (2024-08-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.28.5 ([1684ceb](https://github.com/elfhosted/myprecious/commit/1684ceba69aabd7632f782980f3d41010398e527))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.538 ([3db8929](https://github.com/elfhosted/myprecious/commit/3db892987452e2dcad7d2f8832d98b21324f5a7a))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.11.1 ([cad412d](https://github.com/elfhosted/myprecious/commit/cad412d879123b8103496a882f448180bebd807f))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.4 ([41a4ff4](https://github.com/elfhosted/myprecious/commit/41a4ff4fcab2af0fd4d31ad85d267828ab1dab0c))
+
 ## [1.100.0](https://github.com/elfhosted/myprecious/compare/v1.99.0...v1.100.0) (2024-08-29)
 
 
