@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.102.0](https://github.com/elfhosted/myprecious/compare/v1.101.0...v1.102.0) (2024-08-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.540 ([62ae1cd](https://github.com/elfhosted/myprecious/commit/62ae1cd65fcc6140971cbb208a0dfb7b3d0e0eea))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.4.0 ([ba6489b](https://github.com/elfhosted/myprecious/commit/ba6489b7cc7eb8623dcfd24f55b1bc1f96d321ed))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.11.0 ([204f67f](https://github.com/elfhosted/myprecious/commit/204f67f0fa7b39abab5d12ba975a237fcedb202e))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.11.1 ([2e20cbc](https://github.com/elfhosted/myprecious/commit/2e20cbccac71406134834ed0a593e134cab35977))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.11.2 ([f4b4fc4](https://github.com/elfhosted/myprecious/commit/f4b4fc42323382151a8e4bbbeaa9c4ae5f4fe38d))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2300 ([96d6e33](https://github.com/elfhosted/myprecious/commit/96d6e334d7c81338f2b7292ff2e40e65ad239006))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.5 ([fb343c7](https://github.com/elfhosted/myprecious/commit/fb343c7b14f4f1f32cebb82f9924827ae7686023))
+
 ## [1.101.0](https://github.com/elfhosted/myprecious/compare/v1.100.0...v1.101.0) (2024-08-30)
 
 
