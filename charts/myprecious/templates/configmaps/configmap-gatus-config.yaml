@@ -888,7 +888,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }}   
+
+      {{ if or .Values.requestrr.enabled }}
+      - name: requestrr
+        group: download-media
+        url: "http://requestrr:4545"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}            
 
       - name: filebrowser
         group: tools
