@@ -12705,7 +12705,7 @@ requestrr:
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /app/config
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-requestrr-ssd  
