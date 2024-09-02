@@ -5988,7 +5988,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: rolling@sha256:5076152d099fdacf03afaaab2379fcf76af8ca200496828f8f8a2de227d768c3
+    tag: rolling@sha256:03ad526c04e18ca223dacd70038f8c5672f02b727ed3c4afc08e79042f6cda2e
   persistence:
     <<: *storagemounts    
     config:
@@ -6059,7 +6059,7 @@ plex: &app_plex
     bootstrap-elfbot: *bootstrap_elfbot
     update-dns: *update_dns_on_init
     repair-db:
-      image: ghcr.io/elfhosted/plex:rolling@sha256:5076152d099fdacf03afaaab2379fcf76af8ca200496828f8f8a2de227d768c3
+      image: ghcr.io/elfhosted/plex:rolling@sha256:03ad526c04e18ca223dacd70038f8c5672f02b727ed3c4afc08e79042f6cda2e
       command:
       - /bin/bash
       - -c
