@@ -5,10 +5,9 @@ metadata:
   name: plex-tinyproxy-conf
 data:
   tinyproxy.conf: |
-    # We use this to "fool" Plex into thinking we're accessing it locally, so that we can claim the server
     Port 8888
     Listen 0.0.0.0
-    Timeout 600  
+    Timeout 600
     ReversePath "/" "http://localhost:32400/"
     ReverseOnly "Yes"
 {{ end }}

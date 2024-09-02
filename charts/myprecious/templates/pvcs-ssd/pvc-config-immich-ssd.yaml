@@ -1,0 +1,22 @@
+{{ if .Values.immich.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config-immich-ssd
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-immich-ssd" ) }}
+  {{- if and (not $pvc) (.Values.location.enabled) }}
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: rd-config-immich-ssd
+  {{- end }}
+  accessModes:
+  - {{ .Values.storageclass.rwx.accessMode }}
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: {{ .Values.storageclass.rwx.name }}
+{{ end }}

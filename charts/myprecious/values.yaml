@@ -5998,7 +5998,7 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,plex-config" # Reload the deployment every time the rclones change   
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,plex-config,plex-tinyproxy-conf" # Reload the deployment every time the rclones change   
   image:
     registry: ghcr.io
     repository: elfhosted/plex
