@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: {{ .Release.Name }}-traefik-forward-auth
+  name: {{ .Release.Name }}-old-traefik-forward-auth
 spec:
   forwardAuth:
     address: http://{{ .Release.Name }}-traefikforwardauth.{{ .Release.Namespace }}:4181
