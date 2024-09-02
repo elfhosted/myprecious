@@ -1,0 +1,25 @@
+{{- if and .Values.requestrr.enabled .Values.volsync.enabled }}
+{{- if .Values.location.enabled }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-requestrr-ssd
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade  
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-requestrr-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    cacheCapacity: 100Mi
+    capacity: 100Mi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{- end }}
+{{- end }}
