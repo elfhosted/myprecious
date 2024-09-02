@@ -9,5 +9,4 @@ data:
     Listen 0.0.0.0
     Timeout 600
     ReversePath "/" "http://localhost:32400/"
-    ReverseOnly "Yes"
 {{ end }}
