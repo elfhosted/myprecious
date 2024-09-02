@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.104.0](https://github.com/elfhosted/myprecious/compare/v1.103.0...v1.104.0) (2024-09-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.31.0 ([c98b754](https://github.com/elfhosted/myprecious/commit/c98b754eb38490a6c8671e4d338d8f153bccab43))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.549 ([420c3d3](https://github.com/elfhosted/myprecious/commit/420c3d36512d1fba581d802ea56471b67cfba9ff))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.5.0 ([9348747](https://github.com/elfhosted/myprecious/commit/934874724dff2a90c2fa1854d05d951a550b04c0))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.23.1.4708 ([c28093f](https://github.com/elfhosted/myprecious/commit/c28093f8d0034fffe05be46d22837a911735eeeb))
+
+
+### Bug Fixes
+
+* jfa image ([8116135](https://github.com/elfhosted/myprecious/commit/81161358dd6c12135417ceb7afd169e64614fd54))
+* remove access for ElfVengers to individual tenant apps (per no-piracy policy) ([fa4024b](https://github.com/elfhosted/myprecious/commit/fa4024bb097d5f5892e69af22be2c8229fe545fb))
+
 ## [1.103.0](https://github.com/elfhosted/myprecious/compare/v1.102.0...v1.103.0) (2024-09-01)
 
 
