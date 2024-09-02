@@ -1,0 +1,13 @@
+{{ if .Values.immich.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: immich-env
+data:
+  REDIS_HOSTNAME: redis
+  DB_HOSTNAME: "database"
+  DB_USERNAME: "immich"
+  DB_DATABASE_NAME: "immich"
+  DB_PASSWORD: "immich"
+  IMMICH_MACHINE_LEARNING_URL: "http://ml:3003"
+{{ end }}

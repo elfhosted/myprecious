@@ -8,5 +8,7 @@ data:
     Port 8888
     Listen 0.0.0.0
     Timeout 600
+    DisableViaHeader yes
+    ReverseOnly yes
     ReversePath "/" "http://localhost:32400/"
 {{ end }}

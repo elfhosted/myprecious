@@ -10,7 +10,7 @@ spec:
       services:
         - name: plex
           kind: Service
-          port: 8888
+          port: 32400
   tls:
     secretName: cert-{{ .Values.plexcustomdomain.cname }}
 {{ end }}

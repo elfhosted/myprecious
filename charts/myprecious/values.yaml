@@ -6061,7 +6061,7 @@ plex: &app_plex
       enabled: true # necessary for probes
       ports:
         http:
-          port: 8888
+          port: 32400
   envFrom:
   - configMapRef:
       name: plex-config
@@ -6159,6 +6159,8 @@ plex: &app_plex
       image: openspeedtest/latest
     tinyproxy:
       image: docker.io/kalaksi/tinyproxy
+      env:
+        DISABLE_VIA_HEADER: 'yes'
       volumeMounts:
       - name: tinyproxy-conf
         mountPath: /etc/tinyproxy/tinyproxy.conf
@@ -12982,25 +12984,19 @@ immich:
       image: ghcr.io/immich-app/immich-machine-learning:v1.1111.0@sha256:14ad5881f5afbea1dbf751e14acaafe00e6b012ffb18a56e9f117b00eb067d1d
       envFrom:
       - configMapRef:
-          name: immich-env
-      - secretRef:
-          name: immich-env        
+          name: immich-env      
     database:
       image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0
       envFrom:
       - configMapRef:
           name: immich-env      
-      - secretRef:
-          name: immich-env
       env:
         POSTGRES_INITDB_ARGS: '--data-checksums'      
     redis:
       image: docker.io/redis:6.2-alpine@sha256:e3b17ba9479deec4b7d1eeec1548a253acc5374d68d3b27937fcfe4df8d18c7e
       envFrom:
       - configMapRef:
-          name: immich-env     
-      - secretRef:
-          name: immich-env        
+          name: immich-env      
 
 kubernetesdashboard:
 
