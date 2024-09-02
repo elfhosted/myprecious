@@ -6161,7 +6161,7 @@ plex: &app_plex
       image: docker.io/kalaksi/tinyproxy
       volumeMounts:
       - name: tinyproxy-conf
-        mouthPath: /etc/tinyproxy/tinyproxy.conf
+        mountPath: /etc/tinyproxy/tinyproxy.conf
         subPath: tinyproxy.conf
   addons:
     vpn:
