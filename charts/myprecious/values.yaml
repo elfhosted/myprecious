@@ -6046,7 +6046,13 @@ plex: &app_plex
       volumeSpec:
         configMap:
           name: tooling-scripts   
-          defaultMode: 0755            
+          defaultMode: 0755    
+    tinyproxy-conf:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: plex-tinyproxy-conf
   ingress:
     main:
       enabled: false
@@ -6055,7 +6061,7 @@ plex: &app_plex
       enabled: true # necessary for probes
       ports:
         http:
-          port: 32400
+          port: 8888
   envFrom:
   - configMapRef:
       name: plex-config
@@ -6151,6 +6157,12 @@ plex: &app_plex
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest
+    tinyproxy:
+      image: docker.io/kalaksi/tinyproxy
+      volumeMounts:
+      - name: tinyproxy-conf
+        mouthPath: /etc/tinyproxy/tinyproxy.conf
+        subPath: tinyproxy.conf
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -12900,6 +12912,95 @@ channelsdvr:
           optional: true      
   initContainers:
     bootstrap: *bootstrap
+
+immich:
+  enabled: false
+  image:
+    repository: ghcr.io/immich-app/immich-server
+    tag: v1.1111.0@sha256:14ad5881f5afbea1dbf751e14acaafe00e6b012ffb18a56e9f117b00eb067d1d
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-immich"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups:
+    - 109
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 15m
+      memory: 200Mi
+    limits:
+      cpu: 1
+      memory: 4Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 2283 
+  persistence:
+    <<: *storagemounts   
+    render-device:
+      enabled: "true"
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"     
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /channels-dvr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-immich-ssd
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-channelsdvr
+          optional: true      
+  envFrom:
+  - configMapRef:
+      name: immich-env        
+  initContainers:
+    bootstrap: *bootstrap
+  additionalContainers:
+    ml: 
+      image: ghcr.io/immich-app/immich-machine-learning:v1.1111.0@sha256:14ad5881f5afbea1dbf751e14acaafe00e6b012ffb18a56e9f117b00eb067d1d
+      envFrom:
+      - configMapRef:
+          name: immich-env
+      - secretRef:
+          name: immich-env        
+    database:
+      image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0
+      envFrom:
+      - configMapRef:
+          name: immich-env      
+      - secretRef:
+          name: immich-env
+      env:
+        POSTGRES_INITDB_ARGS: '--data-checksums'      
+    redis:
+      image: docker.io/redis:6.2-alpine@sha256:e3b17ba9479deec4b7d1eeec1548a253acc5374d68d3b27937fcfe4df8d18c7e
+      envFrom:
+      - configMapRef:
+          name: immich-env     
+      - secretRef:
+          name: immich-env        
 
 kubernetesdashboard:
 
