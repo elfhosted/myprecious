@@ -12923,7 +12923,7 @@ immich:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-immich"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-immich,immich-env"
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -12992,6 +12992,7 @@ immich:
           name: immich-env      
       env:
         POSTGRES_INITDB_ARGS: '--data-checksums'      
+        POSTGRES_PASSWORD: immich
     redis:
       image: docker.io/redis:6.2-alpine@sha256:e3b17ba9479deec4b7d1eeec1548a253acc5374d68d3b27937fcfe4df8d18c7e
       envFrom:

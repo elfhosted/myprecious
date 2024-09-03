@@ -10,5 +10,7 @@ data:
     Timeout 600
     DisableViaHeader yes
     ReverseOnly yes
-    ReversePath "/" "http://localhost:32400/"
+    ReverseMagic yes
+    ReversePath "/" "http://127.0.0.1:32400/"
+    ReverseBaseURL "{{ .Release.Name }}-plex.{{ .Values.dns_domain }}/"
 {{ end }}
