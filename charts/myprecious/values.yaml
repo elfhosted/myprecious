@@ -5130,7 +5130,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2300@sha256:c9139604dffa5770fe6d7468290c9d6b1a27968b1bc063d5a1d3fecee9267b7b
+    tag: 4.0.9.2332@sha256:fb48b7d7f8be200418eeddc9449db5f6935b0e1efbd309690e2de58ef2ce3e4c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5286,7 +5286,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2300@sha256:c9139604dffa5770fe6d7468290c9d6b1a27968b1bc063d5a1d3fecee9267b7b
+    tag: 4.0.9.2332@sha256:fb48b7d7f8be200418eeddc9449db5f6935b0e1efbd309690e2de58ef2ce3e4c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5654,7 +5654,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.5.2.4316@sha256:f510979b266e54b7f1b20470c27f572811dc0c8f29a6213f1818f7378d303663
+    tag: 2.5.3.4341@sha256:6757fd540d9c5009f51fd86429737f368ce6d9c3cbc21981ed73150ddba4e87c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9678,7 +9678,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid  
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.81@sha256:d8d3697483c24a5194f0bafd08d20d4850ffda0c1089a3808c79406dfcc6a811
+    tag: v2.0.84@sha256:f74b2b24af2f462b4c06361daeb687da3e37a71131f2c1918eb07a2a49eee25a
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rdtclient"
