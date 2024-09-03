@@ -12979,11 +12979,10 @@ immich:
         POSTGRES_PASSWORD: immich
         POSTGRES_USER: immich
         POSTGRES_DB: immich
-        POSTGRES_INITDB_ARGS: '--data-checksums'
       volumeMounts:
         - name: config
           subPath: database
-          mountPat: /var/lib/postgresql/data
+          mountPath: /var/lib/postgresql/data
     redis:
       image: docker.io/redis:6.2-alpine@sha256:e3b17ba9479deec4b7d1eeec1548a253acc5374d68d3b27937fcfe4df8d18c7e
       envFrom:
