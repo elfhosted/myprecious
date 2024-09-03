@@ -7,4 +7,5 @@ spec:
   headers:
     customRequestHeaders:
       Host: "localhost"
+      X-Forwarded-For: ""
 {{ end }}
