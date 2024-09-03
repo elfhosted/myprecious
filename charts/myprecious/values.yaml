@@ -12954,6 +12954,11 @@ immich:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-immich-ssd
+    upload:
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload
+      sizeLimit: 1Gi          
     elfbot:
       enabled: "true"
       type: "custom"
