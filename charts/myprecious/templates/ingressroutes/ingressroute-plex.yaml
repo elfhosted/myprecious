@@ -11,8 +11,6 @@ spec:
         - name: plex
           kind: Service
           port: 32400
-      middlewares:
-        - name: {{ .Release.Name }}-customrequestheaders-plex-localhost
     - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
       kind: Rule
       services:
