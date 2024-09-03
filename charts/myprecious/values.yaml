@@ -12949,7 +12949,7 @@ immich:
     config:
       enabled: true
       type: custom
-      mountPath: /usr/src/app
+      mountPath: /usr/src/app/uploads
       subPath: app
       volumeSpec:
         persistentVolumeClaim:
