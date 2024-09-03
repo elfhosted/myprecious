@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.106.0](https://github.com/elfhosted/myprecious/compare/v1.105.0...v1.106.0) (2024-09-03)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.6 ([b9266ad](https://github.com/elfhosted/myprecious/commit/b9266ad6a542c04e4e5ada6af0d2fc0ed2a95f4c))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.113.1 ([85eb47b](https://github.com/elfhosted/myprecious/commit/85eb47be5d78f007259d3e31b89927ff043bf967))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.113.1 ([58e3984](https://github.com/elfhosted/myprecious/commit/58e398437846db0c290ddaa29d1f816f2d3c1bce))
+
+
+### Bug Fixes
+
+* roll back rdtclient to working version (v2.0.81) ([7d63cd9](https://github.com/elfhosted/myprecious/commit/7d63cd9a17edc0a1a6df6717ec8097ca230c4ad6))
+* un-break plex ingressroute ([021bd6b](https://github.com/elfhosted/myprecious/commit/021bd6b365dd80ccaa9e602b6308a628551c5f19))
+
 ## [1.105.0](https://github.com/elfhosted/myprecious/compare/v1.104.0...v1.105.0) (2024-09-03)
 
 
