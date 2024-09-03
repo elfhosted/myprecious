@@ -12949,8 +12949,6 @@ immich:
     config:
       enabled: true
       type: custom
-      mountPath: /usr/src/app/uploads
-      subPath: app
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-immich-ssd
@@ -12968,7 +12966,10 @@ immich:
           optional: true      
   envFrom:
   - configMapRef:
-      name: immich-env        
+      name: immich-env    
+  - configMapRef:
+      name: elfbot-immich
+      optional: true             
   initContainers:
     bootstrap: *bootstrap
   additionalContainers:
