@@ -5998,7 +5998,7 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,plex-config,plex-tinyproxy-conf" # Reload the deployment every time the rclones change   
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,plex-config" # Reload the deployment every time the rclones change   
   image:
     registry: ghcr.io
     repository: elfhosted/plex
@@ -6047,12 +6047,6 @@ plex: &app_plex
         configMap:
           name: tooling-scripts   
           defaultMode: 0755    
-    tinyproxy-conf:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: plex-tinyproxy-conf
   ingress:
     main:
       enabled: false
@@ -6157,14 +6151,6 @@ plex: &app_plex
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest
-    tinyproxy:
-      image: docker.io/kalaksi/tinyproxy
-      env:
-        DISABLE_VIA_HEADER: 'yes'
-      volumeMounts:
-      - name: tinyproxy-conf
-        mountPath: /etc/tinyproxy/tinyproxy.conf
-        subPath: tinyproxy.conf
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -12963,7 +12949,8 @@ immich:
     config:
       enabled: true
       type: custom
-      mountPath: /channels-dvr
+      mountPath: /usr/src/app
+      subPath: app
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-immich-ssd
@@ -12993,6 +12980,10 @@ immich:
       env:
         POSTGRES_INITDB_ARGS: '--data-checksums'      
         POSTGRES_PASSWORD: immich
+      volumeMounts:
+        - name: config
+          subPath: database
+          mountPat: /var/lib/postgresql/data
     redis:
       image: docker.io/redis:6.2-alpine@sha256:e3b17ba9479deec4b7d1eeec1548a253acc5374d68d3b27937fcfe4df8d18c7e
       envFrom:

@@ -14,10 +14,6 @@ spec:
     targetPort: 32400
     protocol: TCP
     name: http
-  - port: 8888
-    targetPort: 8888
-    protocol: TCP
-    name: tinyproxy
   - port: 3000
     targetPort: 3000
     protocol: TCP

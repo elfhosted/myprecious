@@ -4,10 +4,10 @@ kind: ConfigMap
 metadata:
   name: immich-env
 data:
-  REDIS_HOSTNAME: redis
-  DB_HOSTNAME: "database"
+  REDIS_HOSTNAME: localhost
+  DB_HOSTNAME: "localhost"
   DB_USERNAME: "immich"
   DB_DATABASE_NAME: "immich"
   DB_PASSWORD: "immich"
-  IMMICH_MACHINE_LEARNING_URL: "http://ml:3003"
+  IMMICH_MACHINE_LEARNING_URL: "http://localhost:3003"
 {{ end }}
