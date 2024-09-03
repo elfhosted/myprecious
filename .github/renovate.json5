@@ -38,7 +38,7 @@
     {
       "matchUpdateTypes": ["minor"],
       "automerge": true,
-      "excludePackagePatterns": ["filebrowser"]
+      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server"]
     }     
   ],
   // since we version by bumping, each PR needs to be rebased every time we merge
