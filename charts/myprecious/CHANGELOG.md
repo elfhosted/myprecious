@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.105.0](https://github.com/elfhosted/myprecious/compare/v1.104.0...v1.105.0) (2024-09-03)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.554 ([0c55a48](https://github.com/elfhosted/myprecious/commit/0c55a4881e31e0a741fdc1f5df1d3899be6b1657))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.5.3.4341 ([72398f0](https://github.com/elfhosted/myprecious/commit/72398f0d71ee8934bd8b001a8a861ddd97f58a9f))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.84 ([8cf6781](https://github.com/elfhosted/myprecious/commit/8cf6781184abb3c062b30a37ddb1947be70659ee))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2332 ([369dde4](https://github.com/elfhosted/myprecious/commit/369dde4f1b931fa4db8930ace9a7e1939c1174ac))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/requestrr:v2.1.6 docker digest to d9daf34 ([68085d4](https://github.com/elfhosted/myprecious/commit/68085d4bbb090920deee8124de4824ac9fbe6ac3))
+
 ## [1.104.0](https://github.com/elfhosted/myprecious/compare/v1.103.0...v1.104.0) (2024-09-02)
 
 
