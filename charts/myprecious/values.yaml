@@ -10699,7 +10699,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.549@sha256:93f2e88de3ed7549f9fcfb7568b7a3e05a72aa1d5d098d85cdb2eed6a818b147
+    tag: 0.22.554@sha256:787d1cad962ceb946daaa4e2a8773930b08045dd88e111d0bcae91220485b899
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12905,7 +12905,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.111.0@sha256:14ad5881f5afbea1dbf751e14acaafe00e6b012ffb18a56e9f117b00eb067d1d
+    tag: v1.113.0@sha256:9d1c9ab40f3171f1dc06d5c6bc32541ff4b0835c1d217ff5cc61c85e26d2452f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12974,7 +12974,7 @@ immich:
     bootstrap: *bootstrap
   additionalContainers:
     ml: 
-      image: ghcr.io/immich-app/immich-machine-learning:v1.111.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.113.0
       envFrom:
       - configMapRef:
           name: immich-env    
