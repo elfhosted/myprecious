@@ -527,6 +527,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.immich.enabled }}
+      - name: immich
+        group: manage-media
+        url: "http://immich:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
+
       {{ if .Values.xteve.enabled }}
       - name: xteve
         group: consume-media

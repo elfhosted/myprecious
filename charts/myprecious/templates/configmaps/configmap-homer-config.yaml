@@ -934,6 +934,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                           
 
+          {{ if .Values.immich.enabled }}
+          - name: "Immich"
+            logo: "assets/png/immich.png"
+            subtitle: "Manage Photos"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-immich.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }} 
+
       - name: "Download Media"
         icon: "fas fa-cloud-arrow-down"
         items:

@@ -627,7 +627,15 @@ data:
             href: https://{{ .Release.Name }}-riven-backend.{{ .Values.dns_domain }}
             description: Geek out over Riven's backend
             siteMonitor: http://riven:3001                       
-        {{ end }}                     
+        {{ end }}            
+
+        {{ if or .Values.immich.enabled }}
+        - Immich:
+            icon: imming.png
+            href: https://{{ .Release.Name }}-immich.{{ .Values.dns_domain }}
+            description: Manage Photos
+            siteMonitor: http://immich:3001
+        {{ end }}                    
 
     - Download Media:
         {{ if .Values.nzbget.enabled }}

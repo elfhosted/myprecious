@@ -10,8 +10,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 2283
-    targetPort: 2283
+  - port: 3001
+    targetPort: 3001
     protocol: TCP
     name: http
   selector:
