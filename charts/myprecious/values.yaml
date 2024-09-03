@@ -12927,7 +12927,7 @@ immich:
       cpu: 15m
       memory: 200Mi
     limits:
-      cpu: 1
+      cpu: 500m
       memory: 4Gi
   ingress:
     main:
@@ -12977,7 +12977,14 @@ immich:
       image: ghcr.io/immich-app/immich-machine-learning:v1.113.0
       envFrom:
       - configMapRef:
-          name: immich-env      
+          name: immich-env    
+      resources:
+        requests:
+          cpu: 15m
+          memory: 200Mi
+        limits:
+          cpu: 500m
+          memory: 4Gi            
     database:
       image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0    
       env:
@@ -12989,11 +12996,25 @@ immich:
         - name: config
           subPath: database
           mountPath: /var/lib/postgresql/data
+      resources:
+        requests:
+          cpu: 15m
+          memory: 200Mi
+        limits:
+          cpu: 500m
+          memory: 4Gi              
     redis:
       image: docker.io/redis:6.2-alpine@sha256:e3b17ba9479deec4b7d1eeec1548a253acc5374d68d3b27937fcfe4df8d18c7e
       envFrom:
       - configMapRef:
-          name: immich-env      
+          name: immich-env  
+      resources:
+        requests:
+          cpu: 15m
+          memory: 200Mi
+        limits:
+          cpu: 500m
+          memory: 4Gi                  
 
 kubernetesdashboard:
 
