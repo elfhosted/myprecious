@@ -1123,7 +1123,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.blackhole4k.enabled }}
+          {{ if .Values.blackhole.enabled }}
           - name: "Blackhole (4K)"
             icon: "fas fa-circle"
             subtitle: "West's Blackhole Script (4K)"

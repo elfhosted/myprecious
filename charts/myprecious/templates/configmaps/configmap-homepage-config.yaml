@@ -771,7 +771,7 @@ data:
             siteMonitor: http://blackhole:3001
         {{ end }}  
 
-        {{ if .Values.blackhole4k.enabled }}
+        {{ if .Values.blackhole.enabled }}
         - Blackhole (4K):
             icon: mdi-cirle
             href: https://{{ .Release.Name }}-blackhole4k.{{ .Values.dns_domain }}

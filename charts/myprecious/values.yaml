@@ -12738,24 +12738,31 @@ blackhole: &app_blackhole
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-env"
   securityContext:
     runAsUser: 568
     runAsGroup: 568
     privileged: false
+    readOnlyRootFilesystem: true
   podSecurityContext:
     fsGroup: 568
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
   automountServiceAccountToken: false
+  env:
+    BLACKHOLE_RADARR_PATH: "radarr"
+    BLACKHOLE_SONARR_PATH: "sonarr"  
+  envFrom:
+  - configMapRef:
+      name: blackhole-env      
   resources:
     requests:
       cpu: 1m
       memory: 1m
     limits:
       cpu: 100m
-      memory: 1Gi
+      memory: 100Mi
   ingress:
     main:
       enabled: false   
@@ -12767,77 +12774,55 @@ blackhole: &app_blackhole
           port: 3001 
   persistence:
     <<: *storagemounts   
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-blackhole-ssd
-    example-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: blackhole-config      
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-blackhole
-          optional: true              
-  initContainers:
-    bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
+    # config:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /config
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: config-blackhole-ssd
+    # example-config:
+    #   enabled: "true"
+    #   type: "custom"
+    #   volumeSpec:
+    #     configMap:
+    #       name: blackhole-config      
+    # elfbot:
+    #   enabled: "true"
+    #   type: "custom"
+    #   volumeSpec:
+    #     configMap:
+    #       name: elfbot-blackhole
+    #       optional: true              
+  # initContainers:
+    # bootstrap: *bootstrap
+    # setup:
+    #   image: *tooling_image
+    #   command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
+    #     set -x
+    #     set -e
         
-        # If we don't already have an env file, then copy the default
-        if [[ ! -f "/config/blackhole.env" ]]
-          then
-          cp /bootstrap/blackhole.env /config/
-        fi
-      volumeMounts:
-      - mountPath: /config
-        name: config  
-      - mountPath: /bootstrap
-        name: example-config          
-      securityContext: *default_securitycontext
-      resources: *default_resources  
+    #     # If we don't already have an env file, then copy the default
+    #     if [[ ! -f "/config/blackhole.env" ]]
+    #       then
+    #       cp /bootstrap/blackhole.env /config/
+    #     fi
+    #   volumeMounts:
+    #   - mountPath: /config
+    #     name: config  
+    #   - mountPath: /bootstrap
+    #     name: example-config          
+      # securityContext: *default_securitycontext
+      # resources: *default_resources  
 
 blackhole4k: 
   <<: *app_blackhole
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole4k,blackhole4k-config" 
-  persistence:
-    <<: *storagemounts   
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-blackhole4k-ssd
-    example-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: blackhole-config      
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-blackhole
-          optional: true        
+  env:
+    BLACKHOLE_RADARR_PATH: "radarr4k"
+    BLACKHOLE_SONARR_PATH: "sonarr4k"   
 
 channelsdvr:
   enabled: false
