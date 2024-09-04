@@ -813,7 +813,7 @@ data:
           - type: email
       {{ end }}  
 
-      {{ if .Values.blackhole4k.enabled }}
+      {{ if .Values.blackhole.enabled }}
       - name: blackhole4k
         group: download-media
         url: "http://blackhole4k:3001"

@@ -1,4 +1,4 @@
-{{ if .Values.blackhole4k.enabled }}
+{{ if .Values.blackhole.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
