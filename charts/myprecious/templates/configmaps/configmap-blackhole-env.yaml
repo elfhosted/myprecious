@@ -1,0 +1,57 @@
+{{ if .Values.blackhole.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blackhole-env
+data:
+  # SONARR_HOST: http://sonarr:8989
+  # SONARR_API_KEY: {{ .Values.sonarrexposed.apikey }}
+  # SONARR_ROOT_FOLDER: sonarr
+
+  # SONARR_HOST_4K: http://sonarr4k:8989
+  # SONARR_API_KEY_4K: {{ .Values.sonarr4kexposed.apikey }}
+  # SONARR_ROOT_FOLDER_4K: sonarr4k
+
+  # RADARR_HOST: http://radarr:7878
+  # RADARR_API_KEY: {{ .Values.radarrexposed.apikey }}
+  # RADARR_ROOT_FOLDER: radarr
+
+  # RADARR_HOST_4K: http://radarr4k:7878
+  # RADARR_API_KEY_4K: {{ .Values.radarr4kexposed.apikey }}
+  # RADARR_ROOT_FOLDER_4K: radarr4k
+
+  # PLEX_HOST="https://plex.tv/"
+  # PLEX_METADATA_HOST="https://metadata.provider.plex.tv/"
+  # PLEX_SERVER_HOST=http://plex.32400
+  # PLEX_SERVER_MACHINE_ID=<plex_server_machine_id>
+  # PLEX_SERVER_API_KEY=<plex_server_api_key>
+
+  # Fake these to satisfy blackhole (they are unnecessary since we already have autoscan)
+  PLEX_SERVER_MOVIE_LIBRARY_ID: "1"
+  PLEX_SERVER_TV_SHOW_LIBRARY_ID: "2"
+  
+  REALDEBRID_ENABLED: "true"
+  REALDEBRID_HOST: "https://api.real-debrid.com/rest/1.0/"
+  # REALDEBRID_API_KEY: <realdebrid_api_key>
+  REALDEBRID_MOUNT_TORRENTS_PATH: /storage/realdebrid-zurg/__all__
+
+  #---------------------------#
+  # TORBOX - BLACKHOLE, REPAIR #
+  #---------------------------#
+
+  TORBOX_ENABLED: "false"
+  TORBOX_HOST: "https://api.torbox.app/v1/api/"
+  # TORBOX_API_KEY: <torbox_api_key>
+  TORBOX_MOUNT_TORRENTS_PATH: /storage/torbox
+
+  BLACKHOLE_BASE_WATCH_PATH: "/storage/symlinks/blackhole"
+  # BLACKHOLE_RADARR_PATH: "radarr"
+  # BLACKHOLE_SONARR_PATH: "sonarr"
+  BLACKHOLE_FAIL_IF_NOT_CACHED: "true"
+  BLACKHOLE_RD_MOUNT_REFRESH_SECONDS: "10"
+  BLACKHOLE_WAIT_FOR_TORRENT_TIMEOUT: "60"
+  BLACKHOLE_HISTORY_PAGE_SIZE: "500"
+
+  REPAIR_REPAIR_INTERVAL: "10m"
+  REPAIR_RUN_INTERVAL: "1d"
+{{ end }}
