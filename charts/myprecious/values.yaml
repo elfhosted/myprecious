@@ -5055,7 +5055,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.17.0@sha256:74520d0b938b6c8c7f227832edb464120b6b5b75241bf88041e48107761eab39
+    tag: 7.17.0@sha256:11abba8a25d12467342912d608efaffbeea2af71945be8efbb2105cf7daf9d04
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10699,7 +10699,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.554@sha256:787d1cad962ceb946daaa4e2a8773930b08045dd88e111d0bcae91220485b899
+    tag: 0.22.559@sha256:2f721adfbc9541cb311d0e2bde640fa328fc4a53757555e43263413a4e49c48f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11272,7 +11272,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.31.0@sha256:b498b371fab8b3d1cb70d560b13f9e87a7dd5907cabc23828222b70d5305f30d
+    tag: v1.31.2@sha256:75fec7e49c5320d0445225a6b746d70335e5041a9c972550d03f2cd875bfe549
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
