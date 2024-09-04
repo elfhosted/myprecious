@@ -12708,6 +12708,7 @@ blackhole: &app_blackhole
     repository: ghcr.io/elfhosted/wests-blackhole-script
     tag: v1.4.4@sha256:56a7f0f31961494a1211bfd88437c6a2f8e12d84235e855fd2a2dd98eab0d2eb
   priorityClassName: tenant-normal
+  affinity: *standard_affinity
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-env"
