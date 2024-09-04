@@ -68,12 +68,30 @@ data:
                 exit 1
             fi
             if [[ "$2" == "all" ]]; then
-                for APP in $(ls /storage/config)
-                do
-                    echo "resetting $APP... 🗑️"
-                    echo reset > /elfbot/$APP
-                    sleep 5s
+                # Get all pods in the current namespace
+                pods=$(kubectl get pods -o jsonpath='{.items[*].metadata.name}')
+
+                # Iterate through each pod, find their labels, and use these to trigger a reset
+                for pod in $pods; do
+                # Extract the value of the 'app.elfhosted.com/name' label
+                elfhosted_label=$(kubectl get pod $pod -o jsonpath='{.metadata.labels.app\.elfhosted\.com/name}' 2>/dev/null)
+                
+                if [[ -z "$elfhosted_label" ]]; then
+
+                    # If 'app.elfhosted.com/name' doesn't exist, extract 'app.kubernetes.io/name' instead
+                    kubernetes_label=$(kubectl get pod $pod -o jsonpath='{.metadata.labels.app\.kubernetes\.io/name}' 2>/dev/null)
+
+                    # provided a label was found...
+                    if [[ -z "$kubernetes_label" ]]; then
+                        echo reset > /elfbot/$kubernetes_label
+                        echo "resetting $kubernetes_label... 🗑️"
+                    fi
+                else
+                    echo reset > /elfbot/$elfhosted_label
+                    echo "resetting $elfhosted_label... 🗑️"                    
+                fi
                 done
+
             else               
                 echo reset > /elfbot/$2
                 echo "resetting $2... 🗑️"
