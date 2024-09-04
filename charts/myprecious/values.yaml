@@ -1221,7 +1221,7 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-blackhole-ssd  
-  blackhole:
+  blackhole4k:
     enabled: false
     type: custom
     mountPath: /storage/config/blackhole4k/
