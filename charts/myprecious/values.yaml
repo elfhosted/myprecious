@@ -571,21 +571,7 @@ configmounts: &config_mounts
     mountPath: /config/bazarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd
-  blackhole:
-    enabled: false
-    type: custom
-    mountPath: /config/blackhole/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-blackhole-ssd  
-  blackhole4k:
-    enabled: false
-    type: custom
-    mountPath: /config/blackhole/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-blackhole4k-ssd                        
+        claimName: config-bazarr4k-ssd                      
   calibreweb:
     enabled: false
     type: custom
@@ -1213,21 +1199,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/bazarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd
-  blackhole:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/blackhole/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-blackhole-ssd  
-  blackhole4k:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/blackhole4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-blackhole4k-ssd                  
+        claimName: config-bazarr4k-ssd              
   calibreweb:
     enabled: false
     type: custom
@@ -12756,6 +12728,9 @@ blackhole: &app_blackhole
   envFrom:
   - configMapRef:
       name: blackhole-env      
+  - configMapRef:
+      name: elfbot-blackhole
+      optional: true         
   resources:
     requests:
       cpu: 1m
