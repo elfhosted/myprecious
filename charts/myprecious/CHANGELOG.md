@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.107.0](https://github.com/elfhosted/myprecious/compare/v1.106.0...v1.107.0) (2024-09-04)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.31.2 ([6e8cf47](https://github.com/elfhosted/myprecious/commit/6e8cf472b4ff0720a6f6419fd434ff5a7e84cbcd))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.559 ([9f2bbfe](https://github.com/elfhosted/myprecious/commit/9f2bbfee13a9fa6aae8dc4e12c41831aefd5de6f))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2342 ([af2e065](https://github.com/elfhosted/myprecious/commit/af2e0659c43804a299728c2c64674c1ae45bd1f4))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 0d12da9 ([1f5cccd](https://github.com/elfhosted/myprecious/commit/1f5cccd4a0b4276710f01ae66a2186ae8323ac4b))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.4.4 docker digest to 56a7f0f ([a7366b0](https://github.com/elfhosted/myprecious/commit/a7366b0dcc0790ba9e5525ce494dcd57d1878eb1))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 77a3c01 ([fb2a733](https://github.com/elfhosted/myprecious/commit/fb2a733d9f2919cb35a3a62bfed60bf7b9ef5363))
+* **app:** update quay.io/linuxserver.io/calibre:7.17.0 docker digest to 11abba8 ([d74d364](https://github.com/elfhosted/myprecious/commit/d74d36430a3058b9520c711f8252ce209cced408))
+
 ## [1.106.0](https://github.com/elfhosted/myprecious/compare/v1.105.0...v1.106.0) (2024-09-03)
 
 
