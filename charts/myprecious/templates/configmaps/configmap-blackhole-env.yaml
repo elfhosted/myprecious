@@ -22,7 +22,7 @@ data:
 
   REALDEBRID_ENABLED: "true"
   REALDEBRID_HOST: "https://api.real-debrid.com/rest/1.0/"
-  REALDEBRID_API_KEY: <realdebrid_api_key>
+  # REALDEBRID_API_KEY: <realdebrid_api_key>
   REALDEBRID_MOUNT_TORRENTS_PATH: /storage/realdebrid-zurg/__all__
 
   #---------------------------#
@@ -31,7 +31,7 @@ data:
 
   TORBOX_ENABLED: "false"
   TORBOX_HOST: "https://api.torbox.app/v1/api/"
-  TORBOX_API_KEY: <torbox_api_key>
+  # TORBOX_API_KEY: <torbox_api_key>
   TORBOX_MOUNT_TORRENTS_PATH: /storage/torbox
 
   BLACKHOLE_BASE_WATCH_PATH: "/storage/symlinks/blackhole"
