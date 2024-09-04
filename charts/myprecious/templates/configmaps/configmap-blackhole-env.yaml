@@ -4,21 +4,21 @@ kind: ConfigMap
 metadata:
   name: blackhole-env
 data:
-  # SONARR_HOST: http://sonarr:8989
-  # SONARR_API_KEY: {{ .Values.sonarrexposed.apikey }}
-  # SONARR_ROOT_FOLDER: sonarr
+  SONARR_HOST: http://sonarr:8989
+  SONARR_API_KEY: {{ .Values.sonarrexposed.apikey }}
+  SONARR_ROOT_FOLDER: sonarr
 
-  # SONARR_HOST_4K: http://sonarr4k:8989
-  # SONARR_API_KEY_4K: {{ .Values.sonarr4kexposed.apikey }}
-  # SONARR_ROOT_FOLDER_4K: sonarr4k
+  SONARR_HOST_4K: http://sonarr4k:8989
+  SONARR_API_KEY_4K: {{ .Values.sonarr4kexposed.apikey }}
+  SONARR_ROOT_FOLDER_4K: sonarr4k
 
-  # RADARR_HOST: http://radarr:7878
-  # RADARR_API_KEY: {{ .Values.radarrexposed.apikey }}
-  # RADARR_ROOT_FOLDER: radarr
+  RADARR_HOST: http://radarr:7878
+  RADARR_API_KEY: {{ .Values.radarrexposed.apikey }}
+  RADARR_ROOT_FOLDER: radarr
 
-  # RADARR_HOST_4K: http://radarr4k:7878
-  # RADARR_API_KEY_4K: {{ .Values.radarr4kexposed.apikey }}
-  # RADARR_ROOT_FOLDER_4K: radarr4k
+  RADARR_HOST_4K: http://radarr4k:7878
+  RADARR_API_KEY_4K: {{ .Values.radarr4kexposed.apikey }}
+  RADARR_ROOT_FOLDER_4K: radarr4k
 
   # PLEX_HOST="https://plex.tv/"
   # PLEX_METADATA_HOST="https://metadata.provider.plex.tv/"
