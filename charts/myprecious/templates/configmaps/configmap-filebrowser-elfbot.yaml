@@ -68,6 +68,9 @@ data:
                 exit 1
             fi
             if [[ "$2" == "all" ]]; then
+
+                echo "This command will irrecoverably reset ALL of your app's data. If you didn't mean to do this, hit CTRL-C within the next 10s to abort.."
+                sleep 10s
                 # Get all pods in the current namespace
                 pods=$(kubectl get pods -o jsonpath='{.items[*].metadata.name}')
 
@@ -82,13 +85,15 @@ data:
                     kubernetes_label=$(kubectl get pod $pod -o jsonpath='{.metadata.labels.app\.kubernetes\.io/name}' 2>/dev/null)
 
                     # provided a label was found...
-                    if [[ -z "$kubernetes_label" ]]; then
-                        echo reset > /elfbot/$kubernetes_label
+                    if [[ -z "$kubernetes_label" && "$kubernetes_label" != "filebrowser" ]]; then
                         echo "resetting $kubernetes_label... 🗑️"
+                        sleep 5s
+                        echo reset > /elfbot/$kubernetes_label
                     fi
                 else
-                    echo reset > /elfbot/$elfhosted_label
-                    echo "resetting $elfhosted_label... 🗑️"                    
+                    echo "resetting $elfhosted_label... 🗑️"
+                    sleep 5s
+                    echo reset > /elfbot/$elfhosted_label            
                 fi
                 done
 
