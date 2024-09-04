@@ -66,9 +66,18 @@ data:
             if [[ "$3" != "--yesiamsure" ]]; then
                 echo potentially dangerous! add \'--yesiamsure\' after your reset command to force
                 exit 1
-            fi      
-            echo reset > /elfbot/$2
-            echo "resetting $2..."
+            fi
+            if [[ "$2" == "all" ]]; then
+                for APP in $(ls /storage/config)
+                do
+                    echo "resetting $APP... 🗑️"
+                    echo reset > /elfbot/$APP
+                    sleep 5s
+                done
+            else               
+                echo reset > /elfbot/$2
+                echo "resetting $2... 🗑️"
+            fi
             ;;
 
         "backup")   
