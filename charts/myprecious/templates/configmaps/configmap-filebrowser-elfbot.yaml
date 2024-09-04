@@ -79,7 +79,7 @@ data:
                 # Extract the value of the 'app.elfhosted.com/name' label
                 elfhosted_label=$(kubectl get pod $pod -o jsonpath='{.metadata.labels.app\.elfhosted\.com/name}' 2>/dev/null)
                 
-                if [[ -z "$elfhosted_label" ]]; then
+                if [[ -z "$elfhosted_label" && "$elfhosted_label" != "filebrowser" ]]; then
 
                     # If 'app.elfhosted.com/name' doesn't exist, extract 'app.kubernetes.io/name' instead
                     kubernetes_label=$(kubectl get pod $pod -o jsonpath='{.metadata.labels.app\.kubernetes\.io/name}' 2>/dev/null)
