@@ -7278,6 +7278,7 @@ tunarr:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+    privileged: true
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tunarr"
@@ -7288,6 +7289,8 @@ tunarr:
     runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
+    supplementalGroups:
+    - 109    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -7320,7 +7323,12 @@ tunarr:
       volumeSpec:
         configMap:
           name: elfbot-tunarr
-          optional: true            
+          optional: true      
+    render-device:
+      enabled: "true"
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"                  
   initContainers:
     bootstrap: *bootstrap
 
