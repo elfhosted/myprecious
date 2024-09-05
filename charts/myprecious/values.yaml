@@ -7311,7 +7311,7 @@ tunarr:
     config:
       enabled: true
       type: custom
-      mountPath: /config/
+      mountPath: /root/.local/share/tunarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-tunarr-ssd
