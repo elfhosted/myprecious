@@ -468,6 +468,14 @@ data:
               key: {{`{{HOMEPAGE_FILE_JELLYSEERR_KEY}}`}}       
         {{ end }}       
 
+        {{ if .Values.petio.enabled }}
+        - Ombi:
+            icon: petio.png
+            href: https://{{ .Release.Name }}-petio.{{ .Values.dns_domain }}
+            description: Manage Requests   
+            siteMonitor: http://petio:7777  
+        {{ end }}   
+
         {{ if .Values.jfa.enabled }}
         - Jellyfin Accounts:
             icon: mdi-account-group

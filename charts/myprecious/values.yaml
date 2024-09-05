@@ -10991,6 +10991,110 @@ stremiojackett:
           name: elfbot-stremio-jackett
           optional: true
 
+pairdrop:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/pairdrop
+    tag: v1.10.10@sha256:c0188414adebb07c69a170c81256825f7ea83784f2f7ff491679fa0165b4425f
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pairdrop"
+    strategy:
+    rollingUpdate:
+      unavailable: 1      
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  # envFrom:
+  # - configMapRef:
+  #     name: pairdrop-env       
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000 
+  persistence:  
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-pairdrop
+          optional: true
+
+petio:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/petio
+    tag: v0.5.5@sha256:6c1bb09cf15aea87fa8f8c14b0824f7c7320d0b204d5255a1f34d6a9a83dd283
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-petio"
+    strategy:
+    rollingUpdate:
+      unavailable: 1      
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  # envFrom:
+  # - configMapRef:
+  #     name: pairdrop-env       
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 7777 
+  persistence:  
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-petio
+          optional: true
+
 pgadmin:
   enabled: false
   image:
