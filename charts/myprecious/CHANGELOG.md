@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.108.0](https://github.com/elfhosted/myprecious/compare/v1.107.0...v1.108.0) (2024-09-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.563 ([88972d4](https://github.com/elfhosted/myprecious/commit/88972d4d1de5a91d69602edc99ae54e87f7deaeb))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.3.0 ([7383b29](https://github.com/elfhosted/myprecious/commit/7383b29a3f739bcbdb64e88ba16b0909ba0bcabb))
+
+
+### Bug Fixes
+
+* reset all --yesiamsure now works (take care!) ([db8a6e8](https://github.com/elfhosted/myprecious/commit/db8a6e879c13f86e3f8759593b3e26c2905c6721))
+
 ## [1.107.0](https://github.com/elfhosted/myprecious/compare/v1.106.0...v1.107.0) (2024-09-04)
 
 
