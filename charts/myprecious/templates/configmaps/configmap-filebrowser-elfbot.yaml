@@ -90,7 +90,7 @@ data:
                         sleep 5s
                         echo reset > /elfbot/$kubernetes_label
                     fi
-                elif [[ "$elfhosted_label" != "filebrowser" ]]; 
+                elif [[ "$elfhosted_label" != "filebrowser" ]]; then
                     echo "resetting $elfhosted_label... 🗑️"
                     sleep 5s
                     echo reset > /elfbot/$elfhosted_label            

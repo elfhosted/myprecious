@@ -472,6 +472,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.petio.enabled }}
+      - name: petio
+        group: manage-media
+        url: "http://petio:7000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.jellyseerr.enabled }}
       - name: jellyseerr
         group: manage-media
@@ -538,10 +549,10 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.xteve.enabled }}
-      - name: xteve
+      {{ if .Values.tunarr.enabled }}
+      - name: tunarr
         group: consume-media
-        url: "http://xteve:34400"
+        url: "http://tunarr:8000"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
@@ -1168,4 +1179,15 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }}    
+
+      {{ if .Values.pairdrop.enabled }}
+      - name: pairdrop
+        group: tools
+        url: "http://pairdrop:3000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}            

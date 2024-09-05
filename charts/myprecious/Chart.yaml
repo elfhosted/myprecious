@@ -354,8 +354,8 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: xteve.enabled
-    alias: xteve
+    condition: tunarr.enabled
+    alias: tunarr
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -765,6 +765,16 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: recyclarr
+  - name: app-template
+    condition: pairdrop.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: pairdrop    
+  - name: app-template
+    condition: petio.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: petio        
   - name: app-template
     condition: immich.enabled
     version: ~0.2.1

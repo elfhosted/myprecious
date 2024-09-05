@@ -1070,7 +1070,14 @@ configmounts: &config_mounts
     mountPath: /config/threadfin/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-threadfin-ssd        
+        claimName: config-threadfin-ssd   
+  tunarr:
+    enabled: false
+    type: custom
+    mountPath: /config/tunarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-tunarr-ssd             
   unpackerr:
     enabled: false
     type: custom
@@ -1092,13 +1099,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-vaultwarden-ssd
-  xteve:
-    enabled: false
-    type: custom
-    mountPath: /config/xteve/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-xteve-ssd
   youtubedl:
     enabled: false
     type: custom
@@ -1683,6 +1683,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-thelounge-ssd
+  tunarr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/tunarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-tunarr-ssd        
   threadfin:
     enabled: false
     type: custom
@@ -1711,13 +1718,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-vaultwarden-ssd
-  xteve:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/xteve/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-xteve-ssd
   youtubedl:
     enabled: false
     type: custom
@@ -2320,7 +2320,7 @@ nzbgetexposed:
 mylarrexposed:
   enabled: false
   apikey: 0f97f6a7f352c63eb43fcb7e53ea9d8f
-xteveexposed:
+tunarrexposed:
   enabled: false
 threadfinexposed:
   enabled: false  
@@ -7265,22 +7265,21 @@ seafile:
   initContainers:
     bootstrap: *bootstrap
 
-xteve:
+tunarr:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
-    repository: k8s-at-home/xteve
-    tag: v2.2.0.200
+    repository: chrisbenincasa/tunarr
+    tag: 0.9.1-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+    privileged: true
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-xteve"
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tunarr"
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7288,7 +7287,8 @@ xteve:
     runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
-
+    supplementalGroups:
+    - 109    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -7314,26 +7314,21 @@ xteve:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-xteve-ssd
+          claimName: config-tunarr-ssd
     elfbot:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-xteve
-          optional: true
-    tooling-scripts:
+          name: elfbot-tunarr
+          optional: true      
+    render-device:
       enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: tooling-scripts             
-          defaultMode: 0755               
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"                  
   initContainers:
     bootstrap: *bootstrap
-    update-dns: *update_dns_on_init    
-  additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
 
 threadfin:
   enabled: false
@@ -7389,7 +7384,7 @@ threadfin:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-xteve
+          name: elfbot-tunarr
           optional: true
     tooling-scripts:
       enabled: "true"
@@ -10144,8 +10139,8 @@ homepage:
         touch /app/config/user-change-these/OVERSEERR_KEY
         touch /app/config/user-change-these/JELLYSEERR_KEY
         touch /app/config/user-change-these/TAUTULLI_KEY
-        touch /app/config/user-change-these/XTEVE_USERNAME
-        touch /app/config/user-change-these/XTEVE_PASSWORD
+        touch /app/config/user-change-these/tunarr_USERNAME
+        touch /app/config/user-change-these/tunarr_PASSWORD
         touch /app/config/user-change-these/MINIFLUX_KEY
         touch /app/config/user-change-these/UPTIMEKUMA_SLUG
         touch /app/config/user-change-these/GOTIFY_KEY
@@ -10992,6 +10987,110 @@ stremiojackett:
       volumeSpec:
         configMap:
           name: elfbot-stremio-jackett
+          optional: true
+
+pairdrop:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/pairdrop
+    tag: v1.10.10@sha256:c0188414adebb07c69a170c81256825f7ea83784f2f7ff491679fa0165b4425f
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pairdrop"
+    strategy:
+    rollingUpdate:
+      unavailable: 1      
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  # envFrom:
+  # - configMapRef:
+  #     name: pairdrop-env       
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000 
+  persistence:  
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-pairdrop
+          optional: true
+
+petio:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/petio
+    tag: v0.5.5@sha256:6c1bb09cf15aea87fa8f8c14b0824f7c7320d0b204d5255a1f34d6a9a83dd283
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-petio"
+    strategy:
+    rollingUpdate:
+      unavailable: 1      
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  # envFrom:
+  # - configMapRef:
+  #     name: pairdrop-env       
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 7777 
+  persistence:  
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-petio
           optional: true
 
 pgadmin:
