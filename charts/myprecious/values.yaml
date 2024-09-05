@@ -1070,7 +1070,14 @@ configmounts: &config_mounts
     mountPath: /config/threadfin/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-threadfin-ssd        
+        claimName: config-threadfin-ssd   
+  tunarr:
+    enabled: false
+    type: custom
+    mountPath: /config/tunarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-tunarr-ssd             
   unpackerr:
     enabled: false
     type: custom
@@ -1092,13 +1099,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-vaultwarden-ssd
-  tunarr:
-    enabled: false
-    type: custom
-    mountPath: /config/tunarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-tunarr-ssd
   youtubedl:
     enabled: false
     type: custom
@@ -1683,6 +1683,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-thelounge-ssd
+  tunarr:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/tunarr/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-tunarr-ssd        
   threadfin:
     enabled: false
     type: custom
@@ -1711,13 +1718,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-vaultwarden-ssd
-  tunarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/tunarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-tunarr-ssd
   youtubedl:
     enabled: false
     type: custom
@@ -7267,8 +7267,6 @@ seafile:
 
 tunarr:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
