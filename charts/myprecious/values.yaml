@@ -1092,13 +1092,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-vaultwarden-ssd
-  xteve:
+  tunarr:
     enabled: false
     type: custom
-    mountPath: /config/xteve/
+    mountPath: /config/tunarr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-xteve-ssd
+        claimName: config-tunarr-ssd
   youtubedl:
     enabled: false
     type: custom
@@ -1711,13 +1711,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-vaultwarden-ssd
-  xteve:
+  tunarr:
     enabled: false
     type: custom
-    mountPath: /storage/config/xteve/
+    mountPath: /storage/config/tunarr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-xteve-ssd
+        claimName: config-tunarr-ssd
   youtubedl:
     enabled: false
     type: custom
@@ -2320,7 +2320,7 @@ nzbgetexposed:
 mylarrexposed:
   enabled: false
   apikey: 0f97f6a7f352c63eb43fcb7e53ea9d8f
-xteveexposed:
+tunarrexposed:
   enabled: false
 threadfinexposed:
   enabled: false  
@@ -7265,14 +7265,14 @@ seafile:
   initContainers:
     bootstrap: *bootstrap
 
-xteve:
+tunarr:
   enabled: false
   sso:
     enabled: true
   image:
     registry: ghcr.io
-    repository: k8s-at-home/xteve
-    tag: v2.2.0.200
+    repository: chrisbenincasa/tunarr
+    tag: 0.9.1-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7280,7 +7280,7 @@ xteve:
     readOnlyRootFilesystem: true
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-xteve"
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tunarr"
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7288,7 +7288,6 @@ xteve:
     runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
-
   automountServiceAccountToken: false
   resources:
     requests:
@@ -7314,26 +7313,16 @@ xteve:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-xteve-ssd
+          claimName: config-tunarr-ssd
     elfbot:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-xteve
-          optional: true
-    tooling-scripts:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: tooling-scripts             
-          defaultMode: 0755               
+          name: elfbot-tunarr
+          optional: true            
   initContainers:
     bootstrap: *bootstrap
-    update-dns: *update_dns_on_init    
-  additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
 
 threadfin:
   enabled: false
@@ -7389,7 +7378,7 @@ threadfin:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-xteve
+          name: elfbot-tunarr
           optional: true
     tooling-scripts:
       enabled: "true"
@@ -10144,8 +10133,8 @@ homepage:
         touch /app/config/user-change-these/OVERSEERR_KEY
         touch /app/config/user-change-these/JELLYSEERR_KEY
         touch /app/config/user-change-these/TAUTULLI_KEY
-        touch /app/config/user-change-these/XTEVE_USERNAME
-        touch /app/config/user-change-these/XTEVE_PASSWORD
+        touch /app/config/user-change-these/tunarr_USERNAME
+        touch /app/config/user-change-these/tunarr_PASSWORD
         touch /app/config/user-change-these/MINIFLUX_KEY
         touch /app/config/user-change-these/UPTIMEKUMA_SLUG
         touch /app/config/user-change-these/GOTIFY_KEY

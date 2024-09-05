@@ -1,10 +1,10 @@
-{{ if .Values.xteve.enabled }}
+{{ if .Values.tunarr.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: xteve
+  name: tunarr
   labels:
-    app.kubernetes.io/name: xteve
+    app.kubernetes.io/name: tunarr
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: xteve
+    app.kubernetes.io/name: tunarr
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}    

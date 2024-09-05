@@ -1,18 +1,18 @@
-{{ if .Values.xteve.enabled }}
+{{ if .Values.tunarr.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-xteve.{{ .Values.dns_domain }}
+  name: {{ .Release.Name }}-tunarr.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-xteve.{{ .Values.dns_domain }}`)
+    - match: Host(`{{ .Release.Name }}-tunarr.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: xteve
+        - name: tunarr
           kind: Service
           port: 34400
       middlewares:
-        {{- if not .Values.xteveexposed.enabled }}
+        {{- if not .Values.tunarrexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
         {{ end }}      
         - name: error-pages

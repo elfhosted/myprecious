@@ -538,10 +538,10 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.xteve.enabled }}
-      - name: xteve
+      {{ if .Values.tunarr.enabled }}
+      - name: tunarr
         group: consume-media
-        url: "http://xteve:34400"
+        url: "http://tunarr:8000"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

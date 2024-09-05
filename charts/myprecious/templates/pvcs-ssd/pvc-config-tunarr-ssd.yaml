@@ -1,17 +1,17 @@
-{{ if .Values.xteve.enabled }}
+{{ if .Values.tunarr.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-xteve-ssd
+  name: config-tunarr-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-xteve-ssd" ) }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-tunarr-ssd" ) }}
   {{- if and (not $pvc) (.Values.location.enabled) }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
-    name: rd-config-xteve-ssd
+    name: rd-config-tunarr-ssd
   {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}

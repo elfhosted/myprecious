@@ -488,17 +488,12 @@ data:
               key: {{`{{HOMEPAGE_FILE_TAUTULLI_KEY}}`}}       
         {{ end }}   
 
-        {{ if .Values.xteve.enabled }}
-        - Xteve:
-            icon: xteve.png
-            href: https://{{ .Release.Name }}-xteve.{{ .Values.dns_domain }}
-            description: Live TV Proxy for Plex/Emby
-            siteMonitor: http://xteve:34400    
-            widget:
-              type: xteve
-              url: http://xteve:34400
-              username: {{`{{HOMEPAGE_FILE_XTEVE_USERNAME}}`}} 
-              password: {{`{{HOMEPAGE_FILE_XTEVE_PASSWORD}}`}}                 
+        {{ if .Values.tunarr.enabled }}
+        - tunarr:
+            icon: tunarr.png
+            href: https://{{ .Release.Name }}-tunarr.{{ .Values.dns_domain }}
+            description: Create "channels" from your Plex media
+            siteMonitor: http://tunarr:8000    
         {{ end }}   
 
         {{ if .Values.threadfin.enabled }}
