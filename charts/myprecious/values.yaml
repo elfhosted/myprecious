@@ -7305,7 +7305,7 @@ tunarr:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 34400
+          port: 8000
   persistence:
     <<: *storagemounts
     config:

@@ -10,7 +10,7 @@ spec:
       services:
         - name: tunarr
           kind: Service
-          port: 34400
+          port: 8000
       middlewares:
         {{- if not .Values.tunarrexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
