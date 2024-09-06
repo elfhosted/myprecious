@@ -11106,13 +11106,13 @@ petio:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-petio-block          
-  additionalContainers:
-    mongodb:
-      image: bitnami/mongodb:7.0.14-debian-12-r3
-      volumeMounts:
-        - name: config
-          subPath: mongodb
-          mountPath: /bitnami/mongodb
+  # additionalContainers:
+  #   mongodb:
+  #     image: bitnami/mongodb:7.0.14-debian-12-r3
+  #     volumeMounts:
+  #       - name: config
+  #         subPath: mongodb
+  #         mountPath: /bitnami/mongodb
 
 pgadmin:
   enabled: false
