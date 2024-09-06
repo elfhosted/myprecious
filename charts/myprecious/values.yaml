@@ -12870,6 +12870,7 @@ blackhole: &app_blackhole
           port: 3001 
   persistence:
     <<: *storagemounts   
+    tmp: *tmp
     # config:
     #   enabled: true
     #   type: custom
