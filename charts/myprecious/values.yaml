@@ -2344,7 +2344,9 @@ jellyfincustomdomain:
 embycustomdomain:
   enabled: false   
 stremiowebcustomdomain:
-  enabled: false      
+  enabled: false   
+pairdropcustomdomain:
+  enabled: false        
 
 rutorrentgluetun: &rutorrent
   enabled: false
@@ -11100,10 +11102,10 @@ petio:
   additionalContainers:
     mongodb:
       image: bitnami/mongodb:7.0.14-debian-12-r3
-    volumeMounts:
-      - name: config
-        subPath: mongodb
-        mountPath: /bitnami/mongodb
+      volumeMounts:
+        - name: config
+          subPath: mongodb
+          mountPath: /bitnami/mongodb
 
 pgadmin:
   enabled: false
