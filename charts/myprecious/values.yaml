@@ -7312,7 +7312,7 @@ tunarr:
     config:
       enabled: true
       type: custom
-      mountPath: /root/.local/share/tunarr
+      mountPath: /root/.local
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-tunarr-ssd
@@ -7328,7 +7328,7 @@ tunarr:
       type: hostPath
       hostPath: "/dev/dri/renderD128"
       mountPath: "/dev/dri/renderD128"   
-    transcode: # in case users use /tmp
+    media: # in case users use /tmp
       enabled: true
       mountPath: /streams
       type: emptyDir
@@ -11109,10 +11109,10 @@ petio:
   additionalContainers:
     mongodb:
       image: bitnami/mongodb:7.0.14-debian-12-r3
-      # volumeMounts:
-      #   - name: config
-      #     subPath: mongodb
-      #     mountPath: /bitnami/mongodb
+      volumeMounts:
+        - name: config
+          subPath: mongodb
+          mountPath: /bitnami/mongodb
 
 pgadmin:
   enabled: false
