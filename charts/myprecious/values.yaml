@@ -10672,7 +10672,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.563@sha256:9381a59d2f5f4c8bac3795cadd54c52df83ca337206b8533a868be4497def75f
+    tag: 0.22.565@sha256:be22d02bb8d26819e764ef32c7e629c53166e1600beec484461310dba37d9f2d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12826,7 +12826,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.4@sha256:56a7f0f31961494a1211bfd88437c6a2f8e12d84235e855fd2a2dd98eab0d2eb
+    tag: v1.4.4@sha256:dcdef2ab229bfe17e0411dcb9dd81aa4c08f0ad69842c5e956216044cbc58c68
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   controller:
