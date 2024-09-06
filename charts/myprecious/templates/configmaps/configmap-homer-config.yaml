@@ -779,9 +779,7 @@ data:
 
           {{ if .Values.tunarr.enabled }}
           - name: "tunarr"
-            logo: "assets/png/tunarr.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
+            icon: "fab fa-tv"
             subtitle: "Live TV Proxy for Plex/Emby"
             {{ if .Values.tunarrexposed.enabled }}
             tag: "public"
