@@ -12805,7 +12805,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.4@sha256:56a7f0f31961494a1211bfd88437c6a2f8e12d84235e855fd2a2dd98eab0d2eb
+    tag: v1.4.4@sha256:dcdef2ab229bfe17e0411dcb9dd81aa4c08f0ad69842c5e956216044cbc58c68
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   controller:
