@@ -11108,11 +11108,12 @@ petio:
           claimName: config-petio-block          
   additionalContainers:
     mongodb:
-      image: bitnami/mongodb:7.0.14-debian-12-r3
+      image: mongodb/mongodb-community-server:7.0.2-ubi8
       volumeMounts:
         - name: config
           subPath: mongodb
-          mountPath: /bitnami/mongodb
+          mountPath: /data/db/
+      securityContext: *default_securitycontext
 
 pgadmin:
   enabled: false
