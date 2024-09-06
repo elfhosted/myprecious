@@ -12871,13 +12871,14 @@ blackhole: &app_blackhole
   persistence:
     <<: *storagemounts   
     tmp: *tmp
-    # config:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /config
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: config-blackhole-ssd
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: blackhole
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-homer-ssd
     # example-config:
     #   enabled: "true"
     #   type: "custom"
@@ -12917,6 +12918,17 @@ blackhole: &app_blackhole
 
 blackhole4k: 
   <<: *app_blackhole
+  persistence:
+    <<: *storagemounts   
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: blackhole4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-homer-ssd  
   env:
     BLACKHOLE_RADARR_PATH: "radarr4k"
     BLACKHOLE_SONARR_PATH: "sonarr4k"   
