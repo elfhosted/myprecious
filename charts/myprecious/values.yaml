@@ -7327,7 +7327,12 @@ tunarr:
       enabled: "true"
       type: hostPath
       hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"                  
+      mountPath: "/dev/dri/renderD128"   
+    transcode: # in case users use /tmp
+      enabled: true
+      mountPath: /streams
+      type: emptyDir
+      sizeLimit: 50Gi                     
   initContainers:
     bootstrap: *bootstrap
 
