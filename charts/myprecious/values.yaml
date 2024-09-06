@@ -4798,7 +4798,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:0d12da9f268549ea817ed781cb5a4d862c160b765ec210cddfeeecb3169e8524
+    tag: rolling@sha256:6ff402c1f3c94226882129e81441d763249938e74eca5ef84a3cf6005c491f56
   enabled: false
   controller:
     annotations:
@@ -9651,7 +9651,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid  
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.81
+    tag: v2.0.86
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rdtclient"
@@ -11365,7 +11365,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.31.2@sha256:75fec7e49c5320d0445225a6b746d70335e5041a9c972550d03f2cd875bfe549
+    tag: v1.31.3@sha256:9abb5d924f622a3fa27aae518e9423900c2c4e212753eb9289a911457d08fe08
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
