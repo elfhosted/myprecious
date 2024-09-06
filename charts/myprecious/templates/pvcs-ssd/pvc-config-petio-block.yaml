@@ -1,0 +1,22 @@
+{{ if or .Values.petio.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: config-petio-block
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-petio-block" ) }}
+  {{- if and (not $pvc) (.Values.location.enabled) }}
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: rd-config-petio-block
+  {{- end }}
+  accessModes:
+  - {{ .Values.storageclass.rwo.accessMode }}
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: {{ .Values.storageclass.rwo.name }}
+{{ end }}
