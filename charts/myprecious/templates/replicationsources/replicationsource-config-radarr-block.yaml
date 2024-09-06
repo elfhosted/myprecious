@@ -8,7 +8,7 @@ spec:
   # The PVC to be backed up
   sourcePVC: config-radarr-block
   trigger:
-    schedule: "0 9 * * *" # 1h before maintenance
+    schedule: "0 {{ ( ( sha256sum .Release.Name | substr 0 8 ) | int 0 16 ) | mod 24 }} * * *"
   restic:
     pruneIntervalDays: 7
     repository: config-radarr-block-volsync-restic-config
