@@ -11356,7 +11356,7 @@ annatar:
       config: # We have to set this to null so that we can override with our own config    
   additionalContainers:
     redis:
-      image: redis:alpine@sha256:eaea8264f74a95ea9a0767c794da50788cbd9cf5223951674d491fa1b3f4f2d2
+      image: redis:alpine@sha256:309ba197540c90f5ae5ec22eb10d4a01151510216bd9121616fde58dab8f0d28
       volumeMounts:
       - mountPath: /data
         name: redis
@@ -13099,7 +13099,7 @@ immich:
           cpu: 500m
           memory: 4Gi              
     redis:
-      image: docker.io/redis:6.2-alpine@sha256:e3b17ba9479deec4b7d1eeec1548a253acc5374d68d3b27937fcfe4df8d18c7e
+      image: docker.io/redis:6.2-alpine@sha256:4f26c3bf78bf93b178f4c0d5548a203042a59a2d1ac05dba307d2f6a8129a75f
       envFrom:
       - configMapRef:
           name: immich-env  
