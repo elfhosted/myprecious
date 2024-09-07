@@ -414,7 +414,15 @@ data:
               type: mylar
               url: http://mylar:8090
               key: {{ .Values.mylarrexposed.apikey }}     
-        {{ end }}    
+        {{ end }} 
+
+        {{ if .Values.kapowarr.enabled }}
+        - Kapowarr:
+            icon: mylar.png
+            href: https://{{ .Release.Name }}-kapowarr.{{ .Values.dns_domain }}
+            description: Manage Comics
+            siteMonitor: http://kapowarr:5656  
+        {{ end }}            
 
         {{ if .Values.rpdb.enabled }}
         - RPDB:

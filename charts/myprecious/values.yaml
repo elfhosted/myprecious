@@ -4658,6 +4658,75 @@ nzbhydra:
   initContainers:
     bootstrap: *bootstrap
 
+kapowarr:
+  enabled: false
+  sso:
+    enabled: true
+  image:
+    registry: ghcr.io
+    repository: elfhosted/kapowarr
+    tag: v1.0.0@sha256:68d8cf426fbdcfac4ce9b7d94a8fa3cbe31a65a888e9e7d319d484e5b257de86
+  priorityClassName: 
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-kapowarr"
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+    allowPrivilegeEscalation: false
+    runAsUser: 568
+    runAsGroup: 568
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  probes:
+    liveness:
+      enabled: false
+    startup:
+      enabled: false
+    readiness:
+      enabled: false
+  automountServiceAccountToken: false
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kapowarr-ssd          
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-nzbhydra
+          optional: true
+    tmp: *tmp
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5656
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  initContainers:
+    bootstrap: *bootstrap
+
+
 calibreweb:
   enabled: false
   priorityClassName: 

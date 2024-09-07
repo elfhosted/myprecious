@@ -697,6 +697,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.kapowarr.enabled }}
+          - name: "Kapowarr"
+            logo: "assets/png/mylar.png"
+            subtitle: "Manage Comics"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-kapowarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.rpdb.enabled }}
           - name: "RPDB"
             icon: "fas fa-star"

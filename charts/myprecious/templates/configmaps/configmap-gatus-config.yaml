@@ -615,6 +615,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.kapowarr.enabled }}
+      - name: kapowarr
+        group: manage-media
+        url: "http://kapowarr:5656"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.notifiarr.enabled }}
       - name: notifiarr
         group: manage-media
