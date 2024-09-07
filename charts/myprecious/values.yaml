@@ -45,28 +45,17 @@ dns_domain: elfhosted.com
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
 
-standard_affinity: &standard_affinity
+# all pods have to exist with zurg
+standard_affinity: &standard_affinity  
   podAffinity: 
-    preferredDuringSchedulingIgnoredDuringExecution: 
-    - weight: 100  
-      podAffinityTerm:    
-        labelSelector:
+    requiredDuringSchedulingIgnoredDuringExecution: 
+      - labelSelector:
           matchExpressions:
           - key: app.elfhosted.com/name
             operator: In
             values:
             - zurg
-        topologyKey: "kubernetes.io/hostname"   
-    - weight: 50  
-      podAffinityTerm:    
-        labelSelector:
-          matchExpressions:
-          - key: app.kubernetes.io/name
-            operator: In
-            values:
-            - kubernetesdashboard
-        topologyKey: "kubernetes.io/hostname"    
-
+        topologyKey: "kubernetes.io/hostname"          
 
 standard_tolerations: &standard_tolerations
 - key: node-role.elfhosted.com/dedicated
