@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.110.0](https://github.com/elfhosted/myprecious/compare/v1.109.0...v1.110.0) (2024-09-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.574 ([ff03f3d](https://github.com/elfhosted/myprecious/commit/ff03f3d8e6cc96d76d98666b7ae88e4402bf5dd1))
+
+
+### Bug Fixes
+
+* add kapowarr! ([bef3edf](https://github.com/elfhosted/myprecious/commit/bef3edfc4ec928c3f9f2334cdad8f38f228fb56b))
+* **app:** update docker.io/redis:6.2-alpine docker digest to 4f26c3b ([7f31ee2](https://github.com/elfhosted/myprecious/commit/7f31ee2cbe4e08f50cfbfa3e217f8a14deb6df5b))
+* **app:** update docker.io/redis:6.2-alpine docker digest to ffa932b ([b250393](https://github.com/elfhosted/myprecious/commit/b250393734df8a59c820ccdab08e62a2db75a860))
+* **app:** update redis:alpine docker digest to 309ba19 ([2818155](https://github.com/elfhosted/myprecious/commit/28181556e2e876bbcc3dd0842353a58ba58281bd))
+* **app:** update redis:alpine docker digest to dd6c86d ([003029c](https://github.com/elfhosted/myprecious/commit/003029cfa72aaea3c1431a431b9847a9ba3f6791))
+
 ## [1.109.0](https://github.com/elfhosted/myprecious/compare/v1.108.0...v1.109.0) (2024-09-06)
 
 
