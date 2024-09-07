@@ -74,24 +74,6 @@ standard_tolerations: &standard_tolerations
 - key: node-role.elfhosted.com/hobbit
   operator: Exists
 
-
-hobbit_affinity: &hobbit_affinity
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: node-role.elfhosted.com/hobbit
-          operator: Exists    
-  podAffinity: 
-    requiredDuringSchedulingIgnoredDuringExecution: 
-      - labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/class
-            operator: In
-            values:
-            - hobbit
-        topologyKey: "kubernetes.io/hostname"  
-
 hobbit_tolerations: &hobbit_tolerations
 - key: node-role.elfhosted.com/hobbit
   operator: Exists               
@@ -13281,8 +13263,8 @@ plexhobbit:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_streamer_resources
 
 jellyfinhobbit:
@@ -13293,8 +13275,8 @@ jellyfinhobbit:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_streamer_resources
 
 embyhobbit:
@@ -13305,8 +13287,8 @@ embyhobbit:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_streamer_resources
 
 zurghobbit:
@@ -13316,7 +13298,14 @@ zurghobbit:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "250M"    
   enabled: false
-  affinity: *hobbit_affinity              
+  # zurg is the "anchor" which keeps all the other apps on the same node
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/hobbit
+            operator: Exists
   tolerations: *hobbit_tolerations
   resources: *hobbit_resources
 
@@ -13325,8 +13314,8 @@ radarrhobbit:
   podLabels:
     app.elfhosted.com/name: radarr
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 radarr4khobbit:
@@ -13334,8 +13323,8 @@ radarr4khobbit:
   podLabels:
     app.elfhosted.com/name: radarr4k
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations  
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 sonarrhobbit:
@@ -13343,8 +13332,8 @@ sonarrhobbit:
   podLabels:
     app.elfhosted.com/name: sonarr
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 sonarr4khobbit:
@@ -13352,8 +13341,8 @@ sonarr4khobbit:
   podLabels:
     app.elfhosted.com/name: sonarr4k
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations  
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 plexdebridhobbit:
@@ -13361,8 +13350,8 @@ plexdebridhobbit:
   podLabels:
     app.elfhosted.com/name: plexdebrid
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations 
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 prowlarrhobbit:
@@ -13370,8 +13359,8 @@ prowlarrhobbit:
   podLabels:
     app.elfhosted.com/name: prowlarr
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations 
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 rdtclienthobbit:
@@ -13379,8 +13368,8 @@ rdtclienthobbit:
   podLabels:
     app.elfhosted.com/name: rdtclient
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 rivenhobbit:
@@ -13388,8 +13377,8 @@ rivenhobbit:
   podLabels:
     app.elfhosted.com/name: riven
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations
   resources:
     requests:
       cpu: 1m
@@ -13403,8 +13392,8 @@ kometahobbit:
   podLabels:
     app.elfhosted.com/name: kometa
   enabled: false
-  affinity: *hobbit_affinity              
-  tolerations: *hobbit_tolerations  
+  affinity: *standard_affinity              
+  tolerations: *standard_tolerations 
   resources: *hobbit_resources
 
 
