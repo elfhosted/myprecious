@@ -5588,6 +5588,8 @@ prowlarr: &app_prowlarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-prowlarr"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
@@ -8868,7 +8870,6 @@ webdav: &webdav
   podAnnotations:
     kubernetes.io/egress-bandwidth: "40M"    
   priorityClassName: tenant-normal
-  # Always prefer to cohabit with zurg
   affinity: *standard_affinity 
   tolerations: *standard_tolerations      
   image:
@@ -9193,6 +9194,8 @@ jfa:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jfa"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
