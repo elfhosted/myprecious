@@ -9,7 +9,7 @@ spec:
   sourcePVC: config-plex-block
   trigger:
     # Take a backup every 30 minutes
-    schedule: "0 "{{ mod .Values.userId 24 }}" * * *"
+    schedule: "0 {{ mod .Values.userId 24 }} * * *"
   restic:
     pruneIntervalDays: 7
     repository: config-plex-block-volsync-restic-config

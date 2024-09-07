@@ -7,7 +7,7 @@ metadata:
 spec:
   sourcePVC: config-zurg-ssd
   trigger:
-    schedule: "0 "{{ mod .Values.userId 24 }}" * * *"
+    schedule: "0 {{ mod .Values.userId 24 }} * * *"
   restic:
     pruneIntervalDays: 7
     repository: config-zurg-ssd-volsync-restic-config
