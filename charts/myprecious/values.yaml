@@ -4695,16 +4695,21 @@ kapowarr:
     config:
       enabled: true
       type: custom
-      mountPath: /config/
+      mountPath: /app/db
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kapowarr-ssd          
+          claimName: config-kapowarr-ssd        
+    temp-downloads:
+      enabled: true
+      type: emptyDir
+      mountPath: /app/temp_downloads
+      sizeLimit: 10Gi            
     elfbot:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-nzbhydra
+          name: elfbot-kapowarr
           optional: true
     tmp: *tmp
   ingress:
