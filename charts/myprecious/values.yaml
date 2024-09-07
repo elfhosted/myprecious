@@ -24,6 +24,22 @@ storageclass:
     accessMode: ReadWriteOnce
     volumeSnapshotClassName: ceph-block
 
+hobbit_streamer_resources: &hobbit_streamer_resources
+  requests:
+    cpu: "1.8"
+    memory: 30Mi
+  limits:
+    cpu: "2"
+    memory: 4Gi   
+
+ranger_streamer_resources: &ranger_streamer_resources
+  requests:
+    cpu: 3500m
+    memory: 30Mi
+  limits:
+    cpu: 4
+    memory: 16Gi    
+
 # sets the user's base dns domain
 dns_domain: elfhosted.com
 
@@ -78,15 +94,7 @@ hobbit_affinity: &hobbit_affinity
 
 hobbit_tolerations: &hobbit_tolerations
 - key: node-role.elfhosted.com/hobbit
-  operator: Exists          
-
-hobbit_streamer_resources: &hobbit_streamer_resources
-  requests:
-    cpu: "1.8"
-    memory: 30Mi
-  limits:
-    cpu: "2"
-    memory: 4Gi     
+  operator: Exists               
 
 # Set minimal requests so that pods can co-exist with streamers
 hobbit_resources: &hobbit_resources
@@ -95,7 +103,7 @@ hobbit_resources: &hobbit_resources
     memory: "16Mi"
   limits:
     cpu: "2"
-    memory: 4Gi     
+    memory: 4Gi       
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -4665,7 +4673,7 @@ kapowarr:
   image:
     registry: ghcr.io
     repository: elfhosted/kapowarr
-    tag: v1.0.0@sha256:02c77a10e08fa80fd62e8f8ac6a4f4b1c70d01bdc52bfb7b377ecb901352e0a2
+    tag: V1.0.0@sha256:02c77a10e08fa80fd62e8f8ac6a4f4b1c70d01bdc52bfb7b377ecb901352e0a2
   priorityClassName: 
   controller:
     annotations:
@@ -6292,13 +6300,7 @@ plexplus:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
   automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 3500m
-      memory: 30Mi
-    limits:
-      cpu: 4
-      memory: 16Gi  
+  resources: *ranger_streamer_resources 
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,plex-config"
@@ -6494,13 +6496,7 @@ jellyfinplus:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
   automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 3500m
-      memory: 30Mi
-    limits:
-      cpu: 4
-      memory: 4Gi  
+  resources: *ranger_streamer_resources  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-jellyfin,elfbot-all"
@@ -6689,13 +6685,7 @@ embyplus:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
   automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 3500m
-      memory: 30Mi
-    limits:
-      cpu: 4
-      memory: 8Gi  
+  resources: *ranger_streamer_resources 
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-emby,elfbot-all"

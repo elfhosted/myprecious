@@ -12,6 +12,16 @@ spec:
   restic:
     repository: config-requestrr-ssd-volsync-restic-config
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 100Mi
     capacity: 100Mi
     cacheStorageClassName: topolvm-provisioner-thin

@@ -13,6 +13,16 @@ spec:
     retain:
       daily: 2
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:

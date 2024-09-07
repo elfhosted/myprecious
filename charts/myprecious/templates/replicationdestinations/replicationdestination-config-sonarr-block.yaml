@@ -13,6 +13,16 @@ spec:
   restic:
     repository: config-sonarr-block-volsync-restic-config
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 20Gi
     capacity: 20Gi
     cacheStorageClassName: topolvm-provisioner-thin

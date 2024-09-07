@@ -13,6 +13,16 @@ spec:
   restic:
     repository: config-plex-block-volsync-restic-config
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 100Gi
     capacity: 100Gi
     cacheStorageClassName: topolvm-provisioner-thin
