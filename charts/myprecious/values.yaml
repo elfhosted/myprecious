@@ -10741,7 +10741,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.565@sha256:be22d02bb8d26819e764ef32c7e629c53166e1600beec484461310dba37d9f2d
+    tag: 0.22.574@sha256:ff69ea03106e1c19e7978d4e6477250617d37f41001624ebec49ca768c8ea5c2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11425,7 +11425,7 @@ annatar:
       config: # We have to set this to null so that we can override with our own config    
   additionalContainers:
     redis:
-      image: redis:alpine@sha256:309ba197540c90f5ae5ec22eb10d4a01151510216bd9121616fde58dab8f0d28
+      image: redis:alpine@sha256:dd6c86dc8f3be0526b2baa964473e2443b5a4412c4c2232781ca9820296d407b
       volumeMounts:
       - mountPath: /data
         name: redis
@@ -13168,7 +13168,7 @@ immich:
           cpu: 500m
           memory: 4Gi              
     redis:
-      image: docker.io/redis:6.2-alpine@sha256:4f26c3bf78bf93b178f4c0d5548a203042a59a2d1ac05dba307d2f6a8129a75f
+      image: docker.io/redis:6.2-alpine@sha256:ffa932bc7e3e6775432f3d3333df0da3c2df4b55b8576ea76a8ce1f536784e3f
       envFrom:
       - configMapRef:
           name: immich-env  
