@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.111.0](https://github.com/elfhosted/myprecious/compare/v1.110.0...v1.111.0) (2024-09-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.576 ([d85146f](https://github.com/elfhosted/myprecious/commit/d85146f6dc76c6ea776f593a81bf3cf91b0fa335))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.9.11 ([06ccebd](https://github.com/elfhosted/myprecious/commit/06ccebd4892c72eac877720c6b7a4516347e2c57))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.24.0.4721 ([506adbb](https://github.com/elfhosted/myprecious/commit/506adbbc89f5cfb3fe0782f294f5f6ac24ee259e))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to 4dc8a5b ([319a3b4](https://github.com/elfhosted/myprecious/commit/319a3b4c9a003428d980dba16e483418a90aec19))
+* **app:** update docker.io/redis:7.4-alpine docker digest to c9a84aa ([2a7963e](https://github.com/elfhosted/myprecious/commit/2a7963e6d0a35902eac0f6efb116f66ea4e79de9))
+* **app:** update ghcr.io/elfhosted/kapowarr:v1.0.0 docker digest to 02c77a1 ([c6470b3](https://github.com/elfhosted/myprecious/commit/c6470b3ebeeadb9cb459c31ccd5045499422bc60))
+* **app:** update ghcr.io/elfhosted/kapowarr:v1.0.0 docker digest to 29932c9 ([e053838](https://github.com/elfhosted/myprecious/commit/e053838f45af0094563dbe116b7d62f4ff6ed1ef))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 4de28b6 ([43656b5](https://github.com/elfhosted/myprecious/commit/43656b59e9531193b6f6eee896d3b00f18d34516))
+* **app:** update redis:alpine docker digest to 4dc8a5b ([e1f0821](https://github.com/elfhosted/myprecious/commit/e1f082174eb9be11d21d35acaeebb9aecdba86cb))
+* **app:** update redis:alpine docker digest to c9a84aa ([796d9a6](https://github.com/elfhosted/myprecious/commit/796d9a6b6519a39576cec35365aa96cc632aea3f))
+
 ## [1.110.0](https://github.com/elfhosted/myprecious/compare/v1.109.0...v1.110.0) (2024-09-07)
 
 
