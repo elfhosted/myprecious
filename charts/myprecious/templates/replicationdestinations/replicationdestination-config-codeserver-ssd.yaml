@@ -4,14 +4,22 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-codeserver-ssd
-  annotations:
-    helm.sh/hook: pre-install,pre-upgrade  
-spec:
+  spec:
   trigger:
     manual: runonce
   restic:
     repository: config-codeserver-ssd-volsync-restic-config
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 1Gi
     capacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin

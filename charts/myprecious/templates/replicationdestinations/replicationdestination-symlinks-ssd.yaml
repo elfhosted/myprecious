@@ -5,13 +5,23 @@ kind: ReplicationDestination
 metadata:
   name: rd-symlinks-ssd
   annotations:
-    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook: post-install,post-upgrade
 spec:
   trigger:
     manual: runonce
   restic:
     repository: symlinks-ssd-volsync-restic-config
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 2Gi
     capacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin

@@ -5,14 +5,22 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-prowlarr-ssd
-  annotations:
-    helm.sh/hook: pre-install,pre-upgrade  
-spec:
+  spec:
   trigger:
     manual: runonce
   restic:
     repository: config-prowlarr-ssd-volsync-restic-config
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 2Gi
     capacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin

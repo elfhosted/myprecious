@@ -699,7 +699,7 @@ data:
 
           {{ if .Values.kapowarr.enabled }}
           - name: "Kapowarr"
-            logo: "assets/png/mylar.png"
+            icon: "fas fa-comments"
             subtitle: "Manage Comics"
             tag: "protected"
             tagstyle: "is-success"

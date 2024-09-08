@@ -1,14 +1,18 @@
-{{- if and .Values.nextpvr.enabled .Values.volsync.enabled }}
-{{- if .Values.location.enabled }}
+{{ if .Values.kapowarr.enabled }}
+{{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
-kind: ReplicationDestination
+kind: ReplicationSource
 metadata:
-  name: rd-config-nextpvr-ssd
-  spec:
+  name: rs-config-kapowarr-ssd
+spec:
+  sourcePVC: config-kapowarr-ssd
   trigger:
-    manual: runonce
+    schedule: "0 {{ mod .Values.userId 24 }} * * *"
   restic:
-    repository: config-nextpvr-ssd-volsync-restic-config
+    pruneIntervalDays: 7
+    repository: config-kapowarr-ssd-volsync-restic-config
+    retain:
+      daily: 2
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:
@@ -20,14 +24,10 @@ metadata:
               values:
               - zurg
           topologyKey: "kubernetes.io/hostname"
-    cacheCapacity: 2Gi
-    capacity: 2Gi
+    cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
-    accessModes:
-    - {{ .Values.storageclass.rwx.accessMode }}
-    storageClassName: {{ .Values.storageclass.rwx.name }}
     cacheAccessModes:
-    - ReadWriteOnce
+    - ReadWriteOnce    
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
-{{- end }}
-{{- end }}
+{{ end }}
+{{ end }}

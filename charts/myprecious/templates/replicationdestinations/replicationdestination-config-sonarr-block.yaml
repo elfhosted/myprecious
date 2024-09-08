@@ -5,14 +5,22 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-sonarr-block
-  annotations:
-    helm.sh/hook: pre-install,pre-upgrade  
-spec:
+  spec:
   trigger:
     manual: runonce
   restic:
     repository: config-sonarr-block-volsync-restic-config
     copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 20Gi
     capacity: 20Gi
     cacheStorageClassName: topolvm-provisioner-thin
