@@ -15,16 +15,6 @@ spec:
     retain:
       daily: 2
     copyMethod: Snapshot
-    moverAffinity:
-      podAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 20Gi
     cacheStorageClassName: topolvm-provisioner-thin
     volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
