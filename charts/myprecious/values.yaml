@@ -4851,7 +4851,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:6ff402c1f3c94226882129e81441d763249938e74eca5ef84a3cf6005c491f56
+    tag: rolling@sha256:4de28b6c6870ef978d3ecf6d839ec1c5601224d083fcddc56a02c728439949bc
   enabled: false
   controller:
     annotations:
@@ -5546,7 +5546,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.23.1.4708@sha256:32785a8d270571fe7de1c1b2bde98a8d334db9db60b84e747757a6628e364870
+    tag: 1.24.0.4721@sha256:6fbcbb70e74286c8d16ebcb783080b147257c98d3ff7c0387570dc8daf776a8f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6275,7 +6275,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.10@sha256:3388e91957bbfb442fe5d86805a1bf29b828f12d10ea9cc967b8871fa7624f5d
+    tag: 10.9.11@sha256:7d7d1024b821febf4dcb3c2c843c700986ecf743cc949423701ceadfb62ba9fb
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid  
@@ -10703,7 +10703,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.574@sha256:ff69ea03106e1c19e7978d4e6477250617d37f41001624ebec49ca768c8ea5c2
+    tag: 0.22.576@sha256:5211033f750f90cab08f8a36f57118274738ef6421d4d41fe9356d89a876aecd
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11387,7 +11387,7 @@ annatar:
       config: # We have to set this to null so that we can override with our own config    
   additionalContainers:
     redis:
-      image: redis:alpine@sha256:dd6c86dc8f3be0526b2baa964473e2443b5a4412c4c2232781ca9820296d407b
+      image: redis:alpine@sha256:4dc8a5b107f17e119f85a6f8a4547283f6c7db4d281b6f409a93dd098645c3f6
       volumeMounts:
       - mountPath: /data
         name: redis
@@ -13031,7 +13031,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.113.1@sha256:b1922303018a9bece29cce8d196ae4f66d13afdf6ab109a19e1ed50663bbf98c
+    tag: v1.114.0@sha256:df4ae6d2bf8aa3ebd6370b42a667a007c5e7452a1cd2ab4c22fbaff9a69ffcbc
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13100,7 +13100,7 @@ immich:
     bootstrap: *bootstrap
   additionalContainers:
     ml: 
-      image: ghcr.io/immich-app/immich-machine-learning:v1.113.1
+      image: ghcr.io/immich-app/immich-machine-learning:v1.114.0
       envFrom:
       - configMapRef:
           name: immich-env    
@@ -13130,7 +13130,7 @@ immich:
           cpu: 500m
           memory: 4Gi              
     redis:
-      image: docker.io/redis:6.2-alpine@sha256:ffa932bc7e3e6775432f3d3333df0da3c2df4b55b8576ea76a8ce1f536784e3f
+      image: docker.io/redis:7.4-alpine@sha256:4dc8a5b107f17e119f85a6f8a4547283f6c7db4d281b6f409a93dd098645c3f6
       envFrom:
       - configMapRef:
           name: immich-env  

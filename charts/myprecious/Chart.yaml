@@ -774,7 +774,7 @@ dependencies:
     condition: kapowarr.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: kapowarr    
+    alias: kapowarr
   - name: app-template
     condition: petio.enabled
     version: ~0.2.1
