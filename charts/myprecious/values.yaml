@@ -7927,7 +7927,7 @@ audiobookshelf:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: audiobookshelf   
-  affinity: *standard_affinity 
+  affinity: *soft_affinity 
   tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
@@ -10291,7 +10291,7 @@ autoscan:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-autoscan"
-  affinity: *standard_affinity 
+  affinity: *soft_affinity 
   tolerations: *standard_tolerations       
   securityContext:
     seccompProfile:

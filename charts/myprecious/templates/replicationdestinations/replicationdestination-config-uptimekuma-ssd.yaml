@@ -4,7 +4,7 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-uptimekuma-ssd
-  spec:
+spec:
   trigger:
     manual: runonce
   restic:
