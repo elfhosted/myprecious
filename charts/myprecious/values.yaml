@@ -45,7 +45,7 @@ dns_domain: elfhosted.com
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
 
-# all pods have to exist with zurg
+# all RD pods have to exist with zurg
 standard_affinity: &standard_affinity  
   podAffinity: 
     requiredDuringSchedulingIgnoredDuringExecution: 
@@ -55,7 +55,21 @@ standard_affinity: &standard_affinity
             operator: In
             values:
             - zurg
-        topologyKey: "kubernetes.io/hostname"          
+        topologyKey: "kubernetes.io/hostname"     
+
+soft_affinity: &soft_affinity
+  podAffinity:
+    # prefer to be located with zurg, if tolerations permit
+    preferredDuringSchedulingIgnoredDuringExecution: 
+    - weight: 100  
+      podAffinityTerm:    
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/name
+            operator: In
+            values:
+            - zurg
+        topologyKey: "kubernetes.io/hostname"     
 
 standard_tolerations: &standard_tolerations
 - key: node-role.elfhosted.com/dedicated
@@ -4159,19 +4173,7 @@ filebrowser:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
-  affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
+  affinity: *soft_affinity
   tolerations: *standard_tolerations 
   envFrom:
   - configMapRef:
@@ -10725,7 +10727,7 @@ jackett:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   # Always prefer to cohabit with zurg
-  affinity: *standard_affinity 
+  affinity: *soft_affinity 
   tolerations: *standard_tolerations       
   podSecurityContext:
     seccompProfile:
@@ -11421,24 +11423,8 @@ comet:
     strategy:
     rollingUpdate:
       unavailable: 1      
-  affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"     
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists               
-  - key: node-role.elfhosted.com/hobbit
-    operator: Exists               
+  affinity: *soft_affinity   
+  tolerations: *standard_tolerations           
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12872,7 +12858,8 @@ blackhole: &app_blackhole
     repository: ghcr.io/elfhosted/wests-blackhole-script
     tag: v1.4.4@sha256:1a3f77c14b24c66492f80cfd159132b408d903e741fff0fa174a7a916f2942d1
   priorityClassName: tenant-normal
-  affinity: *standard_affinity
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-env"
