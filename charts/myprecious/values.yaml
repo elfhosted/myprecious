@@ -5593,7 +5593,6 @@ prowlarr: &app_prowlarr
         http:
           port: 9696
   initContainers:
-    a-migrate-data: *migrate_data 
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
