@@ -5564,12 +5564,6 @@ prowlarr: &app_prowlarr
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-prowlarr-block   
     config:
       enabled: true
       type: custom
