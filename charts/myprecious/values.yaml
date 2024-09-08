@@ -4159,7 +4159,19 @@ filebrowser:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
-  affinity: *standard_affinity 
+  affinity:
+    podAffinity:
+      # prefer to be located with zurg, if tolerations permit
+      preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 100  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg
+          topologyKey: "kubernetes.io/hostname"
   tolerations: *standard_tolerations 
   envFrom:
   - configMapRef:
