@@ -8642,7 +8642,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:f4f1afa5f1b4528ae21f12e0ec8a284cd5c1ce5b7fb32b9268c7b5a56357eb4e
+    tag: 1.68.0@sha256:fc8b37958472764f3f2ea0d8d2bbed70ea8f3a740029aa3170b9dd0ba70b9f39
   command: 
   - /rcloneui.sh
   controller:
@@ -8739,7 +8739,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:f4f1afa5f1b4528ae21f12e0ec8a284cd5c1ce5b7fb32b9268c7b5a56357eb4e
+    tag: 1.68.0@sha256:fc8b37958472764f3f2ea0d8d2bbed70ea8f3a740029aa3170b9dd0ba70b9f39
   command: 
   - /rclonefm.sh
   controller:
@@ -8852,7 +8852,7 @@ webdav: &webdav
   tolerations: *standard_tolerations      
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.67.0@sha256:f4f1afa5f1b4528ae21f12e0ec8a284cd5c1ce5b7fb32b9268c7b5a56357eb4e
+    tag: 1.68.0@sha256:fc8b37958472764f3f2ea0d8d2bbed70ea8f3a740029aa3170b9dd0ba70b9f39
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus,elfbot-webdav"
@@ -11401,7 +11401,7 @@ annatar:
       config: # We have to set this to null so that we can override with our own config    
   additionalContainers:
     redis:
-      image: redis:alpine@sha256:4dc8a5b107f17e119f85a6f8a4547283f6c7db4d281b6f409a93dd098645c3f6
+      image: redis:alpine@sha256:c35af3bbcef51a62c8bae5a9a563c6f1b60d7ebaea4cb5a3ccbcc157580ae098
       volumeMounts:
       - mountPath: /data
         name: redis
@@ -11983,7 +11983,7 @@ stremify:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremify
-    tag: rolling@sha256:dab15d1f4b5982e962e48a708fdaea04ab7e0c1a83bb4e56572f1375b5e17203
+    tag: rolling@sha256:585a8086fb168a648a9a182932a62bc199b30f34fca523620020e8bab1c6e796
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13129,7 +13129,7 @@ immich:
           cpu: 500m
           memory: 4Gi              
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:4dc8a5b107f17e119f85a6f8a4547283f6c7db4d281b6f409a93dd098645c3f6
+      image: docker.io/redis:7.4-alpine@sha256:c35af3bbcef51a62c8bae5a9a563c6f1b60d7ebaea4cb5a3ccbcc157580ae098
       envFrom:
       - configMapRef:
           name: immich-env  
