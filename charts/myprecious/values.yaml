@@ -13297,17 +13297,9 @@ elfassesment:
 zurghobbit:
   <<: *app_zurg
   podAnnotations: *hobbit_streamer_podAnnotations
-  enabled: false
   # zurg is the "anchor" which keeps all the other apps on the same node
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
-  tolerations: *hobbit_tolerations
-  resources: *hobbit_resources
+  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
+  resources: *hobbit_zurg_resources
 
 plexhobbit:
   <<: *app_plex
