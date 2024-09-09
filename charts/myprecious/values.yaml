@@ -34,7 +34,7 @@ halfling_streamer_podAnnotations: &halfling_streamer_podAnnotations
 nazgul_streamer_podAnnotations: &nazgul_streamer_podAnnotations
   kubernetes.io/egress-bandwidth: "1000M"    
 
-# These control the requests used to "anchor" a stack to a particular dedicated node
+# These control the requests used to "anchor" a stack to a particular dedicated node. The following defaults can be overridden on a per-cluster basis:
 hobbit_zurg_resources: &hobbit_zurg_resources
   requests:
     cpu: "1.8"
