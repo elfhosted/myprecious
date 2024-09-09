@@ -4,8 +4,6 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-airdcpp-ssd
-  annotations:
-    helm.sh/hook: post-install,post-upgrade
 spec:
   trigger:
     manual: runonce
