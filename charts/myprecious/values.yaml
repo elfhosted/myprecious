@@ -110,7 +110,9 @@ soft_affinity: &soft_affinity
 
 
 # all RD pods have to exist with zurg - make this soft for now
-standard_affinity: *soft_affinity
+standard_affinity: &standard_affinity
+  <<: *soft_affinity
+
   # podAffinity: 
   #   requiredDuringSchedulingIgnoredDuringExecution: 
   #     - labelSelector:
