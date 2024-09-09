@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.112.0](https://github.com/elfhosted/myprecious/compare/v1.111.0...v1.112.0) (2024-09-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.581 ([fd8066b](https://github.com/elfhosted/myprecious/commit/fd8066b2d05522055b676cd6a01fe3e9459ae9c1))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.68.0 ([6bd98ea](https://github.com/elfhosted/myprecious/commit/6bd98eaa7de17f21f18557666e85a79ab596f565))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to c35af3b ([9bd322d](https://github.com/elfhosted/myprecious/commit/9bd322d3ab35425063490c1185011c55b6ac603a))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to 585a808 ([f8b9573](https://github.com/elfhosted/myprecious/commit/f8b9573bfa9f5f35f954ea23b65d2e0448f7bd88))
+* **app:** update redis:alpine docker digest to c35af3b ([5222a6e](https://github.com/elfhosted/myprecious/commit/5222a6e0cb3eaeb06188ef73606cf5f598946de9))
+
 ## [1.111.0](https://github.com/elfhosted/myprecious/compare/v1.110.0...v1.111.0) (2024-09-08)
 
 
