@@ -93,17 +93,6 @@ dns_domain: elfhosted.com
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
 
-# all RD pods have to exist with zurg
-standard_affinity: &standard_affinity  
-  podAffinity: 
-    requiredDuringSchedulingIgnoredDuringExecution: 
-      - labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/name
-            operator: In
-            values:
-            - zurg
-        topologyKey: "kubernetes.io/hostname"     
 
 soft_affinity: &soft_affinity
   podAffinity:
@@ -118,6 +107,21 @@ soft_affinity: &soft_affinity
             values:
             - zurg
         topologyKey: "kubernetes.io/hostname"     
+
+
+# all RD pods have to exist with zurg - make this soft for now
+standard_affinity: &standard_affinity
+  <<: *soft_affinity
+
+  # podAffinity: 
+  #   requiredDuringSchedulingIgnoredDuringExecution: 
+  #     - labelSelector:
+  #         matchExpressions:
+  #         - key: app.elfhosted.com/name
+  #           operator: In
+  #           values:
+  #           - zurg
+  #       topologyKey: "kubernetes.io/hostname"             
 
 dedicated_affinity: &dedicated_affinity
   affinity:
