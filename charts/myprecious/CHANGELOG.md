@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.113.0](https://github.com/elfhosted/myprecious/compare/v1.112.0...v1.113.0) (2024-09-10)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.583 ([8edcf83](https://github.com/elfhosted/myprecious/commit/8edcf8322ed8a722b34975f377e06029f6bd42c3))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.7 ([d8d7e53](https://github.com/elfhosted/myprecious/commit/d8d7e53c9ce0c19aebd6eb7431300cfd9a53ca79))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.7 ([ef3888c](https://github.com/elfhosted/myprecious/commit/ef3888c7041cb965d33c8e6f1445697dd3d3d1b0))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.8 ([bd777a4](https://github.com/elfhosted/myprecious/commit/bd777a4e42131f64b0eb75add3ba9aa4e94158ef))
+
+
+### Bug Fixes
+
+* add backups for jackett, tautulli ([0131aff](https://github.com/elfhosted/myprecious/commit/0131aff16a4ba974de3d7f51fc4af3e9bc6fa6ad))
+* **app:** update ghcr.io/elfhosted/stremify:rolling docker digest to dccb712 ([c620f99](https://github.com/elfhosted/myprecious/commit/c620f99c19cd0627f0a61481bfb72bc110d5b222))
+
 ## [1.112.0](https://github.com/elfhosted/myprecious/compare/v1.111.0...v1.112.0) (2024-09-09)
 
 
