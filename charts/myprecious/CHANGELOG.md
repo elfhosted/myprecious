@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.114.0](https://github.com/elfhosted/myprecious/compare/v1.113.0...v1.114.0) (2024-09-11)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.10.0 ([b50615d](https://github.com/elfhosted/myprecious/commit/b50615d768355a9d25a243b51cdcd47c8de440e3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.584 ([22c3cda](https://github.com/elfhosted/myprecious/commit/22c3cda9a9241ae9593984c340655bbb09f64e1e))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.09.11 ([b4556a0](https://github.com/elfhosted/myprecious/commit/b4556a0fb97827ab6c28b755777b18f4fafe9b27))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.9 ([13f31d0](https://github.com/elfhosted/myprecious/commit/13f31d0c2a59c6529107f38c0dc8e642c905ab57))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 1da3695 ([9d5079f](https://github.com/elfhosted/myprecious/commit/9d5079fd7396523bc1d210d10ea8dbe2d39e0daa))
+* **app:** update quay.io/linuxserver.io/calibre:7.17.0 docker digest to 67e3ec6 ([a9c2bb4](https://github.com/elfhosted/myprecious/commit/a9c2bb44cd91793462fdb01b240273b3d7700e9c))
+
 ## [1.113.0](https://github.com/elfhosted/myprecious/compare/v1.112.0...v1.113.0) (2024-09-10)
 
 
