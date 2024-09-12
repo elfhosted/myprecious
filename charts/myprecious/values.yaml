@@ -111,26 +111,23 @@ soft_affinity: &soft_affinity
 
 # all RD pods have to exist with zurg - make this soft for now
 standard_affinity: &standard_affinity
-  <<: *soft_affinity
-
-  # podAffinity: 
-  #   requiredDuringSchedulingIgnoredDuringExecution: 
-  #     - labelSelector:
-  #         matchExpressions:
-  #         - key: app.elfhosted.com/name
-  #           operator: In
-  #           values:
-  #           - zurg
-  #       topologyKey: "kubernetes.io/hostname"             
+  podAffinity: 
+    requiredDuringSchedulingIgnoredDuringExecution: 
+      - labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/name
+            operator: In
+            values:
+            - zurg
+        topologyKey: "kubernetes.io/hostname"             
 
 dedicated_affinity: &dedicated_affinity
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-role.elfhosted.com/dedicated
+          operator: Exists
 
 standard_tolerations: &standard_tolerations
 - key: node-role.elfhosted.com/dedicated
