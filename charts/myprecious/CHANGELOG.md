@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.115.0](https://github.com/elfhosted/myprecious/compare/v1.114.0...v1.115.0) (2024-09-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.586 ([4277a04](https://github.com/elfhosted/myprecious/commit/4277a04f82ca5303bb43a9f0a6f9e27fc352a9e8))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v24.3 ([657362b](https://github.com/elfhosted/myprecious/commit/657362b44baedb3c99b046d64118c0dfe04cff67))
+
 ## [1.114.0](https://github.com/elfhosted/myprecious/compare/v1.113.0...v1.114.0) (2024-09-11)
 
 
