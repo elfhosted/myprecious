@@ -3641,6 +3641,8 @@ radarr: &app_radarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-radarr" # Reload the deployment every time the rclones change
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -5244,6 +5246,8 @@ sonarr: &app_sonarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-sonarr" # Reload the deployment every time the rclones change
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -6067,19 +6071,8 @@ plex: &app_plex
     app.elfhosted.com/class: debrid
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
-  affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -6373,6 +6366,8 @@ jellyfin: &app_jellyfin
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyfin" # Reload the deployment every time the rclones change          
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   persistence:
     <<: *storagemounts
     config:
@@ -6551,7 +6546,6 @@ emby: &app_emby
   podLabels:
     app.elfhosted.com/class: debrid
     app.elfhosted.com/name: emby
-  affinity:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux    
   securityContext:
@@ -6570,6 +6564,8 @@ emby: &app_emby
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-emby" # Reload the deployment every time the rclones change
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations        
   persistence:
     <<: *storagemounts
     config:
@@ -7891,6 +7887,8 @@ jellyseerr:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyseerr"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
