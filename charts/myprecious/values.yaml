@@ -8570,6 +8570,8 @@ kometa: &app_kometa
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-kometa"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10441,6 +10443,8 @@ riven: &app_riven
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven,riven-env,riven-frontend-env"
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
