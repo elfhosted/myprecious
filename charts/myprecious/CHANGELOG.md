@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.116.0](https://github.com/elfhosted/myprecious/compare/v1.115.0...v1.116.0) (2024-09-13)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.10.1 ([4709860](https://github.com/elfhosted/myprecious/commit/47098607b2ea6745322c75e1cabf9f847a284d65))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.10.2 ([343d2e1](https://github.com/elfhosted/myprecious/commit/343d2e11ed90a375f54876510531ccb716b907f4))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.587 ([2b8634f](https://github.com/elfhosted/myprecious/commit/2b8634fbdd27478225f781294e4565e5b00c19a6))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.11.3 ([e556cbc](https://github.com/elfhosted/myprecious/commit/e556cbcf13b2e89f7614e5e471f97e2432f28992))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.18.0 ([8644c7a](https://github.com/elfhosted/myprecious/commit/8644c7a1a20f7031c6fe9826bb75464759ecb297))
+
 ## [1.115.0](https://github.com/elfhosted/myprecious/compare/v1.114.0...v1.115.0) (2024-09-12)
 
 
