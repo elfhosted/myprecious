@@ -14,7 +14,7 @@ spec:
     retain:
       daily: 2
     copyMethod: Snapshot
-    cacheCapacity: 1Gi
+    cacheCapacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:
     - ReadWriteOnce    

@@ -17,6 +17,6 @@ spec:
   - {{ .Values.storageclass.rwx.accessMode }}
   resources:
     requests:
-      storage: 1Gi
+      storage: 2Gi
   storageClassName: {{ .Values.storageclass.rwx.name }}
 {{ end }}
