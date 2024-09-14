@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -6091,7 +6091,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.40.5.8921-836b34c27@sha256:03ad526c04e18ca223dacd70038f8c5672f02b727ed3c4afc08e79042f6cda2e
+    tag: 1.41.0.8992-8463ad060
   persistence:
     <<: *storagemounts    
     config:
@@ -6162,7 +6162,7 @@ plex: &app_plex
     bootstrap-elfbot: *bootstrap_elfbot
     update-dns: *update_dns_on_init
     repair-db:
-      image: ghcr.io/elfhosted/plex:1.40.5.8921-836b34c27@sha256:03ad526c04e18ca223dacd70038f8c5672f02b727ed3c4afc08e79042f6cda2e
+      image: ghcr.io/elfhosted/plex:1.41.0.8992-8463ad060
       command:
       - /bin/bash
       - -c
