@@ -13,6 +13,7 @@ spec:
       labels:
         app.elfhosted.com/name: nodefinder
     spec:
+      restartPolicy: Never
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
