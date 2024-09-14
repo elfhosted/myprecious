@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.117.0](https://github.com/elfhosted/myprecious/compare/v1.116.0...v1.117.0) (2024-09-14)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.10.3 ([105810d](https://github.com/elfhosted/myprecious/commit/105810deaf612497527cfffc65c40c29e4e4f050))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.600 ([74dd48f](https://github.com/elfhosted/myprecious/commit/74dd48fc5094e0ffda06a9c5d22e57fb076d231e))
+
+
+### Bug Fixes
+
+* bump Riven's config volume to 2Gi (hoarderz gonna hoard!) ([93c0f59](https://github.com/elfhosted/myprecious/commit/93c0f591d5e294fd63f1cfa37891791523502387))
+
 ## [1.116.0](https://github.com/elfhosted/myprecious/compare/v1.115.0...v1.116.0) (2024-09-13)
 
 
