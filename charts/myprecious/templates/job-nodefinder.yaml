@@ -22,7 +22,7 @@ spec:
         resources: {{ .Values.zurghobbit.resources }}
         tolerations: {{ .Values.zurghobbit.tolerations }}
         affinity: {{ .Values.zurghobbit.affinity }}
-        {{- elseif .Values.zurgplus.enabled }}
+        {{- else if .Values.zurgplus.enabled }}
         resources: {{ .Values.zurgplus.resources }}
         tolerations: {{ .Values.zurgplus.tolerations }}
         affinity: {{ .Values.zurgplus.affinity }}
