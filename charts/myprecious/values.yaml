@@ -11213,6 +11213,7 @@ petio:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-petio-block          
+    tmp: *tmp
   additionalContainers:
     mongodb:
       image: mongodb/mongodb-community-server:7.0.12-ubi8
@@ -11220,8 +11221,9 @@ petio:
         - name: config
           subPath: mongodb
           mountPath: /data/db/
+        - name: tmp
+          mountPath: /tmp          
       securityContext: *default_securitycontext
-
 pgadmin:
   enabled: false
   image:
