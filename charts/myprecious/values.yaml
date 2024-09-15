@@ -11208,7 +11208,7 @@ petio:
     config:
       enabled: true
       type: custom
-      mountPath: /config/
+      mountPath: /app/api/config/
       subPath: config
       volumeSpec:
         persistentVolumeClaim:
