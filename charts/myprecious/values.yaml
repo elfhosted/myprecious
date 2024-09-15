@@ -5554,7 +5554,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 2.8.1.1390-1@sha256:40b459a07a05b78801eb759bf03061d8b6540a9c464533bffd05c4c2a6ddde34
+    tag: 3.0.0.1409-1@sha256:ce32a98e57e13d2aca167ce9cab55beada510bc03c51d26d5b66eb09604c1d9d
   env:
     PUID: 568
     GUID: 568
@@ -6540,7 +6540,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.8.8.0@sha256:e45c3c3ae760231cbaa57cfdf0fb288cf28785d86843b66315b843849719427d
+    tag: 4.9.0.30@sha256:b771f2d6194cb6e0c6ffc42cd0807f2b018de03fb12b38dca6b43e8ae05d7078
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -9286,7 +9286,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 9.11.1@sha256:1e897b848c26d03784e151524ddc63c245f1787c831f9d5cccac45169148128a
+    tag: 10.0.0@sha256:eb72fed23b0581eb17ed082f7926797716612594dcd1a9aac2537efcddc0af56
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10547,7 +10547,7 @@ riven: &app_riven
         name: config
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.11.3@sha256:e5b08feef7b31a6198005ca80011bb4a5f6c813bee2212ffdac8a525ee73735f
+      image: ghcr.io/elfhosted/riven-frontend:v0.12.0@sha256:16ba7dd83e058de9f768d32386e5b5b14bd840a0130a3486b9dce520fa94f043
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -12135,7 +12135,7 @@ recyclarr:
   enabled: false
   image:
     repository: ghcr.io/recyclarr/recyclarr
-    tag: latest@sha256:77a3c0156ec0ddef256998b246d4d80a2f1b96ee4a3a1a21bbc8459bfd0c9ad9
+    tag: latest@sha256:1bf2436ed4749a4309765dd21643aac858dd436a536e37c25bb463513601e962
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12223,7 +12223,7 @@ recyclarr:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
     sync:
-      image: ghcr.io/recyclarr/recyclarr:latest@sha256:77a3c0156ec0ddef256998b246d4d80a2f1b96ee4a3a1a21bbc8459bfd0c9ad9      
+      image: ghcr.io/recyclarr/recyclarr:latest@sha256:1bf2436ed4749a4309765dd21643aac858dd436a536e37c25bb463513601e962      
       command:
       - /bin/bash
       - -c
@@ -13090,7 +13090,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.114.0@sha256:df4ae6d2bf8aa3ebd6370b42a667a007c5e7452a1cd2ab4c22fbaff9a69ffcbc
+    tag: v1.115.0@sha256:544fcfc41ce97833e33126e5041fb3b821e3db7bf405b54ac06689247a170a90
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13159,7 +13159,7 @@ immich:
     bootstrap: *bootstrap
   additionalContainers:
     ml: 
-      image: ghcr.io/immich-app/immich-machine-learning:v1.114.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.115.0
       envFrom:
       - configMapRef:
           name: immich-env    
