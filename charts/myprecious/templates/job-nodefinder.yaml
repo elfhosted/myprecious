@@ -7,8 +7,8 @@ metadata:
     app.elfhosted.com/name: nodefinder
   annotations:
     helm.sh/hook: pre-install
-    helm.sh/hook-weight: "-1"  # Determines order of hooks; 0 for no specific order
-    # helm.sh/hook-delete-policy: hook-succeeded
+    helm.sh/hook-weight: "-10"  # Run before all the replicationdestinations
+    helm.sh/hook-delete-policy: hook-succeeded
 spec:
   template:
     metadata:
@@ -19,7 +19,7 @@ spec:
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
-        args: [ "5m" ]
+        args: [ "2m" ]
         image: ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
         {{- if .Values.zurghobbit.enabled  }}
         resources: 

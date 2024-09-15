@@ -5,6 +5,8 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-plex-debrid-ssd
+  annotations:
+    helm.sh/hook: pre-install
 spec:
   trigger:
     manual: runonce

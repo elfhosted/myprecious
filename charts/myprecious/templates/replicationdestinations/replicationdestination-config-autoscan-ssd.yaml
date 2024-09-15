@@ -4,6 +4,8 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-autoscan-ssd
+  annotations:
+    helm.sh/hook: pre-install
 spec:
   trigger:
     manual: runonce

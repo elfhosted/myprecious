@@ -4,6 +4,8 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-symlinks-ssd
+  annotations:
+    helm.sh/hook: pre-install
 spec:
   trigger:
     manual: runonce
@@ -21,6 +23,7 @@ spec:
               - nodefinder
           topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 2Gi
+    # Use this to ensure a fresh install is "pinned" to a node with enough resources
     capacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
