@@ -10,6 +10,9 @@ metadata:
     helm.sh/hook-weight: "-10"  # Run before all the replicationdestinations
     helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation
 spec:
+  selector:
+    matchLabels:
+      app.elfhosted.com/name: nodefinder
   template:
     metadata:
       labels:
