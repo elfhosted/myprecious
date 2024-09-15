@@ -5,6 +5,9 @@ apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
   name: rd-config-zurg-ssd
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-succeeded
 spec:
   trigger:
     manual: runonce

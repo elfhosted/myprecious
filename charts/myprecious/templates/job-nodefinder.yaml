@@ -1,6 +1,6 @@
 # This job is intended to start upon first installation, "anchoring" all of the replicationdestination restores to the desired node
 apiVersion: batch/v1
-kind: Job
+kind: Deployment
 metadata:
   name: nodefinder
   labels:
@@ -8,18 +8,17 @@ metadata:
   annotations:
     helm.sh/hook: pre-install
     helm.sh/hook-weight: "-10"  # Run before all the replicationdestinations
-    helm.sh/hook-delete-policy: hook-succeeded
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation
 spec:
   template:
     metadata:
       labels:
         app.elfhosted.com/name: nodefinder
     spec:
-      restartPolicy: Never
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
-        args: [ "2m" ]
+        args: [ "infinity" ]
         image: ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
         {{- if .Values.zurghobbit.enabled  }}
         resources: 

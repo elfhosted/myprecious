@@ -7,6 +7,7 @@ metadata:
   name: rd-config-qbittorrent-ssd
   annotations:
     helm.sh/hook: pre-install
+    helm.sh/hook-delete-policy: hook-succeeded,before-hook-creation,hook-succeeded
 spec:
   trigger:
     manual: runonce
