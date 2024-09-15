@@ -7,4 +7,4 @@ rules:
   resources: ["deployments"]
   verbs: ["delete","list","get"]
   resourceNames:
-  - {{ .Release.Name }}-nodefinder-deleter
+  - {{ .Release.Name }}-nodefinder
