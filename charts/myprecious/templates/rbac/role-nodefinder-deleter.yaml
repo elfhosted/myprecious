@@ -5,6 +5,6 @@ metadata:
 rules:
 - apiGroups: ["apps"]
   resources: ["deployments"]
-  verbs: ["delete"]
+  verbs: ["delete","get"]
   resourceNames:
   - {{ .Release.Name }}-nodefinder

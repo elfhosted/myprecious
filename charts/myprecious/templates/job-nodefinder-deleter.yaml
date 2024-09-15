@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Release.Name }}-nodefinder-deleter
+  name: {{ .Release.Name }}-nodefinder-deleter-v2
   labels:
     app.elfhosted.com/name: nodefinder-deleter  
 spec:
@@ -20,5 +20,10 @@ spec:
         - /bin/bash
         - -c
         - |
-          kubectl delete deployment {{ .Release.Name }}-nodefinder || echo "nodefinder not running"
+          # If deployment exists, then wait 4 min and delete it
+          if kubectl get kubectl delete deployment {{ .Release.Name }}-nodefinder
+          then
+            sleep 4m
+            kubectl delete deployment {{ .Release.Name }}-nodefinder || echo "nodefinder not running"
+          done
 
