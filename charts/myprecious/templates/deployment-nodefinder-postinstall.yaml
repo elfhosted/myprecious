@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodefinder
+  name: {{ .Release.Name }}-nodefinder
   labels:
     app.elfhosted.com/name: nodefinder
   annotations:
