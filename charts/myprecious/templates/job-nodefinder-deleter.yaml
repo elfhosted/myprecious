@@ -20,6 +20,5 @@ spec:
         - /bin/bash
         - -c
         - |
-          sleep 1m
           kubectl delete deployment {{ .Release.Name }}-nodefinder || echo "nodefinder not running"
 
