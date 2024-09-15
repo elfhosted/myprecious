@@ -22,7 +22,7 @@ spec:
             - key: app.elfhosted.com/name
               operator: In
               values:
-              - zurg
+              - nodefinder
           topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin

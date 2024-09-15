@@ -18,9 +18,10 @@ spec:
             - key: app.elfhosted.com/name
               operator: In
               values:
-              - zurg
+              - nodefinder
           topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 2Gi
+    # Use this to ensure a fresh install is "pinned" to a node with enough resources
     capacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
