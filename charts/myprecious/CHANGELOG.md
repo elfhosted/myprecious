@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.118.0](https://github.com/elfhosted/myprecious/compare/v1.117.0...v1.118.0) (2024-09-15)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.30 ([930cb8c](https://github.com/elfhosted/myprecious/commit/930cb8c0fe9477b7e7e2a0a0fe187d76ae10d902))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.604 ([2ba8a5d](https://github.com/elfhosted/myprecious/commit/2ba8a5dee7c53eecb919c2d2d38a7968ba441e33))
+* **app:** update ghcr.io/elfhosted/resilio-sync docker tag to v3 ([7da2911](https://github.com/elfhosted/myprecious/commit/7da2911feb27b7685e329d487df57cc49eaf7199))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.12.0 ([436612c](https://github.com/elfhosted/myprecious/commit/436612c06e53782c6140ea0f379da8c3c17b94ef))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.115.0 ([db2d2c1](https://github.com/elfhosted/myprecious/commit/db2d2c1226450175c05496ca67c2f47c88dc5c31))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.115.0 ([4ad019c](https://github.com/elfhosted/myprecious/commit/4ad019c5d5223ea7f52257902b3cb08b2cd728be))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10 ([d148d1d](https://github.com/elfhosted/myprecious/commit/d148d1d68353d431b51e50e9404ec01e6afe71f1))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 1bf2436 ([621bf18](https://github.com/elfhosted/myprecious/commit/621bf18697aa2eb39d94c9f1205b97c755726566))
+* improve volume affinity in US DC ([e1775e0](https://github.com/elfhosted/myprecious/commit/e1775e0feb99a2bb75dfa95aeb8bb00e8dd805aa))
+
 ## [1.117.0](https://github.com/elfhosted/myprecious/compare/v1.116.0...v1.117.0) (2024-09-14)
 
 
