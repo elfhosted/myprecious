@@ -1,5 +1,5 @@
 # This job is intended to start upon first installation, "anchoring" all of the replicationdestination restores to the desired node
-apiVersion: batch/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodefinder
