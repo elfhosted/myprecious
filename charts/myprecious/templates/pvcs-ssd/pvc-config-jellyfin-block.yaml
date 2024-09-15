@@ -17,6 +17,6 @@ spec:
   - {{ .Values.storageclass.rwo.accessMode }}
   resources:
     requests:
-      storage: 20Gi
+      storage: 100Gi
   storageClassName: {{ .Values.storageclass.rwo.name }}
 {{ end }}
