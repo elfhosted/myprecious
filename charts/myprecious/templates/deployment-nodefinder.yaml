@@ -4,18 +4,18 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-nodefinder
   labels:
-    app.elfhosted.com/name: nodefinder
+    app.elfhosted.com/role: nodefinder
   annotations:
     helm.sh/hook: pre-install
     helm.sh/hook-weight: "-10"  # Run before all the replicationdestinations
 spec:
   selector:
     matchLabels:
-      app.elfhosted.com/name: nodefinder
+      app.elfhosted.com/role: nodefinder
   template:
     metadata:
       labels:
-        app.elfhosted.com/name: nodefinder
+        app.elfhosted.com/role: nodefinder
     spec:
       containers:
       - name: "nodefinder"

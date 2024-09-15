@@ -6759,6 +6759,8 @@ homer:
   tolerations:
   - key: node-role.elfhosted.com/observability
     operator: Exists        
+  podLabels:
+    app.elfhosted.com/role: nodefinder # let this be an anchor for replicationdestinations    
   persistence:
     config-yml:
       enabled: "true"
