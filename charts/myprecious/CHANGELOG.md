@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.119.0](https://github.com/elfhosted/myprecious/compare/v1.118.0...v1.119.0) (2024-09-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bazarr docker tag to v1.4.4 ([ed5e1d1](https://github.com/elfhosted/myprecious/commit/ed5e1d175e2cd74466f2dbb5a83cc37bf531d7ef))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.618 ([40fec1a](https://github.com/elfhosted/myprecious/commit/40fec1abc4f37fa220202928fe518208e107e34b))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.5.1 ([ba3d91f](https://github.com/elfhosted/myprecious/commit/ba3d91ffa8d28c28bd714867c19f20f3d7d07f10))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2386 ([301d827](https://github.com/elfhosted/myprecious/commit/301d8274a2fb07ed250d4c817f4062fd27b1d1f1))
+
+
+### Bug Fixes
+
+* bring emby/jellyfin volumes to parity with plex volumes wrt size ([56b470f](https://github.com/elfhosted/myprecious/commit/56b470f96da4fcb73fb82c4a9e7ee58dcfe6c737))
+
 ## [1.118.0](https://github.com/elfhosted/myprecious/compare/v1.117.0...v1.118.0) (2024-09-15)
 
 
