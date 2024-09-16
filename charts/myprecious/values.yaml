@@ -5648,7 +5648,7 @@ prowlarr: &app_prowlarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-prowlarr"
-  affinity: *standard_affinity 
+  affinity: *soft_affinity 
   tolerations: *standard_tolerations      
   automountServiceAccountToken: false
   persistence:
