@@ -1,0 +1,35 @@
+{{ if or .Values.petio.enabled .Values.petiogluetun.enabled .Values.petioplus.enabled .Values.petiohobbit.enabled }}
+{{- if .Values.volsync.enabled }}
+{{- if .Values.location.enabled }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-config-petio-ssd
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: config-petio-ssd-volsync-restic-config
+    copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - nodefinder
+          topologyKey: "kubernetes.io/hostname"
+    cacheCapacity: 1Gi
+    capacity: 1Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - {{ .Values.storageclass.rwx.accessMode }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{- end }}
+{{- end }}
+{{- end }}

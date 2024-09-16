@@ -907,7 +907,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-overseerr-ssd
-      
+  petio:
+    enabled: false
+    type: custom
+    mountPath: /config/petio/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-petio-ssd         
   privatebin:
     enabled: false
     type: custom
@@ -1506,6 +1512,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-overseerr-ssd
+  petio:
+    enabled: false
+    mountPath: /storage/config/petio
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-petio-ssd         
   plexdebrid:
     enabled: false
     type: custom
