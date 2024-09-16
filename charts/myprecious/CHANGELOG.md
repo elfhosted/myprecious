@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.120.0](https://github.com/elfhosted/myprecious/compare/v1.119.0...v1.120.0) (2024-09-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.12.1 ([669533e](https://github.com/elfhosted/myprecious/commit/669533e2ed86d83c3769fd4415bedc5652b568aa))
+
+
+### Bug Fixes
+
+* rpdb volume size in US DC ([d7303ad](https://github.com/elfhosted/myprecious/commit/d7303ad3f1911fdbe2cbceede863b59d1279738f))
+
 ## [1.119.0](https://github.com/elfhosted/myprecious/compare/v1.118.0...v1.119.0) (2024-09-16)
 
 
