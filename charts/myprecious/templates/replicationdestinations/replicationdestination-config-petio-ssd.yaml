@@ -1,4 +1,4 @@
-{{ if or .Values.petio.enabled .Values.petiogluetun.enabled .Values.petioplus.enabled .Values.petiohobbit.enabled }}
+{{ if .Values.petio.enabled }}
 {{- if .Values.volsync.enabled }}
 {{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
