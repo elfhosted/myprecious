@@ -82,7 +82,7 @@ ranger_streamer_resources: &ranger_streamer_resources
     memory: 30Mi
   limits:
     cpu: 4
-    memory: 16Gi
+    memory: 4Gi
 
 # Giving more than 4 CPU to a streamer is unwise regardless
 halfling_streamer_resources: *ranger_streamer_resources
@@ -145,8 +145,8 @@ hobbit_resources: &hobbit_resources
     cpu: "1m"
     memory: "16Mi"
   limits:
-    cpu: "2"
-    memory: 4Gi       
+    cpu: "1"
+    memory: 2Gi       
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -3775,7 +3775,7 @@ radarrplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 8
+      cpu: 1
       memory: 16Gi  
   controller:
     annotations:
@@ -3941,7 +3941,7 @@ radarr4kplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 8
+      cpu: 1
       memory: 16Gi  
   controller:
     annotations:
@@ -10631,8 +10631,8 @@ rivenplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 2
-      memory: 8Gi  
+      cpu: 1
+      memory: 2Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config,elfbot-all"
