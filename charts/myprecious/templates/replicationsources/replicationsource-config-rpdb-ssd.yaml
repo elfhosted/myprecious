@@ -1,0 +1,23 @@
+{{ if .Values.rpdb.enabled }}
+{{ if .Values.volsync.enabled }}
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: rs-config-rpdb-ssd
+spec:
+  sourcePVC: config-rpdb-ssd
+  trigger:
+    schedule: "0 {{ mod .Values.userId 24 }} * * *"
+  restic:
+    pruneIntervalDays: 7
+    repository: config-rpdb-ssd-volsync-restic-config
+    retain:
+      daily: 2
+    copyMethod: Snapshot
+    cacheCapacity: 100Mi
+    cacheStorageClassName: topolvm-provisioner-thin
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
+{{ end }}
+{{ end }}
