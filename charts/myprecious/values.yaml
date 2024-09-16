@@ -907,7 +907,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-overseerr-ssd
-      
+  petio:
+    enabled: false
+    type: custom
+    mountPath: /config/petio/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-petio-ssd         
   privatebin:
     enabled: false
     type: custom
@@ -1506,6 +1512,13 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-overseerr-ssd
+  petio:
+    enabled: false
+    mountPath: /storage/config/petio
+    type: "custom"
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-petio-ssd         
   plexdebrid:
     enabled: false
     type: custom
@@ -7788,6 +7801,8 @@ overseerr:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: overseerr      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-overseerr"
@@ -7886,6 +7901,8 @@ jellyseerr:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: jellyseerr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyseerr"
@@ -11108,6 +11125,8 @@ pairdrop:
     repository: ghcr.io/elfhosted/pairdrop
     tag: v1.10.10@sha256:c0188414adebb07c69a170c81256825f7ea83784f2f7ff491679fa0165b4425f
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: pairdrop    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pairdrop"
