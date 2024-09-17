@@ -86,8 +86,21 @@ ranger_streamer_resources: &ranger_streamer_resources
     memory: 16Gi
 
 # Giving more than 4 CPU to a streamer is unwise regardless
-halfling_streamer_resources: *ranger_streamer_resources
-nazgul_streamer_resources: *ranger_streamer_resources
+halfling_streamer_resources: &halfling_streamer_resources
+  requests:
+    cpu: 10m
+    memory: 30Mi
+  limits:
+    cpu: 4
+    memory: 4Gi
+
+nazgul_streamer_resources: &halfling_streamer_resources
+  requests:
+    cpu: 10m
+    memory: 30Mi
+  limits:
+    cpu: 4
+    memory: 4Gi
 
 # sets the user's base dns domain
 dns_domain: elfhosted.com
