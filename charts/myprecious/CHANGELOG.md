@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.121.0](https://github.com/elfhosted/myprecious/compare/v1.120.0...v1.121.0) (2024-09-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.53.0 ([e0b251a](https://github.com/elfhosted/myprecious/commit/e0b251a667ee51ed71d80387fd9beda4a293a668))
+
+
+### Bug Fixes
+
+* auto-clean prowlarr and riven logs on startup ([8104f08](https://github.com/elfhosted/myprecious/commit/8104f08587add6ecf13974c0b3dd4379809fbe20))
+* CORS issue on homer dashboard ([b9b7b90](https://github.com/elfhosted/myprecious/commit/b9b7b90b19cbe28cb502c38a6427bc223e714b97))
+* improve backup restores for US DC ([2d8c459](https://github.com/elfhosted/myprecious/commit/2d8c459815f06ddd3b84488669160721a6607151))
+
 ## [1.120.0](https://github.com/elfhosted/myprecious/compare/v1.119.0...v1.120.0) (2024-09-16)
 
 
