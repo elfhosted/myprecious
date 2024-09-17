@@ -42,6 +42,7 @@ hobbit_zurg_resources: &hobbit_zurg_resources
   limits:
     cpu: "2"
     memory: 4Gi
+
 ranger_zurg_resources: &ranger_zurg_resources
   requests:
     cpu: "3500m"
@@ -93,11 +94,19 @@ dns_domain: elfhosted.com
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
 
-
-soft_affinity: &soft_affinity
-  podAffinity:
-    # prefer to be located with zurg, if tolerations permit
+# all RD pods have to exist with zurg - make this soft for now
+standard_affinity: &standard_affinity
+  podAffinity: 
     preferredDuringSchedulingIgnoredDuringExecution: 
+    - weight: 50  
+      podAffinityTerm:    
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/role
+            operator: In
+            values:
+            - nodefinder # use nodefinder in the absense of zurg...
+        topologyKey: "kubernetes.io/hostname"  
     - weight: 100  
       podAffinityTerm:    
         labelSelector:
@@ -105,20 +114,7 @@ soft_affinity: &soft_affinity
           - key: app.elfhosted.com/name
             operator: In
             values:
-            - zurg
-        topologyKey: "kubernetes.io/hostname"     
-
-
-# all RD pods have to exist with zurg - make this soft for now
-standard_affinity: &standard_affinity
-  podAffinity: 
-    requiredDuringSchedulingIgnoredDuringExecution: 
-      - labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/name
-            operator: In
-            values:
-            - zurg
+            - zurg # .. but prefer zurg
         topologyKey: "kubernetes.io/hostname"             
 
 dedicated_affinity: &dedicated_affinity
@@ -4246,7 +4242,7 @@ filebrowser:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
-  affinity: *soft_affinity
+  affinity: *standard_affinity
   tolerations: *standard_tolerations 
   envFrom:
   - configMapRef:
@@ -5695,6 +5691,12 @@ prowlarr: &app_prowlarr
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
+        # Clear out logs older than 24h
+        if [ -d "/config/logs" ]; then
+            # Find and delete files older than 7 days
+            find "/config/logs" -type f -mtime +1 -exec rm -f {} \;
+            echo "Files older than 1 day have been removed from /config/logs."
+        fi
 
         # Get custom torrent.io definition
         mkdir -p /config/Definitions/Custom
@@ -6131,7 +6133,7 @@ plex: &app_plex
         configMap:
           name: elfbot-plex
           optional: true
-    render-device:
+    render-device: &streamer_render_device
       enabled: "true"
       type: hostPath
       hostPath: "/dev/dri/renderD128"
@@ -6537,7 +6539,7 @@ jellyfinplus:
               operator: In
               values:
               - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
+          topologyKey: "kubernetes.io/hostname"
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
@@ -8002,7 +8004,7 @@ audiobookshelf:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: audiobookshelf   
-  affinity: *soft_affinity 
+  affinity: *standard_affinity 
   tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
@@ -10368,7 +10370,7 @@ autoscan:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-autoscan"
-  affinity: *soft_affinity 
+  affinity: *standard_affinity 
   tolerations: *standard_tolerations       
   securityContext:
     seccompProfile:
@@ -10534,6 +10536,13 @@ riven: &app_riven
         mkdir -p /config/postgresql/database
         mkdir -p /config/postgresql/backups
         chown elfie:elfie /config/postgresql -R
+
+        # Clear out logs older than 24h
+        if [ -d "/config/logs" ]; then
+            # Find and delete files older than 7 days
+            find "/config/logs" -type f -mtime +1 -exec rm -f {} \;
+            echo "Files older than 1 day have been removed from /config/logs."
+        fi        
       volumeMounts:
       - mountPath: /config
         name: config
@@ -10806,7 +10815,7 @@ jackett:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   # Always prefer to cohabit with zurg
-  affinity: *soft_affinity 
+  affinity: *standard_affinity 
   tolerations: *standard_tolerations       
   podSecurityContext:
     seccompProfile:
@@ -11506,7 +11515,7 @@ comet:
     strategy:
     rollingUpdate:
       unavailable: 1      
-  affinity: *soft_affinity   
+  affinity: *standard_affinity   
   tolerations: *standard_tolerations           
   securityContext:
     seccompProfile:
@@ -13327,6 +13336,20 @@ zurghobbit:
   affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
   resources: *hobbit_zurg_resources
 
+zurghalfling:
+  <<: *app_zurg
+  podAnnotations: *halfling_streamer_podAnnotations
+  # zurg is the "anchor" which keeps all the other apps on the same node
+  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
+  resources: *halfling_zurg_resources
+
+zurgnazgul:
+  <<: *app_zurg
+  podAnnotations: *nazgul_streamer_podAnnotations
+  # zurg is the "anchor" which keeps all the other apps on the same node
+  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
+  resources: *nazgul_zurg_resources
+
 plexhobbit:
   <<: *app_plex
   podAnnotations: *hobbit_streamer_podAnnotations 
@@ -13341,6 +13364,36 @@ embyhobbit:
   <<: *app_emby
   podAnnotations: *hobbit_streamer_podAnnotations 
   resources: *hobbit_streamer_resources
+
+plexhalfling:
+  <<: *app_plex
+  podAnnotations: *halfling_streamer_podAnnotations 
+  resources: *halfling_streamer_resources
+
+jellyfinhalfling:
+  <<: *app_jellyfin
+  podAnnotations: *halfling_streamer_podAnnotations 
+  resources: *halfling_streamer_resources
+
+embyhalfling:
+  <<: *app_emby
+  podAnnotations: *halfling_streamer_podAnnotations 
+  resources: *halfling_streamer_resources
+
+plexnazgul:
+  <<: *app_plex
+  podAnnotations: *nazgul_streamer_podAnnotations 
+  resources: *nazgul_streamer_resources
+
+jellyfinnazgul:
+  <<: *app_jellyfin
+  podAnnotations: *nazgul_streamer_podAnnotations 
+  resources: *nazgul_streamer_resources
+
+embynazgul:
+  <<: *app_emby
+  podAnnotations: *nazgul_streamer_podAnnotations 
+  resources: *nazgul_streamer_resources
 
 radarrhobbit:
   <<: *app_radarr
