@@ -5691,6 +5691,12 @@ prowlarr: &app_prowlarr
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
+        # Clear out logs older than 24h
+        if [ -d "/config/logs" ]; then
+            # Find and delete files older than 7 days
+            find "/config/logs" -type f -mtime +1 -exec rm -f {} \;
+            echo "Files older than 1 day have been removed from /config/logs."
+        fi
 
         # Get custom torrent.io definition
         mkdir -p /config/Definitions/Custom
@@ -10530,6 +10536,13 @@ riven: &app_riven
         mkdir -p /config/postgresql/database
         mkdir -p /config/postgresql/backups
         chown elfie:elfie /config/postgresql -R
+
+        # Clear out logs older than 24h
+        if [ -d "/config/logs" ]; then
+            # Find and delete files older than 7 days
+            find "/config/logs" -type f -mtime +1 -exec rm -f {} \;
+            echo "Files older than 1 day have been removed from /config/logs."
+        fi        
       volumeMounts:
       - mountPath: /config
         name: config
