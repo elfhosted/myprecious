@@ -6533,7 +6533,7 @@ jellyfinplus:
               operator: In
               values:
               - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
+          topologyKey: "kubernetes.io/hostname"
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    

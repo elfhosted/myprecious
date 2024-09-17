@@ -16,7 +16,7 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution: 
         - labelSelector:
             matchExpressions:
-            - key: app.elfhosted.com/name
+            - key: app.elfhosted.com/role
               operator: In
               values:
               - nodefinder
