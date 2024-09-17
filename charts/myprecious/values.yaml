@@ -6127,7 +6127,7 @@ plex: &app_plex
         configMap:
           name: elfbot-plex
           optional: true
-    render-device:
+    render-device: &streamer_render_device
       enabled: "true"
       type: hostPath
       hostPath: "/dev/dri/renderD128"
@@ -13351,6 +13351,36 @@ embyhobbit:
   <<: *app_emby
   podAnnotations: *hobbit_streamer_podAnnotations 
   resources: *hobbit_streamer_resources
+
+plexhalfling:
+  <<: *app_plex
+  podAnnotations: *halfling_streamer_podAnnotations 
+  resources: *halfling_streamer_resources
+
+jellyfinhalfling:
+  <<: *app_jellyfin
+  podAnnotations: *halfling_streamer_podAnnotations 
+  resources: *halfling_streamer_resources
+
+embyhalfling:
+  <<: *app_emby
+  podAnnotations: *halfling_streamer_podAnnotations 
+  resources: *halfling_streamer_resources
+
+plexnazgul:
+  <<: *app_plex
+  podAnnotations: *nazgul_streamer_podAnnotations 
+  resources: *nazgul_streamer_resources
+
+jellyfinnazgul:
+  <<: *app_jellyfin
+  podAnnotations: *nazgul_streamer_podAnnotations 
+  resources: *nazgul_streamer_resources
+
+embynazgul:
+  <<: *app_emby
+  podAnnotations: *nazgul_streamer_podAnnotations 
+  resources: *nazgul_streamer_resources
 
 radarrhobbit:
   <<: *app_radarr

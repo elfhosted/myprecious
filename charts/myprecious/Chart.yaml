@@ -38,22 +38,21 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexplus.enabled
     alias: plexplus
-  # - name: app-template
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   condition: plexhalfling.enabled
-  #   alias: plexhalfling
-  # - name: app-template
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   condition: plexnazgul.enabled
-  #   alias: plexnazgul    
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: plexhalfling.enabled
+    alias: plexhalfling
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: plexnazgul.enabled
+    alias: plexnazgul    
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexhobbit.enabled
     alias: plexhobbit
-
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -69,17 +68,16 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: embyhobbit.enabled
     alias: embyhobbit
-  # - name: app-template
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   condition: embyhalfling.enabled
-  #   alias: embyhalfling
-  # - name: app-template
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   condition: embynazgul.enabled
-  #   alias: embynazgul
-
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: embyhalfling.enabled
+    alias: embyhalfling
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: embynazgul.enabled
+    alias: embynazgul
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -95,17 +93,16 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfin.enabled
     alias: jellyfin
-  # - name: app-template
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   condition: jellyfinhalfling.enabled
-  #   alias: jellyfinhalfling    
-  # - name: app-template
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   condition: jellyfinnazgul.enabled
-  #   alias: jellyfinnazgul
-
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: jellyfinhalfling.enabled
+    alias: jellyfinhalfling    
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: jellyfinnazgul.enabled
+    alias: jellyfinnazgul
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -518,6 +515,16 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: zurghobbit
+  - name: app-template
+    condition: zurghalfling.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: zurghalfling    
+  - name: app-template
+    condition: zurgnazgul.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: zurgnazgul
   - name: app-template
     condition: zurgplus.enabled
     version: ~0.2.1
