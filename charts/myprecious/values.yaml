@@ -42,6 +42,7 @@ hobbit_zurg_resources: &hobbit_zurg_resources
   limits:
     cpu: "2"
     memory: 4Gi
+
 ranger_zurg_resources: &ranger_zurg_resources
   requests:
     cpu: "3500m"
@@ -93,11 +94,19 @@ dns_domain: elfhosted.com
 
 tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
 
-
-soft_affinity: &soft_affinity
-  podAffinity:
-    # prefer to be located with zurg, if tolerations permit
+# all RD pods have to exist with zurg - make this soft for now
+standard_affinity: &standard_affinity
+  podAffinity: 
     preferredDuringSchedulingIgnoredDuringExecution: 
+    - weight: 50  
+      podAffinityTerm:    
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/role
+            operator: In
+            values:
+            - nodefinder # use nodefinder in the absense of zurg...
+        topologyKey: "kubernetes.io/hostname"  
     - weight: 100  
       podAffinityTerm:    
         labelSelector:
@@ -105,20 +114,7 @@ soft_affinity: &soft_affinity
           - key: app.elfhosted.com/name
             operator: In
             values:
-            - zurg
-        topologyKey: "kubernetes.io/hostname"     
-
-
-# all RD pods have to exist with zurg - make this soft for now
-standard_affinity: &standard_affinity
-  podAffinity: 
-    requiredDuringSchedulingIgnoredDuringExecution: 
-      - labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/name
-            operator: In
-            values:
-            - zurg
+            - zurg # .. but prefer zurg
         topologyKey: "kubernetes.io/hostname"             
 
 dedicated_affinity: &dedicated_affinity
@@ -4246,7 +4242,7 @@ filebrowser:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
-  affinity: *soft_affinity
+  affinity: *standard_affinity
   tolerations: *standard_tolerations 
   envFrom:
   - configMapRef:
@@ -8002,7 +7998,7 @@ audiobookshelf:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: audiobookshelf   
-  affinity: *soft_affinity 
+  affinity: *standard_affinity 
   tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
@@ -10368,7 +10364,7 @@ autoscan:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-autoscan"
-  affinity: *soft_affinity 
+  affinity: *standard_affinity 
   tolerations: *standard_tolerations       
   securityContext:
     seccompProfile:
@@ -10806,7 +10802,7 @@ jackett:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   # Always prefer to cohabit with zurg
-  affinity: *soft_affinity 
+  affinity: *standard_affinity 
   tolerations: *standard_tolerations       
   podSecurityContext:
     seccompProfile:
@@ -11506,7 +11502,7 @@ comet:
     strategy:
     rollingUpdate:
       unavailable: 1      
-  affinity: *soft_affinity   
+  affinity: *standard_affinity   
   tolerations: *standard_tolerations           
   securityContext:
     seccompProfile:
@@ -13326,6 +13322,20 @@ zurghobbit:
   # zurg is the "anchor" which keeps all the other apps on the same node
   affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
   resources: *hobbit_zurg_resources
+
+zurghalfling:
+  <<: *app_zurg
+  podAnnotations: *halfling_streamer_podAnnotations
+  # zurg is the "anchor" which keeps all the other apps on the same node
+  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
+  resources: *halfling_zurg_resources
+
+zurgnazgul:
+  <<: *app_zurg
+  podAnnotations: *nazgul_streamer_podAnnotations
+  # zurg is the "anchor" which keeps all the other apps on the same node
+  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
+  resources: *nazgul_zurg_resources
 
 plexhobbit:
   <<: *app_plex
