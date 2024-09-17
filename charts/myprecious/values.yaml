@@ -6777,16 +6777,8 @@ homer:
   service:
     main:
       enabled: true # necessary for probes   
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/observability
-            operator: Exists    
-  tolerations:
-  - key: node-role.elfhosted.com/observability
-    operator: Exists        
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations  
   podLabels:
     app.elfhosted.com/role: nodefinder # let this be an anchor for replicationdestinations    
   persistence:
