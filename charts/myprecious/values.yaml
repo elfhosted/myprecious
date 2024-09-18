@@ -4525,16 +4525,8 @@ uptimekuma:
       type: RuntimeDefault
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/observability
-            operator: Exists    
-  tolerations:
-  - key: node-role.elfhosted.com/observability
-    operator: Exists
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
@@ -6884,16 +6876,8 @@ homer:
       memory: 128Mi
 
 traefikforwardauth:
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/observability
-            operator: Exists    
-  tolerations:
-  - key: node-role.elfhosted.com/observability
-    operator: Exists
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations
   whitelist: admin@elfhosted.com
   priorityClassName: tenant-normal
   securityContext:
