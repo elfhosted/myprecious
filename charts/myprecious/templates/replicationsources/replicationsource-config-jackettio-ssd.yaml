@@ -23,7 +23,7 @@ spec:
               operator: In
               values:
               - nodefinder
-          topologyKey: "kubernetes.io/hostname"    
+          topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:
