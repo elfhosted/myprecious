@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.122.0](https://github.com/elfhosted/myprecious/compare/v1.121.0...v1.122.0) (2024-09-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.31.4 ([82d968e](https://github.com/elfhosted/myprecious/commit/82d968eacae171190753f72509e012f10d3581f6))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.635 ([73226b9](https://github.com/elfhosted/myprecious/commit/73226b92443e95bc064f78809104ee4fec44ca88))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.53.1 ([e826598](https://github.com/elfhosted/myprecious/commit/e8265987699f7ece7b38deae5b4ac00f07c13b57))
+* **app:** update ghcr.io/elfhosted/qbittorrent docker tag to v4.6.7 ([48e4d91](https://github.com/elfhosted/myprecious/commit/48e4d913419f906819b319c8a138f0715db90cb7))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.18.0 docker digest to e198919 ([8692cfe](https://github.com/elfhosted/myprecious/commit/8692cfe254060a6c90503edd1c8736fd71d00f1c))
+
 ## [1.121.0](https://github.com/elfhosted/myprecious/compare/v1.120.0...v1.121.0) (2024-09-17)
 
 
