@@ -1,28 +1,27 @@
-{{ if .Values.petio.enabled }}
-{{- if .Values.volsync.enabled }}
+{{- if and .Values.rpdb.enabled .Values.volsync.enabled }}
 {{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: rd-config-petio-ssd
+  name: rd-config-rpdb-ssd
 spec:
   trigger:
     manual: runonce
   restic:
-    repository: config-petio-ssd-volsync-restic-config
+    repository: config-rpdb-ssd-volsync-restic-config
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:
         requiredDuringSchedulingIgnoredDuringExecution: 
         - labelSelector:
             matchExpressions:
-            - key: app.elfhosted.com/role
+            - key: app.elfhosted.com/name
               operator: In
               values:
               - nodefinder
           topologyKey: "kubernetes.io/hostname"
-    cacheCapacity: 1Gi
-    capacity: 1Gi
+    cacheCapacity: 100Mi
+    capacity: 100Mi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
     - {{ .Values.storageclass.rwx.accessMode }}
@@ -30,6 +29,5 @@ spec:
     cacheAccessModes:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
-{{- end }}
 {{- end }}
 {{- end }}

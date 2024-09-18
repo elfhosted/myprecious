@@ -83,7 +83,7 @@ ranger_streamer_resources: &ranger_streamer_resources
     memory: 30Mi
   limits:
     cpu: 4
-    memory: 16Gi
+    memory: 4Gi
 
 # Giving more than 4 CPU to a streamer is unwise regardless
 halfling_streamer_resources: &halfling_streamer_resources
@@ -154,8 +154,8 @@ hobbit_resources: &hobbit_resources
     cpu: "1m"
     memory: "16Mi"
   limits:
-    cpu: "2"
-    memory: 4Gi       
+    cpu: "1"
+    memory: 2Gi       
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -3797,7 +3797,7 @@ radarrplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 8
+      cpu: 1
       memory: 16Gi  
   controller:
     annotations:
@@ -3963,7 +3963,7 @@ radarr4kplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 8
+      cpu: 1
       memory: 16Gi  
   controller:
     annotations:
@@ -5863,7 +5863,7 @@ navidrome:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/navidrome
-    tag: 0.52.5@sha256:54401aa19f7d2ee175df99c5efcebc5c30dbcb91082c6d41836a6fea1cfd0905
+    tag: 0.53.0@sha256:ef5743fae4a85d13fbf8e8331f746d8f3b50b02fbf0316ac6ab97c25d7ac7e31
   sso:
     enabled: true
   priorityClassName: tenant-streaming
@@ -10580,7 +10580,7 @@ riven: &app_riven
         name: config
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.12.0@sha256:16ba7dd83e058de9f768d32386e5b5b14bd840a0130a3486b9dce520fa94f043
+      image: ghcr.io/elfhosted/riven-frontend:v0.12.1@sha256:c698e9a07e9bf64f14ae777c876780b4b803aa8594d72c37bfb9498655243679
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -10662,8 +10662,8 @@ rivenplus:
       cpu: 1m
       memory: 30Mi
     limits:
-      cpu: 2
-      memory: 8Gi  
+      cpu: 1
+      memory: 2Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config,elfbot-all"
@@ -10810,7 +10810,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.604@sha256:439e38e495081aa0d36a9180ef6447270c3fcd06fe8f1b8f567b6e3875a2136c
+    tag: 0.22.618@sha256:d0ba73215fecb091aa72958698027bb9c196426852c778e160cd03c34e4050dd
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11833,7 +11833,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.5.0@sha256:1ed43237bab3bd07e7e7f8c676b94de86b9e3b287e50ccc8011a160400afb854
+    tag: 1.5.1@sha256:3999ee28e07a8cacb3442f7b82f26818a0b01661f869edb30cabab3df014f5fe
   podLabels: 
       app.elfhosted.com/name: mediaflow-proxy  
   priorityClassName: tenant-normal

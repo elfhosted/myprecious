@@ -1,5 +1,46 @@
 # Changelog
 
+## [1.121.0](https://github.com/elfhosted/myprecious/compare/v1.120.0...v1.121.0) (2024-09-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.53.0 ([e0b251a](https://github.com/elfhosted/myprecious/commit/e0b251a667ee51ed71d80387fd9beda4a293a668))
+
+
+### Bug Fixes
+
+* auto-clean prowlarr and riven logs on startup ([8104f08](https://github.com/elfhosted/myprecious/commit/8104f08587add6ecf13974c0b3dd4379809fbe20))
+* CORS issue on homer dashboard ([b9b7b90](https://github.com/elfhosted/myprecious/commit/b9b7b90b19cbe28cb502c38a6427bc223e714b97))
+* improve backup restores for US DC ([2d8c459](https://github.com/elfhosted/myprecious/commit/2d8c459815f06ddd3b84488669160721a6607151))
+
+## [1.120.0](https://github.com/elfhosted/myprecious/compare/v1.119.0...v1.120.0) (2024-09-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.12.1 ([669533e](https://github.com/elfhosted/myprecious/commit/669533e2ed86d83c3769fd4415bedc5652b568aa))
+
+
+### Bug Fixes
+
+* rpdb volume size in US DC ([d7303ad](https://github.com/elfhosted/myprecious/commit/d7303ad3f1911fdbe2cbceede863b59d1279738f))
+
+## [1.119.0](https://github.com/elfhosted/myprecious/compare/v1.118.0...v1.119.0) (2024-09-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bazarr docker tag to v1.4.4 ([ed5e1d1](https://github.com/elfhosted/myprecious/commit/ed5e1d175e2cd74466f2dbb5a83cc37bf531d7ef))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.618 ([40fec1a](https://github.com/elfhosted/myprecious/commit/40fec1abc4f37fa220202928fe518208e107e34b))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.5.1 ([ba3d91f](https://github.com/elfhosted/myprecious/commit/ba3d91ffa8d28c28bd714867c19f20f3d7d07f10))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2386 ([301d827](https://github.com/elfhosted/myprecious/commit/301d8274a2fb07ed250d4c817f4062fd27b1d1f1))
+
+
+### Bug Fixes
+
+* bring emby/jellyfin volumes to parity with plex volumes wrt size ([56b470f](https://github.com/elfhosted/myprecious/commit/56b470f96da4fcb73fb82c4a9e7ee58dcfe6c737))
+
 ## [1.118.0](https://github.com/elfhosted/myprecious/compare/v1.117.0...v1.118.0) (2024-09-15)
 
 

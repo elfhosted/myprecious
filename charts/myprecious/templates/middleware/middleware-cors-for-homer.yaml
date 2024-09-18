@@ -10,6 +10,7 @@ spec:
       - "OPTIONS"
     accessControlAllowOriginList:
       - "https://{{ .Release.Name }}.elfhosted.com"
+      - "https://{{ .Release.Name }}.elfhosted.cc"      
     accessControlAllowCredentials: true
     accessControlMaxAge: 100
     addVaryHeader: true
