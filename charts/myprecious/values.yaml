@@ -94,7 +94,7 @@ halfling_streamer_resources: &halfling_streamer_resources
     cpu: 4
     memory: 4Gi
 
-nazgul_streamer_resources: &halfling_streamer_resources
+nazgul_streamer_resources: &nazgul_streamer_resources
   requests:
     cpu: 10m
     memory: 30Mi
