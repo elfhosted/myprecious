@@ -4832,6 +4832,25 @@ kapowarr:
       memory: 1Gi
   initContainers:
     bootstrap: *bootstrap
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # for symlink downloads and imports
+        mkdir -p /storage/symlinks/downloads/comics
+        mkdir -p /storage/symlinks/comics
+
+      volumeMounts:
+      - mountPath: /storage/symlinks
+        name: symlinks                 
+      resources: *default_resources
+      securityContext: *default_securitycontext      
 
 
 calibreweb:
