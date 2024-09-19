@@ -12991,7 +12991,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.4@sha256:1a3f77c14b24c66492f80cfd159132b408d903e741fff0fa174a7a916f2942d1
+    tag: v1.4.4@sha256:703c10cc9a4aa4f0489e53eec6bb92bdd345747b7c5f12e3e7bf1a14c3dbaf86
   priorityClassName: tenant-normal
   affinity: *standard_affinity 
   tolerations: *standard_tolerations  
@@ -13037,14 +13037,14 @@ blackhole: &app_blackhole
   persistence:
     <<: *storagemounts   
     tmp: *tmp
-    # config:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /config
-    #   subPath: blackhole
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: config-homer-ssd
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: blackhole
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-homer-ssd
     # example-config:
     #   enabled: "true"
     #   type: "custom"
@@ -13084,17 +13084,17 @@ blackhole: &app_blackhole
 
 blackhole4k: 
   <<: *app_blackhole
-  # persistence:
-  #   <<: *storagemounts   
-  #   tmp: *tmp
-  #   config:
-  #     enabled: true
-  #     type: custom
-  #     mountPath: /config
-  #     subPath: blackhole4k
-  #     volumeSpec:
-  #       persistentVolumeClaim:
-  #         claimName: config-homer-ssd  
+  persistence:
+    <<: *storagemounts   
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: blackhole4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-homer-ssd  
   env:
     BLACKHOLE_RADARR_PATH: "radarr4k"
     BLACKHOLE_SONARR_PATH: "sonarr4k"   
