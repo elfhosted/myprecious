@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.123.0](https://github.com/elfhosted/myprecious/compare/v1.122.0...v1.123.0) (2024-09-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.32.0 ([58a52a6](https://github.com/elfhosted/myprecious/commit/58a52a6973f991e5428caf88b88d23d1a6eddab0))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.643 ([4a16f3a](https://github.com/elfhosted/myprecious/commit/4a16f3a680e023f9afeb85abd63c2d99a32a2e44))
+* **app:** update ghcr.io/elfhosted/kavita docker tag to v0.8.3 ([4a34b67](https://github.com/elfhosted/myprecious/commit/4a34b67b241d8557c55d77336242163eb25dd3f3))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.6.0 ([1bfa6c2](https://github.com/elfhosted/myprecious/commit/1bfa6c27f7e6f480d4a17b696ccb20685d1f1f55))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/kapowarr:v1.0.0 docker digest to 0944369 ([3431e05](https://github.com/elfhosted/myprecious/commit/3431e054a890852cdcb524f7e45f916f7ee04494))
+* **app:** update ghcr.io/elfhosted/kapowarr:v1.0.0 docker digest to ed4fda4 ([9468267](https://github.com/elfhosted/myprecious/commit/94682671ff2f4b7706dbb6bc9dda6256c1d9ce21))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 0c6e398 ([c5720f4](https://github.com/elfhosted/myprecious/commit/c5720f4066ba2944acffc82bd2394d4b0ac5492c))
+* auto-clean tautulli's logs and backuus ([9b6a352](https://github.com/elfhosted/myprecious/commit/9b6a352473703f86c3b2e6b215347db55dd42eca))
+* ENV vars for mediafusion in elfhosted.cc ([37b61b6](https://github.com/elfhosted/myprecious/commit/37b61b69b667f31ec53e3472f85aeacc2e4e0176))
+
 ## [1.122.0](https://github.com/elfhosted/myprecious/compare/v1.121.0...v1.122.0) (2024-09-18)
 
 
