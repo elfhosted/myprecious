@@ -4732,7 +4732,7 @@ kapowarr:
   image:
     registry: ghcr.io
     repository: elfhosted/kapowarr
-    tag: V1.0.0@sha256:29932c9324d007f2dd883178472c5ae3441af7146b07f35ae2afde6fab446755
+    tag: V1.0.0@sha256:ed4fda4ccdd1e10695ff24a9ad2b09424c93f9ec4007a442b804403b83d3f91d
   priorityClassName: 
   controller:
     annotations:
@@ -5117,7 +5117,7 @@ kavita:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kavita
-    tag: 0.8.2@sha256:5190562f1daf3833ac6c5d499967fa9626fb3a0005aea3932a8fd3e59e60a35f
+    tag: 0.8.3@sha256:d878e0c81d72cc3e2c4b1c6b41374cc89d566ffee0e7ce22c5981a8142620c24
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11491,7 +11491,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.31.4@sha256:40fafeff16c078b75a4c29b2e1774bc3b6d2b8759f1865b518389a33f37615db
+    tag: v1.32.0@sha256:470c5fe8808d26c1893dbf4797ce5b81ad17efb981e5a0b20e76b1f60282266b
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
