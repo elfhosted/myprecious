@@ -3638,6 +3638,41 @@ tautulli:
       memory: 1Gi
   initContainers:
     bootstrap: *bootstrap
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/sh
+      - -c
+      - |
+        set -x
+        set -e
+
+        # Clear out logs older than 24h
+        if [ -d "/config/logs" ]; then
+            # Find and delete files older than 7 days
+            find "/config/logs" -type f -mtime +1 -exec rm -f {} \;
+            echo "Files older than 1 day have been removed from /config/logs."
+        fi
+
+        # Clear out backups older than 2d
+        if [ -d "/config/backups" ]; then
+            # Find and delete files older than 2 days
+            find "/config/backups" -type f -mtime +2 -exec rm -f {} \;
+            echo "Files older than 1 day have been removed from /config/backups."
+        fi
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      resources: *default_resources
+      securityContext: *default_securitycontext
+  resources:
+    requests:
+      cpu: 60m
+      memory: 128Mi
+    limits:
+      cpu: 2
+      memory: 1Gi
 
 radarr: &app_radarr
   enabled: false
@@ -4740,7 +4775,7 @@ kapowarr:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # breaks kapowarr
     allowPrivilegeEscalation: false
     runAsUser: 568
     runAsGroup: 568
@@ -4797,6 +4832,25 @@ kapowarr:
       memory: 1Gi
   initContainers:
     bootstrap: *bootstrap
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # for symlink downloads and imports
+        mkdir -p /storage/symlinks/downloads/comics
+        mkdir -p /storage/symlinks/comics
+
+      volumeMounts:
+      - mountPath: /storage/symlinks
+        name: symlinks                 
+      resources: *default_resources
+      securityContext: *default_securitycontext      
 
 
 calibreweb:
