@@ -11283,7 +11283,7 @@ petio:
       subPath: config
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-petio-block          
+          claimName: config-petio-ssd          
     tmp: *tmp
   additionalContainers:
     mongodb:
