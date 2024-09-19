@@ -4775,7 +4775,7 @@ kapowarr:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # breaks kapowarr
     allowPrivilegeEscalation: false
     runAsUser: 568
     runAsGroup: 568
