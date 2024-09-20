@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.124.0](https://github.com/elfhosted/myprecious/compare/v1.123.0...v1.124.0) (2024-09-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.655 ([d753afe](https://github.com/elfhosted/myprecious/commit/d753afe6d3d0e0c84acb567121fe3020862a85cc))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/kometa:v2.0.2 docker digest to e1f0744 ([4432798](https://github.com/elfhosted/myprecious/commit/44327988aeadc4c1b04f20fea2d6984abe4d6181))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.4.4 docker digest to 4e9c895 ([ba933d1](https://github.com/elfhosted/myprecious/commit/ba933d1097277d3c3e8e064018a73aebc520be8d))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.4.4 docker digest to 703c10c ([e907252](https://github.com/elfhosted/myprecious/commit/e907252a19e503708e7b8d9c4fcf876dc293a46d))
+* petio volume name ([098b2ed](https://github.com/elfhosted/myprecious/commit/098b2edfe797366428910a35a6f81dd7304f82cd))
+
 ## [1.123.0](https://github.com/elfhosted/myprecious/compare/v1.122.0...v1.123.0) (2024-09-19)
 
 
