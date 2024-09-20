@@ -1265,7 +1265,23 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/bazarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd              
+        claimName: config-bazarr4k-ssd    
+  blackhole:
+    enabled: false
+    subPath: "where-is-my-blackhole.txt"
+    mountPath: /storage/config/blackhole/where-is-my-blackhole.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration    
+  blackhole4k:
+    enabled: false
+    subPath: "where-is-my-blackhole4k.txt"
+    mountPath: /storage/config/blackhole4k/where-is-my-blackhole4k.txt
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: explain-migration                              
   calibreweb:
     enabled: false
     type: custom
