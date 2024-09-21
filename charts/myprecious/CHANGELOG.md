@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.125.0](https://github.com/elfhosted/myprecious/compare/v1.124.0...v1.125.0) (2024-09-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.656 ([63e8ed7](https://github.com/elfhosted/myprecious/commit/63e8ed7df7aec25df99b52180e8290a2f4b41440))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.10.4.9218 ([c2b5d8e](https://github.com/elfhosted/myprecious/commit/c2b5d8e973d3ef1c35705dd6a3168e82972b5964))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.12.0 ([aa0c2db](https://github.com/elfhosted/myprecious/commit/aa0c2db6df821d920ddbf5071d6b6d770c5c2d86))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.12.1 ([b911c59](https://github.com/elfhosted/myprecious/commit/b911c59df75f8fe008296d35c9b8cd1133421e47))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.12.3 ([58d1a3b](https://github.com/elfhosted/myprecious/commit/58d1a3b46eb74c9e58d7f861a5c958b283b817d0))
+* **app:** update ghcr.io/elfhosted/tautulli docker tag to v2.14.5 ([ab04bdd](https://github.com/elfhosted/myprecious/commit/ab04bdd14eb4b2264949376ce89eb92b64dcfe7e))
+
 ## [1.124.0](https://github.com/elfhosted/myprecious/compare/v1.123.0...v1.124.0) (2024-09-20)
 
 
