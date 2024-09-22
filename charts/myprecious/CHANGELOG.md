@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.126.0](https://github.com/elfhosted/myprecious/compare/v1.125.0...v1.126.0) (2024-09-22)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.10.4 ([cdfac70](https://github.com/elfhosted/myprecious/commit/cdfac7080fda70f1b9482b94eef8178a548c7f8a))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.657 ([213bc02](https://github.com/elfhosted/myprecious/commit/213bc02e465a4df188f9c71a7629e30b4e4214f6))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.6.0.4348 ([16a449f](https://github.com/elfhosted/myprecious/commit/16a449f0c46459fa52e06f2442def8c4250b431e))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.6.1.4370 ([bd86044](https://github.com/elfhosted/myprecious/commit/bd860442e844ec3b1cac0e8a0186097fc9a7c34c))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.53.2 ([887e842](https://github.com/elfhosted/myprecious/commit/887e84224e87a1c1d5801ca39d91bb833296f7aa))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.24.1.4740 ([495f761](https://github.com/elfhosted/myprecious/commit/495f7618f863497a9a0c9bd43fe1aeb74d399fa0))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.12.7 ([bd2a256](https://github.com/elfhosted/myprecious/commit/bd2a256b84da1531f607c97fd6fbd330f9d63325))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.12.8 ([c1f7988](https://github.com/elfhosted/myprecious/commit/c1f79882c8ac42c0971bf9eedfbc945fe19779a1))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2421 ([7e02e02](https://github.com/elfhosted/myprecious/commit/7e02e026144a3af4283514e3c1213cad831bae96))
+
 ## [1.125.0](https://github.com/elfhosted/myprecious/compare/v1.124.0...v1.125.0) (2024-09-21)
 
 
