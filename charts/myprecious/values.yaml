@@ -155,7 +155,7 @@ hobbit_resources: &hobbit_resources
     memory: "16Mi"
   limits:
     cpu: "1"
-    memory: 2Gi       
+    memory: 4Gi       
 
 volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
   ephemeral:
@@ -5706,7 +5706,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.24.1.4740@sha256:60c1fb1bcb75b4159f15cb321c7f6a841f523cb50244722cf9c18a5ab1123361
+    tag: 1.24.0.4721@sha256:6fbcbb70e74286c8d16ebcb783080b147257c98d3ff7c0387570dc8daf776a8f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5844,7 +5844,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.6.1.4370@sha256:90343b43636755fd3436fe8734f49ba978af51e75660ca564807293c476b1e4a
+    tag: 2.5.3.4341@sha256:6757fd540d9c5009f51fd86429737f368ce6d9c3cbc21981ed73150ddba4e87c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5883,7 +5883,11 @@ lidarr:
         configMap:
           name: elfbot-lidarr
           optional: true
-
+    mediacover:
+      enabled: true
+      mountPath: /mediacover
+      type: custom
+      volumeSpec: *volumespec_ephemeral_volume_50g
   ingress:
     main:
       enabled: false
@@ -5907,10 +5911,17 @@ lidarr:
 
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
-        
+        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+
+        if [ -d "/config/MediaCover" ]; then
+          rm -rf "/config/MediaCover"
+          ln -s /mediacover '/config/MediaCover'
+        fi
       volumeMounts:
       - mountPath: /config
-        name: config        
+        name: config
+      - mountPath: /mediacover
+        name: mediacover           
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -10518,7 +10529,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.13.3@sha256:1acb36745f6fac097c3c0f998fa8015572af0e6e94b0e183bd6b317de8fad709
+    tag: v0.12.7@sha256:2a99a2612aaaccd40132fd07b2e2d804f3ba194de0eb156ee4532a25a4e41399
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10634,7 +10645,7 @@ riven: &app_riven
         name: config
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.13.0@sha256:45a20ab8ec73c18bcca0656793ea2ca788024b921a340a85069d1db40cd01dc2
+      image: ghcr.io/elfhosted/riven-frontend:v0.12.1@sha256:c698e9a07e9bf64f14ae777c876780b4b803aa8594d72c37bfb9498655243679
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -10864,7 +10875,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.657@sha256:fa8019cbaa3ff392b0e3c20beb39ecb4b1d0b67334e859a5a40cf50529573169
+    tag: 0.22.656@sha256:33008036e7eb7e4e0dc4f4b7416be56c1a0d0f29e87fd0d6383cb69ec2400b4e
   priorityClassName: tenant-normal
   controller:
     annotations:
