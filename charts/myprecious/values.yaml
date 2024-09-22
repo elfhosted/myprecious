@@ -136,17 +136,21 @@ dedicated_affinity: &dedicated_affinity
       nodeSelectorTerms:
       - matchExpressions:
         - key: node-role.elfhosted.com/dedicated
-          operator: Exists
+          operator: In
+          values:
+          - "true"
 
 standard_tolerations: &standard_tolerations
-- key: node-role.elfhosted.com/dedicated
-  operator: Exists   
-- key: node-role.elfhosted.com/hobbit
-  operator: Exists
+# not using tolerations anymore
+# - key: node-role.elfhosted.com/dedicated
+#   operator: Exists   
+# - key: node-role.elfhosted.com/hobbit
+#   operator: Exists
 
 hobbit_tolerations: &hobbit_tolerations
-- key: node-role.elfhosted.com/hobbit
-  operator: Exists               
+# not using tolerations anymore
+# - key: node-role.elfhosted.com/hobbit
+#   operator: Exists               
 
 # Set minimal requests so that pods can co-exist with streamers
 hobbit_resources: &hobbit_resources
@@ -12446,12 +12450,14 @@ zurg: &app_zurg
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
     strategy: RollingUpdate      
   affinity:
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: node-role.elfhosted.com/download-only
-    #         operator: Exists
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-role.elfhosted.com/dedicated
+            operator: In
+            values:
+            - "false"
     podAffinity: 
       # prefer to be located with debrid class (plex/jelly/emby), but 
       preferredDuringSchedulingIgnoredDuringExecution: 
