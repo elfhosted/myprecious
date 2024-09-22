@@ -101,8 +101,8 @@ data:
   RIVEN_LOGGER_TRAKT_ICON: "📚"
 
   {{ if or .Values.location.enabled .Values.riven.enabled }}
-  SYMLINK_MAX_WORKERS: "1"
+  RIVEN_SYMLINK_MAX_WORKERS: "1"
   {{ else }}
-  SYMLINK_MAX_WORKERS: "2"
+  RIVEN_SYMLINK_MAX_WORKERS: "2"
   {{ end }}
 {{ end }}
