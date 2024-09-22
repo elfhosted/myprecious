@@ -100,9 +100,10 @@ data:
   RIVEN_LOGGER_TRAKT_FG: "1DB954"
   RIVEN_LOGGER_TRAKT_ICON: "📚"
 
+  # To get us over the initial issues, set this to 1 for everyone
   {{ if or .Values.location.enabled .Values.riven.enabled }}
-  RIVEN_SYMLINK_MAX_WORKERS: "1"
+  SYMLINK_MAX_WORKERS: "1"
   {{ else }}
-  RIVEN_SYMLINK_MAX_WORKERS: "2"
+  SYMLINK_MAX_WORKERS: "1"
   {{ end }}
 {{ end }}
