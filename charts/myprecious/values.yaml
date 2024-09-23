@@ -139,6 +139,26 @@ dedicated_affinity: &dedicated_affinity
           operator: In
           values:
           - "true"
+  podAffinity: 
+    preferredDuringSchedulingIgnoredDuringExecution: 
+    - weight: 50  
+      podAffinityTerm:    
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/role
+            operator: In
+            values:
+            - nodefinder # use nodefinder in the absense of zurg...
+        topologyKey: "kubernetes.io/hostname"  
+    - weight: 100  
+      podAffinityTerm:    
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/name
+            operator: In
+            values:
+            - zurg # .. but prefer zurg
+        topologyKey: "kubernetes.io/hostname"             
 
 standard_tolerations: &standard_tolerations
 # not using tolerations anymore
@@ -12501,20 +12521,25 @@ zurg: &app_zurg
             values:
             - "false"
     podAffinity: 
-      # prefer to be located with debrid class (plex/jelly/emby), but 
       preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 50  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/role
+              operator: In
+              values:
+              - nodefinder # use nodefinder in the absense of zurg...
+          topologyKey: "kubernetes.io/hostname"  
       - weight: 100  
         podAffinityTerm:    
           labelSelector:
             matchExpressions:
-            - key: app.kubernetes.io/class
+            - key: app.elfhosted.com/name
               operator: In
               values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"   
-  # tolerations:
-  # - key: node-role.elfhosted.com/download-only
-  #   operator: Exists                            
+              - zurg # .. but prefer zurg
+          topologyKey: "kubernetes.io/hostname"                          
   securityContext:
     seccompProfile:
       type: RuntimeDefault
