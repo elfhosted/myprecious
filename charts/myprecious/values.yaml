@@ -139,6 +139,26 @@ dedicated_affinity: &dedicated_affinity
           operator: In
           values:
           - "true"
+  podAffinity: 
+    preferredDuringSchedulingIgnoredDuringExecution: 
+    - weight: 50  
+      podAffinityTerm:    
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/role
+            operator: In
+            values:
+            - nodefinder # use nodefinder in the absense of zurg...
+        topologyKey: "kubernetes.io/hostname"  
+    - weight: 100  
+      podAffinityTerm:    
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/name
+            operator: In
+            values:
+            - zurg # .. but prefer zurg
+        topologyKey: "kubernetes.io/hostname"             
 
 standard_tolerations: &standard_tolerations
 # not using tolerations anymore
@@ -3805,16 +3825,7 @@ radarrplus:
         nodeSelectorTerms:
         - matchExpressions:
           - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
+            operator: Exists                
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
@@ -3967,25 +3978,6 @@ radarr4kplus:
     app.elfhosted.com/name: radarr4k
     app.elfhosted.com/class: dedicated
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5433,25 +5425,6 @@ sonarrplus:
     app.elfhosted.com/name: sonarr
     app.elfhosted.com/class: dedicated
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5591,25 +5564,6 @@ sonarr4kplus:
     app.elfhosted.com/name: sonarr4k
     app.elfhosted.com/class: dedicated
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5807,26 +5761,7 @@ prowlarrplus:
   podLabels:
     app.elfhosted.com/name: prowlarr
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false 
   automountServiceAccountToken: false
   resources:
     requests:
@@ -6418,25 +6353,6 @@ plexplus:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources 
   controller:
@@ -6616,25 +6532,6 @@ jellyfinplus:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources  
   controller:
@@ -6806,25 +6703,6 @@ embyplus:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources 
   controller:
@@ -6911,20 +6789,6 @@ homer:
   - /bin/bash
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
-    gatus:
-      image: ghcr.io/elfhosted/gatus:5.12.1@sha256:806a7bf6ee46cf1790c7144c1ec5a856e551a60dd3f23af474b3de2cdfa99a2e
-      volumeMounts:
-      - mountPath: /config
-        name: gatus-config
-      - mountPath: /data
-        name: gatus
-      env:
-        GATUS_CONFIG_PATH: /config/config.yaml
-        SMTP_FROM: 'health@elfhosted.com'
-        SMTP_PORT: 587        
-      envFrom:
-      - secretRef:
-          name: gatus-smtp-config
     ui:
       image: ghcr.io/elfhosted/homer:v24.05.1@sha256:7e2dba1a1c5370cb57c7b8ebb0d7b5ac43c0ce940393b1fa25dac9e9422cc5a3
       imagePullPolicy: IfNotPresent
@@ -6948,10 +6812,10 @@ homer:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
       enabled: false
   controller:
-    # replicas: 1 # not sure we need 2 replicas anymore
-    # strategy: RollingUpdate # can't do this because we run gatus in homer now
-    # rollingUpdate:
-    #   unavailable: 1
+    replicas: 2 # not sure we need 2 replicas anymore
+    strategy: RollingUpdate # can't do this because we run gatus in homer now
+    rollingUpdate:
+      unavailable: 1
     annotations:
       configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer,gatus-config" # Reload the deployment every time the yaml config changes
   resources:
@@ -7009,76 +6873,68 @@ traefikforwardauth:
       cpu: 1
       memory: 32Mi
 
-# gatus:
-#   image:
-#     repository: ghcr.io/elfhosted/gatus
-#     tag: 5.11.0@sha256:e54b379efadcaefca18c72d70f9d6c70b19e3ae88e9dcacca931c6906aa96e75
-#   priorityClassName: tenant-normal
-#   securityContext:
-#     seccompProfile:
-#       type: RuntimeDefault
-#     readOnlyRootFilesystem: true
-#   podSecurityContext:
-#     seccompProfile:
-#       type: RuntimeDefault
-#     fsGroup: 568
-#   affinity:
-#     nodeAffinity:
-#       requiredDuringSchedulingIgnoredDuringExecution:
-#         nodeSelectorTerms:
-#         - matchExpressions:
-#           - key: node-role.elfhosted.com/observability
-#             operator: Exists    
-#   tolerations:
-#   - key: node-role.elfhosted.com/observability
-#     operator: Exists    
-#   automountServiceAccountToken: false
-#   resources:
-#     requests:
-#       cpu: 20m
-#       memory: 20Mi
-#     limits:
-#       cpu: 200m
-#       memory: 128Mi
-#   ingress:
-#     main:
-#       enabled: false
-#   service:
-#     main:
-#       enabled: true # necessary for probes
-#       ports:
-#         http:
-#           port: 8080
-#   controller:
-#     # strategy: RollingUpdate
-#     annotations:
-#       configmap.reloader.stakater.com/reload: "gatus-config"        
-#   env:
-#     GATUS_CONFIG_PATH: /config/config.yaml
-#     SMTP_FROM: 'health@elfhosted.com'
-#     SMTP_PORT: 587
-#   persistence:
-#     gatus-config:
-#       enabled: "true"
-#       mountPath: /config
-#       type: "custom"
-#       volumeSpec:
-#         configMap:
-#           name: gatus-config
-#     config:
-#       enabled: true
-#       type: custom
-#       mountPath: /data/
-#       volumeSpec:
-#         persistentVolumeClaim:
-#           claimName: config-gatus-block         
-#   envFrom:
-#   - secretRef:
-#       name: gatus-smtp-config
-#   configmap:
-#     config:
-#       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
-#       enabled: false
+gatus:
+  image:
+    repository: ghcr.io/elfhosted/gatus
+    tag: 5.11.0@sha256:e54b379efadcaefca18c72d70f9d6c70b19e3ae88e9dcacca931c6906aa96e75
+  priorityClassName: tenant-normal
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 568
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations 
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 20m
+      memory: 20Mi
+    limits:
+      cpu: 200m
+      memory: 128Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8080
+  controller:
+    # strategy: RollingUpdate
+    annotations:
+      configmap.reloader.stakater.com/reload: "gatus-config"        
+  env:
+    GATUS_CONFIG_PATH: /config/config.yaml
+    SMTP_FROM: 'health@elfhosted.com'
+    SMTP_PORT: 587
+  persistence:
+    gatus-config:
+      enabled: "true"
+      mountPath: /config
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: gatus-config
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-gatus-block         
+  envFrom:
+  - secretRef:
+      name: gatus-smtp-config
+  configmap:
+    config:
+      # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
+      enabled: false
 
 gotify:
   sso:
@@ -7290,25 +7146,6 @@ flaresolverr: &app_flaresolverr
 flaresolverrplus:
   <<: *app_flaresolverr
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   controller:
     annotations:
@@ -8782,26 +8619,7 @@ kometaplus:
   podLabels:
     app.elfhosted.com/name: kometa
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false  
   automountServiceAccountToken: false
   resources:
     requests:
@@ -10743,26 +10561,7 @@ rivenplus:
   podLabels:
     app.elfhosted.com/name: riven
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false 
   automountServiceAccountToken: false
   resources: *ranger_resources
   controller:
@@ -12523,20 +12322,25 @@ zurg: &app_zurg
             values:
             - "false"
     podAffinity: 
-      # prefer to be located with debrid class (plex/jelly/emby), but 
       preferredDuringSchedulingIgnoredDuringExecution: 
+      - weight: 50  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/role
+              operator: In
+              values:
+              - nodefinder # use nodefinder in the absense of zurg...
+          topologyKey: "kubernetes.io/hostname"  
       - weight: 100  
         podAffinityTerm:    
           labelSelector:
             matchExpressions:
-            - key: app.kubernetes.io/class
+            - key: app.elfhosted.com/name
               operator: In
               values:
-              - debrid
-          topologyKey: "kubernetes.io/hostname"   
-  # tolerations:
-  # - key: node-role.elfhosted.com/download-only
-  #   operator: Exists                            
+              - zurg # .. but prefer zurg
+          topologyKey: "kubernetes.io/hostname"                          
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12753,26 +12557,7 @@ zurgplus:
     app.elfhosted.com/class: dedicated  
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"         
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false   
   automountServiceAccountToken: false
   resources:
     requests:
@@ -12885,26 +12670,7 @@ plexdebridplus:
   podLabels:
     app.elfhosted.com/name: plexdebrid
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false 
   automountServiceAccountToken: false
 
 codeserver:
