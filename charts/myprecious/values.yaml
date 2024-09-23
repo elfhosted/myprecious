@@ -3825,16 +3825,7 @@ radarrplus:
         nodeSelectorTerms:
         - matchExpressions:
           - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
+            operator: Exists                
   tolerations:
   - key: node-role.elfhosted.com/dedicated
     operator: Exists    
@@ -3987,25 +3978,6 @@ radarr4kplus:
     app.elfhosted.com/name: radarr4k
     app.elfhosted.com/class: dedicated
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5453,25 +5425,6 @@ sonarrplus:
     app.elfhosted.com/name: sonarr
     app.elfhosted.com/class: dedicated
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5611,25 +5564,6 @@ sonarr4kplus:
     app.elfhosted.com/name: sonarr4k
     app.elfhosted.com/class: dedicated
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5827,26 +5761,7 @@ prowlarrplus:
   podLabels:
     app.elfhosted.com/name: prowlarr
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false 
   automountServiceAccountToken: false
   resources:
     requests:
@@ -6438,25 +6353,6 @@ plexplus:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources 
   controller:
@@ -6636,25 +6532,6 @@ jellyfinplus:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources  
   controller:
@@ -6826,25 +6703,6 @@ embyplus:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources 
   controller:
@@ -7288,25 +7146,6 @@ flaresolverr: &app_flaresolverr
 flaresolverrplus:
   <<: *app_flaresolverr
   enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
   automountServiceAccountToken: false
   controller:
     annotations:
@@ -8780,26 +8619,7 @@ kometaplus:
   podLabels:
     app.elfhosted.com/name: kometa
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false  
   automountServiceAccountToken: false
   resources:
     requests:
@@ -10741,26 +10561,7 @@ rivenplus:
   podLabels:
     app.elfhosted.com/name: riven
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false 
   automountServiceAccountToken: false
   resources: *ranger_resources
   controller:
@@ -12756,26 +12557,7 @@ zurgplus:
     app.elfhosted.com/class: dedicated  
   podAnnotations:
     kubernetes.io/egress-bandwidth: "500M"    
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"         
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false   
   automountServiceAccountToken: false
   resources:
     requests:
@@ -12888,26 +12670,7 @@ plexdebridplus:
   podLabels:
     app.elfhosted.com/name: plexdebrid
     app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists    
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/class
-              operator: In
-              values:
-              - dedicated
-          topologyKey: "kubernetes.io/hostname"                 
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists    
+  enabled: false 
   automountServiceAccountToken: false
 
 codeserver:
