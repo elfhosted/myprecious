@@ -10084,14 +10084,14 @@ miniflux:
     nameOverride: miniflux-postgresql
     commonAnnotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-miniflux"
-    affinity: *standard_affinity 
-    tolerations: *standard_tolerations        
     auth:
       username: miniflux
       password: miniflux
       database: miniflux
       postgresPassword: miniflux
     primary:
+      affinity: *standard_affinity 
+      tolerations: *standard_tolerations      
       persistence:
         enabled: true
         existingClaim: config-miniflux-ssd
@@ -10199,8 +10199,6 @@ joplinserver:
   postgresql:
     enabled: true
     nameOverride: joplinserver-postgresql
-    affinity: *standard_affinity 
-    tolerations: *standard_tolerations      
     commonAnnotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-joplinserver"
     auth:
@@ -10209,6 +10207,8 @@ joplinserver:
       database: joplinserver
       postgresPassword: joplinserver
     primary:
+      affinity: *standard_affinity 
+      tolerations: *standard_tolerations      
       persistence:
         enabled: true
         existingClaim: config-joplinserver-ssd
