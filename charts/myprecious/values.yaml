@@ -12569,7 +12569,8 @@ zurgplus:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-zurg"
-  
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations  
 
 plexdebrid: &app_plexdebrid
   enabled: false
