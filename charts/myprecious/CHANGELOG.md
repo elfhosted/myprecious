@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.127.0](https://github.com/elfhosted/myprecious/compare/v1.126.0...v1.127.0) (2024-09-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.13.1 ([637b578](https://github.com/elfhosted/myprecious/commit/637b57812d126ea73cb5d72eb58a15c7903ad7b9))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.13.2 ([f5c7ba1](https://github.com/elfhosted/myprecious/commit/f5c7ba1c78acb1ec6e74ebd9d4c1e960be97b3a7))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.13.3 ([aabc6c7](https://github.com/elfhosted/myprecious/commit/aabc6c77b755a7efd8d1c12d30ed311a1fe1ba33))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.13.0 ([bad006f](https://github.com/elfhosted/myprecious/commit/bad006faf832a5b43e55fe4c4b6e98011f509163))
+
+
+### Bug Fixes
+
+* make Lidarr's mediacover folder ephemeral to avoid space-ballooning ([aaed2b4](https://github.com/elfhosted/myprecious/commit/aaed2b46fe32bfbdcc7a1e8aa2c838877d6a9ca8))
+* set `SYMLINK_MAX_WORKERS`to 1 to avoid OOMKills on DB resets ([ad89cf0](https://github.com/elfhosted/myprecious/commit/ad89cf0f6b9b7edf94be00105d10b6e9c821f4dd))
+
 ## [1.126.0](https://github.com/elfhosted/myprecious/compare/v1.125.0...v1.126.0) (2024-09-22)
 
 
