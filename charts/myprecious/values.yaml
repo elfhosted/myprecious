@@ -7415,7 +7415,7 @@ threadfin:
     config:
       enabled: true
       type: custom
-      mountPath: /config/
+      mountPath: /home/threadfin/conf/
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-threadfin-ssd
