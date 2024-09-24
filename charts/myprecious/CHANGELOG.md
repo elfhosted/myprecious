@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.128.0](https://github.com/elfhosted/myprecious/compare/v1.127.0...v1.128.0) (2024-09-24)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v8.12 ([e8c338b](https://github.com/elfhosted/myprecious/commit/e8c338ba7a5db0beeb9e01f30df08f4c74470d86))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.11.0 ([5be2228](https://github.com/elfhosted/myprecious/commit/5be2228f5b9a94c66cc3fed27001c6e4a0cb5dad))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.93.1 ([024b11f](https://github.com/elfhosted/myprecious/commit/024b11f98de0fedef07a2a8637b139024460b342))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.664 ([85d1579](https://github.com/elfhosted/myprecious/commit/85d1579b275dd425056a858fe6c1c766e604d20c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.666 ([c314811](https://github.com/elfhosted/myprecious/commit/c3148113a34d1d0673866df5d5f5b1a11c5d000b))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.7.0 ([70fd6f7](https://github.com/elfhosted/myprecious/commit/70fd6f709efdeb3c0ef987cf661e7fb447a833bf))
+* **app:** update ghcr.io/elfhosted/notifiarr docker tag to v0.8.2 ([ebe9806](https://github.com/elfhosted/myprecious/commit/ebe9806c976668b6159147952c75e6a96dce1753))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.14.0 ([797903e](https://github.com/elfhosted/myprecious/commit/797903e6ad5a34af9d585c3c86df9e1431173e34))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.14.1 ([66b3f50](https://github.com/elfhosted/myprecious/commit/66b3f50453289c48f6133a42828d1b3531d008fd))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/kometa:v2.0.2 docker digest to ed44138 ([e78c05c](https://github.com/elfhosted/myprecious/commit/e78c05c64c311007cdc2fb4c51d23fb86c4886a4))
+
 ## [1.127.0](https://github.com/elfhosted/myprecious/compare/v1.126.0...v1.127.0) (2024-09-23)
 
 
