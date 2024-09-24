@@ -125,8 +125,8 @@ data:
                     kubectl patch replicationsource $RS --type merge -p '{"spec":{"trigger":{"manual":"'$MANUAL'"}}}' > /dev/null 2>&1 &
 
                     sleep 5s
-                    kubectl logs -l batch.kubernetes.io/job-name=volsync-src-$RS
-                    
+                    kubectl logs -l batch.kubernetes.io/job-name=volsync-src-$RS -f
+
                     # Set the timeout to 5 minutes (300 seconds)
                     timeout=300
                     start_time=$(date +%s)
