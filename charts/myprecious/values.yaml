@@ -13090,7 +13090,12 @@ immich:
       enabled: true
       type: emptyDir
       mountPath: /usr/src/app/upload
-      sizeLimit: 1Gi          
+      sizeLimit: 1Gi
+    upload-encoded:
+      enabled: true
+      type: emptyDir
+      mountPath: /usr/src/app/upload/encode-video
+      sizeLimit: 1Gi      
     elfbot:
       enabled: "true"
       type: "custom"
