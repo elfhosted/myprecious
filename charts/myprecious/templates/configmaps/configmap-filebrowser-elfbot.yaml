@@ -121,6 +121,7 @@ data:
 
                     echo "$(date '+%H:%M:%S') Triggering manual backup of $RS..."
                     MANUAL=$(date +%s)
+                    kubectl patch replicationsource $RS --type merge -p '{"spec":{"restic":{"unlock":"'$MANUAL'"}}}' > /dev/null 2>&1 &
                     kubectl patch replicationsource $RS --type merge -p '{"spec":{"trigger":{"manual":"'$MANUAL'"}}}' > /dev/null 2>&1 &
 
                     # Set the timeout to 5 minutes (300 seconds)
