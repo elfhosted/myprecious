@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.129.0](https://github.com/elfhosted/myprecious/compare/v1.128.0...v1.129.0) (2024-09-25)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.12.1 ([64e6bd9](https://github.com/elfhosted/myprecious/commit/64e6bd9849ff6d73d1e389af2d554ceb1f754558))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.671 ([ddd027e](https://github.com/elfhosted/myprecious/commit/ddd027e58548b767f5676086573d5b37f7974a5f))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.6.1.4370 ([b52089b](https://github.com/elfhosted/myprecious/commit/b52089bbcdadea4aad3589c53f272901ca56f37b))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.7.1 ([cbde094](https://github.com/elfhosted/myprecious/commit/cbde0943ba07bcd9b610237531398913824439b5))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.24.1.4740 ([f41d7de](https://github.com/elfhosted/myprecious/commit/f41d7de7fa7f5afd80489b6950393590d3dfc41c))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.11.0.9244 ([736942c](https://github.com/elfhosted/myprecious/commit/736942ce457192685c22507ef86f1d93e8b823fa))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.18.0 docker digest to b6120d2 ([74e1c12](https://github.com/elfhosted/myprecious/commit/74e1c12f01998c531c7c87b6ca7e70d2a83e89a2))
+
 ## [1.128.0](https://github.com/elfhosted/myprecious/compare/v1.127.0...v1.128.0) (2024-09-24)
 
 
