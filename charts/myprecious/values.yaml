@@ -13094,7 +13094,7 @@ immich:
     upload-encoded:
       enabled: true
       type: emptyDir
-      mountPath: /usr/src/app/upload/encode-video
+      mountPath: /usr/src/app/upload/encoded-video
       sizeLimit: 1Gi      
     elfbot:
       enabled: "true"
