@@ -3678,13 +3678,6 @@ tautulli:
         name: config
       resources: *default_resources
       securityContext: *default_securitycontext
-  resources:
-    requests:
-      cpu: 60m
-      memory: 128Mi
-    limits:
-      cpu: 2
-      memory: 1Gi
 
 radarr: &app_radarr
   enabled: false
@@ -3827,7 +3820,7 @@ radarrplus:
           - key: node-role.elfhosted.com/dedicated
             operator: Exists                
   tolerations:
-  - key: node-role.elfhosted.com/dedicated
+  - key: node-role.elfhosted.comgcated
     operator: Exists    
   automountServiceAccountToken: false
   resources:
@@ -12317,10 +12310,10 @@ zurg: &app_zurg
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
+          - key: node-role.elfhosted.com/contended
             operator: In
             values:
-            - "false"
+            - "true"
     podAffinity: 
       preferredDuringSchedulingIgnoredDuringExecution: 
       - weight: 50  
@@ -12569,8 +12562,8 @@ zurgplus:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-zurg"
-  affinity: *standard_affinity 
-  tolerations: *standard_tolerations  
+  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
+  resources: *ranger_zurg_resources
 
 plexdebrid: &app_plexdebrid
   enabled: false

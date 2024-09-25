@@ -17,6 +17,19 @@ spec:
       labels:
         app.elfhosted.com/role: nodefinder
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              {{- if or .Values.zurghobbit.enabled .Values.zurgplus.enabled }}
+              - key: node-role.elfhosted.com/dedicated
+              {{- else }}
+              - key: node-role.elfhosted.com/contended
+              {{- end }}
+                operator: In
+                values:
+                - "true"    
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
