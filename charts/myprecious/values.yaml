@@ -10498,7 +10498,7 @@ riven: &app_riven
         name: config
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.13.0@sha256:45a20ab8ec73c18bcca0656793ea2ca788024b921a340a85069d1db40cd01dc2
+      image: ghcr.io/elfhosted/riven-frontend:v0.13.1@sha256:92cee31094be29b9a2df7e18527dc7cfc3e82bb4acff56c7da6496576ef619ad
       volumeMounts:
       - mountPath: /riven/data
         name: config
