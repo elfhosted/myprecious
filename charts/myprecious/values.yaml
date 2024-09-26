@@ -48,7 +48,7 @@ ranger_zurg_resources: &ranger_zurg_resources
     cpu: "3500m"
     memory: 30Mi
   limits:
-    cpu: "3500m"
+    cpu: "4"
     memory: 4Gi   
 
 halfling_zurg_resources: &halfling_zurg_resources
@@ -56,7 +56,7 @@ halfling_zurg_resources: &halfling_zurg_resources
     cpu: "7"
     memory: 30Mi
   limits:
-    cpu: "7"
+    cpu: "8"
     memory: 4Gi       
 
 nazgul_zurg_resources: &nazgul_zurg_resources
@@ -64,7 +64,7 @@ nazgul_zurg_resources: &nazgul_zurg_resources
     cpu: "7"
     memory: 30Mi
   limits:
-    cpu: "7"
+    cpu: "8"
     memory: 4Gi           
 
 
