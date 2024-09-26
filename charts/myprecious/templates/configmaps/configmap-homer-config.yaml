@@ -88,7 +88,7 @@ data:
       ICON="fa fa-magic"
       MESSAGE="App hosting that works like magic! (<I>Stats updated roughly hourly</I>)"
 
-      {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgplus.enabled }}
+      {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled }}
       RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq .user_info.premium) # days
       RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
       ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days</br>"
@@ -171,7 +171,7 @@ data:
         link-hover: "#ffdd57"
         background-image: /assets/backgrounds/background-dark.jpg
 
-    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgplus.enabled .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenplus.enabled }}
+    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenplus.enabled }}
     # Optional message
     message:
       url: https://{{ .Release.Name }}.{{ .Values.dns_domain }}/assets/message/message.json
@@ -229,7 +229,7 @@ data:
         # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
         # logo: "path/to/logo"
         items:
-          {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled  }}
+          {{ if or .Values.jellyfin.enabled .Values.jellyfinranger.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled  }}
           - name: "Jellyfin"
             logo: "assets/png/jellyfin.png"
             # Alternatively a fa icon can be provided:
@@ -241,7 +241,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
+          {{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
           - name: "Plex"
             logo: "assets/png/plex.png"
             # Alternatively a fa icon can be provided:
@@ -253,7 +253,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
+          {{ if or .Values.emby.enabled .Values.embyranger.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
           - name: "Emby"
             logo: "assets/png/emby.png"
             # Alternatively a fa icon can be provided:
@@ -1161,7 +1161,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
           - name: "Zurg"
             logo: "assets/png/real-debrid.png"
             subtitle: "Manage Real Debrid WebDAV proxy"

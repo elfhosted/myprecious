@@ -22,7 +22,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              {{- if or .Values.zurghobbit.enabled .Values.zurgplus.enabled }}
+              {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled }}
               - key: node-role.elfhosted.com/dedicated
               {{- else }}
               - key: node-role.elfhosted.com/contended
@@ -42,13 +42,13 @@ spec:
           {{ .Values.zurghobbit.tolerations | toYaml | indent 10  | trimPrefix "          " }}
         affinity: 
           {{ .Values.zurghobbit.affinity    | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.zurgplus.enabled }}
+        {{- else if .Values.zurgranger.enabled }}
         resources: 
-          {{ .Values.zurgplus.resources   | toYaml | indent 10  | trimPrefix "          " }}
+          {{ .Values.zurgranger.resources   | toYaml | indent 10  | trimPrefix "          " }}
         tolerations: 
-          {{ .Values.zurgplus.tolerations | toYaml | indent 10  | trimPrefix "          " }}
+          {{ .Values.zurgranger.tolerations | toYaml | indent 10  | trimPrefix "          " }}
         affinity: 
-          {{ .Values.zurgplus.affinity    | toYaml | indent 10  | trimPrefix "          " }}
+          {{ .Values.zurgranger.affinity    | toYaml | indent 10  | trimPrefix "          " }}
         {{- else }}
         resources: 
           {{ .Values.zurg.resources   | toYaml | indent 10  | trimPrefix "          " }}

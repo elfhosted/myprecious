@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.130.2-pre-02
+version: 1.130.2-pre-03
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -36,8 +36,8 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: plexplus.enabled
-    alias: plexplus
+    condition: plexranger.enabled
+    alias: plexranger
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -61,8 +61,8 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: embyplus.enabled
-    alias: embyplus
+    condition: embyranger.enabled
+    alias: embyranger
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -81,8 +81,8 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: jellyfinplus.enabled
-    alias: jellyfinplus
+    condition: jellyfinranger.enabled
+    alias: jellyfinranger
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -263,7 +263,7 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: gatus
+    alias: gatus    
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -530,10 +530,10 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: zurgnazgul
   - name: app-template
-    condition: zurgplus.enabled
+    condition: zurgranger.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: zurgplus
+    alias: zurgranger
   # - name: app-template
   #   condition: zurghalfling.enabled
   #   version: ~0.2.1

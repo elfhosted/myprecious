@@ -1,4 +1,4 @@
-{{- if or .Values.jellyfin.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinplus.enabled }}
+{{- if or .Values.jellyfin.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinranger.enabled }}
 {{- if .Values.volsync.enabled }}
 {{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1

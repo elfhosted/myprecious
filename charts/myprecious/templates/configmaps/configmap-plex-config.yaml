@@ -1,4 +1,4 @@
-{{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
+{{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:

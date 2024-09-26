@@ -1,4 +1,4 @@
-{{- if or .Values.plex.enabled .Values.plexhobbit.enabled .Values.plexplus.enabled }}
+{{- if or .Values.plex.enabled .Values.plexhobbit.enabled .Values.plexranger.enabled }}
 {{- if .Values.volsync.enabled }}
 {{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1

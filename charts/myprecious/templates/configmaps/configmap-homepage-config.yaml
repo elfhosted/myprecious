@@ -33,7 +33,7 @@ data:
   services.yaml: |
     - Consume Media:
 
-        {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
+        {{ if or .Values.jellyfin.enabled .Values.jellyfinranger.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
         - Jellyfin:
             icon: jellyfin.png
             href: https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}
@@ -45,7 +45,7 @@ data:
               key: {{`{{HOMEPAGE_FILE_JELLYFIN_KEY}}`}} 
         {{ end }} 
 
-        {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
+        {{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
         - Plex:
             icon: plex.png
             href: https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}
@@ -57,7 +57,7 @@ data:
               key: {{`{{HOMEPAGE_FILE_PLEX_KEY}}`}} 
         {{ end }}
 
-        {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
+        {{ if or .Values.emby.enabled .Values.embyranger.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
         - Emby:
             icon: emby.png
             href: https://{{ .Release.Name }}-emby.{{ .Values.dns_domain }}
@@ -798,7 +798,7 @@ data:
             siteMonitor: http://rdtclient-alldebrid:6500
         {{ end }}            
 
-        {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+        {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
         - Zurg:
             icon: https://debridmediamanager.com/apple-touch-icon.png
             href: https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/

@@ -1211,7 +1211,7 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-zurg-ssd
-  zurgplus:
+  zurgranger:
     enabled: false
     type: custom
     mountPath: /config/zurg/
@@ -1867,7 +1867,7 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-zurg-ssd
-  zurgplus:
+  zurgranger:
     enabled: false
     type: custom
     mountPath: /storage/config/zurg/
@@ -6366,7 +6366,7 @@ plex: &app_plex
         periodSeconds: 10
         timeoutSeconds: 10
 
-plexplus:
+plexranger:
   <<: *app_plex
   podLabels:
     app.elfhosted.com/name: plex
@@ -6545,7 +6545,7 @@ jellyfin: &app_jellyfin
         JELLYFIXER_INTERNAL_URL: http://jellyfin:8096
         JELLYFIXER_EXTERNAL_URL: https://{{ .Release.Name }}-jellyfin.elfhosted.com
       
-jellyfinplus:
+jellyfinranger:
   <<: *app_jellyfin
   podLabels:
     app.elfhosted.com/name: jellyfin
@@ -6716,7 +6716,7 @@ emby: &app_emby
       cpu: 2
       memory: 4Gi   
 
-embyplus:
+embyranger:
   <<: *app_emby
   podLabels:
     app.elfhosted.com/name: emby
@@ -12571,7 +12571,7 @@ zurggluetun:
       - configMapRef:
           name: gluetun-config
 
-zurgplus:
+zurgranger:
   <<: *app_zurg
   podLabels:
     app.elfhosted.com/name: zurg

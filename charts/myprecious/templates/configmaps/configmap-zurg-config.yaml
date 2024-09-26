@@ -1,4 +1,4 @@
-{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -61,7 +61,7 @@ data:
   {{ if .Values.zurg.enabled }}
     token: {{ .Values.zurg.token }} # https://real-debrid.com/apitoken
   {{ else }}
-    token: {{ .Values.zurgplus.token }} # https://real-debrid.com/apitoken
+    token: {{ .Values.zurgranger.token }} # https://real-debrid.com/apitoken
   {{ end }}
   
     # additional download tokens - uncomment and populate this with your additional tokens to auto-overcome bandwidth limitation issues
