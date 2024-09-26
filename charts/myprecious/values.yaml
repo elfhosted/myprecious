@@ -8631,8 +8631,8 @@ kometa: &app_kometa
       cpu: 1m
       memory: 64Mi
     limits:
-      cpu: 1
-      memory: 2Gi
+      cpu: 4
+      memory: 4Gi
 
 
 kometaplus:
@@ -10440,8 +10440,8 @@ riven: &app_riven
       cpu: 1m
       memory: 20Mi
     limits:
-      cpu: 200m
-      memory: 1Gi
+      cpu: 4
+      memory: 4Gi
   ingress:
     main:
       enabled: false
