@@ -1,0 +1,11 @@
+{{ if .Values.recyclarr.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recyclarr-env
+data:
+  RADARR_API_KEY: "{{ .Values.radarrexposed.apikey }}"
+  RADARR4K_API_KEY: "{{ .Values.radarr4kexposed.apikey }}"
+  SONARR_API_KEY: "{{ .Values.sonarrexposed.apikey }}"  
+  SONARR4K_API_KEY: "{{ .Values.sonarr4kexposed.apikey }}"
+{{ .end }}

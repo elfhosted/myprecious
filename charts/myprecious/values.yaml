@@ -12221,6 +12221,9 @@ recyclarr:
       volumeMounts:
       - mountPath: /config
         name: config
+      envFrom:
+      - configMapRef:
+          name: recyclarr-env         
 
 knightcrawler: &app_knightcrawler
   enabled: false
