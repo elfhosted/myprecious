@@ -1,4 +1,4 @@
-{{ if or .Values.zurg.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
+{{ if or .Values.zurg.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource

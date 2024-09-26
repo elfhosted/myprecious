@@ -1224,7 +1224,21 @@ configmounts: &config_mounts
     mountPath: /config/zurg/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-zurg-ssd                              
+        claimName: config-zurg-ssd   
+  zurghalfling:
+    enabled: false
+    type: custom
+    mountPath: /config/zurg/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-zurg-ssd   
+  zurgnazgul:
+    enabled: false
+    type: custom
+    mountPath: /config/zurg/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-zurg-ssd                                              
   rdtclient:
     enabled: false
     type: custom
@@ -1866,7 +1880,21 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/zurg/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-zurg-ssd                              
+        claimName: config-zurg-ssd  
+  zurghalfling:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/zurg/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-zurg-ssd 
+  zurgnazgul:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/zurg/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config-zurg-ssd                                               
   rdtclient:
     enabled: false
     type: custom

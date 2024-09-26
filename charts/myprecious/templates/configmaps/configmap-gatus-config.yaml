@@ -50,7 +50,7 @@ data:
 
     endpoints:
 
-      {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled }}
+      {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
       - name: jellyfin
         group: consume-media
         url: "http://jellyfin:8096"
@@ -61,7 +61,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled }}
+      {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
       - name: emby
         group: consume-media
         url: "http://emby:8096"
@@ -72,7 +72,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
+      {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
       - name: plex
         group: consume-media
         url: "http://plex:32400"
@@ -854,7 +854,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
+      {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
       - name: zurg
         group: download-media
         url: "http://zurg:9999/http/version.txt"

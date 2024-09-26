@@ -229,7 +229,7 @@ data:
         # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
         # logo: "path/to/logo"
         items:
-          {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled  }}
+          {{ if or .Values.jellyfin.enabled .Values.jellyfinplus.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled  }}
           - name: "Jellyfin"
             logo: "assets/png/jellyfin.png"
             # Alternatively a fa icon can be provided:
@@ -241,7 +241,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled }}
+          {{ if or .Values.plex.enabled .Values.plexplus.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
           - name: "Plex"
             logo: "assets/png/plex.png"
             # Alternatively a fa icon can be provided:
@@ -253,7 +253,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled }}
+          {{ if or .Values.emby.enabled .Values.embyplus.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
           - name: "Emby"
             logo: "assets/png/emby.png"
             # Alternatively a fa icon can be provided:
@@ -1161,7 +1161,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled }}
+          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgplus.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
           - name: "Zurg"
             logo: "assets/png/real-debrid.png"
             subtitle: "Manage Real Debrid WebDAV proxy"
