@@ -10120,7 +10120,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.9.9
+    tag: v0.9.10
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-homepage,homepage-config,homepage-env"
@@ -10410,7 +10410,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.14.2@sha256:deadd18fefc707e4f2c7d773a626acb33b0d52b7284702488f47dab35bdeb5b6
+    tag: v0.15.0@sha256:590eacd75072708143b90b32db92784b897498a56080b6402b15642332d4c270
   priorityClassName: tenant-normal
   controller:
     annotations:
