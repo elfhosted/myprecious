@@ -6827,10 +6827,10 @@ homer:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
       enabled: false
   controller:
-    replicas: 2 # not sure we need 2 replicas anymore
-    strategy: RollingUpdate # can't do this because we run gatus in homer now
-    rollingUpdate:
-      unavailable: 1
+    replicas: 1 # not sure we need 2 replicas anymore
+    # strategy: RollingUpdate # can't do this because we run gatus in homer now
+    # rollingUpdate:
+    #   unavailable: 1
     annotations:
       configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer,gatus-config" # Reload the deployment every time the yaml config changes
   resources:
