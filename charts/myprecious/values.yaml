@@ -5251,7 +5251,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.18.0@sha256:b6120d24bc974c36b2554968df2aa7e3ca12404c2e7b2db9ca6fe7b45b0087e9
+    tag: 7.19.0@sha256:a1c75ef2de6d78eaa5bda0717df257eb9b574535f1d9d53b808bec0ebc46d98e
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5683,7 +5683,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.24.1.4740@sha256:60c1fb1bcb75b4159f15cb321c7f6a841f523cb50244722cf9c18a5ab1123361
+    tag: 1.24.3.4754@sha256:fb7a344ce73d9a765c0e201a84069b5e5a9f2779610e6053a8a74b09bff66917
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10733,7 +10733,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.676@sha256:04f2ad487176a2ccc41293c0cd403fc05e1a00446f6cb773d12d8c340e170334
+    tag: 0.22.681@sha256:2354f02346d40c73ee6318df41efa495f475a0d7f68206f62b27effb90d47e8b
   priorityClassName: tenant-normal
   controller:
     annotations:
