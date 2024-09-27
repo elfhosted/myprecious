@@ -12,7 +12,7 @@ spec:
   - port: 8080
     targetPort: 8080
     protocol: TCP
-    name: gatus
+    name: http
   selector:
     app.kubernetes.io/name: gatus
     app.kubernetes.io/instance: {{ .Release.Name }}
