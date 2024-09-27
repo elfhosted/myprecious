@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.131.0](https://github.com/elfhosted/myprecious/compare/v1.130.0...v1.131.0) (2024-09-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.681 ([4776c80](https://github.com/elfhosted/myprecious/commit/4776c809803c2270ac931ff900501cd6a3607378))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.24.3.4754 ([4e6ab8f](https://github.com/elfhosted/myprecious/commit/4e6ab8f4f3f86d47d1aa74aaef9572cd2dbc8bb9))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.14.2 ([17fe60b](https://github.com/elfhosted/myprecious/commit/17fe60bdf15d20f87a76924a40a08468865ed176))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.15.0 ([f5d0728](https://github.com/elfhosted/myprecious/commit/f5d0728ab133f68118b53e2042415927778f996a))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.10 ([1a67b5b](https://github.com/elfhosted/myprecious/commit/1a67b5b1db5abddabf07787126338d469f8202ed))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.116.0 ([5867f4e](https://github.com/elfhosted/myprecious/commit/5867f4e70dd2596d8eacffb8fab0c5a2d5fe9ed6))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.116.0 ([2ffdac3](https://github.com/elfhosted/myprecious/commit/2ffdac3e45be98a6357b668eef22fb414307baea))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.19.0 ([f124e37](https://github.com/elfhosted/myprecious/commit/f124e374b49aec6336a465b326d29953f4f4501b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:v0.15.0 docker digest to 040496d ([30929aa](https://github.com/elfhosted/myprecious/commit/30929aadcb6e36a44463baf19142d43d6402a705))
+
 ## [1.130.0](https://github.com/elfhosted/myprecious/compare/v1.129.0...v1.130.0) (2024-09-26)
 
 
