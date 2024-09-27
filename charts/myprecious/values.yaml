@@ -6779,13 +6779,7 @@ homer:
       type: "custom"
       volumeSpec:
         configMap:
-          name: gatus-config
-    gatus:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gatus-block             
+          name: gatus-config           
     disk-usage:
       enabled: "true"
       mountPath: "/usr/local/bin/disk_usage.sh"
