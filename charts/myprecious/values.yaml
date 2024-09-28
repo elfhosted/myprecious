@@ -6154,7 +6154,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.0.8992-8463ad060
+    tag: rolling
   persistence:
     <<: *storagemounts    
     config:
@@ -6225,7 +6225,7 @@ plex: &app_plex
     bootstrap-elfbot: *bootstrap_elfbot
     update-dns: *update_dns_on_init
     repair-db:
-      image: ghcr.io/elfhosted/plex:1.41.0.8992-8463ad060
+      image: ghcr.io/elfhosted/plex:rolling
       command:
       - /bin/bash
       - -c
