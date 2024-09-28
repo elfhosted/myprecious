@@ -3828,7 +3828,7 @@ radarr: &app_radarr
       securityContext: *default_securitycontext           
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 500Mi
     limits:
       cpu: 1
@@ -3986,7 +3986,7 @@ radarr4k: &app_radarr4k
       securityContext: *default_securitycontext      
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 500Mi
     limits:
       cpu: 1
@@ -4545,7 +4545,7 @@ filebrowser:
       cpu: 1m
       memory: 6Mi
     limits:
-      cpu: 200m
+      cpu: 1m
       memory: 514Mi
 
 
@@ -5434,7 +5434,7 @@ sonarr: &app_sonarr
       securityContext: *default_securitycontext            
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 600Mi
     limits:
       cpu: 1
@@ -5670,7 +5670,7 @@ resiliosync:
       enabled: false
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -6909,7 +6909,7 @@ gatus:
       cpu: 1m
       memory: 20Mi
     limits:
-      cpu: 200m
+      cpu: 1m
       memory: 128Mi
   ingress:
     main:
@@ -9014,7 +9014,7 @@ storagehub:
       cpu: 1m
       memory: 10Mi
     limits:
-      cpu: 200m
+      cpu: 1m
       memory: 512Mi
   # envFrom:
   # - configMapRef:
