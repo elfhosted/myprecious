@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.132.0](https://github.com/elfhosted/myprecious/compare/v1.131.0...v1.132.0) (2024-09-28)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.12.0 ([2e6bcec](https://github.com/elfhosted/myprecious/commit/2e6bcecbe50e30a24a471bf4cea38cfe2f5a6095))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.685 ([ff18d10](https://github.com/elfhosted/myprecious/commit/ff18d10018009936a67636ccee5b957461536e2c))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.1 ([900c5c3](https://github.com/elfhosted/myprecious/commit/900c5c3b0bf8db64513ff1ed39e547d6832c7af6))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.53.3 ([7e7ee79](https://github.com/elfhosted/myprecious/commit/7e7ee796f1ed4d6589194da8e62e839498263406))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2457 ([6854aa1](https://github.com/elfhosted/myprecious/commit/6854aa17148afdb948e69f789c45d95a25718adb))
+
+
+### Bug Fixes
+
+* switch plex to rolling update tag ([04cc1ad](https://github.com/elfhosted/myprecious/commit/04cc1adcbbb08987488459b799199620b2ea4936))
+
 ## [1.131.0](https://github.com/elfhosted/myprecious/compare/v1.130.0...v1.131.0) (2024-09-27)
 
 
