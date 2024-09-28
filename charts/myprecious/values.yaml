@@ -5328,7 +5328,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2421@sha256:40b7e018844a91e8c562feccaeeba7f0024c6bdbf1e96b3c99672f385dd3938b
+    tag: 4.0.9.2457@sha256:63c3a47bd56241e458c0817a1bcbc48feb2c54b90d34d6690db6e3e0bfcc09ec
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5467,7 +5467,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2421@sha256:40b7e018844a91e8c562feccaeeba7f0024c6bdbf1e96b3c99672f385dd3938b
+    tag: 4.0.9.2457@sha256:63c3a47bd56241e458c0817a1bcbc48feb2c54b90d34d6690db6e3e0bfcc09ec
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5896,7 +5896,7 @@ navidrome:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/navidrome
-    tag: 0.53.2@sha256:373159e69a7bd3035865116c26b30893d09d936ce0f12ad6ab07ae2ae6038ee3
+    tag: 0.53.3@sha256:62ab1152c89931dc33029f9136744fbf6ab76e17ed9f978343f46d858e8188cc
   sso:
     enabled: true
   priorityClassName: tenant-streaming
@@ -9892,7 +9892,7 @@ miniflux:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/miniflux
-    tag: 2.2.0
+    tag: 2.2.1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-miniflux,miniflux-config"
@@ -10727,7 +10727,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.681@sha256:2354f02346d40c73ee6318df41efa495f475a0d7f68206f62b27effb90d47e8b
+    tag: 0.22.685@sha256:2797efb5616700b1bd199a55415ee99a04e381bfbc04e97abea9cd2817bdb4c9
   priorityClassName: tenant-normal
   controller:
     annotations:
