@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.133.0](https://github.com/elfhosted/myprecious/compare/v1.132.0...v1.133.0) (2024-09-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.688 ([2f030ec](https://github.com/elfhosted/myprecious/commit/2f030ecca23c34677e7b340a4e9c1d94d985ac55))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.6.2.4379 ([8a714bc](https://github.com/elfhosted/myprecious/commit/8a714bce287652febdd06e6835bb22d78cd25fb8))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4 ([4fca278](https://github.com/elfhosted/myprecious/commit/4fca2786ac04f6c24cca9902b11a191d9b0ffc98))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.0.1 ([4f893b7](https://github.com/elfhosted/myprecious/commit/4f893b7be8b8ab9ecafaf981514b6ec5c3b59c2c))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.116.2 ([136a60f](https://github.com/elfhosted/myprecious/commit/136a60f080ebb479ec686b23ebbbda5957e21a03))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.116.2 ([a19c47a](https://github.com/elfhosted/myprecious/commit/a19c47a437f19aab32eceff55cc8855db36c5263))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy:1.7.1 docker digest to e9d8339 ([b9f7587](https://github.com/elfhosted/myprecious/commit/b9f7587d063690960508d0fff7ce5e93e4aa154c))
+* improve Jellyseerr Emby support ([eecff61](https://github.com/elfhosted/myprecious/commit/eecff619318f16d03b3fff22de780c3cf8303db1))
+
 ## [1.132.0](https://github.com/elfhosted/myprecious/compare/v1.131.0...v1.132.0) (2024-09-28)
 
 

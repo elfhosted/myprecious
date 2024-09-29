@@ -5802,7 +5802,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.6.1.4370@sha256:90343b43636755fd3436fe8734f49ba978af51e75660ca564807293c476b1e4a
+    tag: 2.6.2.4379@sha256:3b9eb21b5686d493fe792aed87a946d92ffa252746d3ae76bc82be16f9caf1fe
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10710,7 +10710,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.685@sha256:2797efb5616700b1bd199a55415ee99a04e381bfbc04e97abea9cd2817bdb4c9
+    tag: 0.22.688@sha256:9a0581e8b28415cf09eca9f216f33abfc9ba6e5765a6062500c8d8fff8024b14
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11652,7 +11652,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.16@sha256:75e12716415faeddda69649e25391299887916d487b7eceaeeb3722397204a6c
+    tag: 4.0.1@sha256:ad36cff532436f08d638f0674d4c99dadf5ad3a011b264aa47dc15a07e3d555f
   podLabels: 
       app.elfhosted.com/name: mediafusion  
   priorityClassName: tenant-normal
@@ -13020,7 +13020,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.116.0@sha256:548ad7547d3c79c35acb933c1b3e42b6d87d190f9c31442c0bfe12585153af33
+    tag: v1.116.2@sha256:effd3d44202964c5f53af85e0fd0f2ca5287c989a43c4d55ba71133eb148bed3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13096,7 +13096,7 @@ immich:
     bootstrap: *bootstrap
   additionalContainers:
     ml: 
-      image: ghcr.io/immich-app/immich-machine-learning:v1.116.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.116.2
       envFrom:
       - configMapRef:
           name: immich-env    
