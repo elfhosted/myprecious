@@ -16,4 +16,5 @@ data:
   validate_m3u8_urls_liveness: "true"
   disable_all_scheduler: "true"
   poster_host_url: https://mediafusion.{{ .Values.dns_domain }}
+  api_password: changemeelfie
 {{ end }}
