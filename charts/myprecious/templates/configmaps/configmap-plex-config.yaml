@@ -13,7 +13,6 @@ data:
   PLEX_PREFERENCE_7: "autoEmptyTrash=0"
   PLEX_PREFERENCE_8: "BackgroundTranscodeLowPriority=1"
   PLEX_PREFERENCE_9: "LongRunningJobThreads=1"
-  PLEX_PREFERENCE_10: "TranscoderH264BackgroundPreset=ultrafast"
   PLEX_PREFERENCE_11: "RelayEnabled=0"
   PLEX_PREFERENCE_12: "TranscoderTempDirectory=/transcode"
   PLEX_PREFERENCE_13: "MinutesAllowedPaused=30"
@@ -22,12 +21,16 @@ data:
   PLEX_PREFERENCE_16: "ButlerEndHour=10"
   PLEX_PREFERENCE_17: "ButlerTaskDeepMediaAnalysis=0" # this wrecks remote mounts
   PLEX_PREFERENCE_18: "ButlerTaskUpgradeMediaAnalysis=0" # suspect this does too
+
+  {{ if not .Values.plexnazgul.enabled }}
+  PLEX_PREFERENCE_10: "TranscoderH264BackgroundPreset=ultrafast"
   PLEX_PREFERENCE_19: "MarkerSource=cloud" # get credit markers from online DBs only
   PLEX_PREFERENCE_20: "GenerateCreditsMarkerBehavior=never" # don't scan for credits
   PLEX_PREFERENCE_21: "GenerateChapterThumbBehavior=never" # don't generate thumbnails
   PLEX_PREFERENCE_22: "GenerateChapterThumbBehavior=never" # don't generate thumbnails
   PLEX_PREFERENCE_23: "GenerateIntroMarkerBehavior=never" # don't detect intros for skippage
   PLEX_PREFERENCE_24: "GenerateBIFBehavior=never" # don't generate video preview thumbnails
+  {{ end }}
   
     
   # For custom domains
