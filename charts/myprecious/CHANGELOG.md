@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.134.0](https://github.com/elfhosted/myprecious/compare/v1.133.0...v1.134.0) (2024-09-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gluetun docker tag to v3.39.1 ([3e31a75](https://github.com/elfhosted/myprecious/commit/3e31a75f3e3c8af4edb4265de3c2a85e7a782405))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.694 ([ecd2885](https://github.com/elfhosted/myprecious/commit/ecd28854dfca6ce2ff242faa2d6086bbf91fc8e1))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.15.1 ([ee2dc96](https://github.com/elfhosted/myprecious/commit/ee2dc9647703e0a1c293a4d2083f91209f51b15b))
+* **app:** update ghcr.io/elfhosted/uptime-kuma docker tag to v1.23.14 ([3183919](https://github.com/elfhosted/myprecious/commit/3183919d3f06fb80d0b7c867f1475a83039baffd))
+* **app:** update ghcr.io/elfhosted/uptime-kuma docker tag to v1.23.15 ([73fc885](https://github.com/elfhosted/myprecious/commit/73fc88547167274f149b1bd828573005c94ded18))
+* **app:** update jlesage/jdownloader-2 docker tag to v24.09.1 ([d8b11c6](https://github.com/elfhosted/myprecious/commit/d8b11c664f245c5f4d9b665b1141aba2d04f325d))
+
+
+### Bug Fixes
+
+* allow BW-heavy plexpass features on nazguls ([a2a6038](https://github.com/elfhosted/myprecious/commit/a2a60382c1d658d64ff4b8c70f6e81182f474bea))
+* **app:** update ghcr.io/elfhosted/warp:rolling docker digest to 4e89fc0 ([cf78131](https://github.com/elfhosted/myprecious/commit/cf78131553cf6679c445b71dcd93e48436dd9411))
+* elfbot env for mediaflow-proxy ([3639883](https://github.com/elfhosted/myprecious/commit/3639883d4fd323ce6e157516a2064c10a9799ebd))
+* increase default Riven database RAM limit ([d80320a](https://github.com/elfhosted/myprecious/commit/d80320a1e210f1bfccf824c6305a8a5b513213eb))
+
 ## [1.133.0](https://github.com/elfhosted/myprecious/compare/v1.132.0...v1.133.0) (2024-09-29)
 
 
