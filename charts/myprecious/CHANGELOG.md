@@ -1,5 +1,59 @@
 # Changelog
 
+## [1.134.0](https://github.com/elfhosted/myprecious/compare/v1.133.0...v1.134.0) (2024-09-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gluetun docker tag to v3.39.1 ([3e31a75](https://github.com/elfhosted/myprecious/commit/3e31a75f3e3c8af4edb4265de3c2a85e7a782405))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.694 ([ecd2885](https://github.com/elfhosted/myprecious/commit/ecd28854dfca6ce2ff242faa2d6086bbf91fc8e1))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.15.1 ([ee2dc96](https://github.com/elfhosted/myprecious/commit/ee2dc9647703e0a1c293a4d2083f91209f51b15b))
+* **app:** update ghcr.io/elfhosted/uptime-kuma docker tag to v1.23.14 ([3183919](https://github.com/elfhosted/myprecious/commit/3183919d3f06fb80d0b7c867f1475a83039baffd))
+* **app:** update ghcr.io/elfhosted/uptime-kuma docker tag to v1.23.15 ([73fc885](https://github.com/elfhosted/myprecious/commit/73fc88547167274f149b1bd828573005c94ded18))
+* **app:** update jlesage/jdownloader-2 docker tag to v24.09.1 ([d8b11c6](https://github.com/elfhosted/myprecious/commit/d8b11c664f245c5f4d9b665b1141aba2d04f325d))
+
+
+### Bug Fixes
+
+* allow BW-heavy plexpass features on nazguls ([a2a6038](https://github.com/elfhosted/myprecious/commit/a2a60382c1d658d64ff4b8c70f6e81182f474bea))
+* **app:** update ghcr.io/elfhosted/warp:rolling docker digest to 4e89fc0 ([cf78131](https://github.com/elfhosted/myprecious/commit/cf78131553cf6679c445b71dcd93e48436dd9411))
+* elfbot env for mediaflow-proxy ([3639883](https://github.com/elfhosted/myprecious/commit/3639883d4fd323ce6e157516a2064c10a9799ebd))
+* increase default Riven database RAM limit ([d80320a](https://github.com/elfhosted/myprecious/commit/d80320a1e210f1bfccf824c6305a8a5b513213eb))
+
+## [1.133.0](https://github.com/elfhosted/myprecious/compare/v1.132.0...v1.133.0) (2024-09-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.688 ([2f030ec](https://github.com/elfhosted/myprecious/commit/2f030ecca23c34677e7b340a4e9c1d94d985ac55))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.6.2.4379 ([8a714bc](https://github.com/elfhosted/myprecious/commit/8a714bce287652febdd06e6835bb22d78cd25fb8))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4 ([4fca278](https://github.com/elfhosted/myprecious/commit/4fca2786ac04f6c24cca9902b11a191d9b0ffc98))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.0.1 ([4f893b7](https://github.com/elfhosted/myprecious/commit/4f893b7be8b8ab9ecafaf981514b6ec5c3b59c2c))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.116.2 ([136a60f](https://github.com/elfhosted/myprecious/commit/136a60f080ebb479ec686b23ebbbda5957e21a03))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.116.2 ([a19c47a](https://github.com/elfhosted/myprecious/commit/a19c47a437f19aab32eceff55cc8855db36c5263))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy:1.7.1 docker digest to e9d8339 ([b9f7587](https://github.com/elfhosted/myprecious/commit/b9f7587d063690960508d0fff7ce5e93e4aa154c))
+* improve Jellyseerr Emby support ([eecff61](https://github.com/elfhosted/myprecious/commit/eecff619318f16d03b3fff22de780c3cf8303db1))
+
+## [1.132.0](https://github.com/elfhosted/myprecious/compare/v1.131.0...v1.132.0) (2024-09-28)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.12.0 ([2e6bcec](https://github.com/elfhosted/myprecious/commit/2e6bcecbe50e30a24a471bf4cea38cfe2f5a6095))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.685 ([ff18d10](https://github.com/elfhosted/myprecious/commit/ff18d10018009936a67636ccee5b957461536e2c))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.1 ([900c5c3](https://github.com/elfhosted/myprecious/commit/900c5c3b0bf8db64513ff1ed39e547d6832c7af6))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.53.3 ([7e7ee79](https://github.com/elfhosted/myprecious/commit/7e7ee796f1ed4d6589194da8e62e839498263406))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.9.2457 ([6854aa1](https://github.com/elfhosted/myprecious/commit/6854aa17148afdb948e69f789c45d95a25718adb))
+
+
+### Bug Fixes
+
+* switch plex to rolling update tag ([04cc1ad](https://github.com/elfhosted/myprecious/commit/04cc1adcbbb08987488459b799199620b2ea4936))
+
 ## [1.131.0](https://github.com/elfhosted/myprecious/compare/v1.130.0...v1.131.0) (2024-09-27)
 
 

@@ -16,4 +16,8 @@ data:
   validate_m3u8_urls_liveness: "true"
   disable_all_scheduler: "true"
   poster_host_url: https://mediafusion.{{ .Values.dns_domain }}
+  api_password: changemeelfie
+  zilean_url: http://zilean.zilean:8181
+  is_scrap_from_zilean: "true"
+  addon_name: "MediaFusion | {{ .Release.Name }}"
 {{ end }}

@@ -18,4 +18,7 @@ spec:
       - ports:
         - port: '6379' # redis
           protocol: TCP
+      - ports:
+        - port: '8181' # zilean
+          protocol: TCP
 {{- end }}

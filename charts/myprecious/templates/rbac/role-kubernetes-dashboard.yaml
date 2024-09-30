@@ -75,6 +75,12 @@ rules:
 {{ if .Values.comet.enabled }}
   - elfbot-comet
 {{ end }}
+{{ if .Values.mediafusion.enabled }}
+  - elfbot-mediafusion
+{{ end }}
+{{ if .Values.mediaflowproxy.enabled }}
+  - elfbot-mediaflow-proxy
+{{ end }}
 {{ if .Values.calibre.enabled }}
   - elfbot-calibre
 {{ end }}

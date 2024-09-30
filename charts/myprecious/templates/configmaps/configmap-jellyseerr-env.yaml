@@ -1,0 +1,10 @@
+{{ if .Values.jellyseerr.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jellyseerr-env
+data:
+  {{ if or .Values.emby.enabled .Values.embyhobbit.enabled .Values.embyranger.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
+  JELLYFIN_TYPE: emby
+  {{ end }}
+{{ end }}

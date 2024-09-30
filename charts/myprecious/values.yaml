@@ -64,7 +64,7 @@ nazgul_zurg_resources: &nazgul_zurg_resources
     cpu: "7"
     memory: 30Mi
   limits:
-    cpu: "8"
+    cpu: "16"
     memory: 4Gi           
 
 
@@ -2684,7 +2684,7 @@ rutorrentgluetun: &rutorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       securityContext:
         runAsUser: 0
         capabilities:
@@ -2944,7 +2944,7 @@ delugegluetun: &deluge
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       securityContext:
         runAsUser: 0
         capabilities:
@@ -3301,7 +3301,7 @@ qbittorrentgluetun: &qbittorrent
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077          
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3          
       securityContext:
         runAsUser: 0
         capabilities:
@@ -3828,7 +3828,7 @@ radarr: &app_radarr
       securityContext: *default_securitycontext           
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 500Mi
     limits:
       cpu: 1
@@ -3986,7 +3986,7 @@ radarr4k: &app_radarr4k
       securityContext: *default_securitycontext      
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 500Mi
     limits:
       cpu: 1
@@ -4545,7 +4545,7 @@ filebrowser:
       cpu: 1m
       memory: 6Mi
     limits:
-      cpu: 200m
+      cpu: 1m
       memory: 514Mi
 
 
@@ -4555,7 +4555,7 @@ uptimekuma:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/uptime-kuma
-    tag: 1.23.13@sha256:56042a346a369c6e16c926388c7c670645acce7974bb4175414fef904317f24c
+    tag: 1.23.15@sha256:1c64e3c9bcb756107c9e0e362061d71b6302702fd3fbb50ec5b2f6b33993e43b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -5328,7 +5328,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2421@sha256:40b7e018844a91e8c562feccaeeba7f0024c6bdbf1e96b3c99672f385dd3938b
+    tag: 4.0.9.2457@sha256:63c3a47bd56241e458c0817a1bcbc48feb2c54b90d34d6690db6e3e0bfcc09ec
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5434,7 +5434,7 @@ sonarr: &app_sonarr
       securityContext: *default_securitycontext            
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 600Mi
     limits:
       cpu: 1
@@ -5467,7 +5467,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2421@sha256:40b7e018844a91e8c562feccaeeba7f0024c6bdbf1e96b3c99672f385dd3938b
+    tag: 4.0.9.2457@sha256:63c3a47bd56241e458c0817a1bcbc48feb2c54b90d34d6690db6e3e0bfcc09ec
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5670,7 +5670,7 @@ resiliosync:
       enabled: false
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 512Mi
     limits:
       cpu: 1
@@ -5802,7 +5802,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.6.1.4370@sha256:90343b43636755fd3436fe8734f49ba978af51e75660ca564807293c476b1e4a
+    tag: 2.6.2.4379@sha256:3b9eb21b5686d493fe792aed87a946d92ffa252746d3ae76bc82be16f9caf1fe
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5896,7 +5896,7 @@ navidrome:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/navidrome
-    tag: 0.53.2@sha256:373159e69a7bd3035865116c26b30893d09d936ce0f12ad6ab07ae2ae6038ee3
+    tag: 0.53.3@sha256:62ab1152c89931dc33029f9136744fbf6ab76e17ed9f978343f46d858e8188cc
   sso:
     enabled: true
   priorityClassName: tenant-streaming
@@ -6026,7 +6026,7 @@ readarr:
         set -e
 
         # Set auth to external
-        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml        
+        # sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml        
       volumeMounts:
       - mountPath: /config
         name: config        
@@ -6112,7 +6112,7 @@ readarraudio:
         set -e
 
         # Set auth to external
-        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
+        # sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
       volumeMounts:
       - mountPath: /config
         name: config        
@@ -6154,7 +6154,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.0.8992-8463ad060
+    tag: rolling
   persistence:
     <<: *storagemounts    
     config:
@@ -6225,7 +6225,7 @@ plex: &app_plex
     bootstrap-elfbot: *bootstrap_elfbot
     update-dns: *update_dns_on_init
     repair-db:
-      image: ghcr.io/elfhosted/plex:1.41.0.8992-8463ad060
+      image: ghcr.io/elfhosted/plex:rolling
       command:
       - /bin/bash
       - -c
@@ -6309,7 +6309,7 @@ plex: &app_plex
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       env:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
         DNS_KEEP_NAMESERVER: "on"            
@@ -6909,7 +6909,7 @@ gatus:
       cpu: 1m
       memory: 20Mi
     limits:
-      cpu: 200m
+      cpu: 1m
       memory: 128Mi
   ingress:
     main:
@@ -7132,7 +7132,7 @@ flaresolverr: &app_flaresolverr
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
@@ -7885,6 +7885,9 @@ jellyseerr:
         configMap:
           name: tooling-scripts             
           defaultMode: 0755    
+  envFrom:
+  - configMapRef:
+      name: jellyseerr-env          
   initContainers:
     bootstrap: *bootstrap
     update-dns: *update_dns_on_init 
@@ -9014,7 +9017,7 @@ storagehub:
       cpu: 1m
       memory: 10Mi
     limits:
-      cpu: 200m
+      cpu: 1m
       memory: 512Mi
   # envFrom:
   # - configMapRef:
@@ -9822,7 +9825,7 @@ jdownloader:
   priorityClassName: tenant-bulk
   image:
     repository: jlesage/jdownloader-2
-    tag: v24.08.1
+    tag: v24.09.1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jdownloader"
@@ -9892,7 +9895,7 @@ miniflux:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/miniflux
-    tag: 2.2.0
+    tag: 2.2.1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-miniflux,miniflux-config"
@@ -10404,7 +10407,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.15.0@sha256:040496ddcaa526bd8b0cc516f8919410c79d8f569580b72ee55c63c023971911
+    tag: v0.15.1@sha256:7c8faadf256154b84c08830973c67a5a73f195782bdda45b8647c467382a779c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10434,7 +10437,7 @@ riven: &app_riven
       cpu: 1m
       memory: 20Mi
     limits:
-      cpu: 4
+      cpu: 2
       memory: 4Gi
   ingress:
     main:
@@ -10543,33 +10546,13 @@ riven: &app_riven
         subPath: postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
-    backup-database:
-      image: *tooling_image
-      env:
-        - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DATABASE
-          value: postgres
-        - name: POSTGRES_USER
-          value: riven
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-
-        set +e # for debug
-        sleep 2m # give postgres time to start up
-        while true
-        do
-          now=$(date +"%s_%Y-%m-%d")
-          PGPASSWORD=$POSTGRES_PASSWORD pg_dump -U $POSTGRES_USER -h localhost -d $POSTGRES_DATABASE -F c -f /backup/${now}_${POSTGRES_DATABASE}.psql
-          sleep 1d
-        done
-      volumeMounts:
-      - mountPath: /backup
-        name: config      
-        subPath: postgresql/backups
+      resources:
+        requests:
+          cpu: 1m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 3Gi
 
 rivenplus:
   <<: *app_riven
@@ -10700,7 +10683,7 @@ airdcppgluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       envFrom:
       - configMapRef:
           name: airdcpp-gluetun-config
@@ -10727,7 +10710,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.681@sha256:2354f02346d40c73ee6318df41efa495f475a0d7f68206f62b27effb90d47e8b
+    tag: 0.22.694@sha256:9641f4d26e32e7246b8d40ddd5e956325595ea0dadff7c5b46a605080df42abf
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10924,7 +10907,7 @@ stremioservergluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       envFrom:
       - configMapRef:
           name: stremioserver-gluetun-config
@@ -11533,7 +11516,7 @@ comet:
     speedtest:
       image: openspeedtest/latest      
     warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:fbb62450640544de4974e1e424b13bf30f6e4683b55faef4b4c5f13e7c78c083
+      image: ghcr.io/elfhosted/warp:rolling@sha256:4e89fc07ff24c30ffc7f3804d7f3738d634c7b9aa4fecb4941618a366e43d8c9
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -11669,7 +11652,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 3.9.16@sha256:75e12716415faeddda69649e25391299887916d487b7eceaeeb3722397204a6c
+    tag: 4.0.1@sha256:ad36cff532436f08d638f0674d4c99dadf5ad3a011b264aa47dc15a07e3d555f
   podLabels: 
       app.elfhosted.com/name: mediafusion  
   priorityClassName: tenant-normal
@@ -11691,24 +11674,6 @@ mediafusion:
       type: RuntimeDefault
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  affinity:
-    podAffinity:
-      # prefer to be located with zurg, if tolerations permit
-      preferredDuringSchedulingIgnoredDuringExecution: 
-      - weight: 100  
-        podAffinityTerm:    
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg
-          topologyKey: "kubernetes.io/hostname"     
-  tolerations:
-  - key: node-role.elfhosted.com/dedicated
-    operator: Exists               
-  - key: node-role.elfhosted.com/hobbit
-    operator: Exists  
   persistence:
     tmp: *tmp
   resources:
@@ -11766,13 +11731,13 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.7.1@sha256:acd70896329e08d43cdf216fd9bd637bdfe892e8585ffd6e262f70f07f7d5abc
+    tag: 1.7.1@sha256:e9d8339844c4a9b7594215be0e643b9a7f4ab37394da2b9e0791712494e7bd5b
   podLabels: 
       app.elfhosted.com/name: mediaflow-proxy  
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow,mediaflow-proxy-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
       secret.reloader.stakater.com/reload: "mediaflow-proxy-env"
       kubernetes.io/egress-bandwidth: "125M"
     strategy:
@@ -12504,7 +12469,7 @@ zurg: &app_zurg
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       envFrom:
       - configMapRef:
           name: gluetun-config
@@ -12563,7 +12528,7 @@ zurggluetun:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.0@sha256:198b5473cc2a48a3f38ab3a5d9e1316a6cc2b93f2b856c1cfc232713d03ce077
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
       envFrom:
       - configMapRef:
           name: gluetun-config
@@ -13055,7 +13020,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.116.0@sha256:548ad7547d3c79c35acb933c1b3e42b6d87d190f9c31442c0bfe12585153af33
+    tag: v1.116.2@sha256:effd3d44202964c5f53af85e0fd0f2ca5287c989a43c4d55ba71133eb148bed3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13131,7 +13096,7 @@ immich:
     bootstrap: *bootstrap
   additionalContainers:
     ml: 
-      image: ghcr.io/immich-app/immich-machine-learning:v1.116.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.116.2
       envFrom:
       - configMapRef:
           name: immich-env    
