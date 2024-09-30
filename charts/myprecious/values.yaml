@@ -10552,7 +10552,7 @@ riven: &app_riven
           memory: 1Mi
         limits:
           cpu: 500m
-          memory: 3Gi
+          memory: 4Gi
 
 rivenplus:
   <<: *app_riven
