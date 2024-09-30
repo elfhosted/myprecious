@@ -79,7 +79,7 @@ rules:
   - elfbot-mediafusion
 {{ end }}
 {{ if .Values.mediaflowproxy.enabled }}
-  - elfbot-mediaflowproxy
+  - elfbot-mediaflow-proxy
 {{ end }}
 {{ if .Values.calibre.enabled }}
   - elfbot-calibre

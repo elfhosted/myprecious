@@ -11737,7 +11737,7 @@ mediaflowproxy:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow,mediaflow-proxy-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
       secret.reloader.stakater.com/reload: "mediaflow-proxy-env"
       kubernetes.io/egress-bandwidth: "125M"
     strategy:
