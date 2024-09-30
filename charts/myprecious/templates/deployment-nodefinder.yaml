@@ -49,6 +49,20 @@ spec:
           {{ .Values.zurgranger.tolerations | toYaml | indent 10  | trimPrefix "          " }}
         affinity: 
           {{ .Values.zurgranger.affinity    | toYaml | indent 10  | trimPrefix "          " }}
+        {{- else if .Values.zurgrhalfling.enabled }}
+        resources: 
+          {{ .Values.zurghalfling.resources   | toYaml | indent 10  | trimPrefix "          " }}
+        tolerations: 
+          {{ .Values.zurghalfling.tolerations | toYaml | indent 10  | trimPrefix "          " }}
+        affinity: 
+          {{ .Values.zurghalfling.affinity    | toYaml | indent 10  | trimPrefix "          " }}
+        {{- else if .Values.zurgnazgul.enabled }}
+        resources: 
+          {{ .Values.zurgnazgul.resources   | toYaml | indent 10  | trimPrefix "          " }}
+        tolerations: 
+          {{ .Values.zurgnazgul.tolerations | toYaml | indent 10  | trimPrefix "          " }}
+        affinity: 
+          {{ .Values.zurgnazgul.affinity    | toYaml | indent 10  | trimPrefix "          " }}
         {{- else }}
         resources: 
           {{ .Values.zurg.resources   | toYaml | indent 10  | trimPrefix "          " }}

@@ -2,10 +2,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Release.Name }}-nodefinder-deleter-v4
+  name: {{ .Release.Name }}-nodefinder-deleter-v5
   labels:
     app.elfhosted.com/name: nodefinder-deleter  
 spec:
+  ttlSecondsAfterFinished: 60  # Cleanup after 60 seconds
+  backoffLimit: 3  # Number of retries before considering the job as failed
   template:
     metadata:
       labels:
@@ -13,6 +15,7 @@ spec:
     spec:
       restartPolicy: Never
       serviceAccountName: nodefinder-deleter
+      restartPolicy: OnFailure  # Restart only if the job fails
       containers:
       - name: "delete-nodefinder"
         image: ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
@@ -20,10 +23,13 @@ spec:
         - /bin/bash
         - -c
         - |
+          set -x
+          set -e
+
           # If deployment exists, then wait 4 min and delete it
-          if kubectl get deployment {{ .Release.Name }}-nodefinder
+          if kubectl --request-timeout 30s get deployment {{ .Release.Name }}-nodefinder
           then
             sleep 4m
-            kubectl delete deployment {{ .Release.Name }}-nodefinder || echo "nodefinder not running"
+            kubectl --request-timeout 30s delete deployment {{ .Release.Name }}-nodefinder"
           fi
 
