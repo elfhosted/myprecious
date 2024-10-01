@@ -5355,7 +5355,15 @@ sonarr: &app_sonarr
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr-block          
+          claimName: config-sonarr-block      
+    b2-mediacovers:
+      enabled: true
+      type: custom
+      mountPath: /test-mediacovers/
+      subPath: sonarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: b2-mediacovers     
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5873,7 +5881,7 @@ lidarr:
           rm -rf "/config/MediaCover"
           ln -s /mediacover '/config/MediaCover'
         fi
-        
+
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
         # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
