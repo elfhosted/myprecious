@@ -5961,8 +5961,8 @@ readarr:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/readarr-develop
-    tag: 0.3.32.2587@sha256:2809df955403e72db236c484aa5c0b513193c65114e73c34b6f1906724444330
+    repository: elfhosted/readarr-nightly
+    tag: 0.4.1.2639@sha256:d565a40e66cc8af8dbd9272b585ca7b023412ac96fd12b435de95af69dc578f7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6047,8 +6047,8 @@ readarraudio:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/readarr-develop
-    tag: 0.3.32.2587@sha256:2809df955403e72db236c484aa5c0b513193c65114e73c34b6f1906724444330
+    repository: elfhosted/readarr-nightly
+    tag: 0.4.1.2639@sha256:d565a40e66cc8af8dbd9272b585ca7b023412ac96fd12b435de95af69dc578f7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
