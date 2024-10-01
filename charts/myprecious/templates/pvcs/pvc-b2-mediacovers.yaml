@@ -14,4 +14,3 @@ spec:
   selector:
     matchLabels:
       name: rclone-{{ .Release.Name }}-b2-mediacovers
-{{ end }}
