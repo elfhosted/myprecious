@@ -7319,7 +7319,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.12.0-vaapi
+    tag: 0.12.2-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7390,7 +7390,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.7@sha256:015c52208c049560a2c096a5b55c276cfb03ed39ea4f167d97d95e639bb2750a
+    tag: 1.2.8@sha256:64e73d81970550b819ddecff2524692dd7ed2a1a67280cd812c5a64b49a65fcf
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -8534,7 +8534,7 @@ kometa: &app_kometa
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kometa
-    tag: v2.0.2@sha256:ed44138ae6c6c12d3185e5dd513c8fc454a9970555a95d9da7f2bba39dc1fe54
+    tag: v2.1.0@sha256:598cea4b0d31c383e1bfee9f473991cbcf5f03ef175e13a6472bfb12f842802b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10710,7 +10710,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.694@sha256:9641f4d26e32e7246b8d40ddd5e956325595ea0dadff7c5b46a605080df42abf
+    tag: 0.22.698@sha256:11088a9c036d1f08524f66cd567ff91f9d19859df85ce0c6b3fba4d5e7c1a7fe
   priorityClassName: tenant-normal
   controller:
     annotations:
