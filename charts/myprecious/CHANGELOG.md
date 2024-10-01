@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.135.0](https://github.com/elfhosted/myprecious/compare/v1.134.0...v1.135.0) (2024-10-01)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.12.1 ([8dbd15f](https://github.com/elfhosted/myprecious/commit/8dbd15f746b40c9fdefce06f55232317c2ca5f5c))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.12.2 ([dae9437](https://github.com/elfhosted/myprecious/commit/dae94374758c210748e05e0effa2d2201af46b3c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.698 ([856248c](https://github.com/elfhosted/myprecious/commit/856248cb34674b77941bb07d28a9b15358fad5cb))
+* **app:** update ghcr.io/elfhosted/kometa docker tag to v2.1.0 ([3c4d3bf](https://github.com/elfhosted/myprecious/commit/3c4d3bf72cd709230dcd1db1c31786305b8117de))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.8 ([3d4c96c](https://github.com/elfhosted/myprecious/commit/3d4c96ca49a5152df11c5e275e4348783955d7f5))
+
 ## [1.134.0](https://github.com/elfhosted/myprecious/compare/v1.133.0...v1.134.0) (2024-09-30)
 
 
