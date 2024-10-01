@@ -16,14 +16,25 @@ spec:
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution: 
-        - labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/role
-              operator: In
-              values:
-              - nodefinder
-          topologyKey: "kubernetes.io/hostname"    
+        preferredDuringSchedulingIgnoredDuringExecution: 
+        - weight: 50  
+          podAffinityTerm:    
+            labelSelector:
+              matchExpressions:
+              - key: app.elfhosted.com/role
+                operator: In
+                values:
+                - nodefinder # use nodefinder in the absense of zurg...
+            topologyKey: "kubernetes.io/hostname"  
+        - weight: 100  
+          podAffinityTerm:    
+            labelSelector:
+              matchExpressions:
+              - key: app.elfhosted.com/name
+                operator: In
+                values:
+                - zurg # .. but prefer zurg
+            topologyKey: "kubernetes.io/hostname"   
     cacheCapacity: 1Gi
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:
