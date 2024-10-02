@@ -4171,7 +4171,7 @@ bazarr:
   image:
     registry: ghcr.io
     repository: elfhosted/bazarr
-    tag: 1.4.4@sha256:13581ae29f3597ee307671f6294fe4ac769867d9d329d87147b84472e626295e
+    tag: 1.4.5@sha256:d47e588d0479896800d7034543e57bb4111bf397511ed15f8f479939d4e2445c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -4244,7 +4244,7 @@ bazarr4k:
   image:
     registry: ghcr.io
     repository: elfhosted/bazarr
-    tag: 1.4.4@sha256:13581ae29f3597ee307671f6294fe4ac769867d9d329d87147b84472e626295e
+    tag: 1.4.5@sha256:d47e588d0479896800d7034543e57bb4111bf397511ed15f8f479939d4e2445c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -5273,7 +5273,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.19.0@sha256:a1c75ef2de6d78eaa5bda0717df257eb9b574535f1d9d53b808bec0ebc46d98e
+    tag: 7.19.0@sha256:9b7369f047476626d872e7748e11348a3a24ba5d90a7ff91df701ed056df9c00
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10758,7 +10758,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.698@sha256:11088a9c036d1f08524f66cd567ff91f9d19859df85ce0c6b3fba4d5e7c1a7fe
+    tag: 0.22.703@sha256:a8015260af0e90c649a2212244073dca31c2fbbaddb3ac0879f2e6f897e9e479
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11207,7 +11207,7 @@ petio:
     tmp: *tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:7.0.12-ubi8
+      image: mongodb/mongodb-community-server:7.0.14-ubi8
       volumeMounts:
         - name: config
           subPath: mongodb
@@ -11467,7 +11467,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.32.0@sha256:470c5fe8808d26c1893dbf4797ce5b81ad17efb981e5a0b20e76b1f60282266b
+    tag: v1.32.1@sha256:1a111c2062109bdbf08c6fd9ebe1bb08d96f326077f1a1fa16d82edd7229c7ba
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
