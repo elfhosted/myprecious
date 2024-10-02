@@ -3788,18 +3788,11 @@ radarr: &app_radarr
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies        
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /config
-        name: config
-      # - mountPath: /mediacover
-      #   name: mediacover        
+        name: config     
       resources: *default_resources
       securityContext: *default_securitycontext
   additionalContainers:
@@ -3821,7 +3814,7 @@ radarr: &app_radarr
           -H "X-Api-Key: $RADARR__API_KEY" \
           -s \
           -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
           sleep 1h
         done
       envFrom:
@@ -3949,11 +3942,6 @@ radarr4k: &app_radarr4k
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -3982,7 +3970,7 @@ radarr4k: &app_radarr4k
           -H "X-Api-Key: $RADARR__API_KEY" \
           -s \
           -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
           sleep 1h
         done
       envFrom:
@@ -5392,12 +5380,7 @@ sonarr: &app_sonarr
       volumeSpec:
         configMap:
           name: elfbot-sonarr
-          optional: true     
-    # mediacover:
-    #   enabled: true
-    #   mountPath: /config/MediaCover
-    #   type: custom
-    #   volumeSpec: *volumespec_ephemeral_volume_50g            
+          optional: true             
   ingress:
     main:
       enabled: false
@@ -5423,16 +5406,9 @@ sonarr: &app_sonarr
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: symlinks
-      # - mountPath: /mediacover
-      #   name: mediacover                     
+        name: symlinks              
       resources: *default_resources
       securityContext: *default_securitycontext   
   additionalContainers:
@@ -5454,7 +5430,7 @@ sonarr: &app_sonarr
           -H "X-Api-Key: $SONARR__API_KEY" \
           -s \
           -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
           sleep 1h
         done
       envFrom:
@@ -5596,7 +5572,7 @@ sonarr4k: &app_sonarr4k
           -H "X-Api-Key: $SONARR__API_KEY" \
           -s \
           -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
+          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
           sleep 1h
         done
       envFrom:
