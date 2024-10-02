@@ -30,4 +30,3 @@ spec:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{- end }}
-{{- end }}
