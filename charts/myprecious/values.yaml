@@ -3794,34 +3794,7 @@ radarr: &app_radarr
       - mountPath: /config
         name: config     
       resources: *default_resources
-      securityContext: *default_securitycontext
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:7878/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $RADARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: radarr-env
-      resources: *default_resources
-      securityContext: *default_securitycontext           
+      securityContext: *default_securitycontext        
   resources:
     requests:
       cpu: 1m
@@ -3946,36 +3919,7 @@ radarr4k: &app_radarr4k
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /config
-        name: config
-      # - mountPath: /mediacover
-      #   name: mediacover        
-      resources: *default_resources
-      securityContext: *default_securitycontext    
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:7878/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $RADARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: radarr4k-env
+        name: config    
       resources: *default_resources
       securityContext: *default_securitycontext      
   resources:
@@ -5411,33 +5355,6 @@ sonarr: &app_sonarr
         name: symlinks              
       resources: *default_resources
       securityContext: *default_securitycontext   
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:8989/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $SONARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: sonarr-env
-      resources: *default_resources
-      securityContext: *default_securitycontext            
   resources:
     requests:
       cpu: 1m
@@ -5541,45 +5458,11 @@ sonarr4k: &app_sonarr4k
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: symlinks
-      # - mountPath: /mediacover
-      #   name: mediacover        
+        name: symlinks      
       resources: *default_resources
       securityContext: *default_securitycontext       
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:8989/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $SONARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1,"downloadPropersAndRepacks": "doNotPrefer","deleteEmptyFolders": true,"copyUsingHardlinks": false}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: sonarr4k-env
-      resources: *default_resources
-      securityContext: *default_securitycontext            
   resources:
     requests:
       cpu: 1m
@@ -5887,9 +5770,7 @@ lidarr:
 
       volumeMounts:
       - mountPath: /config
-        name: config
-      - mountPath: /mediacover
-        name: mediacover           
+        name: config       
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
