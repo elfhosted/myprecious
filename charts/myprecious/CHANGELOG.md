@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.136.1](https://github.com/elfhosted/myprecious/compare/v1.136.0...v1.136.1) (2024-10-02)
+
+
+### Bug Fixes
+
+* make hardware transcoding work again (Ubuntu 24.04 changed group ids) ([8a15964](https://github.com/elfhosted/myprecious/commit/8a159644f9547c2cdc8b94f018abe279d3f82f0f))
+
 ## [1.136.0](https://github.com/elfhosted/myprecious/compare/v1.135.0...v1.136.0) (2024-10-02)
 
 
