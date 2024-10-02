@@ -3762,7 +3762,7 @@ radarr: &app_radarr
       subPath: radarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers            
+          claimName: mediacovers
   ingress:
     main:
       enabled: false
@@ -3920,7 +3920,7 @@ radarr4k: &app_radarr4k
       subPath: radarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers           
+          claimName: mediacovers           
   ingress:
     main:
       enabled: false
@@ -4217,7 +4217,7 @@ bazarr:
       subPath: bazarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers              
+          claimName: mediacovers              
   ingress:
     main:
       enabled: false
@@ -4290,7 +4290,7 @@ bazarr4k:
       subPath: bazarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers              
+          claimName: mediacovers              
   ingress:
     main:
       enabled: false
@@ -5385,7 +5385,7 @@ sonarr: &app_sonarr
       subPath: sonarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers     
+          claimName: mediacovers     
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5539,7 +5539,7 @@ sonarr4k: &app_sonarr4k
       subPath: sonarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers             
+          claimName: mediacovers             
   ingress:
     main:
       enabled: false
@@ -5883,7 +5883,7 @@ lidarr:
       subPath: lidarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers    
+          claimName: mediacovers    
   ingress:
     main:
       enabled: false
@@ -6043,7 +6043,7 @@ readarr:
       subPath: readarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers              
+          claimName: mediacovers              
   ingress:
     main:
       enabled: false
@@ -6137,7 +6137,7 @@ readarraudio:
       subPath: readarraudio
       volumeSpec:
         persistentVolumeClaim:
-          claimName: b2-mediacovers              
+          claimName: mediacovers              
   ingress:
     main:
       enabled: false
@@ -10455,7 +10455,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.15.1@sha256:7c8faadf256154b84c08830973c67a5a73f195782bdda45b8647c467382a779c
+    tag: v0.15.2@sha256:0cf1c5bbd6829d6c2d68f189e158e79361b1d0025a2bc8e8c7cda93df79525ea
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10600,7 +10600,7 @@ riven: &app_riven
           memory: 1Mi
         limits:
           cpu: 500m
-          memory: 4Gi
+          memory: 2Gi
 
 rivenplus:
   <<: *app_riven
