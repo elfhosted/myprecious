@@ -3757,9 +3757,12 @@ radarr: &app_radarr
           optional: true
     mediacover:
       enabled: true
-      mountPath: /mediacover
       type: custom
-      volumeSpec: *volumespec_ephemeral_volume_50g          
+      mountPath: /config/MediaCover/
+      subPath: radarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: b2-mediacovers            
   ingress:
     main:
       enabled: false
@@ -3785,18 +3788,18 @@ radarr: &app_radarr
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies        
 
-        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        if [ -d "/config/MediaCover" ]; then
-          rm -rf "/config/MediaCover"
-          ln -s /mediacover '/config/MediaCover'
-        fi
+        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        # if [ -d "/config/MediaCover" ]; then
+        #   rm -rf "/config/MediaCover"
+        #   ln -s /mediacover '/config/MediaCover'
+        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /config
         name: config
-      - mountPath: /mediacover
-        name: mediacover        
+      # - mountPath: /mediacover
+      #   name: mediacover        
       resources: *default_resources
       securityContext: *default_securitycontext
   additionalContainers:
@@ -3912,9 +3915,12 @@ radarr4k: &app_radarr4k
           optional: true
     mediacover:
       enabled: true
-      mountPath: /mediacover
       type: custom
-      volumeSpec: *volumespec_ephemeral_volume_50g            
+      mountPath: /config/MediaCover/
+      subPath: radarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: b2-mediacovers           
   ingress:
     main:
       enabled: false
@@ -3943,18 +3949,18 @@ radarr4k: &app_radarr4k
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
-        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        if [ -d "/config/MediaCover" ]; then
-          rm -rf "/config/MediaCover"
-          ln -s /mediacover '/config/MediaCover'
-        fi
+        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        # if [ -d "/config/MediaCover" ]; then
+        #   rm -rf "/config/MediaCover"
+        #   ln -s /mediacover '/config/MediaCover'
+        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /config
         name: config
-      - mountPath: /mediacover
-        name: mediacover        
+      # - mountPath: /mediacover
+      #   name: mediacover        
       resources: *default_resources
       securityContext: *default_securitycontext    
   additionalContainers:
@@ -5356,10 +5362,10 @@ sonarr: &app_sonarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-sonarr-block      
-    b2-mediacovers:
+    mediacover:
       enabled: true
       type: custom
-      mountPath: /test-mediacovers/
+      mountPath: /config/MediaCover/
       subPath: sonarr
       volumeSpec:
         persistentVolumeClaim:
@@ -5371,11 +5377,11 @@ sonarr: &app_sonarr
         configMap:
           name: elfbot-sonarr
           optional: true     
-    mediacover:
-      enabled: true
-      mountPath: /mediacover
-      type: custom
-      volumeSpec: *volumespec_ephemeral_volume_50g            
+    # mediacover:
+    #   enabled: true
+    #   mountPath: /config/MediaCover
+    #   type: custom
+    #   volumeSpec: *volumespec_ephemeral_volume_50g            
   ingress:
     main:
       enabled: false
@@ -5401,16 +5407,16 @@ sonarr: &app_sonarr
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
 
-        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        if [ -d "/config/MediaCover" ]; then
-          rm -rf "/config/MediaCover"
-          ln -s /mediacover '/config/MediaCover'
-        fi
+        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        # if [ -d "/config/MediaCover" ]; then
+        #   rm -rf "/config/MediaCover"
+        #   ln -s /mediacover '/config/MediaCover'
+        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
-      - mountPath: /mediacover
-        name: mediacover                     
+      # - mountPath: /mediacover
+      #   name: mediacover                     
       resources: *default_resources
       securityContext: *default_securitycontext   
   additionalContainers:
@@ -5512,9 +5518,12 @@ sonarr4k: &app_sonarr4k
           optional: true      
     mediacover:
       enabled: true
-      mountPath: /mediacover
       type: custom
-      volumeSpec: *volumespec_ephemeral_volume_50g           
+      mountPath: /config/MediaCover/
+      subPath: sonarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: b2-mediacovers             
   ingress:
     main:
       enabled: false
@@ -5540,16 +5549,16 @@ sonarr4k: &app_sonarr4k
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
 
-        # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        if [ -d "/config/MediaCover" ]; then
-          rm -rf "/config/MediaCover"
-          ln -s /mediacover '/config/MediaCover'
-        fi
+        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
+        # if [ -d "/config/MediaCover" ]; then
+        #   rm -rf "/config/MediaCover"
+        #   ln -s /mediacover '/config/MediaCover'
+        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
-      - mountPath: /mediacover
-        name: mediacover        
+      # - mountPath: /mediacover
+      #   name: mediacover        
       resources: *default_resources
       securityContext: *default_securitycontext       
   additionalContainers:
