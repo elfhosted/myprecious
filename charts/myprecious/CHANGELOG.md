@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.136.0](https://github.com/elfhosted/myprecious/compare/v1.135.0...v1.136.0) (2024-10-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bazarr docker tag to v1.4.5 ([dcdacf3](https://github.com/elfhosted/myprecious/commit/dcdacf3ebe72ae04cba983f2e324939f12fb2b49))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.32.1 ([7ec04bb](https://github.com/elfhosted/myprecious/commit/7ec04bb069335b7a6fb94ff682626d9a2e1e2cff))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.703 ([df56bf1](https://github.com/elfhosted/myprecious/commit/df56bf1a3e2ddb67bbe2df1a945cd3b53610c487))
+* **app:** update mongodb/mongodb-community-server docker tag to v7.0.14 ([c6b8cce](https://github.com/elfhosted/myprecious/commit/c6b8ccec35e42ad583a03e99389865a0b971afc8))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.19.0 docker digest to 9b7369f ([562165d](https://github.com/elfhosted/myprecious/commit/562165d38e394ac5b564fa3ebd48471609a03ae1))
+
 ## [1.135.0](https://github.com/elfhosted/myprecious/compare/v1.134.0...v1.135.0) (2024-10-01)
 
 
