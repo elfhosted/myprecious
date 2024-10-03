@@ -1820,6 +1820,24 @@ bootstrap_env: &bootstrap_env
     fieldRef:
       fieldPath: metadata.labels['app.elfhosted.com/name']
 
+remove_mediacover: &remove_mediacover
+  image: *tooling_image
+  imagePullPolicy: IfNotPresent
+  command:
+  - /bin/bash
+  - -c
+  - |
+    set -e
+
+    if [[ ! -z "$(ls -A /config/MediaCover)" ]]
+    then
+      rm -rf /config/MediaCover
+    fi   
+
+    if [[ ! -z "$(ls -A /migration/MediaCover)" ]]
+    then
+      rm -rf /migration/MediaCover
+    fi       
 migrate_data: &migrate_data
   image: *tooling_image
   imagePullPolicy: IfNotPresent
@@ -3629,6 +3647,7 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
@@ -3730,6 +3749,7 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data  
     bootstrap: *bootstrap
     setup:
@@ -5156,6 +5176,7 @@ sonarr: &app_sonarr
         http:
           port: 8989      
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
@@ -5253,6 +5274,7 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989      
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
@@ -5532,6 +5554,7 @@ lidarr:
         http:
           port: 8686
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
