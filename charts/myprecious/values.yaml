@@ -1838,6 +1838,11 @@ remove_mediacover: &remove_mediacover
     then
       rm -rf /migration/MediaCover
     fi       
+  volumeMounts:
+  - mountPath: /config
+    name: config
+  - mountPath: /migration
+    name: migration    
 migrate_data: &migrate_data
   image: *tooling_image
   imagePullPolicy: IfNotPresent
