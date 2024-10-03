@@ -1,15 +1,15 @@
-{{- if .Values.prowlarr.enabled }}
+{{- if .Values.radarr4k.enabled }}
 {{- if .Values.volsync.enabled }}
 {{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: rd-config-prowlarr-ssd
+  name: rd-config-radarr4k-ssd
 spec:
   trigger:
     manual: runonce
   restic:
-    repository: config-prowlarr-ssd-volsync-restic-config
+    repository: config-radarr4k-ssd-volsync-restic-config
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:
@@ -25,7 +25,7 @@ spec:
     capacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
-    - {{ .Values.storageclass.rwx.accessMode }}
+    - {{ .Values.storageclass.rwo.accessMode }}
     storageClassName: {{ .Values.storageclass.rwx.name }}
     cacheAccessModes:
     - ReadWriteOnce

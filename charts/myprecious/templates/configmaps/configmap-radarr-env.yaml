@@ -1,4 +1,4 @@
-{{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
+{{ if .Values.radarr.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:

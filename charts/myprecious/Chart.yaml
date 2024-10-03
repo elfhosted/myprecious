@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.136.1-pre-03
+version: 1.136.1-pre-04
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -121,58 +121,13 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: radarrplus.enabled
-    alias: radarrplus
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: radarrhobbit.enabled
-    alias: radarrhobbit
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: radarr4k.enabled
-    alias: radarr4k
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: radarr4khobbit.enabled
-    alias: radarr4khobbit
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: radarr4kplus.enabled
-    alias: radarr4kplus
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: sonarr.enabled
     alias: sonarr
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: sonarrplus.enabled
-    alias: sonarrplus
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: sonarrhobbit.enabled
-    alias: sonarrhobbit
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: sonarr4k.enabled
     alias: sonarr4k
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: sonarr4kplus.enabled
-    alias: sonarr4kplus
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: sonarr4khobbit.enabled
-    alias: sonarr4khobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -200,16 +155,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: prowlarr.enabled
     alias: prowlarr
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: prowlarrplus.enabled
-    alias: prowlarrplus
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: prowlarrhobbit.enabled
-    alias: prowlarrhobbit
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -323,11 +268,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: flaresolverr.enabled
     alias: flaresolverr
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: flaresolverrplus.enabled
-    alias: flaresolverrplus
   - name: rtorrent-rutorrent
     version: 1.1.x
     repository: oci://ghcr.io/elfhosted/charts
@@ -440,16 +380,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: kometaplus.enabled
-    alias: kometaplus
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: kometahobbit.enabled
-    alias: kometahobbit
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: filebot.enabled
     alias: filebot
   - name: app-template
@@ -556,42 +486,10 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebrid
   - name: app-template
-    condition: plexdebridplus.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: plexdebridplus
-  - name: app-template
-    condition: plexdebridhobbit.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: plexdebridhobbit
-
-  - name: app-template
     condition: riven.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: riven
-  - name: app-template
-    condition: rivenplus.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: rivenplus
-  - name: app-template
-    condition: rivenhobbit.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: rivenhobbit
-  # - name: app-template
-  #   condition: rivenhalfling.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: rivenhalfling
-  # - name: app-template
-  #   condition: rivennazgul.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: rivennazgul
-
   - name: app-template
     condition: airdcpppia.enabled
     version: ~0.2.1

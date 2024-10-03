@@ -315,7 +315,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
+      {{ if .Values.radarr.enabled }}
       - name: radarr
         group: manage-media
         url: "http://radarr:7878"
@@ -326,7 +326,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
+      {{ if .Values.radarr4k.enabled }}
       - name: radarr4K
         group: manage-media
         url: "http://radarr4k:7878"
@@ -337,7 +337,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
+      {{ if .Values.sonarr.enabled }}
       - name: sonarr
         group: manage-media
         url: "http://sonarr:8989"
@@ -348,7 +348,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.sonarr4k.enabled  .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
+      {{ if .Values.sonarr4k.enabled }}
       - name: sonarr4K
         group: manage-media
         url: "http://sonarr4k:8989"
@@ -513,7 +513,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
+      {{ if .Values.plexdebrid.enabled }}
       - name: plex-debrid
         group: manage-media
         url: "http://plex-debrid:3001"
@@ -524,7 +524,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+      {{ if .Values.riven.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"
@@ -667,7 +667,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
+      {{ if .Values.kometa.enabled }}
       - name: kometa
         group: manage-media
         url: "http://kometa:3001"
@@ -722,7 +722,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
+      {{ if .Values.prowlarr.enabled }}
       - name: prowlarr
         group: download-media
         url: "http://prowlarr:9696"

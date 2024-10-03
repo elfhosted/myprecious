@@ -1,17 +1,17 @@
-{{ if .Values.riven.enabled }}
+{{ if .Values.lidarr.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-riven-ssd
+  name: config-lidarr-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-riven-ssd" ) }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-lidarr-ssd" ) }}
   {{- if and (not $pvc) (.Values.location.enabled) }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
-    name: rd-config-riven-ssd
+    name: rd-config-lidarr-ssd
   {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}

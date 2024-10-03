@@ -1,17 +1,17 @@
-{{ if .Values.riven.enabled }}
+{{ if .Values.radarr4k.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-riven-ssd
+  name: config-radarr4k-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-riven-ssd" ) }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-radarr4k-ssd" ) }}
   {{- if and (not $pvc) (.Values.location.enabled) }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
-    name: rd-config-riven-ssd
+    name: rd-config-radarr4k-ssd
   {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwx.accessMode }}

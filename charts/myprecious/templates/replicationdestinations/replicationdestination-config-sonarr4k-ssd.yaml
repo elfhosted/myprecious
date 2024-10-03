@@ -1,15 +1,15 @@
-{{- if or .Values.radarr4k.enabled .Values.radarr4khobbit.enabled .Values.radarr4kplus.enabled }}
+{{- if .Values.sonarr4k.enabled }}
 {{- if .Values.volsync.enabled }}
 {{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: rd-config-radarr4k-block
+  name: rd-config-sonarr4k-ssd
 spec:
   trigger:
     manual: runonce
   restic:
-    repository: config-radarr4k-block-volsync-restic-config
+    repository: config-sonarr4k-ssd-volsync-restic-config
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:
@@ -21,15 +21,15 @@ spec:
               values:
               - nodefinder
           topologyKey: "kubernetes.io/hostname"
-    cacheCapacity: 20Gi
-    capacity: 20Gi
+    cacheCapacity: 2Gi
+    capacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
     - {{ .Values.storageclass.rwo.accessMode }}
-    storageClassName: {{ .Values.storageclass.rwo.name }}
+    storageClassName: {{ .Values.storageclass.rwx.name }}
     cacheAccessModes:
     - ReadWriteOnce
-    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{- end }}
 {{- end }}
 {{- end }}

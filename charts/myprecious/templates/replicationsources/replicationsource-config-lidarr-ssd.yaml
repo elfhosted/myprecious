@@ -1,17 +1,17 @@
-{{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
+{{ if .Values.lidarr.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: rs-config-radarr4k-block
+  name: rs-config-lidarr-ssd
 spec:
   # The PVC to be backed up
-  sourcePVC: config-radarr4k-block
+  sourcePVC: config-lidarr-ssd
   trigger:
     schedule: "0 {{ mod .Values.userId 24 }} * * *"
   restic:
     pruneIntervalDays: 7
-    repository: config-radarr4k-block-volsync-restic-config
+    repository: config-lidarr-ssd-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot
@@ -36,8 +36,8 @@ spec:
                 values:
                 - zurg # .. but prefer zurg
             topologyKey: "kubernetes.io/hostname"       
-    cacheCapacity: 20Gi
+    cacheCapacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
-    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{ end }}
 {{ end }}

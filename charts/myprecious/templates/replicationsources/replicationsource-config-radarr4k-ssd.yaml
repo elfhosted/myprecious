@@ -1,16 +1,17 @@
-{{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
+{{ if .Values.radarr4k.enabled }}
 {{ if .Values.volsync.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: rs-config-sonarr-block
+  name: rs-config-radarr4k-ssd
 spec:
-  sourcePVC: config-sonarr-block
+  # The PVC to be backed up
+  sourcePVC: config-radarr4k-ssd
   trigger:
     schedule: "0 {{ mod .Values.userId 24 }} * * *"
   restic:
     pruneIntervalDays: 7
-    repository: config-sonarr-block-volsync-restic-config
+    repository: config-radarr4k-ssd-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot
@@ -35,8 +36,8 @@ spec:
                 values:
                 - zurg # .. but prefer zurg
             topologyKey: "kubernetes.io/hostname"       
-    cacheCapacity: 20Gi
+    cacheCapacity: 2Gi
     cacheStorageClassName: topolvm-provisioner-thin
-    volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
+    volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{ end }}
 {{ end }}
