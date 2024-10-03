@@ -1594,7 +1594,7 @@ storageconfigmounts: &storageconfigmounts
   radarr4k:
     enabled: false
     type: custom
-    mountPath: /storage/config/radar4k/
+    mountPath: /storage/config/radarr4k/
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-radarr4k-ssd   
