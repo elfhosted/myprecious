@@ -11,6 +11,7 @@ spec:
     # Take a backup every 30 minutes
     schedule: "0 {{ mod .Values.userId 24 }} * * *"
   restic:
+    unlock: {{ .Chart.Version }}
     pruneIntervalDays: 7
     repository: config-plex-block-volsync-restic-config
     retain:

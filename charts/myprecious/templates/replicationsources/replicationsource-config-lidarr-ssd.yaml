@@ -10,6 +10,7 @@ spec:
   trigger:
     schedule: "0 {{ mod .Values.userId 24 }} * * *"
   restic:
+    unlock: {{ .Chart.Version }}
     pruneIntervalDays: 7
     repository: config-lidarr-ssd-volsync-restic-config
     retain:
