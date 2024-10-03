@@ -806,14 +806,7 @@ configmounts: &config_mounts
     mountPath: /config/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd
-  plexdebridhobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd     
+        claimName: config-plex-debrid-ssd   
   joplinserver:
     enabled: false
     type: custom
@@ -946,14 +939,7 @@ configmounts: &config_mounts
     type: "custom"
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-prowlarr-ssd    
-  prowlarrhobbit:
-    enabled: false
-    mountPath: /config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd    
+        claimName: config-prowlarr-ssd     
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1037,14 +1023,7 @@ configmounts: &config_mounts
     mountPath: /config/riven/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-riven-ssd  
-  rivenhobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd                                
+        claimName: config-riven-ssd                             
   rpdb:
     enabled: false
     type: custom
@@ -1205,14 +1184,7 @@ configmounts: &config_mounts
     mountPath: /config/rdtclient/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-rdtclient-ssd
-  rdtclienthobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd              
+        claimName: config-rdtclient-ssd            
   rdtclientvpnpia:
     enabled: false
     type: custom
@@ -1386,14 +1358,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/kometa/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-kometa    
-  kometahobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/kometa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kometa                                  
+        claimName: config-kometa                               
   pyload:
     enabled: false
     type: custom
@@ -1541,14 +1506,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd
-  plexdebridhobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd     
+        claimName: config-plex-debrid-ssd 
   privatebin:
     enabled: false
     type: custom
@@ -1563,13 +1521,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd   
-  prowlarrhobbit:
-    enabled: false
-    mountPath: /storage/config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd  
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1653,14 +1604,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/riven/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-riven-ssd  
-  rivenhobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd                                
+        claimName: config-riven-ssd                             
   rpdb:
     enabled: false
     type: custom
@@ -1821,14 +1765,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/rdtclient/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-rdtclient-ssd
-  rdtclienthobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd              
+        claimName: config-rdtclient-ssd           
   rdtclientvpnpia:
     enabled: false
     type: custom
