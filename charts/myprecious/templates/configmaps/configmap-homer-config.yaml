@@ -88,13 +88,13 @@ data:
       ICON="fa fa-magic"
       MESSAGE="App hosting that works like magic! (<I>Stats updated roughly hourly</I>)"
 
-      {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled }}
+      {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
       RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq .user_info.premium) # days
       RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
       ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days</br>"
       {{ end }}
 
-      {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenplus.enabled }}
+      {{ if .Values.riven.enabled }}
       RIVEN_TOTAL_ITEMS=$(curl -s http://riven:8080/stats | jq .data.total_items) # items
       RIVEN_TOTAL_MOVIES=$(curl -s http://riven:8080/stats | jq .data.total_movies) # items
       RIVEN_TOTAL_SHOWS=$(curl -s http://riven:8080/stats | jq .data.total_shows) # items
@@ -171,7 +171,7 @@ data:
         link-hover: "#ffdd57"
         background-image: /assets/backgrounds/background-dark.jpg
 
-    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenplus.enabled }}
+    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled  .Values.riven.enabled }}
     # Optional message
     message:
       url: https://{{ .Release.Name }}.{{ .Values.dns_domain }}/assets/message/message.json
@@ -521,7 +521,7 @@ data:
       - name: "Manage Media"
         icon: "fas fa-photo-video"
         items:
-          {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
+          {{ if .Values.radarr.enabled }}
           - name: "Radarr"
             logo: "assets/png/radarr.png"
             subtitle: "Manage Movies"
@@ -539,7 +539,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled  }}
+          {{ if .Values.radarr4k.enabled }}
           - name: "Radarr 4K"
             logo: "assets/png/radarr.png"
             subtitle: "Manage Movies (4K)"
@@ -557,7 +557,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled }}
+          {{ if .Values.sonarr.enabled }}
           - name: "Sonarr"
             logo: "assets/png/sonarr.png"
             subtitle: "Manage Series"
@@ -575,7 +575,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
+          {{ if .Values.sonarr4k.enabled }}
           - name: "Sonarr 4K"
             logo: "assets/png/sonarr.png"
             subtitle: "Manage Series (4K)"
@@ -888,7 +888,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
+          {{ if .Values.kometa.enabled }}
           - name: "Kometa"
             icon: "fas fa-meteor"
             # Alternatively a fa icon can be provided:
@@ -922,7 +922,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                    
 
-          {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
+          {{ if .Values.plexdebrid.enabled }}
           - name: "plex-debrid"
             logo: "assets/png/real-debrid.png"
             # Alternatively a fa icon can be provided:
@@ -934,7 +934,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
-          {{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+          {{ if .Values.riven.enabled }}
           - name: "Riven"
             icon: "fas fa-mountain"
             subtitle: "All-in-one Debrid Media Management"
@@ -999,7 +999,7 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
+          {{ if .Values.prowlarr.enabled }}
           - name: "Prowlarr"
             logo: "assets/png/prowlarr.png"
             subtitle: "Manage Indexers"

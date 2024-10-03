@@ -5,7 +5,7 @@ metadata:
   name: scannarr-config
 data:
   # Overwrite API key with default
-  {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled }}
+  {{ if .Values.radarr.enabled }}
   settings_radarr.json: |
     {
       "URL": "http://radarr:7878",
@@ -19,7 +19,7 @@ data:
       "APIKey": "{{ .Values.radarrexposed.apikey }}"
     }
   {{ end }}
-  {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled .Values.sonarrhobbit.enabled }}
+  {{ if .Values.sonarr.enabled }}
   settings_sonarr.json: |
     {
       "URL": "http://sonarr:8989",

@@ -769,21 +769,7 @@ configmounts: &config_mounts
     mountPath: /config/kometa/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-kometa    
-  kometaplus:
-    enabled: false
-    type: custom
-    mountPath: /config/kometa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kometa    
-  kometahobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/kometa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kometa                                  
+        claimName: config-kometa                                
   pyload:
     enabled: false
     type: custom
@@ -828,13 +814,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd     
-  plexdebridplus:
-    enabled: false
-    type: custom
-    mountPath: /config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd                
   joplinserver:
     enabled: false
     type: custom
@@ -872,12 +851,11 @@ configmounts: &config_mounts
         claimName: config-lazylibrarian-ssd
   lidarr:
     enabled: false
-    subPath: "where-is-my-lidarr.txt"
-    mountPath: /config/lidarr/where-is-my-lidarr.txt
-    type: "custom"
+    type: custom
+    mountPath: /config/lidarr/
     volumeSpec:
-      configMap:
-        name: explain-migration           
+      persistentVolumeClaim:
+        claimName: config-lidarr-ssd          
   mattermost:
     enabled: false
     type: custom
@@ -976,13 +954,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd    
-  prowlarrplus:
-    enabled: false
-    mountPath: /config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd                
   qbittorrentpia:
     enabled: false
     type: custom
@@ -999,20 +970,18 @@ configmounts: &config_mounts
         claimName: config-qbittorrent-ssd
   radarr:
     enabled: false
-    subPath: "where-is-my-radarr.txt"
-    mountPath: /config/radarr/where-is-my-radarr.txt
-    type: "custom"
+    type: custom
+    mountPath: /config/radarr/
     volumeSpec:
-      configMap:
-        name: explain-migration   
+      persistentVolumeClaim:
+        claimName: config-radarr-ssd
   radarr4k:
     enabled: false
-    subPath: "where-is-my-radarr4k.txt"
-    mountPath: /config/radarr4k/where-is-my-radarr4k.txt
-    type: "custom"
+    type: custom
+    mountPath: /config/radarr4k/
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-radarr4k-ssd  
   rapidleech:
     enabled: false
     type: custom
@@ -1063,13 +1032,6 @@ configmounts: &config_mounts
       persistentVolumeClaim:
         claimName: config-resiliosync-ssd
   riven:
-    enabled: false
-    type: custom
-    mountPath: /config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd  
-  rivenplus:
     enabled: false
     type: custom
     mountPath: /config/riven/
@@ -1127,20 +1089,18 @@ configmounts: &config_mounts
         claimName: config-shoko-ssd
   sonarr:
     enabled: false
-    subPath: "where-is-my-sonarr.txt"
-    mountPath: /config/sonarr/where-is-my-sonarr.txt
-    type: "custom"
+    type: custom
+    mountPath: /config/sonarr/
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-sonarr-ssd
   sonarr4k:
     enabled: false
-    subPath: "where-is-my-sonarr4k.txt"
-    mountPath: /config/sonarr4k/where-is-my-sonarr4k.txt
-    type: "custom"
+    type: custom
+    mountPath: /config/sonarr4k/
     volumeSpec:
-      configMap:
-        name: explain-migration           
+      persistentVolumeClaim:
+        claimName: config-sonarr4k-ssd         
   syncthing:
     enabled: false
     type: custom
@@ -1246,13 +1206,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rdtclient-ssd
-  rdtclientplus:
-    enabled: false
-    type: custom
-    mountPath: /config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd      
   rdtclienthobbit:
     enabled: false
     type: custom
@@ -1434,13 +1387,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-kometa    
-  kometaplus:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/kometa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kometa    
   kometahobbit:
     enabled: false
     type: custom
@@ -1507,12 +1453,11 @@ storageconfigmounts: &storageconfigmounts
         claimName: config-lazylibrarian-ssd
   lidarr:
     enabled: false
-    subPath: "where-is-my-lidarr.txt"
-    mountPath: /storage/config/lidarr/where-is-my-lidarr.txt
-    type: "custom"
+    type: custom
+    mountPath: /storage/config/lidarr/
     volumeSpec:
-      configMap:
-        name: explain-migration     
+      persistentVolumeClaim:
+        claimName: config-lidarr-ssd     
   mattermost:
     enabled: false
     type: custom
@@ -1604,13 +1549,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-plex-debrid-ssd     
-  plexdebridplus:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd
   privatebin:
     enabled: false
     type: custom
@@ -1632,13 +1570,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd  
-  prowlarrplus:
-    enabled: false
-    mountPath: /storage/config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd                    
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1655,20 +1586,18 @@ storageconfigmounts: &storageconfigmounts
         claimName: config-qbittorrent-ssd
   radarr:
     enabled: false
-    subPath: "where-is-my-radarr.txt"
-    mountPath: /storage/config/radarr/where-is-my-radarr.txt
-    type: "custom"
+    type: custom
+    mountPath: /storage/config/radarr/
     volumeSpec:
-      configMap:
-        name: explain-migration   
+      persistentVolumeClaim:
+        claimName: config-radarr-ssd     
   radarr4k:
     enabled: false
-    subPath: "where-is-my-radarr4k.txt"
-    mountPath: /storage/config/radarr4k/where-is-my-radarr4k.txt
-    type: "custom"
+    type: custom
+    mountPath: /storage/config/radarr4k/
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-radarr4k-ssd   
   rapidleech:
     enabled: false
     type: custom
@@ -1719,13 +1648,6 @@ storageconfigmounts: &storageconfigmounts
       persistentVolumeClaim:
         claimName: config-resiliosync-ssd
   riven:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd  
-  rivenplus:
     enabled: false
     type: custom
     mountPath: /storage/config/riven/
@@ -1783,20 +1705,18 @@ storageconfigmounts: &storageconfigmounts
         claimName: config-shoko-ssd
   sonarr:
     enabled: false
-    subPath: "where-is-my-sonarr.txt"
-    mountPath: /storage/config/sonarr/where-is-my-sonarr.txt
-    type: "custom"
+    type: custom
+    mountPath: /storage/config/sonarr/
     volumeSpec:
-      configMap:
-        name: explain-migration  
+      persistentVolumeClaim:
+        claimName: config-sonarr-ssd    
   sonarr4k:
     enabled: false
-    subPath: "where-is-my-sonarr4k.txt"
-    mountPath: /storage/config/sonarr4k/where-is-my-sonarr4k.txt
-    type: "custom"
+    type: custom
+    mountPath: /storage/config/sonarr4k/
     volumeSpec:
-      configMap:
-        name: explain-migration           
+      persistentVolumeClaim:
+        claimName: config-sonarr4k-ssd          
   syncthing:
     enabled: false
     type: custom
@@ -1902,13 +1822,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rdtclient-ssd
-  rdtclientplus:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd      
   rdtclienthobbit:
     enabled: false
     type: custom
@@ -3747,7 +3660,13 @@ radarr: &app_radarr
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr-block            
+          claimName: config-radarr-ssd  
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-radarr-block                      
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3773,6 +3692,7 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -3802,36 +3722,6 @@ radarr: &app_radarr
     limits:
       cpu: 1
       memory: 2Gi
-
-radarrplus:
-  <<: *app_radarr
-  podLabels:
-    app.elfhosted.com/name: radarr
-    app.elfhosted.com/class: dedicated
-  enabled: false
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: node-role.elfhosted.com/dedicated
-            operator: Exists                
-  tolerations:
-  - key: node-role.elfhosted.comgcated
-    operator: Exists    
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 30Mi
-    limits:
-      cpu: 1
-      memory: 16Gi  
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-radarr,radarr-env"
-
-
 
 radarr4k: &app_radarr4k
   enabled: false
@@ -3871,7 +3761,7 @@ radarr4k: &app_radarr4k
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr4k-block           
+          claimName: config-radarr4k-ssd           
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3886,7 +3776,13 @@ radarr4k: &app_radarr4k
       subPath: radarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: mediacovers           
+          claimName: mediacovers
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-radarr4k-block            
   ingress:
     main:
       enabled: false
@@ -3897,6 +3793,7 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
+    a-migration: *migrate_data  
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -3929,25 +3826,6 @@ radarr4k: &app_radarr4k
     limits:
       cpu: 1
       memory: 1Gi
-
-
-radarr4kplus:
-  <<: *app_radarr4k
-  podLabels:
-    app.elfhosted.com/name: radarr4k
-    app.elfhosted.com/class: dedicated
-  enabled: false
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 30Mi
-    limits:
-      cpu: 1
-      memory: 16Gi  
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-radarr4k,radarr4k-env"
 
 
 ombi:
@@ -5309,7 +5187,7 @@ sonarr: &app_sonarr
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr-block      
+          claimName: config-sonarr-ssd      
     mediacover:
       enabled: true
       type: custom
@@ -5324,7 +5202,13 @@ sonarr: &app_sonarr
       volumeSpec:
         configMap:
           name: elfbot-sonarr
-          optional: true             
+          optional: true     
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sonarr-block           
   ingress:
     main:
       enabled: false
@@ -5335,6 +5219,7 @@ sonarr: &app_sonarr
         http:
           port: 8989      
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -5362,24 +5247,6 @@ sonarr: &app_sonarr
     limits:
       cpu: 1
       memory: 1Gi
-
-sonarrplus:
-  <<: *app_sonarr
-  podLabels:
-    app.elfhosted.com/name: sonarr
-    app.elfhosted.com/class: dedicated
-  enabled: false
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 30Mi
-    limits:
-      cpu: 8
-      memory: 16Gi  
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-sonarr,sonarr-env"
 
 sonarr4k: &app_sonarr4k
   enabled: false
@@ -5417,7 +5284,7 @@ sonarr4k: &app_sonarr4k
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr4k-block            
+          claimName: config-sonarr4k-ssd            
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5432,7 +5299,13 @@ sonarr4k: &app_sonarr4k
       subPath: sonarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: mediacovers             
+          claimName: mediacovers   
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sonarr4k-block                      
   ingress:
     main:
       enabled: false
@@ -5443,6 +5316,7 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989      
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -5470,25 +5344,6 @@ sonarr4k: &app_sonarr4k
     limits:
       cpu: 1
       memory: 1Gi
-
-sonarr4kplus:
-  <<: *app_sonarr4k
-  podLabels:
-    app.elfhosted.com/name: sonarr4k
-    app.elfhosted.com/class: dedicated
-  enabled: false
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 30Mi
-    limits:
-      cpu: 8
-      memory: 16Gi  
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-sonarr4k,sonarr4k-env"
-
 
 resiliosync:
   service:
@@ -5668,25 +5523,6 @@ prowlarr: &app_prowlarr
   env:
     S6_READ_ONLY_ROOT: 1
 
-
-prowlarrplus:
-  <<: *app_prowlarr
-  podLabels:
-    app.elfhosted.com/name: prowlarr
-    app.elfhosted.com/class: dedicated
-  enabled: false 
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 30Mi
-    limits:
-      cpu: 8
-      memory: 16Gi  
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-prowlarr,prowlarr-env"
-
 lidarr:
   enabled: false
   sso:
@@ -5722,7 +5558,13 @@ lidarr:
       mountPath: /config/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-lidarr-block      
+          claimName: config-lidarr-ssd  
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-lidarr-block                
     s6:
       enabled: true
       type: emptyDir
@@ -5753,6 +5595,7 @@ lidarr:
         http:
           port: 8686
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -7062,14 +6905,6 @@ flaresolverr: &app_flaresolverr
       volumeMounts:
       - mountPath: /shared
         name: shared
-
-flaresolverrplus:
-  <<: *app_flaresolverr
-  enabled: false
-  automountServiceAccountToken: false
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-flaresolverr,flaresolverr-env"
 
 seafile:
   enabled: false
@@ -8537,23 +8372,7 @@ kometa: &app_kometa
       memory: 4Gi
 
 
-kometaplus:
-  <<: *app_kometa
-  podLabels:
-    app.elfhosted.com/name: kometa
-    app.elfhosted.com/class: dedicated
-  enabled: false  
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 30Mi
-    limits:
-      cpu: 8
-      memory: 16Gi  
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-kometa,kometa-env"      
+  
 
 rcloneui:
   enabled: false
@@ -10457,19 +10276,7 @@ riven: &app_riven
           memory: 1Mi
         limits:
           cpu: 500m
-          memory: 4Gi
-
-rivenplus:
-  <<: *app_riven
-  podLabels:
-    app.elfhosted.com/name: riven
-    app.elfhosted.com/class: dedicated
-  enabled: false 
-  automountServiceAccountToken: false
-  resources: *ranger_resources
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-riven,riven-config,elfbot-all"
+          memory: 2Gi
 
 airdcpp: &app_airdcpp
   enabled: false
@@ -12554,14 +12361,6 @@ plexdebrid: &app_plexdebrid
           type: RuntimeDefault
         readOnlyRootFilesystem: true    
 
-plexdebridplus:
-  <<: *app_plexdebrid
-  podLabels:
-    app.elfhosted.com/name: plexdebrid
-    app.elfhosted.com/class: dedicated
-  enabled: false 
-  automountServiceAccountToken: false
-
 codeserver:
   enabled: false
   # runtimeClassName: kata  
@@ -13196,42 +12995,5 @@ embynazgul:
   <<: *app_emby
   podAnnotations: *nazgul_streamer_podAnnotations 
   resources: *nazgul_streamer_resources
-
-radarrhobbit:
-  <<: *app_radarr
-  resources: *hobbit_resources
-
-radarr4khobbit:
-  <<: *app_radarr4k
-  resources: *hobbit_resources
-
-sonarrhobbit:
-  <<: *app_sonarr
-  resources: *hobbit_resources
-
-sonarr4khobbit:
-  <<: *app_sonarr4k
-  resources: *hobbit_resources
-
-plexdebridhobbit:
-  <<: *app_plexdebrid
-  resources: *hobbit_resources
-
-prowlarrhobbit:
-  <<: *app_prowlarr
-  resources: *hobbit_resources
-
-rdtclienthobbit:
-  <<: *app_rdtclient
-  resources: *hobbit_resources
-
-rivenhobbit:
-  <<: *app_riven
-  resources: *hobbit_resources 
-
-kometahobbit:
-  <<: *app_kometa
-  resources: *hobbit_resources
-
 
 # This file must end on a single newline

@@ -66,10 +66,10 @@ rules:
 {{ if .Values.gluetun.enabled }}
   - gluetun-config
 {{ end }}
-{{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+{{ if .Values.riven.enabled }}
   - elfbot-riven
 {{ end }}
-{{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
+{{ if .Values.kometa.enabled }}
   - elfbot-kometa
 {{ end }}
 {{ if .Values.comet.enabled }}

@@ -1,4 +1,4 @@
-{{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
+{{ if .Values.kometa.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

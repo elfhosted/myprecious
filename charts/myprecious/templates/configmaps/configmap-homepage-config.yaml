@@ -288,7 +288,7 @@ data:
         {{ end }}             
 
     - Manage Media:
-        {{ if or .Values.radarr.enabled .Values.radarrplus.enabled .Values.radarrhobbit.enabled  }}
+        {{ if .Values.radarr.enabled }}
         - Radarr:
             icon: radarr.png
             href: https://{{ .Release.Name }}-radarr.{{ .Values.dns_domain }}
@@ -300,7 +300,7 @@ data:
               key: {{ .Values.radarrexposed.apikey }}
         {{ end }}  
 
-        {{ if or .Values.radarr4k.enabled .Values.radarr4kplus.enabled .Values.radarr4khobbit.enabled }}
+        {{ if .Values.radarr4k.enabled }}
         - Radarr 4K:
             icon: radarr.png
             href: https://{{ .Release.Name }}-radarr4k.{{ .Values.dns_domain }}
@@ -312,7 +312,7 @@ data:
               key: {{ .Values.radarr4kexposed.apikey }}
         {{ end }}              
 
-        {{ if or .Values.sonarr.enabled .Values.sonarrplus.enabled .Values.sonarrhobbit.enabled  }}
+        {{ if .Values.sonarr.enabled }}
         - Sonarr:
             icon: sonarr.png
             href: https://{{ .Release.Name }}-sonarr.{{ .Values.dns_domain }}
@@ -324,7 +324,7 @@ data:
               key: {{ .Values.sonarrexposed.apikey }}
         {{ end }}  
 
-        {{ if or .Values.sonarr4k.enabled .Values.sonarr4kplus.enabled .Values.sonarr4khobbit.enabled }}
+        {{ if .Values.sonarr4k.enabled }}
         - Sonarr 4K:
             icon: sonarr.png
             href: https://{{ .Release.Name }}-sonarr4k.{{ .Values.dns_domain }}
@@ -573,7 +573,7 @@ data:
             siteMonitor: http://unpackerr:9898
         {{ end }}       
 
-        {{ if or .Values.kometa.enabled .Values.kometaplus.enabled .Values.kometahobbit.enabled }}
+        {{ if .Values.kometa.enabled }}
         - Kometa:
             icon: mdi-folder-information
             href: https://{{ .Release.Name }}-kometa.{{ .Values.dns_domain }}
@@ -597,7 +597,7 @@ data:
             siteMonitor: http://recyclarr:9898
         {{ end }}    
 
-        {{ if or .Values.plexdebrid.enabled .Values.plexdebridplus.enabled .Values.plexdebridhobbit.enabled }}
+        {{ if .Values.plexdebrid.enabled }}
         - plex-debrid:
             icon: real-debrid.png
             href: https://{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}
@@ -605,7 +605,7 @@ data:
             siteMonitor: http://plex-debrid:3001            
         {{ end }}     
 
-        {{ if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+        {{ if .Values.riven.enabled }}
         - Riven:
             icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
             href: https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}
@@ -672,7 +672,7 @@ data:
               key: {{ .Values.sabnzbdexposed.apikey }} 
         {{ end }}
         
-        {{ if or .Values.prowlarr.enabled .Values.prowlarrplus.enabled .Values.prowlarrhobbit.enabled }}
+        {{ if .Values.prowlarr.enabled }}
         - Prowlarr:
             icon: prowlarr.png
             href: https://{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}

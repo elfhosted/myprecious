@@ -1,4 +1,4 @@
-{{- if or .Values.riven.enabled .Values.rivenplus.enabled .Values.rivenhobbit.enabled }}
+{{- if .Values.riven.enabled }}
 {{- if .Values.volsync.enabled }}
 {{- if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1

@@ -1,22 +1,22 @@
-{{ if .Values.sonarr.enabled }}
+{{ if .Values.sonarr4k.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-sonarr-block
+  name: config-sonarr4k-ssd
   annotations:
     helm.sh/resource-policy: keep
 spec:
-{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-sonarr-block" ) }}
+{{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config-sonarr4k-ssd" ) }}
   {{- if and (not $pvc) (.Values.location.enabled) }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
-    name: rd-config-sonarr-block
+    name: rd-config-sonarr4k-ssd
   {{- end }}
   accessModes:
-  - {{ .Values.storageclass.rwo.accessMode }}
+  - {{ .Values.storageclass.rwx.accessMode }}
   resources:
     requests:
       storage: 20Gi
-  storageClassName: {{ .Values.storageclass.rwo.name }}
+  storageClassName: {{ .Values.storageclass.rwx.name }}
 {{ end }}
