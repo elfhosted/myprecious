@@ -8356,7 +8356,7 @@ imagemaid: &app_imagemaid
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   podLabels:
-    app.elfhosted.com/name: kometa    
+    app.elfhosted.com/name: imagemaid    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-imagemaid"
