@@ -10408,7 +10408,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.704@sha256:1505cd46881f5f2afacdf6376472e26294a0f1f8a560cb0830618004e94434c4
+    tag: 0.22.707@sha256:938d807f3f1398eafe4308960979d05664feb2f5b548684ce5d857c29d507d34
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10857,7 +10857,7 @@ petio:
     tmp: *tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:7.0.14-ubi8
+      image: mongodb/mongodb-community-server:8.0.0-ubi8
       volumeMounts:
         - name: config
           subPath: mongodb
@@ -12720,7 +12720,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.116.2@sha256:effd3d44202964c5f53af85e0fd0f2ca5287c989a43c4d55ba71133eb148bed3
+    tag: v1.117.0@sha256:ac9fb82f2be3cc60d4e0c7f1ceb371d401d52573e387834d7a82776116458242
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12796,7 +12796,7 @@ immich:
     bootstrap: *bootstrap
   additionalContainers:
     ml: 
-      image: ghcr.io/immich-app/immich-machine-learning:v1.116.2
+      image: ghcr.io/immich-app/immich-machine-learning:v1.117.0
       envFrom:
       - configMapRef:
           name: immich-env    
