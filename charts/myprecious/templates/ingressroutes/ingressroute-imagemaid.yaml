@@ -11,7 +11,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: imagemaid
+        - name: plex
           kind: Service
           port: 3001
       middlewares:

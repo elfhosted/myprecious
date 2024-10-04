@@ -1,10 +1,13 @@
-{{ if .Values.imagemaid.enabled }}
+{{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: imagemaid-env
 data:
-  PLEX_PATH: /what/will/this/do/without/local/plex
+{{ if .Values.imagemaid.enabled }}
+  IMAGEMAID_ENABLED: "true"
+{{ end }}
+  PLEX_PATH: "/config/Library/Application Support/Plex Media Server/"
   MODE: remove
   USE_EXISTING: "True"
   PLEX_URL: http:/plex:32400

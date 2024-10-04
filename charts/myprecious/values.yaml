@@ -5,6 +5,9 @@ safeToRelease: true
 location:
   enabled: false
 
+imagemaid:
+  enabled: false  
+
 # false by default
 volsync:
   enabled: false
@@ -6023,6 +6026,18 @@ plex: &app_plex
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest
+    imagemaid:
+      image: ghcr.io/elfhosted/imagemaid@v1.1.1@sha256:1e129efeea6bea6b1d04255f7f87bffc41c77db6211d8d54ade7cd8d2579dfb8      
+      volumeMounts:
+      - mountPath: /config
+        name: config      
+      envFrom:
+      - configMapRef:
+          name: imagemaid-env
+          optional: true      
+      - configMapRef:
+          name: elfbot-imagemaid
+          optional: true            
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -8343,75 +8358,7 @@ kometa: &app_kometa
       cpu: 1
       memory: 4Gi
 
-imagemaid: &app_imagemaid
-  enabled: false
-  sso:
-    enabled: true
-  priorityClassName: tenant-normal
-  image:
-    repository: ghcr.io/elfhosted/imagemaid
-    tag: v1.1.1@sha256:1e129efeea6bea6b1d04255f7f87bffc41c77db6211d8d54ade7cd8d2579dfb8
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podLabels:
-    app.elfhosted.com/name: imagemaid    
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-imagemaid"
-  affinity: *standard_affinity 
-  tolerations: *standard_tolerations      
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3001
-  envFrom:
-  - configMapRef:
-      name: imagemaid-env
-      optional: true      
-  - configMapRef:
-      name: elfbot-imagemaid
-      optional: true          
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-imagemaid-ssd
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-imagemaid
-          optional: true
-  initContainers:
-    bootstrap: *bootstrap
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 64Mi
-    limits:
-      cpu: 1
-      memory: 4Gi
-  
+
 
 rcloneui:
   enabled: false
