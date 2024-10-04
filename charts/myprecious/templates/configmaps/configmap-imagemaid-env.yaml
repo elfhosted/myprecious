@@ -7,10 +7,10 @@ data:
 {{ if .Values.imagemaid.enabled }}
   IMAGEMAID_ENABLED: "true"
 {{ end }}
-  PLEX_PATH: "/config/Library/Application Support/Plex Media Server/"
+  PLEX_PATH: "/Library/Application Support/Plex Media Server/"
   MODE: remove
   USE_EXISTING: "True"
-  PLEX_URL: http:/plex:32400
+  PLEX_URL: http:/localhost:32400
   TIMEOUT: "600"
   SLEEP: "60"
   IGNORE_RUNNING: "False"
