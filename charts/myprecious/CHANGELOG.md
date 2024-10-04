@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.138.0](https://github.com/elfhosted/myprecious/compare/v1.137.0...v1.138.0) (2024-10-04)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.707 ([a88907d](https://github.com/elfhosted/myprecious/commit/a88907d58a556ecb44f8db43931baa2e8eaf8ab0))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.3.1 ([67149cc](https://github.com/elfhosted/myprecious/commit/67149ccf383d057fcbdb4187356c6a98407ce7ca))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.1 ([920b8a5](https://github.com/elfhosted/myprecious/commit/920b8a525b384d49443175608d95ccb46a6e176b))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.117.0 ([71d3012](https://github.com/elfhosted/myprecious/commit/71d30121257a3d4b6d9906f2b642734888d2100f))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.117.0 ([777387b](https://github.com/elfhosted/myprecious/commit/777387b9bce64a0f6b54d2cfed25e88a5f68a8f9))
+* **app:** update mongodb/mongodb-community-server docker tag to v8 ([6f4ddb6](https://github.com/elfhosted/myprecious/commit/6f4ddb6ef0f6863e05b26d7999d76a53f2439bbc))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/imagemaid:v1.1.1 docker digest to ca0352b ([0b20a24](https://github.com/elfhosted/myprecious/commit/0b20a248a398acf987727be292ec952b4744c915))
+
 ## [1.137.0](https://github.com/elfhosted/myprecious/compare/v1.136.1...v1.137.0) (2024-10-03)
 
 
