@@ -12708,8 +12708,6 @@ channelsdvr:
   additionalContainers:
     tinyproxy:
       image: docker.io/kalaksi/tinyproxy
-      env:
-        DISABLE_VIA_HEADER: 'yes'
       volumeMounts:
       - name: tinyproxy-conf
         mountPath: /etc/tinyproxy/tinyproxy.conf
