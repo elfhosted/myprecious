@@ -7805,7 +7805,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.0@sha256:165e9af55c26301969b51f9dcdd3c85c0f4f2b43017484a9f361b82c263fc166
+    tag: 1.32.1@sha256:b68d01f41a1c2d8b012cda875d5dad8211efb64208d35da94b06cfcf17c3c2f2
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -11214,7 +11214,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.3.0@sha256:fa112f11ecc72d7476303774cc2fdb0dee14e91f6bacec0ae9c121f1995b4f15
+    tag: v1.3.1@sha256:c9f336aa579a81700e3ab608743a48fdc4de522b0157adf3755e2e3cca12f12b
   priorityClassName: tenant-normal
   controller:
     annotations:
