@@ -831,7 +831,7 @@ data:
           {{ end }}
 
           {{ if .Values.channelsdvr.enabled }}
-          - name: "Channels DRV"
+          - name: "Channels DVR"
             logo: "assets/png/channels.png"
             subtitle: "Watch TV your way"
             tag: "protected"

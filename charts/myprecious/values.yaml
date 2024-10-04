@@ -806,14 +806,7 @@ configmounts: &config_mounts
     mountPath: /config/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd
-  plexdebridhobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd     
+        claimName: config-plex-debrid-ssd   
   joplinserver:
     enabled: false
     type: custom
@@ -946,14 +939,7 @@ configmounts: &config_mounts
     type: "custom"
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-prowlarr-ssd    
-  prowlarrhobbit:
-    enabled: false
-    mountPath: /config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd    
+        claimName: config-prowlarr-ssd     
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1037,14 +1023,7 @@ configmounts: &config_mounts
     mountPath: /config/riven/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-riven-ssd  
-  rivenhobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd                                
+        claimName: config-riven-ssd                             
   rpdb:
     enabled: false
     type: custom
@@ -1205,14 +1184,7 @@ configmounts: &config_mounts
     mountPath: /config/rdtclient/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-rdtclient-ssd
-  rdtclienthobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd              
+        claimName: config-rdtclient-ssd            
   rdtclientvpnpia:
     enabled: false
     type: custom
@@ -1386,14 +1358,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/kometa/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-kometa    
-  kometahobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/kometa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kometa                                  
+        claimName: config-kometa                               
   pyload:
     enabled: false
     type: custom
@@ -1541,14 +1506,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/plex-debrid/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd
-  plexdebridhobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd     
+        claimName: config-plex-debrid-ssd 
   privatebin:
     enabled: false
     type: custom
@@ -1563,13 +1521,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd   
-  prowlarrhobbit:
-    enabled: false
-    mountPath: /storage/config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd  
   qbittorrentpia:
     enabled: false
     type: custom
@@ -1653,14 +1604,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/riven/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-riven-ssd  
-  rivenhobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd                                
+        claimName: config-riven-ssd                             
   rpdb:
     enabled: false
     type: custom
@@ -1821,14 +1765,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/rdtclient/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-rdtclient-ssd
-  rdtclienthobbit:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd              
+        claimName: config-rdtclient-ssd           
   rdtclientvpnpia:
     enabled: false
     type: custom
@@ -1883,6 +1820,29 @@ bootstrap_env: &bootstrap_env
     fieldRef:
       fieldPath: metadata.labels['app.elfhosted.com/name']
 
+remove_mediacover: &remove_mediacover
+  image: *tooling_image
+  imagePullPolicy: IfNotPresent
+  command:
+  - /bin/bash
+  - -c
+  - |
+    set -e
+
+    if [[ ! -z "$(ls -A /config/MediaCover)" ]]
+    then
+      rm -rf /config/MediaCover
+    fi   
+
+    if [[ ! -z "$(ls -A /migration/MediaCover)" ]]
+    then
+      rm -rf /migration/MediaCover
+    fi       
+  volumeMounts:
+  - mountPath: /config
+    name: config
+  - mountPath: /migration
+    name: migration    
 migrate_data: &migrate_data
   image: *tooling_image
   imagePullPolicy: IfNotPresent
@@ -3692,6 +3652,7 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
@@ -3708,47 +3669,13 @@ radarr: &app_radarr
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies        
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /config
-        name: config
-      # - mountPath: /mediacover
-      #   name: mediacover        
+        name: config     
       resources: *default_resources
-      securityContext: *default_securitycontext
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:7878/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $RADARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: radarr-env
-      resources: *default_resources
-      securityContext: *default_securitycontext           
+      securityContext: *default_securitycontext        
   resources:
     requests:
       cpu: 1m
@@ -3827,6 +3754,7 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data  
     bootstrap: *bootstrap
     setup:
@@ -3846,45 +3774,11 @@ radarr4k: &app_radarr4k
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /config
-        name: config
-      # - mountPath: /mediacover
-      #   name: mediacover        
-      resources: *default_resources
-      securityContext: *default_securitycontext    
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:7878/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $RADARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: radarr4k-env
+        name: config    
       resources: *default_resources
       securityContext: *default_securitycontext      
   resources:
@@ -5287,6 +5181,7 @@ sonarr: &app_sonarr
         http:
           port: 8989      
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
@@ -5303,45 +5198,11 @@ sonarr: &app_sonarr
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: symlinks
-      # - mountPath: /mediacover
-      #   name: mediacover                     
+        name: symlinks              
       resources: *default_resources
       securityContext: *default_securitycontext   
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:8989/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $SONARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: sonarr-env
-      resources: *default_resources
-      securityContext: *default_securitycontext            
   resources:
     requests:
       cpu: 1m
@@ -5418,6 +5279,7 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989      
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
@@ -5434,45 +5296,11 @@ sonarr4k: &app_sonarr4k
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
 
-        # # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
-        # if [ -d "/config/MediaCover" ]; then
-        #   rm -rf "/config/MediaCover"
-        #   ln -s /mediacover '/config/MediaCover'
-        # fi
       volumeMounts:
       - mountPath: /storage/symlinks
-        name: symlinks
-      # - mountPath: /mediacover
-      #   name: mediacover        
+        name: symlinks      
       resources: *default_resources
       securityContext: *default_securitycontext       
-  additionalContainers:
-    settings:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-        set -e
-        set -x
-
-        # Apply our settings regularly
-        while [ 1 ]; do
-          curl 'http://localhost:8989/api/v3/config/mediamanagement' \
-          -X PUT \
-          -H "X-Api-Key: $SONARR__API_KEY" \
-          -s \
-          -H 'Content-Type: application/json' \
-          --data-raw '{"autoUnmonitorPreviouslyDownloadedMovies":false,"recycleBin":"","recycleBinCleanupDays":7,"downloadPropersAndRepacks":"preferAndUpgrade","createEmptyMovieFolders":false,"deleteEmptyFolders":false,"fileDate":"none","rescanAfterRefresh":"always","autoRenameFolders":false,"pathsDefaultStatic":false,"setPermissionsLinux":false,"chmodFolder":"755","chownGroup":"","skipFreeSpaceCheckWhenImporting":true,"minimumFreeSpaceWhenImporting":100,"copyUsingHardlinks":true,"useScriptImport":false,"scriptImportPath":"","importExtraFiles":false,"extraFileExtensions":"srt","enableMediaInfo":false,"id":1}' > /dev/null
-          sleep 1h
-        done
-      envFrom:
-      - configMapRef:
-          name: sonarr4k-env
-      resources: *default_resources
-      securityContext: *default_securitycontext            
   resources:
     requests:
       cpu: 1m
@@ -5731,6 +5559,7 @@ lidarr:
         http:
           port: 8686
   initContainers:
+    a-clean-mediacover: *remove_mediacover
     a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
@@ -5749,9 +5578,7 @@ lidarr:
 
       volumeMounts:
       - mountPath: /config
-        name: config
-      - mountPath: /mediacover
-        name: mediacover           
+        name: config       
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -5832,7 +5659,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-nightly
-    tag: 0.4.1.2639@sha256:d565a40e66cc8af8dbd9272b585ca7b023412ac96fd12b435de95af69dc578f7
+    tag: 0.4.1.2642@sha256:740647d442a869c41cd329dac9658483e35fc3a1a2b25fdf82f9f2482048386b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5926,7 +5753,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-nightly
-    tag: 0.4.1.2639@sha256:d565a40e66cc8af8dbd9272b585ca7b023412ac96fd12b435de95af69dc578f7
+    tag: 0.4.1.2642@sha256:740647d442a869c41cd329dac9658483e35fc3a1a2b25fdf82f9f2482048386b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7197,7 +7024,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.12.2-vaapi
+    tag: 0.12.3-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7978,7 +7805,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.0@sha256:165e9af55c26301969b51f9dcdd3c85c0f4f2b43017484a9f361b82c263fc166
+    tag: 1.32.1@sha256:b68d01f41a1c2d8b012cda875d5dad8211efb64208d35da94b06cfcf17c3c2f2
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9103,7 +8930,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.0.0@sha256:eb72fed23b0581eb17ed082f7926797716612594dcd1a9aac2537efcddc0af56
+    tag: 10.1.0@sha256:3d4715da6f51b346e8c2ab2401072d9028a4e2cd8724bcbcde085f48a9900c49
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10269,7 +10096,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.15.2@sha256:0cf1c5bbd6829d6c2d68f189e158e79361b1d0025a2bc8e8c7cda93df79525ea
+    tag: v0.15.3@sha256:9afd9a810493df564393f674e4da10af89f124899dc9ab5ac3a93a722529d29d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10414,7 +10241,7 @@ riven: &app_riven
           memory: 1Mi
         limits:
           cpu: 500m
-          memory: 2Gi
+          memory: 4Gi
 
 airdcpp: &app_airdcpp
   enabled: false
@@ -10560,7 +10387,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.703@sha256:a8015260af0e90c649a2212244073dca31c2fbbaddb3ac0879f2e6f897e9e479
+    tag: 0.22.704@sha256:1505cd46881f5f2afacdf6376472e26294a0f1f8a560cb0830618004e94434c4
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11387,7 +11214,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.3.0@sha256:fa112f11ecc72d7476303774cc2fdb0dee14e91f6bacec0ae9c121f1995b4f15
+    tag: v1.3.1@sha256:c9f336aa579a81700e3ab608743a48fdc4de522b0157adf3755e2e3cca12f12b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12165,7 +11992,7 @@ zurg: &app_zurg
               values:
               - nodefinder # use nodefinder in the absense of zurg...
           topologyKey: "kubernetes.io/hostname"  
-      - weight: 100  
+      - weight: 60  
         podAffinityTerm:    
           labelSelector:
             matchExpressions:
@@ -12173,7 +12000,17 @@ zurg: &app_zurg
               operator: In
               values:
               - zurg # .. but prefer zurg
-          topologyKey: "kubernetes.io/hostname"                          
+          topologyKey: "kubernetes.io/hostname"  
+          namespaceSelector: {}  # i.e., in the absense of any better signal, pick a node which already has zurg on it
+      - weight: 70  
+        podAffinityTerm:    
+          labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/name
+              operator: In
+              values:
+              - zurg # .. but prefer zurg
+          topologyKey: "kubernetes.io/hostname"                                 
   securityContext:
     seccompProfile:
       type: RuntimeDefault

@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.137.0](https://github.com/elfhosted/myprecious/compare/v1.136.1...v1.137.0) (2024-10-03)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.12.3 ([fef976c](https://github.com/elfhosted/myprecious/commit/fef976cc9ed05ad20eff0f86bcc518e51ca2fff4))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.704 ([50dadd8](https://github.com/elfhosted/myprecious/commit/50dadd8c8ba67b160e840c66ab7ea628befd53ba))
+* **app:** update ghcr.io/elfhosted/readarr-nightly docker tag to v0.4.1.2642 ([0085ec9](https://github.com/elfhosted/myprecious/commit/0085ec9fc6745570b0ceb710226309bcceda3c2d))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.15.2 ([03733b7](https://github.com/elfhosted/myprecious/commit/03733b739edd750c35eae1cf3ad0d28e1b8d9ca2))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.15.3 ([1ccb31c](https://github.com/elfhosted/myprecious/commit/1ccb31c673d5bb6406c63df6b96d67e548401fb5))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.1.0 ([d272f97](https://github.com/elfhosted/myprecious/commit/d272f978e932ffb2604ab19637a6351e4ea8ead0))
+* restore aarrs to filebrowser ([1cf15bc](https://github.com/elfhosted/myprecious/commit/1cf15bcd2cc8ce586bc645228973de5471de134f))
+
+
+### Bug Fixes
+
+* Update Riven to v0.15.2 for OOMKill fix ([06fcc63](https://github.com/elfhosted/myprecious/commit/06fcc63e9336101c53ed3e047e829e14a25df50c))
+
+## [1.136.1](https://github.com/elfhosted/myprecious/compare/v1.136.0...v1.136.1) (2024-10-02)
+
+
+### Bug Fixes
+
+* make hardware transcoding work again (Ubuntu 24.04 changed group ids) ([8a15964](https://github.com/elfhosted/myprecious/commit/8a159644f9547c2cdc8b94f018abe279d3f82f0f))
+
 ## [1.136.0](https://github.com/elfhosted/myprecious/compare/v1.135.0...v1.136.0) (2024-10-02)
 
 

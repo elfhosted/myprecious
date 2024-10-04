@@ -37,7 +37,7 @@ spec:
                 values:
                 - zurg # .. but prefer zurg
             topologyKey: "kubernetes.io/hostname"       
-    cacheCapacity: 2Gi
+    cacheCapacity: 5Gi
     cacheStorageClassName: topolvm-provisioner-thin
     volumeSnapshotClassName: {{ .Values.storageclass.rwx.volumeSnapshotClassName }}
 {{ end }}
