@@ -12650,7 +12650,7 @@ channelsdvr:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr,channelsdvr-tinyproxy-conf"
   affinity: *standard_affinity 
   tolerations: *standard_tolerations        
   securityContext:
@@ -12702,14 +12702,20 @@ channelsdvr:
       volumeSpec:
         configMap:
           name: elfbot-channelsdvr
-          optional: true      
+          optional: true
+    channelsdvr-tinyproxy-conf:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: channelsdvr-tinyproxy-conf      
   initContainers:
     bootstrap: *bootstrap
   additionalContainers:
     tinyproxy:
       image: docker.io/kalaksi/tinyproxy
       volumeMounts:
-      - name: tinyproxy-conf
+      - name: channelsdvr-tinyproxy-conf
         mountPath: /etc/tinyproxy/tinyproxy.conf
         subPath: tinyproxy.conf  
 
