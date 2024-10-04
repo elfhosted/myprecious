@@ -10836,7 +10836,7 @@ petio:
     tmp: *tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:7.0.14-ubi8
+      image: mongodb/mongodb-community-server:8.0.0-ubi8
       volumeMounts:
         - name: config
           subPath: mongodb
