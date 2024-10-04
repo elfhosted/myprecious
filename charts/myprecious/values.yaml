@@ -12765,7 +12765,7 @@ immich:
     bootstrap: *bootstrap
   additionalContainers:
     ml: 
-      image: ghcr.io/immich-app/immich-machine-learning:v1.116.2
+      image: ghcr.io/immich-app/immich-machine-learning:v1.117.0
       envFrom:
       - configMapRef:
           name: immich-env    
