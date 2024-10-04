@@ -6013,7 +6013,7 @@ plex: &app_plex
     speedtest:
       image: openspeedtest/latest
     imagemaid:
-      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:ca0352bf95e9e4dd0aef61ec7494f0d3a64c3def6522e5315417ee71e7fa8387      
+      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:d71ddc837f8e12d8181b0f16337ebe6c7729b86181e5923756b9418e0a7bc87d      
       volumeMounts:
       - mountPath: /config
         name: config      
