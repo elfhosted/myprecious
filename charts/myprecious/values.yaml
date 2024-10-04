@@ -752,13 +752,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                                     
-  imagemaid:
-    enabled: false
-    type: custom
-    mountPath: /config/imagemaid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-imagemaid-ssd
   jellyseerr:
     enabled: false
     type: custom
@@ -1340,14 +1333,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd  
-  imagemaid:
-    enabled: true
-    type: custom
-    mountPath: /storage/config/imagemaid
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-imagemaid-ssd                      
+        claimName: config-homer-ssd                       
   # jackett:
   #   enabled: false
   #   type: custom
