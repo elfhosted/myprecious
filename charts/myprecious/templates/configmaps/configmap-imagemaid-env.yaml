@@ -7,8 +7,8 @@ data:
   MODE=report
   SCHEDULE=05:00|weekly(sunday)
   PLEX_URL=http:/plex:32400
-  TIMEOUT=600
-  SLEEP=60
+  TIMEOUT="600"
+  SLEEP="60"
   IGNORE_RUNNING=False
   LOCAL_DB=False
   USE_EXISTING=False
