@@ -4,18 +4,13 @@ kind: ConfigMap
 metadata:
   name: imagemaid-env
 data:
-  MODE=report
-  SCHEDULE=05:00|weekly(sunday)
-  PLEX_URL=http:/plex:32400
-  TIMEOUT="600"
-  SLEEP="60"
-  IGNORE_RUNNING=False
-  LOCAL_DB=False
-  USE_EXISTING=False
-  PHOTO_TRANSCODER=False
-  EMPTY_TRASH=False
-  CLEAN_BUNDLES=False
-  OPTIMIZE_DB=False
-  TRACE=False
-  LOG_REQUESTS=False
+  PLEX_PATH: /what/will/this/do/without/local/plex
+  MODE: remove
+  USE_EXISTING: "True"
+  SCHEDULE: 05:00|weekly(sunday)
+  PLEX_URL: http:/plex:32400
+  TIMEOUT: "600"
+  SLEEP: "60"
+  IGNORE_RUNNING: "False"
+  LOCAL_DB: "False"
 {{ end }}
