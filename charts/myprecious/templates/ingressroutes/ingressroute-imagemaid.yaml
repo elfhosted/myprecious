@@ -1,0 +1,19 @@
+{{ if .Values.imagemaid.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  - web
+  routes:
+    - match: Host(`{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: imagemaid
+          kind: Service
+          port: 3001
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+{{ end }}

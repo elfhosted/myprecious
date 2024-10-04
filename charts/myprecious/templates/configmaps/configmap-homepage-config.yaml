@@ -579,7 +579,15 @@ data:
             href: https://{{ .Release.Name }}-kometa.{{ .Values.dns_domain }}
             description: Manage Plex Metadata   
             siteMonitor: http://kometa:3001
-        {{ end }}           
+        {{ end }}    
+
+        {{ if .Values.imagemaid.enabled }}
+        - ImageMaid:
+            icon: mdi-delete-sweep
+            href: https://{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}
+            description: Clean Plex Images   
+            siteMonitor: http://imagemaid:3001
+        {{ end }}                   
 
         {{ if or .Values.autoscan.enabled }}
         - Autoscan:

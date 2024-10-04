@@ -676,7 +676,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }}   
+
+      {{ if .Values.imagemaid.enabled }}
+      - name: imagemaid
+        group: manage-media
+        url: "http://imagemaid:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}            
 
       {{ if or .Values.autoscan.enabled }}
       - name: autoscan
