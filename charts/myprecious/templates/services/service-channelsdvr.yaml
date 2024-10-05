@@ -10,6 +10,10 @@ metadata:
 spec:
   type: ClusterIP
   ports:
+  - port: 8888
+    targetPort: 8888
+    protocol: TCP
+    name: tinyproxy
   - port: 8089
     targetPort: 8089
     protocol: TCP

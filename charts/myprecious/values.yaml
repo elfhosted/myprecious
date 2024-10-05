@@ -5654,8 +5654,8 @@ readarr:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/readarr-nightly
-    tag: 0.4.1.2642@sha256:740647d442a869c41cd329dac9658483e35fc3a1a2b25fdf82f9f2482048386b
+    repository: elfhosted/readarr-develop
+    tag: 0.4.0.2634@sha256:c12b03f9ada000806d414985eacf5496ee525334df679fda03505d1286e65acd
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5748,8 +5748,8 @@ readarraudio:
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/readarr-nightly
-    tag: 0.4.1.2642@sha256:740647d442a869c41cd329dac9658483e35fc3a1a2b25fdf82f9f2482048386b
+    repository: elfhosted/readarr-develop
+    tag: 0.4.0.2634@sha256:c12b03f9ada000806d414985eacf5496ee525334df679fda03505d1286e65acd
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5859,7 +5859,7 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,plex-config" # Reload the deployment every time the rclones change   
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,elfbot-imagemaid,plex-config,imagemaid-env" # Reload the deployment every time the rclones change   
   image:
     registry: ghcr.io
     repository: elfhosted/plex
@@ -6013,17 +6013,21 @@ plex: &app_plex
     speedtest:
       image: openspeedtest/latest
     imagemaid:
-      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:ca0352bf95e9e4dd0aef61ec7494f0d3a64c3def6522e5315417ee71e7fa8387      
+      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:8fb3b3b89431e4b0217ec268abbabfb67a970de3fb2d763f72847d558c1c8aa5
       volumeMounts:
       - mountPath: /config
-        name: config      
+        name: config
+        subPath: imagemaid
+      - mountPath: /Library
+        name: config
+        subPath: Library
       envFrom:
       - configMapRef:
           name: imagemaid-env
           optional: true      
       - configMapRef:
           name: elfbot-imagemaid
-          optional: true            
+          optional: true
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -6038,7 +6042,7 @@ plex: &app_plex
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         VPN_TYPE: wireguard
         VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "32400,3000,8888"
+        FIREWALL_INPUT_PORTS: "32400,3000,8888,3001"
         WIREGUARD_MTU: "1280"
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
@@ -12646,7 +12650,7 @@ channelsdvr:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr,channelsdvr-tinyproxy-conf"
   affinity: *standard_affinity 
   tolerations: *standard_tolerations        
   securityContext:
@@ -12698,9 +12702,22 @@ channelsdvr:
       volumeSpec:
         configMap:
           name: elfbot-channelsdvr
-          optional: true      
+          optional: true
+    channelsdvr-tinyproxy-conf:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: channelsdvr-tinyproxy-conf      
   initContainers:
     bootstrap: *bootstrap
+  additionalContainers:
+    tinyproxy:
+      image: docker.io/kalaksi/tinyproxy
+      volumeMounts:
+      - name: channelsdvr-tinyproxy-conf
+        mountPath: /etc/tinyproxy/tinyproxy.conf
+        subPath: tinyproxy.conf  
 
 immich:
   enabled: false
