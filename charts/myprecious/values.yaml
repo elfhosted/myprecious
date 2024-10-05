@@ -5859,7 +5859,7 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,elfbot-imagemaid,plex-config" # Reload the deployment every time the rclones change   
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,elfbot-imagemaid,plex-config,imagemaid-env" # Reload the deployment every time the rclones change   
   image:
     registry: ghcr.io
     repository: elfhosted/plex
