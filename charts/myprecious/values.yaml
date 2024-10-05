@@ -6013,7 +6013,7 @@ plex: &app_plex
     speedtest:
       image: openspeedtest/latest
     imagemaid:
-      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:8fb3b3b89431e4b0217ec268abbabfb67a970de3fb2d763f72847d558c1c8aa5
+      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:8fb3b3b89431e4b0217ec268abbabfb67a970de3fb2d763f72847d558c1c8aa5      
       volumeMounts:
       - mountPath: /config
         name: config
@@ -7885,7 +7885,7 @@ notifiarr:
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/notifiarr
-    tag: 0.8.2@sha256:394f33b228cb0917d3072d46161bca73af4eac664009123491f492825edd5bad
+    tag: 0.8.3@sha256:cc1f6e5e2b41205860de8e31a004fb0957590bf96bd50c0ab78b4e8c19813d40
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -8941,7 +8941,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.1.0@sha256:3d4715da6f51b346e8c2ab2401072d9028a4e2cd8724bcbcde085f48a9900c49
+    tag: 10.1.1@sha256:a85b47e8b5d457d6e0fde8e82a8726474de16e4621db84e575c42e9ca2927e6b
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10398,7 +10398,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.707@sha256:938d807f3f1398eafe4308960979d05664feb2f5b548684ce5d857c29d507d34
+    tag: 0.22.714@sha256:205d67618d77274e05ebe93e16f4a8381ff904598a3df65e17121437885fd3db
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11225,7 +11225,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.3.1@sha256:c9f336aa579a81700e3ab608743a48fdc4de522b0157adf3755e2e3cca12f12b
+    tag: v1.4.0@sha256:fb3e82bf0d7734880473329ffb9921ee47ca3a4d7c855d88e3f6076d7f195ff4
   priorityClassName: tenant-normal
   controller:
     annotations:
