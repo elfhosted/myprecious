@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.139.0](https://github.com/elfhosted/myprecious/compare/v1.138.0...v1.139.0) (2024-10-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.714 ([187e2f6](https://github.com/elfhosted/myprecious/commit/187e2f6a1b062d951442350bf70d899e50f1a4c8))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.4.0 ([1bd1011](https://github.com/elfhosted/myprecious/commit/1bd101160a3f2b748ab1045370392d3159f5bdc5))
+* **app:** update ghcr.io/elfhosted/notifiarr docker tag to v0.8.3 ([3a12eb5](https://github.com/elfhosted/myprecious/commit/3a12eb53e4237e9efc75f9eec8f4883dfc2edc16))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.1.1 ([67b5c38](https://github.com/elfhosted/myprecious/commit/67b5c38db5c4751e763648cfd7737ab2ae7a7bc8))
+
+
+### Bug Fixes
+
+* add imagemaid ([9627e69](https://github.com/elfhosted/myprecious/commit/9627e690115e034ac91200f441b1f956f92a0433))
+* **app:** update ghcr.io/elfhosted/imagemaid:v1.1.1 docker digest to 8fb3b3b ([4c3e938](https://github.com/elfhosted/myprecious/commit/4c3e938e967957dd68be9a5e3a5a0c34f0d3f782))
+* **app:** update ghcr.io/elfhosted/imagemaid:v1.1.1 docker digest to b5ccbab ([b2bd6e7](https://github.com/elfhosted/myprecious/commit/b2bd6e75ec8b0ee743cba7719e9573605d2126ad))
+* **app:** update ghcr.io/elfhosted/imagemaid:v1.1.1 docker digest to d71ddc8 ([1829c17](https://github.com/elfhosted/myprecious/commit/1829c1725900ebb1d35de11330c4c27af995c110))
+
 ## [1.138.0](https://github.com/elfhosted/myprecious/compare/v1.137.0...v1.138.0) (2024-10-04)
 
 
