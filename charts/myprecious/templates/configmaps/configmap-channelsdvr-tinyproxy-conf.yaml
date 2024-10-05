@@ -10,7 +10,7 @@ data:
     Timeout 600
     DisableViaHeader yes
     ReverseOnly yes
-    ReverseMagic yes
-    ReversePath "/" "http://127.0.0.1:8089/"
-    ReverseBaseURL "{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}/"
+    # ReverseMagic yes
+    # ReversePath "/" "http://127.0.0.1:8089/"
+    # ReverseBaseURL "{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}/"
 {{ end }}
