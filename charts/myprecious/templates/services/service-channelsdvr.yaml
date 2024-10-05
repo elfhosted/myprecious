@@ -13,7 +13,7 @@ spec:
   - port: 8888
     targetPort: 8888
     protocol: TCP
-    name: http
+    name: tinyproxy
   selector:
     app.kubernetes.io/name: channelsdvr
     app.kubernetes.io/instance: {{ .Release.Name }}
