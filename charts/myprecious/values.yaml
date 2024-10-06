@@ -5390,7 +5390,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.24.3.4754@sha256:fb7a344ce73d9a765c0e201a84069b5e5a9f2779610e6053a8a74b09bff66917
+    tag: 1.25.0.4759@sha256:0a3c47594ff8c06035cb76492c74ba48e9c924c39ba60261c22c50598e4a1a55
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10398,7 +10398,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.714@sha256:205d67618d77274e05ebe93e16f4a8381ff904598a3df65e17121437885fd3db
+    tag: 0.22.716@sha256:bc5a1b8e18d8a753ac86fd4ca0d11f701a535a740e7248de57b905261d7197ad
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12259,7 +12259,7 @@ plexdebrid: &app_plexdebrid
     app.elfhosted.com/name: plexdebrid  
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:d234b06e14608bd9160d86d9d17aff50c6cafcdc2d80f20885d04ba3b2350861
+    tag: rolling@sha256:0a287b77b8f38231bc55b33c4792addc666b8681789b79ff78b6f09219cbaaaa
   priorityClassName: tenant-normal
   controller:
     annotations:
