@@ -794,7 +794,7 @@ data:
             siteMonitor: http://blackhole4k:3001
         {{ end }}    
 
-        {{ if .Values.torbox.enabled }}
+        {{ if .Values.rclonemounttorbox.enabled }}
         - Blackhole Torbox:
             icon: mdi-cirle
             href: https://{{ .Release.Name }}-blackholetorbox.{{ .Values.dns_domain }}
