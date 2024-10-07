@@ -625,6 +625,13 @@ storagemounts: &storagemounts
 
 # These are used for containers (like codeserver) which need access to all **all** the '/config' volumes
 configmounts: &config_mounts
+  config:
+    enabled: false
+    type: custom
+    mountPath: /config/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config
   airdcpppia:
     enabled: false
     type: custom
@@ -695,20 +702,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-comet-ssd             
-  delugepia:
-    enabled: false
-    type: custom
-    mountPath: /config/deluge/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-deluge-ssd
-  delugegluetun:
-    enabled: false
-    type: custom
-    mountPath: /config/deluge/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-deluge-ssd
   elfterm:
     enabled: true
     type: custom
@@ -936,20 +929,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd     
-  qbittorrentpia:
-    enabled: false
-    type: custom
-    mountPath: /config/qbittorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-qbittorrent-ssd
-  qbittorrentgluetun:
-    enabled: false
-    type: custom
-    mountPath: /config/qbittorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-qbittorrent-ssd
   radarr:
     enabled: false
     type: custom
@@ -1012,14 +991,7 @@ configmounts: &config_mounts
     mountPath: /config/resiliosync/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-resiliosync-ssd
-  riven:
-    enabled: false
-    type: custom
-    mountPath: /config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd                             
+        claimName: config-resiliosync-ssd                        
   rpdb:
     enabled: false
     type: custom
@@ -1027,20 +999,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rpdb-ssd
-  rutorrentpia:
-    enabled: false
-    type: custom
-    mountPath: /config/rutorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rutorrent-ssd
-  rutorrentgluetun:
-    enabled: false
-    type: custom
-    mountPath: /config/rutorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rutorrent-ssd
   sabnzbd:
     enabled: false
     type: custom
@@ -1191,6 +1149,13 @@ configmounts: &config_mounts
 
 # And this is for mounting the volumes into `/storage/config/`
 storageconfigmounts: &storageconfigmounts
+  config:
+    enabled: false
+    type: custom
+    mountPath: /storage/config/
+    volumeSpec:
+      persistentVolumeClaim:
+        claimName: config
   airdcpppia:
     enabled: false
     type: custom
@@ -1277,20 +1242,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-comet-ssd            
-  delugepia:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/deluge/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-deluge-ssd
-  delugegluetun:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/deluge/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-deluge-ssd
   elfterm:
     enabled: true
     type: custom
@@ -1517,20 +1468,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-prowlarr-ssd   
-  qbittorrentpia:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/qbittorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-qbittorrent-ssd
-  qbittorrentgluetun:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/qbittorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-qbittorrent-ssd
   radarr:
     enabled: false
     type: custom
@@ -1593,14 +1530,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/resiliosync/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-resiliosync-ssd
-  riven:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/riven/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-riven-ssd                             
+        claimName: config-resiliosync-ssd                         
   rpdb:
     enabled: false
     type: custom
@@ -1608,20 +1538,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rpdb-ssd
-  rutorrentpia:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rutorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rutorrent-ssd
-  rutorrentgluetun:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rutorrent/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rutorrent-ssd
   sabnzbd:
     enabled: false
     type: custom
@@ -2388,6 +2304,13 @@ rutorrentgluetun: &rutorrent
       enabled: true
       type: custom
       mountPath: /data/rtorrent/
+      subPath: rutorrent
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-rutorrent-ssd
@@ -2488,6 +2411,7 @@ rutorrentgluetun: &rutorrent
     PORT_FILE: /data/rtorrent/forwarded-port
     WAN_IP_CMD: 'curl -s ifconfig.me'
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     update-dns: *update_dns_on_init    
     setup:
@@ -2538,6 +2462,7 @@ rutorrentgluetun: &rutorrent
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: rutorrent
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -2602,6 +2527,7 @@ rutorrentgluetun: &rutorrent
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: rutorrent
       - mountPath: /shared
         name: shared        
       resources: *default_resources
@@ -2667,9 +2593,16 @@ delugegluetun: &deluge
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: deluge
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-deluge-ssd
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-deluge-ssd          
     shared:
       enabled: true
       mountPath: /shared
@@ -2723,6 +2656,7 @@ delugegluetun: &deluge
         key: PORT_FILE
     optional: true
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -2764,6 +2698,7 @@ delugegluetun: &deluge
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /shared
         name: shared        
       env: *bootstrap_env
@@ -2798,6 +2733,7 @@ delugegluetun: &deluge
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
@@ -2824,6 +2760,7 @@ delugegluetun: &deluge
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /tmp
         name: tmp
       env:
@@ -2886,6 +2823,7 @@ delugepia:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /shared
         name: shared        
       env: *bootstrap_env
@@ -2903,6 +2841,7 @@ delugepia:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: deluge
       - mountPath: /tmp
         name: tmp
       env:
@@ -2959,9 +2898,16 @@ qbittorrentgluetun: &qbittorrent
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: qbittorrent
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-qbittorrent-ssd          
     shared:
       enabled: true
       mountPath: /shared
@@ -3018,6 +2964,7 @@ qbittorrentgluetun: &qbittorrent
         key: PORT_FILE
     optional: true
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -3064,6 +3011,7 @@ qbittorrentgluetun: &qbittorrent
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       - mountPath: /shared
         name: shared  
       securityContext: *default_securitycontext
@@ -3122,6 +3070,7 @@ qbittorrentgluetun: &qbittorrent
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       - mountPath: /shared
         name: shared
       resources: *default_resources
@@ -3155,6 +3104,7 @@ qbittorrentgluetun: &qbittorrent
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       config: # We have to set this to null so that we can override with our own config
 
       # The scripts that get run when the VPN connection opens/closes are defined here.
