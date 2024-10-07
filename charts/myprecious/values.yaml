@@ -2071,7 +2071,7 @@ storagehub_bootstrap: &storagehub_bootstrap
   securityContext: *default_securitycontext
 
 # Eventually we'll remove the old one, and rename this to bootstrap
-bootstrap_ssd: &bootstrap_ssd
+bootstrap_migration: &bootstrap_migration
   image: *tooling_image
   imagePullPolicy: IfNotPresent
   command:
@@ -2156,7 +2156,7 @@ bootstrap_ssd: &bootstrap_ssd
     name: elfbot
   - mountPath: /config
     name: config
-  - mountPath: /config-hdd
+  - mountPath: /migation
     name: confighdd
   env: *bootstrap_env
   resources: *default_resources
@@ -2412,7 +2412,14 @@ rutorrentgluetun: &rutorrent
     WAN_IP_CMD: 'curl -s ifconfig.me'
   initContainers:
     a-migration: *migrate_data
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent
     update-dns: *update_dns_on_init    
     setup:
       image: *tooling_image
@@ -2657,7 +2664,14 @@ delugegluetun: &deluge
     optional: true
   initContainers:
     a-migration: *migrate_data
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: deluge
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -3151,7 +3165,14 @@ qbittorrentpia:
         name: tmp
   initContainers:
     a-migration: *migrate_data
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: qbittorrent
     setup:
       image: *tooling_image
       command:
@@ -10111,7 +10132,14 @@ riven: &app_riven
         medium: Memory  
   initContainers:
     a-migration: *migrate_data
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: riven
     setup-postgres:
       image: *tooling_image
       command:
