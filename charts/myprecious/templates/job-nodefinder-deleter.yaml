@@ -29,6 +29,6 @@ spec:
           if kubectl --request-timeout 30s get deployment {{ .Release.Name }}-nodefinder
           then
             sleep 4m
-            kubectl --request-timeout 30s delete deployment {{ .Release.Name }}-nodefinder"
+            kubectl --request-timeout 30s delete deployment {{ .Release.Name }}-nodefinder
           fi
 
