@@ -6694,7 +6694,7 @@ gatus:
     config:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
       enabled: false
-  additionalContainers:
+  initContainers:
     a-migration: 
       <<: *migrate_data
       volumeMounts:
