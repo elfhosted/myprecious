@@ -10087,9 +10087,10 @@ riven: &app_riven
       enabled: true
       type: custom
       mountPath: /riven/data
+      subPath: riven
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-riven-ssd
+          claimName: config
     migration:
       enabled: true
       type: custom
