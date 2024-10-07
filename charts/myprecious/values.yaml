@@ -12544,7 +12544,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.4@sha256:4e9c895e7d1a6946918872e5891566bb26e6263271807b486280b42f6dedaef3
+    tag: v1.4.4@sha256:5244a75916eae5c700648f6ebfce5939826f18b8992dbbcdd93d993afab84f39
   priorityClassName: tenant-normal
   affinity: *standard_affinity 
   tolerations: *standard_tolerations  
@@ -12668,9 +12668,11 @@ channelsdvr:
     repository: fancybits/channels-dvr
     tag: latest@sha256:f6b5a737781d679d14ca55f176425a2cb766add038471f9cfb1b32f8f26033da
   priorityClassName: tenant-normal
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "125M"  
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr,channelsdvr-tinyproxy-conf"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr"
   affinity: *standard_affinity 
   tolerations: *standard_tolerations        
   securityContext:
