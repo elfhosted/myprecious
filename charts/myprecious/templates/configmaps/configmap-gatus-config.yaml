@@ -678,7 +678,7 @@ data:
           - type: email
       {{ end }}   
 
-      {{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
+      {{ if .Values.imagemaid.enabled }}
       - name: imagemaid
         group: manage-media
         url: "http://imagemaid:3001"
