@@ -12,7 +12,7 @@
   "extends": [":semanticCommitTypeAll(feat)",":semanticCommitScope(app)"], // for release-please
   "postUpgradeTasks": {
     "commands": ["./scripts/bump-myprecious.sh"],
-    "fileFilters": ["Chart.yaml"],
+    "fileFilters": ["charts/myprecious/Chart.yaml"],
     "executionMode": "branch"
   },
   "automerge": false,
