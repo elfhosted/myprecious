@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.140.0](https://github.com/elfhosted/myprecious/compare/v1.139.0...v1.140.0) (2024-10-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.32.2 ([b488d1f](https://github.com/elfhosted/myprecious/commit/b488d1fa7df54bc48903c415d0c80ec78b4c0738))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.716 ([ceb6e4d](https://github.com/elfhosted/myprecious/commit/ceb6e4dce0cdb009f5e43568a784bc1c852279cb))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.722 ([ecf91db](https://github.com/elfhosted/myprecious/commit/ecf91db3e8522306f4cbce8a3f3565e0b52d24e8))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.6.3.4389 ([c599d04](https://github.com/elfhosted/myprecious/commit/c599d049db16904bec80723be80e29c6ed5c0dd9))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.25.0.4759 ([ccd7ea5](https://github.com/elfhosted/myprecious/commit/ccd7ea5894df473901d20b3a20cea1aea3e3afb7))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.25.1.4770 ([1347c55](https://github.com/elfhosted/myprecious/commit/1347c559274c4dedf2f306d2d294fdc230b2f589))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.06 ([ec5f6e2](https://github.com/elfhosted/myprecious/commit/ec5f6e25124ffbb915e7b1d3fb31bd609bec71e6))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.07 ([4f23237](https://github.com/elfhosted/myprecious/commit/4f23237118b4cfe927f0346ba7a06ce2dfaaf72b))
+
+
+### Bug Fixes
+
+* 8Gb now, Riven's DB is still hungry! ([4b30f26](https://github.com/elfhosted/myprecious/commit/4b30f26eaea41265e99574e3e535f7d2f15f6ae0))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 0a287b7 ([29871d2](https://github.com/elfhosted/myprecious/commit/29871d206333703588b58db74b3d16a409d89d2b))
+* bump Riven DB's RAM limit to 6Gi ([22b7036](https://github.com/elfhosted/myprecious/commit/22b7036227665261eab3e07f3ef7aa122b028a7f))
+* switch torbox mount to webdav ([be09350](https://github.com/elfhosted/myprecious/commit/be09350fe6b34d7d75088fa61cfacd7c4455657f))
+
 ## [1.139.0](https://github.com/elfhosted/myprecious/compare/v1.138.0...v1.139.0) (2024-10-05)
 
 
