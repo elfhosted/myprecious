@@ -2412,6 +2412,12 @@ rutorrentgluetun: &rutorrent
     WAN_IP_CMD: 'curl -s ifconfig.me'
   initContainers:
     a-migration: *migrate_data
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent
     bootstrap: 
       <<: *bootstrap
       volumeMounts:
@@ -2666,6 +2672,12 @@ delugegluetun: &deluge
     optional: true
   initContainers:
     a-migration: *migrate_data
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent    
     bootstrap: 
       <<: *bootstrap
       volumeMounts:
@@ -2801,6 +2813,12 @@ delugepia:
           name: deluge-pia-config
   initContainers:
     a-migration: *migrate_data
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent    
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -2984,6 +3002,12 @@ qbittorrentgluetun: &qbittorrent
     optional: true
   initContainers:
     a-migration: *migrate_data
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent    
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -3169,6 +3193,12 @@ qbittorrentpia:
         name: tmp
   initContainers:
     a-migration: *migrate_data
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent    
     bootstrap: 
       <<: *bootstrap
       volumeMounts:
@@ -6635,6 +6665,12 @@ gatus:
       enabled: false
   additionalContainers:
     a-migration: *migrate_data
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent    
 
 gotify:
   sso:
