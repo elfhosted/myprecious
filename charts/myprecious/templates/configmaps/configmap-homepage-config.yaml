@@ -581,7 +581,7 @@ data:
             siteMonitor: http://kometa:3001
         {{ end }}    
 
-        {{ if .Values.imagemaid.enabled }}
+        {{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
         - ImageMaid:
             icon: mdi-delete-sweep
             href: https://{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}
