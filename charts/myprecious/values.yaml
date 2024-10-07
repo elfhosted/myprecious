@@ -4138,6 +4138,13 @@ filebrowser:
   persistence:
     <<: *storagemounts
     <<: *storageconfigmounts
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /storage/logs
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs    
     elfterm:
       enabled: true
       type: custom
@@ -10172,6 +10179,14 @@ riven: &app_riven
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /riven/data/logs
+      subPath: riven
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     migration:
       enabled: true
       type: custom
@@ -10222,13 +10237,7 @@ riven: &app_riven
         mkdir -p /config/postgresql/database
         mkdir -p /config/postgresql/backups
         chown elfie:elfie /config/postgresql -R
-
-        # Clear out logs older than 24h
-        if [ -d "/config/logs" ]; then
-            # Find and delete files older than 7 days
-            find "/config/logs" -type f -mtime +1 -exec rm -f {} \;
-            echo "Files older than 1 day have been removed from /config/logs."
-        fi        
+   
       volumeMounts:
       - mountPath: /config
         name: config
@@ -10249,11 +10258,6 @@ riven: &app_riven
         # make symlink directories if they don't exist, to make onboarding simpler
         mkdir -p /storage/symlinks/movies
         mkdir -p /storage/symlinks/shows
-
-        # if user has bad postgresql string, replace it with a good one
-        if [[ -f /riven/data/settings.json ]]; then
-          sed -i  "s/postgresql:/postgresql+psycopg2:/" /riven/data/settings.json
-        fi
 
       volumeMounts:
       - mountPath: /storage/symlinks
