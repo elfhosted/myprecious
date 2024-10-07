@@ -2411,7 +2411,8 @@ rutorrentgluetun: &rutorrent
     PORT_FILE: /data/rtorrent/forwarded-port
     WAN_IP_CMD: 'curl -s ifconfig.me'
   initContainers:
-    a-migration: *migrate_data
+    a-migration: 
+      <<: *migrate_data
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
@@ -2671,7 +2672,8 @@ delugegluetun: &deluge
         key: PORT_FILE
     optional: true
   initContainers:
-    a-migration: *migrate_data
+    a-migration: 
+      <<: *migrate_data
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
@@ -2812,7 +2814,8 @@ delugepia:
       - configMapRef:
           name: deluge-pia-config
   initContainers:
-    a-migration: *migrate_data
+    a-migration: 
+      <<: *migrate_data
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
@@ -3001,7 +3004,8 @@ qbittorrentgluetun: &qbittorrent
         key: PORT_FILE
     optional: true
   initContainers:
-    a-migration: *migrate_data
+    a-migration: 
+      <<: *migrate_data
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
@@ -3192,7 +3196,8 @@ qbittorrentpia:
       - mountPath: /tmp
         name: tmp
   initContainers:
-    a-migration: *migrate_data
+    a-migration: 
+      <<: *migrate_data
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
@@ -6664,7 +6669,8 @@ gatus:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
       enabled: false
   additionalContainers:
-    a-migration: *migrate_data
+    a-migration: 
+      <<: *migrate_data
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
