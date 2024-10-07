@@ -2414,8 +2414,8 @@ rutorrentgluetun: &rutorrent
     a-migration: 
       <<: *migrate_data
       volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
+      - mountPath: /migration
+        name: migration
       - mountPath: /config
         name: config
         subPath: rutorrent
@@ -2566,7 +2566,24 @@ rutorrentpia:
       - configMapRef:
           name: rutorrent-pia-config
   initContainers:
-    bootstrap: *bootstrap # avoid adding setup
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: rutorrent
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: rutorrent
+      - mountPath: /tmp
+        name: tmp     
         
 delugegluetun: &deluge
   enabled: false
@@ -2675,11 +2692,11 @@ delugegluetun: &deluge
     a-migration: 
       <<: *migrate_data
       volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
+      - mountPath: /migration
+        name: migration
       - mountPath: /config
         name: config
-        subPath: rutorrent    
+        subPath: deluge    
     bootstrap: 
       <<: *bootstrap
       volumeMounts:
@@ -2817,11 +2834,11 @@ delugepia:
     a-migration: 
       <<: *migrate_data
       volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
+      - mountPath: /migration
+        name: migration
       - mountPath: /config
         name: config
-        subPath: rutorrent    
+        subPath: deluge    
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -3007,12 +3024,21 @@ qbittorrentgluetun: &qbittorrent
     a-migration: 
       <<: *migrate_data
       volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: qbittorrent    
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
       - mountPath: /config
         name: config
-        subPath: rutorrent    
-    bootstrap: *bootstrap
+        subPath: qbittorrent
+      - mountPath: /tmp
+        name: tmp
     setup:
       image: *tooling_image
       command:
@@ -3199,11 +3225,11 @@ qbittorrentpia:
     a-migration: 
       <<: *migrate_data
       volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
+      - mountPath: /migration
+        name: migration
       - mountPath: /config
         name: config
-        subPath: rutorrent    
+        subPath: qbittorrent    
     bootstrap: 
       <<: *bootstrap
       volumeMounts:
@@ -6676,7 +6702,7 @@ gatus:
         name: elfbot
       - mountPath: /config
         name: config
-        subPath: rutorrent    
+        subPath: gatus    
 
 gotify:
   sso:
@@ -10179,7 +10205,14 @@ riven: &app_riven
       volumeSpec:
         medium: Memory  
   initContainers:
-    a-migration: *migrate_data
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: riven       
     bootstrap: 
       <<: *bootstrap
       volumeMounts:
