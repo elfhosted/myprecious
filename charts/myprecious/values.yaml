@@ -2782,6 +2782,7 @@ delugepia:
       - configMapRef:
           name: deluge-pia-config
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -3149,6 +3150,7 @@ qbittorrentpia:
       - mountPath: /tmp
         name: tmp
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup:
       image: *tooling_image
@@ -3195,6 +3197,7 @@ qbittorrentpia:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: qbittorrent
       - mountPath: /shared
         name: shared  
       securityContext: *default_securitycontext
