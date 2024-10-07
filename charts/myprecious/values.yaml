@@ -6698,8 +6698,8 @@ gatus:
     a-migration: 
       <<: *migrate_data
       volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
+      - mountPath: /migration
+        name: migration
       - mountPath: /config
         name: config
         subPath: gatus    
