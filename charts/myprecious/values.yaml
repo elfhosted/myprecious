@@ -2420,6 +2420,8 @@ rutorrentgluetun: &rutorrent
       - mountPath: /config
         name: config
         subPath: rutorrent
+      - mountPath: /tmp
+        name: tmp         
     update-dns: *update_dns_on_init    
     setup:
       image: *tooling_image
@@ -2672,6 +2674,8 @@ delugegluetun: &deluge
       - mountPath: /config
         name: config
         subPath: deluge
+      - mountPath: /tmp
+        name: tmp         
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -3173,6 +3177,8 @@ qbittorrentpia:
       - mountPath: /config
         name: config
         subPath: qbittorrent
+      - mountPath: /tmp
+        name: tmp             
     setup:
       image: *tooling_image
       command:
@@ -10140,6 +10146,8 @@ riven: &app_riven
       - mountPath: /config
         name: config
         subPath: riven
+      - mountPath: /tmp
+        name: tmp             
     setup-postgres:
       image: *tooling_image
       command:
