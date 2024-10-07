@@ -12593,7 +12593,7 @@ blackhole: &app_blackhole
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackhole
       volumeSpec:
         persistentVolumeClaim:
@@ -12607,7 +12607,7 @@ blackhole4k:
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackhole4k
       volumeSpec:
         persistentVolumeClaim:
@@ -12618,13 +12618,16 @@ blackhole4k:
 
 blackholetorbox: 
   <<: *app_blackhole
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackholetorbox,blackholetorbox-env"  
   persistence:
     <<: *storagemounts   
     tmp: *tmp
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackholetorbox
       volumeSpec:
         persistentVolumeClaim:
@@ -12641,13 +12644,16 @@ blackholetorbox:
 
 blackholetorbox4k: 
   <<: *app_blackhole
-  persistence:
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackholetorbox,blackholetorbox-env"  
+  persistence:  
     <<: *storagemounts   
     tmp: *tmp
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackholetorbox4k
       volumeSpec:
         persistentVolumeClaim:
