@@ -6667,7 +6667,13 @@ gatus:
       mountPath: /data/
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gatus-block         
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-gatus-block                   
   envFrom:
   - secretRef:
       name: gatus-smtp-config
@@ -6675,6 +6681,8 @@ gatus:
     config:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
       enabled: false
+  additionalContainers:
+    a-migration: *migrate_data
 
 gotify:
   sso:
