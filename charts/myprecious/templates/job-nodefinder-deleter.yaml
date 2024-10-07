@@ -6,13 +6,14 @@ metadata:
   labels:
     app.elfhosted.com/name: nodefinder-deleter  
 spec:
-  ttlSecondsAfterFinished: 60  # Cleanup after 60 seconds
+  ttlSecondsAfterFinished: 600  # Cleanup after 60 seconds
   backoffLimit: 3  # Number of retries before considering the job as failed
   template:
     metadata:
       labels:
         app.elfhosted.com/name: nodefinder-deleter
     spec:
+      automountServiceAccountToken: true
       serviceAccountName: nodefinder-deleter
       restartPolicy: OnFailure  # Restart only if the job fails
       containers:
@@ -29,6 +30,6 @@ spec:
           if kubectl --request-timeout 30s get deployment {{ .Release.Name }}-nodefinder
           then
             sleep 4m
-            kubectl --request-timeout 30s delete deployment {{ .Release.Name }}-nodefinder"
+            kubectl --request-timeout 30s delete deployment {{ .Release.Name }}-nodefinder
           fi
 
