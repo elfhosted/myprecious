@@ -1856,6 +1856,8 @@ migrate_data: &migrate_data
         cp -rfpv /migration/* /config/
         touch /config/.migrated-20241007
       fi
+    else
+      echo "No migration necessary"
     fi    
     
   volumeMounts:
@@ -1867,36 +1869,6 @@ migrate_data: &migrate_data
   env: *bootstrap_env
   resources: *default_resources
   securityContext: *default_securitycontext
-
-migrate_from_cephfs: &migrate_from_cephfs
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-    set -e
-
-    if [[ ! -f /config/i-am-migrated ]]
-    then
-      if [[ ! -z "$(ls -A /migration)" ]]    
-      then
-        echo "Migrating from /migration/..."
-        cp -rfp /migration/* /config/
-        touch /config/i-am-migrated
-      fi
-    fi    
-    
-  volumeMounts:
-  - mountPath: /config
-    name: config
-  - mountPath: /migration
-    name: migration
-
-  env: *bootstrap_env
-  resources: *default_resources
-  securityContext: *default_securitycontext
-
 
 update_dns_on_init: &update_dns_on_init
   image: *tooling_image
@@ -10165,6 +10137,12 @@ riven: &app_riven
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-riven-ssd
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-riven-ssd          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -10178,6 +10156,7 @@ riven: &app_riven
       volumeSpec:
         medium: Memory  
   initContainers:
+    a-migration: *migrate_data
     bootstrap: *bootstrap
     setup-postgres:
       image: *tooling_image
@@ -10202,6 +10181,7 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /config
         name: config
+        subpath: riven
       securityContext:
         runAsUser: 0
         seccompProfile:
@@ -10229,12 +10209,14 @@ riven: &app_riven
         name: symlinks
       - mountPath: /riven/data
         name: config
+        subPath: riven
   additionalContainers:
     frontend:
       image: ghcr.io/elfhosted/riven-frontend:v0.13.1@sha256:92cee31094be29b9a2df7e18527dc7cfc3e82bb4acff56c7da6496576ef619ad
       volumeMounts:
       - mountPath: /riven/data
         name: config
+        subPath: riven
       envFrom:
       - configMapRef:
           name: riven-frontend-env
@@ -10251,7 +10233,7 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config      
-        subPath: postgresql/database
+        subPath: riven/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
