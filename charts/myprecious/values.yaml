@@ -631,21 +631,7 @@ configmounts: &config_mounts
     mountPath: /config
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config
-  airdcpppia:
-    enabled: false
-    type: custom
-    mountPath: /config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd
-  airdcppgluetun:
-    enabled: false
-    type: custom
-    mountPath: /config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd          
+        claimName: config       
   autoscan:
     enabled: false
     type: custom
@@ -716,14 +702,7 @@ configmounts: &config_mounts
     mountPath: /config/filebot/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-filebot-ssd
-  gotify:
-    enabled: false
-    type: custom
-    mountPath: /config/gotify/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-gotify-ssd                    
+        claimName: config-filebot-ssd               
   homepage:
     enabled: false
     type: custom
@@ -1141,21 +1120,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config
-  airdcpppia:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd
-  airdcppgluetun:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd          
+        claimName: config      
   autoscan:
     enabled: false
     type: custom
@@ -1226,14 +1191,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/filebot/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-filebot-ssd
-  gotify:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/gotify/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-gotify-ssd                    
+        claimName: config-filebot-ssd                  
   homepage:
     enabled: false
     type: custom
@@ -1247,14 +1205,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                       
-  # jackett:
-  #   enabled: false
-  #   type: custom
-  #   mountPath: /storage/config/jackett/
-  #   volumeSpec:
-  #     persistentVolumeClaim:
-  #       claimName: config-jackett-block # misnamed, I know                           
+        claimName: config-homer-ssd                                                
   jellyseerr:
     enabled: false
     type: custom
@@ -6700,9 +6651,16 @@ gotify:
       enabled: true
       type: custom
       mountPath: /app/data/
+      subPath: gotify
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gotify-ssd
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-gotify-ssd          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6712,6 +6670,24 @@ gotify:
           optional: true
     tmp: *tmp # Avoids issues with readOnlyRootFilesystem
   initContainers:
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: gotify     
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: gotify
+      - mountPath: /tmp
+        name: tmp       
     bootstrap: *bootstrap
 
 flaresolverr: &app_flaresolverr
@@ -10344,9 +10320,10 @@ airdcpp: &app_airdcpp
       enabled: true
       type: custom
       mountPath: /.airdcpp/
+      subPath: airdcpp
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-airdcpp-ssd
+          claimName: config
     shared:
       enabled: true
       mountPath: /shared
