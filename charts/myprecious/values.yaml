@@ -626,9 +626,9 @@ storagemounts: &storagemounts
 # These are used for containers (like codeserver) which need access to all **all** the '/config' volumes
 configmounts: &config_mounts
   config:
-    enabled: false
+    enabled: true
     type: custom
-    mountPath: /config/
+    mountPath: /config
     volumeSpec:
       persistentVolumeClaim:
         claimName: config
@@ -1150,7 +1150,7 @@ configmounts: &config_mounts
 # And this is for mounting the volumes into `/storage/config/`
 storageconfigmounts: &storageconfigmounts
   config:
-    enabled: false
+    enabled: true
     type: custom
     mountPath: /storage/config/
     volumeSpec:
@@ -10288,6 +10288,13 @@ riven: &app_riven
       resources: *default_resources
     database:
       image: postgres:16.4-alpine3.20
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - c
+      - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
           value: postgres
