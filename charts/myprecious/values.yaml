@@ -6678,6 +6678,7 @@ gatus:
       enabled: true
       type: custom
       mountPath: /data/
+      subPath: gatus
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -10293,7 +10294,7 @@ riven: &app_riven
       - shared_buffers=500MB
       - -c
       - work_mem=4MB
-      - c
+      - -c
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
