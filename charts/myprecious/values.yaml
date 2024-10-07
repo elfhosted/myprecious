@@ -6681,29 +6681,14 @@ gatus:
       subPath: gatus
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gatus-block                   
+          claimName: config               
   envFrom:
   - secretRef:
       name: gatus-smtp-config
   configmap:
     config:
       # -- Store homer configuration as a ConfigMap, but don't specify any config, since we'll supply our own
-      enabled: false
-  initContainers:
-    a-migration: 
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: gatus    
+      enabled: false    
 
 gotify:
   sso:
