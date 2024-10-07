@@ -688,13 +688,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-calibre-ssd
-  channelsdvr:
-    enabled: false
-    type: custom
-    mountPath: /config/channelsdvr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-channelsdvr-ssd   
   comet:
     enabled: false
     type: custom
@@ -1197,23 +1190,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/bazarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd    
-  blackhole:
-    enabled: false
-    subPath: "where-is-my-blackhole.txt"
-    mountPath: /storage/config/blackhole/where-is-my-blackhole.txt
-    type: "custom"
-    volumeSpec:
-      configMap:
-        name: explain-migration    
-  blackhole4k:
-    enabled: false
-    subPath: "where-is-my-blackhole4k.txt"
-    mountPath: /storage/config/blackhole4k/where-is-my-blackhole4k.txt
-    type: "custom"
-    volumeSpec:
-      configMap:
-        name: explain-migration                              
+        claimName: config-bazarr4k-ssd                                
   calibreweb:
     enabled: false
     type: custom
@@ -1227,14 +1204,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/calibre/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-calibre-ssd
-  channelsdvr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/channelsdvr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-channelsdvr-ssd     
+        claimName: config-calibre-ssd   
   comet:
     enabled: false
     type: custom
@@ -12639,43 +12609,7 @@ blackhole: &app_blackhole
       subPath: blackhole
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homer-ssd
-    # example-config:
-    #   enabled: "true"
-    #   type: "custom"
-    #   volumeSpec:
-    #     configMap:
-    #       name: blackhole-config      
-    # elfbot:
-    #   enabled: "true"
-    #   type: "custom"
-    #   volumeSpec:
-    #     configMap:
-    #       name: elfbot-blackhole
-    #       optional: true              
-  # initContainers:
-    # bootstrap: *bootstrap
-    # setup:
-    #   image: *tooling_image
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     set -x
-    #     set -e
-        
-    #     # If we don't already have an env file, then copy the default
-    #     if [[ ! -f "/config/blackhole.env" ]]
-    #       then
-    #       cp /bootstrap/blackhole.env /config/
-    #     fi
-    #   volumeMounts:
-    #   - mountPath: /config
-    #     name: config  
-    #   - mountPath: /bootstrap
-    #     name: example-config          
-      # securityContext: *default_securitycontext
-      # resources: *default_resources  
+          claimName: logs
 
 blackhole4k: 
   <<: *app_blackhole
@@ -12689,10 +12623,56 @@ blackhole4k:
       subPath: blackhole4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homer-ssd  
+          claimName: logs 
+  env:
+    BLACKHOLE_RADARR_PATH: "radarr4k"
+    BLACKHOLE_SONARR_PATH: "sonarr4k"  
+
+blackholetorbox: 
+  <<: *app_blackhole
+  persistence:
+    <<: *storagemounts   
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: blackholetorbox
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs 
+  env:
+    BLACKHOLE_RADARR_PATH: "radarr"
+    BLACKHOLE_SONARR_PATH: "sonarr"   
+  envFrom:
+  - configMapRef:
+      name: blackholetorbox-env      
+  - configMapRef:
+      name: elfbot-blackholetorbox
+      optional: true         
+
+blackholetorbox4k: 
+  <<: *app_blackhole
+  persistence:
+    <<: *storagemounts   
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: blackholetorbox4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs 
   env:
     BLACKHOLE_RADARR_PATH: "radarr4k"
     BLACKHOLE_SONARR_PATH: "sonarr4k"   
+  envFrom:
+  - configMapRef:
+      name: blackholetorbox-env      
+  - configMapRef:
+      name: elfbot-blackholetorbox
+      optional: true                  
 
 channelsdvr:
   enabled: false
@@ -12734,7 +12714,7 @@ channelsdvr:
         http:
           port: 8089 
   persistence:
-    <<: *storagemounts   
+    <<: *storagemounts 
     render-device:
       enabled: "true"
       type: hostPath
@@ -12745,31 +12725,20 @@ channelsdvr:
       enabled: true
       type: custom
       mountPath: /channels-dvr
+      subPath: channelsdvr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-channelsdvr-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
           name: elfbot-channelsdvr
-          optional: true
-    channelsdvr-tinyproxy-conf:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: channelsdvr-tinyproxy-conf      
+          optional: true   
   initContainers:
     bootstrap: *bootstrap
-  additionalContainers:
-    tinyproxy:
-      image: docker.io/kalaksi/tinyproxy
-      volumeMounts:
-      - name: channelsdvr-tinyproxy-conf
-        mountPath: /etc/tinyproxy/tinyproxy.conf
-        subPath: tinyproxy.conf  
+
 
 immich:
   enabled: false
