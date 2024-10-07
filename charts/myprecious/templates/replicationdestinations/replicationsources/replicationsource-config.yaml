@@ -1,0 +1,41 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: rs-config
+spec:
+  sourcePVC: config
+  trigger:
+    schedule: "0 {{ mod .Values.userId 24 }} * * *"
+  restic:
+    unlock: {{ .Chart.Version }}
+    pruneIntervalDays: 7
+    repository: config-volsync-restic-config
+    retain:
+      daily: 2
+    copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution: 
+        - weight: 50  
+          podAffinityTerm:    
+            labelSelector:
+              matchExpressions:
+              - key: app.elfhosted.com/role
+                operator: In
+                values:
+                - nodefinder # use nodefinder in the absense of zurg...
+            topologyKey: "kubernetes.io/hostname"  
+        - weight: 100  
+          podAffinityTerm:    
+            labelSelector:
+              matchExpressions:
+              - key: app.elfhosted.com/name
+                operator: In
+                values:
+                - zurg # .. but prefer zurg
+            topologyKey: "kubernetes.io/hostname"       
+    cacheCapacity: 100Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: topolvm-provisioner-thin

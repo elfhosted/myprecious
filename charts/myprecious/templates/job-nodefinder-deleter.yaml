@@ -13,6 +13,7 @@ spec:
       labels:
         app.elfhosted.com/name: nodefinder-deleter
     spec:
+      automountServiceAccountToken: true
       serviceAccountName: nodefinder-deleter
       restartPolicy: OnFailure  # Restart only if the job fails
       containers:
