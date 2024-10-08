@@ -10211,7 +10211,7 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /config
         name: config
-        subpath: riven
+        subPath: riven
       securityContext:
         runAsUser: 0
         seccompProfile:
