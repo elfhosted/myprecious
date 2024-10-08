@@ -12486,7 +12486,7 @@ doplarr: &app_doplarr
   resources:
     requests:
       cpu: 1m
-      memory: 1m
+      memory: 1Mi
     limits:
       cpu: 100m
       memory: 1Gi
@@ -12536,7 +12536,7 @@ requestrr:
   resources:
     requests:
       cpu: 1m
-      memory: 1m
+      memory: 1Mi
     limits:
       cpu: 100m
       memory: 1Gi
@@ -12596,7 +12596,7 @@ debridlink: &app_davdebrid
   resources:
     requests:
       cpu: 1m
-      memory: 1m
+      memory: 1Mi
     limits:
       cpu: 100m
       memory: 100Mi
@@ -12628,7 +12628,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.4@sha256:5244a75916eae5c700648f6ebfce5939826f18b8992dbbcdd93d993afab84f39
+    tag: v1.4.4@sha256:ff25e99d3512a119a80d4be71c103e6bd3e85c13fc105ced549a4950739f0b2e
   priorityClassName: tenant-normal
   affinity: *standard_affinity 
   tolerations: *standard_tolerations  
@@ -12658,7 +12658,7 @@ blackhole: &app_blackhole
   resources:
     requests:
       cpu: 1m
-      memory: 1m
+      memory: 1Mi
     limits:
       cpu: 100m
       memory: 100Mi

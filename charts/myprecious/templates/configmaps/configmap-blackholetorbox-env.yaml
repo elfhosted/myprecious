@@ -36,9 +36,9 @@ data:
   TORBOX_MOUNT_TORRENTS_PATH: /storage/torbox
 
   BLACKHOLE_BASE_WATCH_PATH: "/storage/symlinks/blackholetorbox"
-  BLACKHOLE_FAIL_IF_NOT_CACHED: "false"
+  BLACKHOLE_FAIL_IF_NOT_CACHED: "true"
   BLACKHOLE_RD_MOUNT_REFRESH_SECONDS: "10"
-  BLACKHOLE_WAIT_FOR_TORRENT_TIMEOUT: "6000" # if we're downloading uncached torrents, this could take a while
+  BLACKHOLE_WAIT_FOR_TORRENT_TIMEOUT: "120"
   BLACKHOLE_HISTORY_PAGE_SIZE: "500"
 
   REPAIR_REPAIR_INTERVAL: "10m"
