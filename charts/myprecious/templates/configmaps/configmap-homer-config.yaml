@@ -94,7 +94,7 @@ data:
       ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days</br>"
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
       RIVEN_TOTAL_ITEMS=$(curl -s http://riven:8080/stats | jq .data.total_items) # items
       RIVEN_TOTAL_MOVIES=$(curl -s http://riven:8080/stats | jq .data.total_movies) # items
       RIVEN_TOTAL_SHOWS=$(curl -s http://riven:8080/stats | jq .data.total_shows) # items
@@ -171,7 +171,7 @@ data:
         link-hover: "#ffdd57"
         background-image: /assets/backgrounds/background-dark.jpg
 
-    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled  .Values.riven.enabled }}
+    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
     # Optional message
     message:
       url: https://{{ .Release.Name }}.{{ .Values.dns_domain }}/assets/message/message.json
@@ -942,7 +942,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
-          {{ if .Values.riven.enabled }}
+          {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
           - name: "Riven"
             icon: "fas fa-mountain"
             subtitle: "All-in-one Debrid Media Management"

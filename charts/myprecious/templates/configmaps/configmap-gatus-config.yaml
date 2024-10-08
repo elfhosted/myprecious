@@ -524,7 +524,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"

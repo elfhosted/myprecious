@@ -10263,6 +10263,11 @@ riven: &app_riven
           cpu: 500m
           memory: 8Gi
 
+rivenhobbit: *app_riven
+rivenranger: *app_riven
+rivenhalfling: *app_riven
+rivennazgul: *app_riven
+
 airdcpp: &app_airdcpp
   enabled: false
   image:
