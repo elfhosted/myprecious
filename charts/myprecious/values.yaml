@@ -403,6 +403,20 @@ rclonemountrealdebridzurg: &rclonemountrealdebridzurg
     persistentVolumeClaim:
       claimName: realdebrid-zurg
   mountPath: /storage/realdebrid-zurg
+rclonemountdebridlink: &rclonemountdebridlink
+  enabled: false
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: debridlink
+  mountPath: /storage/debridlink
+rclonemountalldebrid: &rclonemountalldebrid
+  enabled: false
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: alldebrid
+  mountPath: /storage/alldebrid
 rclonemountalldebridpia: &rclonemountalldebridpia
   enabled: false
   type: custom
@@ -631,21 +645,7 @@ configmounts: &config_mounts
     mountPath: /config
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config
-  airdcpppia:
-    enabled: false
-    type: custom
-    mountPath: /config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd
-  airdcppgluetun:
-    enabled: false
-    type: custom
-    mountPath: /config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd          
+        claimName: config       
   autoscan:
     enabled: false
     type: custom
@@ -687,14 +687,7 @@ configmounts: &config_mounts
     mountPath: /config/calibre/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-calibre-ssd
-  comet:
-    enabled: false
-    type: custom
-    mountPath: /config/comet/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-comet-ssd             
+        claimName: config-calibre-ssd            
   elfterm:
     enabled: true
     type: custom
@@ -716,14 +709,7 @@ configmounts: &config_mounts
     mountPath: /config/filebot/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-filebot-ssd
-  gotify:
-    enabled: false
-    type: custom
-    mountPath: /config/gotify/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-gotify-ssd                    
+        claimName: config-filebot-ssd               
   homepage:
     enabled: false
     type: custom
@@ -744,14 +730,7 @@ configmounts: &config_mounts
     mountPath: /config/jellyseerr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-jellyseerr-ssd
-  kometa:
-    enabled: false
-    type: custom
-    mountPath: /config/kometa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kometa                                
+        claimName: config-jellyseerr-ssd                             
   pyload:
     enabled: false
     type: custom
@@ -1148,21 +1127,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config
-  airdcpppia:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd
-  airdcppgluetun:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/airdcpp/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-airdcpp-ssd          
+        claimName: config      
   autoscan:
     enabled: false
     type: custom
@@ -1204,14 +1169,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/calibre/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-calibre-ssd   
-  comet:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/calibreweb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-comet-ssd            
+        claimName: config-calibre-ssd             
   elfterm:
     enabled: true
     type: custom
@@ -1233,14 +1191,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/filebot/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-filebot-ssd
-  gotify:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/gotify/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-gotify-ssd                    
+        claimName: config-filebot-ssd                  
   homepage:
     enabled: false
     type: custom
@@ -1254,28 +1205,14 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                       
-  # jackett:
-  #   enabled: false
-  #   type: custom
-  #   mountPath: /storage/config/jackett/
-  #   volumeSpec:
-  #     persistentVolumeClaim:
-  #       claimName: config-jackett-block # misnamed, I know                           
+        claimName: config-homer-ssd                                                
   jellyseerr:
     enabled: false
     type: custom
     mountPath: /storage/config/jellyseerr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-jellyseerr-ssd
-  kometa:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/kometa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kometa                               
+        claimName: config-jellyseerr-ssd                           
   pyload:
     enabled: false
     type: custom
@@ -6714,9 +6651,16 @@ gotify:
       enabled: true
       type: custom
       mountPath: /app/data/
+      subPath: gotify
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-gotify-ssd
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-gotify-ssd          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6726,6 +6670,24 @@ gotify:
           optional: true
     tmp: *tmp # Avoids issues with readOnlyRootFilesystem
   initContainers:
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: gotify     
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: gotify
+      - mountPath: /tmp
+        name: tmp       
     bootstrap: *bootstrap
 
 flaresolverr: &app_flaresolverr
@@ -8274,13 +8236,20 @@ kometa: &app_kometa
       optional: true          
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kometa
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: kometa
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kometa
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8295,7 +8264,24 @@ kometa: &app_kometa
         configMap:
           name: kometa-config
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: kometa     
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: kometa
+      - mountPath: /tmp
+        name: tmp     
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -8322,6 +8308,7 @@ kometa: &app_kometa
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: kometa
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
@@ -10333,9 +10320,10 @@ airdcpp: &app_airdcpp
       enabled: true
       type: custom
       mountPath: /.airdcpp/
+      subPath: airdcpp
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-airdcpp-ssd
+          claimName: config
     shared:
       enabled: true
       mountPath: /shared
@@ -11150,18 +11138,6 @@ comet:
     readOnlyRootFilesystem: true
   initContainers:
     update-dns: *update_dns_on_init
-    bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        # zap DB
-        rm -rf /config/*
-      volumeMounts:
-      - mountPath: /config
-        name: config   
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11183,9 +11159,10 @@ comet:
       enabled: true
       type: custom
       mountPath: /app/data
+      subPath: comet
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-comet-ssd    
+          claimName: config    
     cache: 
       enabled: true
       type: emptyDir
@@ -11239,9 +11216,8 @@ comet:
           name: comet-env            
       volumeMounts:
       - mountPath: /data
-        subPath: warp
+        subPath: comet/warp
         name: config
-
 
 jackettio:
   enabled: false
@@ -12484,7 +12460,7 @@ doplarr: &app_doplarr
   resources:
     requests:
       cpu: 1m
-      memory: 1m
+      memory: 1Mi
     limits:
       cpu: 100m
       memory: 1Gi
@@ -12534,7 +12510,7 @@ requestrr:
   resources:
     requests:
       cpu: 1m
-      memory: 1m
+      memory: 1Mi
     limits:
       cpu: 100m
       memory: 1Gi
@@ -12552,11 +12528,81 @@ requestrr:
       name: elfbot-requestrr
       optional: true     
 
+debridlink: &app_davdebrid
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/davdebrid
+    tag: v1.1.0@sha256:145a5e3d3df290780f9145b021a6bbbdbb76b74be9700b6167cf82211316cb35
+  priorityClassName: tenant-normal
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations  
+  podLabels:
+    app.elfhosted.com/name: debridlink  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: debridlink
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config  
+  envFrom:
+  - configMapRef:
+      name: debridlink-env      
+  - configMapRef:
+      name: elfbot-debridlink
+      optional: true         
+  resources:
+    requests:
+      cpu: 1m
+      memory: 1Mi
+    limits:
+      cpu: 100m
+      memory: 100Mi
+  ingress:
+    main:
+      enabled: false   
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8080
+
+alldebrid: 
+  <<: *app_davdebrid
+  podLabels:
+    app.elfhosted.com/name: alldebrid    
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: alldebrid
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config  
+
 blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.4@sha256:5244a75916eae5c700648f6ebfce5939826f18b8992dbbcdd93d993afab84f39
+    tag: v1.4.4@sha256:ff25e99d3512a119a80d4be71c103e6bd3e85c13fc105ced549a4950739f0b2e
   priorityClassName: tenant-normal
   affinity: *standard_affinity 
   tolerations: *standard_tolerations  
@@ -12586,7 +12632,7 @@ blackhole: &app_blackhole
   resources:
     requests:
       cpu: 1m
-      memory: 1m
+      memory: 1Mi
     limits:
       cpu: 100m
       memory: 100Mi
@@ -12605,7 +12651,7 @@ blackhole: &app_blackhole
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackhole
       volumeSpec:
         persistentVolumeClaim:
@@ -12619,7 +12665,7 @@ blackhole4k:
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackhole4k
       volumeSpec:
         persistentVolumeClaim:
@@ -12630,13 +12676,16 @@ blackhole4k:
 
 blackholetorbox: 
   <<: *app_blackhole
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackholetorbox,blackholetorbox-env"  
   persistence:
     <<: *storagemounts   
     tmp: *tmp
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackholetorbox
       volumeSpec:
         persistentVolumeClaim:
@@ -12653,13 +12702,16 @@ blackholetorbox:
 
 blackholetorbox4k: 
   <<: *app_blackhole
-  persistence:
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackholetorbox,blackholetorbox-env"  
+  persistence:  
     <<: *storagemounts   
     tmp: *tmp
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /config/logs
       subPath: blackholetorbox4k
       volumeSpec:
         persistentVolumeClaim:
@@ -12680,9 +12732,11 @@ channelsdvr:
     repository: fancybits/channels-dvr
     tag: latest@sha256:f6b5a737781d679d14ca55f176425a2cb766add038471f9cfb1b32f8f26033da
   priorityClassName: tenant-normal
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "125M"  
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr,channelsdvr-tinyproxy-conf"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr"
   affinity: *standard_affinity 
   tolerations: *standard_tolerations        
   securityContext:

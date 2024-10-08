@@ -431,6 +431,16 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: alldebridwebdavpia
   - name: app-template
+    condition: rclonemountalldebrid.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: alldebrid
+  - name: app-template
+    condition: rclonemountdebridlink.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: debridlink
+  - name: app-template
     condition: homepage.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -585,12 +595,12 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackhole4k
   - name: app-template
-    condition: torbox.enabled
+    condition: rclonemounttorbox.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackholetorbox
   - name: app-template
-    condition: torbox.enabled
+    condition: rclonemounttorbox.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackholetorbox4k    
