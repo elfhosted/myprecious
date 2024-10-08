@@ -10408,7 +10408,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.722@sha256:82bb41d83a085857910e0b848e31bdb515f1aa32c240d359bc22b62963d4c010
+    tag: 0.22.735@sha256:fb8aceb3ab4e355c8c8f505cc3287629b78267c364bfd096d4ffa5c71c9cb5b5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12532,7 +12532,7 @@ debridlink: &app_davdebrid
   enabled: false
   image:
     repository: ghcr.io/elfhosted/davdebrid
-    tag: v1.1.0@sha256:145a5e3d3df290780f9145b021a6bbbdbb76b74be9700b6167cf82211316cb35
+    tag: v1.1.0@sha256:7d8a4f9c9358067eff1a2a1e662111bdd9e6599e2f05e3460471409bbdbbd785
   priorityClassName: tenant-normal
   affinity: *standard_affinity 
   tolerations: *standard_tolerations  
