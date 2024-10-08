@@ -674,20 +674,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-bazarr4k-ssd                      
-  calibreweb:
-    enabled: false
-    type: custom
-    mountPath: /config/calibreweb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibreweb-ssd
-  calibre:
-    enabled: false
-    type: custom
-    mountPath: /config/calibre/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibre-ssd            
   elfterm:
     enabled: true
     type: custom
@@ -1141,21 +1127,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/bazarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd                                
-  calibreweb:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/calibreweb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibreweb-ssd
-  calibre:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/calibre/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibre-ssd             
+        claimName: config-bazarr4k-ssd                                      
   elfterm:
     enabled: true
     type: custom
@@ -4587,13 +4559,20 @@ calibreweb:
       optional: true
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-calibreweb-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: calibreweb
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-calibreweb-ssd
+          claimName: config
     config-calibre:
       enabled: true
       type: custom
@@ -4617,7 +4596,24 @@ calibreweb:
         http:
           port: 8083
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: calibreweb       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: calibreweb
+      - mountPath: /tmp
+        name: tmp    
   resources:
     requests:
       cpu: 1m
@@ -4962,13 +4958,20 @@ calibre:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-calibre-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: calibre
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-calibre-ssd
+          claimName: config      
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5002,7 +5005,24 @@ calibre:
       cpu: 1
       memory: 4Gi
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: calibre       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: calibre
+      - mountPath: /tmp
+        name: tmp    
   envFrom:
   - configMapRef:
       name: elfbot-calibre   
@@ -5590,7 +5610,15 @@ readarr:
       subPath: readarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config        
+          claimName: config       
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: readarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs                  
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -5709,7 +5737,15 @@ readarraudio:
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarraudio-ssd                      
+          claimName: config-readarraudio-ssd   
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: readarraudio
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs                                
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
