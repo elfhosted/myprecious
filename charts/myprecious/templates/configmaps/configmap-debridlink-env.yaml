@@ -1,0 +1,11 @@
+{{ if .Values.debridlink.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: debridlink-env
+data:
+  USER: debridlink
+  PASS: debridlink
+  DEBRID_ID: debridlink
+  DATA_FOLDER: /config
+{{ end }}

@@ -12540,6 +12540,72 @@ requestrr:
       name: elfbot-requestrr
       optional: true     
 
+debridlink: &app_davdebrid
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/davdebrid
+    tag: v1.1.0@sha256:145a5e3d3df290780f9145b021a6bbbdbb76b74be9700b6167cf82211316cb35
+  priorityClassName: tenant-normal
+  affinity: *standard_affinity 
+  tolerations: *standard_tolerations  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: debridlink
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config  
+  envFrom:
+  - configMapRef:
+      name: debridlink-env      
+  - configMapRef:
+      name: elfbot-debridlink
+      optional: true         
+  resources:
+    requests:
+      cpu: 1m
+      memory: 1m
+    limits:
+      cpu: 100m
+      memory: 100Mi
+  ingress:
+    main:
+      enabled: false   
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8080
+
+alldebrid: 
+<<: *app_davdebrid
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: alldebrid
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config  
+
 blackhole: &app_blackhole
   enabled: false
   image:
