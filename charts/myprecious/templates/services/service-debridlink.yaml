@@ -1,0 +1,20 @@
+{{ if or .Values.debridlink.enabled .Values.debridlinkranger.enabled .Values.debridlinkhobbit.enabled .Values.debridlinkhalfling.enabled .Values.debridlinknazgul.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: debridlink
+  labels:
+    app.kubernetes.io/name: debridlink
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app.elfhosted.com/name: debridlink
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

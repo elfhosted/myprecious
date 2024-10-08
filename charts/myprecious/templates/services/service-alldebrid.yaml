@@ -1,0 +1,20 @@
+{{ if or .Values.alldebrid.enabled .Values.alldebridranger.enabled .Values.alldebridhobbit.enabled .Values.alldebridhalfling.enabled .Values.alldebridnazgul.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: alldebrid
+  labels:
+    app.kubernetes.io/name: alldebrid
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app.elfhosted.com/name: alldebrid
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

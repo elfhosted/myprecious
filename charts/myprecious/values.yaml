@@ -403,6 +403,20 @@ rclonemountrealdebridzurg: &rclonemountrealdebridzurg
     persistentVolumeClaim:
       claimName: realdebrid-zurg
   mountPath: /storage/realdebrid-zurg
+rclonemountdebridlink: &rclonemountdebridlink
+  enabled: false
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: debridlink
+  mountPath: /storage/debridlink
+rclonemountalldebrid: &rclonemountalldebrid
+  enabled: false
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: alldebrid
+  mountPath: /storage/alldebrid
 rclonemountalldebridpia: &rclonemountalldebridpia
   enabled: false
   type: custom
@@ -12548,6 +12562,8 @@ debridlink: &app_davdebrid
   priorityClassName: tenant-normal
   affinity: *standard_affinity 
   tolerations: *standard_tolerations  
+  podLabels:
+    app.elfhosted.com/name: debridlink  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
@@ -12595,7 +12611,9 @@ debridlink: &app_davdebrid
           port: 8080
 
 alldebrid: 
-<<: *app_davdebrid
+  <<: *app_davdebrid
+  podLabels:
+    app.elfhosted.com/name: alldebrid    
   persistence:
     config:
       enabled: true
