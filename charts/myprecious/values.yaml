@@ -929,20 +929,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
-  readarr:
-    enabled: false
-    mountPath: /config/readarr/
-    type: custom
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarr-ssd
-  readarraudio:
-    enabled: false
-    mountPath: /config/readarraudio/
-    type: custom
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -1403,20 +1389,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
-  readarr:
-    enabled: false
-    mountPath: /storage/config/readarr/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarr-ssd
-  readarraudio:
-    enabled: false
-    mountPath: /storage/config/readarraudio/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -5605,13 +5577,20 @@ readarr:
       name: readarr-config  
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-readarr-ssd   
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: readarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarr-ssd           
+          claimName: config        
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -5642,7 +5621,24 @@ readarr:
         http:
           port: 8787
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: readarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: readarr
+      - mountPath: /tmp
+        name: tmp    
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5658,6 +5654,7 @@ readarr:
       volumeMounts:
       - mountPath: /config
         name: config        
+        subPath: readarr
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -5703,9 +5700,16 @@ readarraudio:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: readarraudio
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarraudio-ssd            
+          claimName: config  
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-readarraudio-ssd                      
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -5736,7 +5740,24 @@ readarraudio:
         http:
           port: 8787
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: readarraudio       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: readarraudio
+      - mountPath: /tmp
+        name: tmp    
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5752,6 +5773,7 @@ readarraudio:
       volumeMounts:
       - mountPath: /config
         name: config        
+        subPath: readarraudio
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
