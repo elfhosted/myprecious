@@ -4426,13 +4426,20 @@ kapowarr:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kapowarr-ssd    
     config:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: kapowarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kapowarr-ssd        
+          claimName: config       
     temp-downloads:
       enabled: true
       type: emptyDir
@@ -4463,7 +4470,24 @@ kapowarr:
       cpu: 1
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: kapowarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: kapowarr
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
