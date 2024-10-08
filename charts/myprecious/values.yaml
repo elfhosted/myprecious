@@ -7766,8 +7766,8 @@ audiobookshelf:
       - mountPath: /migration
         name: migration
       - mountPath: /config
-        name: audiobookshelf
-        subPath: calibre       
+        name: config
+        subPath: audiobookshelf       
     bootstrap: 
       <<: *bootstrap
       volumeMounts:
