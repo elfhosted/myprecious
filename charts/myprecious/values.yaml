@@ -687,14 +687,7 @@ configmounts: &config_mounts
     mountPath: /config/calibre/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-calibre-ssd
-  comet:
-    enabled: false
-    type: custom
-    mountPath: /config/comet/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-comet-ssd             
+        claimName: config-calibre-ssd            
   elfterm:
     enabled: true
     type: custom
@@ -1176,14 +1169,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/calibre/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-calibre-ssd   
-  comet:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/calibreweb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-comet-ssd            
+        claimName: config-calibre-ssd             
   elfterm:
     enabled: true
     type: custom
@@ -11152,18 +11138,6 @@ comet:
     readOnlyRootFilesystem: true
   initContainers:
     update-dns: *update_dns_on_init
-    bootstrap: *bootstrap
-    setup:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        # zap DB
-        rm -rf /config/*
-      volumeMounts:
-      - mountPath: /config
-        name: config   
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11185,9 +11159,10 @@ comet:
       enabled: true
       type: custom
       mountPath: /app/data
+      subPath: comet
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-comet-ssd    
+          claimName: config    
     cache: 
       enabled: true
       type: emptyDir
@@ -11241,9 +11216,8 @@ comet:
           name: comet-env            
       volumeMounts:
       - mountPath: /data
-        subPath: warp
+        subPath: comet/warp
         name: config
-
 
 jackettio:
   enabled: false
