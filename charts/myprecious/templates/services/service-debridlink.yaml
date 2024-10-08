@@ -1,4 +1,4 @@
-{{ if or .Values.debridlink.enabled .Values.debridlinkranger.enabled .Values.debridlinkhobbit.enabled .Values.debridlinkhalfling.enabled .Values.debridlinknazgul.enabled }}
+{{ if .Values.rclonemountdebridlink.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
