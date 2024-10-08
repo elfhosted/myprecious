@@ -653,13 +653,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-autoscan-ssd              
-  audiobookshelf:
-    enabled: false
-    type: custom
-    mountPath: /config/audiobookshelf/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-audiobookshelf-ssd
   bazarr:
     enabled: false
     type: custom
@@ -1093,13 +1086,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-autoscan-ssd              
-  audiobookshelf:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/audiobookshelf/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-audiobookshelf-ssd
   bazarr:
     enabled: false
     type: custom
@@ -7713,13 +7699,20 @@ audiobookshelf:
     enabled: true
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-audiobookshelf-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: audiobookshelf
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-audiobookshelf-ssd
+          claimName: config
     # never used, just satisfies startup scripts
     metadata:
       enabled: true
@@ -7732,19 +7725,36 @@ audiobookshelf:
         configMap:
           name: elfbot-audiobookshelf
           optional: true       
-    tooling-scripts:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: tooling-scripts             
-          defaultMode: 0755               
+    # tooling-scripts:
+    #   enabled: "true"
+    #   type: "custom"
+    #   volumeSpec:
+    #     configMap:
+    #       name: tooling-scripts             
+    #       defaultMode: 0755               
   env:
     METADATA_PATH: /config/metadata    
     SOURCE: ElfHosted         
   initContainers:
-    bootstrap: *bootstrap
-    update-dns: *update_dns_on_init    
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: audiobookshelf
+        subPath: calibre       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: audiobookshelf
+      - mountPath: /tmp
+        name: tmp    
+    # update-dns: *update_dns_on_init    
   ingress:
     main:
       enabled: false
@@ -7761,8 +7771,8 @@ audiobookshelf:
     limits:
       cpu: 2
       memory: 1Gi
-  additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination          
+  # additionalContainers:
+  #   clean-up-dns: *clean_up_dns_on_termination          
     
 openbooks:
   enabled: false
