@@ -652,15 +652,7 @@ configmounts: &config_mounts
     mountPath: /config/elfterm
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-elfterm-ssd           
-  emby:
-    enabled: false
-    subPath: "where-is-my-emby.txt"
-    mountPath: /config/emby/where-is-my-emby.txt
-    type: "custom"
-    volumeSpec:
-      configMap:
-        name: explain-migration    
+        claimName: config-elfterm-ssd             
   homer:
     enabled: true
     type: custom
@@ -1043,15 +1035,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/elfterm
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-elfterm-ssd          
-  emby:
-    enabled: false
-    subPath: "where-is-my-emby.txt"
-    mountPath: /storage/config/emby/where-is-my-emby.txt
-    type: "custom"
-    volumeSpec:
-      configMap:
-        name: explain-migration    
+        claimName: config-elfterm-ssd            
   homer:
     enabled: true
     type: custom
@@ -6296,13 +6280,20 @@ emby: &app_emby
   tolerations: *standard_tolerations        
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-emby-block 
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: emby
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-emby-block         
+          claimName: config       
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -6328,7 +6319,24 @@ emby: &app_emby
           name: tooling-scripts      
           defaultMode: 0755          
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: emby       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: emby
+      - mountPath: /tmp
+        name: tmp    
     update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
@@ -6363,6 +6371,7 @@ emby: &app_emby
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: emby
       - mountPath: /transcode
         name: transcode  
       securityContext: *default_securitycontext
