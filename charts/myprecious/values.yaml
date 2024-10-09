@@ -659,28 +659,7 @@ configmounts: &config_mounts
     mountPath: /config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                                     
-  jellyseerr:
-    enabled: false
-    type: custom
-    mountPath: /config/jellyseerr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-jellyseerr-ssd                             
-  pyload:
-    enabled: false
-    type: custom
-    mountPath: /config/pyload/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-pyload-ssd
-  jdownloader:
-    enabled: false
-    type: custom
-    mountPath: /config/jdownloader/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-jdownloader-ssd
+        claimName: config-homer-ssd                                                                
   jellyfin:
     enabled: false
     subPath: "where-is-my-jellyfin.txt"
@@ -1014,28 +993,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                                                
-  jellyseerr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/jellyseerr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-jellyseerr-ssd                           
-  pyload:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/pyload/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-pyload-ssd
-  jdownloader:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/jdownloader/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-jdownloader-ssd
+        claimName: config-homer-ssd                                                                         
   jellyfin:
     enabled: false
     subPath: "where-is-my-jellyfin.txt"
@@ -4553,15 +4511,40 @@ pyload:
         configMap:
           name: elfbot-pyload
           optional: true
+    migration:
+      enabled: true
+      type: custom
+      subPath: pyload
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-pyload-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: pyload
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-pyload-ssd
+          claimName: config
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: pyload       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: pyload
+      - mountPath: /tmp
+        name: tmp    
   ingress:
     main:
       enabled: false
@@ -7583,9 +7566,16 @@ jellyseerr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jellyseerr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jellyseerr-ssd
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jellyseerr-ssd          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7605,7 +7595,24 @@ jellyseerr:
   - configMapRef:
       name: jellyseerr-env          
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: jellyseerr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: jellyseerr
+      - mountPath: /tmp
+        name: tmp  
     update-dns: *update_dns_on_init 
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
@@ -9316,9 +9323,10 @@ rapidleech:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: rapidleech
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rapidleech-ssd
+          claimName: config
     data:
       enabled: false
     var-run:
@@ -9366,6 +9374,7 @@ rapidleech:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: rapidleech
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -9618,12 +9627,17 @@ jdownloader:
     config:
       enabled: true
       type: custom
-      mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jdownloader-ssd
+          claimName: config
       mountPath: /output
-      subPath: downloads/completed/jdownloader
+      subPath: jdownloader/downloads/completed/jdownloader
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jdownloader-ssd    
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9648,7 +9662,24 @@ jdownloader:
       cpu: 0.5
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: jdownloader       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: jdownloader
+      - mountPath: /tmp
+        name: tmp    
   additionalContainers:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
@@ -9930,7 +9961,7 @@ homepage:
       subPath: homepage
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homepage-ssd
+          claimName: config
     config-default:
       enabled: "true"
       type: "custom"
