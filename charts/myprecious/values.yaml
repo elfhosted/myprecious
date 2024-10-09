@@ -1557,7 +1557,6 @@ migrate_data: &migrate_data
   - /bin/bash
   - -c
   - |
-    set -e
 
     if [[ ! -f /config/.migrated-20241007 ]]
     then
@@ -6635,7 +6634,7 @@ gatus:
       cpu: 1m
       memory: 20Mi
     limits:
-      cpu: 1m
+      cpu: 1
       memory: 128Mi
   ingress:
     main:
@@ -7735,13 +7734,13 @@ audiobookshelf:
         configMap:
           name: elfbot-audiobookshelf
           optional: true       
-    # tooling-scripts:
-    #   enabled: "true"
-    #   type: "custom"
-    #   volumeSpec:
-    #     configMap:
-    #       name: tooling-scripts             
-    #       defaultMode: 0755               
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts             
+          defaultMode: 0755               
   env:
     METADATA_PATH: /config/metadata    
     SOURCE: ElfHosted         
@@ -7764,7 +7763,7 @@ audiobookshelf:
         subPath: audiobookshelf
       - mountPath: /tmp
         name: tmp    
-    # update-dns: *update_dns_on_init    
+    update-dns: *update_dns_on_init    
   ingress:
     main:
       enabled: false
@@ -7781,8 +7780,8 @@ audiobookshelf:
     limits:
       cpu: 2
       memory: 1Gi
-  # additionalContainers:
-  #   clean-up-dns: *clean_up_dns_on_termination          
+  additionalContainers:
+    clean-up-dns: *clean_up_dns_on_termination          
     
 openbooks:
   enabled: false
@@ -8775,7 +8774,7 @@ storagehub:
       cpu: 1m
       memory: 10Mi
     limits:
-      cpu: 1m
+      cpu: 1
       memory: 512Mi
   # envFrom:
   # - configMapRef:
