@@ -5418,6 +5418,7 @@ lidarr:
       volumeMounts:
       - mountPath: /config
         name: config       
+        subPath: lidarr
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
