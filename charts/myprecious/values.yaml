@@ -5943,6 +5943,9 @@ plex: &app_plex
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest
+      env:
+        CHANGE_CONTAINER_PORTS: "True"
+        HTTP_PORT: "3002"
     imagemaid:
       image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:8fb3b3b89431e4b0217ec268abbabfb67a970de3fb2d763f72847d558c1c8aa5      
       volumeMounts:
@@ -5973,7 +5976,7 @@ plex: &app_plex
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         VPN_TYPE: wireguard
         VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "32400,3000,8888,3001"
+        FIREWALL_INPUT_PORTS: "32400,3000,8888,3001,3002"
         WIREGUARD_MTU: "1280"
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
