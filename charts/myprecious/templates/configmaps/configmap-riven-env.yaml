@@ -1,4 +1,4 @@
-{{ if .Values.riven.enabled }}
+{{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -110,9 +110,5 @@ data:
   RIVEN_LOGGER_TRAKT_ICON: "📚"
 
   # To get us over the initial issues, set this to 1 for everyone
-  {{ if or .Values.location.enabled .Values.riven.enabled }}
   SYMLINK_MAX_WORKERS: "1"
-  {{ else }}
-  SYMLINK_MAX_WORKERS: "1"
-  {{ end }}
 {{ end }}

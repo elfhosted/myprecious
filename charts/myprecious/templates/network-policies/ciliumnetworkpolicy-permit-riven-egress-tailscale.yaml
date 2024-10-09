@@ -1,4 +1,4 @@
-{{- if .Values.riven.enabled }}
+{{- if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:

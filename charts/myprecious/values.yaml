@@ -653,13 +653,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-autoscan-ssd              
-  audiobookshelf:
-    enabled: false
-    type: custom
-    mountPath: /config/audiobookshelf/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-audiobookshelf-ssd
   bazarr:
     enabled: false
     type: custom
@@ -674,20 +667,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-bazarr4k-ssd                      
-  calibreweb:
-    enabled: false
-    type: custom
-    mountPath: /config/calibreweb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibreweb-ssd
-  calibre:
-    enabled: false
-    type: custom
-    mountPath: /config/calibre/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibre-ssd            
   elfterm:
     enabled: true
     type: custom
@@ -782,20 +761,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-jfa-ssd
-  kavita:
-    enabled: false
-    type: custom
-    mountPath: /config/kavita/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kavita-ssd
-  komga:
-    enabled: false
-    type: custom
-    mountPath: /config/komga/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-komga-ssd
   lazylibrarian:
     enabled: false
     type: custom
@@ -866,13 +831,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-ombi-ssd
-  openbooks:
-    enabled: false
-    type: custom
-    mountPath: /config/openbooks/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-openbooks-ssd
   overseerr:
     enabled: false
     type: custom
@@ -929,20 +887,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
-  readarr:
-    enabled: false
-    mountPath: /config/readarr/
-    type: custom
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarr-ssd
-  readarraudio:
-    enabled: false
-    mountPath: /config/readarraudio/
-    type: custom
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -1135,13 +1079,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-autoscan-ssd              
-  audiobookshelf:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/audiobookshelf/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-audiobookshelf-ssd
   bazarr:
     enabled: false
     type: custom
@@ -1155,21 +1092,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/bazarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd                                
-  calibreweb:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/calibreweb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibreweb-ssd
-  calibre:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/calibre/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-calibre-ssd             
+        claimName: config-bazarr4k-ssd                                      
   elfterm:
     enabled: true
     type: custom
@@ -1249,20 +1172,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-jfa-ssd
-  kavita:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/kavita/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-kavita-ssd
-  komga:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/komga/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-komga-ssd
   lazylibrarian:
     enabled: false
     type: custom
@@ -1332,14 +1241,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/ombi/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-ombi-ssd
-  openbooks:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/openbooks/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-openbooks-ssd
+        claimName: config-ombi-ssdg
   overseerr:
     enabled: false
     type: custom
@@ -1403,20 +1305,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rclonebrowser-ssd
-  readarr:
-    enabled: false
-    mountPath: /storage/config/readarr/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarr-ssd
-  readarraudio:
-    enabled: false
-    mountPath: /storage/config/readarraudio/
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-readarraudio-ssd
   recyclarr:
     enabled: true
     type: custom
@@ -1669,7 +1557,6 @@ migrate_data: &migrate_data
   - /bin/bash
   - -c
   - |
-    set -e
 
     if [[ ! -f /config/.migrated-20241007 ]]
     then
@@ -4262,8 +4149,8 @@ filebrowser:
       cpu: 1m
       memory: 6Mi
     limits:
-      cpu: 1m
-      memory: 514Mi
+      cpu: 1
+      memory: 1Gi
 
 
 uptimekuma:
@@ -4524,13 +4411,20 @@ kapowarr:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kapowarr-ssd    
     config:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: kapowarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kapowarr-ssd        
+          claimName: config       
     temp-downloads:
       enabled: true
       type: emptyDir
@@ -4561,7 +4455,24 @@ kapowarr:
       cpu: 1
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: kapowarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: kapowarr
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4615,13 +4526,20 @@ calibreweb:
       optional: true
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-calibreweb-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: calibreweb
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-calibreweb-ssd
+          claimName: config
     config-calibre:
       enabled: true
       type: custom
@@ -4645,7 +4563,24 @@ calibreweb:
         http:
           port: 8083
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: calibreweb       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: calibreweb
+      - mountPath: /tmp
+        name: tmp    
   resources:
     requests:
       cpu: 1m
@@ -4873,13 +4808,20 @@ komga:
   tolerations: *standard_tolerations        
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-komga-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: komga
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-komga-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4897,7 +4839,24 @@ komga:
         http:
           port: 25600
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: komga       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: komga
+      - mountPath: /tmp
+        name: tmp    
   resources:
     requests:
       cpu: 1m
@@ -4929,13 +4888,20 @@ kavita:
   tolerations: *standard_tolerations        
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-kavita-ssd
     config:
       enabled: true
       type: custom
       mountPath: /kavita/config
+      subPath: kavita
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-kavita-ssd
+          claimName: config          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4944,7 +4910,24 @@ kavita:
           name: elfbot-kavita
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: kavita       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: kavita
+      - mountPath: /tmp
+        name: tmp    
   ingress:
     main:
       enabled: false
@@ -4990,13 +4973,20 @@ calibre:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-calibre-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: calibre
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-calibre-ssd
+          claimName: config      
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5030,7 +5020,24 @@ calibre:
       cpu: 1
       memory: 4Gi
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: calibre       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: calibre
+      - mountPath: /tmp
+        name: tmp    
   envFrom:
   - configMapRef:
       name: elfbot-calibre   
@@ -5605,13 +5612,28 @@ readarr:
       name: readarr-config  
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-readarr-ssd   
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: readarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarr-ssd           
+          claimName: config       
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: readarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs                  
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -5642,7 +5664,24 @@ readarr:
         http:
           port: 8787
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: readarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: readarr
+      - mountPath: /tmp
+        name: tmp    
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5658,6 +5697,7 @@ readarr:
       volumeMounts:
       - mountPath: /config
         name: config        
+        subPath: readarr
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -5703,9 +5743,24 @@ readarraudio:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: readarraudio
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-readarraudio-ssd            
+          claimName: config  
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-readarraudio-ssd   
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: readarraudio
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs                                
     tmp-readarr-backup:
       enabled: true
       type: emptyDir
@@ -5736,7 +5791,24 @@ readarraudio:
         http:
           port: 8787
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: readarraudio       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: readarraudio
+      - mountPath: /tmp
+        name: tmp    
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5752,6 +5824,7 @@ readarraudio:
       volumeMounts:
       - mountPath: /config
         name: config        
+        subPath: readarraudio
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -6561,7 +6634,7 @@ gatus:
       cpu: 1m
       memory: 20Mi
     limits:
-      cpu: 1m
+      cpu: 1
       memory: 128Mi
   ingress:
     main:
@@ -7635,13 +7708,20 @@ audiobookshelf:
     enabled: true
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-audiobookshelf-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: audiobookshelf
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-audiobookshelf-ssd
+          claimName: config
     # never used, just satisfies startup scripts
     metadata:
       enabled: true
@@ -7665,7 +7745,24 @@ audiobookshelf:
     METADATA_PATH: /config/metadata    
     SOURCE: ElfHosted         
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: audiobookshelf       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: audiobookshelf
+      - mountPath: /tmp
+        name: tmp    
     update-dns: *update_dns_on_init    
   ingress:
     main:
@@ -7731,24 +7828,6 @@ openbooks:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-openbooks"
   affinity: *standard_affinity 
   tolerations: *standard_tolerations        
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-openbooks-ssd
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-openbooks
-          optional: true
-  initContainers:
-    bootstrap: *bootstrap
   ingress:
     main:
       enabled: false
@@ -8695,7 +8774,7 @@ storagehub:
       cpu: 1m
       memory: 10Mi
     limits:
-      cpu: 1m
+      cpu: 1
       memory: 512Mi
   # envFrom:
   # - configMapRef:
@@ -10263,10 +10342,10 @@ riven: &app_riven
           cpu: 500m
           memory: 8Gi
 
-rivenhobbit: &app_riven
-rivenranger: &app_riven
-rivenhalfling: &app_riven
-rivennazgul: &app_riven
+rivenhobbit: *app_riven
+rivenranger: *app_riven
+rivenhalfling: *app_riven
+rivennazgul: *app_riven
 
 airdcpp: &app_airdcpp
   enabled: false

@@ -45,7 +45,7 @@ data:
           success-threshold: 1
 
     maintenance:
-      start: 10:00 # 10am UTC = 10pm NZDT
+      start: 09:00 # 9am UTC = 10pm NZDT
       duration: 1h
 
     endpoints:
@@ -524,7 +524,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"

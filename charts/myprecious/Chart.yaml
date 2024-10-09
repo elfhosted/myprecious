@@ -506,6 +506,26 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: riven
   - name: app-template
+    condition: rivenhobbit.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rivenhobbit
+  - name: app-template
+    condition: rivenranger.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rivenranger
+  - name: app-template
+    condition: rivenhalfling.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rivenhalfling 
+  - name: app-template
+    condition: rivennazgul.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rivennazgul     
+  - name: app-template
     condition: airdcpppia.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
