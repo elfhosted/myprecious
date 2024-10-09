@@ -7801,6 +7801,8 @@ openbooks:
     runAsNonRoot: true
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
+  persistence:
+    <<: *storagemounts    
   command:
   - /bin/bash
   - -c
