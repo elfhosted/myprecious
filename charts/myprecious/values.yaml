@@ -831,13 +831,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-ombi-ssd
-  openbooks:
-    enabled: false
-    type: custom
-    mountPath: /config/openbooks/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-openbooks-ssd
   overseerr:
     enabled: false
     type: custom
@@ -1248,14 +1241,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/ombi/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-ombi-ssd
-  openbooks:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/openbooks/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-openbooks-ssd
+        claimName: config-ombi-ssdg
   overseerr:
     enabled: false
     type: custom
@@ -7843,24 +7829,6 @@ openbooks:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-openbooks"
   affinity: *standard_affinity 
   tolerations: *standard_tolerations        
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-openbooks-ssd
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-openbooks
-          optional: true
-  initContainers:
-    bootstrap: *bootstrap
   ingress:
     main:
       enabled: false
