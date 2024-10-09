@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.142.0](https://github.com/elfhosted/myprecious/compare/v1.141.0...v1.142.0) (2024-10-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.749 ([ee8cf32](https://github.com/elfhosted/myprecious/commit/ee8cf32a8962e180a08bf5bd584a9ff94e0d408a))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.09 ([0151889](https://github.com/elfhosted/myprecious/commit/01518893dc5399f5d7971385908fd9eb15904dc6))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.19.0 docker digest to 1029032 ([3e3b44e](https://github.com/elfhosted/myprecious/commit/3e3b44e2e0aa2f99ab9f1876966b6819ea7de355))
+
 ## [1.141.0](https://github.com/elfhosted/myprecious/compare/v1.140.0...v1.141.0) (2024-10-08)
 
 
