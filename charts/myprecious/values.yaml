@@ -667,22 +667,7 @@ configmounts: &config_mounts
     type: "custom"
     volumeSpec:
       configMap:
-        name: explain-migration  
-  # plex:
-  #   enabled: true
-  #   type: custom
-  #   mountPath: /config/plex/
-  #   subPath: plex
-  #   volumeSpec:
-  #     persistentVolumeClaim:
-  #       claimName: storagehub    
-  plexdebrid:
-    enabled: false
-    type: custom
-    mountPath: /config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd   
+        name: explain-migration 
   joplinserver:
     enabled: false
     type: custom
@@ -1072,13 +1057,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-petio-ssd         
-  plexdebrid:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/plex-debrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-plex-debrid-ssd 
   privatebin:
     enabled: false
     type: custom
@@ -12415,13 +12393,6 @@ zurgranger:
     kubernetes.io/egress-bandwidth: "500M"    
   enabled: false   
   automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 30Mi
-    limits:
-      cpu: 8
-      memory: 16Gi  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-zurg"
@@ -12475,10 +12446,17 @@ plexdebrid: &app_plexdebrid
           port: 3001 
   persistence:
     tmp: *tmp   
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-plex-debrid-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: plex-debrid
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-plex-debrid-ssd
@@ -12496,7 +12474,24 @@ plexdebrid: &app_plexdebrid
         configMap:
           name: plexdebrid-config
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: plex-debrid
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: plex-debrid
+      - mountPath: /tmp
+        name: tmp         
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
