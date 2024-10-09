@@ -645,28 +645,7 @@ configmounts: &config_mounts
     mountPath: /config
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config       
-  autoscan:
-    enabled: false
-    type: custom
-    mountPath: /config/autoscan/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-autoscan-ssd              
-  bazarr:
-    enabled: false
-    type: custom
-    mountPath: /config/bazarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-bazarr-ssd
-  bazarr4k:
-    enabled: false
-    type: custom
-    mountPath: /config/bazarr4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd                      
+        claimName: config                                      
   elfterm:
     enabled: true
     type: custom
@@ -1071,28 +1050,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config      
-  autoscan:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/autoscan/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-autoscan-ssd              
-  bazarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/bazarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-bazarr-ssd
-  bazarr4k:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/bazarr4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-bazarr4k-ssd                                      
+        claimName: config                                                   
   elfterm:
     enabled: true
     type: custom
@@ -3771,13 +3729,20 @@ bazarr:
       name: bazarr-config     
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-bazarr-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: bazarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-bazarr-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3803,7 +3768,24 @@ bazarr:
         http:
           port: 6767
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: bazarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: bazarr
+      - mountPath: /tmp
+        name: tmp   
   resources:
     requests:
       cpu: 1m
@@ -3844,13 +3826,20 @@ bazarr4k:
       name: bazarr4k-config     
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-bazarr4k-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: bazarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-bazarr4k-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3876,7 +3865,24 @@ bazarr4k:
         http:
           port: 6767
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: bazarr4k       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: bazarr4k
+      - mountPath: /tmp
+        name: tmp   
   resources:
     requests:
       cpu: 1m
@@ -10115,9 +10121,16 @@ autoscan:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: autoscan
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-autoscan-ssd
+          claimName: config
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-autoscan-ssd          
     example-config:
       enabled: "true"
       type: "custom"
@@ -10133,7 +10146,24 @@ autoscan:
           optional: true
 
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: autoscan       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: autoscan
+      - mountPath: /tmp
+        name: tmp   
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -10152,6 +10182,7 @@ autoscan:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: autoscan
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
