@@ -718,27 +718,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-jfa-ssd
-  lazylibrarian:
-    enabled: false
-    type: custom
-    mountPath: /config/lazylibrarian/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-lazylibrarian-ssd
-  lidarr:
-    enabled: false
-    type: custom
-    mountPath: /config/lidarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-lidarr-ssd          
-  mattermost:
-    enabled: false
-    type: custom
-    mountPath: /config/mattermost/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-mattermost-ssd
   mylar:
     enabled: false
     type: custom
@@ -781,13 +760,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-nzbhydra-ssd
-  ombi:
-    enabled: false
-    type: custom
-    mountPath: /config/ombi/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-ombi-ssd
   overseerr:
     enabled: false
     type: custom
@@ -1086,27 +1058,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-jfa-ssd
-  lazylibrarian:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/lazylibrarian/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-lazylibrarian-ssd
-  lidarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/lidarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-lidarr-ssd     
-  mattermost:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/mattermost/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-mattermost-ssd
   mylar:
     enabled: false
     type: custom
@@ -1149,13 +1100,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-nzbhydra-ssd
-  ombi:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/ombi/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-ombi-ssdg
   overseerr:
     enabled: false
     type: custom
@@ -1331,13 +1275,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-uptimekuma-ssd          
-  vaultwarden:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/vaultwarden/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-vaultwarden-ssd
   youtubedl:
     enabled: false
     type: custom
@@ -3535,13 +3472,20 @@ ombi:
     enabled: true
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-ombi-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: ombi
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-ombi-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3559,7 +3503,24 @@ ombi:
         http:
           port: 5000
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: ombi       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: ombi
+      - mountPath: /tmp
+        name: tmp    
   resources:
     requests:
       cpu: 3m
@@ -4649,9 +4610,10 @@ lazylibrarian:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: lazylibrarian
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-lazylibrarian-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4659,7 +4621,6 @@ lazylibrarian:
         configMap:
           name: elfbot-lazylibrarian
           optional: true
-
   ingress:
     main:
       enabled: false
@@ -4668,8 +4629,17 @@ lazylibrarian:
       ports:
         http:
           port: 5299
-  initContainers:
-    bootstrap: *bootstrap
+  initContainers:    
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: lazylibrarian
+      - mountPath: /tmp
+        name: tmp    
   resources:
     requests:
       cpu: 1m
@@ -5412,15 +5382,16 @@ lidarr:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: lidarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-lidarr-ssd  
+          claimName: config
     migration:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-lidarr-block                
+          claimName: config-lidarr-ssd                
     s6:
       enabled: true
       type: emptyDir
@@ -5451,9 +5422,24 @@ lidarr:
         http:
           port: 8686
   initContainers:
-    a-clean-mediacover: *remove_mediacover
-    a-migration: *migrate_data
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: lidarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: lidarr
+      - mountPath: /tmp
+        name: tmp    
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7868,9 +7854,10 @@ vaultwarden:
       enabled: true
       type: custom
       mountPath: /data
+      subPath: vaultwarden
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-vaultwarden-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7879,8 +7866,17 @@ vaultwarden:
           name: elfbot-vaultwarden
           optional: true
     tmp: *tmp
-  initContainers:
-    bootstrap: *bootstrap
+  initContainers:   
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: vaultwarden
+      - mountPath: /tmp
+        name: tmp    
   ingress:
     main:
       enabled: false
@@ -9048,8 +9044,8 @@ mattermost:
       ##
       # storageClass:
       accessMode: ReadWriteOnce
-      existingClaim: "config-mattermost-ssd"
-      subPath: data
+      existingClaim: "config"
+      subPath: mattermost/data
     plugins:
       enabled: false # these just end up under data anyway
 
@@ -9157,8 +9153,8 @@ mattermost:
           name: mattermost-backup
       - name: confighdd
         persistentVolumeClaim:
-          claimName: config-mattermost
-          subPath: database
+          claimName: config
+          subPath: mattermost/database
       sidecars:
         - name: backup-database
           image: *tooling_image
@@ -9247,8 +9243,8 @@ mattermost:
     #   name: varlog
   extraVolumeMounts:
     - name: mattermost-data
-      mountPath: /mattermost/logs
-      subPath: logs
+      mountPath: mattermost/mattermost/logs
+      subPath: mattermost/logs
       readOnly: true
 
   ## Node selector
