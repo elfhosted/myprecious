@@ -8980,6 +8980,7 @@ jfa:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
+    backup: *backup
     migration:
       enabled: true
       type: custom
@@ -10666,6 +10667,7 @@ jackett:
           port: 9117 
   persistence:
     tmp: *tmp
+    backup: *backup
     config:
       enabled: true
       type: custom
@@ -12512,6 +12514,7 @@ plexdebrid: &app_plexdebrid
           port: 3001 
   persistence:
     tmp: *tmp   
+    backup: *backup
     migration:
       enabled: true
       type: custom
