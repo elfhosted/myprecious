@@ -660,21 +660,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                                                                
-  jellyfin:
-    enabled: false
-    subPath: "where-is-my-jellyfin.txt"
-    mountPath: /config/jellyfin/where-is-my-jellyfin.txt
-    type: "custom"
-    volumeSpec:
-      configMap:
-        name: explain-migration 
-  joplinserver:
-    enabled: false
-    type: custom
-    mountPath: /config/joplin-server/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-joplinserver-ssd
   jfa:
     enabled: false
     type: custom
@@ -978,22 +963,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                                                                         
-  jellyfin:
-    enabled: false
-    subPath: "where-is-my-jellyfin.txt"
-    mountPath: /storage/config/jellyfin/where-is-my-jellyfin.txt
-    type: "custom"
-    volumeSpec:
-      configMap:
-        name: explain-migration        
-  joplinserver:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/joplin-server/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-joplinserver-ssd
+        claimName: config-homer-ssd
   jfa:
     enabled: false
     type: custom
@@ -5925,6 +5895,7 @@ plex: &app_plex
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
+        HTTPS_PORT: "3003"
     imagemaid:
       image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:8fb3b3b89431e4b0217ec268abbabfb67a970de3fb2d763f72847d558c1c8aa5      
       volumeMounts:
@@ -6033,7 +6004,6 @@ jellyfin: &app_jellyfin
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
     privileged: true
   podSecurityContext:
     seccompProfile:
@@ -6056,9 +6026,16 @@ jellyfin: &app_jellyfin
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jellyfin
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jellyfin-block            
+          claimName: config  
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jellyfin-block                      
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -6084,7 +6061,24 @@ jellyfin: &app_jellyfin
           name: tooling-scripts      
           defaultMode: 0755          
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: jellyfin       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: jellyfin
+      - mountPath: /tmp
+        name: tmp    
     update-dns: *update_dns_on_init  
     setup:
       image: *tooling_image
@@ -9815,9 +9809,10 @@ joplinserver:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: joplinserver/data
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-joplinserver-ssd
+          claimName: config
       subPath: data
   postgresql:
     enabled: true
@@ -9834,8 +9829,8 @@ joplinserver:
       tolerations: *standard_tolerations      
       persistence:
         enabled: true
-        existingClaim: config-joplinserver-ssd
-        subPath: database
+        existingClaim: config
+        subPath: joplinserver/database
       resources:
         requests:
           cpu: 5m
