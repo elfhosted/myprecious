@@ -667,13 +667,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                                                                
-  nzbhydra:
-    enabled: false
-    type: custom
-    mountPath: /config/nzbhydra/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-nzbhydra-ssd
   overseerr:
     enabled: false
     type: custom
@@ -915,13 +908,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-nextpvr-ssd
-  nzbhydra:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/nzbhydra/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-nzbhydra-ssd
   overseerr:
     enabled: false
     type: custom

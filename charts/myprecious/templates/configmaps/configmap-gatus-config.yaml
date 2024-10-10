@@ -742,17 +742,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.nzbhydra.enabled }}
-      - name: nzbhydra
-        group: download-media
-        url: "http://nzbhydra:5076"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
       - name: deluge
         group: download-media

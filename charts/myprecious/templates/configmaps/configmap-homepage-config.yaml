@@ -691,15 +691,7 @@ data:
             widget:
               type: jackett
               url: http://jackett:9117          
-        {{ end }}                                    
-
-        {{ if .Values.nzbhydra.enabled }}
-        - NZBHydra:
-            icon: nzbhydra.png
-            href: https://{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}
-            description: Manage Indexers
-            siteMonitor: http://nzbhydra:5076
-        {{ end }}           
+        {{ end }}                                            
 
         {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
         - Deluge:
