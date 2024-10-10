@@ -722,21 +722,7 @@ configmounts: &config_mounts
     mountPath: /config/threadfin/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-threadfin-ssd   
-  tunarr:
-    enabled: false
-    type: custom
-    mountPath: /config/tunarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-tunarr-ssd                    
-  uptimekuma:
-    enabled: false
-    type: custom
-    mountPath: /config/uptimekuma/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-uptimekuma-ssd          
+        claimName: config-threadfin-ssd                             
   vaultwarden:
     enabled: false
     type: custom
@@ -872,28 +858,14 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/sonarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-sonarr4k-ssd          
-  tunarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/tunarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-tunarr-ssd        
+        claimName: config-sonarr4k-ssd           
   threadfin:
     enabled: false
     type: custom
     mountPath: /storage/config/threadfin/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-threadfin-ssd              
-  uptimekuma:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/uptimekuma/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-uptimekuma-ssd          
+        claimName: config-threadfin-ssd                     
   youtubedl:
     enabled: false
     type: custom
@@ -3803,9 +3775,10 @@ uptimekuma:
       enabled: true
       type: custom
       mountPath: /app/data/
+      subPath: uptimekuma
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-uptimekuma-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3823,7 +3796,18 @@ uptimekuma:
         http:
           port: 3001
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: uptimekuma
+      - mountPath: /tmp
+        name: tmp   
   resources:
     requests:
       cpu: 1m
@@ -6858,13 +6842,20 @@ tunarr:
           port: 8000
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-tunarr-ssd
     config:
       enabled: true
       type: custom
       mountPath: /root/.local
+      subPath: tunarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-tunarr-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6883,7 +6874,26 @@ tunarr:
       type: emptyDir
       sizeLimit: 50Gi                     
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: tunarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: tunarr
+      - mountPath: /tmp
+        name: tmp  
 
 threadfin:
   enabled: false
