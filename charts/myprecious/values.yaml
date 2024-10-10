@@ -1932,6 +1932,8 @@ rutorrentgluetun: &rutorrent
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: rutorrent
@@ -2087,6 +2089,8 @@ rutorrentpia:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: rutorrent
@@ -2210,6 +2214,8 @@ delugegluetun: &deluge
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: deluge
@@ -2542,6 +2548,8 @@ qbittorrentgluetun: &qbittorrent
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: qbittorrent
@@ -2743,6 +2751,8 @@ qbittorrentpia:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: qbittorrent
@@ -3379,6 +3389,8 @@ ombi:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: ombi
@@ -3561,6 +3573,8 @@ bazarr:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: bazarr
@@ -3658,6 +3672,8 @@ bazarr4k:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: bazarr4k
@@ -4254,6 +4270,8 @@ kapowarr:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: kapowarr
@@ -4362,6 +4380,8 @@ calibreweb:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: calibreweb
@@ -4445,6 +4465,8 @@ pyload:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: pyload
@@ -4523,6 +4545,8 @@ lazylibrarian:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: lazylibrarian
@@ -4596,6 +4620,8 @@ mylar:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: mylar
@@ -4682,6 +4708,8 @@ komga:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: komga
@@ -4753,6 +4781,8 @@ kavita:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: kavita
@@ -4863,6 +4893,8 @@ calibre:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: calibre
@@ -5333,6 +5365,8 @@ lidarr:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: lidarr
@@ -5417,6 +5451,8 @@ navidrome:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: navidrome
@@ -5534,6 +5570,8 @@ readarr:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: readarr
@@ -5661,6 +5699,8 @@ readarraudio:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: readarraudio
@@ -6051,6 +6091,8 @@ jellyfin: &app_jellyfin
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: jellyfin
@@ -6254,6 +6296,8 @@ emby: &app_emby
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: emby
@@ -6665,6 +6709,8 @@ gotify:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: gotify
@@ -7561,6 +7607,8 @@ jellyseerr:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: jellyseerr
@@ -7691,6 +7739,8 @@ audiobookshelf:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: audiobookshelf
@@ -7832,6 +7882,8 @@ vaultwarden:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: vaultwarden
@@ -8081,6 +8133,8 @@ filebot:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: filebot
@@ -8325,6 +8379,8 @@ kometa: &app_kometa
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: kometa
@@ -8962,6 +9018,8 @@ jfa:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: jfa
@@ -9652,6 +9710,8 @@ jdownloader:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: jdownloader
@@ -9983,6 +10043,8 @@ homepage:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: homepage
@@ -10194,6 +10256,8 @@ autoscan:
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: autoscan
@@ -10323,6 +10387,8 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: riven
@@ -12485,6 +12551,8 @@ plexdebrid: &app_plexdebrid
       volumeMounts:
       - mountPath: /etc/elfbot
         name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: plex-debrid
