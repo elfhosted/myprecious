@@ -702,20 +702,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-recyclarr-ssd                             
-  rpdb:
-    enabled: false
-    type: custom
-    mountPath: /config/rpdb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rpdb-ssd
-  seafile:
-    enabled: false
-    type: custom
-    mountPath: /config/seafile/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-seafile
   sonarr:
     enabled: false
     type: custom
@@ -901,20 +887,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-recyclarr-ssd                              
-  rpdb:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rpdb/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rpdb-ssd
-  seafile:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/seafile/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-seafile
   sonarr:
     enabled: false
     type: custom
@@ -6828,8 +6800,8 @@ seafile:
         enabled: false # probes can make helm fail/restart under some conditions. Either do or do not, there is no try
       persistence:
         enabled: true
-        existingClaim: config-seafile
-        subPath: database
+        existingClaim: config
+        subPath: seafile/database
       resources:
         requests:
           cpu: 5m
@@ -6858,27 +6830,7 @@ seafile:
       - name: backup-database-script
         configMap:
           name: seafile-backup
-      sidecars:
-        - name: backup-database
-          image: *tooling_image
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: wLu5UUuT@3Zu33eT
-            - name: MYSQL_DATABASE
-              value: seafile
-          command:
-          - /usr/bin/dumb-init
-          - /bin/bash
-          - -c
-          - |
 
-            sleep 2m # give mysql time to start up
-            while true
-            do
-              now=$(date +"%s_%Y-%m-%d")
-              /usr/bin/mysqldump --opt -h seafile-mysql -u root -p${MYSQL_ROOT_PASSWORD} ${MYSQL_DATABASE} > "/backup/${now}_${MYSQL_DATABASE}.sql"
-              sleep 1d
-            done
   persistence:
     <<: *storagemounts
     config:
@@ -6887,8 +6839,8 @@ seafile:
       mountPath: /shared/seafile
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-seafile
-      subPath: data
+          claimName: config
+      subPath: seafile/data
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6896,8 +6848,6 @@ seafile:
         configMap:
           name: elfbot-seafile
           optional: true
-  initContainers:
-    bootstrap: *bootstrap
 
 tunarr:
   enabled: false
@@ -8124,66 +8074,6 @@ filebot:
     limits:
       cpu: 2
       memory: 1Gi 
-
-rpdb:
-  enabled: false
-  sso:
-    enabled: true
-  priorityClassName: tenant-normal
-  image:
-    repository: ghcr.io/elfhosted/rpdb
-    tag: 0.2.7@sha256:9a4378c84aea8fa77c97c10f88484ff8fb30cbaf4fe7589e30e58ca1a1a31bcc
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rpdb"
-  affinity: *standard_affinity 
-  tolerations: *standard_tolerations        
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /.config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rpdb-ssd
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-rpdb
-          optional: true
-  initContainers:
-    bootstrap: *bootstrap
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8750
-  resources:
-    requests:
-      cpu: 1m
-      memory: 40Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
 
 kometa: &app_kometa
   enabled: false
