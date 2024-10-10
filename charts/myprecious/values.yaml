@@ -5975,14 +5975,14 @@ jellyfin: &app_jellyfin
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    privileged: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
     runAsUser: 568
     runAsGroup: 568
+    privileged: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
     supplementalGroups:
     - 993
   automountServiceAccountToken: false
