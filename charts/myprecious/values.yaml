@@ -635,7 +635,7 @@ storagemounts: &storagemounts
       persistentVolumeClaim:
         claimName: symlinks-ssd
     mountPath: /storage/symlinks     
-  backup:
+  backup: &backup
     enabled: true
     type: custom
     volumeSpec:
@@ -12201,7 +12201,8 @@ zurg: &app_zurg
         http:
           port: 9999 
   persistence:
-    tmp: *tmp  
+    tmp: *tmp
+    backup: *backup # to pin zurg to the node with the backup PVC
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     config:
       enabled: true
