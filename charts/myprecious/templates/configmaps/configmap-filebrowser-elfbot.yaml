@@ -169,8 +169,8 @@ data:
                 if [[ "$APP" == "filebrowser" ]]; then
                     echo "skipping filebrowser (we're using it right now!)..."
                 else
-                    FREE_SPACE=$(df -P /storage/backup awk  '{print $4}')
-                    NEEDED_SPACE=$(du -s /storage/config/$APP)
+                    FREE_SPACE=$(df -P /storage/backup | awk 'NR==2 {print $4}')
+                    NEEDED_SPACE=$(du -s /storage/config/$APP | cut -f1)
 
                     if [[ "$FREE_SPACE" -lt "$NEEDED_SPACE" ]]; then
                         echo "Error - not enough free space for backup. We need $NEEDED_SPACE bytes, but we only have $FREE_SPACE remaining :("
