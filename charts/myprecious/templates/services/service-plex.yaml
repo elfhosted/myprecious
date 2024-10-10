@@ -14,8 +14,8 @@ spec:
     targetPort: 32400
     protocol: TCP
     name: http
-  - port: 3000
-    targetPort: 3000
+  - port: 3002
+    targetPort: 3002
     protocol: TCP
     name: speedtest
   selector:

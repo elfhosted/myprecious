@@ -16,7 +16,7 @@ spec:
       services:
         - name: plex
           kind: Service
-          port: 3000 # openspeedtest
+          port: 3002 # openspeedtest
       middlewares:
         - name: stripprefix-speed
           namespace: traefik

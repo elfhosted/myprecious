@@ -108,10 +108,9 @@ data:
 
             if [[ "$2" == "symlinks" ]]; then
                 TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
-                echo "Backing up all symlinks to /storage/elfstorage/backup/symlinks-$TIMESTAMP.tar.gz"
-                mkdir -p /storage/elfstorage/backup/
-                tar -C /storage/symlinks -czf /storage/elfstorage/backup/symlinks-$TIMESTAMP.tar.gz .
-                BACKUP_SIZE=$(du -sh /storage/elfstorage/backup/symlinks-$TIMESTAMP.tar.gz | awk '{print $1}')
+                echo "Backing up all symlinks to /storage/backup/symlinks-$TIMESTAMP.tar.gz"
+                tar -C /storage/symlinks -czf /storage/backup/symlinks-$TIMESTAMP.tar.gz .
+                BACKUP_SIZE=$(du -sh /storage/backup/symlinks-$TIMESTAMP.tar.gz | awk '{print $1}')
                 echo "Done! (yes, it really was that fast!) - total size 🔬 $BACKUP_SIZE "
                 exit 0
             fi
@@ -169,21 +168,18 @@ data:
             do
                 if [[ "$APP" == "filebrowser" ]]; then
                     echo "skipping filebrowser (we're using it right now!)..."
-                elif [[ "$APP" == "backup" ]]; then
-                    echo "skipping /config/backup (no backup-ception for us!)..."                
                 else
-                    # FREE_SPACE=$(df -P /storage/config | grep config | awk  '{print $4}')
-                    # NEEDED_SPACE=$(du -s /storage/config/$APP)
+                    FREE_SPACE=$(df -P /storage/backup | awk 'NR==2 {print $4}')
+                    NEEDED_SPACE=$(du -s /storage/config/$APP | cut -f1)
 
-                    # if [[ "$FREE_SPACE" -lt "$NEEDED_SPACE" ]]; then
-                    #     echo "Error - not enough free space for backup. We need $NEEDED_SPACE bytes, but we only have $FREE_SPACE remaining :("
-                    # else
+                    if [[ "$FREE_SPACE" -lt "$NEEDED_SPACE" ]]; then
+                        echo "Error - not enough free space for backup. We need $NEEDED_SPACE bytes, but we only have $FREE_SPACE remaining :("
+                    else
                         TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
-                        echo "Not currently working, fix coming ASAP"
-                        # echo backup > /elfbot/$APP
-                        # echo "restarting $APP, backup will be saved as /storage/elfstorage/backups/$APP-$TIMESTAMP ..."
+                        echo backup > /elfbot/$APP
+                        echo "restarting $APP, backup will be saved as /storage/backup/$APP-$TIMESTAMP ..."
                         sleep $SLEEP
-                    # fi
+                    fi
                 fi
             done
             ;;       
