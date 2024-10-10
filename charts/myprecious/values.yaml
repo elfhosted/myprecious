@@ -666,14 +666,7 @@ configmounts: &config_mounts
     mountPath: /config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                                                                    
-  privatebin:
-    enabled: false
-    type: custom
-    mountPath: /config/privatebin/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-privatebin-ssd            
+        claimName: config-homer-ssd                                                                               
   prowlarr:
     enabled: false
     mountPath: /config/prowlarr
@@ -708,21 +701,7 @@ configmounts: &config_mounts
     mountPath: /config/recyclarr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-recyclarr-ssd
-  requestrr:
-    enabled: false
-    type: custom
-    mountPath: /config/requestrr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-requestrr-ssd           
-  resiliosync:
-    enabled: false
-    type: custom
-    mountPath: /config/resiliosync/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-resiliosync-ssd                        
+        claimName: config-recyclarr-ssd                             
   rpdb:
     enabled: false
     type: custom
@@ -886,14 +865,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd       
-  privatebin:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/privatebin/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-privatebin-ssd            
+        claimName: config-homer-ssd                
   prowlarr:
     enabled: false
     mountPath: /storage/config/prowlarr
@@ -928,21 +900,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/recyclarr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-recyclarr-ssd
-  requestrr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/requestrr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-requestrr-ssd           
-  resiliosync:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/resiliosync/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-resiliosync-ssd                         
+        claimName: config-recyclarr-ssd                              
   rpdb:
     enabled: false
     type: custom
@@ -3962,9 +3920,10 @@ privatebin:
       enabled: true
       type: custom
       mountPath: /srv/data
+      subPath: privatebin
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-privatebin-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4025,8 +3984,6 @@ privatebin:
     traffic:
       limit: 10
       # exemptedIp: "1.2.3.4,10.10.10/24"
-  initContainers:
-    bootstrap: *bootstrap
 
 nzbhydra:
   enabled: false
@@ -5061,9 +5018,10 @@ resiliosync:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: resiliosync
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-resiliosync-ssd
+          claimName: config
     setup-config:
       enabled: "true"
       mountPath: "/sync.conf"
@@ -5084,9 +5042,19 @@ resiliosync:
         configMap:
           name: elfbot-resiliosync
           optional: true
-
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: resiliosync
+      - mountPath: /tmp
+        name: tmp         
   ingress:
     main:
       enabled: false
@@ -12598,10 +12566,17 @@ requestrr:
       type: RuntimeDefault
   automountServiceAccountToken: false
   persistence:
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-requestrr-ssd  
     config:
       enabled: true
       type: custom
       mountPath: /app/config
+      subPath: requestrr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-requestrr-ssd  
@@ -12624,7 +12599,28 @@ requestrr:
   envFrom:   
   - configMapRef:      
       name: elfbot-requestrr
-      optional: true     
+      optional: true    
+  initContainers:
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: requestrr
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: requestrr
+      - mountPath: /tmp
+        name: tmp                
 
 debridlink: &app_davdebrid
   enabled: false
