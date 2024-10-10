@@ -797,17 +797,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.rapidleech.enabled }}
-      - name: rapidleech
-        group: download-media
-        url: "http://rapidleech:8080"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.rdtclient.enabled }}
       - name: rdtclient
         group: download-media

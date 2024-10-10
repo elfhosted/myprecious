@@ -222,11 +222,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: rapidleech.enabled
-    alias: rapidleech
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: delugepia.enabled
     alias: delugepia
   - name: app-template

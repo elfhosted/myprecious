@@ -756,14 +756,6 @@ data:
             siteMonitor: http://youtubedl:17442
         {{ end }}  
 
-        {{ if .Values.rapidleech.enabled }}
-        - RapidLeech:
-            icon: mdi-flash
-            href: https://{{ .Release.Name }}-rapidleech.{{ .Values.dns_domain }}
-            description: Rapidly Leech
-            siteMonitor: http://rapidleech:8080
-        {{ end }}      
-
         {{ if .Values.rdtclient.enabled }}
         - RDT Client:
             icon: rdt-client.png
