@@ -1065,16 +1065,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.youtubedl.enabled }}
-          - name: "Youtube DL"
-            logo: "assets/png/youtubedl.png"
-            subtitle: "Download Youtube Videos"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-youtubedl.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.rdtclient.enabled }}
           - name: "RDT Client"
             logo: "assets/png/real-debrid.png"

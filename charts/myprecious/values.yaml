@@ -716,48 +716,13 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-sonarr4k-ssd                                  
-  youtubedl:
-    enabled: false
-    type: custom
-    mountPath: /config/youtubedl/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-youtubedl-ssd
   zurg:
     enabled: false
     type: custom
     mountPath: /config/zurg/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-zurg-ssd
-  zurgranger:
-    enabled: false
-    type: custom
-    mountPath: /config/zurg/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-zurg-ssd   
-  zurghobbit:
-    enabled: false
-    type: custom
-    mountPath: /config/zurg/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-zurg-ssd   
-  zurghalfling:
-    enabled: false
-    type: custom
-    mountPath: /config/zurg/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-zurg-ssd   
-  zurgnazgul:
-    enabled: false
-    type: custom
-    mountPath: /config/zurg/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-zurg-ssd                                              
+        claimName: config-zurg-ssd                                           
   rdtclient:
     enabled: false
     type: custom
@@ -845,13 +810,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-sonarr4k-ssd                          
-  youtubedl:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/youtubedl/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-youtubedl-ssd
   zurg:
     enabled: false
     type: custom
@@ -6960,81 +6918,6 @@ threadfin:
         subPath: threadfin
       - mountPath: /tmp
         name: tmp  
-
-youtubedl:
-  enabled: false
-  sso:
-    enabled: true
-  image:
-    repository: ghcr.io/geek-cookbook/youtubedl-material-nightly
-    tag: "4.3.2@sha256:057a172284fdb540a79e42a2afe92ac2431db53a7bbc126be1d2653b0ca46a07"
-  priorityClassName: tenant-bulk
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: false # doesn't work because the node modules in /app try to create files
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-youtubedl"
-  affinity: *standard_affinity 
-  tolerations: *standard_tolerations        
-  env:
-    TZ: UTC
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 1m
-      memory: 128Mi
-    limits:
-      cpu: 10
-      memory: 1024Mi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 17442
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /app/appdata
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-youtubedl-ssd
-    pm2:
-      enabled: true
-      mountPath: /app/pm2
-      type: emptyDir
-      volumeSpec:
-        medium: Memory
-    home-elfie:
-      enabled: true
-      mountPath: /home/elfie
-      type: emptyDir
-      volumeSpec:
-        medium: Memory        
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-youtubedl
-          optional: true
-
-  initContainers:
-    bootstrap: *bootstrap
 
 thelounge:
   enabled: false
