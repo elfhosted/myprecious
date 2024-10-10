@@ -667,13 +667,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                                                                
-  nzbget:
-    enabled: false
-    type: custom
-    mountPath: /config/nzbget/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-nzbget-ssd
   nzbhydra:
     enabled: false
     type: custom
@@ -758,13 +751,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rpdb-ssd
-  sabnzbd:
-    enabled: false
-    type: custom
-    mountPath: /config/sabnzbd/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-sabnzbd-ssd
   seafile:
     enabled: false
     type: custom
@@ -929,13 +915,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-nextpvr-ssd
-  nzbget:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/nzbget/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-nzbget-ssd
   nzbhydra:
     enabled: false
     type: custom
@@ -1020,13 +999,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-rpdb-ssd
-  sabnzbd:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/sabnzbd/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-sabnzbd-ssd
   seafile:
     enabled: false
     type: custom
@@ -2800,9 +2772,10 @@ nzbget:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: nzbget
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-nzbget-ssd          
+          claimName: config         
     tmp:
       enabled: true
       type: custom
@@ -2826,7 +2799,18 @@ nzbget:
         http:
           port: 6789
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: nzbget
+      - mountPath: /tmp
+        name: tmp    
 
 sabnzbd:
   enabled: false
@@ -2863,13 +2847,20 @@ sabnzbd:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sabnzbd-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: sabnzbd
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sabnzbd-ssd
+          claimName: config-sabnzbd-ssd          
     tmp:
       enabled: true
       type: custom
@@ -2881,9 +2872,7 @@ sabnzbd:
       volumeSpec:
         configMap:
           name: elfbot-sabnzbd
-          optional: true
-          
-
+          optional: true          
   ingress:
     main:
       enabled: false
@@ -2894,7 +2883,26 @@ sabnzbd:
         http:
           port: 8080
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: sabnzbd       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: sabnzbd
+      - mountPath: /tmp
+        name: tmp
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
