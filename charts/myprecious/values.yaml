@@ -715,21 +715,7 @@ configmounts: &config_mounts
     mountPath: /config/sonarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-sonarr4k-ssd         
-  threadfin:
-    enabled: false
-    type: custom
-    mountPath: /config/threadfin/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-threadfin-ssd                             
-  vaultwarden:
-    enabled: false
-    type: custom
-    mountPath: /config/vaultwarden/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-vaultwarden-ssd
+        claimName: config-sonarr4k-ssd                                  
   youtubedl:
     enabled: false
     type: custom
@@ -858,14 +844,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/sonarr4k/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-sonarr4k-ssd           
-  threadfin:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/threadfin/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-threadfin-ssd                     
+        claimName: config-sonarr4k-ssd                          
   youtubedl:
     enabled: false
     type: custom
@@ -6939,32 +6918,48 @@ threadfin:
           port: 34400
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-threadfin-ssd
     config:
       enabled: true
       type: custom
       mountPath: /home/threadfin/conf/
+      subPath: threadfin
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-threadfin-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
           name: elfbot-tunarr
-          optional: true
-    tooling-scripts:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: tooling-scripts             
-          defaultMode: 0755               
+          optional: true           
   initContainers:
-    bootstrap: *bootstrap
-    update-dns: *update_dns_on_init    
-  additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination     
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: threadfin       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: threadfin
+      - mountPath: /tmp
+        name: tmp  
 
 youtubedl:
   enabled: false
