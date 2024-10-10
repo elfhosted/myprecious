@@ -9662,6 +9662,7 @@ jdownloader:
       name: jdownloader-config
   persistence:
     tmp: *tmp   
+    backup: *backup
     config:
       enabled: true
       type: custom
@@ -12630,6 +12631,7 @@ codeserver:
           port: 8080 
   persistence:
     tmp: *tmp     
+    backup: *backup
     # <<: *config_mounts
     config:
       enabled: true
