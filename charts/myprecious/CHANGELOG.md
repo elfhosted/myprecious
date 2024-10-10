@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.144.0](https://github.com/elfhosted/myprecious/compare/v1.143.0...v1.144.0) (2024-10-10)
+
+
+### Features
+
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.1 ([eaf282e](https://github.com/elfhosted/myprecious/commit/eaf282ebd377afd4194d7244013109126bcb8818))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 8bed7da ([df88e21](https://github.com/elfhosted/myprecious/commit/df88e212b612be1871edd593ef443d17ca034858))
+
 ## [1.143.0](https://github.com/elfhosted/myprecious/compare/v1.142.0...v1.143.0) (2024-10-10)
 
 
