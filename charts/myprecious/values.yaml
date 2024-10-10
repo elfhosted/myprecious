@@ -1417,6 +1417,8 @@ bootstrap: &bootstrap
     name: elfbot
   - mountPath: /config
     name: config
+  - mountPath: /storage/backup
+    name: backup    
   - mountPath: /tmp
     name: tmp 
   env: *bootstrap_env
