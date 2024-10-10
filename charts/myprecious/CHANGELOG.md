@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.143.0](https://github.com/elfhosted/myprecious/compare/v1.142.0...v1.143.0) (2024-10-10)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.12.4 ([996873d](https://github.com/elfhosted/myprecious/commit/996873d08c1b832825a98cb3781f588bfb33ce1d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.756 ([b28816f](https://github.com/elfhosted/myprecious/commit/b28816f4906245d7ff056310ed9792d00470a677))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.6.4.4402 ([f550fa5](https://github.com/elfhosted/myprecious/commit/f550fa5300d1eb9f3bbec45c048493049608e60e))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.7.3 ([92b2a8b](https://github.com/elfhosted/myprecious/commit/92b2a8b07809e127898e795cacd7d20b786c5445))
+
 ## [1.142.0](https://github.com/elfhosted/myprecious/compare/v1.141.0...v1.142.0) (2024-10-09)
 
 
