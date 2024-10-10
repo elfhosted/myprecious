@@ -667,13 +667,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                                                                
-  notifiarr:
-    enabled: false
-    type: custom
-    mountPath: /config/notifiarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-notifiarr-ssd
   nzbget:
     enabled: false
     type: custom
@@ -779,13 +772,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-seafile
-  shoko:
-    enabled: false
-    type: custom
-    mountPath: /config/shoko/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-shoko-ssd
   sonarr:
     enabled: false
     type: custom
@@ -943,13 +929,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-nextpvr-ssd
-  notifiarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/notifiarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-notifiarr-ssd
   nzbget:
     enabled: false
     type: custom
@@ -1055,13 +1034,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-seafile
-  shoko:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/shoko/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-shoko-ssd
   sonarr:
     enabled: false
     type: custom
@@ -7940,13 +7912,20 @@ notifiarr:
           port: 5454
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-notifiarr-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: notifiarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-notifiarr-ssd
+          claimName: config
     example-config:
       enabled: "true"
       type: "custom"
@@ -7961,7 +7940,26 @@ notifiarr:
           name: elfbot-notifiarr
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: notifiarr       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: notifiarr
+      - mountPath: /tmp
+        name: tmp 
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7980,6 +7978,7 @@ notifiarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: notifiarr
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
@@ -8017,13 +8016,20 @@ shoko:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-shoko-ssd
     config:
       enabled: true
       type: custom
       mountPath: /home/shoko/.shoko/
+      subPath: shoko
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-shoko-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8032,7 +8038,26 @@ shoko:
           name: elfbot-shoko
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: shoko       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: shoko
+      - mountPath: /tmp
+        name: tmp 
   ingress:
     main:
       enabled: false
