@@ -12429,7 +12429,7 @@ plexdebrid: &app_plexdebrid
       subPath: plex-debrid
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-debrid-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -12482,6 +12482,7 @@ plexdebrid: &app_plexdebrid
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: plex-debrid
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
