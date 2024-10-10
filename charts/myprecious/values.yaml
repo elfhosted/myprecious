@@ -716,27 +716,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-sonarr4k-ssd         
-  syncthing:
-    enabled: false
-    type: custom
-    mountPath: /config/syncthing/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-syncthing
-  tautulli:
-    enabled: false
-    type: custom
-    mountPath: /config/tautulli/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-tautulli-ssd
-  thelounge:
-    enabled: false
-    type: custom
-    mountPath: /config/thelounge/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-thelounge-ssd
   threadfin:
     enabled: false
     type: custom
@@ -901,27 +880,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-sonarr4k-ssd          
-  syncthing:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/syncthing/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-syncthing
-  tautulli:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/tautulli/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-tautulli-ssd
-  thelounge:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/thelounge/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-thelounge-ssd
   tunarr:
     enabled: false
     type: custom
@@ -2895,13 +2853,20 @@ tautulli:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-tautulli-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: tautulli
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-tautulli-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2926,7 +2891,26 @@ tautulli:
       cpu: 1
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: tautulli       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: tautulli
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -6725,9 +6709,6 @@ flaresolverr: &app_flaresolverr
 
 seafile:
   enabled: false
-  # runtimeClassName: kata
-  sso:
-    enabled: false
   image:
     repository: ghcr.io/elfhosted/seafile
     tag: 10.0.1@sha256:9513eb378e72adc5d91b30ec7a0c45860246ed2d49d0f531dbfc585b822bb4cd
@@ -7115,9 +7096,10 @@ thelounge:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: thelounge
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-thelounge-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7125,8 +7107,19 @@ thelounge:
         configMap:
           name: elfbot-thelounge
           optional: true
-  initContainers:
-    bootstrap: *bootstrap
+  initContainers:    
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: thelounge
+      - mountPath: /tmp
+        name: tmp   
     create-user:
       image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:92d172b18085509de57442a31d9f29d60e1f0f0dc3cf2d3c05e4406cfc543b70
       imagePullPolicy: IfNotPresent
@@ -7152,6 +7145,7 @@ thelounge:
         fi
       volumeMounts:
       - mountPath: /config
+        subPath: thelounge
         name: config
       env:
       - name: THELOUNGE_HOME
@@ -9136,9 +9130,10 @@ syncthing:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: syncthing
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-syncthing-ssd          
+          claimName: config     
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9164,7 +9159,18 @@ syncthing:
       cpu: 1
       memory: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: syncthing
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: ghcr.io/elfhosted/syncthing:1.27.10@sha256:e97e468c112cafb92e89c1a00d6793d0f869e780b98830ad19de8b9a08071574
       imagePullPolicy: IfNotPresent
@@ -9201,6 +9207,7 @@ syncthing:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: syncthing
       resources: *default_resources
       securityContext: *default_securitycontext
 
