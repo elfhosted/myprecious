@@ -549,14 +549,6 @@ data:
             siteMonitor: http://filebot:5452       
         {{ end }}        
 
-        {{ if .Values.unpackerr.enabled }}
-        - Unpackerr:
-            icon: mdi-gift-open
-            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/unpackerr/
-            description: Automatically Unpack Media      
-            siteMonitor: http://unpackerr:9898
-        {{ end }}       
-
         {{ if .Values.kometa.enabled }}
         - Kometa:
             icon: mdi-folder-information

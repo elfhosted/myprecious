@@ -854,18 +854,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.unpackerr.enabled }}
-          - name: "Unpackerr"
-            # logo: "assets/png/unpackerr.png"
-            # Alternatively a fa icon can be provided:
-            icon: "fas fa-box-archive"
-            subtitle: "Unpack Media"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/unpackerr/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.kometa.enabled }}
           - name: "Kometa"
             icon: "fas fa-meteor"
