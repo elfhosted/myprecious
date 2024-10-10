@@ -525,14 +525,6 @@ data:
               password: {{`{{HOMEPAGE_FILE_THREADFIN_PASSWORD}}`}}                 
         {{ end }}           
 
-        {{ if .Values.nextpvr.enabled }}
-        - NextPVR:
-            icon: nextpvr.png
-            href: https://{{ .Release.Name }}-nextpvr.{{ .Values.dns_domain }}
-            description: Live TV Proxy     
-            siteMonitor: http://nextpvr:8866               
-        {{ end }}   
-
         {{ if .Values.channelsdvr.enabled }}
         - Channels DVR:
             icon: channels.png

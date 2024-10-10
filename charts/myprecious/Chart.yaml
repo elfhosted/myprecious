@@ -390,11 +390,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: nextpvr.enabled
-    alias: nextpvr
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: syncthing.enabled
     alias: syncthing
   - name: app-template

@@ -660,34 +660,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                                                                
-  jfa:
-    enabled: false
-    type: custom
-    mountPath: /config/jfa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-jfa-ssd
-  mylar:
-    enabled: false
-    type: custom
-    mountPath: /config/mylar/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-mylar-ssd
-  navidrome:
-    enabled: false
-    type: custom
-    mountPath: /config/navidrome/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-navidrome-ssd
-  nextpvr:
-    enabled: false
-    type: custom
-    mountPath: /config/nextpvr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-nextpvr-ssd
   notifiarr:
     enabled: false
     type: custom
@@ -964,27 +936,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd
-  jfa:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/jfa/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-jfa-ssd
-  mylar:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/mylar/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-mylar-ssd
-  navidrome:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/navidrome/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-navidrome-ssd
   nextpvr:
     enabled: false
     type: custom
@@ -4612,9 +4563,10 @@ mylar:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: mylar
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-mylar-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4633,7 +4585,16 @@ mylar:
         http:
           port: 8090
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: mylar
+      - mountPath: /tmp
+        name: tmp         
   resources:
     requests:
       cpu: 1m
@@ -5425,7 +5386,7 @@ navidrome:
   tolerations: *standard_tolerations        
   automountServiceAccountToken: false
   env:
-    ND_MUSICFOLDER: /storage/elfstorage/music
+    ND_MUSICFOLDER: /tmp
     ND_DATAFOLDER: /config
   persistence:
     <<: *storagemounts
@@ -5433,9 +5394,10 @@ navidrome:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: navidrome
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-navidrome-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5444,7 +5406,16 @@ navidrome:
           name: elfbot-navidrome
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: navidrome
+      - mountPath: /tmp
+        name: tmp         
   ingress:
     main:
       enabled: false
@@ -8945,13 +8916,20 @@ jfa:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jfa-ssd
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jfa
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jfa-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -8965,7 +8943,24 @@ jfa:
       mountPath: /tmp
       sizeLimit: 1Gi
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: jfa       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /config
+        name: config
+        subPath: jfa
+      - mountPath: /tmp
+        name: tmp    
   ingress:
     main:
       enabled: false

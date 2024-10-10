@@ -568,17 +568,6 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.nextpvr.enabled }}
-      - name: nextpvr
-        group: consume-media
-        url: "http://nextpvr:8866/js/utility.js"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.channelsdvr.enabled }}
       - name: channels-dvr
         group: consume-media
