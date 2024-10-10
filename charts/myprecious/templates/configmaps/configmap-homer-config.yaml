@@ -1295,16 +1295,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.nextcloud.enabled }}
-          - name: "NextCloud"
-            logo: "assets/png/nextcloud.png"
-            subtitle: "Collaborate in the Cloud"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-nextcloud.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.seafile.enabled }}
           - name: "Seafile"
             logo: "assets/png/seafile.png"
