@@ -2657,7 +2657,7 @@ sabnzbd:
       subPath: sabnzbd
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sabnzbd-ssd          
+          claimName: config       
     tmp:
       enabled: true
       type: custom
