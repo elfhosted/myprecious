@@ -12596,9 +12596,10 @@ immich:
     config:
       enabled: true
       type: custom
+      subPath: immich
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-immich-ssd
+          claimName: config
     upload:
       enabled: true
       type: emptyDir
@@ -12614,7 +12615,7 @@ immich:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-channelsdvr
+          name: elfbot-immich
           optional: true      
   envFrom:
   - configMapRef:
@@ -12623,7 +12624,18 @@ immich:
       name: elfbot-immich
       optional: true             
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: immich
+      - mountPath: /tmp
+        name: tmp    
   additionalContainers:
     ml: 
       image: ghcr.io/immich-app/immich-machine-learning:v1.117.0
@@ -12646,7 +12658,7 @@ immich:
         POSTGRES_DB: immich
       volumeMounts:
         - name: config
-          subPath: database
+          subPath: immich/database
           mountPath: /var/lib/postgresql/data
       resources:
         requests:
