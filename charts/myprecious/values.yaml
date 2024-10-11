@@ -3436,32 +3436,32 @@ filebrowser:
       - name: symlinks
         mountPath: /storage/symlinks
       securityContext: *default_securitycontext
-    migrate-elfterm:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
+    # migrate-elfterm:
+    #   image: *tooling_image
+    #   imagePullPolicy: IfNotPresent
+    #   command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
 
-        if [[ ! -f /config/.migrated-20241007 ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]
-          then
-            echo "Migrating from /migration/..."
-            cp -rfpv /migration/* /config/
-            touch /config/.migrated-20241007
-          fi
-        else
-          echo "No migration necessary"
-        fi
-      volumeMounts:
-      - mountPath: /migration
-        name: elfterm-migration
-      - mountPath: /config
-        name: elfterm
-        subPath: elfterm
-      securityContext: *default_securitycontext
+    #     if [[ ! -f /config/.migrated-20241007 ]]
+    #     then
+    #       if [[ ! -z "$(ls -A /migration)" ]]
+    #       then
+    #         echo "Migrating from /migration/..."
+    #         cp -rfpv /migration/* /config/
+    #         touch /config/.migrated-20241007
+    #       fi
+    #     else
+    #       echo "No migration necessary"
+    #     fi
+    #   volumeMounts:
+    #   - mountPath: /migration
+    #     name: elfterm-migration
+    #   - mountPath: /config
+    #     name: elfterm
+    #     subPath: elfterm
+    #   securityContext: *default_securitycontext
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
