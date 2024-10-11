@@ -716,20 +716,7 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-sonarr4k-ssd                                                                          
-  rdtclient:
-    enabled: false
-    type: custom
-    mountPath: /config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd            
-  rdtclientvpnpia:
-    enabled: false
-    type: custom
-    mountPath: /config/rdtclient-alldebrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-alldebrid-ssd   
+
 
 # And this is for mounting the volumes into `/storage/config/`
 storageconfigmounts: &storageconfigmounts
@@ -803,20 +790,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-sonarr4k-ssd                                                                     
-  rdtclient:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rdtclient/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-ssd           
-  rdtclientvpnpia:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/rdtclient-alldebrid/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-rdtclient-alldebrid-ssd   
         
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
@@ -8974,13 +8947,20 @@ rdtclient: &app_rdtclient
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-rdtclient-ssd
     config:
       enabled: true
       type: custom
       mountPath: /data/db
+      subPath: rdtclient
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rdtclient-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9012,7 +8992,26 @@ rdtclient: &app_rdtclient
       memory: 2Gi
       ephemeral-storage: 100Mi # a safety net against node ephemeral space exhaustion
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: rdtclient       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: rdtclient
+      - mountPath: /tmp
+        name: tmp    
 
 # Add a VPN option for rdtclient
 rdtclientvpnpia:
@@ -9026,9 +9025,10 @@ rdtclientvpnpia:
       enabled: true
       type: custom
       mountPath: /data/db
+      subPath: rdtclient-alldebrid
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-rdtclient-alldebrid-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
