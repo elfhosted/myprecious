@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.143.5-pre-01
+version: 1.143.5-pre-21
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -246,11 +246,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: nzbhydra.enabled
-    alias: nzbhydra
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: privatebin.enabled
     alias: privatebin
   - name: app-template
@@ -315,18 +310,8 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: youtubedl.enabled
-    alias: youtubedl
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: thelounge.enabled
     alias: thelounge
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: unpackerr.enabled
-    alias: unpackerr
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -357,11 +342,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: notifiarr.enabled
     alias: notifiarr
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: rpdb.enabled
-    alias: rpdb
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

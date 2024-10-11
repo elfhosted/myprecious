@@ -436,17 +436,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.rpdb.enabled }}
-      - name: rpdb
-        group: manage-media
-        url: "http://rpdb:8750"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.ombi.enabled }}
       - name: ombi
         group: manage-media
@@ -645,17 +634,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.unpackerr.enabled }}
-      - name: unpackerr
-        group: manage-media
-        url: "http://unpackerr:9898"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.kometa.enabled }}
       - name: kometa
         group: manage-media
@@ -735,17 +713,6 @@ data:
       - name: jackett
         group: download-media
         url: "http://jackett:9117/jacket_medium.png"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.nzbhydra.enabled }}
-      - name: nzbhydra
-        group: download-media
-        url: "http://nzbhydra:5076"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
