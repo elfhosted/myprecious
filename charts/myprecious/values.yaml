@@ -659,7 +659,7 @@ configmounts: &config_mounts
     mountPath: /config/elfterm
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-elfterm-ssd             
+        claimName: config-elfterm-ssd
   homer:
     enabled: true
     type: custom
@@ -11090,9 +11090,10 @@ jackettio:
       enabled: true
       type: custom
       mountPath: /config
+      subPath: jackettio
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jackettio-ssd    
+          claimName: config  
   resources:
     requests:
       cpu: 1m
