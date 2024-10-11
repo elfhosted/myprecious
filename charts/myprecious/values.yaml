@@ -680,21 +680,7 @@ configmounts: &config_mounts
     mountPath: /config/recyclarr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-recyclarr-ssd                             
-  sonarr:
-    enabled: false
-    type: custom
-    mountPath: /config/sonarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-sonarr-ssd
-  sonarr4k:
-    enabled: false
-    type: custom
-    mountPath: /config/sonarr4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-sonarr4k-ssd                                                                          
+        claimName: config-recyclarr-ssd                                                                                                   
 
 
 # And this is for mounting the volumes into `/storage/config/`
@@ -733,21 +719,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/recyclarr/
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-recyclarr-ssd                              
-  sonarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/sonarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-sonarr-ssd    
-  sonarr4k:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/sonarr4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-sonarr4k-ssd                                                                     
+        claimName: config-recyclarr-ssd                                                                                                 
         
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
@@ -2824,7 +2796,7 @@ radarr: &app_radarr
         subPath: radarr 
       - mountPath: /config/logs
         name: logs
-        subPath: radar    
+        subPath: radarr  
       - mountPath: /config/Backups
         name: backup
         subPath: radarr                    
@@ -4637,13 +4609,36 @@ sonarr: &app_sonarr
       name: sonarr-env     
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sonarr-ssd    
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: sonarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr-ssd      
+          claimName: config            
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: sonarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs     
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /config/Backups
+      subPath: sonarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup                 
     mediacover:
       enabled: true
       type: custom
@@ -4658,13 +4653,7 @@ sonarr: &app_sonarr
       volumeSpec:
         configMap:
           name: elfbot-sonarr
-          optional: true     
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr-block           
+          optional: true         
   ingress:
     main:
       enabled: false
@@ -4675,9 +4664,32 @@ sonarr: &app_sonarr
         http:
           port: 8989      
   initContainers:
-    a-clean-mediacover: *remove_mediacover
-    a-migration: *migrate_data
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: sonarr 
+      - mountPath: /config/logs
+        name: logs
+        subPath: sonarr    
+      - mountPath: /config/Backups
+        name: backup
+        subPath: sonarr                    
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: sonarr
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4735,13 +4747,36 @@ sonarr4k: &app_sonarr4k
       name: sonarr4k-env     
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-sonarr4k-ssd  
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: sonarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-sonarr4k-ssd            
+          claimName: config             
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: sonarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs     
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /config/Backups
+      subPath: sonarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup                    
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4773,9 +4808,32 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989      
   initContainers:
-    a-clean-mediacover: *remove_mediacover
-    a-migration: *migrate_data
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: sonarr4k
+      - mountPath: /config/logs
+        name: logs
+        subPath: sonarr4k   
+      - mountPath: /config/Backups
+        name: backup
+        subPath: sonarr4k                  
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: sonarr4k
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
