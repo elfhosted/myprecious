@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.144.0](https://github.com/elfhosted/myprecious/compare/v1.143.0...v1.144.0) (2024-10-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.763 ([8832ef9](https://github.com/elfhosted/myprecious/commit/8832ef9a0b587476d9d283acd81610bc6aa7d27e))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.11 ([4c9159b](https://github.com/elfhosted/myprecious/commit/4c9159b4ff0158523dbba435955232ed527e05d3))
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.1 ([eaf282e](https://github.com/elfhosted/myprecious/commit/eaf282ebd377afd4194d7244013109126bcb8818))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 8bed7da ([df88e21](https://github.com/elfhosted/myprecious/commit/df88e212b612be1871edd593ef443d17ca034858))
+
 ## [1.143.0](https://github.com/elfhosted/myprecious/compare/v1.142.0...v1.143.0) (2024-10-10)
 
 

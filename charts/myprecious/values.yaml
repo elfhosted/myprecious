@@ -729,7 +729,7 @@ default_resources: &default_resources
     # ephemeral-storage: 50Mi
   limits:
     cpu: 1
-    memory: 1Gi # just a safety net against bugs!
+    memory: 4Gi # just a safety net against bugs!
     # ephemeral-storage: 2Gi # a safety net against node ephemeral space exhaustion
 
 default_securitycontext: &default_securitycontext
@@ -766,30 +766,7 @@ bootstrap_env: &bootstrap_env
   valueFrom:
     fieldRef:
       fieldPath: metadata.labels['app.elfhosted.com/name']
-
-remove_mediacover: &remove_mediacover
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-    set -e
-
-    if [[ ! -z "$(ls -A /config/MediaCover)" ]]
-    then
-      rm -rf /config/MediaCover
-    fi   
-
-    if [[ ! -z "$(ls -A /migration/MediaCover)" ]]
-    then
-      rm -rf /migration/MediaCover
-    fi       
-  volumeMounts:
-  - mountPath: /config
-    name: config
-  - mountPath: /migration
-    name: migration    
+ 
 migrate_data: &migrate_data
   image: *tooling_image
   imagePullPolicy: IfNotPresent
@@ -2768,14 +2745,6 @@ radarr: &app_radarr
         configMap:
           name: elfbot-radarr
           optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: radarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers
   ingress:
     main:
       enabled: false
@@ -2907,15 +2876,7 @@ radarr4k: &app_radarr4k
       subPath: radarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: backup              
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: radarr4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers         
+          claimName: backup                    
   ingress:
     main:
       enabled: false
@@ -3204,15 +3165,7 @@ bazarr:
       volumeSpec:
         configMap:
           name: elfbot-bazarr
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: bazarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true           
   ingress:
     main:
       enabled: false
@@ -3303,15 +3256,7 @@ bazarr4k:
       volumeSpec:
         configMap:
           name: elfbot-bazarr4k
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: bazarr4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true            
   ingress:
     main:
       enabled: false
@@ -4174,7 +4119,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:0c6e39813a0b5a3eb1887110d6ef39578ee396213235257a295a1fc67164eda1
+    tag: rolling@sha256:8bed7dac9481a0c71a2447efe3e46b622bd69ea92c4b06bec0f458fa76cf89ec
   enabled: false
   controller:
     annotations:
@@ -4644,14 +4589,6 @@ sonarr: &app_sonarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: backup                 
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: sonarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers     
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4788,21 +4725,7 @@ sonarr4k: &app_sonarr4k
       volumeSpec:
         configMap:
           name: elfbot-sonarr4k
-          optional: true      
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: sonarr4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers   
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr4k-block                      
+          optional: true                    
   ingress:
     main:
       enabled: false
@@ -5158,15 +5081,7 @@ lidarr:
       volumeSpec:
         configMap:
           name: elfbot-lidarr
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: lidarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers    
+          optional: true  
   ingress:
     main:
       enabled: false
@@ -5363,15 +5278,7 @@ readarr:
       volumeSpec:
         configMap:
           name: elfbot-readarr
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: readarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true          
   ingress:
     main:
       enabled: false
@@ -5492,15 +5399,7 @@ readarraudio:
       volumeSpec:
         configMap:
           name: elfbot-readarraudio
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: readarraudio
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true            
   ingress:
     main:
       enabled: false
@@ -10226,7 +10125,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.756@sha256:33ce4b41eb28fafb2006cb8cc5a9dda01bc72436be5207c3b6a6d84db7ef0bc8
+    tag: 0.22.763@sha256:d5cbe66e8a548d59e738bfc0e02a2efb0c114cdf9b38cf68189f9348cde28fed
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10654,7 +10553,7 @@ petio:
       ports:
         http:
           port: 7777 
-  persistence:
+  persistence:  
     backup: *backup
     elfbot:
       enabled: "true"
@@ -11822,7 +11721,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.10.09-nightly@sha256:774225255509b4f22bcca4e556d8f6a83e8e331342b9df5a43c905249c84fe19
+    tag: 2024.10.11-nightly@sha256:4bafad65cf88a95cb04acc5bffd2b8fcf3ca8b5b131fab11cbace7e425975398
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12181,7 +12080,7 @@ plexdebrid: &app_plexdebrid
       subPath: plex-debrid
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-debrid-ssd
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
@@ -12234,6 +12133,7 @@ plexdebrid: &app_plexdebrid
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: plex-debrid
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:

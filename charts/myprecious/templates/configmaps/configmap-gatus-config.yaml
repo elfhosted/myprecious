@@ -461,7 +461,7 @@ data:
       {{ if .Values.petio.enabled }}
       - name: petio
         group: manage-media
-        url: "http://petio:7000"
+        url: "http://petio:7777"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
