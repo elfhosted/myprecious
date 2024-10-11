@@ -7897,6 +7897,14 @@ kometa: &app_kometa
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logsg:
+      enabled: true
+      type: custom
+      mountPath: /config/logs/
+      subPath: kometa
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     elfbot:
       enabled: "true"
       type: "custom"
