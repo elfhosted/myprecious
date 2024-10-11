@@ -12397,6 +12397,8 @@ requestrr:
       type: RuntimeDefault
   automountServiceAccountToken: false
   persistence:
+    tmp: *tmp
+    backup: *backup
     migration:
       enabled: true
       type: custom
