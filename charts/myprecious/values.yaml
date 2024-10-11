@@ -3276,14 +3276,6 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
-    elfterm:
-      enabled: true
-      type: custom
-      mountPath: /home/elfie/.config/
-      subPath: elfterm
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
     elfterm-migration:
       enabled: true
       type: custom
@@ -3436,32 +3428,32 @@ filebrowser:
       - name: symlinks
         mountPath: /storage/symlinks
       securityContext: *default_securitycontext
-    # migrate-elfterm:
-    #   image: *tooling_image
-    #   imagePullPolicy: IfNotPresent
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
+    migrate-elfterm:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
 
-    #     if [[ ! -f /config/.migrated-20241007 ]]
-    #     then
-    #       if [[ ! -z "$(ls -A /migration)" ]]
-    #       then
-    #         echo "Migrating from /migration/..."
-    #         cp -rfpv /migration/* /config/
-    #         touch /config/.migrated-20241007
-    #       fi
-    #     else
-    #       echo "No migration necessary"
-    #     fi
-    #   volumeMounts:
-    #   - mountPath: /migration
-    #     name: elfterm-migration
-    #   - mountPath: /config
-    #     name: elfterm
-    #     subPath: elfterm
-    #   securityContext: *default_securitycontext
+        if [[ ! -f /config/.migrated-20241007 ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]
+          then
+            echo "Migrating from /migration/..."
+            cp -rfpv /migration/* /config/
+            touch /config/.migrated-20241007
+          fi
+        else
+          echo "No migration necessary"
+        fi
+      volumeMounts:
+      - mountPath: /migration
+        name: elfterm-migration
+      - mountPath: /config
+        name: config
+        subPath: elfterm
+      securityContext: *default_securitycontext
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
@@ -6090,6 +6082,13 @@ homer:
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config          
     backup:
       enabled: true
       type: custom
@@ -6135,14 +6134,6 @@ homer:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-homer-ssd
-    config:
-      enabled: true
-      type: custom
-      mountPath: /www/assets/backgrounds
-      subPath: homer/backgrounds
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
   command:
   - /bin/bash
   - /usr/local/bin/disk_usage.sh
