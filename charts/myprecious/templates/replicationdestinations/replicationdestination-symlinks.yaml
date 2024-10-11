@@ -13,10 +13,10 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution: 
         - labelSelector:
             matchExpressions:
-            - key: app.elfhosted.com/role
+            - key: app.kubernetes.io/name
               operator: In
               values:
-              - nodefinder
+              - gatus
           topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 5Gi
     capacity: 5Gi
