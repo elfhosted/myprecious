@@ -2661,6 +2661,7 @@ sabnzbd:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: sabnzbd
       - mountPath: /tmp
         name: tmp        
       env: *bootstrap_env
