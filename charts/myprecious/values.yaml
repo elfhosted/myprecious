@@ -640,8 +640,7 @@ storagemounts: &storagemounts
     type: custom
     volumeSpec:
       persistentVolumeClaim:
-        claimName: backup
-    mountPath: /storage/backup         
+        claimName: backup 
 
 
 # These are used for containers (like codeserver) which need access to all **all** the '/config' volumes
@@ -659,14 +658,7 @@ configmounts: &config_mounts
     mountPath: /config/elfterm
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-elfterm-ssd
-  homer:
-    enabled: true
-    type: custom
-    mountPath: /config/homer
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-homer-ssd                                                                                 
+        claimName: config-elfterm-ssd                                                                             
   rclonebrowser:
     enabled: true # this is always on
     type: custom
@@ -698,14 +690,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/elfterm
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-elfterm-ssd            
-  homer:
-    enabled: true
-    type: custom
-    mountPath: /storage/config/homer
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-homer-ssd                 
+        claimName: config-elfterm-ssd                           
   rclonebrowser:
     enabled: true # this is always on
     type: custom
@@ -6189,6 +6174,15 @@ homer:
   podLabels:
     app.elfhosted.com/role: nodefinder # let this be an anchor for replicationdestinations    
   persistence:
+    <<: *storagemounts  
+    logs: *logs
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /backup
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup 
     config-yml:
       enabled: "true"
       subPath: "config.yml"
@@ -6221,14 +6215,20 @@ homer:
       enabled: true
       type: emptyDir
       mountPath: /www/assets/message
-    homer:
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-homer-ssd     
+    config:
       enabled: true
       type: custom
       mountPath: /www/assets/backgrounds
-      subPath: backgrounds
+      subPath: homer/backgrounds
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-homer-ssd      
+          claimName: config     
   command:
   - /bin/bash
   - /usr/local/bin/disk_usage.sh
@@ -6246,8 +6246,8 @@ homer:
       - mountPath: /www/assets/message
         name: message
       - mountPath: /www/assets/backgrounds
-        name: homer
-        subPath: backgrounds
+        name: config
+        subPath: homer/backgrounds
         readOnly: true        
       resources: *default_resources
       securityContext: *default_securitycontext     
@@ -6269,6 +6269,15 @@ homer:
     limits:
       cpu: 100m
       memory: 128Mi
+  initContainers:
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: homer          
 
 traefikforwardauth:
   affinity: *standard_affinity 
@@ -12320,7 +12329,7 @@ requestrr:
       subPath: requestrr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-requestrr-ssd  
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
