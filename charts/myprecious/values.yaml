@@ -766,30 +766,7 @@ bootstrap_env: &bootstrap_env
   valueFrom:
     fieldRef:
       fieldPath: metadata.labels['app.elfhosted.com/name']
-
-remove_mediacover: &remove_mediacover
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-    set -e
-
-    if [[ ! -z "$(ls -A /config/MediaCover)" ]]
-    then
-      rm -rf /config/MediaCover
-    fi   
-
-    if [[ ! -z "$(ls -A /migration/MediaCover)" ]]
-    then
-      rm -rf /migration/MediaCover
-    fi       
-  volumeMounts:
-  - mountPath: /config
-    name: config
-  - mountPath: /migration
-    name: migration    
+ 
 migrate_data: &migrate_data
   image: *tooling_image
   imagePullPolicy: IfNotPresent
@@ -2768,14 +2745,6 @@ radarr: &app_radarr
         configMap:
           name: elfbot-radarr
           optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: radarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers
   ingress:
     main:
       enabled: false
@@ -2907,15 +2876,7 @@ radarr4k: &app_radarr4k
       subPath: radarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: backup              
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: radarr4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers         
+          claimName: backup                    
   ingress:
     main:
       enabled: false
@@ -3204,15 +3165,7 @@ bazarr:
       volumeSpec:
         configMap:
           name: elfbot-bazarr
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: bazarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true           
   ingress:
     main:
       enabled: false
@@ -3303,15 +3256,7 @@ bazarr4k:
       volumeSpec:
         configMap:
           name: elfbot-bazarr4k
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: bazarr4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true            
   ingress:
     main:
       enabled: false
@@ -4639,14 +4584,6 @@ sonarr: &app_sonarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: backup                 
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: sonarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers     
     elfbot:
       enabled: "true"
       type: "custom"
@@ -4784,14 +4721,6 @@ sonarr4k: &app_sonarr4k
         configMap:
           name: elfbot-sonarr4k
           optional: true      
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: sonarr4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers   
     migration:
       enabled: true
       type: custom
@@ -5153,15 +5082,7 @@ lidarr:
       volumeSpec:
         configMap:
           name: elfbot-lidarr
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: lidarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers    
+          optional: true  
   ingress:
     main:
       enabled: false
@@ -5358,15 +5279,7 @@ readarr:
       volumeSpec:
         configMap:
           name: elfbot-readarr
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: readarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true          
   ingress:
     main:
       enabled: false
@@ -5487,15 +5400,7 @@ readarraudio:
       volumeSpec:
         configMap:
           name: elfbot-readarraudio
-          optional: true
-    mediacover:
-      enabled: true
-      type: custom
-      mountPath: /config/MediaCover/
-      subPath: readarraudio
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: mediacovers              
+          optional: true            
   ingress:
     main:
       enabled: false
