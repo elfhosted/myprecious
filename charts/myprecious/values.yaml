@@ -9186,48 +9186,49 @@ rdtclient: &app_rdtclient
 # Add a VPN option for rdtclient
 rdtclientvpnpia:
   enabled: false
-  <<: *app_rdtclient
-  podLabels:
-    app.elfhosted.com/name: rdtclient-alldebrid  
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /data/db
-      subPath: rdtclient-alldebrid
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-rdtclient-alldebrid
-          optional: true
-    download: # in case users use /tmp
-      enabled: true
-      type: custom
-      mountPath: /data/downloads
-      volumeSpec: *volumespec_ephemeral_volume_1g                        
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      envFrom:
-      - secretRef:
-          name: rdtclient-pia-config
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config    
+  # bring this back after migration
+  # <<: *app_rdtclient
+  # podLabels:
+  #   app.elfhosted.com/name: rdtclient-alldebrid  
+  # persistence:
+  #   <<: *storagemounts
+  #   config:
+  #     enabled: true
+  #     type: custom
+  #     mountPath: /data/db
+  #     subPath: rdtclient-alldebrid
+  #     volumeSpec:
+  #       persistentVolumeClaim:
+  #         claimName: config
+  #   elfbot:
+  #     enabled: "true"
+  #     type: "custom"
+  #     volumeSpec:
+  #       configMap:
+  #         name: elfbot-rdtclient-alldebrid
+  #         optional: true
+  #   download: # in case users use /tmp
+  #     enabled: true
+  #     type: custom
+  #     mountPath: /data/downloads
+  #     volumeSpec: *volumespec_ephemeral_volume_1g                        
+  # addons:
+  #   vpn:
+  #     enabled: true # in case we ever need it
+  #     gluetun:
+  #       image:
+  #         repository: thrnz/docker-wireguard-pia
+  #         tag: latest
+  #     envFrom:
+  #     - secretRef:
+  #         name: rdtclient-pia-config
+  #     securityContext:
+  #       runAsUser: 0
+  #       capabilities:
+  #         add:
+  #           - NET_ADMIN
+  #           - SYS_MODULE
+  #     config: # We have to set this to null so that we can override with our own config    
 
 jdownloader:
   enabled: false
@@ -10653,7 +10654,8 @@ petio:
       ports:
         http:
           port: 7777 
-  persistence:  
+  persistence:
+    backup: *backup
     elfbot:
       enabled: "true"
       type: "custom"
@@ -12409,6 +12411,13 @@ requestrr:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config-requestrr-ssd  
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-requestrr
+          optional: true                
   resources:
     requests:
       cpu: 1m
