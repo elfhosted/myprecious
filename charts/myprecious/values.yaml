@@ -6083,7 +6083,13 @@ homer:
     app.elfhosted.com/role: nodefinder # let this be an anchor for replicationdestinations
   persistence:
     <<: *storagemounts
-    logs: *logs
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /logs
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
     backup:
       enabled: true
       type: custom
