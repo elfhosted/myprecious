@@ -5583,13 +5583,20 @@ plex: &app_plex
     tag: rolling
   persistence:
     <<: *storagemounts    
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-plex-block     
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: plex
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-plex-block                                            
+          claimName: config                                          
     transcode: # in case users use /tmp
       enabled: true
       mountPath: /transcode
@@ -5648,7 +5655,26 @@ plex: &app_plex
       cpu: "2" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    bootstrap-elfbot: *bootstrap_elfbot
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: plex       
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plex
+      - mountPath: /tmp
+        name: tmp
     update-dns: *update_dns_on_init
     repair-db:
       image: ghcr.io/elfhosted/plex:rolling
@@ -5668,7 +5694,8 @@ plex: &app_plex
         fi
       volumeMounts:
       - mountPath: /config
-        name: config      
+        name: config     
+        subPath: plex 
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5688,7 +5715,7 @@ plex: &app_plex
       volumeMounts:
       - mountPath: /config
         name: config
-        # subPath: plex
+        subPath: plex
       - mountPath: /phototranscoder
         name: phototranscoder        
       # can't use default resources because the ephemeral limit kicks out /phototranscoder later
@@ -5738,10 +5765,10 @@ plex: &app_plex
       volumeMounts:
       - mountPath: /config
         name: config
-        subPath: imagemaid
+        subPath: plex/imagemaid
       - mountPath: /Library
         name: config
-        subPath: Library
+        subPath: plex/Library
       envFrom:
       - configMapRef:
           name: imagemaid-env
