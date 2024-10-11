@@ -6,7 +6,7 @@ spec:
   trigger:
     manual: runonce
   restic:
-    repository: symlinks-volsync-restic-symlinks
+    repository: symlinks-volsync-restic-config
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:
