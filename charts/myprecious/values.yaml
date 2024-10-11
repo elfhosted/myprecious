@@ -667,13 +667,6 @@ configmounts: &config_mounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                                                                                
-  radarr:
-    enabled: false
-    type: custom
-    mountPath: /config/radarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-radarr-ssd
   radarr4k:
     enabled: false
     type: custom
@@ -734,13 +727,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                
-  radarr:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/radarr/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-radarr-ssd     
   radarr4k:
     enabled: false
     type: custom
@@ -2791,15 +2777,32 @@ radarr: &app_radarr
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: radarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr-ssd  
+          claimName: config
     migration:
       enabled: true
       type: custom
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr-block                      
+          claimName: config-radarr-ssd      
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: radarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs     
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /config/Backups
+      subPath: radarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup                            
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2825,9 +2828,32 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
-    a-clean-mediacover: *remove_mediacover
-    a-migration: *migrate_data
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: radarr 
+      - mountPath: /config/logs
+        name: logs
+        subPath: radar    
+      - mountPath: /config/Backups
+        name: backup
+        subPath: radarr                    
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: radarr
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -2845,8 +2871,6 @@ radarr: &app_radarr
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
-      - mountPath: /config
-        name: config     
       resources: *default_resources
       securityContext: *default_securitycontext        
   resources:
