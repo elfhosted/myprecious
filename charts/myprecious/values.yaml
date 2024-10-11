@@ -666,14 +666,7 @@ configmounts: &config_mounts
     mountPath: /config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                                                                                
-  radarr4k:
-    enabled: false
-    type: custom
-    mountPath: /config/radarr4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-radarr4k-ssd  
+        claimName: config-homer-ssd                                                                                 
   rclonebrowser:
     enabled: true # this is always on
     type: custom
@@ -726,14 +719,7 @@ storageconfigmounts: &storageconfigmounts
     mountPath: /storage/config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                
-  radarr4k:
-    enabled: false
-    type: custom
-    mountPath: /storage/config/radarr4k/
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-radarr4k-ssd   
+        claimName: config-homer-ssd                 
   rclonebrowser:
     enabled: true # this is always on
     type: custom
@@ -2913,13 +2899,20 @@ radarr4k: &app_radarr4k
       name: radarr4k-env
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-radarr4k-ssd  
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: radarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-radarr4k-ssd           
+          claimName: config         
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2927,6 +2920,22 @@ radarr4k: &app_radarr4k
         configMap:
           name: elfbot-radarr4k
           optional: true
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: radarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs     
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /config/Backups
+      subPath: radarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup              
     mediacover:
       enabled: true
       type: custom
@@ -2934,13 +2943,7 @@ radarr4k: &app_radarr4k
       subPath: radarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: mediacovers
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-radarr4k-block            
+          claimName: mediacovers         
   ingress:
     main:
       enabled: false
@@ -2951,9 +2954,32 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
-    a-clean-mediacover: *remove_mediacover
-    a-migration: *migrate_data  
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: radarr4k
+      - mountPath: /config/logs
+        name: logs
+        subPath: radarr4k  
+      - mountPath: /config/Backups
+        name: backup
+        subPath: radarr4k                  
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: radarr4k
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -2968,14 +2994,9 @@ radarr4k: &app_radarr4k
         mkdir -p /storage/symlinks/downloads/radarr4k
         mkdir -p /storage/symlinks/movies-4k    
 
-        # Set auth to external
-        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
-
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
-      - mountPath: /config
-        name: config    
       resources: *default_resources
       securityContext: *default_securitycontext      
   resources:
