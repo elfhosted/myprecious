@@ -3860,14 +3860,14 @@ calibreweb:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    config-calibre:
-      enabled: true
-      type: custom
-      mountPath: /calibre/
-      subPath: calibre
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
+    # config-calibre:
+    #   enabled: true
+    #   type: custom
+    #   mountPath: /calibre/
+    #   subPath: calibre
+    #   volumeSpec:
+    #     persistentVolumeClaim:
+    #       claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
