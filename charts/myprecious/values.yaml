@@ -10554,6 +10554,7 @@ petio:
         http:
           port: 7777 
   persistence:  
+    backup: *backup
     elfbot:
       enabled: "true"
       type: "custom"
@@ -12296,6 +12297,7 @@ requestrr:
       type: RuntimeDefault
   automountServiceAccountToken: false
   persistence:
+    backup: *backup
     migration:
       enabled: true
       type: custom
