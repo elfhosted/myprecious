@@ -633,7 +633,7 @@ storagemounts: &storagemounts
     type: custom
     volumeSpec:
       persistentVolumeClaim:
-        claimName: symlinks-ssd
+        claimName: symlinks
     mountPath: /storage/symlinks     
   backup: &backup
     enabled: true
@@ -3450,6 +3450,12 @@ filebrowser:
         configMap:
           name: recyclarr-config
     symlinks: *symlinks            
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: symlinks-ssd
     tmp: *tmp
   service:
     main:
@@ -3528,30 +3534,29 @@ filebrowser:
       - name: recyclarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext   
-    # migrate-symlinks:
-    #   image: *tooling_image
-    #   imagePullPolicy: IfNotPresent
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     set -x
-    #     if [[ ! -f /storage/symlinks/.i-was-migrated-to-cephfs-b ]]
-    #     then
-    #       if [[ ! -z "$(ls -A /migration)" ]]    
-    #       then
-    #         echo "Tar-migrating from /migration/..." 
-    #         tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-    #         touch /storage/symlinks/.i-was-migrated-to-cephfs-b
-    #       fi
-    #     fi   
-    #   volumeMounts:
-    #   - mountPath: /migration
-    #     name: migration
-    #     subPath: symlinks
-    #   - name: symlinks
-    #     mountPath: /storage/symlinks
-    #   securityContext: *default_securitycontext             
+    migrate-symlinks:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        if [[ ! -f /storage/symlinks/.migrated-to-topolvm ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]    
+          then
+            echo "Tar-migrating from /migration/..." 
+            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
+            touch /storage/symlinks/.migrated-to-topolvm
+          fi
+        fi   
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - name: symlinks
+        mountPath: /storage/symlinks
+      securityContext: *default_securitycontext             
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:

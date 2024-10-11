@@ -1,0 +1,29 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: rd-symlinks
+spec:
+  trigger:
+    manual: runonce
+  restic:
+    repository: symlinks-volsync-restic-symlinks
+    copyMethod: Snapshot
+    moverAffinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution: 
+        - labelSelector:
+            matchExpressions:
+            - key: app.elfhosted.com/role
+              operator: In
+              values:
+              - nodefinder
+          topologyKey: "kubernetes.io/hostname"
+    cacheCapacity: 5Gi
+    capacity: 5Gi
+    cacheStorageClassName: topolvm-provisioner-thin
+    accessModes:
+    - ReadWriteOnce
+    storageClassName: topolvm-provisioner-thin
+    cacheAccessModes:
+    - ReadWriteOnce
+    volumeSnapshotClassName: topolvm-provisioner-thin
