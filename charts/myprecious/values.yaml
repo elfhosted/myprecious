@@ -4720,13 +4720,7 @@ sonarr4k: &app_sonarr4k
       volumeSpec:
         configMap:
           name: elfbot-sonarr4k
-          optional: true      
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr4k-block                      
+          optional: true                    
   ingress:
     main:
       enabled: false
