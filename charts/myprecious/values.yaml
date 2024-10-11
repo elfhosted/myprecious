@@ -666,14 +666,7 @@ configmounts: &config_mounts
     mountPath: /config/homer
     volumeSpec:
       persistentVolumeClaim:
-        claimName: config-homer-ssd                                                                               
-  prowlarr:
-    enabled: false
-    mountPath: /config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd     
+        claimName: config-homer-ssd                                                                                
   radarr:
     enabled: false
     type: custom
@@ -741,13 +734,6 @@ storageconfigmounts: &storageconfigmounts
     volumeSpec:
       persistentVolumeClaim:
         claimName: config-homer-ssd                
-  prowlarr:
-    enabled: false
-    mountPath: /storage/config/prowlarr
-    type: "custom"
-    volumeSpec:
-      persistentVolumeClaim:
-        claimName: config-prowlarr-ssd   
   radarr:
     enabled: false
     type: custom
@@ -4886,13 +4872,36 @@ prowlarr: &app_prowlarr
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    migration:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-prowlarr-ssd  
     config:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: prowlarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-prowlarr-ssd                   
+          claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: prowlarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs     
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /config/Backups
+      subPath: prowlarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup                                  
     run: # used for s6-init with non-root
       enabled: true
       type: emptyDir
@@ -4915,7 +4924,32 @@ prowlarr: &app_prowlarr
         http:
           port: 9696
   initContainers:
-    bootstrap: *bootstrap
+    a-migration: 
+      <<: *migrate_data
+      volumeMounts:
+      - mountPath: /migration
+        name: migration
+      - mountPath: /config
+        name: config
+        subPath: prowlarr 
+      - mountPath: /config/logs
+        name: logs
+        subPath: prowlarr    
+      - mountPath: /config/Backups
+        name: backup
+        subPath: prowlarr                    
+    bootstrap: 
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: prowlarr
+      - mountPath: /tmp
+        name: tmp   
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -4949,6 +4983,7 @@ prowlarr: &app_prowlarr
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: prowlarr
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
