@@ -5184,7 +5184,7 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
     imagemaid:
-      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:8fb3b3b89431e4b0217ec268abbabfb67a970de3fb2d763f72847d558c1c8aa5
+      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:1ac456479c1dc40f4da0e604a619f84f847442bab5adb2720b057fbbdaa041dc
       volumeMounts:
       - mountPath: /config
         name: config
