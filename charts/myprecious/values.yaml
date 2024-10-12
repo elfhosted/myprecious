@@ -5778,8 +5778,8 @@ homer:
       cpu: 1m
       memory: 1Mi
     limits:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 200m
+      memory: 1Gi
   initContainers:
     a-migration:
       <<: *migrate_data
