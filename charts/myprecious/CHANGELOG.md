@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.145.0](https://github.com/elfhosted/myprecious/compare/v1.144.0...v1.145.0) (2024-10-12)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.12.5 ([9cf69ac](https://github.com/elfhosted/myprecious/commit/9cf69ac386e1e4a330ac82e19946c28fc80597e3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.772 ([cb374a5](https://github.com/elfhosted/myprecious/commit/cb374a5655e11b1269c5bfe543d9e5927d5df2c2))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to a363b59 ([2fee22e](https://github.com/elfhosted/myprecious/commit/2fee22e9d421bd2536d28196af01f2ef819b5901))
+* **app:** update ghcr.io/elfhosted/imagemaid:v1.1.1 docker digest to 1ac4564 ([d4e6664](https://github.com/elfhosted/myprecious/commit/d4e666424bf222a64d58dda43a4a59babfc5e1f0))
+* **app:** update ghcr.io/elfhosted/jackettio:v1.4.0 docker digest to c3c11dc ([432648b](https://github.com/elfhosted/myprecious/commit/432648b39dbbce7083603bccb5f7ddf63d974c33))
+* **app:** update ghcr.io/elfhosted/petio:v0.5.5 docker digest to 8a8440a ([8a11dd5](https://github.com/elfhosted/myprecious/commit/8a11dd5b67d129870dc022f7dfed2e44826a43ee))
+
 ## [1.144.0](https://github.com/elfhosted/myprecious/compare/v1.143.0...v1.144.0) (2024-10-11)
 
 
