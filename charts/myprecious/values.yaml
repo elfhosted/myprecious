@@ -2285,12 +2285,6 @@ sabnzbd:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sabnzbd-ssd
     config:
       enabled: true
       type: custom
@@ -2321,14 +2315,6 @@ sabnzbd:
         http:
           port: 8080
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: sabnzbd
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2453,12 +2439,6 @@ tautulli:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tautulli-ssd
     config:
       enabled: true
       type: custom
@@ -2491,14 +2471,6 @@ tautulli:
       cpu: 1
       memory: 1Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: tautulli
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2582,12 +2554,6 @@ radarr: &app_radarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-radarr-ssd
     logs:
       enabled: true
       type: custom
@@ -2621,20 +2587,6 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: radarr
-      - mountPath: /config/logs
-        name: logs
-        subPath: radarr
-      - mountPath: /config/Backups
-        name: backup
-        subPath: radarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2706,12 +2658,6 @@ radarr4k: &app_radarr4k
       name: radarr4k-env
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-radarr4k-ssd
     config:
       enabled: true
       type: custom
@@ -2753,20 +2699,6 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: radarr4k
-      - mountPath: /config/logs
-        name: logs
-        subPath: radarr4k
-      - mountPath: /config/Backups
-        name: backup
-        subPath: radarr4k
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2835,12 +2767,6 @@ ombi:
     enabled: true
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-ombi-ssd
     config:
       enabled: true
       type: custom
@@ -2866,14 +2792,6 @@ ombi:
         http:
           port: 5000
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: ombi
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -3011,12 +2929,6 @@ bazarr:
       name: bazarr-config
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-bazarr-ssd
     config:
       enabled: true
       type: custom
@@ -3042,14 +2954,6 @@ bazarr:
         http:
           port: 6767
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: bazarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -3102,12 +3006,6 @@ bazarr4k:
       name: bazarr4k-config
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-bazarr4k-ssd
     config:
       enabled: true
       type: custom
@@ -3133,14 +3031,6 @@ bazarr4k:
         http:
           port: 6767
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: bazarr4k
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -3666,12 +3556,6 @@ kapowarr:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kapowarr-ssd
     config:
       enabled: true
       type: custom
@@ -3710,14 +3594,6 @@ kapowarr:
       cpu: 1
       memory: 1Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: kapowarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -3783,12 +3659,6 @@ calibreweb:
       optional: true
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-calibreweb-ssd
     config:
       enabled: true
       type: custom
@@ -3821,14 +3691,6 @@ calibreweb:
         http:
           port: 8083
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: calibreweb
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -3890,13 +3752,6 @@ pyload:
         configMap:
           name: elfbot-pyload
           optional: true
-    migration:
-      enabled: true
-      type: custom
-      subPath: pyload
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-pyload-ssd
     config:
       enabled: true
       type: custom
@@ -3906,14 +3761,6 @@ pyload:
         persistentVolumeClaim:
           claimName: config
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: pyload
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4118,12 +3965,6 @@ komga:
   tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-komga-ssd
     config:
       enabled: true
       type: custom
@@ -4149,14 +3990,6 @@ komga:
         http:
           port: 25600
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: komga
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4200,12 +4033,6 @@ kavita:
   tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kavita-ssd
     config:
       enabled: true
       type: custom
@@ -4222,14 +4049,6 @@ kavita:
           name: elfbot-kavita
           optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: kavita
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4287,12 +4106,6 @@ calibre:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-calibre-ssd
     config:
       enabled: true
       type: custom
@@ -4334,14 +4147,6 @@ calibre:
       cpu: 1
       memory: 4Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: calibre
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4389,12 +4194,6 @@ sonarr: &app_sonarr
       name: sonarr-env
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr-ssd
     config:
       enabled: true
       type: custom
@@ -4436,20 +4235,6 @@ sonarr: &app_sonarr
         http:
           port: 8989
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: sonarr
-      - mountPath: /config/logs
-        name: logs
-        subPath: sonarr
-      - mountPath: /config/Backups
-        name: backup
-        subPath: sonarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4519,12 +4304,6 @@ sonarr4k: &app_sonarr4k
       name: sonarr4k-env
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-sonarr4k-ssd
     config:
       enabled: true
       type: custom
@@ -4566,20 +4345,6 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: sonarr4k
-      - mountPath: /config/logs
-        name: logs
-        subPath: sonarr4k
-      - mountPath: /config/Backups
-        name: backup
-        subPath: sonarr4k
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4733,12 +4498,6 @@ prowlarr: &app_prowlarr
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-prowlarr-ssd
     config:
       enabled: true
       type: custom
@@ -4785,20 +4544,6 @@ prowlarr: &app_prowlarr
         http:
           port: 9696
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: prowlarr
-      - mountPath: /config/logs
-        name: logs
-        subPath: prowlarr
-      - mountPath: /config/Backups
-        name: backup
-        subPath: prowlarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4894,12 +4639,6 @@ lidarr:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-lidarr-ssd
     s6:
       enabled: true
       type: emptyDir
@@ -4922,14 +4661,6 @@ lidarr:
         http:
           port: 8686
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: lidarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5075,12 +4806,6 @@ readarr:
       name: readarr-config
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-readarr-ssd
     config:
       enabled: true
       type: custom
@@ -5119,14 +4844,6 @@ readarr:
         http:
           port: 8787
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: readarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5204,12 +4921,6 @@ readarraudio:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-readarraudio-ssd
     logs:
       enabled: true
       type: custom
@@ -5240,14 +4951,6 @@ readarraudio:
         http:
           port: 8787
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: readarraudio
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5317,12 +5020,6 @@ plex: &app_plex
     tag: rolling
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plex-block
     config:
       enabled: true
       type: custom
@@ -5389,14 +5086,6 @@ plex: &app_plex
       cpu: "2" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: plex
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5628,12 +5317,6 @@ jellyfin: &app_jellyfin
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jellyfin-block
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -5659,14 +5342,6 @@ jellyfin: &app_jellyfin
           name: tooling-scripts
           defaultMode: 0755
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: jellyfin
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5825,12 +5500,6 @@ emby: &app_emby
   tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-emby-block
     config:
       enabled: true
       type: custom
@@ -5864,14 +5533,6 @@ emby: &app_emby
           name: tooling-scripts
           defaultMode: 0755
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: emby
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -6291,12 +5952,6 @@ gotify:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-gotify-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6306,14 +5961,6 @@ gotify:
           optional: true
     tmp: *tmp # Avoids issues with readOnlyRootFilesystem
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: gotify
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -6639,12 +6286,6 @@ tunarr:
           port: 8000
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-tunarr-ssd
     config:
       enabled: true
       type: custom
@@ -6671,14 +6312,6 @@ tunarr:
       type: emptyDir
       sizeLimit: 50Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: tunarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -6736,12 +6369,6 @@ threadfin:
           port: 34400
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-threadfin-ssd
     config:
       enabled: true
       type: custom
@@ -6758,14 +6385,6 @@ threadfin:
           name: elfbot-tunarr
           optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: threadfin
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -6927,12 +6546,6 @@ overseerr:
     enabled: true
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-overseerr-ssd
     config:
       enabled: true
       type: custom
@@ -6957,14 +6570,6 @@ overseerr:
           name: tooling-scripts
           defaultMode: 0755
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: overseerr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -7061,12 +6666,6 @@ jellyseerr:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jellyseerr-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -7086,14 +6685,6 @@ jellyseerr:
   - configMapRef:
       name: jellyseerr-env
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: jellyseerr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -7182,12 +6773,6 @@ audiobookshelf:
     enabled: true
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-audiobookshelf-ssd
     config:
       enabled: true
       type: custom
@@ -7219,14 +6804,6 @@ audiobookshelf:
     METADATA_PATH: /config/metadata
     SOURCE: ElfHosted
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: audiobookshelf
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -7445,12 +7022,6 @@ notifiarr:
           port: 5454
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-notifiarr-ssd
     config:
       enabled: true
       type: custom
@@ -7473,14 +7044,6 @@ notifiarr:
           name: elfbot-notifiarr
           optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: notifiarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -7549,12 +7112,6 @@ shoko:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-shoko-ssd
     config:
       enabled: true
       type: custom
@@ -7571,14 +7128,6 @@ shoko:
           name: elfbot-shoko
           optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: shoko
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -7638,12 +7187,6 @@ filebot:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-filebot-ssd
     config:
       enabled: true
       type: custom
@@ -7666,14 +7209,6 @@ filebot:
       mountPath: /home/seedy
       sizeLimit: 1Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: filebot
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -7742,12 +7277,6 @@ kometa: &app_kometa
       optional: true
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-kometa
     config:
       enabled: true
       type: custom
@@ -7778,14 +7307,6 @@ kometa: &app_kometa
         configMap:
           name: kometa-config
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: kometa
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -8437,12 +7958,6 @@ jfa:
   automountServiceAccountToken: false
   persistence:
     backup: *backup
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jfa-ssd
     config:
       enabled: true
       type: custom
@@ -8464,14 +7979,6 @@ jfa:
       mountPath: /tmp
       sizeLimit: 1Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: jfa
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -8929,12 +8436,6 @@ rdtclient: &app_rdtclient
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rdtclient-ssd
     config:
       enabled: true
       type: custom
@@ -8974,14 +8475,6 @@ rdtclient: &app_rdtclient
       memory: 2Gi
       ephemeral-storage: 100Mi # a safety net against node ephemeral space exhaustion
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: rdtclient
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -9082,12 +8575,6 @@ jdownloader:
           claimName: config
       mountPath: /output
       subPath: jdownloader/downloads/completed/jdownloader
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jdownloader-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9112,14 +8599,6 @@ jdownloader:
       cpu: 0.5
       memory: 1Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: jdownloader
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -9286,7 +8765,6 @@ joplinserver:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-      subPath: data
   postgresql:
     enabled: true
     nameOverride: joplinserver-postgresql
@@ -9398,12 +8876,6 @@ homepage:
       optional: true
   persistence:
     <<: *storagemounts
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-homepage-ssd
     config:
       enabled: true
       type: custom
@@ -9442,14 +8914,6 @@ homepage:
       cpu: 250m # deliberately hobble the CPU in favor of GPU transcoding
       memory: 1Gi
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: homepage
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -9634,12 +9098,6 @@ autoscan:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-autoscan-ssd
     example-config:
       enabled: "true"
       type: "custom"
@@ -9655,14 +9113,6 @@ autoscan:
           optional: true
 
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: autoscan
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -9767,12 +9217,6 @@ riven: &app_riven
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-riven-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9786,14 +9230,6 @@ riven: &app_riven
       volumeSpec:
         medium: Memory
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: riven
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -10475,13 +9911,6 @@ petio:
         configMap:
           name: elfbot-petio
           optional: true
-    migration:
-      enabled: true
-      type: custom
-      subPath: config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-petio-ssd
     config:
       enabled: true
       type: custom
@@ -10492,14 +9921,6 @@ petio:
           claimName: config
     tmp: *tmp
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: petio
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -11738,12 +11159,6 @@ zurg: &app_zurg
     tmp: *tmp
     backup: *backup # to pin zurg to the node with the backup PVC
     rclonemountrealdebridzurg: *rclonemountrealdebridzurg
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-zurg-ssd
     config:
       enabled: true
       type: custom
@@ -11782,14 +11197,6 @@ zurg: &app_zurg
   - configMapRef:
       name: zurg-env # this is here so we can use env vars to detect whether to enable warp
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: zurg
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -12007,12 +11414,6 @@ plexdebrid: &app_plexdebrid
   persistence:
     tmp: *tmp
     backup: *backup
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-plex-debrid-ssd
     config:
       enabled: true
       type: custom
@@ -12035,14 +11436,6 @@ plexdebrid: &app_plexdebrid
         configMap:
           name: plexdebrid-config
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: plex-debrid
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -12250,12 +11643,6 @@ requestrr:
   persistence:
     tmp: *tmp
     backup: *backup
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-requestrr-ssd
     config:
       enabled: true
       type: custom
@@ -12292,14 +11679,6 @@ requestrr:
       name: elfbot-requestrr
       optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: requestrr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -12419,8 +11798,8 @@ blackhole: &app_blackhole
       cpu: 1m
       memory: 1Mi
     limits:
-      cpu: 100m
-      memory: 100Mi
+      cpu: 1
+      memory: 500Mi
   ingress:
     main:
       enabled: false
