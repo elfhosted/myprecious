@@ -7460,7 +7460,7 @@ decluttarr: &app_decluttarr
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   podLabels:
-    app.elfhosted.com/name: kometa
+    app.elfhosted.com/name: decluttarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-decluttarr"
