@@ -7465,6 +7465,8 @@ decluttarr:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-decluttarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  persistence:
+    tmp: *tmp
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
