@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Release.Name }}-nodefinder-deleter-v5
+  name: {{ .Release.Name }}-nodefinder-deleter-v6
   labels:
     app.elfhosted.com/name: nodefinder-deleter  
 spec:
