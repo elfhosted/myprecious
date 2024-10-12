@@ -26,6 +26,8 @@ spec:
           set -x
           set -e
 
+          sleep 10m
+
           # If deployment exists, then wait 4 min and delete it
           if kubectl --request-timeout 30s get deployment {{ .Release.Name }}-nodefinder
           then
