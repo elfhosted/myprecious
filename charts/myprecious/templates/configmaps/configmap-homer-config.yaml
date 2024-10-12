@@ -20,69 +20,69 @@ data:
     while true
     do
 
-    # # disabled this until migrations are done - remove the next 2 lines to restore
+      # Once for all of /config, /backup, /logs...
+      tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
+      tree --du -hF -s  /backup/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/backup -T "🧝 ElfHosted [/backup] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-backup.html
+      tree --du -hF -s  /logs/   -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/logs -T "🧝 ElfHosted [/logs] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-logs.html
 
-    #   # Once for all of /config...
-    #   # tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
+      for STORAGE_PATH in $(ls /config); do
+        # And again per-app /config...
+        # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
+        tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
 
-    #   for STORAGE_PATH in $(ls /config); do
-    #     # And again per-app /config...
-    #     # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
-    #     tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
+        df -Ph /config/${STORAGE_PATH} | sed s/%//g > /www/assets/message/disk_space_${STORAGE_PATH}.txt
+        PERCENTAGE_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | sed s/%//g | awk '{print $5}' | tail -n1)
+        DISK_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $3}' | tail -n1)
+        DISK_TOTAL=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $2}' | tail -n1)
+        DISK_FREE=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $4}' | tail -n1)
+        PERCENTAGE_FREE=$(echo $((100-${PERCENTAGE_USED})))
 
-    #     df -Ph /config/${STORAGE_PATH} | sed s/%//g > /www/assets/message/disk_space_${STORAGE_PATH}.txt
-    #     PERCENTAGE_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | sed s/%//g | awk '{print $5}' | tail -n1)
-    #     DISK_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $3}' | tail -n1)
-    #     DISK_TOTAL=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $2}' | tail -n1)
-    #     DISK_FREE=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $4}' | tail -n1)
-    #     PERCENTAGE_FREE=$(echo $((100-${PERCENTAGE_USED})))
-
-    #     # Keep the highest percentage used number
-    #     if [[ ! -z ${EXISTING_USAGE+x} ]]; then
-    #       if [[ "$PERCENTAGE_USED" -gt "$EXISTING_USAGE" ]]; then
-    #         EXISTING_USAGE=$PERCENTAGE_USED
-    #         CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
-    #         CONFIG_DISK_FREE=$DISK_FREE
-    #         CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
-    #         CONFIG_DISK_TOTAL=$DISK_TOTAL
-    #         # echo -n "<A HREF='/assets/message/disk-usage-config.html' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='/assets/message/disk-usage-config-${CONFIG_BIGGEST_CONSUMER}.html' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
-    #         echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
-    #       fi
-    #     else
-    #       EXISTING_USAGE=$PERCENTAGE_USED
-    #       CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
-    #       CONFIG_DISK_FREE=$DISK_FREE
-    #       CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
-    #       CONFIG_DISK_TOTAL=$DISK_TOTAL
-    #       echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
-    #     fi
-    #   done
+        # Keep the highest percentage used number
+        if [[ ! -z ${EXISTING_USAGE+x} ]]; then
+          if [[ "$PERCENTAGE_USED" -gt "$EXISTING_USAGE" ]]; then
+            EXISTING_USAGE=$PERCENTAGE_USED
+            CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
+            CONFIG_DISK_FREE=$DISK_FREE
+            CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
+            CONFIG_DISK_TOTAL=$DISK_TOTAL
+            # echo -n "<A HREF='/assets/message/disk-usage-config.html' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='/assets/message/disk-usage-config-${CONFIG_BIGGEST_CONSUMER}.html' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
+            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
+          fi
+        else
+          EXISTING_USAGE=$PERCENTAGE_USED
+          CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
+          CONFIG_DISK_FREE=$DISK_FREE
+          CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
+          CONFIG_DISK_TOTAL=$DISK_TOTAL
+          echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
+        fi
+      done
 
 
       cat /dev/null > /www/assets/message/message_details.html
 
-      # PERCENTAGE_USED=$(cat /www/assets/message/disk_space_percent_used)
-      # if [[ "$PERCENTAGE_USED" -ge 90 || "$CONFIG_PERCENTAGE_USED" -ge 90 ]]; then
-      #   STYLE="is-danger"
-      #   ICON="fa fa-thermometer-full"
-      #   MESSAGE="Time to clean up! 🧹"
-      # elif [[ "$PERCENTAGE_USED" -ge 75 || "$CONFIG_PERCENTAGE_USED" -ge 75 ]]; then
-      #   STYLE="is-warning"
-      #   ICON="fa fa-thermometer-three-quarters"
-      #   MESSAGE="Getting full.. 🍔"
-      # elif [[ "$PERCENTAGE_USED" -ge 50 || "$CONFIG_PERCENTAGE_USED" -ge 50 ]]; then
-      #   STYLE="is-info"
-      #   ICON="fa fa-thermometer-half"
-      #   MESSAGE="Halfway there.."
-      # elif [[ "$PERCENTAGE_USED" -ge 25  || "$CONFIG_PERCENTAGE_USED" -ge 25 ]]; then
-      #   STYLE="is-success"
-      #   ICON="fa fa-thermometer-quarter"
-      #   MESSAGE="Nice and tidy! 👍"
-      # else
-      #   STYLE="is-success"
-      #   ICON="fa fa-thermometer-empty"
-      #   MESSAGE="Gigabytes everywhere! 🥳"
-      # fi
+      PERCENTAGE_USED=$(cat /www/assets/message/disk_space_percent_used)
+      if [[ "$PERCENTAGE_USED" -ge 90 || "$CONFIG_PERCENTAGE_USED" -ge 90 ]]; then
+        STYLE="is-danger"
+        ICON="fa fa-thermometer-full"
+        MESSAGE="Time to clean up! 🧹"
+      elif [[ "$PERCENTAGE_USED" -ge 75 || "$CONFIG_PERCENTAGE_USED" -ge 75 ]]; then
+        STYLE="is-warning"
+        ICON="fa fa-thermometer-three-quarters"
+        MESSAGE="Getting full.. 🍔"
+      elif [[ "$PERCENTAGE_USED" -ge 50 || "$CONFIG_PERCENTAGE_USED" -ge 50 ]]; then
+        STYLE="is-info"
+        ICON="fa fa-thermometer-half"
+        MESSAGE="Halfway there.."
+      elif [[ "$PERCENTAGE_USED" -ge 25  || "$CONFIG_PERCENTAGE_USED" -ge 25 ]]; then
+        STYLE="is-success"
+        ICON="fa fa-thermometer-quarter"
+        MESSAGE="Nice and tidy! 👍"
+      else
+        STYLE="is-success"
+        ICON="fa fa-thermometer-empty"
+        MESSAGE="Gigabytes everywhere! 🥳"
+      fi
 
       STYLE="is-success"
       ICON="fa fa-magic"
@@ -105,8 +105,8 @@ data:
 
       COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments | tr -d '"')
 
-      # MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
-      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${COMPLIMENT}</BR>${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
+      MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
+      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"${COMPLIMENT}</BR>${MESSAGE_DETAILS}</BR>${ZURG_MESSAGE} ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
             
       sleep $(shuf -i 1800-5400 -n 1)
     done
