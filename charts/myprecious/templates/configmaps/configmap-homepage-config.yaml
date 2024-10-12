@@ -504,6 +504,14 @@ data:
             siteMonitor: http://tunarr:8000    
         {{ end }}   
 
+        {{ if .Values.ersatztv.enabled }}
+        - ersatztv:
+            icon: ersatztv.png
+            href: https://{{ .Release.Name }}-ersatztv.{{ .Values.dns_domain }}
+            description: Create "channels" from your Plex media
+            siteMonitor: http://ersatztv:8409    
+        {{ end }}           
+
         {{ if .Values.threadfin.enabled }}
         - Threadfin:
             icon: threadfin.png

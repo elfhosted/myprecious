@@ -1161,6 +1161,8 @@ mylarrexposed:
   apikey: 0f97f6a7f352c63eb43fcb7e53ea9d8f
 tunarrexposed:
   enabled: false
+ersatztv:
+  enabled: false  
 threadfinexposed:
   enabled: false
 zurgexposed:
@@ -6322,6 +6324,87 @@ tunarr:
       - mountPath: /config
         name: config
         subPath: tunarr
+      - mountPath: /tmp
+        name: tmp
+
+ersatztv:
+  enabled: false
+  image:
+    registry: docker.io
+    repository: jasongdove/ersatztv
+    tag: develop-vaapi@sha256:c8532987370dc5cbaf18962997bcc07b15563e04fb2c7b848139e47a2f3ce711
+  priorityClassName: tenant-normal
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+    privileged: true
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-erzatztv"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroupChangePolicy: "OnRootMismatch"
+    supplementalGroups:
+    - 993
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 256Mi
+    limits:
+      cpu: 1
+      memory: 2Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8409
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /root/.local/share/ersatztv
+      subPath: ersatztv
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /root/.local/share/etv-transcode
+      volumeSpec: *volumespec_ephemeral_volume_50g          
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-tunarr
+          optional: true
+    render-device:
+      enabled: "true"
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: ersatztv
       - mountPath: /tmp
         name: tmp
 

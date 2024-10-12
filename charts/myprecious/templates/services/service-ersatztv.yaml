@@ -1,0 +1,20 @@
+{{ if .Values.ersatztv.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: ersatztv
+  labels:
+    app.kubernetes.io/name: ersatztv
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8409
+    targetPort: 8409
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: ersatztv
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}    

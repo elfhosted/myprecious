@@ -546,6 +546,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.ersatztv.enabled }}
+      - name: ersatztv
+        group: consume-media
+        url: "http://ersatztv:8409"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.threadfin.enabled }}
       - name: threadfin
         group: consume-media
