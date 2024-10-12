@@ -665,6 +665,17 @@ data:
           - type: email
       {{ end }}            
 
+      {{ if .Values.decluttarr.enabled }}
+      - name: decluttarr
+        group: manage-media
+        url: "http://decluttarr:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
+
       {{ if or .Values.autoscan.enabled }}
       - name: autoscan
         group: manage-media

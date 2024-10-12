@@ -571,6 +571,14 @@ data:
             siteMonitor: http://imagemaid:3001
         {{ end }}                   
 
+        {{ if or .Values.decluttarr.enabled }}
+        - Decluttarr:
+            icon: mdi-magnify-scan
+            href: https://{{ .Release.Name }}-decluttarr.{{ .Values.dns_domain }}
+            description: Clean Aarr queues
+            # siteMonitor: http://decluttarr:3001
+        {{ end }} 
+
         {{ if or .Values.autoscan.enabled }}
         - Autoscan:
             icon: mdi-magnify-scan

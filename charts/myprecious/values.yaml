@@ -7446,7 +7446,56 @@ kometa: &app_kometa
       cpu: 1
       memory: 4Gi
 
-
+decluttarr:
+  enabled: false
+  sso:
+    enabled: true
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/decluttarr
+    tag: rolling@sha256:63eb8212b2aa0a0a0250b95b4d4ec6cd5b82d8e5c9529a4e460c71ff4090c632
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: kometa
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-decluttarr"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  envFrom:
+  - configMapRef:
+      name: elfbot-decluttarr
+      optional: true
+  - configMapRef:
+      name: decluttarr-env
+      optional: true      
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
 
 rcloneui:
   enabled: false
