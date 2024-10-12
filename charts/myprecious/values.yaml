@@ -3099,6 +3099,13 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *storagemounts
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /storage/backup
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup
     config:
       enabled: true
       type: custom
