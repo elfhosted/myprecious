@@ -5,7 +5,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: nodefinder-deleter
+       app.elfhosted.com/name: nodefinder-deleter
   egress:
     - toEntities:
         - kube-apiserver
