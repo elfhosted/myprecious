@@ -7446,7 +7446,7 @@ kometa: &app_kometa
       cpu: 1
       memory: 4Gi
 
-decluttarr:
+decluttarr: &app_decluttarr
   enabled: false
   sso:
     enabled: true
@@ -7498,6 +7498,17 @@ decluttarr:
     limits:
       cpu: 1
       memory: 1Gi
+
+decluttarr4k: 
+  <<: *app_decluttarr
+  envFrom:
+  - configMapRef:
+      name: elfbot-decluttarr
+      optional: true
+  - configMapRef:
+      name: decluttarr4k-env
+      optional: true      
+
 
 rcloneui:
   enabled: false

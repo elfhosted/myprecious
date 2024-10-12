@@ -1,0 +1,20 @@
+{{ if .Values.decluttarr.enabled }} 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: decluttarr4k-env
+data:
+
+  {{- if .Values.radarr4k.enabled }}
+  ## Radarr
+  RADARR_URL: http://radarr4k:7878
+  RADARR_KEY: {{ .Values.radarr4kexposed.apikey }}
+  {{- end }}
+
+  {{- if .Values.sonarr4k.enabled }}
+  ## Sonarr
+  SONARR_URL: http://sonarr4k:8989
+  SONARR_KEY: {{ .Values.sonarr4kexposed.apikey }}
+  {{- end }}
+
+{{ end }}

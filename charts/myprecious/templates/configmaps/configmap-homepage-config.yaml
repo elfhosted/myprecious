@@ -577,6 +577,11 @@ data:
             href: https://{{ .Release.Name }}-decluttarr.{{ .Values.dns_domain }}
             description: Clean Aarr queues
             # siteMonitor: http://decluttarr:3001
+        - Decluttarr4k:
+            icon: mdi-magnify-scan
+            href: https://{{ .Release.Name }}-decluttarr4k.{{ .Values.dns_domain }}
+            description: Clean Aarr4k queues
+            # siteMonitor: http://decluttarr4k:3001            
         {{ end }} 
 
         {{ if or .Values.autoscan.enabled }}
