@@ -9,7 +9,7 @@ spec:
   restic:
     unlock: {{ .Chart.Version }}
     pruneIntervalDays: 7
-    repository: symlinks-volsync-restic-symlinks
+    repository: symlinks-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot
