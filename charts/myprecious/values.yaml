@@ -1241,12 +1241,6 @@ rutorrentgluetun: &rutorrent
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rutorrent-ssd
     elfbot:
       enabled: "true"
       type: "custom"
@@ -1344,14 +1338,6 @@ rutorrentgluetun: &rutorrent
     PORT_FILE: /data/rtorrent/forwarded-port
     WAN_IP_CMD: 'curl -s ifconfig.me'
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: rutorrent
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -1501,14 +1487,6 @@ rutorrentpia:
       - configMapRef:
           name: rutorrent-pia-config
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: rutorrent
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -1567,12 +1545,6 @@ delugegluetun: &deluge
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-deluge-ssd
     shared:
       enabled: true
       mountPath: /shared
@@ -1626,14 +1598,6 @@ delugegluetun: &deluge
         key: PORT_FILE
     optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: deluge
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -1770,15 +1734,18 @@ delugepia:
       - configMapRef:
           name: deluge-pia-config
   initContainers:
-    a-migration:
-      <<: *migrate_data
+    bootstrap:
+      <<: *bootstrap
       volumeMounts:
-      - mountPath: /migration
-        name: migration
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
       - mountPath: /config
         name: config
         subPath: deluge
-    bootstrap: *bootstrap
+      - mountPath: /tmp
+        name: tmp
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -1898,12 +1865,6 @@ qbittorrentgluetun: &qbittorrent
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-qbittorrent-ssd
     shared:
       enabled: true
       mountPath: /shared
@@ -1960,14 +1921,6 @@ qbittorrentgluetun: &qbittorrent
         key: PORT_FILE
     optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: qbittorrent
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2163,14 +2116,6 @@ qbittorrentpia:
       - mountPath: /tmp
         name: tmp
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: qbittorrent
     bootstrap:
       <<: *bootstrap
       volumeMounts:
