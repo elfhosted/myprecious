@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: symlinks-ssd
   annotations:
-    helm.sh/resource-policy: keep
+    helm.sh/resource-policy: delete
 spec:
 {{- $pvc := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "symlinks-ssd" ) }}
   {{- if and (not $pvc) (.Values.location.enabled) }}
