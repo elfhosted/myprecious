@@ -9,7 +9,7 @@ spec:
   restic:
     unlock: {{ .Chart.Version }}
     pruneIntervalDays: 7
-    repository: backup-volsync-restic-backup
+    repository: backup-volsync-restic-config
     retain:
       daily: 2
     copyMethod: Snapshot

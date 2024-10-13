@@ -6,7 +6,7 @@ spec:
   trigger:
     manual: runonce
   restic:
-    repository: backup-volsync-restic-backup
+    repository: backup-volsync-restic-config
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:
