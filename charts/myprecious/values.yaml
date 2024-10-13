@@ -3120,12 +3120,6 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
-    elfterm-migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-elfterm-ssd
     elfterm-state: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -3165,12 +3159,6 @@ filebrowser:
         configMap:
           name: recyclarr-config
     symlinks: *symlinks
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks-ssd
     tmp: *tmp
   service:
     main:
@@ -3248,55 +3236,6 @@ filebrowser:
         subPath: recyclarr
       - name: recyclarr-config
         mountPath: "/bootstrap/"
-      securityContext: *default_securitycontext
-    migrate-symlinks:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        if [[ ! -f /storage/symlinks/.migrated-to-topolvm ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]
-          then
-            echo "Tar-migrating from /migration/..."
-            tar --exclude='.symlink_cache' --exclude='real-debrid-blackhole' --exclude='import' -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-            touch /storage/symlinks/.migrated-to-topolvm
-          fi
-        fi
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - name: symlinks
-        mountPath: /storage/symlinks
-      securityContext: *default_securitycontext
-    migrate-elfterm:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-
-        if [[ ! -f /config/.migrated-20241007 ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]
-          then
-            echo "Migrating from /migration/..."
-            cp -rfpv /migration/* /config/
-            touch /config/.migrated-20241007
-          fi
-        else
-          echo "No migration necessary"
-        fi
-      volumeMounts:
-      - mountPath: /migration
-        name: elfterm-migration
-      - mountPath: /config
-        name: config
-        subPath: elfterm
       securityContext: *default_securitycontext
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
@@ -5744,12 +5683,6 @@ homer:
       enabled: true
       type: emptyDir
       mountPath: /www/assets/message
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-homer-ssd
   command:
   - /bin/bash
   - /usr/local/bin/disk_usage.sh
@@ -5790,15 +5723,6 @@ homer:
     limits:
       cpu: 200m
       memory: 1Gi
-  initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: homer
 
 traefikforwardauth:
   affinity: *standard_affinity
@@ -7552,12 +7476,6 @@ rcloneui:
       type: emptyDir
       mountPath: /home/elfie/.cache
       sizeLimit: 1Gi
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-rclonebrowser-ssd
     config:
       enabled: true
       type: custom
@@ -7581,14 +7499,6 @@ rcloneui:
           name: elfbot-rclonebrowser
           optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: rclone
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -11048,12 +10958,6 @@ recyclarr:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-recyclarr-ssd
     example-config:
       enabled: "true"
       type: "custom"
@@ -11068,14 +10972,6 @@ recyclarr:
           name: elfbot-recyclarr
           optional: true
   initContainers:
-    a-migration:
-      <<: *migrate_data
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /config
-        name: config
-        subPath: recyclarr
     bootstrap:
       <<: *bootstrap
       volumeMounts:
