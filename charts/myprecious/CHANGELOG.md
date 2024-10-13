@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.146.0](https://github.com/elfhosted/myprecious/compare/v1.145.0...v1.146.0) (2024-10-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.779 ([cb52c9b](https://github.com/elfhosted/myprecious/commit/cb52c9b3a4f1a5ab2d3870e77cb46d1b86220fcc))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.7.4 ([f2cb374](https://github.com/elfhosted/myprecious/commit/f2cb374a8c6c0fb64fdfa652c14d4617461f65f9))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.7.5 ([51c7373](https://github.com/elfhosted/myprecious/commit/51c737330ce2ee702e36c2caf6d6aa87ee9d53d9))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.25.2.4794 ([9bb21a0](https://github.com/elfhosted/myprecious/commit/9bb21a0efc7938bd33ae24dc86c31d17379d3ea5))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.12.2.9335 ([c747572](https://github.com/elfhosted/myprecious/commit/c747572f9aa111ff392ddec64b60ecffc56680dc))
+* **app:** update ghcr.io/elfhosted/tautulli docker tag to v2.14.6 ([09332a2](https://github.com/elfhosted/myprecious/commit/09332a2c8f32304be669b52ddcc73a3ccb887590))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.13 ([3880bcf](https://github.com/elfhosted/myprecious/commit/3880bcf2e88ebe0a235a6651c935fed030669424))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to d1a0374 ([fb4fdea](https://github.com/elfhosted/myprecious/commit/fb4fdeaeb01ad4e0408c805e473ca5efade2e886))
+
 ## [1.145.0](https://github.com/elfhosted/myprecious/compare/v1.144.0...v1.145.0) (2024-10-12)
 
 
