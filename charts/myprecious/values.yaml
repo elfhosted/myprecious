@@ -3113,6 +3113,14 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediaflowproxy-config:
+      enabled: false
+      mountPath: "/config/mediaflow-proxy"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: mediaflowproxy-config
+          defaultMode: 0755          
     logs:
       enabled: true
       type: custom

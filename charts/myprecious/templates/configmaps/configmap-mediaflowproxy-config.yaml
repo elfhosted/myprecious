@@ -1,0 +1,23 @@
+{{ if .Values.mediaflowproxy.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mediaflowproxy-config
+data:
+  README.txt: |
+    MediaFlow Proxy doesn't actually have a UI - this file is here to provide you with the essential information you need to use it.
+
+    Your MediaFlow Proxy URL is:
+    https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
+
+    You would have either picked your own password upon purchase, or you'll need to
+    set one using an environment variable (you can also use this workflow to change the password)
+
+    Using FileBrowser, open the console, and paste in:
+    elfbot env mediaflow-proxy API_PASSWORD=whatevermypasswordis
+
+    MediaFlow Proxy will restart, and and your new password applied.
+
+    For further details, see https://elfhosted.com/app/mediaflow-proxy/
+
+{{- end }}

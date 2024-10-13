@@ -234,7 +234,7 @@ data:
         {{ if .Values.mediaflowproxy.enabled }}
         - Mediaflow Proxy:
             icon: mdi-content-copy
-            href: https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
+            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}//files/config/mediaflow-proxy/
             description: Streaming Video Proxy
             siteMonitor: http://mediaflow-proxy:8888
         {{ end }}            

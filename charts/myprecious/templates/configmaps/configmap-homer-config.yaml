@@ -454,7 +454,7 @@ data:
             subtitle: "Video Streaming Proxy"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}"
+            url: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}//files/config/mediaflow-proxy/
             target: "_blank" # optional html tag target attribute
           {{ end }}            
 
