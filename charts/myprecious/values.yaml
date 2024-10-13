@@ -2418,7 +2418,7 @@ tautulli:
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
-    tag: 2.14.5@sha256:70ce5db9006b0d17473e4bdeaf86e37073f94a6fbcb6dbc4347279f85b166688
+    tag: 2.14.6@sha256:8a9b2dd1d14c90fc0c6cf226ffd75277e8fde1ed1c4ef7f456a66865b801f25e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -4489,7 +4489,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.25.1.4770@sha256:0fe288affc87d3ca6a7068ea7431ca014e209c97c4d51f5b80665b187c45396c
+    tag: 1.25.2.4794@sha256:d40bb32452f287670c58f207c208825f69266f7f8fc95fc72188857f25d0328c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7461,7 +7461,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:63eb8212b2aa0a0a0250b95b4d4ec6cd5b82d8e5c9529a4e460c71ff4090c632
+    tag: rolling@sha256:d1a0374818f55e2b97c48abc8149dd87d03465dd43cf302349ab49ae0063f35f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11235,7 +11235,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.10.11-nightly@sha256:4bafad65cf88a95cb04acc5bffd2b8fcf3ca8b5b131fab11cbace7e425975398
+    tag: 2024.10.13-nightly@sha256:288013fd27c04eda28ce5f49678fab267689ee82dc026dc4aa0cbc0990640785
   priorityClassName: tenant-normal
   controller:
     annotations:
