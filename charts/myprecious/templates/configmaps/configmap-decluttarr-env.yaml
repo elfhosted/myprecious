@@ -5,6 +5,10 @@ metadata:
   name: decluttarr-env
 data:
 
+  # Sensible defaults
+  REMOVE_FAILED: "true"
+  REMOVE_ORPHANS: "true" # Orphan downloads are those that do not belong to any requested media anymore (Since the media was removed from radarr/sonarr/lidarr/readarr/whisparr after the download started)
+
   {{- if .Values.radarr.enabled }}
   ## Radarr
   RADARR_URL: http://radarr:7878
