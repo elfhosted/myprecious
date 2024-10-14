@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.147.0](https://github.com/elfhosted/myprecious/compare/v1.146.0...v1.147.0) (2024-10-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.789 ([938ad85](https://github.com/elfhosted/myprecious/commit/938ad85ebe98381bd707adae68fa2becd1e19363))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.2 ([eaaacaa](https://github.com/elfhosted/myprecious/commit/eaaacaafb427d527e64ec539a1e52cdf738eed2b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.14 ([6e6fe95](https://github.com/elfhosted/myprecious/commit/6e6fe95cf7875dc3639ac2854093213a3266f411))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediafusion:4.0.1 docker digest to 431dadc ([24be17e](https://github.com/elfhosted/myprecious/commit/24be17eaaf680dfb08a375211fbb77a39ad3c43d))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to eb518da ([e765214](https://github.com/elfhosted/myprecious/commit/e765214880fc0cae10b1a97f7ca25539ed6546f2))
+
 ## [1.146.0](https://github.com/elfhosted/myprecious/compare/v1.145.0...v1.146.0) (2024-10-13)
 
 
