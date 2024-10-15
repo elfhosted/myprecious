@@ -648,7 +648,7 @@ data:
             icon: imming.png
             href: https://{{ .Release.Name }}-immich.{{ .Values.dns_domain }}
             description: Manage Photos
-            siteMonitor: http://immich:3001
+            siteMonitor: http://immich:2283
         {{ end }}                    
 
     - Download Media:
