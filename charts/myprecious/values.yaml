@@ -7112,7 +7112,7 @@ shoko:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/shokoserver
-    tag: v4.2.2@sha256:055e4a03cf89f89cbc48f4855d418d17fbe18df9eabe708ec11f4d3161baa3b5
+    tag: v5.0.0@sha256:85ad89084fd24a03586d1f79b3e5ea5da0f2554778bdf04e3bec8a18504ace6d
   env:
     PUID: 568
     PGID: 568
@@ -12019,7 +12019,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.117.0@sha256:ac9fb82f2be3cc60d4e0c7f1ceb371d401d52573e387834d7a82776116458242
+    tag: v1.118.0@sha256:3c4250f80ef0c38b70fb947c2c6688e07c737d2409c1d715a2f03fb7d75ba036
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12107,7 +12107,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.117.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.118.0
       envFrom:
       - configMapRef:
           name: immich-env
