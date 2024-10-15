@@ -11536,7 +11536,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.93.1@sha256:0403390965ae2dc7fcc2649cfafe039496354451ba4fc77ee237e2be8537a6b2
+    tag: 4.93.1@sha256:0be0a62c8e0adaa07343561fc2df5b746e7dcd3a4e3f2c3c22d813e2c64c7ec5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11577,8 +11577,7 @@ codeserver:
     config:
       enabled: true
       type: custom
-      mountPath: /home/coder
-      subPath: codeserver
+      mountPath: /config # no subpath, codeserver wants to see all
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -11627,6 +11626,7 @@ codeserver:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: codeserver
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
