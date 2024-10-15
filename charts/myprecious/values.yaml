@@ -11540,7 +11540,7 @@ codeserver:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-codeserver"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-codeserver"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
