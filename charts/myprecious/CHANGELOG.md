@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.148.0](https://github.com/elfhosted/myprecious/compare/v1.147.0...v1.148.0) (2024-10-15)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.13.0 ([99ba7ae](https://github.com/elfhosted/myprecious/commit/99ba7ae85b2a6aca3d70888287ef4d3947adffac))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.13.1 ([34e0feb](https://github.com/elfhosted/myprecious/commit/34e0feb483228aa97fcf77716dc5d80c7e5edc8a))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.800 ([75d815c](https://github.com/elfhosted/myprecious/commit/75d815c9ff4141c622ad7a9c75c66856f9667c64))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.0.2 ([18cf812](https://github.com/elfhosted/myprecious/commit/18cf81299a1c1cc249196c45116ed5a4912ab8a7))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.0.3 ([9bbef88](https://github.com/elfhosted/myprecious/commit/9bbef88501a149e215d5f1e9788bdf814086c718))
+* **app:** update ghcr.io/elfhosted/shokoserver docker tag to v5 ([e630791](https://github.com/elfhosted/myprecious/commit/e630791279399a0dc5124bb5919b44853693385e))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.11 ([8a0f466](https://github.com/elfhosted/myprecious/commit/8a0f466a5b159eaccd800b82ffd14e35f5b0e06e))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.118.0 ([1f7a219](https://github.com/elfhosted/myprecious/commit/1f7a219af044e5d13f526aad9f506810a135b6ff))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.118.0 ([4f94061](https://github.com/elfhosted/myprecious/commit/4f9406110336217dfc399ee6a9c1b2836365568a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/codeserver:4.93.1 docker digest to 77f4991 ([0098582](https://github.com/elfhosted/myprecious/commit/0098582c569c5841177625cbff6f5e5314ba5a48))
+* **app:** update ghcr.io/elfhosted/codeserver:4.93.1 docker digest to 8a482b4 ([8cca87b](https://github.com/elfhosted/myprecious/commit/8cca87bfa0310ba10580e19d69dbe53f0dd6ee0f))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to a1b211d ([f85a83c](https://github.com/elfhosted/myprecious/commit/f85a83c90fa77f77007250d3fdefb9ca4f5f6a15))
+* **app:** update ghcr.io/elfhosted/riven:v0.15.3 docker digest to 2942af9 ([8885456](https://github.com/elfhosted/myprecious/commit/888545642e0b109acc4ff0a2bb1d385cf85161d1))
+
 ## [1.147.0](https://github.com/elfhosted/myprecious/compare/v1.146.0...v1.147.0) (2024-10-14)
 
 
