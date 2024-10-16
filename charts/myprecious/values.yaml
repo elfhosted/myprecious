@@ -2187,7 +2187,7 @@ nzbget:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/nzbget
-    tag: 24.3@sha256:e1ae7b272ec63377389a5bc1f0115853c75d2ff43be62e9df06999ba9c5c50d6
+    tag: 24.3@sha256:86202d7e8d9699ee647b97a343eab88803a58fa2c50911a6c09ea412442b2d70
   priorityClassName: tenant-bulk
   securityContext:
     seccompProfile:
@@ -3060,7 +3060,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:a363b5924f93543b146f5febbe0067e614a031f9e6d398a691cfddc30b6ba36d
+    tag: 2.23.0@sha256:b2ab27b1c032dba1edba1e67ad835299a7643af29a846b14968a7cf48f6f8407
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
@@ -3186,7 +3186,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:a363b5924f93543b146f5febbe0067e614a031f9e6d398a691cfddc30b6ba36d
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:b2ab27b1c032dba1edba1e67ad835299a7643af29a846b14968a7cf48f6f8407
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -3348,7 +3348,7 @@ uptimekuma:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/uptime-kuma
-    tag: 1.23.15@sha256:1c64e3c9bcb756107c9e0e362061d71b6302702fd3fbb50ec5b2f6b33993e43b
+    tag: 1.23.15@sha256:79e8449685c4a5242703669989a3e5e77eb7aabd9ee009ffa023967b61a5163e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -5727,7 +5727,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:7e2dba1a1c5370cb57c7b8ebb0d7b5ac43c0ce940393b1fa25dac9e9422cc5a3
+      image: ghcr.io/elfhosted/homer:v24.05.1@sha256:f1860dfc0f94f13af61c3bcda0e6bbea7edbd5ef504f3ec26c91a87d6834d25f
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -10873,7 +10873,7 @@ shluflix:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/shluflix
-    tag: rolling@sha256:4880fe509752ee2f3fcef15561a8499c1e35057475d086299a62721b9e6426b3
+    tag: rolling@sha256:78dba010c540bb90885aa57e8e27b1c4c5142f0a68d6868ca87f66010740bdc2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11246,7 +11246,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.10.16-nightly@sha256:4d2378d145f20885f2d0e97d5b29ac790cb2072b24d00a4da775dcb5d87ae81f
+    tag: 2024.10.16-nightly@sha256:18bc9815b6beebd3bfc5172924b7c178219e68074ec6aae30106b2127a86856b
   priorityClassName: tenant-normal
   controller:
     annotations:
