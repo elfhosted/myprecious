@@ -3276,6 +3276,30 @@ filebrowser:
         name: symlinks
       resources: *default_resources
       securityContext: *default_securitycontext
+    migrate-plextraktsync:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+
+        mkdir -p /config/plextraktsync
+        if [[ ! -f /config/plextraktsync/.migrated-20241016 ]]
+        then
+          if [[ ! -z "$(ls -A /config/elfterm/PlexTraktSync)" ]]
+          then
+            echo "Migrating PlexTraktSync.."
+            cp /config/elfterm/PlexTraktSync/* /config/plextraktsync/
+            touch /config/plextraktsync/.migrated-20241016
+          fi
+        fi
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      resources: *default_resources
+      securityContext: *default_securitycontext      
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
@@ -7457,8 +7481,8 @@ plextraktsync:
     config:
       enabled: true
       type: custom
-      mountPath: /home/elfie/.config
-      subPath: elfterm/.config
+      mountPath: /home/elfie/.config/PlexTraktSync
+      subPath: plextraktsync
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -7469,6 +7493,16 @@ plextraktsync:
         configMap:
           name: elfbot-kometa
           optional: true
+    state: # plextraktsync needs this
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi
+      mountPath: /home/elfie/.local/state
+    cache: # plextraktsync needs this
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi
+      mountPath: /home/elfie/.cache      
   initContainers:
     bootstrap:
       <<: *bootstrap
