@@ -865,6 +865,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.plextraktsync.enabled }}
+          - name: "PlexTraktSync"
+            icon: "fab fa-sync"
+            subtitle: "Sync Plex and Trakt"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-plextraktsync.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+          
           {{ if .Values.kometa.enabled }}
           - name: "Kometa"
             icon: "fas fa-meteor"

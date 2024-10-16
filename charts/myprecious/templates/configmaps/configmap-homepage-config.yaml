@@ -555,7 +555,15 @@ data:
             href: https://{{ .Release.Name }}-filebot.{{ .Values.dns_domain }}
             description: Automate Media Management  
             siteMonitor: http://filebot:5452       
-        {{ end }}        
+        {{ end }}   
+
+        {{ if .Values.plextraktsync.enabled }}
+        - Filebot:
+            icon: mdi-sync
+            href: https://{{ .Release.Name }}-plextraktsync.{{ .Values.dns_domain }}
+            description: Sync Plex and Trakt 
+            siteMonitor: http://plextraktsync:3001       
+        {{ end }}                
 
         {{ if .Values.kometa.enabled }}
         - Kometa:
