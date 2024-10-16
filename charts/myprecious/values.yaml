@@ -7596,7 +7596,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:e8774e059e5f0c732ad0f515c0cca406c9e5f641e74b441bb22bedb3d2690252
+    tag: 1.68.1@sha256:300ecbd41513c671ed269975b52dc8c07e36f94dc739f427cf2622ec72a63b1d
   command:
   - /rcloneui.sh
   controller:
@@ -7706,7 +7706,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:e8774e059e5f0c732ad0f515c0cca406c9e5f641e74b441bb22bedb3d2690252
+    tag: 1.68.1@sha256:300ecbd41513c671ed269975b52dc8c07e36f94dc739f427cf2622ec72a63b1d
   command:
   - /rclonefm.sh
   controller:
@@ -7832,7 +7832,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:e8774e059e5f0c732ad0f515c0cca406c9e5f641e74b441bb22bedb3d2690252
+    tag: 1.68.1@sha256:300ecbd41513c671ed269975b52dc8c07e36f94dc739f427cf2622ec72a63b1d
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus,elfbot-webdav"
