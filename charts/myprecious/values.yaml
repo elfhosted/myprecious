@@ -8513,7 +8513,7 @@ syncthing:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/syncthing
-    tag: 1.28.0@sha256:d78a7895fbffb03ff72b1c28bdd6c719f9ac093e36c703eb784aa5803265af08
+    tag: 1.28.0@sha256:e1d8f1839f2d49cedd69a777d1c5848faba7baefe6545f6503bba1ba730a0d5e
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-syncthing"
@@ -8579,7 +8579,7 @@ syncthing:
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/syncthing:1.28.0@sha256:d78a7895fbffb03ff72b1c28bdd6c719f9ac093e36c703eb784aa5803265af08
+      image: ghcr.io/elfhosted/syncthing:1.28.0@sha256:e1d8f1839f2d49cedd69a777d1c5848faba7baefe6545f6503bba1ba730a0d5e
       imagePullPolicy: IfNotPresent
       envFrom:
       - configMapRef:
