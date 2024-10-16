@@ -7497,7 +7497,7 @@ plextraktsync:
       enabled: true
       type: emptyDir
       sizeLimit: 1Gi
-      mouthPath: /home/elfie/.local/state          
+      mountPath: /home/elfie/.local/state
   initContainers:
     bootstrap:
       <<: *bootstrap
