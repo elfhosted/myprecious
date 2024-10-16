@@ -3296,10 +3296,8 @@ filebrowser:
         fi
 
       volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /storage/symlinks
-        name: symlinks
+      - mountPath: /config
+        name: config
       resources: *default_resources
       securityContext: *default_securitycontext      
   additionalContainers:
