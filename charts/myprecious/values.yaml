@@ -2262,7 +2262,7 @@ sabnzbd:
   image:
     registry: ghcr.io
     repository: elfhosted/sabnzbd
-    tag: 4.3.3@sha256:a8c3887ac476b5dc7d462643575c7085bb69449608ddf2bec6b7c6124fd623f6
+    tag: 4.3.3@sha256:df3e40454824069625475af2dec205f73c17798e78bfb61e4470b8441c0aaadf
   priorityClassName: tenant-bulk
   controller:
     annotations:
@@ -2418,7 +2418,7 @@ tautulli:
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
-    tag: 2.14.6@sha256:d002b6ed837f76b6695324ec2607d2ea8004a6c71b13392a149d419cbc2d14ae
+    tag: 2.14.6@sha256:d792f9264a9fa4c67723a6d9da8051c9cd75a4e12a0e3cf18dee0ede64817343
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2523,7 +2523,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.12.2.9335@sha256:35f034c67ceff9dd7df238dd2e5bccf933da48cab7eae4f6c681b6c8479b7a1c
+    tag: 5.12.2.9335@sha256:5e32c869f8ab607d96965e262e5716e177678b53b7780612b1bb123561a9e832
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2637,7 +2637,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.12.2.9335@sha256:35f034c67ceff9dd7df238dd2e5bccf933da48cab7eae4f6c681b6c8479b7a1c
+    tag: 5.12.2.9335@sha256:5e32c869f8ab607d96965e262e5716e177678b53b7780612b1bb123561a9e832
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2906,7 +2906,7 @@ bazarr:
   image:
     registry: ghcr.io
     repository: elfhosted/bazarr
-    tag: 1.4.5@sha256:0d486e5ea7e1444d21e4242f37c450a5a289333cde9670ba2ccd3b7a9c4729e3
+    tag: 1.4.5@sha256:3ad8b32a96f4a192ba9dc2d42291e45a61a057686c7c3b7ed67d45d8673c06ae
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2983,7 +2983,7 @@ bazarr4k:
   image:
     registry: ghcr.io
     repository: elfhosted/bazarr
-    tag: 1.4.5@sha256:0d486e5ea7e1444d21e4242f37c450a5a289333cde9670ba2ccd3b7a9c4729e3
+    tag: 1.4.5@sha256:3ad8b32a96f4a192ba9dc2d42291e45a61a057686c7c3b7ed67d45d8673c06ae
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -3880,7 +3880,7 @@ mylar:
   image:
     registry: ghcr.io
     repository: elfhosted/mylar3
-    tag: 0.8.0@sha256:79aa53e57ed63cb75645adf59d05c30c574868e2e7e4ff82f80ff5779bd9f19f
+    tag: 0.8.0@sha256:6743878579aba9cd3059fee85409b29bdf6fd5f88d195f27d093e41f90fec516
   env:
     PUID: 568
     PGID: 568
@@ -4184,7 +4184,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2513@sha256:f68defdf9ccfc102cdd0cbba871b4b8a1b1df5e31af68cdeece59ff2a782f00a
+    tag: 4.0.9.2513@sha256:a76ffaa849b96fa9296110284331ac92d510f59b1cbe55b0420521df9a798708
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4294,7 +4294,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2513@sha256:f68defdf9ccfc102cdd0cbba871b4b8a1b1df5e31af68cdeece59ff2a782f00a
+    tag: 4.0.9.2513@sha256:a76ffaa849b96fa9296110284331ac92d510f59b1cbe55b0420521df9a798708
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4491,7 +4491,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.25.2.4794@sha256:991671b8731d1fed32b1cb5e95ccc6d7d64f87ab30663be75802b1bbb0557917
+    tag: 1.25.2.4794@sha256:ca8581202ad3d159b0bdcefd78c7bd19831643bfb5ef2a9d4cf8c86e694cd0e9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4621,7 +4621,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.6.4.4402@sha256:fa03e383c370065466ba14ce3d4af9fb422e929cbb7c0324d86fa83b2fa7423a
+    tag: 2.6.4.4402@sha256:2db75fc1f17ba49be7beef6920493a89cf317aaf7ad0e5c2f588f99f671e146e
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4717,7 +4717,7 @@ navidrome:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/navidrome
-    tag: 0.53.3@sha256:12d57ca15a182db2cc9134fa0a597662a68ef9db0ea5be5adf077e6c9267dff1
+    tag: 0.53.3@sha256:be321e336f57283fcf99ecba42017ce34ba3da2164051da383acfe8c2d1bb549
   sso:
     enabled: true
   priorityClassName: tenant-streaming
@@ -4795,7 +4795,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.0.2634@sha256:6ea03d605ffcc5bae52f51ee1c7efb47a33729331be66a06b19bb5cccf5163e2
+    tag: 0.4.0.2634@sha256:1401f38e7bf9e9ed1926881e77e837a2010c9f480caec7bb2afbffe231425115
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4902,7 +4902,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.0.2634@sha256:6ea03d605ffcc5bae52f51ee1c7efb47a33729331be66a06b19bb5cccf5163e2
+    tag: 0.4.0.2634@sha256:1401f38e7bf9e9ed1926881e77e837a2010c9f480caec7bb2afbffe231425115
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5837,7 +5837,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.12.1@sha256:bbd80ee0e8b247c23dc1723c89d2f0270822622b0c9ff86533bb58ad0543d1b2
+    tag: 5.12.1@sha256:74473bb63c8e1796b93c8fb3b1912ef6cca7ff67f16ca45aa511adb960b39fad
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6327,7 +6327,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:c8532987370dc5cbaf18962997bcc07b15563e04fb2c7b848139e47a2f3ce711
+    tag: develop-vaapi@sha256:f2a4d035bcd721fc21308e3aaf4482091851fae8d2680f36ce590b586b88f5c8
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6410,7 +6410,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.9@sha256:c156103ddd1c75bb10eebdf38cd18c5b90fb19ec69cb9f51a802cde9c8dd020a
+    tag: 1.2.10@sha256:ceaf30ca080220fe8961cc3f9a2c70fdbca2b6cca9d0b365bab29630da6dd81b
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6482,7 +6482,7 @@ thelounge:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/thelounge
-    tag: "4.4.3@sha256:3e4c549a6395bf6060c03f62637dda0d92377e8463bb5f6ac7f45fdaa57621f5"
+    tag: "4.4.3@sha256:c6912e72939c3d33b41e4dddf1344dc723c3beedf28fa6fa505b902a0e0a7d43"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -6552,7 +6552,7 @@ thelounge:
       - mountPath: /tmp
         name: tmp
     create-user:
-      image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:3e4c549a6395bf6060c03f62637dda0d92377e8463bb5f6ac7f45fdaa57621f5
+      image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:c6912e72939c3d33b41e4dddf1344dc723c3beedf28fa6fa505b902a0e0a7d43
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -6597,7 +6597,7 @@ overseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/overseerr
-    tag: 1.33.2@sha256:353f60ad6e825c352d078753161a135fbcd28f6157bac8bd8ed083ebf61abad7
+    tag: 1.33.2@sha256:20062fec48a74d9600c4dd5a28c03919dba575cdc3ddf307d4d4f8fc3e731a0c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6663,7 +6663,7 @@ overseerr:
     update-dns: *update_dns_on_init
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:353f60ad6e825c352d078753161a135fbcd28f6157bac8bd8ed083ebf61abad7
+      image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:20062fec48a74d9600c4dd5a28c03919dba575cdc3ddf307d4d4f8fc3e731a0c
       command:
         - /bin/bash
         - -c
@@ -6982,7 +6982,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.2@sha256:385c84148c1fbb4cea7e38982a188db42583ca41a8a80456f254b7f26f9e4f61
+    tag: 1.32.2@sha256:ff05c1c2b8ac87112bc4c1229fd76c00de139d6b5bba17e19e4bf21cafdb5781
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7062,7 +7062,7 @@ notifiarr:
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/notifiarr
-    tag: 0.8.3@sha256:2790de8e3c18c146d274c397b62ad97f6569377cbf9ff1fa2065afdf577a172c
+    tag: 0.8.3@sha256:eeb304062ed6ef1015e89f9e7892f82b738f701a44378551e4f658fb301812c8
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7534,7 +7534,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:d1a0374818f55e2b97c48abc8149dd87d03465dd43cf302349ab49ae0063f35f
+    tag: rolling@sha256:d6c7ec2a785347342798055d3cb851573c71688e3e1081f7ff48e7e01d23cf5b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7648,7 +7648,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:d7d3a39909a46f7dbcb7a48774fcf884177111b0d8cd29214ca3b700fce5827d
+    tag: 1.68.1@sha256:300ecbd41513c671ed269975b52dc8c07e36f94dc739f427cf2622ec72a63b1d
   command:
   - /rcloneui.sh
   controller:
@@ -7758,7 +7758,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:d7d3a39909a46f7dbcb7a48774fcf884177111b0d8cd29214ca3b700fce5827d
+    tag: 1.68.1@sha256:300ecbd41513c671ed269975b52dc8c07e36f94dc739f427cf2622ec72a63b1d
   command:
   - /rclonefm.sh
   controller:
@@ -7884,7 +7884,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:d7d3a39909a46f7dbcb7a48774fcf884177111b0d8cd29214ca3b700fce5827d
+    tag: 1.68.1@sha256:300ecbd41513c671ed269975b52dc8c07e36f94dc739f427cf2622ec72a63b1d
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus,elfbot-webdav"
@@ -8565,7 +8565,7 @@ syncthing:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/syncthing
-    tag: 1.28.0@sha256:e434198c3a5077e5e5ea255c56b4b9bf356f03f822f0074ac852fbf8981955f6
+    tag: 1.28.0@sha256:c2d75d043230e2aa504a6faf78283ba1e06d976bbe91a94d540702b2f3c34206
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-syncthing"
@@ -8631,7 +8631,7 @@ syncthing:
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/syncthing:1.28.0@sha256:e434198c3a5077e5e5ea255c56b4b9bf356f03f822f0074ac852fbf8981955f6
+      image: ghcr.io/elfhosted/syncthing:1.28.0@sha256:c2d75d043230e2aa504a6faf78283ba1e06d976bbe91a94d540702b2f3c34206
       imagePullPolicy: IfNotPresent
       envFrom:
       - configMapRef:
@@ -9315,7 +9315,7 @@ autoscan:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/autoscan
-    tag: 1.4.0@sha256:b2a19342182085db818f88714c2a6a103914f0d5cb243e07e72c2a542fc51c0b
+    tag: 1.4.0@sha256:e1e9212d6fe9fb3475bfdc58eb0773da536b8b2850c4e407f0d034b53afc9089
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9738,7 +9738,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.806@sha256:73c0e5022b7f567c5f228383ce915d57910419ed81ce84186a4aebe954c2a0ab
+    tag: 0.22.806@sha256:50668c64adea52199ef0d292b2a8503934f65cfe08f8e8b91a3574a7e51a4655
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10683,7 +10683,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.0.4@sha256:e1e80415e78746ae708d9d3ece6a169094ca7def092436595e16bddda8c3bb87
+    tag: 4.0.5@sha256:0041ace77f3ab8fb9a9beea01ec287517a5027d3d98ceec67845dd908f7daf4f
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
