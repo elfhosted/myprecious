@@ -6458,7 +6458,7 @@ thelounge:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/thelounge
-    tag: "4.4.3@sha256:1dfed807f7781bb656f12529e77d4aabe1d3c70c093f87b439af988dcc148914"
+    tag: "4.4.3@sha256:90d5c7371169386f2d31368e197f8dfc2b129f9a8f3c1f6d8fb52f88464e72bc"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -6528,7 +6528,7 @@ thelounge:
       - mountPath: /tmp
         name: tmp
     create-user:
-      image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:1dfed807f7781bb656f12529e77d4aabe1d3c70c093f87b439af988dcc148914
+      image: ghcr.io/elfhosted/thelounge:4.4.3@sha256:90d5c7371169386f2d31368e197f8dfc2b129f9a8f3c1f6d8fb52f88464e72bc
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
