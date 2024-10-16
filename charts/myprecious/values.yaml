@@ -7498,6 +7498,11 @@ plextraktsync:
       type: emptyDir
       sizeLimit: 1Gi
       mountPath: /home/elfie/.local/state
+    cache: # plextraktsync needs this
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi
+      mountPath: /home/elfie/.cache      
   initContainers:
     bootstrap:
       <<: *bootstrap
