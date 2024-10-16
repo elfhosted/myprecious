@@ -867,7 +867,7 @@ data:
 
           {{ if .Values.plextraktsync.enabled }}
           - name: "PlexTraktSync"
-            icon: "fab fa-sync"
+            icon: "fas fa-sync"
             subtitle: "Sync Plex and Trakt"
             tag: "protected"
             tagstyle: "is-success"

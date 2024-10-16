@@ -7469,6 +7469,11 @@ plextraktsync:
         configMap:
           name: elfbot-kometa
           optional: true
+    state: # plextraktsync needs this
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi
+      mouthPath: /home/elfie/.local/state          
   initContainers:
     bootstrap:
       <<: *bootstrap
