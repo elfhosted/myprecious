@@ -7339,7 +7339,7 @@ kometa: &app_kometa
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    logsg:
+    logs:
       enabled: true
       type: custom
       mountPath: /config/logs/
@@ -7416,6 +7416,82 @@ kometa: &app_kometa
     limits:
       cpu: 1
       memory: 4Gi
+
+plextraktsync:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/plextraktsync
+    tag: 0.31.14@sha256:01b065216392241c6e1d002c50c5c3e519bad1b1f0ed76e4eb4c90cb8001bee5
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: plextraktsync
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plextraktsync"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  envFrom:
+  - configMapRef:
+      name: elfbot-plextraktsync
+      optional: true
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /home/elfie/.config
+      subPath: elfterm/.config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-kometa
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plextraktsync
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
 
 decluttarr: &app_decluttarr
   enabled: false
