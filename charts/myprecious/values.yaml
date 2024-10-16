@@ -3118,15 +3118,7 @@ filebrowser:
     #   type: custom
     #   volumeSpec:
     #     persistentVolumeClaim:
-    #       claimName: symlinks-ssd          
-    mediaflowproxy-config:
-      enabled: false
-      mountPath: "/config/mediaflow-proxy"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: mediaflowproxy-config
-          defaultMode: 0755          
+    #       claimName: symlinks-ssd              
     logs:
       enabled: true
       type: custom
@@ -5111,26 +5103,26 @@ plex: &app_plex
       - mountPath: /tmp
         name: tmp
     update-dns: *update_dns_on_init
-    repair-db:
-      image: ghcr.io/elfhosted/plex:rolling
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
+    # repair-db:
+    #   image: ghcr.io/elfhosted/plex:rolling
+    #   command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
+    #     set -x
+    #     set -e
 
-        grep -q PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
-          echo "Plex is not claimed yet, no point repairing" && exit 0)
+    #     grep -q PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
+    #       echo "Plex is not claimed yet, no point repairing" && exit 0)
 
-        # If the DB directory exists, then repair
-        if [ -d "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases" ]; then
-          /usr/local/bin/DBRepair.sh --sqlite /usr/lib/plexmediaserver --databases '/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases' auto
-        fi
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: plex
+    #     # If the DB directory exists, then repair
+    #     if [ -d "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases" ]; then
+    #       /usr/local/bin/DBRepair.sh --sqlite /usr/lib/plexmediaserver --databases '/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases' auto
+    #     fi
+    #   volumeMounts:
+    #   - mountPath: /config
+    #     name: config
+    #     subPath: plex
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
