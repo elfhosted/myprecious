@@ -123,22 +123,9 @@ data:
                     kubectl patch replicationsource $RS --type merge -p '{"spec":{"restic":{"unlock":"'$MANUAL'"}}}' > /dev/null 2>&1 &
                     kubectl patch replicationsource $RS --type merge -p '{"spec":{"trigger":{"manual":"'$MANUAL'"}}}' > /dev/null 2>&1 &
 
-                    # Set the timeout to 5 minutes (300 seconds)
-                    timeout=300
-                    start_time=$(date +%s)
                     LAST_MANUAL_SYNC=""
 
                     while [ "$LAST_MANUAL_SYNC" != "$MANUAL" ]; do
-                        # Get the current time and calculate the elapsed time
-                        current_time=$(date +%s)
-                        elapsed_time=$((current_time - start_time))
-
-                        # Check if the elapsed time exceeds the timeout
-                        if [ $elapsed_time -ge $timeout ]; then
-                            echo "❌ Timeout: Failed to sync $RS within 5 minutes."
-                            break
-                        fi
-
                         # Perform the sync check
                         LAST_MANUAL_SYNC=$(kubectl get replicationsource $RS --template=\{\{.status.lastManualSync}})
                         
