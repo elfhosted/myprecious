@@ -3253,9 +3253,10 @@ filebrowser:
 
         if [[ ! -f /storage/symlinks/import/.migrated-20241016 ]]
         then
-          if [[ ! -z "$(ls -A /migration)" ]]    
+          if [[ ! -z "$(ls -A /migration/import)" ]]    
           then
             echo "Tar-migrating from /migration/..." 
+            mkdir -p /storage/symlinks/import/
             tar -cf - -C /migration/import/ . | tar xvmf - -C /storage/symlinks/import/
             touch /storage/symlinks/import/.migrated-20241016
           fi
