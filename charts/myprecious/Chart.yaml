@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.149.34-pre-01
+version: 1.149.34
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -300,11 +300,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: rdebridui.enabled
-    alias: rdebridui    
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: decluttarr.enabled
     alias: decluttarr4k
   - name: app-template
@@ -377,6 +372,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: kometa.enabled
     alias: kometa
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: rdebridui.enabled
+    alias: rdebridui    
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
