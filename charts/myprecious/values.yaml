@@ -7620,7 +7620,8 @@ rdebridui:
       name: elfbot-rdebrid-ui
       optional: true  
   - secretRef:
-      name: rdebrid-ui-env      
+      name: rdebrid-ui-env   
+      optional: true   
   ingress:
     main:
       enabled: false
