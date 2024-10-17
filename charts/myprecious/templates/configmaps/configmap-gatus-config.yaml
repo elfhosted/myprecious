@@ -646,7 +646,7 @@ data:
       {{ end }}
 
       {{ if .Values.plextraktsync.enabled }}
-      - name: filebot
+      - name: plextraktsync
         group: manage-media
         url: "http://plextraktsync:3001"
         interval: 5m
