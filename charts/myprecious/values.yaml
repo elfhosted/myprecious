@@ -3113,12 +3113,6 @@ filebrowser:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    migration:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: symlinks-ssd              
     logs:
       enabled: true
       type: custom
@@ -3243,56 +3237,7 @@ filebrowser:
       - name: recyclarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext
-    migrate-symlink-import:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
 
-        if [[ ! -f /storage/symlinks/import/.migrated-20241016 ]]
-        then
-          if [[ ! -z "$(ls -A /migration/import)" ]]    
-          then
-            echo "Tar-migrating from /migration/..." 
-            mkdir -p /storage/symlinks/import/
-            tar -cf - -C /migration/import/ . | tar xvmf - -C /storage/symlinks/import/
-            touch /storage/symlinks/import/.migrated-20241016
-          fi
-        fi   
-
-      volumeMounts:
-      - mountPath: /migration
-        name: migration
-      - mountPath: /storage/symlinks
-        name: symlinks
-      resources: *default_resources
-      securityContext: *default_securitycontext
-    migrate-plextraktsync:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-
-        mkdir -p /config/plextraktsync
-        if [[ ! -f /config/plextraktsync/.migrated-20241016 ]]
-        then
-          if [[ ! -z "$(ls -A /config/elfterm/PlexTraktSync)" ]]
-          then
-            echo "Migrating PlexTraktSync.."
-            cp /config/elfterm/PlexTraktSync/* /config/plextraktsync/
-            touch /config/plextraktsync/.migrated-20241016
-          fi
-        fi
-
-      volumeMounts:
-      - mountPath: /config
-        name: config
-      resources: *default_resources
-      securityContext: *default_securitycontext      
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
