@@ -3237,7 +3237,25 @@ filebrowser:
       - name: recyclarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext
-
+    replace-plextraktsync-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+        # Only do this if a plextraktconfig even exists
+        if [ -f /storage/config/elfterm/PlexTraktSync/config.yml ];
+        then
+          rm /storage/config/elfterm/PlexTraktSync/*
+          echo "PlexTraktSync config has moved to config/plextracktsync (where it always should have been!)" > /storage/config/elfterm/PlexTraktSync/where-is-my-config-readme.txt
+        fi
+      volumeMounts:
+      - mountPath: /config/
+        name: config
+      securityContext: *default_securitycontext      
   additionalContainers:
     # this container exists to watch for restarts requested by elfbot, and to use create configmaps to trigger restarts using reloader
     elfbot:
