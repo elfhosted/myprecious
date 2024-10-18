@@ -7525,7 +7525,7 @@ rdebridui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/tgdrive/rdebrid-ui
-    tag: latest@sha256:1fbdab4c5edbdb04ba3acb3d2f4141a3a872b1e8dc1d73544751366c90798862
+    tag: latest@sha256:592f0276d4b8a9c15ff48d4e0eeaed428a0ab33a08eaf9badd0d0d25ac56494e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9360,7 +9360,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.16.0@sha256:4132c82c562ae3affa9dd48ca979b7152c3768681c8a43a4d9b260154ecdbe0c
+    tag: v0.15.3@sha256:2942af96b90708f24c87acdf2c1cd22e334c5cb3d5421c6d280e1ce4988df59e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9487,7 +9487,7 @@ riven: &app_riven
         subPath: riven
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.14.1@sha256:492080261c136fe6c120a926a73fb758c2eeef1908484094e67ad8fb41827181
+      image: ghcr.io/elfhosted/riven-frontend:v0.13.1@sha256:92cee31094be29b9a2df7e18527dc7cfc3e82bb4acff56c7da6496576ef619ad
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -9676,7 +9676,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.812@sha256:e216e305e103a2e5ad754e860604f81fb5db53ef7ae381e71ac37500d94a1184
+    tag: 0.22.809@sha256:a81a2b37421d6c6ecaf42df41d3d609293e1eef2d711e027a6b30012d87c6586
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10704,11 +10704,12 @@ mediaflowproxy:
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "125M"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
       secret.reloader.stakater.com/reload: "mediaflow-proxy-env"
-      kubernetes.io/egress-bandwidth: "125M"
     strategy:
     rollingUpdate:
       unavailable: 1
