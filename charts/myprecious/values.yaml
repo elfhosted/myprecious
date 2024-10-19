@@ -9737,9 +9737,10 @@ jackett:
       enabled: true
       type: custom
       mountPath: /config/
+      subPath: jackett
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-jackett-block
+          claimName: config
     elfbot:
       enabled: "true"
       type: "custom"
