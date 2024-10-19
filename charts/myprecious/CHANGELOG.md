@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.152.0](https://github.com/elfhosted/myprecious/compare/v1.151.0...v1.152.0) (2024-10-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.16.1 ([de710ad](https://github.com/elfhosted/myprecious/commit/de710adb124fed6e613c69f3bd84560100bb9377))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.16.2 ([2611b09](https://github.com/elfhosted/myprecious/commit/2611b091334c0df06e2bb8969fff4e12c255c388))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy:1.7.5 docker digest to b1e7eb0 ([d8819ef](https://github.com/elfhosted/myprecious/commit/d8819ef5d97227510c4423792d0db0d6c1daecb4))
+* pending jackett pods ([c5cdf1b](https://github.com/elfhosted/myprecious/commit/c5cdf1b94d88c32b5cb625a34a7dda62afec3d10))
+
 ## [1.151.0](https://github.com/elfhosted/myprecious/compare/v1.150.0...v1.151.0) (2024-10-19)
 
 
