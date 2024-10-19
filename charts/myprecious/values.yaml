@@ -9378,7 +9378,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.16.0@sha256:4132c82c562ae3affa9dd48ca979b7152c3768681c8a43a4d9b260154ecdbe0c
+    tag: v0.16.1@sha256:23052b82892d2dd87a763fecb35a63db57124e229c2fd4f20fcc044fe03dfeef
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9505,7 +9505,7 @@ riven: &app_riven
         subPath: riven
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.14.1@sha256:492080261c136fe6c120a926a73fb758c2eeef1908484094e67ad8fb41827181
+      image: ghcr.io/elfhosted/riven-frontend:v0.16.2@sha256:92c14b2f78674ff7e4aa58d4a6b9cf6bc4be4f105000504c4578eaeb53b18570
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -9694,7 +9694,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.809@sha256:a81a2b37421d6c6ecaf42df41d3d609293e1eef2d711e027a6b30012d87c6586
+    tag: 0.22.813@sha256:5d91ada1b7d44e4cfb9a85eee3435cc02247e82a805c966b31bda45b65770e0a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10719,7 +10719,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.7.5@sha256:2b9883f1197c1703fcc60d2885d6b3ef7682b7f02cc75ecc2a8f76f55ac36da0
+    tag: 1.7.5@sha256:b1e7eb0bb560246a911214d6e70dc42561a8f1aa35ae58b21638c6595fdda9ff
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal

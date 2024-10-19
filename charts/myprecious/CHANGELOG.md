@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.151.0](https://github.com/elfhosted/myprecious/compare/v1.150.0...v1.151.0) (2024-10-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.813 ([11e36e6](https://github.com/elfhosted/myprecious/commit/11e36e667d9c509a58ad36f1804cf4c5633cdece))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.16.1 ([0196c42](https://github.com/elfhosted/myprecious/commit/0196c42949c2832e6cb1bdeb89c1e6971ca13c47))
+
 ## 1.150.0 (2024-10-18)
 
 
