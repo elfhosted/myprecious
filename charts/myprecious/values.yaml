@@ -9505,7 +9505,7 @@ riven: &app_riven
         subPath: riven
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.16.2@sha256:92c14b2f78674ff7e4aa58d4a6b9cf6bc4be4f105000504c4578eaeb53b18570
+      image: ghcr.io/elfhosted/riven-frontend:v0.16.3@sha256:eb44190dd10920b8eeb0068f3a5fbcae5128d203eec242675dd838acb000d11f
       volumeMounts:
       - mountPath: /riven/data
         name: config
