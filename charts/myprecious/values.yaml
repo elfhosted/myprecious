@@ -9740,7 +9740,14 @@ jackett:
       subPath: jackett
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config
+          claimName: config   
+    migration:
+      enabled: true
+      type: custom
+      subPath: jackett
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config-jackett-block             
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9750,6 +9757,32 @@ jackett:
           optional: true
   initContainers:
     bootstrap: *bootstrap
+    a-migrate-backup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+
+        if [[ ! -f /config/.migrated-20241021 ]]
+        then
+          if [[ ! -z "$(ls -A /migration)" ]]
+          then
+            echo "Migrating from /migration/..."
+            mkdir -p /config/restored/
+            cp -rfpv /migration/* /config/restored/
+            touch /config/.migrated-20241021
+          fi
+        else
+          echo "No migration necessary"
+        fi
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      - mountPath: /migration
+        name: migration    
 
 stremioserver: &app_stremioserver
   enabled: false
