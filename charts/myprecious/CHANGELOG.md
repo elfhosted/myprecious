@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.153.0](https://github.com/elfhosted/myprecious/compare/v1.152.0...v1.153.0) (2024-10-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.817 ([161ec23](https://github.com/elfhosted/myprecious/commit/161ec23064dff421c71927d48b424334caf2ce25))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.7.0.4413 ([f0e8c8d](https://github.com/elfhosted/myprecious/commit/f0e8c8dc48e4fedf91b15b6612e1372cf2317d83))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.0 ([34d11d0](https://github.com/elfhosted/myprecious/commit/34d11d0fd410d5841fad35c8463a1b2ad05fcec7))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.25.3.4815 ([ddddd3a](https://github.com/elfhosted/myprecious/commit/ddddd3a744bf9cda7ea2d7cfe8e987ff3abd6b3d))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.1.2648 ([f69411a](https://github.com/elfhosted/myprecious/commit/f69411a922712327a890defe0f4322254c161e0f))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 2397430 ([0c6640e](https://github.com/elfhosted/myprecious/commit/0c6640e715ea9e835c0213d1b43952ccc020f191))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to a9c46bc ([18c2564](https://github.com/elfhosted/myprecious/commit/18c25640ef1c7900ff198c7c1c6bbb132ab2099e))
+
 ## [1.152.0](https://github.com/elfhosted/myprecious/compare/v1.151.0...v1.152.0) (2024-10-19)
 
 
