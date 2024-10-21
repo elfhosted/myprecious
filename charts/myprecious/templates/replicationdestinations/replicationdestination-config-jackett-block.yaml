@@ -1,5 +1,4 @@
 {{- if and .Values.jackett.enabled .Values.volsync.enabled }}
-{{ if .Values.location.enabled }}
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
@@ -29,5 +28,4 @@ spec:
     cacheAccessModes:
     - ReadWriteOnce
     volumeSnapshotClassName: {{ .Values.storageclass.rwo.volumeSnapshotClassName }}
-{{- end }}
 {{- end }}

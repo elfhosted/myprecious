@@ -5,12 +5,10 @@ metadata:
   annotations:
     helm.sh/resource-policy: delete
 spec:
-{{ if .Values.location.enabled }}
   dataSourceRef:
     kind: ReplicationDestination
     apiGroup: volsync.backube
     name: rd-config-jackett-block
-  {{- end }}
   accessModes:
   - {{ .Values.storageclass.rwo.accessMode }}
   resources:
