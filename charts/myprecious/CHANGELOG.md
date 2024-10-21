@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.154.0](https://github.com/elfhosted/myprecious/compare/v1.153.0...v1.154.0) (2024-10-21)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.14.0 ([e0889bc](https://github.com/elfhosted/myprecious/commit/e0889bc0f0b01e64d4522803004f51bbf20197a1))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.14.1 ([a48ffb4](https://github.com/elfhosted/myprecious/commit/a48ffb43d2951bfa474138731df1deda903feb04))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.820 ([568e9b1](https://github.com/elfhosted/myprecious/commit/568e9b1518ab99fac5ff320684f042880ada1cc8))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.16.2 ([bb22057](https://github.com/elfhosted/myprecious/commit/bb22057fe474da1fcf96c10203f0dfb750756ef5))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.21 ([39afdd4](https://github.com/elfhosted/myprecious/commit/39afdd4c50f3cdf3e4116ce7f43a4f9e1c72fb41))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/tgdrive/rdebrid-ui:latest docker digest to 10a6854 ([78f7b5e](https://github.com/elfhosted/myprecious/commit/78f7b5e300b45667d40425233594854eae5880b2))
+* ensure blackholetorbox folder structure is created on first start ([6543593](https://github.com/elfhosted/myprecious/commit/6543593b1ee13cf856b4b668d7f69a67f9f46138))
+
 ## [1.153.0](https://github.com/elfhosted/myprecious/compare/v1.152.0...v1.153.0) (2024-10-20)
 
 
