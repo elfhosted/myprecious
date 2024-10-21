@@ -12080,7 +12080,6 @@ blackholetorbox:
       - -c
       - |
         set -x
-        set -e
 
         # Create directory structure
         mkdir -p /storage/symlinks/blackholetorbox/radarr/completed
