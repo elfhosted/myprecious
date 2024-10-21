@@ -9740,14 +9740,7 @@ jackett:
       subPath: jackett
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config   
-    migration:
-      enabled: true
-      type: custom
-      subPath: jackett
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config-jackett-block             
+          claimName: config        
     elfbot:
       enabled: "true"
       type: "custom"
@@ -9757,32 +9750,6 @@ jackett:
           optional: true
   initContainers:
     bootstrap: *bootstrap
-    a-migrate-backup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-
-        if [[ ! -f /config/.migrated-20241021 ]]
-        then
-          if [[ ! -z "$(ls -A /migration)" ]]
-          then
-            echo "Migrating from /migration/..."
-            mkdir -p /config/restored/
-            cp -rfpv /migration/* /config/restored/
-            touch /config/.migrated-20241021
-          fi
-        else
-          echo "No migration necessary"
-        fi
-
-      volumeMounts:
-      - mountPath: /config
-        name: config
-      - mountPath: /migration
-        name: migration    
 
 stremioserver: &app_stremioserver
   enabled: false
@@ -12104,6 +12071,28 @@ blackholetorbox:
   - configMapRef:
       name: elfbot-blackholetorbox
       optional: true
+  additionalContainers:
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # Create directory structure
+        mkdir -p /storage/symlinks/blackholetorbox/radarr/completed
+        mkdir -p /storage/symlinks/blackholetorbox/radarr/processing
+        mkdir -p /storage/symlinks/blackholetorbox/sonarr/completed
+        mkdir -p /storage/symlinks/blackholetorbox/sonarr/processing
+
+      volumeMounts:
+      - mountPath: /storage/symlinks
+        name: symlinks
+      resources: *default_resources
+      securityContext: *default_securitycontext
 
 blackholetorbox4k:
   <<: *app_blackhole
