@@ -7657,6 +7657,7 @@ rcloneui:
       type: emptyDir
       mountPath: /mount
       sizeLimit: 1Gi    
+      mountPropagation: Bidirectional
     cache:
       enabled: true
       type: emptyDir
@@ -7732,13 +7733,15 @@ rcloneui:
         subPath: rclone
       - mountPath: /mount
         name: mount
+        mountPropagation: Bidirectional
     webdav:
       image: ghcr.io/elfhosted/rclone:1.68.1@sha256:ba2dd338793852f4bfc58b865bcf246830f4f4d05baa5b2360ccbb4a187dcf63
       command: 
       - /webdav-local.sh
       volumeMounts:
       - mountPath: /mount
-        name: mount        
+        name: mount  
+        mountPropagation: Bidirectional      
   service:
     main:
       enabled: true # necessary for probes
