@@ -7593,6 +7593,8 @@ rdebridui:
   - configMapRef:
       name: elfbot-rdebrid-ui
       optional: true  
+  - configMapRef:
+      name: zenv-debrid-ui
   ingress:
     main:
       enabled: false
