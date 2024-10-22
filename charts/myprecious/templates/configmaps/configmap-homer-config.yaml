@@ -85,18 +85,19 @@ data:
       fi
 
       {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
-      RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq .user_info.premium) # days
+      RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq -r '.user_infos[] | "\(.username) has \(.premium) days remaining<br/>"')
       RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
-      ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, premium expires in $RD_DAYS_REMAINING days</br>"
+      ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, $RD_DAYS_REMAINING days"
       {{ end }}
 
       {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
-      RIVEN_TOTAL_ITEMS=$(curl -s http://riven:8080/stats | jq .data.total_items) # items
-      RIVEN_TOTAL_MOVIES=$(curl -s http://riven:8080/stats | jq .data.total_movies) # items
-      RIVEN_TOTAL_SHOWS=$(curl -s http://riven:8080/stats | jq .data.total_shows) # items
-      RIVEN_TOTAL_SEASONS=$(curl -s http://riven:8080/stats | jq .data.total_seasons) # items
-      RIVEN_TOTAL_EPISODES=$(curl -s http://riven:8080/stats | jq .data.total_episodes) # items
-      RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes!</I>)"
+      RIVEN_TOTAL_ITEMS=$(curl -s http://riven:8080/stats | jq .total_items) # items
+      RIVEN_TOTAL_MOVIES=$(curl -s http://riven:8080/stats | jq .total_movies) # items
+      RIVEN_TOTAL_SHOWS=$(curl -s http://riven:8080/stats | jq .total_shows) # items
+      RIVEN_TOTAL_SEASONS=$(curl -s http://riven:8080/stats | jq .total_seasons) # items
+      RIVEN_TOTAL_EPISODES=$(curl -s http://riven:8080/stats | jq .total_episodes) # items
+      RIVEN_TOTAL_SYMLINKS=$(curl -s http://riven:8080/stats | jq .total_symlinks) # items
+      RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes across $RIVEN_TOTAL_SYMLINKS symlinks!</I>)"
       {{ end }}
 
       COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments | tr -d '"')

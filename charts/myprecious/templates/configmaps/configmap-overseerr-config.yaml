@@ -9,7 +9,8 @@ data:
 
     # If we are using Riven, then remove radarr and sonarr from any pre-prepared config
     {{- if .Values.riven.enabled }}
-      jq 'del(.radarr)' /config/settings.json
-      jq 'del(.sonarr)' /config/settings.json
+      jq 'del(.radarr)' /config/settings.json > /config/settings-noradarr.json
+      jq 'del(.sonarr)' /config/settings-noraarr.json > /config/settings-nosonarr.json
+      mv /config/settings-nosonarr.json /config/settings.json
     {{- end }}
 {{ end }}
