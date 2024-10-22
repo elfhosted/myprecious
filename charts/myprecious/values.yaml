@@ -4444,7 +4444,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.25.3.4815@sha256:79d757f6a2113f9ae73d439c0a48d5dae42440fd7c2515a6ec43092c205a8117
+    tag: 1.25.4.4818@sha256:485413bf22922058056bf0837a3a768918f57aa7fd4cee5cf69df52546920b04
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6363,7 +6363,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.10@sha256:ceaf30ca080220fe8961cc3f9a2c70fdbca2b6cca9d0b365bab29630da6dd81b
+    tag: 1.2.11@sha256:04256fe3872d23d9225423a91d051794919f1952a283f37e716dac83a84a0224
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7420,7 +7420,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.0@sha256:47fc20adb8e0859cada4bf4247380d64a4f09272314e39ec0aae6b4de6d9af4b
+    tag: 0.32.0@sha256:b83477f99052a5a75c4cdfdf4314e167fde0b51adee291879fbb2056cd1de889
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7628,8 +7628,6 @@ rcloneui:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rcloneui,elfhosted-user-config"
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "40M"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -7739,7 +7737,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:fb9672efc8d419f3b026d21d839bda6e0983a90fe615d577eec3bc469bea942c
+    tag: 1.68.1@sha256:fdbbb0a44edbcae788f7cf4454881f6157eb63793deee0e211d7625764991af8
   command:
   - /rclonefm.sh
   controller:
@@ -7865,7 +7863,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:fb9672efc8d419f3b026d21d839bda6e0983a90fe615d577eec3bc469bea942c
+    tag: 1.68.1@sha256:fdbbb0a44edbcae788f7cf4454881f6157eb63793deee0e211d7625764991af8
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus,elfbot-webdav"
@@ -8260,7 +8258,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.1.1@sha256:a85b47e8b5d457d6e0fde8e82a8726474de16e4621db84e575c42e9ca2927e6b
+    tag: 10.1.2@sha256:3de25ae1b300351ae0c667dc82a33d8dc83497cd1e5ecd0d6e3055f522019696
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -9719,7 +9717,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.820@sha256:217675376093b5e94ef050a80ab605bcc0f755a751a7ea816984708ca49c290d
+    tag: 0.22.825@sha256:bb4e8dbb765ffa2e73880f2e198dee9df16b91f9095ee9965ec61657df1f507b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11325,7 +11323,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.10.21-nightly@sha256:3a89a0b2aade726ac0c9ed97613feeeab7242536c327326ee0fb109c5415b0ce
+    tag: 2024.10.22-nightly@sha256:4eefafdc56b020113d73082b085aeaa8bf4628a8ca24341fff3a27fdbef1b0d8
   priorityClassName: tenant-normal
   controller:
     annotations:
