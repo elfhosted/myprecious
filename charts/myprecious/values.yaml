@@ -7626,9 +7626,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:ba2dd338793852f4bfc58b865bcf246830f4f4d05baa5b2360ccbb4a187dcf63
-  command:
-  - /rcloneui.sh
+    tag: 1.68.1@sha256:a686c806e6a00907d940c2276e4de0868411f206ceee3958a81eab1d2e78dde7
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rcloneui,elfhosted-user-config"
@@ -7657,7 +7655,6 @@ rcloneui:
       type: emptyDir
       mountPath: /mount
       sizeLimit: 1Gi    
-      mountPropagation: Bidirectional
     cache:
       enabled: true
       type: emptyDir
@@ -7722,26 +7719,6 @@ rcloneui:
         name: rclone-remote-storage
       resources: *default_resources
       securityContext: *default_securitycontext
-  additionalContainers:
-    mounter:
-      image: ghcr.io/elfhosted/rclone:1.68.1@sha256:ba2dd338793852f4bfc58b865bcf246830f4f4d05baa5b2360ccbb4a187dcf63
-      command: 
-      - /mounter.sh
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: rclone
-      - mountPath: /mount
-        name: mount
-        mountPropagation: Bidirectional
-    webdav:
-      image: ghcr.io/elfhosted/rclone:1.68.1@sha256:ba2dd338793852f4bfc58b865bcf246830f4f4d05baa5b2360ccbb4a187dcf63
-      command: 
-      - /webdav-local.sh
-      volumeMounts:
-      - mountPath: /mount
-        name: mount  
-        mountPropagation: Bidirectional      
   service:
     main:
       enabled: true # necessary for probes
