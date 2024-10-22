@@ -7593,8 +7593,6 @@ rdebridui:
   - configMapRef:
       name: elfbot-rdebrid-ui
       optional: true  
-  - secretRef:
-      name: rdebrid-ui-env      
   ingress:
     main:
       enabled: false
@@ -12104,7 +12102,7 @@ blackholetorbox:
   - configMapRef:
       name: elfbot-blackholetorbox
       optional: true
-  additionalContainers:
+  initContainers:
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -12119,7 +12117,6 @@ blackholetorbox:
         mkdir -p /storage/symlinks/blackholetorbox/radarr/processing
         mkdir -p /storage/symlinks/blackholetorbox/sonarr/completed
         mkdir -p /storage/symlinks/blackholetorbox/sonarr/processing
-
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
