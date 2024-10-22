@@ -8,9 +8,13 @@ data:
     #!/bin/bash
 
     # If we are using Riven, then remove radarr and sonarr from any pre-prepared config
-    {{- if .Values.riven.enabled }}
-      jq 'del(.radarr)' /config/settings.json > /config/settings-noradarr.json
-      jq 'del(.sonarr)' /config/settings-noraarr.json > /config/settings-nosonarr.json
-      mv /config/settings-nosonarr.json /config/settings.json
+    {{- if not .Values.radarr.enabled }}
+      contents="$(jq '.radarr=[]' /config/settings.json)" && \
+      echo -E "${contents}" > /config/settings.json
     {{- end }}
+
+    {{- if not .Values.sonarr.enabled }}
+      contents="$(jq '.sonarr=[]' /config/settings.json)" && \
+      echo -E "${contents}" > /config/settings.json
+    {{- end }}    
 {{ end }}
