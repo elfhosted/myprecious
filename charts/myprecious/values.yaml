@@ -7542,8 +7542,8 @@ rdebridui:
     enabled: true
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/tgdrive/rdebrid-ui
-    tag: latest@sha256:10a6854caa7083dd8a2a585e44dea94f5e77dcf1e75409ce65e63799915795a8
+    repository: ghcr.io/elfhosted/rdebrid-ui
+    tag: rolling@sha256:2c9885f1918097d8b762e0e60fcee5e12f147c10d79f13decbe4f3b73d24e4ad
   securityContext:
     seccompProfile:
       type: RuntimeDefault
