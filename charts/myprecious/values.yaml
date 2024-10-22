@@ -588,7 +588,6 @@ rclone: &rclone
 
 # This simplfies the process of adding all the optional mounts to every app
 storagemounts: &storagemounts
-  rclone: *rclone
   rclonecustoma: *rclonecustoma
   rclonea: *rclonea
   rcloneb: *rcloneb
@@ -3100,6 +3099,7 @@ filebrowser:
   automountServiceAccountToken: true
   persistence:
     <<: *storagemounts
+    rclone: *rclone    
     backup:
       enabled: true
       type: custom
