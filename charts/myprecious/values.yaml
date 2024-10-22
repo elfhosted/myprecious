@@ -578,16 +578,17 @@ rclonesmbencrypteda: &rclonesmbencrypteda
     persistentVolumeClaim:
       claimName: smb-encrypted-a
   mountPath: /storage/smb-encrypted-a
-rclonemountdebridlink: &rclonemountdebridlink
+rclone: &rclone
   enabled: false
   type: custom
   volumeSpec:
     persistentVolumeClaim:
-      claimName: debridlink
-  mountPath: /storage/debridlink
+      claimName: rclone
+  mountPath: /storage/rclone  
 
 # This simplfies the process of adding all the optional mounts to every app
 storagemounts: &storagemounts
+  rclone: *rclone
   rclonecustoma: *rclonecustoma
   rclonea: *rclonea
   rcloneb: *rcloneb
@@ -7649,7 +7650,6 @@ rcloneui:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    <<: *storagemounts
     mount:
       enabled: true
       type: emptyDir

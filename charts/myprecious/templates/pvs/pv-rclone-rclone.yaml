@@ -1,0 +1,20 @@
+{{ if .Values.rcloneui.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rclone-{{ .Release.Name }}-rclone
+  labels:
+    name: rclone-{{ .Release.Name }}-rclone
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi # doesn't matter, is used to match with the PVC
+  storageClassName: rclone
+  persistentVolumeReclaimPolicy: Delete
+  csi:
+    driver: csi-rclone
+    volumeHandle: rclone-{{ .Release.Name }}-rclone
+    volumeAttributes:
+      secretName: "{{ .Release.Name }}-rclone"
+{{ end }}
