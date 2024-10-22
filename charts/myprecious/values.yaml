@@ -6628,7 +6628,7 @@ overseerr:
       - mountPath: /config
         name: config
         subPath: overseerr
-      - name: overseerr-script
+      - name: overseerr-config
         mountPath: "/bootstrap/"
     update-dns: *update_dns_on_init
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
