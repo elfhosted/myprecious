@@ -10462,14 +10462,14 @@ comet:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568    
   initContainers:
     update-dns: *update_dns_on_init
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
