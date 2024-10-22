@@ -9,7 +9,10 @@ data:
 
     # If we are using Riven, then remove radarr and sonarr from any pre-prepared config
     {{- if .Values.riven.enabled }}
-      jq -i '.radarr=[]' /config/settings.json
-      jq -i '.sonarr=[]' /config/settings.json
+      contents="$(jq '.radarr=[]' /config/settings.json)" && \
+      echo -E "${contents}" > settings.json
+
+      contents="$(jq '.sonarr=[]' /config/settings.json)" && \
+      echo -E "${contents}" > settings.json      
     {{- end }}
 {{ end }}
