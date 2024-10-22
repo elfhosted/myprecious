@@ -30,34 +30,24 @@ data:
         # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
         tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
 
-        df -Ph /config/${STORAGE_PATH} | sed s/%//g > /www/assets/message/disk_space_${STORAGE_PATH}.txt
-        PERCENTAGE_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | sed s/%//g | awk '{print $5}' | tail -n1)
-        DISK_USED=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $3}' | tail -n1)
-        DISK_TOTAL=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $2}' | tail -n1)
-        DISK_FREE=$(cat /www/assets/message/disk_space_${STORAGE_PATH}.txt | awk '{print $4}' | tail -n1)
-        PERCENTAGE_FREE=$(echo $((100-${PERCENTAGE_USED})))
-
+        USED_RAW=$(du -s /config/${STORAGE_PATH} | cut -f1)
+        USED_HUMAN=$(du -sh /config/${STORAGE_PATH} | cut -f1)
+        
         # Keep the highest percentage used number
         if [[ ! -z ${EXISTING_USAGE+x} ]]; then
-          if [[ "$PERCENTAGE_USED" -gt "$EXISTING_USAGE" ]]; then
-            EXISTING_USAGE=$PERCENTAGE_USED
+          if [[ "$USED_RAW" -gt "$EXISTING_USAGE" ]]; then
+            EXISTING_USAGE=$USED_RAW
             CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
-            CONFIG_DISK_FREE=$DISK_FREE
-            CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
-            CONFIG_DISK_TOTAL=$DISK_TOTAL
-            # echo -n "<A HREF='/assets/message/disk-usage-config.html' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='/assets/message/disk-usage-config-${CONFIG_BIGGEST_CONSUMER}.html' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
-            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
+            CONFIG_DISK_USED_HUMAN=$USED_HUMAN
+            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${CONFIG_DISK_USED_HUMAN} used<BR/>" > /www/assets/message/message_details_config.html
           fi
         else
-          EXISTING_USAGE=$PERCENTAGE_USED
-          CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
-          CONFIG_DISK_FREE=$DISK_FREE
-          CONFIG_PERCENTAGE_USED=$PERCENTAGE_USED
-          CONFIG_DISK_TOTAL=$DISK_TOTAL
-          echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${PERCENTAGE_FREE}% (${DISK_FREE}) of ${DISK_TOTAL} remaining<BR/>" > /www/assets/message/message_details_config.html
+            EXISTING_USAGE=$USED_RAW
+            CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
+            CONFIG_DISK_USED_HUMAN=$USED_HUMAN
+            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${CONFIG_DISK_USED_HUMAN} used<BR/>" > /www/assets/message/message_details_config.html
         fi
       done
-
 
       cat /dev/null > /www/assets/message/message_details.html
 
@@ -85,7 +75,7 @@ data:
       fi
 
       {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
-      RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq -r '.user_infos[] | "\(.username) has \(.premium) days remaining<br/>"')
+      RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq -r '.user_infos[] | "\(.username) has \(.premium) days remaining" | join(",")')
       RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
       ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, $RD_DAYS_REMAINING days"
       {{ end }}
