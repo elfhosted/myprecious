@@ -966,6 +966,17 @@ data:
         alerts:
           - type: email
 
+      {{ if .Values.rdebridui.enabled }}
+      - name: rdebrid-ui
+        group: tools
+        url: "http://rdebrid-ui:8080"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email          
+      {{ end }}
+
       {{ if .Values.rcloneui.enabled }}
       - name: rcloneui
         group: tools

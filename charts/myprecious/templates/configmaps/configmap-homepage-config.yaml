@@ -890,6 +890,14 @@ data:
             description: Kubernetes Resources
             siteMonitor: http://kubernetes-dashboard:9090
 
+        {{ if .Values.rdebridui.enabled }}
+        - RDebrid UI:
+            icon: privatebin.png
+            href: https://{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}
+            description: Manage RealDebrid Account
+            siteMonitor: http://rdebrid-ui:8080
+        {{ end }}
+
         {{ if .Values.privatebin.enabled }}
         - PrivateBin:
             icon: privatebin.png

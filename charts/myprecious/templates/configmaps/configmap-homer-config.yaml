@@ -1248,6 +1248,16 @@ data:
             url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
 
+          {{ if .Values.rdebridui.enabled }}
+          - name: "Rdebrid UI"
+            logo: "assets/png/real-debrid.png"
+            subtitle: "Manage RealDebrid account"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
           {{ if .Values.privatebin.enabled }}
           - name: "Privatebin"
             logo: "assets/png/privatebin.png"
