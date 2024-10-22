@@ -6603,6 +6603,13 @@ overseerr:
         configMap:
           name: tooling-scripts
           defaultMode: 0755
+    overseerr-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-overseerr
+          optional: true          
   initContainers:
     bootstrap:
       <<: *bootstrap
