@@ -7635,7 +7635,7 @@ rcloneui:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
-    privileged: false
+    privileged: true
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: false
