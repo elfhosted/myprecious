@@ -6560,7 +6560,7 @@ overseerr:
     app.elfhosted.com/name: overseerr
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-overseerr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-overseerr,overseerr-config"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
   tolerations: *standard_tolerations
