@@ -14,6 +14,10 @@ spec:
     targetPort: 8888
     protocol: TCP
     name: http
+  - port: 3002
+    targetPort: 3002
+    protocol: TCP
+    name: speedtest    
   selector:
     app.elfhosted.com/name: mediaflow-proxy
     app.kubernetes.io/instance: {{ .Release.Name }}
