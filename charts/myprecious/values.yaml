@@ -7650,6 +7650,7 @@ rcloneui:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
+    tmp: *tmp
     mount:
       enabled: true
       type: emptyDir
