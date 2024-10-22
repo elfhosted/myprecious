@@ -11,4 +11,15 @@ spec:
         - name: mediaflow-proxy
           kind: Service
           port: 8888
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
+      kind: Rule
+      services:
+        - name: mediaflow-prexy
+          kind: Service
+          port: 3002 # openspeedtest
+      middlewares:
+        - name: stripprefix-speed
+          namespace: traefik
+        - name: buffer-2gb
+          namespace: traefik
 {{ end }}

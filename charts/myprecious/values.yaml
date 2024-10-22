@@ -588,10 +588,7 @@ rclone: &rclone
 
 # This simplfies the process of adding all the optional mounts to every app
 storagemounts: &storagemounts
-  rclonecustoma: *rclonecustoma
-  rclonea: *rclonea
-  rcloneb: *rcloneb
-  rclonec: *rclonec
+  rclone: *rclone
   rclonemounts3a: *rclonemounts3a
   rclonemounts3b: *rclonemounts3b
   rclonemounts3c: *rclonemounts3c
@@ -3098,8 +3095,7 @@ filebrowser:
     name: filebrowser
   automountServiceAccountToken: true
   persistence:
-    <<: *storagemounts
-    rclone: *rclone    
+    <<: *storagemounts  
     backup:
       enabled: true
       type: custom
@@ -10528,8 +10524,6 @@ comet:
       optional: true
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
-    speedtest:
-      image: openspeedtest/latest
     warp:
       image: ghcr.io/elfhosted/warp:rolling@sha256:4e89fc07ff24c30ffc7f3804d7f3738d634c7b9aa4fecb4941618a366e43d8c9
       securityContext:
@@ -10546,6 +10540,12 @@ comet:
       - mountPath: /data
         subPath: comet/warp
         name: config
+    speedtest:
+      image: openspeedtest/latest
+      env:
+        CHANGE_CONTAINER_PORTS: "True"
+        HTTP_PORT: "3002"
+        HTTPS_PORT: "3003"        
 
 jackettio:
   enabled: false
@@ -10783,6 +10783,12 @@ mediaflowproxy:
     update-dns: *update_dns_on_init
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
+    speedtest:
+      image: openspeedtest/latest
+      env:
+        CHANGE_CONTAINER_PORTS: "True"
+        HTTP_PORT: "3002"
+        HTTPS_PORT: "3003"    
   resources:
     requests:
       cpu: 1m
