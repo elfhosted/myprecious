@@ -1,0 +1,19 @@
+{{ if .Values.rcloneui.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-csi-nodeplugin-rclone-ingress-rcloneui"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: zurg
+  ingress:
+  # - fromEndpoints:
+  #   - matchLabels:
+  #       k8s:io.kubernetes.pod.namespace: csi-rclone
+  #       app: csi-nodeplugin-rclone
+  - toPorts:
+      - ports:
+        - port: '5575'
+          protocol: TCP
+{{ end }}

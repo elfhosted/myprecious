@@ -7625,7 +7625,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:24faa5655857e61c210a275988a7d9c47d5010b3ccdba47f7882946b9ad3ad49
+    tag: 1.68.1@sha256:a92410c5d3e8d36f15ec5d8c722b0b0fdd3fd6f1f75efd06cec52c490618b979
   command:
   - /rcloneui.sh
   controller:
@@ -7721,19 +7721,32 @@ rcloneui:
       securityContext: *default_securitycontext
   additionalContainers:
     mounter:
-      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:24faa5655857e61c210a275988a7d9c47d5010b3ccdba47f7882946b9ad3ad49
+      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:a92410c5d3e8d36f15ec5d8c722b0b0fdd3fd6f1f75efd06cec52c490618b979
       command:
       - /bin/bash
       - -c
       - |
         set -x
-        set -e
 
-        # mount all discovered volumes
-        for MOUNT in $(grep '^\[.*\]$' "/config/rclone.conf" | grep -v storage | sed 's/^\[\(.*\)\]$/\1/'); do
+        # Define the function to be executed when the file changes
+        refresh_mounts() {
+          for MOUNT in $(grep '^\[.*\]$' "/config/rclone.conf" | grep -v storage | sed 's/^\[\(.*\)\]$/\1/'); do
           rclone rc mount/mount fs=$MOUNT: mountPoint=/mount/$MOUNT
         done
-        sleep infinity
+        }
+
+        # run once the first time
+        refresh_mounts
+        
+        # Loop indefinitely, monitoring for changes
+        while true; do
+            # Wait for any changes to the file
+            inotifywait -e modify "/config/rclone.conf"
+            
+            # Call the function when the file is modified
+            refresh_mounts
+        done
+
       volumeMounts:
       - mountPath: /config
         name: config
@@ -7741,7 +7754,7 @@ rcloneui:
       - mountPath: /mount
         name: mount
     webdav:
-      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:24faa5655857e61c210a275988a7d9c47d5010b3ccdba47f7882946b9ad3ad49
+      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:a92410c5d3e8d36f15ec5d8c722b0b0fdd3fd6f1f75efd06cec52c490618b979
       command: /webdav-local.sh
       volumeMounts:
       - mountPath: /mount
