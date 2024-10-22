@@ -6616,6 +6616,20 @@ overseerr:
         subPath: overseerr
       - mountPath: /tmp
         name: tmp
+    setup:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        # run the setup script from the configmap, so that we can make templated changes
+        bash /bootstrap/setup.sh
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: overseerr
+      - name: overseerr-script
+        mountPath: "/bootstrap/"
     update-dns: *update_dns_on_init
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
@@ -7523,7 +7537,7 @@ decluttarr: &app_decluttarr
       name: elfbot-decluttarr
       optional: true
   - configMapRef:
-      name: decluttarr-env
+      name: zenv-decluttarr
       optional: true      
   ingress:
     main:
