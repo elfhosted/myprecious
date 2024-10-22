@@ -7723,7 +7723,7 @@ rcloneui:
       securityContext: *default_securitycontext
   additionalContainers:
     mounter:
-      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:63da546a00d0ae7ad2b01afb5b9380ac316dd33575e1661b842794d1c8cf965f
+      image: ghcr.io/elfhosted/rclone:1.68.1@sha256:63da546a00d0ae7ad2b01afb5b9380ac316dd33575e1661b842794d1c8cf965f
       command: 
       - /mounter.sh
       volumeMounts:
@@ -7733,7 +7733,7 @@ rcloneui:
       - mountPath: /mount
         name: mount
     webdav:
-      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:63da546a00d0ae7ad2b01afb5b9380ac316dd33575e1661b842794d1c8cf965f
+      image: ghcr.io/elfhosted/rclone:1.68.1@sha256:63da546a00d0ae7ad2b01afb5b9380ac316dd33575e1661b842794d1c8cf965f
       command: 
       - /webdav-local.sh
       volumeMounts:
