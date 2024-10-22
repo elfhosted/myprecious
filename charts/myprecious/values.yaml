@@ -7650,6 +7650,11 @@ rcloneui:
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
+    mount:
+      enabled: true
+      type: emptyDir
+      mountPath: /mount
+      sizeLimit: 1Gi    
     cache:
       enabled: true
       type: emptyDir
@@ -7714,6 +7719,33 @@ rcloneui:
         name: rclone-remote-storage
       resources: *default_resources
       securityContext: *default_securitycontext
+  additionalContainers:
+    mounter:
+      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:24faa5655857e61c210a275988a7d9c47d5010b3ccdba47f7882946b9ad3ad49
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # mount all discovered volumes
+        for MOUNT in $(grep '^\[.*\]$' "/config/rclone.conf" | grep -v storage | sed 's/^\[\(.*\)\]$/\1/'); do
+          rclone rc mount/mount fs=$MOUNT: mountPoint=/mount/$MOUNT
+        done
+        sleep infinity
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: rclone
+      - mountPath: /mount
+        name: mount
+    webdav:
+      image: ghcr.io/elfhosted/rclone@1.68.1@sha256:24faa5655857e61c210a275988a7d9c47d5010b3ccdba47f7882946b9ad3ad49
+      command: /webdav-local.sh
+      volumeMounts:
+      - mountPath: /mount
+        name: mount        
   service:
     main:
       enabled: true # necessary for probes
