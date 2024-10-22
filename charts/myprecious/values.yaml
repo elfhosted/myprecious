@@ -7635,10 +7635,10 @@ rcloneui:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
-    privileged: true
+    privileged: false
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
