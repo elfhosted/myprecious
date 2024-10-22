@@ -6608,7 +6608,7 @@ overseerr:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-overseerr
+          name: overseerr-config
           optional: true          
   initContainers:
     bootstrap:
