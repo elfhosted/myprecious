@@ -34,6 +34,9 @@ data:
       tree --du -hF -s  /backup/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/backup -T "🧝 ElfHosted [/backup] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-backup.html
       tree --du -hF -s  /logs/   -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/logs -T "🧝 ElfHosted [/logs] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-logs.html
 
+      TOTAL_USED_RAW=$(du -s /config/ | cut -f1)
+      TOTAL_USED_HUMAN=$(du -sh /config/ | cut -f1)
+      
       for STORAGE_PATH in $(ls /config); do
         # And again per-app /config...
         # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
@@ -48,17 +51,17 @@ data:
             EXISTING_USAGE=$USED_RAW
             CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
             CONFIG_DISK_USED_HUMAN=$USED_HUMAN
-            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${CONFIG_DISK_USED_HUMAN} used<BR/>" > /www/assets/message/message_details_config.html
+            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}.{{ .Values.dns_domain }}/assets/message/disk-usage-config-${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${CONFIG_DISK_USED_HUMAN} used<BR/>" > /www/assets/message/message_details_config.html
           fi
         else
             EXISTING_USAGE=$USED_RAW
             CONFIG_BIGGEST_CONSUMER=$STORAGE_PATH
             CONFIG_DISK_USED_HUMAN=$USED_HUMAN
-            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${CONFIG_DISK_USED_HUMAN} used<BR/>" > /www/assets/message/message_details_config.html
+            echo -n "<A HREF='https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/' TARGET='_blank'>/config</A>: Largest volume-per-app consumer is <A HREF='https://{{ .Release.Name }}.{{ .Values.dns_domain }}/assets/message/disk-usage-config-${CONFIG_BIGGEST_CONSUMER}/' TARGET='_blank'>${CONFIG_BIGGEST_CONSUMER}</A> with ${CONFIG_DISK_USED_HUMAN} used<BR/>" > /www/assets/message/message_details_config.html
         fi
       done
 
-      cat /dev/null > /www/assets/message/message_details.html
+      echo "💾 /config/ $TOTAL_USED_HUMAN of 100GB used: "> /www/assets/message/message_details.html
 
       PERCENTAGE_USED=$(cat /www/assets/message/disk_space_percent_used)
       if [[ "$PERCENTAGE_USED" -ge 90 || "$CONFIG_PERCENTAGE_USED" -ge 90 ]]; then
@@ -101,8 +104,8 @@ data:
 
       COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments | tr -d '"')
 
-      MESSAGE_DETAILS=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
-      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"❤️ ${COMPLIMENT}</BR>${ZURG_MESSAGE}<BR/> ${RIVEN_MESSAGE}<BR/>$(cat /www/assets/message/message_details_config.html)\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
+      DISK_USAGE_CONFIG=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
+      echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"❤️ ${COMPLIMENT}</BR>${ZURG_MESSAGE}<BR/> ${RIVEN_MESSAGE}<BR/>$DISK_USAGE_CONFIG\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
             
       sleep $(shuf -i 1800-5400 -n 1)
     done
