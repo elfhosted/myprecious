@@ -21,7 +21,7 @@ data:
     DAYSREMAINING=$(curl -s -m 2 http://zurg:9999/stats | jq .user_infos[0].premium)
     while [[ ! "$DAYSREMAINING" -gt 0 ]]; do
       echo "Zurg not up yet, waiting...."
-      echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running, either your RD key is not setup, or it's invalid / expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/zurg/config.yml>here</A>","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
+      echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/zurg/config.yml>here</A>","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
       sleep 60s  
     done    
 
@@ -96,7 +96,7 @@ data:
       RIVEN_TOTAL_SEASONS=$(curl -s http://riven:8080/stats | jq .total_seasons) # items
       RIVEN_TOTAL_EPISODES=$(curl -s http://riven:8080/stats | jq .total_episodes) # items
       RIVEN_TOTAL_SYMLINKS=$(curl -s http://riven:8080/stats | jq .total_symlinks) # items
-      RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes across $RIVEN_TOTAL_SYMLINKS symlinks</I>)"
+      RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes across $RIVEN_TOTAL_SYMLINKS symlinks!</I>)"
       {{ end }}
 
       COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments | tr -d '"')
