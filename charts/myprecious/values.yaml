@@ -2397,6 +2397,7 @@ sabnzbd:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: sabnzbd
       - mountPath: /tmp
         name: tmp
       env: *bootstrap_env
@@ -4048,7 +4049,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.20.0@sha256:1c4559f8d1504190e9a12a5115b19595bd370e1f6562d18077ad33756c8f4a63
+    tag: 7.20.0@sha256:bccd97d3242ef8a768ff5daae8872ac498bdb3ccd7619f49e78ccec2e5203918
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6363,7 +6364,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.11@sha256:04256fe3872d23d9225423a91d051794919f1952a283f37e716dac83a84a0224
+    tag: 1.2.12@sha256:339fa6a5dbdb4b305b4f6b1bfadaacc886ca391decd85c65cc5fd0d7d28fa8bf
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7729,7 +7730,7 @@ rcloneui:
       cpu: 1m
       memory: 60Mi
     limits:
-      cpu: 150m
+      cpu: 1
       memory: 512Mi
 
 rclonefm:
@@ -9717,7 +9718,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.825@sha256:bb4e8dbb765ffa2e73880f2e198dee9df16b91f9095ee9965ec61657df1f507b
+    tag: 0.22.832@sha256:932d86dbb6ec9755f959685e148a79cc092763fd00befc50099fddd82464a15b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11194,6 +11195,7 @@ recyclarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: recyclarr
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:

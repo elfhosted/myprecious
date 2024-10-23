@@ -11,7 +11,7 @@ spec:
     pruneIntervalDays: 7
     repository: config-volsync-restic-config
     retain:
-      daily: 2
+      daily: 7
     copyMethod: Snapshot
     moverAffinity:
       podAffinity:

@@ -1458,7 +1458,7 @@ data:
             subtitle: "Rclone remotes"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/rclonebrowser/rclone.conf"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/rclone/rclone.conf"
             target: "_blank" # optional html tag target attribute
 
           - name: "Rclone UI"
