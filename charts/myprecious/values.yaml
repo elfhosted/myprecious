@@ -7613,10 +7613,10 @@ decluttarr4k:
   <<: *app_decluttarr
   envFrom:
   - configMapRef:
-      name: elfbot-decluttarr
+      name: elfbot-decluttarr4k
       optional: true
   - configMapRef:
-      name: decluttarr4k-env
+      name: zenv-decluttarr4k
       optional: true      
 
 
