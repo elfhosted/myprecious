@@ -21,7 +21,7 @@ data:
     DAYSREMAINING=$(curl -s -m 2 http://zurg:9999/stats | jq .user_infos[0].premium)
     while [[ ! "$DAYSREMAINING" -gt 0 ]]; do
       echo "Zurg not up yet, waiting...."
-      echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/zurg/config.yml>here</A>","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
+      echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running - either your RD key is not setup, or it's invalid / expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.elfhosted.com/files/config/zurg/config.yml>here</A>","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
       sleep 60s  
     done    
 

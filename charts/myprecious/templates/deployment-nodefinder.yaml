@@ -19,8 +19,9 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference: # prefer a particular class of node
             - matchExpressions:
               {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled  }}
               - key: node-role.elfhosted.com/dedicated
@@ -29,7 +30,7 @@ spec:
               {{- end }}
                 operator: In
                 values:
-                - "true"    
+                - "true"     
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
@@ -38,36 +39,21 @@ spec:
         {{- if .Values.zurghobbit.enabled  }}
         resources: 
           {{ .Values.zurghobbit.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        tolerations: 
-          {{ .Values.zurghobbit.tolerations | toYaml | indent 10  | trimPrefix "          " }}
-        affinity: 
-          {{ .Values.zurghobbit.affinity    | toYaml | indent 10  | trimPrefix "          " }}
         {{- else if .Values.zurgranger.enabled }}
         resources: 
           {{ .Values.zurgranger.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        tolerations: 
-          {{ .Values.zurgranger.tolerations | toYaml | indent 10  | trimPrefix "          " }}
-        affinity: 
-          {{ .Values.zurgranger.affinity    | toYaml | indent 10  | trimPrefix "          " }}
         {{- else if .Values.zurghalfling.enabled }}
         resources: 
           {{ .Values.zurghalfling.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        tolerations: 
-          {{ .Values.zurghalfling.tolerations | toYaml | indent 10  | trimPrefix "          " }}
-        affinity: 
-          {{ .Values.zurghalfling.affinity    | toYaml | indent 10  | trimPrefix "          " }}
         {{- else if .Values.zurgnazgul.enabled }}
         resources: 
           {{ .Values.zurgnazgul.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        tolerations: 
-          {{ .Values.zurgnazgul.tolerations | toYaml | indent 10  | trimPrefix "          " }}
-        affinity: 
-          {{ .Values.zurgnazgul.affinity    | toYaml | indent 10  | trimPrefix "          " }}
         {{- else }}
-        resources: 
-          {{ .Values.zurg.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        tolerations: 
-          {{ .Values.zurg.tolerations | toYaml | indent 10  | trimPrefix "          " }}
-        affinity: 
-          {{ .Values.zurg.affinity    | toYaml | indent 10  | trimPrefix "          " }}
+        resources:
+          requests:
+            cpu: "500"
+            memory: 500Mi
+          limits:
+            cpu: "2"
+            memory: 4Gi        
         {{- end }}

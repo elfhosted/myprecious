@@ -11333,16 +11333,17 @@ zurg: &app_zurg
     strategy: Recreate
   affinity:
     nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
           - key: node-role.elfhosted.com/contended
             operator: In
             values:
-            - "true"
+            - "true"         
     podAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 50
+      - weight: 1
         podAffinityTerm:
           labelSelector:
             matchExpressions:
@@ -11351,7 +11352,7 @@ zurg: &app_zurg
               values:
               - nodefinder # use nodefinder in the absense of zurg...
           topologyKey: "kubernetes.io/hostname"
-      - weight: 60
+      - weight: 2
         podAffinityTerm:
           labelSelector:
             matchExpressions:
@@ -11361,15 +11362,6 @@ zurg: &app_zurg
               - zurg # .. but prefer zurg
           topologyKey: "kubernetes.io/hostname"
           namespaceSelector: {}  # i.e., in the absense of any better signal, pick a node which already has zurg on it
-      - weight: 70
-        podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg # .. but prefer zurg
-          topologyKey: "kubernetes.io/hostname"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
