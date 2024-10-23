@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.156.0](https://github.com/elfhosted/myprecious/compare/v1.155.0...v1.156.0) (2024-10-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.832 ([830d5fd](https://github.com/elfhosted/myprecious/commit/830d5fd1d95ec605892a2ddea7b4a58ab7df5940))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.12 ([5a0f0a4](https://github.com/elfhosted/myprecious/commit/5a0f0a480c9d769f4955d571cfa179679b26a292))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.13 ([09868d8](https://github.com/elfhosted/myprecious/commit/09868d8e07e10742729a6cb55825f3849adcca35))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.14 ([e58e25b](https://github.com/elfhosted/myprecious/commit/e58e25bdeda1225eb37c4f57e6eb5e80b0244c91))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.15 ([7570d93](https://github.com/elfhosted/myprecious/commit/7570d93015633c24270153623ba0d383f2513568))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.20.0 docker digest to bccd97d ([339082f](https://github.com/elfhosted/myprecious/commit/339082f212bb00c9fecdf7b80475c0be42c7d340))
+* fixed decluttarr4k env vars ([2f760d8](https://github.com/elfhosted/myprecious/commit/2f760d8f3d8bc939c08baee1b7eed8e9856708cc))
+* further fix for overseerr bootstrap ([a78bc76](https://github.com/elfhosted/myprecious/commit/a78bc760328b47d4f81d5a700a0d478ab6697676))
+
 ## [1.155.0](https://github.com/elfhosted/myprecious/compare/v1.154.0...v1.155.0) (2024-10-22)
 
 
