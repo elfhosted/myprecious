@@ -1,8 +1,8 @@
-{{ if .Values.overseerr.enabled }}
+{{ if .Values.jellyseerr.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: overseerr-config
+  name: jellyseerr-config
 data:
   setup.sh: |
     #!/bin/bash
@@ -16,6 +16,5 @@ data:
     {{- if not .Values.sonarr.enabled }}
       contents="$(jq '.sonarr=[]' /config/settings.json)" && \
       echo -E "${contents}" > /config/settings.json
-    {{- end }}    
-    
+    {{- end }}
 {{ end }}

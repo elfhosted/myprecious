@@ -2397,6 +2397,7 @@ sabnzbd:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: sabnzbd
       - mountPath: /tmp
         name: tmp
       env: *bootstrap_env
@@ -11194,6 +11195,7 @@ recyclarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: recyclarr
       - name: example-config
         mountPath: "/bootstrap/"
       securityContext:
