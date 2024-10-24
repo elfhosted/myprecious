@@ -4999,6 +4999,14 @@ plex: &app_plex
       mountPath: /transcode
       type: emptyDir
       sizeLimit: 50Gi
+    logs:
+      enabled: true
+      type: custom
+      mountPath: "/config/Library/Application Support/Plex Media Server/Logs/"
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs      
     phototranscoder:
       enabled: true
       mountPath: /phototranscoder
@@ -5283,6 +5291,14 @@ jellyfin: &app_jellyfin
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: "/config/log/"
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs             
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -5474,6 +5490,14 @@ emby: &app_emby
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: "/config/log/"
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs                
     transcode: # in case users use /tmp
       enabled: true
       type: custom
@@ -11405,6 +11429,14 @@ zurg: &app_zurg
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: zurg
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     example-config:
       enabled: "true"
       type: "custom"
