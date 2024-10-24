@@ -6,7 +6,7 @@ metadata:
 data:
   {{ if .Values.stremioweb.enabled }}
   {{ if .Values.stremiowebcustomdomain.enabled }}
-  WEBUI_LOCATION: https://{{ .Values.stremiowebcustomdomain.cname }}
+  WEBUI_LOCATION: https://{{ .Values.stremiowebcustomdomain.cname | lower }}
   {{ else }}
   WEBUI_LOCATION: https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}
   {{ end }}

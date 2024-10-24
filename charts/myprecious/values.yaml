@@ -1203,7 +1203,7 @@ rutorrentgluetun: &rutorrent
     kubernetes.io/egress-bandwidth: "150M"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,rutorrent-config,rutorrent-gluetun-config,elfbot-rutorrent" # Reload the deployment every time the yaml config changes
+      configmap.reloader.stakater.com/reload: "elfbot-all,rutorrent-config,rutorrent-gluetun-config,elfbot-rutorrent" # Reload the deployment every time the yaml config changes
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -1474,7 +1474,7 @@ rutorrentpia:
   <<: *rutorrent
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,rutorrent-config,rutorrent-pia-config,elfbot-rutorrent,dante-config" # Reload the deployment every time the yaml config changes
+      configmap.reloader.stakater.com/reload: "elfbot-all,rutorrent-config,rutorrent-pia-config,elfbot-rutorrent,dante-config" # Reload the deployment every time the yaml config changes
   addons:
     vpn:
       <<: *rutorrent_addons_vpn
@@ -1526,7 +1526,7 @@ delugegluetun: &deluge
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-deluge,deluge-gluetun-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-deluge,deluge-gluetun-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -1721,7 +1721,7 @@ delugepia:
   <<: *deluge
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,deluge-config,deluge-pia-config,elfbot-deluge" # Reload the deployment every time the yaml config changes
+      configmap.reloader.stakater.com/reload: "elfbot-all,deluge-config,deluge-pia-config,elfbot-deluge" # Reload the deployment every time the yaml config changes
   addons:
     vpn:
       <<: *deluge_addons_vpn
@@ -1846,7 +1846,7 @@ qbittorrentgluetun: &qbittorrent
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-qbittorrent,qbittorrent-gluetun-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-qbittorrent,qbittorrent-gluetun-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -2094,7 +2094,7 @@ qbittorrentpia:
     WAIT_FOR_VPN: "true"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-qbittorrent,qbittorrent-pia-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-qbittorrent,qbittorrent-pia-config"
   addons:
     vpn:
       <<: *qbittorrent_addons_vpn
@@ -2199,7 +2199,7 @@ nzbget:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-nzbget"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nzbget"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -2263,7 +2263,7 @@ sabnzbd:
   priorityClassName: tenant-bulk
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-sabnzbd"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sabnzbd"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -2420,7 +2420,7 @@ tautulli:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tautulli"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tautulli"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -2535,7 +2535,7 @@ radarr: &app_radarr
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-radarr" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -2649,7 +2649,7 @@ radarr4k: &app_radarr4k
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-radarr4k" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr4k" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -2747,7 +2747,7 @@ ombi:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-ombi"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-ombi"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -2908,7 +2908,7 @@ bazarr:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-bazarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2985,7 +2985,7 @@ bazarr4k:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-bazarr4k"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr4k"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3089,7 +3089,7 @@ filebrowser:
     # rollingUpdate:
     #   unavailable: 1
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,filebrowser-elfbot-script,elfbot-filebrowser" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,filebrowser-elfbot-script,elfbot-filebrowser" # Reload the deployment every time the rclones change
   # We will use this to alter configmaps to trigger pod restarts
   serviceAccount:
     create: true
@@ -3330,7 +3330,7 @@ uptimekuma:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-uptimekuma"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-uptimekuma"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3400,7 +3400,7 @@ privatebin:
   priorityClassName:
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-privatebin"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-privatebin"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -3496,7 +3496,7 @@ kapowarr:
   priorityClassName:
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-kapowarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kapowarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -3600,7 +3600,7 @@ calibreweb:
     tag: nightly-version-0ff3f0f4
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibreweb"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibreweb"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -3690,7 +3690,7 @@ pyload:
     # S6_READ_ONLY_ROOT: 1
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-pyload"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pyload"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -3765,7 +3765,7 @@ lazylibrarian:
   enabled: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lazylibrarian"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-lazylibrarian"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -3849,7 +3849,7 @@ mylar:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-mylar" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mylar" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -3925,7 +3925,7 @@ komga:
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-komga" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-komga" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -3993,7 +3993,7 @@ kavita:
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-kavita" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kavita" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -4065,7 +4065,7 @@ calibre:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-calibre"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibre"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4150,7 +4150,7 @@ sonarr: &app_sonarr
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-sonarr" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4260,7 +4260,7 @@ sonarr4k: &app_sonarr4k
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-sonarr4k" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr4k" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4375,7 +4375,7 @@ resiliosync:
     readOnlyRootFilesystem: false # another s6 containeir!
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-resiliosync"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-resiliosync"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -4457,7 +4457,7 @@ prowlarr: &app_prowlarr
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-prowlarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-prowlarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4588,7 +4588,7 @@ lidarr:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-lidarr" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-lidarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4688,7 +4688,7 @@ navidrome:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-navidrome"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-navidrome"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4763,7 +4763,7 @@ readarr:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-readarr" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-readarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4876,7 +4876,7 @@ readarraudio:
       name: readarraudio-config
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-readarraudio" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-readarraudio" # Reload the deployment every time the rclones change
   persistence:
     <<: *storagemounts
     config:
@@ -4979,11 +4979,11 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plex,elfbot-imagemaid,plex-config,imagemaid-env" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,elfbot-imagemaid,plex-config,imagemaid-env" # Reload the deployment every time the rclones change
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: rolling
+    tag: 1.41.1.9057-af5eaea7a
   persistence:
     <<: *storagemounts
     config:
@@ -5270,7 +5270,7 @@ jellyfin: &app_jellyfin
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyfin" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -5461,7 +5461,7 @@ emby: &app_emby
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-emby" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-emby" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -5871,7 +5871,7 @@ gotify:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-gotify"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-gotify"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -5967,7 +5967,7 @@ flaresolverr: &app_flaresolverr
     operator: Exists
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-flaresolverr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
   persistence:
     elfbot:
       enabled: "true"
@@ -6090,7 +6090,7 @@ seafile:
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-seafile"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seafile"
   resources:
     requests:
       cpu: 1m
@@ -6129,7 +6129,7 @@ seafile:
     enabled: true
     architecture: standalone
     commonAnnotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-seafile"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seafile"
 
     auth:
       rootPassword: "wLu5UUuT@3Zu33eT"
@@ -6209,7 +6209,7 @@ tunarr:
     privileged: true
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-tunarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tunarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -6281,7 +6281,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:f2a4d035bcd721fc21308e3aaf4482091851fae8d2680f36ce590b586b88f5c8
+    tag: develop-vaapi@sha256:05c209247e296f42fe478ce0217411563bb9ac1a52e8a7991f790a29f42ab87f
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6290,7 +6290,7 @@ ersatztv:
     privileged: true
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-erzatztv"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-erzatztv"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -6364,7 +6364,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.12@sha256:339fa6a5dbdb4b305b4f6b1bfadaacc886ca391decd85c65cc5fd0d7d28fa8bf
+    tag: 1.2.15@sha256:adb43ce15f95c2204ee1242172dd83317569c53425e2f264f3844a255cacdab1
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6372,7 +6372,7 @@ threadfin:
     readOnlyRootFilesystem: true
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-threadfin"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-threadfin"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -6440,7 +6440,7 @@ thelounge:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-thelounge"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-thelounge"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -6561,7 +6561,7 @@ overseerr:
     app.elfhosted.com/name: overseerr
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-overseerr,overseerr-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-overseerr,overseerr-config"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -6685,7 +6685,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 1.9.2@sha256:a4023a0b8b5e919e179bad2c9bcfbb57ce51805ecf3e0dc9680498b5e4912418
+    tag: 2.0.1@sha256:ee475414b42e17152f67f75169137ece981b6912466182132dc3d207eebee27c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6695,7 +6695,7 @@ jellyseerr:
     app.elfhosted.com/name: jellyseerr
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jellyseerr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyseerr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -6752,20 +6752,20 @@ jellyseerr:
         name: tmp
     update-dns: *update_dns_on_init
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
-    copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:1.9.2@sha256:a4023a0b8b5e919e179bad2c9bcfbb57ce51805ecf3e0dc9680498b5e4912418
-      command:
-        - /bin/bash
-        - -c
-        - |
-          mkdir -p /config/branding
-          cp --no-clobber -rf /app/overseerr/public/logo_* /config/branding/
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: jellyseerr
-      resources: *default_resources
-      securityContext: *default_securitycontext
+    # copy-branding:
+    #   image: ghcr.io/elfhosted/jellyseerr:2.0.1@sha256:ee475414b42e17152f67f75169137ece981b6912466182132dc3d207eebee27c
+    #   command:
+    #     - /bin/bash
+    #     - -c
+    #     - |
+    #       mkdir -p /config/branding
+    #       cp --no-clobber -rf /app/overseerr/public/logo_* /config/branding/
+    #   volumeMounts:
+    #   - mountPath: /config
+    #     name: config
+    #     subPath: jellyseerr
+    #   resources: *default_resources
+    #   securityContext: *default_securitycontext
   ingress:
     main:
       enabled: false
@@ -6821,7 +6821,7 @@ audiobookshelf:
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-audiobookshelf,elfbot-all"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookshelf,elfbot-all"
   sso:
     enabled: true
   persistence:
@@ -6933,7 +6933,7 @@ openbooks:
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-openbooks"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-openbooks"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   ingress:
@@ -6973,7 +6973,7 @@ vaultwarden:
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-vaultwarden"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-vaultwarden"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -7045,7 +7045,7 @@ notifiarr:
     readOnlyRootFilesystem: true # doesn't work because the node modules in /app try to create files
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-notifiarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-notifiarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -7148,7 +7148,7 @@ shoko:
     PGID: 568
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-shoko"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-shoko"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -7223,7 +7223,7 @@ filebot:
     PGID: 568
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-filebot"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-filebot"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -7307,7 +7307,7 @@ kometa: &app_kometa
     app.elfhosted.com/name: kometa
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-kometa"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kometa"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -7430,7 +7430,7 @@ plextraktsync:
     app.elfhosted.com/name: plextraktsync
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-plextraktsync"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plextraktsync"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -7518,7 +7518,7 @@ decluttarr: &app_decluttarr
     app.elfhosted.com/name: decluttarr
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-decluttarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decluttarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -7571,7 +7571,7 @@ rdebridui:
     app.elfhosted.com/name: rdebrid-ui
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rdebrid-ui"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdebrid-ui"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -7611,6 +7611,9 @@ rdebridui:
 
 decluttarr4k: 
   <<: *app_decluttarr
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decluttarr4k"  
   envFrom:
   - configMapRef:
       name: elfbot-decluttarr4k
@@ -7628,7 +7631,7 @@ rcloneui:
     tag: 1.68.1@sha256:fdbbb0a44edbcae788f7cf4454881f6157eb63793deee0e211d7625764991af8
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rcloneui,elfhosted-user-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -7743,7 +7746,7 @@ rclonefm:
   - /rclonefm.sh
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rclonefm,rclonefm-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rclonefm,rclonefm-config"
   podAnnotations:
     kubernetes.io/egress-bandwidth: "40M"
   # Always prefer to cohabit with zurg
@@ -7867,7 +7870,7 @@ webdav: &webdav
     tag: 1.68.1@sha256:fdbbb0a44edbcae788f7cf4454881f6157eb63793deee0e211d7625764991af8
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-webdav-plus,elfbot-webdav"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8189,7 +8192,7 @@ jfa:
     readOnlyRootFilesystem: true
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jfa"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jfa"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -8263,7 +8266,7 @@ mattermost:
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-mattermost"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mattermost"
 
   initContainerImage:
     repository: appropriate/curl
@@ -8356,7 +8359,7 @@ mattermost:
     # nameOverride: mattermost-mariadb
 
     commonAnnotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-mattermost"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mattermost"
 
     auth:
       rootPassword: "3uAaJYGJLR3d2qbBM2FsSThJ"
@@ -8548,7 +8551,7 @@ syncthing:
     tag: 1.28.0@sha256:ab5fb7a23c0605d87a11d34cf8792d53523fab3c68c926a0bb5f3f4856838c54
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-syncthing"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-syncthing"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -8663,7 +8666,7 @@ rdtclient: &app_rdtclient
     tag: v2.0.86
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rdtclient"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -8789,7 +8792,7 @@ jdownloader:
     tag: v24.09.1
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jdownloader"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jdownloader"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8867,7 +8870,7 @@ miniflux:
     tag: 2.2.1
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-miniflux,miniflux-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -8896,7 +8899,7 @@ miniflux:
     enabled: true
     nameOverride: miniflux-postgresql
     commonAnnotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-miniflux"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux"
     auth:
       username: miniflux
       password: miniflux
@@ -8975,7 +8978,7 @@ joplinserver:
     tag: v2.14.2@sha256:b4f52bffce08541dd54e823b78bbfa18e091d53064ed507f69fe9e1ca92b719b
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-joplinserver,joplinserver-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-joplinserver,joplinserver-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9013,7 +9016,7 @@ joplinserver:
     enabled: true
     nameOverride: joplinserver-postgresql
     commonAnnotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-joplinserver"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-joplinserver"
     auth:
       username: joplinserver
       password: joplinserver
@@ -9089,7 +9092,7 @@ homepage:
     tag: v0.9.11
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-homepage,homepage-config,homepage-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-homepage,homepage-config,homepage-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9229,7 +9232,7 @@ wallabag:
     tag: latest
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-wallabag,wallabag-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wallabag,wallabag-config"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9299,7 +9302,7 @@ autoscan:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-autoscan"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-autoscan"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9406,7 +9409,7 @@ riven: &app_riven
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-riven,riven-env,riven-frontend-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env,riven-frontend-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9585,7 +9588,7 @@ airdcpp: &app_airdcpp
     kubernetes.io/egress-bandwidth: "100M"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-airdcpp"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-airdcpp"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9718,11 +9721,11 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.832@sha256:932d86dbb6ec9755f959685e148a79cc092763fd00befc50099fddd82464a15b
+    tag: 0.22.834@sha256:bc20c86cc4d18eedcba877230843cc09097a190a51805c1ca2fff3dcb01e7e39
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-jackett"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jackett"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11230,7 +11233,7 @@ knightcrawler: &app_knightcrawler
     app.elfhosted.com/name: knightcrawler
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-knightcrawler,elfbot-torrentio,knightcrawler-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-knightcrawler,elfbot-torrentio,knightcrawler-env"
       secret.reloader.stakater.com/reload: "knightcrawler-env"
     strategy:
     rollingUpdate:

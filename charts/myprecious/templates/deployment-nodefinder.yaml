@@ -27,7 +27,7 @@ spec:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 1
             preference: # prefer a particular class of node
-            - matchExpressions:
+              matchExpressions:
               {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled  }}
               - key: node-role.elfhosted.com/dedicated
               {{- else }}
@@ -35,7 +35,7 @@ spec:
               {{- end }}
                 operator: In
                 values:
-                - "true"     
+                - "true"
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
@@ -56,7 +56,7 @@ spec:
         {{- else }}
         resources:
           requests:
-            cpu: "500"
+            cpu: "500m"
             memory: 500Mi
           limits:
             cpu: "2"

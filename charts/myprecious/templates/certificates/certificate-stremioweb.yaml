@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: custom-domain-stremioweb-{{ .Values.stremiowebcustomdomain.cname }}
+  name: custom-domain-stremioweb-{{ .Values.stremiowebcustomdomain.cname | lower }}
 spec:
-  secretName: cert-{{ .Values.stremiowebcustomdomain.cname }}
+  secretName: cert-{{ .Values.stremiowebcustomdomain.cname | lower }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: {{ .Values.stremiowebcustomdomain.cname }}
+  commonName: {{ .Values.stremiowebcustomdomain.cname | lower }}
   dnsNames:
-  - {{ .Values.stremiowebcustomdomain.cname }}
+  - {{ .Values.stremiowebcustomdomain.cname | lower }}
 {{ end }}  

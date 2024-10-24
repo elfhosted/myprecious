@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.157.0](https://github.com/elfhosted/myprecious/compare/v1.156.0...v1.157.0) (2024-10-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.834 ([d8fc911](https://github.com/elfhosted/myprecious/commit/d8fc911b55faf2fabf5b2192b2e67d0bf261fe03))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2 ([378f467](https://github.com/elfhosted/myprecious/commit/378f46776a39ab36d37c4d13e80842950b961c55))
+* update Plex to 1.41.1.9057-af5eaea7a ([3521121](https://github.com/elfhosted/myprecious/commit/352112186742a0b74acc789c6d47aa2015c2de4a))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 05c2092 ([a008a08](https://github.com/elfhosted/myprecious/commit/a008a08e8638d123adb925161027b4a98178f393))
+
+## [1.156.0](https://github.com/elfhosted/myprecious/compare/v1.155.0...v1.156.0) (2024-10-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.832 ([830d5fd](https://github.com/elfhosted/myprecious/commit/830d5fd1d95ec605892a2ddea7b4a58ab7df5940))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.12 ([5a0f0a4](https://github.com/elfhosted/myprecious/commit/5a0f0a480c9d769f4955d571cfa179679b26a292))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.13 ([09868d8](https://github.com/elfhosted/myprecious/commit/09868d8e07e10742729a6cb55825f3849adcca35))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.14 ([e58e25b](https://github.com/elfhosted/myprecious/commit/e58e25bdeda1225eb37c4f57e6eb5e80b0244c91))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.15 ([7570d93](https://github.com/elfhosted/myprecious/commit/7570d93015633c24270153623ba0d383f2513568))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.20.0 docker digest to bccd97d ([339082f](https://github.com/elfhosted/myprecious/commit/339082f212bb00c9fecdf7b80475c0be42c7d340))
+* fixed decluttarr4k env vars ([2f760d8](https://github.com/elfhosted/myprecious/commit/2f760d8f3d8bc939c08baee1b7eed8e9856708cc))
+* further fix for overseerr bootstrap ([a78bc76](https://github.com/elfhosted/myprecious/commit/a78bc760328b47d4f81d5a700a0d478ab6697676))
+
 ## [1.155.0](https://github.com/elfhosted/myprecious/compare/v1.154.0...v1.155.0) (2024-10-22)
 
 

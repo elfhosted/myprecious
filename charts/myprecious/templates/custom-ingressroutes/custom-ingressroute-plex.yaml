@@ -2,15 +2,15 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Values.plexcustomdomain.cname }}
+  name: {{ .Values.plexcustomdomain.cname | lower }}
 spec:
   routes:
-    - match: Host(`{{ .Values.plexcustomdomain.cname }}`)
+    - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`)
       kind: Rule
       services:
         - name: plex
           kind: Service
           port: 32400
   tls:
-    secretName: cert-{{ .Values.plexcustomdomain.cname }}
+    secretName: cert-{{ .Values.plexcustomdomain.cname | lower }}
 {{ end }}

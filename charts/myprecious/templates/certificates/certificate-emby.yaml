@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: custom-domain-emby-{{ .Values.embycustomdomain.cname }}
+  name: custom-domain-emby-{{ .Values.embycustomdomain.cname | lower }}
 spec:
-  secretName: cert-{{ .Values.embycustomdomain.cname }}
+  secretName: cert-{{ .Values.embycustomdomain.cname | lower }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: {{ .Values.embycustomdomain.cname }}
+  commonName: {{ .Values.embycustomdomain.cname | lower }}
   dnsNames:
-  - {{ .Values.embycustomdomain.cname }}
+  - {{ .Values.embycustomdomain.cname | lower }}
 {{ end }}  

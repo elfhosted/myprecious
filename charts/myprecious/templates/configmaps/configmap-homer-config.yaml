@@ -18,7 +18,7 @@ data:
     fi
     
     # until zurg is up, continue producing this error message every minute
-    DAYSREMAINING=$(curl -s -m 2 http://zurg:9999/stats | jq .user_infos[0].premium)
+    DAYSREMAINING=$(curl -s http://zurg:9999/stats | jq .user_infos[0].premium)
     while [[ ! "$DAYSREMAINING" -gt 0 ]]; do
       echo "Zurg not up yet, waiting...."
       echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/zurg/config.yml>here</A> (refreshes every 5min)","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
@@ -723,7 +723,7 @@ data:
             tag: "public"
             tagstyle: "is-danger"
             {{- if .Values.overseerrcustomdomain.enabled }}
-            url: "https://{{ .Values.overseerrcustomdomain.cname }}"
+            url: "https://{{ .Values.overseerrcustomdomain.cname | lower }}"
             {{- else }}
             url: "https://{{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}"
             {{- end }}
@@ -737,7 +737,7 @@ data:
             tag: "public"
             tagstyle: "is-danger"
             {{- if .Values.jellyseerrcustomdomain.enabled }}
-            url: "https://{{ .Values.jellyseerrcustomdomain.cname }}"
+            url: "https://{{ .Values.jellyseerrcustomdomain.cname | lower }}"
             {{- else }}
             url: "https://{{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}"
             {{- end }}
@@ -1297,7 +1297,7 @@ data:
             tag: "public"
             tagstyle: "is-danger"
             {{- if .Values.uptimekumacustomdomain.enabled }}
-            url: "https://{{ .Values.uptimekumacustomdomain.cname }}"
+            url: "https://{{ .Values.uptimekumacustomdomain.cname | lower }}"
             {{- else }}
             url: "https://{{ .Release.Name }}-uptime-kuma.{{ .Values.dns_domain }}"
             {{- end }}
@@ -1474,7 +1474,7 @@ data:
             {{ if .Values.rcloneui.enabled }}
             url: "https://{{ .Release.Name }}-rcloneui.{{ .Values.dns_domain }}"
             {{ else }}
-            url: https://store.elfhosted.com/product/rcloneui
+            url: https://store.{{ .Values.dns_domain }}/product/rcloneui
             {{ end }}
             target: "_blank" # optional html tag target attribute
 
@@ -1486,7 +1486,7 @@ data:
             {{ if .Values.rclonefm.enabled }}
             url: "https://{{ .Release.Name }}-rclonefm.{{ .Values.dns_domain }}"
             {{ else }}
-            url: https://store.elfhosted.com/product/rclonefm
+            url: https://store.{{ .Values.dns_domain }}/product/rclonefm
             {{ end }}
             target: "_blank" # optional html tag target attribute
 

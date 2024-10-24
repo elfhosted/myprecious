@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: custom-domain-overseerr-{{ .Values.overseerrcustomdomain.cname }}
+  name: custom-domain-overseerr-{{ .Values.overseerrcustomdomain.cname | lower }}
 spec:
-  secretName: cert-{{ .Values.overseerrcustomdomain.cname }}
+  secretName: cert-{{ .Values.overseerrcustomdomain.cname | lower }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: {{ .Values.overseerrcustomdomain.cname }}
+  commonName: {{ .Values.overseerrcustomdomain.cname | lower }}
   dnsNames:
-  - {{ .Values.overseerrcustomdomain.cname }}
+  - {{ .Values.overseerrcustomdomain.cname | lower }}
 {{ end }}  

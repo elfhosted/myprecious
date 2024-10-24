@@ -37,7 +37,7 @@ data:
     
   # For custom domains
   {{- if .Values.plexcustomdomain.enabled }}
-  ADVERTISE_IP: "https://{{ .Values.plexcustomdomain.cname }}:443"
+  ADVERTISE_IP: "https://{{ .Values.plexcustomdomain.cname | lower }}:443"
   {{ else }}
   ADVERTISE_IP: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}:443"
   {{ end }}
