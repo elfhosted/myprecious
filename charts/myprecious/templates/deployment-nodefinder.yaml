@@ -1,4 +1,9 @@
 # This job is intended to start upon first installation, "anchoring" all of the replicationdestination restores to the desired node
+
+# Here, we check for pre-existing volumes, so that later on we can optionally mount them, forcing nodefinder onto the node which already has our volumes:
+{{- $pvc_config := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "config" ) }}
+{{- $pvc_symlinks := (lookup "v1" "PersistentVolumeClaim" .Release.Namespace "symlinks" ) }}
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -57,3 +62,23 @@ spec:
             cpu: "2"
             memory: 4Gi        
         {{- end }}
+        volumeMounts:
+        {{- if $pvc_config }}
+        - mountPath: /config
+          name: config
+        {{- end }}
+        {{- if $pvc_symlinks }}
+        - mountPath: /storage/symlinks
+          name: symlinks
+        {{- end }}
+      volumes:
+      {{- if $pvc_config }}
+      - name: config
+        persistentVolumeClaim:
+          claimName: config
+      {{ end }}
+      {{- if $pvc_symlinks }}
+      - name: symlinks
+        persistentVolumeClaim:
+          claimName: symlinks
+      {{ end }}
