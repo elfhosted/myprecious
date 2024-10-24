@@ -21,7 +21,7 @@ data:
     DAYSREMAINING=$(curl -s http://zurg:9999/stats | jq .user_infos[0].premium)
     while [[ ! "$DAYSREMAINING" -gt 0 ]]; do
       echo "Zurg not up yet, waiting...."
-      echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/zurg/config.yml>here</A>","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
+      echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/zurg/config.yml>here</A> (refreshes every 5min)","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
       sleep 60s  
     done    
 
@@ -178,8 +178,8 @@ data:
       #   content: 'message'
       #   style: 'style'
       #   title: 'title'
-      refreshInterval: 30000
-      # icon: "fa fa-seedling"
+      refreshInterval: 10000
+      icon: "fas fa-door-open"
     {{ end }}
     
     # Optional navbar
