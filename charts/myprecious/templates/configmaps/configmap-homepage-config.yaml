@@ -440,7 +440,7 @@ data:
         - Overseerr:
             icon: overseerr.png
             {{- if .Values.overseerrcustomdomain.enabled }}
-            href: "https://{{ .Values.overseerrcustomdomain.cname }}"
+            href: "https://{{ .Values.overseerrcustomdomain.cname | lower }}"
             {{- else }}
             href: "https://{{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}"
             {{- end }}
@@ -456,7 +456,7 @@ data:
         - Jellyseerr:
             icon: jellyseerr.png
             {{- if .Values.jellyseerrcustomdomain.enabled }}
-            href: "https://{{ .Values.jellyseerrcustomdomain.cname }}"
+            href: "https://{{ .Values.jellyseerrcustomdomain.cname | lower }}"
             {{- else }}
             href: "https://{{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}"
             {{- end }}
@@ -922,7 +922,7 @@ data:
         - Uptime Kuma:
             icon: uptime-kuma.png
             {{- if .Values.uptimekumacustomdomain.enabled }}
-            href: "https://{{ .Values.uptimekumacustomdomain.cname }}"
+            href: "https://{{ .Values.uptimekumacustomdomain.cname | lower }}"
             {{- else }}
             href: "https://{{ .Release.Name }}-uptime-kuma.{{ .Values.dns_domain }}"
             {{- end }}

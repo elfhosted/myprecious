@@ -6,7 +6,7 @@ metadata:
 data:
   # For custom domains
   {{- if .Values.plexcustomdomain.enabled }}
-  JELLYFIN_PublishedServerUrl: "https://{{ .Values.jellyfincustomdomain.cname }}"
+  JELLYFIN_PublishedServerUrl: "https://{{ .Values.jellyfincustomdomain.cname | lower }}"
   {{ else }}
   JELLYFIN_PublishedServerUrl: "https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}"
   {{ end }}

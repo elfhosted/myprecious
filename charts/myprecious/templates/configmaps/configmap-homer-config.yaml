@@ -723,7 +723,7 @@ data:
             tag: "public"
             tagstyle: "is-danger"
             {{- if .Values.overseerrcustomdomain.enabled }}
-            url: "https://{{ .Values.overseerrcustomdomain.cname }}"
+            url: "https://{{ .Values.overseerrcustomdomain.cname | lower }}"
             {{- else }}
             url: "https://{{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}"
             {{- end }}
@@ -737,7 +737,7 @@ data:
             tag: "public"
             tagstyle: "is-danger"
             {{- if .Values.jellyseerrcustomdomain.enabled }}
-            url: "https://{{ .Values.jellyseerrcustomdomain.cname }}"
+            url: "https://{{ .Values.jellyseerrcustomdomain.cname | lower }}"
             {{- else }}
             url: "https://{{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}"
             {{- end }}
@@ -1297,7 +1297,7 @@ data:
             tag: "public"
             tagstyle: "is-danger"
             {{- if .Values.uptimekumacustomdomain.enabled }}
-            url: "https://{{ .Values.uptimekumacustomdomain.cname }}"
+            url: "https://{{ .Values.uptimekumacustomdomain.cname | lower }}"
             {{- else }}
             url: "https://{{ .Release.Name }}-uptime-kuma.{{ .Values.dns_domain }}"
             {{- end }}

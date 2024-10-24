@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: custom-domain-pairdrop-{{ .Values.pairdropcustomdomain.cname }}
+  name: custom-domain-pairdrop-{{ .Values.pairdropcustomdomain.cname | lower }}
 spec:
-  secretName: cert-{{ .Values.pairdropcustomdomain.cname }}
+  secretName: cert-{{ .Values.pairdropcustomdomain.cname | lower }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: {{ .Values.pairdropcustomdomain.cname }}
+  commonName: {{ .Values.pairdropcustomdomain.cname | lower }}
   dnsNames:
-  - {{ .Values.pairdropcustomdomain.cname }}
+  - {{ .Values.pairdropcustomdomain.cname | lower }}
 {{ end }}  

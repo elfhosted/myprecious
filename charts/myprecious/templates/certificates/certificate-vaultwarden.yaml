@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: custom-domain-vaultwarden-{{ .Values.vaultwardencustomdomain.cname }}
+  name: custom-domain-vaultwarden-{{ .Values.vaultwardencustomdomain.cname | lower }}
 spec:
-  secretName: cert-{{ .Values.vaultwardencustomdomain.cname }}
+  secretName: cert-{{ .Values.vaultwardencustomdomain.cname | lower }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: {{ .Values.vaultwardencustomdomain.cname }}
+  commonName: {{ .Values.vaultwardencustomdomain.cname | lower }}
   dnsNames:
-  - {{ .Values.vaultwardencustomdomain.cname }}
+  - {{ .Values.vaultwardencustomdomain.cname | lower }}
 {{ end }}  
