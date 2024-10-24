@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.157.0](https://github.com/elfhosted/myprecious/compare/v1.156.0...v1.157.0) (2024-10-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.834 ([d8fc911](https://github.com/elfhosted/myprecious/commit/d8fc911b55faf2fabf5b2192b2e67d0bf261fe03))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2 ([378f467](https://github.com/elfhosted/myprecious/commit/378f46776a39ab36d37c4d13e80842950b961c55))
+* update Plex to 1.41.1.9057-af5eaea7a ([3521121](https://github.com/elfhosted/myprecious/commit/352112186742a0b74acc789c6d47aa2015c2de4a))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 05c2092 ([a008a08](https://github.com/elfhosted/myprecious/commit/a008a08e8638d123adb925161027b4a98178f393))
+
 ## [1.156.0](https://github.com/elfhosted/myprecious/compare/v1.155.0...v1.156.0) (2024-10-23)
 
 
