@@ -6752,20 +6752,20 @@ jellyseerr:
         name: tmp
     update-dns: *update_dns_on_init
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
-    copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:2.0.1@sha256:ee475414b42e17152f67f75169137ece981b6912466182132dc3d207eebee27c
-      command:
-        - /bin/bash
-        - -c
-        - |
-          mkdir -p /config/branding
-          cp --no-clobber -rf /app/overseerr/public/logo_* /config/branding/
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: jellyseerr
-      resources: *default_resources
-      securityContext: *default_securitycontext
+    # copy-branding:
+    #   image: ghcr.io/elfhosted/jellyseerr:2.0.1@sha256:ee475414b42e17152f67f75169137ece981b6912466182132dc3d207eebee27c
+    #   command:
+    #     - /bin/bash
+    #     - -c
+    #     - |
+    #       mkdir -p /config/branding
+    #       cp --no-clobber -rf /app/overseerr/public/logo_* /config/branding/
+    #   volumeMounts:
+    #   - mountPath: /config
+    #     name: config
+    #     subPath: jellyseerr
+    #   resources: *default_resources
+    #   securityContext: *default_securitycontext
   ingress:
     main:
       enabled: false
