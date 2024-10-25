@@ -11976,9 +11976,12 @@ debridlink: &app_davdebrid
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
   securityContext:
+    runAsUser: 568
+    runAsGroup: 568
     privileged: false
     readOnlyRootFilesystem: true
   podSecurityContext:
+    fsGroup: 568
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
