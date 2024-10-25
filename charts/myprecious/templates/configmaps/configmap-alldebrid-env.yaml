@@ -4,8 +4,6 @@ kind: ConfigMap
 metadata:
   name: alldebrid-env
 data:
-  USER: alldebrid
-  PASS: alldebrid
   DEBRID_ID: alldebrid
   DATA_FOLDER: /config
 {{ end }}
