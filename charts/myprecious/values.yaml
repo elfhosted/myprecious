@@ -11976,25 +11976,22 @@ debridlink: &app_davdebrid
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
   securityContext:
-    runAsUser: 568
-    runAsGroup: 568
     privileged: false
     readOnlyRootFilesystem: true
   podSecurityContext:
-    fsGroup: 568
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
   automountServiceAccountToken: false
-  persistence:
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: debridlink
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
+  # persistence:
+  #   config:
+  #     enabled: true
+  #     type: custom
+  #     mountPath: /config
+  #     subPath: debridlink
+  #     volumeSpec:
+  #       persistentVolumeClaim:
+  #         claimName: config
   envFrom:
   - configMapRef:
       name: debridlink-env
@@ -12022,15 +12019,15 @@ alldebrid:
   <<: *app_davdebrid
   podLabels:
     app.elfhosted.com/name: alldebrid
-  persistence:
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: alldebrid
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
+  # persistence:
+  #   config:
+  #     enabled: true
+  #     type: custom
+  #     mountPath: /config
+  #     subPath: alldebrid
+  #     volumeSpec:
+  #       persistentVolumeClaim:
+  #         claimName: config
 
 blackhole: &app_blackhole
   enabled: false
