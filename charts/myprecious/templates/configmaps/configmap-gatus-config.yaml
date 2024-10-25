@@ -882,17 +882,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.rclonemountalldebridpia.enabled }}
-      - name: alldebrid
-        group: download-media
-        url: "http://alldebrid-webdav:9999"
-        interval: 5m
-        conditions:
-        - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.openbooks.enabled }}
       - name: openbooks
         group: download-media

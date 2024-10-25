@@ -824,14 +824,6 @@ data:
                   format: number    
         {{ end }} 
 
-        {{ if .Values.rclonemountalldebridpia.enabled }}
-        - AllDebrid:
-            icon: webdav.png
-            href: https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}/
-            description: Manage AllDebrid files
-            siteMonitor: http://alldebrid-webdav:9999
-        {{ end }}                     
-
         {{ if .Values.openbooks.enabled }}
         - OpenBooks:
             icon: mdi-book-open-variant

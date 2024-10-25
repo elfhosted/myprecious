@@ -421,11 +421,6 @@ dependencies:
   #   repository: oci://ghcr.io/elfhosted/charts
   #   alias: rdtclientvpnpia
   - name: app-template
-    condition: rclonemountalldebridpia.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: alldebridwebdavpia
-  - name: app-template
     condition: rclonemountalldebrid.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

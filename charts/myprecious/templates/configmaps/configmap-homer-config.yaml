@@ -1172,16 +1172,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}       
 
-          {{ if .Values.rclonemountalldebridpia.enabled }}
-          - name: "AllDebrid"
-            icon: "fas fa-audio-description"
-            subtitle: "Manage AllDebrid via WebDAV"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                    
-
           {{ if .Values.openbooks.enabled }}
           - name: "Openbooks"
             icon: "fas fa-book-open-reader"
