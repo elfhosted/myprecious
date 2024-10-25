@@ -436,6 +436,14 @@ data:
               key: {{`{{HOMEPAGE_FILE_OMBI_KEY}}`}}       
         {{ end }}    
 
+        {{ if .Values.suggestarr.enabled }}
+        - Suggestarr:
+            icon: mylar.png
+            href: https://{{ .Release.Name }}-suggestarr.{{ .Values.dns_domain }}
+            description: Automate suggestions
+            siteMonitor: http://suggestarr:5000  
+        {{ end }}            
+
         {{ if .Values.overseerr.enabled }}
         - Overseerr:
             icon: overseerr.png

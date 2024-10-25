@@ -447,6 +447,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.suggestarr.enabled }}
+      - name: suggestarr
+        group: manage-media
+        url: "http://suggestarr:5000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.overseerr.enabled }}
       - name: overseerr
         group: manage-media

@@ -7626,6 +7626,73 @@ rdebridui:
       cpu: 1
       memory: 1Gi
 
+suggestarr:
+  enabled: false
+  sso:
+    enabled: true
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/suggestarr
+    tag: rolling@sha256:16b4f2731855d8bbe4d8f293b80ba16dc69322060b1ce779f0d28fc742bb5ffd
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: suggestarr
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-suggestarr"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: suggestarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5000
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: suggestarr
+      - mountPath: /tmp
+        name: tmp      
+
 decluttarr4k: 
   <<: *app_decluttarr
   controller:
