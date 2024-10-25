@@ -12015,6 +12015,15 @@ alldebrid:
   <<: *app_davdebrid
   podLabels:
     app.elfhosted.com/name: alldebrid
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-env"    
+  envFrom:
+  - configMapRef:
+      name: alldebrid-env
+  - configMapRef:
+      name: elfbot-alldebrid
+      optional: true    
   persistence:
     config:
       enabled: true
