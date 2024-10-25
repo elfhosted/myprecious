@@ -7655,6 +7655,13 @@ suggestarr:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-suggestarr
+          optional: true          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
