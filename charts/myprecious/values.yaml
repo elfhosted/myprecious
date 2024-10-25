@@ -11934,7 +11934,7 @@ debridlink: &app_davdebrid
   enabled: false
   image:
     repository: ghcr.io/elfhosted/davdebrid
-    tag: v1.1.1@sha256:cf9027bbaad7638f13a73634a3b0c858230628e88a9cd0301e13712dc1770950
+    tag: v1.1.2@sha256:5b111b77d4923449a61dece3baf30b791a36bd80ee2f8b88fe232329d8e83d84
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
