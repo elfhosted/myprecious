@@ -9,7 +9,9 @@ data:
     set -x
     set +e # fail gracefully 
     
-    MY_NODE_IP=$(wget -qO- ipinfo.io/ip)
+    # avoid rate limits
+    # MY_NODE_IP=$(wget -qO- ipinfo.io/ip)
+    MY_NODE_IP=$(curl -s ifconfig.me)
     export CF_API_DOMAIN={{ .Values.dns_domain }}
 
     # Does a DNS entry exist for my node?
@@ -23,7 +25,6 @@ data:
       # No record exists, so create it
       cfcli add -t A $MY_NODE_NAME $MY_NODE_IP
     fi
-    cfcli disable $MY_NODE_NAME $MY_NODE_IP # enable proxying for this node # CHANGED on 13 May 2024
 
     # What's my name? (adjusted for stremio-server secretstring)
     case $ELF_APP_NAME in

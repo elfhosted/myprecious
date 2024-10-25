@@ -7633,7 +7633,7 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: rolling@sha256:16b4f2731855d8bbe4d8f293b80ba16dc69322060b1ce779f0d28fc742bb5ffd
+    tag: v0.1.8.3@sha256:b2fef9dd80c8b949664c7fde80ba502e6465c574f5b431dfb1e37046c471b918
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12090,6 +12090,7 @@ alldebrid:
         FIREWALL_INPUT_PORTS: "5000"
         WIREGUARD_MTU: "1280"
         VPN_ENDPOINT_PORT: "2408"
+        PUBLICIP_API: ip2location
         DOT: "off"
       securityContext:
         runAsUser: 0
