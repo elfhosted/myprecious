@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.157.1](https://github.com/elfhosted/myprecious/compare/v1.157.0...v1.157.1) (2024-10-25)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/davdebrid:v1.1.1 docker digest to cf9027b ([d1fedbf](https://github.com/elfhosted/myprecious/commit/d1fedbf5a2f9c53a1924877eacd9bdd7b0ac494b))
+
 ## [1.157.0](https://github.com/elfhosted/myprecious/compare/v1.156.0...v1.157.0) (2024-10-24)
 
 
