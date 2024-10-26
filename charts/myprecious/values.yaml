@@ -4576,7 +4576,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.7.0.4413@sha256:4c26c4bb0a60f7d03686b5839e58910b2815620152840b6016907121e7226bbe
+    tag: 2.7.1.4417@sha256:42d4abecbfa0a52f026e0741fe4a270264cb217f49626a182c0461c94ea2fadc
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5792,7 +5792,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.12.1@sha256:20e85c38d40b9aa0f867cb45a8292f7b257c4204102c8567fcd25e10da5d8ae1
+    tag: 5.13.0@sha256:6224e5b189c17af64e33e87a099697ddec7983c9865db21488ab499c12d6feea
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9722,7 +9722,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.841@sha256:1ee9036f93087d3995f323fcf698c5d95a5d1b919aba0a58912533eb2a85fc79
+    tag: 0.22.844@sha256:7d2953d89448ae6cba3fb3c599bffbe40a1ec4fbe806f8b369f2bdd7d48a3dd4
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11329,7 +11329,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.10.25.1949-nightly@sha256:53518054310fbc3b9ffa7f96eb3edd04c3ee2c321007a1adc5817f8e2edb6644
+    tag: 2024.10.26.0614-nightly@sha256:bb26212218929628757fd3ee526c7e000914a3f6e3626da1021c55d2d8bad374
   priorityClassName: tenant-normal
   controller:
     annotations:
