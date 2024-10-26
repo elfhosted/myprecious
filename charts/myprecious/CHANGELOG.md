@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.158.0](https://github.com/elfhosted/myprecious/compare/v1.157.0...v1.158.0) (2024-10-25)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.14.2 ([45446b1](https://github.com/elfhosted/myprecious/commit/45446b118be4c3b622230ef0b3befbc49503fb57))
+* **app:** update ghcr.io/elfhosted/davdebrid docker tag to v1.1.2 ([042de96](https://github.com/elfhosted/myprecious/commit/042de96a747f56b32972e1c97692a0e210370307))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.841 ([1ecc7f4](https://github.com/elfhosted/myprecious/commit/1ecc7f407e9aeaf91fdc3fa3f9389fdcd224b8f8))
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.3 ([e2e2593](https://github.com/elfhosted/myprecious/commit/e2e25930606e9ffef1b84066fdb10ef76239cc0f))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/davdebrid:v1.1.1 docker digest to cf9027b ([d1fedbf](https://github.com/elfhosted/myprecious/commit/d1fedbf5a2f9c53a1924877eacd9bdd7b0ac494b))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 5f060d4 ([79260bc](https://github.com/elfhosted/myprecious/commit/79260bc2a129395ad56d31016bee3beb0c00cda4))
+* Update zurg to 2024.10.25.1949-nightly ([94824a4](https://github.com/elfhosted/myprecious/commit/94824a45733ef0516f6d9534046cc3487f4975cf))
+
 ## [1.157.0](https://github.com/elfhosted/myprecious/compare/v1.156.0...v1.157.0) (2024-10-24)
 
 

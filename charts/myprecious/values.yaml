@@ -135,9 +135,10 @@ standard_affinity: &standard_affinity
 
 dedicated_affinity: &dedicated_affinity
   nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 1
+      preference: # prefer a particular class of node
+        matchExpressions:
         - key: node-role.elfhosted.com/dedicated
           operator: In
           values:
@@ -3754,7 +3755,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:b833002b67c6ccfbf5d8a5b24e3809c6bbb8908f3d0e3c9fd5102b30969adf5f
+    tag: rolling@sha256:5f060d4e4a682fa0075c573c49a8621e8e05207ff103f12acf30ea0ceb1b220a
   enabled: false
   controller:
     annotations:
@@ -4568,7 +4569,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.7.0.4413@sha256:4c26c4bb0a60f7d03686b5839e58910b2815620152840b6016907121e7226bbe
+    tag: 2.7.1.4417@sha256:42d4abecbfa0a52f026e0741fe4a270264cb217f49626a182c0461c94ea2fadc
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5247,7 +5248,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.9.11@sha256:7a141d122f12f4589c8323e4a19a32fa82a93c5c4fc80b8bb4ce7ab46c94b1b3
+    tag: 10.10.0@sha256:95783978f24fa631d478f1d6428bc47606ac900ed80aabd40ec7ca65426bf06a
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid
@@ -5722,7 +5723,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.10.1@sha256:f159cbca47ced9c5ad15d45f4a6826278d24c9f60d06cb66ee1576e5ab3ddf21
+      image: ghcr.io/elfhosted/homer:v24.10.2@sha256:4b2356e7dc49c225f588c6831399044fccb3800913e838403837dfc3a3b8a5d8
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -5808,7 +5809,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.12.1@sha256:20e85c38d40b9aa0f867cb45a8292f7b257c4204102c8567fcd25e10da5d8ae1
+    tag: 5.13.0@sha256:6224e5b189c17af64e33e87a099697ddec7983c9865db21488ab499c12d6feea
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6217,7 +6218,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.14.1-vaapi
+    tag: 0.14.2-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6298,7 +6299,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:05c209247e296f42fe478ce0217411563bb9ac1a52e8a7991f790a29f42ab87f
+    tag: develop-vaapi@sha256:14ebe1ae4209bce1f26ee8ae36a2bbb925ffb0f97acbe6806a9d10cb3121f7ac
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9755,7 +9756,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.834@sha256:bc20c86cc4d18eedcba877230843cc09097a190a51805c1ca2fff3dcb01e7e39
+    tag: 0.22.844@sha256:7d2953d89448ae6cba3fb3c599bffbe40a1ec4fbe806f8b369f2bdd7d48a3dd4
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10217,7 +10218,7 @@ petio:
         name: tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:8.0.1-ubi8
+      image: mongodb/mongodb-community-server:8.0.3-ubi8
       volumeMounts:
         - name: config
           subPath: petio/mongodb
@@ -11362,7 +11363,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.10.22-nightly@sha256:4eefafdc56b020113d73082b085aeaa8bf4628a8ca24341fff3a27fdbef1b0d8
+    tag: 2024.10.26.1216-nightly@sha256:f6b7308f1c4d559257b51f02b75499b91a88c7f3a4a9b0301b1a7213ca287a85
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11976,7 +11977,7 @@ debridlink: &app_davdebrid
   enabled: false
   image:
     repository: ghcr.io/elfhosted/davdebrid
-    tag: v1.1.1@sha256:cf9027bbaad7638f13a73634a3b0c858230628e88a9cd0301e13712dc1770950
+    tag: v1.1.2@sha256:5b111b77d4923449a61dece3baf30b791a36bd80ee2f8b88fe232329d8e83d84
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
