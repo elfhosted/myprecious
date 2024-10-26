@@ -135,9 +135,10 @@ standard_affinity: &standard_affinity
 
 dedicated_affinity: &dedicated_affinity
   nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 1
+      preference: # prefer a particular class of node
+        matchExpressions:
         - key: node-role.elfhosted.com/dedicated
           operator: In
           values:
