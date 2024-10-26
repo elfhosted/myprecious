@@ -7633,7 +7633,7 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: v0.1.8.3@sha256:b2fef9dd80c8b949664c7fde80ba502e6465c574f5b431dfb1e37046c471b918
+    tag: v1.0.9@sha256:0eb7125945fa1ebf357c54a1cfea48d4ccf35e8c08728dee4730babeaf7d97f5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7650,11 +7650,19 @@ suggestarr:
     config:
       enabled: true
       type: custom
-      mountPath: /config/
+      mountPath: /app/config/
       subPath: suggestarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /var/logs
+      subPath: suggestarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     elfbot:
       enabled: "true"
       type: "custom"
