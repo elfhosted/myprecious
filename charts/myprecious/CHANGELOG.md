@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.160.0](https://github.com/elfhosted/myprecious/compare/v1.159.0...v1.160.0) (2024-10-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.850 ([dbfad2f](https://github.com/elfhosted/myprecious/commit/dbfad2fb085beee95e0625ebcef005b40c74bc93))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.2.2653 ([72f57a7](https://github.com/elfhosted/myprecious/commit/72f57a7a55982d7937057d7cdfc42e9151820171))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.10.2579 ([36e8e3f](https://github.com/elfhosted/myprecious/commit/36e8e3fd1707dc07988a2e06df3605af344e91e5))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.3 ([e2d50d4](https://github.com/elfhosted/myprecious/commit/e2d50d48384c3fd08c1ef8091ce4e72ff662d8a2))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.27.0027 ([eb95b1d](https://github.com/elfhosted/myprecious/commit/eb95b1ddff1af6e47226390ac05f27b0920f62af))
+
+
+### Bug Fixes
+
+* stop false-alarming to zurg config issues ([6f8c099](https://github.com/elfhosted/myprecious/commit/6f8c099e6203ad19d41ebbf0f920f0bf41ee823d))
+
 ## [1.159.0](https://github.com/elfhosted/myprecious/compare/v1.158.0...v1.159.0) (2024-10-26)
 
 
