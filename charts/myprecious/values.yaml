@@ -10330,9 +10330,10 @@ redisinsight:
       enabled: true
       type: custom
       mountPath: /data
+      subPath: redisinsight
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config-redisinsight-block
+          claimName: config
 
 mongoexpress:
   enabled: false
