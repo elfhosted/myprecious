@@ -23,6 +23,7 @@ data:
       echo "Zurg not up yet, waiting...."
       echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Zurg is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/zurg/config.yml>here</A> (refreshes every 5min)","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
       sleep 60s  
+      DAYSREMAINING=$(curl -s http://zurg:9999/stats | jq .user_infos[0].premium)
     done    
 
     rm /www/assets/message/message.json
@@ -716,16 +717,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.suggestarr.enabled }}
-          - name: "Suggestarr"
-            icon: "fas fa-comments"
-            subtitle: "Automate suggestions"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-suggestarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
           {{ if .Values.overseerr.enabled }}
           - name: "Overseerr"
             logo: "assets/png/overseerr.png"
@@ -1181,6 +1172,16 @@ data:
             url: "https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/"
             target: "_blank" # optional html tag target attribute
           {{ end }}       
+
+          {{ if .Values.rclonemountalldebridpia.enabled }}
+          - name: "AllDebrid"
+            icon: "fas fa-audio-description"
+            subtitle: "Manage AllDebrid via WebDAV"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                    
 
           {{ if .Values.openbooks.enabled }}
           - name: "Openbooks"
