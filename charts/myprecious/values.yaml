@@ -8974,9 +8974,6 @@ miniflux:
       - name: tmp
         emptyDir:
           sizeLimit: 1Gi
-      - name: confighdd
-        persistentVolumeClaim:
-          claimName: config-miniflux
       sidecars:
         - name: backup-database
           image: *tooling_image
