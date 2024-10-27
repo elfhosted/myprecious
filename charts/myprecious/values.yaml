@@ -4132,7 +4132,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2513@sha256:39899a0b87356f4550852f0a3fd8797fb7feb2c4d9be565c4f0c7aff260c608e
+    tag: 4.0.10.2579@sha256:6146de499837e8f77ad71cc980c26ef5c5c38d94752b17b58e123fccfb460d1c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4242,7 +4242,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.9.2513@sha256:39899a0b87356f4550852f0a3fd8797fb7feb2c4d9be565c4f0c7aff260c608e
+    tag: 4.0.10.2579@sha256:6146de499837e8f77ad71cc980c26ef5c5c38d94752b17b58e123fccfb460d1c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4743,7 +4743,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.1.2648@sha256:d20e5665aa6fa469167495c9d38a06099d3ab95e4239750e4eac82e8231a48d8
+    tag: 0.4.2.2653@sha256:f1a752b4a74d44b64b520f8854d20d5cc6ffd76b1581a4d26767f73579241809
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4850,7 +4850,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.1.2648@sha256:d20e5665aa6fa469167495c9d38a06099d3ab95e4239750e4eac82e8231a48d8
+    tag: 0.4.2.2653@sha256:f1a752b4a74d44b64b520f8854d20d5cc6ffd76b1581a4d26767f73579241809
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6975,7 +6975,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.2@sha256:9aa967057bd2616dfccc437ba619ee5043dcc14bcb4655ddf51762030864d130
+    tag: 1.32.3@sha256:8655e8b07fb6230910c478f7e792f7dc4517c2320162d6b2d6ed55ab4850ecc7
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9750,7 +9750,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.844@sha256:7d2953d89448ae6cba3fb3c599bffbe40a1ec4fbe806f8b369f2bdd7d48a3dd4
+    tag: 0.22.850@sha256:e79af92bcdf74b2851b2f89cf696a54c66e51ea591a9320c299eff011847f668
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11358,7 +11358,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.10.26.1216-nightly@sha256:f6b7308f1c4d559257b51f02b75499b91a88c7f3a4a9b0301b1a7213ca287a85
+    tag: 2024.10.27.0027-nightly@sha256:5b877217c16d45d7f1a74ad8d072e8df282e73dbc327ba73d5ef017a42595e2b
   priorityClassName: tenant-normal
   controller:
     annotations:

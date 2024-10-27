@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.159.0](https://github.com/elfhosted/myprecious/compare/v1.158.0...v1.159.0) (2024-10-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.13.0 ([4332185](https://github.com/elfhosted/myprecious/commit/4332185e1fbd367d5f9712def24e5288699de39d))
+* **app:** update ghcr.io/elfhosted/homer docker tag to v24.10.2 ([589c7dd](https://github.com/elfhosted/myprecious/commit/589c7dd6262c2ee200e8caf2e5c2d2bc40eeeb17))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.844 ([43df49f](https://github.com/elfhosted/myprecious/commit/43df49f5201cdbc69e754cdae91b1eb66a50972e))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.10.0 ([987ba80](https://github.com/elfhosted/myprecious/commit/987ba80a10dd2ae8ef668ccceee5058163fc214f))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.7.1.4417 ([3089c66](https://github.com/elfhosted/myprecious/commit/3089c66a86311c61e59a6aee4e49fb9416193ca6))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.26.0026 ([8da6c02](https://github.com/elfhosted/myprecious/commit/8da6c0289159b7771f3219dedc5646c99154e1ff))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.26.0614 ([80592a6](https://github.com/elfhosted/myprecious/commit/80592a625337c57fcafcad4f9d7b6c16425fbeef))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.26.1216 ([7012146](https://github.com/elfhosted/myprecious/commit/70121462bd93c8e1676bf64a3a3b40f90b5fff82))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 14ebe1a ([ff97b8f](https://github.com/elfhosted/myprecious/commit/ff97b8fe39e08216271588fdb88bcd49fcd8283c))
+
 ## [1.158.0](https://github.com/elfhosted/myprecious/compare/v1.157.0...v1.158.0) (2024-10-25)
 
 
