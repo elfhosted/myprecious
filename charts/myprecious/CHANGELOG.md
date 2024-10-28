@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.161.0](https://github.com/elfhosted/myprecious/compare/v1.160.0...v1.161.0) (2024-10-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.856 ([34d45d7](https://github.com/elfhosted/myprecious/commit/34d45d7000ae1375c02e615221d5a6a308ef475e))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.5.1 ([3329d3e](https://github.com/elfhosted/myprecious/commit/3329d3ebf7ba8f9a40d3932d0691cd970012f5d7))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.10.28.0027 ([eca09c0](https://github.com/elfhosted/myprecious/commit/eca09c011791a8832ec859c5e58451439a41416f))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.119.0 ([25ef1bc](https://github.com/elfhosted/myprecious/commit/25ef1bc993a6511842d3851adf1f083d35b38201))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.119.0 ([4dd1041](https://github.com/elfhosted/myprecious/commit/4dd1041ca94e7658c5de1e708f7929dc53e6a269))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 2aaa020 ([4b5514e](https://github.com/elfhosted/myprecious/commit/4b5514e86979cfcaafc4ceced5cead68fc779805))
+
 ## [1.160.0](https://github.com/elfhosted/myprecious/compare/v1.159.0...v1.160.0) (2024-10-27)
 
 
