@@ -4965,6 +4965,8 @@ plex: &app_plex
     privileged: true
   podSecurityContext:
     fsGroup: 568
+    runAsUser: 568
+    runAsGroup: 568    
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
