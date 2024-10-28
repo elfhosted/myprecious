@@ -4965,6 +4965,8 @@ plex: &app_plex
     privileged: true
   podSecurityContext:
     fsGroup: 568
+    runAsUser: 568
+    runAsGroup: 568    
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
@@ -11972,7 +11974,7 @@ debridlink: &app_davdebrid
   enabled: false
   image:
     repository: ghcr.io/elfhosted/davdebrid
-    tag: v1.1.2@sha256:5b111b77d4923449a61dece3baf30b791a36bd80ee2f8b88fe232329d8e83d84
+    tag: v1.2.2@sha256:6571776a022a36889d1cc8392440ad58fa2654535e82b9741f1c287e045c7fd0
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
