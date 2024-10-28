@@ -7529,7 +7529,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:2397430f201a727dd203f8afb51d05461e226db5bf3a86a12c8d357ca71d3cc1
+    tag: rolling@sha256:318590ded365024f31c6af4d4313df848be154942dd895b46fffd84f39b41bcd
   securityContext:
     seccompProfile:
       type: RuntimeDefault
