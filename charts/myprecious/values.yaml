@@ -12062,7 +12062,7 @@ alldebrid:
           repository: thrnz/docker-wireguard-pia
           tag: latest
       envFrom:
-      - secretRef:
+      - configMapRef:
           name: alldebrid-pia-config
       - configMapRef:
           name: elfbot-alldebrid
