@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.162.0](https://github.com/elfhosted/myprecious/compare/v1.161.0...v1.162.0) (2024-10-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.860 ([4a57e86](https://github.com/elfhosted/myprecious/commit/4a57e86080a0cb654f5c5dceb4b5fdc14fa032dd))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.119.1 ([e818993](https://github.com/elfhosted/myprecious/commit/e818993e1cb00d9b0d41221296a0f5b9f38461d4))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.119.1 ([3f5398b](https://github.com/elfhosted/myprecious/commit/3f5398bcb25fe34e2054f06f5169067c1c8d01c5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 318590d ([4ee4475](https://github.com/elfhosted/myprecious/commit/4ee447550b851d060f2229b1005e8d0bbc968944))
+* **app:** update ghcr.io/elfhosted/plextraktsync:0.32.0 docker digest to 3d10728 ([95a991f](https://github.com/elfhosted/myprecious/commit/95a991ff9c54b3acdc04bc236993c82cd7c3af2d))
+* **app:** update ghcr.io/elfhosted/plextraktsync:0.32.0 docker digest to 42e9d47 ([544073d](https://github.com/elfhosted/myprecious/commit/544073d3ee6da47c28c26f97cd543c24513f0332))
+* **app:** update ghcr.io/elfhosted/plextraktsync:0.32.0 docker digest to 676b5cc ([9d96ca9](https://github.com/elfhosted/myprecious/commit/9d96ca909a6ff9bc303b7674ce65b4392c71a9f3))
+
 ## [1.161.0](https://github.com/elfhosted/myprecious/compare/v1.160.0...v1.161.0) (2024-10-28)
 
 
