@@ -10480,7 +10480,7 @@ comet:
     tag: v1.32.2@sha256:9173883363799fce4f2d700062b304ee6853276d37fc7cd15f84a093dc98db95
   priorityClassName: tenant-normal
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M"
+    kubernetes.io/egress-bandwidth: "64M"
   podLabels:
       app.elfhosted.com/name: comet
   controller:
@@ -10787,7 +10787,7 @@ mediaflowproxy:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "125M"
+    kubernetes.io/egress-bandwidth: "64M"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
