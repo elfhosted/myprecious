@@ -10480,7 +10480,7 @@ comet:
     tag: v1.32.2@sha256:9173883363799fce4f2d700062b304ee6853276d37fc7cd15f84a093dc98db95
   priorityClassName: tenant-normal
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M"
+    kubernetes.io/egress-bandwidth: "64M"
   podLabels:
       app.elfhosted.com/name: comet
   controller:
@@ -10787,7 +10787,7 @@ mediaflowproxy:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "125M"
+    kubernetes.io/egress-bandwidth: "64M"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
@@ -12032,7 +12032,7 @@ alldebrid:
     app.elfhosted.com/name: alldebrid
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-env"    
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-env,alldebrid-pia-config"    
   envFrom:
   - configMapRef:
       name: alldebrid-env
@@ -12053,58 +12053,20 @@ alldebrid:
       mountPath: /shared
       type: emptyDir
       volumeSpec:
-        medium: Memory          
-  initContainers:
-    setup-warp:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-
-        cd /shared
-
-        # Create cloudflare account
-        wgcf register --accept-tos
-
-        # Create gluetun config
-        wgcf generate -p /shared/wg0.conf
-
-        # grab the values from the profile and put them into env vars for gluetun to consume
-        echo "export WIREGUARD_PRIVATE_KEY=$(grep PrivateKey /shared/wg0.conf | cut -f3 -d' ')" > /shared/env
-        echo "export WIREGUARD_PUBLIC_KEY=$(grep PublicKey /shared/wg0.conf | cut -f3 -d' ')" >> /shared/env
-        echo "export WIREGUARD_ADDRESSES=$(grep Address /shared/wg0.conf | grep '/32' | cut -f3 -d' ')" >> /shared/env
-
-        echo "export VPN_ENDPOINT_IP=$(dig +short dig +short engage.cloudflareclient.com)" >> /shared/env
-
-      volumeMounts:
-      - mountPath: /shared
-        name: shared
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
-        readOnlyRootFilesystem: false  
+        medium: Memory           
   addons:
     vpn:
       enabled: true # in case we ever need it
       gluetun:
         image:
-          repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
-      env:
-        FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
-        DNS_KEEP_NAMESERVER: "on"
-        HTTP_CONTROL_SERVER_PORT: "8000"
-        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-        VPN_TYPE: wireguard
-        VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "8080"
-        WIREGUARD_MTU: "1280"
-        VPN_ENDPOINT_PORT: "2408"
-        PUBLICIP_API: ip2location
-        DOT: "off"
+          repository: thrnz/docker-wireguard-pia
+          tag: latest
+      envFrom:
+      - configMapRef:
+          name: alldebrid-pia-config
+      - configMapRef:
+          name: elfbot-alldebrid
+          optional: true             
       securityContext:
         runAsUser: 0
         capabilities:
@@ -12112,9 +12074,6 @@ alldebrid:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
-      volumeMounts:
-      - mountPath: /shared
-        name: shared
 
 blackhole: &app_blackhole
   enabled: false
