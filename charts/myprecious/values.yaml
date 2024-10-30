@@ -9565,7 +9565,7 @@ riven: &app_riven
         subPath: riven
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.16.3@sha256:eb44190dd10920b8eeb0068f3a5fbcae5128d203eec242675dd838acb000d11f
+      image: ghcr.io/elfhosted/riven-frontend:v0.16.3@sha256:0b48da430248120168edc412d75ef6374c67fe444ee85057a629c071c76af855
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -9573,6 +9573,9 @@ riven: &app_riven
       envFrom:
       - configMapRef:
           name: riven-frontend-env
+      - configMapRef:
+          name: elfbot-riven
+          optional: true          
       resources: *default_resources
     database:
       image: postgres:16.4-alpine3.20
