@@ -9573,6 +9573,9 @@ riven: &app_riven
       envFrom:
       - configMapRef:
           name: riven-frontend-env
+      - configMapRef:
+          name: elfbot-riven
+          optional: true          
       resources: *default_resources
     database:
       image: postgres:16.4-alpine3.20
