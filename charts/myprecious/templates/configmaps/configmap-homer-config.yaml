@@ -121,8 +121,7 @@ data:
     # externalConfig: https://example.com/server-luci/config.yaml
 
     subtitle: "{{ .Release.Name }} is ..."
-    # title: "ElfHosted!"
-    title: "ElfGhosted!👻🎃"
+    title: "ElfHosted!"
     documentTitle: "ElfHosted - {{ .Release.Name }}" # Customize the browser tab text
     # Alternatively a fa icon can be provided:
     # icon: "fas fa-wand-magic-sparkles"
@@ -1610,12 +1609,10 @@ data:
 
     /* Changes Header Opacity */
     body #bighead .first-line {
-      # background-color: #50762E;
-      background-color: #E17221;
+      background-color: #50762E;
     }
     body #bighead .navbar {
-      # background-color: #36511F;
-      background-color: #9D4A0E;
+      background-color: #36511F;
     }
 
     body .search-bar input {
@@ -1623,7 +1620,6 @@ data:
     }
 
     body #bighead .navbar a:focus, body #bighead .navbar a:hover {
-      # background-color: #50762E;
-      background-color: #E17221;
+      background-color: #50762E;
       color: var(--link-hover);
     }    
