@@ -5153,6 +5153,8 @@ plex: &app_plex
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
+      securityContext:
+        runAsUser: 0 # stupid speedtest. One day we can fix this.
     imagemaid:
       image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:1ac456479c1dc40f4da0e604a619f84f847442bab5adb2720b057fbbdaa041dc
       volumeMounts:
