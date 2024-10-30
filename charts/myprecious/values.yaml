@@ -4043,7 +4043,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.20.0@sha256:bccd97d3242ef8a768ff5daae8872ac498bdb3ccd7619f49e78ccec2e5203918
+    tag: 7.20.0@sha256:af61bfbfae6152140a793bfa13117bc95938d1d0b4f03647e685f42d2522f80c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4132,7 +4132,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.10.2579@sha256:6146de499837e8f77ad71cc980c26ef5c5c38d94752b17b58e123fccfb460d1c
+    tag: 4.0.10.2579@sha256:0fc348d4f2b4cc88160c5d0b507de07e953227295618788e0c359a65a993eb9f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4242,7 +4242,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.10.2579@sha256:6146de499837e8f77ad71cc980c26ef5c5c38d94752b17b58e123fccfb460d1c
+    tag: 4.0.10.2579@sha256:0fc348d4f2b4cc88160c5d0b507de07e953227295618788e0c359a65a993eb9f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8903,7 +8903,7 @@ miniflux:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/miniflux
-    tag: 2.2.1
+    tag: 2.2.2
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
@@ -9754,7 +9754,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.860@sha256:b9b7944826a5e8e6c48011a74dc78c0e97cc5b4ad63c34d6dd98ad585f4caccb
+    tag: 0.22.862@sha256:d08e1bcea87268b45bd3684779a53a1253d0149246e280f3711d38f483e174ae
   priorityClassName: tenant-normal
   controller:
     annotations:
