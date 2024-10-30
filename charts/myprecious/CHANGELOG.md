@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.163.0](https://github.com/elfhosted/myprecious/compare/v1.162.0...v1.163.0) (2024-10-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.862 ([693fb6f](https://github.com/elfhosted/myprecious/commit/693fb6f61c47566d06892a34f33939859d811535))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.2 ([f0cae34](https://github.com/elfhosted/myprecious/commit/f0cae34adccb87e50ca024976c119b816e7b6dfe))
+
+
+### Bug Fixes
+
+* add halloween theming to dashboard for today ([1cc311a](https://github.com/elfhosted/myprecious/commit/1cc311a90e0175db6f71d53f8fdb2c89eeb4d086))
+* **app:** update ghcr.io/elfhosted/riven-frontend:v0.16.3 docker digest to 0b48da4 ([e932273](https://github.com/elfhosted/myprecious/commit/e932273c41cd3ffec8764a2127508bc2f99d092b))
+* **app:** update ghcr.io/elfhosted/sonarr-develop:4.0.10.2579 docker digest to 0fc348d ([b12890a](https://github.com/elfhosted/myprecious/commit/b12890ade83359bbfa752684f4452707d68686ed))
+* **app:** update quay.io/linuxserver.io/calibre:7.20.0 docker digest to af61bfb ([0a968e4](https://github.com/elfhosted/myprecious/commit/0a968e4fe11c1b8b99b2f4fb0623fafa2c0f569c))
+
 ## [1.162.0](https://github.com/elfhosted/myprecious/compare/v1.161.0...v1.162.0) (2024-10-29)
 
 
