@@ -97,5 +97,12 @@ rules:
   - elfbot-decluttarr
   - elfbot-decluttarr4k
 {{ end }}
+{{ if .Values.blackhole.enabled }}
+  - elfbot-blackhole
+{{ end }}
+{{ if .Values.blackhole4k.enabled }}
+  - elfbot-blackhole4k
+{{ end }}
+
 
 
