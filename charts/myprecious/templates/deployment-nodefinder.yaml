@@ -24,7 +24,7 @@ spec:
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
+          - weight: 100
             preference: # prefer a particular class of node
               matchExpressions:
               {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled  }}
