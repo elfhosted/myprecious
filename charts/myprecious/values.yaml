@@ -5105,6 +5105,8 @@ plex: &app_plex
           ln -s /phototranscoder '/config/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder'
         fi
 
+        chown elfie /config -R
+        
       volumeMounts:
       - mountPath: /config
         name: config
@@ -5113,7 +5115,10 @@ plex: &app_plex
         name: phototranscoder
       # can't use default resources because the ephemeral limit kicks out /phototranscoder later
       # resources: *default_resources
-      securityContext: *default_securitycontext
+      # use this to reset permissions that hvae been messed up
+      # securityContext: *default_securitycontext
+      securityContext:
+        runAsUser: 0      
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5171,6 +5176,7 @@ plex: &app_plex
       - configMapRef:
           name: elfbot-imagemaid
           optional: true
+      securityContext: *default_securitycontext
   addons:
     vpn:
       enabled: true # in case we ever need it
