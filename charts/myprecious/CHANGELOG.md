@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.164.0](https://github.com/elfhosted/myprecious/compare/v1.163.0...v1.164.0) (2024-10-31)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.0 ([12e2f63](https://github.com/elfhosted/myprecious/commit/12e2f63aac332cedd6e0afddb690ac4842f117af))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.867 ([70d0162](https://github.com/elfhosted/myprecious/commit/70d016288d656627e0e6c22f418597eed22f75a5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d7be37f ([896f901](https://github.com/elfhosted/myprecious/commit/896f9016858faad88d5872d50f85f6709687be26))
+* **app:** update ghcr.io/elfhosted/riven-frontend:v0.16.3 docker digest to 4b52236 ([4272af2](https://github.com/elfhosted/myprecious/commit/4272af2d7a4e2e1add361188213c1113196eb0c5))
+* back to normal colors for dashboard (bye bye halloween!) ([5664922](https://github.com/elfhosted/myprecious/commit/5664922a7d3b785b64ed27f9661971a47e9951e1))
+* Fix Plex permissions issue on new installs ([560c09a](https://github.com/elfhosted/myprecious/commit/560c09ab8b13fad6d4fd00d84c47e1d2d5ed4929))
+
 ## [1.163.0](https://github.com/elfhosted/myprecious/compare/v1.162.0...v1.163.0) (2024-10-30)
 
 
