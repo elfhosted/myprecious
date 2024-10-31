@@ -5117,6 +5117,8 @@ plex: &app_plex
       # resources: *default_resources
       # use this to reset permissions that hvae been messed up
       # securityContext: *default_securitycontext
+      securityContext:
+        runAsUser: 0      
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
