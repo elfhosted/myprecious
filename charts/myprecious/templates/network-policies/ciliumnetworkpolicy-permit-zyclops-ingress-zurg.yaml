@@ -1,0 +1,23 @@
+{{ if or .Values.zurg.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: permit-zyclops-ingress-zurg
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: zurg
+  ingress:
+    - fromEndpoints:
+        - {}
+      toPorts:
+        - ports:
+          - port: '9999'
+            protocol: TCP
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: zyclops
+      toPorts:
+        - ports:
+          - port: '9999'
+            protocol: TCP
