@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.165.0](https://github.com/elfhosted/myprecious/compare/v1.164.0...v1.165.0) (2024-11-01)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.2 ([77201a7](https://github.com/elfhosted/myprecious/commit/77201a795f30ed84c0821c8e50eca946699c4d1d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.869 ([59bbb5e](https://github.com/elfhosted/myprecious/commit/59bbb5e649c031eace75a25245f91fb9e0a958c0))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.2.0 ([b062efb](https://github.com/elfhosted/myprecious/commit/b062efb80363557bc9877cc2b49ee5b669dda01a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon:v2.0.27 docker digest to b2748c6 ([5fbdd26](https://github.com/elfhosted/myprecious/commit/5fbdd26519fead3bfedef658e018220ad2f17f33))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 1c902fd ([a16e04b](https://github.com/elfhosted/myprecious/commit/a16e04bde49aa9b1a506841552616b48a6c4dfff))
+* **app:** update ghcr.io/elfhosted/mediafusion:4.0.5 docker digest to 2f220a1 ([da54973](https://github.com/elfhosted/myprecious/commit/da54973e96b46b9c7f63a5c5e76eafa35769cb7f))
+* **app:** update ghcr.io/elfhosted/shluflix:rolling docker digest to e8637bd ([035682f](https://github.com/elfhosted/myprecious/commit/035682fe535d1ca66abd300f6fc424e41d474060))
+* **app:** update ghcr.io/elfhosted/xtremio:rolling docker digest to e29cd24 ([a8e1d73](https://github.com/elfhosted/myprecious/commit/a8e1d73b2600f85d648d857a883ee6339667eafa))
+
 ## [1.164.0](https://github.com/elfhosted/myprecious/compare/v1.163.0...v1.164.0) (2024-10-31)
 
 
