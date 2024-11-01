@@ -5163,6 +5163,8 @@ plex: &app_plex
     imagemaid:
       image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:1ac456479c1dc40f4da0e604a619f84f847442bab5adb2720b057fbbdaa041dc
       volumeMounts:
+      - mountPath: /tmp
+        name: tmp
       - mountPath: /config
         name: config
         subPath: plex/imagemaid
