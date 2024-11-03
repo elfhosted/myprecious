@@ -9782,7 +9782,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.873@sha256:5d53dc71b39be23438c95dd1207794b59b532596d2de46302d226a6609f1c07f
+    tag: 0.22.878@sha256:55baae407e9567e4b2b7b251065c804766a961fdbf145ff6aa6406b2a8834291
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11426,7 +11426,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.02.1538-nightly@sha256:00b74d1545fa94cfddee10cbb573eb588b85c1c51d74db22c5d6f25d49a1dfb4
+    tag: 2024.11.03.0028-nightly@sha256:92026dd74aaf904850ce3ff83dca60ba4962a29388765f1899741cf87053620d
   priorityClassName: tenant-normal
   controller:
     annotations:
