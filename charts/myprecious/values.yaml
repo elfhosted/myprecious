@@ -5448,12 +5448,13 @@ jellyfin: &app_jellyfin
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest
+      securityContext: *speedtest_securitycontext
     jellyfixer:
       image: quay.io/xsteadfastx/jellyfixer:latest
       env:
         JELLYFIXER_INTERNAL_URL: http://jellyfin:8096
         JELLYFIXER_EXTERNAL_URL: https://{{ .Release.Name }}-jellyfin.elfhosted.com
-    securityContext: *speedtest_securitycontext
+      
 
 jellyfinranger:
   <<: *app_jellyfin
