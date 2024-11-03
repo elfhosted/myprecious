@@ -655,6 +655,17 @@ default_securitycontext: &default_securitycontext
     drop:
     - ALL
 
+speedtest_securitycontext: &speedtest_securitycontext
+  seccompProfile:
+    type: RuntimeDefault
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: false
+  runAsUser: 101
+  runAsGroup: 101
+  capabilities:
+    drop:
+    - ALL
+
 # We use this to provide env not only to bootstrap, but also to the torrent clients which use elfvpn
 # it's necessary since the wireguard configs are in S3
 bootstrap_env: &bootstrap_env
@@ -5160,7 +5171,7 @@ plex: &app_plex
         HTTPS_PORT: "3003"
       # securityContext:
       #   runAsUser: 0 # stupid speedtest. One day we can fix this.
-      securityContext: *default_securitycontext
+      securityContext: *speedtest_securitycontext
     imagemaid:
       image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:1ac456479c1dc40f4da0e604a619f84f847442bab5adb2720b057fbbdaa041dc
       volumeMounts:
