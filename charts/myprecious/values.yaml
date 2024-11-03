@@ -5288,6 +5288,8 @@ jellyfin: &app_jellyfin
     privileged: true
   podSecurityContext:
     fsGroup: 568
+    runAsUser: 568
+    runAsGroup: 568    
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
@@ -5451,6 +5453,7 @@ jellyfin: &app_jellyfin
       env:
         JELLYFIXER_INTERNAL_URL: http://jellyfin:8096
         JELLYFIXER_EXTERNAL_URL: https://{{ .Release.Name }}-jellyfin.elfhosted.com
+    securityContext: *speedtest_securitycontext
 
 jellyfinranger:
   <<: *app_jellyfin
@@ -5596,6 +5599,7 @@ emby: &app_emby
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest
+      securityContext: *speedtest_securitycontext
   ingress:
     main:
       enabled: false
@@ -10607,6 +10611,7 @@ comet:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"        
+      securityContext: *speedtest_securitycontext
 
 jackettio:
   enabled: false
@@ -10884,6 +10889,7 @@ mediaflowproxy:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"    
+      securityContext: *speedtest_securitycontext
   resources:
     requests:
       cpu: 1m
