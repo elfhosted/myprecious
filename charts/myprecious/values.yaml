@@ -5752,7 +5752,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.10.2@sha256:4b2356e7dc49c225f588c6831399044fccb3800913e838403837dfc3a3b8a5d8
+      image: ghcr.io/elfhosted/homer:v24.11.1@sha256:a866a979644b5522609ac3503e4e3958641a9bb4fe8053ed332dc4386d6d6204
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
