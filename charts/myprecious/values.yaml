@@ -9567,7 +9567,7 @@ riven: &app_riven
 
         # make symlink directories if they don't exist, to make onboarding simpler
         # wipe DB entirely (a requirement of 0.17)
-        if grep -q 16 "database/PG_VERSION" 2>/dev/null; then
+        if grep -q 16 "/config/postgresql/database/PG_VERSION" 2>/dev/null; then
           rm -rf "/config/postgresql"
         fi
         mkdir -p /config/postgresql/database
