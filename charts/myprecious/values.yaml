@@ -4143,7 +4143,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.10.2579@sha256:0fc348d4f2b4cc88160c5d0b507de07e953227295618788e0c359a65a993eb9f
+    tag: 4.0.10.2624@sha256:0945b0d6bc10ce3bbc46b0f8de46237bbeab437fa1f17b307e75a999a40609a3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4253,7 +4253,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.10.2579@sha256:0fc348d4f2b4cc88160c5d0b507de07e953227295618788e0c359a65a993eb9f
+    tag: 4.0.10.2624@sha256:0945b0d6bc10ce3bbc46b0f8de46237bbeab437fa1f17b307e75a999a40609a3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4450,7 +4450,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.25.4.4818@sha256:485413bf22922058056bf0837a3a768918f57aa7fd4cee5cf69df52546920b04
+    tag: 1.26.0.4833@sha256:c72631f08c3f57ac64b8a2781f40e7a54bc131865db2330dda2309fdf3fed205
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4580,7 +4580,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.7.1.4417@sha256:42d4abecbfa0a52f026e0741fe4a270264cb217f49626a182c0461c94ea2fadc
+    tag: 2.8.0.4431@sha256:6701204def1eaa78d30255dfcfcae0918b6a84a0fe0e1cf187adfb909279eb0a
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4754,7 +4754,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.2.2653@sha256:f1a752b4a74d44b64b520f8854d20d5cc6ffd76b1581a4d26767f73579241809
+    tag: 0.4.3.2665@sha256:f4e354fa36a0bced8299dfa30f4ab007229f2a3c53d5c6d21125d483ea679110
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4861,7 +4861,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.2.2653@sha256:f1a752b4a74d44b64b520f8854d20d5cc6ffd76b1581a4d26767f73579241809
+    tag: 0.4.3.2665@sha256:f4e354fa36a0bced8299dfa30f4ab007229f2a3c53d5c6d21125d483ea679110
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5272,7 +5272,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.0@sha256:95783978f24fa631d478f1d6428bc47606ac900ed80aabd40ec7ca65426bf06a
+    tag: 10.10.1@sha256:afa8dcf940f41bfd82642b96181bf1c187f65a38dd29756aee012cf2f6562ee3
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid
@@ -5752,7 +5752,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.10.2@sha256:4b2356e7dc49c225f588c6831399044fccb3800913e838403837dfc3a3b8a5d8
+      image: ghcr.io/elfhosted/homer:v24.11.1@sha256:a866a979644b5522609ac3503e4e3958641a9bb4fe8053ed332dc4386d6d6204
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -5838,7 +5838,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.13.0@sha256:6224e5b189c17af64e33e87a099697ddec7983c9865db21488ab499c12d6feea
+    tag: 5.13.1@sha256:fd059d9df1b54125440121ac636399a2e084e0e321365243b46f9673ffb619e5
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7663,7 +7663,7 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: v1.0.9@sha256:ee7b05b557c2b91897b1892a2efe84ec13e5e5b6b9b2ef19184129762b1ae579
+    tag: v1.0.15@sha256:436578dd9b3a64190d9cebc1efc42db1542115b61a052567f7c3e503cbb1bdca
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9326,7 +9326,7 @@ wallabag:
       memory: 1Gi
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/wallabag:2.6.9@sha256:82b5d3f29f92135de47bdbed385ef5dffa8e22cef6330496c85f590278654816
+      image: ghcr.io/elfhosted/wallabag:2.6.10@sha256:baec0c2d03568cd21c34682a6bc5c53a9961783717f0999d8b1b2d80fc492b8c
       volumeMounts:
       - mountPath: /var/www/wallabag/data
         name: config
@@ -9463,7 +9463,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.16.2@sha256:b4093a18b4207ec278fa9ff0aa036622bb6cdc9b1874d42c778c54f329db30b7
+    tag: v0.17.0@sha256:57efb9652ab8f3b88dd05f669897069f29dad489884bc06f73a41283f63230d1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9590,7 +9590,7 @@ riven: &app_riven
         subPath: riven
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.16.3@sha256:4b52236ceec81cafe84b86655e54c1c855e94a674ae8e953e0207d31286d8ab5
+      image: ghcr.io/elfhosted/riven-frontend:v0.17.0@sha256:f8543deadc70e6386662a7feeb833398269eb513bf91c229e0a47be7394f7bea
       volumeMounts:
       - mountPath: /riven/data
         name: config
@@ -9782,7 +9782,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.878@sha256:55baae407e9567e4b2b7b251065c804766a961fdbf145ff6aa6406b2a8834291
+    tag: 0.22.885@sha256:ae7424df108fecfe12e99a93be0cff67ab55e8d827c45370be14cd11e83c9315
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11113,7 +11113,7 @@ shluflix:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/shluflix
-    tag: rolling@sha256:e8637bdaed50fbb6c17ed5e46d9789433370c86aa01abc4708b93c6c6f016724
+    tag: rolling@sha256:4e62bfe690740055bd27346c2aeb03d924fff3cf1c7a3351621141c36e2ba69b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11487,7 +11487,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.03.0028-nightly@sha256:92026dd74aaf904850ce3ff83dca60ba4962a29388765f1899741cf87053620d
+    tag: 2024.11.05.1510-nightly@sha256:e73176cf00818988caec3b9df43bc5e94c89f773797015bb11267d4a8f0500c5
   priorityClassName: tenant-normal
   controller:
     annotations:
