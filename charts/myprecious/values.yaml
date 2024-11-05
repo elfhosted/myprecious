@@ -10169,17 +10169,17 @@ pairdrop:
           name: elfbot-pairdrop
           optional: true
 
-actualserver:
+actual:
   enabled: false
   image:
     repository: ghcr.io/actualbudget/actual-server
     tag: 24.11.0-alpine
   priorityClassName: tenant-normal
   podLabels:
-    app.elfhosted.com/name: actualserver
+    app.elfhosted.com/name: actual
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-actualserver"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-actual"
     strategy:
     rollingUpdate:
       unavailable: 1
@@ -10219,13 +10219,13 @@ actualserver:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-actualserver
+          name: elfbot-actual
           optional: true
     config:
       enabled: true
       type: custom
       mountPath: /data
-      subPath: actualserver
+      subPath: actual
       volumeSpec:
         persistentVolumeClaim:
           claimName: config          

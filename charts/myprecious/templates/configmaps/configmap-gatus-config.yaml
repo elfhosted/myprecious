@@ -1032,10 +1032,10 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.actualserver.enabled }}
-      - name: actualserver
+      {{ if .Values.actual.enabled }}
+      - name: actual
         group: tools
-        url: "http://actualserver:5006"
+        url: "http://actual:5006"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

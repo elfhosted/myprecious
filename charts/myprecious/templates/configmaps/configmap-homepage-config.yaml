@@ -906,12 +906,12 @@ data:
             siteMonitor: http://privatebin:8080
         {{ end }}
 
-        {{ if .Values.actualserver.enabled }}
+        {{ if .Values.actual.enabled }}
         - Actual Server:
             icon: actual.png
-            href: https://{{ .Release.Name }}-actualserver.{{ .Values.dns_domain }}
-            description: Sync for Actual Budget
-            siteMonitor: http://actualserver:5006
+            href: https://{{ .Release.Name }}-actual.{{ .Values.dns_domain }}
+            description: Actual Budget
+            siteMonitor: http://actual:5006
         {{ end }}        
         
         {{ if .Values.miniflux.enabled }}

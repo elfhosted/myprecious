@@ -1,14 +1,14 @@
-{{ if .Values.actualserver.enabled }}
+{{ if .Values.actual.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-actualserver.{{ .Values.dns_domain }}
+  name: {{ .Release.Name }}-actual.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-actualserver.{{ .Values.dns_domain }}`)
+    - match: Host(`{{ .Release.Name }}-actual.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: actualserver
+        - name: actual
           kind: Service
           port: 5006
 {{ end }}
