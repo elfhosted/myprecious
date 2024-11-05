@@ -12,7 +12,7 @@ data:
     mkdir -p /storage/symlinks/shows
 
     # Enforce API key
-    contents="$('.api_key={{ .Values.rivenexposed.apikey }}' /config/settings.json)" && \
+    contents="$(jq '.api_key={{ .Values.rivenexposed.apikey }}' /config/settings.json)" && \
       echo -E "${contents}" > /config/settings.json
     
 {{ end }}
