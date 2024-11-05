@@ -1161,6 +1161,9 @@ nzbgetexposed:
 mylarrexposed:
   enabled: false
   apikey: 0f97f6a7f352c63eb43fcb7e53ea9d8f
+rivenexposed:
+  enabled: false
+  apikey: 1nMZNC0Cg6UP7sblvFirUi9Sad4ga84u  
 tunarrexposed:
   enabled: false
 ersatztv:
@@ -9586,6 +9589,9 @@ riven: &app_riven
         mkdir -p /storage/symlinks/movies
         mkdir -p /storage/symlinks/shows
 
+        # Enforce API key
+        jq '.api_key={{ .Values.rivenexposed.apikey }}' /config/settings.json
+        
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -9647,6 +9653,15 @@ rivenfrontend:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    config:
+      enabled: "true"
+      type: "custom"
+      mountPath: /config
+      volumeSpec:
+        configMap:
+          name: riven-frontend-config          
   envFrom:
   - configMapRef:
       name: riven-frontend-env

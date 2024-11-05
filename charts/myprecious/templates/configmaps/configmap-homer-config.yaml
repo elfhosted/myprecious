@@ -94,14 +94,12 @@ data:
       {{ end }}
 
       {{ if .Values.riven.enabled }}
-      # get API key
-      RIVEN_API_KEY=$(cat /config/riven/settings.json  | jq -r .api_key)
-      RIVEN_TOTAL_ITEMS=$(curl -s -H "Authorization: Bearer ${RIVEN_API_KEY}" http://riven:8080/api/v1/stats | jq .total_items) # items
-      RIVEN_TOTAL_MOVIES=$(curl -s -H "Authorization: Bearer ${RIVEN_API_KEY}" http://riven:8080/api/v1/stats | jq .total_movies) # items
-      RIVEN_TOTAL_SHOWS=$(curl -s -H "Authorization: Bearer ${RIVEN_API_KEY}" http://riven:8080/api/v1/stats | jq .total_shows) # items
-      RIVEN_TOTAL_SEASONS=$(curl -s -H "Authorization: Bearer ${RIVEN_API_KEY}" http://riven:8080/api/v1/stats | jq .total_seasons) # items
-      RIVEN_TOTAL_EPISODES=$(curl -s -H "Authorization: Bearer ${RIVEN_API_KEY}" http://riven:8080/api/v1/stats | jq .total_episodes) # items
-      RIVEN_TOTAL_SYMLINKS=$(curl -s -H "Authorization: Bearer ${RIVEN_API_KEY}" http://riven:8080/api/v1/stats | jq .total_symlinks) # items
+      RIVEN_TOTAL_ITEMS=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_items) # items
+      RIVEN_TOTAL_MOVIES=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_movies) # items
+      RIVEN_TOTAL_SHOWS=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_shows) # items
+      RIVEN_TOTAL_SEASONS=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_seasons) # items
+      RIVEN_TOTAL_EPISODES=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_episodes) # items
+      RIVEN_TOTAL_SYMLINKS=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_symlinks) # items
       RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes across $RIVEN_TOTAL_SYMLINKS symlinks!</I>)"
       {{ end }}
 
