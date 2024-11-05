@@ -9543,7 +9543,6 @@ riven: &app_riven
       volumeSpec:
         configMap:
           name: riven-setup
-          optional: true           
   initContainers:
     bootstrap:
       <<: *bootstrap
