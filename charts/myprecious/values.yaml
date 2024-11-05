@@ -9593,7 +9593,7 @@ riven: &app_riven
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
-      - mountPath: /riven/data
+      - mountPath: /config
         name: config
         subPath: riven
       - name: setup
