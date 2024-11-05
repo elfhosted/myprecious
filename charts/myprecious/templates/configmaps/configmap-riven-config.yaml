@@ -1,0 +1,17 @@
+{{ if .Values.riven.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: riven-config
+data:
+  setup.sh: |
+    #!/bin/bash
+
+    # make symlink directories if they don't exist, to make onboarding simpler
+    mkdir -p /storage/symlinks/movies
+    mkdir -p /storage/symlinks/shows
+
+    # Enforce API key
+    jq '.api_key={{ .Values.rivenexposed.apikey }}' /config/settings.json
+    
+{{ end }}

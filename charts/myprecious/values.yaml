@@ -9537,6 +9537,13 @@ riven: &app_riven
       type: emptyDir
       volumeSpec:
         medium: Memory
+    setup:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: riven-setup
+          optional: true           
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -9582,22 +9589,16 @@ riven: &app_riven
       - /bin/bash
       - -c
       - |
-        set -x
-        set -e
-
-        # make symlink directories if they don't exist, to make onboarding simpler
-        mkdir -p /storage/symlinks/movies
-        mkdir -p /storage/symlinks/shows
-
-        # Enforce API key
-        jq '.api_key={{ .Values.rivenexposed.apikey }}' /config/settings.json
-        
+        # run the setup script from the configmap, so that we can make templated changes
+        bash /setup/setup.sh
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
       - mountPath: /riven/data
         name: config
         subPath: riven
+      - name: setup
+        mountPath: "/setup/"        
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -11586,7 +11587,7 @@ zurg: &app_zurg
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 100m
+      cpu: 150m
       memory: 32Mi
     limits:
       cpu: 1
