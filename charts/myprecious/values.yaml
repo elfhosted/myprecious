@@ -9470,7 +9470,7 @@ riven: &app_riven
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env,riven-setup"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
