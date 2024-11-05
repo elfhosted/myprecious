@@ -66,7 +66,7 @@ rules:
 {{ if .Values.gluetun.enabled }}
   - gluetun-config
 {{ end }}
-{{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
+{{ if .Values.riven.enabled }}
   - elfbot-riven
 {{ end }}
 {{ if .Values.kometa.enabled }}

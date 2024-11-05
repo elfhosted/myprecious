@@ -9467,7 +9467,7 @@ riven: &app_riven
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env,riven-frontend-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9593,19 +9593,6 @@ riven: &app_riven
         name: config
         subPath: riven
   additionalContainers:
-    frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.17.0@sha256:f8543deadc70e6386662a7feeb833398269eb513bf91c229e0a47be7394f7bea
-      volumeMounts:
-      - mountPath: /riven/data
-        name: config
-        subPath: riven
-      envFrom:
-      - configMapRef:
-          name: riven-frontend-env
-      - configMapRef:
-          name: elfbot-riven
-          optional: true          
-      resources: *default_resources
     database:
       image: postgres:17-alpine
       args:
@@ -9636,10 +9623,52 @@ riven: &app_riven
           cpu: 500m
           memory: 8Gi
 
-rivenhobbit: *app_riven
-rivenranger: *app_riven
-rivenhalfling: *app_riven
-rivennazgul: *app_riven
+rivenfrontend:
+  podLabels:
+    app.elfhosted.com/name: riven-frontend
+  image:
+    repository: ghcr.io/elfhosted/riven-frontend
+    tag: v0.17.0@sha256:f8543deadc70e6386662a7feeb833398269eb513bf91c229e0a47be7394f7bea
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rivenfrontend,riven-frontend-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: false # doesn't work with ilikedanger currently
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: riven-frontend-env
+  - configMapRef:
+      name: elfbot-rivenfrontend
+      optional: true
+  resources:
+    requests:
+      cpu: 1m
+      memory: 20Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000
 
 airdcpp: &app_airdcpp
   enabled: false
