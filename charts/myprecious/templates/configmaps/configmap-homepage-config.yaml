@@ -905,6 +905,14 @@ data:
             description: Securely Share Snippets
             siteMonitor: http://privatebin:8080
         {{ end }}
+
+        {{ if .Values.actualserver.enabled }}
+        - Actual Server:
+            icon: actual.png
+            href: https://{{ .Release.Name }}-actualserver.{{ .Values.dns_domain }}
+            description: Sync for Actual Budget
+            siteMonitor: http://actualserver:5006
+        {{ end }}        
         
         {{ if .Values.miniflux.enabled }}
         - MiniFlux:

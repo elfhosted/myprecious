@@ -1,0 +1,20 @@
+{{ if .Values.actualserver.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: actualserver
+  labels:
+    app.kubernetes.io/name: actualserver
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5006
+    targetPort: 5006
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: actualserver
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

@@ -1271,6 +1271,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.actualserver.enabled }}
+          - name: "Actual Server"
+            logo: "assets/png/actual.png"
+            subtitle: "Sync server for Actual Budget"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-actualserver.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.miniflux.enabled }}
           - name: "Miniflux"
             logo: "assets/png/miniflux.png"

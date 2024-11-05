@@ -10169,6 +10169,67 @@ pairdrop:
           name: elfbot-pairdrop
           optional: true
 
+actualserver:
+  enabled: false
+  image:
+    repository: ghcr.io/actualbudget/actual-server
+    tag: 24.11.0-alpine
+  priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: actualserver
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-actualserver"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5006
+  persistence:
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-actualserver
+          optional: true
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data
+      subPath: actualserver
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config          
+
 petio:
   enabled: false
   image:

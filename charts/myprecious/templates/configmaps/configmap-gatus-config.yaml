@@ -1032,6 +1032,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.actualserver.enabled }}
+      - name: actualserver
+        group: tools
+        url: "http://actualserver:5006"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
+
       {{ if .Values.miniflux.enabled }}
       - name: miniflux
         group: tools
