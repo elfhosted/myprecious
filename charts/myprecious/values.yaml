@@ -4057,7 +4057,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.20.0@sha256:af61bfbfae6152140a793bfa13117bc95938d1d0b4f03647e685f42d2522f80c
+    tag: 7.20.0@sha256:67544618e8c0ab3e57bcae6cdf519b0cfe2f47d47b15776351598f18eaf5f413
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6250,7 +6250,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.15.4-vaapi
+    tag: 0.15.5-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7666,7 +7666,7 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: v1.0.15@sha256:d765222e0c6060dc7616f3c6a3b67cc922d900706ecb967edaf297fd12b5a2a4
+    tag: v1.0.17@sha256:6631d889c27d05e899e21835338baedb547790de932f547e7ad497f1150196e9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9466,7 +9466,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.17.0@sha256:57efb9652ab8f3b88dd05f669897069f29dad489884bc06f73a41283f63230d1
+    tag: v0.18.0@sha256:3bbe4e2a890dae30cb71a624cda6e184c152eb0bbf80241ac7d96ef351763b40
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9830,7 +9830,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.885@sha256:ae7424df108fecfe12e99a93be0cff67ab55e8d827c45370be14cd11e83c9315
+    tag: 0.22.888@sha256:d48d2b15a216970619a23eda659f34b96912b0c56fb5f9adab6180f94f3abd2a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10727,7 +10727,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.5.1@sha256:9d51b4dd66d9e31dc6c22bde1a5802a33af5ca554e776080d622a60580c90426
+    tag: v1.6.0@sha256:c9f44813f42eebe36564721d61f0feab324e072437dbe08e2d8d37c500814f86
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10843,7 +10843,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.0@sha256:ed2c406155d611a0e4dc4f6b71eec2355f12977f2a2a713f7049b86615b0a081
+    tag: 4.1.1@sha256:d305092168bb7d3b5cb6abda2f225a93a668f3931bc7ba90c4aaf5d1fdeb025a
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -11535,7 +11535,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.05.1510-nightly@sha256:e73176cf00818988caec3b9df43bc5e94c89f773797015bb11267d4a8f0500c5
+    tag: 2024.11.06.0025-nightly@sha256:3bfa330a650ea9becf31a5f418529aaeb2dc14ff12222af7b7920defe2a955fb
   priorityClassName: tenant-normal
   controller:
     annotations:
