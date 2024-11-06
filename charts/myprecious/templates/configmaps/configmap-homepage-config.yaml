@@ -915,7 +915,7 @@ data:
         {{ end }}
 
         {{ if .Values.actual.enabled }}
-        - Actual Server:
+        - Actual:
             icon: actual.png
             href: https://{{ .Release.Name }}-actual.{{ .Values.dns_domain }}
             description: Actual Budget

@@ -1284,7 +1284,7 @@ data:
           {{ if .Values.actual.enabled }}
           - name: "Actual Server"
             logo: "assets/png/actual.png"
-            subtitle: "Sync server for Actual Budget"
+            subtitle: "Actual Budget"
             tag: "public"
             tagstyle: "is-danger"
             url: "https://{{ .Release.Name }}-actual.{{ .Values.dns_domain }}"
