@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.169.0](https://github.com/elfhosted/myprecious/compare/v1.168.0...v1.169.0) (2024-11-06)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.5 ([89eb047](https://github.com/elfhosted/myprecious/commit/89eb04713a027132f40ea17787d73a5442d3c8b6))
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.13.1 ([298d8aa](https://github.com/elfhosted/myprecious/commit/298d8aa7b48907117df050ac369b071ad5c6f7d3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.884 ([c37b813](https://github.com/elfhosted/myprecious/commit/c37b8137c2c6d162e650b53e340284712984a570))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.885 ([90a2dcd](https://github.com/elfhosted/myprecious/commit/90a2dcd9ccfb1b307df5f3fb0282afdd9b1b953c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.888 ([89dd379](https://github.com/elfhosted/myprecious/commit/89dd3797133f9dfe74894b46434c36922977459f))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.6.0 ([749db5f](https://github.com/elfhosted/myprecious/commit/749db5fede303952e9a176fea0f6a662e786a767))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.1 ([9806d11](https://github.com/elfhosted/myprecious/commit/9806d11fddbe1b507190f0cce87c5666ecfba7be))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.17.0 ([6ce8e3a](https://github.com/elfhosted/myprecious/commit/6ce8e3a118adfc1ea8f2b0d0b0eb9bad2c47d182))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.18.0 ([91557dd](https://github.com/elfhosted/myprecious/commit/91557ddf09c7e844996baac74a0c0392316cb420))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.17.0 ([134350d](https://github.com/elfhosted/myprecious/commit/134350d8583a225f07bbf7726c3140768f5fc249))
+* **app:** update ghcr.io/elfhosted/suggestarr docker tag to v1.0.15 ([116a127](https://github.com/elfhosted/myprecious/commit/116a1271c237ae2d5e3535496659b01a3b03ebb0))
+* **app:** update ghcr.io/elfhosted/suggestarr docker tag to v1.0.16 ([2f39bd0](https://github.com/elfhosted/myprecious/commit/2f39bd0000e23db1faecdc142a7efd365d0b2e2d))
+* **app:** update ghcr.io/elfhosted/suggestarr docker tag to v1.0.17 ([f3f96a1](https://github.com/elfhosted/myprecious/commit/f3f96a12224f898e45b55333725dce38d686c542))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.05.0026 ([a4e3614](https://github.com/elfhosted/myprecious/commit/a4e361484ed10ebd5110e3964a6209d8cffd5f3e))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.05.1510 ([2845acb](https://github.com/elfhosted/myprecious/commit/2845acb4107472e531e1508438b336fc1daa3698))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.06.0025 ([283d1d5](https://github.com/elfhosted/myprecious/commit/283d1d59a7d05aae0ed4cd5104a6346eea7c8bb5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/suggestarr:v1.0.15 docker digest to d765222 ([c82f70c](https://github.com/elfhosted/myprecious/commit/c82f70c0c576b4dcd6c61b0a23398d291e63e7fe))
+* **app:** update quay.io/linuxserver.io/calibre:7.20.0 docker digest to 6754461 ([177fafa](https://github.com/elfhosted/myprecious/commit/177fafa9a9aef3c728fd654e31b5da2b5095f359))
+
 ## [1.168.0](https://github.com/elfhosted/myprecious/compare/v1.167.0...v1.168.0) (2024-11-04)
 
 
