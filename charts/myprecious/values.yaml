@@ -7670,7 +7670,7 @@ suggestarr:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # doesn't work with app :(
   podLabels:
     app.elfhosted.com/name: suggestarr
   controller:
