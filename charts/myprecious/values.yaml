@@ -1161,6 +1161,9 @@ nzbgetexposed:
 mylarrexposed:
   enabled: false
   apikey: 0f97f6a7f352c63eb43fcb7e53ea9d8f
+rivenexposed:
+  enabled: false
+  apikey: 1nMZNC0Cg6UP7sblvFirUi9Sad4ga84u  
 tunarrexposed:
   enabled: false
 ersatztv:
@@ -7663,11 +7666,11 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: v1.0.15@sha256:436578dd9b3a64190d9cebc1efc42db1542115b61a052567f7c3e503cbb1bdca
+    tag: v1.0.15@sha256:d765222e0c6060dc7616f3c6a3b67cc922d900706ecb967edaf297fd12b5a2a4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # doesn't work with app :(
   podLabels:
     app.elfhosted.com/name: suggestarr
   controller:
@@ -7688,7 +7691,7 @@ suggestarr:
     logs:
       enabled: true
       type: custom
-      mountPath: /var/logs
+      mountPath: /var/log
       subPath: suggestarr
       volumeSpec:
         persistentVolumeClaim:
@@ -9467,7 +9470,7 @@ riven: &app_riven
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env,riven-frontend-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env,riven-setup"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9534,6 +9537,12 @@ riven: &app_riven
       type: emptyDir
       volumeSpec:
         medium: Memory
+    setup:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: riven-setup
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -9557,6 +9566,10 @@ riven: &app_riven
         set -e
 
         # make symlink directories if they don't exist, to make onboarding simpler
+        # wipe DB entirely (a requirement of 0.17)
+        if grep -q 16 "/config/postgresql/database/PG_VERSION" 2>/dev/null; then
+          rm -rf "/config/postgresql"
+        fi
         mkdir -p /config/postgresql/database
         mkdir -p /config/postgresql/backups
         chown elfie:elfie /config/postgresql -R
@@ -9575,35 +9588,19 @@ riven: &app_riven
       - /bin/bash
       - -c
       - |
-        set -x
-        set -e
-
-        # make symlink directories if they don't exist, to make onboarding simpler
-        mkdir -p /storage/symlinks/movies
-        mkdir -p /storage/symlinks/shows
-
+        # run the setup script from the configmap, so that we can make templated changes
+        bash /setup/setup.sh
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
-      - mountPath: /riven/data
+      - mountPath: /config
         name: config
         subPath: riven
+      - name: setup
+        mountPath: "/setup/"        
   additionalContainers:
-    frontend:
-      image: ghcr.io/elfhosted/riven-frontend:v0.17.0@sha256:f8543deadc70e6386662a7feeb833398269eb513bf91c229e0a47be7394f7bea
-      volumeMounts:
-      - mountPath: /riven/data
-        name: config
-        subPath: riven
-      envFrom:
-      - configMapRef:
-          name: riven-frontend-env
-      - configMapRef:
-          name: elfbot-riven
-          optional: true          
-      resources: *default_resources
     database:
-      image: postgres:16.4-alpine3.20
+      image: postgres:17-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -9632,10 +9629,61 @@ riven: &app_riven
           cpu: 500m
           memory: 8Gi
 
-rivenhobbit: *app_riven
-rivenranger: *app_riven
-rivenhalfling: *app_riven
-rivennazgul: *app_riven
+rivenfrontend:
+  podLabels:
+    app.elfhosted.com/name: riven-frontend
+  image:
+    repository: ghcr.io/elfhosted/riven-frontend
+    tag: v0.17.0@sha256:f8543deadc70e6386662a7feeb833398269eb513bf91c229e0a47be7394f7bea
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rivenfrontend,riven-frontend-env,riven-frontend-config"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: false # doesn't work with ilikedanger currently
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    config:
+      enabled: "true"
+      type: "custom"
+      mountPath: /riven/config
+      volumeSpec:
+        configMap:
+          name: riven-frontend-config          
+  envFrom:
+  - configMapRef:
+      name: riven-frontend-env
+  - configMapRef:
+      name: elfbot-rivenfrontend
+      optional: true
+  resources:
+    requests:
+      cpu: 1m
+      memory: 20Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000
 
 airdcpp: &app_airdcpp
   enabled: false
@@ -11538,7 +11586,7 @@ zurg: &app_zurg
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 100m
+      cpu: 150m
       memory: 32Mi
     limits:
       cpu: 1

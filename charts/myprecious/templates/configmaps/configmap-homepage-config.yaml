@@ -624,7 +624,7 @@ data:
             siteMonitor: http://plex-debrid:3001            
         {{ end }}     
 
-        {{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
+        {{ if .Values.riven.enabled }}
         - Riven:
             icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
             href: https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}
@@ -632,7 +632,7 @@ data:
             siteMonitor: http://riven:3000
             widget:
                 type: customapi
-                url: http://riven:8080/stats
+                url: http://riven:8080/api/v1/stats
                 refreshInterval: 10000
                 method: GET
                 mappings:

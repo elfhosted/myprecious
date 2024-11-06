@@ -2,27 +2,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: riven
+  name: riven-frontend
   labels:
-    app.kubernetes.io/name: riven
+    app.kubernetes.io/name: riven-frontend
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
   type: ClusterIP
   ports:
-  - port: 3001
-    targetPort: 3001
+  - port: 3000
+    targetPort: 3000
     protocol: TCP
     name: http
-  - port: 5432
-    targetPort: 5432
-    protocol: TCP
-    name: postgres
-  - port: 8080
-    targetPort: 8080
-    protocol: TCP
-    name: backend
   selector:
-    app.elfhosted.com/name: riven
+    app.elfhosted.com/name: riven-frontend
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
