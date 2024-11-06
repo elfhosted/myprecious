@@ -21,4 +21,8 @@ data:
     # If we are using a riven webhook, change it to the new /api/v1 syntax
     sed -i 's|riven:8080/webhook/overseerr|riven:8080/api/v1/webhook/overseerr|' /config/settings.json
 
+    # Fill in the webhook auth header
+    contents="$(jq '.notifications.agents.webhook.options.authHeader=\"Bearer {{ .Values.rivenexposed.apikey }}\"' /config/settings.json)" && \
+    echo -E "${contents}" > /config/settings.json 
+    
 {{ end }}
