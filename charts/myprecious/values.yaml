@@ -9638,7 +9638,7 @@ rivenfrontend:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rivenfrontend,riven-frontend-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rivenfrontend,riven-frontend-env,riven-frontend-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9658,7 +9658,7 @@ rivenfrontend:
     config:
       enabled: "true"
       type: "custom"
-      mountPath: /config
+      mountPath: /riven/config
       volumeSpec:
         configMap:
           name: riven-frontend-config          

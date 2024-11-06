@@ -5,6 +5,4 @@ metadata:
   name: riven-frontend-env
 data:
   ORIGIN: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
-  PROTOCOL_HEADER: x-forwarded-proto
-  HOST_HEADER: x-forwarded-host
 {{ end }}
