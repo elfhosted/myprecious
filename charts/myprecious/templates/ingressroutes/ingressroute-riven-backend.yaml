@@ -1,4 +1,4 @@
-{{ if or .Values.riven.enabled .Values.rivenhobbit.enabled .Values.rivenranger.enabled .Values.rivenhalfling.enabled .Values.rivennazgul.enabled }}
+{{ if .Values.riven.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
