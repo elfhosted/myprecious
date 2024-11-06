@@ -745,13 +745,13 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.suggestaarr.enabled }}
-          - name: "SuggestAarr"
+          {{ if .Values.suggestarr.enabled }}
+          - name: "suggestarr"
             icon: "fas fa-infinity"
             subtitle: "Automate Requests"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-suggestaarr.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-suggestarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 

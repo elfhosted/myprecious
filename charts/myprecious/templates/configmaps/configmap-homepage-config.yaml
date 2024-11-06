@@ -476,12 +476,12 @@ data:
               key: {{`{{HOMEPAGE_FILE_JELLYSEERR_KEY}}`}}       
         {{ end }}       
 
-        {{ if .Values.suggestaarr.enabled }}
-        - SuggestAarr:
+        {{ if .Values.suggestarr.enabled }}
+        - suggestarr:
             icon: mdi-infinity
-            href: https://{{ .Release.Name }}-suggestaarr.{{ .Values.dns_domain }}
+            href: https://{{ .Release.Name }}-suggestarr.{{ .Values.dns_domain }}
             description: Automamte Requests   
-            siteMonitor: http://suggestaarr:5000  
+            siteMonitor: http://suggestarr:5000  
         {{ end }}          
 
         {{ if .Values.petio.enabled }}
