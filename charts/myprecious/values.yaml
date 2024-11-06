@@ -5167,7 +5167,7 @@ plex: &app_plex
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest
+      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
@@ -5450,7 +5450,7 @@ jellyfin: &app_jellyfin
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest
+      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
       securityContext: *speedtest_securitycontext
     jellyfixer:
       image: quay.io/xsteadfastx/jellyfixer:latest
@@ -5602,7 +5602,7 @@ emby: &app_emby
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest
+      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
       securityContext: *speedtest_securitycontext
   ingress:
     main:
@@ -10716,7 +10716,7 @@ comet:
         subPath: comet/warp
         name: config
     speedtest:
-      image: openspeedtest/latest
+      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
@@ -10994,7 +10994,7 @@ mediaflowproxy:
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest
+      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
