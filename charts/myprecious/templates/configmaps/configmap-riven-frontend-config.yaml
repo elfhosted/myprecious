@@ -6,7 +6,7 @@ metadata:
 data:
   server.json: |
     { 
-      "backendURl": "http://riven:8080",
+      "backendUrl": "http://riven:8080",
       "apiKey": "{{ .Values.rivenexposed.apikey }}"
     }
 {{ end }}
