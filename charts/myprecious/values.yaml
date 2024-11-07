@@ -11587,7 +11587,7 @@ zurg: &app_zurg
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 150m
+      cpu: 200m
       memory: 32Mi
     limits:
       cpu: 1
