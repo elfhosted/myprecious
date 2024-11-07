@@ -3769,7 +3769,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:1c902fd774bc95bb56fdcb8ae0b3b312a2529d9fd9e257d0d41dbf18b67b80fe
+    tag: rolling@sha256:9aee7a9910a4c81d9899029ca47a7b43f2e45072f4b7bcb87dd83a0d9ca1170a
   enabled: false
   controller:
     annotations:
@@ -11536,7 +11536,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.07.0025-nightly@sha256:8cb3e2861127a1e84699fc53795fd56e81e45589e0ef9688fbb7430a37a3e6be
+    tag: 2024.11.07.1757-nightly@sha256:f4ab8113cbf496061fea13ca130ec3ac109d3d5bc67f71fc3992ba37594b0a01
   priorityClassName: tenant-normal
   controller:
     annotations:
