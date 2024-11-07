@@ -7679,7 +7679,8 @@ suggestarr:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
-    <<: *storagemounts
+    tmp: *tmp
+    backup: *backup
     config:
       enabled: true
       type: custom
