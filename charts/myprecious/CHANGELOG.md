@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.170.0](https://github.com/elfhosted/myprecious/compare/v1.169.0...v1.170.0) (2024-11-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.95.1 ([f8cdbfc](https://github.com/elfhosted/myprecious/commit/f8cdbfcf2b3846e5cf3b6470d705bd3cabf67924))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.891 ([4b575c3](https://github.com/elfhosted/myprecious/commit/4b575c3a8564000f12cbc17a31726df77ce3a886))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.14.0.9383 ([85e6467](https://github.com/elfhosted/myprecious/commit/85e646738fb6c44bc91f9fb0cd9e201d6b88f742))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.07.0025 ([b8141f6](https://github.com/elfhosted/myprecious/commit/b8141f6ccfb893dbbc9990b6174fdaa0452478e1))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.07.1455 ([3285eea](https://github.com/elfhosted/myprecious/commit/3285eeaeeefb741d8f932024d728c97bfd04464a))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.07.1757 ([eedc34e](https://github.com/elfhosted/myprecious/commit/eedc34e1c95d8825e1bc59fbc31247026fff09c5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 9aee7a9 ([aa99e60](https://github.com/elfhosted/myprecious/commit/aa99e60d173df02e072094be60b3e992138c2a97))
+
 ## [1.169.0](https://github.com/elfhosted/myprecious/compare/v1.168.0...v1.169.0) (2024-11-06)
 
 
