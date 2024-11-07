@@ -2631,7 +2631,7 @@ radarr: &app_radarr
       cpu: 1m
       memory: 500Mi
     limits:
-      cpu: 1
+      cpu: 900m
       memory: 2Gi
 
 radarr4k: &app_radarr4k
@@ -2743,7 +2743,7 @@ radarr4k: &app_radarr4k
       cpu: 1m
       memory: 500Mi
     limits:
-      cpu: 1
+      cpu: 900m
       memory: 1Gi
 
 
