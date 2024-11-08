@@ -2631,7 +2631,7 @@ radarr: &app_radarr
       cpu: 1m
       memory: 500Mi
     limits:
-      cpu: 1
+      cpu: 900m
       memory: 2Gi
 
 radarr4k: &app_radarr4k
@@ -2743,7 +2743,7 @@ radarr4k: &app_radarr4k
       cpu: 1m
       memory: 500Mi
     limits:
-      cpu: 1
+      cpu: 900m
       memory: 1Gi
 
 
@@ -3769,7 +3769,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:1c902fd774bc95bb56fdcb8ae0b3b312a2529d9fd9e257d0d41dbf18b67b80fe
+    tag: rolling@sha256:9aee7a9910a4c81d9899029ca47a7b43f2e45072f4b7bcb87dd83a0d9ca1170a
   enabled: false
   controller:
     annotations:
@@ -4554,7 +4554,6 @@ prowlarr: &app_prowlarr
         if [ -f /config/Definitions/Custom/elfhosted-torrentio.yml ]; then rm /config/Definitions/Custom/elfhosted-torrentio.yml; fi
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/torrentio.yml > /config/Definitions/Custom/torrentio.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfhosted-internal.yml > /config/Definitions/Custom/elfhosted-internal.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/annatar.yml > /config/Definitions/Custom/elfhosted-annatar.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
         curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/torbox.yml > /config/Definitions/Custom/torbox.yml
@@ -5477,7 +5476,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.30@sha256:bfe7f625df28b35f89ed7fabe2181bbcd180541902f28aa853626a6f966b2256
+    tag: 4.9.0.31@sha256:e7cd9ebe85d4b7d2f4a43fd190377d9b687ca0debebf73ff2f9b77f4268b8d57
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -6248,7 +6247,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.15.5-vaapi
+    tag: 0.15.6-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9829,7 +9828,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.888@sha256:d48d2b15a216970619a23eda659f34b96912b0c56fb5f9adab6180f94f3abd2a
+    tag: 0.22.891@sha256:8cd9ebf49cc939fd2868f4fb2fd4c001cdc321ac2155640992549eb50a6690ee
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11534,7 +11533,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.07.0025-nightly@sha256:8cb3e2861127a1e84699fc53795fd56e81e45589e0ef9688fbb7430a37a3e6be
+    tag: 2024.11.08.0025-nightly@sha256:bfd8e0347f6a2982ed3da1de57f50f365e1c2a789e0e63db7b578c511febb3a2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11585,7 +11584,7 @@ zurg: &app_zurg
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 150m
+      cpu: 200m
       memory: 32Mi
     limits:
       cpu: 1
