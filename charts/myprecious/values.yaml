@@ -6960,7 +6960,7 @@ jellystat:
         - name: POSTGRES_DB
           value: jellystat
         - name: POSTGRES_USER
-          value: postgres
+          value: jellystat
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
