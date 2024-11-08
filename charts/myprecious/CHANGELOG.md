@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.171.0](https://github.com/elfhosted/myprecious/compare/v1.170.0...v1.171.0) (2024-11-08)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.6 ([8f5527d](https://github.com/elfhosted/myprecious/commit/8f5527d71c6c78f87d4edbf08a0ae4259fe77012))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.31 ([3e85669](https://github.com/elfhosted/myprecious/commit/3e8566975b73c14ac27b24594b6954e32ea10f5b))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.893 ([7bc71fd](https://github.com/elfhosted/myprecious/commit/7bc71fd80b631b3635d9206049d79304b80ae9d4))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.1 ([8e07724](https://github.com/elfhosted/myprecious/commit/8e0772416fbf83e6376fe991953d26b3a3bee507))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.08.0025 ([db3ef0d](https://github.com/elfhosted/myprecious/commit/db3ef0d8688d72171853515ce77bd9854d48e8df))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.21.0 ([df4a64d](https://github.com/elfhosted/myprecious/commit/df4a64d972df008ce1c12f8aff2ffae3dd6d6c8c))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 6e5403f ([696be06](https://github.com/elfhosted/myprecious/commit/696be06565170f969cde71576a422807cec32873))
+
 ## [1.170.0](https://github.com/elfhosted/myprecious/compare/v1.169.0...v1.170.0) (2024-11-07)
 
 
