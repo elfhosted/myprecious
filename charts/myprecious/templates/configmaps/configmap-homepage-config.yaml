@@ -518,7 +518,7 @@ data:
             icon: jellystat.png
             href: https://{{ .Release.Name }}-jellystat.{{ .Values.dns_domain }}
             description: Jellyfin Statistics  
-            siteMonitor: http://jellystat:5000     
+            siteMonitor: http://jellystat:3000     
         {{ end }}   
 
         {{ if .Values.tunarr.enabled }}

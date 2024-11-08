@@ -13,7 +13,7 @@ spec:
       services:
         - name: jellystat
           kind: Service
-          port: 5000
+          port: 3000
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
 {{ end }}
