@@ -6328,7 +6328,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:14ebe1ae4209bce1f26ee8ae36a2bbb925ffb0f97acbe6806a9d10cb3121f7ac
+    tag: develop-vaapi@sha256:6e5403fbb97f91b8dbf98a43e99a85319033c9ab3898c9eb81be613cf0c94df8
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7600,7 +7600,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.0@sha256:42e9d47afef3dc90bd50fca7466f201a55dfc667fd1ca006f88bfc96f8b89846
+    tag: 0.32.1@sha256:4a8175d078b40c8e0c87fd440344424fcc35e82fce5692e6b1dbebb9d46d8e4b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9960,7 +9960,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.891@sha256:8cd9ebf49cc939fd2868f4fb2fd4c001cdc321ac2155640992549eb50a6690ee
+    tag: 0.22.893@sha256:1bbd151284bf529d723a6414d821adcb351ff8e712ccdf8f5852d75046daf299
   priorityClassName: tenant-normal
   controller:
     annotations:
