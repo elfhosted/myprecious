@@ -6866,7 +6866,6 @@ jellystat:
     runAsUser: 568
     runAsGroup: 568
     fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -6934,9 +6933,8 @@ jellystat:
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
-        mkdir -p /config/postgresql/backups
-        chown elfie:elfie /config/postgresql -R
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
 
       volumeMounts:
       - mountPath: /config
