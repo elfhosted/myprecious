@@ -513,6 +513,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.jellystat.enabled }}
+      - name: jellystat
+        group: manage-media
+        url: "http://jellystat:5000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.plexdebrid.enabled }}
       - name: plex-debrid
         group: manage-media

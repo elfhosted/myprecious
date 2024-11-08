@@ -1,0 +1,13 @@
+{{ if .Values.jellystat.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jellystat-env
+data:
+  POSTGRES_USER: jellystat
+  POSTGRES_PASSWORD: jellystat
+  POSTGRES_IP: localhost
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: jellystat
+  JWT_SECRET: notasecretsecretdoesntmatter
+{{ end }}
