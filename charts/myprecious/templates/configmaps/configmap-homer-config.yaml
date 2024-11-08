@@ -171,7 +171,6 @@ data:
         link-hover: "#ffdd57"
         background-image: /assets/backgrounds/background-dark.jpg
 
-    {{ if .Values.zurg.enabled }}
     # Optional message
     message:
       url: https://{{ .Release.Name }}.{{ .Values.dns_domain }}/assets/message/message.json
@@ -181,7 +180,6 @@ data:
       #   title: 'title'
       refreshInterval: 10000
       icon: "fas fa-door-open"
-    {{ end }}
     
     # Optional navbar
     # links: [] # Allows for navbar (dark mode, layout, and search) without any links
