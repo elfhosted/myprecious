@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.172.0](https://github.com/elfhosted/myprecious/compare/v1.171.0...v1.172.0) (2024-11-09)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.7 ([cd12ac8](https://github.com/elfhosted/myprecious/commit/cd12ac823ab4839c66063ad0025413cfb5da7806))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.8 ([688dd59](https://github.com/elfhosted/myprecious/commit/688dd592f84e1b6947955a0f555983b07dbb9285))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.9 ([9b8334a](https://github.com/elfhosted/myprecious/commit/9b8334a8507e875eecc22074a0299761ef4b0cdc))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.898 ([8250cce](https://github.com/elfhosted/myprecious/commit/8250cce45834126b9a917a754dccf771249f3a27))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.2 ([0320830](https://github.com/elfhosted/myprecious/commit/032083061197e17dbc5bce944ca55895b634db2f))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.3 ([3ce0981](https://github.com/elfhosted/myprecious/commit/3ce0981575915ccac7c4ac59d54d0840e0f918de))
+
 ## [1.171.0](https://github.com/elfhosted/myprecious/compare/v1.170.0...v1.171.0) (2024-11-08)
 
 
