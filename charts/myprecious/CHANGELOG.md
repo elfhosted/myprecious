@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.173.0](https://github.com/elfhosted/myprecious/compare/v1.172.0...v1.173.0) (2024-11-10)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.902 ([cf9fa7f](https://github.com/elfhosted/myprecious/commit/cf9fa7f6217460bd048240fc41f04ad492f7d527))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.10.0027 ([ea62982](https://github.com/elfhosted/myprecious/commit/ea6298203c1ed90cda14bd14dd8fc9b01301596f))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.10.0051 ([715f7fb](https://github.com/elfhosted/myprecious/commit/715f7fb901e664602d970e3489992e2fc9c88fbd))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.120.1 ([04e8cb1](https://github.com/elfhosted/myprecious/commit/04e8cb120544584b81d5c7826e75f09b12c82ec3))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.120.1 ([1bb0c86](https://github.com/elfhosted/myprecious/commit/1bb0c860e381cd4e8bb09214210fec2699c7c8c2))
+
 ## [1.172.0](https://github.com/elfhosted/myprecious/compare/v1.171.0...v1.172.0) (2024-11-09)
 
 
