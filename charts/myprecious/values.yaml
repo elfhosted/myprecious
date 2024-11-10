@@ -6247,7 +6247,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.15.6-vaapi
+    tag: 0.15.9-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9960,7 +9960,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.893@sha256:1bbd151284bf529d723a6414d821adcb351ff8e712ccdf8f5852d75046daf299
+    tag: 0.22.902@sha256:eeeadac29bb03e409b878e42aa07e22c1784d91f95c660e7ee9600627826403b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10973,7 +10973,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.1@sha256:d305092168bb7d3b5cb6abda2f225a93a668f3931bc7ba90c4aaf5d1fdeb025a
+    tag: 4.1.3@sha256:e6e49665cde7262fc4b74c1b66853607520b89df8f52b107e6fcaae256674bcd
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -11665,7 +11665,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.08.0025-nightly@sha256:bfd8e0347f6a2982ed3da1de57f50f365e1c2a789e0e63db7b578c511febb3a2
+    tag: 2024.11.10.0051-nightly@sha256:164a8b525f0d3c4cebe47ea5ce45d3c93514623d3e2443f4333b5e778687c6ea
   priorityClassName: tenant-normal
   controller:
     annotations:
