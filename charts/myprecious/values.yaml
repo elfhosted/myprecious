@@ -7678,7 +7678,7 @@ plextraktsync:
       cpu: 1m
       memory: 64Mi
     limits:
-      cpu: 1
+      cpu: 100m # no way this should be using so much resources
       memory: 1Gi
 
 decluttarr: &app_decluttarr
