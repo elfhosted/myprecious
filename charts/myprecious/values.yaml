@@ -3602,12 +3602,15 @@ kapowarr:
 
 calibreweb:
   enabled: false
+  podLabels:
+    app.elfhosted.com/name: calibre-web
+  priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/calibre-web-automated
-    tag: v2.1.2@sha256:adef98ea85eadf3e50558a450c11033ed00e3b0de1a109c61730aa0c9aa62e24
+    tag: v2.1.2@sha256:bf554d609e019db823c4d20d81cae5008ef83e2cff20838646999d771bbd4ff6
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibreweb"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibre-web"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -3627,7 +3630,7 @@ calibreweb:
     DOCKER_MODS: linuxserver/mods:universal-calibre
   envFrom:
   - configMapRef:
-      name: elfbot-calibreweb
+      name: elfbot-calibre-web
       optional: true
   persistence:
     <<: *storagemounts
@@ -3635,32 +3638,16 @@ calibreweb:
       enabled: true
       type: custom
       mountPath: /config/
-      subPath: calibreweb/config
+      subPath: calibre-web
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config
-    calibre-library:
-      enabled: true
-      type: custom
-      mountPath: /calibre-library/
-      subPath: calibreweb/library
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    cwa-book-ingest:
-      enabled: true
-      type: custom
-      mountPath: /cwa-book-ingest
-      subPath: calibreweb/cwa-book-ingest
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config          
+          claimName: config     
     elfbot:
       enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-calibreweb
+          name: elfbot-calibre-web
           optional: true
   ingress:
     main:
@@ -3680,9 +3667,29 @@ calibreweb:
         name: backup
       - mountPath: /config
         name: config
-        subPath: calibreweb
+        subPath: calibre-web
       - mountPath: /tmp
         name: tmp
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # There are symlinks pre-prepared for these
+        mkdir -p /config/calibre-library
+        mkdir -p /config/cwa-book-ingest
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: calibre-web
+      resources: *default_resources
+      securityContext: *default_securitycontext        
   resources:
     requests:
       cpu: 1m
