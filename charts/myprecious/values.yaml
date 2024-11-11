@@ -3602,7 +3602,6 @@ kapowarr:
 
 calibreweb:
   enabled: false
-  priorityClassName:
   image:
     repository: ghcr.io/elfhosted/calibre-web-automated
     tag: v2.1.2@sha256:adef98ea85eadf3e50558a450c11033ed00e3b0de1a109c61730aa0c9aa62e24
@@ -3636,18 +3635,26 @@ calibreweb:
       enabled: true
       type: custom
       mountPath: /config/
-      subPath: calibreweb
+      subPath: calibreweb/config
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    # config-calibre:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /calibre/
-    #   subPath: calibre
-    #   volumeSpec:
-    #     persistentVolumeClaim:
-    #       claimName: config
+    calibre-library:
+      enabled: true
+      type: custom
+      mountPath: /calibre-library/
+      subPath: calibreweb/library
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    cwa-book-ingest:
+      enabled: true
+      type: custom
+      mountPath: /cwa-book-ingest
+      subPath: calibreweb/cwa-book-ingest
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -3681,7 +3688,7 @@ calibreweb:
       cpu: 1m
       memory: 128Mi
     limits:
-      cpu: 10
+      cpu: 1
       memory: 1Gi
 
 pyload:
