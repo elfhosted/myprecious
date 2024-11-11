@@ -3604,8 +3604,8 @@ calibreweb:
   enabled: false
   priorityClassName:
   image:
-    repository: linuxserver/calibre-web
-    tag: nightly-version-0ff3f0f4
+    repository: ghcr.io/elfhostetd/calibre-web-automated
+    tag: v2.1.2@sha256:adef98ea85eadf3e50558a450c11033ed00e3b0de1a109c61730aa0c9aa62e24
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibreweb"
