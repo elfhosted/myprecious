@@ -3783,7 +3783,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:9aee7a9910a4c81d9899029ca47a7b43f2e45072f4b7bcb87dd83a0d9ca1170a
+    tag: rolling@sha256:1bad8dbc2d5fb32cc0450723f9b8e01fdaa426f448e5efbc494b00350ad99efb
   enabled: false
   controller:
     annotations:
@@ -5766,7 +5766,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.11.1@sha256:a866a979644b5522609ac3503e4e3958641a9bb4fe8053ed332dc4386d6d6204
+      image: ghcr.io/elfhosted/homer:v24.11.3@sha256:bc04df5313836ecb23dad95671a8ee8075b750c51b3c23c52739c6c5c51dc3ed
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -9974,7 +9974,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.902@sha256:eeeadac29bb03e409b878e42aa07e22c1784d91f95c660e7ee9600627826403b
+    tag: 0.22.903@sha256:79b09806804addf7e7fe169b31c3f563e0e8cf0730da660b2ad9b2334f1c9381
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11457,7 +11457,7 @@ recyclarr:
   enabled: false
   image:
     repository: ghcr.io/recyclarr/recyclarr
-    tag: latest@sha256:2aaa0205a93171b93a159e4665004ccee1a5aacd60359fb8d7683db0ae7e774b
+    tag: latest@sha256:619c3b8920a179f2c578acd0f54e9a068f57c049aff840469eed66e93a4be2cf
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11560,7 +11560,7 @@ recyclarr:
     podinfo:
       image: stefanprodan/podinfo # used to run probes from gatus
     sync:
-      image: ghcr.io/recyclarr/recyclarr:latest@sha256:2aaa0205a93171b93a159e4665004ccee1a5aacd60359fb8d7683db0ae7e774b
+      image: ghcr.io/recyclarr/recyclarr:latest@sha256:619c3b8920a179f2c578acd0f54e9a068f57c049aff840469eed66e93a4be2cf
       command:
       - /bin/bash
       - -c
@@ -11679,7 +11679,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.11.0027-nightly@sha256:de2be5dd05c9cdae414f314b5622a1ccd0176e408e451390838cc18133c6d724
+    tag: 2024.11.11.1542-nightly@sha256:f0652d6775431b12f05b7e8742be0dfa115415e462d8dd22e403cf629d01aab5
   priorityClassName: tenant-normal
   controller:
     annotations:
