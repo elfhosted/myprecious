@@ -4855,7 +4855,9 @@ readarr:
         set -e
 
         # Set auth to external
-        # sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
+        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
+        sed -i  "s|<AuthenticationMethod>Basic</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
+
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4962,7 +4964,9 @@ readarraudio:
         set -e
 
         # Set auth to external
-        # sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
+        # Set auth to external
+        sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
+        sed -i  "s|<AuthenticationMethod>Basic</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
       volumeMounts:
       - mountPath: /config
         name: config
