@@ -47,8 +47,7 @@ data:
     sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
 
     # Enable repair everywhere
-    # disabled on 13 nov 2024 to debug 
-    # sed -i  "s/enable_repair:.*/enable_repair: true/" /config/config.yml
+    sed -i  "s/enable_repair:.*/enable_repair: true/" /config/config.yml
 
 
   config.yml: |
