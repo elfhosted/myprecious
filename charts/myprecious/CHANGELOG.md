@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.175.0](https://github.com/elfhosted/myprecious/compare/v1.174.0...v1.175.0) (2024-11-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.95.2 ([b558d06](https://github.com/elfhosted/myprecious/commit/b558d06cda117b6b45b2a935b1cb28be96821396))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.907 ([8d57ce5](https://github.com/elfhosted/myprecious/commit/8d57ce555cde3d344ae27aab90b993c666bb970a))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.8.0 ([c928e18](https://github.com/elfhosted/myprecious/commit/c928e18dd50458d34eea383df67b13eef721cd97))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.12.0026 ([df16513](https://github.com/elfhosted/myprecious/commit/df165137c51ccffa4c64faca948942fb431441e9))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to 4213831 ([0c52ca5](https://github.com/elfhosted/myprecious/commit/0c52ca5e1ecbd7e6f2dee140114dde2350ba159c))
+* **app:** update docker.io/redis:7.4-alpine docker digest to bcc5b7e ([182a799](https://github.com/elfhosted/myprecious/commit/182a7992ca41037e750abba2840c74e92159b9fb))
+* **app:** update docker.io/redis:7.4-alpine docker digest to be113c8 ([9683f87](https://github.com/elfhosted/myprecious/commit/9683f87f51507b7c998ebb35aa80ce90446bed4d))
+* **app:** update docker.io/redis:7.4-alpine docker digest to ea9fcb1 ([cc2442a](https://github.com/elfhosted/myprecious/commit/cc2442a57f78ed7d2d6287a21ec08ea093cec6f3))
+* **app:** update docker.io/redis:7.4-alpine docker digest to f9f38fd ([e83d79a](https://github.com/elfhosted/myprecious/commit/e83d79a1a0d72ffd9551a9c0c439adf3e792bd0a))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 9f1148e ([811fa61](https://github.com/elfhosted/myprecious/commit/811fa61104e24ac55d64f817b2c59b43f08bf652))
+* **app:** update ghcr.io/elfhosted/rclone:1.68.1 docker digest to fb01de5 ([5297386](https://github.com/elfhosted/myprecious/commit/529738619d6f021561e26d8e26a5cc188530604b))
+* **app:** update redis:alpine docker digest to 4213831 ([8db4564](https://github.com/elfhosted/myprecious/commit/8db456475d8466018e56149ffefcf1ef03e1e3f7))
+* **app:** update redis:alpine docker digest to bcc5b7e ([19e04fb](https://github.com/elfhosted/myprecious/commit/19e04fb16d4e7eb5986e892c5c4e6884d6b55e6d))
+* **app:** update redis:alpine docker digest to be113c8 ([9673546](https://github.com/elfhosted/myprecious/commit/9673546160229e3e8dbd0f06cacbc6151812bb51))
+* **app:** update redis:alpine docker digest to ea9fcb1 ([468ae8c](https://github.com/elfhosted/myprecious/commit/468ae8c7dea026cbacf288fb3249137538c7e14a))
+* **app:** update redis:alpine docker digest to f9f38fd ([b345934](https://github.com/elfhosted/myprecious/commit/b3459348e62921cace0c8e3ebc41adf2a47ee15d))
+
 ## [1.174.0](https://github.com/elfhosted/myprecious/compare/v1.173.0...v1.174.0) (2024-11-11)
 
 
