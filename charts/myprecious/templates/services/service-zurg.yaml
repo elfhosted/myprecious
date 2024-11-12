@@ -5,6 +5,7 @@ metadata:
   name: zurg
   labels:
     app.kubernetes.io/name: zurg
+    zyclops.elfhosted.com/scrape: "true"
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
