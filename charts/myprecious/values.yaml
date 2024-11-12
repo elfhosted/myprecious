@@ -10751,7 +10751,7 @@ annatar:
       config: # We have to set this to null so that we can override with our own config
   additionalContainers:
     redis:
-      image: redis:alpine@sha256:de13e74e14b98eb96bdf886791ae47686c3c5d29f9d5f85ea55206843e3fce26
+      image: redis:alpine@sha256:ea9fcb1c25a20121af8a57d42cd5fea83d3b2cbb497a993f2a15265e0d59043e
       volumeMounts:
       - mountPath: /data
         name: redis
