@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.174.0](https://github.com/elfhosted/myprecious/compare/v1.173.0...v1.174.0) (2024-11-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/homer docker tag to v24.11.3 ([e9af0cb](https://github.com/elfhosted/myprecious/commit/e9af0cba619be3ac15408ee8d33f0d2338d56b10))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.903 ([195d6bd](https://github.com/elfhosted/myprecious/commit/195d6bd8c28403ed944e845147b5bc7de1ccb374))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.3 ([9ce6fac](https://github.com/elfhosted/myprecious/commit/9ce6fac76e07382402cd27cb1b75631fa00fe09a))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.4 ([acdd34c](https://github.com/elfhosted/myprecious/commit/acdd34c3ee728059220b8f2b30528eaaff71fc08))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script docker tag to v1.4.5 ([8c08b11](https://github.com/elfhosted/myprecious/commit/8c08b1112f801845defba73cb1f3f1e95b81f100))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.11.0027 ([7b9fb92](https://github.com/elfhosted/myprecious/commit/7b9fb92a14348f2a6c56e78accccb8721f0cd41f))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.11.1015 ([643018a](https://github.com/elfhosted/myprecious/commit/643018acd4e79971f2e2d867e07f4d07ba2cfdac))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.11.1542 ([06bb73a](https://github.com/elfhosted/myprecious/commit/06bb73a05e5139c9c819d547ee446c83e8705b9d))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.12 ([9e16da8](https://github.com/elfhosted/myprecious/commit/9e16da8e17a7f5a67250a58c97391d77249008e9))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 1bad8db ([665c6a9](https://github.com/elfhosted/myprecious/commit/665c6a92c46765ce1c80e15fb21a987d07691649))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 619c3b8 ([5bfcf9d](https://github.com/elfhosted/myprecious/commit/5bfcf9def8a073800ae0d6fc63ebe3f99d03a906))
+* only show zurg stats to zurg users ([20a3732](https://github.com/elfhosted/myprecious/commit/20a3732429589eb17e3d9e1d830669b94578e1f9))
+
 ## [1.173.0](https://github.com/elfhosted/myprecious/compare/v1.172.0...v1.173.0) (2024-11-10)
 
 

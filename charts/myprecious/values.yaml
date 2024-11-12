@@ -9979,7 +9979,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.903@sha256:79b09806804addf7e7fe169b31c3f563e0e8cf0730da660b2ad9b2334f1c9381
+    tag: 0.22.907@sha256:3807913a44963bc7d32f91da34104b4bd63e28fc5786f27c1e0f22be41579259
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10756,7 +10756,7 @@ annatar:
       config: # We have to set this to null so that we can override with our own config
   additionalContainers:
     redis:
-      image: redis:alpine@sha256:de13e74e14b98eb96bdf886791ae47686c3c5d29f9d5f85ea55206843e3fce26
+      image: redis:alpine@sha256:be113c8e5689dd5391c4c082972bb651ab739e63c285ad4938efe9cffbce7320
       volumeMounts:
       - mountPath: /data
         name: redis
@@ -11105,7 +11105,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.7.5@sha256:b1e7eb0bb560246a911214d6e70dc42561a8f1aa35ae58b21638c6595fdda9ff
+    tag: 1.8.0@sha256:a8ba719472cf8d28d15217401f3e6350fcc2efd02e18761e408e207044dbaf50
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
@@ -11684,7 +11684,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.11.1542-nightly@sha256:f0652d6775431b12f05b7e8742be0dfa115415e462d8dd22e403cf629d01aab5
+    tag: 2024.11.12.0026-nightly@sha256:1bee6211d2a160de9c280000869fe32639d03ffcf75485a475f964d994374e77
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12081,7 +12081,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.95.1@sha256:66aa6056ac5867c931f8838d170c5d0e9e668bf18b069421538db7e683616f55
+    tag: 4.95.2@sha256:9e9168363caad3df430a8f19cf9b66be8e64d44562080801c293b3792b67f9e3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12737,7 +12737,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:de13e74e14b98eb96bdf886791ae47686c3c5d29f9d5f85ea55206843e3fce26
+      image: docker.io/redis:7.4-alpine@sha256:be113c8e5689dd5391c4c082972bb651ab739e63c285ad4938efe9cffbce7320
       envFrom:
       - configMapRef:
           name: immich-env
