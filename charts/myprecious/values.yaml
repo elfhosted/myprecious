@@ -12732,7 +12732,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:f9f38fd31d4de16420a216fcfc5374438287786af48f98071409c917aec63443
+      image: docker.io/redis:7.4-alpine@sha256:be113c8e5689dd5391c4c082972bb651ab739e63c285ad4938efe9cffbce7320
       envFrom:
       - configMapRef:
           name: immich-env
