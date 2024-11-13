@@ -4074,7 +4074,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.21.0@sha256:759773a89c64ceb77e4ffdbace0bb70c8266b1f58aaaa3937d45b45ac8fab8ae
+    tag: 7.21.0@sha256:1dad366bde7d0d4d705ba9a4cfdf89343b960ac2c834e8b5f21d2090b9e4da38
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9982,7 +9982,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.907@sha256:3807913a44963bc7d32f91da34104b4bd63e28fc5786f27c1e0f22be41579259
+    tag: 0.22.910@sha256:3f4cb0f7dfe5d18949d0f4eccd9864e9557424bceea0902749c3844ca29c7eed
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10759,7 +10759,7 @@ annatar:
       config: # We have to set this to null so that we can override with our own config
   additionalContainers:
     redis:
-      image: redis:alpine@sha256:be113c8e5689dd5391c4c082972bb651ab739e63c285ad4938efe9cffbce7320
+      image: redis:alpine@sha256:c1e88455c85225310bbea54816e9c3f4b5295815e6dbf80c34d40afc6df28275
       volumeMounts:
       - mountPath: /data
         name: redis
@@ -10995,7 +10995,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.3@sha256:e6e49665cde7262fc4b74c1b66853607520b89df8f52b107e6fcaae256674bcd
+    tag: 4.1.4@sha256:8217a2533a2d3aff0af94254a1872f8c30a0e76d653b8cadb36be7e321343306
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -12740,7 +12740,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:be113c8e5689dd5391c4c082972bb651ab739e63c285ad4938efe9cffbce7320
+      image: docker.io/redis:7.4-alpine@sha256:c1e88455c85225310bbea54816e9c3f4b5295815e6dbf80c34d40afc6df28275
       envFrom:
       - configMapRef:
           name: immich-env
