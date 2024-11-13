@@ -11,7 +11,7 @@ spec:
         - name: mediaflow-proxy
           kind: Service
           port: 8888
-    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
+    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`) && (PathPrefix(`/speed`) && !PathPrefix(`/speedtest`))
       kind: Rule
       services:
         - name: mediaflow-proxy

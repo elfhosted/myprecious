@@ -1,3 +1,4 @@
+{{ if .Values.zyclops.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
@@ -13,3 +14,4 @@ spec:
       - ports:
         - port: '8080'
           protocol: TCP
+{{ end }}
