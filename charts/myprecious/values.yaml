@@ -10768,7 +10768,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.32.2@sha256:9173883363799fce4f2d700062b304ee6853276d37fc7cd15f84a093dc98db95
+    tag: v1.32.2@sha256:3eeec34ef89ea490a813e3232d860403d1b3390f70749478244dd73b2fa0c281
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -10851,22 +10851,22 @@ comet:
       optional: true
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
-    warp:
-      image: ghcr.io/elfhosted/warp:rolling@sha256:4e89fc07ff24c30ffc7f3804d7f3738d634c7b9aa4fecb4941618a366e43d8c9
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        privileged: false
-        capabilities:
-          add:
-          - NET_ADMIN
-      envFrom:
-      - secretRef:
-          name: comet-env
-      volumeMounts:
-      - mountPath: /data
-        subPath: comet/warp
-        name: config
+    # warp:
+    #   image: ghcr.io/elfhosted/warp:rolling@sha256:4e89fc07ff24c30ffc7f3804d7f3738d634c7b9aa4fecb4941618a366e43d8c9
+    #   securityContext:
+    #     runAsUser: 1000
+    #     runAsGroup: 1000
+    #     privileged: false
+    #     capabilities:
+    #       add:
+    #       - NET_ADMIN
+    #   envFrom:
+    #   - secretRef:
+    #       name: comet-env
+    #   volumeMounts:
+    #   - mountPath: /data
+    #     subPath: comet/warp
+    #     name: config
     speedtest:
       image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
       env:
