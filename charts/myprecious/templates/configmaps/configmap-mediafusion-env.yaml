@@ -21,4 +21,5 @@ data:
   is_scrap_from_zilean: "true"
   addon_name: "MediaFusion | {{ .Release.Name }}"
   branding_description: "Welcome, {{ .Release.Name }}, to your own ElfHosted mediafusion instance!"
+  db_max_connections: "30"
 {{ end }}
