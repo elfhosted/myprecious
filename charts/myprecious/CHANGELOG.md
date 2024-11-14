@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.177.0](https://github.com/elfhosted/myprecious/compare/v1.176.0...v1.177.0) (2024-11-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.33.0 ([b40c750](https://github.com/elfhosted/myprecious/commit/b40c750763cf0c0925e6edd96385bb88f7089127))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.34.0 ([d496b98](https://github.com/elfhosted/myprecious/commit/d496b98c96d23160d50c2e99c47f42d2cc33285e))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.35.0 ([ad06978](https://github.com/elfhosted/myprecious/commit/ad06978b892d4056232460dea330070dd2ebdf1b))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.35.1 ([3e5fcb5](https://github.com/elfhosted/myprecious/commit/3e5fcb503aefc6c509b074925c340a85ce9d0f58))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.35.2 ([8c08f2d](https://github.com/elfhosted/myprecious/commit/8c08f2d99e794bccb3e2184ab373e74f5ed4e6e9))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.35.3 ([caca7f0](https://github.com/elfhosted/myprecious/commit/caca7f034feb1b9f7a919bcc10d7e21e510c94fa))
+* **app:** update ghcr.io/elfhosted/homer docker tag to v24.11.4 ([f77607a](https://github.com/elfhosted/myprecious/commit/f77607a93cfd2485243d2d3b95f00892e3abad25))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.932 ([3849356](https://github.com/elfhosted/myprecious/commit/384935694cb6bd3359c71e33d0a1e481366f25be))
+* Let Comet 💫 scrape MediaFusion! 🎞️ ([086206c](https://github.com/elfhosted/myprecious/commit/086206cd8475d3e37df285051f13cedb83ddaead))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to cdba700 ([7ebd93f](https://github.com/elfhosted/myprecious/commit/7ebd93f7eaf4a5521c48186cadffd786aaef11c8))
+* **app:** update ghcr.io/elfhosted/mediafusion:4.1.5 docker digest to 40bea20 ([154b68e](https://github.com/elfhosted/myprecious/commit/154b68eefa4f355abfeda42cb5c09ccb46eef589))
+
 ## [1.176.0](https://github.com/elfhosted/myprecious/compare/v1.175.0...v1.176.0) (2024-11-14)
 
 
