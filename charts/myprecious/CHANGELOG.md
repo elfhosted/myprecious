@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.176.0](https://github.com/elfhosted/myprecious/compare/v1.175.0...v1.176.0) (2024-11-14)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v8.13 ([f5217ca](https://github.com/elfhosted/myprecious/commit/f5217ca6ecd9b04c5938bf09e7c7ec8a0742b1e0))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.15.10 ([2d27341](https://github.com/elfhosted/myprecious/commit/2d2734190724f0ffda6f4c33a4c3346e0f2e6371))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.910 ([a0c57e6](https://github.com/elfhosted/myprecious/commit/a0c57e649e84b845aa291f0a7d8060eaa5d1b690))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.1.0 ([ab0d513](https://github.com/elfhosted/myprecious/commit/ab0d513c5de26cf6c836cd3e0ef91a2aa562d9c6))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.4 ([9dc8449](https://github.com/elfhosted/myprecious/commit/9dc84491fd8e4f188ef1f57af69f10ca5b6f1d75))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.5 ([9cd57a3](https://github.com/elfhosted/myprecious/commit/9cd57a30c12580d2975cbb88343d6af02428a160))
+* disable WARP in Comet (unnecessary) to fix file limit issue ([f632153](https://github.com/elfhosted/myprecious/commit/f632153f9249cf1e3d4cfa9b499dec39c94ba7bd))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to deea9a6 ([1821bcf](https://github.com/elfhosted/myprecious/commit/1821bcfada2f9132b5f0016db4b584c68df0c572))
+* **app:** update docker.io/redis:7.4-alpine docker digest to c1e8845 ([f3df406](https://github.com/elfhosted/myprecious/commit/f3df4068238e880439e1c00999174f4e28e8b31e))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 6bc2838 ([bdfb199](https://github.com/elfhosted/myprecious/commit/bdfb1999715f3b65447c95a4d2e3494e06b9bdce))
+* **app:** update quay.io/linuxserver.io/calibre:7.21.0 docker digest to 1dad366 ([ee3021c](https://github.com/elfhosted/myprecious/commit/ee3021c2e0ab25acf1fc56b2b4127914333f1605))
+* **app:** update redis:alpine docker digest to c1e8845 ([e10a970](https://github.com/elfhosted/myprecious/commit/e10a970d76b81be4b084981391776405609972f0))
+
 ## [1.175.0](https://github.com/elfhosted/myprecious/compare/v1.174.0...v1.175.0) (2024-11-12)
 
 

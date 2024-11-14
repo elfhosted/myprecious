@@ -3786,7 +3786,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:9f1148e8195fa00bd0a23d6a5721d60420fd74acc88cdcdc3c4df5d9d30606f1
+    tag: rolling@sha256:cdba700a2b1e611c4a9b6fa2f6191d48e9982b4f057ea4d08e18683171e5482a
   enabled: false
   controller:
     annotations:
@@ -5774,7 +5774,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.11.3@sha256:bc04df5313836ecb23dad95671a8ee8075b750c51b3c23c52739c6c5c51dc3ed
+      image: ghcr.io/elfhosted/homer:v24.11.4@sha256:6c4ca6ce266d41da3a82bac5b5ee56821ae5a8c196f828be5cd5f16f266fde98
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -9982,7 +9982,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.910@sha256:3f4cb0f7dfe5d18949d0f4eccd9864e9557424bceea0902749c3844ca29c7eed
+    tag: 0.22.932@sha256:095776b355859c67488a657057619d9f64639615552ef812d48cf9299fbd5440
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10518,7 +10518,7 @@ pgadmin:
   enabled: false
   image:
     repository: dpage/pgadmin4
-    tag: "8.12"
+    tag: "8.13"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10768,7 +10768,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.32.2@sha256:3eeec34ef89ea490a813e3232d860403d1b3390f70749478244dd73b2fa0c281
+    tag: v1.35.3@sha256:48fff7c0087b79d6057292fbd31739a2ab4c0822eb138591bf92362b2709608d
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -10996,7 +10996,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.5@sha256:24c519d781ae3ebfe6872a582f24cc4cbfa80bf9c88b3e658e7d089195cfc9df
+    tag: 4.1.5@sha256:40bea2097f7acc381279911e8a2b687286e1722805c7db7716468cab2f5c4a78
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
