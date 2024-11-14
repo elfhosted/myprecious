@@ -10851,6 +10851,7 @@ comet:
       optional: true
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
+    # don't need this at present
     # warp:
     #   image: ghcr.io/elfhosted/warp:rolling@sha256:4e89fc07ff24c30ffc7f3804d7f3738d634c7b9aa4fecb4941618a366e43d8c9
     #   securityContext:
