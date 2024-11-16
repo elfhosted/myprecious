@@ -7909,7 +7909,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:fb01de54ad3be4c10eeecf28f9ca1e27a11a9a494b8108fa79ee5c4e66ce2bb1
+    tag: 1.68.2@sha256:de917bfe24f0e9289bd520aa161090619966e0592716e5fa4445af36d92abdae
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -8022,7 +8022,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:fb01de54ad3be4c10eeecf28f9ca1e27a11a9a494b8108fa79ee5c4e66ce2bb1
+    tag: 1.68.2@sha256:de917bfe24f0e9289bd520aa161090619966e0592716e5fa4445af36d92abdae
   command:
   - /rclonefm.sh
   controller:
@@ -8148,7 +8148,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.1@sha256:fb01de54ad3be4c10eeecf28f9ca1e27a11a9a494b8108fa79ee5c4e66ce2bb1
+    tag: 1.68.2@sha256:de917bfe24f0e9289bd520aa161090619966e0592716e5fa4445af36d92abdae
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -10768,7 +10768,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.36.1@sha256:1461b5627fd8041c732d7124704e60cf1c17f9b950583261506c58717846d9d9
+    tag: v1.37.0@sha256:c0bd5b9528ac9c353293fc1499f34cdfa81d0563d6de6414ec03b2054b8bd752
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
