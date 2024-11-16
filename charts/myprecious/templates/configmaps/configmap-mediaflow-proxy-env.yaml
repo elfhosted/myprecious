@@ -5,4 +5,19 @@ metadata:
   name: mediaflow-proxy-env
 data:
   API_PASSWORD: "{{ .Values.mediaflowproxy.API_PASSWORD | default }}"
+  proxy_routes: |
+    {
+      "https://*.alldebrid.com": {
+          "proxy_url": "$PROXY_URL"
+      },
+      "https://*.debrid.it": {
+          "proxy_url": "$PROXY_URL"
+      },
+      "https://*.iosplayer.ru": {
+          "proxy_url": "$PROXY_URL"
+      },
+      "https://*.mizhls.ru": {
+          "proxy_url": "$PROXY_URL"
+      }
+    }
 {{ end }}
