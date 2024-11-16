@@ -5,9 +5,6 @@ metadata:
   name: zurg
   labels:
     app.kubernetes.io/name: zurg
-    {{ if .Values.zyclops.enabled }}
-    zyclops.elfhosted.com/scrape: "true"
-    {{ end }}
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:

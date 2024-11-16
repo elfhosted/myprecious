@@ -1,8 +1,7 @@
-{{ if .Values.zyclops.enabled }}
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: permit-zyclops-ingress-zurg
+  name: permit-zilean-ingress-zurg
 spec:
   endpointSelector:
     matchLabels:
@@ -16,9 +15,8 @@ spec:
             protocol: TCP
     - fromEndpoints:
         - matchLabels:
-            io.kubernetes.pod.namespace: zyclops
+            io.kubernetes.pod.namespace: zilean
       toPorts:
         - ports:
           - port: '9999'
             protocol: TCP
-{{ end }}
