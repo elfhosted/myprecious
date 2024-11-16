@@ -11090,6 +11090,7 @@ mediafusion:
         PORT_PERSIST: "1"
         NFTABLES: "1"
         VPNDNS: "0"
+        HTTPPROXY: "on" # we use this for mediaflowproxy
       envFrom:
       - secretRef:
           name: mediafusion-vpn
@@ -11170,9 +11171,7 @@ mediaflowproxy:
       name: mediaflow-proxy-env
   - configMapRef:
       name: elfbot-mediaflow-proxy
-      optional: true
-  - secretRef:
-      name: mediaflowproxy-env      
+      optional: true   
 
 stremiojackettcommunity: &stremiojackettcommunity
   enabled: false
