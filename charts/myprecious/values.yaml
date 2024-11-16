@@ -11175,6 +11175,8 @@ mediaflowproxy:
   - configMapRef:
       name: elfbot-mediaflow-proxy
       optional: true
+  - secretRef:
+      name: mediaflowproxy-env      
 
 stremiojackettcommunity: &stremiojackettcommunity
   enabled: false
