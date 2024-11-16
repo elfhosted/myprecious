@@ -11118,7 +11118,7 @@ mediaflowproxy:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
-      secret.reloader.stakater.com/reload: "mediaflow-proxy-env"
+      secret.reloader.stakater.com/reload: "mediaflowproxy-env"
     strategy:
     rollingUpdate:
       unavailable: 1
