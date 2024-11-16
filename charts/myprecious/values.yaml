@@ -11090,7 +11090,6 @@ mediafusion:
         PORT_PERSIST: "1"
         NFTABLES: "1"
         VPNDNS: "0"
-        HTTPPROXY: "on" # we use this for mediaflowproxy
       envFrom:
       - secretRef:
           name: mediafusion-vpn
