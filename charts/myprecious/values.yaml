@@ -11119,7 +11119,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.3@sha256:d8f5ca470fd4c28f40622df9aefea0925a634f608e789d97c4ebb505cf5b909b
+    tag: 1.9.4@sha256:8b570ee51f94541003485ac655844961c1466700aa13e108a8224a62ecc1f3ff
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
