@@ -14,10 +14,10 @@ spec:
     targetPort: 8000
     protocol: TCP
     name: http
-  - port: 2020
-    targetPort: 2020
+  - port: 8888
+    targetPort: 8888
     protocol: TCP
-    name: dante    
+    name: tinyproxy
   selector:
     app.kubernetes.io/name: mediafusion
     app.kubernetes.io/instance: {{ .Release.Name }}
