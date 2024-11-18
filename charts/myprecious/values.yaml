@@ -7593,9 +7593,6 @@ kometa: &app_kometa
       memory: 4Gi
 
 imagemaid:
-  enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/imagemaid
