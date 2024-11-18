@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: imagemaid
   selector:
-    app.elfhosted.com/name: plex
+    app.elfhosted.com/name: imagemaid
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
