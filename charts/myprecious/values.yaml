@@ -5,9 +5,6 @@ safeToRelease: true
 location:
   enabled: false
 
-imagemaid:
-  enabled: false
-
 # false by default
 volsync:
   enabled: false
@@ -5190,25 +5187,6 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
-    imagemaid:
-      image: ghcr.io/elfhosted/imagemaid:v1.1.1@sha256:1ac456479c1dc40f4da0e604a619f84f847442bab5adb2720b057fbbdaa041dc
-      volumeMounts:
-      - mountPath: /tmp
-        name: tmp
-      - mountPath: /config
-        name: config
-        subPath: plex/imagemaid
-      - mountPath: /Library
-        name: config
-        subPath: plex/Library
-      envFrom:
-      - configMapRef:
-          name: imagemaid-env
-          optional: true
-      - configMapRef:
-          name: elfbot-imagemaid
-          optional: true
-      securityContext: *default_securitycontext
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -7612,6 +7590,92 @@ kometa: &app_kometa
     limits:
       cpu: 1
       memory: 4Gi
+
+imagemaid:
+  enabled: false
+  sso:
+    enabled: true
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/imagemaid
+    tag: v1.1.1@sha256:1ac456479c1dc40f4da0e604a619f84f847442bab5adb2720b057fbbdaa041dc
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: imagemaid
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-imagemaid"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  envFrom:
+  - configMapRef:
+      name: imagemaid-env
+  - configMapRef:
+      name: elfbot-imagemaid
+      optional: true
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-imagemaid
+          optional: true
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: kometa-config
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: imagemaid
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 4Gi  
 
 plextraktsync:
   enabled: false
