@@ -4996,7 +4996,7 @@ plex: &app_plex
     fsGroup: 568
     runAsUser: 568
     runAsGroup: 568    
-    fsGroupChangePolicy: "Always"
+    # fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
     supplementalGroups:
@@ -5135,10 +5135,14 @@ plex: &app_plex
         fi
 
         chown elfie /config -R
+        chown elfie /logs -R
         
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: plex
+      - mountPath: /logs
+        name: logs
         subPath: plex
       - mountPath: /phototranscoder
         name: phototranscoder
