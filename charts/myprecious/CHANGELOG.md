@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.181.0](https://github.com/elfhosted/myprecious/compare/v1.180.0...v1.181.0) (2024-11-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.95.3 ([8154202](https://github.com/elfhosted/myprecious/commit/8154202c1085f5e7dd68cdfb3847c73c9d1e4d6b))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.38.0 ([5e0f483](https://github.com/elfhosted/myprecious/commit/5e0f483838859acfe9232440e41a2b8249de343b))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.39.0 ([6f308cf](https://github.com/elfhosted/myprecious/commit/6f308cfe5a46fb0f778ee67a7a0b5ed944ee476a))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.40.0 ([032de00](https://github.com/elfhosted/myprecious/commit/032de00b2d13504c9bf7708338e00f8fc929db99))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.40.1 ([5126d3d](https://github.com/elfhosted/myprecious/commit/5126d3d0ed64b3c2f17fd5a6199fef1082376b0d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.955 ([858c433](https://github.com/elfhosted/myprecious/commit/858c43317ce88f4e1353cb51827760708b62c77b))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.2 ([c69fc14](https://github.com/elfhosted/myprecious/commit/c69fc14b34119495c0e6de7f9d87e9e10612264f))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.87 ([7256ffe](https://github.com/elfhosted/myprecious/commit/7256ffebf11344256d2bdb90d6c0b818b3a937e5))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.17 ([406fb31](https://github.com/elfhosted/myprecious/commit/406fb312d10a0f865c9274410d33bde3199d8169))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.5 ([bb46ae9](https://github.com/elfhosted/myprecious/commit/bb46ae957fee75ddb3203fd3f13dc4145075418b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.18.0029 ([1ecb35c](https://github.com/elfhosted/myprecious/commit/1ecb35ce990dac95fa849c4076b595e3f2d0a48f))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 4848f83 ([ad2f391](https://github.com/elfhosted/myprecious/commit/ad2f3918a8927d36dfb498dbd815cee819537a77))
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 9e1e43c ([89a2289](https://github.com/elfhosted/myprecious/commit/89a228970999e25f11433ef71cc6144e6b50c22b))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 9fd5449 ([65cd39e](https://github.com/elfhosted/myprecious/commit/65cd39e4b653c7d84c334cd95cd226cb4541dc03))
+
 ## [1.180.0](https://github.com/elfhosted/myprecious/compare/v1.179.0...v1.180.0) (2024-11-17)
 
 
