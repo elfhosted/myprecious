@@ -1837,7 +1837,7 @@ qbittorrentgluetun: &qbittorrent
   image:
     registry: ghcr.io
     repository: elfhosted/qbittorrent
-    tag: 4.6.7@sha256:34b9bb6bc7e37e944efa4d8b260ef132207cb51d75b4630be88446fd9eb681b7
+    tag: 5.0.1@sha256:1000cf2add4329b09d62a1a73921ef98aad8cdf1d253d3986759c4c1ab497aeb
   priorityClassName: tenant-bulk
   securityContext:
     runAsUser: 568
@@ -3783,7 +3783,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:cdba700a2b1e611c4a9b6fa2f6191d48e9982b4f057ea4d08e18683171e5482a
+    tag: rolling@sha256:70293b41ab285ca36daa6332a912db60a9afc75743ec18ad9736fc603efce586
   enabled: false
   controller:
     annotations:
@@ -5290,7 +5290,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.1@sha256:afa8dcf940f41bfd82642b96181bf1c187f65a38dd29756aee012cf2f6562ee3
+    tag: 10.10.2@sha256:d64ef4b156025cde7201a6096e1124f653e2ef0272cce9843c6014bbaff26c08
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid
@@ -6346,7 +6346,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:deea9a6ea90f4184f316b7de94c531b321d988fb1b8aa6ff8376b2089381358b
+    tag: develop-vaapi@sha256:3381c078dba9d8909634bbeb0cd78eda95e7630e949a4dcb554a5682f7d52bc0
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6429,7 +6429,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.15@sha256:adb43ce15f95c2204ee1242172dd83317569c53425e2f264f3844a255cacdab1
+    tag: 1.2.16@sha256:d2a27873d8a640d7d205f67d72aeaed40480ca43507ebea07c734614287f28a8
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9978,7 +9978,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.946@sha256:b3d291cc62229b8b31fdc38d301d52f3a3d946e02d2bc7ebfae927a4881012b5
+    tag: 0.22.950@sha256:b23d3c6e95d666b10b77786c7deba87c9d6c2d303dcfc83b7818f83c932e8adc
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10764,7 +10764,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.37.0@sha256:c0bd5b9528ac9c353293fc1499f34cdfa81d0563d6de6414ec03b2054b8bd752
+    tag: v1.38.0@sha256:b12bbc62e70e5799f88a57732e597c819386dec3ab057d1fb82465a582d6de4b
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -11048,7 +11048,7 @@ mediafusion:
           path: /health
           port: 8000
         initialDelaySeconds: 30
-        periodSeconds: 10
+        periodSeconds: 120
         timeoutSeconds: 10
     readiness:
       custom: true
@@ -11059,7 +11059,7 @@ mediafusion:
           path: /health
           port: 8000
         initialDelaySeconds: 30
-        periodSeconds: 10
+        periodSeconds: 120
         timeoutSeconds: 10
     startup:
       custom: true
@@ -11119,7 +11119,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.1@sha256:8edc3bcff384c49bee945a20bece65a86b17e883f24be18c0a3d89e8bd10309d
+    tag: 1.9.4@sha256:8b570ee51f94541003485ac655844961c1466700aa13e108a8224a62ecc1f3ff
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
@@ -11698,7 +11698,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.12.0026-nightly@sha256:1bee6211d2a160de9c280000869fe32639d03ffcf75485a475f964d994374e77
+    tag: 2024.11.17.0028-nightly@sha256:d1540bc10e762d91709a73dad477a8d0eaf4655f7ff7376492a4329619110165
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12633,7 +12633,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.120.1@sha256:4193f3cc99bb4d99f53007f07d45e2efbcd531f4e81a765470b2cce433f33131
+    tag: v1.120.2@sha256:99f97cb61cd1b49c23fbee46a0ed067f171970518d8834c7e8b2dd3ac0d39c63
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12721,7 +12721,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.120.1
+      image: ghcr.io/immich-app/immich-machine-learning:v1.120.2
       envFrom:
       - configMapRef:
           name: immich-env

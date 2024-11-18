@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.180.0](https://github.com/elfhosted/myprecious/compare/v1.179.0...v1.180.0) (2024-11-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.950 ([f931e8b](https://github.com/elfhosted/myprecious/commit/f931e8bdca51cab0d9ed257a3ca10404000e21ea))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.3 ([8b1f53b](https://github.com/elfhosted/myprecious/commit/8b1f53ba96194cab51fe3949b8dea0a65bd3228b))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.4 ([0d680b4](https://github.com/elfhosted/myprecious/commit/0d680b45423b7f134457c2f9dd2e7186707651b6))
+* **app:** update ghcr.io/elfhosted/qbittorrent docker tag to v5 ([d7eb919](https://github.com/elfhosted/myprecious/commit/d7eb919bc4e3f230f6b41c4f77ac73215a3f23c5))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.16 ([8dea346](https://github.com/elfhosted/myprecious/commit/8dea346442dd50f024785c4c6bbc5950f020bfed))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.17.0028 ([c19445f](https://github.com/elfhosted/myprecious/commit/c19445f232770ef345be647aa9e07a79a47d3cdc))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.120.2 ([265bc89](https://github.com/elfhosted/myprecious/commit/265bc89a5b13469ab5721b362da392a73677eb17))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.120.2 ([328b87f](https://github.com/elfhosted/myprecious/commit/328b87f8304964ac8d6fca28ef9af0e51480eb98))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 3381c07 ([dd7cf2c](https://github.com/elfhosted/myprecious/commit/dd7cf2c73d6f8c97c0d2839e550f81c1399ae702))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 70293b4 ([56706c4](https://github.com/elfhosted/myprecious/commit/56706c441521b3d7cb7f901bb15408a9828cc5ce))
+
+## [1.179.0](https://github.com/elfhosted/myprecious/compare/v1.178.0...v1.179.0) (2024-11-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.37.0 ([bda53f9](https://github.com/elfhosted/myprecious/commit/bda53f90614dfb659ae6ac454398a893daa3b2a7))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.946 ([9dde84f](https://github.com/elfhosted/myprecious/commit/9dde84f94386611b065149216b6cb5c5f6b2a562))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.10.2 ([4f1f4d2](https://github.com/elfhosted/myprecious/commit/4f1f4d2f60c70728e4aa54d1ef60ce83c37ded39))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.1 ([04b4eb8](https://github.com/elfhosted/myprecious/commit/04b4eb86434917c3e1baac38c966b03122ad7f2b))
+* **app:** update privatebin/fs docker tag to v1.7.5 ([9cbc7b7](https://github.com/elfhosted/myprecious/commit/9cbc7b7ecf73064c6d4c21b77ee5745fc6915e3f))
+
 ## [1.178.0](https://github.com/elfhosted/myprecious/compare/v1.177.0...v1.178.0) (2024-11-15)
 
 
