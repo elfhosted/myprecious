@@ -3780,7 +3780,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:70293b41ab285ca36daa6332a912db60a9afc75743ec18ad9736fc603efce586
+    tag: rolling@sha256:9fd54490b58ac5e87bd4104768ded0894ab831bb1bb7c4fc2f671f6c9a49d2b5
   enabled: false
   controller:
     annotations:
@@ -6248,7 +6248,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.15.10-vaapi
+    tag: 0.16.0-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6329,7 +6329,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:3381c078dba9d8909634bbeb0cd78eda95e7630e949a4dcb554a5682f7d52bc0
+    tag: develop-vaapi@sha256:436671f0a0c8922963d15f5deb3c30793ae263ee9cb177ec0a855ffe43ae83ec
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6412,7 +6412,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.16@sha256:d2a27873d8a640d7d205f67d72aeaed40480ca43507ebea07c734614287f28a8
+    tag: 1.2.18@sha256:979899d4e7329719aa62ac79055313e087f5628b3497d8f2616d60509559382d
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7137,7 +7137,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.4@sha256:be28f4e020aa5c805fa15aa7847c2cbddb202c67127435d929e867c90885cbbb
+    tag: 1.32.5@sha256:e20601f73e8a6e236b3a3451c57d99364badf6c32aab9c46fb0455be7d8e5fdd
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7684,7 +7684,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.1@sha256:4a8175d078b40c8e0c87fd440344424fcc35e82fce5692e6b1dbebb9d46d8e4b
+    tag: 0.32.2@sha256:866898a18aabe925b2a7e7f956e012a3b486e190554d37fd5cb5b7a3a9f6f1b7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8941,7 +8941,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.86
+    tag: v2.0.87
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -10830,7 +10830,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.38.0@sha256:b12bbc62e70e5799f88a57732e597c819386dec3ab057d1fb82465a582d6de4b
+    tag: v1.40.1@sha256:c965cd2a586b57616f828744ce3f029c2bf480bc2338a9691211f7a2c16f196d
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -12161,7 +12161,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.95.2@sha256:9e9168363caad3df430a8f19cf9b66be8e64d44562080801c293b3792b67f9e3
+    tag: 4.95.3@sha256:8a0a3b02fcc5382c607cf05aca26b915affc6e9999b141e5aa66eba230bfd45d
   priorityClassName: tenant-normal
   controller:
     annotations:
