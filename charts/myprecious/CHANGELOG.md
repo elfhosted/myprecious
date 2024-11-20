@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.183.0](https://github.com/elfhosted/myprecious/compare/v1.182.0...v1.183.0) (2024-11-20)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.2 ([e108d20](https://github.com/elfhosted/myprecious/commit/e108d20960ae08a7e30f95a9512f15250eac9a3d))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.43.1 ([c563e11](https://github.com/elfhosted/myprecious/commit/c563e1135221b1651883b15aeee5245b2a2115af))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.43.2 ([0bdaa9d](https://github.com/elfhosted/myprecious/commit/0bdaa9d6441242c2ef8792b52a807ff1e8594408))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.43.3 ([a108514](https://github.com/elfhosted/myprecious/commit/a108514dfa6f76c1985f9adadd2d50c1d26e803c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.985 ([ab1eeb9](https://github.com/elfhosted/myprecious/commit/ab1eeb9d6ec58c74733296af0ccff4d40f709e51))
+* **app:** update ghcr.io/elfhosted/knightcrawler-addon docker tag to v2.0.28 ([e92321a](https://github.com/elfhosted/myprecious/commit/e92321a1e2ce6884c42b961c40cac70a4143b3c5))
+
 ## [1.182.0](https://github.com/elfhosted/myprecious/compare/v1.181.0...v1.182.0) (2024-11-19)
 
 
