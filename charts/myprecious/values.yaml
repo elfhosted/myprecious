@@ -2189,7 +2189,7 @@ nzbget:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/nzbget
-    tag: 24.3@sha256:86202d7e8d9699ee647b97a343eab88803a58fa2c50911a6c09ea412442b2d70
+    tag: 24.4@sha256:7374ee77d5b84bad609b5319d03cbf9fa4a081efe9b6b25f9969630a859e8775
   priorityClassName: tenant-bulk
   securityContext:
     seccompProfile:
@@ -2526,7 +2526,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.14.0.9383@sha256:a60bb7e984345275b486e583b27486ec74ef4749af3204b743e4e721ad9c3bb0
+    tag: 5.15.1.9463@sha256:102c4fc73d836e7a17b531020f66a0f00844de63fd027bc216cd20bb0884944d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2640,7 +2640,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.14.0.9383@sha256:a60bb7e984345275b486e583b27486ec74ef4749af3204b743e4e721ad9c3bb0
+    tag: 5.15.1.9463@sha256:102c4fc73d836e7a17b531020f66a0f00844de63fd027bc216cd20bb0884944d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4464,7 +4464,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.26.0.4833@sha256:c72631f08c3f57ac64b8a2781f40e7a54bc131865db2330dda2309fdf3fed205
+    tag: 1.26.1.4844@sha256:1c3467d2636aa05c94f6961c2abe808d287c136b24dd33678ca44698e72c578d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5273,7 +5273,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.2@sha256:d64ef4b156025cde7201a6096e1124f653e2ef0272cce9843c6014bbaff26c08
+    tag: 10.10.3@sha256:e2140c289dc8cb94d41a698abb8fb89306fb0294a6d9fb69dc744f368159facc
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid
@@ -6248,7 +6248,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.16.0-vaapi
+    tag: 0.16.2-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6329,7 +6329,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:436671f0a0c8922963d15f5deb3c30793ae263ee9cb177ec0a855ffe43ae83ec
+    tag: develop-vaapi@sha256:1b888ec42396eabe0981c13cfec65621eb1b96f6be330d8fbce3b9ce864a06e9
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10044,7 +10044,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.955@sha256:86b895f11071ac369e650293a899b96bf08b3c2466fcf1b31752068b446402a6
+    tag: 0.22.968@sha256:b1afbd54d2a1d683af73c6f4d03ad90961a21851fd6f029467443650343ac123
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10830,7 +10830,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.40.1@sha256:c965cd2a586b57616f828744ce3f029c2bf480bc2338a9691211f7a2c16f196d
+    tag: v1.43.1@sha256:3ca0a68e4a09d0caf036bd658ed6b0384642b94da2eadca09c3794384635235e
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
