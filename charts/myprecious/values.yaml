@@ -1834,7 +1834,7 @@ qbittorrentgluetun: &qbittorrent
   image:
     registry: ghcr.io
     repository: elfhosted/qbittorrent
-    tag: 5.0.1@sha256:1000cf2add4329b09d62a1a73921ef98aad8cdf1d253d3986759c4c1ab497aeb
+    tag: 5.0.2@sha256:b0d66baaddfd07ed467c13a560451330f0db4ce43d1e3aca3b95a1f34c8dc734
   priorityClassName: tenant-bulk
   securityContext:
     runAsUser: 568
