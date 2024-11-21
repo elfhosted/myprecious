@@ -600,12 +600,12 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackhole4k
   - name: app-template
-    condition: rclonemounttorbox.enabled
+    condition: blackholetorbox.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackholetorbox
   - name: app-template
-    condition: rclonemounttorbox.enabled
+    condition: blackholetorbox.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackholetorbox4k
