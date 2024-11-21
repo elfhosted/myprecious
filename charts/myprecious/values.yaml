@@ -12477,6 +12477,10 @@ alldebrid:
       ports:
         http:
           port: 9999
+  envFrom:
+  - configMapRef:
+      name: elfbot-alldebrid
+      optional: true              
   ingress:
     main:
       enabled: false
