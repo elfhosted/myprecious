@@ -800,7 +800,7 @@ data:
             siteMonitor: http://blackhole4k:3001
         {{ end }}    
 
-        {{ if .Values.rclonemounttorbox.enabled }}
+        {{ if .Values.blackholetorbox.enabled }}
         - Blackhole Torbox:
             icon: mdi-cirle
             href: https://{{ .Release.Name }}-blackholetorbox.{{ .Values.dns_domain }}

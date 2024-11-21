@@ -860,7 +860,7 @@ data:
           - type: email
       {{ end }}               
 
-      {{ if .Values.rclonemounttorbox.enabled }}
+      {{ if .Values.blackholetorbox.enabled }}
       - name: blackholetorbox
         group: download-media
         url: "http://blackholetorbox:3001"
@@ -871,7 +871,7 @@ data:
           - type: email
       {{ end }}   
 
-      {{ if .Values.rclonemounttorbox.enabled }}
+      {{ if .Values.blackholetorbox.enabled }}
       - name: blackholetorbox4k
         group: download-media
         url: "http://blackholetorbox4k:3001"

@@ -1,4 +1,4 @@
-{{ if .Values.rclonemounttorbox.enabled }}
+{{ if .Values.blackholetorbox.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

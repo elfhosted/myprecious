@@ -1,4 +1,4 @@
-{{ if .Values.rclonemounttorbox.enabled }}
+{{ if .Values.blackholetorbox.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
