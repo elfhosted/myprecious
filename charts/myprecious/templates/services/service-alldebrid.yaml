@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.elfhosted.com/name: alldebrid
+    app.kubernetes.io/name: alldebrid
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}

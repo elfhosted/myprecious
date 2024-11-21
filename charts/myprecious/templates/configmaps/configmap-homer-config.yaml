@@ -1521,6 +1521,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.alldebrid.enabled }}
+          - name: "AllDebrid"
+            logo: "assets/png/rclone.png"
+            subtitle: "AllDebrid (WebDAV)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.webdavplus.enabled }}
           - name: "WebDAV Plus"
             logo: "assets/png/rclone.png"
