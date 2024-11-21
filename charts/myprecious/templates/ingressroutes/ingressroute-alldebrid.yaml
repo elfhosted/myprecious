@@ -10,7 +10,7 @@ spec:
       services:
         - name: alldebrid
           kind: Service
-          port: 8080
+          port: 9999
       middlewares:  
         - name: {{ .Release.Name }}-traefik-forward-auth
 {{ end }}
