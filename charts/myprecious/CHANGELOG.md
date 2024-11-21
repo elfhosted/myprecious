@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.185.0](https://github.com/elfhosted/myprecious/compare/v1.184.0...v1.185.0) (2024-11-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.7 ([d5c68eb](https://github.com/elfhosted/myprecious/commit/d5c68eb47bb3591a602b0552b35fa7089f9dff56))
+
 ## [1.184.0](https://github.com/elfhosted/myprecious/compare/v1.183.0...v1.184.0) (2024-11-21)
 
 
