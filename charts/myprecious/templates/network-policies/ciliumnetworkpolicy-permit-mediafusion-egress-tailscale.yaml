@@ -21,4 +21,10 @@ spec:
       - ports:
         - port: '8181' # zilean
           protocol: TCP
+      - ports:
+        - port: '9696' # prowlarr
+          protocol: TCP          
+      - ports:
+        - port: '5432' # postgresql
+          protocol: TCP                    
 {{- end }}

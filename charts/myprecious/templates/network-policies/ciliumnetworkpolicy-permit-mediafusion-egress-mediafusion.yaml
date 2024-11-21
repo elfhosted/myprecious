@@ -2,7 +2,7 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-mediafusion-egress-mediafusion-mongodb"
+  name: "permit-mediafusion-egress-mediafusion"
 spec:
   endpointSelector:
     matchLabels:
@@ -11,9 +11,4 @@ spec:
   - toEndpoints:
     - matchLabels:
         k8s:io.kubernetes.pod.namespace: mediafusion
-        app.kubernetes.io/name: mongodb
-    toPorts:
-      - ports:
-        - port: '27017'
-          protocol: TCP
 {{- end }}
