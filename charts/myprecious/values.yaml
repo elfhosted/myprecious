@@ -12440,10 +12440,9 @@ alldebrid:
   - /alldebrid.sh
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rclonefm,rclonefm-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-config"
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "40M"
-  # Always prefer to cohabit with zurg
+    kubernetes.io/egress-bandwidth: "128M"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -12498,7 +12497,6 @@ alldebrid:
       envFrom:
       - configMapRef:
           name: gluetun-config
-          optional: true
       env:
         DOT: "off"
         FIREWALL_INPUT_PORTS: "9999" # 9999 is for rclone
