@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.184.0](https://github.com/elfhosted/myprecious/compare/v1.183.0...v1.184.0) (2024-11-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.43.4 ([2850291](https://github.com/elfhosted/myprecious/commit/285029180090f52e1ca129574aaa0783d9a1665a))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.991 ([ba47ef3](https://github.com/elfhosted/myprecious/commit/ba47ef3f666287615e667e7a5627eb949f3a63c6))
+* **app:** update ghcr.io/elfhosted/qbittorrent docker tag to v5.0.2 ([be31455](https://github.com/elfhosted/myprecious/commit/be3145583b10a2714081438ca30225a5846c4512))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.20.0 ([b5df2d7](https://github.com/elfhosted/myprecious/commit/b5df2d7fc5fa163576fe4ab35682de98378879a8))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.21.0028 ([4343585](https://github.com/elfhosted/myprecious/commit/4343585f2d938a76553109b60877e0f283d1e02c))
+* make blackhole (torbox) a standalone option now that rclone mounts are self-service ([1f613c3](https://github.com/elfhosted/myprecious/commit/1f613c3054ea1a43b869f7e0c7d271f55d899057))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 0f55bad ([3cce002](https://github.com/elfhosted/myprecious/commit/3cce002768a5d7761a6565434213b3c7f264ae7e))
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 9aac1b1 ([6583538](https://github.com/elfhosted/myprecious/commit/6583538fbaaba18ae9523a0092e4963fa677f470))
+* **app:** update ghcr.io/elfhosted/comet:v1.43.3 docker digest to eb5fd95 ([b563b30](https://github.com/elfhosted/myprecious/commit/b563b30c14e2dfbe47c88060793ea6e38550f8e1))
+
 ## [1.183.0](https://github.com/elfhosted/myprecious/compare/v1.182.0...v1.183.0) (2024-11-20)
 
 
