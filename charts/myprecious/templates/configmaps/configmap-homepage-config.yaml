@@ -1126,24 +1126,16 @@ data:
     - greeting:
         text_size: 2xl
         text: ElfHosted / {{ .Release.Name }}
-        
-  {{ if .Values.storageboxa.enabled }}
-    - resources:
-        label: /storage/storagebox-a
-        disk: /storage/storagebox-a
-  {{ end }}
 
-  {{ if .Values.storageboxb.enabled }}
     - resources:
-        label: /storage/storagebox-b
-        disk: /storage/storagebox-b
-  {{ end }}
-
-  {{ if .Values.storageboxc.enabled }}
+        label: /config
+        disk: /config
     - resources:
-        label: /storage/storagebox-c
-        disk: /storage/storagebox-c
-  {{ end }}  
+        label: /logs
+        disk: /logs
+    - resources:
+        label: /backup
+        disk: /backup
 
   bookmarks.yaml: |
     - Links:
