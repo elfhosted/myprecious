@@ -1521,7 +1521,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.alldebrid.enabled }}
+          {{ if .Values.rclonealldebrid.enabled }}
           - name: "AllDebrid"
             logo: "assets/png/rclone.png"
             subtitle: "AllDebrid (WebDAV)"
@@ -1531,7 +1531,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
-          {{ if .Values.torbox.enabled }}
+          {{ if .Values.rclonetorbox.enabled }}
           - name: "TorBox"
             logo: "assets/png/rclone.png"
             subtitle: "TorBox (WebDAV)"

@@ -1021,7 +1021,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.alldebrid.enabled }}
+      {{ if .Values.rclonealldebrid.enabled }}
       - name: alldebrid
         group: tools
         url: "http://alldebrid:9999"

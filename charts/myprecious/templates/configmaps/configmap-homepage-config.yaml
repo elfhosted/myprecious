@@ -1101,7 +1101,7 @@ data:
             siteMonitor: http://rclonebrowser:5574
         {{ end }}
 
-        {{ if .Values.alldebrid.enabled }}
+        {{ if .Values.rclonealldebrid.enabled }}
         - AllDebrid:
             icon: webdav.png
             href: https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}
