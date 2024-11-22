@@ -12274,7 +12274,7 @@ torbox:
       enabled: "true"
       type: emptyDir
       mountPath: /config
-    example-config:
+    bootstrap:
       enabled: "true"
       type: "custom"
       volumeSpec:
