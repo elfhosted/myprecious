@@ -282,118 +282,6 @@ volumespec_ephemeral_volume_500g: &volumespec_ephemeral_volume_500g
             storage: 500Gi
 
 # And this makes the media / rclone mounts tidier.
-rclonecustoma: &rclonecustoma
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: custom-a
-  mountPath: /storage/custom-a
-rclonea: &rclonea
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: rclone-a
-  mountPath: /storage/rclone-a
-rcloneb: &rcloneb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: rclone-b
-  mountPath: /storage/rclone-b
-rclonec: &rclonec
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: rclone-c
-  mountPath: /storage/rclone-c
-rclonemounts3a: &rclonemounts3a
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: rclone-s3-a
-  mountPath: /storage/s3-a
-rclonemounts3b: &rclonemounts3b
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: s3-b
-  mountPath: /storage/s3-b
-rclonemounts3c: &rclonemounts3c
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: rclone-s3-c
-  mountPath: /storage/s3-c
-gdrivea: &gdrivea
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: gdrive-a
-  mountPath: /storage/gdrive-a
-gdriveb: &gdriveb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: gdrive-b
-  mountPath: /storage/gdrive-b
-gdrivec: &gdrivec
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: gdrive-c
-  mountPath: /storage/gdrive-c
-gdrived: &gdrived
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: gdrive-d
-  mountPath: /storage/gdrive-d
-rclonegdriveencrypteda: &rclonegdriveencrypteda
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: gdrive-encrypted-a
-  mountPath: /storage/gdrive-encrypted-a
-rclonegdriveencryptedb: &rclonegdriveencryptedb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: gdrive-encrypted-b
-  mountPath: /storage/gdrive-encrypted-b
-rclonegdriveencryptedc: &rclonegdriveencryptedc
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: gdrive-encrypted-c
-  mountPath: /storage/gdrive-encrypted-c
-onedrivea: &onedrivea
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: onedrive-a
-  mountPath: /storage/onedrive-a
-rclonemountwebdava: &rclonemountwebdava
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: webdav-a
-  mountPath: /storage/webdav-a
 rclonemountrealdebridzurg: &rclonemountrealdebridzurg
   enabled: false
   type: custom
@@ -415,111 +303,6 @@ rclonemountalldebrid: &rclonemountalldebrid
     persistentVolumeClaim:
       claimName: alldebrid
   mountPath: /storage/alldebrid
-rclonemountputio: &rclonemountputio
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: putio
-  mountPath: /storage/putio
-rclonemountpikpak: &rclonemountpikpak
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: pikpak
-  mountPath: /storage/pikpak
-rclonemountssha: &rclonemountssha
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: ssh-a
-  mountPath: /storage/ssh-a
-rclonemountsshb: &rclonemountsshb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: ssh-b
-  mountPath: /storage/ssh-b
-rclonemountsshc: &rclonemountsshc
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: ssh-c
-  mountPath: /storage/ssh-c
-webdavb: &webdavb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: webdav-b
-  mountPath: /storage/webdav-b
-webdavc: &webdavc
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: webdav-c
-  mountPath: /storage/webdav-c
-storageboxa: &storageboxa
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storagebox-a
-  mountPath: /storage/storagebox-a
-  subaccount: false
-storageboxb: &storageboxb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storagebox-b
-  mountPath: /storage/storagebox-b
-  subaccount: false
-storageboxc: &storageboxc
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storagebox-c
-  mountPath: /storage/storagebox-c
-  subaccount: false
-rclonestorageboxencrypteda: &rclonestorageboxencrypteda
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storagebox-encrypted-a
-  mountPath: /storage/storagebox-encrypted-a
-  subaccount: false
-rcloneb2encrypteda: &rcloneb2encrypteda
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: b2-encrypted-a
-  mountPath: /storage/b2-encrypted-a
-  subaccount: false
-rclonestorageboxencryptedb: &rclonestorageboxencryptedb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storagebox-encrypted-b
-  mountPath: /storage/storagebox-encrypted-b
-  subaccount: false
-rclonestorageboxencryptedc: &rclonestorageboxencryptedc
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: storagebox-encrypted-c
-  mountPath: /storage/storagebox-encrypted-c
-  subaccount: false
 rclonemountpremiumize: &rclonemountpremiumize
   enabled: false
   type: custom
@@ -534,41 +317,6 @@ rclonemounttorbox: &rclonemounttorbox
     persistentVolumeClaim:
       claimName: torbox
   mountPath: /storage/torbox
-b2: &b2
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: b2
-  mountPath: /storage/b2
-smbmounta: &smbmounta
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: smbmount-a
-  mountPath: /storage/smbmount-a
-smbmountb: &smbmountb
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: smbmount-b
-  mountPath: /storage/smbmount-b
-smbmountc: &smbmountc
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: smbmount-c
-  mountPath: /storage/smbmount-c
-rclonesmbencrypteda: &rclonesmbencrypteda
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: smb-encrypted-a
-  mountPath: /storage/smb-encrypted-a
 rclone: &rclone
   enabled: true # everyone gets an rclone mount
   type: custom
@@ -580,38 +328,11 @@ rclone: &rclone
 # This simplfies the process of adding all the optional mounts to every app
 storagemounts: &storagemounts
   rclone: *rclone
-  rclonemounts3a: *rclonemounts3a
-  rclonemounts3b: *rclonemounts3b
-  rclonemounts3c: *rclonemounts3c
-  gdrivea: *gdrivea
-  gdriveb: *gdriveb
-  gdrivec: *gdrivec
-  gdrived: *gdrived
-  rclonegdriveencrypteda: *rclonegdriveencrypteda
-  rclonegdriveencryptedb: *rclonegdriveencryptedb
-  rclonegdriveencryptedc: *rclonegdriveencryptedc
-  onedrivea: *onedrivea
-  rclonemountwebdava: *rclonemountwebdava
   rclonemountrealdebridzurg: *rclonemountrealdebridzurg
-  rclonemountputio: *rclonemountputio
-  rclonemountpikpak: *rclonemountpikpak
-  rclonemountssha: *rclonemountssha
   rclonemountdebridlink: *rclonemountdebridlink
   rclonemountalldebrid: *rclonemountalldebrid
-  storageboxa: *storageboxa
-  storageboxb: *storageboxb
-  storageboxc: *storageboxc
-  rclonestorageboxencrypteda: *rclonestorageboxencrypteda
-  rclonestorageboxencryptedb: *rclonestorageboxencryptedb
-  rclonestorageboxencryptedc: *rclonestorageboxencryptedc
-  rcloneb2encrypteda: *rcloneb2encrypteda
   rclonemountpremiumize: *rclonemountpremiumize
   rclonemounttorbox: *rclonemounttorbox
-  b2: *b2
-  smbmounta: *smbmounta
-  smbmountb: *smbmountb
-  smbmountc: *smbmountc
-  rclonesmbencrypteda: *rclonesmbencrypteda
   tmp: &tmp
     enabled: true
     type: emptyDir
@@ -7971,7 +7692,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:de917bfe24f0e9289bd520aa161090619966e0592716e5fa4445af36d92abdae
+    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -8084,7 +7805,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:de917bfe24f0e9289bd520aa161090619966e0592716e5fa4445af36d92abdae
+    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
   command:
   - /rclonefm.sh
   controller:
@@ -8210,7 +7931,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:de917bfe24f0e9289bd520aa161090619966e0592716e5fa4445af36d92abdae
+    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -12435,9 +12156,9 @@ alldebrid:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:de917bfe24f0e9289bd520aa161090619966e0592716e5fa4445af36d92abdae
+    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
   command:
-  - /alldebrid.sh
+  - /debrid-provider.sh
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-config"
@@ -12465,8 +12186,8 @@ alldebrid:
       sizeLimit: 1Gi
     alldebrid-config:
       enabled: "true"
-      mountPath: /rlcone-alldebrid.conf
-      subPath: "rlcone-alldebrid.conf"
+      mountPath: /config/rlcone-debrid-provider.conf
+      subPath: rlcone-debrid-provider.conf
       type: "custom"
       volumeSpec:
         configMap:
@@ -12515,54 +12236,94 @@ alldebrid:
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
 
-alldebridold:
-  <<: *app_davdebrid
-  podLabels:
-    app.elfhosted.com/name: alldebrid
+torbox:
+  enabled: true
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/rclone
+    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+  command:
+  - /debrid-provider.sh
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-env,alldebrid-pia-config"    
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-torbox,torbox-config"
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "128M"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    cache:
+      enabled: true
+      type: emptyDir
+      mountPath: /home/elfie/.cache
+      sizeLimit: 1Gi
+    # we'll run the obscure command and copy the config into here
+    config: 
+      enabled: "true"
+      type: emptyDir
+      mountPath: /config
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: torbox-config
+  initContainers:
+    setup:
+      image: ghcr.io/elfhosted/rclone@1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+      command:
+      - /bin/ash
+      - -c
+      - |
+        set -x
+
+        # Create directory structure
+
+        OBSCURED_PASS=$(rclone obscure $PASS)
+        cp /bootstrap/rlcone-debrid-provider.conf /config/
+        sed -i "s/REPLACEUSER/$USER/" /config/rlcone-debrid-provider.conf
+        sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rlcone-debrid-provider.conf
+        
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      - mountPath: /bootstrap
+        name: bootstrap
+      resources: *default_resources
+      securityContext: *default_securitycontext
+
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 9999
   envFrom:
   - configMapRef:
-      name: alldebrid-env
-  - configMapRef:
-      name: elfbot-alldebrid
-      optional: true    
-  persistence:
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: alldebrid
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    shared:
-      enabled: true
-      mountPath: /shared
-      type: emptyDir
-      volumeSpec:
-        medium: Memory           
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      envFrom:
-      - configMapRef:
-          name: alldebrid-pia-config
-      - configMapRef:
-          name: elfbot-alldebrid
-          optional: true             
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
+      name: elfbot-torbox
+      optional: true              
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 60Mi
+    limits:
+      cpu: 150m
+      memory: 512Mi
 
 blackhole: &app_blackhole
   enabled: false
