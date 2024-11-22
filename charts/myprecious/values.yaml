@@ -12261,7 +12261,7 @@ rclonealldebrid:
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
 
-torbox:
+rclonetorbox:
   enabled: true
   priorityClassName: tenant-normal
   image:
