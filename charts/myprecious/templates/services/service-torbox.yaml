@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: torbox
   labels:
-    app.kubernetes.io/name: torbox
+    app.kubernetes.io/name: rclonetorbox
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: torbox
+    app.kubernetes.io/name: rclonetorbox
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
