@@ -12372,7 +12372,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.5@sha256:81467c48cfaceadd249af0387ac677002789d6e2bc972933b37e2fc8544cce2f
+    tag: 1.4.6@sha256:c168be416becb5fbfc38eb08bd89641a4fe91f674bffec0baa011d5a9bc3c470
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
