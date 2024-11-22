@@ -12321,7 +12321,7 @@ rclonetorbox:
 
         # Create directory structure
 
-        OBSCURED_PASS=$(rclone obscure $PASS)
+        OBSCURED_PASS=$(rclone obscure '$PASS')
         cp /bootstrap/rclone-debrid-provider.conf /config/
         sed -i "s/REPLACEUSER/$USER/" /config/rclone-debrid-provider.conf
         sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rclone-debrid-provider.conf
