@@ -12213,7 +12213,7 @@ rclonedebridlink:
 
 
 rclonealldebrid:
-  enabled: true
+  enabled: false
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
@@ -12323,7 +12323,7 @@ rclonealldebrid:
       config: # We have to set this to null so that we can override with our own config
 
 rclonepremiumize:
-  enabled: true
+  enabled: false
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
