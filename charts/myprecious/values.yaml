@@ -12217,16 +12217,16 @@ alldebrid:
         name: bootstrap
       resources: *default_resources
       securityContext: *default_securitycontext
+      envFrom:
+      - configMapRef:
+          name: elfbot-alldebrid
+          optional: true
   service:
     main:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 9999
-  envFrom:
-  - configMapRef:
-      name: elfbot-alldebrid
-      optional: true              
+          port: 9999      
   ingress:
     main:
       enabled: false
@@ -12328,6 +12328,10 @@ torbox:
         name: bootstrap
       resources: *default_resources
       securityContext: *default_securitycontext
+      envFrom:
+      - configMapRef:
+          name: elfbot-torbox
+          optional: true
 
   service:
     main:
