@@ -882,17 +882,6 @@ data:
           - type: email
       {{ end }}              
 
-      {{ if .Values.rdtclientvpnpia.enabled }}
-      - name: rdtclient-alldebrid
-        group: download-media
-        url: "http://rdtclient-alldebrid:6500"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
       - name: zurg
         group: download-media

@@ -813,14 +813,7 @@ data:
             description: West's blackhole script Torbox (4K)
             siteMonitor: http://blackholetorbox4k:3001
         {{ end }}                                 
-
-        {{ if .Values.rdtclientvpnpia.enabled }}
-        - RDT Client (AllDebrid):
-            icon: mdi-home-floor-a
-            href: https://{{ .Release.Name }}-rdtclient-alldebrid.{{ .Values.dns_domain }}
-            description: Manage AllDebrid Downloads
-            siteMonitor: http://rdtclient-alldebrid:6500
-        {{ end }}            
+          
 
         {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
         - Zurg:
