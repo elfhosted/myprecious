@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.elfhosted.com/name: rclonedebridlink
+    app.kubernetes.io/name: rclonedebridlink
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
