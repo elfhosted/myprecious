@@ -1,4 +1,4 @@
-{{ if .Values.rclonemountdebridlink.enabled }}
+{{ if .Values.rclonedebridlink.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

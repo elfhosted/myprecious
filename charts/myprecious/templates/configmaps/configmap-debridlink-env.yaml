@@ -1,4 +1,4 @@
-{{ if .Values.rclonemountdebridlink.enabled }}
+{{ if .Values.rclonedebridlink.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
