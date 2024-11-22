@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: alldebrid
+  name: torbox
   labels:
     velero.io/exclude-from-backup: "true"
 spec:
