@@ -95,7 +95,7 @@ data:
       ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, $RD_DAYS_REMAINING"
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
       RIVEN_TOTAL_ITEMS=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_items) # items
       RIVEN_TOTAL_MOVIES=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_movies) # items
       RIVEN_TOTAL_SHOWS=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_shows) # items
@@ -958,7 +958,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                    
 
-          {{ if .Values.plexdebrid.enabled }}
+          {{ if or .Values.plexdebrid.enabled .Values.plexdebridvpn.enabled }}
           - name: "plex-debrid"
             logo: "assets/png/real-debrid.png"
             # Alternatively a fa icon can be provided:
@@ -970,7 +970,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}   
 
-          {{ if .Values.riven.enabled }}
+          {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
           - name: "Riven"
             icon: "fas fa-mountain"
             subtitle: "All-in-one Debrid Media Management"

@@ -633,7 +633,7 @@ data:
             siteMonitor: http://recyclarr:9898
         {{ end }}    
 
-        {{ if .Values.plexdebrid.enabled }}
+        {{ if or .Values.plexdebrid.enabled .Values.plexdebridvpn.enabled }}
         - plex-debrid:
             icon: real-debrid.png
             href: https://{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}
@@ -641,7 +641,7 @@ data:
             siteMonitor: http://plex-debrid:3001            
         {{ end }}     
 
-        {{ if .Values.riven.enabled }}
+        {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
         - Riven:
             icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
             href: https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}

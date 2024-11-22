@@ -9569,6 +9569,32 @@ riven: &app_riven
           cpu: 500m
           memory: 8Gi
 
+rivenvpn: 
+  <<*: app_riven
+  addons:
+    vpn:
+      enabled: true
+      gluetun:
+        image:
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+      envFrom:
+      - configMapRef:
+          name: gluetun-config
+      env:
+        DOT: "off"
+        FIREWALL_INPUT_PORTS: "3001" # 9999 is for rclone
+        HTTP_CONTROL_SERVER_PORT: "8000"
+        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+        HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
+      securityContext:
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+
 rivenfrontend:
   podLabels:
     app.elfhosted.com/name: riven-frontend
@@ -11882,6 +11908,33 @@ plexdebrid: &app_plexdebrid
           type: RuntimeDefault
         readOnlyRootFilesystem: true
 
+# This is a copy of plexdebrid plumbed into the user's VPN
+plexdebridvpn: 
+  <<*: app_plexdebrid
+  addons:
+    vpn:
+      enabled: true
+      gluetun:
+        image:
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+      envFrom:
+      - configMapRef:
+          name: gluetun-config
+      env:
+        DOT: "off"
+        FIREWALL_INPUT_PORTS: "3001" # 9999 is for rclone
+        HTTP_CONTROL_SERVER_PORT: "8000"
+        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+        HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
+      securityContext:
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+
 codeserver:
   enabled: false
   # runtimeClassName: kata
@@ -12155,6 +12208,7 @@ debridlink: &app_davdebrid
       ports:
         http:
           port: 8080
+
 
 rclonealldebrid:
   enabled: true

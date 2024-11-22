@@ -524,7 +524,7 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.plexdebrid.enabled }}
+      {{ if or .Values.plexdebrid.enabled .Values.plexdebridvpn.enabled }}
       - name: plex-debrid
         group: manage-media
         url: "http://plex-debrid:3001"
@@ -535,7 +535,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"
