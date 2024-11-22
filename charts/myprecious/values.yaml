@@ -9569,6 +9569,33 @@ riven: &app_riven
           cpu: 500m
           memory: 8Gi
 
+rivenvpn: 
+  enabled: false
+  <<: *app_riven
+  addons:
+    vpn:
+      enabled: true
+      gluetun:
+        image:
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+      envFrom:
+      - configMapRef:
+          name: gluetun-config
+      env:
+        DOT: "off"
+        FIREWALL_INPUT_PORTS: "3001" # 9999 is for rclone
+        HTTP_CONTROL_SERVER_PORT: "8000"
+        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+        HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
+      securityContext:
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+
 rivenfrontend:
   podLabels:
     app.elfhosted.com/name: riven-frontend
@@ -11882,6 +11909,34 @@ plexdebrid: &app_plexdebrid
           type: RuntimeDefault
         readOnlyRootFilesystem: true
 
+# This is a copy of plexdebrid plumbed into the user's VPN
+plexdebridvpn: 
+  enabled: false
+  <<: *app_plexdebrid
+  addons:
+    vpn:
+      enabled: true
+      gluetun:
+        image:
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+      envFrom:
+      - configMapRef:
+          name: gluetun-config
+      env:
+        DOT: "off"
+        FIREWALL_INPUT_PORTS: "3001" # 9999 is for rclone
+        HTTP_CONTROL_SERVER_PORT: "8000"
+        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+        HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
+      securityContext:
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+
 codeserver:
   enabled: false
   # runtimeClassName: kata
@@ -12100,7 +12155,7 @@ requestrr:
       - mountPath: /tmp
         name: tmp
 
-debridlink: &app_davdebrid
+rclonedebridlink:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/davdebrid
@@ -12155,6 +12210,7 @@ debridlink: &app_davdebrid
       ports:
         http:
           port: 8080
+
 
 rclonealldebrid:
   enabled: true
@@ -12265,6 +12321,93 @@ rclonealldebrid:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
+
+rclonepremiumize:
+  enabled: true
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/rclone
+    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+  command:
+  - /debrid-provider.sh
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-premiumize,premiumize-config"
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "128M"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    cache:
+      enabled: true
+      type: emptyDir
+      mountPath: /home/elfie/.cache
+      sizeLimit: 1Gi
+    config: 
+      enabled: "true"
+      type: emptyDir
+      mountPath: /config
+    bootstrap:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: alldebrid-config
+  initContainers:
+    setup:
+      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+      command:
+      - /bin/ash
+      - -c
+      - |
+        set -x
+
+        # Create directory structure
+
+        OBSCURED_PASS=$(rclone obscure doesntmatter)
+        cp /bootstrap/rclone-debrid-provider.conf /config/
+        sed -i "s/REPLACEUSER/$USER/" /config/rclone-debrid-provider.conf
+        sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rclone-debrid-provider.conf
+        
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      - mountPath: /bootstrap
+        name: bootstrap
+      resources: *default_resources
+      securityContext: *default_securitycontext
+      envFrom:
+      - configMapRef:
+          name: elfbot-premiumize
+          optional: true
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 9999      
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 60Mi
+    limits:
+      cpu: 150m
+      memory: 512Mi
 
 rclonetorbox:
   enabled: false

@@ -425,21 +425,26 @@ dependencies:
     condition: joplinserver.enabled
     version: ~0.0.1
     repository: oci://ghcr.io/elfhosted/charts
-  # - name: app-template
-  #   version: ~0.2.1
-  #   condition: rdtclientvpnpia.enabled
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: rdtclientvpnpia
   - name: app-template
-    condition: rclonemountalldebrid.enabled
+    version: ~0.2.1
+    condition: rdtclientvpn.enabled
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rdtclientvpn
+  - name: app-template
+    condition: rclonealldebrid.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: rclonealldebrid
   - name: app-template
-    condition: rclonemountdebridlink.enabled
+    condition: rclonedebridlink.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: debridlink
+    alias: rclonedebridlink
+  - name: app-template
+    condition: rclonepremiumize.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rclonepremiumize
   - name: app-template
     condition: homepage.enabled
     version: ~0.2.1
@@ -501,10 +506,20 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebrid
   - name: app-template
+    condition: plexdebridvpn.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: plexdebridvpn    
+  - name: app-template
     condition: riven.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: riven
+  - name: app-template
+    condition: rivenvpn.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rivenvpn    
   - name: app-template
     condition: riven.enabled
     version: ~0.2.1

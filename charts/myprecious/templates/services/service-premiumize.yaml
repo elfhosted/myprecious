@@ -1,20 +1,20 @@
-{{ if .Values.rclonedebridlink.enabled }}
+{{ if .Values.rclonepremiumize.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: debridlink
+  name: premiumize
   labels:
-    app.kubernetes.io/name: debridlink
+    app.kubernetes.io/name: rclonepremiumize
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
   type: ClusterIP
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 9999
+    targetPort: 9999
     protocol: TCP
     name: http
   selector:
-    app.elfhosted.com/name: rclonedebridlink
+    app.kubernetes.io/name: rclonepremiumize
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}

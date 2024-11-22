@@ -22,4 +22,5 @@ data:
   addon_name: "MediaFusion | {{ .Release.Name }}"
   branding_description: "Welcome, {{ .Release.Name }}, to your own ElfHosted mediafusion instance!"
   db_max_connections: "30"
+  zilean_cache_check_url: http://zilean.zilean:8181/torrents/checkcached
 {{ end }}

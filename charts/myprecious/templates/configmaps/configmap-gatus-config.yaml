@@ -524,7 +524,7 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.plexdebrid.enabled }}
+      {{ if or .Values.plexdebrid.enabled .Values.plexdebridvpn.enabled }}
       - name: plex-debrid
         group: manage-media
         url: "http://plex-debrid:3001"
@@ -535,7 +535,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.riven.enabled }}
+      {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
       - name: riven
         group: manage-media
         url: "http://riven:3001"
@@ -1030,7 +1030,29 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }}   
+
+      {{ if .Values.rclonedebridlink.enabled }}
+      - name: debridlink
+        group: tools
+        url: "http://debridlink:9999"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}       
+
+      {{ if .Values.rclonepremiumize.enabled }}
+      - name: premiumize
+        group: tools
+        url: "http://premiumize:9999"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}   
 
       {{ if .Values.webdavplus.enabled }}
       - name: webdav-plus
