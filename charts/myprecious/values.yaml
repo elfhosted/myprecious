@@ -9570,6 +9570,7 @@ riven: &app_riven
           memory: 8Gi
 
 rivenvpn: 
+  enabled: false
   <<*: app_riven
   addons:
     vpn:
@@ -11910,6 +11911,7 @@ plexdebrid: &app_plexdebrid
 
 # This is a copy of plexdebrid plumbed into the user's VPN
 plexdebridvpn: 
+  enabled: false
   <<*: app_plexdebrid
   addons:
     vpn:
