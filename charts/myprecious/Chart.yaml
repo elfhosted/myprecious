@@ -434,7 +434,7 @@ dependencies:
     condition: rclonemountalldebrid.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: alldebrid
+    alias: rclonealldebrid
   - name: app-template
     condition: rclonemountdebridlink.enabled
     version: ~0.2.1
@@ -600,6 +600,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackhole4k
   - name: app-template
+    condition: rclonetorbox.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rclonetorbox
+  - name: app-template
     condition: blackholetorbox.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -644,11 +649,6 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: stremiojackettcommunity
-  - name: app-template
-    condition: stremiojackettcommunityalldebrid.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: stremiojackettcommunityalldebrid
   - name: app-template
     condition: jackettio.enabled
     version: ~0.2.1

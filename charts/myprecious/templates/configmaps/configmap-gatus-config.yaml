@@ -1021,6 +1021,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.rclonealldebrid.enabled }}
+      - name: alldebrid
+        group: tools
+        url: "http://alldebrid:9999"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.webdavplus.enabled }}
       - name: webdav-plus
         group: tools

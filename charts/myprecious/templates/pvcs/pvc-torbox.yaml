@@ -1,8 +1,8 @@
-{{ if .Values.rclonemountputio.enabled }}
+{{ if .Values.rclonemounttorbox.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: putio
+  name: torbox
   labels:
     velero.io/exclude-from-backup: "true"
 spec:
@@ -14,5 +14,5 @@ spec:
   storageClassName: rclone
   selector:
     matchLabels:
-      name: rclone-{{ .Release.Name }}-putio
+      name: rclone-{{ .Release.Name }}-torbox
 {{ end }}
