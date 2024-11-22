@@ -7692,7 +7692,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+    tag: 1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -7805,7 +7805,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+    tag: 1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
   command:
   - /rclonefm.sh
   controller:
@@ -7931,7 +7931,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+    tag: 1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -12156,7 +12156,7 @@ alldebrid:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+    tag: 1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
   command:
   - /debrid-provider.sh
   controller:
@@ -12241,7 +12241,7 @@ torbox:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+    tag: 1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
   command:
   - /debrid-provider.sh
   controller:
@@ -12282,7 +12282,7 @@ torbox:
           name: torbox-config
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone@1.68.2@sha256:d5e8d03089f422153c1c0b6d17dc9a0254c26c58961a743543ff561fd644c9e8
+      image: ghcr.io/elfhosted/rclone@1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
       command:
       - /bin/ash
       - -c
