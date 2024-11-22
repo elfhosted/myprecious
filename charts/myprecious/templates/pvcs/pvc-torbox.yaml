@@ -1,4 +1,4 @@
-{{ if .Values.rclonemountalldebrid.enabled }}
+{{ if .Values.rclonemounttorbox.enabled }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -14,5 +14,5 @@ spec:
   storageClassName: rclone
   selector:
     matchLabels:
-      name: rclone-{{ .Release.Name }}-alldebrid
+      name: rclone-{{ .Release.Name }}-torbox
 {{ end }}
