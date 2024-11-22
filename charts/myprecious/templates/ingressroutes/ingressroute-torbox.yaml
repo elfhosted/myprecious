@@ -8,7 +8,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-torbox.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: rclonetorbox
+        - name: torbox
           kind: Service
           port: 9999
       middlewares:  
