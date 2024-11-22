@@ -12155,7 +12155,7 @@ requestrr:
       - mountPath: /tmp
         name: tmp
 
-debridlink: &app_davdebrid
+rclonedebridlink:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/davdebrid
@@ -12321,6 +12321,93 @@ rclonealldebrid:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
+
+rclonepremiumize:
+  enabled: true
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/rclone
+    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+  command:
+  - /debrid-provider.sh
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-premiumize,premiumize-config"
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "128M"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    cache:
+      enabled: true
+      type: emptyDir
+      mountPath: /home/elfie/.cache
+      sizeLimit: 1Gi
+    config: 
+      enabled: "true"
+      type: emptyDir
+      mountPath: /config
+    bootstrap:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: alldebrid-config
+  initContainers:
+    setup:
+      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+      command:
+      - /bin/ash
+      - -c
+      - |
+        set -x
+
+        # Create directory structure
+
+        OBSCURED_PASS=$(rclone obscure doesntmatter)
+        cp /bootstrap/rclone-debrid-provider.conf /config/
+        sed -i "s/REPLACEUSER/$USER/" /config/rclone-debrid-provider.conf
+        sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rclone-debrid-provider.conf
+        
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      - mountPath: /bootstrap
+        name: bootstrap
+      resources: *default_resources
+      securityContext: *default_securitycontext
+      envFrom:
+      - configMapRef:
+          name: elfbot-premiumize
+          optional: true
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 9999      
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 60Mi
+    limits:
+      cpu: 150m
+      memory: 512Mi
 
 rclonetorbox:
   enabled: false
