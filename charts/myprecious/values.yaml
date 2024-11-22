@@ -12310,6 +12310,13 @@ rclonetorbox:
       volumeSpec:
         configMap:
           name: torbox-config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-torbox
+          optional: true          
   initContainers:
     setup:
       image: ghcr.io/elfhosted/rclone:1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
@@ -12321,7 +12328,7 @@ rclonetorbox:
 
         # Create directory structure
 
-        OBSCURED_PASS=$(rclone obscure "$PASS")
+        OBSCURED_PASS=$(rclone obscure < /elfbot/PASS)
         cp /bootstrap/rclone-debrid-provider.conf /config/
         sed -i "s/REPLACEUSER/$USER/" /config/rclone-debrid-provider.conf
         sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rclone-debrid-provider.conf
@@ -12331,6 +12338,8 @@ rclonetorbox:
         name: config
       - mountPath: /bootstrap
         name: bootstrap
+      - mountPath: /elfbot
+        name: elfbot
       resources: *default_resources
       securityContext: *default_securitycontext
       envFrom:
