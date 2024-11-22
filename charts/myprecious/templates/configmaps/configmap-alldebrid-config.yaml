@@ -9,6 +9,7 @@ data:
     type = webdav
     url = https://webdav.debrid.it/
     vendor = other
-    pass = a0438NlKLAgZaH-VH-Pt1T2O405hP-104mg
+    user = REPLACEUSER
+    pass = REPLACEPASS
 # the password is not used by AD, it's the obscured version of "immaterial". All that matters is the API key, which is passed as a user var in an env var
 {{ end }}

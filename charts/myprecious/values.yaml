@@ -12184,14 +12184,39 @@ alldebrid:
       type: emptyDir
       mountPath: /home/elfie/.cache
       sizeLimit: 1Gi
-    alldebrid-config:
+    config: 
       enabled: "true"
-      mountPath: /config/rlcone-debrid-provider.conf
-      subPath: rlcone-debrid-provider.conf
+      type: emptyDir
+      mountPath: /config
+    bootstrap:
+      enabled: "true"
       type: "custom"
       volumeSpec:
         configMap:
           name: alldebrid-config
+  initContainers:
+    setup:
+      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
+      command:
+      - /bin/ash
+      - -c
+      - |
+        set -x
+
+        # Create directory structure
+
+        OBSCURED_PASS=$(rclone obscure doesntmatter)
+        cp /bootstrap/rlcone-debrid-provider.conf /config/
+        sed -i "s/REPLACEUSER/$USER/" /config/rlcone-debrid-provider.conf
+        sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rlcone-debrid-provider.conf
+        
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      - mountPath: /bootstrap
+        name: bootstrap
+      resources: *default_resources
+      securityContext: *default_securitycontext
   service:
     main:
       enabled: true # necessary for probes
@@ -12282,7 +12307,7 @@ torbox:
           name: torbox-config
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone@1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
+      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:ed1750afc7fcf5bbc48c3a6d180284064fe1f83a4ca3455c66b73e183503a663
       command:
       - /bin/ash
       - -c
