@@ -3501,7 +3501,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:16c7c30d0cd922333fd87aa1de2ab3d6d49c182a7bacf130c6a382477e18c83d
+    tag: rolling@sha256:2e0919c91b7e4387b939790b630fac77d874064cc9a672bc613f2590b468cd9e
   enabled: false
   controller:
     annotations:
@@ -4489,7 +4489,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.3.2665@sha256:f4e354fa36a0bced8299dfa30f4ab007229f2a3c53d5c6d21125d483ea679110
+    tag: 0.4.4.2686@sha256:51f9aec4471dc3222e7bb0ec083820d5abc1f683541bf3ae8620cc75caca794f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4598,7 +4598,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.3.2665@sha256:f4e354fa36a0bced8299dfa30f4ab007229f2a3c53d5c6d21125d483ea679110
+    tag: 0.4.4.2686@sha256:51f9aec4471dc3222e7bb0ec083820d5abc1f683541bf3ae8620cc75caca794f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5474,7 +5474,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.11.4@sha256:6c4ca6ce266d41da3a82bac5b5ee56821ae5a8c196f828be5cd5f16f266fde98
+      image: ghcr.io/elfhosted/homer:v24.11.5@sha256:023f5cacef42f437d4c8c1823c3f4ef3a087c6a9e157db7b11559093fc8c6c44
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
