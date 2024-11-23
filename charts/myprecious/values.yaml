@@ -12429,7 +12429,7 @@ rclonepremiumize:
       type: "custom"
       volumeSpec:
         configMap:
-          name: alldebrid-config
+          name: premiumize-config
   initContainers:
     setup:
       image: ghcr.io/elfhosted/rclone:1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
@@ -12441,7 +12441,7 @@ rclonepremiumize:
 
         # Create directory structure
 
-        OBSCURED_PASS=$(rclone obscure doesntmatter)
+        OBSCURED_PASS=$(rclone obscure "$PASS")
         cp /bootstrap/rclone-debrid-provider.conf /config/
         sed -i "s/REPLACEUSER/$USER/" /config/rclone-debrid-provider.conf
         sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rclone-debrid-provider.conf
