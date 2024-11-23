@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.187.0](https://github.com/elfhosted/myprecious/compare/v1.186.0...v1.187.0) (2024-11-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/homer docker tag to v24.11.5 ([37ebecf](https://github.com/elfhosted/myprecious/commit/37ebecffa5c43692d24faa49209253b5dbf3ad5d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.995 ([2231fd4](https://github.com/elfhosted/myprecious/commit/2231fd4be60855eb19b4a224785adacb3a1479c9))
+* **app:** update ghcr.io/elfhosted/kavita docker tag to v0.8.4 ([fb7929d](https://github.com/elfhosted/myprecious/commit/fb7929d061e32106b81d9b54c4e2de2cc3e90255))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.4.2686 ([5781772](https://github.com/elfhosted/myprecious/commit/578177263dd15fc8ef96709935e096393af3031b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 2e0919c ([e883001](https://github.com/elfhosted/myprecious/commit/e8830011305215b2c0062fed0c82e39be909b75f))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 345f554 ([adbc369](https://github.com/elfhosted/myprecious/commit/adbc369cf3e8f069a6f87785ec2f2c2c4a19237f))
+* Restore VPN for Comet AD ([97bf2dd](https://github.com/elfhosted/myprecious/commit/97bf2ddebd863bbae623065f5593ff7134854cc2))
+
 ## [1.186.0](https://github.com/elfhosted/myprecious/compare/v1.185.0...v1.186.0) (2024-11-22)
 
 
