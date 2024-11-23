@@ -1,0 +1,12 @@
+{{ if .Values.rclonealldebrid.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alldebrid-tinyproxy-conf
+data:
+  tinyproxy.conf: |
+    Port 8888
+    Listen 0.0.0.0
+    Timeout 600
+    DisableViaHeader yes
+{{ end }}
