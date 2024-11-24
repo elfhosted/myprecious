@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.188.0](https://github.com/elfhosted/myprecious/compare/v1.187.0...v1.188.0) (2024-11-24)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.5 ([03a6bd1](https://github.com/elfhosted/myprecious/commit/03a6bd101cbbd7c7afe7a53c3c46c8e914bbd24d))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.6 ([b7aef18](https://github.com/elfhosted/myprecious/commit/b7aef188415e7da2f93413bdf529aa5ad6d4c25e))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.44.0 ([4f0a10d](https://github.com/elfhosted/myprecious/commit/4f0a10dd2d500cdaef9bdd4fa22eed28f7c5090e))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.44.1 ([bdc9dda](https://github.com/elfhosted/myprecious/commit/bdc9dda1adbdd64547367250211634bb7ef868a1))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.46.0 ([eb0e069](https://github.com/elfhosted/myprecious/commit/eb0e069c3f04bdd6cdc9787e847dbec3b1c07632))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.998 ([136c7c2](https://github.com/elfhosted/myprecious/commit/136c7c2272f8889b3d5692cd684cd9f1d4b364a8))
+* **app:** update ghcr.io/elfhosted/jellystat docker tag to v1.1.1 ([53c955b](https://github.com/elfhosted/myprecious/commit/53c955bcb20b31e872aa396637abff04bb13c6d4))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.89 ([19a765c](https://github.com/elfhosted/myprecious/commit/19a765c0d04562f9527483e1f103b3accbb847c3))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.9.13 ([bd5be05](https://github.com/elfhosted/myprecious/commit/bd5be05fd9946e84a663d46890c76c098b9b917a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 4546c48 ([c7853ff](https://github.com/elfhosted/myprecious/commit/c7853ff9028319b4244f6709c7c3cb5511cb4b20))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to c73fb88 ([e992862](https://github.com/elfhosted/myprecious/commit/e992862dff0fe210cca161aeaa2180503a0c754a))
+
 ## [1.187.0](https://github.com/elfhosted/myprecious/compare/v1.186.0...v1.187.0) (2024-11-23)
 
 
