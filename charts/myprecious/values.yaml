@@ -11959,8 +11959,8 @@ plexdebriddebridlink:
           claimName: config
 
 plexdebridtorbox: 
-  enabled: false
   <<: *app_plexdebrid  
+  enabled: false  
   persistence:
     <<: *storagemounts
     config:
@@ -11973,8 +11973,8 @@ plexdebridtorbox:
           claimName: config
 
 plexdebridpremiumize: 
-  enabled: false
   <<: *app_plexdebrid  
+  enabled: false  
   persistence:
     <<: *storagemounts
     config:
