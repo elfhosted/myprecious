@@ -1166,7 +1166,7 @@ data:
           {{ if .Values.rdtclient.enabled }}
           - name: "RDT Client"
             logo: "assets/png/real-debrid.png"
-            subtitle: "Manage Real Debrid services"
+            subtitle: "Manage Debrid Downloads"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-rdtclient.{{ .Values.dns_domain }}"
@@ -1212,7 +1212,7 @@ data:
           {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
           - name: "Zurg"
             logo: "assets/png/real-debrid.png"
-            subtitle: "Manage Real Debrid WebDAV proxy"
+            subtitle: "Manage RealDebrid Mount"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/"
@@ -1505,6 +1505,7 @@ data:
         icon: "fas fa-truck"
         items:
 
+          {{ if not .Values.zurgling.enabled }}
           - name: "Rclone Remotes"
             logo: "assets/png/rclone.png"
             subtitle: "Rclone remotes"
@@ -1536,6 +1537,7 @@ data:
             url: https://store.{{ .Values.dns_domain }}/product/rclonefm
             {{ end }}
             target: "_blank" # optional html tag target attribute
+          {{ end }}
 
           {{ if .Values.webdav.enabled }}
           - name: "WebDAV"
@@ -1587,15 +1589,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                                        
 
-          {{ if .Values.webdavplus.enabled }}
-          - name: "WebDAV Plus"
-            logo: "assets/png/rclone.png"
-            subtitle: "WebDAV Plus"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-webdav-plus.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
 
       - name: "Grafana"
         icon: "fas fa-globe"
