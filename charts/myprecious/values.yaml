@@ -4800,7 +4800,7 @@ plex: &app_plex
       optional: true
   resources:
     requests:
-      cpu: "50m"
+      cpu: "100m"
       memory: 1Gi
     limits:
       cpu: "2" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
@@ -11922,26 +11922,26 @@ plexdebrid: &app_plexdebrid
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    # elfbot:
-    #   enabled: "true"
-    #   type: "custom"
-    #   volumeSpec:
-    #     configMap:
-    #       name: elfbot-plex-debrid
-    #       optional: true
-  # initContainers:
-  #   bootstrap:
-  #     <<: *bootstrap
-  #     volumeMounts:
-  #     - mountPath: /etc/elfbot
-  #       name: elfbot
-  #     - mountPath: /storage/backup
-  #       name: backup
-  #     - mountPath: /config
-  #       name: config
-  #       subPath: plex-debrid
-  #     - mountPath: /tmp
-  #       name: tmp
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-plex-debrid
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plex-debrid
+      - mountPath: /tmp
+        name: tmp
 
 
 plexdebriddebridlink: 
