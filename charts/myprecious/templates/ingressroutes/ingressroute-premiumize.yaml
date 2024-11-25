@@ -8,7 +8,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-premiumize.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: rclonepremiumize
+        - name: premiumize
           kind: Service
           port: 9999
       middlewares:  

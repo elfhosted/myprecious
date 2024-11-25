@@ -2142,7 +2142,7 @@ tautulli:
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
-    tag: 2.14.6@sha256:60c2de508e3b4916a9b0afc18d784bea79ddfb6d6c2f59e5723625d4d8321d9e
+    tag: 2.15.0@sha256:e763974ccd5559086786242b7e02db04930e9b45a945ad31aa6a5b0ec9a246cc
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -3501,7 +3501,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:16c7c30d0cd922333fd87aa1de2ab3d6d49c182a7bacf130c6a382477e18c83d
+    tag: rolling@sha256:c73fb881ff1ceff938958d86c1b18698c11a87bc3ed84e88537159659bbc144d
   enabled: false
   controller:
     annotations:
@@ -3720,7 +3720,7 @@ kavita:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kavita
-    tag: 0.8.3@sha256:d878e0c81d72cc3e2c4b1c6b41374cc89d566ffee0e7ce22c5981a8142620c24
+    tag: 0.8.4@sha256:5b61be5f506bdba6aaffaa982578b1e794ce7bb9a53bca1bd16369121b9871a4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4489,7 +4489,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.3.2665@sha256:f4e354fa36a0bced8299dfa30f4ab007229f2a3c53d5c6d21125d483ea679110
+    tag: 0.4.4.2686@sha256:51f9aec4471dc3222e7bb0ec083820d5abc1f683541bf3ae8620cc75caca794f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4598,7 +4598,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.3.2665@sha256:f4e354fa36a0bced8299dfa30f4ab007229f2a3c53d5c6d21125d483ea679110
+    tag: 0.4.4.2686@sha256:51f9aec4471dc3222e7bb0ec083820d5abc1f683541bf3ae8620cc75caca794f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5474,7 +5474,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v24.11.4@sha256:6c4ca6ce266d41da3a82bac5b5ee56821ae5a8c196f828be5cd5f16f266fde98
+      image: ghcr.io/elfhosted/homer:v24.11.5@sha256:023f5cacef42f437d4c8c1823c3f4ef3a087c6a9e157db7b11559093fc8c6c44
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -5969,7 +5969,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.16.3-vaapi
+    tag: 0.16.6-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6571,7 +6571,7 @@ jellystat:
     app.elfhosted.com/name: jellystat
   image:
     repository: ghcr.io/elfhosted/jellystat
-    tag: 1.1.0@sha256:ef08d57ae2ddfdecbe6fd051cf6c562d27217ed3c263d5a1056b0cf6425b3cfe
+    tag: 1.1.1@sha256:922dcab655b350ee0a851fe77fa5cde4a8f624c7a71c4d3efee7503af5bc884e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -8662,7 +8662,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.87
+    tag: v2.0.89@sha256:87a51a0dd57c1e4d45776cd1d63b154f2b170d7ee65fbc3b88d539b3a4c84e33
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -9090,7 +9090,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.9.12
+    tag: v0.9.13
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-homepage,homepage-config,homepage-env"
@@ -9797,7 +9797,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.994@sha256:e5398b88bd2331bfbb5c82fbae7a00924e981d7f300d93c1cce842a5fc713167
+    tag: 0.22.998@sha256:eb5573976548d83ebda101102a92beda8ce2665862f51615d09dc60b40a41819
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10583,7 +10583,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.43.4@sha256:e59c0c0077fb36512208035a65c19d3fa646da23d0293de84bbcb2154e34f26b
+    tag: v1.46.0@sha256:e2e9fd5dae934509eec80e1828b63310a44577585dc51b476077565a743c7021
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -10876,7 +10876,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.7@sha256:64ec5c7ddd82f685d0129eccfb343b321633f4907fa64f815006fad08cc4066a
+    tag: 4.1.9@sha256:23d92e6dfb8e450171787df8d0dbb087a5a135991546b5294649a452e5d995dc
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -11872,7 +11872,7 @@ plexdebrid: &app_plexdebrid
     app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:041a244296c14ff1279fa87424792841bfddb291a02e6c703384a46987bf5734
+    tag: rolling@sha256:345f554c973b52169a197d6c827c79779aceadcef043358b8831d3d7c0da63cd
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12279,7 +12279,7 @@ rclonedebridlink:
 
 
 rclonealldebrid:
-  enabled: true
+  enabled: false
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
@@ -12403,7 +12403,7 @@ rclonealldebrid:
       config: # We have to set this to null so that we can override with our own config
 
 rclonepremiumize:
-  enabled: true
+  enabled: false
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
@@ -12595,7 +12595,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.4.5@sha256:81467c48cfaceadd249af0387ac677002789d6e2bc972933b37e2fc8544cce2f
+    tag: 1.4.6@sha256:c168be416becb5fbfc38eb08bd89641a4fe91f674bffec0baa011d5a9bc3c470
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -12811,7 +12811,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.120.2@sha256:99f97cb61cd1b49c23fbee46a0ed067f171970518d8834c7e8b2dd3ac0d39c63
+    tag: v1.121.0@sha256:851c02f28891f1854c5b5762ee8d2e254e2de528cfe3627b2fbcb37a7f108ff3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12899,7 +12899,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.120.2
+      image: ghcr.io/immich-app/immich-machine-learning:v1.121.0
       envFrom:
       - configMapRef:
           name: immich-env
