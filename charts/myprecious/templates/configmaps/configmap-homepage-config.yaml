@@ -657,7 +657,7 @@ data:
             siteMonitor: http://plex-debrid-alldebrid:3001            
         {{ end }}      
 
-        {{ if .Values.plexdebridbridlink.enabled  }}
+        {{ if .Values.plexdebriddebridlink.enabled  }}
         - plex-debrid-debridlink:
             icon: real-debrid.png
             href: https://{{ .Release.Name }}-plex-debrid-debridlink.{{ .Values.dns_domain }}
