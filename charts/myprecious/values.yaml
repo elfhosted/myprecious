@@ -4,6 +4,10 @@ safeToRelease: true
 # false by default means the FSN cluster (so no migrations)
 location:
   enabled: false
+zurgling:
+  enabled: false
+sidekick:
+  enabled: false
 
 # false by default
 volsync:
