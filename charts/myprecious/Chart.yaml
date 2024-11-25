@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.188.1-pre-01
+version: 1.188.1-pre-02
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -506,10 +506,25 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebrid
   - name: app-template
-    condition: plexdebridvpn.enabled
+    condition: plexdebridalldebrid.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: plexdebridvpn
+    alias: plexdebridalldebrid
+  - name: app-template
+    condition: plexdebriddebridlink.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: plexdebriddebridlink   
+  - name: app-template
+    condition: plexdebriddebridpremiumize.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: plexdebridpremiumize     
+  - name: app-template
+    condition: plexdebridtorboxenabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: plexdebridtorbox     
   - name: app-template
     condition: riven.enabled
     version: ~0.2.1

@@ -36,7 +36,7 @@ data:
     sed -i  "s/serve_from_rclone:.*/serve_from_rclone: false/" /config/config.yml
 
     # Disable plex_update.sh unless user uses plexdebrid
-    {{- if or .Values.plexdebrid.enabled .Values.plexdebridvpn.enabled }}
+    {{- if .Values.plexdebrid.enabled }}
       # we need the script
       sed -i  "s/#on_library_update/on_library_update/" /config/config.yml
     {{- else }}

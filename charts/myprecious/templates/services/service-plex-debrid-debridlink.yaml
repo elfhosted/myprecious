@@ -1,10 +1,10 @@
-{{ if .Values.plexdebrid.enabled }}
+{{ if .Values.plexdebriddebridlink.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: plex-debrid
+  name: plex-debrid-debridlink
   labels:
-    app.elfhosted.com/name: plexdebrid
+    app.kubernetes.io/name: plexdebridalldebrid
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: http
   selector:
-    app.elfhosted.com/name: plexdebrid
+    app.kubernetes.io/name: plexdebriddebridlink
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
