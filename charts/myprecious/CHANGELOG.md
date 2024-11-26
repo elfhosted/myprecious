@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.189.0](https://github.com/elfhosted/myprecious/compare/v1.188.0...v1.189.0) (2024-11-25)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1003 ([5c037b1](https://github.com/elfhosted/myprecious/commit/5c037b104c8645a7e381ee52304616e86c6dba84))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.1.7 ([e54096e](https://github.com/elfhosted/myprecious/commit/e54096e6880160f23bbca7895d0d1605d669bf0d))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.1.8 ([29f518d](https://github.com/elfhosted/myprecious/commit/29f518deb74580712b9e685ebb6b30ee1b5dc987))
+* **app:** update ghcr.io/elfhosted/tautulli docker tag to v2.15.0 ([f1d44f4](https://github.com/elfhosted/myprecious/commit/f1d44f46d32a662aad885dafd3343ca22bd2f46a))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to a16f814 ([cd89ddd](https://github.com/elfhosted/myprecious/commit/cd89ddd13819211be968315d5856af5eec11b48a))
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to c1f613c ([b0cc204](https://github.com/elfhosted/myprecious/commit/b0cc2045133ffdbbe3ca8c5e2ea981b90f480983))
+* **app:** update ghcr.io/elfhosted/qbittorrent:5.0.2 docker digest to 7ff09d6 ([114c042](https://github.com/elfhosted/myprecious/commit/114c042eda15ca09ea9ec72411bb7e79e0ed3065))
+
 ## [1.188.0](https://github.com/elfhosted/myprecious/compare/v1.187.0...v1.188.0) (2024-11-24)
 
 
