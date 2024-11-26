@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.190.0](https://github.com/elfhosted/myprecious/compare/v1.189.0...v1.190.0) (2024-11-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.47.0 ([76e8b76](https://github.com/elfhosted/myprecious/commit/76e8b76ebe07b715a7e1a88239b83ce4db90c4a4))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.48.0 ([933b085](https://github.com/elfhosted/myprecious/commit/933b085db1454b9affd5c228ba549112dd0c575e))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.48.1 ([5b79398](https://github.com/elfhosted/myprecious/commit/5b793989bcabf97f149fe39801b2af773f38f34a))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.49.0 ([0aaa924](https://github.com/elfhosted/myprecious/commit/0aaa9244b4409e5d3d805a1af84f816de8f9943e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1009 ([3800242](https://github.com/elfhosted/myprecious/commit/3800242611b743ddafcaf58e466b75a9edaf1e5b))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.27.0.4852 ([95e1e1e](https://github.com/elfhosted/myprecious/commit/95e1e1e78213b89e38b87f5d393ac21a22fead3b))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.1.9 ([70ce68a](https://github.com/elfhosted/myprecious/commit/70ce68a133f67d5485f718e4d40d076eece2afa5))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.11.26.0103 ([00411b3](https://github.com/elfhosted/myprecious/commit/00411b3e32789e129176418ac232bf7bd2289b59))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to e210683 ([0323811](https://github.com/elfhosted/myprecious/commit/0323811ffbd5bc61c271cfc48279410f840785e4))
+
 ## [1.189.0](https://github.com/elfhosted/myprecious/compare/v1.188.0...v1.189.0) (2024-11-25)
 
 
