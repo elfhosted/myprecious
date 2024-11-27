@@ -10072,7 +10072,7 @@ stremiojackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.1.9@sha256:a98559cf462f74df24f0c222c8aeacf724db7dd91ed020be69547f82cef81863
+    tag: v4.2.0@sha256:43fe06bd4e62722af88336e00116ed8238cbbba8352a9ab5f6b2a47d497409da
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11080,7 +11080,7 @@ stremiojackettcommunity: &stremiojackettcommunity
       app.elfhosted.com/name: stremio-jackett-community
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.1.9@sha256:a98559cf462f74df24f0c222c8aeacf724db7dd91ed020be69547f82cef81863
+    tag: v4.2.0@sha256:43fe06bd4e62722af88336e00116ed8238cbbba8352a9ab5f6b2a47d497409da
   priorityClassName: tenant-normal
   # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"] # allow logs on private instances
   controller:
