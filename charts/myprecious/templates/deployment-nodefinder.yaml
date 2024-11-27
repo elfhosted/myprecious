@@ -14,11 +14,11 @@ metadata:
     helm.sh/hook-weight: "-10"  # Run before all the replicationdestinations
 spec:
   selector:
-    matchLabels:
+    matchLabels: 
       app.elfhosted.com/role: nodefinder
   template:
     metadata:
-      labels:
+      labels: 
         app.elfhosted.com/role: nodefinder
     spec:
       affinity:
