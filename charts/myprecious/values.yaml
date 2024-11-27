@@ -3505,7 +3505,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:c73fb881ff1ceff938958d86c1b18698c11a87bc3ed84e88537159659bbc144d
+    tag: rolling@sha256:e210683d27d00ced1cdbe34344a2e77a90a47687b60dc81b7a79aeea7529f6eb
   enabled: false
   controller:
     annotations:
@@ -3793,7 +3793,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.21.0@sha256:1dad366bde7d0d4d705ba9a4cfdf89343b960ac2c834e8b5f21d2090b9e4da38
+    tag: 7.21.0@sha256:e1c5964a0ce8781978e6fbfd0702804c189819aa4d5fadf2ade399678b5b2120
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -3882,7 +3882,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.10.2656@sha256:c68341a8e99295fd942e7608201c96db302830de85766a6af7dcc62b8be26f81
+    tag: 4.0.11.2688@sha256:aeac5013acc14a38e438cbcbc555fc6c6281db1d18979fe7269de112c798a2e5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3992,7 +3992,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.10.2656@sha256:c68341a8e99295fd942e7608201c96db302830de85766a6af7dcc62b8be26f81
+    tag: 4.0.11.2688@sha256:aeac5013acc14a38e438cbcbc555fc6c6281db1d18979fe7269de112c798a2e5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4189,7 +4189,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.26.1.4844@sha256:1c3467d2636aa05c94f6961c2abe808d287c136b24dd33678ca44698e72c578d
+    tag: 1.27.0.4852@sha256:4b1be85e319f4df8ff9a6f75df14d21d66afb756df226d62dc31d188acc004ac
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9801,7 +9801,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1003@sha256:56392feb6140e685d946f1bd35772800ccbe3a965e99e422e3b49f8381031384
+    tag: 0.22.1012@sha256:d539152bd9ea56f074432c4332e4200591234adb98e11949cf20678fa65c21f6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10072,7 +10072,7 @@ stremiojackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.1.8@sha256:011ee77d61773937c5b28c89b3089c768a51ba03f244dbcdfd4771c1ac708b02
+    tag: v4.1.9@sha256:a98559cf462f74df24f0c222c8aeacf724db7dd91ed020be69547f82cef81863
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10587,7 +10587,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.46.0@sha256:e2e9fd5dae934509eec80e1828b63310a44577585dc51b476077565a743c7021
+    tag: v1.49.0@sha256:c6116d4b25fa667aa8dbd71d1b21f5b511302618b47fe88fa0d8766f69e75997
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -11080,7 +11080,7 @@ stremiojackettcommunity: &stremiojackettcommunity
       app.elfhosted.com/name: stremio-jackett-community
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.1.8@sha256:011ee77d61773937c5b28c89b3089c768a51ba03f244dbcdfd4771c1ac708b02
+    tag: v4.1.9@sha256:a98559cf462f74df24f0c222c8aeacf724db7dd91ed020be69547f82cef81863
   priorityClassName: tenant-normal
   # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"] # allow logs on private instances
   controller:
@@ -11586,7 +11586,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.26.0103-nightly@sha256:635d24f002497dae1a0fcebfd7686dad885d3762ec4db7df3ed0c89e6b3e668d
+    tag: 2024.11.27.0028-nightly@sha256:1fd4e44034186f7e384389b1af3af95320a9ff83dcafd48fc00e1cac2de6885f
   priorityClassName: tenant-normal
   controller:
     annotations:
