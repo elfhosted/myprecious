@@ -11961,6 +11961,13 @@ plexdebriddebridlink:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-plex-debrid
+          optional: true          
 
 plexdebridtorbox: 
   <<: *app_plexdebrid  
@@ -11975,6 +11982,13 @@ plexdebridtorbox:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-plex-debrid
+          optional: true          
 
 plexdebridpremiumize: 
   <<: *app_plexdebrid  
@@ -11988,7 +12002,14 @@ plexdebridpremiumize:
       subPath: plex-debrid/premiumize
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config               
+          claimName: config    
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-plex-debrid
+          optional: true                     
 
 # This is a copy of plexdebrid plumbed into the user's VPN
 plexdebridalldebrid: 
@@ -12004,6 +12025,13 @@ plexdebridalldebrid:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-plex-debrid
+          optional: true          
   addons:
     vpn:
       enabled: true
