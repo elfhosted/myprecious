@@ -11876,7 +11876,7 @@ plexdebrid: &app_plexdebrid
   #   app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:345f554c973b52169a197d6c827c79779aceadcef043358b8831d3d7c0da63cd
+    tag: rolling@sha256:6ffd36fc616d3502a8636fd82bc336d39c28a89ac7bcbef30da896914d9b9fbf
   priorityClassName: tenant-normal
   controller:
     annotations:
