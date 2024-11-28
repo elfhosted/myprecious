@@ -3992,7 +3992,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.11.2688@sha256:aeac5013acc14a38e438cbcbc555fc6c6281db1d18979fe7269de112c798a2e5
+    tag: 4.0.11.2697@sha256:eb526dbd47739bb2efcdf5130e36b4448e3989d738597378965512748378102f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6054,7 +6054,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:c1f613c8e6ff774c48bfa0c325985342c201b16521098bd7dc310124af0e6469
+    tag: develop-vaapi@sha256:faa6caf9f9659745113c23470ae82b38267cc54d9a43483644ca06ae8e44aa73
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9801,7 +9801,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1012@sha256:d539152bd9ea56f074432c4332e4200591234adb98e11949cf20678fa65c21f6
+    tag: 0.22.1014@sha256:994f52d5335a97e42979dc6e45ff5de4f5a153ee464ed68ce74bc1b6c9d53065
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10072,7 +10072,7 @@ stremiojackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.2.0@sha256:43fe06bd4e62722af88336e00116ed8238cbbba8352a9ab5f6b2a47d497409da
+    tag: v4.2.1@sha256:1ee680e9ef65c5b0090a76c9df609f6545cf7c2a63329a42dd3801fb538a9dee
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10587,7 +10587,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.50.1@sha256:43d53fa40f37e75e7b084191a771b6163ddf90fc9fbe8f318313788250c284b5
+    tag: v1.51.0@sha256:65284c497ca82610e7be477cca266cf9cc42f1ead3c412fac0ee7c863d0d2b7f
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -10764,7 +10764,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.6.2@sha256:1e5a1446fb5881b2eaa638a2ba2180a48f58bab8cffda4baec3e99d5c8076813
+    tag: v1.7.0@sha256:cd575cf575be731701d2d8b0c2b1a85acf4d9678fbd8e045ea6c50fba0a02d49
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10880,7 +10880,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.10@sha256:d11fa007fd93a0d54e6f9ffaaf78accd22032cdfdb2b4d0353b013bfa0640796
+    tag: 4.1.11@sha256:144a5828fe7c66033bb5b0d831eb0de5f21921c3287f8919c93d066661361f38
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -11082,7 +11082,7 @@ stremiojackettcommunity: &stremiojackettcommunity
       app.elfhosted.com/name: stremio-jackett-community
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.2.0@sha256:43fe06bd4e62722af88336e00116ed8238cbbba8352a9ab5f6b2a47d497409da
+    tag: v4.2.1@sha256:1ee680e9ef65c5b0090a76c9df609f6545cf7c2a63329a42dd3801fb538a9dee
   priorityClassName: tenant-normal
   # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"] # allow logs on private instances
   controller:
@@ -11878,7 +11878,7 @@ plexdebrid: &app_plexdebrid
   #   app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:345f554c973b52169a197d6c827c79779aceadcef043358b8831d3d7c0da63cd
+    tag: rolling@sha256:0b2049ee3942bc98d95ca3d61e08a13137c2bac61b91b561a9ca66376457f00e
   priorityClassName: tenant-normal
   controller:
     annotations:
