@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.192.0](https://github.com/elfhosted/myprecious/compare/v1.191.0...v1.192.0) (2024-11-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v1.51.0 ([373df5e](https://github.com/elfhosted/myprecious/commit/373df5ed6ee8c05086db23d5e8fbcd78276c65ce))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1014 ([d8d9d40](https://github.com/elfhosted/myprecious/commit/d8d9d40d3a51dd3cd8a8ce06a59c6a21157f6e36))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.7.0 ([1b33a6d](https://github.com/elfhosted/myprecious/commit/1b33a6d7ab80932553392a5757a4a1a90a9ee6d8))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.11 ([804e428](https://github.com/elfhosted/myprecious/commit/804e4281cd06306f70e5c32e01840f29ca395f4e))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2697 ([1fc53b9](https://github.com/elfhosted/myprecious/commit/1fc53b91682439eca1d74a4949535405d16182be))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to faa6caf ([127e94d](https://github.com/elfhosted/myprecious/commit/127e94da2aaa2fa50c3b62aa719c2aeac0f3e01c))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 0b2049e ([a47df1b](https://github.com/elfhosted/myprecious/commit/a47df1b24fffd41ca424352fe299481f6c6f308b))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 6ffd36f ([0e94c86](https://github.com/elfhosted/myprecious/commit/0e94c86765136d5e51b7553fe8b3b2942ea06baf))
+
 ## [1.191.0](https://github.com/elfhosted/myprecious/compare/v1.190.0...v1.191.0) (2024-11-27)
 
 
