@@ -10962,6 +10962,8 @@ mediafusion:
         timeoutSeconds: 10           
   envFrom:
   - configMapRef:
+      name: a-mediafusion-env # non-overrideable values
+  - configMapRef:
       name: mediafusion-env
   - configMapRef:
       name: elfbot-mediafusion
