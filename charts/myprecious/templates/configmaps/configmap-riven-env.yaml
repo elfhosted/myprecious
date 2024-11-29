@@ -14,9 +14,25 @@ data:
   RIVEN_DATABASE_HOST: postgresql+psycopg2://postgres:postgres@localhost/riven
   RIVEN_FORCE_ENV: 'false' # allow users to override values from env vars
 
-  RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
-  RIVEN_SYMLINK_LIBRARY_PATH: /storage/symlinks
+  {{ if or .Values.plex.enabled .Values.plexhobbit.enabled .Values.plexranger.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
+  ELF_STREAMER_URL: plex:32400
+  {{ else if or  .Values.jellyfin.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinranger.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
+  ELF_STREAMER_URL: jellyfin:8096
+  {{ else }}
+  ELF_STREAMER_URL: emby:8096
+  {{ end }}
 
+  {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+  RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
+  {{ else if .Values.rivenvpn }}
+  # So we're using AllDebrid
+  RIVEN_SYMLINK_RCLONE_PATH: /storage/alldebrid/magnets
+  {{ else }}
+  # If not AD or RD, then we're using torbox
+  RIVEN_SYMLINK_RCLONE_PATH: /storage/torbox
+  {{ end }}
+
+  RIVEN_SYMLINK_LIBRARY_PATH: /storage/symlinks
   RIVEN_UPDATERS_PLEX_URL: http://plex:32400
   RIVEN_UPDATERS_JELLYFIN_URL: http://jellyfin:8096
   RIVEN_UPDATERS_EMBY_URL: http://emby:8096

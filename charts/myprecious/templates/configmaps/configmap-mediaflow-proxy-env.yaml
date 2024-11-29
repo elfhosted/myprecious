@@ -5,7 +5,7 @@ metadata:
   name: mediaflow-proxy-env
 data:
   API_PASSWORD: "{{ .Values.mediaflowproxy.API_PASSWORD | default }}"
-  PROXY_URL: http://mediafusion:8888 # proxy via mediafusion's existing gluetun instance
+  PROXY_URL: http://tinyproxy:8888 # proxy via mediafusion's existing gluetun instance
   TRANSPORT_ROUTES: |
     {
       "https://*.alldebrid.com": {
