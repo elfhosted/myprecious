@@ -281,17 +281,15 @@ data:
         alerts:
           - type: email
 
-      - name: tinyproxy
-        group: consume-media
-        url: "http://tinyproxy:8888"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}   
-
-
+      # - name: tinyproxy
+      #   group: consume-media
+      #   url: "http://tinyproxy:8888"
+      #   interval: 5m
+      #   conditions:
+      #     - "[STATUS] == 400"
+      #   alerts:
+      #     - type: email
+      # {{ end }}   
 
       {{ if .Values.shluflix.enabled }}
       - name: shluflix
