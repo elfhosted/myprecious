@@ -51,7 +51,7 @@ spec:
       middlewares:
         - name: chain-hosted-stremio-addon
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && PathPrefix(`/configure/`)
+    - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && PathPrefix(`/configure`)
       kind: Rule
       services:
         - name: mediafusion
