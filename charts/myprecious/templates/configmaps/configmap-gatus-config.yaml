@@ -286,7 +286,7 @@ data:
         url: "http://tinyproxy:8888"
         interval: 5m
         conditions:
-          - "[STATUS] == 200"
+          - "[STATUS] == 400"
         alerts:
           - type: email
       {{ end }}   
