@@ -14,6 +14,14 @@ data:
   RIVEN_DATABASE_HOST: postgresql+psycopg2://postgres:postgres@localhost/riven
   RIVEN_FORCE_ENV: 'false' # allow users to override values from env vars
 
+  {{ if or .Values.plex.enabled .Values.plexhobbit.enabled .Values.plexranger.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
+  ELF_STREAMER_URL: plex:32400
+  {{ else if or  .Values.jellyfin.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinranger.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
+  ELF_STREAMER_URL: jellyfin:8096
+  {{ else }}
+  ELF_STREAMER_URL: emby:8096
+  {{ end }}
+
   {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
   {{ else if .Values.rivenvpn }}
