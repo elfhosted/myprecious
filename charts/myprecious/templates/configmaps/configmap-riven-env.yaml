@@ -26,12 +26,13 @@ data:
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
   {{ else if .Values.rivenvpn }}
   # So we're using AllDebrid
-  RIVEN_SYMLINK_LIBRARY_PATH: /storage/alldebrid/magnets
+  RIVEN_SYMLINK_RCLONE_PATH: /storage/alldebrid/magnets
   {{ else }}
   # If not AD or RD, then we're using torbox
-  RIVEN_SYMLINK_LIBRARY_PATH: /storage/torbox
+  RIVEN_SYMLINK_RCLONE_PATH: /storage/torbox
   {{ end }}
 
+  RIVEN_SYMLINK_LIBRARY_PATH: /storage/symlinks
   RIVEN_UPDATERS_PLEX_URL: http://plex:32400
   RIVEN_UPDATERS_JELLYFIN_URL: http://jellyfin:8096
   RIVEN_UPDATERS_EMBY_URL: http://emby:8096

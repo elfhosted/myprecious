@@ -1,20 +1,20 @@
-{{ if .Values.mediafusion.enabled }}
+{{ if .Values.mediaflowproxy.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: mediafusion
+  name: tinyproxy
   labels:
-    app.kubernetes.io/name: mediafusion
+    app.kubernetes.io/name: tinyproxy
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
   type: ClusterIP
   ports:
-  - port: 8000
-    targetPort: 8000
+  - port: 8888
+    targetPort: 8888
     protocol: TCP
-    name: http
+    name: tinyproxy
   selector:
-    app.kubernetes.io/name: mediafusion
+    app.kubernetes.io/name: tinyproxy
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}

@@ -675,6 +675,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: mediaflowproxy
   - name: app-template
+    condition: mediaflowproxy.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: tinyproxy    
+  - name: app-template
     condition: stremiojackettcommunity.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

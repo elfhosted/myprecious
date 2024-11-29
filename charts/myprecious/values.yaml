@@ -9410,7 +9410,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.20.1@sha256:e7fcc222b7eb71461a539dc35a03259805d16cb55657bcb93718aa3c19b373f5
+    tag: v0.20.1@sha256:0644c1c1ef6ccca274968717828d09d7edc2761db51e68c1e578ebf246b0ed84
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10997,6 +10997,85 @@ mediafusion:
       envFrom:
       - secretRef:
           name: mediafusion-vpn
+      securityContext:
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+
+
+tinyproxy:
+  enabled: false
+  image:
+    repository: docker.io/kalaksi/tinyproxy
+    tag: latest
+  podLabels:
+      app.elfhosted.com/name: tinyproxy
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      secret.reloader.stakater.com/reload: "tinyproxy-vpn"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    tinyproxy-conf:
+      enabled: "true"
+      type: "custom"
+      mountPath: /etc/tinyproxy/tinyproxy.conf
+      subPath: tinyproxy.conf  
+      volumeSpec:
+        configMap:
+          name: mediafusion-tinyproxy-conf 
+  resources:
+    requests:
+      cpu: 1m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8888
+  addons:
+    vpn:
+      enabled: true # in case we ever need it
+      gluetun:
+        image:
+          repository: thrnz/docker-wireguard-pia
+          tag: latest
+      env:
+        IPTABLES_BACKEND: nft
+        KILLSWITCH: "true"
+        LOCAL_NETWORK: 10.0.0.0/8
+        LOC: de-frankfurt
+        PORT_FORWARDING: "0"
+        PORT_PERSIST: "1"
+        NFTABLES: "1"
+        VPNDNS: "0"
+      envFrom:
+      - secretRef:
+          name: tinyproxy-vpn
       securityContext:
         runAsUser: 0
         capabilities:
