@@ -10892,7 +10892,7 @@ mediafusion:
       type: "custom"
       volumeSpec:
         configMap:
-          name: mediafusion-tinyproxy-conf 
+          name: tinyproxy-conf 
   resources:
     requests:
       cpu: 1m
