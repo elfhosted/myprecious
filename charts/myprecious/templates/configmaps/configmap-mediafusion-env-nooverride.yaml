@@ -1,8 +1,0 @@
-{{ if .Values.mediafusion.enabled }}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mediafusion-env-nooverride
-data:
-  disabled_providers: '["easydebrid"]'
-{{ end }}

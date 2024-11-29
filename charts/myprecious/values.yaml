@@ -10965,9 +10965,7 @@ mediafusion:
       name: mediafusion-env
   - configMapRef:
       name: elfbot-mediafusion
-      optional: true      
-  - configMapRef:
-      name: mediafusion-env-nooverride
+      optional: true
   - secretRef:
       name: mediafusion-env
   additionalContainers:
