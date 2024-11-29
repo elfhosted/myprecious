@@ -10962,12 +10962,12 @@ mediafusion:
         timeoutSeconds: 10           
   envFrom:
   - configMapRef:
-      name: z-mediafusion-env # non-overrideable values
-  - configMapRef:
       name: mediafusion-env
   - configMapRef:
       name: elfbot-mediafusion
-      optional: true
+      optional: true      
+  - configMapRef:
+      name: mediafusion-env-nooverride
   - secretRef:
       name: mediafusion-env
   additionalContainers:
