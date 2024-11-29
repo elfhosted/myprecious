@@ -10870,7 +10870,7 @@ mediafusion:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediafusion,mediafusion-env"
-      secret.reloader.stakater.com/reload: "mediafusion-env"
+      secret.reloader.stakater.com/reload: "mediafusion-env,mediafusion-vpn"
     strategy:
     rollingUpdate:
       unavailable: 1
@@ -10887,12 +10887,6 @@ mediafusion:
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
-    tinyproxy-conf:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: mediafusion-tinyproxy-conf 
   resources:
     requests:
       cpu: 1m
@@ -10951,14 +10945,6 @@ mediafusion:
       optional: true
   - secretRef:
       name: mediafusion-env
-  additionalContainers:
-    # Use this to provied proxied access to mediaflowproxy
-    tinyproxy:
-      image: docker.io/kalaksi/tinyproxy
-      volumeMounts:
-      - name: tinyproxy-conf
-        mountPath: /etc/tinyproxy/tinyproxy.conf
-        subPath: tinyproxy.conf  
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -10997,6 +10983,7 @@ tinyproxy:
   priorityClassName: tenant-normal
   controller:
     annotations:
+      configmap.reloader.stakater.com/reload: "tinyproxy-conf"
       secret.reloader.stakater.com/reload: "tinyproxy-vpn"
     strategy:
     rollingUpdate:

@@ -1,8 +1,8 @@
-{{ if .Values.mediafusion.enabled }}
+{{ if .Values.mediaflowproxy.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mediafusion-tinyproxy-conf
+  name: tinyproxy-conf
 data:
   tinyproxy.conf: |
     Port 8888
