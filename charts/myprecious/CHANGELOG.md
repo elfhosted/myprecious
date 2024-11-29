@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.193.0](https://github.com/elfhosted/myprecious/compare/v1.192.0...v1.193.0) (2024-11-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1018 ([d7637bf](https://github.com/elfhosted/myprecious/commit/d7637bf1445d17fae74e7b597594636e2167a489))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.12 ([2259eaa](https://github.com/elfhosted/myprecious/commit/2259eaa9021b54a4ebdb0f24497084c34c455183))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.2.1 ([ee37d94](https://github.com/elfhosted/myprecious/commit/ee37d949f4df7fe6913492dbe423fb31e31f2f9d))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.22.0 ([6feacfe](https://github.com/elfhosted/myprecious/commit/6feacfe3c159d504aad04a58ec2b3210d1841314))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 3b670bc ([c06094f](https://github.com/elfhosted/myprecious/commit/c06094f09bf75f3e2414b2d148ac8b23425b714a))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to 0644c1c ([1a98d87](https://github.com/elfhosted/myprecious/commit/1a98d8750e33d69974c9c86029c92eba91caca45))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to b3babd1 ([984f6cd](https://github.com/elfhosted/myprecious/commit/984f6cdeb779946b732e9c606fc841437545c1d5))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to b577589 ([ef55d65](https://github.com/elfhosted/myprecious/commit/ef55d650756e0e51ded9060591d237d2a03478b9))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to e7fcc22 ([fbe642e](https://github.com/elfhosted/myprecious/commit/fbe642e5fe4e57fccf09a4b73cada86c2538b6b3))
+
 ## [1.192.0](https://github.com/elfhosted/myprecious/compare/v1.191.0...v1.192.0) (2024-11-28)
 
 
