@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: a-mediafusion-env
+  name: z-mediafusion-env
 data:
   disabled_providers: '["easydebrid"]'
 {{ end }}
