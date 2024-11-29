@@ -4748,15 +4748,7 @@ plex: &app_plex
       enabled: true
       mountPath: /transcode
       type: emptyDir
-      sizeLimit: 50Gi
-    logs:
-      enabled: true
-      type: custom
-      mountPath: "/config/Library/Application Support/Plex Media Server/Logs/"
-      subPath: plex
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs      
+      sizeLimit: 50Gi   
     phototranscoder:
       enabled: true
       mountPath: /phototranscoder
@@ -4858,25 +4850,16 @@ plex: &app_plex
           rm -rf "/config/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder"
           ln -s /phototranscoder '/config/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder'
         fi
-
-        chown elfie /config -R
-        chown elfie /logs -R
         
       volumeMounts:
       - mountPath: /config
         name: config
         subPath: plex
-      - mountPath: /logs
-        name: logs
-        subPath: plex
       - mountPath: /phototranscoder
         name: phototranscoder
       # can't use default resources because the ephemeral limit kicks out /phototranscoder later
       # resources: *default_resources
-      # use this to reset permissions that hvae been messed up
-      # securityContext: *default_securitycontext
-      securityContext:
-        runAsUser: 0      
+      securityContext: *default_securitycontext 
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
