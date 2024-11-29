@@ -3793,7 +3793,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.21.0@sha256:e1c5964a0ce8781978e6fbfd0702804c189819aa4d5fadf2ade399678b5b2120
+    tag: 7.22.0@sha256:b5144796e48598ed5a672fd9c69fb41888463e3c038ea6c562efafaed7917f21
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9784,7 +9784,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1014@sha256:994f52d5335a97e42979dc6e45ff5de4f5a153ee464ed68ce74bc1b6c9d53065
+    tag: 0.22.1018@sha256:bc8cd0194a9474009502e92c079b4113ed6473d8aa2196c58c6fdf341904587c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10863,7 +10863,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.11@sha256:144a5828fe7c66033bb5b0d831eb0de5f21921c3287f8919c93d066661361f38
+    tag: 4.1.12@sha256:11be46cc711f07cea3189e722827487f6e4c10d20d673d78b473bcd1578d7999
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
