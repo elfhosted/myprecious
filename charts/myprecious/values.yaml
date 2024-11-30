@@ -9559,6 +9559,9 @@ riven: &app_riven
 rivenvpn: 
   enabled: false
   <<: *app_riven
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env,riven-setup,gluetun-config"  
   addons:
     vpn:
       enabled: true
@@ -9575,6 +9578,8 @@ rivenvpn:
         HTTP_CONTROL_SERVER_PORT: "8000"
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
+        FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
+        DNS_KEEP_NAMESERVER: "on"        
       securityContext:
         runAsUser: 0
         capabilities:
@@ -12405,7 +12410,7 @@ rclonealldebrid:
   - /debrid-provider.sh
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-config,gluetun-config"
   podAnnotations:
     kubernetes.io/egress-bandwidth: "128M"
   affinity: *standard_affinity
