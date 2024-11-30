@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.194.0](https://github.com/elfhosted/myprecious/compare/v1.193.0...v1.194.0) (2024-11-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1021 ([b1f343f](https://github.com/elfhosted/myprecious/commit/b1f343fa0405168f6752c5dfe2e750873bddc65b))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.13 ([6ab1309](https://github.com/elfhosted/myprecious/commit/6ab13094510894a1b49c16f64b320f82255a767a))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.14 ([8a40437](https://github.com/elfhosted/myprecious/commit/8a404371049cf79857f8cc1619c891fd85b8d5f7))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.15 ([a7ef718](https://github.com/elfhosted/myprecious/commit/a7ef7183eb8bb3bf93b39b9289638c07ab21179f))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.2.2 ([411148a](https://github.com/elfhosted/myprecious/commit/411148a02bf18ead16bc41d07c51b055f3e81b57))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to c2f951c ([dddf492](https://github.com/elfhosted/myprecious/commit/dddf4921c46cec0d3c9600f905589c5ff03f3276))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to 2ae999e ([f556910](https://github.com/elfhosted/myprecious/commit/f55691028b520c6ecd9df5609417fca180d77d0c))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to ae3afd2 ([ef26652](https://github.com/elfhosted/myprecious/commit/ef26652238400fcc7030717292d48beeba026efd))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to b1725a9 ([79c2f0a](https://github.com/elfhosted/myprecious/commit/79c2f0a561f3d90ba3b5ac31cbac98d99d5c276c))
+* secure mediafusion /configure page with SSO ([419a2f6](https://github.com/elfhosted/myprecious/commit/419a2f6682742dfd75c721c458b5f99043e79d76))
+
 ## [1.193.0](https://github.com/elfhosted/myprecious/compare/v1.192.0...v1.193.0) (2024-11-29)
 
 
