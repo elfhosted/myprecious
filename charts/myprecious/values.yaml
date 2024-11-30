@@ -12405,7 +12405,7 @@ rclonealldebrid:
   - /debrid-provider.sh
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-config,gluetun-config"
   podAnnotations:
     kubernetes.io/egress-bandwidth: "128M"
   affinity: *standard_affinity
