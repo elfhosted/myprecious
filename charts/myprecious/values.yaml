@@ -9393,7 +9393,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.20.1@sha256:0644c1c1ef6ccca274968717828d09d7edc2761db51e68c1e578ebf246b0ed84
+    tag: v0.20.1@sha256:ae3afd2a03f360859621deaa3f1b1e7bfdf4516851089a289b56881918f6b36c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9784,7 +9784,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1018@sha256:bc8cd0194a9474009502e92c079b4113ed6473d8aa2196c58c6fdf341904587c
+    tag: 0.22.1021@sha256:113439c6086390f2cc3743d0c59683243c953839cfc025e4dc992e96e9ed1d2a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10863,7 +10863,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.12@sha256:11be46cc711f07cea3189e722827487f6e4c10d20d673d78b473bcd1578d7999
+    tag: 4.1.14@sha256:8a9df0b69796828bad9aa72a7233f1ed326b4f7fb2f2a42f58d13de9ab88ec05
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -11939,7 +11939,7 @@ plexdebrid: &app_plexdebrid
   #   app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:0b2049ee3942bc98d95ca3d61e08a13137c2bac61b91b561a9ca66376457f00e
+    tag: rolling@sha256:c2f951c1eab5e8622509f416c7b4e215a7a9778e262f4b21fe8da8e7bb6dd5fe
   priorityClassName: tenant-normal
   controller:
     annotations:
