@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.192.10-pre-14
+version: 1.192.10-pre-15
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -540,6 +540,11 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: rivenfrontend
+  - name: app-template
+    condition: rivenvpn.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rivenfrontendvpn   
   - name: app-template
     condition: airdcpppia.enabled
     version: ~0.2.1

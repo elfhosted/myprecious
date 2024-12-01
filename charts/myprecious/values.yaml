@@ -9588,7 +9588,7 @@ rivenvpn:
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
 
-rivenfrontend:
+rivenfrontend: &app_rivenfrontend
   podLabels:
     app.elfhosted.com/name: riven-frontend
   image:
@@ -9643,6 +9643,11 @@ rivenfrontend:
       ports:
         http:
           port: 3000
+
+# So that we can toggle it on with rivenvpn
+rivenfrontendvpn:
+  enabled: false
+  <<*: *app_rivenfrontend
 
 airdcpp: &app_airdcpp
   enabled: false

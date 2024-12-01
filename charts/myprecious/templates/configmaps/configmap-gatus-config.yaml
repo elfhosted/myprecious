@@ -589,7 +589,7 @@ data:
       {{ end }}      
 
       {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
-      - name: riven
+      - name: riven-backend
         group: manage-media
         url: "http://riven:3001"
         interval: 5m
@@ -597,6 +597,15 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
+
+      - name: riven-frontend
+        group: manage-media
+        url: "http://riven:3000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email          
       {{ end }}
 
       {{ if .Values.immich.enabled }}
