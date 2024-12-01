@@ -12788,6 +12788,15 @@ blackhole4k:
   env:
     BLACKHOLE_RADARR_PATH: "radarr4k"
     BLACKHOLE_SONARR_PATH: "sonarr4k"
+  envFrom:
+  - configMapRef:
+      name: blackhole-env
+  - configMapRef:
+      name: elfbot-blackhole
+      optional: true   
+  - configMapRef:
+      name: elfbot-blackhole4k
+      optional: true    
 
 blackholetorbox:
   <<: *app_blackhole
@@ -12860,6 +12869,9 @@ blackholetorbox4k:
   - configMapRef:
       name: elfbot-blackholetorbox
       optional: true
+  - configMapRef:
+      name: elfbot-blackholetorbox4k
+      optional: true      
 
 channelsdvr:
   enabled: false

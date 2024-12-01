@@ -103,6 +103,11 @@ rules:
 {{ if .Values.blackhole4k.enabled }}
   - elfbot-blackhole4k
 {{ end }}
-
+{{ if .Values.blackholetorbox.enabled }}
+  - elfbot-blackholetorbox
+{{ end }}
+{{ if .Values.blackholetorbox4k.enabled }}
+  - elfbot-blackholetorbox4k
+{{ end }}
 
 
