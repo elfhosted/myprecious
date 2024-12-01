@@ -9647,7 +9647,7 @@ rivenfrontend: &app_rivenfrontend
 # So that we can toggle it on with rivenvpn
 rivenfrontendvpn:
   enabled: false
-  <<*: *app_rivenfrontend
+  <<: *app_rivenfrontend
 
 airdcpp: &app_airdcpp
   enabled: false
