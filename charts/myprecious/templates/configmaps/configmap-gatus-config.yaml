@@ -600,7 +600,7 @@ data:
 
       - name: riven-frontend
         group: manage-media
-        url: "http://riven:3000"
+        url: "http://riven-frontend:3000"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
