@@ -9393,7 +9393,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.20.1@sha256:ae3afd2a03f360859621deaa3f1b1e7bfdf4516851089a289b56881918f6b36c
+    tag: v0.20.1@sha256:5c9e4bf6938526dff656a13aa840a96d278a9e44c4bc95dbc53fe581bc7c1b60
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -9588,7 +9588,7 @@ rivenvpn:
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
 
-rivenfrontend:
+rivenfrontend: &app_rivenfrontend
   podLabels:
     app.elfhosted.com/name: riven-frontend
   image:
@@ -9643,6 +9643,11 @@ rivenfrontend:
       ports:
         http:
           port: 3000
+
+# So that we can toggle it on with rivenvpn
+rivenfrontendvpn:
+  enabled: false
+  <<*: *app_rivenfrontend
 
 airdcpp: &app_airdcpp
   enabled: false

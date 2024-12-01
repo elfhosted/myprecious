@@ -541,6 +541,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: rivenfrontend
   - name: app-template
+    condition: rivenvpn.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: rivenfrontendvpn   
+  - name: app-template
     condition: airdcpppia.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
