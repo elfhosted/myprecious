@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.195.0](https://github.com/elfhosted/myprecious/compare/v1.194.0...v1.195.0) (2024-12-01)
+
+
+### Features
+
+* Allow different elfbot env vars on blackhole vs blackhole4k ([e6d8f18](https://github.com/elfhosted/myprecious/commit/e6d8f1844001c603568a473c2c9250e3dfa55cf2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1023 ([95bd19a](https://github.com/elfhosted/myprecious/commit/95bd19af5c3e6b82f7baacbb772ee4e96ff3d0f0))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.16 ([b6e0b49](https://github.com/elfhosted/myprecious/commit/b6e0b49a3c0c534ad39d704b6223fb8970825c30))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.17 ([fffab44](https://github.com/elfhosted/myprecious/commit/fffab447cc374dc21d4d707e0ad7bbf864fca130))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to 5c9e4bf ([cf7929f](https://github.com/elfhosted/myprecious/commit/cf7929fd968ca22c5fe3976931b18c51ca2d2415))
+* update elfbot recyclarr support ([02553d7](https://github.com/elfhosted/myprecious/commit/02553d7f05170e9b99f128e3397896ed8079706e))
+
 ## [1.194.0](https://github.com/elfhosted/myprecious/compare/v1.193.0...v1.194.0) (2024-11-30)
 
 

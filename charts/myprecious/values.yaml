@@ -9864,7 +9864,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1023@sha256:d67efc315713c53a1ceae32ef58a11962f3b4d1f9ba71decae993980f5e2844e
+    tag: 0.22.1027@sha256:d966ba92dfd025c0634bee048dfca7968e16587e68a742a61d33cf4030217af2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12019,7 +12019,7 @@ plexdebrid: &app_plexdebrid
   #   app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:c2f951c1eab5e8622509f416c7b4e215a7a9778e262f4b21fe8da8e7bb6dd5fe
+    tag: rolling@sha256:ec4d3af803ec20d53a7c579df2031d364a78929ffe036a385d9991e7a3160794
   priorityClassName: tenant-normal
   controller:
     annotations:
