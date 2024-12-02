@@ -27,11 +27,13 @@ data:
   {{ else if .Values.rclonealldebrid.enabled }}
   # So we're using AllDebrid
   ALL_DEBRID_ENABLED: "true"
+  REAL_DEBRID_ENABLED: "false"
   RIVEN_SYMLINK_RCLONE_PATH: /storage/alldebrid/magnets
   RIVEN_DOWNLOADERS_PROXY_URL: http://rclonealldebrid:8888
   {{ else }}
   # If not AD or RD, then we're using torbox
   RIVEN_SYMLINK_RCLONE_PATH: /storage/torbox
+  REAL_DEBRID_ENABLED: "false"
   TORBOX_ENABLED: "true"
   {{ end }}
 
