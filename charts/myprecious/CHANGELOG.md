@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.196.0](https://github.com/elfhosted/myprecious/compare/v1.195.0...v1.196.0) (2024-12-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/homer docker tag to v24.12.1 ([1aac6de](https://github.com/elfhosted/myprecious/commit/1aac6de6196cd43d75e7b5e090a188c827639b0e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1027 ([1b58e40](https://github.com/elfhosted/myprecious/commit/1b58e40b4080ee9eeb9976aee3e7b08b5419eac8))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.18 ([e266108](https://github.com/elfhosted/myprecious/commit/e266108d2ae59f2cc82a0d68f382d77f077a030d))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to b025648 ([4f05469](https://github.com/elfhosted/myprecious/commit/4f05469d67f375721fed3013e2515cae7f85fc61))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to ec4d3af ([28a4e62](https://github.com/elfhosted/myprecious/commit/28a4e62a7535ae8a897e350441a1d97fe7103ddc))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to 195ff18 ([6927d1d](https://github.com/elfhosted/myprecious/commit/6927d1dba0d94f0bbd8f7d7b3251f6d3325676d8))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to 67d655d ([b0f96e1](https://github.com/elfhosted/myprecious/commit/b0f96e10ef368fb9fc42ecb16ee714e61790c047))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to dfef082 ([7720f49](https://github.com/elfhosted/myprecious/commit/7720f49563e9d8e2014214a749f94611e649b7d3))
+
 ## [1.195.0](https://github.com/elfhosted/myprecious/compare/v1.194.0...v1.195.0) (2024-12-01)
 
 
