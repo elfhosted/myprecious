@@ -7179,6 +7179,76 @@ filebot:
       cpu: 2
       memory: 1Gi
 
+rpdb:
+  enabled: false
+  sso:
+    enabled: true
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/rpdb
+    tag: 0.2.7@sha256:9a4378c84aea8fa77c97c10f88484ff8fb30cbaf4fe7589e30e58ca1a1a31bcc
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rpdb"
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /.config
+      subPath: rpdb
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-rpdb
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: rpdb
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8750
+  resources:
+    requests:
+      cpu: 1m
+      memory: 40Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+
 kometa: &app_kometa
   enabled: false
   sso:
