@@ -424,6 +424,14 @@ data:
             siteMonitor: http://kapowarr:5656  
         {{ end }}            
 
+        {{ if .Values.rpdb.enabled }}
+        - RPDB:
+            icon: mdi-star-half-full
+            href: https://{{ .Release.Name }}-rpdb.{{ .Values.dns_domain }}
+            description: Manage Rating Posters  
+            siteMonitor: http://rpdb:8750    
+        {{ end }}   
+        
         {{ if .Values.ombi.enabled }}
         - Ombi:
             icon: ombi.png
