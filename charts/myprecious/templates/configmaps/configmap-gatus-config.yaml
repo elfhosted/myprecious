@@ -588,7 +588,7 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
+      {{ if .Values.riven.enabled }}
       - name: riven-backend
         group: manage-media
         url: "http://riven:3001"

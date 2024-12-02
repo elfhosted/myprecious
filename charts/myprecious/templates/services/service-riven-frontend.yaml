@@ -1,4 +1,4 @@
-{{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
+{{ if .Values.riven.enabled }}
 apiVersion: v1
 kind: Service
 metadata:

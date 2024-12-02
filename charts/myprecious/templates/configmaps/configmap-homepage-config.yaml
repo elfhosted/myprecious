@@ -673,7 +673,7 @@ data:
             siteMonitor: http://plex-debrid-premiumize:3001            
         {{ end }}          
 
-        {{ if or .Values.riven.enabled .Values.rivenvpn.enabled }}
+        {{ if .Values.riven.enabled }}
         - Riven:
             icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
             href: https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}

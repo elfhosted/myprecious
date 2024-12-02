@@ -1,4 +1,4 @@
-{{- if or .Values.riven.enabled .Values.rivenvpn.enabled }}
+{{- if .Values.riven.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
