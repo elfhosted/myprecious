@@ -445,6 +445,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.rpdb.enabled }}
+      - name: rpdb
+        group: manage-media
+        url: "http://rpdb:8750"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
+      
       {{ if .Values.ombi.enabled }}
       - name: ombi
         group: manage-media
