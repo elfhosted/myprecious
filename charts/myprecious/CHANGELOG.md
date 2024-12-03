@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.197.0](https://github.com/elfhosted/myprecious/compare/v1.196.0...v1.197.0) (2024-12-03)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.7 ([758cf14](https://github.com/elfhosted/myprecious/commit/758cf1452aa935dc2718388875c236ae64aa8382))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1033 ([055b070](https://github.com/elfhosted/myprecious/commit/055b070c63f33b6af5cfe0be486e0792e4f39e95))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.19 ([72c1b70](https://github.com/elfhosted/myprecious/commit/72c1b708271a1c3d4d39a42f5a028a00d753768d))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to 9de6dda ([e7e1937](https://github.com/elfhosted/myprecious/commit/e7e1937a01f3e30c469100af1ac1f7060168dec4))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to ac9b6bf ([46a2fda](https://github.com/elfhosted/myprecious/commit/46a2fda6fb6838bb6ced0360b4d040a3c2622d3c))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to f75de1a ([7d80f26](https://github.com/elfhosted/myprecious/commit/7d80f26048a21f5226addc1d4736bff4003f5a14))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 39a2759 ([d59b768](https://github.com/elfhosted/myprecious/commit/d59b76828e836b9bfaa501311be4b37e494afe7d))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to fe852a9 ([25f0cac](https://github.com/elfhosted/myprecious/commit/25f0cac64d5847a967ba0356a82936b191fb9b7f))
+
 ## [1.196.0](https://github.com/elfhosted/myprecious/compare/v1.195.0...v1.196.0) (2024-12-02)
 
 
