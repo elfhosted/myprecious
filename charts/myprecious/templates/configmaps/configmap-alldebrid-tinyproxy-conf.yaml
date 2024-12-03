@@ -1,8 +1,8 @@
-{{ if .Values.tinyproxy.enabled }}
+{{ if .Values.rclonealldebrid.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: tinyproxy-conf
+  name: alldebrid-tinyproxy-conf
 data:
   tinyproxy.conf: |
     Port 8888
