@@ -5967,6 +5967,8 @@ tunarr:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tunarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "64M"  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
