@@ -11129,7 +11129,7 @@ tinyproxy:
       env:
         IPTABLES_BACKEND: nft
         KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.0.0.0/8
+        LOCAL_NETWORK: 10.0.0.0/8,192.168.0.0/16,172.16.0.0/20
         LOC: de-frankfurt
         PORT_FORWARDING: "0"
         PORT_PERSIST: "1"
