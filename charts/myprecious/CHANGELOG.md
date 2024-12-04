@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.198.0](https://github.com/elfhosted/myprecious/compare/v1.197.0...v1.198.0) (2024-12-04)
+
+
+### Features
+
+* allow exposing tunarr with basic auth ([79a84f1](https://github.com/elfhosted/myprecious/commit/79a84f196f57630bd6904c00364afdf7a3e77b93))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1036 ([d573fd1](https://github.com/elfhosted/myprecious/commit/d573fd1c3cefbacf2ac722004455edb867438747))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.3.0 ([f180f54](https://github.com/elfhosted/myprecious/commit/f180f54822cabf044627ec60d50c30bd2e6b35ca))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to 61c2e32 ([9a0afb2](https://github.com/elfhosted/myprecious/commit/9a0afb2cb544aa991d5cf4ec511cc8dd7b8ae39b))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 149ac4c ([c02f2c6](https://github.com/elfhosted/myprecious/commit/c02f2c67df0e6a3ef0818bb4bad9a52152ecc4e0))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 3b3a65f ([f122c6a](https://github.com/elfhosted/myprecious/commit/f122c6ad467c9e15ea77d694c2816cdfb1f1960b))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 4a5e6e2 ([f5c7d7e](https://github.com/elfhosted/myprecious/commit/f5c7d7e45a9af24eb7c13fc659ad21981f6c2b81))
+
 ## [1.197.0](https://github.com/elfhosted/myprecious/compare/v1.196.0...v1.197.0) (2024-12-03)
 
 
