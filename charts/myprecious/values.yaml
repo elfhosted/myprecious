@@ -5968,7 +5968,7 @@ tunarr:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "64M"  
+    kubernetes.io/egress-bandwidth: "128M"  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
