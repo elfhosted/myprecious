@@ -896,7 +896,6 @@ zurgexposed:
   enabled: false
 elfassessment:
   enabled: false
-
 uptimekumacustomdomain:
   enabled: false
 mattermostcustomdomain:
@@ -3505,7 +3504,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:b025648ea0c35d1582c90f3f812cc61ab8566eaa6569e3cd9eb2cec4e0565020
+    tag: rolling@sha256:4a5e6e2a1f797a99adcbc153e928a5a15e5fee6e62047224922d4b682f86e412
   enabled: false
   controller:
     annotations:
@@ -5968,6 +5967,8 @@ tunarr:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tunarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  podAnnotations:
+    kubernetes.io/egress-bandwidth: "128M"  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6120,7 +6121,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.18@sha256:979899d4e7329719aa62ac79055313e087f5628b3497d8f2616d60509559382d
+    tag: 1.2.19@sha256:df4b0ba4e702960d6b2118bee3cceeddcf3e564c3a03e4cc2936741eca95a84c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7550,7 +7551,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:6bc283890bcc64cca8a0f8af972f7cce2970e3223ee753cfbf41b5e580d894d5
+    tag: rolling@sha256:149ac4c53fc4b30decb48a0e670a2ed811644bb2e8baad386dbad0977a533df3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8318,7 +8319,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.2.0@sha256:c7a97a031db8d32da5d826a3d98e961b5f965531643e1c8399340bdb349795f7
+    tag: 10.3.0@sha256:a8b8d318d58f4acc1aa85969a7713b352408da77a0aa54e70130a3cc1f3b932b
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -9864,7 +9865,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1027@sha256:d966ba92dfd025c0634bee048dfca7968e16587e68a742a61d33cf4030217af2
+    tag: 0.22.1036@sha256:943381ad9aa3a22646157475f3f320b66458f6c03b4f4ccdd535b78bacfe2b82
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10650,7 +10651,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.51.0@sha256:65284c497ca82610e7be477cca266cf9cc42f1ead3c412fac0ee7c863d0d2b7f
+    tag: v1.51.0@sha256:61c2e32b0885a361f0ac91c8d67e2acc6957619a91a10fa51d2e6d7e6388b511
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -11065,7 +11066,6 @@ mediafusion:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
-
 
 tinyproxy:
   enabled: false
