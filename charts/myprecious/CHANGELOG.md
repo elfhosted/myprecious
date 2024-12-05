@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.199.0](https://github.com/elfhosted/myprecious/compare/v1.198.0...v1.199.0) (2024-12-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1043 ([fe9bd00](https://github.com/elfhosted/myprecious/commit/fe9bd0027aded9a4bcc261289d2b7d8e20522f8a))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v24.5 ([ee17033](https://github.com/elfhosted/myprecious/commit/ee170337afe7c8c8abea1648c7df7e02d89eeaab))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.20 ([315870f](https://github.com/elfhosted/myprecious/commit/315870f01dbf02f80df35bd1aa8f41d5db21c9ef))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to c1b62ce ([a2f642c](https://github.com/elfhosted/myprecious/commit/a2f642c3b8b6502a74f65a736c4acd9ae36e7d4f))
+
 ## [1.198.0](https://github.com/elfhosted/myprecious/compare/v1.197.0...v1.198.0) (2024-12-04)
 
 
