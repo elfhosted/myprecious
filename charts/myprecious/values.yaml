@@ -10968,12 +10968,12 @@ mediafusion:
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
-    # tinyproxy-conf:
-    #   enabled: "true"
-    #   type: "custom"
-    #   volumeSpec:
-    #     configMap:
-    #       name: tinyproxy-conf 
+    tinyproxy-conf:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tinyproxy-conf 
   resources:
     requests:
       cpu: 1m
@@ -11032,14 +11032,14 @@ mediafusion:
       optional: true
   - secretRef:
       name: mediafusion-env
-  # additionalContainers:
-  #   # Use this to provied proxied access to mediaflowproxy
-  #   tinyproxy:
-  #     image: docker.io/kalaksi/tinyproxy
-  #     volumeMounts:
-  #     - name: tinyproxy-conf
-  #       mountPath: /etc/tinyproxy/tinyproxy.conf
-  #       subPath: tinyproxy.conf  
+  additionalContainers:
+    # Use this to provied proxied access to mediaflowproxy
+    tinyproxy:
+      image: docker.io/kalaksi/tinyproxy
+      volumeMounts:
+      - name: tinyproxy-conf
+        mountPath: /etc/tinyproxy/tinyproxy.conf
+        subPath: tinyproxy.conf  
   addons:
     vpn:
       enabled: true # in case we ever need it
