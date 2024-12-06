@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.200.0](https://github.com/elfhosted/myprecious/compare/v1.199.0...v1.200.0) (2024-12-06)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v24.12.0 ([2295624](https://github.com/elfhosted/myprecious/commit/22956242bb03ddb6b1a7b132a432182dba5187ba))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.8 ([c958443](https://github.com/elfhosted/myprecious/commit/c958443391e708e7369b2aae787492a3ab8c0490))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1052 ([9d09b59](https://github.com/elfhosted/myprecious/commit/9d09b596fbe2739c75ab5cb38421f7ea47d83e39))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.5 ([ec862fa](https://github.com/elfhosted/myprecious/commit/ec862fa01b0cbcb97fc1e38ca3b12c60269772b8))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 5d9bfb3 ([e2f9950](https://github.com/elfhosted/myprecious/commit/e2f9950c01c8ee0ee69e6ef4f98d54ff6ad2cb74))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to 229f1da ([d7b1d60](https://github.com/elfhosted/myprecious/commit/d7b1d60c34c1be30393d9c6c29f5c6988c24a2ef))
+* **app:** update ghcr.io/elfhosted/riven:v0.20.1 docker digest to 6b0bf6b ([ccdab95](https://github.com/elfhosted/myprecious/commit/ccdab957b50dfb37ec4463d44b2282083f56a41c))
+
 ## [1.199.0](https://github.com/elfhosted/myprecious/compare/v1.198.0...v1.199.0) (2024-12-05)
 
 
