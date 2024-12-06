@@ -7551,7 +7551,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:149ac4c53fc4b30decb48a0e670a2ed811644bb2e8baad386dbad0977a533df3
+    tag: rolling@sha256:5d9bfb3e6964979fc9030e15daa3b7aa5ad0dc854380cd60fb327cd61fd1ddb7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9865,7 +9865,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1043@sha256:986631c74c94f342bc1d0349fdb167a82e3e5c22a08f8c6ecc0ccd7d518f1b18
+    tag: 0.22.1052@sha256:e60fa732f999a638823858e460a9dd8e8be7a56673c926dee4d5ca6bf4d3de53
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10256,7 +10256,7 @@ actual:
   enabled: false
   image:
     repository: ghcr.io/actualbudget/actual-server
-    tag: 24.11.0-alpine
+    tag: 24.12.0-alpine
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: actual
@@ -11150,7 +11150,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.4@sha256:8b570ee51f94541003485ac655844961c1466700aa13e108a8224a62ecc1f3ff
+    tag: 1.9.5@sha256:62452df4766a2c4b18557eee109719aa3d267173e5212bf571dc9b3d01bda11c
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
