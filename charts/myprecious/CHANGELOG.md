@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.201.0](https://github.com/elfhosted/myprecious/compare/v1.200.0...v1.201.0) (2024-12-07)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.9 ([e69dc84](https://github.com/elfhosted/myprecious/commit/e69dc8494839dc982c8517f9dc215a4be65f2923))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1055 ([0173b4f](https://github.com/elfhosted/myprecious/commit/0173b4f4584e320b1c69cf113062b4cd4b9e8804))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.6 ([3e63526](https://github.com/elfhosted/myprecious/commit/3e635264640545eae5f499d975733b833a7c8bc5))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.90 ([2563cd3](https://github.com/elfhosted/myprecious/commit/2563cd30286f8dbb0df0b4bb19970324ea94a5ea))
+* **app:** update jlesage/jdownloader-2 docker tag to v24.12.1 ([4b12e64](https://github.com/elfhosted/myprecious/commit/4b12e647561f902c0aef390376c7ec7a00367dbf))
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.4 ([830e19f](https://github.com/elfhosted/myprecious/commit/830e19f84f351589e0d15ebf9ff6652d90d08853))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 6548680 ([5a88f82](https://github.com/elfhosted/myprecious/commit/5a88f826989ddbba98eeab0ea2849ff1e3931688))
+
 ## [1.200.0](https://github.com/elfhosted/myprecious/compare/v1.199.0...v1.200.0) (2024-12-06)
 
 
