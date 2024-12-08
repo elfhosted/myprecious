@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.202.0](https://github.com/elfhosted/myprecious/compare/v1.201.0...v1.202.0) (2024-12-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1058 ([163257f](https://github.com/elfhosted/myprecious/commit/163257f61aca833e91d2369cfd71d58f3c98523a))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.8.1.4482 ([41e520e](https://github.com/elfhosted/myprecious/commit/41e520e68ca1f3539c099a48628d7623e46e6b48))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.28.0.4862 ([cc3842a](https://github.com/elfhosted/myprecious/commit/cc3842a04a8b432bdb64b0b25eae8f47264a03be))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.5.2699 ([7167d6e](https://github.com/elfhosted/myprecious/commit/7167d6e99fa73e5ae970c40ef8fbfd3ee2ef436b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.12.08.0030 ([0df50ac](https://github.com/elfhosted/myprecious/commit/0df50ac1e61ba1c76fb906c0242b43237aa2887b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 02f0327 ([5c9ec12](https://github.com/elfhosted/myprecious/commit/5c9ec124bc1cc4aa74b1b2ee446412364c6f05bf))
+
 ## [1.201.0](https://github.com/elfhosted/myprecious/compare/v1.200.0...v1.201.0) (2024-12-07)
 
 
