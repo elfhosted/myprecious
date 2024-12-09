@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.203.0](https://github.com/elfhosted/myprecious/compare/v1.202.0...v1.203.0) (2024-12-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1062 ([97239c0](https://github.com/elfhosted/myprecious/commit/97239c0f1f7ee6fdd6caeb912933a8a000870cf0))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2743 ([d6c6125](https://github.com/elfhosted/myprecious/commit/d6c612531ab1c9b3d2fd73953fb8cc26be370684))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.12.09.0029 ([0d2d1c6](https://github.com/elfhosted/myprecious/commit/0d2d1c61d0a4e5da740bdda2df9c65f963c153d7))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.122.2 ([28a0741](https://github.com/elfhosted/myprecious/commit/28a07411329333c01c8d8f5c16ed5100f5cf6e74))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.122.2 ([c9e3de2](https://github.com/elfhosted/myprecious/commit/c9e3de24dcd0d87b6a8c2e72d43cd13442360e00))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to a8d89c4 ([79427a1](https://github.com/elfhosted/myprecious/commit/79427a11e2f1c9b6db9c1b66572df96219debb09))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 5299c7a ([5ba8180](https://github.com/elfhosted/myprecious/commit/5ba81805572686cba5f484b3917e164b4d86945e))
+
 ## [1.202.0](https://github.com/elfhosted/myprecious/compare/v1.201.0...v1.202.0) (2024-12-08)
 
 
