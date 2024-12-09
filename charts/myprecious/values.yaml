@@ -3504,7 +3504,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:c1b62ce804277b7551594173c4e9c9d0c3d4feacbd60f167577d52d04eaa7a1b
+    tag: rolling@sha256:5299c7a5dd46d05b940f1a21f59a23f249d7739b67742db13f9c745966030c8d
   enabled: false
   controller:
     annotations:
@@ -4188,7 +4188,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.27.0.4852@sha256:4b1be85e319f4df8ff9a6f75df14d21d66afb756df226d62dc31d188acc004ac
+    tag: 1.28.0.4862@sha256:c5b956563525b4a213abe6e1481dfd7546daafa9ec543886ff8479d9792f7688
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4318,7 +4318,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.8.0.4431@sha256:6701204def1eaa78d30255dfcfcae0918b6a84a0fe0e1cf187adfb909279eb0a
+    tag: 2.8.1.4482@sha256:ebc29d5ce6c7604d41dbfea75eaecc9d124b1f3873e6d402b20fec8628bd958a
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4492,7 +4492,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.4.2686@sha256:51f9aec4471dc3222e7bb0ec083820d5abc1f683541bf3ae8620cc75caca794f
+    tag: 0.4.5.2699@sha256:947ec6ae98f5a0c51695c8401fc67729a76d5ae160e57f7049e65a258215edb6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4601,7 +4601,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.4.2686@sha256:51f9aec4471dc3222e7bb0ec083820d5abc1f683541bf3ae8620cc75caca794f
+    tag: 0.4.5.2699@sha256:947ec6ae98f5a0c51695c8401fc67729a76d5ae160e57f7049e65a258215edb6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5955,7 +5955,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.16.8-vaapi
+    tag: 0.16.9-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6038,7 +6038,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:faa6caf9f9659745113c23470ae82b38267cc54d9a43483644ca06ae8e44aa73
+    tag: develop-vaapi@sha256:a8d89c49db1d38bb113f0fc6c2629b145c720c1c4cb88f9f255e99ff83d99fd5
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -8720,7 +8720,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.89@sha256:87a51a0dd57c1e4d45776cd1d63b154f2b170d7ee65fbc3b88d539b3a4c84e33
+    tag: v2.0.90@sha256:e3a0d7cb6bc0e74c93f0b5f1784bd44570242d11ed2c041b25c65462d3714af3
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -8851,7 +8851,7 @@ jdownloader:
   priorityClassName: tenant-bulk
   image:
     repository: jlesage/jdownloader-2
-    tag: v24.11.1
+    tag: v24.12.1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jdownloader"
@@ -9865,7 +9865,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1052@sha256:e60fa732f999a638823858e460a9dd8e8be7a56673c926dee4d5ca6bf4d3de53
+    tag: 0.22.1062@sha256:13247f6550a5dc4740c6299e87d9a6c878f702c36936b6f9256542ae3739e80e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10388,7 +10388,7 @@ petio:
         name: tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:8.0.3-ubi8
+      image: mongodb/mongodb-community-server:8.0.4-ubi8
       volumeMounts:
         - name: config
           subPath: petio/mongodb
@@ -11150,7 +11150,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.5@sha256:62452df4766a2c4b18557eee109719aa3d267173e5212bf571dc9b3d01bda11c
+    tag: 1.9.6@sha256:9fde0e2753599d80bb7507134acf95736010c61c55d918359c27eaeec79060af
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
@@ -11729,7 +11729,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2024.11.27.0028-nightly@sha256:1fd4e44034186f7e384389b1af3af95320a9ff83dcafd48fc00e1cac2de6885f
+    tag: 2024.12.09.0029-nightly@sha256:771e788ee6e21dd6f9cbdab383ccf272eea210e47e3d121165d7a2ee22214151
   priorityClassName: tenant-normal
   controller:
     annotations:
