@@ -114,25 +114,56 @@ tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:45
 # all RD pods have to exist with zurg - make this soft for now
 standard_affinity: &standard_affinity
   podAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:  
-        - key: app.elfhosted.com/role
-          operator: In
-          values:
-          - nodefinder # use nodefinder
-      topologyKey: "kubernetes.io/hostname"
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 50
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/role
+            operator: In
+            values:
+            - nodefinder # use nodefinder in the absense of zurg...
+        topologyKey: "kubernetes.io/hostname"
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/name
+            operator: In
+            values:
+            - zurg # .. but prefer zurg
+        topologyKey: "kubernetes.io/hostname"
 
 dedicated_affinity: &dedicated_affinity
-  podAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:  
-        - key: app.elfhosted.com/role
+  nodeAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 1
+      preference: # prefer a particular class of node
+        matchExpressions:
+        - key: node-role.elfhosted.com/dedicated
           operator: In
           values:
-          - nodefinder # use nodefinder
-      topologyKey: "kubernetes.io/hostname"
+          - "true"
+  podAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 50
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/role
+            operator: In
+            values:
+            - nodefinder # use nodefinder in the absense of zurg...
+        topologyKey: "kubernetes.io/hostname"
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.elfhosted.com/name
+            operator: In
+            values:
+            - zurg # .. but prefer zurg
+        topologyKey: "kubernetes.io/hostname"
 
 standard_tolerations: &standard_tolerations
 # not using tolerations anymore
@@ -857,6 +888,8 @@ rivenexposed:
   apikey: 1nMZNC0Cg6UP7sblvFirUi9Sad4ga84u  
 tunarrexposed:
   enabled: false
+ersatztv:
+  enabled: false  
 threadfinexposed:
   enabled: false
 zurgexposed:
@@ -901,6 +934,7 @@ rutorrentgluetun: &rutorrent
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,rutorrent-config,rutorrent-gluetun-config,elfbot-rutorrent" # Reload the deployment every time the yaml config changes
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     # runAsUser: 568 # enforced in env vars
     # runAsGroup: 568
@@ -1223,6 +1257,7 @@ delugegluetun: &deluge
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-deluge,deluge-gluetun-config"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
     tmp:
@@ -1542,6 +1577,7 @@ qbittorrentgluetun: &qbittorrent
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-qbittorrent,qbittorrent-gluetun-config"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
     tmp:
@@ -1894,6 +1930,7 @@ nzbget:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nzbget"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
@@ -1957,6 +1994,7 @@ sabnzbd:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sabnzbd"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2114,6 +2152,7 @@ tautulli:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tautulli"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2227,6 +2266,7 @@ radarr: &app_radarr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -2340,6 +2380,7 @@ radarr4k: &app_radarr4k
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr4k" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -2437,6 +2478,7 @@ ombi:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-ombi"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2523,6 +2565,7 @@ scannarr: &app_scannarr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-scannarr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
@@ -2563,6 +2606,7 @@ scannarr4k:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-scannarr4k"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
     sonarr-settings:
@@ -2602,6 +2646,7 @@ bazarr:
     runAsUser: 568
     runAsGroup: 568
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2678,6 +2723,7 @@ bazarr4k:
     runAsUser: 568
     runAsGroup: 568
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2746,6 +2792,7 @@ filebrowser:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   envFrom:
   - configMapRef:
       name: filebrowser-env
@@ -3023,6 +3070,7 @@ uptimekuma:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
@@ -3083,6 +3131,7 @@ privatebin:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-privatebin"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3178,6 +3227,7 @@ kapowarr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kapowarr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3283,6 +3333,7 @@ calibreweb:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibre-web"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3384,6 +3435,7 @@ pyload:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pyload"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3458,6 +3510,7 @@ lazylibrarian:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-lazylibrarian"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3541,6 +3594,7 @@ mylar:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mylar" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
@@ -3616,6 +3670,7 @@ komga:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-komga" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
     config:
@@ -3683,6 +3738,7 @@ kavita:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kavita" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
     config:
@@ -3754,6 +3810,7 @@ calibre:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibre"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
@@ -3838,6 +3895,7 @@ sonarr: &app_sonarr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -3947,6 +4005,7 @@ sonarr4k: &app_sonarr4k
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr4k" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -4061,6 +4120,7 @@ resiliosync:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-resiliosync"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4142,6 +4202,7 @@ prowlarr: &app_prowlarr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-prowlarr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
     <<: *storagemounts
@@ -4272,6 +4333,7 @@ lidarr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-lidarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -4371,6 +4433,7 @@ navidrome:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-navidrome"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   env:
     ND_MUSICFOLDER: /tmp
@@ -4445,6 +4508,7 @@ readarr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-readarr" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -4543,6 +4607,7 @@ readarraudio:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4646,6 +4711,7 @@ plex: &app_plex
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -4942,6 +5008,7 @@ jellyfin: &app_jellyfin
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
     config:
@@ -5142,6 +5209,7 @@ emby: &app_emby
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-emby" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     <<: *storagemounts
     config:
@@ -5329,6 +5397,7 @@ homer:
     main:
       enabled: true # necessary for probes
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podLabels:
     app.elfhosted.com/role: nodefinder # let this be an anchor for replicationdestinations
   persistence:
@@ -5429,6 +5498,7 @@ homer:
 
 traefikforwardauth:
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   whitelist: admin@elfhosted.com
   priorityClassName: tenant-normal
   securityContext:
@@ -5487,6 +5557,7 @@ gatus:
       type: RuntimeDefault
     fsGroup: 568
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5557,6 +5628,7 @@ gotify:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-gotify"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   env:
     GOTIFY_SERVER_PORT: 8080
@@ -5607,6 +5679,7 @@ gotify:
         subPath: gotify
       - mountPath: /tmp
         name: tmp
+    bootstrap: *bootstrap
 
 flaresolverr: &app_flaresolverr
   enabled: false
@@ -5893,6 +5966,7 @@ tunarr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tunarr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podAnnotations:
     kubernetes.io/egress-bandwidth: "128M"  
   podSecurityContext:
@@ -5975,6 +6049,7 @@ ersatztv:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-erzatztv"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6056,6 +6131,7 @@ threadfin:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-threadfin"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6123,6 +6199,7 @@ thelounge:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-thelounge"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6244,6 +6321,7 @@ overseerr:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-overseerr,overseerr-config"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6376,6 +6454,7 @@ jellyseerr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyseerr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6486,6 +6565,7 @@ jellystat:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellystat,jellystat-env"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6618,6 +6698,7 @@ audiobookshelf:
   podLabels:
     app.elfhosted.com/name: audiobookshelf
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6743,6 +6824,7 @@ openbooks:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-openbooks"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   ingress:
     main:
       enabled: false
@@ -6782,6 +6864,7 @@ vaultwarden:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-vaultwarden"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
@@ -6853,6 +6936,7 @@ notifiarr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-notifiarr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6955,6 +7039,7 @@ shoko:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-shoko"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7029,6 +7114,7 @@ filebot:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-filebot"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7182,6 +7268,7 @@ kometa: &app_kometa
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kometa"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7303,6 +7390,7 @@ imagemaid:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-imagemaid"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7386,6 +7474,7 @@ plextraktsync:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plextraktsync"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7473,6 +7562,7 @@ decluttarr: &app_decluttarr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decluttarr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
   podSecurityContext:
@@ -7525,6 +7615,7 @@ rdebridui:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdebrid-ui"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
   podSecurityContext:
@@ -7578,6 +7669,7 @@ suggestarr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-suggestarr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
     backup: *backup
@@ -7663,6 +7755,7 @@ rcloneui:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     privileged: true
     seccompProfile:
@@ -7780,6 +7873,7 @@ rclonefm:
     kubernetes.io/egress-bandwidth: "40M"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7892,6 +7986,7 @@ webdav: &webdav
     kubernetes.io/egress-bandwidth: "40M"
   priorityClassName: tenant-normal
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
     tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
@@ -8156,6 +8251,7 @@ jfa:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jfa"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8514,6 +8610,7 @@ syncthing:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-syncthing"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8628,6 +8725,7 @@ rdtclient: &app_rdtclient
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8836,6 +8934,7 @@ miniflux:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8870,6 +8969,7 @@ miniflux:
       postgresPassword: miniflux
     primary:
       affinity: *standard_affinity
+      tolerations: *standard_tolerations
       persistence:
         enabled: true
         existingClaim: config
@@ -8939,6 +9039,7 @@ joplinserver:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-joplinserver,joplinserver-config"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8982,6 +9083,7 @@ joplinserver:
       postgresPassword: joplinserver
     primary:
       affinity: *standard_affinity
+      tolerations: *standard_tolerations
       persistence:
         enabled: true
         existingClaim: config
@@ -9051,6 +9153,7 @@ homepage:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-homepage,homepage-config,homepage-env"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9260,6 +9363,7 @@ autoscan:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-autoscan"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9366,6 +9470,7 @@ riven: &app_riven
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-riven,riven-env,riven-setup"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9565,6 +9670,7 @@ rivenfrontend: &app_rivenfrontend
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rivenfrontend,riven-frontend-env,riven-frontend-config"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9628,6 +9734,7 @@ airdcpp: &app_airdcpp
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-airdcpp"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9769,6 +9876,7 @@ jackett:
     readOnlyRootFilesystem: true
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9831,6 +9939,7 @@ stremioserver: &app_stremioserver
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9990,6 +10099,7 @@ stremioweb:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10035,6 +10145,7 @@ stremiojackett:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10100,6 +10211,7 @@ pairdrop:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10155,6 +10267,7 @@ actual:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10213,6 +10326,7 @@ petio:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10455,6 +10569,7 @@ annatar:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10550,6 +10665,7 @@ comet:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10721,6 +10837,7 @@ jackettio:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10839,6 +10956,7 @@ mediafusion:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10965,6 +11083,7 @@ tinyproxy:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11045,6 +11164,7 @@ mediaflowproxy:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11113,6 +11233,7 @@ stremiojackettcommunity: &stremiojackettcommunity
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11192,6 +11313,7 @@ xtremio:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11242,6 +11364,7 @@ shluflix:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11299,6 +11422,7 @@ stremify:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11392,6 +11516,7 @@ recyclarr:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11515,6 +11640,7 @@ knightcrawler: &app_knightcrawler
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11899,6 +12025,7 @@ plexdebrid: &app_plexdebrid
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12084,6 +12211,7 @@ codeserver:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-codeserver"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12185,6 +12313,7 @@ doplarr: &app_doplarr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-doplarr,doplarr-env"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -12226,6 +12355,7 @@ requestrr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-requestrr,requestrr-env"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -12295,6 +12425,7 @@ rclonedebridlink:
     tag: v1.2.2@sha256:6571776a022a36889d1cc8392440ad58fa2654535e82b9741f1c287e045c7fd0
   priorityClassName: tenant-normal
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   podLabels:
     app.elfhosted.com/name: debridlink
   controller:
@@ -12358,6 +12489,7 @@ rclonealldebrid:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "128M"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12483,6 +12615,7 @@ rclonepremiumize:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "128M"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12569,6 +12702,7 @@ rclonetorbox:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "128M"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12663,6 +12797,7 @@ blackhole: &app_blackhole
     tag: 1.4.6@sha256:c168be416becb5fbfc38eb08bd89641a4fe91f674bffec0baa011d5a9bc3c470
   priorityClassName: tenant-normal
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-env"
@@ -12827,6 +12962,7 @@ channelsdvr:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -12892,6 +13028,7 @@ immich:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-immich,immich-env"
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -13040,6 +13177,7 @@ kubernetesdashboard:
   protocolHttp: true
 
   affinity: *standard_affinity
+  tolerations: *standard_tolerations
 
   # Global dashboard settings
   settings:
