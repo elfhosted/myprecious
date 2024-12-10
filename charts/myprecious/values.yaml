@@ -7774,9 +7774,9 @@ rcloneui:
     backup: *backup
     cache: 
       enabled: true
-      type: custom
+      type: emptyDir
       mountPath: /home/elfie/.cache
-      volumeSpec: *volumespec_ephemeral_volume_10g    
+      # volumeSpec: *volumespec_ephemeral_volume_10g    
     mount:
       enabled: true
       type: emptyDir
