@@ -23,10 +23,9 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            preference: # prefer a particular class of node
-              matchExpressions:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
               {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled  }}
               - key: node-role.elfhosted.com/dedicated
               {{- else }}
@@ -35,6 +34,18 @@ spec:
                 operator: In
                 values:
                 - "true"
+        podAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 50
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app.elfhosted.com/name
+                  operator: In
+                  values:
+                  - zurg # .. but prefer zurg
+              topologyKey: "kubernetes.io/hostname"
+              namespaceSelector: {}  # i.e., in the absense of any better signal, pick a node which already has zurg on it
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
