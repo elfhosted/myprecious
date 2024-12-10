@@ -16,7 +16,7 @@ spec:
             - key: app.kubernetes.io/name
               operator: In
               values:
-              - gatus
+              - nodefinder
           topologyKey: "kubernetes.io/hostname"
     cacheCapacity: 5Gi
     capacity: 5Gi
