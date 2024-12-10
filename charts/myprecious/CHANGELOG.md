@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.204.0](https://github.com/elfhosted/myprecious/compare/v1.203.0...v1.204.0) (2024-12-10)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.10 ([95169a7](https://github.com/elfhosted/myprecious/commit/95169a743c00e21e913bfb66a4eb49b7b0a0dfea))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1063 ([149b70b](https://github.com/elfhosted/myprecious/commit/149b70be9f2772ea23672c3d7f77f0d252f5acbc))
+
+
+### Bug Fixes
+
+* update scanarr to scan sonarr on interval ([9a1b470](https://github.com/elfhosted/myprecious/commit/9a1b47020dea88f3998981a796040569b8484571))
+
 ## [1.203.0](https://github.com/elfhosted/myprecious/compare/v1.202.0...v1.203.0) (2024-12-09)
 
 
