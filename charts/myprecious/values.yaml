@@ -857,8 +857,6 @@ rivenexposed:
   apikey: 1nMZNC0Cg6UP7sblvFirUi9Sad4ga84u  
 tunarrexposed:
   enabled: false
-ersatztv:
-  enabled: false  
 threadfinexposed:
   enabled: false
 zurgexposed:
@@ -5609,7 +5607,6 @@ gotify:
         subPath: gotify
       - mountPath: /tmp
         name: tmp
-    bootstrap: *bootstrap
 
 flaresolverr: &app_flaresolverr
   enabled: false
@@ -8873,7 +8870,7 @@ miniflux:
       postgresPassword: miniflux
     primary:
       affinity: *standard_affinity
-          persistence:
+      persistence:
         enabled: true
         existingClaim: config
         subPath: miniflux/database
@@ -8985,7 +8982,7 @@ joplinserver:
       postgresPassword: joplinserver
     primary:
       affinity: *standard_affinity
-          persistence:
+      persistence:
         enabled: true
         existingClaim: config
         subPath: joplinserver/database
