@@ -3792,7 +3792,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.22.0@sha256:b5144796e48598ed5a672fd9c69fb41888463e3c038ea6c562efafaed7917f21
+    tag: 7.22.0@sha256:e0df48e4d99cf357078e7aeb03458a5a68cd0c3b38bf5347225ef0867aed2b7a
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5955,7 +5955,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.16.9-vaapi
+    tag: 0.16.10-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6846,7 +6846,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.5@sha256:e20601f73e8a6e236b3a3451c57d99364badf6c32aab9c46fb0455be7d8e5fdd
+    tag: 1.32.6@sha256:0938e4eb85e7bd5585a9df04e468f2688bb9bd101c16188773771265c0fb5c08
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7551,7 +7551,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:5d9bfb3e6964979fc9030e15daa3b7aa5ad0dc854380cd60fb327cd61fd1ddb7
+    tag: rolling@sha256:f4d85d9888e615ce8ed4356c59ad49cbed1703e132e07735ab975636b1bf3d36
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8319,7 +8319,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.3.0@sha256:a8b8d318d58f4acc1aa85969a7713b352408da77a0aa54e70130a3cc1f3b932b
+    tag: 10.3.1@sha256:5892ec2bdb79d74adafd2ef689ac4ea585370646a8028cc6da249ed2715ae6fa
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -9865,7 +9865,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1063@sha256:65920946c32248c33d2cb2ba38d9d306bfd014950f5287747d34bdf23c4ab8d7
+    tag: 0.22.1064@sha256:b9042c8faa64527d6dbc2ab3dda200c5988f8a5b07cf0cb199782dc5161dcf4b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11150,7 +11150,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.6@sha256:9fde0e2753599d80bb7507134acf95736010c61c55d918359c27eaeec79060af
+    tag: 1.9.7@sha256:98e3643a3e2007e5424500c41c1198bcc01eb46c3584971de61200ec50c0c6da
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
