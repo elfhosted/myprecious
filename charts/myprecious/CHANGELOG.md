@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.205.0](https://github.com/elfhosted/myprecious/compare/v1.204.0...v1.205.0) (2024-12-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1064 ([73cb7ed](https://github.com/elfhosted/myprecious/commit/73cb7edfa016b7c93af37389fffab6ad0224d069))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.7 ([983cb9a](https://github.com/elfhosted/myprecious/commit/983cb9ad7e6ad76496dda550677ed940984d765a))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.6 ([55a705a](https://github.com/elfhosted/myprecious/commit/55a705a838b9f70120fb1921602361a329bf9a51))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.3.1 ([01a08a5](https://github.com/elfhosted/myprecious/commit/01a08a5f9deccdced3af9392493b1fb966b822a0))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to f4d85d9 ([f9ef63a](https://github.com/elfhosted/myprecious/commit/f9ef63a4c7abab59448b424a74f1207b75341d1e))
+* **app:** update quay.io/linuxserver.io/calibre:7.22.0 docker digest to e0df48e ([38c9e8f](https://github.com/elfhosted/myprecious/commit/38c9e8f801151820ffe523d5a908452d14dc4e98))
+* only show DMM dashboard link for Zurglings ([6714f6a](https://github.com/elfhosted/myprecious/commit/6714f6a1a27edd9ea22c02c1f7ce8eb356402c64))
+
 ## [1.204.0](https://github.com/elfhosted/myprecious/compare/v1.203.0...v1.204.0) (2024-12-10)
 
 
