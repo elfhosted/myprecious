@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.206.0](https://github.com/elfhosted/myprecious/compare/v1.205.0...v1.206.0) (2024-12-12)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v8.14 ([7409671](https://github.com/elfhosted/myprecious/commit/740967133950199a74297a12e4f60a2e203d2850))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.11 ([1bc4831](https://github.com/elfhosted/myprecious/commit/1bc4831b3c39c73d1334b9b85a330ff72610c82f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1072 ([d435a49](https://github.com/elfhosted/myprecious/commit/d435a49cf07ba74ea2047ecf60f49896c443895d))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.91 ([0609df3](https://github.com/elfhosted/myprecious/commit/0609df338d1842f19836a49a64ebf785d299954b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 317b5f6 ([23d8d78](https://github.com/elfhosted/myprecious/commit/23d8d78f3c960649828df4e30d0986674e8dbc93))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d5f7e7b ([3742029](https://github.com/elfhosted/myprecious/commit/37420290d6fc361fcb6aa8aff156c0c1c98e2535))
+* **app:** update ghcr.io/elfhosted/rclone:1.68.2 docker digest to 80abc5b ([11c774b](https://github.com/elfhosted/myprecious/commit/11c774bd25e345b37160c4f3f1d87e016a11c714))
+* Update plex to 1.41.3.9292-bc7397402 ([39f993f](https://github.com/elfhosted/myprecious/commit/39f993f7c82249571f8700b9088d03b3412510f2))
+
 ## [1.205.0](https://github.com/elfhosted/myprecious/compare/v1.204.0...v1.205.0) (2024-12-11)
 
 
