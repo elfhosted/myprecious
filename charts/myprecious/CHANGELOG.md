@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.206.0](https://github.com/elfhosted/myprecious/compare/v1.205.0...v1.206.0) (2024-12-12)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.11 ([1bc4831](https://github.com/elfhosted/myprecious/commit/1bc4831b3c39c73d1334b9b85a330ff72610c82f))
+
 ## [1.205.0](https://github.com/elfhosted/myprecious/compare/v1.204.0...v1.205.0) (2024-12-11)
 
 
