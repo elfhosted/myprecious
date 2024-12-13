@@ -933,7 +933,7 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.rdtclient-premiumize.enabled }}
+      {{ if .Values.rdtclientpremiumize.enabled }}
       - name: rdtclient-premiumize
         group: download-media
         url: "http://rdtclient-premiumize:6500"
