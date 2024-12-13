@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.207.0](https://github.com/elfhosted/myprecious/compare/v1.206.0...v1.207.0) (2024-12-13)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.12 ([5b25edc](https://github.com/elfhosted/myprecious/commit/5b25edcea66e0390315c4e8356c5a559d2303dc1))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.33 ([92ae240](https://github.com/elfhosted/myprecious/commit/92ae240a6ad94e564d28d4ecfbaa0323cfa30c1c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1074 ([3815cee](https://github.com/elfhosted/myprecious/commit/3815cee01a2210b4f170d55350166256d594e7b8))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.3 ([84551a5](https://github.com/elfhosted/myprecious/commit/84551a53d9e4c22aa48469b2dd0cb2cfb8c8fa78))
+
 ## [1.206.0](https://github.com/elfhosted/myprecious/compare/v1.205.0...v1.206.0) (2024-12-12)
 
 
