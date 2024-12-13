@@ -5483,11 +5483,11 @@ homer:
       enabled: false
   controller:
     replicas: 1
-    strategy: RollingUpdate # can't do this because we run gatus in homer now
-    # rollingUpdate:
-    #   unavailable: 1
+    strategy: RollingUpdate
+    rollingUpdate:
+      unavailable: 1
     annotations:
-      configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer,gatus-config" # Reload the deployment every time the yaml config changes
+      configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer" # Reload the deployment every time the yaml config changes
   resources:
     requests:
       cpu: 1m
