@@ -8793,33 +8793,9 @@ rdtclient: &app_rdtclient
         name: tmp
 
 # Add a VPN option for rdtclient
-rdtclientvpn:
+rdtclientgluetun:
   enabled: false
   <<: *app_rdtclient
-  podLabels:
-    app.elfhosted.com/name: rdtclientvpn
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /data/db
-      subPath: rdtclientvpn
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-rdtclientvpn
-          optional: true
-    download: # in case users use /tmp
-      enabled: true
-      type: custom
-      mountPath: /data/downloads
-      volumeSpec: *volumespec_ephemeral_volume_1g
   addons:
     vpn:
       enabled: true
