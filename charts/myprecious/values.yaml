@@ -114,56 +114,25 @@ tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20240530@sha256:45
 # all RD pods have to exist with zurg - make this soft for now
 standard_affinity: &standard_affinity
   podAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 50
-      podAffinityTerm:
-        labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/role
-            operator: In
-            values:
-            - nodefinder # use nodefinder in the absense of zurg...
-        topologyKey: "kubernetes.io/hostname"
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/name
-            operator: In
-            values:
-            - zurg # .. but prefer zurg
-        topologyKey: "kubernetes.io/hostname"
-
-dedicated_affinity: &dedicated_affinity
-  nodeAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 1
-      preference: # prefer a particular class of node
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
         matchExpressions:
-        - key: node-role.elfhosted.com/dedicated
+        - key: app.elfhosted.com/role
           operator: In
           values:
-          - "true"
+          - nodefinder # use nodefinder in the absence of zurg...
+      topologyKey: "kubernetes.io/hostname"
+
+dedicated_affinity: &dedicated_affinity
   podAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 50
-      podAffinityTerm:
-        labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/role
-            operator: In
-            values:
-            - nodefinder # use nodefinder in the absense of zurg...
-        topologyKey: "kubernetes.io/hostname"
-    - weight: 100
-      podAffinityTerm:
-        labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/name
-            operator: In
-            values:
-            - zurg # .. but prefer zurg
-        topologyKey: "kubernetes.io/hostname"
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchExpressions:
+        - key: app.elfhosted.com/role
+          operator: In
+          values:
+          - nodefinder # use nodefinder in the absence of zurg...
+      topologyKey: "kubernetes.io/hostname"
 
 standard_tolerations: &standard_tolerations
 # not using tolerations anymore
