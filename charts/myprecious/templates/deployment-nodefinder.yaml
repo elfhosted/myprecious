@@ -26,7 +26,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled  }}
+              {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled .Values.embyhobbit.enabled .Values.embyranger.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinranger.enabled  .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
               - key: node-role.elfhosted.com/dedicated
               {{- else }}
               - key: node-role.elfhosted.com/contended
