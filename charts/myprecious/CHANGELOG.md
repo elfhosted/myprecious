@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.208.0](https://github.com/elfhosted/myprecious/compare/v1.207.0...v1.208.0) (2024-12-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1079 ([7dba939](https://github.com/elfhosted/myprecious/commit/7dba939077654834b909feb59ca88086497f133c))
+
+
+### Bug Fixes
+
+* **app:** update fancybits/channels-dvr:latest docker digest to a1ab946 ([94ba7ac](https://github.com/elfhosted/myprecious/commit/94ba7acaf9959f88972af08df32385e5e2d30b5e))
+
 ## [1.207.0](https://github.com/elfhosted/myprecious/compare/v1.206.0...v1.207.0) (2024-12-13)
 
 
