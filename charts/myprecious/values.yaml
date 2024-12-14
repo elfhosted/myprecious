@@ -12167,6 +12167,9 @@ plexdebrid: &app_plexdebrid
 plexdebriddebridlink: 
   <<: *app_plexdebrid  
   enabled: false
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-debridlink"  
   persistence:
     <<: *storagemounts
     config:
@@ -12182,19 +12185,35 @@ plexdebriddebridlink:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-plex-debrid
+          name: elfbot-plex-debrid-debridlink
           optional: true          
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plex-debrid-debridlink
+      - mountPath: /tmp
+        name: tmp
 
 plexdebridtorbox: 
   <<: *app_plexdebrid  
   enabled: false  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-torbox"  
   persistence:
     <<: *storagemounts
     config:
       enabled: true
       type: custom
       mountPath: /config
-      subPath: plex-debrid/torbox
+      subPath: plex-debrid-torbox
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -12203,19 +12222,35 @@ plexdebridtorbox:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-plex-debrid
-          optional: true          
+          name: elfbot-plex-debrid-torbox
+          optional: true     
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plex-debrid-torbox
+      - mountPath: /tmp
+        name: tmp               
 
 plexdebridpremiumize: 
   <<: *app_plexdebrid  
   enabled: false  
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-premiumize"  
   persistence:
     <<: *storagemounts
     config:
       enabled: true
       type: custom
       mountPath: /config
-      subPath: plex-debrid/premiumize
+      subPath: plex-debrid-premiumize
       volumeSpec:
         persistentVolumeClaim:
           claimName: config    
@@ -12224,12 +12259,28 @@ plexdebridpremiumize:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-plex-debrid
+          name: elfbot-plex-debrid-premiumize
           optional: true                     
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plex-debrid-premiumize
+      - mountPath: /tmp
+        name: tmp
 
 # This is a copy of plexdebrid plumbed into the user's VPN
 plexdebridalldebrid: 
   <<: *app_plexdebrid
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-alldebrid"  
   enabled: false
   persistence:
     <<: *storagemounts
@@ -12237,7 +12288,7 @@ plexdebridalldebrid:
       enabled: true
       type: custom
       mountPath: /config
-      subPath: plex-debrid/alldebrid
+      subPath: plex-debrid-alldebrid
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -12246,8 +12297,21 @@ plexdebridalldebrid:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-plex-debrid
-          optional: true          
+          name: elfbot-plex-debrid-alldebrid
+          optional: true   
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plex-debrid-alldebrid
+      - mountPath: /tmp
+        name: tmp                 
   addons:
     vpn:
       enabled: true
