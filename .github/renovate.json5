@@ -22,8 +22,8 @@
   "packageRules": [
     {
       "matchPackageNames": ["plex"],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)-(?<hash>[a-f0-9]+)$",
-      "extractVersion": "^plex:(?<version>.*)$",
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)(-(?<hash>[a-f0-9]+))?$",
+      "extractVersion": "^.*:(?<version>.*)$",
       "automerge": true
     },
     {

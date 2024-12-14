@@ -1,5 +1,63 @@
 # Changelog
 
+## [1.207.0](https://github.com/elfhosted/myprecious/compare/v1.206.0...v1.207.0) (2024-12-13)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.12 ([5b25edc](https://github.com/elfhosted/myprecious/commit/5b25edcea66e0390315c4e8356c5a559d2303dc1))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.33 ([92ae240](https://github.com/elfhosted/myprecious/commit/92ae240a6ad94e564d28d4ecfbaa0323cfa30c1c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1074 ([3815cee](https://github.com/elfhosted/myprecious/commit/3815cee01a2210b4f170d55350166256d594e7b8))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.3 ([84551a5](https://github.com/elfhosted/myprecious/commit/84551a53d9e4c22aa48469b2dd0cb2cfb8c8fa78))
+
+## [1.206.0](https://github.com/elfhosted/myprecious/compare/v1.205.0...v1.206.0) (2024-12-12)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v8.14 ([7409671](https://github.com/elfhosted/myprecious/commit/740967133950199a74297a12e4f60a2e203d2850))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.11 ([1bc4831](https://github.com/elfhosted/myprecious/commit/1bc4831b3c39c73d1334b9b85a330ff72610c82f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1072 ([d435a49](https://github.com/elfhosted/myprecious/commit/d435a49cf07ba74ea2047ecf60f49896c443895d))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.91 ([0609df3](https://github.com/elfhosted/myprecious/commit/0609df338d1842f19836a49a64ebf785d299954b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 317b5f6 ([23d8d78](https://github.com/elfhosted/myprecious/commit/23d8d78f3c960649828df4e30d0986674e8dbc93))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d5f7e7b ([3742029](https://github.com/elfhosted/myprecious/commit/37420290d6fc361fcb6aa8aff156c0c1c98e2535))
+* **app:** update ghcr.io/elfhosted/rclone:1.68.2 docker digest to 80abc5b ([11c774b](https://github.com/elfhosted/myprecious/commit/11c774bd25e345b37160c4f3f1d87e016a11c714))
+* Update plex to 1.41.3.9292-bc7397402 ([39f993f](https://github.com/elfhosted/myprecious/commit/39f993f7c82249571f8700b9088d03b3412510f2))
+
+## [1.205.0](https://github.com/elfhosted/myprecious/compare/v1.204.0...v1.205.0) (2024-12-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1064 ([73cb7ed](https://github.com/elfhosted/myprecious/commit/73cb7edfa016b7c93af37389fffab6ad0224d069))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.7 ([983cb9a](https://github.com/elfhosted/myprecious/commit/983cb9ad7e6ad76496dda550677ed940984d765a))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.6 ([55a705a](https://github.com/elfhosted/myprecious/commit/55a705a838b9f70120fb1921602361a329bf9a51))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.3.1 ([01a08a5](https://github.com/elfhosted/myprecious/commit/01a08a5f9deccdced3af9392493b1fb966b822a0))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to f4d85d9 ([f9ef63a](https://github.com/elfhosted/myprecious/commit/f9ef63a4c7abab59448b424a74f1207b75341d1e))
+* **app:** update quay.io/linuxserver.io/calibre:7.22.0 docker digest to e0df48e ([38c9e8f](https://github.com/elfhosted/myprecious/commit/38c9e8f801151820ffe523d5a908452d14dc4e98))
+* only show DMM dashboard link for Zurglings ([6714f6a](https://github.com/elfhosted/myprecious/commit/6714f6a1a27edd9ea22c02c1f7ce8eb356402c64))
+
+## [1.204.0](https://github.com/elfhosted/myprecious/compare/v1.203.0...v1.204.0) (2024-12-10)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.16.10 ([95169a7](https://github.com/elfhosted/myprecious/commit/95169a743c00e21e913bfb66a4eb49b7b0a0dfea))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1063 ([149b70b](https://github.com/elfhosted/myprecious/commit/149b70be9f2772ea23672c3d7f77f0d252f5acbc))
+
+
+### Bug Fixes
+
+* update scanarr to scan sonarr on interval ([9a1b470](https://github.com/elfhosted/myprecious/commit/9a1b47020dea88f3998981a796040569b8484571))
+
 ## [1.203.0](https://github.com/elfhosted/myprecious/compare/v1.202.0...v1.203.0) (2024-12-09)
 
 

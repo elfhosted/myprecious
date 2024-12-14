@@ -3504,7 +3504,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:5299c7a5dd46d05b940f1a21f59a23f249d7739b67742db13f9c745966030c8d
+    tag: rolling@sha256:317b5f68e1dce58168ac282c75d9a55ab896ac261ed8e0ddd14431b4f02c82c7
   enabled: false
   controller:
     annotations:
@@ -3792,7 +3792,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.22.0@sha256:b5144796e48598ed5a672fd9c69fb41888463e3c038ea6c562efafaed7917f21
+    tag: 7.22.0@sha256:e0df48e4d99cf357078e7aeb03458a5a68cd0c3b38bf5347225ef0867aed2b7a
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4732,7 +4732,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.2.9200-c6bbc1b53
+    tag: 1.41.3.9292-bc7397402
   persistence:
     <<: *storagemounts
     config:
@@ -5184,7 +5184,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.32@sha256:d196d8f762e5ccd0cdb580c260fd0628f64cc84b1528a6097acad8cee67bc199
+    tag: 4.9.0.33@sha256:e4adfdcda9e64b0ef4879159b0aed100727be2bcc83a7e2d1f58da1e63732168
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -5955,7 +5955,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.16.9-vaapi
+    tag: 0.16.12-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6846,7 +6846,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.5@sha256:e20601f73e8a6e236b3a3451c57d99364badf6c32aab9c46fb0455be7d8e5fdd
+    tag: 1.32.6@sha256:0938e4eb85e7bd5585a9df04e468f2688bb9bd101c16188773771265c0fb5c08
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7463,7 +7463,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.2@sha256:866898a18aabe925b2a7e7f956e012a3b486e190554d37fd5cb5b7a3a9f6f1b7
+    tag: 0.32.3@sha256:a0556ba7c06d2e54efb0c6a8ea5575ab8bc051590519676e9ed5917b7778b4d2
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7551,7 +7551,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:5d9bfb3e6964979fc9030e15daa3b7aa5ad0dc854380cd60fb327cd61fd1ddb7
+    tag: rolling@sha256:f4d85d9888e615ce8ed4356c59ad49cbed1703e132e07735ab975636b1bf3d36
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7750,7 +7750,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+    tag: 1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -7863,7 +7863,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+    tag: 1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
   command:
   - /rclonefm.sh
   controller:
@@ -7989,7 +7989,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+    tag: 1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -8319,7 +8319,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.3.0@sha256:a8b8d318d58f4acc1aa85969a7713b352408da77a0aa54e70130a3cc1f3b932b
+    tag: 10.3.1@sha256:5892ec2bdb79d74adafd2ef689ac4ea585370646a8028cc6da249ed2715ae6fa
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -8720,7 +8720,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.90@sha256:e3a0d7cb6bc0e74c93f0b5f1784bd44570242d11ed2c041b25c65462d3714af3
+    tag: v2.0.91@sha256:8c6d375d0911f8f150d9d804be375a272bc4fd20a7d06b3780a4a5da7abd1bfe
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -9930,7 +9930,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1062@sha256:13247f6550a5dc4740c6299e87d9a6c878f702c36936b6f9256542ae3739e80e
+    tag: 0.22.1074@sha256:48189d70f2e2453e1305e9fd4888016f5a13637727624e6b90fe9cba720809c0
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10466,7 +10466,7 @@ pgadmin:
   enabled: false
   image:
     repository: dpage/pgadmin4
-    tag: "8.13"
+    tag: "8.14"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11215,7 +11215,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.6@sha256:9fde0e2753599d80bb7507134acf95736010c61c55d918359c27eaeec79060af
+    tag: 1.9.7@sha256:98e3643a3e2007e5424500c41c1198bcc01eb46c3584971de61200ec50c0c6da
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
@@ -12545,7 +12545,7 @@ rclonealldebrid:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+    tag: 1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
   command:
   - /debrid-provider.sh
   controller:
@@ -12599,7 +12599,7 @@ rclonealldebrid:
         subPath: tinyproxy.conf                      
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
       command:
       - /bin/ash
       - -c
@@ -12671,7 +12671,7 @@ rclonepremiumize:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+    tag: 1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
   command:
   - /debrid-provider.sh
   controller:
@@ -12711,7 +12711,7 @@ rclonepremiumize:
           name: premiumize-config
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
       command:
       - /bin/ash
       - -c
@@ -12758,7 +12758,7 @@ rclonetorbox:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+    tag: 1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
   command:
   - /debrid-provider.sh
   controller:
@@ -12806,7 +12806,7 @@ rclonetorbox:
           optional: true          
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:dd489ec5d9bd221032efffca799547c1122758f1199098b357c518bc0ae5bbef
+      image: ghcr.io/elfhosted/rclone:1.68.2@sha256:80abc5bb3d2de4c310980bfabfc107e626fcbaa503f72a440338c1284c056d15
       command:
       - /bin/ash
       - -c

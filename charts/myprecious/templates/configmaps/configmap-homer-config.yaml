@@ -1046,6 +1046,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }} 
 
+          {{ if .Values.zurgling.enabled }}
           - name: "DebridMediaManager"
             logo: "assets/png/debridmediamanager.png"
             subtitle: "Manage Debrid Media"
@@ -1053,6 +1054,7 @@ data:
             tagstyle: "is-danger"
             url: "https://debridmediamanager.com"
             target: "_blank" # optional html tag target attribute
+          {{ end }}
 
       - name: "Download Media"
         icon: "fas fa-cloud-arrow-down"
