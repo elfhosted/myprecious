@@ -8822,6 +8822,19 @@ rdtclientpremiumize:
       type: custom
       mountPath: /data/downloads
       volumeSpec: *volumespec_ephemeral_volume_1g  
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: rdtclient-premiumize
+      - mountPath: /tmp
+        name: tmp
 
 rdtclienttorbox:
   enabled: false
@@ -8853,6 +8866,19 @@ rdtclienttorbox:
       type: custom
       mountPath: /data/downloads
       volumeSpec: *volumespec_ephemeral_volume_1g  
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: rdtclient-torbox
+      - mountPath: /tmp
+        name: tmp
 
 # RDTClient for AllDebrid
 rdtclientalldebrid:
@@ -8885,6 +8911,19 @@ rdtclientalldebrid:
       type: custom
       mountPath: /data/downloads
       volumeSpec: *volumespec_ephemeral_volume_1g  
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: rdtclient-alldebrid
+      - mountPath: /tmp
+        name: tmp      
   addons:
     vpn:
       enabled: true
