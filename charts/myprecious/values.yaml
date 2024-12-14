@@ -5483,11 +5483,11 @@ homer:
       enabled: false
   controller:
     replicas: 1
-    strategy: RollingUpdate # can't do this because we run gatus in homer now
-    # rollingUpdate:
-    #   unavailable: 1
+    strategy: RollingUpdate
+    rollingUpdate:
+      unavailable: 1
     annotations:
-      configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer,gatus-config" # Reload the deployment every time the yaml config changes
+      configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer" # Reload the deployment every time the yaml config changes
   resources:
     requests:
       cpu: 1m
@@ -8792,19 +8792,21 @@ rdtclient: &app_rdtclient
       - mountPath: /tmp
         name: tmp
 
-# Add a VPN option for rdtclient
-rdtclientvpn:
+rdtclientpremiumize:
   enabled: false
   <<: *app_rdtclient
   podLabels:
-    app.elfhosted.com/name: rdtclientvpn
+    app.elfhosted.com/name: rdtclient-premiumize
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient-premiumize"  
   persistence:
     <<: *storagemounts
     config:
       enabled: true
       type: custom
       mountPath: /data/db
-      subPath: rdtclientvpn
+      subPath: rdtclient-premiumize
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -8813,13 +8815,76 @@ rdtclientvpn:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-rdtclientvpn
+          name: elfbot-rdtclient-premiumize
           optional: true
     download: # in case users use /tmp
       enabled: true
       type: custom
       mountPath: /data/downloads
-      volumeSpec: *volumespec_ephemeral_volume_1g
+      volumeSpec: *volumespec_ephemeral_volume_1g  
+
+rdtclienttorbox:
+  enabled: false
+  <<: *app_rdtclient
+  podLabels:
+    app.elfhosted.com/name: rdtclient-torbox
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient-torbox"  
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data/db
+      subPath: rdtclient-torbox
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-rdtclient-torbox
+          optional: true
+    download: # in case users use /tmp
+      enabled: true
+      type: custom
+      mountPath: /data/downloads
+      volumeSpec: *volumespec_ephemeral_volume_1g  
+
+# RDTClient for AllDebrid
+rdtclientalldebrid:
+  enabled: false
+  <<: *app_rdtclient
+  podLabels:
+    app.elfhosted.com/name: rdtclient-alldebrid
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient-alldebrid"  
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data/db
+      subPath: rdtclient-alldebrid
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-rdtclient-alldebrid
+          optional: true
+    download: # in case users use /tmp
+      enabled: true
+      type: custom
+      mountPath: /data/downloads
+      volumeSpec: *volumespec_ephemeral_volume_1g  
   addons:
     vpn:
       enabled: true
