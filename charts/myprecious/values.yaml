@@ -12093,6 +12093,8 @@ plexdebrid: &app_plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
     tag: rolling@sha256:ec4d3af803ec20d53a7c579df2031d364a78929ffe036a385d9991e7a3160794
+  podLabels:
+    app.elfhosted.com/name: plex-debrid    
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12167,6 +12169,8 @@ plexdebrid: &app_plexdebrid
 plexdebriddebridlink: 
   <<: *app_plexdebrid  
   enabled: false
+  podLabels:
+    app.elfhosted.com/name: plex-debrid-debridlink  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-debridlink"  
@@ -12204,6 +12208,8 @@ plexdebriddebridlink:
 plexdebridtorbox: 
   <<: *app_plexdebrid  
   enabled: false  
+  podLabels:
+    app.elfhosted.com/name: plex-debrid-torbox  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-torbox"  
@@ -12241,6 +12247,8 @@ plexdebridtorbox:
 plexdebridpremiumize: 
   <<: *app_plexdebrid  
   enabled: false  
+  podLabels:
+    app.elfhosted.com/name: plex-debrid-premiumize    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-premiumize"  
@@ -12278,6 +12286,8 @@ plexdebridpremiumize:
 # This is a copy of plexdebrid plumbed into the user's VPN
 plexdebridalldebrid: 
   <<: *app_plexdebrid
+  podLabels:
+    app.elfhosted.com/name: plex-debrid-alldebrid    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-alldebrid"  
