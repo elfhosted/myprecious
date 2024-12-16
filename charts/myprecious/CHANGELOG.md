@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.210.0](https://github.com/elfhosted/myprecious/compare/v1.209.0...v1.210.0) (2024-12-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1085 ([2c6928f](https://github.com/elfhosted/myprecious/commit/2c6928fa461f0396b70b88a705779c9972410ba2))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.8.2.4493 ([67ac1bc](https://github.com/elfhosted/myprecious/commit/67ac1bc97a1d10a58e347ece749a8d6977537954))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.1.22 ([8d8c6b8](https://github.com/elfhosted/myprecious/commit/8d8c6b8743ebe37a88b89b5b12d0159b8d5e0285))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.28.2.4885 ([1238957](https://github.com/elfhosted/myprecious/commit/1238957d9cafeb5816bfed234f0d1bf93d9f1048))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.16.3.9541 ([2a5f426](https://github.com/elfhosted/myprecious/commit/2a5f426950bca3a2e6cb724ad56a59acdf43aadc))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2762 ([597416b](https://github.com/elfhosted/myprecious/commit/597416bae64418819ee3db9624d9632ee9a75166))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 9b670ca ([1a9ec20](https://github.com/elfhosted/myprecious/commit/1a9ec20b789009c20431012c58b28d921229dde3))
+
 ## [1.209.0](https://github.com/elfhosted/myprecious/compare/v1.208.0...v1.209.0) (2024-12-15)
 
 
