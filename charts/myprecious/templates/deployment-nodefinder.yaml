@@ -19,7 +19,7 @@ spec:
   template:
     metadata:
       labels: 
-        app.elfhosted.com/role: pre-nodefinder
+        app.elfhosted.com/role: nodefinder
     spec:
       affinity:
         nodeAffinity:
