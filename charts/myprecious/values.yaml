@@ -11143,8 +11143,8 @@ mediafusion:
 tinyproxy:
   enabled: false
   image:
-    repository: docker.io/kalaksi/tinyproxy
-    tag: latest
+    repository: ghcr.io/elfhosted/tinyproxy
+    tag: v1.4.3@sha256:afc49b44bcab30c261e4e0232e23126da9b63220d2f9a8201ce3e3a90132a035
   podLabels:
       app.elfhosted.com/name: tinyproxy
   priorityClassName: tenant-normal
@@ -11176,6 +11176,12 @@ tinyproxy:
       volumeSpec:
         configMap:
           name: tinyproxy-conf 
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory          
   resources:
     requests:
       cpu: 1m
@@ -11192,6 +11198,8 @@ tinyproxy:
       ports:
         http:
           port: 8888
+  env:
+    WAIT_FOR_VPN: "true"          
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -11218,7 +11226,15 @@ tinyproxy:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
+      scripts:
+        up: |-
+          #!/bin/ash
+          echo "connected" > /shared/vpnstatus
 
+        down: |-
+          #!/bin/ash
+          echo "disconnected" > /shared/vpnstatus
+          
 mediaflowproxy:
   enabled: false
   image:
