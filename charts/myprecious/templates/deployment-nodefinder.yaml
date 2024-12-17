@@ -15,11 +15,11 @@ metadata:
 spec:
   selector:
     matchLabels: 
-      app.elfhosted.com/role: nodefinder
+      app.elfhosted.com/role: pre-nodefinder
   template:
     metadata:
       labels: 
-        app.elfhosted.com/role: nodefinder
+        app.elfhosted.com/role: pre-nodefinder
     spec:
       affinity:
         nodeAffinity:
