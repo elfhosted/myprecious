@@ -17,7 +17,7 @@ spec:
         app.elfhosted.com/name: nodefinder-waiter
     spec:
       automountServiceAccountToken: true
-      serviceAccountName: nodefinder
+      serviceAccountName: nodefinder-waiter
       restartPolicy: OnFailure  # Restart only if the job fails
       containers:
       - name: "wait-for-nodefinder"
