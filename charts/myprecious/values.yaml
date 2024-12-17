@@ -5365,16 +5365,7 @@ homer:
   service:
     main:
       enabled: true # necessary for probes
-  affinity:
-    podAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-      - labelSelector:
-          matchExpressions:
-          - key: app.elfhosted.com/role
-            operator: In
-            values:
-            - pre-nodefinder
-        topologyKey: "kubernetes.io/hostname"  
+  affinity: *standard_affinity
   tolerations: *standard_tolerations
   podLabels:
     app.elfhosted.com/role: nodefinder # let this be an anchor for replicationdestinations

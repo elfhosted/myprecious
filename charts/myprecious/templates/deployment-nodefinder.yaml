@@ -15,7 +15,7 @@ metadata:
 spec:
   selector:
     matchLabels: 
-      app.elfhosted.com/role: pre-nodefinder
+      app.elfhosted.com/role: nodefinder
   template:
     metadata:
       labels: 

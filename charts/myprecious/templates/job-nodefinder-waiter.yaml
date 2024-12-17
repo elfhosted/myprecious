@@ -1,0 +1,36 @@
+# This job is intended to start upon first installation, "anchoring" all of the replicationdestination restores to the desired node
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-nodefinder-waiter
+  labels:
+    app.elfhosted.com/name: nodefinder-waiter  
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-weight: "10"  # Run after nodefinder deployment 
+spec:
+  ttlSecondsAfterFinished: 60  # Cleanup after 60 seconds
+  backoffLimit: 3  # Number of retries before considering the job as failed
+  template:
+    metadata:
+      labels:
+        app.elfhosted.com/name: nodefinder-waiter
+    spec:
+      automountServiceAccountToken: true
+      serviceAccountName: nodefinder-waiter
+      restartPolicy: OnFailure  # Restart only if the job fails
+      containers:
+      - name: "wait-for-nodefinder"
+        image: ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
+        command:
+        - /bin/bash
+        - -c
+        - |
+          set -x
+          set -e
+
+          # If deployment exists, then wait 1 min and exit
+          if kubectl get deployment {{ .Release.Name }}-nodefinder
+          then
+            sleep 1m          
+          fi
