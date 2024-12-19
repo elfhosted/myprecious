@@ -3473,7 +3473,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:278af15741689a891eb606c1596ecacbe29c781ea6951cbec3674ce3f3c5976f
+    tag: rolling@sha256:1e759cc9a6ea44571398250b66027f01fd401126a26b8e35b4ea1295baae4955
   enabled: false
   controller:
     annotations:
@@ -3761,7 +3761,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.22.0@sha256:e0df48e4d99cf357078e7aeb03458a5a68cd0c3b38bf5347225ef0867aed2b7a
+    tag: 7.22.0@sha256:af369095c4cd0625aca753ae0478bf45196728e382e546747a2be5dda98a887c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5924,7 +5924,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.16.12-vaapi
+    tag: 0.16.13-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -8689,7 +8689,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.91@sha256:8c6d375d0911f8f150d9d804be375a272bc4fd20a7d06b3780a4a5da7abd1bfe
+    tag: v2.0.92@sha256:b4b0ba88515f0270209146a61b22cdf0a9cff56ed0c9c41b12383487a0481617
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -9938,7 +9938,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1088@sha256:5cb596e23625b21d33dbb938fcd1c2f068d72a1f9d524c38c8567a802736a7fb
+    tag: 0.22.1096@sha256:33f722fc0a0932a2703c0575fde2c3f4c33d933972ebe719858e1a3ada35400d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12393,7 +12393,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.95.3@sha256:8a0a3b02fcc5382c607cf05aca26b915affc6e9999b141e5aa66eba230bfd45d
+    tag: 4.96.1@sha256:04f8a8b27a741b225bcd52454e154a996feffa20e994ee552f64f4e4df5efe33
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13298,7 +13298,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.122.2
+      image: ghcr.io/immich-app/immich-machine-learning:v1.123.0
       envFrom:
       - configMapRef:
           name: immich-env
