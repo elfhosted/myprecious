@@ -2321,7 +2321,7 @@ radarr: &app_radarr
       cpu: 1m
       memory: 500Mi
     limits:
-      cpu: 900m
+      cpu: 1.5
       memory: 2Gi
 
 radarr4k: &app_radarr4k
@@ -2433,8 +2433,8 @@ radarr4k: &app_radarr4k
       cpu: 1m
       memory: 500Mi
     limits:
-      cpu: 900m
-      memory: 1Gi
+      cpu: 1.5
+      memory: 2Gi
 
 
 ombi:
@@ -3948,8 +3948,8 @@ sonarr: &app_sonarr
       cpu: 1m
       memory: 600Mi
     limits:
-      cpu: 1
-      memory: 1Gi
+      cpu: 1.5
+      memory: 2Gi
 
 sonarr4k: &app_sonarr4k
   enabled: false
@@ -4058,8 +4058,8 @@ sonarr4k: &app_sonarr4k
       cpu: 1m
       memory: 256Mi
     limits:
-      cpu: 1
-      memory: 1Gi
+      cpu: 1.5
+      memory: 2Gi
 
 resiliosync:
   service:
@@ -11199,7 +11199,8 @@ tinyproxy:
         http:
           port: 8888
   env:
-    WAIT_FOR_VPN: "true"          
+    WAIT_FOR_VPN: "true"    
+  initContainers:      
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
