@@ -11017,7 +11017,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.1.22@sha256:acbb0e2729f6b434b87b67a20043173053b0d71459c7e4ddfde3157a21ac7b92
+    tag: 4.1.23@sha256:45ac4f22b9cd17ce3661287108e5590fb39c22342aac978cb777aa3831fe9c5b
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -13210,7 +13210,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.122.2@sha256:27ceb1867f5501818c86188c62924bbfd3024d8f74395cd66d6a302b01d1b2cd
+    tag: v1.123.0@sha256:666ce77995230ff7327da5d285c861895576977237de08564e3c3ddf842877eb
   priorityClassName: tenant-normal
   controller:
     annotations:
