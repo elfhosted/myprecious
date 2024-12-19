@@ -11199,7 +11199,8 @@ tinyproxy:
         http:
           port: 8888
   env:
-    WAIT_FOR_VPN: "true"          
+    WAIT_FOR_VPN: "true"    
+  initContainers:      
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
