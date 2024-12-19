@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.213.0](https://github.com/elfhosted/myprecious/compare/v1.212.0...v1.213.0) (2024-12-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.96.1 ([fad840f](https://github.com/elfhosted/myprecious/commit/fad840f0530682a82e44b96a0f6400b3215a53ad))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1096 ([c8bb428](https://github.com/elfhosted/myprecious/commit/c8bb4282feae83a690674f0aac7b4336b62e1793))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 1e759cc ([a8a39c9](https://github.com/elfhosted/myprecious/commit/a8a39c9a7cd42cbee87f84e769e43fe978b4f188))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 29980e8 ([8390e91](https://github.com/elfhosted/myprecious/commit/8390e9170a52b2a05928e601fd8ee90f0b322071))
+* Upgrade Plex to 1.41.3.9314-a0bfb8370 ([ce3560f](https://github.com/elfhosted/myprecious/commit/ce3560fab06ef3168c228aa36458c8a2c615fc71))
+
 ## [1.212.0](https://github.com/elfhosted/myprecious/compare/v1.211.0...v1.212.0) (2024-12-18)
 
 
