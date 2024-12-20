@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.214.0](https://github.com/elfhosted/myprecious/compare/v1.213.0...v1.214.0) (2024-12-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.14.0 ([528408c](https://github.com/elfhosted/myprecious/commit/528408c254c0bce89db82c59182b83413c09bb67))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1101 ([a0f5392](https://github.com/elfhosted/myprecious/commit/a0f53928266e3de96a5d9cdd9981cfbf3c64ec8f))
+* **app:** update ghcr.io/elfhosted/uptime-kuma docker tag to v1.23.16 ([b89348c](https://github.com/elfhosted/myprecious/commit/b89348cf4fa841bfd37999a93c62f28e7d056482))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.32.7 ([b7a2b41](https://github.com/elfhosted/myprecious/commit/b7a2b4192d4bd047d69d0f7ff8f81fd858c90f5f))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script docker tag to v1.4.7 ([bb72510](https://github.com/elfhosted/myprecious/commit/bb7251061b4ccf5ad7e4b1595fdc1b562ed58c20))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.0 ([bac1335](https://github.com/elfhosted/myprecious/commit/bac133516df0abd9aa830ed873e876308aab0f75))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.23.0 ([6546cbe](https://github.com/elfhosted/myprecious/commit/6546cbe778268ae6c05132ba672e75508ab035d2))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 79c6a03 ([58cae10](https://github.com/elfhosted/myprecious/commit/58cae109fae86d6427e79821b4b0fefea5502e07))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 3cfbeef ([992d2fd](https://github.com/elfhosted/myprecious/commit/992d2fd2d633a6bd3679c5e9cc4cdc718aa7a811))
+
 ## [1.213.0](https://github.com/elfhosted/myprecious/compare/v1.212.0...v1.213.0) (2024-12-19)
 
 
