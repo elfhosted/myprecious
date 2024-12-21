@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.215.0](https://github.com/elfhosted/myprecious/compare/v1.214.0...v1.215.0) (2024-12-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.96.2 ([719aece](https://github.com/elfhosted/myprecious/commit/719aeceecde8537695aa457c67a7a096db3e84be))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1103 ([476c23a](https://github.com/elfhosted/myprecious/commit/476c23a615512d0b078afee8967eb88f530084c2))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.4 ([c207666](https://github.com/elfhosted/myprecious/commit/c207666921c2bbae240ca798aec306ef3b10dbfe))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.54.1 ([c14d280](https://github.com/elfhosted/myprecious/commit/c14d28082dc7c8f6f77bd3b4e7e2bdd68394ddbc))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2784 ([98f9817](https://github.com/elfhosted/myprecious/commit/98f981715d00d206456b2ce8dc79df11567aaf61))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.12.21.0027 ([a1b9ab6](https://github.com/elfhosted/myprecious/commit/a1b9ab62ac5d977559983c75d64bb3f0d3085bcd))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.1 ([e307f4d](https://github.com/elfhosted/myprecious/commit/e307f4dec2acb56825fed3bbb890eccdf87881de))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/rclone:1.68.2 docker digest to 6fe146d ([741229f](https://github.com/elfhosted/myprecious/commit/741229f543d483ebab7176077704f88b4eff1c1b))
+
 ## [1.214.0](https://github.com/elfhosted/myprecious/compare/v1.213.0...v1.214.0) (2024-12-20)
 
 
