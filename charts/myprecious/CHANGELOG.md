@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.217.0](https://github.com/elfhosted/myprecious/compare/v1.216.0...v1.217.0) (2024-12-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1111 ([3921945](https://github.com/elfhosted/myprecious/commit/39219452d2a1dec3d85dc6e492f97edb2a93e664))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2793 ([5a9a659](https://github.com/elfhosted/myprecious/commit/5a9a659f71dd32f1f7c916fe8164bc2398335363))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script docker tag to v1.4.8 ([1182891](https://github.com/elfhosted/myprecious/commit/1182891198e869c98e31a24be7527707a5f17675))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/annatar:rolling docker digest to 066141e ([e8cb272](https://github.com/elfhosted/myprecious/commit/e8cb2727dbd2d884b7ba8ec7f348d8058ed509e7))
+
 ## [1.216.0](https://github.com/elfhosted/myprecious/compare/v1.215.0...v1.216.0) (2024-12-22)
 
 
