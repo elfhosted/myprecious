@@ -19,6 +19,8 @@ data:
   api_password: changemeelfie
   zilean_url: http://zilean.zilean:8181
   is_scrap_from_zilean: "true"
+  is_scrap_from_jackett: "true"
+  jackett_url: http://jackett:9117  
   addon_name: "MediaFusion | {{ .Release.Name }}"
   branding_description: "Welcome, {{ .Release.Name }}, to your own ElfHosted mediafusion instance!"
   db_max_connections: "30"
