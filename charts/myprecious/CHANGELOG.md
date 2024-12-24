@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.218.0](https://github.com/elfhosted/myprecious/compare/v1.217.0...v1.218.0) (2024-12-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bazarr docker tag to v1.5.0 ([bd8d180](https://github.com/elfhosted/myprecious/commit/bd8d18002ce393cbdab005881feeecb3d4a86793))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1116 ([5595b14](https://github.com/elfhosted/myprecious/commit/5595b149d4fbe99bfc64df76de9c6b4591ad58d0))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.3 ([0e23b53](https://github.com/elfhosted/myprecious/commit/0e23b53387f39054a022e503fd610a3559dc84b6))
+
 ## [1.217.0](https://github.com/elfhosted/myprecious/compare/v1.216.0...v1.217.0) (2024-12-23)
 
 
