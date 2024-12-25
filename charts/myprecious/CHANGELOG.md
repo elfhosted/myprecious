@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.219.0](https://github.com/elfhosted/myprecious/compare/v1.218.0...v1.219.0) (2024-12-25)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1123 ([c1ed7ed](https://github.com/elfhosted/myprecious/commit/c1ed7edd200917d6fa286f4023daae11fe4c2e02))
+* **app:** update ghcr.io/elfhosted/jellystat docker tag to v1.1.2 ([4624add](https://github.com/elfhosted/myprecious/commit/4624addcf9c5583eea1a152ff569cc01e016d2cc))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.4 ([b4b3fb5](https://github.com/elfhosted/myprecious/commit/b4b3fb571508e06cef389d8eabedb1b8b505b677))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 91da867 ([0c75224](https://github.com/elfhosted/myprecious/commit/0c75224763f8ac2bbd902e76d48f3c79c2ff783b))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d2d0b44 ([5c71be8](https://github.com/elfhosted/myprecious/commit/5c71be869e8f58b08916b735166a28c1d9b459fa))
+* **app:** update quay.io/linuxserver.io/calibre:7.23.0 docker digest to 6236e60 ([57faf18](https://github.com/elfhosted/myprecious/commit/57faf18e03350ccac6c919e03ca903e73a21b7a0))
+
 ## [1.218.0](https://github.com/elfhosted/myprecious/compare/v1.217.0...v1.218.0) (2024-12-24)
 
 
