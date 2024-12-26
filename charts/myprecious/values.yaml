@@ -11022,6 +11022,71 @@ jackettio:
       - mountPath: /shared
         name: shared
 
+stremthru:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/stremthru
+    tag: 0.17.0@sha256:0e7cf83aa9fa3ec24c1f82d5a3a37510a60320285d81432a1d423c4d49fda185
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-stremthru,stremthru-env"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: stremthru
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory              
+  resources:
+    requests:
+      cpu: 1m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8080
+  envFrom:
+  - configMapRef:
+      name: stremthru-env
+  - configMapRef:
+      name: elfbot-stremthru
+      optional: true
+
 davio:
   enabled: false
   image:

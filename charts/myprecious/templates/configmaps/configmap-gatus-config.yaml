@@ -260,6 +260,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.stremthru.enabled }}
+      - name: stremthru
+        group: consume-media
+        url: "http://stremthru:8080"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
+
       {{ if .Values.mediafusion.enabled }}
       - name: mediafusion
         group: consume-media
