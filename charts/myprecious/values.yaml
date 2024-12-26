@@ -4256,14 +4256,12 @@ prowlarr: &app_prowlarr
         mkdir -p /config/Definitions/Custom
 
         if [ -f /config/Definitions/Custom/elfhosted-torrentio.yml ]; then rm /config/Definitions/Custom/elfhosted-torrentio.yml; fi
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/torrentio.yml > /config/Definitions/Custom/torrentio.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfhosted-internal.yml > /config/Definitions/Custom/elfhosted-internal.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfzyclops.yml > /config/Definitions/Custom/elfzyclops.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/torbox.yml > /config/Definitions/Custom/torbox.yml
-        curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/elfhosted-mediafusion.yml > /config/Definitions/Custom/elfhosted-mediafusion.yml
-        # curl https://raw.githubusercontent.com/geek-cookbook/elfhosted-prowlarr-indexers/main/Custom/ygg-api.yml > /config/Definitions/Custom/ygg-api.yml
+        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/torrentio.yml > /config/Definitions/Custom/torrentio.yml
+        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
+        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
+        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/torbox.yml > /config/Definitions/Custom/torbox.yml
+        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/elfhosted-mediafusion.yml > /config/Definitions/Custom/elfhosted-mediafusion.yml
+        # curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/ygg-api.yml > /config/Definitions/Custom/ygg-api.yml
       volumeMounts:
       - mountPath: /config
         name: config
@@ -10161,7 +10159,7 @@ stremioweb:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-web
-    tag: v5.0.0-beta.15@sha256:0a5922281291cfa0a790282542afa40b38508b61574aaee8be8ecd07e3b1e469
+    tag: rolling@sha256:1e5ce4931af36e61071e27fabae0bfeffd18da1f7a6c936714ad50c05a0a5da4
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: stremio-web
