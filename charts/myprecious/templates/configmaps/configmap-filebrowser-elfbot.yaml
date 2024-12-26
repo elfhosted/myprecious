@@ -198,7 +198,7 @@ data:
             fi
 
             echo "This may take a while..."
-            HOME=/storage/config/recyclarr/ $@ --config /storage/config/recyclarr/recyclarr.yaml --app-data /storage/config/recyclarr/
+            HOME=/storage/config/recyclarr/ RECYCLARR_APP_DATA=/storage/config/recyclarr/ $@
             ;;                          
 
         "blackhole")
