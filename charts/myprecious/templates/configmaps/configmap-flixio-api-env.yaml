@@ -1,0 +1,10 @@
+{{ if .Values.flixioapi.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flixio-api-env
+data:
+  FLIXIO_API_KEY: some-api-key
+  FLIXIO_CORS_ALLOWED_ORIGINS: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}"
+  FLIXIO_LOKI_LOGGING_FORMAT: "true"
+{{ end }}

@@ -6,5 +6,5 @@ metadata:
 data:
   STREMTHRU_LANDING_PAGE: |
      {"description": "I am description", "sections": [{"title": "I am title", "content":"I am content"}]}
-  STREMTHRU_DATABASE_URI: sqlite://config/stremthru.db
+  STREMTHRU_DATABASE_URI: sqlite:///config/stremthru.db
 {{ end }}

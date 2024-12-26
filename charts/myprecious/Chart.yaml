@@ -736,6 +736,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: stremioweb
   - name: app-template
+    condition: flixioapi.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: flixioapi    
+  - name: app-template
     condition: pgadmin.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
