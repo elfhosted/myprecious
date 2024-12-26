@@ -10179,12 +10179,6 @@ stremioweb:
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-    runAsUser: 568
-    runAsGroup: 568
-    supplementalGroups:
-    - 993
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
