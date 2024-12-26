@@ -10174,7 +10174,7 @@ stremioweb:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # doesn't work with iprom's patching trick
     privileged: true
   podSecurityContext:
     seccompProfile:
