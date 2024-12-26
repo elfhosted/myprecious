@@ -1,0 +1,14 @@
+{{ if .Values.flixioapi.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-flixio-api.{{ .Values.dns_domain }}
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-flixio-api.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: flixio-api
+          kind: Service
+          port: 8080
+{{ end }}

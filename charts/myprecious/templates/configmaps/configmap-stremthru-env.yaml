@@ -1,0 +1,10 @@
+{{ if .Values.stremthru.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stremthru-env
+data:
+  STREMTHRU_LANDING_PAGE: |
+     {"description": "Welcome, {{ .Release.Name }}, to your StremThru instance!", "sections": []}
+  STREMTHRU_DATABASE_URI: sqlite:///config/stremthru.db
+{{ end }}

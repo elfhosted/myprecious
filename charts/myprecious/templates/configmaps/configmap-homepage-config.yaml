@@ -223,6 +223,14 @@ data:
             siteMonitor: http://knightcrawler-vpn:7000
         {{ end }}
 
+        {{ if .Values.stremthru.enabled }}
+        - StremThru:
+            icon: mdi-tools
+            href: https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}
+            description: Stremio / Debrid Multitool
+            siteMonitor: http://stremthru:8080
+        {{ end }}   
+
         {{ if .Values.mediafusion.enabled }}
         - MediaFusion:
             icon: mdi-atom

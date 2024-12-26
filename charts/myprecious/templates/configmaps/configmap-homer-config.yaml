@@ -442,6 +442,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.stremthru.enabled }}
+          - name: "StremThru"
+            icon: "fas fa-tools"
+            subtitle: "Stremio / Debrid Swiss-Army Knife"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
           {{ if .Values.mediafusion.enabled }}
           - name: "MediaFusion"
             icon: "fas fa-atom"

@@ -1,0 +1,9 @@
+{{ if .Values.stremioweb.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stremio-web-env
+data:
+  API_KEY: some-api-key
+  API_ENDPOINT: "https://{{ .Release.Name }}-flixio-api.{{ .Values.dns_domain }}"
+{{ end }}
