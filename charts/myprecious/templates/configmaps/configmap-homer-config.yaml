@@ -498,7 +498,7 @@ data:
             subtitle: "Stremio Server"
             tag: "public"
             tagstyle: "is-danger"
-            {{ if not .values.flixio.enabled }}
+            {{ if not .Values.flixio.enabled }}
               {{ if .Values.stremioserver.enabled }}
             url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
@@ -518,7 +518,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}      
 
-          {{ if .values.flixio.enabled }}
+          {{ if .Values.flixio.enabled }}
           - name: "Flixio"
             logo: "assets/png/stremio.png"
             subtitle: "Stremio (Anonymous)"

@@ -1,4 +1,4 @@
-{{ if .values.flixio.enabled }}
+{{ if .Values.flixio.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:

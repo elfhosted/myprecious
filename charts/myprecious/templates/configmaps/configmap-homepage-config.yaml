@@ -266,7 +266,7 @@ data:
         {{ if or .Values.stremioserver.enabled .Values.stremioserverpia.enabled .Values.stremioservergluetun.enabled }}
         - Stremio:
             icon: mdi-tv
-            {{ if .values.flixio.enabled }}
+            {{ if .Values.flixio.enabled }}
               {{ if .Values.stremioserver.enabled }}
             href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
@@ -287,7 +287,7 @@ data:
             siteMonitor: http://stremio-server:11470
         {{ end }}        
 
-        {{ if .values.flixio.enabled }}
+        {{ if .Values.flixio.enabled }}
         - Stremio:
             icon: mdi-tv
             href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"

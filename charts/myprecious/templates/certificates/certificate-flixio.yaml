@@ -1,14 +1,14 @@
-{{- if .values.flixiocustomdomain.enabled }}
+{{- if .Values.flixiocustomdomain.enabled }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: custom-domain-flixio-{{ .values.flixiocustomdomain.cname | lower }}
+  name: custom-domain-flixio-{{ .Values.flixiocustomdomain.cname | lower }}
 spec:
-  secretName: cert-{{ .values.flixiocustomdomain.cname | lower }}
+  secretName: cert-{{ .Values.flixiocustomdomain.cname | lower }}
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: {{ .values.flixiocustomdomain.cname | lower }}
+  commonName: {{ .Values.flixiocustomdomain.cname | lower }}
   dnsNames:
-  - {{ .values.flixiocustomdomain.cname | lower }}
+  - {{ .Values.flixiocustomdomain.cname | lower }}
 {{ end }}  
