@@ -498,7 +498,7 @@ data:
             subtitle: "Stremio Server"
             tag: "public"
             tagstyle: "is-danger"
-            {{ if not .Values.stremioweb.enabled }}
+            {{ if not .values.flixio.enabled }}
               {{ if .Values.stremioserver.enabled }}
             url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
@@ -508,23 +508,23 @@ data:
               {{ end }}            
             {{ else }}
               {{ if .Values.stremioserver.enabled }}
-            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
+            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
-            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
+            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioservergluetun.enabled }}
-            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
+            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ end }}            
             {{ end }}
             target: "_blank" # optional html tag target attribute
           {{ end }}      
 
-          {{ if .Values.stremioweb.enabled }}
-          - name: "Stremio Web"
+          {{ if .values.flixio.enabled }}
+          - name: "Flixio"
             logo: "assets/png/stremio.png"
-            subtitle: "Stremio Web"
+            subtitle: "Stremio (Anonymous)"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}                      
 

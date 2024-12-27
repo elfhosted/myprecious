@@ -324,15 +324,24 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.stremioserver.enabled }}
-      - name: stremio-server
+      {{ if .Values.flixio.enabled }}
+      - name: flixio
         group: consume-media
-        url: "http://stremio-server:8080"
+        url: "http://flixio:8080"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
         alerts:
           - type: email
+
+      - name: flixio-api
+        group: consume-media
+        url: "http://flixio-api:8080"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email          
       {{ end }}
 
       {{ if .Values.radarr.enabled }}

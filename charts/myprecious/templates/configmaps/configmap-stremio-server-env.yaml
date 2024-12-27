@@ -4,11 +4,11 @@ kind: ConfigMap
 metadata:
   name: stremio-server-env
 data:
-  {{ if .Values.stremioweb.enabled }}
-  {{ if .Values.stremiowebcustomdomain.enabled }}
-  WEBUI_LOCATION: https://{{ .Values.stremiowebcustomdomain.cname | lower }}
+  {{ if .values.flixio.enabled }}
+  {{ if .values.flixiocustomdomain.enabled }}
+  WEBUI_LOCATION: https://{{ .values.flixiocustomdomain.cname | lower }}
   {{ else }}
-  WEBUI_LOCATION: https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}
+  WEBUI_LOCATION: https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}
   {{ end }}
   {{ else }}
   WEBUI_LOCATION: https://web.strem.io

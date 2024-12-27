@@ -266,7 +266,7 @@ data:
         {{ if or .Values.stremioserver.enabled .Values.stremioserverpia.enabled .Values.stremioservergluetun.enabled }}
         - Stremio:
             icon: mdi-tv
-            {{ if .Values.stremioweb.enabled }}
+            {{ if .values.flixio.enabled }}
               {{ if .Values.stremioserver.enabled }}
             href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
@@ -276,21 +276,21 @@ data:
               {{ end }}            
             {{ else }}
               {{ if .Values.stremioserver.enabled }}
-            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
+            href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioserverpia.enabled }}
-            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
+            href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ else if .Values.stremioservergluetun.enabled }}
-            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
+            href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
               {{ end }}            
             {{ end }}
             description: Stremio Server
             siteMonitor: http://stremio-server:11470
         {{ end }}        
 
-        {{ if .Values.stremioweb.enabled }}
+        {{ if .values.flixio.enabled }}
         - Stremio:
             icon: mdi-tv
-            href: "https://{{ .Release.Name }}-stremio-web.{{ .Values.dns_domain }}"
+            href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"
             description: Stremio Web
             siteMonitor: http://stremio-web:8080
         {{ end }}             

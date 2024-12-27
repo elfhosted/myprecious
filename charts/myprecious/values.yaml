@@ -881,7 +881,7 @@ jellyfincustomdomain:
   enabled: false
 embycustomdomain:
   enabled: false
-stremiowebcustomdomain:
+flixiocustomdomain:
   enabled: false
 pairdropcustomdomain:
   enabled: false
@@ -10155,17 +10155,17 @@ stremioservergluetun:
           #!/bin/ash
           echo "disconnected" > /shared/vpnstatus
 
-stremioweb:
+flixio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-web
     tag: rolling@sha256:1e5ce4931af36e61071e27fabae0bfeffd18da1f7a6c936714ad50c05a0a5da4
   priorityClassName: tenant-normal
   podLabels:
-    app.elfhosted.com/name: stremio-web
+    app.elfhosted.com/name: flixio
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-stremio-web"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flixio"
     strategy:
     rollingUpdate:
       unavailable: 1
@@ -10182,9 +10182,9 @@ stremioweb:
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
-      name: stremio-web-env
+      name: flixio-env
   - configMapRef:
-      name: elfbot-stremio-web
+      name: elfbot-flixio
       optional: true  
   resources:
     requests:
