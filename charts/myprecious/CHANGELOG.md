@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.221.0](https://github.com/elfhosted/myprecious/compare/v1.220.0...v1.221.0) (2024-12-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1133 ([f616da7](https://github.com/elfhosted/myprecious/commit/f616da71ec46af518440222db6e71979d7e12192))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.4 ([e8d3b6a](https://github.com/elfhosted/myprecious/commit/e8d3b6ac80b582d900cab00632cce1261e3bd883))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.18.0 ([453e6c2](https://github.com/elfhosted/myprecious/commit/453e6c2508ec4e97231d76118f6bce89b865fe16))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.5 ([59852cc](https://github.com/elfhosted/myprecious/commit/59852cc91474b9c2ad4db0354d7725e143a4390e))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 3f5efc8 ([513e301](https://github.com/elfhosted/myprecious/commit/513e301ead634dcc199be3d08cc96f4b49317902))
+
+## [1.220.0](https://github.com/elfhosted/myprecious/compare/v1.219.0...v1.220.0) (2024-12-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gluetun docker tag to v3.40.0 ([742db10](https://github.com/elfhosted/myprecious/commit/742db100d44041695ee370e36a7ac04c7c8c6386))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1128 ([e19a7c0](https://github.com/elfhosted/myprecious/commit/e19a7c0eb0017f884ad90df028cbfd8a6b9be020))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2800 ([b26e423](https://github.com/elfhosted/myprecious/commit/b26e42324be22f92b56fa7a8834b3f0d4e75a025))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2024.12.26.0027 ([47e4462](https://github.com/elfhosted/myprecious/commit/47e44626f875434b917d93c9488b8dfd45e1cec1))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/flixio-api:rolling docker digest to 54c2e3a ([e9e8118](https://github.com/elfhosted/myprecious/commit/e9e81187ff6dd347550bb58b287ce2d8e2fdb369))
+
 ## [1.219.0](https://github.com/elfhosted/myprecious/compare/v1.218.0...v1.219.0) (2024-12-25)
 
 

@@ -3473,7 +3473,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:91da8673b8e28ead0202559517d652c0a5d4e5de966f8fe40a7243a807fd51ca
+    tag: rolling@sha256:3f5efc8733fc64ebd7dd4c068dea0ea04a7baf0c70dd86a4583636ca7f066671
   enabled: false
   controller:
     annotations:
@@ -3850,7 +3850,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.11.2793@sha256:c9cb5159fe4092caa45cc0c00dc5a226c8a2850e9e7ed03e10d4057e25465168
+    tag: 4.0.11.2800@sha256:aaac842351b0a556f995499c32e731ec637696046f65b18c7f8b77b8f009a1e1
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3960,7 +3960,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.11.2793@sha256:c9cb5159fe4092caa45cc0c00dc5a226c8a2850e9e7ed03e10d4057e25465168
+    tag: 4.0.11.2800@sha256:aaac842351b0a556f995499c32e731ec637696046f65b18c7f8b77b8f009a1e1
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6005,7 +6005,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:a8d89c49db1d38bb113f0fc6c2629b145c720c1c4cb88f9f255e99ff83d99fd5
+    tag: develop-vaapi@sha256:a5c14d00550725335d578193b52b9a184369fbc9452ff1e50bef438f8c9ccb68
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7430,7 +7430,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.3@sha256:a0556ba7c06d2e54efb0c6a8ea5575ab8bc051590519676e9ed5917b7778b4d2
+    tag: 0.32.4@sha256:69fa88c392d1ae7eddb9e9769839ae51ecfd1e8567aad36ea8ccb1efbe2c3d50
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9219,7 +9219,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.10.4
+    tag: v0.10.5
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-homepage,homepage-config,homepage-env"
@@ -9936,7 +9936,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1128@sha256:65854e5afa411d1e488481eef0926c1806220157323b978bd5de5a438f83ec28
+    tag: 0.22.1133@sha256:b6bd56abb04af77b74323455362cc16b12d57e7123ee89e7fa3db8ad30e20ee0
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10207,7 +10207,7 @@ flixioapi:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/flixio-api
-    tag: rolling@sha256:0097e6ffa3b82b971739db556fb6f54305f0387b46971e39b4269d1c0e65f7e7
+    tag: rolling@sha256:54c2e3adac9580e0549203348fb0886d9f031952439ca6ddba0ebfeb27153e0a
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: flixio-api
@@ -11091,7 +11091,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.17.0@sha256:0e7cf83aa9fa3ec24c1f82d5a3a37510a60320285d81432a1d423c4d49fda185
+    tag: 0.18.0@sha256:36e00cb2a0bf44cc062f0ac7fe0fa6bf90bfe61090fd6bd34869b19185d0859b
   priorityClassName: tenant-normal
   controller:
     annotations:
