@@ -8,7 +8,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: stremio-web
+        - name: flixio
           kind: Service
           port: 8080
       middlewares:

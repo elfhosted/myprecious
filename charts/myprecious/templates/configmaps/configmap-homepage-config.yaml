@@ -288,11 +288,11 @@ data:
         {{ end }}        
 
         {{ if .Values.flixio.enabled }}
-        - Stremio:
+        - Flixio:
             icon: mdi-tv
             href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"
-            description: Stremio Web
-            siteMonitor: http://stremio-web:8080
+            description: Stremio (Anonymous)
+            siteMonitor: http://flixio:8080
         {{ end }}             
 
     - Manage Media:

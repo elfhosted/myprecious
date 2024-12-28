@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: stremio-web
+  name: flixio
   labels:
     app.kubernetes.io/name: flixio
     app.kubernetes.io/instance: {{ .Release.Name }}
