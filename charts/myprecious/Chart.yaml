@@ -16,7 +16,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.221.4-pre-01
+version: 1.221.4-pre-02
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -731,12 +731,12 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: stremioservergluetun
   - name: app-template
-    condition: stremioweb.enabled
+    condition: flixio.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: stremioweb
+    alias: flixio
   - name: app-template
-    condition: flixioapi.enabled
+    condition: flixio.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: flixioapi
