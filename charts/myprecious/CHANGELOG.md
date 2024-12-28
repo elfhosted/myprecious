@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.222.0](https://github.com/elfhosted/myprecious/compare/v1.221.0...v1.222.0) (2024-12-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1136 ([5c44377](https://github.com/elfhosted/myprecious/commit/5c44377e21225fc734109c7864d8d1ba796796b9))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2804 ([629882c](https://github.com/elfhosted/myprecious/commit/629882c072601d5a034ccc88af92a9331f3ec36e))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.19.0 ([03d1fb3](https://github.com/elfhosted/myprecious/commit/03d1fb325ff73293ce99fd413c378ec71c0c970a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.20.0 ([ea70649](https://github.com/elfhosted/myprecious/commit/ea70649dd9e2ad8bd5a0f2ade07eddd009660ea5))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.6 ([4ac187f](https://github.com/elfhosted/myprecious/commit/4ac187fe88a4f1a17bfea793d1b58d385db11960))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to a5c14d0 ([470258c](https://github.com/elfhosted/myprecious/commit/470258c4e000923b6a40f5b33748eb54a75ee644))
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to a85acdd ([006e3e4](https://github.com/elfhosted/myprecious/commit/006e3e4f4bdb22e9d06a4aaa05f2de7832739653))
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to bd3eedc ([0c9c404](https://github.com/elfhosted/myprecious/commit/0c9c40403e87ded4278fbf104e159e4143ae161a))
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to d99b23a ([f027023](https://github.com/elfhosted/myprecious/commit/f02702340c60f049807212c952fbcc98b51d55b8))
+
 ## [1.221.0](https://github.com/elfhosted/myprecious/compare/v1.220.0...v1.221.0) (2024-12-27)
 
 
