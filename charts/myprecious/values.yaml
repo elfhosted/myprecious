@@ -10789,7 +10789,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v1.51.0@sha256:bd3eedc074d2daf3f7e611ceb2592ee6101e02a9d03659c534c10a1beaf44aa7
+    tag: v1.51.0@sha256:d99b23ac14f18618bf0e3614bb831857c912c71168f90def7a551e198d73afa5
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -11091,7 +11091,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.19.1@sha256:5edd3d9b0e2eb4df412ae3208b86a6b1a3dba6581408d440e02b0a7fd1e99bd2
+    tag: 0.20.0@sha256:4b974f5002c052e74128e4c5d60e33e66766c6453d80f22703ecd3ae679b9c92
   priorityClassName: tenant-normal
   controller:
     annotations:
