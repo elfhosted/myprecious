@@ -339,7 +339,7 @@ data:
         url: "http://flixio-api:8080"
         interval: 5m
         conditions:
-          - "[STATUS] == 200"
+          - "[STATUS] == 404"
         alerts:
           - type: email          
       {{ end }}
