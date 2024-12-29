@@ -11145,6 +11145,8 @@ stremthru:
   - configMapRef:
       name: elfbot-stremthru
       optional: true
+  - secretRef:
+      name: stremthru-env      
 
 davio:
   enabled: false
