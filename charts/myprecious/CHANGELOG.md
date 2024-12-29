@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.223.0](https://github.com/elfhosted/myprecious/compare/v1.222.0...v1.223.0) (2024-12-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.15.0 ([db7096d](https://github.com/elfhosted/myprecious/commit/db7096ddf18adea8b0bafe811d8e846328c62e92))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1141 ([6ed182a](https://github.com/elfhosted/myprecious/commit/6ed182ac80fee0ff83088d164c27ff77c10011da))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.54.3 ([cf61c60](https://github.com/elfhosted/myprecious/commit/cf61c60adf9d1e35a619749652158295267d5699))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.20.1 ([bf7b069](https://github.com/elfhosted/myprecious/commit/bf7b069f6f5dda524d538fcf587f4c1c55c18138))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 687db6c ([094f1ce](https://github.com/elfhosted/myprecious/commit/094f1ce275c704330692e248f466de7cc6e60908))
+
 ## [1.222.0](https://github.com/elfhosted/myprecious/compare/v1.221.0...v1.222.0) (2024-12-28)
 
 
