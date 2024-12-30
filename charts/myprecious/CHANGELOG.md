@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.225.0](https://github.com/elfhosted/myprecious/compare/v1.224.0...v1.225.0) (2024-12-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.2.3 ([0fa64ac](https://github.com/elfhosted/myprecious/commit/0fa64ac4707bcdf158c0c165811933fa991ce4e8))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.1 ([bc31268](https://github.com/elfhosted/myprecious/commit/bc3126888cfa8df91afd73835f15f4a44782a140))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.5 ([59b904d](https://github.com/elfhosted/myprecious/commit/59b904d5c0358fe761c1404473de86ad347f1fb3))
+
 ## [1.224.0](https://github.com/elfhosted/myprecious/compare/v1.223.0...v1.224.0) (2024-12-30)
 
 
