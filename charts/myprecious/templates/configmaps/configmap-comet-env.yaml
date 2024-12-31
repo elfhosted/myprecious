@@ -14,8 +14,8 @@ data:
   REMOVE_ADULT_CONTENT: "true"
   CACHE_TTL: "2764800" # 1 month
   {{ if .Values.stremthru.enabled }}
-  STREMTHRU_DEFAULT_URL: https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}
+  STREMTHRU_DEFAULT_URL: http://stremthru:8080
   {{ else }}
-  STREMTHRU_DEFAULT_URL: https://stremthru.elfhosted.com
+  STREMTHRU_DEFAULT_URL: http://elfhosted-internal.stremthru
   {{ end }}
 {{ end }}
