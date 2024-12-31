@@ -6409,7 +6409,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 2.2.2@sha256:6258135c06b0d1c77a1945670305e721639f9886a253659f0c638aed991358fc
+    tag: 2.2.3@sha256:934db49b03db58e7ad5edf7f9f998b6e12fcd2d1b540199983f7f9830d659f4b
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7430,7 +7430,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.4@sha256:69fa88c392d1ae7eddb9e9769839ae51ecfd1e8567aad36ea8ccb1efbe2c3d50
+    tag: 0.32.5@sha256:7eef778a5ed543521c6b5d17c42af5829a96ba1bbe9aba33496143b2dbe3a6c8
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11277,7 +11277,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.0@sha256:dae3d856d96fd31984260e3da09c01e92462652201d8fc323ac4be94d1332f03
+    tag: 4.3.2@sha256:14fe22d04c81925fe31fdf7917c98afa0c3436205fec994b42c5d03e568d4619
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal

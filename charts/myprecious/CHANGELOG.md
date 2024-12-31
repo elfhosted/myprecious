@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.225.0](https://github.com/elfhosted/myprecious/compare/v1.224.0...v1.225.0) (2024-12-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.2.3 ([0fa64ac](https://github.com/elfhosted/myprecious/commit/0fa64ac4707bcdf158c0c165811933fa991ce4e8))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.1 ([bc31268](https://github.com/elfhosted/myprecious/commit/bc3126888cfa8df91afd73835f15f4a44782a140))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.5 ([59b904d](https://github.com/elfhosted/myprecious/commit/59b904d5c0358fe761c1404473de86ad347f1fb3))
+
+## [1.224.0](https://github.com/elfhosted/myprecious/compare/v1.223.0...v1.224.0) (2024-12-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1150 ([e9c5e94](https://github.com/elfhosted/myprecious/commit/e9c5e9473c0ffca85800b981c7f58aea89dfbb12))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.2.0 ([eb8cab0](https://github.com/elfhosted/myprecious/commit/eb8cab068cccd093c6cff768017115d054ac35b9))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.2.1 ([bdc2a53](https://github.com/elfhosted/myprecious/commit/bdc2a53a78b0547e365246bda2f05642c2983aad))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.2.2 ([2bfb63b](https://github.com/elfhosted/myprecious/commit/2bfb63b79d53a61671a93503355cbb25df188b48))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.9.1.4517 ([0221863](https://github.com/elfhosted/myprecious/commit/0221863684b5dc65d175d42b9e503efb1800a8a0))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.0 ([3619ee6](https://github.com/elfhosted/myprecious/commit/3619ee645c07465eb4d4aacf94d0eb56a8b221be))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.29.1.4903 ([082ef9e](https://github.com/elfhosted/myprecious/commit/082ef9e1089696f856712ee66fa8432f37381cb7))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 687db6c ([1ea8963](https://github.com/elfhosted/myprecious/commit/1ea89637f509e295fd5080911c502e796fba4bbc))
+
 ## [1.223.0](https://github.com/elfhosted/myprecious/compare/v1.222.0...v1.223.0) (2024-12-29)
 
 
