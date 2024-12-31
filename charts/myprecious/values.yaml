@@ -11189,7 +11189,7 @@ stremthru:
         readOnlyRootFilesystem: false    
   addons:
     vpn:
-      enabled: true
+      enabled: false
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
