@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.226.0](https://github.com/elfhosted/myprecious/compare/v1.225.0...v1.226.0) (2024-12-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1162 ([5603710](https://github.com/elfhosted/myprecious/commit/56037106e258488713878a4122c38b413db1482f))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.2 ([5b31649](https://github.com/elfhosted/myprecious/commit/5b31649c0afefbbf6f4d8ea1d69fa56e7da99ee9))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.3 ([b8a52c5](https://github.com/elfhosted/myprecious/commit/b8a52c5195966f4bbc2dad37d04c518ccec3ceca))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.11.2815 ([be3d393](https://github.com/elfhosted/myprecious/commit/be3d393ea2f8747623a52eff4050b8f2d9ff8140))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to 4084289 ([294810e](https://github.com/elfhosted/myprecious/commit/294810e0851b4201531bcf315448903e83773653))
+
 ## [1.225.0](https://github.com/elfhosted/myprecious/compare/v1.224.0...v1.225.0) (2024-12-30)
 
 
