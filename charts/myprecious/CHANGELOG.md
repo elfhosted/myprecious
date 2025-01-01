@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.227.0](https://github.com/elfhosted/myprecious/compare/v1.226.0...v1.227.0) (2025-01-01)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bazarr docker tag to v1.5.1 ([b64cd78](https://github.com/elfhosted/myprecious/commit/b64cd787cb3fac2f2a5f9edf16c6c5fe65c41835))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1177 ([c3c944a](https://github.com/elfhosted/myprecious/commit/c3c944a02a1f199aefdc8dfeed1989908a122406))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.4 ([61d3ae8](https://github.com/elfhosted/myprecious/commit/61d3ae87bfa0ae458224944dcb3fba66e26b066c))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.23.0 ([ade99b8](https://github.com/elfhosted/myprecious/commit/ade99b80866cc6313858de6238f3a0764fb24116))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script docker tag to v1.4.9 ([cc0c4f7](https://github.com/elfhosted/myprecious/commit/cc0c4f76be496c74f7268b466c5e7198c8239b48))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.7 ([fcf2588](https://github.com/elfhosted/myprecious/commit/fcf258823fb02920b1ff15234f541a08feeca3a8))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 391aa9b ([d6044c8](https://github.com/elfhosted/myprecious/commit/d6044c8807e09fc30bd07e1d5f6e0ece9ac05b54))
+* **app:** update ghcr.io/elfhosted/rclone:1.68.2 docker digest to 7f0485b ([6ccf4be](https://github.com/elfhosted/myprecious/commit/6ccf4be6a4fb57114eabcb76f88f6941cf28fe8c))
+
 ## [1.226.0](https://github.com/elfhosted/myprecious/compare/v1.225.0...v1.226.0) (2024-12-31)
 
 
