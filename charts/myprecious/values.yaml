@@ -3388,6 +3388,83 @@ calibreweb:
       cpu: 1
       memory: 1Gi
 
+cwabookdownloader:
+  enabled: false
+  podLabels:
+    app.elfhosted.com/name: cwa-book-downloader
+  priorityClassName: tenant-normal  
+  image:
+    repository: ghcr.io/elfhosted/cwa-downloader
+    tag: rolling@sha256:621ce41bffeb89132ad7aca1e1786510204ef77e8c6aa0098e9466e5e762b609
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    # readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+
+  automountServiceAccountToken: false
+  env:
+    PUID: 568
+    PGID: 568
+  envFrom:
+  - configMapRef:
+      name: elfbot-cwa-book-downloader
+      optional: true
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: cwa-book-downloader
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config     
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-cwa-book-downloader
+          optional: true
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      ports:
+        http:
+          port: 8084
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: calibre-web-book-downloader
+      - mountPath: /tmp
+        name: tmp      
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+
 pyload:
   enabled: false
   sso:
