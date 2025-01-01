@@ -96,6 +96,14 @@ data:
             #   username: {{`{{HOMEPAGE_FILE_CALIBREWEB_USERNAME}}`}} 
             #   password: {{`{{HOMEPAGE_FILE_CALIBREWEB_PASSWORDN}}`}} 
         {{ end }}
+
+        {{ if .Values.cwabookdownloader.enabled }}
+        - CWA Book Downloader:
+            icon: calibre-web.png
+            href: https://{{ .Release.Name }}-cwa-book-downloader.{{ .Values.dns_domain }}
+            description: Download eBooks
+            siteMonitor: http://cwa-book-downloader:8084
+        {{ end }}        
         
         {{ if .Values.calibre.enabled }}
         - Calibre:

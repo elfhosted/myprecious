@@ -1,0 +1,14 @@
+{{ if .Values.cwabookdownloader.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-cwa-book-downloader.{{ .Values.dns_domain }}
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-cwa-book-downloader.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: cwa-book-downloader
+          kind: Service
+          port: 8084
+{{ end }}

@@ -1,0 +1,20 @@
+{{ if .Values.cwabookdownloader.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: cwa-book-downloader
+  labels:
+    app.kubernetes.io/name: cwabookdownloader
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8084
+    targetPort: 8084
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: cwabookdownloader
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}    

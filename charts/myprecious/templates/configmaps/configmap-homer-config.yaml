@@ -289,6 +289,18 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.cwabookdownloader.enabled }}
+          - name: "CWA Book Downloadoer"
+            logo: "assets/png/calibre-web.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Download Books"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-cwa-book-downloader.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.calibre.enabled }}
           - name: "Calibre"
             logo: "assets/png/calibre.png"

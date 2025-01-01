@@ -105,6 +105,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.cwabookdownloader.enabled }}
+      - name: calibre-web-automated book downloader
+        group: consume-media
+        url: "http://cwa-book-downloader:8084"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.calibre.enabled }}
       - name: calibre
         group: consume-media
