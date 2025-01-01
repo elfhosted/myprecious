@@ -3457,6 +3457,9 @@ cwabookdownloader:
         subPath: calibre-web-book-downloader
       - mountPath: /tmp
         name: tmp      
+    additionalContainers:
+      cloudflarebypassforscraping:
+        image: ghcr.io/elfhosted/cloudflarebypassforscraping@sha256:7bdf614b57f57e47a6cecdaf6048869037123e0731456ed186b5430d6bfbefad
   resources:
     requests:
       cpu: 1m
