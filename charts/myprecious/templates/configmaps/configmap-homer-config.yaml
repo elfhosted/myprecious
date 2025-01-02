@@ -291,9 +291,7 @@ data:
 
           {{ if .Values.cwabookdownloader.enabled }}
           - name: "CWA Book Downloadoer"
-            logo: "assets/png/calibre-web.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
+            logo: "assets/png/calibrain.png"
             subtitle: "Download Books"
             tag: "protected"
             tagstyle: "is-success"
@@ -1284,8 +1282,8 @@ data:
           {{ end }}          
 
           {{ if .Values.cinesync.enabled }}
-          - name: "Cinesync"
-            icon: "fas fa-circle"
+          - name: "CineSync"
+            icon: "fas fa-sync"
             subtitle: "Symlink / sort debrid media"
             tag: "protected"
             tagstyle: "is-success"
