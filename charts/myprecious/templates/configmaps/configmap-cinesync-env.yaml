@@ -5,10 +5,7 @@ metadata:
   name: cinesync-env
 data:
   SOURCE_DIR: "/storage/realdebrid-zurg/__all__"
-  DESTINATION_DIR: /storage/symlinks/cinesync
-  CINESYNC_LAYOUT: "true"
-  CUSTOM_SHOW_FOLDER: shows
-  CUSTOM_MOVIE_FOLDER: movies
+  DESTINATION_DIR: /storage/symlinks
   RCLONE_MOUNT: "true" # seems to hang with the way we do our mounts
   ENABLE_PLEX_UPDATE: "true"
   PLEX_URL: http://plex:32400
