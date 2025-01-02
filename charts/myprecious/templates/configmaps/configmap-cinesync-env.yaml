@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: cinesync-env
 data:
-  SOURCE_DIR: {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}/storage/realdebrid-zurg/__all__,{{ end }}{{ if .Values.rclonealldebrid.enabled }}/storage/alldebrid/magnets,{{ end }}{{ if .Values.rclonetorbox.enabled }}/storage/torbox,{{ end }}{{ if .Values.rclonedebridlink.enabled }}/storage/debridlink,{{ end }}{{ if .Values.rclonepremiumize.enabled }}/storage/premiumize,{{ end }}
+  SOURCE_DIR: {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}/storage/realdebrid-zurg/__all__,{{ end }}{{ if .Values.rclonealldebrid.enabled }}/storage/alldebrid/magnets,{{ end }}{{ if .Values.rclonetorbox.enabled }}/storage/torbox,{{ end }}{{ if .Values.rclonedebridlink.enabled }}/storage/debridlink,{{ end }}{{ if .Values.rclonepremiumize.enabled }}/storage/premiumize,{{ end }}/tmp/dummy
   DESTINATION_DIR: /storage/symlinks
   RCLONE_MOUNT: "true" # seems to hang with the way we do our mounts
   ENABLE_PLEX_UPDATE: "true"

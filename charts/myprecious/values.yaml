@@ -7559,6 +7559,11 @@ cinesync:
         configMap:
           name: elfbot-cinesync
           optional: true
+    tmp: # to avoid cinesync "watching" a null folder (see env vars)
+      enabled: true
+      type: emptyDir
+      mountPath: /tmp/dummy
+      sizeLimit: 1Gi          
   initContainers:
     bootstrap:
       <<: *bootstrap
