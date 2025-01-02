@@ -7506,6 +7506,7 @@ imagemaid:
       memory: 4Gi  
 
 cinesync:
+  enabled: false
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/cinesync
@@ -7515,7 +7516,7 @@ cinesync:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   podLabels:
-    app.elfhosted.com/name: imagemaid
+    app.elfhosted.com/name: cinesync
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync"
