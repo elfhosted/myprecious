@@ -7571,24 +7571,7 @@ cinesync:
         name: config
         subPath: cinesync
       - mountPath: /tmp
-        name: tmp
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-
-        # Create directory structure
-        mkdir -p /storage/symlinks/cinesync/movies
-        mkdir -p /storage/symlinks/cinesync/shows
-      volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks
-      resources: *default_resources
-      securityContext: *default_securitycontext        
+        name: tmp     
   ingress:
     main:
       enabled: false
