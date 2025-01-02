@@ -4,14 +4,13 @@ kind: ConfigMap
 metadata:
   name: cinesync-env
 data:
-  SOURCE_DIR: {{ with (list)}}
-    {{- if $.Values.zurg.enabled -}}         {{- append . "/storage/realdebrid-zurg/__all__" -}}     {{- end -}}
-    {{- if $.Values.rclonealldebrid.enabled -}} {{- append . "/storage/alldebrid/magnets" -}}        {{- end -}}
-    {{- if $.Values.rclonetorbox.enabled -}}    {{- append . "/storage/torbox" -}}                   {{- end -}}
-    {{- if $.Values.rclonedebridlink.enabled -}}{{- append . "/storage/debridlink" -}}               {{- end -}}
-    {{- if $.Values.rclonepremiumize.enabled -}}{{- append . "/storage/premiumize" -}}               {{- end -}}
-    {{- join "," . | trimSuffix "," -}}
-  {{- end }} 
+  SOURCE_DIR: {{ $dirs := list }}
+    {{- if .Values.zurg.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
+    {{- if .Values.rclonealldebrid.enabled }}{{ $dirs = append $dirs "/storage/alldebrid/magnets" }}{{- end }}
+    {{- if .Values.rclonetorbox.enabled }}{{ $dirs = append $dirs "/storage/torbox" }}{{- end }}
+    {{- if .Values.rclonedebridlink.enabled }}{{ $dirs = append $dirs "/storage/debridlink" }}{{- end }}
+    {{- if .Values.rclonepremiumize.enabled }}{{ $dirs = append $dirs "/storage/premiumize" }}{{- end }}
+    {{- join "," $dirs }}
   DESTINATION_DIR: /storage/symlinks
   RCLONE_MOUNT: "true" # seems to hang with the way we do our mounts
   ENABLE_PLEX_UPDATE: "true"
