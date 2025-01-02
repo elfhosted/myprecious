@@ -7505,6 +7505,83 @@ imagemaid:
       cpu: 1
       memory: 4Gi  
 
+cinesync:
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/cinesync
+    tag: v2.1@sha256:856741c8cfd0934cd7a7b8c1e833d95f15f71bf326951a3fc3acd144c8cccbee
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: imagemaid
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  envFrom:
+  - configMapRef:
+      name: cinesync-env
+  - configMapRef:
+      name: elfbot-cinesync
+      optional: true
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/db
+      subPath: cinesync
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-cinesync
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: cinesync
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 4Gi  
+
 plextraktsync:
   enabled: false
   priorityClassName: tenant-normal

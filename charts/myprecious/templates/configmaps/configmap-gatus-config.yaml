@@ -1017,7 +1017,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}              
+      {{ end }}      
+
+      {{ if .Values.cinesync.enabled }}
+      - name: cinesync
+        group: download-media
+        url: "http://cinesync:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}                    
 
       {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
       - name: zurg

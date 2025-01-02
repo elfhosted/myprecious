@@ -869,7 +869,14 @@ data:
             description: West's blackhole script Torbox (4K)
             siteMonitor: http://blackholetorbox4k:3001
         {{ end }}                                 
-          
+
+        {{ if .Values.cinesync.enabled }}
+        - CineSync:
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-cinesync.{{ .Values.dns_domain }}
+            description: Sync / sort Debrid media
+            siteMonitor: http://cinesync:3001
+        {{ end }}          
 
         {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
         - Zurg:

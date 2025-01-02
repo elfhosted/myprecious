@@ -1283,6 +1283,16 @@ data:
             target: "_blank" # optional html tag target attribute            
           {{ end }}          
 
+          {{ if .Values.cinesync.enabled }}
+          - name: "Cinesync"
+            icon: "fas fa-circle"
+            subtitle: "Symlink / sort debrid media"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-cinesync.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute            
+          {{ end }}  
+
           {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
           - name: "Zurg"
             logo: "assets/png/real-debrid.png"
