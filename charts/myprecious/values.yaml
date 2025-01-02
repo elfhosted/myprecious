@@ -7580,8 +7580,8 @@ cinesync:
       cpu: 1m
       memory: 64Mi
     limits:
-      cpu: 1
-      memory: 4Gi  
+      cpu: 200m
+      memory: 2Gi  
 
 plextraktsync:
   enabled: false
