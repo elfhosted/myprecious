@@ -3553,7 +3553,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:391aa9bb1f4e198d9e6f62e6d9d8a9d0c793deebfa5bd1d779cf476b6fb9b44d
+    tag: rolling@sha256:119014ab1d5cb2fcf1fe43d7ab4f083a2dd58ac95760dedf5577b47281d235bc
   enabled: false
   controller:
     annotations:
@@ -7510,7 +7510,7 @@ cinesync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/cinesync
-    tag: v2.1@sha256:1cdeb0ec5463b4096ade4e7ae660bf377e0a2168b61582340e9e75186886352e
+    tag: v2.1@sha256:df6a6b38f855448ee6551ad9e5923b42e3766b999174cb299302c48f088a7a74
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7588,7 +7588,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.5@sha256:7eef778a5ed543521c6b5d17c42af5829a96ba1bbe9aba33496143b2dbe3a6c8
+    tag: 0.32.6@sha256:b6ec8d5c7a55acb6b574ee806c6c804ccd24b0c93729987e8a8697a76c1d6338
   securityContext:
     seccompProfile:
       type: RuntimeDefault
