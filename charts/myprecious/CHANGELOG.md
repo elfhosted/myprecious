@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.228.0](https://github.com/elfhosted/myprecious/compare/v1.227.0...v1.228.0) (2025-01-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1182 ([e9ba6bc](https://github.com/elfhosted/myprecious/commit/e9ba6bc73b83ac6ef26c3437dc0e35f99e26de69))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.5 ([b3a5060](https://github.com/elfhosted/myprecious/commit/b3a5060b75a630ee7d3ec0e8ed59114ab4e4b890))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.6 ([1013baf](https://github.com/elfhosted/myprecious/commit/1013baf7fe32558221561f1aa4ab39357dc87ff3))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.24.0 ([faeb854](https://github.com/elfhosted/myprecious/commit/faeb854e0bca6f9f20a5a42ca8ec4227724cfff5))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.25.0 ([f4378a0](https://github.com/elfhosted/myprecious/commit/f4378a0c35cf49277543260be278efc0c55b86e9))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script docker tag to v1.5.0 ([4a8043d](https://github.com/elfhosted/myprecious/commit/4a8043d03568a87a5cccfe6c9be3f7c793f88aeb))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cinesync:v2.1 docker digest to 1cdeb0e ([ad3748d](https://github.com/elfhosted/myprecious/commit/ad3748df55f4e0b10e03e8e4758ab223d7a8933a))
+* **app:** update ghcr.io/elfhosted/cinesync:v2.1 docker digest to 8a951eb ([5f9bbea](https://github.com/elfhosted/myprecious/commit/5f9bbea76b9dc0ef645384e5d19a616574098459))
+* **app:** update ghcr.io/elfhosted/cinesync:v2.1 docker digest to df6a6b3 ([c37a75b](https://github.com/elfhosted/myprecious/commit/c37a75bbe4095650176f61f74cd237464272741c))
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to 1f01cf0 ([3d69607](https://github.com/elfhosted/myprecious/commit/3d69607bf33f4ab8e8efe81c7916a83fe6b305ed))
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to a2540fc ([4056946](https://github.com/elfhosted/myprecious/commit/4056946a3dd172954cb631f1acbe9bb3338ca255))
+* **app:** update ghcr.io/elfhosted/comet:v1.51.0 docker digest to d8c7b02 ([78a159d](https://github.com/elfhosted/myprecious/commit/78a159d755d574c086d619638d3575b07142dda8))
+* **app:** update ghcr.io/elfhosted/homer:v24.12.1 docker digest to ce1588a ([63d7267](https://github.com/elfhosted/myprecious/commit/63d72679b966c1be5bdd5fb28ac4b5366c34ea09))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 119014a ([4dc7efd](https://github.com/elfhosted/myprecious/commit/4dc7efdd79c035c06734d4dd07ea5f2769af65f7))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 2417c1c ([3e666a3](https://github.com/elfhosted/myprecious/commit/3e666a339866a1523e31a10d47e1e0a02f12e0a3))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 7acb75f ([a6d43bb](https://github.com/elfhosted/myprecious/commit/a6d43bbbf3ec63b16c9d5057b40bca78f1ec2f06))
+
 ## [1.227.0](https://github.com/elfhosted/myprecious/compare/v1.226.0...v1.227.0) (2025-01-01)
 
 
