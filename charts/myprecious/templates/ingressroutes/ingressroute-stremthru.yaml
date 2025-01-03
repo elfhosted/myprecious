@@ -14,9 +14,9 @@ spec:
     - match: Host(`{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}`) && PathPrefix(`/{something:.*}/configure{else:.*}`)
       kind: Rule
       services:
-        - name: mediafusion
+        - name: stremthru
           kind: Service
-          port: 8000
+          port: 8080
       middlewares:
       {{ if not .Values.mediafusionexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
