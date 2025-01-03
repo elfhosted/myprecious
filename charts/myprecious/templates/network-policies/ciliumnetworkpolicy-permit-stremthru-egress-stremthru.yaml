@@ -11,11 +11,4 @@ spec:
   - toEndpoints:
     - matchLabels:
         k8s:io.kubernetes.pod.namespace: stremthru
-    toPorts:
-      - ports:
-        - port: '8080'
-          protocol: TCP
-      - ports:
-        - port: '8888' # tinyproxy
-          protocol: TCP          
 {{ end }}
