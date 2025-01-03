@@ -6,7 +6,7 @@ spec:
   inFlightReq:
     {{ if .Values.plexhobbit.enabled }}
     amount: 4
-    {{ if .Values.plexranger.enabled }}
+    {{ else if .Values.plexranger.enabled }}
     amount: 8
     {{ else if .Values.plexhalfling.enabled }}
     amount: 16
