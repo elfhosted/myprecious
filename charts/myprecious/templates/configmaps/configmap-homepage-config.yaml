@@ -191,14 +191,6 @@ data:
             siteMonitor: http://xtremio:3649
         {{ end }}                   
 
-        {{ if .Values.torrentio.enabled }}
-        - Torrentio:
-            icon: mdi-water
-            href: https://{{ .Release.Name }}-torrentio.{{ .Values.dns_domain }}
-            description: Torrent indexer for Stremio
-            siteMonitor: http://torrentio:7000
-        {{ end }}    
-
         {{ if .Values.knightcrawler.enabled }}
         - Knightcrawler:
             icon: mdi-chess-knight

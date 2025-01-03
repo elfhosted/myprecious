@@ -12025,11 +12025,6 @@ knightcrawler: &app_knightcrawler
   - secretRef:
       name: knightcrawler-env
 
-# Old naming convention
-torrentio:
-  <<: *app_knightcrawler
-  enabled: false
-
 zurg: &app_zurg
   enabled: false
   podLabels:

@@ -216,17 +216,6 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.torrentio.enabled }}
-      - name: torrentio
-        group: consume-media
-        url: "http://torrentio:7000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.knightcrawler.enabled }}
       - name: knightcrawler
         group: consume-media
