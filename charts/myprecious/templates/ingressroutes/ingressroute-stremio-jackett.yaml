@@ -14,14 +14,16 @@ spec:
       middlewares:
         - name: error-pages
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}`) && PathPrefix(`/configure/`)
+    - match: Host(`{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`))
       kind: Rule
       services:
         - name: stremio-jackett
           kind: Service
           port: 3000
       middlewares:
+        {{ if not .Values.stremiojackettexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}
         - name: error-pages
           namespace: traefik
 {{ end }}

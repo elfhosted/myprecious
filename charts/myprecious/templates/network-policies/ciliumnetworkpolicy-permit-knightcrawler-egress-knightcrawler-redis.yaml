@@ -1,4 +1,4 @@
-{{ if or .Values.knightcrawler.enabled .Values.knightcrawlervpn.enabled .Values.torrentio.enabled }}
+{{ if .Values.knightcrawler.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:

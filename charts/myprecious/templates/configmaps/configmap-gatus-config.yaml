@@ -183,17 +183,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.stremiojackettcommunity.enabled .Values.stremiojackettcommunityalldebrid.enabled }}
-      - name: stremio-jackett-community
-        group: consume-media
-        url: "http://stremio-jackett-community:3000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.jackettio.enabled }}
       - name: jackettio
         group: consume-media
@@ -216,17 +205,6 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.annatar.enabled }}
-      - name: annatar
-        group: consume-media
-        url: "http://annatar:8000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.comet.enabled }}
       - name: comet
         group: consume-media
@@ -238,32 +216,10 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.torrentio.enabled }}
-      - name: torrentio
-        group: consume-media
-        url: "http://torrentio:7000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.knightcrawler.enabled }}
       - name: knightcrawler
         group: consume-media
         url: "http://knightcrawler:7000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.knightcrawlervpn.enabled }}
-      - name: knightcrawler-vpn
-        group: consume-media
-        url: "http://knightcrawler-vpn:7000"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
@@ -312,28 +268,6 @@ data:
       #   alerts:
       #     - type: email
       # {{ end }}   
-
-      {{ if .Values.shluflix.enabled }}
-      - name: shluflix
-        group: consume-media
-        url: "http://shluflix:8001"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.stremify.enabled }}
-      - name: stremify
-        group: consume-media
-        url: "http://stremify:3000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
 
       {{ if .Values.flixio.enabled }}
       - name: flixio

@@ -14,14 +14,4 @@ spec:
       middlewares:
         - name: chain-hosted-stremio-addon
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-stremify.{{ .Values.dns_domain }}`) && PathPrefix(`/configure/`)
-      kind: Rule
-      services:
-        - name: stremify
-          kind: Service
-          port: 3000
-      middlewares:
-        - name: {{ .Release.Name }}-traefik-forward-auth
-        - name: chain-hosted-stremio-addon
-          namespace: traefik
 {{ end }}

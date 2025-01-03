@@ -14,14 +14,16 @@ spec:
       middlewares:
         - name: chain-hosted-stremio-addon
           namespace: traefik                 
-    - match: Host(`{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}`) && PathPrefix(`/configure/`)
+    - match: Host(`{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`))
       kind: Rule
       services:
         - name: xtremio
           kind: Service
           port: 3649
       middlewares:
+        {{ if not .Values.xtremioexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}
         - name: chain-hosted-stremio-addon
           namespace: traefik
 {{ end }}
