@@ -21,5 +21,13 @@ spec:
         - name: stripprefix-speed
           namespace: traefik
         - name: buffer-2gb
-          namespace: traefik          
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-emby.{{ .Values.dns_domain }}`) && (PathPrefix(`/video/{something:.+}`) || PathPrefix(`/Items/{something:.+}/Download`))
+      kind: Rule
+      services:
+        - name: emby
+          kind: Service
+          port: 8096
+      middlewares:
+        - name: {{ .Release.Name }}-inflightreq-streaming
 {{ end }}

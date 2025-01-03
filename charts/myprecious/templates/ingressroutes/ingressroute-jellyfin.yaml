@@ -24,7 +24,15 @@ spec:
         - name: stripprefix-speed
           namespace: traefik
         - name: buffer-2gb
-          namespace: traefik          
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}`) && (PathPrefix(`/Videos/{something:.+}`) || PathPrefix(`/Items/{something:.+}/Download`))
+      kind: Rule
+      services:
+        - name: jellyfin
+          kind: Service
+          port: 8096
+      middlewares:
+        - name: {{ .Release.Name }}-inflightreq-streaming
     - match: Host(`{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}`)
       kind: Rule
       services:

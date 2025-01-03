@@ -11,6 +11,14 @@ spec:
         - name: plex
           kind: Service
           port: 32400
+    - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && (PathPrefix(`/{something:.+}/library/parts/{else:.+}`) || PathPrefix(`/video/{something:.+}/proxy`) || PathPrefix(`/video/{something:.+}/transcode/{else:.*}`))
+      kind: Rule
+      services:
+        - name: plex
+          kind: Service
+          port: 32400
+      middlewares:
+        - name: {{ .Release.Name }}-inflightreq-streaming
   tls:
     secretName: cert-{{ .Values.plexcustomdomain.cname | lower }}
 {{ end }}

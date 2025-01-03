@@ -11,6 +11,14 @@ spec:
         - name: emby
           kind: Service
           port: 8096
+    - match: Host(`{{ .Values.embycustomdomain.cname | lower }}`) && (PathPrefix(`/video/{something:.+}`) || PathPrefix(`/Items/{something:.+}/Download`))
+      kind: Rule
+      services:
+        - name: emby
+          kind: Service
+          port: 8096
+      middlewares:
+        - name: {{ .Release.Name }}-inflightreq-streaming
   tls:
     secretName: cert-{{ .Values.embycustomdomain.cname | lower }}
 {{ end }}
