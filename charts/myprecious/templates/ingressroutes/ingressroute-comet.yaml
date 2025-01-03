@@ -21,7 +21,7 @@ spec:
           kind: Service
           port: 8000
       middlewares:
-      {{ if .Values.cometexposed.enabled }}
+      {{ if not .Values.cometexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
       {{ end }}
         - name: chain-hosted-stremio-addon

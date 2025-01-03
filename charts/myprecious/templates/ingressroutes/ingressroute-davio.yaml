@@ -21,7 +21,7 @@ spec:
           kind: Service
           port: 4000
       middlewares:
-        {{ if .Values.davioexposed.enabled }}
+        {{ if not .Values.davioexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
         {{ end }}
         - name: chain-hosted-stremio-addon

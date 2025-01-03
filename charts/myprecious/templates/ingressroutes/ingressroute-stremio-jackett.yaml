@@ -21,7 +21,7 @@ spec:
           kind: Service
           port: 3000
       middlewares:
-        {{ if .Values.stremiojackettexposed.enabled }}
+        {{ if not .Values.stremiojackettexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
         {{ end }}
         - name: error-pages

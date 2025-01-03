@@ -58,7 +58,7 @@ spec:
           kind: Service
           port: 8000
       middlewares:
-      {{ if .Values.mediafusionexposed.enabled }}
+      {{ if not .Values.mediafusionexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
       {{ end }}
         - name: chain-hosted-stremio-addon
