@@ -11146,7 +11146,7 @@ jackettio:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+          tag: 3.40.0@sha256:2ce9c1407bad9897f4269b3c7f53862befb52a25c712731c91ae05906d41358f
       env:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
         DNS_KEEP_NAMESERVER: "on"
