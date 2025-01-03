@@ -7509,7 +7509,7 @@ cinesync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/cinesync
-    tag: v2.1@sha256:91afa6a1bff0face609a7b924e8a024775b2ed23aade67dadc4619b3d95263b7
+    tag: v2.1@sha256:8a951eb6b42c8d2c75eed014aa6b43bbe7ec54b7cb3e602d71756310f9eb7caf
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11281,13 +11281,20 @@ stremthru:
       subPath: stremthru
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config       
-    shared:
-      enabled: true
-      mountPath: /shared
-      type: emptyDir
+          claimName: config      
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
       volumeSpec:
-        medium: Memory                    
+        configMap:
+          name: tooling-scripts
+          defaultMode: 0755           
+    # shared:
+    #   enabled: true
+    #   mountPath: /shared
+    #   type: emptyDir
+    #   volumeSpec:
+    #     medium: Memory                    
   resources:
     requests:
       cpu: 1m
@@ -11312,66 +11319,77 @@ stremthru:
       optional: true
   - secretRef:
       name: stremthru-env      
-  initContainers:      
-    setup-warp:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
+  # initContainers:      
+  #   setup-warp:
+  #     image: *tooling_image
+  #     imagePullPolicy: IfNotPresent
+  #     command:
+  #     - /bin/bash
+  #     - -c
+  #     - |
+  #       set -x
 
-        cd /shared
+  #       cd /shared
 
-        # Create cloudflare account
-        wgcf register --accept-tos
+  #       # Create cloudflare account
+  #       wgcf register --accept-tos
 
-        # Create gluetun config
-        wgcf generate -p /shared/wg0.conf
+  #       # Create gluetun config
+  #       wgcf generate -p /shared/wg0.conf
 
-        # grab the values from the profile and put them into env vars for gluetun to consume
-        echo "export WIREGUARD_PRIVATE_KEY=$(grep PrivateKey /shared/wg0.conf | cut -f3 -d' ')" > /shared/env
-        echo "export WIREGUARD_PUBLIC_KEY=$(grep PublicKey /shared/wg0.conf | cut -f3 -d' ')" >> /shared/env
-        echo "export WIREGUARD_ADDRESSES=$(grep Address /shared/wg0.conf | grep '/32' | cut -f3 -d' ')" >> /shared/env
+  #       # grab the values from the profile and put them into env vars for gluetun to consume
+  #       echo "export WIREGUARD_PRIVATE_KEY=$(grep PrivateKey /shared/wg0.conf | cut -f3 -d' ')" > /shared/env
+  #       echo "export WIREGUARD_PUBLIC_KEY=$(grep PublicKey /shared/wg0.conf | cut -f3 -d' ')" >> /shared/env
+  #       echo "export WIREGUARD_ADDRESSES=$(grep Address /shared/wg0.conf | grep '/32' | cut -f3 -d' ')" >> /shared/env
 
-        echo "export VPN_ENDPOINT_IP=$(dig +short dig +short engage.cloudflareclient.com)" >> /shared/env
+  #       echo "export VPN_ENDPOINT_IP=$(dig +short dig +short engage.cloudflareclient.com)" >> /shared/env
 
-      volumeMounts:
-      - mountPath: /shared
-        name: shared
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
-        readOnlyRootFilesystem: false    
-  addons:
-    vpn:
-      enabled: false
-      gluetun:
-        image:
-          repository: ghcr.io/elfhosted/gluetun
-          tag: 3.40.0@sha256:2ce9c1407bad9897f4269b3c7f53862befb52a25c712731c91ae05906d41358f
+  #     volumeMounts:
+  #     - mountPath: /shared
+  #       name: shared
+  #     securityContext:
+  #       seccompProfile:
+  #         type: RuntimeDefault
+  #       readOnlyRootFilesystem: false    
+  # addons:
+  #   vpn:
+  #     enabled: false
+  #     gluetun:
+  #       image:
+  #         repository: ghcr.io/elfhosted/gluetun
+  #         tag: 3.40.0@sha256:2ce9c1407bad9897f4269b3c7f53862befb52a25c712731c91ae05906d41358f
+  #     env:
+  #       FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
+  #       DNS_KEEP_NAMESERVER: "on"
+  #       HTTP_CONTROL_SERVER_PORT: "8000"
+  #       HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+  #       VPN_TYPE: wireguard
+  #       VPN_SERVICE_PROVIDER: custom
+  #       FIREWALL_INPUT_PORTS: "8080"
+  #       WIREGUARD_MTU: "1280"
+  #       VPN_ENDPOINT_PORT: "2408"
+  #       DOT: "off"
+  #     securityContext:
+  #       runAsUser: 0
+  #       capabilities:
+  #         add:
+  #           - NET_ADMIN
+  #           - SYS_MODULE
+  #     config: # We have to set this to null so that we can override with our own config
+  #     volumeMounts:
+  #     - mountPath: /shared
+  #       name: shared
+  initContainers:
+    update-dns: *update_dns_on_init
+  additionalContainers:
+    clean-up-dns: *clean_up_dns_on_termination
+    speedtest:
+      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
       env:
-        FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
-        DNS_KEEP_NAMESERVER: "on"
-        HTTP_CONTROL_SERVER_PORT: "8000"
-        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-        VPN_TYPE: wireguard
-        VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "8080"
-        WIREGUARD_MTU: "1280"
-        VPN_ENDPOINT_PORT: "2408"
-        DOT: "off"
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
-      volumeMounts:
-      - mountPath: /shared
-        name: shared
+        CHANGE_CONTAINER_PORTS: "True"
+        HTTP_PORT: "3002"
+        HTTPS_PORT: "3003"    
+      securityContext: *speedtest_securitycontext  
 
 davio:
   enabled: false
