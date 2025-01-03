@@ -159,14 +159,6 @@ data:
             siteMonitor: http://stremio-jackett:3000
         {{ end }}  
 
-        {{ if or .Values.stremiojackettcommunity.enabled .Values.stremiojackettcommunityalldebrid.enabled }}
-        - Stremio-Jackett-Community:
-            icon: jackett.png
-            href: https://{{ .Release.Name }}-stremio-jackett-community.{{ .Values.dns_domain }}
-            description: Stremio-Jackett AddOn with community cache
-            siteMonitor: http://stremio-jackett-community:3000
-        {{ end }}  
-
         {{ if .Values.jackettio.enabled }}
         - Jackettio:
             icon: jackett.png
@@ -183,14 +175,6 @@ data:
             siteMonitor: http://davio:4000
         {{ end }}                           
 
-        {{ if .Values.annatar.enabled }}
-        - Annatar:
-            icon: jackett.png
-            href: https://{{ .Release.Name }}-annatar.{{ .Values.dns_domain }}
-            description: Use Jackett in Stremio
-            siteMonitor: http://annatar:8000
-        {{ end }} 
-
         {{ if .Values.comet.enabled }}
         - Comet:
             icon: mdi-meteor
@@ -200,7 +184,7 @@ data:
         {{ end }}          
 
         {{ if .Values.xtremio.enabled }}
-        - Annatar:
+        - Xtremio:
             icon: mdi-tv
             href: https://{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}
             description: Watch IPTV in Stremio
@@ -222,14 +206,6 @@ data:
             description: Torrent indexer for Stremio
             siteMonitor: http://knightcrawler:7000
         {{ end }}      
-
-        {{ if .Values.knightcrawlervpn.enabled }}
-        - Knightcrawler (VPN):
-            icon: mdi-chess-knight
-            href: https://{{ .Release.Name }}-knightcrawler-vpn.{{ .Values.dns_domain }}
-            description: Torrent indexer for Stremio (VPN)
-            siteMonitor: http://knightcrawler-vpn:7000
-        {{ end }}
 
         {{ if .Values.stremthru.enabled }}
         - StremThru:
@@ -254,14 +230,6 @@ data:
             description: Streaming Video Proxy
             siteMonitor: http://mediaflow-proxy:8888
         {{ end }}            
-
-        {{ if .Values.shluflix.enabled }}
-        - Shluflix:
-            icon: mdi-tv
-            href: https://{{ .Release.Name }}-shluflix.{{ .Values.dns_domain }}
-            description: Watch HTTP streams in Stremio
-            siteMonitor: http://shluflix:8001
-        {{ end }}     
 
         {{ if .Values.stremify.enabled }}
         - Stremify:

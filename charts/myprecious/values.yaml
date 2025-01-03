@@ -857,6 +857,24 @@ rivenexposed:
   apikey: 1nMZNC0Cg6UP7sblvFirUi9Sad4ga84u  
 tunarrexposed:
   enabled: false
+cometexposed:
+  enabled: false  
+davioexposed:
+  enabled: false  
+jackettioexposed:
+  enabled: false  
+knightcrawlerexposed:
+  enabled: false  
+mediafusionexposed:
+  enabled: false
+stremthruexposed:
+  enabled: false  
+stremifyexposed:
+  enabled: false  
+stremiojackettexposed:
+  enabled: false  
+xtremioexposed:
+  enabled: false
 ersatztv:
   enabled: false  
 threadfinexposed:
@@ -10851,97 +10869,6 @@ mongoexpress:
       name: elfbot-mongoexpress
       optional: true
 
-annatar:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/annatar
-    tag: rolling@sha256:066141e95d2d29a3b077521fde44f237cccf9093caf220862a2200f3397ad0b7
-  priorityClassName: tenant-normal
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-annatar,annatar-env"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    tmp: *tmp
-    redis:
-      enabled: true
-      type: emptyDir
-  resources:
-    requests:
-      cpu: 1m
-      memory: 512Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8000
-  envFrom:
-  - configMapRef:
-      name: annatar-env
-  - configMapRef:
-      name: elfbot-annatar
-      optional: true
-  env:
-  - name: NAMESPACE
-    valueFrom:
-      fieldRef:
-        fieldPath: metadata.namespace
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      env:
-        IPTABLES_BACKEND: nft
-        KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.0.0.0/8
-        LOC: de-frankfurt
-        PORT_FORWARDING: "0"
-        PORT_PERSIST: "1"
-        NFTABLES: "1"
-        VPNDNS: "0"
-      envFrom:
-      - secretRef:
-          name: annatar-vpn
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
-  additionalContainers:
-    redis:
-      image: redis:alpine@sha256:c1e88455c85225310bbea54816e9c3f4b5295815e6dbf80c34d40afc6df28275
-      volumeMounts:
-      - mountPath: /data
-        name: redis
-
 comet:
   enabled: false
   image:
@@ -11767,89 +11694,6 @@ mediaflowproxy:
       name: elfbot-mediaflow-proxy
       optional: true   
 
-stremiojackettcommunity: &stremiojackettcommunity
-  enabled: false
-  podLabels:
-      app.elfhosted.com/name: stremio-jackett-community
-  image:
-    repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.2.2@sha256:a496777c70fbb1aa36da9b4f9a8b16059607007e6bee7d3cc5f7d98fb74fb38c
-  priorityClassName: tenant-normal
-  # command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"] # allow logs on private instances
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-stremio-jackett-community"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    tmp: *tmp
-  resources:
-    requests:
-      cpu: 1m
-      memory: 512Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3000
-  envFrom:
-  - configMapRef:
-      name: stremio-jackett-community-env
-
-stremiojackettcommunityalldebrid:
-  enabled: false
-  <<: *stremiojackettcommunity
-  podLabels:
-      app.elfhosted.com/name: stremio-jackett-community
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      env:
-        IPTABLES_BACKEND: nft
-        KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.0.0.0/8
-        LOC: de-frankfurt
-        PORT_FORWARDING: "0"
-        PORT_PERSIST: "1"
-        NFTABLES: "1"
-        VPNDNS: "0"
-      envFrom:
-      - secretRef:
-          name: stremio-jackett-community-vpn
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
-
 xtremio:
   enabled: false
   image:
@@ -11899,64 +11743,6 @@ xtremio:
   envFrom:
   - configMapRef:
       name: elfbot-xtremio
-      optional: true
-
-shluflix:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/shluflix
-    tag: rolling@sha256:4e62bfe690740055bd27346c2aeb03d924fff3cf1c7a3351621141c36e2ba69b
-  priorityClassName: tenant-normal
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-shluflix"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  env:
-    PORT: 8001
-  persistence:
-    tmp: *tmp
-    npm:
-      enabled: true
-      type: emptyDir
-      mountPath: /home/elfie/.npm
-      sizeLimit: 1Gi
-  resources:
-    requests:
-      cpu: 1m
-      memory: 512Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8001
-  envFrom:
-  - configMapRef:
-      name: shluflix-env
-  - configMapRef:
-      name: elfbot-shluflix
       optional: true
 
 stremify:
@@ -12245,30 +12031,6 @@ knightcrawler: &app_knightcrawler
 torrentio:
   <<: *app_knightcrawler
   enabled: false
-
-# Add a VPN for AD
-knightcrawlervpn:
-  <<: *app_knightcrawler
-  enabled: false
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      envFrom:
-      - configMapRef:
-          name: knightcrawler-pia-config #yes, it's a WIP
-      - secretRef:
-          name: knightcrawler-vpn
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
 
 zurg: &app_zurg
   enabled: false
