@@ -4,12 +4,14 @@ metadata:
   name: {{ .Release.Name }}-inflightreq-streaming
 spec:
   inFlightReq:
+    {{ if .Values.plexhobbit.enabled }}
+    amount: 4
     {{ if .Values.plexranger.enabled }}
-    amount: 10
+    amount: 8
     {{ else if .Values.plexhalfling.enabled }}
-    amount: 20
+    amount: 16
     {{ else if .Values.plexnazgul.enabled }}
-    amount: 20
+    amount: 16
     {{ else }}
-    amount: 5
+    amount: 2 # 10 per stream
     {{ end }}
