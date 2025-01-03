@@ -11,7 +11,7 @@ spec:
         - name: plex
           kind: Service
           port: 32400
-    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && PathPrefix(`/{something:.+}/file./{else:.+}`)
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (PathPrefix(`/{something:.+}/library/parts/{else:.+}`) || PathPrefix(`/video/{something:.+}/transcode`) || PathPrefix(`/video/{something:.+}/transcode/{else:.*}`) || PathPrefix(`{something:.+}/timeline`))
       kind: Rule
       services:
         - name: plex
