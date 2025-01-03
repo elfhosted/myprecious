@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .Release.Name }}-inflightreq-streaming
+spec:
+  inFlightReq:
+    {{ if .Values.plexranger.enabled }}
+    amount: 10
+    {{ else if .Values.plexhalfling.enabled }}
+    amount: 20
+    {{ else if .Values.plexnazgul.enabled }}
+    amount: 20
+    {{ else }}
+    amount: 5
