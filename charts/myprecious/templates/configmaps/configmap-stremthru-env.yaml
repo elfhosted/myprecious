@@ -7,4 +7,7 @@ data:
   STREMTHRU_LANDING_PAGE: |
      {"description": "Welcome, {{ .Release.Name }}, to your StremThru instance!", "sections": []}
   STREMTHRU_DATABASE_URI: sqlite:///config/stremthru.db
+  STREMTHRU_STORE_TUNNEL: '*:false,realdebrid:api,alldebrid:api'
+  STREMTHRU_HTTP_PROXY: http://tinyproxy.stremthru:8888
+  STREMTHRU_HTTPS_PROXY: http://tinyproxy.stremthru:8888
 {{ end }}
