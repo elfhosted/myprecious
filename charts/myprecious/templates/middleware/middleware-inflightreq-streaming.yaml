@@ -12,3 +12,4 @@ spec:
     amount: 20
     {{ else }}
     amount: 5
+    {{ end }}
