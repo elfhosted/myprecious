@@ -14,7 +14,7 @@ spec:
     targetPort: 3001
     protocol: TCP
     name: ttdy
-  - port: 3001
+  - port: 8777
     targetPort: 8777
     protocol: TCP
     name: seerrbridge
