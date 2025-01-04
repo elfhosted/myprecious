@@ -21,6 +21,7 @@ data:
   zilean_url: http://zilean.zilean:8181
   is_scrap_from_zilean: "true"
   sync_debrid_cache_streams: "false"
+  is_scrap_from_mediafusion: "false"
   jackett_url: http://jackett:9117  
   addon_name: "MediaFusion | {{ .Release.Name }}"
   branding_description: "Welcome, {{ .Release.Name }}, to your own ElfHosted mediafusion instance!"

@@ -7615,6 +7615,12 @@ seerrbridge:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seerrbridge,seerrbridge-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  persistence:
+    tmp:
+      enabled: true
+      type: emptyDir
+      mountPath: /tmp
+      sizeLimit: 1Gi  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
