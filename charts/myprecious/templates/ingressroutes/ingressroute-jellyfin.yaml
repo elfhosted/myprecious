@@ -24,7 +24,7 @@ spec:
         - name: stripprefix-speed
           namespace: traefik
         - name: buffer-2gb
-          namespace: traefik          
+          namespace: traefik
     - match: Host(`{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}`)
       kind: Rule
       services:

@@ -61,6 +61,7 @@ rules:
   resources:
   - configmaps
   verbs:
+  - create
   - update
   resourceNames:
 {{ if .Values.gluetun.enabled }}
@@ -111,6 +112,9 @@ rules:
 {{ end }}
 {{ if .Values.cinesync.enabled }}
   - elfbot-cinesync
+{{ end }}
+{{ if .Values.seerrbridge.enabled }}
+  - elfbot-seerrbridge
 {{ end }}
 
 

@@ -1,0 +1,12 @@
+{{ if .Values.seerrbridge.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: seerrbridge-env
+data:
+  OVERSEERR_BASE: http://overseerr:5055
+  HEADLESS_MODE: "true"
+  ENABLE_AUTOMATIC_BACKGROUND_TASK: "true"
+  REFRESH_INTERVAL_MINUTES: "120"
+  TORRENT_FILTER_REGEX: ^(?!.*【.*?】)(?!.*[\u0400-\u04FF])(?!.*\[esp\]).*
+{{ end }}

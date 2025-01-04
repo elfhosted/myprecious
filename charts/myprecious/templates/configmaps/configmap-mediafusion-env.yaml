@@ -12,7 +12,7 @@ data:
   IS_SCRAP_FROM_TORRENTIO: "true"
   TORRENTIO_URL: https://torrentio.strem.fun # we only do this on private instances
   REDIS_URL: redis://redis-master.mediafusion:6379
-  prowlarr_immediate_max_process_time: "0"
+  requests_proxy_url: http://tinyproxy.mediafusion:8888
   validate_m3u8_urls_liveness: "true"
   disable_all_scheduler: "true"
   poster_host_url: https://mediafusion.{{ .Values.dns_domain }}
@@ -20,9 +20,10 @@ data:
   zilean_url: http://zilean.zilean:8181
   is_scrap_from_zilean: "true"
   sync_debrid_cache_streams: "false"
+  is_scrap_from_mediafusion: "false"
   jackett_url: http://jackett:9117  
   addon_name: "MediaFusion | {{ .Release.Name }}"
   branding_description: "Welcome, {{ .Release.Name }}, to your own ElfHosted mediafusion instance!"
   db_max_connections: "30"
-  zilean_cache_check_url: http://zilean.zilean:8181/torrents/checkcached
+  prowlarr_immediate_max_process_time: "10"
 {{ end }}
