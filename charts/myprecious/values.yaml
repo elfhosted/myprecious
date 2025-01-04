@@ -3568,7 +3568,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:119014ab1d5cb2fcf1fe43d7ab4f083a2dd58ac95760dedf5577b47281d235bc
+    tag: rolling@sha256:d824d6ea91532bca8c02d138ab4d777d08686cb990cbc42863af6f9263ea82ba
   enabled: false
   controller:
     annotations:
@@ -7603,7 +7603,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.4.3@sha256:5eabed25c64fc143a7d7030ace02ea5b5119b23da0fb03b7eb05f3ef692cf7d4
+    tag: v0.4.3@sha256:3fddba7aa32f177282fd005dab190c35a375e8f936cf46d7fe69886e78d0aa31
   securityContext:
     seccompProfile:
       type: RuntimeDefault
