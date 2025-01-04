@@ -836,7 +836,15 @@ data:
             href: https://{{ .Release.Name }}-cinesync.{{ .Values.dns_domain }}
             description: Sync / sort Debrid media
             siteMonitor: http://cinesync:3001
-        {{ end }}          
+        {{ end }}  
+
+        {{ if .Values.seerrbridge.enabled }}
+        - SeerrBridge:
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-seerrbridge.{{ .Values.dns_domain }}
+            description: Download from DMM with Overseerr
+            siteMonitor: http://seerrbridge:8777
+        {{ end }}                  
 
         {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
         - Zurg:

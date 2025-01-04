@@ -7596,6 +7596,54 @@ cinesync:
       memory: 64Mi
     limits:
       cpu: 1
+      memory: 2Gi 
+
+seerrbridge:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/seerrbridge
+    tag: v0.4.0@sha256:cc5b555b28f5897d715a4b35acef393a511a75685e8f2c15c86e39c365a6bc17
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: cinesync
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seerrbridge,seerrbridge-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  envFrom:
+  - configMapRef:
+      name: seerrbridge-env
+  - configMapRef:
+      name: elfbot-seerrbridge
+      optional: true
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 64Mi
+    limits:
+      cpu: 1
       memory: 2Gi  
 
 plextraktsync:

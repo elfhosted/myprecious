@@ -962,7 +962,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}                    
+      {{ end }} 
+
+      {{ if .Values.seerrbridge.enabled }}
+      - name: seerrbridge
+        group: download-media
+        url: "http://seerrbridge:8777"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}                          
 
       {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
       - name: zurg
