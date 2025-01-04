@@ -33,9 +33,9 @@ data:
     do
 
       # Once for all of /config, /backup, /logs...
-      tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
-      tree --du -hF -s  /backup/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/backup -T "🧝 ElfHosted [/backup] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-backup.html
-      tree --du -hF -s  /logs/   -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/logs -T "🧝 ElfHosted [/logs] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-logs.html
+      # tree --du -hF -s  /config/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config -T "🧝 ElfHosted [/config] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config.html
+      # tree --du -hF -s  /backup/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/backup -T "🧝 ElfHosted [/backup] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-backup.html
+      # tree --du -hF -s  /logs/   -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/logs -T "🧝 ElfHosted [/logs] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-logs.html
 
       TOTAL_USED_RAW=$(du -s /config/ | cut -f1)
       TOTAL_USED_HUMAN=$(du -sh /config/ | cut -f1)
@@ -43,7 +43,7 @@ data:
       for STORAGE_PATH in $(ls /config); do
         # And again per-app /config...
         # disabled on 19 Feb 2024 - consumes too much I/O now that we have "infinite" streaming - @funkypenguin
-        tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
+        # tree --du -hF -s  /config/${STORAGE_PATH} -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/${STORAGE_PATH} -T "🧝 ElfHosted [/config/${STORAGE_PATH}] usage for {{ .Release.Name }}"> /www/assets/message/disk-usage-config-${STORAGE_PATH}.html
 
         USED_RAW=$(du -s /config/${STORAGE_PATH} | cut -f1)
         USED_HUMAN=$(du -sh /config/${STORAGE_PATH} | cut -f1)
