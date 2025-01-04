@@ -11,14 +11,6 @@ spec:
         - name: plex
           kind: Service
           port: 32400
-    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (PathPrefix(`/{something:.+}/library/parts/{else:.+}`) || PathPrefix(`/video/{something:.+}/proxy`) || PathPrefix(`/video/{something:.+}/transcode/{else:.*}`))
-      kind: Rule
-      services:
-        - name: plex
-          kind: Service
-          port: 32400
-      middlewares:
-        - name: {{ .Release.Name }}-inflightreq-streaming
     - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
       kind: Rule
       services:

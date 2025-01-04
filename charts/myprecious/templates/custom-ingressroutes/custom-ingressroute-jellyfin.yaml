@@ -11,14 +11,6 @@ spec:
         - name: jellyfin
           kind: Service
           port: 8096
-    - match: Host(`{{ .Values.jellyfincustomdomain.cname | lower }}`) && (PathPrefix(`/Videos/{something:.+}`) || PathPrefix(`/Items/{something:.+}/Download`))
-      kind: Rule
-      services:
-        - name: jellyfin
-          kind: Service
-          port: 8096
-      middlewares:
-        - name: {{ .Release.Name }}-inflightreq-streaming
   tls:
     secretName: cert-{{ .Values.jellyfincustomdomain.cname | lower }}
 {{ end }}
