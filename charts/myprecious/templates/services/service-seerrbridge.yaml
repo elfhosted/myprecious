@@ -15,6 +15,6 @@ spec:
     protocol: TCP
     name: seerrbridge
   selector:
-    app.elfhosted.com/name: seerrbridge
+    app.kubernetes.io/name: seerrbridge
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
