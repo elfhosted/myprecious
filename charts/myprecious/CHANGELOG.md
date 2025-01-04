@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.230.0](https://github.com/elfhosted/myprecious/compare/v1.229.0...v1.230.0) (2025-01-04)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.35 ([45a4e9d](https://github.com/elfhosted/myprecious/commit/45a4e9ddb5ff516c382d800fc5fe75300d79475c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1191 ([cefda14](https://github.com/elfhosted/myprecious/commit/cefda147460c6b103f54c8d1179589b6d1e20573))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.93 ([f996988](https://github.com/elfhosted/myprecious/commit/f996988297936a7d07761e37de80676480e018bf))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.28.1 ([0b4e0f9](https://github.com/elfhosted/myprecious/commit/0b4e0f9aedc7b83e48506bf3dc54332c42de945b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to ce9e0de ([a6b313c](https://github.com/elfhosted/myprecious/commit/a6b313c941b76a5d62094e9b4adb13ffdc62aa29))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to d824d6e ([1d617e8](https://github.com/elfhosted/myprecious/commit/1d617e89467d4144150c5bc04b491866da5eadf4))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.4.3 docker digest to 3fddba7 ([1dab521](https://github.com/elfhosted/myprecious/commit/1dab5213afda16b91c6b03e525969518f0aef035))
+
 ## [1.229.0](https://github.com/elfhosted/myprecious/compare/v1.228.0...v1.229.0) (2025-01-03)
 
 
