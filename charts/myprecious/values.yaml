@@ -7607,7 +7607,7 @@ seerrbridge:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # needs to write to /app/seerrbridge.log, apparently
   podLabels:
     app.elfhosted.com/name: cinesync
   controller:
