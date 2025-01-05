@@ -14,7 +14,7 @@ spec:
       middlewares:
         - name: error-pages
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`))
+    - match: Host(`{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:
         - name: stremio-jackett

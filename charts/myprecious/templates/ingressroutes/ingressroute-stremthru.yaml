@@ -11,7 +11,7 @@ spec:
         - name: stremthru
           kind: Service
           port: 8080
-    - match: Host(`{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}`) && PathPrefix(`/{something:.*}/configure{else:.*}`)
+    - match: Host(`{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}`) && (PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:
         - name: stremthru
