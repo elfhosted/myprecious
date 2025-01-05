@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.231.0](https://github.com/elfhosted/myprecious/compare/v1.230.0...v1.231.0) (2025-01-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1199 ([fa54803](https://github.com/elfhosted/myprecious/commit/fa5480399c675609b35fbe1b67c40d6e28f24903))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.32.7 ([0adb2f1](https://github.com/elfhosted/myprecious/commit/0adb2f1cd65f11bfd9398ef728119a0a3e6886a7))
+* **app:** update ghcr.io/elfhosted/seerrbridge docker tag to v0.4.4 ([9393774](https://github.com/elfhosted/myprecious/commit/9393774fd0a95e619d70724b24cf50356a7b966e))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.12.2825 ([ed2c756](https://github.com/elfhosted/myprecious/commit/ed2c756caf0a36b01e27d9658db0508a026f43d7))
+
+
+### Bug Fixes
+
+* fix mediafusion / mediaflowproxy network policy issue ([a008447](https://github.com/elfhosted/myprecious/commit/a0084470e4b4045b7016b894f04719568accbe92))
+* minor dashboard performance fix ([aa4bcd2](https://github.com/elfhosted/myprecious/commit/aa4bcd26d610a8e2bfafd3555346193f0fedeccb))
+
 ## [1.230.0](https://github.com/elfhosted/myprecious/compare/v1.229.0...v1.230.0) (2025-01-04)
 
 
