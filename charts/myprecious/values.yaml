@@ -2235,7 +2235,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.17.2.9580@sha256:541f4a4d5d5322fec0165acd7a24ba71e08c42466ade1e1480de0d2e07c5847b
+    tag: 5.16.3.9541@sha256:ad9e45ba676e8a1b014368c756fa452224e2611c78330583311ebd7d0d46253e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2349,7 +2349,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.17.2.9580@sha256:541f4a4d5d5322fec0165acd7a24ba71e08c42466ade1e1480de0d2e07c5847b
+    tag: 5.16.3.9541@sha256:ad9e45ba676e8a1b014368c756fa452224e2611c78330583311ebd7d0d46253e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3568,7 +3568,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:35f4bc60dedfa9722f85f9b9561fb5146232a0c6add410624493a77e12a64b0b
+    tag: rolling@sha256:d824d6ea91532bca8c02d138ab4d777d08686cb990cbc42863af6f9263ea82ba
   enabled: false
   controller:
     annotations:
@@ -4252,7 +4252,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.29.2.4915@sha256:f0e630f136ad8ffa4dbda1a288b9fed5d2745e492b0e7766e2e8a4654339096a
+    tag: 1.29.1.4903@sha256:2fa35c599b2ceb601471c7823ea1ba8df945356cd4543d08c8ccdc48b6c3d6d5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4380,7 +4380,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.9.2.4521@sha256:4615a853b0277a2fdec85c4f82ba0983e26f92620b7827f4f5fe9afe936d5329
+    tag: 2.9.1.4517@sha256:736706de89074a46124634dd9183811d91d0913106f807c7170c7defe6ae8cb6
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4554,7 +4554,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.7.2718@sha256:68e5d14d1b57592fb05df7f434b611dfc845f96ba1daecb32cb85c65e6e4f26f
+    tag: 0.4.6.2711@sha256:a312c8a8b48de7777cb4ff11c65a268f2e1acaac96ccd6319a3356c494c58b59
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4663,7 +4663,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.7.2718@sha256:68e5d14d1b57592fb05df7f434b611dfc845f96ba1daecb32cb85c65e6e4f26f
+    tag: 0.4.6.2711@sha256:a312c8a8b48de7777cb4ff11c65a268f2e1acaac96ccd6319a3356c494c58b59
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7602,8 +7602,8 @@ seerrbridge:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.4.5-beta@sha256:239537e262190ac6ea61e5ec76dd1e17410fe55511e4ce7915f4394800afe276
+    repository: ghcr.io/elfhosted/seerrbridge-dev
+    tag: rolling@sha256:2279fab4398cfb53b1b8851dd46b2c3f959f64d1b50bd8deb8fd4c6a63e53e9a
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8914,7 +8914,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.94@sha256:f202c19afee891829c697fea8cc59824974dada53f7fa496f089543c982a1d75
+    tag: v2.0.93@sha256:6e47dc2b5f96ac28aaf1ee7060b268df79a464f27425dba83298d71d931cecc3
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -9446,7 +9446,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.10.8
+    tag: v0.10.7
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-homepage,homepage-config,homepage-env"
@@ -11227,7 +11227,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.29.0@sha256:23b34a3fce114c94b05a08882be7207d3f8e6bb97ad076f93383e215c07947c7
+    tag: 0.28.1@sha256:dc922f619cd1946a410add3be80df481c034278317977c4e84e22ec37484dbd4
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
