@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.232.0](https://github.com/elfhosted/myprecious/compare/v1.231.0...v1.232.0) (2025-01-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.9.2.4521 ([83cb0bf](https://github.com/elfhosted/myprecious/commit/83cb0bf60889e8db500228bda6eff1521977cfad))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.29.2.4915 ([f581701](https://github.com/elfhosted/myprecious/commit/f5817015cdab61acb4e47f213df74ff3c63929e2))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.17.2.9580 ([9f07904](https://github.com/elfhosted/myprecious/commit/9f079040d1408d8739f4c7d3a93dd9502f886000))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.94 ([6a70a0d](https://github.com/elfhosted/myprecious/commit/6a70a0d1d30440e1d52935ec27363a5f179b6ee2))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.7.2718 ([d522755](https://github.com/elfhosted/myprecious/commit/d522755064e2593adde467561b76e2ba8d6b931a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.29.0 ([dd608e7](https://github.com/elfhosted/myprecious/commit/dd608e78bf1e994e163ad09812451426efbe2662))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v0.10.8 ([116ec76](https://github.com/elfhosted/myprecious/commit/116ec76622a4b8e71ade814c814ac8d8e5f9554f))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 35f4bc6 ([28c73a3](https://github.com/elfhosted/myprecious/commit/28c73a3e71c7930890343178fce7ad61975b7348))
+
 ## [1.231.0](https://github.com/elfhosted/myprecious/compare/v1.230.0...v1.231.0) (2025-01-05)
 
 
