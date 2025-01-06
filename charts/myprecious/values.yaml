@@ -7691,7 +7691,7 @@ seerrbridge:
         readOnlyRootFilesystem: false    
   addons:
     vpn:
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
@@ -7703,7 +7703,7 @@ seerrbridge:
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         VPN_TYPE: wireguard
         VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "3001"
+        FIREWALL_INPUT_PORTS: "3001,8777"
         WIREGUARD_MTU: "1280"
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
