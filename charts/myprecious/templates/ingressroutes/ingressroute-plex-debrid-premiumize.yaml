@@ -1,4 +1,4 @@
-{{ if .Values.plexdebridtorbox.enabled }}
+{{ if .Values.plexdebridpremiumize.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -8,7 +8,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-plex-debrid-premiumize.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: plex-debrid-torbox
+        - name: plex-debrid-premiumize
           kind: Service
           port: 3001
       middlewares:
