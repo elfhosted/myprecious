@@ -3570,7 +3570,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:d824d6ea91532bca8c02d138ab4d777d08686cb990cbc42863af6f9263ea82ba
+    tag: rolling@sha256:10bb730c681879d6412eb7ef121218b00a7aa2e41abe4455d5b24c96ba1d9aaf
   enabled: false
   controller:
     annotations:
@@ -9514,7 +9514,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v0.10.7
+    tag: v0.10.9
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-homepage,homepage-config,homepage-env"
@@ -10231,7 +10231,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1199@sha256:33d7a8aa76ece4fd43035da8dffd848340cc8ff93b5a7bce80c5d62f6233c5ca
+    tag: 0.22.1211@sha256:2d4ccedbcedbf7034ae8ca04ec85313f9587b6576fc3e71e3f3bbe4e2ac7a67d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12412,7 +12412,7 @@ plexdebrid: &app_plexdebrid
   #   app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:3cfbeef9fb055f5b359af2ee90502884eb957ea33bf44ec569b3296b21d3f9bd
+    tag: rolling@sha256:951da714fb083fa5981680faef63b31b050d09b10c5bebbfec93b9a8aa37f093
   podLabels:
     app.elfhosted.com/name: plex-debrid    
   priorityClassName: tenant-normal
@@ -13607,7 +13607,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:c1e88455c85225310bbea54816e9c3f4b5295815e6dbf80c34d40afc6df28275
+      image: docker.io/redis:7.4-alpine@sha256:8860d052306f47904110630a97b1edd8439e24ef7b7ed4bb315ac12f1c3a58c3
       envFrom:
       - configMapRef:
           name: immich-env
