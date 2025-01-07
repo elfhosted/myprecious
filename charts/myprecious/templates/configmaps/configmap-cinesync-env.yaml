@@ -14,5 +14,7 @@ data:
   DESTINATION_DIR: /storage/symlinks
   RCLONE_MOUNT: "true"
   ENABLE_PLEX_UPDATE: "true"
+  RENAME_ENABLED: "true"
   PLEX_URL: http://plex:32400
+  RENAME_TAGS: TMDB,VideoCodec,DynamicRange,AudioCodec,AudioChannels,AudioAtmos,StreamingServices,Languages,MovieVersions
 {{ end }}

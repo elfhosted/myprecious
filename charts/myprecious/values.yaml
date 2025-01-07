@@ -7556,6 +7556,8 @@ cinesync:
   envFrom:
   - configMapRef:
       name: cinesync-env
+  - secretRef:
+      name: cinesync-env      
   - configMapRef:
       name: elfbot-cinesync
       optional: true
