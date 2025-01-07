@@ -1041,7 +1041,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }} 
 
-          {{ if .Values.zurgling.enabled }}
+          {{ if or .Values.zurgling.enabled .Values.debridling.enabled }}
           - name: "DebridMediaManager"
             logo: "assets/png/debridmediamanager.png"
             subtitle: "Manage Debrid Media"
