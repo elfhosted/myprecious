@@ -4254,7 +4254,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.29.1.4903@sha256:2fa35c599b2ceb601471c7823ea1ba8df945356cd4543d08c8ccdc48b6c3d6d5
+    tag: 1.29.2.4915@sha256:f0e630f136ad8ffa4dbda1a288b9fed5d2745e492b0e7766e2e8a4654339096a
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10689,7 +10689,7 @@ actual:
   enabled: false
   image:
     repository: ghcr.io/actualbudget/actual-server
-    tag: 24.12.0-alpine
+    tag: 25.1.0-alpine
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: actual
@@ -11295,7 +11295,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.29.0@sha256:23b34a3fce114c94b05a08882be7207d3f8e6bb97ad076f93383e215c07947c7
+    tag: 0.30.0@sha256:5a1c7f7635880d23cc0229319f6f0759b63a5dbf1a09f124595466368c7c42e7
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13489,7 +13489,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.123.0@sha256:666ce77995230ff7327da5d285c861895576977237de08564e3c3ddf842877eb
+    tag: v1.124.0@sha256:80e0f8a9520db3536c91fadedc369a30080d6fd9df046e0f2f03210755ddf55d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13577,7 +13577,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.123.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.124.0
       envFrom:
       - configMapRef:
           name: immich-env
