@@ -13577,7 +13577,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.123.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.124.0
       envFrom:
       - configMapRef:
           name: immich-env
