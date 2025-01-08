@@ -617,6 +617,14 @@ data:
             siteMonitor: http://recyclarr:9898
         {{ end }}    
 
+        {{ if .Values.clidebrid.enabled  }}
+        - cli-debrid:
+            icon: real-debrid.png
+            href: https://{{ .Release.Name }}-cli-debrid.{{ .Values.dns_domain }}
+            description: Sync Plex with RealDebrid (with a UI)
+            siteMonitor: http://cli-debrid:5000            
+        {{ end }}  
+
         {{ if .Values.plexdebrid.enabled  }}
         - plex-debrid:
             icon: real-debrid.png

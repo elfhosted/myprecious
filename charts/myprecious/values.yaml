@@ -12487,6 +12487,83 @@ plexdebrid: &app_plexdebrid
       - mountPath: /tmp
         name: tmp
 
+clidebrid: &app_clidebrid
+  enabled: false
+  podLabels:
+    app.elfhosted.com/name: cli-debrid
+  image:
+    repository: ghcr.io/elfhosted/cli_debrid
+    tag: v0.5.20@sha256:f9de88daf2cd9cb01dc645dc35187579854137e30cbd977d68c647088d11f6af
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cli-debrid"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true # doesn't work because of s6
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  env:
+    PUID: 568
+    PGID: 568
+  resources:
+    requests:
+      cpu: 2m
+      memory: 100Mi
+    limits:
+      cpu: 500m
+      memory: 3Gi
+  ingress:
+    main:
+      enabled: false
+  envFrom:
+  - secretRef:
+      name: cli-debrid-env
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /user/
+      subPath: cli-debrid
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-cli-debrid
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: cli-debrid
+      - mountPath: /tmp
+        name: tmp
+
 
 plexdebriddebridlink: 
   <<: *app_plexdebrid  

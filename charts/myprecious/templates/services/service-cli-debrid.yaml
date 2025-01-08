@@ -1,0 +1,24 @@
+{{ if .Values.clidebrid.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: cli-debrid
+  labels:
+    app.elfhosted.com/name: cli-debrid
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5000
+    targetPort: 5000
+    protocol: TCP
+    name: primary
+  - port: 5001
+    targetPort: 5001
+    protocol: TCP
+    name: secondary 
+  selector:
+    app.elfhosted.com/name: cli-debrid
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}
