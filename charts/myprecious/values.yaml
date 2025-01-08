@@ -12523,15 +12523,12 @@ clidebrid: &app_clidebrid
   ingress:
     main:
       enabled: false
-  envFrom:
-  - secretRef:
-      name: cli-debrid-env
   service:
     main:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 3001
+          port: 5000
   persistence:
     tmp: *tmp
     backup: *backup
