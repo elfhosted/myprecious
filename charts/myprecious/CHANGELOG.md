@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.235.0](https://github.com/elfhosted/myprecious/compare/v1.234.0...v1.235.0) (2025-01-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid docker tag to v0.5.26 ([0a2dff2](https://github.com/elfhosted/myprecious/commit/0a2dff2ac7a10e46c0543771c1b72a293168a6e3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1218 ([ce260e8](https://github.com/elfhosted/myprecious/commit/ce260e813f5f4958b5a50fd1b4ab3461ad1bb320))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.31.0 ([1345b37](https://github.com/elfhosted/myprecious/commit/1345b3770d8b90ac40df46e40c636f0dbf2b5037))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.31.1 ([b738721](https://github.com/elfhosted/myprecious/commit/b7387213b5e9d93bda5941d0671c2fbc91b018af))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.4.0 ([5f520c5](https://github.com/elfhosted/myprecious/commit/5f520c53cc6e5c0a698d80c29cba0e77ee06618d))
+
+
+### Bug Fixes
+
+* add sensible cinesync defaults ([c787fa3](https://github.com/elfhosted/myprecious/commit/c787fa3b1c3c114ae8bec043fc2d54c1c680641a))
+* **app:** update docker.io/redis:7.4-alpine docker digest to 339f840 ([032227f](https://github.com/elfhosted/myprecious/commit/032227ff43d15bcd8840315c40c0b37286b88e52))
+* **app:** update ghcr.io/elfhosted/cinesync:v2.1 docker digest to e723b32 ([235e200](https://github.com/elfhosted/myprecious/commit/235e2004843eac02e4768a251f3384c8c8d6d5c6))
+* **app:** update ghcr.io/elfhosted/kometa:v2.1.0 docker digest to e2fd869 ([197ee2a](https://github.com/elfhosted/myprecious/commit/197ee2a020f1ea6638479b179271af7b3f828ba6))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 6d685f1 ([5b14f36](https://github.com/elfhosted/myprecious/commit/5b14f361a8b2a650273f3c34f535c1f5d8d06b2f))
+* **app:** update quay.io/linuxserver.io/calibre:7.23.0 docker digest to b88abdf ([e6082dc](https://github.com/elfhosted/myprecious/commit/e6082dc8abfa68cac934439a6e5e611c764b620e))
+
 ## [1.234.0](https://github.com/elfhosted/myprecious/compare/v1.233.0...v1.234.0) (2025-01-07)
 
 
