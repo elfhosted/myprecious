@@ -12503,7 +12503,7 @@ clidebrid: &app_clidebrid
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true # doesn't work because of s6
+    readOnlyRootFilesystem: false # doesn't work because of s6
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12561,6 +12561,79 @@ clidebrid: &app_clidebrid
       - mountPath: /tmp
         name: tmp
 
+puter:
+  enabled: false
+  podLabels:
+    app.elfhosted.com/name: puter
+  image:
+    repository: ghcr.io/elfhosted/puter
+    tag: v2.5.0@sha256:f164d93d52e55426b42f00a84e19ed8893db101f15bdc5baf6056f8b0571f222
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-puter"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: false # doesn't work because of s6
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  env:
+    PUID: 568
+    PGID: 568
+  resources:
+    requests:
+      cpu: 2m
+      memory: 100Mi
+    limits:
+      cpu: 500m
+      memory: 3Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 4100
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: puter
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-puter
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: puter
+      - mountPath: /tmp
+        name: tmp
 
 plexdebriddebridlink: 
   <<: *app_plexdebrid  

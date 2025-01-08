@@ -1288,6 +1288,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.puter.enabled }}
+      - name: puter
+        group: tools
+        url: "http://puter:4100"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.mattermost.enabled }}
       - name: mattermost
         group: tools

@@ -1041,7 +1041,15 @@ data:
             href: https://{{ .Release.Name }}-vaultwarden.{{ .Values.dns_domain }}
             description: Securely manage passwords / secrets
             siteMonitor: http://vaultwarden:8000
-        {{ end }}     
+        {{ end }}    
+
+        {{ if .Values.putner.enabled }}
+        - Puter:
+            icon: puter.png
+            href: https://{{ .Release.Name }}-puter.{{ .Values.dns_domain }}
+            description: Remotely compute
+            siteMonitor: http://puter:4100
+        {{ end }}             
 
         {{ if .Values.mattermost.enabled }}
         - Mattermost:
