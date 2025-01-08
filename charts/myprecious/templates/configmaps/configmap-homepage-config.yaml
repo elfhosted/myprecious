@@ -1043,7 +1043,7 @@ data:
             siteMonitor: http://vaultwarden:8000
         {{ end }}    
 
-        {{ if .Values.putner.enabled }}
+        {{ if .Values.puter.enabled }}
         - Puter:
             icon: puter.png
             href: https://{{ .Release.Name }}-puter.{{ .Values.dns_domain }}
