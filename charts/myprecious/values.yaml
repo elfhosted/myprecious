@@ -13065,6 +13065,7 @@ debridav:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
+    <<: *storagemounts
     tmp: *tmp
     config:
       enabled: true
