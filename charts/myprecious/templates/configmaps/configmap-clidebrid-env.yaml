@@ -1,0 +1,9 @@
+{{ if .Values.clidebrid.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: debridav-env
+data:
+  PUID: "568"
+  PGID: "568"
+{{ end }}

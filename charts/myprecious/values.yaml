@@ -12518,6 +12518,12 @@ clidebrid: &app_clidebrid
   env:
     PUID: 568
     PGID: 568
+  envFrom:
+  - configMapRef:
+      name: clidebrid-env
+  - configMapRef:
+      name: elfbot-clidebrid
+      optional: true        
   resources:
     requests:
       cpu: 2m

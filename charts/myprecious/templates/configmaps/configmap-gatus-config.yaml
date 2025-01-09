@@ -554,7 +554,7 @@ data:
       {{ end }}     
 
       {{ if .Values.plexdebriddebridlink.enabled }}
-      - name: plex-debrid
+      - name: plex-debrid-debridlink
         group: manage-media
         url: "http://plex-debrid-debridlink:3001"
         interval: 5m
@@ -565,7 +565,7 @@ data:
       {{ end }}       
       
       {{ if .Values.plexdebridpremiumize.enabled }}
-      - name: plex-debrid
+      - name: plex-debrid-premiumize
         group: manage-media
         url: "http://plex-debrid-premiumize:3001"
         interval: 5m
