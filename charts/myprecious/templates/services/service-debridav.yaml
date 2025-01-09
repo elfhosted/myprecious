@@ -1,0 +1,21 @@
+{{ if .Values.debridav.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: debridav
+  labels:
+    app.kubernetes.io/name: debridav
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    zilean.elfhosted.com/scrape: "true"
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app.elfhosted.com/name: debridav
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

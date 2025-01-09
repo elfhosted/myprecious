@@ -292,6 +292,13 @@ rclonemounttorbox: &rclonemounttorbox
     persistentVolumeClaim:
       claimName: torbox
   mountPath: /storage/torbox
+rclonemountdebridav: &rclonemountdebridav
+  enabled: true # everyone gets an rclone mount
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: debridav
+  mountPath: /storage/debridav    
 rclone: &rclone
   enabled: true # everyone gets an rclone mount
   type: custom
@@ -308,6 +315,7 @@ storagemounts: &storagemounts
   rclonemountalldebrid: *rclonemountalldebrid
   rclonemountpremiumize: *rclonemountpremiumize
   rclonemounttorbox: *rclonemounttorbox
+  rclonemountdebridav: *rclonemountdebridav
   tmp: &tmp
     enabled: true
     type: emptyDir
@@ -13030,6 +13038,55 @@ requestrr:
         subPath: requestrr
       - mountPath: /tmp
         name: tmp
+
+debridav:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/debridav
+    tag: rolling@sha256:f276bd2680ddff2d186a09ad906bfc01df586e07833bfc7588eaa99709455503
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-config"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /debridav/h2data
+      subPath: debridav
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8080      
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 60Mi
+    limits:
+      cpu: 1
+      memory: 512Mi
 
 rclonedebridlink:
   enabled: false

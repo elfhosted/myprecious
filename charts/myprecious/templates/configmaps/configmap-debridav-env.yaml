@@ -1,0 +1,16 @@
+{{ if .Values.debridav.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: debridav-env
+data:
+  PUID: 568
+  PGID: 568
+  DEBRIDAV_FILE-PATH: /storage/debridav
+  DEBRIDAV_DOWNLOAD-PATH: /storage/debridav
+  DEBRIDAV_DEBRID_CLIENTS: real_debrid,premiumize
+  DEBRIDAV_DOWNLOAD-PATH: /storage/debridav
+  DEBRIDAV_MOUNT_PATH_CONTAINERS: /storage/debridav
+  DEBRIDAV_MOUNT_PATH_LOCAL_FS: /storage/debridav
+  DEBRIDAV_CACHE-LOCAL-DEBRID-FILES-THRESHOLD-MB: "100"
+{{ end }}
