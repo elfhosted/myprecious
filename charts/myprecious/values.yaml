@@ -3578,7 +3578,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:6d685f15fb3f4b236e538b69a2fa4e879ac1a10ec9c4604249e565eb9b44d560
+    tag: rolling@sha256:6735197c15c49fb42a6c817baedd10808b25588ab8bca07dd002cc529a00a2e1
   enabled: false
   controller:
     annotations:
@@ -4965,7 +4965,7 @@ plex: &app_plex
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
@@ -5227,7 +5227,7 @@ jellyfin: &app_jellyfin
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       securityContext: *speedtest_securitycontext
     jellyfixer:
       image: quay.io/xsteadfastx/jellyfixer:latest
@@ -5379,7 +5379,7 @@ emby: &app_emby
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       securityContext: *speedtest_securitycontext
   ingress:
     main:
@@ -7732,7 +7732,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.32.7@sha256:8009c1d6cf0bb1463a8aaccad1f83203149f4b8f9a099534fdb6141ef9c4360d
+    tag: 0.32.7@sha256:ac8de40a3adc472e72acc4345b41d6f721288555000dfea1a8b9ec780b15f8c3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7820,7 +7820,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:e7e5ecdc7fdb0f174a257217a108c2535f6f684e5e84d996335bf0fb8b9f6945
+    tag: rolling@sha256:d6d19dfb0bfb39daf6d41328f301c26ff4d9c891ebce4a22e6ddafe26bf32b44
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8588,7 +8588,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.4.0@sha256:66f9dc5f690f65f5f78a107fc89efaec0680f6554f1bec7feac0d55e50658423
+    tag: 10.4.1@sha256:23967dd2d46c77311eea2bd64016a328f8a13cba07eb64c163856e880bc47762
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -8989,7 +8989,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.94@sha256:f202c19afee891829c697fea8cc59824974dada53f7fa496f089543c982a1d75
+    tag: v2.0.94@sha256:ad79453f13984c7330e9b39857160ceede5e972880f92c34fbc4ac7a7d51ea42
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -10238,7 +10238,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1218@sha256:0a434d8af78d50ec88624bc06333799219a581464c3a0d8f7c685a998bddffa7
+    tag: 0.22.1224@sha256:02655a91db0c6a65034f45a1fa2510b0a93aef73049964c7bddb1d33df139da7
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10299,7 +10299,7 @@ stremioserver: &app_stremioserver
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-server
-    tag: v4.20.8@sha256:53d851cdd0ce35ecd1bfe0bff9ad123b806255e03ff3ba133bde12ed75c57188
+    tag: v4.20.8@sha256:0d681334c2e727e1f8d4782cbd140dee3708ee897f735ce10312b2d292ceb820
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: stremio-server
@@ -11138,7 +11138,7 @@ comet:
     #     subPath: comet/warp
     #     name: config
     speedtest:
-      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
@@ -11302,7 +11302,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.31.1@sha256:501f9dd4a769bccce0bbe1cb896e785203b35fb3399643b1bebbb8f6b502a14a
+    tag: 0.32.0@sha256:de20836a86d740fdae658cb7a78f41cab30c33ec0390b60b5dd11bbeea15678e
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -11438,7 +11438,7 @@ stremthru:
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
@@ -11758,7 +11758,7 @@ mediaflowproxy:
   additionalContainers:
     clean-up-dns: *clean_up_dns_on_termination
     speedtest:
-      image: openspeedtest/latest:latest@sha256:0d2d94087a68cf3f6e2a99b9bcc03c49a8624f144cb670f841bfa3c1570a0eb6
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       env:
         CHANGE_CONTAINER_PORTS: "True"
         HTTP_PORT: "3002"
@@ -13825,7 +13825,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:339f8403efc53c93179052f02a5196c8dd3b58c6a0428b837886ef88246f6c64
+      image: docker.io/redis:7.4-alpine@sha256:12129f2f3773d5aebc5f549ea14850bc59a6c0c1233d7598c2bc6984a83ded53
       envFrom:
       - configMapRef:
           name: immich-env
