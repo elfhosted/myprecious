@@ -920,6 +920,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.debridav.enabled }}
+      - name: debridav
+        group: download-media
+        url: "http://debridav:8080"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}  
+
       {{ if .Values.blackhole.enabled }}
       - name: blackhole
         group: download-media

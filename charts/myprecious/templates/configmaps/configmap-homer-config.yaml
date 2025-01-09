@@ -1230,6 +1230,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                              
 
+          {{ if .Values.debridav.enabled }}
+          - name: "DebriDav"
+            icon: "fas fa-file-export"
+            subtitle: "DebriDav"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/debridav/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }} 
+
           {{ if .Values.blackhole.enabled }}
           - name: "Blackhole"
             icon: "fas fa-circle"
