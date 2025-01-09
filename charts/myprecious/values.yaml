@@ -13047,7 +13047,7 @@ debridav:
     tag: rolling@sha256:f276bd2680ddff2d186a09ad906bfc01df586e07833bfc7588eaa99709455503
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -13072,6 +13072,17 @@ debridav:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    app-dev:
+      enabled: true
+      type: emptyDir
+      mountPath: /app/dev
+      sizeLimit: 1Gi          
+  envFrom:
+  - configMapRef:
+      name: debridav-env
+  - configMapRef:
+      name: elfbot-debridav
+      optional: true      
   service:
     main:
       enabled: true # necessary for probes
