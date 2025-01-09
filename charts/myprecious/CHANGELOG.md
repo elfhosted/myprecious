@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.236.0](https://github.com/elfhosted/myprecious/compare/v1.235.0...v1.236.0) (2025-01-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1224 ([ecb8225](https://github.com/elfhosted/myprecious/commit/ecb8225b02ef80899d1f9e2810fc1039ad750de1))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.32.0 ([d127806](https://github.com/elfhosted/myprecious/commit/d1278066723f81ccc7de6e58ca742e1ac1622847))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.4.1 ([fb8ec9d](https://github.com/elfhosted/myprecious/commit/fb8ec9deb860aa18c380860daee2aebbeedabd7b))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to 12129f2 ([2774cbb](https://github.com/elfhosted/myprecious/commit/2774cbbaa3822323cc61e2fdecea2b0c6c003874))
+* **app:** update docker.io/redis:7.4-alpine docker digest to cf95756 ([ebf6e04](https://github.com/elfhosted/myprecious/commit/ebf6e04633067ba6753aec76b0197b478b1066d3))
+* **app:** update ghcr.io/elfhosted/cli_debrid:v0.5.26 docker digest to 3f73813 ([6b6d0e0](https://github.com/elfhosted/myprecious/commit/6b6d0e02a26c9f8ed6dce3b5ec98052438bb53f6))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to d6d19df ([bca3c2c](https://github.com/elfhosted/myprecious/commit/bca3c2ccd94db42e587ed533a4e7be50cbcef825))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 6735197 ([97fbb5f](https://github.com/elfhosted/myprecious/commit/97fbb5fcbbb49804ef8dd3a80b58595d26d4e4d3))
+* **app:** update ghcr.io/elfhosted/plextraktsync:0.32.7 docker digest to ac8de40 ([0e5acc4](https://github.com/elfhosted/myprecious/commit/0e5acc492b270d5f6bc376b356b011cfb5bbcded))
+* **app:** update ghcr.io/elfhosted/rdtclient:v2.0.94 docker digest to ad79453 ([f99e352](https://github.com/elfhosted/myprecious/commit/f99e352a092ee595fff56c6f5550fee8666b281d))
+* **app:** update ghcr.io/elfhosted/stremio-server:v4.20.8 docker digest to 0d68133 ([4ac4cca](https://github.com/elfhosted/myprecious/commit/4ac4ccafa852f216a1be3358887c5c00039fa391))
+* **app:** update openspeedtest/latest:latest docker digest to 1745e91 ([e99bc4a](https://github.com/elfhosted/myprecious/commit/e99bc4a1109f357f3ae887fc0ba7713adcfac653))
+
 ## [1.235.0](https://github.com/elfhosted/myprecious/compare/v1.234.0...v1.235.0) (2025-01-08)
 
 
