@@ -13067,7 +13067,7 @@ debridav:
     config:
       enabled: true
       type: custom
-      mountPath: /debridav/h2data
+      mountPath: /config
       subPath: debridav
       volumeSpec:
         persistentVolumeClaim:
@@ -13076,7 +13076,7 @@ debridav:
       enabled: true
       type: emptyDir
       mountPath: /app/dev
-      sizeLimit: 1Gi          
+      sizeLimit: 1Gi
   envFrom:
   - configMapRef:
       name: debridav-env
