@@ -13063,6 +13063,7 @@ debridav:
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
+    tmp: *tmp
     config:
       enabled: true
       type: custom
