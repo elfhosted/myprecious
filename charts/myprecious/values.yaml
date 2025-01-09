@@ -10294,7 +10294,7 @@ stremioserver: &app_stremioserver
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-server
-    tag: v4.20.8@sha256:53d851cdd0ce35ecd1bfe0bff9ad123b806255e03ff3ba133bde12ed75c57188
+    tag: v4.20.8@sha256:0d681334c2e727e1f8d4782cbd140dee3708ee897f735ce10312b2d292ceb820
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: stremio-server
