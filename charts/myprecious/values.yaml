@@ -12551,6 +12551,14 @@ clidebrid: &app_clidebrid
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /user/logs
+      subPath: cli-debrid
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     elfbot:
       enabled: "true"
       type: "custom"
