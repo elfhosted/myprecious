@@ -13042,6 +13042,8 @@ requestrr:
 debridav:
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
     tag: rolling@sha256:f276bd2680ddff2d186a09ad906bfc01df586e07833bfc7588eaa99709455503
