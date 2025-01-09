@@ -923,7 +923,7 @@ data:
       {{ if .Values.debridav.enabled }}
       - name: debridav
         group: download-media
-        url: "http://debridav:8080"
+        url: "http://debridav:8080/api/v2/app/webapiVersion"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
