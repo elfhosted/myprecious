@@ -293,7 +293,7 @@ rclonemounttorbox: &rclonemounttorbox
       claimName: torbox
   mountPath: /storage/torbox
 rclonemountdebridav: &rclonemountdebridav
-  enabled: true # everyone gets an rclone mount
+  enabled: false 
   type: custom
   volumeSpec:
     persistentVolumeClaim:
@@ -12518,6 +12518,12 @@ clidebrid: &app_clidebrid
   env:
     PUID: 568
     PGID: 568
+  envFrom:
+  - configMapRef:
+      name: clidebrid-env
+  - configMapRef:
+      name: elfbot-clidebrid
+      optional: true        
   resources:
     requests:
       cpu: 2m
@@ -12545,6 +12551,14 @@ clidebrid: &app_clidebrid
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /user/logs
+      subPath: cli-debrid
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     elfbot:
       enabled: "true"
       type: "custom"

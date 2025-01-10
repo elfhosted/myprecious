@@ -39,6 +39,9 @@ data:
     {{- if or .Values.plexdebrid.enabled .Values.zurgling.enabled .Values.sidekick.enabled }}
       # we need the script
       sed -i  "s/#*on_library_update/on_library_update/" /config/config.yml
+    {{- else if .Values.clidebrid.enabled }}
+      # we want the cli_debrid version
+      sed -i  "s/.*on_library_update.*/on_library_update: sh cli_debrid_update.sh \"$@\"/" /config/config.yml
     {{- else }}
       # we don't need the script
       sed -i  "s/on_library_update/#on_library_update/" /config/config.yml
@@ -184,4 +187,20 @@ data:
     echo "All updated sections refreshed"
 
     # credits to godver3  
+
+  cli_debrid_update.sh: |
+    #!/bin/bash
+
+    webhook_url="http://cli-debrid:5000/webhook/rclone"  # Replace with your actual webhook URL
+
+    # First notify our webhook for each file
+    for arg in "$@"
+    do
+        arg_clean=$(echo "$arg" | sed 's/\\//g')
+        echo "Notifying webhook for: $arg_clean"
+        encoded_webhook_arg=$(echo -n "$arg_clean" | python3 -c "import sys, urllib.parse as ul; print(ul.quote(sys.stdin.read()))")
+        curl -s -X GET "$webhook_url?file=$encoded_webhook_arg"
+    done
+
+    echo "Updates completed!"
 {{ end }}
