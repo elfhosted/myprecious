@@ -766,17 +766,6 @@ data:
           - type: email          
       {{ end }}
 
-      {{ if or .Values.autoscan.enabled }}
-      - name: autoscan
-        group: manage-media
-        url: "http://autoscan:3030/triggers/manual/"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       # {{ if or .Values.recyclarr.enabled }}
       # - name: recyclarr
       #   group: manage-media
