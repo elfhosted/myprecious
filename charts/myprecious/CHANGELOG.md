@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.237.0](https://github.com/elfhosted/myprecious/compare/v1.236.0...v1.237.0) (2025-01-10)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.17.0 ([a8bcf40](https://github.com/elfhosted/myprecious/commit/a8bcf40a7b8ef60bdb4359a144e71e95bf80204c))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.17.1 ([8034d48](https://github.com/elfhosted/myprecious/commit/8034d48d5ffd885c662d5f029c314485538a0ea0))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.31 ([1f42e4e](https://github.com/elfhosted/myprecious/commit/1f42e4e108b4d3e1635693dc1c41467045d3e0dc))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.32 ([bda1070](https://github.com/elfhosted/myprecious/commit/bda1070c320674240a8bd583310dbb532e3ab762))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1226 ([4c67070](https://github.com/elfhosted/myprecious/commit/4c67070364c20ee2278f4c1aa444e2a363e519a7))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.32.1 ([114953e](https://github.com/elfhosted/myprecious/commit/114953e9e0c2a03b39bce40222e36e7fae5fe321))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.33.0 ([77572ed](https://github.com/elfhosted/myprecious/commit/77572ed414e1c2d671ba364647d9e2d66c11cd67))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.24.0 ([1682fc0](https://github.com/elfhosted/myprecious/commit/1682fc067f7f46e108dccc42036882986fdb0507))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to 1bf97f2 ([3e200cb](https://github.com/elfhosted/myprecious/commit/3e200cb360a271b633e9b0ca6e52353fb18c8033))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 17521ae ([f6ed216](https://github.com/elfhosted/myprecious/commit/f6ed216dc272c524a0d2b640295ef81256f0eb2a))
+
 ## [1.236.0](https://github.com/elfhosted/myprecious/compare/v1.235.0...v1.236.0) (2025-01-09)
 
 
