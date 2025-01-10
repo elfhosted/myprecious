@@ -293,7 +293,7 @@ rclonemounttorbox: &rclonemounttorbox
       claimName: torbox
   mountPath: /storage/torbox
 rclonemountdebridav: &rclonemountdebridav
-  enabled: true # everyone gets an rclone mount
+  enabled: false 
   type: custom
   volumeSpec:
     persistentVolumeClaim:
