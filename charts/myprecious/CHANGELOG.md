@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.238.0](https://github.com/elfhosted/myprecious/compare/v1.237.0...v1.238.0) (2025-01-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.33 ([f078c41](https://github.com/elfhosted/myprecious/commit/f078c410d40c795cb25ba2c2ed5de0c1570e41c3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1229 ([f64488b](https://github.com/elfhosted/myprecious/commit/f64488bb8b15f89d1f2431bc47683c6f7aced432))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.6 ([7b42174](https://github.com/elfhosted/myprecious/commit/7b421748c43f084db2849572b86696eb9246fae8))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.12.2849 ([2756319](https://github.com/elfhosted/myprecious/commit/2756319a3e3047d6be87b10fa3a07b89c74c5933))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/jackettio:v1.7.0 docker digest to 5745485 ([fd95ade](https://github.com/elfhosted/myprecious/commit/fd95ade947bd5c32071e2b9bc2056b82a00ee1fe))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to ca05d7b ([0ce3d14](https://github.com/elfhosted/myprecious/commit/0ce3d148dd92a1a948c632a14bd78e8ff7e2957e))
+
 ## [1.237.0](https://github.com/elfhosted/myprecious/compare/v1.236.0...v1.237.0) (2025-01-10)
 
 
