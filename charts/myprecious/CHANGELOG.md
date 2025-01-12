@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.239.0](https://github.com/elfhosted/myprecious/compare/v1.238.0...v1.239.0) (2025-01-12)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.17.2 ([d48e767](https://github.com/elfhosted/myprecious/commit/d48e7671adebfb4b966b2da4ee2b582a101cbab5))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.34 ([dd2a0d6](https://github.com/elfhosted/myprecious/commit/dd2a0d61093ba8ec4246ff74e0d67e49b51a14c1))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.35 ([f2ff6ee](https://github.com/elfhosted/myprecious/commit/f2ff6eed15d89ba82ca41f793d5604ae7791ade1))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.36 ([d5477cd](https://github.com/elfhosted/myprecious/commit/d5477cd086ff20f11980614bdddc88805003a645))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1239 ([9adb34e](https://github.com/elfhosted/myprecious/commit/9adb34ead73789688a9b9b16489701d733461e5f))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.9.3.4527 ([62aebf2](https://github.com/elfhosted/myprecious/commit/62aebf22fe1da7f127f4fbdfafce63816b617552))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.30.0.4920 ([84063c1](https://github.com/elfhosted/myprecious/commit/84063c1b2298f59cd7602e21346bdc0b0b95eabb))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.8.2726 ([1a754ca](https://github.com/elfhosted/myprecious/commit/1a754caca5fbce3839773f92e7d68cd084cf98d1))
+* **app:** update ghcr.io/elfhosted/tautulli docker tag to v2.15.1 ([4ea1b92](https://github.com/elfhosted/myprecious/commit/4ea1b9236d63387d6132d83a86d1ad1603c0fc48))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 54b42b8 ([641a3d3](https://github.com/elfhosted/myprecious/commit/641a3d330ec8e7aad2c07c229825fa4e574b392f))
+
 ## [1.238.0](https://github.com/elfhosted/myprecious/compare/v1.237.0...v1.238.0) (2025-01-11)
 
 
