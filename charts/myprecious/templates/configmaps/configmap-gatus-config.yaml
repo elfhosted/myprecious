@@ -854,17 +854,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.pyload.enabled }}
-      - name: pyload
-        group: download-media
-        url: "http://pyload:8000/_themes/pyplex/vendor/jQuery/jquery.min.js"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.rdtclient.enabled }}
       - name: rdtclient
         group: download-media

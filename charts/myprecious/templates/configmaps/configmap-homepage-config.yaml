@@ -789,19 +789,6 @@ data:
               url: http://rutorrent:8080
         {{ end }}  
 
-        {{ if .Values.pyload.enabled }}
-        - pyLoad:
-            icon: pyload.png
-            href: https://{{ .Release.Name }}-pyload.{{ .Values.dns_domain }}
-            description: Manage downloads
-            siteMonitor: http://pyload:8000
-            # not working currently
-            # widget:
-            #   type: pyload
-            #   url: http://pyload:8000
-            #   username: pyload
-        {{ end }}          
-
         {{ if .Values.rdtclient.enabled }}
         - RDT Client:
             icon: rdt-client.png

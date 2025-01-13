@@ -1180,16 +1180,6 @@ data:
             # useCredentials: true
             {{ end }}
 
-          {{ if .Values.pyload.enabled }}
-          - name: "Pyload"
-            logo: "assets/png/pyload.png"
-            subtitle: "Manage Downloads"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-pyload.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.rdtclient.enabled }}
           - name: "RDT Client (RealDebrid)"
             logo: "assets/png/real-debrid.png"
