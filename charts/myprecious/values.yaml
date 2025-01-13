@@ -3499,7 +3499,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:ca05d7bbb7a27b83bef734635e31352e27ce20c65dddcb553649f4dbb44a1676
+    tag: rolling@sha256:54b42b8fa15ad589c15dc31ec64a434dc0bc91c6c6ee186ab4823cff2b0137ea
   enabled: false
   controller:
     annotations:
@@ -3572,7 +3572,7 @@ mylar:
   image:
     registry: ghcr.io
     repository: elfhosted/mylar3
-    tag: 0.8.0@sha256:64406246b893f7b910a4fb8f0b94e7c5ddfe58ee3a81e4982f5f6fd04ead7d6e
+    tag: 0.8.1@sha256:e2ae1cf4d7a88210be3de5625f0853b4f8bf79725e0ec41375dc5ae686f828ac
   env:
     PUID: 568
     PGID: 568
@@ -4183,7 +4183,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.29.2.4915@sha256:f0e630f136ad8ffa4dbda1a288b9fed5d2745e492b0e7766e2e8a4654339096a
+    tag: 1.30.0.4920@sha256:26791c3248330401c22e127ca0154e6fac5144ac0824352489b6acb69cd9de54
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4311,7 +4311,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.9.1.4517@sha256:736706de89074a46124634dd9183811d91d0913106f807c7170c7defe6ae8cb6
+    tag: 2.9.3.4527@sha256:9efc54bc5f939024f3c5b042f6ab53e8111b6b33af792aa9ca8dc7dae18fdf61
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4485,7 +4485,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.6.2711@sha256:a312c8a8b48de7777cb4ff11c65a268f2e1acaac96ccd6319a3356c494c58b59
+    tag: 0.4.8.2726@sha256:687ffea5148c715806d412579dc43aea1c19e920bbfb2888910d0dc662343c2f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4594,7 +4594,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.6.2711@sha256:a312c8a8b48de7777cb4ff11c65a268f2e1acaac96ccd6319a3356c494c58b59
+    tag: 0.4.8.2726@sha256:687ffea5148c715806d412579dc43aea1c19e920bbfb2888910d0dc662343c2f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10159,7 +10159,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1229@sha256:22c4fe585532035e8adf9dab9f7b451a36b677356fdf93c3b0bbd8dc3984a8ee
+    tag: 0.22.1249@sha256:79fdc497455d679a2e3d55933236cfeb4e898eb415218a98b47e6981631a20d1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12419,7 +12419,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.34@sha256:482f653ef3983b171d4943d68fe221ffe5af4ea9aa7fa3763c637aa9213b2bea
+    tag: v0.5.36@sha256:6aefd04a00cfad3fcdfe642e144d853b96126fcf90eac283ff1bbcde777974cd
   priorityClassName: tenant-normal
   controller:
     annotations:
