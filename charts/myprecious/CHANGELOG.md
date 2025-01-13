@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.240.0](https://github.com/elfhosted/myprecious/compare/v1.239.0...v1.240.0) (2025-01-13)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.17.3 ([beaced5](https://github.com/elfhosted/myprecious/commit/beaced5917f79b79125308ea5c93e018defc7bf4))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.37 ([bd3ca3c](https://github.com/elfhosted/myprecious/commit/bd3ca3cb29827be04374db9713fe311ea0b6e88e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1249 ([ee7af54](https://github.com/elfhosted/myprecious/commit/ee7af549270a877ff3ed6b546594126732701c7d))
+* **app:** update ghcr.io/elfhosted/mylar3 docker tag to v0.8.1 ([adf59ad](https://github.com/elfhosted/myprecious/commit/adf59adf8a31a3fca65c941e0d33183677a5288a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cinesync-dev:rolling docker digest to e6bdb8e ([fc165a3](https://github.com/elfhosted/myprecious/commit/fc165a3b3976aff9cb7b2929b1c7422733a48fae))
+
 ## [1.239.0](https://github.com/elfhosted/myprecious/compare/v1.238.0...v1.239.0) (2025-01-12)
 
 
