@@ -7452,8 +7452,8 @@ cinesync:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/cinesync-dev
-    tag: rolling@sha256:e6bdb8e4ff1af667f31bc57a276d6edb716a9c7b53d0178bf8652a3520350c69
+    repository: ghcr.io/elfhosted/cinesync
+    tag: v2.2@sha256:3059feef71fa7bf0868445997f33193a55ce10b183d5888989ad156aa5ec4567
   securityContext:
     seccompProfile:
       type: RuntimeDefault
