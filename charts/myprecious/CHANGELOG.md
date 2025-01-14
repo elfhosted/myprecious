@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.241.0](https://github.com/elfhosted/myprecious/compare/v1.240.0...v1.241.0) (2025-01-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.38 ([1ed90ce](https://github.com/elfhosted/myprecious/commit/1ed90ce1ef00b2b49a969e9bced717eb56a62af9))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.39 ([d5ad016](https://github.com/elfhosted/myprecious/commit/d5ad01685b0f2c1b551810f1c2cf86f31ce15047))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.40 ([dee8ff5](https://github.com/elfhosted/myprecious/commit/dee8ff5df2db7b77a6cf20e633f8aaf3f64978a0))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.41 ([8934f9d](https://github.com/elfhosted/myprecious/commit/8934f9de32bfbf3c96e44da94797c5d88c589997))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1255 ([abbf964](https://github.com/elfhosted/myprecious/commit/abbf964db9f8085761eca1ad87f46ef09a50d6d5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/aiostreams:v1.7.0 docker digest to bffb394 ([b9c7c59](https://github.com/elfhosted/myprecious/commit/b9c7c59cef6b9d02a62e7e99c64a689b96a1b0de))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.10.3 docker digest to bced3a2 ([47b249f](https://github.com/elfhosted/myprecious/commit/47b249f24d14a1a3a241e71f5bb749cd52e33775))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 2f5b3ae ([7ab7fdb](https://github.com/elfhosted/myprecious/commit/7ab7fdb66162e53a4a56a9361946101d744b0ffd))
+* **app:** update ghcr.io/elfhosted/puter:v2.5.0 docker digest to 27bc68a ([4e287fe](https://github.com/elfhosted/myprecious/commit/4e287fe44a6a10467b1005d07fb23348d3a848d2))
+* **app:** update ghcr.io/elfhosted/sonarr-develop:4.0.12.2849 docker digest to 87ecddd ([7724b26](https://github.com/elfhosted/myprecious/commit/7724b2644a1efb3bc9409e7a9c4e58628dfae1c1))
+
 ## [1.240.0](https://github.com/elfhosted/myprecious/compare/v1.239.0...v1.240.0) (2025-01-13)
 
 

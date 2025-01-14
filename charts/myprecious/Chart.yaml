@@ -16,7 +16,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.240.9-pre-01
+version: 1.241.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -680,7 +680,7 @@ dependencies:
     condition: aiostreams.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: aiostreams    
+    alias: aiostreams
   - name: app-template
     condition: stremify.enabled
     version: ~0.2.1
