@@ -4975,7 +4975,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.3@sha256:e2140c289dc8cb94d41a698abb8fb89306fb0294a6d9fb69dc744f368159facc
+    tag: 10.10.3@sha256:bced3a22b418785305d84512743aaf74c5b12cb85520312d9648af4d4bdf05be
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid
