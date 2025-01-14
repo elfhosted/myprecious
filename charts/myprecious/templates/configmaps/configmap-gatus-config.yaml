@@ -777,17 +777,6 @@ data:
           - type: email          
       {{ end }}
 
-      {{ if or .Values.autoscan.enabled }}
-      - name: autoscan
-        group: manage-media
-        url: "http://autoscan:3030/triggers/manual/"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       # {{ if or .Values.recyclarr.enabled }}
       # - name: recyclarr
       #   group: manage-media
@@ -869,17 +858,6 @@ data:
       - name: rutorrent
         group: download-media
         url: "http://rutorrent:8080"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.pyload.enabled }}
-      - name: pyload
-        group: download-media
-        url: "http://pyload:8000/_themes/pyplex/vendor/jQuery/jquery.min.js"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

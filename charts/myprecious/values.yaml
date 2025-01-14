@@ -2142,7 +2142,7 @@ tautulli:
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
-    tag: 2.15.0@sha256:e763974ccd5559086786242b7e02db04930e9b45a945ad31aa6a5b0ec9a246cc
+    tag: 2.15.1@sha256:b1b8582a2b6fab5bbdc6ce2347c9507c191db40f4f8706e0589c707ab1b87a9a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -3495,92 +3495,13 @@ cwabookdownloader:
       cpu: 1
       memory: 1Gi
 
-pyload:
-  enabled: false
-  sso:
-    enabled: true
-  priorityClassName:
-  image:
-    repository: ghcr.io/geek-cookbook/pyload-ng
-    tag: 0.5.0b3.dev71@sha256:17b0414059c2aad0ae0318244a4f024f3e54851430ad6d44bedba260466c78d2
-  env:
-    PUID: 568
-    PGID: 568
-    # S6_READ_ONLY_ROOT: 1
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pyload"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: false # again, s6
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    <<: *storagemounts
-    run: # used for s6-init with non-root
-      enabled: true
-      type: emptyDir
-      mountPath: /run
-      sizeLimit: 1Gi
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-pyload
-          optional: true
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      subPath: pyload
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: pyload
-      - mountPath: /tmp
-        name: tmp
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8000
-  resources:
-    requests:
-      cpu: 1m
-      memory: 40Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-
 lazylibrarian:
   sso:
     enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:6735197c15c49fb42a6c817baedd10808b25588ab8bca07dd002cc529a00a2e1
+    tag: rolling@sha256:54b42b8fa15ad589c15dc31ec64a434dc0bc91c6c6ee186ab4823cff2b0137ea
   enabled: false
   controller:
     annotations:
@@ -3653,7 +3574,7 @@ mylar:
   image:
     registry: ghcr.io
     repository: elfhosted/mylar3
-    tag: 0.8.0@sha256:64406246b893f7b910a4fb8f0b94e7c5ddfe58ee3a81e4982f5f6fd04ead7d6e
+    tag: 0.8.1@sha256:e2ae1cf4d7a88210be3de5625f0853b4f8bf79725e0ec41375dc5ae686f828ac
   env:
     PUID: 568
     PGID: 568
@@ -3868,7 +3789,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.23.0@sha256:b88abdff30b7da51775fc5047001379194cad27c32a97f61db6c9a7be6889ebf
+    tag: 7.24.0@sha256:76ba8f3321c66638551d753c484b64b3c3a9ae68633e14edc9d77bc6b7551fd2
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -3957,7 +3878,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.12.2825@sha256:1a4f8498846c84fbccbe066ed55b792dfe3cd648fe2cffcec1bd49d7fdfb5021
+    tag: 4.0.12.2849@sha256:9cb943419c86d7f6c25c55c1edfa45b90843931502f6c2d1264871f7c63ee5a4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4067,7 +3988,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.12.2825@sha256:1a4f8498846c84fbccbe066ed55b792dfe3cd648fe2cffcec1bd49d7fdfb5021
+    tag: 4.0.12.2849@sha256:9cb943419c86d7f6c25c55c1edfa45b90843931502f6c2d1264871f7c63ee5a4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4264,7 +4185,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.29.2.4915@sha256:f0e630f136ad8ffa4dbda1a288b9fed5d2745e492b0e7766e2e8a4654339096a
+    tag: 1.30.0.4920@sha256:26791c3248330401c22e127ca0154e6fac5144ac0824352489b6acb69cd9de54
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4392,7 +4313,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.9.1.4517@sha256:736706de89074a46124634dd9183811d91d0913106f807c7170c7defe6ae8cb6
+    tag: 2.9.3.4527@sha256:9efc54bc5f939024f3c5b042f6ab53e8111b6b33af792aa9ca8dc7dae18fdf61
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4566,7 +4487,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.6.2711@sha256:a312c8a8b48de7777cb4ff11c65a268f2e1acaac96ccd6319a3356c494c58b59
+    tag: 0.4.8.2726@sha256:687ffea5148c715806d412579dc43aea1c19e920bbfb2888910d0dc662343c2f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4675,7 +4596,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.6.2711@sha256:a312c8a8b48de7777cb4ff11c65a268f2e1acaac96ccd6319a3356c494c58b59
+    tag: 0.4.8.2726@sha256:687ffea5148c715806d412579dc43aea1c19e920bbfb2888910d0dc662343c2f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6026,7 +5947,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.16.13-vaapi
+    tag: 0.17.3-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7533,8 +7454,8 @@ cinesync:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/cinesync-dev
-    tag: rolling@sha256:2f6941c46e0d369a493e63314f7394b810f9fceebfda994932bf278cb13e6ee1
+    repository: ghcr.io/elfhosted/cinesync
+    tag: v2.2@sha256:3059feef71fa7bf0868445997f33193a55ce10b183d5888989ad156aa5ec4567
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10240,7 +10161,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1224@sha256:02655a91db0c6a65034f45a1fa2510b0a93aef73049964c7bddb1d33df139da7
+    tag: 0.22.1249@sha256:79fdc497455d679a2e3d55933236cfeb4e898eb415218a98b47e6981631a20d1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11179,7 +11100,7 @@ jackettio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackettio
-    tag: v1.7.0@sha256:cd575cf575be731701d2d8b0c2b1a85acf4d9678fbd8e045ea6c50fba0a02d49
+    tag: v1.7.0@sha256:5745485f81616a2987befef32f1ed23fd36640ed2e4faaa0b193f615b7358630
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11304,7 +11225,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.32.0@sha256:de20836a86d740fdae658cb7a78f41cab30c33ec0390b60b5dd11bbeea15678e
+    tag: 0.33.0@sha256:be4cbc34a3783df917f8aeb3ed62bb47ec94c6f9da1617d73a5964bdfc6607d3
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -11508,7 +11429,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.5@sha256:bd5ca87407f1fa677f811ccb1f32b6434919ec1793a1797fb0639be658cd26ec
+    tag: 4.3.6@sha256:0b7c69d39922f6a7ed28fdeba873ae9c9db1c4821bed506b5b5a26496e7e45ac
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -12472,7 +12393,7 @@ plexdebrid: &app_plexdebrid
   #   app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:951da714fb083fa5981680faef63b31b050d09b10c5bebbfec93b9a8aa37f093
+    tag: rolling@sha256:e993ea0e13bf7677d13fef16c2302cbcfd3b8bc8e41148f3a39f31c253ded85a
   podLabels:
     app.elfhosted.com/name: plex-debrid    
   priorityClassName: tenant-normal
@@ -12551,7 +12472,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.31@sha256:7991deb78b3a28cc8a56eaaaba0ceaaebbf715ff6b5272320a78cae8ab021c4d
+    tag: v0.5.38@sha256:f4377ab65fab29c508a26e473ac845565cb4843e5272c03413301cba792dcc44
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13892,7 +13813,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:12129f2f3773d5aebc5f549ea14850bc59a6c0c1233d7598c2bc6984a83ded53
+      image: docker.io/redis:7.4-alpine@sha256:1bf97f21f01b0e7bd4b7b34a26d3b9d8086e41e70c10f262e8a9e0b49b5116a0
       envFrom:
       - configMapRef:
           name: immich-env

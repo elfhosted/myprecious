@@ -16,7 +16,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.236.1-pre-05
+version: 1.240.1-pre-01
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -280,11 +280,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: rutorrentgluetun.enabled
     alias: rutorrentgluetun
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: pyload.enabled
-    alias: pyload
   - name: seafile
     version: 3.1.x
     repository: oci://ghcr.io/elfhosted/charts
