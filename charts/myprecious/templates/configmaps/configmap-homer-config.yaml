@@ -422,6 +422,21 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                     
 
+          {{ if .Values.aiostreams.enabled }}
+          - name: "AIOStreams"
+            icon: "fas fa-tools"
+            subtitle: "Combine and format multiple Stremio addons"
+            {{ if .Values.aiostreamsexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
           {{ if .Values.knightcrawler.enabled }}
           - name: "Knightcrawler"
             icon: "fas fa-chess-knight"

@@ -1,0 +1,9 @@
+{{ if .Values.aiostreams.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aiostreams-env
+data:
+  COMET_URL: http://elfhosted-internal.comet/
+  MEDIAFUSION_URL: http://elfhosted-internal.mediafusion/
+{{ end }}

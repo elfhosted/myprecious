@@ -214,7 +214,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }}     
+
+      {{ if .Values.aiostreams.enabled }}
+      - name: aiostreams
+        group: consume-media
+        url: "http://aiostreams:3000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}            
 
       {{ if .Values.knightcrawler.enabled }}
       - name: knightcrawler

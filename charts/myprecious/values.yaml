@@ -869,6 +869,8 @@ tunarrexposed:
   enabled: false
 cometexposed:
   enabled: false  
+aiostreamsexposed:
+  enabled: false    
 davioexposed:
   enabled: false  
 jackettioexposed:
@@ -11757,6 +11759,57 @@ xtremio:
   envFrom:
   - configMapRef:
       name: elfbot-xtremio
+      optional: true
+
+aiostreams:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/aiostreams
+    tag: v1.7.0@sha256:7a26bdf041d2ceed2617fbbb687ee35459015b81d4d21a9018e08144156da8f2
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+  resources:
+    requests:
+      cpu: 1m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000
+  envFrom:
+  - configMapRef:
+      name: aiostreams-env
+  - configMapRef:
+      name: elfbot-aiostreams
       optional: true
 
 stremify:

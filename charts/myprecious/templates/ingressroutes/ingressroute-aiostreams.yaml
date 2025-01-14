@@ -1,0 +1,29 @@
+{{ if .Values.aiostreams.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: aiostreams
+          kind: Service
+          port: 3000
+      middlewares:
+        - name: headers-add-cors-for-stremio
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
+      kind: Rule
+      services:
+        - name: aiostreams
+          kind: Service
+          port: 3000
+      middlewares:
+      {{ if not .Values.aiostreamsexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+      {{ end }}
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+{{ end }}

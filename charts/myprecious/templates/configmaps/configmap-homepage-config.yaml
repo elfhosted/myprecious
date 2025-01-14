@@ -181,7 +181,15 @@ data:
             href: https://{{ .Release.Name }}-comet.{{ .Values.dns_domain }}
             description: Stremio's fastest torrent/debrid search add-on
             siteMonitor: http://comet:8000
-        {{ end }}          
+        {{ end }} 
+
+        {{ if .Values.aiostreams.enabled }}
+        - AIOStreams:
+            icon: mdi-filmstrip-box-multiple
+            href: https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}
+            description: Combine multiple Stremio addons for tidy results
+            siteMonitor: http://aiostreams:3000
+        {{ end }}                  
 
         {{ if .Values.xtremio.enabled }}
         - Xtremio:

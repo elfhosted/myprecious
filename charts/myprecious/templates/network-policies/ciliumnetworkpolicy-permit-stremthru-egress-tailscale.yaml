@@ -1,8 +1,8 @@
-{{ if .Values.stremthru.enabled }}
+{{- if .Values.stremthru.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-stremthru-egress-stremthru"
+  name: "permit-stremthru-egress-tailscale"
 spec:
   endpointSelector:
     matchLabels:
@@ -10,12 +10,9 @@ spec:
   egress:
   - toEndpoints:
     - matchLabels:
-        k8s:io.kubernetes.pod.namespace: stremthru
+        k8s:io.kubernetes.pod.namespace: tailscale
     toPorts:
       - ports:
-        - port: '8080'
+        - port: '80'
           protocol: TCP
-      - ports:
-        - port: '8888' # tinyproxy
-          protocol: TCP
-{{ end }}
+{{- end }}
