@@ -23,6 +23,8 @@ spec:
       middlewares:
         - name: stripprefix-speed
           namespace: traefik
+        - name: compress-false
+          namespace: traefik            
         - name: buffer-2gb
           namespace: traefik
     - match: Host(`{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}`)
