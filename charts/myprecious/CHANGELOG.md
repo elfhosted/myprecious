@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.243.0](https://github.com/elfhosted/myprecious/compare/v1.242.0...v1.243.0) (2025-01-16)
+
+
+### Features
+
+* AIOStreams - use private mediafusion/comet if the user has them ([3492bde](https://github.com/elfhosted/myprecious/commit/3492bdec254d7b97fa45940e12a5b163f6da545b))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.17.5 ([d939546](https://github.com/elfhosted/myprecious/commit/d939546a4a69934d9ea138f2515a64e5c081c358))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.7.2 ([412104c](https://github.com/elfhosted/myprecious/commit/412104c1cc7bca7c88176b7f78cef38eed2a381c))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.7.4 ([5cbc511](https://github.com/elfhosted/myprecious/commit/5cbc5117172ae86de9ffa631b8c072ee1aa176bd))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1269 ([a5609ce](https://github.com/elfhosted/myprecious/commit/a5609ce1d02b20cda6af15a03eb9226d60136517))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.3.0 ([b9e2e53](https://github.com/elfhosted/myprecious/commit/b9e2e53c98d8d3546f48ff92dd5f7213546d3e78))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.33.0 ([388baaf](https://github.com/elfhosted/myprecious/commit/388baaf5e05cb14506f52a744363470a9b9a80a9))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.36.0 ([fbcdd51](https://github.com/elfhosted/myprecious/commit/fbcdd51935a9d6125da2a3bcb4b73e719fb6404a))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 457ca41 ([029d8e2](https://github.com/elfhosted/myprecious/commit/029d8e2e37403ea666b194d0c8a15f8bec9265f2))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to ff18e7c ([6ce8407](https://github.com/elfhosted/myprecious/commit/6ce8407a4f0b2512076cb51b9e5c07ca2d1bf8e3))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 7edd69a ([36c0c11](https://github.com/elfhosted/myprecious/commit/36c0c11ded6c973f4050e7fd80af1f3ced2997ab))
+* **app:** update ghcr.io/elfhosted/youriptv-nobranding:rolling docker digest to 9c93001 ([7689f17](https://github.com/elfhosted/myprecious/commit/7689f1775ccaccc37d0341e9d76a5cc64e23de41))
+* **app:** update ghcr.io/elfhosted/youriptv-nobranding:rolling docker digest to b5b7cb9 ([1613dc9](https://github.com/elfhosted/myprecious/commit/1613dc9ed4bf7e04af0217d609cfa09b7ab419c0))
+
 ## [1.242.0](https://github.com/elfhosted/myprecious/compare/v1.241.0...v1.242.0) (2025-01-15)
 
 
