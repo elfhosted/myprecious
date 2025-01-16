@@ -12521,7 +12521,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.42@sha256:3f4c744965d48be957974c6f3ba4316b474f17e125edc9dd4adf52cba52d7a7c
+    tag: v0.5.44@sha256:7ef91420253766b2b65e3d1f437ec7f32dcffe318be72b088e04aced857665b8
   priorityClassName: tenant-normal
   controller:
     annotations:
