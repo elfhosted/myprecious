@@ -4,6 +4,14 @@ kind: ConfigMap
 metadata:
   name: aiostreams-env
 data:
+  {{ if .Values.mediafusion.enabled }}
+  COMET_URL: http://comet:8000/
+  {{ else }}
   COMET_URL: http://elfhosted-internal.comet/
+  {{ end }}
+  {{ if .Values.mediafusion.enabled }}
+  MEDIAFUSION_URL: http://mediafusion:8000/
+  {{ else }}
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion/
+  {{ end }}
 {{ end }}
