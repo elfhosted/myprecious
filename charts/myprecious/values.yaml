@@ -11716,7 +11716,7 @@ xtremio:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/youriptv-nobranding
-    tag: rolling@sha256:9c93001692788facf2d5dfa6b848c30b28de7c2529c09339aeac7524ecb8bdfd
+    tag: rolling@sha256:b5b7cb9858e5d6b2edd636f6167ef1e78198deb0badea677256a50613b43211e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11767,7 +11767,7 @@ youriptv:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/youriptv-nobranding
-    tag: rolling@sha256:9c93001692788facf2d5dfa6b848c30b28de7c2529c09339aeac7524ecb8bdfd
+    tag: rolling@sha256:b5b7cb9858e5d6b2edd636f6167ef1e78198deb0badea677256a50613b43211e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13083,7 +13083,7 @@ debridav:
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: rolling@sha256:2405f5c2903142c5e1677ceed90853f7e3e30ebbb9b475296b5089100b3792ef
+    tag: rolling@sha256:ff18e7c2505d6071e2dcadb8da9576435e923571d19d6b94c6e7c9bc3964fb99
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
