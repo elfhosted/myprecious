@@ -11713,8 +11713,8 @@ mediaflowproxy:
 xtremio:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/xtremio
-    tag: rolling@sha256:e29cd242282bf6fbd95253520a9646f42e06cf559edd199f4f83aba7a9eefc6b
+    repository: ghcr.io/elfhosted/youriptv-nobranding
+    tag: rolling@sha256:d40d08a67cc6a611374f8097cc49792803c77150caaf372234750f74201a4f3d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11760,6 +11760,53 @@ xtremio:
   - configMapRef:
       name: elfbot-xtremio
       optional: true
+
+youriptv:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/youriptv-nobranding
+    tag: rolling@sha256:d40d08a67cc6a611374f8097cc49792803c77150caaf372234750f74201a4f3d
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-youriptv"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  env:
+    PORT: 3649
+  persistence:
+    tmp: *tmp
+  resources:
+    requests:
+      cpu: 1m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3649
 
 aiostreams:
   enabled: false

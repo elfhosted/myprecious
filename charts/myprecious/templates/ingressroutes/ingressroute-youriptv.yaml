@@ -1,0 +1,29 @@
+{{ if .Values.youriptv.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: youriptv
+          kind: Service
+          port: 3649
+      middlewares:
+        - name: chain-hosted-stremio-addon
+          namespace: traefik                 
+    - match: Host(`{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
+      kind: Rule
+      services:
+        - name: youriptv
+          kind: Service
+          port: 3649
+      middlewares:
+        {{ if not .Values.youriptvexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+{{ end }}

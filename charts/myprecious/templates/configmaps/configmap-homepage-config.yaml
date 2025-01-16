@@ -197,7 +197,15 @@ data:
             href: https://{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}
             description: Watch IPTV in Stremio
             siteMonitor: http://xtremio:3649
-        {{ end }}                   
+        {{ end }}       
+
+        {{ if .Values.youriptv.enabled }}
+        - YourIPTV:
+            icon: mdi-tv
+            href: https://{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}
+            description: Watch your IPTV in Stremio
+            siteMonitor: http://youriptv:3649
+        {{ end }}                           
 
         {{ if .Values.knightcrawler.enabled }}
         - Knightcrawler:

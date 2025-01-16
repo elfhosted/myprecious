@@ -361,6 +361,21 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}     
 
+          {{ if .Values.youriptv.enabled }}
+          - name: "YourIPTV"
+            icon: "fas fa-tv"
+            subtitle: "Watch your IPTV in Stremio"
+            {{ if .Values.youriptvexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}               
+
           {{ if .Values.stremiojackett.enabled }}
           - name: "Stremio Jackett"
             logo: "assets/png/jackett.png"
