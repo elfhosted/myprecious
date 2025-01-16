@@ -34,7 +34,7 @@ spec:
           port: 3002 # openspeedtest
       middlewares:
         - name: stripprefix-speed
-          namespace: traefik
+          namespace: traefik            
         - name: buffer-2gb
           namespace: traefik
 {{ end }}

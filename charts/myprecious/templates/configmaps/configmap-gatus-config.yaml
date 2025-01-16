@@ -171,6 +171,16 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.youriptv.enabled }}
+      - name: youriptv
+        group: consume-media
+        url: "http://youriptv:3649"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
 
       {{ if .Values.stremiojackett.enabled }}
       - name: stremio-jackett
