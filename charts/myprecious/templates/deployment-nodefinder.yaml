@@ -27,7 +27,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled .Values.embyhobbit.enabled .Values.embyranger.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinranger.enabled  .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
+              {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled .Values.embyhobbit.enabled .Values.embyranger.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinranger.enabled  .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled .Values.hobbit.enabled .Values.ranger.enabled .Values.halfling.enabled .Values.nazgul.enabled }}
               - key: node-role.elfhosted.com/dedicated
               {{- else }}
               - key: node-role.elfhosted.com/contended
@@ -41,10 +41,10 @@ spec:
             podAffinityTerm:
               labelSelector:
                 matchExpressions:
-                - key: app.elfhosted.com/name
+                - key: app.elfhosted.com/role
                   operator: In
                   values:
-                  - zurg # .. but prefer zurg
+                  - nodefinder
               topologyKey: "kubernetes.io/hostname"
               namespaceSelector: {}  # i.e., in the absense of any better signal, pick a node which already has zurg on it
       containers:
@@ -55,15 +55,27 @@ spec:
         {{- if .Values.zurghobbit.enabled  }}
         resources: 
           {{ .Values.zurghobbit.resources   | toYaml | indent 10  | trimPrefix "          " }}
+        {{- if .Values.hobbit.enabled  }}
+        resources: 
+          {{ .Values.hobbit.resources   | toYaml | indent 10  | trimPrefix "          " }}          
         {{- else if .Values.zurgranger.enabled }}
         resources: 
           {{ .Values.zurgranger.resources   | toYaml | indent 10  | trimPrefix "          " }}
+        {{- else if .Values.ranger.enabled }}
+        resources: 
+          {{ .Values.ranger.resources   | toYaml | indent 10  | trimPrefix "          " }}          
         {{- else if .Values.zurghalfling.enabled }}
         resources: 
           {{ .Values.zurghalfling.resources   | toYaml | indent 10  | trimPrefix "          " }}
+        {{- else if .Values.halfling.enabled }}
+        resources: 
+          {{ .Values.halfling.resources   | toYaml | indent 10  | trimPrefix "          " }}
         {{- else if .Values.zurgnazgul.enabled }}
         resources: 
           {{ .Values.zurgnazgul.resources   | toYaml | indent 10  | trimPrefix "          " }}
+        {{- else if .Values.nazgul.enabled }}
+        resources: 
+          {{ .Values.nazgul.resources   | toYaml | indent 10  | trimPrefix "          " }}          
         {{- else }}
         resources:
           requests:
