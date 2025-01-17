@@ -13147,6 +13147,26 @@ debridav: &app_debridav
     limits:
       cpu: 1
       memory: 512Mi
+  additionalContainers:
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/movies
+        mkdir -p /config/series
+        mkdir -p /config/downloads
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: debridav
+      resources: *default_resources
+      securityContext: *default_securitycontext  
 
 debridav4k:
   enabled: false
@@ -13176,6 +13196,26 @@ debridav4k:
   - configMapRef:
       name: elfbot-debridav-4k
       optional: true    
+  additionalContainers:
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/movies-4k
+        mkdir -p /config/series-4k
+        mkdir -p /config/downloads
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: debridav
+      resources: *default_resources
+      securityContext: *default_securitycontext  
 
 rclonedebridlink:
   enabled: false
