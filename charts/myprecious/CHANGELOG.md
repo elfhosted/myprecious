@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.244.0](https://github.com/elfhosted/myprecious/compare/v1.243.0...v1.244.0) (2025-01-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.44 ([9640421](https://github.com/elfhosted/myprecious/commit/9640421c6898376152b58031623cedc93094c347))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.45 ([762d6de](https://github.com/elfhosted/myprecious/commit/762d6de05d0f4b6fe0199d5e68d53e32686b20ec))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1275 ([03e0f35](https://github.com/elfhosted/myprecious/commit/03e0f35152db6cf115480df6e48790824f6d4e26))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.36.1 ([3cfd578](https://github.com/elfhosted/myprecious/commit/3cfd5784136592615f9f5f9944137840e12d17ba))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.37.0 ([75fbe53](https://github.com/elfhosted/myprecious/commit/75fbe53068214c183d346c747e8632033e193374))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.37.1 ([9983c70](https://github.com/elfhosted/myprecious/commit/9983c70bfb3475f54deff93d5bcb8ab54c0980df))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.124.2 ([a93c1ca](https://github.com/elfhosted/myprecious/commit/a93c1ca83efa861862250c0e5984876228251533))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.124.2 ([91671dc](https://github.com/elfhosted/myprecious/commit/91671dc33f148a4683f33b94401eb469e91982f2))
+
+
+### Bug Fixes
+
+* Add localTrafficPolicy to rclone-mounted services to prevent network "load balancing" ([35f2d3c](https://github.com/elfhosted/myprecious/commit/35f2d3cbbd0402cfcdc88dc4cce8e77a1d2761ab))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to 788e700 ([427593c](https://github.com/elfhosted/myprecious/commit/427593c8260a09de1aa38a6fc54f15e84d0645b8))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to 97ff33d ([a7e6b12](https://github.com/elfhosted/myprecious/commit/a7e6b1214027151e3acd5bef763ea3b71126b729))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to fb54e5e ([eed122d](https://github.com/elfhosted/myprecious/commit/eed122dd4a12000040230b0e62f5c7868be93ef6))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 94555e7 ([af6ffeb](https://github.com/elfhosted/myprecious/commit/af6ffeb76429d40e99fe40ee78f39f67ff80643b))
+* VPN fix for gluetun under Kubernetes v1.31.4 ([479c19c](https://github.com/elfhosted/myprecious/commit/479c19c2ae40dcfa60b7f18b638af08d4f677ecb))
+
 ## [1.243.0](https://github.com/elfhosted/myprecious/compare/v1.242.0...v1.243.0) (2025-01-16)
 
 
