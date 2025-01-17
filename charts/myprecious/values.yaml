@@ -893,7 +893,7 @@ stremifyexposed:
   enabled: false    
 stremiojackettexposed:
   enabled: false  
-xtremioexposed:
+youriptvexposed:
   enabled: false
 ersatztv:
   enabled: false  
@@ -11719,57 +11719,6 @@ mediaflowproxy:
   - configMapRef:
       name: elfbot-mediaflow-proxy
       optional: true   
-
-xtremio:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/youriptv-nobranding
-    tag: rolling@sha256:b5b7cb9858e5d6b2edd636f6167ef1e78198deb0badea677256a50613b43211e
-  priorityClassName: tenant-normal
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-xtremio"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  env:
-    PORT: 3649
-  persistence:
-    tmp: *tmp
-  resources:
-    requests:
-      cpu: 1m
-      memory: 512Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3649
-  envFrom:
-  - configMapRef:
-      name: elfbot-xtremio
-      optional: true
 
 youriptv:
   enabled: false

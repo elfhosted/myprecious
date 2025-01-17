@@ -191,14 +191,6 @@ data:
             siteMonitor: http://aiostreams:3000
         {{ end }}                  
 
-        {{ if .Values.xtremio.enabled }}
-        - Xtremio:
-            icon: mdi-tv
-            href: https://{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}
-            description: Watch IPTV in Stremio
-            siteMonitor: http://xtremio:3649
-        {{ end }}       
-
         {{ if .Values.youriptv.enabled }}
         - YourIPTV:
             icon: mdi-tv

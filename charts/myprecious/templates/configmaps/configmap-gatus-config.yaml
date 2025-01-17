@@ -160,17 +160,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.xtremio.enabled }}
-      - name: xtremio
-        group: consume-media
-        url: "http://xtremio:3649"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.youriptv.enabled }}
       - name: youriptv
         group: consume-media
@@ -270,6 +259,7 @@ data:
           - type: email
       {{ end }}
       
+
       {{ if .Values.mediafusion.enabled }}
       - name: mediafusion
         group: consume-media
