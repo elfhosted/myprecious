@@ -1,21 +1,21 @@
-{{ if .Values.debridav.enabled }}
+{{ if .Values.debridav4k.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: debridav-env
+  name: debridav4k-env
 data:
   PUID: "568"
   PGID: "568"
   DEBRIDAV_FILE-PATH: /config/data
-  DEBRIDAV_MOUNT_PATH: /storage/debridav
+  DEBRIDAV_MOUNT_PATH: /storage/debridav4k
   DEBRIDAV_CACHE-LOCAL-DEBRID-FILES-THRESHOLD-MB: "5000"
   DEBRIDAV_DEBRID_CLIENTS: premiumize
   SONARR_INTEGRATION_ENABLED: "true"
-  SONARR_HOST: sonarr
-  SONARR_API_KEY: {{ .Values.sonarrexposed.apikey }}
+  SONARR_HOST: sonarr4k
+  SONARR_API_KEY: {{ .Values.sonarr4kexposed.apikey }}
   SONARR_CATEGORY: series
   RADARR_INTEGRATION_ENABLED: "true"
-  RADARR_HOST: radarr
-  RADARR_API_KEY: {{ .Values.radarrexposed.apikey }}
+  RADARR_HOST: radarr4k
+  RADARR_API_KEY: {{ .Values.radarr4kexposed.apikey }}
   RADARR_CATEGORY: movies
 {{ end }}

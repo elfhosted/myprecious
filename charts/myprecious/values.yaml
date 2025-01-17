@@ -13076,7 +13076,7 @@ requestrr:
       - mountPath: /tmp
         name: tmp
 
-debridav:
+debridav: &app_debridav
   enabled: false
   priorityClassName: tenant-normal
   podLabels:
@@ -13139,6 +13139,35 @@ debridav:
     limits:
       cpu: 1
       memory: 512Mi
+
+debridav4k:
+  enabled: false
+  <<: *app_debridav
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav-4k,debridav-4k-env"
+  persistence:
+    <<: *storagemounts
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: debridav-4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    app-dev:
+      enabled: true
+      type: emptyDir
+      mountPath: /app/dev
+      sizeLimit: 1Gi  
+  envFrom:
+  - configMapRef:
+      name: debridav-4k-env
+  - configMapRef:
+      name: elfbot-debridav-4k
+      optional: true    
 
 rclonedebridlink:
   enabled: false
