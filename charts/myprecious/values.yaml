@@ -298,7 +298,14 @@ rclonemountdebridav: &rclonemountdebridav
   volumeSpec:
     persistentVolumeClaim:
       claimName: debridav
-  mountPath: /storage/debridav    
+  mountPath: /storage/debridav   
+rclonemountdebridav4k: &rclonemountdebridav4k
+  enabled: false 
+  type: custom
+  volumeSpec:
+    persistentVolumeClaim:
+      claimName: debridav-4k
+  mountPath: /storage/debridav      
 rclone: &rclone
   enabled: true # everyone gets an rclone mount
   type: custom
@@ -316,6 +323,7 @@ storagemounts: &storagemounts
   rclonemountpremiumize: *rclonemountpremiumize
   rclonemounttorbox: *rclonemounttorbox
   rclonemountdebridav: *rclonemountdebridav
+  rclonemountdebridav4k: *rclonemountdebridav4k
   tmp: &tmp
     enabled: true
     type: emptyDir
