@@ -4917,6 +4917,7 @@ plex: &app_plex
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -5813,6 +5814,7 @@ flaresolverr: &app_flaresolverr
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -7644,6 +7646,7 @@ seerrbridge:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -9137,6 +9140,7 @@ rdtclientalldebrid:
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -9952,6 +9956,7 @@ rivenvpn:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
         DNS_KEEP_NAMESERVER: "on"        
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10107,6 +10112,7 @@ airdcpp: &app_airdcpp
       - configMapRef:
           name: airdcpp-pia-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10143,6 +10149,7 @@ airdcppgluetun:
       - configMapRef:
           name: airdcpp-gluetun-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10339,6 +10346,7 @@ stremioserverpia:
       - configMapRef:
           name: stremioserver-pia-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10369,6 +10377,7 @@ stremioservergluetun:
       - configMapRef:
           name: stremioserver-gluetun-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11090,6 +11099,7 @@ comet:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11215,6 +11225,7 @@ jackettio:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11633,6 +11644,7 @@ tinyproxy:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11950,6 +11962,7 @@ stremify:
       - secretRef:
           name: stremify-vpn
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -12373,6 +12386,7 @@ zurg: &app_zurg
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -12853,6 +12867,7 @@ plexdebridalldebrid:
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -13318,6 +13333,7 @@ rclonealldebrid:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8,192.168.0.0/16,172.16.0.0/20
         DNS_KEEP_NAMESERVER: "on"        
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
