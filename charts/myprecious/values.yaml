@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true
+safeToRelease: false 
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -13100,7 +13100,7 @@ debridav:
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: rolling@sha256:788e7002f01578b104fb1932b26b28c800dee7435dbb93bce7b2dcc0bf577e23
+    tag: rolling@sha256:97ff33d4b7c9e690be4e40a97751a40bd4fd1998e15056b8817fccc1ee30652b
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
@@ -13762,7 +13762,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.124.0@sha256:80e0f8a9520db3536c91fadedc369a30080d6fd9df046e0f2f03210755ddf55d
+    tag: v1.124.2@sha256:c14dccad0611635668abf98f17ce87c3badcc17bb979c53ef96dc49e934ebbc8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13850,7 +13850,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.124.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.124.2
       envFrom:
       - configMapRef:
           name: immich-env
