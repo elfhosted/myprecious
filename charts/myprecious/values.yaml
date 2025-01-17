@@ -895,6 +895,8 @@ stremiojackettexposed:
   enabled: false  
 youriptvexposed:
   enabled: false
+youriptvexposed:
+  enabled: false  
 ersatztv:
   enabled: false  
 threadfinexposed:
@@ -4923,6 +4925,7 @@ plex: &app_plex
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -5819,6 +5822,7 @@ flaresolverr: &app_flaresolverr
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -7650,6 +7654,7 @@ seerrbridge:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -7952,7 +7957,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -8065,7 +8070,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
   command:
   - /rclonefm.sh
   controller:
@@ -8191,7 +8196,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -9143,6 +9148,7 @@ rdtclientalldebrid:
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -9958,6 +9964,7 @@ rivenvpn:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
         DNS_KEEP_NAMESERVER: "on"        
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10113,6 +10120,7 @@ airdcpp: &app_airdcpp
       - configMapRef:
           name: airdcpp-pia-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10149,6 +10157,7 @@ airdcppgluetun:
       - configMapRef:
           name: airdcpp-gluetun-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10171,7 +10180,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1269@sha256:a1284818d4dfea335217bd968384adb82ff864fbdce045056ff85c585bd6773b
+    tag: 0.22.1275@sha256:8c70a1f13b656bc2e56ac1bb7b5f7f14e156b7841f3362c0a21e870ca2895a95
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10345,6 +10354,7 @@ stremioserverpia:
       - configMapRef:
           name: stremioserver-pia-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -10375,6 +10385,7 @@ stremioservergluetun:
       - configMapRef:
           name: stremioserver-gluetun-config
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11096,6 +11107,7 @@ comet:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11221,6 +11233,7 @@ jackettio:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11235,7 +11248,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.36.1@sha256:d87a1473b94f0a88957d4736e42a4a197bed8310ceda84defc25a65d7556af8b
+    tag: 0.37.1@sha256:16211c7c476842665e8bba81f2c272176f85e6b90e00b2ca7c8ef3d035be0da5
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -11639,6 +11652,7 @@ tinyproxy:
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -11905,6 +11919,7 @@ stremify:
       - secretRef:
           name: stremify-vpn
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -12328,6 +12343,7 @@ zurg: &app_zurg
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -12478,7 +12494,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.44@sha256:7ef91420253766b2b65e3d1f437ec7f32dcffe318be72b088e04aced857665b8
+    tag: v0.5.45@sha256:609d58f69695ae8aed86202d29740a763273463910efca9f4aca31b8b1235509
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12808,6 +12824,7 @@ plexdebridalldebrid:
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -13228,7 +13245,7 @@ rclonealldebrid:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
   command:
   - /debrid-provider.sh
   controller:
@@ -13282,7 +13299,7 @@ rclonealldebrid:
         subPath: tinyproxy.conf                      
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
       command:
       - /bin/ash
       - -c
@@ -13342,6 +13359,7 @@ rclonealldebrid:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8,192.168.0.0/16,172.16.0.0/20
         DNS_KEEP_NAMESERVER: "on"        
       securityContext:
+        privileged: true
         runAsUser: 0
         capabilities:
           add:
@@ -13354,7 +13372,7 @@ rclonepremiumize:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
   command:
   - /debrid-provider.sh
   controller:
@@ -13394,7 +13412,7 @@ rclonepremiumize:
           name: premiumize-config
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
       command:
       - /bin/ash
       - -c
@@ -13441,7 +13459,7 @@ rclonetorbox:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
   command:
   - /debrid-provider.sh
   controller:
@@ -13489,7 +13507,7 @@ rclonetorbox:
           optional: true          
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:7edd69a4c6e9828a8098b5a22a9f8378bd1ec92adfb2b0e91016acdb17e2b742
+      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
       command:
       - /bin/ash
       - -c
