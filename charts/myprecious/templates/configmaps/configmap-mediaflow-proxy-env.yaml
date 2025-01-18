@@ -8,6 +8,9 @@ data:
   PROXY_URL: http://tinyproxy:8888 # proxy via dedicated tinyproxy instance
   TRANSPORT_ROUTES: |
     {
+      "https://torrentio.strem.fun": {
+          "proxy": true
+      },
       "https://*.alldebrid.com": {
           "proxy": true
       },
