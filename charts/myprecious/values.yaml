@@ -3505,7 +3505,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:7b95a068dbbc5b108a6e6c72cb6df7e6226891fd675dbcf70dae34cdefb913be
+    tag: rolling@sha256:ed963e743dbf31ac611fedfa618feb8956006bf87353999b71b9fa88119f6f07
   enabled: false
   controller:
     annotations:
@@ -3882,7 +3882,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.12.2849@sha256:87ecddd466fce5d8f203dfc82ce24d56bb3a15bc329cc804eba055b414432dbc
+    tag: 4.0.12.2866@sha256:1c562ca61b72cdd5c274bb8cb61ef6f9ded3ee34c2ff98a7eb142bb5b97fd8ef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3992,7 +3992,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.12.2849@sha256:87ecddd466fce5d8f203dfc82ce24d56bb3a15bc329cc804eba055b414432dbc
+    tag: 4.0.12.2866@sha256:1c562ca61b72cdd5c274bb8cb61ef6f9ded3ee34c2ff98a7eb142bb5b97fd8ef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10172,7 +10172,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1275@sha256:8c70a1f13b656bc2e56ac1bb7b5f7f14e156b7841f3362c0a21e870ca2895a95
+    tag: 0.22.1283@sha256:3ecc29c02e18ee5f727f69981fc38a9517047e44dcea01a86c363ff7a1176c07
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11444,7 +11444,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.6@sha256:0b7c69d39922f6a7ed28fdeba873ae9c9db1c4821bed506b5b5a26496e7e45ac
+    tag: 4.3.10@sha256:b40bc43d4ac5628f24058ec9d886945bd5e0911da066e556b031af0794bd46ab
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -12539,7 +12539,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.45@sha256:609d58f69695ae8aed86202d29740a763273463910efca9f4aca31b8b1235509
+    tag: v0.5.46@sha256:bea930423300c3b8d2da85c406f545f30f19d7e1f20ffcdce56218efd68fafff
   priorityClassName: tenant-normal
   controller:
     annotations:
