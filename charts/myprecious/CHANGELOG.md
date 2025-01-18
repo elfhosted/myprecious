@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.245.0](https://github.com/elfhosted/myprecious/compare/v1.244.0...v1.245.0) (2025-01-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.46 ([7745d05](https://github.com/elfhosted/myprecious/commit/7745d05cf6e1bb54a80c043c4902a57765146a66))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1283 ([bed41db](https://github.com/elfhosted/myprecious/commit/bed41dbab807c4e3266b5f8d39740cca4b5c0b2a))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.10 ([ed7c16f](https://github.com/elfhosted/myprecious/commit/ed7c16f78f45d3a87a7fe703b1e6816e236796fa))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.7 ([e5666dc](https://github.com/elfhosted/myprecious/commit/e5666dc3def6233c380485c9557eae65713d1978))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.8 ([eacff8f](https://github.com/elfhosted/myprecious/commit/eacff8f1efb216f78e636f7665f0bd90f883c77e))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.9 ([a5df56b](https://github.com/elfhosted/myprecious/commit/a5df56b1efb035b7fec1082914412e3c1a9bc95c))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.12.2866 ([4052157](https://github.com/elfhosted/myprecious/commit/40521577fa4c55521324ef5efbab64ce91eaa950))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 751beaa ([edb8522](https://github.com/elfhosted/myprecious/commit/edb85224e9eccb4440098d1dddbab55782e99c0e))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to ed963e7 ([ff6fab2](https://github.com/elfhosted/myprecious/commit/ff6fab2364c187cfe5ba5e5dd1bddcb0ecec749a))
+* Fix ingressroute for Riven's /api/v1/stats ([1e84fd3](https://github.com/elfhosted/myprecious/commit/1e84fd3c378d5620e1a84afe0561c361910138dd))
+* Proxy MediaFlowProxy access to torrentio for AIOStreams ([56fe01a](https://github.com/elfhosted/myprecious/commit/56fe01a0c01e839df992bd41a2acf9d641b52d89))
+* Set default secret for AIOStreams (user-overrideable) ([45b3a25](https://github.com/elfhosted/myprecious/commit/45b3a257b3a56bc930bed18a4a253c59acb682c7))
+* Update AIOStreams to v1.8.0 ([7eef506](https://github.com/elfhosted/myprecious/commit/7eef506599212c85f4749b84e7ae21341a2adf15))
+
 ## [1.244.0](https://github.com/elfhosted/myprecious/compare/v1.243.0...v1.244.0) (2025-01-17)
 
 
