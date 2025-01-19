@@ -116,5 +116,11 @@ rules:
 {{ if .Values.seerrbridge.enabled }}
   - elfbot-seerrbridge
 {{ end }}
+{{ if .Values.aiostreams.enabled }}
+  - elfbot-aiostreams
+{{ end }}
+{{ if .Values.debridav.enabled }}
+  - elfbot-debridav
+{{ end }}
 
 

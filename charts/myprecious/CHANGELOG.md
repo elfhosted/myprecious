@@ -1,5 +1,79 @@
 # Changelog
 
+## [1.246.0](https://github.com/elfhosted/myprecious/compare/v1.245.0...v1.246.0) (2025-01-19)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.0 ([b2273ed](https://github.com/elfhosted/myprecious/commit/b2273ed031c5b791888a475a7dd2bfaa5795f7cc))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.8.1 ([09c78e5](https://github.com/elfhosted/myprecious/commit/09c78e5bbf839a31a89d5274c551f7813b64a886))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.8.3 ([d36d9f4](https://github.com/elfhosted/myprecious/commit/d36d9f4501c0d5f356f9c40dd6700f6e15fcfb1b))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.47 ([0cb0f63](https://github.com/elfhosted/myprecious/commit/0cb0f637102acd7d1864aea69577dec4efa476d4))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1286 ([ba10777](https://github.com/elfhosted/myprecious/commit/ba10777335be42afd7c13e70b358d0f28a52de4e))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.9.4.4539 ([b079021](https://github.com/elfhosted/myprecious/commit/b0790212e54aa8ddf7ae1cf475a822b1274eca0e))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.11 ([c057818](https://github.com/elfhosted/myprecious/commit/c0578185ba9605d25e19bb0857eedc57664a4b1e))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.12 ([90949bd](https://github.com/elfhosted/myprecious/commit/90949bdd570ad77a630f023f67e1ac12e133086f))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.30.1.4928 ([db3d047](https://github.com/elfhosted/myprecious/commit/db3d0477945764729973fdbe6d6b3129ea5a1c76))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.9.2730 ([5246b3e](https://github.com/elfhosted/myprecious/commit/5246b3e51332f07c0f3ed74e95b780a496359d83))
+* **app:** update ghcr.io/elfhosted/shokoserver docker tag to v5.1.0 ([3003521](https://github.com/elfhosted/myprecious/commit/3003521989eea034a18706423c4b1693a342d937))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.38.0 ([9646736](https://github.com/elfhosted/myprecious/commit/96467369637e4b1d3ec4ccc3a4af3cd95c7f45d4))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to 70afb9f ([8175e72](https://github.com/elfhosted/myprecious/commit/8175e72e01ab1a1b0aee73ad46b739c53d7f9536))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to db9111c ([39d958c](https://github.com/elfhosted/myprecious/commit/39d958c14545e28182d20e3ad78a5c782e39ca53))
+* **app:** update ghcr.io/elfhosted/shokoserver:v5.0.0 docker digest to 64443e9 ([13a2e28](https://github.com/elfhosted/myprecious/commit/13a2e28f12cafee106cd32bc243d8037578a4b18))
+* Make it possible to edit aiostreams elfbot configmap directly in Kubernetes dashboard ([34c3066](https://github.com/elfhosted/myprecious/commit/34c30660b0eb4a2f12cccb9cf69f6a3ab06dd731))
+* pre-set default MediaFlowProxy URL in AIOStreams if user is subscribed ([de1d75f](https://github.com/elfhosted/myprecious/commit/de1d75f34d4f867d2667fa09063b7f0b08eadf3c))
+
+## [1.245.0](https://github.com/elfhosted/myprecious/compare/v1.244.0...v1.245.0) (2025-01-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.46 ([7745d05](https://github.com/elfhosted/myprecious/commit/7745d05cf6e1bb54a80c043c4902a57765146a66))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1283 ([bed41db](https://github.com/elfhosted/myprecious/commit/bed41dbab807c4e3266b5f8d39740cca4b5c0b2a))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.10 ([ed7c16f](https://github.com/elfhosted/myprecious/commit/ed7c16f78f45d3a87a7fe703b1e6816e236796fa))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.7 ([e5666dc](https://github.com/elfhosted/myprecious/commit/e5666dc3def6233c380485c9557eae65713d1978))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.8 ([eacff8f](https://github.com/elfhosted/myprecious/commit/eacff8f1efb216f78e636f7665f0bd90f883c77e))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.9 ([a5df56b](https://github.com/elfhosted/myprecious/commit/a5df56b1efb035b7fec1082914412e3c1a9bc95c))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.12.2866 ([4052157](https://github.com/elfhosted/myprecious/commit/40521577fa4c55521324ef5efbab64ce91eaa950))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 751beaa ([edb8522](https://github.com/elfhosted/myprecious/commit/edb85224e9eccb4440098d1dddbab55782e99c0e))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to ed963e7 ([ff6fab2](https://github.com/elfhosted/myprecious/commit/ff6fab2364c187cfe5ba5e5dd1bddcb0ecec749a))
+* Fix ingressroute for Riven's /api/v1/stats ([1e84fd3](https://github.com/elfhosted/myprecious/commit/1e84fd3c378d5620e1a84afe0561c361910138dd))
+* Proxy MediaFlowProxy access to torrentio for AIOStreams ([56fe01a](https://github.com/elfhosted/myprecious/commit/56fe01a0c01e839df992bd41a2acf9d641b52d89))
+* Set default secret for AIOStreams (user-overrideable) ([45b3a25](https://github.com/elfhosted/myprecious/commit/45b3a257b3a56bc930bed18a4a253c59acb682c7))
+* Update AIOStreams to v1.8.0 ([7eef506](https://github.com/elfhosted/myprecious/commit/7eef506599212c85f4749b84e7ae21341a2adf15))
+
+## [1.244.0](https://github.com/elfhosted/myprecious/compare/v1.243.0...v1.244.0) (2025-01-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.44 ([9640421](https://github.com/elfhosted/myprecious/commit/9640421c6898376152b58031623cedc93094c347))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.45 ([762d6de](https://github.com/elfhosted/myprecious/commit/762d6de05d0f4b6fe0199d5e68d53e32686b20ec))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1275 ([03e0f35](https://github.com/elfhosted/myprecious/commit/03e0f35152db6cf115480df6e48790824f6d4e26))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.36.1 ([3cfd578](https://github.com/elfhosted/myprecious/commit/3cfd5784136592615f9f5f9944137840e12d17ba))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.37.0 ([75fbe53](https://github.com/elfhosted/myprecious/commit/75fbe53068214c183d346c747e8632033e193374))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.37.1 ([9983c70](https://github.com/elfhosted/myprecious/commit/9983c70bfb3475f54deff93d5bcb8ab54c0980df))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.124.2 ([a93c1ca](https://github.com/elfhosted/myprecious/commit/a93c1ca83efa861862250c0e5984876228251533))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.124.2 ([91671dc](https://github.com/elfhosted/myprecious/commit/91671dc33f148a4683f33b94401eb469e91982f2))
+
+
+### Bug Fixes
+
+* Add localTrafficPolicy to rclone-mounted services to prevent network "load balancing" ([35f2d3c](https://github.com/elfhosted/myprecious/commit/35f2d3cbbd0402cfcdc88dc4cce8e77a1d2761ab))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to 788e700 ([427593c](https://github.com/elfhosted/myprecious/commit/427593c8260a09de1aa38a6fc54f15e84d0645b8))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to 97ff33d ([a7e6b12](https://github.com/elfhosted/myprecious/commit/a7e6b1214027151e3acd5bef763ea3b71126b729))
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to fb54e5e ([eed122d](https://github.com/elfhosted/myprecious/commit/eed122dd4a12000040230b0e62f5c7868be93ef6))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 94555e7 ([af6ffeb](https://github.com/elfhosted/myprecious/commit/af6ffeb76429d40e99fe40ee78f39f67ff80643b))
+* VPN fix for gluetun under Kubernetes v1.31.4 ([479c19c](https://github.com/elfhosted/myprecious/commit/479c19c2ae40dcfa60b7f18b638af08d4f677ecb))
+
 ## [1.243.0](https://github.com/elfhosted/myprecious/compare/v1.242.0...v1.243.0) (2025-01-16)
 
 

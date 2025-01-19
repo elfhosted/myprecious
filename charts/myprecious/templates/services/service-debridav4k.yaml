@@ -1,4 +1,4 @@
-{{ if .Values.debridav4k.enabled }}
+{{ if .Values.debridav.enabled }}
 apiVersion: v1
 kind: Service
 metadata:

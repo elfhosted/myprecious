@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true
+safeToRelease: true 
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -3513,7 +3513,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:7b95a068dbbc5b108a6e6c72cb6df7e6226891fd675dbcf70dae34cdefb913be
+    tag: rolling@sha256:751beaa73fc9c06d22bc34ecd9bd68d5a6c8372ea38733116ca0ba260c1b7f7e
   enabled: false
   controller:
     annotations:
@@ -3890,7 +3890,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.12.2849@sha256:87ecddd466fce5d8f203dfc82ce24d56bb3a15bc329cc804eba055b414432dbc
+    tag: 4.0.12.2866@sha256:1c562ca61b72cdd5c274bb8cb61ef6f9ded3ee34c2ff98a7eb142bb5b97fd8ef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4000,7 +4000,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.12.2849@sha256:87ecddd466fce5d8f203dfc82ce24d56bb3a15bc329cc804eba055b414432dbc
+    tag: 4.0.12.2866@sha256:1c562ca61b72cdd5c274bb8cb61ef6f9ded3ee34c2ff98a7eb142bb5b97fd8ef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4197,7 +4197,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.30.0.4920@sha256:26791c3248330401c22e127ca0154e6fac5144ac0824352489b6acb69cd9de54
+    tag: 1.30.1.4928@sha256:cf1d908231caf9d078d39ed89d79d14d78aac70ee76c63009499716ec180ca60
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4325,7 +4325,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.9.3.4527@sha256:9efc54bc5f939024f3c5b042f6ab53e8111b6b33af792aa9ca8dc7dae18fdf61
+    tag: 2.9.4.4539@sha256:45a7ba912122d1164354d6496c1616c27c2c7e71e2abbaf2c723527449262da8
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4499,7 +4499,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.8.2726@sha256:687ffea5148c715806d412579dc43aea1c19e920bbfb2888910d0dc662343c2f
+    tag: 0.4.9.2730@sha256:9479bbf94e51a90dec1e5d5f6e3db56642010fa206ac440927e4e2107e15faef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4608,7 +4608,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.8.2726@sha256:687ffea5148c715806d412579dc43aea1c19e920bbfb2888910d0dc662343c2f
+    tag: 0.4.9.2730@sha256:9479bbf94e51a90dec1e5d5f6e3db56642010fa206ac440927e4e2107e15faef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5961,7 +5961,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.17.5-vaapi
+    tag: 0.18.0-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7037,7 +7037,7 @@ shoko:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/shokoserver
-    tag: v5.0.0@sha256:85ad89084fd24a03586d1f79b3e5ea5da0f2554778bdf04e3bec8a18504ace6d
+    tag: v5.1.0@sha256:a85870d2e1919f3e5c5cb2b5e29101503934e28f0230393cb5745be3b15c23da
   env:
     PUID: 568
     PGID: 568
@@ -7957,7 +7957,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+    tag: 1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -8070,7 +8070,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+    tag: 1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
   command:
   - /rclonefm.sh
   controller:
@@ -8196,7 +8196,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+    tag: 1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -10180,7 +10180,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1275@sha256:8c70a1f13b656bc2e56ac1bb7b5f7f14e156b7841f3362c0a21e870ca2895a95
+    tag: 0.22.1286@sha256:c1eb096489c3770c96bdd654eb85ce4c421f473cfc3e246ab7b9e1d0b848ae18
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11248,7 +11248,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.37.1@sha256:16211c7c476842665e8bba81f2c272176f85e6b90e00b2ca7c8ef3d035be0da5
+    tag: 0.38.0@sha256:275fa2d047e8954cddac9375153f754b824c706d3ed4a0e3659cc12c962b6533
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -11452,7 +11452,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.6@sha256:0b7c69d39922f6a7ed28fdeba873ae9c9db1c4821bed506b5b5a26496e7e45ac
+    tag: 4.3.12@sha256:4095451b7f6df019b43b1aa3bddbee2049b25b6f538d5b3cd06d6345749a9c1a
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -11785,7 +11785,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.7.4@sha256:5f184a22510065511fdf2098c9f8c726276af0462e6860d61ce7ca4f0ed368e9
+    tag: v1.8.3@sha256:bc1ec84678753b6136b1f5781943e3bd6a66885fd740f2847c0a9afe733d8aac
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11828,6 +11828,8 @@ aiostreams:
   envFrom:
   - configMapRef:
       name: aiostreams-env
+  - secretRef:
+      name: aiostreams-env      
   - configMapRef:
       name: elfbot-aiostreams
       optional: true
@@ -12494,7 +12496,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.45@sha256:609d58f69695ae8aed86202d29740a763273463910efca9f4aca31b8b1235509
+    tag: v0.5.47@sha256:5be082f27df2de3631dc4009c2b51a085dd4b23fc2c5259d5980f65ad96b4ba0
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13056,8 +13058,8 @@ debridav: &app_debridav
   podLabels:
     app.elfhosted.com/name: debridav  
   image:
-    repository: ghcr.io/elfhosted/debridav-dev
-    tag: rolling@sha256:2a2651fe0a8be8939e08f44bc685f75a9b62fb104f6e5617214092b3516e0343
+    repository: ghcr.io/elfhosted/debridav
+    tag: rolling@sha256:70afb9fa85a97896ff841950a0bac81574fef7876d68532f4cde458995e6d28e
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
@@ -13245,7 +13247,7 @@ rclonealldebrid:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+    tag: 1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
   command:
   - /debrid-provider.sh
   controller:
@@ -13299,7 +13301,7 @@ rclonealldebrid:
         subPath: tinyproxy.conf                      
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
       command:
       - /bin/ash
       - -c
@@ -13372,7 +13374,7 @@ rclonepremiumize:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+    tag: 1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
   command:
   - /debrid-provider.sh
   controller:
@@ -13412,7 +13414,7 @@ rclonepremiumize:
           name: premiumize-config
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
       command:
       - /bin/ash
       - -c
@@ -13459,7 +13461,7 @@ rclonetorbox:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+    tag: 1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
   command:
   - /debrid-provider.sh
   controller:
@@ -13507,7 +13509,7 @@ rclonetorbox:
           optional: true          
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:94555e7e7269986412e37a086f5c84cbef9a437595df33a1a91a3f4e33c82784
+      image: ghcr.io/elfhosted/rclone:1.69.0@sha256:92e858a7082e8bbca95e11d63a17298ab4cb5464d8f00f21e4f072eab6d546b6
       command:
       - /bin/ash
       - -c
@@ -13788,7 +13790,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.124.0@sha256:80e0f8a9520db3536c91fadedc369a30080d6fd9df046e0f2f03210755ddf55d
+    tag: v1.124.2@sha256:c14dccad0611635668abf98f17ce87c3badcc17bb979c53ef96dc49e934ebbc8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13876,7 +13878,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.124.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.124.2
       envFrom:
       - configMapRef:
           name: immich-env
