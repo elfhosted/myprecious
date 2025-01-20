@@ -13169,7 +13169,7 @@ debridav:
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: rolling@sha256:9c365b89f9f979dcfabfb95e737ee4d4602d16d892c4ad9d565f135b157509b9
+    tag: v0.2.0@sha256:9c365b89f9f979dcfabfb95e737ee4d4602d16d892c4ad9d565f135b157509b9
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
