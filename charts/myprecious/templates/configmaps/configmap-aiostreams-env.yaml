@@ -15,7 +15,4 @@ data:
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion/
   {{ end }}
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
-  {{ if .Values.mediaflowproxy.enabled }}
-  DEFAULT_MEDIAFLOW_URL: https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
-  {{ end }}
 {{ end }}
