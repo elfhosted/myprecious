@@ -3505,7 +3505,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:751beaa73fc9c06d22bc34ecd9bd68d5a6c8372ea38733116ca0ba260c1b7f7e
+    tag: rolling@sha256:6a5a59c9bfec0859496cb7c0c693a7e001a8f3553c46c755f761b75e3bce8b00
   enabled: false
   controller:
     annotations:
@@ -8919,7 +8919,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.94@sha256:ad79453f13984c7330e9b39857160ceede5e972880f92c34fbc4ac7a7d51ea42
+    tag: v2.0.95@sha256:37c856dcff00f885bf2780245dcba13ed2c3d6544fc9aa7a12196898df92e96d
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -10172,7 +10172,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1286@sha256:c1eb096489c3770c96bdd654eb85ce4c421f473cfc3e246ab7b9e1d0b848ae18
+    tag: 0.22.1289@sha256:00733974acbcba48cf98f480be4c21bddb77000912209c03238b6addb00a031b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11828,7 +11828,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.8.3@sha256:bc1ec84678753b6136b1f5781943e3bd6a66885fd740f2847c0a9afe733d8aac
+    tag: v1.8.4@sha256:9c043a967183eb96a09f7df76c6097d6405392eac056881757211a170bf80028
   priorityClassName: tenant-normal
   controller:
     annotations:
