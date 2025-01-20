@@ -13058,7 +13058,7 @@ debridav: &app_debridav
   podLabels:
     app.elfhosted.com/name: debridav  
   image:
-    repository: ghcr.io/elfhosted/debridav
+    repository: ghcr.io/elfhosted/debridav-dev
     tag: rolling@sha256:fd33077a272d85c8b39104bb579209b25b5a836ffe70f5307d0e29e077c04cbd
   controller:
     annotations:
