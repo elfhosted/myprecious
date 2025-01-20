@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.247.0](https://github.com/elfhosted/myprecious/compare/v1.246.0...v1.247.0) (2025-01-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.8.4 ([e701bd1](https://github.com/elfhosted/myprecious/commit/e701bd1af47ca16f1a4f71bcb403e8d2a9b5eba8))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.8.5 ([4c6001d](https://github.com/elfhosted/myprecious/commit/4c6001d03cabeb639a57460f63d194f099de2e9c))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.8.6 ([d86c64d](https://github.com/elfhosted/myprecious/commit/d86c64d5d1798d63b0315e07cea76de130350278))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.96.4 ([00052c2](https://github.com/elfhosted/myprecious/commit/00052c208f92fa866127964a2517e35a5d985647))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1289 ([8d161af](https://github.com/elfhosted/myprecious/commit/8d161afdd4842c08c0ba49c0c99a5e73abe43fef))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.13 ([bb1361b](https://github.com/elfhosted/myprecious/commit/bb1361b42083b6acae8a06b1465b99756eacab08))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.5 ([5e844e4](https://github.com/elfhosted/myprecious/commit/5e844e435b0afa844734d3c16affcb88f3b211ed))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.95 ([0005398](https://github.com/elfhosted/myprecious/commit/0005398430f0604cb972bef0da09795ac7a15a4a))
+
+
+### Bug Fixes
+
+* Add WARP VPN to aiostreams to avoid torrentio limits ([ded97d5](https://github.com/elfhosted/myprecious/commit/ded97d558be8081b67c6514dea2439224d4c9c8e))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 6a5a59c ([701c07f](https://github.com/elfhosted/myprecious/commit/701c07f9970e10801923831bef15b100b3870be7))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 8ace0bf ([70e6ddf](https://github.com/elfhosted/myprecious/commit/70e6ddf0bfa95c971c5b783f3a70ece7250d3a1a))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 92e858a ([b2e6236](https://github.com/elfhosted/myprecious/commit/b2e6236f8751b1369b0ab69836562a48b88f4803))
+
 ## [1.246.0](https://github.com/elfhosted/myprecious/compare/v1.245.0...v1.246.0) (2025-01-19)
 
 
