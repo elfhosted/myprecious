@@ -3505,7 +3505,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:6a5a59c9bfec0859496cb7c0c693a7e001a8f3553c46c755f761b75e3bce8b00
+    tag: rolling@sha256:8ace0bffb9ec660220e9cbe3bad8c65dcea189471cfae8e7d8f6092c69dd8d18
   enabled: false
   controller:
     annotations:
@@ -11444,7 +11444,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.12@sha256:4095451b7f6df019b43b1aa3bddbee2049b25b6f538d5b3cd06d6345749a9c1a
+    tag: 4.3.13@sha256:750143f1c8431cd374f83576482fbf41c8b707a98da625fe111fe774b0dfea41
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
