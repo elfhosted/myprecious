@@ -5961,7 +5961,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.18.0-vaapi
+    tag: 0.18.1-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10180,7 +10180,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1289@sha256:00733974acbcba48cf98f480be4c21bddb77000912209c03238b6addb00a031b
+    tag: 0.22.1292@sha256:ca41fe292307eca2fffc5205b4208f3a4768e44dd9d270c3aa97f4e801e5c632
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10520,7 +10520,7 @@ stremiojackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.2.2@sha256:a496777c70fbb1aa36da9b4f9a8b16059607007e6bee7d3cc5f7d98fb74fb38c
+    tag: v4.2.3@sha256:7b5353dd24bd45e30dbaca483815f8172420bd15fcdf4794e113cc6450f84b2c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11752,7 +11752,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.8.7@sha256:9ee975545d2cad1cc75513e05968353679ed4b48951091ff6ddbe577a805341d
+    tag: v1.9.0@sha256:2218e713ca1b45050352c2fb00bcd206150861e2271a6ebb40356b3af3e6b9c5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12496,7 +12496,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.49@sha256:9b0fbe6a2763206d4a19208a3defa748a637664a64fec685349abeb563be6445
+    tag: v0.5.50@sha256:3abb5b006f9d3ca45e85a61096f408d9ca6e738819569ef4f4f04711462765eb
   priorityClassName: tenant-normal
   controller:
     annotations:
