@@ -1,4 +1,4 @@
-{{ if .Values.xtremio.enabled }}
+{{ if .Values.youriptv.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -8,7 +8,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: xtremio
+        - name: youriptv
           kind: Service
           port: 3649
       middlewares:
@@ -17,7 +17,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:
-        - name: xtremio
+        - name: youriptv
           kind: Service
           port: 3649
       middlewares:

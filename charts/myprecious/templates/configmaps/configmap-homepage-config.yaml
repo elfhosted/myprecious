@@ -191,14 +191,6 @@ data:
             siteMonitor: http://aiostreams:3000
         {{ end }}                  
 
-        {{ if .Values.xtremio.enabled }}
-        - Xtremio:
-            icon: mdi-tv
-            href: https://{{ .Release.Name }}-xtremio.{{ .Values.dns_domain }}
-            description: Watch IPTV in Stremio
-            siteMonitor: http://xtremio:3649
-        {{ end }}       
-
         {{ if .Values.youriptv.enabled }}
         - YourIPTV:
             icon: mdi-tv
@@ -812,6 +804,22 @@ data:
             description: Manage real debrid(-like) services
             siteMonitor: http://rdtclient:6500
         {{ end }}  
+
+        {{ if .Values.debridav.enabled }}
+        - DebriDav:
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-debridav.{{ .Values.dns_domain }}
+            description: DebriDav
+            siteMonitor: http://blackhole:8080
+        {{ end }}   
+
+        {{ if .Values.debridav4k.enabled }}
+        - DebriDav (4K):
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-debridav4k.{{ .Values.dns_domain }}
+            description: DebriDav
+            siteMonitor: http://debridav4k:8080
+        {{ end }}   
 
         {{ if .Values.blackhole.enabled }}
         - Blackhole:

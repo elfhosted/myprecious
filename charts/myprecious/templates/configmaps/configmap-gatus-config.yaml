@@ -160,17 +160,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.xtremio.enabled }}
-      - name: xtremio
-        group: consume-media
-        url: "http://xtremio:3649"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.youriptv.enabled }}
       - name: youriptv
         group: consume-media
@@ -270,6 +259,7 @@ data:
           - type: email
       {{ end }}
       
+
       {{ if .Values.mediafusion.enabled }}
       - name: mediafusion
         group: consume-media
@@ -939,6 +929,17 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
+      {{ end }}
+
+      {{ if .Values.debridav.enabled }}
+      - name: debridav4k
+        group: download-media
+        url: "http://debridav4k:8080/api/v2/app/webapiVersion"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email          
       {{ end }}  
 
       {{ if .Values.blackhole.enabled }}

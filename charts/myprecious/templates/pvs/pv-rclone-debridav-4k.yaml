@@ -1,0 +1,20 @@
+{{ if .Values.rclonemountdebridav4k.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rclone-{{ .Release.Name }}-debridav-4k
+  labels:
+    name: rclone-{{ .Release.Name }}-debridav-4k
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi # doesn't matter, is used to match with the PVC
+  storageClassName: rclone
+  persistentVolumeReclaimPolicy: Delete
+  csi:
+    driver: csi-rclone
+    volumeHandle: rclone-{{ .Release.Name }}-debridav-4k
+    volumeAttributes:
+      secretName: "{{ .Release.Name }}-debridav-4k"
+{{ end }}
