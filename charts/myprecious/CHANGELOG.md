@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.248.0](https://github.com/elfhosted/myprecious/compare/v1.247.0...v1.248.0) (2025-01-21)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.1 ([7565fab](https://github.com/elfhosted/myprecious/commit/7565fab0a63cecfd151ac18ec766522f4479a45b))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.8.7 ([7504529](https://github.com/elfhosted/myprecious/commit/7504529527b6213540442add679bd5471de07c63))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.8.8 ([55b766a](https://github.com/elfhosted/myprecious/commit/55b766a4d5818eb86e995cfff558483a353b0ebe))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.48 ([c04acdd](https://github.com/elfhosted/myprecious/commit/c04acdda17e81909755a5666d278b458e0a6ed44))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.49 ([fb6b32f](https://github.com/elfhosted/myprecious/commit/fb6b32fdbfab71ddc61b0424b1c76f1ad2998bd2))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.36 ([76453b3](https://github.com/elfhosted/myprecious/commit/76453b3ce7e2bb6befc57d664fafb1530ebaec2e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1292 ([bcf5747](https://github.com/elfhosted/myprecious/commit/bcf57476322dcb129169025fbb153629b2147b4b))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.2.3 ([f22a85e](https://github.com/elfhosted/myprecious/commit/f22a85eb63877e31f96aaf92c797a568e2b3de75))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/debridav:rolling docker digest to 9c365b8 ([8466475](https://github.com/elfhosted/myprecious/commit/8466475e972e44f7c993fba23836823a4fe62f5d))
+
 ## [1.247.0](https://github.com/elfhosted/myprecious/compare/v1.246.0...v1.247.0) (2025-01-20)
 
 
