@@ -21,7 +21,7 @@ spec:
           kind: Service
           port: 3649
       middlewares:
-        {{ if not .Values.xtremioexposed.enabled }}
+        {{ if not .Values.youriptvexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
         {{ end }}
         - name: chain-hosted-stremio-addon
