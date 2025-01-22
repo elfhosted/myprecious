@@ -507,26 +507,26 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: zurg
-  - name: app-template
-    condition: zurghobbit.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: zurghobbit
-  - name: app-template
-    condition: zurghalfling.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: zurghalfling
-  - name: app-template
-    condition: zurgnazgul.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: zurgnazgul
-  - name: app-template
-    condition: zurgranger.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: zurgranger
+  # - name: app-template
+  #   condition: zurghobbit.enabled
+  #   version: ~0.2.1
+  #   repository: oci://ghcr.io/elfhosted/charts
+  #   alias: zurghobbit
+  # - name: app-template
+  #   condition: zurghalfling.enabled
+  #   version: ~0.2.1
+  #   repository: oci://ghcr.io/elfhosted/charts
+  #   alias: zurghalfling
+  # - name: app-template
+  #   condition: zurgnazgul.enabled
+  #   version: ~0.2.1
+  #   repository: oci://ghcr.io/elfhosted/charts
+  #   alias: zurgnazgul
+  # - name: app-template
+  #   condition: zurgranger.enabled
+  #   version: ~0.2.1
+  #   repository: oci://ghcr.io/elfhosted/charts
+  #   alias: zurgranger
   # - name: app-template
   #   condition: zurghalfling.enabled
   #   version: ~0.2.1
