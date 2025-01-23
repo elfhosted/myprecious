@@ -12177,7 +12177,7 @@ zurg: &app_zurg
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 200m
+      cpu: 1m
       memory: 32Mi
     limits:
       cpu: 1
@@ -14077,7 +14077,7 @@ embynazgul:
   resources: *nazgul_streamer_resources
 
 # We use these to set aside resources for dedicated bundles
-hobbit: &app_resource_reserver
+starter: &app_resource_reserver
   enabled: false
   image:
     repository: ghcr.io/elfhosted/tooling
@@ -14099,7 +14099,7 @@ hobbit: &app_resource_reserver
   - /bin/bash
   - -c
   - |
-    echo "This pod simple reserves dedicated resources for a tenant"
+    echo "This pod simple reserves contended resources for a tenant"
     sleep infinity
   affinity: *standard_affinity
   service:
@@ -14113,8 +14113,13 @@ hobbit: &app_resource_reserver
     readiness:
       enabled: false      
   resources:
-    requests: # cpu will be set by helmreleases
+    requests: 
+      cpu: 500m
       memory: 1Mi
+
+hobbit:
+  enabled: false
+  <<: *app_resource_reserver
 
 ranger:
   enabled: false
