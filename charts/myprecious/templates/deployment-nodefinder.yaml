@@ -22,6 +22,7 @@ spec:
       labels: 
         app.elfhosted.com/role: nodefinder
     spec:
+      priorityClassName: tenant-normal
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
