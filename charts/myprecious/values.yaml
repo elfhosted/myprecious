@@ -14087,6 +14087,15 @@ starter: &app_resource_reserver
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+  # we mount config to force the resource-reserver to run on the same node as the volumes
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config    
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
