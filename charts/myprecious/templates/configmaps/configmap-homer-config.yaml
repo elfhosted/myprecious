@@ -712,6 +712,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.arrtools.enabled }}
+          - name: "Arr Tools"
+            icon: "fas fa-sync"
+            subtitle: "Tools to manage Aars"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-arrtools.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute            
+          {{ end }}  
+
           {{ if .Values.mylar.enabled }}
           - name: "Mylar"
             logo: "assets/png/mylar.png"

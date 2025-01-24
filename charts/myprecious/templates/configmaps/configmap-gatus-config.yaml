@@ -432,6 +432,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.arrtools.enabled }}
+      - name: arrtools
+        group: manage-media
+        url: "http://arrtools:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.rpdb.enabled }}
       - name: rpdb
         group: manage-media
@@ -995,7 +1006,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }} 
+      {{ end }}      
 
       {{ if .Values.seerrbridge.enabled }}
       - name: seerrbridge

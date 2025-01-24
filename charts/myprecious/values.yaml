@@ -7544,6 +7544,58 @@ cinesync:
       cpu: 1
       memory: 2Gi 
 
+arrtools:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/arrtools
+    tag: rolling@sha256:4ca87f1becdb17ac839ef749a70fdb0aecbe6299316165335af6b676e0ed14d2
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: arrtools
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-arrtools"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: arrtools
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 1m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 2Gi       
+
 seerrbridge:
   enabled: false
   priorityClassName: tenant-normal
