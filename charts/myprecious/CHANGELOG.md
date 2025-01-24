@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.251.0](https://github.com/elfhosted/myprecious/compare/v1.250.0...v1.251.0) (2025-01-24)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.3 ([847f4be](https://github.com/elfhosted/myprecious/commit/847f4be617b79d161d499547bfd92e4716240302))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.4 ([7ace187](https://github.com/elfhosted/myprecious/commit/7ace187330564cde41ca1f2d8f78a394c3ef9a18))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.9.2 ([7761b53](https://github.com/elfhosted/myprecious/commit/7761b53632cee55acb5f49b76000e1e77dada22c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1305 ([60c5cda](https://github.com/elfhosted/myprecious/commit/60c5cdab2d23f9fbba10a599b6c35582a9a0d6ae))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.30.2.4939 ([54759d4](https://github.com/elfhosted/myprecious/commit/54759d4da02d193938c53bb7bc390bc755f7806c))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.125.1 ([806e8af](https://github.com/elfhosted/myprecious/commit/806e8af21d02012140c07e07aff89da110e8adcc))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.125.1 ([fbc368b](https://github.com/elfhosted/myprecious/commit/fbc368bacab990e3f59b1af3bb505cbb9eb9acdd))
+
+
+### Bug Fixes
+
+* **app:** update fancybits/channels-dvr:latest docker digest to 1fb39f0 ([6020c71](https://github.com/elfhosted/myprecious/commit/6020c71bd28c01661b6e09841959cd11f1ef47cc))
+* **app:** update fancybits/channels-dvr:latest docker digest to 284fed6 ([e27150b](https://github.com/elfhosted/myprecious/commit/e27150baa807638823d8b297d66eef62bad9484a))
+* **app:** update fancybits/channels-dvr:latest docker digest to 333beba ([38dd660](https://github.com/elfhosted/myprecious/commit/38dd660703022fd2ad50415e098d6b9dd1f38add))
+* **app:** update ghcr.io/elfhosted/arrtools:rolling docker digest to 63f329b ([115af86](https://github.com/elfhosted/myprecious/commit/115af867003256a8eeca229d04748e34635b6cbf))
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to e24ae43 ([1884092](https://github.com/elfhosted/myprecious/commit/18840922c07976117bcf0a459f2364396965dcd3))
+
 ## [1.250.0](https://github.com/elfhosted/myprecious/compare/v1.249.0...v1.250.0) (2025-01-23)
 
 
