@@ -2796,7 +2796,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:2b236a953c6221d7a29918ec6e58beebdbb362cbfbe2431299df21077f543b43
+    tag: 2.23.0@sha256:e24ae430b0ec3c1c1b5b56fb65f0c7766c2aedc38182a7e8ad3ff8a564f69d1c
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
@@ -2908,7 +2908,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:2b236a953c6221d7a29918ec6e58beebdbb362cbfbe2431299df21077f543b43
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:e24ae430b0ec3c1c1b5b56fb65f0c7766c2aedc38182a7e8ad3ff8a564f69d1c
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
