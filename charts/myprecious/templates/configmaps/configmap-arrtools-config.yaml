@@ -37,6 +37,36 @@ data:
     ; 3 HD-720p
     ; 4 HD-1080p
     ; 5 Ultra-HD
-    ; 6 HD - 720p/1080p      
+    ; 6 HD - 720p/1080p    
+
+  config4k.ini: |
+    [radarr]
+    api_key = {{ .Values.radarr4kexposed.apikey }}
+    baseurl = http://radarr4k:7878
+    urlbase = ; Include URL Base if you have it enabled
+    rootfolderpath = 
+    searchForMovie = 
+    qualityProfileId = 
+    omdbapi_key = ; sign up here for api key http://www.omdbapi.com/apikey.aspx
+
+    [sonarr]
+    api_key = {{ .Values.sonarr4kexposed.apikey }}
+    baseurl = http://sonarr4k:8989
+    urlbase = ; Include URL Base if you have it enabled
+    rootfolderpath = 
+    searchForShow = 
+    qualityProfileId = 
+    omdbapi_key = 
+    tvdb_api =  ; sign up here for a api key https://thetvdb.com/api-information
+    tvdb_userkey = 
+    tvdb_username = 
+
+    ; Standard Profile ID
+    ; 1 Any
+    ; 2 SD
+    ; 3 HD-720p
+    ; 4 HD-1080p
+    ; 5 Ultra-HD
+    ; 6 HD - 720p/1080p          
 {{ end }}
               
