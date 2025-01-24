@@ -7546,10 +7546,11 @@ cinesync:
 
 arrtools:
   enabled: false
+  hostname: arrtools
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/arrtools
-    tag: rolling@sha256:2d1658b85d667ec0ad7a03e5092ff27b84a166349ec81051f553af422b51fef9
+    tag: rolling@sha256:168e2e33691107c548efefab58947b5968dc6c6cf19029e2b9d064cd757ae3b7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7612,10 +7613,14 @@ arrtools:
         set -x
         set -e
 
+        # Overwrite placeholders
+        cp /bootstrap/config.ini /config/
+        cp /bootstrap/config-placeholder.ini /config/
+        
         # If we don't already have an example config, create one
-        if [[ ! -f /config/config.ini ]];
+        if [[ ! -f /config/confighd.ini ]];
         then
-          cp /bootstrap/config.ini /config/
+          cp /bootstrap/confighd.ini /config/
         fi
         if [[ ! -f /config/config4k.ini ]];
         then
@@ -13146,10 +13151,10 @@ debridav: &app_debridav
   podLabels:
     app.elfhosted.com/name: debridav  
   image:
-    repository: ghcr.io/elfhosted/debridav-dev
-    tag: rolling@sha256:9f0c9c87c32aa22a8779d19de006509510873d6fad67cd15a0f1f8a79469c16d
-    # repository: ghcr.io/elfhosted/debridav
-    # tag: 0.4.0@sha256:e3c03be28ac04bd0d40dfcfb2381b6fff0e610bac51d393b3def786740b428ed    
+    # repository: ghcr.io/elfhosted/debridav-dev
+    # tag: rolling@sha256:9f0c9c87c32aa22a8779d19de006509510873d6fad67cd15a0f1f8a79469c16d
+    repository: ghcr.io/elfhosted/debridav
+    tag: 0.4.0@sha256:e3c03be28ac04bd0d40dfcfb2381b6fff0e610bac51d393b3def786740b428ed    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
