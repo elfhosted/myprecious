@@ -11604,45 +11604,38 @@ mediafusion:
 tinyproxy:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/tinyproxy
-    tag: v1.4.3@sha256:afc49b44bcab30c261e4e0232e23126da9b63220d2f9a8201ce3e3a90132a035
+    repository: ghcr.io/elfhosted/gluetun
+    tag: 3.40.0@sha256:c78b71a8732fdbcf574d76388a88957a54f97ad206a760423b16188cdb655740
   podLabels:
       app.elfhosted.com/name: tinyproxy
   priorityClassName: tenant-normal
   controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "tinyproxy-conf"
-      secret.reloader.stakater.com/reload: "tinyproxy-vpn"
     strategy:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  persistence:
+    tmp: *tmp
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory     
   securityContext:
-    seccompProfile:
-      type: RuntimeDefault
+    privileged: true
+    runAsUser: 0
+    capabilities:
+      add:
+        - NET_ADMIN
+        - SYS_MODULE   
     readOnlyRootFilesystem: true
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  persistence:
-    tmp: *tmp
-    tinyproxy-conf:
-      enabled: "true"
-      type: "custom"
-      mountPath: /etc/tinyproxy/tinyproxy.conf
-      subPath: tinyproxy.conf  
-      volumeSpec:
-        configMap:
-          name: tinyproxy-conf 
-    shared:
-      enabled: true
-      mountPath: /shared
-      type: emptyDir
-      volumeSpec:
-        medium: Memory          
   resources:
     requests:
       cpu: 1m
@@ -11658,9 +11651,19 @@ tinyproxy:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 8888
+          port: 8888  
   env:
-    WAIT_FOR_VPN: "true"    
+    FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
+    DNS_KEEP_NAMESERVER: "on"
+    HTTP_CONTROL_SERVER_PORT: "8000"
+    HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+    VPN_TYPE: wireguard
+    VPN_SERVICE_PROVIDER: custom
+    FIREWALL_INPUT_PORTS: "8888"
+    WIREGUARD_MTU: "1280"
+    VPN_ENDPOINT_PORT: "2408"
+    DOT: "off" 
+    HTTPPROXY: "on"
   initContainers:      
     setup-warp:
       image: *tooling_image
@@ -11693,9 +11696,24 @@ tinyproxy:
         seccompProfile:
           type: RuntimeDefault
         readOnlyRootFilesystem: false    
+  probes:
+    liveness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        exec:
+          command:
+          - curl
+          - -x
+          - http://localhost:8888
+          - -s
+          - https://www.example.com
+          - | 
+            grep -q "Example Domain"   
   addons:
     vpn:
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun

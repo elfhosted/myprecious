@@ -17,7 +17,7 @@ data:
 
     [radarr]
     api_key = {{ .Values.radarrexposed.apikey }}
-    baseurl = http://radarr:7878
+    baseurl = http://radarr:7878/
     urlbase = ; Include URL Base if you have it enabled
     rootfolderpath = 
     searchForMovie = 
@@ -26,7 +26,7 @@ data:
 
     [sonarr]
     api_key = {{ .Values.sonarrexposed.apikey }}
-    baseurl = http://sonarr:8989
+    baseurl = http://sonarr:8989/
     urlbase = ; Include URL Base if you have it enabled
     rootfolderpath = 
     searchForShow = 
