@@ -7546,15 +7546,14 @@ cinesync:
 
 arrtools:
   enabled: false
-  hostname: arrtools
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/arrtools
-    tag: rolling@sha256:5c1be78c74910e8f918b3540a5abbc7ad6e544ce188f5591e6291a91a3a6df49
+    tag: rolling@sha256:2d1658b85d667ec0ad7a03e5092ff27b84a166349ec81051f553af422b51fef9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false
+    readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: arrtools
   controller:
@@ -7613,14 +7612,10 @@ arrtools:
         set -x
         set -e
 
-        # Overwrite placeholders
-        cp /bootstrap/config.ini /config/
-        cp /bootstrap/config-placeholder.ini /config/
-        
         # If we don't already have an example config, create one
-        if [[ ! -f /config/confighd.ini ]];
+        if [[ ! -f /config/config.ini ]];
         then
-          cp /bootstrap/confighd.ini /config/
+          cp /bootstrap/config.ini /config/
         fi
         if [[ ! -f /config/config4k.ini ]];
         then
@@ -11604,38 +11599,45 @@ mediafusion:
 tinyproxy:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/gluetun
-    tag: 3.40.0@sha256:c78b71a8732fdbcf574d76388a88957a54f97ad206a760423b16188cdb655740
+    repository: ghcr.io/elfhosted/tinyproxy
+    tag: v1.4.3@sha256:afc49b44bcab30c261e4e0232e23126da9b63220d2f9a8201ce3e3a90132a035
   podLabels:
       app.elfhosted.com/name: tinyproxy
   priorityClassName: tenant-normal
   controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "tinyproxy-conf"
+      secret.reloader.stakater.com/reload: "tinyproxy-vpn"
     strategy:
     rollingUpdate:
       unavailable: 1
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  persistence:
-    tmp: *tmp
-    shared:
-      enabled: true
-      mountPath: /shared
-      type: emptyDir
-      volumeSpec:
-        medium: Memory     
   securityContext:
-    privileged: true
-    runAsUser: 0
-    capabilities:
-      add:
-        - NET_ADMIN
-        - SYS_MODULE   
+    seccompProfile:
+      type: RuntimeDefault
     readOnlyRootFilesystem: true
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    tinyproxy-conf:
+      enabled: "true"
+      type: "custom"
+      mountPath: /etc/tinyproxy/tinyproxy.conf
+      subPath: tinyproxy.conf  
+      volumeSpec:
+        configMap:
+          name: tinyproxy-conf 
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory          
   resources:
     requests:
       cpu: 1m
@@ -11651,19 +11653,9 @@ tinyproxy:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 8888  
+          port: 8888
   env:
-    FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
-    DNS_KEEP_NAMESERVER: "on"
-    HTTP_CONTROL_SERVER_PORT: "8000"
-    HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-    VPN_TYPE: wireguard
-    VPN_SERVICE_PROVIDER: custom
-    FIREWALL_INPUT_PORTS: "8888"
-    WIREGUARD_MTU: "1280"
-    VPN_ENDPOINT_PORT: "2408"
-    DOT: "off" 
-    HTTPPROXY: "on"
+    WAIT_FOR_VPN: "true"    
   initContainers:      
     setup-warp:
       image: *tooling_image
@@ -11696,24 +11688,9 @@ tinyproxy:
         seccompProfile:
           type: RuntimeDefault
         readOnlyRootFilesystem: false    
-  probes:
-    liveness:
-      custom: true
-      enabled: true
-      spec:
-        failureThreshold: 5
-        exec:
-          command:
-          - curl
-          - -x
-          - http://localhost:8888
-          - -s
-          - https://www.example.com
-          - | 
-            grep -q "Example Domain"   
   addons:
     vpn:
-      enabled: false # in case we ever need it
+      enabled: true # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
@@ -13169,10 +13146,10 @@ debridav: &app_debridav
   podLabels:
     app.elfhosted.com/name: debridav  
   image:
-    # repository: ghcr.io/elfhosted/debridav-dev
-    # tag: rolling@sha256:9f0c9c87c32aa22a8779d19de006509510873d6fad67cd15a0f1f8a79469c16d
-    repository: ghcr.io/elfhosted/debridav
-    tag: 0.4.0@sha256:e3c03be28ac04bd0d40dfcfb2381b6fff0e610bac51d393b3def786740b428ed    
+    repository: ghcr.io/elfhosted/debridav-dev
+    tag: rolling@sha256:9f0c9c87c32aa22a8779d19de006509510873d6fad67cd15a0f1f8a79469c16d
+    # repository: ghcr.io/elfhosted/debridav
+    # tag: 0.4.0@sha256:e3c03be28ac04bd0d40dfcfb2381b6fff0e610bac51d393b3def786740b428ed    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
