@@ -1,4 +1,4 @@
-{{ .Values.autoscan.enabled }}
+{{ if .Values.autoscan.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
