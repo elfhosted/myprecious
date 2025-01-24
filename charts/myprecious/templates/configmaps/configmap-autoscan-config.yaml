@@ -1,7 +1,8 @@
+{{ .Values.autoscan.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: autoscan-config
+  name: z-config
 data:
   config.yml: |
     # port for Autoscan webhooks to listen on
@@ -45,6 +46,5 @@ data:
         - name: sonarr  # /triggers/sonarr
           priority: 1
         - name: sonarr4k  # /triggers/sonarr4k
-          priority: 1          
-
-              
+          priority: 1                        
+{{ end }}

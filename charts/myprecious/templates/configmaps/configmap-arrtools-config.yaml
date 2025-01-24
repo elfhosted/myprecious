@@ -1,0 +1,42 @@
+{{ if .Values.arrtools.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arrtools-config
+data:
+  config.ini: |
+    [radarr]
+    api_key = {{ .Values.radarrexposed.apikey }}
+    baseurl = http://radarr:7878
+    urlbase = ; Include URL Base if you have it enabled
+    rootfolderpath = 
+    searchForMovie = 
+    qualityProfileId = 
+    omdbapi_key = ; sign up here for api key http://www.omdbapi.com/apikey.aspx
+
+    [sonarr]
+    api_key = {{ .Values.sonarrexposed.apikey }}
+    baseurl = http://sonarr:8989
+    urlbase = ; Include URL Base if you have it enabled
+    rootfolderpath = 
+    searchForShow = 
+    qualityProfileId = 
+    omdbapi_key = 
+    tvdb_api =  ; sign up here for a api key https://thetvdb.com/api-information
+    tvdb_userkey = 
+    tvdb_username = 
+
+    [lidarr]
+    api_key = {{ .Values.lidarrexposed.apikey }}
+    baseurl = http://lidarr:8686
+    rootfolderpath = 
+
+    ; Standard Profile ID
+    ; 1 Any
+    ; 2 SD
+    ; 3 HD-720p
+    ; 4 HD-1080p
+    ; 5 Ultra-HD
+    ; 6 HD - 720p/1080p      
+{{ end }}
+              
