@@ -2097,7 +2097,7 @@ sabnzbd:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
       memory: 1500Mi
@@ -3123,7 +3123,7 @@ uptimekuma:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 100m
       memory: 1Gi
@@ -3722,7 +3722,7 @@ komga:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 2Gi
@@ -4185,7 +4185,7 @@ resiliosync:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -9262,7 +9262,7 @@ miniflux:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
       memory: 1Gi
@@ -9367,7 +9367,7 @@ joplinserver:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
       memory: 1Gi
@@ -11041,7 +11041,7 @@ comet:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 2
       memory: 4Gi
@@ -11163,7 +11163,7 @@ jackettio:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11298,7 +11298,7 @@ stremthru:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11393,7 +11393,7 @@ davio:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11452,7 +11452,7 @@ mediafusion:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11553,7 +11553,7 @@ tinyproxy:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11681,7 +11681,7 @@ mediaflowproxy:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11734,7 +11734,7 @@ youriptv:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11785,7 +11785,7 @@ aiostreams:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11880,7 +11880,7 @@ stremify:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11958,7 +11958,7 @@ recyclarr:
   resources:
     requests:
       cpu: 1m
-      memory: 512Mi
+      memory: 100Mi
     limits:
       cpu: 1
       memory: 1Gi
