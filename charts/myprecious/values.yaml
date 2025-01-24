@@ -4197,7 +4197,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.30.1.4928@sha256:cf1d908231caf9d078d39ed89d79d14d78aac70ee76c63009499716ec180ca60
+    tag: 1.30.2.4939@sha256:ca9e402308733e62a60d9330d2c0a7097058520cb17025234b051fd4e2fb7646
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10268,7 +10268,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1296@sha256:8794a76dcd37f987b909057dc7b620beca716c805a0c2a53c3e4a7ca358ee563
+    tag: 0.22.1305@sha256:e0440c3ae73ff6d8901afed5a528e4711224d934541e83353500d3a7dfea6347
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13812,7 +13812,7 @@ channelsdvr:
   enabled: false
   image:
     repository: fancybits/channels-dvr
-    tag: latest@sha256:333beba613489be4dc19c653ae8469b283f88b0c62cfda84be05c954611e8e24
+    tag: latest@sha256:284fed6f4ee5150d41d9a7f247a63e190f6f1c3a4e4bc740f029df6d36955d29
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "125M"
