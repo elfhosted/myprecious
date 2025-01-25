@@ -3513,7 +3513,7 @@ lazylibrarian:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
-    tag: rolling@sha256:8ace0bffb9ec660220e9cbe3bad8c65dcea189471cfae8e7d8f6092c69dd8d18
+    tag: rolling@sha256:5095b4270cd7132983e6b6b1088a552d20051c2cf0f1f7e265c733c2af899e00
   enabled: false
   controller:
     annotations:
@@ -4988,7 +4988,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.4@sha256:34af8eaa361d7721d255d2cbc68b00509aa4ebd85aa125c113fdfdb8f895e0f6
+    tag: 10.10.5@sha256:1b2bfb314eed49e025eb01c5eb013f45f59da7d88caa8d4d651315e70cbcbba1
   enabled: false
   podLabels:
     app.elfhosted.com/class: debrid
@@ -5961,7 +5961,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.18.5-vaapi
+    tag: 0.18.6-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6852,7 +6852,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.32.7@sha256:36b2bf5ee51b71ea625b9fc817409cd633f8d1db1f6173399bcab13fb9d860aa
+    tag: 1.33.0@sha256:4c23827e22188aaf1433107f75ec4f08987f0a664566da77b4436f71ed49b9fc
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -11503,7 +11503,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.14@sha256:156aaf7e1fa948a1b13392ce48c81566b016f0f90bfacc6fd7d524579f605bc4
+    tag: 4.3.15@sha256:35ccf9b9115b53221ed9f9d7753caae6448acbdf82be454b8177cd875ef8802a
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -12576,7 +12576,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.52@sha256:033a856a6033abe279161ed51110d91a90fd5cdcb76427d3d55d894548d4c99f
+    tag: v0.5.55@sha256:78296ad6c98cd5c18407b61754954013ce000a563331217c5c5fecef994bd309
   priorityClassName: tenant-normal
   controller:
     annotations:
