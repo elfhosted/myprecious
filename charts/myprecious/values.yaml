@@ -10616,8 +10616,6 @@ stremiojackett:
     strategy:
     rollingUpdate:
       unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10635,7 +10633,7 @@ stremiojackett:
       name: stremio-jackett-env
   resources:
     requests:
-      cpu: 1m
+      cpu: 10m
       memory: 128Mi
     limits:
       cpu: 1
@@ -11218,8 +11216,6 @@ jackettio:
     strategy:
     rollingUpdate:
       unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11250,7 +11246,7 @@ jackettio:
         medium: Memory              
   resources:
     requests:
-      cpu: 1m
+      cpu: 10m
       memory: 100Mi
     limits:
       cpu: 1
@@ -11518,8 +11514,6 @@ mediafusion:
     strategy:
     rollingUpdate:
       unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11539,7 +11533,7 @@ mediafusion:
           name: tinyproxy-conf 
   resources:
     requests:
-      cpu: 1m
+      cpu: 50m
       memory: 100Mi
     limits:
       cpu: 1
@@ -11768,7 +11762,7 @@ mediaflowproxy:
       securityContext: *speedtest_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 100m
       memory: 100Mi
     limits:
       cpu: 1
@@ -11848,8 +11842,6 @@ aiostreams:
     strategy:
     rollingUpdate:
       unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11873,7 +11865,7 @@ aiostreams:
   resources:
     requests:
       cpu: 1m
-      memory: 100Mi
+      memory: 50Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11967,7 +11959,7 @@ stremify:
       mountPath: /home/node/app/.nitro
   resources:
     requests:
-      cpu: 1m
+      cpu: 10m
       memory: 100Mi
     limits:
       cpu: 1
@@ -14033,9 +14025,6 @@ kubernetesdashboard:
   ##
   ## Note: If set to true, you may want to add --enable-insecure-login to extraArgs
   protocolHttp: true
-
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
 
   # Global dashboard settings
   settings:
