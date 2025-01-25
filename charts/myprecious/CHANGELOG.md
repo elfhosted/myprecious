@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.252.0](https://github.com/elfhosted/myprecious/compare/v1.251.0...v1.252.0) (2025-01-25)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.5 ([1d5c770](https://github.com/elfhosted/myprecious/commit/1d5c7702f592585622cc3d4dbb0be85e047d9643))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.6 ([4b7871e](https://github.com/elfhosted/myprecious/commit/4b7871e1cbd46aa2303efd9e5a610b064ceb249f))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.54 ([798ca35](https://github.com/elfhosted/myprecious/commit/798ca35f4aff7f2d42c0401c405785cd1a76cd69))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.55 ([3ac9eea](https://github.com/elfhosted/myprecious/commit/3ac9eea9706b233fa1696291eb632021e184cf5d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1309 ([03d4aa8](https://github.com/elfhosted/myprecious/commit/03d4aa8ec33695abfd0eac7023530a285f521532))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.10.5 ([59e90f9](https://github.com/elfhosted/myprecious/commit/59e90f9713df8c7d9dabec277e452c11c4b66074))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.15 ([a0c4b7b](https://github.com/elfhosted/myprecious/commit/a0c4b7b58087e3a0b5fad38ded144e3d546feed8))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.33.0 ([4e30111](https://github.com/elfhosted/myprecious/commit/4e301110c354fc779eb49714a2c80d99cbf639fa))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.125.2 ([d1f176f](https://github.com/elfhosted/myprecious/commit/d1f176f38b8789b63a1d629a446c5ccff192d4bd))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.125.2 ([cec4ef5](https://github.com/elfhosted/myprecious/commit/cec4ef59ae41554acee359d9502e49b35e56b6db))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/aiostreams:v1.9.2 docker digest to 4980daa ([7d786aa](https://github.com/elfhosted/myprecious/commit/7d786aad0ecfbe03dcfe6af8b5ae69b40a4f3e49))
+* **app:** update ghcr.io/elfhosted/lazylibrarian:rolling docker digest to 5095b42 ([c80a99a](https://github.com/elfhosted/myprecious/commit/c80a99a881c56e9042b559ddbbe4fe4c3a715221))
+* bugfix for arrtools ([b6f4c3d](https://github.com/elfhosted/myprecious/commit/b6f4c3d7a6ad4a67a62d8bb04182b2e6f916c569))
+* Increase blackhole RAM limit to avoid OOMKills on monster libraries ([25659a2](https://github.com/elfhosted/myprecious/commit/25659a206bb28edb78e2c06ea0969e6bef1e5256))
+
 ## [1.251.0](https://github.com/elfhosted/myprecious/compare/v1.250.0...v1.251.0) (2025-01-24)
 
 
