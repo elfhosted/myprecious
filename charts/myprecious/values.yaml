@@ -3337,7 +3337,7 @@ calibreweb:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/calibre-web-automated
-    tag: v2.1.2@sha256:899c5204880235aa3793304aac5ae19d21b517f598e3dcc0b619e4c6df1ec7a0
+    tag: v2.1.2@sha256:aec4068f04e26a3a21ad913af3725a7d1e323bfa5257c2a0d01ba5d8090d798b
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibre-web"
