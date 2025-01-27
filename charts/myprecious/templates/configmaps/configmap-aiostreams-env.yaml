@@ -15,4 +15,5 @@ data:
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion/
   {{ end }}
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
+  DEFAULT_TORRENTIO_TIMEOUT: "10000"
 {{ end }}
