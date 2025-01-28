@@ -11590,6 +11590,66 @@ mediafusion:
   - secretRef:
       name: mediafusion-env
 
+gluetunproxy:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: thrnz/docker-wireguard-pia
+    tag: latest
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "gluetunproxy-conf"
+      secret.reloader.stakater.com/reload: "gluetunproxy-vpn"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations    
+  env:
+    IPTABLES_BACKEND: nft
+    KILLSWITCH: "true"
+    LOCAL_NETWORK: 10.0.0.0/8
+    LOC: de-frankfurt
+    PORT_FORWARDING: "0"
+    PORT_PERSIST: "1"
+    NFTABLES: "1"
+    VPNDNS: "0"
+    HTTPPROXY: "true"
+  envFrom:
+  - secretRef:
+      name: gluetunproxy-vpn
+  securityContext:
+    privileged: true
+    runAsUser: 0
+    capabilities:
+      add:
+        - NET_ADMIN
+        - SYS_MODULE
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8888
+  probes:
+    liveness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        exec:
+          command:
+          - curl
+          - -x
+          - http://localhost:8888
+          - -s
+          - https://docs.elfhosted.com/
+          - | 
+            grep -q "Funky Penguin"
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 10
+
 tinyproxy:
   enabled: false
   image:
@@ -11902,6 +11962,7 @@ aiostreams:
         PORT_PERSIST: "1"
         NFTABLES: "1"
         VPNDNS: "0"
+        HTTPPROXY: "true"
       envFrom:
       - secretRef:
           name: aiostreams-vpn
