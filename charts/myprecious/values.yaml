@@ -11594,7 +11594,7 @@ tinyproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/tinyproxy
-    tag: v1.4.3@sha256:b41f615b2a5d19831efcb4cbd9432bd5bb1ed30df05a03cccafeb2b5bc4ce584
+    tag: v1.4.3@sha256:9370be1434e80f8ac7d3a24d9c19335742b2c74ba15129dcdc166bb0dd3c9098
   podLabels:
       app.elfhosted.com/name: tinyproxy
   priorityClassName: tenant-normal
