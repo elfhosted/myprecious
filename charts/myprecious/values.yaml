@@ -10541,7 +10541,7 @@ flixioapi:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/flixio-api
-    tag: rolling@sha256:54c2e3adac9580e0549203348fb0886d9f031952439ca6ddba0ebfeb27153e0a
+    tag: rolling@sha256:b934680e51b830e25937fda6b9a2f8664307895d690585d2d4f9c272ad9d68a0
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: flixio-api
