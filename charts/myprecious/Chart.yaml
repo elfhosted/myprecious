@@ -717,6 +717,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: tinyproxy
   - name: app-template
+    condition: gluetunproxy.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: gluetunproxy    
+  - name: app-template
     condition: jackettio.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
