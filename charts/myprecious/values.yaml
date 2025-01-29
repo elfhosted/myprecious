@@ -11651,11 +11651,9 @@ piaproxy:
         failureThreshold: 5
         exec:
           command:
-          - curl
-          - -x
-          - http://localhost:8888
-          - -s
-          - https://docs.elfhosted.com/
+          - /bin/bash
+          - -c
+          - curl -x http://localhost:8888 -s https://docs.elfhosted.com/ | grep ElfHosted
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
