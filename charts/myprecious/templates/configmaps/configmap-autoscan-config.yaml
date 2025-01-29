@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: z-config
+  name: autoscan-config
 data:
   config.yml: |
     # port for Autoscan webhooks to listen on

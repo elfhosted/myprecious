@@ -717,10 +717,10 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: tinyproxy
   - name: app-template
-    condition: gluetunproxy.enabled
+    condition: piaproxy.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: gluetunproxy    
+    alias: piaproxy    
   - name: app-template
     condition: jackettio.enabled
     version: ~0.2.1

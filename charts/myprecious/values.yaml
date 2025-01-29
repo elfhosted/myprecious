@@ -11590,7 +11590,7 @@ mediafusion:
   - secretRef:
       name: mediafusion-env
 
-gluetunproxy:
+piaproxy:
   enabled: false
   priorityClassName: tenant-normal
   image:
@@ -11598,8 +11598,8 @@ gluetunproxy:
     tag: latest
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "gluetunproxy-conf"
-      secret.reloader.stakater.com/reload: "gluetunproxy-vpn"
+      configmap.reloader.stakater.com/reload: "piaproxy-conf"
+      secret.reloader.stakater.com/reload: "piaproxy-vpn"
     strategy:
     rollingUpdate:
       unavailable: 1
@@ -11614,10 +11614,9 @@ gluetunproxy:
     PORT_PERSIST: "1"
     NFTABLES: "1"
     VPNDNS: "0"
-    HTTPPROXY: "true"
   envFrom:
   - secretRef:
-      name: gluetunproxy-vpn
+      name: piaproxy-vpn
   securityContext:
     privileged: true
     runAsUser: 0
@@ -11625,6 +11624,19 @@ gluetunproxy:
       add:
         - NET_ADMIN
         - SYS_MODULE
+  persistence:
+    tinyproxy-conf:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tinyproxy-conf 
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory
   service:
     main:
       enabled: true # necessary for probes
@@ -11639,16 +11651,23 @@ gluetunproxy:
         failureThreshold: 5
         exec:
           command:
-          - curl
-          - -x
-          - http://localhost:8888
-          - -s
-          - https://docs.elfhosted.com/
-          - | 
-            grep -q "Funky Penguin"
+          - /bin/bash
+          - -c
+          - curl -x http://localhost:8888 -s https://docs.elfhosted.com/ | grep ElfHosted
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
+  additionalContainers:
+    tinyproxy:
+      image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:9370be1434e80f8ac7d3a24d9c19335742b2c74ba15129dcdc166bb0dd3c9098
+      volumeMounts:
+      - mountPath: /etc/tinyproxy/tinyproxy.conf
+        name: tinyproxy-conf
+        subPath: tinyproxy.conf
+      - mountPath: /shared
+        name: shared
+      # env:
+      #   WAIT_FOR_VPN: "true"
 
 tinyproxy:
   enabled: false
@@ -11898,7 +11917,7 @@ aiostreams:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams,aiostreams-env"
     strategy:
     rollingUpdate:
       unavailable: 1
@@ -11916,12 +11935,6 @@ aiostreams:
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
-    shared:
-      enabled: true
-      mountPath: /shared
-      type: emptyDir
-      volumeSpec:
-        medium: Memory    
   resources:
     requests:
       cpu: 1m
@@ -11946,34 +11959,6 @@ aiostreams:
   - configMapRef:
       name: elfbot-aiostreams
       optional: true
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      env:
-        IPTABLES_BACKEND: nft
-        KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.0.0.0/8
-        LOC: de-frankfurt
-        PORT_FORWARDING: "0"
-        PORT_PERSIST: "1"
-        NFTABLES: "1"
-        VPNDNS: "0"
-        HTTPPROXY: "true"
-      envFrom:
-      - secretRef:
-          name: aiostreams-vpn
-      securityContext:
-        privileged: true
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
 
 stremify:
   enabled: false
