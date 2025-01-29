@@ -11674,7 +11674,7 @@ vpnproxy:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/gluetun
-    tag: 3.40.0@sha256:b09d29317912e6fa1b1cf295dd619163a27ff0a4c2f09d3a88e10dbe0f50ca20
+    tag: 3.40.0@sha256:897e3dc0945a104ba087af36026a8bd365a1c1d4865b3a111a2fbdad7e6b9729
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-vpnproxy"
