@@ -16,4 +16,5 @@ data:
   {{ end }}
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
   DEFAULT_TORRENTIO_TIMEOUT: "10000"
+  ADDON_PROXY: http://piaproxy:8888
 {{ end }}

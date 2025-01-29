@@ -5,7 +5,7 @@ metadata:
   name: mediaflow-proxy-env
 data:
   API_PASSWORD: "{{ .Values.mediaflowproxy.API_PASSWORD | default }}"
-  PROXY_URL: http://tinyproxy:8888 # proxy via dedicated tinyproxy instance
+  PROXY_URL: http://piaproxy:8888 # proxy via dedicated tinyproxy instance
   TRANSPORT_ROUTES: |
     {
       "https://torrentio.strem.fun": {
