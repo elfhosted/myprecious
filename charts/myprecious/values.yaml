@@ -11656,8 +11656,6 @@ piaproxy:
           - http://localhost:8888
           - -s
           - https://docs.elfhosted.com/
-          - | 
-            grep -q "Funky Penguin"
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
