@@ -14,13 +14,8 @@ data:
   {{ else }}
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion/
   {{ end }}
-  {{ if .Values.jackettio.enabled }}
-  # JACKETTIO_URL: http://jackettio:4000/
-  {{ else }}
-  # JACKETTIO_URL: http://elfhosted-internal.jackettio/
-  {{ end }}  
-  # EASYNEWS_PLUS_URL: http://elfhosted-internal.easynewsplus/
+  JACKETTIO_URL: http://elfhosted-internal.jackettio/
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
   DEFAULT_TORRENTIO_TIMEOUT: "10000"
-  ADDON_PROXY: http://piaproxy:8888
+  ADDON_PROXY: http://piaproxy.aiostreams:8888
 {{ end }}
