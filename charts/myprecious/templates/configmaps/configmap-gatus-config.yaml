@@ -281,15 +281,15 @@ data:
         alerts:
           - type: email
 
-      # - name: tinyproxy
-      #   group: consume-media
-      #   url: "http://tinyproxy:8888"
-      #   interval: 5m
-      #   conditions:
-      #     - "[STATUS] == 400"
-      #   alerts:
-      #     - type: email
-      # {{ end }}   
+      - name: piaproxy
+        group: consume-media
+        url: "http://piaproxy:8888"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 400"
+        alerts:
+          - type: email
+      {{ end }}   
 
       {{ if .Values.flixio.enabled }}
       - name: flixio
