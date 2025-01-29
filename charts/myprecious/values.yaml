@@ -11917,7 +11917,7 @@ aiostreams:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams,aiostreams-env"
     strategy:
     rollingUpdate:
       unavailable: 1
