@@ -281,9 +281,9 @@ data:
         alerts:
           - type: email
 
-      - name: piaproxy
+      - name: vpnproxy
         group: consume-media
-        url: "http://piaproxy:8888"
+        url: "http://vpnproxy:8888"
         interval: 5m
         conditions:
           - "[STATUS] == 400"
