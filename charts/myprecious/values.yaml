@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false 
+safeToRelease: true 
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -11684,6 +11684,7 @@ vpnproxy:
   affinity: *standard_affinity
   tolerations: *standard_tolerations    
   securityContext:
+    privileged: true
     runAsUser: 0
     capabilities:
       add:
