@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.256.1](https://github.com/elfhosted/myprecious/compare/v1.256.0...v1.256.1) (2025-01-30)
+
+
+### Bug Fixes
+
+* Update AIOStreams to v.1.12.0 ([07cd81b](https://github.com/elfhosted/myprecious/commit/07cd81bce4c75ca99f79e47dc228db02e7efbb58))
+
 ## [1.256.0](https://github.com/elfhosted/myprecious/compare/v1.255.0...v1.256.0) (2025-01-30)
 
 
