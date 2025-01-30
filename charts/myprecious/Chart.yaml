@@ -16,7 +16,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.255.7-pre-01
+version: 1.256.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -715,12 +715,12 @@ dependencies:
     condition: mediaflowproxy.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: vpnproxy    
+    alias: vpnproxy
   - name: app-template
     condition: piaproxy.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: piaproxy    
+    alias: piaproxy
   - name: app-template
     condition: jackettio.enabled
     version: ~0.2.1

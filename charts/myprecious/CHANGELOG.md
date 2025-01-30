@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.256.0](https://github.com/elfhosted/myprecious/compare/v1.255.0...v1.256.0) (2025-01-30)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.7 ([547ce55](https://github.com/elfhosted/myprecious/commit/547ce55d78a9f588efb0959bb7178e0b40c628f3))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.11.5 ([443d55c](https://github.com/elfhosted/myprecious/commit/443d55c277cf4e502ebe9225ec1f0063ab2af295))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.60 ([609d6ab](https://github.com/elfhosted/myprecious/commit/609d6abcd9e82dcc0d1ef3791c64aaf3d1a1ba27))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.61 ([0b8ba46](https://github.com/elfhosted/myprecious/commit/0b8ba4660444d89b24fc1687ab565ca79a8ade6a))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.62 ([1e51e13](https://github.com/elfhosted/myprecious/commit/1e51e13380cc2460220f84627bab402ff6055e75))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.63 ([91d467e](https://github.com/elfhosted/myprecious/commit/91d467e8b847fa6903f99e10589f8f388302f21f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1323 ([9460768](https://github.com/elfhosted/myprecious/commit/9460768487577d9a295f6a907fccda411577d71e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1336 ([0aec41b](https://github.com/elfhosted/myprecious/commit/0aec41bb156ee5a113c9696b951e541dd127179c))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.96 ([2f9dc04](https://github.com/elfhosted/myprecious/commit/2f9dc041ee7a5817765f95017bc6012c45e45e6e))
+* Refactor VPN for AIOStreams (prevent stale-ness) ([316a045](https://github.com/elfhosted/myprecious/commit/316a045a67b43bb6016878d3aa3b44205a1671b7))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/gluetun:3.40.0 docker digest to 897e3dc ([e2a20ae](https://github.com/elfhosted/myprecious/commit/e2a20ae9f283cc491fbf60b4f97664530db7bf62))
+* **app:** update quay.io/linuxserver.io/calibre:7.24.0 docker digest to 8c47114 ([5ebed55](https://github.com/elfhosted/myprecious/commit/5ebed5526ed7b4a59262bb3b4bf99efe0c456b55))
+* switch AIOStreams to updated VPN design ([e73c1ae](https://github.com/elfhosted/myprecious/commit/e73c1ae7b5375ef11518ba3a2916fea4ff4a2c50))
+
 ## [1.255.0](https://github.com/elfhosted/myprecious/compare/v1.254.0...v1.255.0) (2025-01-28)
 
 
