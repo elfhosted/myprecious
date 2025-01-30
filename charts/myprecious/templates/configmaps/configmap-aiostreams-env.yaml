@@ -16,6 +16,6 @@ data:
   {{ end }}
   JACKETTIO_URL: http://elfhosted-internal.jackettio/
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
-  DEFAULT_TORRENTIO_TIMEOUT: "10000"
   ADDON_PROXY: http://vpnproxy:8888
+  ADDON_PROXY_CONFIG: "*:false,torrentio.strem.fun:true"
 {{ end }}
