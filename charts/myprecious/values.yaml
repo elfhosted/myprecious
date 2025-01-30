@@ -11684,6 +11684,7 @@ vpnproxy:
   affinity: *standard_affinity
   tolerations: *standard_tolerations    
   securityContext:
+    privileged: true
     runAsUser: 0
     capabilities:
       add:
