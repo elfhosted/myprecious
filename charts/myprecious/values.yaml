@@ -429,53 +429,6 @@ migrate_data: &migrate_data
   resources: *default_resources
   securityContext: *default_securitycontext
 
-update_dns_on_init: &update_dns_on_init
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /usr/bin/dumb-init
-  - /bin/bash
-  - -c
-  - /tooling-scripts/update-dns-on-init.sh
-  env:
-    - name: MY_NODE_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: spec.nodeName
-    - name: MY_POD_NAMESPACE
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.namespace
-    - name: ELF_APP_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.labels['app.elfhosted.com/name']
-    - name: ELF_TENANT_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.labels['app.kubernetes.io/instance']
-    - name: CF_API_DOMAIN
-      value: elfhosted.com
-  envFrom:
-  - secretRef:
-      name: cloudflare-api-token
-  volumeMounts:
-  - mountPath: /tooling-scripts
-    name: tooling-scripts
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-
-# This is almost the same as the dns-update script, except we run it as a sidecar, waiting on pod termination
-clean_up_dns_on_termination: &clean_up_dns_on_termination
-  <<: *update_dns_on_init
-  command:
-  - /usr/bin/dumb-init
-  - /bin/bash
-  - -c
-  - /tooling-scripts/clean-up-dns-on-termination.sh
-
 bootstrap: &bootstrap
   image: *tooling_image
   imagePullPolicy: IfNotPresent
@@ -1087,7 +1040,6 @@ rutorrentgluetun: &rutorrent
         subPath: rutorrent
       - mountPath: /tmp
         name: tmp
-    update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
       command:
@@ -1206,7 +1158,6 @@ rutorrentgluetun: &rutorrent
         name: shared
       resources: *default_resources
       securityContext: *default_securitycontext
-    clean-up-dns: *clean_up_dns_on_termination
 
 rutorrentpia:
   <<: *rutorrent
@@ -4820,7 +4771,6 @@ plex: &app_plex
         subPath: plex
       - mountPath: /tmp
         name: tmp
-    update-dns: *update_dns_on_init
     # repair-db:
     #   image: ghcr.io/elfhosted/plex:rolling
     #   command:
@@ -4898,7 +4848,6 @@ plex: &app_plex
           type: RuntimeDefault
         readOnlyRootFilesystem: false
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       env:
@@ -5072,7 +5021,6 @@ jellyfin: &app_jellyfin
         subPath: jellyfin
       - mountPath: /tmp
         name: tmp
-    update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
       command:
@@ -5161,7 +5109,6 @@ jellyfin: &app_jellyfin
   - configMapRef:
       name: jellyfin-config
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       securityContext: *speedtest_securitycontext
@@ -5273,7 +5220,6 @@ emby: &app_emby
         subPath: emby
       - mountPath: /tmp
         name: tmp
-    update-dns: *update_dns_on_init
     setup:
       image: *tooling_image
       command:
@@ -5313,7 +5259,6 @@ emby: &app_emby
       securityContext: *default_securitycontext
       resources: *default_resources
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       securityContext: *speedtest_securitycontext
@@ -6398,7 +6343,6 @@ overseerr:
         subPath: overseerr
       - name: overseerr-config
         mountPath: "/bootstrap/"
-    update-dns: *update_dns_on_init
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
       image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:f388a21e1b2c0e7212728e68fc1ec47d1d3e6c779bf7b326c4e2410fbeb9697c
@@ -6442,7 +6386,6 @@ overseerr:
         name: tmp
       resources: *default_resources
       securityContext: *default_securitycontext
-    clean-up-dns: *clean_up_dns_on_termination
 
 jellyseerr:
   enabled: false
@@ -6513,7 +6456,6 @@ jellyseerr:
         subPath: jellyseerr
       - mountPath: /tmp
         name: tmp
-    update-dns: *update_dns_on_init
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     # copy-branding:
     #   image: ghcr.io/elfhosted/jellyseerr:2.0.1@sha256:ee475414b42e17152f67f75169137ece981b6912466182132dc3d207eebee27c
@@ -6557,7 +6499,6 @@ jellyseerr:
         name: tmp
       resources: *default_resources
       securityContext: *default_securitycontext
-    clean-up-dns: *clean_up_dns_on_termination
 
 jellystat:
   enabled: false
@@ -6764,7 +6705,6 @@ audiobookshelf:
         subPath: audiobookshelf
       - mountPath: /tmp
         name: tmp
-    update-dns: *update_dns_on_init
   ingress:
     main:
       enabled: false
@@ -6781,8 +6721,6 @@ audiobookshelf:
     limits:
       cpu: 2
       memory: 1Gi
-  additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
 
 openbooks:
   enabled: false
@@ -8331,10 +8269,6 @@ webdav: &webdav
         configMap:
           name: tooling-scripts
           defaultMode: 0755
-  initContainers:
-    update-dns: *update_dns_on_init
-  additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
   service:
     main:
       enabled: false # necessary for probes
@@ -10410,11 +10344,7 @@ stremioserver: &app_stremioserver
       type: emptyDir
       volumeSpec:
         medium: Memory
-  initContainers:
-    update-dns: *update_dns_on_init
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
-    # Avoid 404s on the /casting endpoint
     casting:
       image: nginxinc/nginx-unprivileged
       volumeMounts:
@@ -11053,7 +10983,6 @@ comet:
     runAsGroup: 568
     fsGroup: 568    
   initContainers:
-    update-dns: *update_dns_on_init
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -11430,10 +11359,7 @@ stremthru:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
-  initContainers:
-    update-dns: *update_dns_on_init
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       env:
@@ -11931,10 +11857,7 @@ mediaflowproxy:
         configMap:
           name: tooling-scripts
           defaultMode: 0755
-  initContainers:
-    update-dns: *update_dns_on_init
   additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
     speedtest:
       image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
       env:
@@ -12530,30 +12453,6 @@ zurg: &app_zurg
         subPath: zurg
       - name: example-config
         mountPath: "/bootstrap/"
-    update-dns: *update_dns_on_init
-  additionalContainers:
-    clean-up-dns: *clean_up_dns_on_termination
-    # warp:
-    #   image: ghcr.io/elfhosted/warp:rolling@sha256:9b7e2e5da5b1caab6bb1a4e450fc1a2cc7c99f162325901656d5bc9104439eb6
-    #   securityContext:
-    #     runAsUser: 1000
-    #     runAsGroup: 1000
-    #     privileged: false
-    #     capabilities:
-    #       add:
-    #       - NET_ADMIN
-    #     sysctls:
-    #     - name: net.ipv6.conf.all.disable_ipv6
-    #       value: "0"
-    #     - name: net.ipv4.conf.all.src_valid_mark
-    #       value: "1"
-    #   volumeMounts:
-    #   - mountPath: /data
-    #     subPath: warp
-    #     name: config
-    #   envFrom:
-    #   - configMapRef:
-    #       name: zurg-env # this is here so we can use env vars to detect whether to enable warp
   addons:
     vpn: &zurg_addons_vpn
       enabled: false # in case we ever need it
@@ -14349,6 +14248,50 @@ starter: &app_resource_reserver
     requests: 
       cpu: 500m
       memory: 1Mi
+  initContainers:
+    update_dns_on_init:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - /tooling-scripts/update-dns-on-init.sh
+      env:
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: ELF_TENANT_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['app.kubernetes.io/instance']
+      envFrom:
+      - secretRef:
+          name: cloudflare-api-token
+      volumeMounts:
+      - mountPath: /tooling-scripts
+        name: tooling-scripts
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        readOnlyRootFilesystem: true
+  additionalContainers:
+    clean_up_dns_on_termination: &clean_up_dns_on_termination
+      <<: *update_dns_on_init
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - /tooling-scripts/clean-up-dns-on-termination.sh      
+
+streamer:
+  enabled: false
+  <<: *app_resource_reserver
 
 hobbit:
   enabled: false

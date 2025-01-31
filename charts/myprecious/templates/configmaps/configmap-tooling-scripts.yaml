@@ -9,6 +9,9 @@ data:
     set -x
     set +e # fail gracefully 
     
+    # return true for now, we'll fix this in time
+    exit 0
+
     # avoid rate limits
     # MY_NODE_IP=$(wget -qO- ipinfo.io/ip)
     MY_NODE_IP=$(curl -s ifconfig.me)
@@ -125,6 +128,9 @@ data:
         fi
     }
 
+    # return true for now, we'll fix this in time
+    exit 0
+    
     # When we terminate, delete the DNS record
     trap cleanup_dns_on_shutdown SIGTERM
 

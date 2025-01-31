@@ -821,6 +821,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: starter
   - name: app-template
+    condition: streamer.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: streamer    
+  - name: app-template
     condition: hobbit.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
