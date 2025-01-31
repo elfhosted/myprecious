@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.258.0](https://github.com/elfhosted/myprecious/compare/v1.257.0...v1.258.0) (2025-01-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.12.1 ([31d36f7](https://github.com/elfhosted/myprecious/commit/31d36f7d124847422713e6766f4fad6f13b99283))
+
 ## [1.257.0](https://github.com/elfhosted/myprecious/compare/v1.256.1...v1.257.0) (2025-01-31)
 
 
