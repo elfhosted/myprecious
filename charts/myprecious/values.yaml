@@ -429,53 +429,6 @@ migrate_data: &migrate_data
   resources: *default_resources
   securityContext: *default_securitycontext
 
-update_dns_on_init: &update_dns_on_init
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /usr/bin/dumb-init
-  - /bin/bash
-  - -c
-  - /tooling-scripts/update-dns-on-init.sh
-  env:
-    - name: MY_NODE_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: spec.nodeName
-    - name: MY_POD_NAMESPACE
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.namespace
-    - name: ELF_APP_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.labels['app.elfhosted.com/name']
-    - name: ELF_TENANT_NAME
-      valueFrom:
-        fieldRef:
-          fieldPath: metadata.labels['app.kubernetes.io/instance']
-    - name: CF_API_DOMAIN
-      value: elfhosted.com
-  envFrom:
-  - secretRef:
-      name: cloudflare-api-token
-  volumeMounts:
-  - mountPath: /tooling-scripts
-    name: tooling-scripts
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-
-# This is almost the same as the dns-update script, except we run it as a sidecar, waiting on pod termination
-clean_up_dns_on_termination: &clean_up_dns_on_termination
-  <<: *update_dns_on_init
-  command:
-  - /usr/bin/dumb-init
-  - /bin/bash
-  - -c
-  - /tooling-scripts/clean-up-dns-on-termination.sh
-
 bootstrap: &bootstrap
   image: *tooling_image
   imagePullPolicy: IfNotPresent
@@ -14295,6 +14248,50 @@ starter: &app_resource_reserver
     requests: 
       cpu: 500m
       memory: 1Mi
+  initContainers:
+    update_dns_on_init:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - /tooling-scripts/update-dns-on-init.sh
+      env:
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: ELF_TENANT_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['app.kubernetes.io/instance']
+      envFrom:
+      - secretRef:
+          name: cloudflare-api-token
+      volumeMounts:
+      - mountPath: /tooling-scripts
+        name: tooling-scripts
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        readOnlyRootFilesystem: true
+  additionalContainers:
+    clean_up_dns_on_termination: &clean_up_dns_on_termination
+      <<: *update_dns_on_init
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - /tooling-scripts/clean-up-dns-on-termination.sh      
+
+streamer:
+  enabled: false
+  <<: *app_resource_reserver
 
 hobbit:
   enabled: false
