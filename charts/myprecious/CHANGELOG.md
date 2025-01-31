@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.257.0](https://github.com/elfhosted/myprecious/compare/v1.256.1...v1.257.0) (2025-01-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.64 ([e57728e](https://github.com/elfhosted/myprecious/commit/e57728e1dbfeac655e65352eb310d34efc2d0dc8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1345 ([25b0af4](https://github.com/elfhosted/myprecious/commit/25b0af4169fe69d3dffe50cb13b33dec5e4d0986))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.0 ([810c619](https://github.com/elfhosted/myprecious/commit/810c6190ce51a8476a494e4e911ce372f7d1208a))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.1 ([c14f5ee](https://github.com/elfhosted/myprecious/commit/c14f5ee75651788d3cd276afb779f3c6ae0fab2b))
+* **app:** update ghcr.io/elfhosted/sonarr-develop docker tag to v4.0.12.2900 ([b9bef11](https://github.com/elfhosted/myprecious/commit/b9bef116ae465c1599970f76d8d7e984b9a9eeee))
+
 ## [1.256.1](https://github.com/elfhosted/myprecious/compare/v1.256.0...v1.256.1) (2025-01-30)
 
 
