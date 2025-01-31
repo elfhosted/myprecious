@@ -14201,6 +14201,13 @@ starter: &app_resource_reserver
       volumeSpec:
         persistentVolumeClaim:
           claimName: config    
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts
+          defaultMode: 0755          
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
