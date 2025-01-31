@@ -14231,7 +14231,7 @@ starter: &app_resource_reserver
       cpu: 500m
       memory: 1Mi
   initContainers:
-    update_dns_on_init:  &update_dns_on_init
+    update-dns:  &update_dns_on_init
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -14263,7 +14263,7 @@ starter: &app_resource_reserver
           type: RuntimeDefault
         readOnlyRootFilesystem: true
   additionalContainers:
-    clean_up_dns_on_termination:
+    clean-up-dns:
       <<: *update_dns_on_init
       command:
       - /usr/bin/dumb-init
