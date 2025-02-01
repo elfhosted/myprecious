@@ -9,4 +9,5 @@ data:
   ADDON_NAME: Stremio-Jackett - {{ .Release.Name }} | ElfHosted
   ADDON_ICON: https://elfhosted.com/images/stremio-jackett-elfhosted.png
   CACHE_URL: http://stremio-jackett-cacher.stremio-jackett-cacher:8080
+  SPONSOR_MESSAGE: Welcome, {{ .Release.Name }}, to your Stremio-Jackett instance!
 {{ end }}

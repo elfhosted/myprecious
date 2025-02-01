@@ -30,7 +30,8 @@ data:
     {{ end }}
     {{ if .Values.mediaflowproxy.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow-proxy.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
-    {{ end }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}    
     {{ if .Values.stremthru.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-stremthru.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
@@ -85,6 +86,7 @@ data:
         {{ end }}
         {{ if .Values.mediaflowproxy.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow-proxy.$DNS_DOMAIN CNAME
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow.$DNS_DOMAIN CNAME
         {{ end }}
         {{- if .Values.overseerrcustomdomain.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-overseerr.$DNS_DOMAIN CNAME
