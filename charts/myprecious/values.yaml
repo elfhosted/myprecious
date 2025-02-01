@@ -4824,6 +4824,7 @@ plex: &app_plex
       - -c
       - |
         set -x
+        set -e
 
         cd /shared
 
@@ -5725,6 +5726,7 @@ flaresolverr: &app_flaresolverr
       - -c
       - |
         set -x
+        set -e
 
         cd /shared
 
@@ -7638,6 +7640,7 @@ seerrbridge:
       - -c
       - |
         set -x
+        set -e
 
         cd /shared
 
@@ -10991,6 +10994,7 @@ comet:
       - -c
       - |
         set -x
+        set -e
 
         cd /shared
 
@@ -11186,6 +11190,7 @@ jackettio:
       - -c
       - |
         set -x
+        set -e
 
         cd /shared
 
@@ -11656,6 +11661,7 @@ vpnproxy:
       - -c
       - |
         set -x
+        set -e
 
         cd /shared
 
@@ -11749,6 +11755,7 @@ tinyproxy:
       - -c
       - |
         set -x
+        set -e
 
         cd /shared
 
