@@ -189,21 +189,21 @@ data:
                     --data "${json_data}")
                     
                 if echo $response | jq -e '.success' > /dev/null; then
-                    echo "Successfully updated ${record_type} record"
+                    echo "Successfully updated ${record_type} record ${record_name}"
                     return 0
                 else
-                    echo "Error updating ${record_type} record:"
+                    echo "Error updating ${record_type} record ${record_name}:"
                     echo $response | jq '.'
                     return 1
                 fi
             else
-                echo "Error: Cannot create ${record_type} record. Please delete existing A/AAAA/CNAME records first."
+                echo "Error: Cannot create ${record_type} record ${record_name}. Please delete existing A/AAAA/CNAME records first."
                 echo "You can use delete_cloudflare_record to remove existing records."
                 return 1
             fi
         else
             # No conflicting records found, create new record
-            echo "No existing A/AAAA/CNAME records found. Creating new ${record_type} record..."
+            echo "No existing A/AAAA/CNAME records found for ${record_name}. Creating new ${record_type} record..."
             local json_data="{
                 \"type\": \"${record_type^^}\",
                 \"name\": \"${record_name}\",
@@ -222,7 +222,7 @@ data:
                 echo "Record ID: $(echo $response | jq -r '.result.id')"
                 return 0
             else
-                echo "Error creating ${record_type} record:"
+                echo "Error creating ${record_type} record ${record_name}:"
                 echo $response | jq '.'
                 return 1
             fi
@@ -287,7 +287,7 @@ data:
             return 0
         fi
 
-        echo "Found ${record_type} record with ID: ${record_id}"
+        echo "Found ${record_type} ${record_name} record with ID: ${record_id}"
         
         # Delete the record
         local response=$(curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/${zone_id}/dns_records/${record_id}" \
@@ -299,7 +299,7 @@ data:
             echo "Successfully deleted ${record_type} record ${record_name}"
             return 0
         else
-            echo "Error deleting ${record_type} record:"
+            echo "Error deleting ${record_type} record ${record_name}:"
             echo $response | jq '.'
             return 1
         fi
