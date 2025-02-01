@@ -22,4 +22,13 @@ spec:
           namespace: traefik            
         - name: buffer-2gb
           namespace: traefik
+    # / is SSO-protected
+    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`) && Path(`/`)
+      kind: Rule
+      services:
+        - name: mediaflow-proxy
+          kind: Service
+          port: 8888
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
 {{ end }}
