@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.259.0](https://github.com/elfhosted/myprecious/compare/v1.258.0...v1.259.0) (2025-02-01)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.12.3 ([1a78097](https://github.com/elfhosted/myprecious/commit/1a78097cd5189ba3abee3e72ed89402d4b251ef9))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.65 ([ad5157f](https://github.com/elfhosted/myprecious/commit/ad5157f0e346cb784242bef2eabbd1c0fed0e370))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.66 ([4366725](https://github.com/elfhosted/myprecious/commit/436672512c539e6ef171d0a2426c73f9ed51816b))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1355 ([99fcbbd](https://github.com/elfhosted/myprecious/commit/99fcbbd0b67780b88d47a20f3fffca83720110c6))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.16 ([3ff0de2](https://github.com/elfhosted/myprecious/commit/3ff0de242d0ea1175a01627a54d57ebef470f3af))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.2.4 ([35f1d4e](https://github.com/elfhosted/myprecious/commit/35f1d4eddd9b921e94945c6ef2486ab6517bfc5b))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.43.1 ([646e082](https://github.com/elfhosted/myprecious/commit/646e082e085956d14b69244c3eaf2a4ef01dc992))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 353d12c ([396add5](https://github.com/elfhosted/myprecious/commit/396add5a63fe20d60a3f3a0eb13ba1b45d0a31d1))
+* **app:** update ghcr.io/elfhosted/stremio-jackett:v4.2.4 docker digest to 732feb3 ([d722c3b](https://github.com/elfhosted/myprecious/commit/d722c3be297da0102358d17e6850a4cecfa4ad25))
+
 ## [1.258.0](https://github.com/elfhosted/myprecious/compare/v1.257.0...v1.258.0) (2025-01-31)
 
 
