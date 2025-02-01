@@ -5,7 +5,7 @@ metadata:
 data:
   update-dns-on-init.sh: |
     # Detect external address
-    
+
     source /tooling-scripts/cloudflare-scripts.sh
     DNS_DOMAIN={{ .Values.dns_domain }}
     MY_NODE_IP=$(curl -s ifconfig.me)
@@ -27,20 +27,32 @@ data:
     {{ end }}
     {{ if .Values.comet.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-comet.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
-    {{ end }}    
+    {{ end }}
     {{ if .Values.mediaflowproxy.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow-proxy.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
-    {{ end }}   
-    {{ if .Values.mediaflowproxy.enabled }}
-    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow-proxy.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
-    {{ end }}    
-    {{- if .Values.overseerrcustomdomain.enabled }}    
+    {{ end }}
+    {{ if .Values.stremthru.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-stremthru.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}
+    {{- if .Values.overseerrcustomdomain.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-overseerr.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
-    {{ end }}   
-    {{- if .Values.zurgexposed.enabled }}    
+    {{ end }}
+    {{- if .Values.jellyseerrcustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-jellyseerr.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}
+    {{- if .Values.uptimekumacustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-uptimekuma.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}
+    {{- if .Values.vaultwardencustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-vaultwarden.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}
+    {{- if .Values.flixiocustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-flixio.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}
+    {{- if .Values.zurgexposed.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-zurg.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
-    {{ end }}   
-    {{- if .Values.webdav.enabled }}    
+    {{ end }}
+    {{- if .Values.webdav.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-webdav.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
 
@@ -67,20 +79,32 @@ data:
         {{ end }}
         {{ if .Values.comet.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-comet.$DNS_DOMAIN CNAME
-        {{ end }}    
+        {{ end }}
         {{ if .Values.mediaflowproxy.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow-proxy.$DNS_DOMAIN CNAME
-        {{ end }}   
+        {{ end }}
         {{ if .Values.mediaflowproxy.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-mediaflow-proxy.$DNS_DOMAIN CNAME
-        {{ end }}    
-        {{- if .Values.overseerrcustomdomain.enabled }}    
+        {{ end }}
+        {{- if .Values.overseerrcustomdomain.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-overseerr.$DNS_DOMAIN CNAME
-        {{ end }}   
-        {{- if .Values.zurgexposed.enabled }}    
+        {{ end }}
+        {{- if .Values.jellyseerrcustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-jellyseerr.$DNS_DOMAIN CNAME
+        {{ end }}
+        {{- if .Values.uptimekumacustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-uptimekuma.$DNS_DOMAIN CNAME
+        {{ end }}
+        {{- if .Values.vaultwardencustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-vaultwarden.$DNS_DOMAIN CNAME
+        {{ end }}
+        {{- if .Values.flixiocustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-flixio.$DNS_DOMAIN CNAME
+        {{ end }}
+        {{- if .Values.zurgexposed.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-zurg.$DNS_DOMAIN CNAME
-        {{ end }}   
-        {{- if .Values.webdav.enabled }}    
+        {{ end }}
+        {{- if .Values.webdav.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-webdav.$DNS_DOMAIN CNAME
         {{ end }}
     }
@@ -100,15 +124,15 @@ data:
     check_existing_records() {
         local zone_id=$1
         local record_name=$2
-        
+
         # Check for any existing A, AAAA, or CNAME records
         local existing_records=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/${zone_id}/dns_records?name=${record_name}" \
             -H "Authorization: Bearer ${CF_API_KEY}" \
             -H "Content-Type: application/json")
-        
+
         # Look for any records of these types
         local conflicting_records=$(echo $existing_records | jq -r '.result[] | select(.type == "A" or .type == "AAAA" or .type == "CNAME")')
-        
+
         if [ ! -z "$conflicting_records" ]; then
             echo "$conflicting_records"
             return 0
@@ -170,7 +194,7 @@ data:
         if conflicting_records=$(check_existing_records "$zone_id" "$record_name"); then
             echo "Found existing DNS records for ${record_name}:"
             echo "$conflicting_records" | jq -r '. | "Type: \(.type), Content: \(.content), ID: \(.id)"'
-            
+
             # If there's an existing record of the same type, update it
             local existing_id=$(echo "$conflicting_records" | jq -r "select(.type == \"${record_type^^}\") | .id")
             if [ ! -z "$existing_id" ] && [ "$existing_id" != "null" ]; then
@@ -182,12 +206,12 @@ data:
                     \"ttl\": 1,
                     \"proxied\": false
                 }"
-                
+
                 local response=$(curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/${zone_id}/dns_records/${existing_id}" \
                     -H "Authorization: Bearer ${CF_API_KEY}" \
                     -H "Content-Type: application/json" \
                     --data "${json_data}")
-                    
+
                 if echo $response | jq -e '.success' > /dev/null; then
                     echo "Successfully updated ${record_type} record ${record_name}"
                     return 0
@@ -288,7 +312,7 @@ data:
         fi
 
         echo "Found ${record_type} ${record_name} record with ID: ${record_id}"
-        
+
         # Delete the record
         local response=$(curl -s -X DELETE "https://api.cloudflare.com/client/v4/zones/${zone_id}/dns_records/${record_id}" \
             -H "Authorization: Bearer ${CF_API_KEY}" \
