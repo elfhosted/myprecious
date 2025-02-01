@@ -14224,6 +14224,7 @@ starter: &app_resource_reserver
   - -c
   - |
     echo "This pod simple reserves contended resources for a tenant"
+
     sleep infinity
   affinity: *standard_affinity
   service:
@@ -14254,10 +14255,6 @@ starter: &app_resource_reserver
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
-        - name: MY_POD_NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
         - name: ELF_TENANT_NAME
           valueFrom:
             fieldRef:
