@@ -93,6 +93,9 @@ data:
     function cleanup_dns_on_shutdown {
         echo "Received SIGTERM, cleaning up DNS entries..."
 
+        # return true for now, we'll fix this in time
+        exit 0
+        
         set -x
         # What's my name? (adjusted for stremio-server secretstring)
         case $ELF_APP_NAME in
@@ -128,9 +131,6 @@ data:
         fi
     }
 
-    # return true for now, we'll fix this in time
-    exit 0
-    
     # When we terminate, delete the DNS record
     trap cleanup_dns_on_shutdown SIGTERM
 
