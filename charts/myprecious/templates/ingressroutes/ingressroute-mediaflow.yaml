@@ -2,19 +2,19 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
+  name: {{ .Release.Name }}-mediaflow.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`)
+    - match: Host(`{{ .Release.Name }}-mediaflow.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: mediaflow-proxy
+        - name: mediaflow
           kind: Service
           port: 8888
-    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`) && (PathPrefix(`/speed`) && !PathPrefix(`/speedtest`))
+    - match: Host(`{{ .Release.Name }}-mediaflow.{{ .Values.dns_domain }}`) && (PathPrefix(`/speed`) && !PathPrefix(`/speedtest`))
       kind: Rule
       services:
-        - name: mediaflow-proxy
+        - name: mediaflow
           kind: Service
           port: 3002 # openspeedtest
       middlewares:
@@ -23,10 +23,10 @@ spec:
         - name: buffer-2gb
           namespace: traefik
     # / is SSO-protected
-    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`) && Path(`/`)
+    - match: Host(`{{ .Release.Name }}-mediaflow.{{ .Values.dns_domain }}`) && Path(`/`)
       kind: Rule
       services:
-        - name: mediaflow-proxy
+        - name: mediaflow
           kind: Service
           port: 8888
       middlewares:
