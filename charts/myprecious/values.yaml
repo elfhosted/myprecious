@@ -12656,8 +12656,7 @@ clidebrid: &app_clidebrid
         http:
           port: 5000
   persistence:
-    tmp: *tmp
-    backup: *backup
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
