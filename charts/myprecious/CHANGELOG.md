@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.260.0](https://github.com/elfhosted/myprecious/compare/v1.259.0...v1.260.0) (2025-02-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.67 ([a629335](https://github.com/elfhosted/myprecious/commit/a6293358269c7df1ec13a2ac3a5455845aeb1ff2))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.68 ([c16cfa3](https://github.com/elfhosted/myprecious/commit/c16cfa3b1ed51c1968e09d73fe70c7a4ed214b13))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1359 ([2eaa2d9](https://github.com/elfhosted/myprecious/commit/2eaa2d9b82d1be14adcaaf88d1e2294ac6d6f801))
+* **app:** update ghcr.io/elfhosted/jellystat docker tag to v1.1.3 ([5c42c1d](https://github.com/elfhosted/myprecious/commit/5c42c1d2f16f4695356ca7971d2f3fcdb8ef19bc))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.17 ([08ed123](https://github.com/elfhosted/myprecious/commit/08ed1237f6bbe73f8a20a3c387777c6d2d43d182))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.18 ([54bfd85](https://github.com/elfhosted/myprecious/commit/54bfd858ed8b210382aaf1314228e87b4eca5e7a))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.19 ([f14d4af](https://github.com/elfhosted/myprecious/commit/f14d4af3d4d80443adb18360e42d6cd447114f24))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.2.5 ([d78cc41](https://github.com/elfhosted/myprecious/commit/d78cc417996326ba5214f421a7246063df0fe892))
+* **app:** update ghcr.io/elfhosted/stremio-jackett docker tag to v4.2.6 ([738edd9](https://github.com/elfhosted/myprecious/commit/738edd917f5dcb2edd4f3ebc5b425ae4f8be2c6b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediafusion:4.3.17 docker digest to c540972 ([94b5003](https://github.com/elfhosted/myprecious/commit/94b500382d5d2fa8d0229e55b9ffb41ec904b008))
+
 ## [1.259.0](https://github.com/elfhosted/myprecious/compare/v1.258.0...v1.259.0) (2025-02-01)
 
 
