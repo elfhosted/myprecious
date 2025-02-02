@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.260.1](https://github.com/elfhosted/myprecious/compare/v1.260.0...v1.260.1) (2025-02-02)
+
+
+### Bug Fixes
+
+* Add storagemounts to cli_debrid for new file validation option ([6792714](https://github.com/elfhosted/myprecious/commit/6792714c4061ff9e41c4de5b699ac32bc3650f44))
+
 ## [1.260.0](https://github.com/elfhosted/myprecious/compare/v1.259.0...v1.260.0) (2025-02-02)
 
 
