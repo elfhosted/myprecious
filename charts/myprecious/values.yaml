@@ -4691,8 +4691,7 @@ plex: &app_plex
     registry: ghcr.io
     repository: elfhosted/plex
     tag: 1.41.3.9314-a0bfb8370 
-  persistence:
-    <<: *storagemounts
+  persistence: &app_plex_persistence
     config:
       enabled: true
       type: custom
@@ -4718,6 +4717,11 @@ plex: &app_plex
         configMap:
           name: elfbot-plex
           optional: true
+    render-device: &streamer_render_device
+      enabled: "true"
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"
     shared:
       enabled: true
       mountPath: /shared
@@ -4759,26 +4763,6 @@ plex: &app_plex
         subPath: plex
       - mountPath: /tmp
         name: tmp
-    # repair-db:
-    #   image: ghcr.io/elfhosted/plex:rolling
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     set -x
-    #     set -e
-
-    #     grep -q PlexOnlineToken /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml || (
-    #       echo "Plex is not claimed yet, no point repairing" && exit 0)
-
-    #     # If the DB directory exists, then repair
-    #     if [ -d "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases" ]; then
-    #       /usr/local/bin/DBRepair.sh --sqlite /usr/lib/plexmediaserver --databases '/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases' auto
-    #     fi
-    #   volumeMounts:
-    #   - mountPath: /config
-    #     name: config
-    #     subPath: plex
     setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -14120,44 +14104,13 @@ plexhobbit:
   <<: *app_plex
   podAnnotations: *hobbit_streamer_podAnnotations
   resources: *hobbit_streamer_resources
-  persistence: &plex_persistence
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      subPath: plex
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    transcode: # in case users use /tmp
+  persistence:
+    <<: *app_plex_persistence
+    transcode: # extra transcoding space
       enabled: true
       mountPath: /transcode
       type: emptyDir
-      sizeLimit: 50Gi   
-    phototranscoder:
-      enabled: true
-      mountPath: /phototranscoder
-      type: emptyDir
       sizeLimit: 50Gi
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-plex
-          optional: true
-    render-device: &streamer_render_device
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
-    shared:
-      enabled: true
-      mountPath: /shared
-      type: emptyDir
-      volumeSpec:
-        medium: Memory
 
 jellyfinhobbit:
   <<: *app_jellyfin
@@ -14171,13 +14124,25 @@ embyhobbit:
 
 plexranger:
   <<: *app_plex
-  persistence: *plex_persistence  
+  persistence:
+    <<: *app_plex_persistence
+    transcode: # extra transcoding space
+      enabled: true
+      mountPath: /transcode
+      type: emptyDir
+      sizeLimit: 50Gi 
   podAnnotations: *ranger_streamer_podAnnotations
   resources: *ranger_streamer_resources
 
 plexhalfling:
   <<: *app_plex
-  persistence: *plex_persistence
+  persistence:
+    <<: *app_plex_persistence
+    transcode: # extra transcoding space
+      enabled: true
+      mountPath: /transcode
+      type: emptyDir
+      sizeLimit: 50Gi
   podAnnotations: *halfling_streamer_podAnnotations
   resources: *halfling_streamer_resources
 
@@ -14193,7 +14158,13 @@ embyhalfling:
 
 plexnazgul:
   <<: *app_plex
-  persistence: *plex_persistence
+  persistence:
+    <<: *app_plex_persistence
+    transcode: # extra transcoding space
+      enabled: true
+      mountPath: /transcode
+      type: emptyDir
+      sizeLimit: 50Gi
   podAnnotations: *nazgul_streamer_podAnnotations
   resources: *nazgul_streamer_resources
 
