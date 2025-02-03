@@ -4276,7 +4276,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.9.4.4539@sha256:616c3b8b02cfac814388698ed5f81d376c9859cd0f0cc9bf177a75aecc014fd9
+    tag: 2.9.6.4552@sha256:28621d115c9e259e668b58e89bb7f8b8c07bbd971e4b28de624c8d0fb08d643e
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6751,7 +6751,7 @@ vaultwarden:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/vaultwarden
-    tag: 1.33.0@sha256:a2b1163c8d6c1419b8ea774cd900a46e28ec93566129f1c7c1d5cf503ef78b78
+    tag: 1.33.1@sha256:68f12b96cb7516dc12b6711475bc5e038e5015b3866634cf5e11904357ccebb5
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10164,7 +10164,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1359@sha256:9c00bc52264d6ebeb103cc06e554c619a40661ad67fe9d51999da4f4adc42397
+    tag: 0.22.1363@sha256:ab63bccc4ae83856a44ed82fb93f11dfdf8eb226c63952261bfb6fca5734a2f2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11375,7 +11375,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.19@sha256:60fcd737892b855fecaa2489ee157223ca60588c3a318fd76a27fae4001c2e08
+    tag: 4.3.20@sha256:61e611dabd3870e4c832a3aa3bb587e6023d0b19a55c4e939f6bccb1b7dde4af
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -12572,7 +12572,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.68@sha256:bc9cbb8a473f1b476b0cee46f88e6158586c5db29eda54c65a2151f544cab60f
+    tag: v0.5.69@sha256:a4f2dcc89197b90d363c0e2a6dd581b3735d80f941b12d3fd7940dc8a7733511
   priorityClassName: tenant-normal
   controller:
     annotations:
