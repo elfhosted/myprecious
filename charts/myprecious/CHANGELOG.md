@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.261.0](https://github.com/elfhosted/myprecious/compare/v1.260.1...v1.261.0) (2025-02-03)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.69 ([ffd7d12](https://github.com/elfhosted/myprecious/commit/ffd7d12eb5b27f4966b030c5e52baaced91fbb34))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1363 ([f9e48fb](https://github.com/elfhosted/myprecious/commit/f9e48fb178f808d25e8c30ccad88325240b7529d))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.9.5.4550 ([e7a0730](https://github.com/elfhosted/myprecious/commit/e7a07302c47688a5ce3e5a82f4ab537594c8d156))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.9.6.4552 ([dc8887b](https://github.com/elfhosted/myprecious/commit/dc8887b7a0332c49da0e8bae38d6a800b5838b28))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.20 ([d4cc404](https://github.com/elfhosted/myprecious/commit/d4cc404169a990e4e550d319b85ed48c0eac5e54))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.33.1 ([135b8bd](https://github.com/elfhosted/myprecious/commit/135b8bd576ffc937bb918b0b95b840ba1d866a40))
+
 ## [1.260.1](https://github.com/elfhosted/myprecious/compare/v1.260.0...v1.260.1) (2025-02-02)
 
 
