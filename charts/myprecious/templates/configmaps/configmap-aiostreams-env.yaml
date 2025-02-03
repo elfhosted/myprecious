@@ -18,4 +18,5 @@ data:
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
   ADDON_PROXY: http://vpnproxy:8888
   ADDON_PROXY_CONFIG: "*:false,torrentio.strem.fun:true"
+  MEDIAFUSION_API_PASSWORD: changemeelfie # default if unset
 {{ end }}
