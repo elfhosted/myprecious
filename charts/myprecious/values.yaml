@@ -4692,6 +4692,7 @@ plex: &app_plex
     repository: elfhosted/plex
     tag: 1.41.3.9314-a0bfb8370 
   persistence: &app_plex_persistence
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
