@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.263.0](https://github.com/elfhosted/myprecious/compare/v1.262.0...v1.263.0) (2025-02-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.71 ([777b02f](https://github.com/elfhosted/myprecious/commit/777b02f2f76126905c3dcb0f89b6a599de96bff8))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.72 ([84c1854](https://github.com/elfhosted/myprecious/commit/84c18540fa6037b34f050391033aa680a853d61b))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.73 ([3685417](https://github.com/elfhosted/myprecious/commit/3685417b130b5f6dcd48ea663185c3a0b4474131))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.74 ([8468f55](https://github.com/elfhosted/myprecious/commit/8468f55d896cee4636a5791314bba3d975e0d7d3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1372 ([02360e3](https://github.com/elfhosted/myprecious/commit/02360e3ea5801b9d573a30454ddfc40853ed102b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to a906748 ([3a575f2](https://github.com/elfhosted/myprecious/commit/3a575f2bd1374b3a292bc60a587c48c584184884))
+* **app:** update quay.io/linuxserver.io/calibre:7.24.0 docker digest to cd7f421 ([0b03611](https://github.com/elfhosted/myprecious/commit/0b0361172709e6dfd40e843a41dc3fe421c43254))
+
 ## [1.262.0](https://github.com/elfhosted/myprecious/compare/v1.261.0...v1.262.0) (2025-02-04)
 
 
