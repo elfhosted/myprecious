@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.264.0](https://github.com/elfhosted/myprecious/compare/v1.263.0...v1.264.0) (2025-02-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.75 ([80cd2cc](https://github.com/elfhosted/myprecious/commit/80cd2ccada2ec5756f7e176d1a395ccd1322ecc3))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.76 ([d9f22b0](https://github.com/elfhosted/myprecious/commit/d9f22b075ec23344d3d72d4d0cd90d001121147f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1377 ([23cc30a](https://github.com/elfhosted/myprecious/commit/23cc30a32a3cd71026b0af8abd475c7ef0db3464))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/gatus:5.15.0 docker digest to ffcfa89 ([9b24734](https://github.com/elfhosted/myprecious/commit/9b24734d30c85dc03061dfe747f71578cadb9994))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 7f48112 ([4681db8](https://github.com/elfhosted/myprecious/commit/4681db8150c37fa5b4a9892fa5108b2600005f0c))
+* **app:** update ghcr.io/elfhosted/seerrbridge-dev:rolling docker digest to 66e1566 ([7dc5a57](https://github.com/elfhosted/myprecious/commit/7dc5a57e6dbf6de97cc8676f1dbb04bd70d03a05))
+
 ## [1.263.0](https://github.com/elfhosted/myprecious/compare/v1.262.0...v1.263.0) (2025-02-05)
 
 
