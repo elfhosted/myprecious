@@ -2243,6 +2243,14 @@ radarr: &app_radarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: radarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers          
     logs:
       enabled: true
       type: custom
@@ -2302,6 +2310,11 @@ radarr: &app_radarr
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
+
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -2355,6 +2368,14 @@ radarr4k: &app_radarr4k
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: radarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers            
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2414,6 +2435,11 @@ radarr4k: &app_radarr4k
         mkdir -p /storage/symlinks/downloads/radarr4k
         mkdir -p /storage/symlinks/movies-4k
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
+        
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -3870,6 +3896,14 @@ sonarr: &app_sonarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: sonarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers            
     logs:
       enabled: true
       type: custom
@@ -3929,6 +3963,10 @@ sonarr: &app_sonarr
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -3980,6 +4018,14 @@ sonarr4k: &app_sonarr4k
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: sonarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers            
     logs:
       enabled: true
       type: custom
@@ -4039,6 +4085,10 @@ sonarr4k: &app_sonarr4k
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -5459,7 +5509,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.15.0@sha256:7b6386cc577268be59dbe01d9040c9f942d4962182b7a9eca36f3e7c3d006b70
+    tag: 5.15.0@sha256:ffcfa89124039e92f4340cadf5bd891c6442b3cc20bffa1d0f7cf53b7c484881
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10164,7 +10214,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1372@sha256:210d0333cead0ab96fdb81c021ae0daafbf8fae092dbdd121815b40317c5c2d4
+    tag: 0.22.1377@sha256:3f58c83d464e6df12da78d732916248b408180dcbdaeced5707160b7f7be5e6d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12493,7 +12543,7 @@ plexdebrid: &app_plexdebrid
   #   app.elfhosted.com/name: plexdebrid
   image:
     repository: ghcr.io/elfhosted/plex-debrid
-    tag: rolling@sha256:e993ea0e13bf7677d13fef16c2302cbcfd3b8bc8e41148f3a39f31c253ded85a
+    tag: rolling@sha256:7f48112e262137d5707f4a1cdda23fefa97d85d6bbe32bb02a5e8755d907e9a5
   podLabels:
     app.elfhosted.com/name: plex-debrid    
   priorityClassName: tenant-normal
@@ -12572,7 +12622,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.74@sha256:19ce947212228731989291e3adbcbbf534550f76888f92d2991b431e1ecb416e
+    tag: v0.5.76@sha256:c7b1c2f421183b626939a5c30d530e90d25991db14b7f981470b1e05b0737798
   priorityClassName: tenant-normal
   controller:
     annotations:

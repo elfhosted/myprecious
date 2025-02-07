@@ -1,0 +1,13 @@
+{{ if .Values.radarr.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mediacovers
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 80Gi
+  storageClassName: topolvm-provisioner-thin
+{{ end }}
