@@ -2243,6 +2243,14 @@ radarr: &app_radarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: radarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers          
     logs:
       enabled: true
       type: custom
@@ -2302,6 +2310,11 @@ radarr: &app_radarr
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
+
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -2355,6 +2368,14 @@ radarr4k: &app_radarr4k
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: radarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers            
     elfbot:
       enabled: "true"
       type: "custom"
@@ -2414,6 +2435,11 @@ radarr4k: &app_radarr4k
         mkdir -p /storage/symlinks/downloads/radarr4k
         mkdir -p /storage/symlinks/movies-4k
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
+        
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -3870,6 +3896,14 @@ sonarr: &app_sonarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: sonarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers            
     logs:
       enabled: true
       type: custom
@@ -3929,6 +3963,10 @@ sonarr: &app_sonarr
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -3980,6 +4018,14 @@ sonarr4k: &app_sonarr4k
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    mediacover:
+      enabled: true
+      type: custom
+      mountPath: /config/MediaCover
+      subPath: sonarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: mediacovers            
     logs:
       enabled: true
       type: custom
@@ -4039,6 +4085,10 @@ sonarr4k: &app_sonarr4k
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
 
+        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
+        if [ -d /config/MediaCover ]; then
+          rm -rf /config/MediaCover
+        fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
