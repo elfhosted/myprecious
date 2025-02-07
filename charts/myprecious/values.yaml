@@ -2312,7 +2312,7 @@ radarr: &app_radarr
 
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
-          rm -rf /config/MediaCover
+          echo rm -rf /config/MediaCover
         fi
 
       volumeMounts:
@@ -2320,7 +2320,7 @@ radarr: &app_radarr
         name: symlinks
       - mountPath: /config
         name: config
-        subPath: sonarr        
+        subPath: radarr        
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -2448,7 +2448,7 @@ radarr4k: &app_radarr4k
         name: symlinks
       - mountPath: /config
         name: config
-        subPath: sonarr        
+        subPath: radarr4k        
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -4103,7 +4103,7 @@ sonarr4k: &app_sonarr4k
         name: symlinks
       - mountPath: /config
         name: config
-        subPath: sonarr        
+        subPath: sonarr4k     
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
