@@ -2318,6 +2318,9 @@ radarr: &app_radarr
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
+      - mountPath: /config
+        name: config
+        subPath: sonarr        
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -2443,6 +2446,9 @@ radarr4k: &app_radarr4k
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
+      - mountPath: /config
+        name: config
+        subPath: sonarr        
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -3970,6 +3976,9 @@ sonarr: &app_sonarr
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
+      - mountPath: /config
+        name: config
+        subPath: sonarr
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
@@ -4092,6 +4101,9 @@ sonarr4k: &app_sonarr4k
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
+      - mountPath: /config
+        name: config
+        subPath: sonarr        
       resources: *default_resources
       securityContext: *default_securitycontext
   resources:
