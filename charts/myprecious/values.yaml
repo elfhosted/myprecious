@@ -2312,7 +2312,7 @@ radarr: &app_radarr
 
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
-          echo rm -rf /config/MediaCover
+          rm -rf /config/MediaCover
         fi
 
       volumeMounts:
