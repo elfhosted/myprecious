@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.264.1](https://github.com/elfhosted/myprecious/compare/v1.264.0...v1.264.1) (2025-02-08)
+
+
+### Bug Fixes
+
+* switch plex /transcode to ephemeral volume ([efc1465](https://github.com/elfhosted/myprecious/commit/efc146527ba169cc689c5ab48e791ca45ecbb756))
+
 ## [1.264.0](https://github.com/elfhosted/myprecious/compare/v1.263.0...v1.264.0) (2025-02-06)
 
 
