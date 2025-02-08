@@ -4765,9 +4765,9 @@ plex: &app_plex
           claimName: config
     transcode: # in case users use /tmp
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 1Gi   
+      volumeSpec: *volumespec_ephemeral_volume_1g       
     phototranscoder:
       enabled: true
       mountPath: /phototranscoder
