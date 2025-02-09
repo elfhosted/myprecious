@@ -4331,6 +4331,75 @@ prowlarr: &app_prowlarr
   env:
     S6_READ_ONLY_ROOT: 1
 
+nzbhydra:
+  enabled: false
+  podLabels:
+    app.elfhosted.com/name: nzbhydra
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/nzbhydra2
+    tag: 7.12.3@sha256:02041770b3a672365f70aa0853f06187a2d28178ba4d81d6965e0d69adf4398c
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    # readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nzbhydra"
+  automountServiceAccountToken: false
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: nzbhydra
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: nzbhydra
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5076
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: nzbhydra
+      - mountPath: /tmp
+        name: tmp
+  resources:
+    requests:
+      cpu: 1m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+
 lidarr:
   enabled: false
   sso:
@@ -12634,7 +12703,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.78@sha256:e1c512d1d2234e1286424850c589168551211c86624507b4d298bd7038bc0423
+    tag: v0.5.79@sha256:b356e140c5fdf1202638bda279545f755abe0de7528271431cb682ef1aef0e31
   priorityClassName: tenant-normal
   controller:
     annotations:

@@ -760,6 +760,14 @@ data:
               key: {{ .Values.prowlarrexposed.apikey }} 
         {{ end }}  
 
+        {{ if .Values.nzbhydra.enabled }}
+        - NZB Hydra:
+            icon: nzbhydra.png
+            href: https://{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}
+            description: Manage NZB Indexers  
+            siteMonitor: http://nzbhydra:5076
+        {{ end }}          
+
         {{ if .Values.jackett.enabled }}
         - Jackett:
             icon: jackett.png
