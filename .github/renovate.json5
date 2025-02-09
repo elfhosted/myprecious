@@ -3,7 +3,6 @@
   "enabledManagers": ["helm-values"],
   "detectHostRulesFromEnv": true,
   "platform": "github",
-  "renovateVersion": "36.0.0", // because v39 errors on our values.yaml
   "repositories": ["elfhosted/myprecious"],
   "pinDigests": true,
   "allowedPostUpgradeCommands": ["./scripts/bump-myprecious.sh"],
@@ -15,7 +14,7 @@
     "commands": ["./scripts/bump-myprecious.sh"],
     "fileFilters": ["charts/myprecious/Chart.yaml"],
     "executionMode": "branch"
-  }, 
+  },
   "automerge": false,
   "automergeType": "pr",
   "platformAutomerge": true,
