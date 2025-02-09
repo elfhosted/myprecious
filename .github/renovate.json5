@@ -15,6 +15,13 @@
     "fileFilters": ["charts/myprecious/Chart.yaml"],
     "executionMode": "branch"
   },
+  "regexManagers": [ // attempt to avoid yaml parser syntax errors
+    {
+      "fileMatch": ["values.yaml"],
+      "matchStrings": ["^(.*?):\\s*(.*)$"],
+      "datasourceTemplate": "helm"
+    }
+  ],  
   "automerge": false,
   "automergeType": "pr",
   "platformAutomerge": true,
