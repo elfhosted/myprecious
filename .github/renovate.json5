@@ -3,6 +3,7 @@
   "enabledManagers": ["helm-values"],
   "detectHostRulesFromEnv": true,
   "platform": "github",
+  "renovateVersion": "36.0.0", // because v39 errors on our values.yaml
   "repositories": ["elfhosted/myprecious"],
   "pinDigests": true,
   "allowedPostUpgradeCommands": ["./scripts/bump-myprecious.sh"],
