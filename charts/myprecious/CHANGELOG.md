@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.268.0](https://github.com/elfhosted/myprecious/compare/v1.267.0...v1.268.0) (2025-02-10)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script docker tag to v1.5.1 ([832841c](https://github.com/elfhosted/myprecious/commit/832841c96c9a9c923d5d517302e65372fecde713))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/aiostreams:v1.13.6 docker digest to 66ba57e ([3ad50ed](https://github.com/elfhosted/myprecious/commit/3ad50edb444934a7450636b5d9863424dd39b94a))
+
 ## [1.267.0](https://github.com/elfhosted/myprecious/compare/v1.266.0...v1.267.0) (2025-02-10)
 
 
