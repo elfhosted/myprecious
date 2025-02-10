@@ -345,7 +345,7 @@ storagemounts: &storagemounts
 # The entire bootstrap sidecar/additionalcontainer
 default_resources: &default_resources
   requests:
-    cpu: 1m
+    cpu: 0m
     memory: 1Mi
     # ephemeral-storage: 50Mi
   limits:
@@ -2047,7 +2047,7 @@ sabnzbd:
       resources: *default_resources
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
@@ -2154,7 +2154,7 @@ tautulli:
           port: 8181
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -2325,7 +2325,7 @@ radarr: &app_radarr
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 500Mi
     limits:
       cpu: 1.5
@@ -2453,7 +2453,7 @@ radarr4k: &app_radarr4k
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 500Mi
     limits:
       cpu: 1.5
@@ -2689,7 +2689,7 @@ bazarr:
         name: tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -2766,7 +2766,7 @@ bazarr4k:
         name: tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -3034,7 +3034,7 @@ filebrowser:
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 6Mi
     limits:
       cpu: 1
@@ -3105,7 +3105,7 @@ uptimekuma:
         name: tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 100m
@@ -3163,7 +3163,7 @@ privatebin:
           port: 8080
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
       ephemeral-storage: 50Mi
     limits:
@@ -3274,7 +3274,7 @@ kapowarr:
           port: 5656
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -3405,7 +3405,7 @@ calibreweb:
       securityContext: *default_securitycontext        
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -3484,7 +3484,7 @@ cwabookdownloader:
       image: ghcr.io/elfhosted/cloudflarebypassforscraping@sha256:7bdf614b57f57e47a6cecdaf6048869037123e0731456ed186b5430d6bfbefad
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -3555,7 +3555,7 @@ lazylibrarian:
         name: tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 96Mi
     limits:
       cpu: 1
@@ -3630,7 +3630,7 @@ mylar:
         name: tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -3704,7 +3704,7 @@ komga:
         name: tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1
@@ -3771,7 +3771,7 @@ kavita:
           port: 5000
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 256Mi
     limits:
       cpu: 2
@@ -3841,7 +3841,7 @@ calibre:
           port: 8080
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 1Gi
     limits:
       cpu: 1
@@ -3983,7 +3983,7 @@ sonarr: &app_sonarr
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 600Mi
     limits:
       cpu: 1.5
@@ -4108,7 +4108,7 @@ sonarr4k: &app_sonarr4k
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 256Mi
     limits:
       cpu: 1.5
@@ -4197,7 +4197,7 @@ resiliosync:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1
@@ -4323,7 +4323,7 @@ prowlarr: &app_prowlarr
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 2
@@ -4401,7 +4401,7 @@ nzbhydra:
         name: tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -4500,7 +4500,7 @@ lidarr:
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 2
@@ -4574,7 +4574,7 @@ navidrome:
           port: 4533
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 32Mi
     limits:
       cpu: 2
@@ -4683,7 +4683,7 @@ readarr:
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 20m
+      cpu: 0m
       memory: 256Mi
     limits:
       cpu: 2
@@ -4792,7 +4792,7 @@ readarraudio:
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 20m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 2
@@ -5541,7 +5541,7 @@ homer:
       configmap.reloader.stakater.com/reload: "homer-config, elfbot-homer" # Reload the deployment every time the yaml config changes
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 1Mi
     limits:
       cpu: 200m
@@ -5588,7 +5588,7 @@ traefikforwardauth:
 
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 6Mi
     limits:
       cpu: 1
@@ -5612,7 +5612,7 @@ gatus:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 20Mi
     limits:
       cpu: 1
@@ -5685,7 +5685,7 @@ gotify:
     GOTIFY_SERVER_PORT: 8080
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 32Mi
     limits:
       cpu: 1
@@ -5796,7 +5796,7 @@ flaresolverr: &app_flaresolverr
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 600m
@@ -5898,7 +5898,7 @@ seafile:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seafile"
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1024m
@@ -6028,7 +6028,7 @@ tunarr:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 256Mi
     limits:
       cpu: 1
@@ -6109,7 +6109,7 @@ ersatztv:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 256Mi
     limits:
       cpu: 1
@@ -6192,7 +6192,7 @@ threadfin:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 256Mi
     limits:
       cpu: 1
@@ -6268,7 +6268,7 @@ thelounge:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 40Mi
     limits:
       cpu: 100m
@@ -6468,7 +6468,7 @@ overseerr:
           port: 5055
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 175Mi
     limits:
       cpu: 2
@@ -6581,7 +6581,7 @@ jellyseerr:
           port: 5055
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 160Mi
     limits:
       cpu: 2
@@ -6631,7 +6631,7 @@ jellystat:
       optional: true
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 20Mi
     limits:
       cpu: 1
@@ -6725,7 +6725,7 @@ jellystat:
         name: dev-shm
       resources:
         requests:
-          cpu: 1m
+          cpu: 0m
           memory: 1Mi
         limits:
           cpu: 500m
@@ -6815,7 +6815,7 @@ audiobookshelf:
           port: 8000
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 2
@@ -6879,7 +6879,7 @@ openbooks:
           port: 8000
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 2
@@ -6955,7 +6955,7 @@ vaultwarden:
           port: 8000
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 16Mi
     limits:
       cpu: 1
@@ -6991,7 +6991,7 @@ notifiarr:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 16Mi
     limits:
       cpu: 2
@@ -7136,7 +7136,7 @@ shoko:
           port: 8111
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -7217,7 +7217,7 @@ filebot:
           port: 5452
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 16Mi
     limits:
       cpu: 2
@@ -7287,7 +7287,7 @@ rpdb:
           port: 8750
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 40Mi
     limits:
       cpu: 1
@@ -7412,7 +7412,7 @@ kometa: &app_kometa
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -7495,7 +7495,7 @@ imagemaid:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -7575,7 +7575,7 @@ cinesync:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -7633,7 +7633,7 @@ arrtools:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -7723,7 +7723,7 @@ seerrbridge:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -7871,7 +7871,7 @@ plextraktsync:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 100m # no way this should be using so much resources
@@ -7924,7 +7924,7 @@ decluttarr: &app_decluttarr
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -7978,7 +7978,7 @@ rdebridui:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -8045,7 +8045,7 @@ suggestarr:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
@@ -8185,7 +8185,7 @@ rcloneui:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 60Mi
     limits:
       cpu: 1
@@ -8304,7 +8304,7 @@ rclonefm:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 60Mi
     limits:
       cpu: 150m
@@ -8380,7 +8380,7 @@ webdav: &webdav
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 60Mi
     limits:
       cpu: 150m
@@ -8473,7 +8473,7 @@ storagehub:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 10Mi
     limits:
       cpu: 1
@@ -8635,7 +8635,7 @@ jfa:
           port: 8056
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 150Mi
     limits:
       cpu: 2
@@ -8981,7 +8981,7 @@ syncthing:
           port: 8384
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 70Mi
     limits:
       cpu: 1
@@ -9100,7 +9100,7 @@ rdtclient: &app_rdtclient
           port: 6500
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
       ephemeral-storage: 50Mi
     limits:
@@ -9336,7 +9336,7 @@ jdownloader:
           port: 9898
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 10Mi
     limits:
       cpu: 0.5
@@ -9383,7 +9383,7 @@ miniflux:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
@@ -9488,7 +9488,7 @@ joplinserver:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1500m # if par threads is 1, this leaves 0.5cpu for downloading
@@ -9648,7 +9648,7 @@ homepage:
           port: 3000
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 250m # deliberately hobble the CPU in favor of GPU transcoding
@@ -9754,7 +9754,7 @@ wallabag:
           port: 8000
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 32Mi
     limits:
       cpu: 100m
@@ -9781,7 +9781,7 @@ wallabag:
         allowPrivilegeEscalation: false
       resources:
         requests:
-          cpu: 1m
+          cpu: 0m
           memory: 100Mi
         limits:
           cpu: 500m
@@ -9814,7 +9814,7 @@ autoscan:
      AUTOSCAN_VERBOSITY: 1
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 16Mi
     limits:
       cpu: 100m
@@ -9925,7 +9925,7 @@ riven: &app_riven
       optional: true
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 20Mi
     limits:
       cpu: 2
@@ -10055,7 +10055,7 @@ riven: &app_riven
         name: dev-shm
       resources:
         requests:
-          cpu: 1m
+          cpu: 0m
           memory: 1Mi
         limits:
           cpu: 500m
@@ -10135,7 +10135,7 @@ rivenfrontend: &app_rivenfrontend
       optional: true
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 20Mi
     limits:
       cpu: 1
@@ -10184,7 +10184,7 @@ airdcpp: &app_airdcpp
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 16Mi
     limits:
       cpu: 2
@@ -10324,7 +10324,7 @@ jackett:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10552,7 +10552,7 @@ flixio:
       optional: true  
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 2
@@ -10619,7 +10619,7 @@ flixioapi:
       optional: true           
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10729,7 +10729,7 @@ pairdrop:
   #     name: pairdrop-env
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10782,7 +10782,7 @@ actual:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10841,7 +10841,7 @@ petio:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10931,7 +10931,7 @@ pgadmin:
       name: pgadmin-env
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -10987,7 +10987,7 @@ redisinsight:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -11037,7 +11037,7 @@ mongoexpress:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 1
@@ -11156,7 +11156,7 @@ comet:
         medium: Memory          
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 2
@@ -11394,7 +11394,7 @@ stremthru:
     #     medium: Memory                    
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1
@@ -11486,7 +11486,7 @@ davio:
       volumeSpec: *volumespec_ephemeral_volume_1g
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1
@@ -11714,7 +11714,7 @@ vpnproxy:
         medium: Memory          
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 512Mi
     limits:
       cpu: 1
@@ -11827,7 +11827,7 @@ tinyproxy:
         medium: Memory          
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1
@@ -12006,7 +12006,7 @@ youriptv:
     tmp: *tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1
@@ -12049,7 +12049,7 @@ aiostreams:
     tmp: *tmp
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 50Mi
     limits:
       cpu: 1
@@ -12195,7 +12195,7 @@ recyclarr:
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 100Mi
     limits:
       cpu: 1
@@ -12319,7 +12319,7 @@ knightcrawler: &app_knightcrawler
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 100m
@@ -12415,7 +12415,7 @@ zurg: &app_zurg
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 32Mi
     limits:
       cpu: 1
@@ -13173,7 +13173,7 @@ doplarr: &app_doplarr
   automountServiceAccountToken: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 1Mi
     limits:
       cpu: 100m
@@ -13233,7 +13233,7 @@ requestrr:
           optional: true
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 1Mi
     limits:
       cpu: 100m
@@ -13323,7 +13323,7 @@ debridav: &app_debridav
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 60Mi
     limits:
       cpu: 1
@@ -13439,7 +13439,7 @@ rclonedebridlink:
       optional: true
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 1Mi
     limits:
       cpu: 100m
@@ -13550,7 +13550,7 @@ rclonealldebrid:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 60Mi
     limits:
       cpu: 150m
@@ -13663,7 +13663,7 @@ rclonepremiumize:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 60Mi
     limits:
       cpu: 150m
@@ -13765,7 +13765,7 @@ rclonetorbox:
       enabled: false
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 60Mi
     limits:
       cpu: 150m
@@ -13804,7 +13804,7 @@ blackhole: &app_blackhole
       optional: true
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 1Mi
     limits:
       cpu: 1
@@ -14141,7 +14141,7 @@ kubernetesdashboard:
   ## Pod resource requests & limits
   resources:
     requests:
-      cpu: 1m
+      cpu: 0m
       memory: 64Mi
     limits:
       cpu: 1
