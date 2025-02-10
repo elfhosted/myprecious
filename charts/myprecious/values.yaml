@@ -4370,6 +4370,13 @@ nzbhydra:
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-nzbhydra
+          optional: true          
   ingress:
     main:
       enabled: false
@@ -12018,7 +12025,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.13.1@sha256:7a7b99b52201090fc21f50638a36b521e552010fdfb3aa5de315bd067e5f31f9
+    tag: v1.13.2@sha256:2dbcb25ce824c42498b327ca7dcec44d5d4b3bd64ee73f34feff605a1dfc7070
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12703,7 +12710,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.79@sha256:b356e140c5fdf1202638bda279545f755abe0de7528271431cb682ef1aef0e31
+    tag: v0.5.79@sha256:94993244d99dd63e9c97790ca63dea754bfb56dd1cc1def47a32d7059d3999d4
   priorityClassName: tenant-normal
   controller:
     annotations:
