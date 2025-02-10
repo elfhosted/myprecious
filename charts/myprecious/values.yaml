@@ -2210,7 +2210,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.17.2.9580@sha256:49b4839b0c7772a093a0bda27bea387401a3f9c59106ca52f132c8a73da42b49
+    tag: 5.18.4.9674@sha256:e9f99ce5f62721b1b38c43bbfb47dcffd69aedee67eabb610bf9282a34965ea1
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2340,7 +2340,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.17.2.9580@sha256:49b4839b0c7772a093a0bda27bea387401a3f9c59106ca52f132c8a73da42b49
+    tag: 5.18.4.9674@sha256:e9f99ce5f62721b1b38c43bbfb47dcffd69aedee67eabb610bf9282a34965ea1
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3117,7 +3117,7 @@ privatebin:
     enabled: false
   image:
     repository: privatebin/fs
-    tag: 1.7.5
+    tag: 1.7.6
   priorityClassName:
   controller:
     annotations:
@@ -3643,7 +3643,7 @@ komga:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/komga
-    tag: 1.11.1@sha256:7317be399b637e7c0855a7b9e6fdc5d0ba4060a6d57a502c24528ade8af777a9
+    tag: 1.19.1@sha256:722f64c9ec219a867ad3194a55e592a86d8da95b7c9307c99b17ab24062bd217
   env:
     KOMGA_CONFIGDIR: /config
     KOMGA_REMEMBERME_KEY: yesplease
@@ -4210,7 +4210,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.30.2.4939@sha256:61bad237d58100febf29c16375436af06dff41fb266c9b8ebb29e870851992b2
+    tag: 1.31.1.4959@sha256:6fa91904cb9710110b182c022297b16c7f97556641937639e2f838e95c58bf88
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4370,6 +4370,13 @@ nzbhydra:
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-nzbhydra
+          optional: true          
   ingress:
     main:
       enabled: false
@@ -5846,7 +5853,7 @@ flaresolverr: &app_flaresolverr
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+          tag: 3.40.0@sha256:897e3dc0945a104ba087af36026a8bd365a1c1d4865b3a111a2fbdad7e6b9729
       env:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
         DNS_KEEP_NAMESERVER: "on"
@@ -6728,7 +6735,7 @@ audiobookshelf:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookshelf
-    tag: 2.12.3@sha256:b8356000ad913a01d672fd8882474a92908c668f272749f7349cf7333148cc9c
+    tag: v2.19.0@sha256:a077a164b13fda298791a55c9f670d016c198ee2a5d9c1f5aa6bc97eceb3347f
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -7760,7 +7767,7 @@ seerrbridge:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+          tag: 3.40.0@sha256:897e3dc0945a104ba087af36026a8bd365a1c1d4865b3a111a2fbdad7e6b9729
       env:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
         DNS_KEEP_NAMESERVER: "on"
@@ -7984,7 +7991,7 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: v1.0.15@sha256:d765222e0c6060dc7616f3c6a3b67cc922d900706ecb967edaf297fd12b5a2a4
+    tag: v1.0.18@sha256:755a8b428b9b4070a1d90b8abcc17ee05f5f0e05021f9ec4813dc7ce5f938188
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8641,7 +8648,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.4.2@sha256:f655fae92b8126e7d7f5dcbb796a8bbe32883f0af9cd20841c1be035e241052f
+    tag: 10.5.0@sha256:10dde337b96de0f66620c2e1c9fb34f5b3ea2e67d0fbf604d30b105528d95301
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10749,7 +10756,7 @@ actual:
   enabled: false
   image:
     repository: ghcr.io/actualbudget/actual-server
-    tag: 25.1.0-alpine
+    tag: 25.2.1-alpine
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: actual
@@ -11310,7 +11317,7 @@ jackettio:
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
-          tag: 3.39.1@sha256:47688e70bd1519bcedaf48270328d85a5405496330787e53371d23fa590af4d3
+          tag: 3.40.0@sha256:897e3dc0945a104ba087af36026a8bd365a1c1d4865b3a111a2fbdad7e6b9729
       env:
         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
         DNS_KEEP_NAMESERVER: "on"
@@ -11338,7 +11345,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.43.1@sha256:91045b47a1a9098472dd1842e4779e8878330fc746445ac7f2f3cae4ff2be1f1
+    tag: 0.48.0@sha256:3006bf87fb92871fd24ef3782baac7b1083128dfee0dee3e167eb8e3749d6e9e
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -12018,7 +12025,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.13.1@sha256:7a7b99b52201090fc21f50638a36b521e552010fdfb3aa5de315bd067e5f31f9
+    tag: v1.13.2@sha256:2dbcb25ce824c42498b327ca7dcec44d5d4b3bd64ee73f34feff605a1dfc7070
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12703,7 +12710,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.79@sha256:b356e140c5fdf1202638bda279545f755abe0de7528271431cb682ef1aef0e31
+    tag: v0.5.79@sha256:94993244d99dd63e9c97790ca63dea754bfb56dd1cc1def47a32d7059d3999d4
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13996,7 +14003,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.125.2@sha256:b7464b8799ab31c192d9b51a59d73426fc2deb39db6166a2f5073ae304c1131d
+    tag: v1.125.7@sha256:217cddb1e0fa3f4878e1573fe1fd4b9dc24f737015cc5c917910787a5ec0f85e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14084,7 +14091,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.125.2
+      image: ghcr.io/immich-app/immich-machine-learning:v1.125.7
       envFrom:
       - configMapRef:
           name: immich-env

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.266.0](https://github.com/elfhosted/myprecious/compare/v1.265.0...v1.266.0) (2025-02-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.13.2 ([9eb5087](https://github.com/elfhosted/myprecious/commit/9eb5087d92aca3aaea2145c21739d790712eb4a8))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.5.79 docker digest to 9499324 ([6ad9998](https://github.com/elfhosted/myprecious/commit/6ad9998213a7de459d39498d67a786db72bca9be))
+
 ## [1.265.0](https://github.com/elfhosted/myprecious/compare/v1.264.1...v1.265.0) (2025-02-09)
 
 
