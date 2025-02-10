@@ -4683,7 +4683,7 @@ readarr:
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 20m
+      cpu: 0m
       memory: 256Mi
     limits:
       cpu: 2
@@ -4792,7 +4792,7 @@ readarraudio:
       securityContext: *default_securitycontext
   resources:
     requests:
-      cpu: 20m
+      cpu: 0m
       memory: 128Mi
     limits:
       cpu: 2
