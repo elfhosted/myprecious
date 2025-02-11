@@ -7557,6 +7557,14 @@ cinesync:
         configMap:
           name: elfbot-cinesync
           optional: true  
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: cinesync
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs              
   initContainers:
     bootstrap:
       <<: *bootstrap
