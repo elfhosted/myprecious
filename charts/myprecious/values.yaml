@@ -12065,9 +12065,7 @@ aiostreams:
           port: 3000
   envFrom:
   - configMapRef:
-      name: aiostreams-env
-  - secretRef:
-      name: aiostreams-env      
+      name: aiostreams-env   
   - configMapRef:
       name: elfbot-aiostreams
       optional: true
