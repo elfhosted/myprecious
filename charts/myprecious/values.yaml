@@ -6735,7 +6735,7 @@ audiobookshelf:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookshelf
-    tag: v2.19.0@sha256:a077a164b13fda298791a55c9f670d016c198ee2a5d9c1f5aa6bc97eceb3347f
+    tag: v2.19.1@sha256:1908b4584a0183b5b04c16936e8815cc8fd99434ad51608598fef7dac8e7c6bd
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -10310,7 +10310,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1393@sha256:65d31751718bae21943455fafd6817c7e138c7fa79159d723dfe3655a73c0a74
+    tag: 0.22.1404@sha256:e77b24fc21ad42fa82bf90b1d42af6e53b60cdbd44d3997698638d7f156d7f66
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10708,7 +10708,7 @@ pairdrop:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pairdrop
-    tag: v1.10.10@sha256:c0188414adebb07c69a170c81256825f7ea83784f2f7ff491679fa0165b4425f
+    tag: v1.10.11@sha256:ff054cd6d6e9363176099c79fb6489a6467876f519fb7497d3138d61a6c8ebb6
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: pairdrop
@@ -11353,7 +11353,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.49.0@sha256:1f0ae44463934a4e849e54812b7d9d38bd7d024d6417c8a621de67b005ed8580
+    tag: 0.50.0@sha256:07045c35db087c94c4a7711acf08eb22704aa319ea1235141efd3aa1ed15e8b6
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -12033,7 +12033,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.13.7@sha256:9232b6f762031d95b23dd2e77f34cffb17ca4d8e1dfda60bf1f4ba9e74b6c455
+    tag: v1.13.8@sha256:dc77118d0bf5f1a8b644c363109a869050283fbc9af77c7f52c788d5ff24f434
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12716,7 +12716,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.5.79@sha256:94993244d99dd63e9c97790ca63dea754bfb56dd1cc1def47a32d7059d3999d4
+    tag: v0.5.80@sha256:de97c047f856f6938de594f86ae72acb3883184998358b05137f92e951e40ad3
   priorityClassName: tenant-normal
   controller:
     annotations:
