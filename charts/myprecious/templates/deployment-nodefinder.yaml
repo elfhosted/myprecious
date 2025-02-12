@@ -36,9 +36,11 @@ spec:
                 operator: In
                 values:
                 - "true"
+        {{ if or .Values.hobbit.enabled .Values.ranger.enabled .Values.halfling.enabled .Values.nazgul.enabled }}
+        # fill up the gretels
         podAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 50
+          - weight: 1
             podAffinityTerm:
               labelSelector:
                 matchExpressions:
@@ -48,6 +50,7 @@ spec:
                   - nodefinder
               topologyKey: "kubernetes.io/hostname"
               namespaceSelector: {}  # i.e., in the absense of any better signal, pick a node which already has zurg on it
+        {{ end }}
       containers:
       - name: "nodefinder"
         command: [ "/usr/bin/sleep" ]
