@@ -21,7 +21,7 @@
   "ignoreTests": false,
   "packageRules": [
     {
-      "matchPackageNames": ["plex"],
+      "matchPackageNames": ["ghcr.io/elfhosted/plex"],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\.(?<build>\\d+)(-(?<hash>[a-f0-9]+))?$",
       "extractVersion": "^.*:(?<version>.*)$",
       "automerge": true
