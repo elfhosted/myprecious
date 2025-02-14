@@ -27,4 +27,10 @@ spec:
         - name: nzbhydra
           kind: Service
           port: 5076
+    - match: Host(`{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}`) && PathPrefix(`/getnzb`)
+      kind: Rule
+      services:
+        - name: nzbhydra
+          kind: Service
+          port: 5076          
 {{ end }}
