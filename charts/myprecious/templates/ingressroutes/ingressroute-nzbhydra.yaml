@@ -15,13 +15,13 @@ spec:
         - name: {{ .Release.Name }}-traefik-forward-auth
         - name: error-pages
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-jackett.{{ .Values.dns_domain }}`) && PathPrefix(`/api`)
+    - match: Host(`{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}`) && PathPrefix(`/api`)
       kind: Rule
       services:
         - name: nzbhydra
           kind: Service
           port: 5076
-    - match: Host(`{{ .Release.Name }}-jackett.{{ .Values.dns_domain }}`) && PathPrefix(`/torznab`)
+    - match: Host(`{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}`) && PathPrefix(`/torznab`)
       kind: Rule
       services:
         - name: nzbhydra
