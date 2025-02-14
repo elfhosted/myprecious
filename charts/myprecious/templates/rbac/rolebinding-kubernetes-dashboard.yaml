@@ -8,13 +8,10 @@ subjects:
   namespace: aa-bsm
 - kind: ServiceAccount
   name: kubernetes-dashboard
-  namespace: aa-fingerz
-- kind: ServiceAccount
-  name: kubernetes-dashboard
   namespace: aa-layezeeelf
 - kind: ServiceAccount
   name: kubernetes-dashboard
-  namespace: aa-ybasteven
+  namespace: aa-bsmusvenger
 - kind: ServiceAccount
   name: kubernetes-dashboard
 roleRef:
