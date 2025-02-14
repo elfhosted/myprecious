@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.273.0](https://github.com/elfhosted/myprecious/compare/v1.272.0...v1.273.0) (2025-02-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.82 ([8fc11d1](https://github.com/elfhosted/myprecious/commit/8fc11d1fcf6a791f825aafd8958b90e95b3768c9))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.83 ([eae9860](https://github.com/elfhosted/myprecious/commit/eae9860a56309624a48e9f6de23edfe0bf910114))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1425 ([cf58b1b](https://github.com/elfhosted/myprecious/commit/cf58b1bcde1f174c55eed03aa80856ab8a3b543a))
+* **app:** update ghcr.io/elfhosted/puter docker tag to v2.5.1 ([5ea4512](https://github.com/elfhosted/myprecious/commit/5ea45128d0d6fe8958676fc1b872f0f2cceea6ce))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.54.2 ([0534494](https://github.com/elfhosted/myprecious/commit/05344941c6340733c9cad7ea944bc9864e0bc81e))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v7.26.0 ([44366de](https://github.com/elfhosted/myprecious/commit/44366dedaf93ddbdac34f9d9974a39ac60f90c40))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.5.82 docker digest to 7484ad2 ([364062e](https://github.com/elfhosted/myprecious/commit/364062e5dcb3c0603fa370ac031a77e32378a81c))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 65be28a ([5374527](https://github.com/elfhosted/myprecious/commit/537452793a5d26647dd9f8e910562cc4071775f0))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to ca14958 ([781daa6](https://github.com/elfhosted/myprecious/commit/781daa6dda924d787764e2599b053c8233efb47e))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 02df09f ([a79b201](https://github.com/elfhosted/myprecious/commit/a79b201b833c3ce20028272572a4a06065476d68))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 543548f ([15a5703](https://github.com/elfhosted/myprecious/commit/15a57039e3c9769faff7eba5b4edb445f6982397))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to b8fe53d ([406e420](https://github.com/elfhosted/myprecious/commit/406e4205e43bdd174b33427c5bff7e9675200590))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 4a70314 ([2571dde](https://github.com/elfhosted/myprecious/commit/2571ddefc0a9bbafa81222466fec44726de1327a))
+* Fix mediaflow proxy landing page SSO ([5d2eb1c](https://github.com/elfhosted/myprecious/commit/5d2eb1c8de6441e5094ff60a6adecb44dd3d4c53))
+
 ## [1.272.0](https://github.com/elfhosted/myprecious/compare/v1.271.0...v1.272.0) (2025-02-13)
 
 
