@@ -23,7 +23,7 @@ spec:
         - name: buffer-2gb
           namespace: traefik
     # / is SSO-protected
-    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`) && Path(`/`)
+    - match: Host(`{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}`) && (Path(`/`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:
         - name: mediaflow-proxy
