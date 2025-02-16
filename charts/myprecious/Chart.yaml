@@ -16,7 +16,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.274.4-pre-03
+version: 1.274.4-pre-04
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -453,10 +453,11 @@ dependencies:
     condition: miniflux.enabled
     version: ~0.0.2
     repository: oci://ghcr.io/elfhosted/charts
-  - name: gotosocial
+  - name: app-template
     condition: gotosocial.enabled
     version: ~0.0.2
     repository: oci://ghcr.io/elfhosted/charts    
+    alias: gotosocial
   - name: joplinserver
     condition: joplinserver.enabled
     version: ~0.0.1
