@@ -1244,6 +1244,15 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
+
+      - name: gotosocial-cli
+        group: tools
+        url: "http://gotosocial:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
       {{ end }}      
 
       {{ if .Values.uptimekuma.enabled }}
