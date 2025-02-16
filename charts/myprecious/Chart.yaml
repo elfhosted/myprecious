@@ -16,7 +16,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.275.0
+version: 1.275.1-pre-01
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -512,46 +512,10 @@ dependencies:
     version: ~0.0.2
     repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
-    condition: autoscan.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: autoscan
-  - name: app-template
     condition: zurg.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: zurg
-  # - name: app-template
-  #   condition: zurghobbit.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: zurghobbit
-  # - name: app-template
-  #   condition: zurghalfling.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: zurghalfling
-  # - name: app-template
-  #   condition: zurgnazgul.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: zurgnazgul
-  # - name: app-template
-  #   condition: zurgranger.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: zurgranger
-  # - name: app-template
-  #   condition: zurghalfling.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: zurghalfling    
-  # - name: app-template
-  #   condition: zurgnazgul.enabled
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: zurgnazgul    
-
+    alias: zur
   - name: app-template
     condition: zurggluetun.enabled
     version: ~0.2.1
