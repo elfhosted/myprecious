@@ -9798,8 +9798,8 @@ wallabag:
 gotosocial:
   enabled: false
   image:
-    repository: superseriousbusiness/gotosocial
-    tag: 0.17.4
+    repository: ghcr.io/elfhosted/gotosocial
+    tag: 0.17.4@sha256:38e89d4776fbc8dcc38536aaa682803c9e3e02c31ed3b7f00b311ffd8447f251
   priorityClassName: tenant-normal
   controller:
     annotations:
