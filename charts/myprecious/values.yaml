@@ -9823,7 +9823,7 @@ gotosocial:
       cpu: 0m
       memory: 16Mi
     limits:
-      cpu: 100m
+      cpu: 1
       memory: 1024Mi
   ingress:
     main:
@@ -9903,6 +9903,40 @@ gotosocial:
         seccompProfile:
           type: RuntimeDefault
         readOnlyRootFilesystem: true
+  probes:
+    liveness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /livez
+          port: 8080
+        initialDelaySeconds: 30
+        periodSeconds: 120
+        timeoutSeconds: 10
+    readiness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /readyz
+          port: 8080
+        initialDelaySeconds: 30
+        periodSeconds: 120
+        timeoutSeconds: 10
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 60 # allow 10 min of failures to start up
+        httpGet:
+          path: /readyz
+          port: 8080
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 10  
 
 riven: &app_riven
   enabled: false
