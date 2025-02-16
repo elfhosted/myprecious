@@ -733,14 +733,14 @@ data:
     # String. Access key part of the S3 credentials.
     # Consider setting this value using environment variables to avoid leaking it via the config file
     # Only required when running with the s3 storage backend.
-    # Examples: ["AKIAJSIE27KKMHXI3BJQ","miniouser"]
+    # Examples: ["iamasecretaccesskey","miniouser"]
     # Default: ""
     storage-s3-access-key: ""
 
     # String. Secret key part of the S3 credentials.
     # Consider setting this value using environment variables to avoid leaking it via the config file
     # Only required when running with the s3 storage backend.
-    # Examples: ["5bEYu26084qjSFyclM/f2pz4gviSfoOg+mFwBH39","miniopassword"]
+    # Examples: ["iamasecretkey","miniopassword"]
     # Default: ""
     storage-s3-secret-key: ""
 
@@ -875,12 +875,12 @@ data:
     oidc-issuer: ""
 
     # String. The ID for this client as registered with the OIDC provider.
-    # Examples: ["some-client-id", "fda3772a-ad35-41c9-9a59-f1943ad18f54"]
+    # Examples: ["some-client-id", "i-am-a-secret-oidc-client-name"]
     # Default: ""
     oidc-client-id: ""
 
     # String. The secret for this client as registered with the OIDC provider.
-    # Examples: ["super-secret-business", "79379cf5-8057-426d-bb83-af504d98a7b0"]
+    # Examples: ["super-secret-business", "i-am-a-secret-oidc-key"]
     # Default: ""
     oidc-client-secret: ""
 
