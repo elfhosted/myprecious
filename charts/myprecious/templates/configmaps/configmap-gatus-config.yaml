@@ -1235,6 +1235,26 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.gotosocial.enabled }}
+      - name: gotosocial
+        group: tools
+        url: "http://gotosocial:8080"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+
+      - name: gotosocial-cli
+        group: tools
+        url: "http://gotosocial:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.uptimekuma.enabled }}
       - name: uptimekuma
         group: tools

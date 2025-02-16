@@ -453,6 +453,11 @@ dependencies:
     condition: miniflux.enabled
     version: ~0.0.2
     repository: oci://ghcr.io/elfhosted/charts
+  - name: app-template
+    condition: gotosocial.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts    
+    alias: gotosocial
   - name: joplinserver
     condition: joplinserver.enabled
     version: ~0.0.1

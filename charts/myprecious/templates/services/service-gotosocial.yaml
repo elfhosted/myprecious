@@ -1,0 +1,23 @@
+{{ if .Values.gotosocial.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: gotosocial
+  labels:
+    app.kubernetes.io/name: gotosocial
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  - port: 3001
+    targetPort: 3001
+    protocol: TCP
+    name: gotosocial-cli
+  selector:
+    app.kubernetes.io/name: gotosocial
+{{ end }}

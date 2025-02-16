@@ -1000,7 +1000,20 @@ data:
               type: miniflux
               url: http://miniflux:8080
               key: {{`{{HOMEPAGE_FILE_MINIFLUX_KEY}}`}} 
-        {{ end }}         
+        {{ end }}  
+
+        {{ if .Values.gotosocial.enabled }}
+        - GoToSocial:
+            icon: gotosocial.png
+            href: https://{{ .Release.Name }}-gotosocial.{{ .Values.dns_domain }}
+            description: Federated Microblogging
+            siteMonitor: http://gotosocial:8080 
+        - GoToSocial Admin CLI:
+            icon: gotosocial.png
+            href: https://{{ .Release.Name }}-gotosocial-cli.{{ .Values.dns_domain }}
+            description: GoToSocial Admin CLI
+            siteMonitor: http://gotosocial:3001             
+        {{ end }}                 
         
         {{ if .Values.uptimekuma.enabled }}
         - Uptime Kuma:
