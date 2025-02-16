@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.275.0](https://github.com/elfhosted/myprecious/compare/v1.274.0...v1.275.0) (2025-02-16)
+
+
+### Features
+
+* Add GoToSocial! 💬 ([52599d4](https://github.com/elfhosted/myprecious/commit/52599d4990d16769adc344c73b4390034c29fc73))
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.11 ([7b5fea7](https://github.com/elfhosted/myprecious/commit/7b5fea7558f958b24a99b266bf9bc6820431e4c9))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.85 ([97c293e](https://github.com/elfhosted/myprecious/commit/97c293ee32b52a25a037cb56c34d3e4609d066d2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1433 ([818dbdc](https://github.com/elfhosted/myprecious/commit/818dbdc3335f80bfc0b5d8931ca56de07f7f721d))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.2 ([9252bd4](https://github.com/elfhosted/myprecious/commit/9252bd4d8abd9c706add787fefcc01b62ac7780a))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.97 ([b3fca15](https://github.com/elfhosted/myprecious/commit/b3fca154661b8c9c1d65676edbeb353b3dcb5d86))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.55.1 ([772c3b0](https://github.com/elfhosted/myprecious/commit/772c3b03f18df5a697664d56f545b4c950673b92))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to 02419de ([055145b](https://github.com/elfhosted/myprecious/commit/055145b85dc86638f8ed4fca75330c238811bfe9))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to d319a9b ([4fb436c](https://github.com/elfhosted/myprecious/commit/4fb436c02b74b4c040b4ade2b1e4835241d76a64))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to da003cb ([620568e](https://github.com/elfhosted/myprecious/commit/620568ed242114157e6dc39016e3d7f6f75ed615))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to da70fca ([758fc50](https://github.com/elfhosted/myprecious/commit/758fc5048efdbf4eca542241b19210d381430855))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to fd8df85 ([e678fcc](https://github.com/elfhosted/myprecious/commit/e678fcce6e18cff948a6da569b37f5b44023c4ad))
+* **app:** update ghcr.io/recyclarr/recyclarr:latest docker digest to 7595408 ([415cff1](https://github.com/elfhosted/myprecious/commit/415cff18733a55e868ef3b9eb9d2e1ca9f748439))
+
 ## [1.274.0](https://github.com/elfhosted/myprecious/compare/v1.273.0...v1.274.0) (2025-02-15)
 
 
