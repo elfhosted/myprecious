@@ -1,19 +1,19 @@
-{{ if .Values.autoscan.enabled }}
+{{ if .Values.gotosocial.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: autoscan
+  name: gotosocial
   labels:
-    app.kubernetes.io/name: autoscan
+    app.kubernetes.io/name: gotosocial
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
   type: ClusterIP
   ports:
-  - port: 3030
-    targetPort: 3030
+  - port: 8080
+    targetPort: 8080
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: autoscan
+    app.kubernetes.io/name: gotosocial
 {{ end }}

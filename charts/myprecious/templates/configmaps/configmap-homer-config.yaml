@@ -1487,6 +1487,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.gotosocial.enabled }}
+          - name: "GoToSocial"
+            logo: "assets/png/gotosocial.png"
+            subtitle: "Federated Microblogging"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-gotosocial.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.uptimekuma.enabled }}
           - name: "Uptime Kuma"
             logo: "assets/png/uptime-kuma.png"
