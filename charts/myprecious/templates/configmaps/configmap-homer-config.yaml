@@ -981,18 +981,6 @@ data:
             target: "_blank" # optional html tag target attribute            
           {{ end }}      
 
-          {{ if .Values.autoscan.enabled }}
-          - name: "Autoscan"
-            # logo: "assets/png/autoscan.png"
-            # Alternatively a fa icon can be provided:
-            icon: "fas fa-search"
-            subtitle: "Configure Autoscan"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/autoscan/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
           {{ if .Values.recyclarr.enabled }}
           - name: "Recyclarr"
             icon: "fas fa-recycle"

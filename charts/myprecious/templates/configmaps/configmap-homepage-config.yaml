@@ -617,14 +617,6 @@ data:
             # siteMonitor: http://decluttarr4k:3001            
         {{ end }} 
 
-        {{ if or .Values.autoscan.enabled }}
-        - Autoscan:
-            icon: mdi-magnify-scan
-            href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/autoscan/
-            description: Configure Autoscan  
-            # siteMonitor: http://autoscan:3030
-        {{ end }}    
-
         {{ if or .Values.recyclarr.enabled }}
         - Recyclarr:
             icon: mdi-recycle
