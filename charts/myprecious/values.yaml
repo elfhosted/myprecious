@@ -9809,7 +9809,7 @@ gotosocial:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false # doesn't work with s6
+    readOnlyRootFilesystem: true # doesn't work with s6
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9834,6 +9834,8 @@ gotosocial:
       ports:
         http:
           port: 8080
+  env:
+    S6_READ_ONLY_ROOT: "true"
   persistence:
     tmp: *tmp
     backup: *backup
@@ -9858,7 +9860,11 @@ gotosocial:
         configMap:
           name: elfbot-gotosocial
           optional: true
-
+    run: # used for s6-init with non-root
+      enabled: true
+      type: emptyDir
+      mountPath: /run
+      sizeLimit: 1Gi
   initContainers:
     bootstrap:
       <<: *bootstrap
