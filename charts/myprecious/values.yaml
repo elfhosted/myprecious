@@ -9895,6 +9895,7 @@ gotosocial:
         fi
 
         # Setup the fish env
+        mkdir -p /config/.config/fish
         cp /bootstrap/config.fish /config/.config/fish
       volumeMounts:
       - mountPath: /config
