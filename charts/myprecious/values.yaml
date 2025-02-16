@@ -9809,7 +9809,7 @@ gotosocial:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true # doesn't work because the node modules in /app try to create files
+    readOnlyRootFilesystem: false # doesn't work with s6
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
