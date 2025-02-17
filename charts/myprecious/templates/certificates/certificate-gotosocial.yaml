@@ -1,0 +1,14 @@
+{{- if .Values.gotosocialcustomdomain.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: custom-domain-gotosocial-{{ .Values.gotosocialcustomdomain.cname | lower }}
+spec:
+  secretName: cert-{{ .Values.gotosocialcustomdomain.cname | lower }}
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: {{ .Values.gotosocialcustomdomain.cname | lower }}
+  dnsNames:
+  - {{ .Values.gotosocialcustomdomain.cname | lower }}
+{{ end }}  

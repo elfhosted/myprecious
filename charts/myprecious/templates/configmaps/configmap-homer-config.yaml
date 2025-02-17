@@ -1481,7 +1481,12 @@ data:
             subtitle: "Federated Microblogging"
             tag: "public"
             tagstyle: "is-danger"
+            {{- if .Values.gotosocialcustomdomain.enabled }}
+            url: "https://{{ .Values.gotosocialcustomdomain.cname | lower }}"
+            {{- else }}
             url: "https://{{ .Release.Name }}-gotosocial.{{ .Values.dns_domain }}"
+            {{- end }}
+
             target: "_blank" # optional html tag target attribute
 
           - name: "GoToSocial CLI"
