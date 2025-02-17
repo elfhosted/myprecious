@@ -50,6 +50,9 @@ data:
     {{- if .Values.flixiocustomdomain.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-flixio.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
+    {{- if .Values.gotosocialcustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-gotosocial.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}    
     {{- if .Values.zurgexposed.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-zurg.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
@@ -103,6 +106,9 @@ data:
         {{- if .Values.flixiocustomdomain.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-flixio.$DNS_DOMAIN CNAME
         {{ end }}
+        {{- if .Values.gotosocialcustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-gotosocial.$DNS_DOMAIN CNAME
+        {{ end }}        
         {{- if .Values.zurgexposed.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-zurg.$DNS_DOMAIN CNAME
         {{ end }}
