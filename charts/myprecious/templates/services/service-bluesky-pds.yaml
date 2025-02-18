@@ -1,0 +1,23 @@
+{{ if .Values.blueskypds.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: bluesky-pds
+  labels:
+    app.kubernetes.io/name: blueskypds
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: http
+  - port: 3001
+    targetPort: 3001
+    protocol: TCP
+    name: bluesky-pds-cli
+  selector:
+    app.kubernetes.io/name: blueskypds
+{{ end }}

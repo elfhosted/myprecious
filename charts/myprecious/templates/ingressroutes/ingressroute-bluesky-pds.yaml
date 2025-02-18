@@ -1,0 +1,14 @@
+{{ if .Values.blueskypds.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-bluesky-pds.{{ .Values.dns_domain }}
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-bluesky-pds.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: bluesky-pds
+          kind: Service
+          port: 3000
+{{ end }}

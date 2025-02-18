@@ -1253,7 +1253,27 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }}     
+
+      {{ if .Values.blueskypds.enabled }}
+      - name: bluesky-pds
+        group: tools
+        url: "http://blueskypds:3000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+
+      - name: bluesky-pds-cli
+        group: tools
+        url: "http://blueskypds:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
 
       {{ if .Values.uptimekuma.enabled }}
       - name: uptimekuma

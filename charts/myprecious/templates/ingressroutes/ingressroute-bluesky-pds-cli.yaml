@@ -1,14 +1,14 @@
-{{ if .Values.gotosocial.enabled }}
+{{ if .Values.blueskypds.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-gotosocial-cli.{{ .Values.dns_domain }}
+  name: {{ .Release.Name }}-bluesky-pds-cli.{{ .Values.dns_domain }}
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-gotosocial-cli.{{ .Values.dns_domain }}`)
+    - match: Host(`{{ .Release.Name }}-bluesky-pds-cli.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: gotosocial
+        - name: bluesky-pds
           kind: Service
           port: 3001
       middlewares:

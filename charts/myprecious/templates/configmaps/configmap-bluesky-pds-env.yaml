@@ -1,0 +1,32 @@
+{{ if .Values.blueskypds.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bluesky-pds-env
+data:
+  # These are sane defaults, but a user can override them if they want to use object storage
+  PDS_DATA_DIRECTORY: /config
+  PDS_BLOBSTORE_DISK_LOCATION: /config/storage
+
+  # These are placeholders, the user is expected to replace them
+  PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX: replace-me-see-docs
+  PDS_JWT_SECRET: replace-me-see-docs
+  PDS_ADMIN_PASSWORD: replace-me-see-docs
+
+  # These are generated based on username, datacenter, and the choice of custom domain name
+  {{- if .Values.blueskypdscustomdomain.enabled }}
+  PDS_HOSTNAME: "{{ .Values.blueskypdscustomdomain.cname | lower }}"
+  {{- else }}
+  PDS_HOSTNAME: "{{ .Release.Name }}-bluesky-pds.{{ .Values.dns_domain }}"
+  {{- end }}
+  PDS_ADMIN_EMAIL: {{ .Values.traefikforwardauth.whitelist }}
+
+  # These are standard from the PDS docs
+  PDS_DID_PLC_URL: "https://plc.directory"
+  PDS_BSKY_APP_VIEW_URL: "https://api.bsky.app"
+  PDS_BSKY_APP_VIEW_DID: "did:web:api.bsky.app"
+  PDS_REPORT_SERVICE_URL: "https://mod.bsky.app"
+  PDS_REPORT_SERVICE_DID: "did:plc:ar7c4by46qjdydhdevvrndac"
+  PDS_CRAWLERS: "https://bsky.network"
+
+{{ end }}

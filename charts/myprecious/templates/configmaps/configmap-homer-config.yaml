@@ -1486,7 +1486,6 @@ data:
             {{- else }}
             url: "https://{{ .Release.Name }}-gotosocial.{{ .Values.dns_domain }}"
             {{- end }}
-
             target: "_blank" # optional html tag target attribute
 
           - name: "GoToSocial CLI"
@@ -1497,6 +1496,28 @@ data:
             url: "https://{{ .Release.Name }}-gotosocial-cli.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
+
+          {{ if .Values.blueskypds.enabled }}
+          - name: "Bluesky PDS"
+            icon: "fas fa-sun"
+            subtitle: "Bluesky Personal Data Server"
+            tag: "public"
+            tagstyle: "is-danger"
+            {{- if .Values.blueskypdscustomdomain.enabled }}
+            url: "https://{{ .Values.blueskypdscustomdomain.cname | lower }}"
+            {{- else }}
+            url: "https://{{ .Release.Name }}-bluesky-pds.{{ .Values.dns_domain }}"
+            {{- end }}
+            target: "_blank" # optional html tag target attribute
+
+          - name: "BlueSky PDS CLI"
+            icon: "fas fa-sun"
+            subtitle: "Bluesky PDS CLI Admin"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-bluesky-pds-cli.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}        
 
           {{ if .Values.uptimekuma.enabled }}
           - name: "Uptime Kuma"
