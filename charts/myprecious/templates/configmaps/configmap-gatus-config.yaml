@@ -1255,7 +1255,7 @@ data:
           - type: email
       {{ end }}     
 
-      {{ if .Values.bluesky-pds.enabled }}
+      {{ if .Values.blueskypds.enabled }}
       - name: bluesky-pds
         group: tools
         url: "http://blueskypds:3000/xrpc/_health"
