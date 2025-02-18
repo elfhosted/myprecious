@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.277.0](https://github.com/elfhosted/myprecious/compare/v1.276.0...v1.277.0) (2025-02-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.87 ([eb356d2](https://github.com/elfhosted/myprecious/commit/eb356d2cabb21a12dc87aac0b545a958d791cefc))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.88 ([7c1e3af](https://github.com/elfhosted/myprecious/commit/7c1e3af06d17532d830b630af2539ac98aeaac04))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.97.2 ([384cba3](https://github.com/elfhosted/myprecious/commit/384cba364460b515e39fb553ece6d53378fd3e77))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1438 ([0ba0deb](https://github.com/elfhosted/myprecious/commit/0ba0deb39d748e6fc0c054bb1b2ce8c7965da1cc))
+* **app:** update ghcr.io/elfhosted/suggestarr docker tag to v1.0.19 ([fab4774](https://github.com/elfhosted/myprecious/commit/fab47743ca2fe92932018c5ec2b639a391bb3e13))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 02a84e6 ([19b7bf1](https://github.com/elfhosted/myprecious/commit/19b7bf1246848c870cad9956f0b1abb55121d516))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 56e2b13 ([0395501](https://github.com/elfhosted/myprecious/commit/0395501b34b7591f9c1defdc0289e9b5be68121c))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to b295451 ([8f0495e](https://github.com/elfhosted/myprecious/commit/8f0495ebe812019629476ff2c4120d5acc7399ee))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to e0639e9 ([93e4523](https://github.com/elfhosted/myprecious/commit/93e4523905e0a2741cb6fb0c314cd71fd74d7a2d))
+* revert tunarr to 0.18.10-vaapi for bugfix ([0c15494](https://github.com/elfhosted/myprecious/commit/0c154946244df2dbc9e96b054d73ad40e1e836ab))
+
 ## [1.276.0](https://github.com/elfhosted/myprecious/compare/v1.275.0...v1.276.0) (2025-02-17)
 
 
