@@ -7,6 +7,7 @@ data:
   # These are sane defaults, but a user can override them if they want to use object storage
   PDS_DATA_DIRECTORY: /config
   PDS_BLOBSTORE_DISK_LOCATION: /config/storage
+  LOG_ENABLED: "true"
 
   # These are placeholders, the user is expected to replace them
   PDS_PLC_ROTATION_KEY_K256_PRIVATE_KEY_HEX: bb1ed941a5a004f007441bd5bb297002f4e533fadba48e429f8350249315cf0c
