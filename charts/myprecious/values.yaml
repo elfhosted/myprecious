@@ -5449,8 +5449,6 @@ homer:
   service:
     main:
       enabled: true # necessary for probes
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
   podLabels:
     app.elfhosted.com/role: nodefinder # let this be an anchor for replicationdestinations
   persistence:
