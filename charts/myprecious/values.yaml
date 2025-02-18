@@ -10002,12 +10002,6 @@ blueskypds:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    example-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: bluesky-pds-config
     elfbot:
       enabled: "true"
       type: "custom"
