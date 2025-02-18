@@ -53,6 +53,9 @@ data:
     {{- if .Values.gotosocialcustomdomain.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-gotosocial.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}    
+    {{- if .Values.blueskypdscustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-bluesky-pds.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}        
     {{- if .Values.zurgexposed.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-zurg.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
@@ -108,7 +111,10 @@ data:
         {{ end }}
         {{- if .Values.gotosocialcustomdomain.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-gotosocial.$DNS_DOMAIN CNAME
-        {{ end }}        
+        {{ end }}   
+        {{- if .Values.blueskypdscustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-bluesky-pds.$DNS_DOMAIN CNAME
+        {{ end }}                
         {{- if .Values.zurgexposed.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-zurg.$DNS_DOMAIN CNAME
         {{ end }}
