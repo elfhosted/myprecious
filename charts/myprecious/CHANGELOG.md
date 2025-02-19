@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.278.0](https://github.com/elfhosted/myprecious/compare/v1.277.0...v1.278.0) (2025-02-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.97 ([46fb6cb](https://github.com/elfhosted/myprecious/commit/46fb6cbed6b3909bd88b732abb34bf7693c84ac3))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.98 ([f274ecc](https://github.com/elfhosted/myprecious/commit/f274ecc0a58715909229975dbaad4ee9adc595b7))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.89 ([558b64e](https://github.com/elfhosted/myprecious/commit/558b64e0a595abeea2b09fa3846df5ffa6f5e285))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.90 ([3ce8ea3](https://github.com/elfhosted/myprecious/commit/3ce8ea3fa0aeeac704089283c2db329d5f370d39))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.91 ([e4735b9](https://github.com/elfhosted/myprecious/commit/e4735b95bfae17ee8ca3699db92ecbe3347cf41a))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1443 ([fd16bb7](https://github.com/elfhosted/myprecious/commit/fd16bb7403a4f1f0c371bac7e1baea2b5caf700e))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.20.0 ([29e75f0](https://github.com/elfhosted/myprecious/commit/29e75f02475eb55de886ce0b37509c5e080e1438))
+* **app:** update ghcr.io/elfhosted/pairdrop docker tag to v1.11.1 ([32f5e76](https://github.com/elfhosted/myprecious/commit/32f5e760bb0b549aed55b63fdf08837bf2864021))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.5.1 ([26788e9](https://github.com/elfhosted/myprecious/commit/26788e934ccfa4d7d378bcd2880b93e9e4295e40))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 32603be ([e309368](https://github.com/elfhosted/myprecious/commit/e309368887cd30b86ea74d952751aed50be8c173))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 80992c0 ([87ad50d](https://github.com/elfhosted/myprecious/commit/87ad50df84618800f3d2bc6557a2c969036949c2))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 8325c68 ([6020afe](https://github.com/elfhosted/myprecious/commit/6020afecf1825b8170259def5bab18169ffcc923))
+* **app:** update quay.io/linuxserver.io/calibre:7.26.0 docker digest to f00ab50 ([9af95c3](https://github.com/elfhosted/myprecious/commit/9af95c30a97769230f9d1335a6cad4c3b1c1a577))
+
 ## [1.277.0](https://github.com/elfhosted/myprecious/compare/v1.276.0...v1.277.0) (2025-02-18)
 
 
