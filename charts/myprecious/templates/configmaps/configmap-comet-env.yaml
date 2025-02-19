@@ -15,7 +15,9 @@ data:
   CACHE_TTL: "2764800" # 1 month
   {{ if .Values.stremthru.enabled }}
   STREMTHRU_DEFAULT_URL: http://stremthru:8080
+  STREMTHRU_URL: http://stremthru:8080
   {{ else }}
   STREMTHRU_DEFAULT_URL: http://elfhosted-internal.stremthru
+  STREMTHRU_URL: http://elfhosted-internal.stremthru
   {{ end }}
 {{ end }}
