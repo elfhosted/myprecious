@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.279.0](https://github.com/elfhosted/myprecious/compare/v1.278.0...v1.279.0) (2025-02-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.19.4 ([ce315c1](https://github.com/elfhosted/myprecious/commit/ce315c1e00d0254a1a244abbcc47f905f3f2514a))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.5.92 ([74e5472](https://github.com/elfhosted/myprecious/commit/74e54722ba5a52829b0605e161fa6bec1ca5b858))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.22 ([ae25b86](https://github.com/elfhosted/myprecious/commit/ae25b862ff1598d864f55a8c0f562641e42905bb))
+
 ## [1.278.0](https://github.com/elfhosted/myprecious/compare/v1.277.0...v1.278.0) (2025-02-19)
 
 
