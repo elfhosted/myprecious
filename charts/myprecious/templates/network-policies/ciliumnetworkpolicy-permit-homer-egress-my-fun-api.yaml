@@ -1,0 +1,17 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-homer-egress-my-fun-api"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: homer
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        k8s:io.kubernetes.pod.namespace: my-fun-api
+        app.kubernetes.io/name: my-fun-api
+    toPorts:
+      - ports:
+        - port: '8000'
+          protocol: TCP
