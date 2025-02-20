@@ -13,7 +13,7 @@ data:
   SCRAPE_MEDIAFUSION: "True"
   SCRAPE_ZILEAN: "True"
   REMOVE_ADULT_CONTENT: "true"
-  CACHE_TTL: "2764800" # 1 month
+  DOWNLOAD_TORRENTS: "false"
   {{ if .Values.stremthru.enabled }}
   STREMTHRU_URL: http://stremthru:8080
   {{ else }}
