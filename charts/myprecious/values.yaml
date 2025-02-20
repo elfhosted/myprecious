@@ -11229,8 +11229,8 @@ mongoexpress:
 comet:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/comet
-    tag: v1.51.0@sha256:40842893e73c000a10eb1fb304b05c07d5ae11b5ee26432e0c8155785c934a07
+    repository: ghcr.io/elfhosted/comet-rewrite
+    tag: rolling@sha256:39ec2ac90d8aede815f49bcf3694d9c8beac9e8c543a36774a6803234f1ededb
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -11358,7 +11358,7 @@ comet:
       securityContext: *speedtest_securitycontext
   addons:
     vpn:
-      enabled: false # in case we ever need it
+      enabled: true # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
