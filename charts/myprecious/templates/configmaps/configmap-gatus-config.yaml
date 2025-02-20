@@ -280,7 +280,9 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
+      {{ end }}
 
+      {{ if .Values.vpnproxy.enabled }}
       - name: vpnproxy
         group: consume-media
         url: "http://vpnproxy:8888"
