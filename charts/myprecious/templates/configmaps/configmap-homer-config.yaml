@@ -105,7 +105,7 @@ data:
       RIVEN_MESSAGE="🗻 Riven reports $RIVEN_TOTAL_ITEMS total items (<I>$RIVEN_TOTAL_MOVIES movies 🍿, $RIVEN_TOTAL_SHOWS shows 📺 across $RIVEN_TOTAL_SEASONS seasons and $RIVEN_TOTAL_EPISODES episodes across $RIVEN_TOTAL_SYMLINKS symlinks!</I>)"
       {{ end }}
 
-      COMPLIMENT=$(curl -s https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments | tr -d '"')
+      COMPLIMENT=$(curl -s http://elfhosted-internal.my-fun-api/compliment | jq -r .data.compliment)
 
       # DISK_USAGE_CONFIG=$(cat /www/assets/message/message_details.html /www/assets/message/message_details_config.html )
       echo "{ \"title\":\"Welcome, {{ .Release.Name }}!\", \"content\":\"❤️ ${COMPLIMENT}</BR>${ZURG_MESSAGE}<BR/> ${RIVEN_MESSAGE}\",\"style\":\"${STYLE}\",\"icon\":\"${ICON}\" }" > /www/assets/message/message.json
