@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.280.0](https://github.com/elfhosted/myprecious/compare/v1.279.0...v1.280.0) (2025-02-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1445 ([3068baf](https://github.com/elfhosted/myprecious/commit/3068baf9086756757528cb604e9ee0bf3609fd5b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to b473d30 ([9d7e48d](https://github.com/elfhosted/myprecious/commit/9d7e48d8b29e6be5368965e4d95c923bcdf0499a))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to ff09eb2 ([d4ff699](https://github.com/elfhosted/myprecious/commit/d4ff699069229bf49e9f54154a57c65eb5f46666))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 2d08e30 ([9912b0a](https://github.com/elfhosted/myprecious/commit/9912b0a2643a11e28f2485e96ff79da07a05f1c4))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.0 docker digest to 64ed40a ([a3ebf40](https://github.com/elfhosted/myprecious/commit/a3ebf40669931af2fb3e32886080ccffcadfd1c2))
+
 ## [1.279.0](https://github.com/elfhosted/myprecious/compare/v1.278.0...v1.279.0) (2025-02-20)
 
 
