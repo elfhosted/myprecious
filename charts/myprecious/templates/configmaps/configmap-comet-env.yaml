@@ -11,6 +11,7 @@ data:
   SCRAPE_TORRENTIO: "True"
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion
   SCRAPE_MEDIAFUSION: "True"
+  SCRAPE_ZILEAN: "True"
   REMOVE_ADULT_CONTENT: "true"
   CACHE_TTL: "2764800" # 1 month
   {{ if .Values.stremthru.enabled }}
