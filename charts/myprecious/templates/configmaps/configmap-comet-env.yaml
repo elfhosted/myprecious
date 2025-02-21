@@ -13,7 +13,6 @@ data:
   SCRAPE_MEDIAFUSION: "True"
   REMOVE_ADULT_CONTENT: "true"
   CACHE_TTL: "2764800" # 1 month
-  DEBRID_PROXY_URL: "http://vpnproxy:8888"
   {{ if .Values.stremthru.enabled }}
   STREMTHRU_URL: http://stremthru:8080
   {{ else }}
