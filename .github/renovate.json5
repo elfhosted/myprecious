@@ -38,12 +38,12 @@
     {
       "matchUpdateTypes": ["patch"],
       "automerge": true,
-      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","comet","zurg-rc","tunarr"]
+      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","comet","zurg-rc","tunarr","riven","riven-frontend"]
     },
     {
       "matchUpdateTypes": ["minor"],
       "automerge": true,
-      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","comet","zurg-rc","tunarr"]
+      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","comet","zurg-rc","tunarr","riven","riven-frontend"]
     }     
   ],
   // since we version by bumping, each PR needs to be rebased every time we merge
