@@ -4214,7 +4214,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.31.1.4959@sha256:6fa91904cb9710110b182c022297b16c7f97556641937639e2f838e95c58bf88
+    tag: 1.31.2.4975@sha256:e634c7df6b93c142662a248571a744c396352dc246538d6d13cc326ac6f22a16
   securityContext:
     seccompProfile:
       type: RuntimeDefault
