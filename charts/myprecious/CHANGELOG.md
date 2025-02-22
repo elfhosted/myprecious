@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.282.0](https://github.com/elfhosted/myprecious/compare/v1.281.0...v1.282.0) (2025-02-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cinesync docker tag to v2.3 ([52053af](https://github.com/elfhosted/myprecious/commit/52053afb47de7f871aabcbf2490a39630f665ad7))
+* **app:** update ghcr.io/elfhosted/gotosocial docker tag to v0.18.0 ([b884f65](https://github.com/elfhosted/myprecious/commit/b884f655b61a4bce1601cec6a8e881239526d3d2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1450 ([0460e2b](https://github.com/elfhosted/myprecious/commit/0460e2bd23718e85cdad3737b04080018e4b0714))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.31.2.4975 ([0f5a062](https://github.com/elfhosted/myprecious/commit/0f5a062f9f967ceac9ef77f866746f4d43a47255))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to b6a4cd9 ([089ed38](https://github.com/elfhosted/myprecious/commit/089ed3837372d7a191a3268d29b43bfd73ea8961))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to c5008df ([e245c8e](https://github.com/elfhosted/myprecious/commit/e245c8e0d08de01e18cd829c731503e616e03be6))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to e929158 ([e5e812a](https://github.com/elfhosted/myprecious/commit/e5e812ab3037daf91b9911739bca951e5e429508))
+
 ## [1.281.0](https://github.com/elfhosted/myprecious/compare/v1.280.0...v1.281.0) (2025-02-21)
 
 
