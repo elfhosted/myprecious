@@ -9373,7 +9373,7 @@ miniflux:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/miniflux
-    tag: 2.2.5
+    tag: 2.2.6
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
@@ -10068,7 +10068,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.20.1@sha256:229f1da453b23e9ef560ec2071e95d9d376eba17c5e76b80175ba46fe8d40096
+    tag: v0.21.0@sha256:befb65d479f153f4ab36edba5e93bc6156b46ed12f1ae3801b60e421657f2861
   priorityClassName: tenant-normal
   controller:
     annotations:
