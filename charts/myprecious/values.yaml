@@ -13451,7 +13451,6 @@ debridav: &app_debridav
     config:
       enabled: true
       type: custom
-      mountPath: /config
       subPath: debridav
       volumeSpec:
         persistentVolumeClaim:
@@ -13465,7 +13464,13 @@ debridav: &app_debridav
       enabled: "true"
       type: emptyDir
       volumeSpec:
-        medium: Memory      
+        medium: Memory    
+    import:
+      enabled: "true"
+      mountPath: /import
+      type: emptyDir
+      volumeSpec:
+        medium: Memory              
   envFrom:
   - configMapRef:
       name: debridav-env
@@ -13499,15 +13504,14 @@ debridav: &app_debridav
         set -x
         set -e
 
-        mkdir -p /config/movies
-        mkdir -p /config/movies-4k
-        mkdir -p /config/series
-        mkdir -p /config/series-4k
-        mkdir -p /config/downloads
+        # Move files from old file-based setup into import folder
+        rsync -av --exclude="database" --remove-source-files /config/ /import/
       volumeMounts:
       - mountPath: /config
         name: config
         subPath: debridav
+      - mountPath: /import
+        name: import
       resources: *default_resources
       securityContext: *default_securitycontext
     setup-postgres:
@@ -13519,8 +13523,8 @@ debridav: &app_debridav
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
-        mkdir -p /config/postgresql/backups
+        mkdir -p /config/database
+        mkdir -p /config/backups
         chown elfie:elfie /config/postgresql -R
       volumeMounts:
       - mountPath: /config
@@ -13550,7 +13554,7 @@ debridav: &app_debridav
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: debridav/postgresql/database
+        subPath: debridav/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
