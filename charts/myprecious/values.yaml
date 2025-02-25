@@ -13504,8 +13504,10 @@ debridav: &app_debridav
         set -x
         set -e
 
-        # Move files from old file-based setup into import folder
-        rsync -av --exclude="database" --remove-source-files /config/ /import/
+        mkdir -p /config/database
+
+        # Move files from old file-based setup into import folder if they exist
+        rsync -av --exclude="database" --remove-source-files --no-times /config/ /import/
       volumeMounts:
       - mountPath: /config
         name: config
@@ -13514,26 +13516,26 @@ debridav: &app_debridav
         name: import
       resources: *default_resources
       securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
+    # setup-postgres:
+    #   image: *tooling_image
+    #   command:
+    #   - /bin/bash
+    #   - -c
+    #   - |
+    #     set -x
+    #     set -e
 
-        mkdir -p /config/database
-        mkdir -p /config/backups
-        chown elfie:elfie /config/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: debridav
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault      
+    #     mkdir -p /config/database
+    #     mkdir -p /config/backups
+    #     chown elfie:elfie /config/database -R
+    #   volumeMounts:
+    #   - mountPath: /config
+    #     name: config
+    #     subPath: debridav
+    #   securityContext:
+    #     runAsUser: 0
+    #     seccompProfile:
+    #       type: RuntimeDefault      
   additionalContainers:
     database:
       image: postgres:17-alpine
