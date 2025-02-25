@@ -1271,17 +1271,7 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/debridav/"
             target: "_blank" # optional html tag target attribute
-          {{ end }} 
-
-          {{ if .Values.debridav4k.enabled }}
-          - name: "DebriDav (4K)"
-            icon: "fas fa-file-export"
-            subtitle: "DebriDav 4K"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/debridav-4k/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}           
+          {{ end }}   
 
           {{ if .Values.blackhole.enabled }}
           - name: "Blackhole"

@@ -298,14 +298,7 @@ rclonemountdebridav: &rclonemountdebridav
   volumeSpec:
     persistentVolumeClaim:
       claimName: debridav
-  mountPath: /storage/debridav   
-rclonemountdebridav4k: &rclonemountdebridav4k
-  enabled: false 
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: debridav-4k
-  mountPath: /storage/debridav      
+  mountPath: /storage/debridav    
 rclone: &rclone
   enabled: true # everyone gets an rclone mount
   type: custom
@@ -323,7 +316,6 @@ storagemounts: &storagemounts
   rclonemountpremiumize: *rclonemountpremiumize
   rclonemounttorbox: *rclonemounttorbox
   rclonemountdebridav: *rclonemountdebridav
-  rclonemountdebridav4k: *rclonemountdebridav4k
   tmp: &tmp
     enabled: true
     type: emptyDir
@@ -10167,11 +10159,6 @@ riven: &app_riven
         set -x
         set -e
 
-        # make symlink directories if they don't exist, to make onboarding simpler
-        # wipe DB entirely (a requirement of 0.17)
-        if grep -q 16 "/config/postgresql/database/PG_VERSION" 2>/dev/null; then
-          rm -rf "/config/postgresql"
-        fi
         mkdir -p /config/postgresql/database
         mkdir -p /config/postgresql/backups
         chown elfie:elfie /config/postgresql -R
@@ -13469,11 +13456,16 @@ debridav: &app_debridav
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    app-dev:
-      enabled: true
+    # app-dev:
+    #   enabled: true
+    #   type: emptyDir
+    #   mountPath: /app/dev
+    #   sizeLimit: 1Gi
+    dev-shm:
+      enabled: "true"
       type: emptyDir
-      mountPath: /app/dev
-      sizeLimit: 1Gi
+      volumeSpec:
+        medium: Memory      
   envFrom:
   - configMapRef:
       name: debridav-env
@@ -13508,47 +13500,18 @@ debridav: &app_debridav
         set -e
 
         mkdir -p /config/movies
+        mkdir -p /config/movies-4k
         mkdir -p /config/series
+        mkdir -p /config/series-4k
         mkdir -p /config/downloads
       volumeMounts:
       - mountPath: /config
         name: config
         subPath: debridav
       resources: *default_resources
-      securityContext: *default_securitycontext  
-
-debridav4k:
-  enabled: false
-  <<: *app_debridav
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav-4k,debridav-4k-env"
-  persistence:
-    <<: *storagemounts
-    tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: debridav-4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    app-dev:
-      enabled: true
-      type: emptyDir
-      mountPath: /app/dev
-      sizeLimit: 1Gi  
-  envFrom:
-  - configMapRef:
-      name: debridav-4k-env
-  - configMapRef:
-      name: elfbot-debridav-4k
-      optional: true    
-  initContainers:
-    setup:
+      securityContext: *default_securitycontext
+    setup-postgres:
       image: *tooling_image
-      imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
       - -c
@@ -13556,15 +13519,47 @@ debridav4k:
         set -x
         set -e
 
-        mkdir -p /config/movies-4k
-        mkdir -p /config/series-4k
-        mkdir -p /config/downloads
+        mkdir -p /config/postgresql/database
+        mkdir -p /config/postgresql/backups
+        chown elfie:elfie /config/postgresql -R
       volumeMounts:
       - mountPath: /config
         name: config
-        subPath: debridav-4k
-      resources: *default_resources
-      securityContext: *default_securitycontext  
+        subPath: debridav
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault      
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: debridav
+        - name: POSTGRES_DB
+          value: debridav
+        - name: POSTGRES_USER
+          value: debridav
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: debridav/postgresql/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi  
 
 rclonedebridlink:
   enabled: false

@@ -821,14 +821,6 @@ data:
             siteMonitor: http://blackhole:8080
         {{ end }}   
 
-        {{ if .Values.debridav4k.enabled }}
-        - DebriDav (4K):
-            icon: mdi-cirle
-            href: https://{{ .Release.Name }}-debridav4k.{{ .Values.dns_domain }}
-            description: DebriDav
-            siteMonitor: http://debridav4k:8080
-        {{ end }}   
-
         {{ if .Values.blackhole.enabled }}
         - Blackhole:
             icon: mdi-cirle
