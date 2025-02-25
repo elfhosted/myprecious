@@ -13525,7 +13525,7 @@ debridav: &app_debridav
 
         mkdir -p /config/database
         mkdir -p /config/backups
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config/database -R
       volumeMounts:
       - mountPath: /config
         name: config
