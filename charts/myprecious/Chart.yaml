@@ -488,11 +488,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: debridav
   - name: app-template
-    condition: debridav4k.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: debridav4k
-  - name: app-template
     condition: rclonealldebrid.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
