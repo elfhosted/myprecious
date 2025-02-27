@@ -7731,8 +7731,17 @@ seerrbridge:
         image:
           repository: thrnz/docker-wireguard-pia
           tag: latest
+      env:
+        IPTABLES_BACKEND: nft
+        KILLSWITCH: "true"
+        LOCAL_NETWORK: 10.0.0.0/8
+        LOC: de-frankfurt
+        PORT_FORWARDING: "0"
+        PORT_PERSIST: "1"
+        NFTABLES: "1"
+        VPNDNS: "0"
       envFrom:
-      - configMapRef:
+      - secretRef:
           name: seerrbridge-vpn
       securityContext:
         privileged: true
