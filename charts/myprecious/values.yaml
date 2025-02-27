@@ -10459,7 +10459,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1459@sha256:0fa336a4430545ec3009039cfd3aca409e25e26e4bb59a83947811e25f50c680
+    tag: 0.22.1461@sha256:0bba43538277be2a1985272b2db16e10f60bc7174e48f0a76576dfcda5ef50b3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11217,7 +11217,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet-rewrite
-    tag: rolling@sha256:9ddb2dcfaf169d48378ff5bcaced07087a2e03170d77917baca19f9d00dee23d
+    tag: rolling@sha256:3703a65d1d8e9fc0a3be2f1b203fced838e0d348073bdba7b4428d1a232d0b02
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
