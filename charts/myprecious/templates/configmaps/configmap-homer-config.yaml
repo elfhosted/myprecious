@@ -1335,7 +1335,21 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-seerrbridge.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute                        
-          {{ end }}  
+          {{ end }}
+
+          {{ if .Values.listsync.enabled }}
+          - name: "ListSync"
+            icon: "fas fa-sync"
+            {{ if .Values.jellyseerr.enabled }}
+            subtitle: "Sync Jellyseer with Lists"
+            {{ else }}
+            subtitle: "Sync Overseerr with Lists"
+            {{ end }}
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-listsync.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute                        
+          {{ end }}            
 
           {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
           - name: "Zurg"

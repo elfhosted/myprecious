@@ -859,11 +859,29 @@ data:
 
         {{ if .Values.seerrbridge.enabled }}
         - SeerrBridge:
-            icon: mdi-cirle
+            icon: mdi-bridge
             href: https://{{ .Release.Name }}-seerrbridge.{{ .Values.dns_domain }}
             description: Download from DMM with Overseerr
             siteMonitor: http://seerrbridge:8777
-        {{ end }}                  
+
+        - SeerrBridge Backend:
+            icon: mdi-bridge
+            href: https://{{ .Release.Name }}-seerrbridge-backend.{{ .Values.dns_domain }}
+            description: Watch SeerrBridge Backend
+            siteMonitor: http://seerrbridge:3001            
+        {{ end }}    
+
+        {{ if .Values.listsync.enabled }}
+        - ListSync:
+            icon: mdi-sync
+            href: https://{{ .Release.Name }}-listsync.{{ .Values.dns_domain }}
+            {{ if .Values.jellyseerr.enabled }}
+            description: "Sync Jellyseer with Lists"
+            {{ else }}
+            description: "Sync Overseerr with Lists"
+            {{ end }}  
+            siteMonitor: http://listsync:3001
+        {{ end }}                       
 
         {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
         - Zurg:

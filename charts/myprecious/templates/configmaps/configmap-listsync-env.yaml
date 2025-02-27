@@ -1,0 +1,14 @@
+{{ if .Values.listsync.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: listsync-env
+data:
+  {{ if .Values.jellyseerr.enabled }}
+  OVERSEERR_URL: http://jellyseerr:5055
+  {{ else }}
+  OVERSEERR_URL: http://overseerr:5055
+  {{ end }}
+  AUTOMATED_MODE: "true"
+  OVERSEERR_USER_ID: "1"
+{{ end }}
