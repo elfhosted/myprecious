@@ -13451,24 +13451,14 @@ debridav: &app_debridav
     config:
       enabled: true
       type: custom
-      subPath: debridav/data
-      mountPath: /config
+      # we no longer need local files
+      # subPath: debridav/data
+      # mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    # app-dev:
-    #   enabled: true
-    #   type: emptyDir
-    #   mountPath: /app/dev
-    #   sizeLimit: 1Gi
     dev-shm:
       enabled: "true"
-      type: emptyDir
-      volumeSpec:
-        medium: Memory    
-    import:
-      enabled: "true"
-      mountPath: /import
       type: emptyDir
       volumeSpec:
         medium: Memory              
@@ -13495,26 +13485,6 @@ debridav: &app_debridav
       cpu: 1
       memory: 512Mi
   initContainers:
-    # setup:
-    #   image: *tooling_image
-    #   imagePullPolicy: IfNotPresent
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     set -x
-    #     set -e
-
-    #     # Move files from old file-based setup into import folder if they exist
-    #     rsync -av --exclude="database" --remove-source-files --no-times /config/ /import/
-    #   volumeMounts:
-    #   - mountPath: /config
-    #     name: config
-    #     subPath: debridav
-    #   - mountPath: /import
-    #     name: import
-    #   resources: *default_resources
-    #   securityContext: *default_securitycontext
     setup-postgres:
       image: *tooling_image
       command:
