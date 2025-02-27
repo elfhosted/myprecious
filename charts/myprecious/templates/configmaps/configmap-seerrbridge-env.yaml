@@ -4,7 +4,11 @@ kind: ConfigMap
 metadata:
   name: seerrbridge-env
 data:
+  {{ if .Values.jellyseerr.enabled }}
+  OVERSEERR_BASE: http://jellyseerr:5055
+  {{ else }}
   OVERSEERR_BASE: http://overseerr:5055
+  {{ end }}  
   HEADLESS_MODE: "true"
   ENABLE_AUTOMATIC_BACKGROUND_TASK: "true"
   REFRESH_INTERVAL_MINUTES: "120"
