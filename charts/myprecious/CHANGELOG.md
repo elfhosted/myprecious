@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.286.0](https://github.com/elfhosted/myprecious/compare/v1.285.0...v1.286.0) (2025-02-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.40 ([04f2d27](https://github.com/elfhosted/myprecious/commit/04f2d27654fbd833c6a99b974164cf69c4b954f0))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1461 ([17a5a96](https://github.com/elfhosted/myprecious/commit/17a5a9692012df3fcfbfe7573f853744319fdaaf))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.23 ([3ce4c1b](https://github.com/elfhosted/myprecious/commit/3ce4c1b72d4e6e8170bb277be5fd07299ed95466))
+* **app:** update ghcr.io/elfhosted/seerrbridge docker tag to v0.4.4 ([753737f](https://github.com/elfhosted/myprecious/commit/753737fd33011c759cbdac1bbf16bded78e28858))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to 3703a65 ([d30bbbf](https://github.com/elfhosted/myprecious/commit/d30bbbfb279650684eff844ad1c1bf4cf60e3ebc))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to 70b1327 ([1530bcb](https://github.com/elfhosted/myprecious/commit/1530bcb3907e5ac577ee93a5a936e915f72b415d))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to 85fbb34 ([1a8dc15](https://github.com/elfhosted/myprecious/commit/1a8dc15e76b558a72b3fefae2a4e42c26d70bc81))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to 9ddb2dc ([b969ea9](https://github.com/elfhosted/myprecious/commit/b969ea9b381e3fdc3a1f5d78712cdce5439731d1))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to a3fb2be ([743141b](https://github.com/elfhosted/myprecious/commit/743141b1f1277ff7202894eaba9ad5f24a5b74c7))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to 4703922 ([c2123cb](https://github.com/elfhosted/myprecious/commit/c2123cb39a72e1ebb0a2a96fb8e4bc027720c824))
+
 ## [1.285.0](https://github.com/elfhosted/myprecious/compare/v1.284.0...v1.285.0) (2025-02-26)
 
 
