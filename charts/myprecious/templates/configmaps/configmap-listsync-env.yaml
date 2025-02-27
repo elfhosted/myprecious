@@ -1,0 +1,9 @@
+{{ if .Values.listsync.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: listsync-env
+data:
+  OVERSEERR_URL: http://overseerr:5055
+  AUTOMATED_MODE: "true"
+{{ end }}

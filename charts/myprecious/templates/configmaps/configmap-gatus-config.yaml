@@ -1019,7 +1019,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}                          
+      {{ end }}   
+
+      {{ if .Values.listsync.enabled }}
+      - name: listsync
+        group: download-media
+        url: "http://listsync:3001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}                                
 
       {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
       - name: zurg

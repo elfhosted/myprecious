@@ -1,0 +1,20 @@
+{{ if .Values.listsync.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: listsync
+  labels:
+    app.kubernetes.io/name: listsync
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3001
+    targetPort: 3001
+    protocol: TCP
+    name: ttyd
+  selector:
+    app.kubernetes.io/name: listsync
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}
