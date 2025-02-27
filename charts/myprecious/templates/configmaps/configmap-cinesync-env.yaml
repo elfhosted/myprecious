@@ -15,6 +15,7 @@ data:
   RCLONE_MOUNT: "true"
   ENABLE_PLEX_UPDATE: "true"
   RENAME_ENABLED: "true"
+  TMDB_FOLDER_ID: "true"
   PLEX_URL: http://plex:32400
-  RENAME_TAGS: TMDB,VideoCodec,DynamicRange,AudioCodec,AudioChannels,AudioAtmos,StreamingServices,Languages,MovieVersions
+  RENAME_TAGS: VideoCodec,DynamicRange,AudioCodec,AudioChannels,AudioAtmos,StreamingServices,Languages,MovieVersions
 {{ end }}
