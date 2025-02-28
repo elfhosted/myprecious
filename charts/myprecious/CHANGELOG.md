@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.287.0](https://github.com/elfhosted/myprecious/compare/v1.286.0...v1.287.0) (2025-02-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.00 ([9249780](https://github.com/elfhosted/myprecious/commit/92497808a1b886cc63f0535e56a5eb3cb1a88731))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to 054b961 ([f584c37](https://github.com/elfhosted/myprecious/commit/f584c37657b9f90e24e88f242a99a8b6120ee2e1))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to 4b4ab6f ([a83b50a](https://github.com/elfhosted/myprecious/commit/a83b50a332f7d7368741dd5d28de2f2af4589e1d))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to 79fed86 ([4ec2d16](https://github.com/elfhosted/myprecious/commit/4ec2d163eb3c8fa8d09d41b7d1d3478444e2ab73))
+* **app:** update ghcr.io/elfhosted/comet-rewrite:rolling docker digest to a342ed2 ([9aa9695](https://github.com/elfhosted/myprecious/commit/9aa96959cc7ab28eaad9845f508939924223dc9b))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to 02ec00b ([39526aa](https://github.com/elfhosted/myprecious/commit/39526aad17a23b4b962b8121f2a18a8057bf8f0c))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to 0401628 ([66f3fe0](https://github.com/elfhosted/myprecious/commit/66f3fe02ab08683ccff9068d0bae19369213b586))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to 5d8b01e ([e7ef269](https://github.com/elfhosted/myprecious/commit/e7ef2699fbe74650da1ca25c41188251f7283131))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to 64287cb ([97dfd0f](https://github.com/elfhosted/myprecious/commit/97dfd0f05d21cb3dba1ea1469f61790a8373fd4f))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to 70e3576 ([a08c475](https://github.com/elfhosted/myprecious/commit/a08c47511b882c7cc625d3c2b9cd37e1b28c19a8))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to aaad6ad ([8ee5779](https://github.com/elfhosted/myprecious/commit/8ee5779e69a52f9218ead2e815aeeff18fec26f0))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to e6bb15a ([c7b0890](https://github.com/elfhosted/myprecious/commit/c7b0890466573694caa8d5160c320e1a0b5fb5eb))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 41946c0 ([6a299ae](https://github.com/elfhosted/myprecious/commit/6a299ae359ae645a019cc693169a8bc1b67b6632))
+
 ## [1.286.0](https://github.com/elfhosted/myprecious/compare/v1.285.0...v1.286.0) (2025-02-27)
 
 
