@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.288.1](https://github.com/elfhosted/myprecious/compare/v1.288.0...v1.288.1) (2025-02-28)
+
+
+### Bug Fixes
+
+* comet rewrite released publicly, update to v2.0.0 ([2fe7c2c](https://github.com/elfhosted/myprecious/commit/2fe7c2c7039e3e0e3714478972c2cb3b2564c69c))
+
 ## [1.288.0](https://github.com/elfhosted/myprecious/compare/v1.287.0...v1.288.0) (2025-02-28)
 
 
