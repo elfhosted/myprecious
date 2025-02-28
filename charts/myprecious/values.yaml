@@ -7689,7 +7689,6 @@ seerrbridge:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
-    backup: *backup  
     tmp:
       enabled: true
       type: emptyDir
@@ -7739,18 +7738,6 @@ seerrbridge:
       cpu: 1
       memory: 2Gi  
   initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: seerrbridge
-      - mountPath: /tmp
-        name: tmp  
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -13558,7 +13545,14 @@ debridav: &app_debridav
       subPath: debridav
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config                       
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-debridav
+          optional: true             
   envFrom:
   - configMapRef:
       name: debridav-env
