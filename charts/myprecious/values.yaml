@@ -7689,6 +7689,7 @@ seerrbridge:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
+    backup: *backup  
     tmp:
       enabled: true
       type: emptyDir
