@@ -11302,8 +11302,8 @@ mongoexpress:
 comet:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/comet-rewrite
-    tag: rolling@sha256:384c145c9f8d4920f018343bbc95fef7acebf09008da55186eb18470687d3185
+    repository: ghcr.io/elfhosted/comet
+    tag: v2.0.0@sha256:4e6274fecc9b21437e53f580cd601f933615bdaa638d48154f1007cdbcd2489d
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
