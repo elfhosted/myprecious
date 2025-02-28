@@ -13514,15 +13514,6 @@ debridav: &app_debridav
   persistence:
     <<: *storagemounts
     tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      # we no longer need local files
-      # subPath: debridav/data
-      # mountPath: /config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
     dev-shm:
       enabled: "true"
       type: emptyDir
