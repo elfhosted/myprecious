@@ -7701,6 +7701,13 @@ seerrbridge:
       type: emptyDir
       volumeSpec:
         medium: Memory      
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-seerrbridge
+          optional: true            
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
