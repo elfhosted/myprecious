@@ -7700,6 +7700,13 @@ seerrbridge:
       type: emptyDir
       volumeSpec:
         medium: Memory      
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-seerrbridge
+          optional: true            
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7858,6 +7865,19 @@ listsync:
     limits:
       cpu: 1
       memory: 2Gi  
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: debridav
+      - mountPath: /tmp
+        name: tmp  
 
 plextraktsync:
   enabled: false
@@ -13514,20 +13534,25 @@ debridav: &app_debridav
   persistence:
     <<: *storagemounts
     tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      # we no longer need local files
-      # subPath: debridav/data
-      # mountPath: /config
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
     dev-shm:
       enabled: "true"
       type: emptyDir
       volumeSpec:
-        medium: Memory              
+        medium: Memory    
+    config:
+      enabled: true
+      type: custom
+      subPath: debridav
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-debridav
+          optional: true             
   envFrom:
   - configMapRef:
       name: debridav-env
@@ -13551,6 +13576,18 @@ debridav: &app_debridav
       cpu: 1
       memory: 512Mi
   initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: debridav
+      - mountPath: /tmp
+        name: tmp  
     setup-postgres:
       image: *tooling_image
       command:
@@ -13570,7 +13607,7 @@ debridav: &app_debridav
       securityContext:
         runAsUser: 0
         seccompProfile:
-          type: RuntimeDefault      
+          type: RuntimeDefault                
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -13601,6 +13638,7 @@ debridav: &app_debridav
         limits:
           cpu: 500m
           memory: 8Gi  
+
 
 rclonedebridlink:
   enabled: false

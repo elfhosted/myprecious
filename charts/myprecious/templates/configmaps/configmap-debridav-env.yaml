@@ -6,9 +6,8 @@ metadata:
 data:
   PUID: "568"
   PGID: "568"
-  DEBRIDAV_FILE-PATH: /config/data # don't think we need this anymore
   DEBRIDAV_MOUNT_PATH: /storage/debridav
-  DEBRIDAV_ROOTPATH: /config # only for importing old file-based setup
+  DEBRIDAV_ROOTPATH: /import
   DEBRIDAV_CACHE-LOCAL-DEBRID-FILES-THRESHOLD-MB: "5000"
   DEBRIDAV_DEBRIDCLIENTS: premiumize
   SONARR_INTEGRATION_ENABLED: "true"
