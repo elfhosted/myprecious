@@ -7731,6 +7731,18 @@ seerrbridge:
       cpu: 1
       memory: 2Gi  
   initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: seerrbridge
+      - mountPath: /tmp
+        name: tmp  
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -7858,6 +7870,19 @@ listsync:
     limits:
       cpu: 1
       memory: 2Gi  
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: debridav
+      - mountPath: /tmp
+        name: tmp  
 
 plextraktsync:
   enabled: false
@@ -13549,6 +13574,18 @@ debridav: &app_debridav
       cpu: 1
       memory: 512Mi
   initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: debridav
+      - mountPath: /tmp
+        name: tmp  
     setup-postgres:
       image: *tooling_image
       command:
