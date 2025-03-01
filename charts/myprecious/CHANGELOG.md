@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.289.0](https://github.com/elfhosted/myprecious/compare/v1.288.1...v1.289.0) (2025-03-01)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.3.0 ([14f36f6](https://github.com/elfhosted/myprecious/commit/14f36f6cd726224819ec55fb612a8d065f2b8dc3))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.14.0 ([6f78613](https://github.com/elfhosted/myprecious/commit/6f78613f6389e8151999f222b2eef4514d7e812d))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.0.2 ([6888a50](https://github.com/elfhosted/myprecious/commit/6888a50fff90dd0d4d0e21ef6f00b73b83142995))
+* **app:** update ghcr.io/elfhosted/homer docker tag to v25.03.1 ([a7b763a](https://github.com/elfhosted/myprecious/commit/a7b763aee3da3a285ec6a41a0ffaba06a0df8987))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1463 ([9b59b05](https://github.com/elfhosted/myprecious/commit/9b59b05fdeadee9ef6b5b316eea842d8e0f02ba8))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.4 ([32bdad6](https://github.com/elfhosted/myprecious/commit/32bdad6d2aee306da6771de6e5abab48dbe57395))
+* **app:** update ghcr.io/elfhosted/seerrbridge docker tag to v0.4.5 ([0cef932](https://github.com/elfhosted/myprecious/commit/0cef9326bc87ce1d619d44f10a371b9b005f5035))
+
 ## [1.288.1](https://github.com/elfhosted/myprecious/compare/v1.288.0...v1.288.1) (2025-02-28)
 
 
