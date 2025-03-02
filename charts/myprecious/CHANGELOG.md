@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.290.0](https://github.com/elfhosted/myprecious/compare/v1.289.0...v1.290.0) (2025-03-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1466 ([f7452e9](https://github.com/elfhosted/myprecious/commit/f7452e987a706c0f6277151d8b80591faba424f2))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.24 ([49e1a37](https://github.com/elfhosted/myprecious/commit/49e1a3763ab36699840bb05796c940b1b9f0cfa4))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.11.2747 ([4331e08](https://github.com/elfhosted/myprecious/commit/4331e087db733fab9225ccd4951344d656cb8d75))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.57.0 ([8b92286](https://github.com/elfhosted/myprecious/commit/8b922869947898ccc57bb75cec7baef81e03f228))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/mediafusion:4.3.24 docker digest to 135a006 ([ba800f9](https://github.com/elfhosted/myprecious/commit/ba800f95ce2b67dc908b7cb0190991a95b49cfe8))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.4.5 docker digest to 45eb6b2 ([76ea581](https://github.com/elfhosted/myprecious/commit/76ea5812f59a74a4902bcdf6409bd74450291d89))
+
 ## [1.289.0](https://github.com/elfhosted/myprecious/compare/v1.288.1...v1.289.0) (2025-03-01)
 
 
