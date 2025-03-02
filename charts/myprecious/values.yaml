@@ -7706,7 +7706,15 @@ seerrbridge:
       volumeSpec:
         configMap:
           name: elfbot-seerrbridge
-          optional: true            
+          optional: true                
+    config:
+      enabled: true
+      type: custom
+      mountPath: /usr/src/app/.env
+      subPath: seerrbridge/.env
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config                  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
