@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.291.0](https://github.com/elfhosted/myprecious/compare/v1.290.0...v1.291.0) (2025-03-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.0.3 ([144da8e](https://github.com/elfhosted/myprecious/commit/144da8e67aa6b9b7bc4cdc9a1c686f0ae55d6a61))
+
+
+### Bug Fixes
+
+* add new max movie/episode defaults to SeerrBridge ([3f3d0d4](https://github.com/elfhosted/myprecious/commit/3f3d0d4824736453e5742e4ca8301a37deb65f11))
+
 ## [1.290.0](https://github.com/elfhosted/myprecious/compare/v1.289.0...v1.290.0) (2025-03-02)
 
 
