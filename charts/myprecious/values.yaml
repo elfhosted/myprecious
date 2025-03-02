@@ -7689,11 +7689,8 @@ seerrbridge:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
-    tmp:
-      enabled: true
-      type: emptyDir
-      mountPath: /tmp
-      sizeLimit: 1Gi  
+    tmp: *tmp
+    backup: *backup
     shared:
       enabled: true
       mountPath: /shared
@@ -7706,7 +7703,15 @@ seerrbridge:
       volumeSpec:
         configMap:
           name: elfbot-seerrbridge
-          optional: true            
+          optional: true                
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: seerrbridge
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config                  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7770,6 +7775,18 @@ seerrbridge:
         seccompProfile:
           type: RuntimeDefault
         readOnlyRootFilesystem: false   
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: seerrbridge
+      - mountPath: /tmp
+        name: tmp          
   addons:
     vpn:
       enabled: true # in case we ever need it
