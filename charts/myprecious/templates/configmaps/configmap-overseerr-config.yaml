@@ -20,7 +20,7 @@ data:
 
     {{- if .Values.seerrbridge.enabled }}
     # Replace the riven placeholder with the seerrbridge version
-    sed -i 's|riven:8080/api/v1/webhook/overseerr|seerrbridge:8777/jellyseer-webhook/' /config/settings.json
+    sed -i 's|riven:8080/api/v1/webhook/overseerr|seerrbridge:8777/jellyseer-webhook/|' /config/settings.json
     {{- end }}
 
     # Fill in the webhook auth header (immaterial for seerrbridge)
