@@ -22,7 +22,8 @@ data:
   CUSTOM_SHOW_FOLDER: /storage/symlinks/series
   CUSTOM_4KMOVIE_FOLDER: /storage/symlinks/movies-4k
   CUSTOM_4KSHOW_FOLDER: /storage/symlinks/series-4k
-  CUSTOM_ANIME_MOVIE_FOLDER: /storage/symlinks/anime-movies
-  CUSTOM_ANIME_SHOW_FOLDER: /storage/symlinks/anime-tv
+  CUSTOM_ANIME_MOVIE_FOLDER: /storage/symlinks/movies-anime
+  CUSTOM_ANIME_SHOW_FOLDER: /storage/symlinks/series-anime
   CINESYNC_LAYOUT: "true"
+  ALLOWED_EXTENSIONS: .mp4,.mkv,.srt,.avi,.mov,.divx,.m2ts
 {{ end }}
