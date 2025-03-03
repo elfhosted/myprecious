@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.292.0](https://github.com/elfhosted/myprecious/compare/v1.291.0...v1.292.0) (2025-03-03)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.3.1 ([88e8652](https://github.com/elfhosted/myprecious/commit/88e8652a3be945e9653a71837f4eefb4a5fbe93c))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.01 ([b1b263c](https://github.com/elfhosted/myprecious/commit/b1b263c0b21fc21c8ccf8729c1db9cb840924d45))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.41 ([7736afa](https://github.com/elfhosted/myprecious/commit/7736afae33ddccca38188ffe90e7a0a3ff05eba3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1468 ([b306665](https://github.com/elfhosted/myprecious/commit/b306665be84afd63aff87dcbb7daf729babe6b62))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.25 ([1b9dcd7](https://github.com/elfhosted/myprecious/commit/1b9dcd72247982ad44b5b0ffd07614ba81d16254))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.4 ([2d3d404](https://github.com/elfhosted/myprecious/commit/2d3d404f591b169cc6ca08e5dbf98fdeda3e3523))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.57.1 ([89b20f1](https://github.com/elfhosted/myprecious/commit/89b20f1a4233acfb7ba7db5cc3dc0b7d5a15d129))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cinesync:v2.3 docker digest to 1dded5e ([13f30fa](https://github.com/elfhosted/myprecious/commit/13f30fa867c838fa6cdb093a30d5a4dab94d2473))
+* **app:** update ghcr.io/elfhosted/cinesync:v2.3 docker digest to 614b28d ([007c18a](https://github.com/elfhosted/myprecious/commit/007c18a9969922beea5281f04bc1aba85cbf7cf0))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.6 docker digest to 6f6f250 ([d7be9dc](https://github.com/elfhosted/myprecious/commit/d7be9dc21ac90ccf69998ee209bd689f7f6f5552))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy:1.9.7 docker digest to df7fffa ([bcf085e](https://github.com/elfhosted/myprecious/commit/bcf085ef81a28e29b45b6c63f2321e0e2734813b))
+* **app:** update ghcr.io/elfhosted/mediafusion:4.3.25 docker digest to 769feca ([b52cc85](https://github.com/elfhosted/myprecious/commit/b52cc85789b32ff659e5d4e565ee8a6655439bb0))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.4.5 docker digest to 8421791 ([bda3b54](https://github.com/elfhosted/myprecious/commit/bda3b549f13435c9ad0ef755ac97aaba5fd1c0d4))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.4.5 docker digest to 9f4d587 ([9b58340](https://github.com/elfhosted/myprecious/commit/9b583405729da850ba62077bdbe0c91c8672872f))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.4.5 docker digest to c15ae0b ([1e380a2](https://github.com/elfhosted/myprecious/commit/1e380a2c0802440dfdfc3474e39eafce1a64905b))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.4.5 docker digest to e1d12f1 ([3036fbb](https://github.com/elfhosted/myprecious/commit/3036fbbb95f9e529aaebac8253268eac6875b9c0))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to 9295a94 ([c842dd4](https://github.com/elfhosted/myprecious/commit/c842dd4c66ba0f9b60dd9c2efb33f1b99f7a6e78))
+* Avoid setting default limits on SeerrBridge ([3ffaeec](https://github.com/elfhosted/myprecious/commit/3ffaeecb2e5e5f8b04aee4c5d16d6a83cc7ff0e8))
+
 ## [1.291.0](https://github.com/elfhosted/myprecious/compare/v1.290.0...v1.291.0) (2025-03-02)
 
 
