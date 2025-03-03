@@ -13,9 +13,16 @@ data:
     {{- join "," $dirs }}
   DESTINATION_DIR: /storage/symlinks
   RCLONE_MOUNT: "true"
-  ENABLE_PLEX_UPDATE: "true"
+  # ENABLE_PLEX_UPDATE: "true"
   RENAME_ENABLED: "true"
   TMDB_FOLDER_ID: "true"
-  PLEX_URL: http://plex:32400
+  # PLEX_URL: http://plex:32400
   RENAME_TAGS: VideoCodec,DynamicRange,AudioCodec,AudioChannels,AudioAtmos,StreamingServices,Languages,MovieVersions
+  CUSTOM_MOVIE_FOLDER: /storage/symlinks/movies
+  CUSTOM_SHOW_FOLDER: /storage/symlinks/series
+  CUSTOM_4KMOVIE_FOLDER: /storage/symlinks/movies-4k
+  CUSTOM_4KSHOW_FOLDER: /storage/symlinks/series-4k
+  CUSTOM_ANIME_MOVIE_FOLDER: /storage/symlinks/anime-movies
+  CUSTOM_ANIME_SHOW_FOLDER: /storage/symlinks/anime-tv
+  CINESYNC_LAYOUT: "true"
 {{ end }}

@@ -7737,6 +7737,8 @@ seerrbridge:
   envFrom:
   - configMapRef:
       name: seerrbridge-env
+  - secretRef:
+      name: seerrbridge-env      
   - configMapRef:
       name: elfbot-seerrbridge
       optional: true
