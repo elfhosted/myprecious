@@ -11055,7 +11055,7 @@ actual:
   enabled: false
   image:
     repository: ghcr.io/actualbudget/actual-server
-    tag: 25.3.0-alpine
+    tag: 25.3.1-alpine
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: actual
@@ -11812,7 +11812,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.24@sha256:135a006e31ef9d6fc84318bc072357caddbe9b7d87efc7b10c36d27523a79da9
+    tag: 4.3.25@sha256:769feca938945c58f5009993b8d2ef0f0b24b703136fe15b2561734fa04cd990
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -14095,7 +14095,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:ff56a94976f7696380e314e8fca0926a64a794ddc4c84fc28dfcd7c640478081
+    tag: v1.5.1@sha256:9295a941b4def082e9b49b5bcd1e45c82396bf033ea9a5d071c15a3a3cf628c9
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
