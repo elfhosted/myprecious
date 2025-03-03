@@ -12,7 +12,7 @@ data:
     {{- if .Values.rclonepremiumize.enabled }}{{ $dirs = append $dirs "/storage/premiumize" }}{{- end }}
     {{- join "," $dirs }}
   DESTINATION_DIR: /storage/symlinks
-  RCLONE_MOUNT: "false"
+  RCLONE_MOUNT: "true"
   {{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
   ENABLE_PLEX_UPDATE: "true"
   PLEX_URL: http://plex:32400
