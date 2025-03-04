@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.293.0](https://github.com/elfhosted/myprecious/compare/v1.292.1...v1.293.0) (2025-03-04)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.18.13 ([227e914](https://github.com/elfhosted/myprecious/commit/227e9142faaf2604c876d8964887b9b6c315c608))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.02 ([8d436b3](https://github.com/elfhosted/myprecious/commit/8d436b3f68b65211ea9c5be73c619e057a34ca9e))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.2.0 ([b3e6548](https://github.com/elfhosted/myprecious/commit/b3e6548d1ed1b90640189b1ae5b8cd4d17cfed8e))
+* **app:** update ghcr.io/elfhosted/homer docker tag to v25.03.2 ([14f58bd](https://github.com/elfhosted/myprecious/commit/14f58bd009c0910c9b6b14e15bd013af47bac483))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1471 ([da68ccc](https://github.com/elfhosted/myprecious/commit/da68cccd7d58aed02e76070caa80807c6cce517a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.57.2 ([f2df3d9](https://github.com/elfhosted/myprecious/commit/f2df3d99fef5caa716b3e908222d79bf85787f81))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.128.0 ([3411cf8](https://github.com/elfhosted/myprecious/commit/3411cf8676e02ec039a2d9626fb256f96d910bc5))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.128.0 ([243b6df](https://github.com/elfhosted/myprecious/commit/243b6df93a1432ee1f8291d7c0e01ae3c2721908))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.6.01 docker digest to f7c44a1 ([0aba269](https://github.com/elfhosted/myprecious/commit/0aba269b237465da9dbd20284d8d6fe700951547))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to f570a3f ([3b499d3](https://github.com/elfhosted/myprecious/commit/3b499d38caac37ec938eb128ef20cd85ee548ebf))
+
 ## [1.292.1](https://github.com/elfhosted/myprecious/compare/v1.292.0...v1.292.1) (2025-03-04)
 
 
