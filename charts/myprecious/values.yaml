@@ -4125,7 +4125,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 3.0.0.1409-1@sha256:41946c0105185c1fb213c2cc6eefacafa2a2efe2155595e4a1f7c918dde3c4e1
+    tag: 3.0.0.1409-1@sha256:f570a3fdb78bcd4d6c44951f43fab45ddc675afafcfd35e74048529b73b7c6b9
   env:
     PUID: 568
     GUID: 568
@@ -11359,7 +11359,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v2.0.3@sha256:11b1b45bf7290249a0e4e2ea157b3a1c092c6b27e1b1154ce91a08be2fc34271
+    tag: v2.1.0@sha256:5fc7cbe555028a6da5913e1e88dac7576b3d22f755f0384fd037217ee1b4bf54
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -13007,7 +13007,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.00@sha256:91431b95d0dd197f9ccd952d2a23783bf181be131cb3fb814719ae230da67497
+    tag: v0.6.01@sha256:04bc61c55a4be413be13f12b3064b90805697c9fa2900d5301c029d21bb5d463
   priorityClassName: tenant-normal
   controller:
     annotations:
