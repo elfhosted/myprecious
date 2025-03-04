@@ -10,12 +10,4 @@ data:
   DEBRIDAV_ROOTPATH: /config
   DEBRIDAV_CACHE-LOCAL-DEBRID-FILES-THRESHOLD-MB: "5000"
   DEBRIDAV_DEBRIDCLIENTS: premiumize
-  SONARR_INTEGRATION_ENABLED: "true"
-  SONARR_HOST: sonarr
-  SONARR_API_KEY: {{ .Values.sonarrexposed.apikey }}
-  SONARR_CATEGORY: series
-  RADARR_INTEGRATION_ENABLED: "true"
-  RADARR_HOST: radarr
-  RADARR_API_KEY: {{ .Values.radarrexposed.apikey }}
-  RADARR_CATEGORY: movies
 {{ end }}
