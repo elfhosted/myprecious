@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.292.1](https://github.com/elfhosted/myprecious/compare/v1.292.0...v1.292.1) (2025-03-04)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.6.01 docker digest to 04bc61c ([60e311f](https://github.com/elfhosted/myprecious/commit/60e311f349a1629ea1bb0f7caaf38553749ed65d))
+
 ## [1.292.0](https://github.com/elfhosted/myprecious/compare/v1.291.0...v1.292.0) (2025-03-03)
 
 
