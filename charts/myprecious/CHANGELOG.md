@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.293.0](https://github.com/elfhosted/myprecious/compare/v1.292.1...v1.293.0) (2025-03-04)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.2.0 ([b3e6548](https://github.com/elfhosted/myprecious/commit/b3e6548d1ed1b90640189b1ae5b8cd4d17cfed8e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1471 ([da68ccc](https://github.com/elfhosted/myprecious/commit/da68cccd7d58aed02e76070caa80807c6cce517a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.57.2 ([f2df3d9](https://github.com/elfhosted/myprecious/commit/f2df3d99fef5caa716b3e908222d79bf85787f81))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.6.01 docker digest to f7c44a1 ([0aba269](https://github.com/elfhosted/myprecious/commit/0aba269b237465da9dbd20284d8d6fe700951547))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to f570a3f ([3b499d3](https://github.com/elfhosted/myprecious/commit/3b499d38caac37ec938eb128ef20cd85ee548ebf))
+
 ## [1.292.1](https://github.com/elfhosted/myprecious/compare/v1.292.0...v1.292.1) (2025-03-04)
 
 
