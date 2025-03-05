@@ -4964,7 +4964,7 @@ plex: &app_plex
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
     request:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:824c06f5b7ca247703e85d4d4c1be00e42730fe96e549fae61eac99e32482027
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
       command: [ "/request.sh" ]
       envFrom:
       - configMapRef:
@@ -4973,7 +4973,7 @@ plex: &app_plex
           name: elfbot-plex
           optional: true      
     auth:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:824c06f5b7ca247703e85d4d4c1be00e42730fe96e549fae61eac99e32482027
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
       command: [ "/auth.sh" ]
       envFrom:
       - configMapRef:
@@ -4982,7 +4982,7 @@ plex: &app_plex
           name: elfbot-plex
           optional: true      
     watchlist:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:824c06f5b7ca247703e85d4d4c1be00e42730fe96e549fae61eac99e32482027
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
       command: [ "/watchlist.sh" ]
       envFrom:
       - configMapRef:
