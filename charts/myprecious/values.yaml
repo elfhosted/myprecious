@@ -5056,6 +5056,9 @@ plexrequests:
     config:
       enabled: true
       type: custom
+      mountPath: /plex-ro
+      subPath: plex
+      readOnly: true
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
