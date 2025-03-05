@@ -4863,6 +4863,11 @@ plex: &app_plex
       type: emptyDir
       volumeSpec:
         medium: Memory
+    app-cache:
+      enabled: true
+      type: emptyDir
+      volumeSpec:
+        medium: Memory        
   ingress:
     main:
       enabled: false
@@ -4979,6 +4984,8 @@ plex: &app_plex
         path: /plex
         subPath: plex
         readOnly: true
+      - name: app-cache
+        mountPath: /app/cache
     auth:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
       command: [ "/auth.sh" ]
