@@ -45,7 +45,7 @@ data:
   # For plex-requests
   {{ if .Values.overseerr.enabled }}
   OVERSEERR_HOST: http://overseerr:5055
-  
+  TMPDIR: /tmp
   # unnecessary but the apps won't start without it
   BLACKHOLE_RD_MOUNT_REFRESH_SECONDS: "30"
   BLACKHOLE_WAIT_FOR_TORRENT_TIMEOUT: "30"

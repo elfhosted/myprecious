@@ -4972,6 +4972,13 @@ plex: &app_plex
       - configMapRef:
           name: elfbot-plex
           optional: true      
+      volumeMounts:
+      - name: tmp
+        path: /tmp
+      - name: config
+        path: /plex
+        subPath: plex
+        readOnly: true
     auth:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
       command: [ "/auth.sh" ]
