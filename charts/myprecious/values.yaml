@@ -4979,9 +4979,9 @@ plex: &app_plex
           optional: true      
       volumeMounts:
       - name: tmp
-        path: /tmp
+        mountPath: /tmp
       - name: config
-        path: /plex
+        mountPath: /plex
         subPath: plex
         readOnly: true
       - name: app-cache
