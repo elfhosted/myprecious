@@ -56,7 +56,7 @@ data:
 
   PLEX_HOST: "https://plex.tv/"
   PLEX_METADATA_HOST: "https://metadata.provider.plex.tv/"
-  PLEX_SERVER_HOST: http://localhost
+  PLEX_SERVER_HOST: http://localhost:32400
   PLEX_SERVER_PATH: /plex
   {{ end }}
   
