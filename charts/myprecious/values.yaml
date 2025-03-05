@@ -7706,7 +7706,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.4.5@sha256:80dee728dffd0e69943553003b2f5b64a45c19d4246973023d56632b9cd3bb35
+    tag: v0.4.5@sha256:503d08883510fc82f541ee98d8376769bad8fbef03816276fb182b173829cf67
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -14104,7 +14104,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:9295a941b4def082e9b49b5bcd1e45c82396bf033ea9a5d071c15a3a3cf628c9
+    tag: v1.5.1@sha256:44e4666e60fe74b32bfa3eca4bfe3d2465460ce8fabd47448c1f106e0e92945e
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
