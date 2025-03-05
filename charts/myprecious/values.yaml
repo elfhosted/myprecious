@@ -4963,6 +4963,25 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
+    request:
+      image: ghcr.io/elfhosted/wests-blackhole-script@v1.5.1@sha256:9295a941b4def082e9b49b5bcd1e45c82396bf033ea9a5d071c15a3a3cf628c9
+      command:
+      - "gunicorn"
+      - --bind"
+      - "0.0.0.0:32501"
+      - "plex_request_wsgi:app"
+    auth:
+      image: ghcr.io/elfhosted/wests-blackhole-script@v1.5.1@sha256:9295a941b4def082e9b49b5bcd1e45c82396bf033ea9a5d071c15a3a3cf628c9
+      command:
+      - "gunicorn"
+      - --bind"
+      - "0.0.0.0:32501"
+      - "plex_authentication_wsgi:app"   
+    watchlist:
+      image: ghcr.io/elfhosted/wests-blackhole-script@v1.5.1@sha256:9295a941b4def082e9b49b5bcd1e45c82396bf033ea9a5d071c15a3a3cf628c9
+      command:
+      - "python"
+      - watchlist_runner.py"            
   addons:
     vpn:
       enabled: true # in case we ever need it
