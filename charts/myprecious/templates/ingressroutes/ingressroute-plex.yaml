@@ -11,13 +11,13 @@ spec:
         - name: plex
           kind: Service
           port: 32400
-    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (Path('/library/all') || Path('/library/request') || PathPrefix('/Library/metadata/{something:.*}/children'))
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (Path(`/library/all``) || Path(`/library/request``) || PathPrefix(`/Library/metadata/{something:.*}/children`))
       kind: Rule
       services:
         - name: plex
           kind: Service
           port: 32502 # request
-    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && Path('/auth')
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && Path(`/auth`)
       kind: Rule
       services:
         - name: plex
