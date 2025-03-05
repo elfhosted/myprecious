@@ -4862,12 +4862,7 @@ plex: &app_plex
       mountPath: /shared
       type: emptyDir
       volumeSpec:
-        medium: Memory
-    app-cache:
-      enabled: true
-      type: emptyDir
-      volumeSpec:
-        medium: Memory        
+        medium: Memory    
   ingress:
     main:
       enabled: false
@@ -4968,47 +4963,7 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
-    request:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
-      command: [ "/request.sh" ]
-      envFrom:
-      - configMapRef:
-          name: plex-env
-      - configMapRef:
-          name: elfbot-plex
-          optional: true      
-      volumeMounts:
-      - name: tmp
-        mountPath: /tmp
-      - name: config
-        mountPath: /plex
-        subPath: plex
-        readOnly: true
-      - name: app-cache
-        mountPath: /app/cache
-    auth:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
-      command: [ "/auth.sh" ]
-      envFrom:
-      - configMapRef:
-          name: plex-env
-      - configMapRef:
-          name: elfbot-plex
-          optional: true      
-      volumeMounts:
-      - name: config
-        mountPath: /plex
-        subPath: plex
-        readOnly: true          
-    watchlist:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
-      command: [ "/watchlist.sh" ]
-      envFrom:
-      - configMapRef:
-          name: plex-env
-      - configMapRef:
-          name: elfbot-plex
-          optional: true      
+  
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -5023,7 +4978,7 @@ plex: &app_plex
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         VPN_TYPE: wireguard
         VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "32400,32501,32502,3000,8888,3001,3002"
+        FIREWALL_INPUT_PORTS: "32400,3000,8888,3001,3002"
         WIREGUARD_MTU: "1280"
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
@@ -5072,6 +5027,84 @@ plex: &app_plex
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
+
+plexrequests:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/wests-blackhole-script
+    tag: v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
+  command: [ "/requests.sh" ]
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plexrequests"
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568 # need this so that the bootstrap can run
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: plexrequests-env
+  persistence:
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    # app-cache:
+    #   enabled: true
+    #   type: emptyDir
+    #   volumeSpec:
+    #     medium: Memory              
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 32501
+  resources:
+    requests:
+      cpu: 0m
+      memory: 10Mi
+    limits:
+      cpu: 0.5
+      memory: 1Gi
+  additionalContainers:
+    auth:
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
+      command: [ "/auth.sh" ]
+      envFrom:
+      - configMapRef:
+          name: plex-env
+      - configMapRef:
+          name: elfbot-plex
+          optional: true      
+      volumeMounts:
+      - name: config
+        mountPath: /plex
+        subPath: plex
+        readOnly: true          
+    watchlist:
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
+      command: [ "/watchlist.sh" ]
+      envFrom:
+      - configMapRef:
+          name: plex-env
+      - configMapRef:
+          name: elfbot-plex
+          optional: true
 
 jellyfin: &app_jellyfin
   hostname: elfhosted

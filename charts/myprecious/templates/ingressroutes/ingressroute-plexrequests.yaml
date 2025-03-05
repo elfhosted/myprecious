@@ -1,0 +1,20 @@
+{{ if .Values.plexrequests.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-plex.{{ .Values.dns_domain }}-requests
+spec:
+  routes:
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (Path(`/library/all`) || Path(`/library/request`) || PathPrefix(`/Library/metadata/{something:.*}/children`))
+      kind: Rule
+      services:
+        - name: plexrequests
+          kind: Service
+          port: 32502 # request
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && Path(`/auth`)
+      kind: Rule
+      services:
+        - name: plexrequests
+          kind: Service
+          port: 32501 # auth
+{{ end }}
