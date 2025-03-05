@@ -15,10 +15,14 @@ spec:
     targetPort: 32400
     protocol: TCP
     name: http
-  - port: 3002
-    targetPort: 3002
+  - port: 32501
+    targetPort: 32501
     protocol: TCP
-    name: speedtest
+    name: auth
+  - port: 32502
+    targetPort: 32502
+    protocol: TCP
+    name: request
   selector:
     app.elfhosted.com/name: plex
     app.kubernetes.io/instance: {{ .Release.Name }}
