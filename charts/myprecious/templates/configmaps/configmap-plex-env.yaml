@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: plex-config
+  name: plex-env
 data:
   # PLEX_PREFERENCE_1: "FriendlyName=ElfHosted | {{ .Release.Name }}"
   PLEX_PREFERENCE_2: "FSEventLibraryPartialScanEnabled=1"

@@ -4820,7 +4820,7 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,elfbot-imagemaid,plex-config,imagemaid-env" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,elfbot-imagemaid,plex-env,imagemaid-env" # Reload the deployment every time the rclones change
   image:
     registry: ghcr.io
     repository: elfhosted/plex
@@ -4874,7 +4874,7 @@ plex: &app_plex
           port: 32400
   envFrom:
   - configMapRef:
-      name: plex-config
+      name: plex-env
   - configMapRef:
       name: elfbot-plex
       optional: true
@@ -4966,12 +4966,30 @@ plex: &app_plex
     request:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:824c06f5b7ca247703e85d4d4c1be00e42730fe96e549fae61eac99e32482027
       command: [ "/request.sh" ]
+      envFrom:
+      - configMapRef:
+          name: plex-env
+      - configMapRef:
+          name: elfbot-plex
+          optional: true      
     auth:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:824c06f5b7ca247703e85d4d4c1be00e42730fe96e549fae61eac99e32482027
       command: [ "/auth.sh" ]
+      envFrom:
+      - configMapRef:
+          name: plex-env
+      - configMapRef:
+          name: elfbot-plex
+          optional: true      
     watchlist:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:824c06f5b7ca247703e85d4d4c1be00e42730fe96e549fae61eac99e32482027
       command: [ "/watchlist.sh" ]
+      envFrom:
+      - configMapRef:
+          name: plex-env
+      - configMapRef:
+          name: elfbot-plex
+          optional: true      
   addons:
     vpn:
       enabled: true # in case we ever need it
