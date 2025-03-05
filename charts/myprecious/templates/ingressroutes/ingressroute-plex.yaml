@@ -8,7 +8,6 @@ spec:
     - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-      services:
         - name: plex
           kind: Service
           port: 32400
