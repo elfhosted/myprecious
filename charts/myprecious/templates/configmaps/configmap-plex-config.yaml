@@ -42,6 +42,12 @@ data:
   ADVERTISE_IP: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}:443"
   {{ end }}
 
+  # For plex-requests
+  {{ if .Values.overseerr.enabled }}
+  OVERSEERR_HOST: http://overseerr:5055
+  {{ end }}
+  
+  {{ end }}
   # to ensure VPN is up first
   WAIT_FOR_VPN: "true"
 {{ end }}
