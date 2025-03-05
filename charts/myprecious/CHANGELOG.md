@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.295.0](https://github.com/elfhosted/myprecious/compare/v1.294.0...v1.295.0) (2025-03-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.05 ([22d4fd7](https://github.com/elfhosted/myprecious/commit/22d4fd7053769f8a4e839b337255134694dcd8c7))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.05 ([b26ae25](https://github.com/elfhosted/myprecious/commit/b26ae25e250138586fd31fcfaffe6c737cb93bd9))
+
 ## [1.294.0](https://github.com/elfhosted/myprecious/compare/v1.293.0...v1.294.0) (2025-03-05)
 
 
