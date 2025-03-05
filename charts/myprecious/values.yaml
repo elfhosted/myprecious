@@ -4995,6 +4995,11 @@ plex: &app_plex
       - configMapRef:
           name: elfbot-plex
           optional: true      
+      volumeMounts:
+      - name: config
+        mountPath: /plex
+        subPath: plex
+        readOnly: true          
     watchlist:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
       command: [ "/watchlist.sh" ]
