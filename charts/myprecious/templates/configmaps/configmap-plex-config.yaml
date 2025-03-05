@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: plex-env
+  name: plex-config
 data:
   # PLEX_PREFERENCE_1: "FriendlyName=ElfHosted | {{ .Release.Name }}"
   PLEX_PREFERENCE_2: "FSEventLibraryPartialScanEnabled=1"
@@ -41,7 +41,7 @@ data:
   {{ else }}
   ADVERTISE_IP: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}:443"
   {{ end }}
-  
+
   # to ensure VPN is up first
   WAIT_FOR_VPN: "true"
 {{ end }}

@@ -4820,7 +4820,7 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,elfbot-imagemaid,plex-env,imagemaid-env" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,elfbot-imagemaid,plex-config,imagemaid-env" # Reload the deployment every time the rclones change
   image:
     registry: ghcr.io
     repository: elfhosted/plex
@@ -4862,7 +4862,7 @@ plex: &app_plex
       mountPath: /shared
       type: emptyDir
       volumeSpec:
-        medium: Memory    
+        medium: Memory
   ingress:
     main:
       enabled: false
@@ -4874,7 +4874,7 @@ plex: &app_plex
           port: 32400
   envFrom:
   - configMapRef:
-      name: plex-env
+      name: plex-config
   - configMapRef:
       name: elfbot-plex
       optional: true
@@ -4963,7 +4963,6 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
-  
   addons:
     vpn:
       enabled: true # in case we ever need it
