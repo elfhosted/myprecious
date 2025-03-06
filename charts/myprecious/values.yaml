@@ -1865,7 +1865,7 @@ nzbget:
     enabled: true
   image:
     repository: ghcr.io/elfhosted/nzbget
-    tag: 24.6@sha256:3fafda639db264e49339c342753289b0361fac75478ad153acb8f63402ba52ce
+    tag: 24.7@sha256:073992797d0e10a12701392dff11acd3c18be51cacf0ac54f97e47b29ad804f4
   priorityClassName: tenant-bulk
   securityContext:
     seccompProfile:
@@ -3616,7 +3616,7 @@ komga:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/komga
-    tag: 1.20.0@sha256:48729d738d1da07ebcb318655fd036b39d455b2c0b80b53a2ac783fa13632c9d
+    tag: 1.21.1@sha256:161317c9833949d53d27cb5fe3b3beaab2543ee675e0418a67908b1e33294128
   env:
     KOMGA_CONFIGDIR: /config
     KOMGA_REMEMBERME_KEY: yesplease
@@ -3757,7 +3757,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.26.0@sha256:458392c5ef13c76bc043a702c2026af3e30fb00d0e8e807ed10d501cf8b96269
+    tag: 7.26.0@sha256:13c4fe0bce1367cb309f74be422d6e38480dee4742a6c3b6c976c3aed3cdad1e
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4102,7 +4102,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 3.0.0.1409-1@sha256:f570a3fdb78bcd4d6c44951f43fab45ddc675afafcfd35e74048529b73b7c6b9
+    tag: 3.0.0.1409-1@sha256:0e8dc6e3bc32a20fb67989e745b3319cf4da12407469fc6e9f976499b37436de
   env:
     PUID: 568
     GUID: 568
@@ -7757,7 +7757,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.4.5@sha256:503d08883510fc82f541ee98d8376769bad8fbef03816276fb182b173829cf67
+    tag: v0.4.5@sha256:56afb4f02e92fd17f173c587aaca59313e234b5d1ec3a9ca69d5f5db833b3533
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10661,7 +10661,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1471@sha256:8427702d3f3790bb64f19283ba855ad1f4b0b8d68e0ff7448750acb3525dd82d
+    tag: 0.22.1512@sha256:4a4dcdb85b6efe3f45750458798470b641a5f17bf6d5627fea5617aa66416307
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11872,7 +11872,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.25@sha256:769feca938945c58f5009993b8d2ef0f0b24b703136fe15b2561734fa04cd990
+    tag: 4.3.26@sha256:6b86b2e5b1d416bcc8463fb929cff141b5715f85f6228193fd1e94446c6e0e70
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -13067,7 +13067,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.02@sha256:e131451ddffcebabea2e87a7123b0ae276ed8e09be3582ef18fecfa33f7eba46
+    tag: v0.6.05@sha256:a3662757a59fe4e5c029dd1a07af412402f5a95ed8413879368f30204ba12cee
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14155,7 +14155,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:44e4666e60fe74b32bfa3eca4bfe3d2465460ce8fabd47448c1f106e0e92945e
+    tag: v1.5.1@sha256:7390b46e2a92823787f669f709c8e06775d83f7438d53ca3fdd2e1f45612c709
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -14383,7 +14383,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.128.0@sha256:3306cbb62e5ac5fd1449b0a92990686b6795afa7bed7fd9aec8fb81c978dec91
+    tag: v1.129.0@sha256:7122354defac839a7ecf541395907c21805f6a2b60b67ee476e66b162f1a355d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14471,7 +14471,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.128.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.129.0
       envFrom:
       - configMapRef:
           name: immich-env

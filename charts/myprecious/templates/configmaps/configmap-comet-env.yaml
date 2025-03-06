@@ -12,6 +12,8 @@ data:
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion
   SCRAPE_MEDIAFUSION: "True"
   SCRAPE_ZILEAN: "True"
+  SCRAPE_COMET: "True"
+  COMET_URL: http://elfhosted-internal.comet
   REMOVE_ADULT_CONTENT: "true"
   DOWNLOAD_TORRENTS: "false"
   {{ if .Values.stremthru.enabled }}
