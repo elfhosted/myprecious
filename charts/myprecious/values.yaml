@@ -5085,7 +5085,7 @@ plexrequests:
           name: elfbot-plexrequests
           optional: true    
       volumeMounts:
-        name: app-shared
+      - name: app-shared
         mountPath: /app/shared          
     watchlist:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
