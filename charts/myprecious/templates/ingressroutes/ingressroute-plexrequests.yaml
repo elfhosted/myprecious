@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name }}-plex.{{ .Values.dns_domain }}-requests
 spec:
   routes:
-    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (Path(`/library/all`) || Path(`/library/request`) || PathPrefix(`/Library/metadata/{something:.*}/children`))
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (Path(`/library/all`) || PathPrefix(`/library/request`) || PathPrefix(`/library/metadata/{something:.*}/children`))
       kind: Rule
       services:
         - name: plexrequests

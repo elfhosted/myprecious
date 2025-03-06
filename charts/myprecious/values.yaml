@@ -5051,6 +5051,9 @@ plexrequests:
   envFrom:
   - configMapRef:
       name: plexrequests-env
+  - configMapRef:
+      name: elfbot-plexrequests
+      optional: true    
   persistence:
     tmp: *tmp
     config:
