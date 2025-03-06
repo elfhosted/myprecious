@@ -5063,6 +5063,7 @@ plexrequests:
         persistentVolumeClaim:
           claimName: config
     app-cache:
+      mountPath: /app/cache
       enabled: true
       type: emptyDir
       volumeSpec:
