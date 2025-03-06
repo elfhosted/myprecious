@@ -1,5 +1,36 @@
 # Changelog
 
+## [1.295.1](https://github.com/elfhosted/myprecious/compare/v1.295.0...v1.295.1) (2025-03-06)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to 7390b46 ([ffac27f](https://github.com/elfhosted/myprecious/commit/ffac27f5b822ba8bb40656676abab08d83a4a568))
+
+## [1.295.0](https://github.com/elfhosted/myprecious/compare/v1.294.0...v1.295.0) (2025-03-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.05 ([22d4fd7](https://github.com/elfhosted/myprecious/commit/22d4fd7053769f8a4e839b337255134694dcd8c7))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.05 ([b26ae25](https://github.com/elfhosted/myprecious/commit/b26ae25e250138586fd31fcfaffe6c737cb93bd9))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1512 ([7355659](https://github.com/elfhosted/myprecious/commit/7355659e539744992cdddd961d335639cb6bf46f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1512 ([1569dbc](https://github.com/elfhosted/myprecious/commit/1569dbcc5b7bda59f6783eee8663af774462bdad))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.21.1 ([ce8cbb2](https://github.com/elfhosted/myprecious/commit/ce8cbb21d34e719a170f950269402916b9e36b16))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.21.1 ([6d9962c](https://github.com/elfhosted/myprecious/commit/6d9962c520846db448f66694f0f1ed3dfcbf5b52))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v24.7 ([8e9793f](https://github.com/elfhosted/myprecious/commit/8e9793f239f50fe393a887caf39878eaace47b02))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v24.7 ([c6f0ca8](https://github.com/elfhosted/myprecious/commit/c6f0ca8bc55316a82126d84131d69647a2d45a84))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.58.0 ([5ae8a99](https://github.com/elfhosted/myprecious/commit/5ae8a9913898ccf4d7bb4380c97ce3ecfecf133e))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.58.0 ([f419b3f](https://github.com/elfhosted/myprecious/commit/f419b3f1d7642acee574820f2c5c6188aa747496))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to 7390b46 ([caa98f2](https://github.com/elfhosted/myprecious/commit/caa98f2b4de15e8fb3ce2a0dd154ebb2448607ea))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to 7390b46 ([750356d](https://github.com/elfhosted/myprecious/commit/750356d52e9002fc565f04dc6d8bb2ed0c3b2583))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to b769d53 ([1dd64be](https://github.com/elfhosted/myprecious/commit/1dd64befd740bb60c80ef041a4a709ccb5f5be1c))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to b769d53 ([1e2a759](https://github.com/elfhosted/myprecious/commit/1e2a75911b3c2091d6b7dda6972cd243d7470edd))
+
 ## [1.294.0](https://github.com/elfhosted/myprecious/compare/v1.293.0...v1.294.0) (2025-03-05)
 
 
