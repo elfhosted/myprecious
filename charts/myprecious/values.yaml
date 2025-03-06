@@ -5086,6 +5086,10 @@ plexrequests:
       - configMapRef:
           name: elfbot-plexrequests
           optional: true
+      volumeMounts:
+      - name: config
+        mountPath: /config
+        subPath: plexrequests             
 
 jellyfin: &app_jellyfin
   hostname: elfhosted
