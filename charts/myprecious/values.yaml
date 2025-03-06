@@ -5032,7 +5032,7 @@ plexrequests:
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
     tag: v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
-  command: [ "/requests.sh" ]
+  command: [ "/request.sh" ]
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plexrequests,plexrequests-env"
