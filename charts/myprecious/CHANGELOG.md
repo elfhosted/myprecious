@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.295.1](https://github.com/elfhosted/myprecious/compare/v1.295.0...v1.295.1) (2025-03-06)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to 7390b46 ([ffac27f](https://github.com/elfhosted/myprecious/commit/ffac27f5b822ba8bb40656676abab08d83a4a568))
+
 ## [1.295.0](https://github.com/elfhosted/myprecious/compare/v1.294.0...v1.295.0) (2025-03-06)
 
 
