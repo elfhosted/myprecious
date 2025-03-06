@@ -5035,7 +5035,7 @@ plexrequests:
   command: [ "/requests.sh" ]
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plexrequests"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plexrequests,plexrequests-env"
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5089,23 +5089,18 @@ plexrequests:
       command: [ "/auth.sh" ]
       envFrom:
       - configMapRef:
-          name: plex-env
+          name: plexrequests-env
       - configMapRef:
-          name: elfbot-plex
-          optional: true      
-      volumeMounts:
-      - name: config
-        mountPath: /plex
-        subPath: plex
-        readOnly: true          
+          name: elfbot-plexrequests
+          optional: true              
     watchlist:
       image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:d581373c269b06dc67b8159fba821ad147c28cce74eebdb40ea3acd60e7ca522
       command: [ "/watchlist.sh" ]
       envFrom:
       - configMapRef:
-          name: plex-env
+          name: plexrequests-env
       - configMapRef:
-          name: elfbot-plex
+          name: elfbot-plexrequests
           optional: true
 
 jellyfin: &app_jellyfin
