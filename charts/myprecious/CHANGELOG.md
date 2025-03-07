@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.297.1](https://github.com/elfhosted/myprecious/compare/v1.297.0...v1.297.1) (2025-03-07)
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/rdtclient:v2.0.102 docker digest to f1347e4 ([1598b68](https://github.com/elfhosted/myprecious/commit/1598b6802a74012771eaeaa3dfe52d5fe1639920))
+* **app:** update ghcr.io/elfhosted/rdtclient:v2.0.102 docker digest to f1347e4 ([2b87cc3](https://github.com/elfhosted/myprecious/commit/2b87cc301b41207502c130feb5496087389588ff))
+
 ## [1.297.0](https://github.com/elfhosted/myprecious/compare/v1.296.0...v1.297.0) (2025-03-07)
 
 
