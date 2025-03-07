@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.296.0](https://github.com/elfhosted/myprecious/compare/v1.295.1...v1.296.0) (2025-03-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.105 ([917451b](https://github.com/elfhosted/myprecious/commit/917451bcb70b9fa4d7ce012e3e8f9b02412cb6a1))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.105 ([8745088](https://github.com/elfhosted/myprecious/commit/87450886b19067312ec77f527aae67189103b62c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1524 ([684a22d](https://github.com/elfhosted/myprecious/commit/684a22d4fa17d2a237baacff3c467846ff1d3325))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1524 ([7076a05](https://github.com/elfhosted/myprecious/commit/7076a05ce5e31cedbc94958c6edb0c4043741f75))
+* **app:** update ghcr.io/elfhosted/kavita docker tag to v0.8.5 ([09a05a3](https://github.com/elfhosted/myprecious/commit/09a05a3e152e2b1ec0472bbf196a3ffb267719d6))
+* **app:** update ghcr.io/elfhosted/kavita docker tag to v0.8.5 ([676a306](https://github.com/elfhosted/myprecious/commit/676a3064cf2c149893559fca39918422197bab4f))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.101 ([37245d5](https://github.com/elfhosted/myprecious/commit/37245d57e09ac47c4a8aff24960948944acd27e3))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.101 ([ed6163c](https://github.com/elfhosted/myprecious/commit/ed6163cd0ea97c504be22145ef3d90fa50307037))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds:0.4.104 docker digest to 6687b31 ([40c2563](https://github.com/elfhosted/myprecious/commit/40c256381cd98ad06e1de1944eab422fa85a1093))
+* **app:** update ghcr.io/elfhosted/bluesky-pds:0.4.104 docker digest to 6687b31 ([0e8d084](https://github.com/elfhosted/myprecious/commit/0e8d084bbdebf728d3f5b81059a5e938575ca1d2))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.6.05 docker digest to b2ec6f6 ([4de0841](https://github.com/elfhosted/myprecious/commit/4de084165193f261376db804802679682bd01b01))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.6.05 docker digest to b2ec6f6 ([89f84fa](https://github.com/elfhosted/myprecious/commit/89f84fae393b8baa9f45e29ca0f180881f3efb8a))
+* **app:** update ghcr.io/elfhosted/emby:4.9.0.41 docker digest to 22ffab3 ([bc02609](https://github.com/elfhosted/myprecious/commit/bc0260908846ba0127d1d5258200caaec3d72b38))
+* **app:** update ghcr.io/elfhosted/emby:4.9.0.41 docker digest to 22ffab3 ([26c5517](https://github.com/elfhosted/myprecious/commit/26c55173fe5ce7bd45d6d514a1de62e7b35874b0))
+* **app:** update ghcr.io/elfhosted/nzbget:24.7 docker digest to 899d25a ([ce8a268](https://github.com/elfhosted/myprecious/commit/ce8a268eee30371aed7c64e5714fcbd1bf154a2d))
+* **app:** update ghcr.io/elfhosted/nzbget:24.7 docker digest to 899d25a ([297e6e8](https://github.com/elfhosted/myprecious/commit/297e6e85b910f93ed8f365df08598dc65cdcfa88))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 87d0d34 ([b6ef524](https://github.com/elfhosted/myprecious/commit/b6ef5247306183043417f22e9dc7fb87a9fba9b8))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 87d0d34 ([af57620](https://github.com/elfhosted/myprecious/commit/af57620eb14b7b98dadf8fccabb7de5b80fbc712))
+* fix plex-requests watchlist ([3a8b155](https://github.com/elfhosted/myprecious/commit/3a8b155ecc10d87be09f6fd2c39da853d0d8187b))
+
 ## [1.295.1](https://github.com/elfhosted/myprecious/compare/v1.295.0...v1.295.1) (2025-03-06)
 
 
