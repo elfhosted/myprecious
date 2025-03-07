@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.297.0](https://github.com/elfhosted/myprecious/compare/v1.296.0...v1.297.0) (2025-03-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.102 ([fba644b](https://github.com/elfhosted/myprecious/commit/fba644baa16f837963944a47201dcbfb227478c8))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.102 ([71658aa](https://github.com/elfhosted/myprecious/commit/71658aa7622a994775a07877cbec840ba74dac8f))
+
 ## [1.296.0](https://github.com/elfhosted/myprecious/compare/v1.295.1...v1.296.0) (2025-03-07)
 
 
