@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.298.0](https://github.com/elfhosted/myprecious/compare/v1.297.1...v1.298.0) (2025-03-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.14.1 ([1358fe4](https://github.com/elfhosted/myprecious/commit/1358fe4da6ac56a1271ef3e9946cf113905757ff))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.14.1 ([3361e6b](https://github.com/elfhosted/myprecious/commit/3361e6bb18ee002fc1a34912d297edbc84dfa3ef))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.106 ([b1f3126](https://github.com/elfhosted/myprecious/commit/b1f3126695f0417c4fb36b680939fdbeb89e77cb))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.106 ([8c1be5a](https://github.com/elfhosted/myprecious/commit/8c1be5a6b80bc98cc87639b9dae9aa46636d3521))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.06 ([11006b0](https://github.com/elfhosted/myprecious/commit/11006b04f3e58139ac11d22f71f46ac657396d24))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.06 ([7220097](https://github.com/elfhosted/myprecious/commit/722009768b8cde1a9112dfe78d402aa41f0a7c7e))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.07 ([eb0b642](https://github.com/elfhosted/myprecious/commit/eb0b642b9c878deabd8bb7807551ffd34da0fbbc))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.07 ([5bd7c94](https://github.com/elfhosted/myprecious/commit/5bd7c94695abcc52b2bc6649aa903ab353357385))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1556 ([79ee54c](https://github.com/elfhosted/myprecious/commit/79ee54c1048a009d84547f5e1e68501e83e653a8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1556 ([95b4fc9](https://github.com/elfhosted/myprecious/commit/95b4fc9eccd0c95d59218723434e9dd26cc8e6d7))
+
 ## [1.297.1](https://github.com/elfhosted/myprecious/compare/v1.297.0...v1.297.1) (2025-03-07)
 
 
