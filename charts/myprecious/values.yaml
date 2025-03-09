@@ -9292,11 +9292,6 @@ rdtclient: &app_rdtclient
         configMap:
           name: elfbot-rdtclient
           optional: true
-    download: # in case users use /tmp
-      enabled: true
-      type: custom
-      mountPath: /data/downloads
-      volumeSpec: *volumespec_ephemeral_volume_1g
   ingress:
     main:
       enabled: false
