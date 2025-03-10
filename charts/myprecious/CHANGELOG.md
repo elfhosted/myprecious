@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.300.0](https://github.com/elfhosted/myprecious/compare/v1.299.0...v1.300.0) (2025-03-10)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.98.0 ([f3a6b54](https://github.com/elfhosted/myprecious/commit/f3a6b5444e46149488ddb2864fc4a67815b2a101))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.98.0 ([b97df47](https://github.com/elfhosted/myprecious/commit/b97df4748d6eea7496f254992d98a558b2e9d668))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1570 ([47f9e7f](https://github.com/elfhosted/myprecious/commit/47f9e7fb43cfcacc6004176f932886f6c3e44f2e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1570 ([585f734](https://github.com/elfhosted/myprecious/commit/585f734a871936617d8556839156bae8bbdda8d4))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.4.0 ([ed2763e](https://github.com/elfhosted/myprecious/commit/ed2763e751250d354e1102f1260a91beaa596811))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.4.0 ([7a45b0d](https://github.com/elfhosted/myprecious/commit/7a45b0da67827f6fa485656c5b88528d63aa0278))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.55.0 ([3e5e0f4](https://github.com/elfhosted/myprecious/commit/3e5e0f405e510045e2de3eacdf86a742cc82bbc6))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.55.0 ([06b589b](https://github.com/elfhosted/myprecious/commit/06b589b830d1da405cec64686eeb0e4c55060e1d))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 5398125 ([ab9ea1b](https://github.com/elfhosted/myprecious/commit/ab9ea1b7114a033b63eac268071be8d6542233bc))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 5398125 ([fbabf46](https://github.com/elfhosted/myprecious/commit/fbabf46624baebc06d99d35ec4bf3937a0d820a3))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 5a96cdd ([4e14efb](https://github.com/elfhosted/myprecious/commit/4e14efbf7a7e1e4cc1b90bf5ca4a4f29a1c5d113))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.0.1409-1 docker digest to 5a96cdd ([cf010ec](https://github.com/elfhosted/myprecious/commit/cf010ec9006964c80edb8c6e458595b94bb4c84c))
+
 ## [1.299.0](https://github.com/elfhosted/myprecious/compare/v1.298.0...v1.299.0) (2025-03-09)
 
 
