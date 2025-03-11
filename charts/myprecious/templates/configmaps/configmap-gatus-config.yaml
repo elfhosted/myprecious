@@ -1054,6 +1054,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.audiobookrequest.enabled }}
+      - name: audiobookrequest
+        group: download-media
+        url: "http://audiobookrequest:8000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
+
       {{ if .Values.jdownloader.enabled }}
       - name: jdownloader
         group: download-media

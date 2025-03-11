@@ -873,8 +873,6 @@ blueskypdscustomdomain:
 
 rutorrentgluetun: &rutorrent
   enabled: false
-  sso:
-    enabled: true
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
@@ -1186,8 +1184,6 @@ delugegluetun: &deluge
     app.elfhosted.com/name: deluge
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
-  sso:
-    enabled: true
   automountServiceAccountToken: false
   image:
     repository: ghcr.io/geek-cookbook/deluge
@@ -1504,8 +1500,6 @@ qbittorrentgluetun: &qbittorrent
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
   enabled: false
-  sso:
-    enabled: true
   automountServiceAccountToken: false
   image:
     registry: ghcr.io
@@ -1861,8 +1855,6 @@ qbittorrentpia:
 
 nzbget:
   enabled: false
-  sso:
-    enabled: true
   image:
     repository: ghcr.io/elfhosted/nzbget
     tag: 24.7@sha256:899d25a11cb136ec8c48d40c6ecaf52ff71ec513d041b109b4b9cd0653c76cb9
@@ -1935,8 +1927,6 @@ sabnzbd:
   hostname: sabnzbd # required to prevent whitelisting requirement per https://sabnzbd.org/wiki/extra/hostname-check.html
   podLabels:
     app.elfhosted.com/class: nzb
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: elfhosted/sabnzbd
@@ -2092,8 +2082,6 @@ sabnzbd:
 
 tautulli:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
@@ -2476,8 +2464,6 @@ ombi:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  sso:
-    enabled: true
   persistence:
     <<: *storagemounts
     config:
@@ -2527,8 +2513,6 @@ ombi:
 
 scannarr: &app_scannarr
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -2612,8 +2596,6 @@ scannarr4k:
 
 bazarr:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: elfhosted/bazarr
@@ -2689,8 +2671,6 @@ bazarr:
 
 bazarr4k:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: elfhosted/bazarr
@@ -3016,8 +2996,6 @@ filebrowser:
 
 uptimekuma:
   enabled: false
-  sso:
-    enabled: true
   image:
     repository: ghcr.io/elfhosted/uptime-kuma
     tag: 1.23.16@sha256:e89ee95acc49f109bf136c2f15eb7aba928a97807cf22dd690cd103b6a2fef91
@@ -3086,8 +3064,6 @@ uptimekuma:
 
 privatebin:
   enabled: false
-  sso:
-    enabled: false
   image:
     repository: privatebin/fs
     tag: 1.7.6
@@ -3181,8 +3157,6 @@ privatebin:
 
 kapowarr:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: elfhosted/kapowarr
@@ -3464,8 +3438,6 @@ cwabookdownloader:
       memory: 1Gi
 
 lazylibrarian:
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/lazylibrarian
@@ -3536,8 +3508,6 @@ lazylibrarian:
 
 mylar:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -3611,8 +3581,6 @@ mylar:
 
 komga:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/komga
@@ -3752,8 +3720,6 @@ kavita:
 
 calibre:
   enabled: false
-  sso:
-    enabled: true
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
@@ -4097,8 +4063,6 @@ resiliosync:
   - /sync.conf
   - --nodaemon
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
@@ -4382,8 +4346,6 @@ nzbhydra:
 
 lidarr:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
@@ -4484,8 +4446,6 @@ navidrome:
   image:
     repository: ghcr.io/elfhosted/navidrome
     tag: 0.55.0@sha256:ca11468546a7e310fe758b31d96ca38f03139044cb58887e2cf3229cf6dc5f63
-  sso:
-    enabled: true
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -4555,8 +4515,6 @@ navidrome:
 
 readarr:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -4664,8 +4622,6 @@ readarr:
 
 readarraudio:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -5717,8 +5673,6 @@ gatus:
       enabled: false
 
 gotify:
-  sso:
-    enabled: true
   enabled: false
   image:
     repository: ghcr.io/elfhosted/gotify
@@ -6224,8 +6178,6 @@ ersatztv:
 
 threadfin:
   enabled: false
-  sso:
-    enabled: true
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
@@ -6297,8 +6249,6 @@ threadfin:
 
 thelounge:
   enabled: false
-  sso:
-    enabled: true
   image:
     repository: ghcr.io/elfhosted/thelounge
     tag: "4.4.3@sha256:74ae8d9fc36d5a8396bb70cfaa58d222730fa69d2f71c3e2ec3ae010f2a0b264"
@@ -6439,8 +6389,6 @@ overseerr:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  sso:
-    enabled: true
   persistence:
     <<: *storagemounts
     config:
@@ -6570,8 +6518,6 @@ jellyseerr:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  sso:
-    enabled: true
   persistence:
     <<: *storagemounts
     config:
@@ -6815,8 +6761,6 @@ audiobookshelf:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookshelf,elfbot-all"
-  sso:
-    enabled: true
   persistence:
     <<: *storagemounts
     config:
@@ -6860,6 +6804,77 @@ audiobookshelf:
       - mountPath: /config
         name: config
         subPath: audiobookshelf
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8000
+  resources:
+    requests:
+      cpu: 0m
+      memory: 64Mi
+    limits:
+      cpu: 2
+      memory: 1Gi
+
+audiobookrequest:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/audiobookrequest
+    tag: v1.1.0@sha256:480fb869c3cf2e1741cb9cd3dcefc6190bc07959cca481d93a80fcfa225508a3
+  priorityClassName: tenant-streaming
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    runAsNonRoot: true
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookrequest,elfbot-all"
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: audiobookrequest
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-audiobookrequest
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: audiobookrequest
       - mountPath: /tmp
         name: tmp
   ingress:
@@ -7022,8 +7037,6 @@ vaultwarden:
 
 notifiarr:
   enabled: false
-  sso:
-    enabled: true
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/notifiarr
@@ -7127,8 +7140,6 @@ notifiarr:
 
 shoko:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/shokoserver
@@ -7202,8 +7213,6 @@ shoko:
 
 filebot:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/filebot-node
@@ -7283,8 +7292,6 @@ filebot:
 
 rpdb:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rpdb
@@ -7353,8 +7360,6 @@ rpdb:
 
 kometa: &app_kometa
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kometa
@@ -8087,8 +8092,6 @@ plextraktsync:
 
 decluttarr: &app_decluttarr
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
@@ -8140,8 +8143,6 @@ decluttarr: &app_decluttarr
 
 rdebridui:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rdebrid-ui
@@ -8194,8 +8195,6 @@ rdebridui:
 
 suggestarr:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
@@ -8774,8 +8773,6 @@ webdavplus:
 
 jfa:
   enabled: false
-  sso:
-    enabled: true
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/jfa-go
@@ -9137,8 +9134,6 @@ mattermost:
 syncthing:
   enabled: false
   hostname: elfhosted
-  sso:
-    enabled: true
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/syncthing
@@ -9250,8 +9245,6 @@ syncthing:
 rdtclient: &app_rdtclient
   enabled: false
   hostname: elfhosted
-  sso:
-    enabled: true
   priorityClassName: tenant-bulk
   podLabels:
     app.elfhosted.com/class: debrid

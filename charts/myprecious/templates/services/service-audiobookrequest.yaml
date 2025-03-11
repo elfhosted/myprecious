@@ -1,0 +1,20 @@
+{{ if .Values.audiobookrequest.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: audiobookrequest
+  labels:
+    app.kubernetes.io/name: audiobookrequest
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: audiobookrequest
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}
