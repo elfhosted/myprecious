@@ -2190,6 +2190,7 @@ tautulli:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: tautulli
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -5212,6 +5213,7 @@ jellyfin: &app_jellyfin
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: jellyfin
       - mountPath: /transcode
         name: transcode
       securityContext: *default_securitycontext
@@ -5788,7 +5790,6 @@ gotify:
         subPath: gotify
       - mountPath: /tmp
         name: tmp
-    bootstrap: *bootstrap
 
 flaresolverr: &app_flaresolverr
   enabled: false
@@ -10610,6 +10611,7 @@ airdcpp: &app_airdcpp
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: airdcpp
       scripts:
         up: |-
           #!/bin/ash
@@ -10647,6 +10649,7 @@ airdcppgluetun:
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: airdcpp
       scripts:
         up: |-
           #!/bin/ash
@@ -12640,6 +12643,7 @@ recyclarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: recyclarr
       envFrom:
       - configMapRef:
           name: recyclarr-env
