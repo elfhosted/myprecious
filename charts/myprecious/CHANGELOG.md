@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.302.0](https://github.com/elfhosted/myprecious/compare/v1.301.0...v1.302.0) (2025-03-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1589 ([75e9fb7](https://github.com/elfhosted/myprecious/commit/75e9fb7125cc72caa0897d33f153d27dd96cfc50))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1589 ([20df8ec](https://github.com/elfhosted/myprecious/commit/20df8ec8a92f0fe763e12c6b4efdb3b40a421fe8))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.21.2 ([aea6290](https://github.com/elfhosted/myprecious/commit/aea62903ff5641c89fc8c8807064b95972770856))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.21.2 ([da082d0](https://github.com/elfhosted/myprecious/commit/da082d04ebac64124968939ee8f94173ae87c87f))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.6.0 ([274906c](https://github.com/elfhosted/myprecious/commit/274906c427b7443033a8370f3652406a0a07e3de))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.6.0 ([6cc58da](https://github.com/elfhosted/myprecious/commit/6cc58da3b6a131d23c4a84d02f60ea74027c1b1b))
+
+
+### Bug Fixes
+
+* **app:** update quay.io/linuxserver.io/calibre:7.26.0 docker digest to dc66964 ([1a3099e](https://github.com/elfhosted/myprecious/commit/1a3099efa05c512177b600e97b545a9f72782404))
+* **app:** update quay.io/linuxserver.io/calibre:7.26.0 docker digest to dc66964 ([3adc905](https://github.com/elfhosted/myprecious/commit/3adc905d787953c75fb286306c6c9b4600c53857))
+
 ## [1.301.0](https://github.com/elfhosted/myprecious/compare/v1.300.0...v1.301.0) (2025-03-11)
 
 
