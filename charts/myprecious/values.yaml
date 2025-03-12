@@ -6598,7 +6598,7 @@ jellyseerr:
         configMap:
           name: tooling-scripts
           defaultMode: 0755
-    overseerr-config:
+    jellyseerr-config:
       enabled: "true"
       type: "custom"
       volumeSpec:
