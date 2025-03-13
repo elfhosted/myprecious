@@ -916,7 +916,15 @@ data:
             href: https://{{ .Release.Name }}-openbooks.{{ .Values.dns_domain }}
             description: Manage eBooks Downloads
             siteMonitor: http://openbooks:8000
-        {{ end }}      
+        {{ end }}  
+
+        {{ if .Values.audiobookrequest.enabled }}
+        - AudioBookRequest:
+            icon: mdi-book-open-variant
+            href: https://{{ .Release.Name }}-audiobookrequest.{{ .Values.dns_domain }}
+            description: Manage AudioBooks Downloads
+            siteMonitor: http://audiobookrequest:8000
+        {{ end }}              
 
         {{ if .Values.jdownloader.enabled }}
         - jDownloader:

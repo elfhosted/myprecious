@@ -1,0 +1,20 @@
+{{ if and .Values.plexrequests.enabled .Values.plexcustomdomain.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.plexcustomdomain.cname | lower }}-requests
+spec:
+  routes:
+    - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && (Path(`/library/all`) || PathPrefix(`/library/request`) || PathPrefix(`/library/metadata/{something:.*}/children`))
+      kind: Rule
+      services:
+        - name: plexrequests
+          kind: Service
+          port: 32502 # request
+    - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && PathPrefix(`/auth`)
+      kind: Rule
+      services:
+        - name: plexrequests
+          kind: Service
+          port: 32501 # auth
+{{ end }}
