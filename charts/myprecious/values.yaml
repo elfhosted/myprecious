@@ -13650,8 +13650,8 @@ debridav: &app_debridav
     config:
       enabled: true
       type: custom
-      subPath: debridav/data
-      mountPath: /config
+      # subPath: debridav/data
+      # mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -13661,7 +13661,12 @@ debridav: &app_debridav
       volumeSpec:
         configMap:
           name: elfbot-debridav
-          optional: true             
+          optional: true    
+    import:
+      enabled: true
+      type: emptyDir
+      mountPath: /import
+      sizeLimit: 1Gi                   
   envFrom:
   - configMapRef:
       name: debridav-env
@@ -13698,26 +13703,26 @@ debridav: &app_debridav
       - mountPath: /tmp
         name: tmp  
     # Only trigger this when moving to database
-    # setup:
-    #   image: *tooling_image
-    #   imagePullPolicy: IfNotPresent
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     set -x
-    #     set -e
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
 
-    #     # Move files from old file-based setup into import folder if they exist
-    #     rsync -av --exclude="database" --remove-source-files --no-times /config/ /import/
-    #   volumeMounts:
-    #   - mountPath: /config
-    #     name: config
-    #     subPath: debridav
-    #   - mountPath: /import
-    #     name: import
-    #   resources: *default_resources
-    #   securityContext: *default_securitycontext        
+        # Move files from old file-based setup into import folder if they exist
+        rsync -av --exclude="database" --remove-source-files --no-times /config/ /import/
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: debridav
+      - mountPath: /import
+        name: import
+      resources: *default_resources
+      securityContext: *default_securitycontext        
     setup-postgres:
       image: *tooling_image
       command:
