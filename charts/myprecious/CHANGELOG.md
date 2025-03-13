@@ -1,5 +1,43 @@
 # Changelog
 
+## [1.303.0](https://github.com/elfhosted/myprecious/compare/v1.302.0...v1.303.0) (2025-03-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.1.1 ([8638c14](https://github.com/elfhosted/myprecious/commit/8638c14eabf93f69f6fa701c893c994f2c52dff8))
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.1.1 ([78bd7aa](https://github.com/elfhosted/myprecious/commit/78bd7aaeff813c7ebe71d8a504f39acb7640e950))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.0 ([daf4b74](https://github.com/elfhosted/myprecious/commit/daf4b7431385e9ba71cb8f758a7c8b9c210e9930))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.0 ([9ffdf75](https://github.com/elfhosted/myprecious/commit/9ffdf750bca913f9ab87efbb9e1d9079aab74ba6))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.1 ([4ab864e](https://github.com/elfhosted/myprecious/commit/4ab864e13adb9b27670019cc1858aac68e1baf15))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.1 ([e61b367](https://github.com/elfhosted/myprecious/commit/e61b3677c8b513953a198ffb5d7c9e82a2cc8eb6))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1595 ([42f1ea0](https://github.com/elfhosted/myprecious/commit/42f1ea0e96be941a156262871861506222896080))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1595 ([32e02b2](https://github.com/elfhosted/myprecious/commit/32e02b28db4aa4bd737c19e5d2e1ace77495f000))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.27 ([fbbe469](https://github.com/elfhosted/myprecious/commit/fbbe469f9827fc2147b8942b6c2886385ea58504))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.27 ([afcbe17](https://github.com/elfhosted/myprecious/commit/afcbe17270245558cca00fc13dc2c52e5e52df02))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.5 ([c98aeee](https://github.com/elfhosted/myprecious/commit/c98aeee9431f906524f3422294cccb9cba1a19eb))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.5 ([449888c](https://github.com/elfhosted/myprecious/commit/449888c10fed3dbc510eae09960ed1e53a867983))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.7 ([b577b5c](https://github.com/elfhosted/myprecious/commit/b577b5cd9fff111a5458d3282b688f6c84fb64dc))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.7 ([152aa47](https://github.com/elfhosted/myprecious/commit/152aa47395199f8e7a4374d6e94d0107b7f0e0b3))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.8 ([652d315](https://github.com/elfhosted/myprecious/commit/652d3154d8c0823ba8dd780b2ba00e43c8e36501))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.8 ([e490ec7](https://github.com/elfhosted/myprecious/commit/e490ec73a174b0cf6aef86962d7b6a5938733159))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.9 ([09e214d](https://github.com/elfhosted/myprecious/commit/09e214db7ac4bf45d3bc29a28ab324ff14cfa70a))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.9 ([70df92b](https://github.com/elfhosted/myprecious/commit/70df92bee7da8175ae41a15bdc4ec7668bda6766))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.18.1 ([7bd96d9](https://github.com/elfhosted/myprecious/commit/7bd96d9028a3f6d34e34bba08fccf3b613ad6c3b))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.18.1 ([67dbd30](https://github.com/elfhosted/myprecious/commit/67dbd3000a1416d5753472d20356dd2b8840329e))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.19.0 ([c15c7f2](https://github.com/elfhosted/myprecious/commit/c15c7f216fb1e7df68f9eeb7940723187c78787d))
+* **app:** update ghcr.io/elfhosted/riven-frontend docker tag to v0.19.0 ([49a667b](https://github.com/elfhosted/myprecious/commit/49a667babf9cd42d5546d079978d68fc1693dc77))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.30 ([e99d93f](https://github.com/elfhosted/myprecious/commit/e99d93ffdd22cbc2820f8f08c3515cf539e7e49b))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.30 ([871627b](https://github.com/elfhosted/myprecious/commit/871627bc5d12a10ec4bcbf818bf7506fc3ef7d8d))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 0c0251d ([03956e0](https://github.com/elfhosted/myprecious/commit/03956e0d350b66dbd7800f03ac32660eb4684809))
+* **app:** update ghcr.io/elfhosted/plex-debrid:rolling docker digest to 0c0251d ([02f18b8](https://github.com/elfhosted/myprecious/commit/02f18b825f7618aa2eb86b829baf968c5c3651bc))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.3.1065-1 docker digest to 67cc3d5 ([a0ce4ff](https://github.com/elfhosted/myprecious/commit/a0ce4ffe0bd5e7af95871af4cb52fb4330322798))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.3.1065-1 docker digest to 67cc3d5 ([5c27194](https://github.com/elfhosted/myprecious/commit/5c271944d003643f239bdd65c66db47b44030309))
+
 ## [1.302.0](https://github.com/elfhosted/myprecious/compare/v1.301.0...v1.302.0) (2025-03-12)
 
 
