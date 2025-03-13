@@ -2178,6 +2178,7 @@ tautulli:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: tautulli
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -3584,7 +3585,7 @@ komga:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/komga
-    tag: 1.21.1@sha256:161317c9833949d53d27cb5fe3b3beaab2543ee675e0418a67908b1e33294128
+    tag: 1.21.2@sha256:8aadbec3a027975cec4422d984f982fee1f5bf23096aac7c6cba33ec9f3d90d3
   env:
     KOMGA_CONFIGDIR: /config
     KOMGA_REMEMBERME_KEY: yesplease
@@ -3723,7 +3724,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.26.0@sha256:13c4fe0bce1367cb309f74be422d6e38480dee4742a6c3b6c976c3aed3cdad1e
+    tag: 7.26.0@sha256:dc6696456caa980a7c7a5a6654011d0d5c9dd1ff4e8bdf1071f1e3f01da36c7c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4066,7 +4067,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 3.0.0.1409-1@sha256:5a96cddbe7df10323cc9728c60b2544667fe7f741104394c9bc2f9fe11bbe3be
+    tag: 3.0.3.1065-1@sha256:67cc3d5d467db48c7f442c664749a85758d63069453c2a298166afde86959063
   env:
     PUID: 568
     GUID: 568
@@ -4757,7 +4758,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.4.9463-630c9f557 
+    tag: 1.41.5.9522-a96edc606 
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:
@@ -5168,6 +5169,7 @@ jellyfin: &app_jellyfin
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: jellyfin
       - mountPath: /transcode
         name: transcode
       securityContext: *default_securitycontext
@@ -5742,7 +5744,6 @@ gotify:
         subPath: gotify
       - mountPath: /tmp
         name: tmp
-    bootstrap: *bootstrap
 
 flaresolverr: &app_flaresolverr
   enabled: false
@@ -6181,7 +6182,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.28@sha256:5f885a08a086f1f8bd9ebcb0d2e1ae7b726be14dc7166d8aff94c4ae4033c55a
+    tag: 1.2.30@sha256:2c144fc58055a33dc4ebbf3d2043d83a98b1929398816c6f3df10d9454fd254c
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6543,6 +6544,13 @@ jellyseerr:
         configMap:
           name: tooling-scripts
           defaultMode: 0755
+    jellyseerr-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: jellyseerr-config
+          optional: true              
   envFrom:
   - configMapRef:
       name: jellyseerr-env
@@ -6559,6 +6567,20 @@ jellyseerr:
         subPath: jellyseerr
       - mountPath: /tmp
         name: tmp
+    setup:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        # run the setup script from the configmap, so that we can make templated changes
+        bash /bootstrap/setup.sh
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: jellyseerr
+      - name: jellyseerr-config
+        mountPath: "/bootstrap/"        
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     # copy-branding:
     #   image: ghcr.io/elfhosted/jellyseerr:2.0.1@sha256:ee475414b42e17152f67f75169137ece981b6912466182132dc3d207eebee27c
@@ -8853,7 +8875,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.5.1@sha256:02bc57ec06c0183340088849345209d732204e4a5733ef9cb0735ca4c460db83
+    tag: 10.6.0@sha256:6a1b22856dc571e8a7e09ce1f3d79aa580bb7110c5797026658f26d6d0b8cf16
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10254,7 +10276,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.21.4@sha256:8525e4dcba654b768dc61ff038753ae6bf253b3128d5ecb91b14d3210f3d7141
+    tag: v0.21.9@sha256:7da8c94ad7d38b24023f65195d086bb7eea0c1639a7110acd1aa66fd407e5e05
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10450,7 +10472,7 @@ rivenfrontend: &app_rivenfrontend
     app.elfhosted.com/name: riven-frontend
   image:
     repository: ghcr.io/elfhosted/riven-frontend
-    tag: v0.18.0@sha256:c901b97c5d24521d5350c3844fdd07dda877546adf9bdd41d1d19abe315ea27c
+    tag: v0.19.0@sha256:bf4385c06e73b29f0dad4aa66d77056b08a1b5a38d0bde11cddd506e4926c1da
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10603,6 +10625,7 @@ airdcpp: &app_airdcpp
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: airdcpp
       scripts:
         up: |-
           #!/bin/ash
@@ -10640,6 +10663,7 @@ airdcppgluetun:
       additionalVolumeMounts:
       - mountPath: /config
         name: config
+        subPath: airdcpp
       scripts:
         up: |-
           #!/bin/ash
@@ -10653,7 +10677,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1576@sha256:84b611f1228482af5555100333c77e29262a020b58584d894f5883ec374f88f6
+    tag: 0.22.1595@sha256:db8beae1099d6f6953282e1c9c3fa60687428b0b76d4d7870dd7271a1c662106
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11411,7 +11435,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v2.2.0@sha256:1dd38debb2d0296a4dc952bad0717d4d25d94e0b77698c9daaab8406a1c29132
+    tag: v2.3.0@sha256:a4510a4109452b7ad028721bfc3d4c200c5f02c86f1e7bde42add3a54c32a05a
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -11696,7 +11720,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.59.0@sha256:be6599e6c2d72348985f3e5bfcc9651ffa6171c5e7450c365d455e41454e53ea
+    tag: 0.60.0@sha256:2323202a7af58b76e6d2b1a60247ff6bda36495989649424f4e56c6c66c9bfe8
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -11864,7 +11888,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.26@sha256:6b86b2e5b1d416bcc8463fb929cff141b5715f85f6228193fd1e94446c6e0e70
+    tag: 4.3.27@sha256:974afd935647380bd015f5e6a1ba46ee6918e2f67b8e8e6058610331328657d3
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -12633,6 +12657,7 @@ recyclarr:
       volumeMounts:
       - mountPath: /config
         name: config
+        subPath: recyclarr
       envFrom:
       - configMapRef:
           name: recyclarr-env
@@ -13621,7 +13646,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.7.0@sha256:1434991bc334b068543b16d86a0cc7f060239d2069be7e1f814c15b0420304c2
+    tag: 0.8.1@sha256:0ade491f48cd4e36f27ad30dc56c23621b41110e1ce7ad4b7095a529c80abc19
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
