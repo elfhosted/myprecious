@@ -6589,7 +6589,7 @@ jellyseerr:
         - -c
         - |
           mkdir -p /config/branding
-          cp --no-clobber -rf /app/overseerr/public/logo_* /config/branding/
+          cp --no-clobber -rf /app/public/logo_* /config/branding/
       volumeMounts:
       - mountPath: /config
         name: config
