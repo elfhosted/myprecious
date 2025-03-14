@@ -6585,7 +6585,7 @@ jellyseerr:
     copy-branding:
       image: ghcr.io/elfhosted/jellyseerr:2.5.0@sha256:0f8441771a3ebc9286a29ca124ef8fb12e389dc1ae89db194465d5e6a28a50c6
       command:
-        - /bin/bash
+        - /bin/ash
         - -c
         - |
           mkdir -p /config/branding
