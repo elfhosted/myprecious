@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.304.0](https://github.com/elfhosted/myprecious/compare/v1.303.0...v1.304.0) (2025-03-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.4.0 ([d2fca83](https://github.com/elfhosted/myprecious/commit/d2fca83367e388192aaee6991e5404f4c66d1870))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.4.0 ([55041b6](https://github.com/elfhosted/myprecious/commit/55041b65aad2b41015308bd614390c1b273b326b))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.2 ([d9b2eb5](https://github.com/elfhosted/myprecious/commit/d9b2eb56706c5a82ff48b569ad1eada40450230c))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.2 ([14895f7](https://github.com/elfhosted/myprecious/commit/14895f76f531e5bc1c91f83fbe8a19aaf55d8b81))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.3 ([64d083c](https://github.com/elfhosted/myprecious/commit/64d083c4061f1ca3a4248c1539c4f4908c4cd8bf))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.3 ([8163dae](https://github.com/elfhosted/myprecious/commit/8163daedf6ae0f29fd4480a1fb90727d64a1a91d))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.42 ([a21f218](https://github.com/elfhosted/myprecious/commit/a21f218641388ae12f138f561bdc63f6dfb492fc))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1615 ([3a9d4ff](https://github.com/elfhosted/myprecious/commit/3a9d4ff14a905dd6801c5cbe6e0653eb31a79b39))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1615 ([92afb8f](https://github.com/elfhosted/myprecious/commit/92afb8fc8698fe4c26c2d8abfedd23c67c4dfcca))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.28 ([23887b2](https://github.com/elfhosted/myprecious/commit/23887b2aaf8f15be2e15173a543541f2caf27a65))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.28 ([eb1b0de](https://github.com/elfhosted/myprecious/commit/eb1b0de98abf749ae887707864b516ee3a6d89ae))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025 ([2b359b4](https://github.com/elfhosted/myprecious/commit/2b359b4d4635daa4c84bc4d82056169190aa7dc7))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.6.1 ([135ec92](https://github.com/elfhosted/myprecious/commit/135ec92a55161b4091e214c508846d5945cfa907))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.6.1 ([713cc03](https://github.com/elfhosted/myprecious/commit/713cc034da04b66f344cd689ebfbee131e3773ff))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.3.1065-1 docker digest to 1d9d9c7 ([5dcdf5a](https://github.com/elfhosted/myprecious/commit/5dcdf5ac1cd4165114769356bf911328a2b4ac40))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.3.1065-1 docker digest to 1d9d9c7 ([953fc29](https://github.com/elfhosted/myprecious/commit/953fc29ed4790ebb8f53d332dd9f53bc8162c61d))
+
 ## [1.303.0](https://github.com/elfhosted/myprecious/compare/v1.302.0...v1.303.0) (2025-03-13)
 
 
