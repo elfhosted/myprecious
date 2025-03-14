@@ -13646,7 +13646,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.2@sha256:8d996ae79e8acdf6eef2cf3cefd796bdd1c974020f266aa11ca799f75985b4c9
+    tag: 0.8.3@sha256:f1166d33b2dd6563cbc438c6e257826db8eb6bd6a8b615f36d17c5ca35a9029d
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
