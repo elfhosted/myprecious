@@ -5,6 +5,7 @@ metadata:
   name: homepage-env
 data:
 
+  HOMEPAGE_ALLOWED_HOSTS: https://{{ .Release.Name }}-homepage.{{ .Values.dns_domain }}
   # https://github.com/gethomepage/homepage/pull/1043
   HOMEPAGE_FILE_JELLYFIN_KEY: /app/config/user-change-these/JELLYFIN_KEY
   HOMEPAGE_FILE_PLEX_KEY: /app/config/user-change-these/PLEX_KEY
