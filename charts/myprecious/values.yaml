@@ -5236,7 +5236,7 @@ plexrequests:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+    tag: v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
   command: [ "/request.sh" ]
   controller:
     annotations:
@@ -5293,7 +5293,7 @@ plexrequests:
       memory: 1Gi
   additionalContainers:
     auth:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
       command: [ "/auth.sh" ]
       envFrom:
       - configMapRef:
@@ -5306,7 +5306,7 @@ plexrequests:
         mountPath: /config
         subPath: plexrequests     
     watchlist:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
       command: [ "/watchlist.sh" ]
       envFrom:
       - configMapRef:
@@ -14456,7 +14456,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+    tag: v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
