@@ -1,0 +1,22 @@
+{{ if or .Values.jellyfin.enabled .Values.jellyfinranger.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jellyfin-env
+data:
+  # For custom domains
+  {{- if .Values.jellyfincustomdomain.enabled }}
+  JELLYFIN_PublishedServerUrl: "https://{{ .Values.jellyfincustomdomain.cname | lower }}"
+  {{ else }}
+  JELLYFIN_PublishedServerUrl: "https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}"
+  {{ end }}
+
+  # To check for mounts before starting
+  WAIT_FOR_MOUNT_PATHS: {{ $dirs := list }}
+    {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
+    {{- if .Values.rclonealldebrid.enabled }}{{ $dirs = append $dirs "/storage/alldebrid/magnets" }}{{- end }}
+    {{- if .Values.rclonetorbox.enabled }}{{ $dirs = append $dirs "/storage/torbox" }}{{- end }}
+    {{- if .Values.rclonedebridlink.enabled }}{{ $dirs = append $dirs "/storage/debridlink" }}{{- end }}
+    {{- if .Values.rclonepremiumize.enabled }}{{ $dirs = append $dirs "/storage/premiumize" }}{{- end }}
+    {{- join "," $dirs }}
+{{ end }}

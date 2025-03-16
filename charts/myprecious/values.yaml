@@ -5084,6 +5084,13 @@ plex: &app_plex
       cpu: "2" # 1.5 works, but results in buffering when playback starts, see https://github.com/elfhosted/charts/issues/501
       memory: 4Gi
   initContainers:
+    restart-with-zurg:
+      image: ghcr.io/elfhosted/zurg-rc:2025.03.16.0034-nightly@sha256:31b60872bdba0bbf103e14f87eab7bd22e0de28a7adfe3a32259d4fef5bea3ed
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause plex to restart when zurg is updated"
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5319,7 +5326,6 @@ jellyfin: &app_jellyfin
     tag: 10.10.6@sha256:b20a5ea9f3e7def32be825b85d8a4c2ea4fad284aa758c5c200e12fb62ba11a1
   enabled: false
   podLabels:
-    app.elfhosted.com/class: debrid
     app.elfhosted.com/name: jellyfin
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
@@ -5342,7 +5348,7 @@ jellyfin: &app_jellyfin
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin,jellyfin-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -5487,7 +5493,10 @@ jellyfin: &app_jellyfin
       memory: 4Gi
   envFrom:
   - configMapRef:
-      name: jellyfin-config
+      name: jellyfin-env
+  - configMapRef:
+      name: elfbot-jellyfin
+      optional: true          
   additionalContainers:
     speedtest:
       image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
@@ -5542,9 +5551,15 @@ emby: &app_emby
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-emby" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-emby,emby-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  envFrom:
+  - configMapRef:
+      name: emby-env
+  - configMapRef:
+      name: elfbot-emby
+      optional: true      
   persistence:
     <<: *storagemounts
     config:

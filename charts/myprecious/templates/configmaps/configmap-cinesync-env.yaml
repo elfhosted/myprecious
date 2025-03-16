@@ -5,7 +5,7 @@ metadata:
   name: cinesync-env
 data:
   SOURCE_DIR: {{ $dirs := list }}
-    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
+    {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
     {{- if .Values.rclonealldebrid.enabled }}{{ $dirs = append $dirs "/storage/alldebrid/magnets" }}{{- end }}
     {{- if .Values.rclonetorbox.enabled }}{{ $dirs = append $dirs "/storage/torbox" }}{{- end }}
     {{- if .Values.rclonedebridlink.enabled }}{{ $dirs = append $dirs "/storage/debridlink" }}{{- end }}

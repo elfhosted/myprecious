@@ -1,0 +1,15 @@
+{{ if or .Values.emby.enabled .Values.embyranger.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: emby-env
+data:
+  # To check for mounts before starting
+  WAIT_FOR_MOUNT_PATHS: {{ $dirs := list }}
+    {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
+    {{- if .Values.rclonealldebrid.enabled }}{{ $dirs = append $dirs "/storage/alldebrid/magnets" }}{{- end }}
+    {{- if .Values.rclonetorbox.enabled }}{{ $dirs = append $dirs "/storage/torbox" }}{{- end }}
+    {{- if .Values.rclonedebridlink.enabled }}{{ $dirs = append $dirs "/storage/debridlink" }}{{- end }}
+    {{- if .Values.rclonepremiumize.enabled }}{{ $dirs = append $dirs "/storage/premiumize" }}{{- end }}
+    {{- join "," $dirs }}
+{{ end }}
