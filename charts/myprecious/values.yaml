@@ -2304,6 +2304,55 @@ radarr: &app_radarr
         subPath: radarr        
       resources: *default_resources
       securityContext: *default_securitycontext
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: radarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault          
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: radarr
+        - name: POSTGRES_USER
+          value: radarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: radarr/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi         
   resources:
     requests:
       cpu: 0m
@@ -2432,6 +2481,25 @@ radarr4k: &app_radarr4k
         subPath: radarr4k        
       resources: *default_resources
       securityContext: *default_securitycontext
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: radarr4k
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault        
   resources:
     requests:
       cpu: 0m
@@ -2439,7 +2507,36 @@ radarr4k: &app_radarr4k
     limits:
       cpu: 1
       memory: 2Gi
-
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: radarr
+        - name: POSTGRES_USER
+          value: radarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: radarr4k/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi   
 
 ombi:
   enabled: false
@@ -3921,6 +4018,25 @@ sonarr: &app_sonarr
         subPath: sonarr
       resources: *default_resources
       securityContext: *default_securitycontext
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: sonarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault        
   resources:
     requests:
       cpu: 0m
@@ -3928,6 +4044,36 @@ sonarr: &app_sonarr
     limits:
       cpu: 1
       memory: 2Gi
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: sonarr
+        - name: POSTGRES_USER
+          value: sonarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: sonarr/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi         
 
 sonarr4k: &app_sonarr4k
   enabled: false
@@ -4046,6 +4192,25 @@ sonarr4k: &app_sonarr4k
         subPath: sonarr4k     
       resources: *default_resources
       securityContext: *default_securitycontext
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: sonarr4k
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault       
   resources:
     requests:
       cpu: 0m
@@ -4053,6 +4218,36 @@ sonarr4k: &app_sonarr4k
     limits:
       cpu: 1
       memory: 2Gi
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: sonarr
+        - name: POSTGRES_USER
+          value: sonarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: sonarr4k/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi 
 
 resiliosync:
   service:
@@ -4247,18 +4442,32 @@ prowlarr: &app_prowlarr
         mkdir -p /config/Definitions/Custom
 
         if [ -f /config/Definitions/Custom/elfhosted-torrentio.yml ]; then rm /config/Definitions/Custom/elfhosted-torrentio.yml; fi
-        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/torrentio.yml > /config/Definitions/Custom/torrentio.yml
-        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/elfcomet.yml > /config/Definitions/Custom/elfcomet.yml
         curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/elfzilean.yml > /config/Definitions/Custom/elfzilean.yml
-        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/torbox.yml > /config/Definitions/Custom/torbox.yml
-        curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/elfhosted-mediafusion.yml > /config/Definitions/Custom/elfhosted-mediafusion.yml
-        # curl https://raw.githubusercontent.com/elfhosted/prowlarr-indexers/main/Custom/ygg-api.yml > /config/Definitions/Custom/ygg-api.yml
       volumeMounts:
       - mountPath: /config
         name: config
         subPath: prowlarr
       resources: *default_resources
       securityContext: *default_securitycontext
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: prowlarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault       
   resources:
     requests:
       cpu: 0m
@@ -4268,6 +4477,36 @@ prowlarr: &app_prowlarr
       memory: 1Gi
   env:
     S6_READ_ONLY_ROOT: 1
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: postgres
+        - name: POSTGRES_DB
+          value: prowlarr
+        - name: POSTGRES_USER
+          value: prowlarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: prowlarr/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi     
 
 nzbhydra:
   enabled: false
