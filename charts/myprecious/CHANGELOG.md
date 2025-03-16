@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.306.0](https://github.com/elfhosted/myprecious/compare/v1.305.0...v1.306.0) (2025-03-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.2.0 ([a70bfa4](https://github.com/elfhosted/myprecious/commit/a70bfa4119514062f9177e30de93b05cf4a6915b))
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.2.1 ([8d47bc7](https://github.com/elfhosted/myprecious/commit/8d47bc727ee05a409614b31a02ac8515b78f04c2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1634 ([aa7d18c](https://github.com/elfhosted/myprecious/commit/aa7d18ca75296f2d58fc2cc0b5e1b626b87c9cb5))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.32.2.4987 ([dae743b](https://github.com/elfhosted/myprecious/commit/dae743b167a92e2044abb6da2516b3b0bd33b1de))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.03.16.0034-nightly ([ff05f47](https://github.com/elfhosted/myprecious/commit/ff05f4718648745b3a01d5133706ff102fbbdf01))
+
 ## [1.305.0](https://github.com/elfhosted/myprecious/compare/v1.304.0...v1.305.0) (2025-03-15)
 
 
