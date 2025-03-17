@@ -18,4 +18,14 @@ data:
       "ForceImportMode": "Copy",
       "APIKey": "{{ .Values.radarr4kexposed.apikey }}"
     }
+
+  # Use for migration to postgres
+  PGPASSWORD: postgres
+  RADARR__POSTGRES_USER: radarr
+  RADARR__POSTGRES_PASSWORD: radarr
+  RADARR__POSTGRES_PORT: "5432"
+  RADARR__POSTGRES_HOST: localhost
+  RADARR__POSTGRES_MAIN_DB: radarr
+  RADARR__POSTGRES_LOG_DB: logs
+      
 {{ end }}

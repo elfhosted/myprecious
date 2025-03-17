@@ -2191,7 +2191,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:c54765da789afa2f82e23b947304c3c946947668c906bf249f6f6fbe7abbd5a5
+    tag: 5.19.3.9730@sha256:fd0d77effb3e73dfdc395a6a9f262f38f2d3865b2b914300991e92eb7fb13a3d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2375,7 +2375,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:c54765da789afa2f82e23b947304c3c946947668c906bf249f6f6fbe7abbd5a5
+    tag: 5.19.3.9730@sha256:fd0d77effb3e73dfdc395a6a9f262f38f2d3865b2b914300991e92eb7fb13a3d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3920,7 +3920,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:87ffd488c05077b163a2023d2dedfcc11bee06667eb02ded26802f5fb308bfb5
+    tag: 4.0.14.2938@sha256:b0c9fa7090d57257b63d8e5f7603025e348874a90655c19a5d0d02ca77d118ad
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4099,7 +4099,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:87ffd488c05077b163a2023d2dedfcc11bee06667eb02ded26802f5fb308bfb5
+    tag: 4.0.14.2938@sha256:b0c9fa7090d57257b63d8e5f7603025e348874a90655c19a5d0d02ca77d118ad
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4375,7 +4375,7 @@ prowlarr: &app_prowlarr
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-prowlarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-prowlarr,prowlarr-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4421,7 +4421,10 @@ prowlarr: &app_prowlarr
       enabled: "true"
       type: emptyDir
       volumeSpec:
-        medium: Memory          
+        medium: Memory      
+  envFrom:
+  - configMapRef:
+      name: prowlarr-env            
   ingress:
     main:
       enabled: false
