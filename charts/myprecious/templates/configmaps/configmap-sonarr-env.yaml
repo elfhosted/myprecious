@@ -20,6 +20,7 @@ data:
     }
   
   # Use for migration to postgres
+  PGPASSWORD: postgres
   SONARR__POSTGRES_USER: sonarr
   SONARR__POSTGRES_PASSWORD: sonarr
   SONARR__POSTGRES_PORT: "5432"
