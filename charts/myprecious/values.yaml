@@ -2191,7 +2191,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:2051ad4da2243d6141b1a842be249c08c3edd663ddae8b1fcdd27be2dd92e084
+    tag: 5.19.3.9730@sha256:9e0b01d6fb7ab9e03d18828bef570dfb0ca633f3a3c6cbace2fab12eab3d4ea4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2212,8 +2212,9 @@ radarr: &app_radarr
   envFrom:
   - configMapRef:
       name: radarr-env
-  - secretRef:
-      name: radarr-env
+  - configMapRef:
+      name: elfbot-radarr
+      optional: true       
   persistence:
     <<: *storagemounts
     config:
@@ -2318,8 +2319,8 @@ radarr: &app_radarr
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -2330,7 +2331,7 @@ radarr: &app_radarr
           type: RuntimeDefault          
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -2348,7 +2349,7 @@ radarr: &app_radarr
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: radarr/database
+        subPath: radarr/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -2375,7 +2376,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:2051ad4da2243d6141b1a842be249c08c3edd663ddae8b1fcdd27be2dd92e084
+    tag: 5.19.3.9730@sha256:9e0b01d6fb7ab9e03d18828bef570dfb0ca633f3a3c6cbace2fab12eab3d4ea4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2396,6 +2397,9 @@ radarr4k: &app_radarr4k
   envFrom:
   - configMapRef:
       name: radarr4k-env
+  - configMapRef:
+      name: elfbot-radarr4k
+      optional: true       
   persistence:
     <<: *storagemounts
     config:
@@ -2500,8 +2504,8 @@ radarr4k: &app_radarr4k
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -2519,7 +2523,7 @@ radarr4k: &app_radarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -2537,7 +2541,7 @@ radarr4k: &app_radarr4k
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: radarr4k/database
+        subPath: radarr4k/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -3919,8 +3923,8 @@ sonarr: &app_sonarr
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:75756653baa05f5efd584871e167db3af602ca628679ddd5f2274a7739f1ca65
+    repository: elfhosted/sonarr
+    tag: 4.0.14.2939@sha256:7fac4ebf4b21a6170d5b6b55dd27af60bed38da47b902c9693729b4f384c5103
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3928,6 +3932,8 @@ sonarr: &app_sonarr
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
@@ -3939,6 +3945,9 @@ sonarr: &app_sonarr
   envFrom:
   - configMapRef:
       name: sonarr-env
+  - configMapRef:
+      name: elfbot-sonarr
+      optional: true       
   persistence:
     <<: *storagemounts
     config:
@@ -4042,8 +4051,8 @@ sonarr: &app_sonarr
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4061,7 +4070,7 @@ sonarr: &app_sonarr
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4079,7 +4088,7 @@ sonarr: &app_sonarr
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: sonarr/database
+        subPath: sonarr/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -4098,8 +4107,8 @@ sonarr4k: &app_sonarr4k
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:75756653baa05f5efd584871e167db3af602ca628679ddd5f2274a7739f1ca65
+    repository: elfhosted/sonarr
+    tag: 4.0.14.2939@sha256:7fac4ebf4b21a6170d5b6b55dd27af60bed38da47b902c9693729b4f384c5103
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4107,6 +4116,8 @@ sonarr4k: &app_sonarr4k
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
@@ -4118,6 +4129,9 @@ sonarr4k: &app_sonarr4k
   envFrom:
   - configMapRef:
       name: sonarr4k-env
+  - configMapRef:
+      name: elfbot-sonarr4k
+      optional: true      
   persistence:
     <<: *storagemounts
     config:
@@ -4221,8 +4235,8 @@ sonarr4k: &app_sonarr4k
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4240,7 +4254,7 @@ sonarr4k: &app_sonarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4258,7 +4272,7 @@ sonarr4k: &app_sonarr4k
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: sonarr4k/database
+        subPath: sonarr4k/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -4375,7 +4389,7 @@ prowlarr: &app_prowlarr
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-prowlarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-prowlarr,prowlarr-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4421,7 +4435,10 @@ prowlarr: &app_prowlarr
       enabled: "true"
       type: emptyDir
       volumeSpec:
-        medium: Memory          
+        medium: Memory      
+  envFrom:
+  - configMapRef:
+      name: prowlarr-env            
   ingress:
     main:
       enabled: false
@@ -4483,8 +4500,8 @@ prowlarr: &app_prowlarr
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4504,7 +4521,7 @@ prowlarr: &app_prowlarr
     S6_READ_ONLY_ROOT: 1
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4522,7 +4539,7 @@ prowlarr: &app_prowlarr
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: prowlarr/database
+        subPath: prowlarr/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -5022,7 +5039,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.5.9522-a96edc606 
+    tag: 1.41.5.9522-a96edc606@sha256:cddba553dbb15a6cc6be7bf756be19797d596805ad1c135a63dd0f742c1a5b36
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:

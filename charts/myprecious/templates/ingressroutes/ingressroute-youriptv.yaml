@@ -15,6 +15,7 @@ spec:
         - name: chain-hosted-stremio-addon
           namespace: traefik                 
     - match: Host(`{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
+      # fixtraefik
       kind: Rule
       services:
         - name: youriptv
@@ -26,4 +27,16 @@ spec:
         {{ end }}
         - name: chain-hosted-stremio-addon
           namespace: traefik
+    - match: Host(`{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)/configure`) || PathPrefix(`/_oauth`))
+      kind: Rule
+      services:
+        - name: youriptv
+          kind: Service
+          port: 3649
+      middlewares:
+        {{ if not .Values.youriptvexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}
+        - name: chain-hosted-stremio-addon
+          namespace: traefik          
 {{ end }}

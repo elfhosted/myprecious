@@ -1,0 +1,19 @@
+{{ if .Values.prowlarr.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prowlarr-env
+data:
+  # Use for migration to postgres
+  PGUSER: prowlarr
+  PGDATABASE: prowlarr
+  PGHOST: localhost
+  PROWLARR__POSTGRES_USER: prowlarr
+  PROWLARR__POSTGRES_PASSWORD: prowlarr
+  PROWLARR__POSTGRES_PORT: "5432"
+  PROWLARR__POSTGRES_HOST: localhost
+  PROWLARR__POSTGRES_MAIN_DB: prowlarr
+  PROWLARR__POSTGRES_LOG_DB: logs
+{{ end }}
+
+

@@ -6,6 +6,7 @@ metadata:
 data:
   # Overwrite API key with default
   RADARR__API_KEY: "{{ .Values.radarr4kexposed.apikey }}"
+  RADARR_AUTHENTICATIONMETHOD: "External"
   scannarr-settings_radarr.json: |
     {
       "URL": "http://localhost:7878",
@@ -18,4 +19,17 @@ data:
       "ForceImportMode": "Copy",
       "APIKey": "{{ .Values.radarr4kexposed.apikey }}"
     }
+
+  # Use for migration to postgres
+  PGPASSWORD: radarr
+  PGDATABASE: postgres
+  PGUSER: radarr
+  PGHOST: localhost
+  RADARR__POSTGRES_USER: radarr
+  RADARR__POSTGRES_PASSWORD: radarr
+  RADARR__POSTGRES_PORT: "5432"
+  RADARR__POSTGRES_HOST: localhost
+  RADARR__POSTGRES_MAIN_DB: radarr_main
+  RADARR__POSTGRES_LOG_DB: radarr_logs
+      
 {{ end }}
