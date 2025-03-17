@@ -12,6 +12,12 @@ spec:
         - name: plexrequests
           kind: Service
           port: 32502 # request
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (Path(`/library/all`) || PathPrefix(`/library/request`) || PathRegexp(`^/library/metadata/(.+)/children`))
+      kind: Rule
+      services:
+        - name: plexrequests
+          kind: Service
+          port: 32502 # request          
     - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && PathPrefix(`/auth`)
       kind: Rule
       services:

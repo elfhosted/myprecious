@@ -2191,7 +2191,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:55cd8e57e4185a31211fda69e4cc29961427f4309402c1363ac24f85b0a82727
+    tag: 5.19.3.9730@sha256:88724cc04b0a450ee3e68182deb9b552f87ca8ee6bd6b6ac73924decdf50f8cf
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2342,9 +2342,9 @@ radarr: &app_radarr
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: radarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: radarr
       volumeMounts:
@@ -2377,7 +2377,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:55cd8e57e4185a31211fda69e4cc29961427f4309402c1363ac24f85b0a82727
+    tag: 5.19.3.9730@sha256:88724cc04b0a450ee3e68182deb9b552f87ca8ee6bd6b6ac73924decdf50f8cf
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2534,9 +2534,9 @@ radarr4k: &app_radarr4k
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: radarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: radarr
       volumeMounts:
@@ -3924,8 +3924,8 @@ sonarr: &app_sonarr
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:b93fdd003d0ddef12d715471fa5f582650370fd845774ebc629fc657cf323f61
+    repository: elfhosted/sonarr
+    tag: 4.0.14.2939@sha256:05499697560b865337a82ee112d5f02b8b3eadefcd0c917b462fc800432e9b1e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4082,9 +4082,9 @@ sonarr: &app_sonarr
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: sonarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: sonarr
       volumeMounts:
@@ -4109,8 +4109,8 @@ sonarr4k: &app_sonarr4k
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
-    repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:b93fdd003d0ddef12d715471fa5f582650370fd845774ebc629fc657cf323f61
+    repository: elfhosted/sonarr
+    tag: 4.0.14.2939@sha256:05499697560b865337a82ee112d5f02b8b3eadefcd0c917b462fc800432e9b1e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4266,9 +4266,9 @@ sonarr4k: &app_sonarr4k
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: sonarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: sonarr
       volumeMounts:
@@ -4298,7 +4298,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 3.0.3.1065-1@sha256:b3f0e56d818682175e968435b92ef5989601d0c679c0038cec1ac88bc8c9afaa
+    tag: 3.0.3.1065-1@sha256:4fe19d14dab20de45387da8f3408e03595f04d4b893a03e83692c82ac853545e
   env:
     PUID: 568
     GUID: 568
@@ -5255,7 +5255,7 @@ plexrequests:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
+    tag: v1.5.1@sha256:e0634deb97554675a39b7dac46920f5e76f479f02f18739b649a26cd67efd474
   command: [ "/request.sh" ]
   controller:
     annotations:
@@ -5312,7 +5312,7 @@ plexrequests:
       memory: 1Gi
   additionalContainers:
     auth:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:e0634deb97554675a39b7dac46920f5e76f479f02f18739b649a26cd67efd474
       command: [ "/auth.sh" ]
       envFrom:
       - configMapRef:
@@ -5325,7 +5325,7 @@ plexrequests:
         mountPath: /config
         subPath: plexrequests     
     watchlist:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:e0634deb97554675a39b7dac46920f5e76f479f02f18739b649a26cd67efd474
       command: [ "/watchlist.sh" ]
       envFrom:
       - configMapRef:
@@ -6795,7 +6795,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 2.5.0@sha256:0f8441771a3ebc9286a29ca124ef8fb12e389dc1ae89db194465d5e6a28a50c6
+    tag: 2.5.1@sha256:6a451f89fe19740431d271462a2a59196a4ff2cc6f845cc432ed565fd503f9cd
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6881,7 +6881,7 @@ jellyseerr:
         mountPath: "/bootstrap/"        
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:2.5.0@sha256:0f8441771a3ebc9286a29ca124ef8fb12e389dc1ae89db194465d5e6a28a50c6
+      image: ghcr.io/elfhosted/jellyseerr:2.5.1@sha256:6a451f89fe19740431d271462a2a59196a4ff2cc6f845cc432ed565fd503f9cd
       command:
         - /bin/ash
         - -c
@@ -10975,7 +10975,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1634@sha256:be12ba41e9ce2fd21008115bb40e9e1b1f37510cf8544bba2a731483c1933552
+    tag: 0.22.1646@sha256:055eff4fb2a983474a428c82b2f4d7b9b56ed21ea00ced7033cd09a0eafa3216
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13944,7 +13944,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.3@sha256:f1166d33b2dd6563cbc438c6e257826db8eb6bd6a8b615f36d17c5ca35a9029d
+    tag: 0.8.4@sha256:d8edf09483f41e5e1aceddb1048429bb7a92561cc021ff0960e7d4df21e4a2ec
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
@@ -14475,7 +14475,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
+    tag: v1.5.1@sha256:e0634deb97554675a39b7dac46920f5e76f479f02f18739b649a26cd67efd474
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations

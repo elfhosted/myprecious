@@ -27,4 +27,16 @@ spec:
         {{ end }}
         - name: chain-hosted-stremio-addon
           namespace: traefik
+    - match: Host(`{{ .Release.Name }}-davio.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)/configure`) || PathPrefix(`/_oauth`))
+      kind: Rule
+      services:
+        - name: davio
+          kind: Service
+          port: 4000
+      middlewares:
+        {{ if not .Values.davioexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}
+        - name: chain-hosted-stremio-addon
+          namespace: traefik          
 {{ end }}

@@ -12,11 +12,16 @@ spec:
         - name: plexrequests
           kind: Service
           port: 32502 # request
-    - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && PathPrefix(`/auth`)
-      # fixtraefik
+    - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && (Path(`/library/all`) || PathPrefix(`/library/request`) || PathRegexp(`^/library/metadata/(.*)/children`))
       kind: Rule
       services:
         - name: plexrequests
           kind: Service
-          port: 32501 # auth
+          port: 32502 # request          
+    - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && PathPrefix(`/auth`)
+      kind: Rule
+      services:
+        - name: plexrequests
+          kind: Service
+          port: 32501 # auth   
 {{ end }}

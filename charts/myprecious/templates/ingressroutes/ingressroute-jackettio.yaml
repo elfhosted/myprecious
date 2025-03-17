@@ -27,4 +27,17 @@ spec:
         {{ end }}
         - name: chain-hosted-stremio-addon
           namespace: traefik
+    - match: Host(`{{ .Release.Name }}-jackettio.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`)  || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`))
+      kind: Rule
+      services:
+        - name: jackettio
+          kind: Service
+          port: 4000
+      middlewares:
+        {{ if not .Values.jackettioexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+
 {{ end }}
