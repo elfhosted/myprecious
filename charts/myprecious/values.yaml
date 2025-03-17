@@ -3932,6 +3932,8 @@ sonarr: &app_sonarr
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
@@ -4114,6 +4116,8 @@ sonarr4k: &app_sonarr4k
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
