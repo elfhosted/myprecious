@@ -2319,8 +2319,8 @@ radarr: &app_radarr
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -2349,7 +2349,7 @@ radarr: &app_radarr
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: radarr/database
+        subPath: radarr/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -2504,8 +2504,8 @@ radarr4k: &app_radarr4k
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -2541,7 +2541,7 @@ radarr4k: &app_radarr4k
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: radarr4k/database
+        subPath: radarr4k/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -4051,8 +4051,8 @@ sonarr: &app_sonarr
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4088,7 +4088,7 @@ sonarr: &app_sonarr
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: sonarr/database
+        subPath: sonarr/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -4235,8 +4235,8 @@ sonarr4k: &app_sonarr4k
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4272,7 +4272,7 @@ sonarr4k: &app_sonarr4k
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: sonarr4k/database
+        subPath: sonarr4k/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
@@ -4500,8 +4500,8 @@ prowlarr: &app_prowlarr
         set -x
         set -e
 
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4539,7 +4539,7 @@ prowlarr: &app_prowlarr
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
-        subPath: prowlarr/database
+        subPath: prowlarr/postgresql/database
       - mountPath: /dev/shm
         name: dev-shm
       resources:
