@@ -4042,7 +4042,7 @@ sonarr: &app_sonarr
         subPath: sonarr
       resources: *default_resources
       securityContext: *default_securitycontext
-    a-setup-postgres:
+    setup-postgres:
       image: *tooling_image
       command:
       - /bin/bash
@@ -4226,7 +4226,7 @@ sonarr4k: &app_sonarr4k
         subPath: sonarr4k     
       resources: *default_resources
       securityContext: *default_securitycontext
-    a-setup-postgres:
+    setup-postgres:
       image: *tooling_image
       command:
       - /bin/bash
