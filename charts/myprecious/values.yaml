@@ -2331,7 +2331,7 @@ radarr: &app_radarr
           type: RuntimeDefault          
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -2523,7 +2523,7 @@ radarr4k: &app_radarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4068,7 +4068,7 @@ sonarr: &app_sonarr
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4250,7 +4250,7 @@ sonarr4k: &app_sonarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4517,7 +4517,7 @@ prowlarr: &app_prowlarr
     S6_READ_ONLY_ROOT: 1
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
