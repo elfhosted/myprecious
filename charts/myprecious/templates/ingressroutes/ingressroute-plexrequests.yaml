@@ -6,7 +6,7 @@ metadata:
 spec:
   routes:
     - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (Path(`/library/all`) || PathPrefix(`/library/request`) || PathPrefix(`/library/metadata/{something:.*}/children`))
-      syntax: v2
+      # fixtraefik
       kind: Rule
       services:
         - name: plexrequests

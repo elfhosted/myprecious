@@ -15,7 +15,7 @@ spec:
         - name: chain-public-stremio-addon-static
           namespace: traefik  
     - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && (PathPrefix(`/streaming_provider`) && PathPrefix(`/{something:.*}/proxy_stream{else:.*}`))
-      syntax: v2
+      # fixtraefik
       kind: Rule
       services:
         - name: mediafusion
@@ -30,7 +30,7 @@ spec:
           namespace: traefik
     {{ end }}
     - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && (PathPrefix(`/streaming_provider`) && PathPrefix(`/{something:.*}/live_stream_proxy{else:.*}`))
-      syntax: v2
+      # fixtraefik
       kind: Rule
       services:
         - name: mediafusion
@@ -54,7 +54,7 @@ spec:
         - name: chain-hosted-stremio-addon
           namespace: traefik
     - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
-      syntax: v2
+      # fixtraefik
       kind: Rule
       services:
         - name: mediafusion

@@ -15,7 +15,7 @@ spec:
         - name: error-pages
           namespace: traefik
     - match: Host(`{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
-      syntax: v2
+      # fixtraefik
       kind: Rule
       services:
         - name: stremio-jackett
