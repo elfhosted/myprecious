@@ -13,12 +13,4 @@ spec:
           port: 8089
       middlewares:  
         - name: {{ .Release.Name }}-add-x-dvr-forceauth
-    - match: Host(`{{ .Release.Name }}-channelsdvr-localhost.{{ .Values.dns_domain }}`)
-      kind: Rule
-      services:
-        - name: channelsdvr
-          kind: Service
-          port: 8888
-      middlewares:  
-        - name: {{ .Release.Name }}-add-x-dvr-forceauth
 {{ end }}
