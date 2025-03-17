@@ -27,4 +27,16 @@ spec:
         {{ end }}
         - name: chain-hosted-stremio-addon
           namespace: traefik
+    - match: Host(`{{ .Release.Name }}-knightcrawler.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`))
+      kind: Rule
+      services:
+        - name: knightcrawler
+          kind: Service
+          port: 7000
+      middlewares:
+        {{ if not .Values.knightcrawlerexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}
+        - name: chain-hosted-stremio-addon
+          namespace: traefik          
 {{ end }}
