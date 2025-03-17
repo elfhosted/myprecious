@@ -29,8 +29,8 @@ data:
   RADARR__POSTGRES_PASSWORD: radarr
   RADARR__POSTGRES_PORT: "5432"
   RADARR__POSTGRES_HOST: localhost
-  RADARR__POSTGRES_MAIN_DB: radarr-main
-  RADARR__POSTGRES_LOG_DB: radarr-logs
+  RADARR__POSTGRES_MAIN_DB: radarr_main
+  RADARR__POSTGRES_LOG_DB: radarr_logs
 
 {{ end }}
 
