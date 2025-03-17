@@ -2341,9 +2341,9 @@ radarr: &app_radarr
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: radarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: radarr
       volumeMounts:
@@ -2533,9 +2533,9 @@ radarr4k: &app_radarr4k
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: radarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: radarr
       volumeMounts:
@@ -4080,9 +4080,9 @@ sonarr: &app_sonarr
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: sonarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: sonarr
       volumeMounts:
@@ -4264,9 +4264,9 @@ sonarr4k: &app_sonarr4k
       - effective_cache_size=1GB
       env:
         - name: POSTGRES_PASSWORD
-          value: postgres
-        - name: POSTGRES_DB
           value: sonarr
+        - name: POSTGRES_DB
+          value: postgres
         - name: POSTGRES_USER
           value: sonarr
       volumeMounts:
