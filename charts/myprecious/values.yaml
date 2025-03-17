@@ -2271,6 +2271,25 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: radarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault      
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2309,26 +2328,7 @@ radarr: &app_radarr
         name: config
         subPath: radarr        
       resources: *default_resources
-      securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: radarr
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault          
+      securityContext: *default_securitycontext      
   additionalContainers:
     database:
       image: postgres:16-alpine
@@ -2456,6 +2456,25 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: radarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault      
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2494,26 +2513,7 @@ radarr4k: &app_radarr4k
         name: config
         subPath: radarr4k        
       resources: *default_resources
-      securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: radarr4k
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault        
+      securityContext: *default_securitycontext      
   resources:
     requests:
       cpu: 0m
@@ -4004,6 +4004,25 @@ sonarr: &app_sonarr
         http:
           port: 8989
   initContainers:
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: sonarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault  
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4042,25 +4061,6 @@ sonarr: &app_sonarr
         subPath: sonarr
       resources: *default_resources
       securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: sonarr
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault        
   resources:
     requests:
       cpu: 0m
@@ -4188,6 +4188,25 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989
   initContainers:
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/postgresql/database
+        chown elfie:elfie /config/postgresql/database -R
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: sonarr4k
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault         
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4226,25 +4245,6 @@ sonarr4k: &app_sonarr4k
         subPath: sonarr4k     
       resources: *default_resources
       securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: sonarr4k
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault       
   resources:
     requests:
       cpu: 0m
