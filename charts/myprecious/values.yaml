@@ -2191,7 +2191,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:0460b15da910e04ac65e0c92ca7528bec5b547ce97933e99e3da72a461629724
+    tag: 5.19.3.9730@sha256:9636f595e0ea610fdbb53347b3f1407934aa4dc451e85d02cebfebf341606a09
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2376,7 +2376,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:0460b15da910e04ac65e0c92ca7528bec5b547ce97933e99e3da72a461629724
+    tag: 5.19.3.9730@sha256:9636f595e0ea610fdbb53347b3f1407934aa4dc451e85d02cebfebf341606a09
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3924,7 +3924,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:947a632bb09b487bb1db3aa6f229697402df388a6d027e278665553baf16fe7c
+    tag: 4.0.14.2938@sha256:22be5195dd4969864d8cecbfc6372071f1221e98c72686af70080c73d44f05b3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4106,7 +4106,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:947a632bb09b487bb1db3aa6f229697402df388a6d027e278665553baf16fe7c
+    tag: 4.0.14.2938@sha256:22be5195dd4969864d8cecbfc6372071f1221e98c72686af70080c73d44f05b3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
