@@ -20,7 +20,10 @@ data:
     }
 
   # Use for migration to postgres
-  PGPASSWORD: postgres
+  PGPASSWORD: radarr
+  PGDATABASE: radarr
+  PGUSER: radarr
+  PGHOST: localhost  
   RADARR__POSTGRES_USER: radarr
   RADARR__POSTGRES_PASSWORD: radarr
   RADARR__POSTGRES_PORT: "5432"

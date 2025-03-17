@@ -5,7 +5,9 @@ metadata:
   name: prowlarr-env
 data:
   # Use for migration to postgres
-  PGPASSWORD: postgres
+  PGUSER: prowlarr
+  PGDATABASE: prowlarr
+  PGHOST: localhost
   PROWLARR__POSTGRES_USER: prowlarr
   PROWLARR__POSTGRES_PASSWORD: prowlarr
   PROWLARR__POSTGRES_PORT: "5432"
