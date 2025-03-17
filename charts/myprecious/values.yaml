@@ -2212,8 +2212,9 @@ radarr: &app_radarr
   envFrom:
   - configMapRef:
       name: radarr-env
-  - secretRef:
-      name: radarr-env
+  - configMapRef:
+      name: elfbot-radarr
+      optional: true       
   persistence:
     <<: *storagemounts
     config:
@@ -2396,6 +2397,9 @@ radarr4k: &app_radarr4k
   envFrom:
   - configMapRef:
       name: radarr4k-env
+  - configMapRef:
+      name: elfbot-radarr4k
+      optional: true       
   persistence:
     <<: *storagemounts
     config:
@@ -3939,6 +3943,9 @@ sonarr: &app_sonarr
   envFrom:
   - configMapRef:
       name: sonarr-env
+  - configMapRef:
+      name: elfbot-sonarr
+      optional: true       
   persistence:
     <<: *storagemounts
     config:
@@ -4118,6 +4125,9 @@ sonarr4k: &app_sonarr4k
   envFrom:
   - configMapRef:
       name: sonarr4k-env
+  - configMapRef:
+      name: elfbot-sonarr4k
+      optional: true      
   persistence:
     <<: *storagemounts
     config:
