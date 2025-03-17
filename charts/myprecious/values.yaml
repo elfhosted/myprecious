@@ -2191,7 +2191,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:fd0d77effb3e73dfdc395a6a9f262f38f2d3865b2b914300991e92eb7fb13a3d
+    tag: 5.19.3.9730@sha256:963bf7ba0f4d536f411edd72fbbaaa42459d3ac3beeae07da47ceae37002ab63
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2375,7 +2375,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:fd0d77effb3e73dfdc395a6a9f262f38f2d3865b2b914300991e92eb7fb13a3d
+    tag: 5.19.3.9730@sha256:963bf7ba0f4d536f411edd72fbbaaa42459d3ac3beeae07da47ceae37002ab63
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2552,7 +2552,7 @@ ombi:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/ombi
-    tag: 4.47.1@sha256:c3b70d5664af738253f611dd7914203ba53dfaf83a5e245a008dc53d579780a7
+    tag: 4.47.1@sha256:5dac456042b2f86bb69cc089ac498fdfbe518096078d0d5dfc1246e1ea0bd7a9
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2859,7 +2859,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:adb2ae3ac36e12984e451d4cc6b4d099d63c5621effc2f800579893ae7d95d9e
+    tag: 2.23.0@sha256:b1c956278486217a9ce7e1b5dc9719c5baf3ecb41a2460905177e1b5ab0d8dbd
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
@@ -2971,7 +2971,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:adb2ae3ac36e12984e451d4cc6b4d099d63c5621effc2f800579893ae7d95d9e
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:b1c956278486217a9ce7e1b5dc9719c5baf3ecb41a2460905177e1b5ab0d8dbd
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -3920,7 +3920,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:b0c9fa7090d57257b63d8e5f7603025e348874a90655c19a5d0d02ca77d118ad
+    tag: 4.0.14.2938@sha256:1ad9383074b8fb7f4a99fbc4d0403532b6f23471e0ecb71dc8e4ed795ca910f3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4099,7 +4099,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr-develop
-    tag: 4.0.14.2938@sha256:b0c9fa7090d57257b63d8e5f7603025e348874a90655c19a5d0d02ca77d118ad
+    tag: 4.0.14.2938@sha256:1ad9383074b8fb7f4a99fbc4d0403532b6f23471e0ecb71dc8e4ed795ca910f3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4282,7 +4282,7 @@ resiliosync:
   priorityClassName: tenant-bulk
   image:
     repository: ghcr.io/elfhosted/resilio-sync
-    tag: 3.0.3.1065-1@sha256:92481b592acaefaee9196aa7e831f1606070cc6cd18edc970453f905015d3e9f
+    tag: 3.0.3.1065-1@sha256:b3f0e56d818682175e968435b92ef5989601d0c679c0038cec1ac88bc8c9afaa
   env:
     PUID: 568
     GUID: 568
@@ -4363,7 +4363,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.32.2.4987@sha256:ab8b2265e93fdfa39e42d05e3281af93480cefd810cdd6e18f74e99a90e6a2dc
+    tag: 1.32.2.4987@sha256:36ed09e8ed8c4c18b5258ef1f9ebdb33a4630e08c0535694b24109e42e637eb9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4543,7 +4543,7 @@ nzbhydra:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
-    tag: 7.12.3@sha256:2eeaa1a7544996b491760159201682b45073bebf4d850c94023b07d8c8a27cc5
+    tag: 7.12.3@sha256:f37e28cc14ebd357148b1ed2f02c6f93a16384f5a9d1817e54c50f091200814d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5088,7 +5088,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.03.16.0034-nightly@sha256:31b60872bdba0bbf103e14f87eab7bd22e0de28a7adfe3a32259d4fef5bea3ed
+      image: ghcr.io/elfhosted/zurg-rc:2025.03.17.0031-nightly@sha256:224d352ee5c2efd5d160d71004798966409ab5bcd1cb0c355dcf58b2a391bac9
       command:
       - /bin/bash
       - -c
@@ -5239,7 +5239,7 @@ plexrequests:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+    tag: v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
   command: [ "/request.sh" ]
   controller:
     annotations:
@@ -5296,7 +5296,7 @@ plexrequests:
       memory: 1Gi
   additionalContainers:
     auth:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
       command: [ "/auth.sh" ]
       envFrom:
       - configMapRef:
@@ -5309,7 +5309,7 @@ plexrequests:
         mountPath: /config
         subPath: plexrequests     
     watchlist:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
       command: [ "/watchlist.sh" ]
       envFrom:
       - configMapRef:
@@ -5326,7 +5326,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.6@sha256:b20a5ea9f3e7def32be825b85d8a4c2ea4fad284aa758c5c200e12fb62ba11a1
+    tag: 10.10.6@sha256:4a334b3a49c704021b2fa3b94464d13a792d7bd868459e674d52dff6b9cecec6
   enabled: false
   podLabels:
     app.elfhosted.com/name: jellyfin
@@ -5531,7 +5531,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.42@sha256:82c2284c85dedd0e9c875b4f09d383d5500489dc0a6883c184ffc8889ecba50c
+    tag: 4.9.0.42@sha256:b21825c1f7f484f9ee5b834275be55f2272997e22cde0209aa755d1ad593bf71
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -7202,7 +7202,7 @@ openbooks:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/openbooks
-    tag: 4.5.0@sha256:6e258d3ab669abf88f4154dd9aa4b66794149b587b28b7dec08d37d5274d9e2c
+    tag: 4.5.0@sha256:1de99152a07d61b0ab9e859dca2aaa3e30fa5987d748a268f749468ad1c260b0
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -8313,7 +8313,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.34.5@sha256:50d38acc5baa53a1f89d131128390109806aedb194a900efddc8d8d3b97cf6ab
+    tag: 0.34.5@sha256:dc78568aeb0e383aeefced8fee354fbfffa601ec796b1e15665b28a45e3cf144
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -13020,7 +13020,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.03.16.0034-nightly@sha256:31b60872bdba0bbf103e14f87eab7bd22e0de28a7adfe3a32259d4fef5bea3ed
+    tag: 2025.03.17.0031-nightly@sha256:224d352ee5c2efd5d160d71004798966409ab5bcd1cb0c355dcf58b2a391bac9
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14459,7 +14459,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:95221936b03b7d219bd40b60d0c57034773853bf0e072fd72185726ebf714985
+    tag: v1.5.1@sha256:63843a795db790efe8b9fa43f8e045b95a5d62454f9302c2c63b1a683132a933
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
