@@ -6,12 +6,14 @@ metadata:
 spec:
   routes:
     - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && (Path(`/library/all`) || PathPrefix(`/library/request`) || PathPrefix(`/library/metadata/{something:.*}/children`))
+      syntax: v2
       kind: Rule
       services:
         - name: plexrequests
           kind: Service
           port: 32502 # request
     - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && PathPrefix(`/auth`)
+      syntax: v2
       kind: Rule
       services:
         - name: plexrequests

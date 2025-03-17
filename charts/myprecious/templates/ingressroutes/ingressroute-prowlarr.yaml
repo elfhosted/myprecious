@@ -7,6 +7,7 @@ spec:
   routes:
     {{ if .Values.prowlarrexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`) && (PathPrefix(`/{something:.*}/api{else:.*}`) || PathPrefix(`/{something:.*}/download{else:.*}`) || PathPrefix(`/api/`))
+      syntax: v2
       kind: Rule
       services:
         - name: prowlarr

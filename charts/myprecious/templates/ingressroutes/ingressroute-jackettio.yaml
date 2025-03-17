@@ -15,6 +15,7 @@ spec:
         - name: chain-hosted-stremio-addon
           namespace: traefik
     - match: Host(`{{ .Release.Name }}-jackettio.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`)  || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
+      syntax: v2
       kind: Rule
       services:
         - name: jackettio
