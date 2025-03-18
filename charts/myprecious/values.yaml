@@ -10174,10 +10174,9 @@ homepage:
     PGID: 568
   envFrom:
   - configMapRef:
-      name: elfbot-homepage
-      optional: true
-  - configMapRef:
       name: homepage-env
+  - configMapRef:
+      name: elfbot-homepage
       optional: true
   persistence:
     <<: *storagemounts
