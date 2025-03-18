@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.308.0](https://github.com/elfhosted/myprecious/compare/v1.307.0...v1.308.0) (2025-03-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.14.2 ([1d4f7b9](https://github.com/elfhosted/myprecious/commit/1d4f7b978a23e8021775b472828bd66d0b149760))
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.20.0 ([26d460d](https://github.com/elfhosted/myprecious/commit/26d460de51116a603cf9d1f0e9d53ab3bdc3abc1))
+* **app:** update ghcr.io/elfhosted/homer docker tag to v25.03.3 ([f642443](https://github.com/elfhosted/myprecious/commit/f642443b87cf575da41128303c1accd22774df1e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1660 ([e9f2524](https://github.com/elfhosted/myprecious/commit/e9f2524efab573557334839b5abae572b217470f))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v24.8 ([2abacaa](https://github.com/elfhosted/myprecious/commit/2abacaa1d8eed5daea3e1616b81b39364639b6c3))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.20.2.9777 ([69467cf](https://github.com/elfhosted/myprecious/commit/69467cf0d385d642e41e0f8dc442afdd33565e29))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.10 ([e46cca6](https://github.com/elfhosted/myprecious/commit/e46cca6964d82610a9ce4404d344b890a93ba718))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.12 ([47975b5](https://github.com/elfhosted/myprecious/commit/47975b5ec3d6f577eb774d31a73e719c8774003b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.03.18.0029-nightly ([edd1bf9](https://github.com/elfhosted/myprecious/commit/edd1bf990c8e519872f9399961ba40650381da95))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds:0.4.107 docker digest to 70a83a0 ([fb2e4d6](https://github.com/elfhosted/myprecious/commit/fb2e4d62bf966ac24651572a21d1d3097433915c))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy:1.9.7 docker digest to b1d0504 ([ce412d2](https://github.com/elfhosted/myprecious/commit/ce412d288bc0089519a2e5016cf02d35922cbf46))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to cc1db7d ([30295b3](https://github.com/elfhosted/myprecious/commit/30295b3b2284dcbb40ab5954a1c56ab51f066e59))
+
 ## [1.307.0](https://github.com/elfhosted/myprecious/compare/v1.306.0...v1.307.0) (2025-03-17)
 
 
