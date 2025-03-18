@@ -13916,8 +13916,8 @@ doplarr: &app_doplarr
 profilarr:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/profilarr
-    tag: v3.6.3@sha256:7703328fc7f9f4190606ba9f95e867a64db79bd06c19e923a83ad6f939f89097
+    repository: ghcr.io/elfhosted/profilarr-frontend
+    tag: 1.0.0@sha256:a91fb20af5076624750f2f49279bfd7f0607c471589ee8a55f53a98040a2f9d5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13979,13 +13979,16 @@ profilarr:
       volumeSpec:
         configMap:
           name: elfbot-profilarr
-          optional: true         
+          optional: true   
+  additionalContainers:
+    backend:
+      image: ghcr.io/elfhosted/profilarr-backend:1.0.0@sha256:d0f1524d046647a60d62df9a995feac1cb494c1e3d1b3b36a3c691fc16f2d1df     
 
 pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.1@sha256:1c658d066d94d7b38370f34cd9d1aa6da11c9e2301fcecf9c940e3e18b98300c
+    tag: v0.2.1@sha256:b6189ba787a3fbe136620d151f23b0ee2c1166b6aaa61749f7f70f8969ebeea2
   priorityClassName: tenant-normal
   controller:
     annotations:
