@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Values.plexcustomdomain.cname | lower }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`)
       kind: Rule

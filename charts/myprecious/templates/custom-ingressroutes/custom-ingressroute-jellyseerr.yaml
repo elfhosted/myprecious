@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Values.jellyseerrcustomdomain.cname | lower }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Values.jellyseerrcustomdomain.cname | lower }}`)
       kind: Rule

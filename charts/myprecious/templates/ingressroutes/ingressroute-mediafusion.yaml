@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && (PathPrefix(`/streaming_provider`) || PathPrefix(`/poster`))
       kind: Rule

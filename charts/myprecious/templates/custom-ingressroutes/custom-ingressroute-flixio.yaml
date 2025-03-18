@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Values.flixiocustomdomain.cname | lower }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Values.flixiocustomdomain.cname | lower }}`)
       kind: Rule

@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-qbittorrent.{{ .Values.dns_domain }}
 spec:
+  entryPoints:
+  - websecure
   routes:
 {{ if .Values.qbittorrentgluetun.enabled }}
     - match: Host(`{{ .Release.Name }}-qbittorrent.{{ .Values.dns_domain }}`) && PathPrefix(`/gluetun/`)

@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-rclonefm.{{ .Values.dns_domain }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Release.Name }}-rclonefm.{{ .Values.dns_domain }}`)
       kind: Rule
