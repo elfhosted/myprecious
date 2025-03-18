@@ -14010,6 +14010,7 @@ pulsarr: &app_pulsarr
       type: RuntimeDefault
   automountServiceAccountToken: false
   persistence:
+    tmp: *tmp
     backup: *backup
     logs:
       enabled: true
