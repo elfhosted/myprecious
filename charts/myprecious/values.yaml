@@ -13917,7 +13917,7 @@ profilarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/profilarr-frontend
-    tag: 1.0.0@sha256:a91fb20af5076624750f2f49279bfd7f0607c471589ee8a55f53a98040a2f9d5
+    tag: 1.0.0@sha256:f4e05633b45b0bba36919dfdce9448f2083c5c7e908adeac0e083e2c37388892
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13983,12 +13983,16 @@ profilarr:
   additionalContainers:
     backend:
       image: ghcr.io/elfhosted/profilarr-backend:1.0.0@sha256:d0f1524d046647a60d62df9a995feac1cb494c1e3d1b3b36a3c691fc16f2d1df     
+      volumeMounts:
+      - name: config
+        mouthPath: /config
+        subPath: profilarr
 
 pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.1@sha256:b6189ba787a3fbe136620d151f23b0ee2c1166b6aaa61749f7f70f8969ebeea2
+    tag: v0.2.1@sha256:c5689a579dd8bfe94978621d0ea6f2564e3e9035be502934670b36386eef92f6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14006,7 +14010,6 @@ pulsarr: &app_pulsarr
       type: RuntimeDefault
   automountServiceAccountToken: false
   persistence:
-    tmp: *tmp
     backup: *backup
     logs:
       enabled: true
@@ -14031,6 +14034,12 @@ pulsarr: &app_pulsarr
         configMap:
           name: elfbot-pulsarr
           optional: true  
+    build-cache:
+      enabled: "true"
+      type: emptyDir
+      mountPath: /app/build-cache
+      volumeSpec:
+        medium: Memory            
   resources:
     requests:
       cpu: 0m
@@ -14066,6 +14075,17 @@ pulsarr: &app_pulsarr
         subPath: pulsarr
       - mountPath: /tmp
         name: tmp
+    setup:
+      image: ghcr.io/elfhosted/pulsarr:v0.2.1@sha256:c5689a579dd8bfe94978621d0ea6f2564e3e9035be502934670b36386eef92f6
+      command:
+      - /bin/bash
+      - -c
+      - |
+        # copy the image's build-cache directory into the emptyDir
+        cp /app/build-cache/* /build-cache -rfp
+      volumeMounts:
+      - mountPath: /build-cache
+        name: build-cache
 
 movieroulette:
   enabled: false
