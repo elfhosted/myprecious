@@ -1098,6 +1098,17 @@ data:
           - type: email
       {{ end }}   
 
+      {{ if or .Values.pulsarr.enabled }}
+      - name: pulsarr
+        group: download-media
+        url: "http://pulsarr:3003"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}         
+
       {{ if or .Values.requestrr.enabled }}
       - name: requestrr
         group: download-media

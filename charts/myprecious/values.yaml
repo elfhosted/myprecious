@@ -13864,6 +13864,50 @@ doplarr: &app_doplarr
       name: elfbot-doplarr
       optional: true
 
+pulsarr: &app_pulsarr
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/pulsarr
+    tag: v0.2.1@sha256:1c658d066d94d7b38370f34cd9d1aa6da11c9e2301fcecf9c940e3e18b98300c
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pulsarr,pulsarr-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3003
+  envFrom:
+  - configMapRef:
+      name: pulsarr-env
+  - configMapRef:
+      name: elfbot-pulsarr
+      optional: true      
+
 requestrr:
   enabled: false
   image:

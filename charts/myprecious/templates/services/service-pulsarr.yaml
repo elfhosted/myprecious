@@ -1,0 +1,20 @@
+{{ if .Values.pulsarr.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: pulsarr
+  labels:
+    app.kubernetes.io/name: pulsarr
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3003
+    targetPort: 3003
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: pulsarr
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

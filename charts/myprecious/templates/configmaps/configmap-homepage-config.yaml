@@ -955,6 +955,14 @@ data:
             siteMonitor: http://doplarr:3001
         {{ end }}  
 
+        {{ if or .Values.pulsarr.enabled }}
+        - Pulsarr:
+            icon: mdi-star
+            href: https://{{ .Release.Name }}-pulsarr.{{ .Values.dns_domain }}
+            description: Add Plex watchlisted items to Aars
+            siteMonitor: http://pulsarr:3003
+        {{ end }}          
+
         {{ if or .Values.requestrr.enabled }}
         - Requestrr:
             icon: mdi-image-chat-bubble
