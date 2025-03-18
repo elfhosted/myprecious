@@ -13996,6 +13996,89 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
 
+movieroulette:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/movie-roulette
+    tag: v3.4@sha256:896203897273e7030cdc5d0ef4524fee34c8302e54a74cfe73056098b9d7980c
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-movie-roulette,movie-roulette-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: movie-roulette
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs    
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/db
+      subPath: movie-roulette
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-movie-roulette
+          optional: true  
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 4000
+  envFrom:
+  - configMapRef:
+      name: movie-roulette-env
+  - configMapRef:
+      name: elfbot-movie-roulette
+      optional: true      
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: movie-roulette
+      - mountPath: /tmp
+        name: tmp
+
 requestrr:
   enabled: false
   image:

@@ -313,6 +313,17 @@ data:
           - type: email          
       {{ end }}
 
+      {{ if or .Values.movieroulette.enabled }}
+      - name: movie-roulette
+        group: consume-media
+        url: "http://movie-roulette:4000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}   
+      
       {{ if .Values.radarr.enabled }}
       - name: radarr
         group: manage-media
@@ -1096,7 +1107,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}   
+      {{ end }}      
 
       {{ if or .Values.pulsarr.enabled }}
       - name: pulsarr
