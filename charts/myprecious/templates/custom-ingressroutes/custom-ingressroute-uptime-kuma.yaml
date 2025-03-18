@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Values.uptimekumacustomdomain.cname | lower }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Values.uptimekumacustomdomain.cname | lower }}`)
       kind: Rule

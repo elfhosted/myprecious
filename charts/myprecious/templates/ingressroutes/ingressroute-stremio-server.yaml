@@ -10,6 +10,8 @@ metadata:
   name: {{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}
   {{ end }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     {{ if .Values.stremioserver.enabled }}
     - match: Host(`{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}`) && Path(`/casting`)

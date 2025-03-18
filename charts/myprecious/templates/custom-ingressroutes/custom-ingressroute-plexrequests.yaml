@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Values.plexcustomdomain.cname | lower }}-requests
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Values.plexcustomdomain.cname | lower }}`) && (Path(`/library/all`) || PathPrefix(`/library/request`) || PathPrefix(`/library/metadata/{something:.*}/children`))
       # fixtraefik

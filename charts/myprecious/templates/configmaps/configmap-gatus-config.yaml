@@ -313,6 +313,17 @@ data:
           - type: email          
       {{ end }}
 
+      {{ if or .Values.movieroulette.enabled }}
+      - name: movie-roulette
+        group: consume-media
+        url: "http://movie-roulette:4000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}   
+
       {{ if .Values.radarr.enabled }}
       - name: radarr
         group: manage-media
@@ -444,6 +455,17 @@ data:
         alerts:
           - type: email
       {{ end }}      
+
+      {{ if .Values.profilarr.enabled }}
+      - name: profilarr
+        group: manage-media
+        url: "http://profilarr:6868"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}   
 
       {{ if .Values.rpdb.enabled }}
       - name: rpdb
@@ -801,16 +823,16 @@ data:
           - type: email          
       {{ end }}
 
-      # {{ if or .Values.recyclarr.enabled }}
-      # - name: recyclarr
-      #   group: manage-media
-      #   url: "http://recyclarr:9898"
-      #   interval: 5m
-      #   conditions:
-      #     - "[STATUS] == 200"
-      #   alerts:
-      #     - type: email
-      # {{ end }}
+      {{ if or .Values.profilarr.enabled }}
+      - name: profilarr
+        group: manage-media
+        url: "http://profilarr:6868"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}
 
       {{ if .Values.nzbget.enabled }}
       - name: nzbget
@@ -1096,7 +1118,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}   
+      {{ end }}      
+
+      {{ if or .Values.pulsarr.enabled }}
+      - name: pulsarr
+        group: download-media
+        url: "http://pulsarr:3003"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}         
 
       {{ if or .Values.requestrr.enabled }}
       - name: requestrr

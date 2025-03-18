@@ -2271,6 +2271,31 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config/postgresql -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: radarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault    
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2297,6 +2322,9 @@ radarr: &app_radarr
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies
 
+        # for database to use 
+        mkdir -p /config/postgresql/database
+
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
           rm -rf /config/MediaCover
@@ -2310,28 +2338,10 @@ radarr: &app_radarr
         subPath: radarr        
       resources: *default_resources
       securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: radarr
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault          
+        
   additionalContainers:
     database:
-      image: postgres:16-alpine
+      image: postgres:17-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -2456,6 +2466,32 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config/postgresql/database -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+        
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: radarr4k
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault      
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -2482,6 +2518,9 @@ radarr4k: &app_radarr4k
         mkdir -p /storage/symlinks/downloads/radarr4k
         mkdir -p /storage/symlinks/movies-4k
 
+        # for database to use 
+        mkdir -p /config/postgresql/database        
+
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
           rm -rf /config/MediaCover
@@ -2494,26 +2533,7 @@ radarr4k: &app_radarr4k
         name: config
         subPath: radarr4k        
       resources: *default_resources
-      securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: radarr4k
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault        
+      securityContext: *default_securitycontext    
   resources:
     requests:
       cpu: 0m
@@ -2523,7 +2543,7 @@ radarr4k: &app_radarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:16-alpine
+      image: postgres:17-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4004,6 +4024,32 @@ sonarr: &app_sonarr
         http:
           port: 8989
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config/postgresql -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: sonarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault    
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4030,6 +4076,9 @@ sonarr: &app_sonarr
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
 
+        # for database to use 
+        mkdir -p /config/postgresql/database        
+
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
           rm -rf /config/MediaCover
@@ -4042,25 +4091,7 @@ sonarr: &app_sonarr
         subPath: sonarr
       resources: *default_resources
       securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: sonarr
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault        
+      
   resources:
     requests:
       cpu: 0m
@@ -4070,7 +4101,7 @@ sonarr: &app_sonarr
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:16-alpine
+      image: postgres:17-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4188,6 +4219,32 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config/postgresql -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: sonarr4k
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault     
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4214,6 +4271,9 @@ sonarr4k: &app_sonarr4k
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
 
+        # for database to use 
+        mkdir -p /config/postgresql/database        
+
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
           rm -rf /config/MediaCover
@@ -4225,26 +4285,7 @@ sonarr4k: &app_sonarr4k
         name: config
         subPath: sonarr4k     
       resources: *default_resources
-      securityContext: *default_securitycontext
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: sonarr4k
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault       
+      securityContext: *default_securitycontext    
   resources:
     requests:
       cpu: 0m
@@ -4254,7 +4295,7 @@ sonarr4k: &app_sonarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:16-alpine
+      image: postgres:17-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4377,7 +4418,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.32.2.4987@sha256:36ed09e8ed8c4c18b5258ef1f9ebdb33a4630e08c0535694b24109e42e637eb9
+    tag: 1.32.2.4987@sha256:7f6085f4e399e701969dd56ee13c5f49e8915bf41e6217c6f59b36cc0a938241
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4473,6 +4514,9 @@ prowlarr: &app_prowlarr
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
+        # for database to use 
+        mkdir -p /config/postgresql/database
+
         # Clear out logs older than 24h
         if [ -d "/config/logs" ]; then
             # Find and delete files older than 7 days
@@ -4491,7 +4535,7 @@ prowlarr: &app_prowlarr
         subPath: prowlarr
       resources: *default_resources
       securityContext: *default_securitycontext
-    setup-postgres:
+    a-fix-permissions:
       image: *tooling_image
       command:
       - /bin/bash
@@ -4500,8 +4544,15 @@ prowlarr: &app_prowlarr
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
+        chown elfie:elfie /config/postgresql -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4521,7 +4572,7 @@ prowlarr: &app_prowlarr
     S6_READ_ONLY_ROOT: 1
   additionalContainers:
     database:
-      image: postgres:16-alpine
+      image: postgres:17-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -13861,6 +13912,264 @@ doplarr: &app_doplarr
   - configMapRef:
       name: elfbot-doplarr
       optional: true
+
+profilarr:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/profilarr-frontend
+    tag: 1.0.0@sha256:f4e05633b45b0bba36919dfdce9448f2083c5c7e908adeac0e083e2c37388892
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-profilarr,profilarr-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 6868
+  envFrom:
+  - configMapRef:
+      name: elfbot-profilarr
+      optional: true
+  persistence:
+    tmp: *tmp
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: profilarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: profilarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-profilarr
+          optional: true   
+  additionalContainers:
+    backend:
+      image: ghcr.io/elfhosted/profilarr-backend:1.0.0@sha256:d0f1524d046647a60d62df9a995feac1cb494c1e3d1b3b36a3c691fc16f2d1df     
+      volumeMounts:
+      - name: config
+        mouthPath: /config
+        subPath: profilarr
+
+pulsarr: &app_pulsarr
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/pulsarr
+    tag: v0.2.1@sha256:c5689a579dd8bfe94978621d0ea6f2564e3e9035be502934670b36386eef92f6
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pulsarr,pulsarr-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: pulsarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs    
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/data
+      subPath: pulsarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-pulsarr
+          optional: true  
+    build-cache:
+      enabled: "true"
+      type: emptyDir
+      mountPath: /app/build-cache
+      volumeSpec:
+        medium: Memory            
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3003
+  envFrom:
+  - configMapRef:
+      name: pulsarr-env
+  - configMapRef:
+      name: elfbot-pulsarr
+      optional: true      
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: pulsarr
+      - mountPath: /tmp
+        name: tmp
+    setup:
+      image: ghcr.io/elfhosted/pulsarr:v0.2.1@sha256:c5689a579dd8bfe94978621d0ea6f2564e3e9035be502934670b36386eef92f6
+      command:
+      - /bin/bash
+      - -c
+      - |
+        # copy the image's build-cache directory into the emptyDir
+        cp /app/build-cache/* /build-cache -rfp
+      volumeMounts:
+      - mountPath: /build-cache
+        name: build-cache
+
+movieroulette:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/movie-roulette
+    tag: v3.4@sha256:896203897273e7030cdc5d0ef4524fee34c8302e54a74cfe73056098b9d7980c
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-movie-roulette,movie-roulette-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: movie-roulette
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs    
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/data
+      subPath: movie-roulette
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-movie-roulette
+          optional: true  
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 4000
+  envFrom:
+  - configMapRef:
+      name: movie-roulette-env
+  - configMapRef:
+      name: elfbot-movie-roulette
+      optional: true      
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: movie-roulette
+      - mountPath: /tmp
+        name: tmp
 
 requestrr:
   enabled: false

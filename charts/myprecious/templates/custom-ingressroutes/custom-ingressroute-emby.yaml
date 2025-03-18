@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Values.embycustomdomain.cname | lower }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Values.embycustomdomain.cname | lower }}`)
       kind: Rule

@@ -1,0 +1,19 @@
+{{ if .Values.pulsarr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-pulsarr.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-pulsarr.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: pulsarr
+          kind: Service
+          port: 3003
+      middlewares:  
+        - name: error-pages
+          namespace: traefik
+{{ end }}

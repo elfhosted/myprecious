@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Values.vaultwardencustomdomain.cname | lower }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Values.vaultwardencustomdomain.cname | lower }}`)
       kind: Rule

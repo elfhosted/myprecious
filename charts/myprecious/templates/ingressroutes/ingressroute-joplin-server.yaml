@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}`)
       kind: Rule

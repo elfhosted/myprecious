@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     {{ if .Values.prowlarrexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`) && (PathPrefix(`/{something:.*}/api{else:.*}`) || PathPrefix(`/{something:.*}/download{else:.*}`) || PathPrefix(`/api/`))

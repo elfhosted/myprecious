@@ -4,6 +4,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}
 spec:
+  entryPoints:
+  - websecure
   routes:
 {{ if .Values.rutorrentgluetun.enabled }}
     - match: Host(`{{ .Release.Name }}.rutorrent.{{ .Values.dns_domain }}`) && PathPrefix(`/gluetun/`)

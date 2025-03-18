@@ -3,6 +3,8 @@ kind: IngressRoute
 metadata:
   name: {{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}
 spec:
+  entryPoints:
+  - websecure
   routes:
     - match: Host(`{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}`)
       kind: Rule
