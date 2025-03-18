@@ -13913,6 +13913,74 @@ doplarr: &app_doplarr
       name: elfbot-doplarr
       optional: true
 
+profilarr:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/profilarr
+    tag: v3.6.3@sha256:7703328fc7f9f4190606ba9f95e867a64db79bd06c19e923a83ad6f939f89097
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-profilarr,profilarr-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 100m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 6868
+  envFrom:
+  - configMapRef:
+      name: elfbot-profilarr
+      optional: true
+  persistence:
+    tmp: *tmp
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: profilarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: profilarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-profilarr
+          optional: true         
+
 pulsarr: &app_pulsarr
   enabled: false
   image:

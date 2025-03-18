@@ -631,7 +631,15 @@ data:
             href: https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/recyclarr/
             description: Configure Recyclarr  
             siteMonitor: http://recyclarr:9898
-        {{ end }}    
+        {{ end }}  
+
+        {{ if or .Values.profilarr.enabled }}
+        - Profilarr:
+            icon: mdi-recycle
+            href: https://{{ .Release.Name }}-profilarr.{{ .Values.dns_domain }}
+            description: Manage Aar Profiles 
+            siteMonitor: http://profilarr:6868
+        {{ end }}            
 
         {{ if .Values.clidebrid.enabled  }}
         - cli-debrid:

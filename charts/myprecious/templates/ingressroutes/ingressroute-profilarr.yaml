@@ -1,0 +1,19 @@
+{{ if .Values.profilarr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-profilarr.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-profilarr.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: profilarr
+          kind: Service
+          port: 6868
+      middlewares:  
+        - name: error-pages
+          namespace: traefik
+{{ end }}
