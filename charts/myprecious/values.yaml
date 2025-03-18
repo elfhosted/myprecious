@@ -10174,10 +10174,9 @@ homepage:
     PGID: 568
   envFrom:
   - configMapRef:
-      name: elfbot-homepage
-      optional: true
-  - configMapRef:
       name: homepage-env
+  - configMapRef:
+      name: elfbot-homepage
       optional: true
   persistence:
     <<: *storagemounts
@@ -14079,7 +14078,7 @@ pulsarr: &app_pulsarr
     setup:
       image: ghcr.io/elfhosted/pulsarr:v0.2.1@sha256:c5689a579dd8bfe94978621d0ea6f2564e3e9035be502934670b36386eef92f6
       command:
-      - /bin/bash
+      - /bin/ash
       - -c
       - |
         # copy the image's build-cache directory into the emptyDir
