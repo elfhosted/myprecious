@@ -14033,7 +14033,7 @@ pulsarr: &app_pulsarr
       cpu: 0m
       memory: 1Mi
     limits:
-      cpu: 100m
+      cpu: 1
       memory: 1Gi
   ingress:
     main:

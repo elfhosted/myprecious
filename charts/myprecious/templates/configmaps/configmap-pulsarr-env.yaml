@@ -6,8 +6,9 @@ metadata:
 data:
   baseUrl: http://pulsarr:3003
   LogLevel: debug
-  # sonarrBaseUrl: http://sonarr4k:8989
-  # sonarrApiKey: {{ .Values.sonarr4kexposed.apikey }}
-  # radarrBaseUrl: http://radarr4k:7878
-  # radarrApiKey: {{ .Values.radarr4kexposed.apikey }}
+  sonarrBaseUrl: http://sonarr4k:8989
+  sonarrApiKey: {{ .Values.sonarr4kexposed.apikey }}
+  radarrBaseUrl: http://radarr4k:7878
+  radarrApiKey: {{ .Values.radarr4kexposed.apikey }}
+  CACHE_DIR: /tmp
 {{ end }}
