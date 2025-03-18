@@ -2271,7 +2271,7 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
-    prepare-postgres:
+    a-prepare-postgres:
       image: *tooling_image
       command:
       - /bin/bash
@@ -2457,7 +2457,7 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
-    prepare-postgres:
+    a-prepare-postgres:
       image: *tooling_image
       command:
       - /bin/bash
@@ -4005,7 +4005,7 @@ sonarr: &app_sonarr
         http:
           port: 8989
   initContainers:
-    prepare-postgres:
+    a-prepare-postgres:
       image: *tooling_image
       command:
       - /bin/bash
@@ -4190,7 +4190,7 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989
   initContainers:
-    prepare-postgres:
+    a-prepare-postgres:
       image: *tooling_image
       command:
       - /bin/bash
