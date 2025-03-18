@@ -8,7 +8,7 @@ spec:
   - websecure
   routes:
     {{ if .Values.prowlarrexposed.enabled }}
-    - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`) && (PathPrefix(`^/(.*)/api`) || PathRegexp(`^/(.*)/download`) || PathPrefix(`/api/`))
+    - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`) && (PathRegexp(`^/(.*)/api`) || PathRegexp(`^/(.*)/download`) || PathPrefix(`/api/`))
       kind: Rule
       services:
         - name: prowlarr
