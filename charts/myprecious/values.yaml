@@ -2271,7 +2271,7 @@ radarr: &app_radarr
         http:
           port: 7878
   initContainers:
-    a-prepare-postgres:
+    a-fix-permissions:
       image: *tooling_image
       command:
       - /bin/bash
@@ -2280,8 +2280,7 @@ radarr: &app_radarr
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
+        chown elfie:elfie /config/postgresql -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -2322,6 +2321,9 @@ radarr: &app_radarr
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/radarr
         mkdir -p /storage/symlinks/movies
+
+        # for database to use 
+        mkdir -p /config/postgresql/database
 
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
@@ -2464,7 +2466,7 @@ radarr4k: &app_radarr4k
         http:
           port: 7878
   initContainers:
-    a-prepare-postgres:
+    a-fix-permissions:
       image: *tooling_image
       command:
       - /bin/bash
@@ -2473,7 +2475,6 @@ radarr4k: &app_radarr4k
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
         chown elfie:elfie /config/postgresql/database -R
 
         # Wipe database if it's on postgresql 16
@@ -2516,6 +2517,9 @@ radarr4k: &app_radarr4k
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/radarr4k
         mkdir -p /storage/symlinks/movies-4k
+
+        # for database to use 
+        mkdir -p /config/postgresql/database        
 
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
@@ -4020,7 +4024,7 @@ sonarr: &app_sonarr
         http:
           port: 8989
   initContainers:
-    a-prepare-postgres:
+    a-fix-permissions:
       image: *tooling_image
       command:
       - /bin/bash
@@ -4029,8 +4033,7 @@ sonarr: &app_sonarr
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
+        chown elfie:elfie /config/postgresql -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -4072,6 +4075,9 @@ sonarr: &app_sonarr
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/sonarr
         mkdir -p /storage/symlinks/series
+
+        # for database to use 
+        mkdir -p /config/postgresql/database        
 
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
@@ -4213,7 +4219,7 @@ sonarr4k: &app_sonarr4k
         http:
           port: 8989
   initContainers:
-    a-prepare-postgres:
+    a-fix-permissions:
       image: *tooling_image
       command:
       - /bin/bash
@@ -4222,8 +4228,7 @@ sonarr4k: &app_sonarr4k
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
+        chown elfie:elfie /config/postgresql -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -4265,6 +4270,9 @@ sonarr4k: &app_sonarr4k
         # for symlink downloads and imports
         mkdir -p /storage/symlinks/downloads/sonarr4k
         mkdir -p /storage/symlinks/series-4k
+
+        # for database to use 
+        mkdir -p /config/postgresql/database        
 
         # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
         if [ -d /config/MediaCover ]; then
@@ -4506,6 +4514,9 @@ prowlarr: &app_prowlarr
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
 
+        # for database to use 
+        mkdir -p /config/postgresql/database
+
         # Clear out logs older than 24h
         if [ -d "/config/logs" ]; then
             # Find and delete files older than 7 days
@@ -4524,7 +4535,7 @@ prowlarr: &app_prowlarr
         subPath: prowlarr
       resources: *default_resources
       securityContext: *default_securitycontext
-    setup-postgres:
+    a-fix-permissions:
       image: *tooling_image
       command:
       - /bin/bash
@@ -4533,8 +4544,15 @@ prowlarr: &app_prowlarr
         set -x
         set -e
 
-        mkdir -p /config/postgresql/database
-        chown elfie:elfie /config/postgresql/database -R
+        chown elfie:elfie /config/postgresql -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+
       volumeMounts:
       - mountPath: /config
         name: config
@@ -13930,7 +13948,7 @@ pulsarr: &app_pulsarr
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /app/db
       subPath: pulsarr
       volumeSpec:
         persistentVolumeClaim:
