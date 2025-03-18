@@ -14016,7 +14016,7 @@ pulsarr: &app_pulsarr
     config:
       enabled: true
       type: custom
-      mountPath: /app/db
+      mountPath: /app/data
       subPath: pulsarr
       volumeSpec:
         persistentVolumeClaim:
