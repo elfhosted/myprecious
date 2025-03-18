@@ -13,19 +13,6 @@ spec:
         - name: stremthru
           kind: Service
           port: 8080
-    - match: Host(`{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}`) && (PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
-      # fixtraefik
-      kind: Rule
-      services:
-        - name: stremthru
-          kind: Service
-          port: 8080
-      middlewares:
-      {{ if not .Values.mediafusionexposed.enabled }}
-        - name: {{ .Release.Name }}-traefik-forward-auth
-      {{ end }}
-        - name: chain-hosted-stremio-addon
-          namespace: traefik
     - match: Host(`{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}`) && (PathRegexp(`^/(.*)/configure`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:

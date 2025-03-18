@@ -16,19 +16,6 @@ spec:
       middlewares:
         - name: headers-add-cors-for-stremio
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/{something:.*}/configure{else:.*}`) || PathPrefix(`/_oauth`))
-      # fixtraefik
-      kind: Rule
-      services:
-        - name: aiostreams
-          kind: Service
-          port: 3000
-      middlewares:
-      {{ if not .Values.aiostreamsexposed.enabled }}
-        - name: {{ .Release.Name }}-traefik-forward-auth
-      {{ end }}
-        - name: chain-hosted-stremio-addon
-          namespace: traefik
     - match: Host(`{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:
