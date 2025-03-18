@@ -13985,7 +13985,7 @@ profilarr:
       image: ghcr.io/elfhosted/profilarr-backend:1.0.0@sha256:d0f1524d046647a60d62df9a995feac1cb494c1e3d1b3b36a3c691fc16f2d1df     
       volumeMounts:
       - name: config
-        mouthPath: /config
+        mountPath: /config
         subPath: profilarr
 
 pulsarr: &app_pulsarr
