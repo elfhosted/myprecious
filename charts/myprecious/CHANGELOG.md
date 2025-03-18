@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.308.1](https://github.com/elfhosted/myprecious/compare/v1.308.0...v1.308.1) (2025-03-18)
+
+
+### Bug Fixes
+
+* Fix ingressroutes for Traefik v3 ([9ca97df](https://github.com/elfhosted/myprecious/commit/9ca97df0f9408d03745ba45bc481ea3d3e518f57))
+
 ## [1.308.0](https://github.com/elfhosted/myprecious/compare/v1.307.0...v1.308.0) (2025-03-18)
 
 
