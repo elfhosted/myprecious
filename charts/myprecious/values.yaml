@@ -2191,7 +2191,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:ee0de9a598f6077b7ef41ecb5c7bfcc47c41e61370edf04f2b3e8297b40d9bb9
+    tag: 5.19.3.9730@sha256:559428c207f246f25bc4d1e3fd40eaf6a01cb77e137e9a50b7a9594577c07da6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2282,12 +2282,6 @@ radarr: &app_radarr
 
         chown elfie:elfie /config/postgresql -R
 
-        # Wipe database if it's on postgresql 16
-        if [ -f /config/postgresql/database/PG_VERSION ]; then
-          if grep 16 /config/postgresql/database/PG_VERSION; then
-            rm -rf /config/postgresql/database/*
-          fi
-        fi
       volumeMounts:
       - mountPath: /config
         name: config
@@ -2341,7 +2335,7 @@ radarr: &app_radarr
         
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -2386,7 +2380,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.19.3.9730@sha256:ee0de9a598f6077b7ef41ecb5c7bfcc47c41e61370edf04f2b3e8297b40d9bb9
+    tag: 5.19.3.9730@sha256:559428c207f246f25bc4d1e3fd40eaf6a01cb77e137e9a50b7a9594577c07da6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2477,12 +2471,6 @@ radarr4k: &app_radarr4k
 
         chown elfie:elfie /config/postgresql/database -R
 
-        # Wipe database if it's on postgresql 16
-        if [ -f /config/postgresql/database/PG_VERSION ]; then
-          if grep 16 /config/postgresql/database/PG_VERSION; then
-            rm -rf /config/postgresql/database/*
-          fi
-        fi
         
       volumeMounts:
       - mountPath: /config
@@ -2543,7 +2531,7 @@ radarr4k: &app_radarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -3944,7 +3932,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:a16d8a11962c8e2c624919a16057f97ec4a08eebf2a48f0d91dd5938c1f9e373
+    tag: 4.0.14.2939@sha256:317f4c5b5e8b02c3ca7fb17774b18e3df94dba8b571d985da4dd0b46ea65b838
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4035,12 +4023,12 @@ sonarr: &app_sonarr
 
         chown elfie:elfie /config/postgresql -R
 
-        # Wipe database if it's on postgresql 16
-        if [ -f /config/postgresql/database/PG_VERSION ]; then
-          if grep 16 /config/postgresql/database/PG_VERSION; then
-            rm -rf /config/postgresql/database/*
-          fi
-        fi
+        # # Wipe database if it's on postgresql 16
+        # if [ -f /config/postgresql/database/PG_VERSION ]; then
+        #   if grep 16 /config/postgresql/database/PG_VERSION; then
+        #     rm -rf /config/postgresql/database/*
+        #   fi
+        # fi
 
       volumeMounts:
       - mountPath: /config
@@ -4101,7 +4089,7 @@ sonarr: &app_sonarr
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4139,7 +4127,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:a16d8a11962c8e2c624919a16057f97ec4a08eebf2a48f0d91dd5938c1f9e373
+    tag: 4.0.14.2939@sha256:317f4c5b5e8b02c3ca7fb17774b18e3df94dba8b571d985da4dd0b46ea65b838
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4230,12 +4218,6 @@ sonarr4k: &app_sonarr4k
 
         chown elfie:elfie /config/postgresql -R
 
-        # Wipe database if it's on postgresql 16
-        if [ -f /config/postgresql/database/PG_VERSION ]; then
-          if grep 16 /config/postgresql/database/PG_VERSION; then
-            rm -rf /config/postgresql/database/*
-          fi
-        fi
 
       volumeMounts:
       - mountPath: /config
@@ -4295,7 +4277,7 @@ sonarr4k: &app_sonarr4k
       memory: 2Gi
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -4418,7 +4400,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.32.2.4987@sha256:36ed09e8ed8c4c18b5258ef1f9ebdb33a4630e08c0535694b24109e42e637eb9
+    tag: 1.32.2.4987@sha256:e953a94a2b2f87308ed643b6a4dd5df9150b88d10954c0a9eacd89208d67b4e4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4546,13 +4528,6 @@ prowlarr: &app_prowlarr
 
         chown elfie:elfie /config/postgresql -R
 
-        # Wipe database if it's on postgresql 16
-        if [ -f /config/postgresql/database/PG_VERSION ]; then
-          if grep 16 /config/postgresql/database/PG_VERSION; then
-            rm -rf /config/postgresql/database/*
-          fi
-        fi
-
       volumeMounts:
       - mountPath: /config
         name: config
@@ -4572,7 +4547,7 @@ prowlarr: &app_prowlarr
     S6_READ_ONLY_ROOT: 1
   additionalContainers:
     database:
-      image: postgres:17-alpine
+      image: postgres:16-alpine
       args:
       - -c
       - shared_buffers=500MB
@@ -13948,7 +13923,7 @@ pulsarr: &app_pulsarr
     config:
       enabled: true
       type: custom
-      mountPath: /app/db
+      mountPath: /app/data
       subPath: pulsarr
       volumeSpec:
         persistentVolumeClaim:
