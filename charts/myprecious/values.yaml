@@ -14859,7 +14859,7 @@ decypharr: &app_decypharr
       - mountPath: /config/
         name: config
         subPath: decypharr
-      - name: decypharr-config
+      - name: example-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext       
 
