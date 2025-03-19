@@ -2280,7 +2280,7 @@ radarr: &app_radarr
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -2475,7 +2475,7 @@ radarr4k: &app_radarr4k
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql/database -R
+        chown elfie:elfie /config/ -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -4033,7 +4033,7 @@ sonarr: &app_sonarr
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -4228,7 +4228,7 @@ sonarr4k: &app_sonarr4k
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -4544,7 +4544,7 @@ prowlarr: &app_prowlarr
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -10723,7 +10723,7 @@ riven: &app_riven
 
         mkdir -p /config/postgresql/database
         mkdir -p /config/postgresql/backups
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
       volumeMounts:
       - mountPath: /config
