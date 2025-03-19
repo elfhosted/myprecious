@@ -835,7 +835,15 @@ data:
             href: https://{{ .Release.Name }}-debridav.{{ .Values.dns_domain }}
             description: DebriDav
             siteMonitor: http://blackhole:8080
-        {{ end }}   
+        {{ end }}  
+
+        {{ if .Values.decypharr.enabled }}
+        - DebriDav:
+            icon: mdi-cirle
+            href: https://{{ .Release.Name }}-decypharr.{{ .Values.dns_domain }}
+            description: Decypharr
+            siteMonitor: http://decypharr:8282
+        {{ end }}           
 
         {{ if .Values.blackhole.enabled }}
         - Blackhole:

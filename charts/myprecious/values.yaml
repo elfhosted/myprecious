@@ -14777,6 +14777,92 @@ rclonetorbox:
       cpu: 150m
       memory: 512Mi
 
+decypharr: &app_decypharr
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/decypharr
+    tag: v0.5.0@sha256:e3a50fa6d6b30943761c4d5498b342ec70d9ee01070f22aaae9e21401113397a
+  priorityClassName: tenant-normal
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8282
+  persistence:
+    <<: *storagemounts
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: decypharr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: decypharr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs    
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: decypharr-example-config                
+  initContainers:
+    copy-example-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+        # If we don't already have an example config, create one
+        if [ ! -f /config/config.json ];
+        then
+          cp /bootstrap/config.json /config/
+        fi
+      volumeMounts:
+      - mountPath: /config/
+        name: config
+        subPath: decypharr
+      - name: decypharr-config
+        mountPath: "/bootstrap/"
+      securityContext: *default_securitycontext       
+
 blackhole: &app_blackhole
   enabled: false
   image:
