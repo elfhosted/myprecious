@@ -14032,7 +14032,7 @@ pulsarr: &app_pulsarr
     logs:
       enabled: true
       type: custom
-      mountPath: /app/logs
+      mountPath: /app/data/logs
       subPath: pulsarr
       volumeSpec:
         persistentVolumeClaim:
