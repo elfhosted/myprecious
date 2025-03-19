@@ -823,17 +823,6 @@ data:
           - type: email          
       {{ end }}
 
-      {{ if or .Values.profilarr.enabled }}
-      - name: profilarr
-        group: manage-media
-        url: "http://profilarr:6868"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.nzbget.enabled }}
       - name: nzbget
         group: download-media
@@ -976,6 +965,17 @@ data:
         alerts:
           - type: email
       {{ end }}
+
+      {{ if .Values.decypharr.enabled }}
+      - name: decypharr
+        group: download-media
+        url: "http://decypharr:8282"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}  
 
       {{ if .Values.blackhole.enabled }}
       - name: blackhole

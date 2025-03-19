@@ -2280,7 +2280,7 @@ radarr: &app_radarr
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -2475,7 +2475,7 @@ radarr4k: &app_radarr4k
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql/database -R
+        chown elfie:elfie /config/ -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -3944,7 +3944,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:cc1db7d6e1fe4b312c17b70e347561fd28e26c53f219aff33924592fdd448230
+    tag: 4.0.14.2939@sha256:585e30399682e882a0d3c01efbacdb3c3d8a7c34e4a07fd08d2abf5539bfad0e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4033,7 +4033,7 @@ sonarr: &app_sonarr
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -4139,7 +4139,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:cc1db7d6e1fe4b312c17b70e347561fd28e26c53f219aff33924592fdd448230
+    tag: 4.0.14.2939@sha256:585e30399682e882a0d3c01efbacdb3c3d8a7c34e4a07fd08d2abf5539bfad0e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4228,7 +4228,7 @@ sonarr4k: &app_sonarr4k
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -4544,7 +4544,7 @@ prowlarr: &app_prowlarr
         set -x
         set -e
 
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
         # Wipe database if it's on postgresql 16
         if [ -f /config/postgresql/database/PG_VERSION ]; then
@@ -10723,7 +10723,7 @@ riven: &app_riven
 
         mkdir -p /config/postgresql/database
         mkdir -p /config/postgresql/backups
-        chown elfie:elfie /config/postgresql -R
+        chown elfie:elfie /config -R
 
       volumeMounts:
       - mountPath: /config
@@ -13979,6 +13979,12 @@ profilarr:
         configMap:
           name: elfbot-profilarr
           optional: true   
+    app:
+      enabled: "true"
+      type: emptyDir
+      mountPath: /app
+      volumeSpec:
+        medium: Memory           
   additionalContainers:
     backend:
       image: ghcr.io/elfhosted/profilarr-backend:v1.0.1@sha256:3f21a61e761d714a8f1daecf26f656c27236db63aa6ce4e95e894c7dba400064     
@@ -13986,6 +13992,18 @@ profilarr:
       - name: config
         mountPath: /config
         subPath: profilarr
+  initContainers:
+    setup:
+      image: ghcr.io/elfhosted/profilarr-frontend:1.0.0@sha256:f4e05633b45b0bba36919dfdce9448f2083c5c7e908adeac0e083e2c37388892
+      command:
+      - /bin/ash
+      - -c
+      - |
+        # copy the image's build-cache directory into the emptyDir
+        cp /app/* /tmp -rfp
+      volumeMounts:
+      - mountPath: /tmp
+        name: app
 
 pulsarr: &app_pulsarr
   enabled: false
@@ -14009,8 +14027,8 @@ pulsarr: &app_pulsarr
       type: RuntimeDefault
   automountServiceAccountToken: false
   persistence:
-    tmp: *tmp
     backup: *backup
+    tmp: *tmp
     logs:
       enabled: true
       type: custom
@@ -14034,12 +14052,12 @@ pulsarr: &app_pulsarr
         configMap:
           name: elfbot-pulsarr
           optional: true  
-    build-cache:
+    app:
       enabled: "true"
       type: emptyDir
-      mountPath: /app/build-cache
+      mountPath: /app
       volumeSpec:
-        medium: Memory            
+        medium: Memory                
   resources:
     requests:
       cpu: 0m
@@ -14082,10 +14100,10 @@ pulsarr: &app_pulsarr
       - -c
       - |
         # copy the image's build-cache directory into the emptyDir
-        cp /app/build-cache/* /build-cache -rfp
+        cp /app/* /tmp -rfp
       volumeMounts:
-      - mountPath: /build-cache
-        name: build-cache
+      - mountPath: /tmp
+        name: app
 
 movieroulette:
   enabled: false
@@ -14776,6 +14794,92 @@ rclonetorbox:
     limits:
       cpu: 150m
       memory: 512Mi
+
+decypharr: &app_decypharr
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/decypharr
+    tag: v0.5.0@sha256:e3a50fa6d6b30943761c4d5498b342ec70d9ee01070f22aaae9e21401113397a
+  priorityClassName: tenant-normal
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr,decypharr-example-config"
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: false
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8282
+  persistence:
+    <<: *storagemounts
+    tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: decypharr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: decypharr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs    
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: decypharr-example-config                
+  initContainers:
+    copy-example-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+        # If we don't already have an example config, create one
+        if [ ! -f /config/config.json ];
+        then
+          cp /bootstrap/config.json /config/
+        fi
+      volumeMounts:
+      - mountPath: /config/
+        name: config
+        subPath: decypharr
+      - name: example-config
+        mountPath: "/bootstrap/"
+      securityContext: *default_securitycontext       
 
 blackhole: &app_blackhole
   enabled: false
