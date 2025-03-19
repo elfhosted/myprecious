@@ -8,15 +8,6 @@ data:
     {
       "debrids": [
         {
-          "name": "torbox",
-          "host": "https://api.torbox.app/v1",
-          "api_key": "torbox_api_key",
-          "folder": "/storage/torbox/torrents/",
-          "rate_limit": "250/minute",
-          "download_uncached": false,
-          "check_cached": true
-        },
-        {
           "name": "realdebrid",
           "host": "https://api.real-debrid.com/rest/1.0",
           "api_key": "realdebrid_key",
@@ -33,24 +24,10 @@ data:
           "rate_limit": "250/minute",
           "download_uncached": false,
           "check_cached": false
-        },
-        {
-          "name": "alldebrid",
-          "host": "http://api.alldebrid.com/v4.1",
-          "api_key": "alldebrid_key",
-          "folder": "/storage/alldebrid/magnet/",
-          "rate_limit": "600/minute",
-          "download_uncached": false,
-          "check_cached": false
         }
       ],
       "proxy": {
-        "enabled": true,
-        "port": "8100",
-        "log_level": "info",
-        "username": "username",
-        "password": "password",
-        "cached_only": true
+        "enabled": false
       },
       "max_cache_size": 1000,
       "qbittorrent": {
@@ -126,7 +103,6 @@ data:
       "min_file_size": "",
       "max_file_size": "",
       "allowed_file_types": [],
-      "use_auth": false,
-      "discord_webhook_url": "https://discord.com/api/webhooks/..."
+      "use_auth": false
     }
 {{ end }}
