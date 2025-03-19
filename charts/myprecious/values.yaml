@@ -14027,8 +14027,8 @@ pulsarr: &app_pulsarr
       type: RuntimeDefault
   automountServiceAccountToken: false
   persistence:
-    tmp: *tmp
     backup: *backup
+    tmp: *tmp
     logs:
       enabled: true
       type: custom
@@ -14057,7 +14057,7 @@ pulsarr: &app_pulsarr
       type: emptyDir
       mountPath: /app
       volumeSpec:
-        medium: Memory            
+        medium: Memory                
   resources:
     requests:
       cpu: 0m
