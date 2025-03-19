@@ -13979,6 +13979,12 @@ profilarr:
         configMap:
           name: elfbot-profilarr
           optional: true   
+    app:
+      enabled: "true"
+      type: emptyDir
+      mountPath: /app
+      volumeSpec:
+        medium: Memory             
   additionalContainers:
     backend:
       image: ghcr.io/elfhosted/profilarr-backend:1.0.0@sha256:d0f1524d046647a60d62df9a995feac1cb494c1e3d1b3b36a3c691fc16f2d1df     
@@ -13986,6 +13992,18 @@ profilarr:
       - name: config
         mountPath: /config
         subPath: profilarr
+  initContainers:
+    setup:
+      image: ghcr.io/elfhosted/profilarr-frontend:1.0.0@sha256:f4e05633b45b0bba36919dfdce9448f2083c5c7e908adeac0e083e2c37388892
+      command:
+      - /bin/ash
+      - -c
+      - |
+        # copy the image's build-cache directory into the emptyDir
+        cp /app/* /tmp -rfp
+      volumeMounts:
+      - mountPath: /tmp
+        name: app
 
 pulsarr: &app_pulsarr
   enabled: false
@@ -14034,10 +14052,10 @@ pulsarr: &app_pulsarr
         configMap:
           name: elfbot-pulsarr
           optional: true  
-    build-cache:
+    app:
       enabled: "true"
       type: emptyDir
-      mountPath: /app/build-cache
+      mountPath: /app
       volumeSpec:
         medium: Memory            
   resources:
@@ -14082,10 +14100,10 @@ pulsarr: &app_pulsarr
       - -c
       - |
         # copy the image's build-cache directory into the emptyDir
-        cp /app/build-cache/* /build-cache -rfp
+        cp /app/* /tmp -rfp
       volumeMounts:
-      - mountPath: /build-cache
-        name: build-cache
+      - mountPath: /tmp
+        name: app
 
 movieroulette:
   enabled: false
