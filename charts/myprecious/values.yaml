@@ -13984,7 +13984,7 @@ profilarr:
       type: emptyDir
       mountPath: /app
       volumeSpec:
-        medium: Memory             
+        medium: Memory           
   additionalContainers:
     backend:
       image: ghcr.io/elfhosted/profilarr-backend:1.0.0@sha256:d0f1524d046647a60d62df9a995feac1cb494c1e3d1b3b36a3c691fc16f2d1df     
@@ -14008,8 +14008,8 @@ profilarr:
 pulsarr: &app_pulsarr
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.1@sha256:c5689a579dd8bfe94978621d0ea6f2564e3e9035be502934670b36386eef92f6
+    repository: ghcr.io/elfhosted/pulsarr-develop
+    tag: v0.2.2@sha256:a4693e7ffbc4db60b224ebcbeaaa8a07e5f3ae936aece72102d6dd2e21ad378b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14805,7 +14805,7 @@ decypharr: &app_decypharr
   tolerations: *standard_tolerations
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr,decypharr-example-config"
   securityContext:
     runAsUser: 568
     runAsGroup: 568

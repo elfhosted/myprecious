@@ -57,7 +57,7 @@ data:
         "port": "8282",
         "download_folder": "/storage/symlinks/downloads",
         "categories": ["sonarr", "sonarr4", "radarr", "radarr4k", "lidarr", "readarr", "readarraudio"],
-        "refresh_interval": 5,
+        "refresh_interval": 5
       },
       "arrs": [
         {
@@ -75,7 +75,7 @@ data:
           "cleanup": true,
           "skip_repair": true,
           "download_uncached": false
-        },        
+        },
         {
           "name": "radarr",
           "host": "http://radarr:7878",
@@ -89,7 +89,7 @@ data:
           "token": "{{ .Values.radarr4kexposed.apikey }}",
           "cleanup": false,
           "download_uncached": false
-        },        
+        },
         {
           "name": "lidarr",
           "host": "http://lidarr:8686",
@@ -127,6 +127,6 @@ data:
       "max_file_size": "",
       "allowed_file_types": [],
       "use_auth": false,
-      "discord_webhook_url": "https://discord.com/api/webhooks/...",
+      "discord_webhook_url": "https://discord.com/api/webhooks/..."
     }
 {{ end }}
