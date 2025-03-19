@@ -5,7 +5,7 @@ metadata:
   name: pulsarr-env
 data:
   baseUrl: http://pulsarr:3003
-  LogLevel: info
+  logLevel: info
   sonarrBaseUrl: http://sonarr4k:8989
   sonarrApiKey: {{ .Values.sonarr4kexposed.apikey }}
   radarrBaseUrl: http://radarr4k:7878
