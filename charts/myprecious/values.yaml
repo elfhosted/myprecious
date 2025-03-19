@@ -13981,7 +13981,7 @@ profilarr:
           optional: true   
   additionalContainers:
     backend:
-      image: ghcr.io/elfhosted/profilarr-backend:v1.0.1@sha256:0f640b7fc1bf37578c8c81dced2a853579f0e8ddd97027f72643287b76aa1818     
+      image: ghcr.io/elfhosted/profilarr-backend:v1.0.1@sha256:3f21a61e761d714a8f1daecf26f656c27236db63aa6ce4e95e894c7dba400064     
       volumeMounts:
       - name: config
         mountPath: /config
