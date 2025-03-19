@@ -10,4 +10,5 @@ data:
   sonarrApiKey: {{ .Values.sonarr4kexposed.apikey }}
   radarrBaseUrl: http://radarr4k:7878
   radarrApiKey: {{ .Values.radarr4kexposed.apikey }}
+  NODE_ARGS: --log-both
 {{ end }}
