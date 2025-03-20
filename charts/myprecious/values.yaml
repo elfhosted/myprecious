@@ -14425,6 +14425,9 @@ debridav: &app_debridav
         while true; do
           sleep 3600  # Sleep for an hour at a time (to be a bit nicer to the system than an infinite tight loop)
         done
+      volumeMounts:
+      - name: rclonemountdebridav
+        mountPath: /storage/debridav
     database:
       image: postgres:17-alpine
       args:
