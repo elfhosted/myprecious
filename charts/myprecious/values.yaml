@@ -14381,7 +14381,7 @@ debridav: &app_debridav
       - |
 
         # Define the folders to check/create
-        FOLDERS=("/storage/debridav/movies" "/storage/debridav/movies-4k" "/storage/debridav/series-4k" "/storage/debridav/series-4k")
+        FOLDERS=("/storage/debridav/movies" "/storage/debridav/movies-4k" "/storage/debridav/series" "/storage/debridav/series-4k")
 
         # Function to check and create folders
         create_folders() {
