@@ -14391,7 +14391,7 @@ debridav: &app_debridav
               echo "Folder $folder does not exist. Creating..."
               
               # sleep so that we have time to avoid a race on local vs dbfolders
-              sleep 60s
+              sleep 20s
               mkdir -p "$folder"
               
               # Check if creation was successful
