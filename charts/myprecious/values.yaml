@@ -14287,19 +14287,17 @@ debridav: &app_debridav
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   persistence:
-    # <<: *storagemounts
+    <<: *storagemounts
     tmp: *tmp
     backup: *backup
-    # dev-shm:
-    #   enabled: "true"
-    #   type: emptyDir
-    #   volumeSpec:
-    #     medium: Memory    
+    dev-shm:
+      enabled: "true"
+      type: emptyDir
+      volumeSpec:
+        medium: Memory    
     config:
       enabled: true
       type: custom
-      # subPath: debridav/data
-      # mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -14372,63 +14370,63 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault                
   additionalContainers:
-    # make-folders:
-    #   image: *tooling_image
-    #   imagePullPolicy: IfNotPresent
-    #   command:
-    #   - /usr/bin/dumb-init
-    #   - /bin/bash
-    #   - -c
-    #   - |
+    make-folders:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - |
 
-    #     # Define the folders to check/create
-    #     FOLDERS=("/storage/debridav/movies" "/storage/debridav/movies-4k" "/storage/debridav/series" "/storage/debridav/series-4k")
+        # Define the folders to check/create
+        FOLDERS=("/storage/debridav/movies" "/storage/debridav/movies-4k" "/storage/debridav/series" "/storage/debridav/series-4k")
 
-    #     # Function to check and create folders
-    #     create_folders() {
-    #       local all_created=true
+        # Function to check and create folders
+        create_folders() {
+          local all_created=true
           
-    #       for folder in "${FOLDERS[@]}"; do
-    #         if [ ! -d "$folder" ]; then
-    #           echo "Folder $folder does not exist. Creating..."
-    #           mkdir -p "$folder"
+          for folder in "${FOLDERS[@]}"; do
+            if [ ! -d "$folder" ]; then
+              echo "Folder $folder does not exist. Creating..."
+              mkdir -p "$folder"
               
-    #           # Check if creation was successful
-    #           if [ ! -d "$folder" ]; then
-    #             echo "Error creating $folder. Will retry in 10 seconds."
-    #             all_created=false
-    #           else
-    #             echo "Successfully created $folder."
-    #           fi
-    #         else
-    #           echo "Folder $folder already exists."
-    #         fi
-    #       done
+              # Check if creation was successful
+              if [ ! -d "$folder" ]; then
+                echo "Error creating $folder. Will retry in 10 seconds."
+                all_created=false
+              else
+                echo "Successfully created $folder."
+              fi
+            else
+              echo "Folder $folder already exists."
+            fi
+          done
           
-    #       return $([ "$all_created" = true ] && echo 0 || echo 1)
-    #     }
+          return $([ "$all_created" = true ] && echo 0 || echo 1)
+        }
 
-    #     # Main loop to create folders
-    #     while true; do
-    #       if create_folders; then
-    #         echo "All required folders exist or were successfully created."
-    #         break
-    #       else
-    #         echo "Waiting 10 seconds before retrying..."
-    #         sleep 10
-    #       fi
-    #     done
+        # Main loop to create folders
+        while true; do
+          if create_folders; then
+            echo "All required folders exist or were successfully created."
+            break
+          else
+            echo "Waiting 10 seconds before retrying..."
+            sleep 10
+          fi
+        done
 
-    #     echo "Success! All required folders are now available."
-    #     echo "Script will now sleep indefinitely."
+        echo "Success! All required folders are now available."
+        echo "Script will now sleep indefinitely."
 
-    #     # Sleep forever
-    #     while true; do
-    #       sleep 3600  # Sleep for an hour at a time (to be a bit nicer to the system than an infinite tight loop)
-    #     done
-    #   volumeMounts:
-    #   - name: rclonemountdebridav
-    #     mountPath: /storage/debridav
+        # Sleep forever
+        while true; do
+          sleep 3600  # Sleep for an hour at a time (to be a bit nicer to the system than an infinite tight loop)
+        done
+      volumeMounts:
+      - name: rclonemountdebridav
+        mountPath: /storage/debridav
     database:
       image: postgres:17-alpine
       args:
@@ -14449,8 +14447,8 @@ debridav: &app_debridav
       - mountPath: /var/lib/postgresql/data
         name: config
         subPath: debridav/database
-      # - mountPath: /dev/shm
-      #   name: dev-shm
+      - mountPath: /dev/shm
+        name: dev-shm
       resources:
         requests:
           cpu: 0m
