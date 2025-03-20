@@ -14289,6 +14289,7 @@ debridav: &app_debridav
   persistence:
     # <<: *storagemounts
     tmp: *tmp
+    backup: *backup
     # dev-shm:
     #   enabled: "true"
     #   type: emptyDir
