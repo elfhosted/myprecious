@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -2191,7 +2191,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.20.2.9777@sha256:e116270151ce255f881f7e802287540a58f189a647b7eee3611695c4f789971c
+    tag: 5.20.2.9777@sha256:7de9578a111602332df1706ca4aacd4a5ce2f106f235ddfa6b7d03402a224a16
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2386,7 +2386,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.20.2.9777@sha256:e116270151ce255f881f7e802287540a58f189a647b7eee3611695c4f789971c
+    tag: 5.20.2.9777@sha256:7de9578a111602332df1706ca4aacd4a5ce2f106f235ddfa6b7d03402a224a16
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5153,7 +5153,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.03.18.0029-nightly@sha256:68fc957a6b4a7c78d44569116e675f5b4f395d550a3eb9cebf74f0a9c2338089
+      image: ghcr.io/elfhosted/zurg-rc:2025.03.20.0029-nightly@sha256:2786089b9453d3c42a0a2d13da8169cc5f0aa51dc2ebb8dc47c6943ca4f7551f
       command:
       - /bin/bash
       - -c
@@ -11023,7 +11023,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1660@sha256:8633cc738f3eb9cf755e0893dc47475b5d09dfa9bd52120150aa666e2d7068a5
+    tag: 0.22.1665@sha256:a51e923a2b0daeb8d608ccebfa618849d6642c0c6e4ddbef166fa08ac8bf8217
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13084,7 +13084,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.03.18.0029-nightly@sha256:68fc957a6b4a7c78d44569116e675f5b4f395d550a3eb9cebf74f0a9c2338089
+    tag: 2025.03.20.0029-nightly@sha256:2786089b9453d3c42a0a2d13da8169cc5f0aa51dc2ebb8dc47c6943ca4f7551f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13430,7 +13430,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.07@sha256:7bbb22213333207e453f4e378148d302b2b5b0842b10e7110ed4e6374730f3ae
+    tag: v0.6.08@sha256:6605f60f7d10c6a7565fc30a8d56c1752e9e0562c6039bd1cef91f5b56456ef6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13916,7 +13916,7 @@ profilarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/profilarr-frontend
-    tag: 1.0.0@sha256:f4e05633b45b0bba36919dfdce9448f2083c5c7e908adeac0e083e2c37388892
+    tag: v1.0.1@sha256:d64425278edd8987c7745f05106e8479656e65c2d4ff3ef304a53bd528911c09
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13987,7 +13987,7 @@ profilarr:
         medium: Memory           
   additionalContainers:
     backend:
-      image: ghcr.io/elfhosted/profilarr-backend:1.0.0@sha256:d0f1524d046647a60d62df9a995feac1cb494c1e3d1b3b36a3c691fc16f2d1df     
+      image: ghcr.io/elfhosted/profilarr-backend:v1.0.1@sha256:3f21a61e761d714a8f1daecf26f656c27236db63aa6ce4e95e894c7dba400064     
       volumeMounts:
       - name: config
         mountPath: /config
@@ -14008,8 +14008,8 @@ profilarr:
 pulsarr: &app_pulsarr
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/pulsarr-develop
-    tag: v0.2.2@sha256:a4693e7ffbc4db60b224ebcbeaaa8a07e5f3ae936aece72102d6dd2e21ad378b
+    repository: ghcr.io/elfhosted/pulsarr
+    tag: v0.2.2@sha256:8570b7edbfc32f629b058571bbe9cda843ee461ca8c901718aa3008eaf60448d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14032,7 +14032,7 @@ pulsarr: &app_pulsarr
     logs:
       enabled: true
       type: custom
-      mountPath: /app/logs
+      mountPath: /app/data/logs
       subPath: pulsarr
       volumeSpec:
         persistentVolumeClaim:
@@ -14094,7 +14094,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.1@sha256:c5689a579dd8bfe94978621d0ea6f2564e3e9035be502934670b36386eef92f6
+      image: ghcr.io/elfhosted/pulsarr:v0.2.2@sha256:8570b7edbfc32f629b058571bbe9cda843ee461ca8c901718aa3008eaf60448d
       command:
       - /bin/ash
       - -c
