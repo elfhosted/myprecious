@@ -14350,26 +14350,6 @@ debridav: &app_debridav
       - mountPath: /tmp
         name: tmp  
     # Only trigger this when moving to database
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # Move files from old file-based setup into import folder if they exist
-        rsync -av --exclude="database" --remove-source-files --no-times /config/ /import/
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: debridav
-      - mountPath: /import
-        name: import
-      resources: *default_resources
-      securityContext: *default_securitycontext        
     setup-postgres:
       image: *tooling_image
       command:
@@ -14391,6 +14371,60 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault                
   additionalContainers:
+    make-folders:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /usr/bin/dumb-init
+      - /bin/bash
+      - -c
+      - |
+
+        # Define the folders to check/create
+        FOLDERS=("/storage/debridav/movies" "/storage/debridav/movies-4k" "/storage/debridav/series-4k" "/storage/debridav/series-4k")
+
+        # Function to check and create folders
+        create_folders() {
+          local all_created=true
+          
+          for folder in "${FOLDERS[@]}"; do
+            if [ ! -d "$folder" ]; then
+              echo "Folder $folder does not exist. Creating..."
+              mkdir -p "$folder"
+              
+              # Check if creation was successful
+              if [ ! -d "$folder" ]; then
+                echo "Error creating $folder. Will retry in 10 seconds."
+                all_created=false
+              else
+                echo "Successfully created $folder."
+              fi
+            else
+              echo "Folder $folder already exists."
+            fi
+          done
+          
+          return $([ "$all_created" = true ] && echo 0 || echo 1)
+        }
+
+        # Main loop to create folders
+        while true; do
+          if create_folders; then
+            echo "All required folders exist or were successfully created."
+            break
+          else
+            echo "Waiting 10 seconds before retrying..."
+            sleep 10
+          fi
+        done
+
+        echo "Success! All required folders are now available."
+        echo "Script will now sleep indefinitely."
+
+        # Sleep forever
+        while true; do
+          sleep 3600  # Sleep for an hour at a time (to be a bit nicer to the system than an infinite tight loop)
+        done
     database:
       image: postgres:17-alpine
       args:
