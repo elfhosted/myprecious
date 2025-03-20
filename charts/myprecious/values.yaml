@@ -13994,7 +13994,7 @@ profilarr:
         subPath: profilarr
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/profilarr-frontend:1.0.0@sha256:f4e05633b45b0bba36919dfdce9448f2083c5c7e908adeac0e083e2c37388892
+      image: ghcr.io/elfhosted/profilarr-frontend:v1.0.1@sha256:d64425278edd8987c7745f05106e8479656e65c2d4ff3ef304a53bd528911c09
       command:
       - /bin/ash
       - -c
