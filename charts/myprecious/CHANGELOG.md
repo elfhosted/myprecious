@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.310.0](https://github.com/elfhosted/myprecious/compare/v1.309.0...v1.310.0) (2025-03-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.108 ([ea797b0](https://github.com/elfhosted/myprecious/commit/ea797b08865f5c7280fc408342e92c27dcdac5c9))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.08 ([f4fd545](https://github.com/elfhosted/myprecious/commit/f4fd54556cef888fe525dde4f04c25bf61d632cd))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.5 ([75a85f3](https://github.com/elfhosted/myprecious/commit/75a85f34ee75245aaa1300cd2859b0b3f8239a5b))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1669 ([b6e8a2a](https://github.com/elfhosted/myprecious/commit/b6e8a2ad18eca8c8a05230ba810f1fa84413fe8c))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.3 ([8422099](https://github.com/elfhosted/myprecious/commit/84220997a5de63a342a7fb3fb2d38767b2673125))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.4 ([7bf034c](https://github.com/elfhosted/myprecious/commit/7bf034ccb719192c570728dc7585495d748a1d54))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.5 ([5b7e49d](https://github.com/elfhosted/myprecious/commit/5b7e49ddfa8c88bd8dfc2916224e1ce35dc967c4))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.03.20.0029-nightly ([434b94c](https://github.com/elfhosted/myprecious/commit/434b94ceb82e4850a034de8c6ea6fc221e8cf278))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/radarr:5.20.2.9777 docker digest to 7de9578 ([9245d99](https://github.com/elfhosted/myprecious/commit/9245d99911e6d43bb3501c9d61c70ffa3c136805))
+
 ## [1.309.0](https://github.com/elfhosted/myprecious/compare/v1.308.1...v1.309.0) (2025-03-19)
 
 
