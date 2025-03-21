@@ -6647,6 +6647,40 @@ symlinkcleaner:
           port: 5000
   persistence:
     <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/config
+      subPath: symlink-cleaner
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-symlink-cleaner
+          optional: true          
+  envFrom:
+  - configMapRef:
+      name: symlink-cleaner-env
+  - configMapRef:
+      name: elfbot-symlink-cleaner
+      optional: true    
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: symlink-cleaner
+      - mountPath: /tmp
+        name: tmp      
 
 overseerr:
   enabled: false
