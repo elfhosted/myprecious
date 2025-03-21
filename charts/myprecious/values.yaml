@@ -6098,8 +6098,8 @@ flaresolverr: &app_flaresolverr
     app.elfhosted.com/name: flaresolverr
   image:
     registry: ghcr.io
-    repository: elfhosted/flaresolverr
-    tag: 3.3.21@sha256:2c3c7087eaf809f2b032fb9df28cf8884546463a1c532c9dd3b244f424bfd6ad
+    repository: elfhosted/byparr
+    tag: v1.1.0@sha256:e7fdbd7fe198feed6caf19bb7a12d694f8a60041fa383dc340e420e71078e304
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6113,8 +6113,8 @@ flaresolverr: &app_flaresolverr
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
+    # runAsUser: 568
+    # runAsGroup: 568
   automountServiceAccountToken: false
   resources:
     requests:
