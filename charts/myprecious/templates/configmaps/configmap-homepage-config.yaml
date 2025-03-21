@@ -955,7 +955,7 @@ data:
             icon: mdi-book-open-variant
             href: https://{{ .Release.Name }}-audiobookbay-automated.{{ .Values.dns_domain }}
             description: Manage AudioBookBay Downloads
-            siteMonitor: http://audiobookbay-automated:5072
+            siteMonitor: http://audiobookbay-automated:5078
         {{ end }}                      
 
         {{ if .Values.jdownloader.enabled }}

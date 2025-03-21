@@ -1090,7 +1090,7 @@ data:
       {{ if .Values.audiobookbayautomated.enabled }}
       - name: audiobookbay-automated
         group: download-media
-        url: "http://audiobookbay-automated:5072"
+        url: "http://audiobookbay-automated:5078"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
