@@ -8,11 +8,11 @@ data:
   DOWNLOAD_CLIENT: None
   DL_HOST: decypharr
   DL_PORT: 8282
-  DL_URL: None
-  DL_USERNAME: None
+  # DL_URL: None
+  # DL_USERNAME: None
   DL_SCHEME: http
-  DL_CATEGORY: abb-automated
-  SAVE_PATH_BASE: None
+  DL_CATEGORY: audiobookbay-automated
+  # SAVE_PATH_BASE: None
   NAV_LINK_NAME: Open AudioBookshelf
   NAV_LINK_URL: https://{{ .Release.Name }}-audiobookshelf.{{ .Values.dns_domain }}
 {{ end }}
