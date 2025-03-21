@@ -377,6 +377,11 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
+    condition: audiobookbayautomated.enabled
+    alias: audiobookbayautomated    
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
     condition: openbooks.enabled
     alias: openbooks
   - name: app-template
@@ -810,6 +815,11 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: petio
+  - name: app-template
+    condition: symlinkcleaner.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: symlinkcleaner    
   - name: app-template
     condition: actual.enabled
     version: ~0.2.1

@@ -91,6 +91,22 @@ data:
           "skip_repair": true,
           "download_uncached": false
         }
+        {
+          "name": "prowlarr",
+          "host": "http://prowlarr:9696",
+          "token": "{{ .Values.prowlarrexposed.apikey }}",
+          "cleanup": false,
+          "skip_repair": true,
+          "download_uncached": false
+        },       
+        {
+          "name": "audiobookrequests",
+          "download_uncached": true
+        },
+        {
+          "name": "audiobookbay-automated",
+          "download_uncached": true
+        }                        
       ],
       "repair": {
         "enabled": false,

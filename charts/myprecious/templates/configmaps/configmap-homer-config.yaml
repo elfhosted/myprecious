@@ -972,7 +972,17 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}        
+          {{ end }}   
+
+          {{ if .Values.symlinkcleaner.enabled }}
+          - name: "Symlink Cleaner"
+            icon: "fas fa-broom"
+            subtitle: "Manage Symlinks"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-symlink-cleaner.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
 
           {{ if .Values.decluttarr.enabled }}
           - name: "Decluttarr"
@@ -1087,7 +1097,7 @@ data:
             tagstyle: "is-danger"
             url: "https://{{ .Release.Name }}-immich.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }} 
+          {{ end }}        
 
           {{ if or .Values.zurgling.enabled .Values.debridling.enabled .Values.seerrbridge.enabled .Values.cinesync.enabled }}
           - name: "DebridMediaManager"
@@ -1395,11 +1405,21 @@ data:
           - name: "AudioBookRequest"
             icon: "fas fa-book-open-reader"
             subtitle: "Manage AudioBook Downloads"
-            tag: "public"
-            tagstyle: "is-warning"
+            tag: "protected"
+            tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-audiobookrequest.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}           
+          {{ end }}
+
+          {{ if .Values.audiobookbayautomated.enabled }}
+          - name: "AudioBookBay Automated"
+            icon: "fas fa-book-open-reader"
+            subtitle: "Manage AudioBookBay Downloads"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-audiobookbay-automated.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
 
           {{ if .Values.jdownloader.enabled }}
           - name: "jDownloader"

@@ -610,7 +610,15 @@ data:
             href: https://{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}
             description: Clean Plex Images   
             siteMonitor: http://imagemaid:3001
-        {{ end }}                   
+        {{ end }}    
+
+        {{ if .Values.symlinkcleaner.enabled }}
+        - Symlink Cleaner:
+            icon: mdi-delete-sweep
+            href: https://{{ .Release.Name }}-symlink-cleaner.{{ .Values.dns_domain }}
+            description: Clean Symlinks
+            siteMonitor: http://symlink-cleaner:5000
+        {{ end }}                          
 
         {{ if or .Values.decluttarr.enabled }}
         - Decluttarr:
@@ -948,7 +956,15 @@ data:
             href: https://{{ .Release.Name }}-audiobookrequest.{{ .Values.dns_domain }}
             description: Manage AudioBooks Downloads
             siteMonitor: http://audiobookrequest:8000
-        {{ end }}              
+        {{ end }} 
+
+        {{ if .Values.audiobookbayautomated.enabled }}
+        - AudioBookBay Automated:
+            icon: mdi-book-open-variant
+            href: https://{{ .Release.Name }}-audiobookbay-automated.{{ .Values.dns_domain }}
+            description: Manage AudioBookBay Downloads
+            siteMonitor: http://audiobookbay-automated:5078
+        {{ end }}                      
 
         {{ if .Values.jdownloader.enabled }}
         - jDownloader:
