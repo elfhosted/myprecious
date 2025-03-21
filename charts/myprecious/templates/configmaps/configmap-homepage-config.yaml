@@ -948,7 +948,15 @@ data:
             href: https://{{ .Release.Name }}-audiobookrequest.{{ .Values.dns_domain }}
             description: Manage AudioBooks Downloads
             siteMonitor: http://audiobookrequest:8000
-        {{ end }}              
+        {{ end }} 
+
+        {{ if .Values.audiobookbayautomated.enabled }}
+        - AudioBookBay Automated:
+            icon: mdi-book-open-variant
+            href: https://{{ .Release.Name }}-audiobookbay-automated.{{ .Values.dns_domain }}
+            description: Manage AudioBookBay Downloads
+            siteMonitor: http://audiobookbay-automated:5072
+        {{ end }}                      
 
         {{ if .Values.jdownloader.enabled }}
         - jDownloader:

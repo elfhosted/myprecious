@@ -1087,6 +1087,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.audiobookbayautomated.enabled }}
+      - name: audiobookbay-automated
+        group: download-media
+        url: "http://audiobookbay-automated:5072"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.jdownloader.enabled }}
       - name: jdownloader
         group: download-media

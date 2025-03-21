@@ -7263,6 +7263,76 @@ audiobookrequest:
       cpu: 2
       memory: 1Gi
 
+audiobookbayautomated:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/audiobookbay-automated
+    tag: rolling@sha256:b2939e6a7c9d36e4d39c7ba73c3edcb373a08652a746d9ee490a91b1be847c38
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    runAsNonRoot: true
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookbay-automated"
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: audiobookbay-automated
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-audiobookbay-automated
+          optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: audiobookbay-automated
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5072
+  resources:
+    requests:
+      cpu: 0m
+      memory: 64Mi
+    limits:
+      cpu: 2
+      memory: 1Gi      
+
 openbooks:
   enabled: false
   image:
