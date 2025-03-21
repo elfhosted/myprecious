@@ -1,0 +1,34 @@
+{{ if .Values.symlinkcleaner.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: symlink-cleaner-example-config
+data:
+  config.json: |
+    {
+      "zurg_host": "http://zurg:9999",
+      "zurg_mount": "/storage/realdebrid-zurg/__all__",
+      "symlink_dirs": [
+        "/storage/symlinks/anime_movies",
+        "/storage/symlinks/anime_shows",
+        "/storage/symlinks/movies",
+        "/storage/symlinks/movies-4k",
+        "/storage/symlinks/movies-anime",
+        "/storage/symlinks/shows",
+        "/storage/symlinks/series",
+        "/storage/symlinks/series-4k",
+        "/storage/symlinks/series-anime"
+      ],
+      "mode": "repair_and_remove",
+      "scan_interval": 0,
+      "log_level": "info",
+      "radarr_instances": [
+        {"name": "Radarr", "host": "http://radarr:7878", "api_key": "{{ .Values.radarrexposed.apikey }}"},
+        {"name": "Radarr4k", "host": "http://radarr4k:7879", "api_key": "{{ .Values.radarr4kexposed.apikey }}"}
+      ],
+      "sonarr_instances": [
+        {"name": "Sonarr", "host": "http://sonarr:8989", "api_key": "{{ .Values.sonarrexposed.apikey }}"},
+        {"name": "Sonarr4k", "host": "http://sonarr4k:8990", "api_key": "{{ .Values.sonarr4kexposed.apikey }}"}
+      ]
+    }
+{{ end }}

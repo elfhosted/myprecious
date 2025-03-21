@@ -6614,7 +6614,7 @@ symlinkcleaner:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-symlink-cleaner"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-symlink-cleaner,symlink-cleaner-example-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -6647,6 +6647,67 @@ symlinkcleaner:
           port: 5000
   persistence:
     <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/config
+      subPath: symlink-cleaner
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-symlink-cleaner
+          optional: true          
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: symlink-cleaner-example-config          
+  envFrom:
+  - configMapRef:
+      name: symlink-cleaner-env
+  - configMapRef:
+      name: elfbot-symlink-cleaner
+      optional: true    
+  initContainers:  
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: symlink-cleaner
+      - mountPath: /tmp
+        name: tmp      
+    copy-example-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+        # If we don't already have an example config, create one
+        if [ ! -f /config/config.json ];
+        then
+          cp /bootstrap/config.json /config/
+        fi
+      volumeMounts:
+      - mountPath: /config/
+        name: config
+        subPath: symlink-cleaner
+      - name: example-config
+        mountPath: "/bootstrap/"
+      securityContext: *default_securitycontext  
 
 overseerr:
   enabled: false
