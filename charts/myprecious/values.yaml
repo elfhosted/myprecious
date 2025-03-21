@@ -7332,6 +7332,9 @@ audiobookbayautomated:
     limits:
       cpu: 2
       memory: 1Gi      
+  envFrom:
+  - configMapRef:
+      name: audiobookbay-automated-env      
 
 openbooks:
   enabled: false
