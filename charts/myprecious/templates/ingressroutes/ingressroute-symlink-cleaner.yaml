@@ -10,7 +10,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-symlink-cleaner.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: symlinkcleaner
+        - name: symlink-cleaner
           kind: Service
           port: 5000
       middlewares:  
