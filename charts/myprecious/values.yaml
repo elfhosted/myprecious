@@ -6614,7 +6614,7 @@ symlinkcleaner:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-symlink-cleaner"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-symlink-cleaner,symlink-cleaner-example-config"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -6662,13 +6662,19 @@ symlinkcleaner:
         configMap:
           name: elfbot-symlink-cleaner
           optional: true          
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: symlink-cleaner-example-config          
   envFrom:
   - configMapRef:
       name: symlink-cleaner-env
   - configMapRef:
       name: elfbot-symlink-cleaner
       optional: true    
-  initContainers:
+  initContainers:  
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -6681,6 +6687,27 @@ symlinkcleaner:
         subPath: symlink-cleaner
       - mountPath: /tmp
         name: tmp      
+    copy-example-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+        # If we don't already have an example config, create one
+        if [ ! -f /config/config.json ];
+        then
+          cp /bootstrap/config.json /config/
+        fi
+      volumeMounts:
+      - mountPath: /config/
+        name: config
+        subPath: symlink-cleaner
+      - name: example-config
+        mountPath: "/bootstrap/"
+      securityContext: *default_securitycontext  
 
 overseerr:
   enabled: false
