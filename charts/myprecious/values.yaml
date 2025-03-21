@@ -6113,8 +6113,8 @@ flaresolverr: &app_flaresolverr
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    # runAsUser: 568
-    # runAsGroup: 568
+    runAsUser: 568
+    runAsGroup: 568
   automountServiceAccountToken: false
   resources:
     requests:
@@ -6610,7 +6610,7 @@ symlinkcleaner:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/symlink-cleaner
-    tag: "rolling@sha256:dbb12c39dd78294ff17e68ed1d38e9f6334771b786b84b7be39f35b395293992"
+    tag: "rolling@sha256:9008ed64fb926025559db97ce2decf87ecd06f2c9428676b2dc352f6d16ae6db"
   priorityClassName: tenant-normal
   controller:
     annotations:
