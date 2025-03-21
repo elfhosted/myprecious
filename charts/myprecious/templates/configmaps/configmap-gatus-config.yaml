@@ -661,7 +661,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}
+      {{ end }}  
 
       {{ if .Values.tunarr.enabled }}
       - name: tunarr
@@ -802,7 +802,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}            
+      {{ end }}       
+
+      {{ if .Values.symlinkcleaner.enabled }}
+      - name: symlink-cleaner
+        group: manage-media
+        url: "http://symlink-cleaner:5000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}               
 
       {{ if .Values.decluttarr.enabled }}
       - name: decluttarr

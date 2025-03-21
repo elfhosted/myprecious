@@ -6606,6 +6606,48 @@ thelounge:
           type: RuntimeDefault
         readOnlyRootFilesystem: true
 
+symlinkcleaner:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/symlink-cleaner
+    tag: "rolling@sha256:74ae8d9fc36d5a8396bb70cfaa58d222730fa69d2f71c3e2ec3ae010f2a0b264"
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-symlink-cleaner"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true # doesn't work because the node modules in /app try to create files
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 40Mi
+    limits:
+      cpu: 100m
+      memory: 1024Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5000
+  persistence:
+    <<: *storagemounts
+
 overseerr:
   enabled: false
   image:

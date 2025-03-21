@@ -1,0 +1,19 @@
+{{ if .Values.symlinkcleaner.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-symlink-cleaner.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-symlink-cleaner.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: symlinkcleaner
+          kind: Service
+          port: 5000
+      middlewares:  
+        - name: error-pages
+          namespace: traefik
+{{ end }}
