@@ -14294,6 +14294,40 @@ debridav: &app_debridav
       ports:
         http:
           port: 8080      
+  probes:
+    liveness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /actuator/health/liveness
+          port: 8080
+        initialDelaySeconds: 30
+        periodSeconds: 120
+        timeoutSeconds: 10
+    readiness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /actuator/health/readiness
+          port: 8000
+        initialDelaySeconds: 30
+        periodSeconds: 120
+        timeoutSeconds: 10
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 5
+        httpGet:
+          path: /health
+          port: 8000
+        initialDelaySeconds: 30
+        periodSeconds: 10
+        timeoutSeconds: 10            
   ingress:
     main:
       enabled: false
