@@ -1,5 +1,51 @@
 # Changelog
 
+## [1.312.0](https://github.com/elfhosted/myprecious/compare/v1.311.0...v1.312.0) (2025-03-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.3.0 ([25aeb81](https://github.com/elfhosted/myprecious/commit/25aeb8188cbaa3777aa9cc5e17d9f13bd5e722e7))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.7 ([49adf61](https://github.com/elfhosted/myprecious/commit/49adf61fad0a2d2d09fdf3ffde02b5be39620561))
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.17.0 ([b03d392](https://github.com/elfhosted/myprecious/commit/b03d3924a318621bac0f1e9b20499f5e5b52f560))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1675 ([c765bf7](https://github.com/elfhosted/myprecious/commit/c765bf789a218729551a2c7637e495c4ff90f762))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.8 ([72d8332](https://github.com/elfhosted/myprecious/commit/72d8332580a051faf303157e6964feca57a66e70))
+* **app:** update ghcr.io/elfhosted/seerrbridge docker tag to v0.4.6 ([501617c](https://github.com/elfhosted/myprecious/commit/501617c2fd64fe16a27d83dd804f51bfb6df7e94))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/arrtools:rolling docker digest to db962b3 ([3f52c63](https://github.com/elfhosted/myprecious/commit/3f52c637a38bec2394a41cf7a54bbb170054f0be))
+* **app:** update ghcr.io/elfhosted/audiobookbay-automated:rolling docker digest to 6e63d1e ([3bcf042](https://github.com/elfhosted/myprecious/commit/3bcf042efcb14545b8c43c81abc06a3c37a78142))
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 0314b17 ([4508dfb](https://github.com/elfhosted/myprecious/commit/4508dfb6cf64d6cacbe248f659010a1055bf53c0))
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 2ea8a34 ([a8e8e92](https://github.com/elfhosted/myprecious/commit/a8e8e924c5c6eb09e1c337879b6c96899619ed97))
+* **app:** update ghcr.io/elfhosted/kavita:0.8.5 docker digest to b6006d4 ([81ade58](https://github.com/elfhosted/myprecious/commit/81ade58cb6111a8a97cb42688446df341e5491f5))
+
+## [1.311.0](https://github.com/elfhosted/myprecious/compare/v1.310.0...v1.311.0) (2025-03-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.109 ([1ce7dc2](https://github.com/elfhosted/myprecious/commit/1ce7dc27b7de75fe55834a57e91cfadf71301dfa))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.09 ([f7f41e1](https://github.com/elfhosted/myprecious/commit/f7f41e1e80ccfbea832c0e70a4a849d9157d19a9))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.6 ([6ab3722](https://github.com/elfhosted/myprecious/commit/6ab37229e864e9d02b997542b51d3debd6fc533e))
+* **app:** update ghcr.io/elfhosted/gotosocial docker tag to v0.18.3 ([a09a22b](https://github.com/elfhosted/myprecious/commit/a09a22b6f2821e8400fd80b5e1ddea3c00865080))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1672 ([99311ec](https://github.com/elfhosted/myprecious/commit/99311ecc5ce238f2ba8651a34bc88457926c2957))
+* **app:** update ghcr.io/elfhosted/profilarr-frontend docker tag to v1.0.1 ([f9e0e4a](https://github.com/elfhosted/myprecious/commit/f9e0e4ae8ba6d3b04e2c9fba555f1ded26c638e3))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.6 ([914881a](https://github.com/elfhosted/myprecious/commit/914881aa96601f1c44c3ff35983e954797c1dc7d))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.7 ([aa14c76](https://github.com/elfhosted/myprecious/commit/aa14c76c5ed2904bfdae43363d4a3b1693a9ec81))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.69.1 ([55f8bc7](https://github.com/elfhosted/myprecious/commit/55f8bc74c419f0e1658fa3dd6c1518cd5e4159b5))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.61.0 ([0b3d0c5](https://github.com/elfhosted/myprecious/commit/0b3d0c51384dfab5ceffa66d6112f8ba62668e91))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8 ([1a0c552](https://github.com/elfhosted/myprecious/commit/1a0c552a07d34a6e32b05e915c2a30a732727a9e))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 457ca41 ([5bab617](https://github.com/elfhosted/myprecious/commit/5bab617b54a24bd4633888cbfcfbec685f8bbbc3))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.1 docker digest to 9bca2ef ([7053d00](https://github.com/elfhosted/myprecious/commit/7053d00fe5e32d873111f13070d799f6eaa89915))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner:rolling docker digest to dbb12c3 ([27f798e](https://github.com/elfhosted/myprecious/commit/27f798eb96fdac991008f81f05d444bd0fd10439))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to 9e134b7 ([d965dad](https://github.com/elfhosted/myprecious/commit/d965dadbeda3af8a35fb274969942734ad5613e9))
+
 ## [1.310.0](https://github.com/elfhosted/myprecious/compare/v1.309.0...v1.310.0) (2025-03-20)
 
 

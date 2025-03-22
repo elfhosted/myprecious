@@ -3497,7 +3497,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:aa57b270767053bc9d9bf5897b3577b5dbc2f7e1add4479a7c07991e9d60475f
+    tag: rolling@sha256:0314b172b73d9cf84fd0618a844ff79b21a066577113a1c62a2958f31de3e033
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
@@ -3788,7 +3788,7 @@ kavita:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kavita
-    tag: 0.8.5@sha256:36125a28e2a29254c598e10f4b6f399f0f17d8fd9863da42a87dceed05399964
+    tag: 0.8.5@sha256:b6006d4fb14508108a809f1fff81186fd759ed8fecf6855b8c3268054a710045
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3855,7 +3855,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 7.26.0@sha256:dc6696456caa980a7c7a5a6654011d0d5c9dd1ff4e8bdf1071f1e3f01da36c7c
+    tag: 8.0.1@sha256:d0ea14c64f7253ad91d94686d8622f8b69c9c755a8950f8b3eddffb431cfdd9b
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5960,7 +5960,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.16.0@sha256:d430f5a9bc5efbc52833306066a15b7ef6093cf017b26ec339e44d5b45cc7940
+    tag: 5.17.0@sha256:da063af4d683d3ef7c92c0122adf1c404351d3d238de03d2c4f58261c2416538
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6448,7 +6448,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:457ca41c1e4577753d724d57a008ee1686ee52ae9f43be1a195985078344c3cd
+    tag: develop-vaapi@sha256:457ca41c1e4577753d724d57a008ee1686ee52ae9f43be1a195985072344c3cd
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7299,7 +7299,7 @@ audiobookrequest:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookrequest
-    tag: 1.2.2@sha256:596c8e51db05b25804bf6593db79ce2ac990ca18a1f7bf7206ab07df1f37c3d7
+    tag: 1.3.0@sha256:28127441bc70ef531bdc1368bdcb64101fdeaf9419d2f19b01116c4739ff686e
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -7370,7 +7370,7 @@ audiobookbayautomated:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookbay-automated
-    tag: rolling@sha256:b2939e6a7c9d36e4d39c7ba73c3edcb373a08652a746d9ee490a91b1be847c38
+    tag: rolling@sha256:6e63d1eadb96440487948b6e71859f8247959f5b99aeefad460bb260d3b1a04c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8223,7 +8223,7 @@ arrtools:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/arrtools
-    tag: rolling@sha256:63f329b47cdbfa6cdeb8b51b9530390f49fd75c57a5125fe26b8709b48a55996
+    tag: rolling@sha256:db962b3d011000a239a3878c8fc99116a507fdf54fd5d1b1f134cfdb6e8b6374
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8311,7 +8311,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.4.5@sha256:c3f8d1b70a8bd30793ac2ee59c4a0678fa5a114a01c6e7d09f45754e3990397a
+    tag: v0.4.6@sha256:ef040ad21a9587ca5c42ff8190f4f5ddf01150d56443bc21de70e3d9a724be74
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11199,7 +11199,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1672@sha256:895bf9dc6e0f9fde8e11e3953dfb5ff5e818512e25b9eab58483a610e6b58aa4
+    tag: 0.22.1675@sha256:e683b156937527db5c8dd75e1149ea5aae3e4fd59967570efd98ed9ecf18ec83
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14185,7 +14185,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.7@sha256:388a9acb566bc06c8dcbd49728d64c55936ede58f076b0f81c45006cffaeea5a
+    tag: v0.2.8@sha256:c37d90c572fef6540434feb33013f6033c3b8ed23f21dfaee53fff335d92ebf8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14270,7 +14270,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.7@sha256:388a9acb566bc06c8dcbd49728d64c55936ede58f076b0f81c45006cffaeea5a
+      image: ghcr.io/elfhosted/pulsarr:v0.2.8@sha256:c37d90c572fef6540434feb33013f6033c3b8ed23f21dfaee53fff335d92ebf8
       command:
       - /bin/ash
       - -c
@@ -14444,7 +14444,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.5@sha256:d04a993dfbfd7c285509ed8fb3e6b3cd4e2316855a10d4fb3556c23019dbcdd5
+    tag: 0.8.7@sha256:7bec021661d9c96aa072ece4a44f6445be2da0db432384776dc7ed9e84cfd324
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
