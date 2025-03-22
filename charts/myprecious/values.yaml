@@ -6714,7 +6714,7 @@ symlinkcleaner:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/symlink-cleaner
-    tag: "rolling@sha256:9008ed64fb926025559db97ce2decf87ecd06f2c9428676b2dc352f6d16ae6db"
+    tag: rolling@sha256:ce6c5bff132c8ad369001a6e743ea076ed639a08846c07e0a107349aa07903d9
   priorityClassName: tenant-normal
   controller:
     annotations:
