@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.312.0](https://github.com/elfhosted/myprecious/compare/v1.311.0...v1.312.0) (2025-03-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.3.0 ([25aeb81](https://github.com/elfhosted/myprecious/commit/25aeb8188cbaa3777aa9cc5e17d9f13bd5e722e7))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.7 ([49adf61](https://github.com/elfhosted/myprecious/commit/49adf61fad0a2d2d09fdf3ffde02b5be39620561))
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.17.0 ([b03d392](https://github.com/elfhosted/myprecious/commit/b03d3924a318621bac0f1e9b20499f5e5b52f560))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1675 ([c765bf7](https://github.com/elfhosted/myprecious/commit/c765bf789a218729551a2c7637e495c4ff90f762))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.8 ([72d8332](https://github.com/elfhosted/myprecious/commit/72d8332580a051faf303157e6964feca57a66e70))
+* **app:** update ghcr.io/elfhosted/seerrbridge docker tag to v0.4.6 ([501617c](https://github.com/elfhosted/myprecious/commit/501617c2fd64fe16a27d83dd804f51bfb6df7e94))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/arrtools:rolling docker digest to db962b3 ([3f52c63](https://github.com/elfhosted/myprecious/commit/3f52c637a38bec2394a41cf7a54bbb170054f0be))
+* **app:** update ghcr.io/elfhosted/audiobookbay-automated:rolling docker digest to 6e63d1e ([3bcf042](https://github.com/elfhosted/myprecious/commit/3bcf042efcb14545b8c43c81abc06a3c37a78142))
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 0314b17 ([4508dfb](https://github.com/elfhosted/myprecious/commit/4508dfb6cf64d6cacbe248f659010a1055bf53c0))
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 2ea8a34 ([a8e8e92](https://github.com/elfhosted/myprecious/commit/a8e8e924c5c6eb09e1c337879b6c96899619ed97))
+* **app:** update ghcr.io/elfhosted/kavita:0.8.5 docker digest to b6006d4 ([81ade58](https://github.com/elfhosted/myprecious/commit/81ade58cb6111a8a97cb42688446df341e5491f5))
+
 ## [1.311.0](https://github.com/elfhosted/myprecious/compare/v1.310.0...v1.311.0) (2025-03-21)
 
 
