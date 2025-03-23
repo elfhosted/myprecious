@@ -14480,6 +14480,12 @@ debridav: &app_debridav
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     elfbot:
       enabled: "true"
       type: "custom"
@@ -14663,6 +14669,10 @@ debridav: &app_debridav
           memory: 8Gi  
     fake-torrent-server:
       image: ghcr.io/elfhosted/fake-torrent-server:rolling@sha256:270254374a67e7573bed019928018057ab7736e9d75e1b07243a23a28a24a5e2
+      volumeMounts:
+      - name: logs
+        mouthPath: /app/logs
+        subPath: debridav/fake-torrent-server
 
 rclonedebridlink:
   enabled: false
