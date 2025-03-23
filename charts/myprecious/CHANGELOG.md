@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.313.0](https://github.com/elfhosted/myprecious/compare/v1.312.0...v1.313.0) (2025-03-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/decypharr docker tag to v0.5.1 ([6e2cf80](https://github.com/elfhosted/myprecious/commit/6e2cf808fc88d9b6a6ba26eec03441e210767151))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1680 ([c456738](https://github.com/elfhosted/myprecious/commit/c4567383ff403c31dee1874cc48804c78da10448))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.10.3.4602 ([5882398](https://github.com/elfhosted/myprecious/commit/5882398778fe5213258509fbec8cbe0bbd98a00d))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.33.0.4994 ([3feeda4](https://github.com/elfhosted/myprecious/commit/3feeda475a5ec98d0a109067cbc823b7f1f243bc))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.9 ([9fa9855](https://github.com/elfhosted/myprecious/commit/9fa9855ed60caeaff5da013c71cd686340265ffe))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to c25680d ([4d2de98](https://github.com/elfhosted/myprecious/commit/4d2de985a61dbb37b4990ff30a5691739fc3c466))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.1 docker digest to 94e674e ([b8f61ed](https://github.com/elfhosted/myprecious/commit/b8f61ed21ea0fb12318db4b2486866d8bde11f48))
+* **app:** update ghcr.io/elfhosted/wests-blackhole-script:v1.5.1 docker digest to 3f7a6e0 ([3051665](https://github.com/elfhosted/myprecious/commit/305166524ea787e46fcbcd24c9823327857a9c3d))
+
 ## [1.312.0](https://github.com/elfhosted/myprecious/compare/v1.311.0...v1.312.0) (2025-03-22)
 
 
