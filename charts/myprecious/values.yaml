@@ -14671,7 +14671,7 @@ debridav: &app_debridav
       image: ghcr.io/elfhosted/fake-torrent-server:rolling@sha256:270254374a67e7573bed019928018057ab7736e9d75e1b07243a23a28a24a5e2
       volumeMounts:
       - name: logs
-        mouthPath: /app/logs
+        mountPath: /app/logs
         subPath: debridav/fake-torrent-server
 
 rclonedebridlink:
