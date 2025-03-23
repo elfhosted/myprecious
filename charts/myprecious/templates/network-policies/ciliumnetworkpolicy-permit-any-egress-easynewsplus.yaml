@@ -1,12 +1,9 @@
-{{ if .Values.aiostreams.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-  name: "permit-aiostreams-egress-easynewsplus"
+  name: "permit-any-egress-easynewsplus"
 spec:
-  endpointSelector:
-    matchLabels:
-      app.kubernetes.io/name: aiostreams
+  endpointSelector: {}
   egress:
   - toEndpoints:
     - matchLabels:
@@ -15,4 +12,3 @@ spec:
       - ports:
         - port: '1337'
           protocol: TCP
-{{ end }}
