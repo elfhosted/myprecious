@@ -4418,7 +4418,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.32.2.4987@sha256:7f6085f4e399e701969dd56ee13c5f49e8915bf41e6217c6f59b36cc0a938241
+    tag: 1.33.0.4994@sha256:7042d4a620b6e842ed93c5d42ca49ad6f47429b365bffe48bb124fcaac12ee65
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4682,7 +4682,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.10.1.4589@sha256:4508ebbf0e32ac37f11b72f9e7a7b067b7e0ccba7dc1b9d5bbb1d5bc74b25688
+    tag: 2.10.3.4602@sha256:b3a592b5f18bba3e4eab5b0d881ea9044319a19b59d1a473d7b0b0327f629858
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -11199,7 +11199,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1675@sha256:e683b156937527db5c8dd75e1149ea5aae3e4fd59967570efd98ed9ecf18ec83
+    tag: 0.22.1680@sha256:3bffc6fa59fe6560771c964466572825b5e002d9b165e9c18e7c4380405d7579
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14185,7 +14185,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.8@sha256:c37d90c572fef6540434feb33013f6033c3b8ed23f21dfaee53fff335d92ebf8
+    tag: v0.2.9@sha256:354d937ec37ec96c42b081980567fa3dfc8e002027a8543140cd2872006a910a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14270,7 +14270,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.8@sha256:c37d90c572fef6540434feb33013f6033c3b8ed23f21dfaee53fff335d92ebf8
+      image: ghcr.io/elfhosted/pulsarr:v0.2.9@sha256:354d937ec37ec96c42b081980567fa3dfc8e002027a8543140cd2872006a910a
       command:
       - /bin/ash
       - -c
@@ -15037,7 +15037,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr
-    tag: v0.5.0@sha256:e3a50fa6d6b30943761c4d5498b342ec70d9ee01070f22aaae9e21401113397a
+    tag: v0.5.1@sha256:be8889029c64a2c20987be8f3e9ce33998644cde54e050aac8c683ac3d9931fa
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
