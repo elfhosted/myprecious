@@ -5155,7 +5155,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.03.20.0029-nightly@sha256:2786089b9453d3c42a0a2d13da8169cc5f0aa51dc2ebb8dc47c6943ca4f7551f
+      image: ghcr.io/elfhosted/zurg-rc:2025.03.24.0030-nightly@sha256:72ec4f1aba38d11f7271514d1e25ad5b89df0bc85d182b0725dda3ef1dcd551f
       command:
       - /bin/bash
       - -c
@@ -11201,7 +11201,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1680@sha256:3bffc6fa59fe6560771c964466572825b5e002d9b165e9c18e7c4380405d7579
+    tag: 0.22.1685@sha256:d87f10eb3cefdfbee772d476ca503ccaa7d336c466009e8ed0b19720ca21deba
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12412,7 +12412,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.28@sha256:d850287348215eb14f138ec95805f4cc335a2a7cb38bc3475dfdca68e82f59df
+    tag: 4.3.29@sha256:9525b038077e17c1460e6ce743855e10e1ca720ec7200219e91846ff3dbc0fa5
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -13262,7 +13262,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.03.20.0029-nightly@sha256:2786089b9453d3c42a0a2d13da8169cc5f0aa51dc2ebb8dc47c6943ca4f7551f
+    tag: 2025.03.24.0030-nightly@sha256:72ec4f1aba38d11f7271514d1e25ad5b89df0bc85d182b0725dda3ef1dcd551f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13608,7 +13608,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.09@sha256:12771e56105dfcdd26f3905124068ca0bfeec11e3da489afb10ddc8e295db1d0
+    tag: v0.6.10@sha256:4f289836b43d7217fe17dfd494ab12f5e54a660fdfc5db1c4b331c6a851c80f5
   priorityClassName: tenant-normal
   controller:
     annotations:
