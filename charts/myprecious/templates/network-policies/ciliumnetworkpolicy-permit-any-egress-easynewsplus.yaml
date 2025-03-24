@@ -7,4 +7,9 @@ spec:
   egress:
   - toEndpoints:
     - matchLabels:
+        app.kubernetes.io/name: easynewsplus
         k8s:io.kubernetes.pod.namespace: easynewsplus
+    toPorts:
+      - ports:
+        - port: '1337'
+          protocol: TCP
