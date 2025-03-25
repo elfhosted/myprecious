@@ -14673,7 +14673,7 @@ debridav: &app_debridav
     #     mountPath: /app/logs
     #     subPath: debridav/fake-torrent-server
     fakearr:
-      image: ghcr.io/elfhosted/fakearr:rolling@sha256:b084babd29f622ae01c7a1697ba8da5ea7f1c69262105e22c8b19c6be3aba43f
+      image: ghcr.io/elfhosted/fakearr:rolling@sha256:3fae796485fd4a6d38a965ef12b59c2d010ade422f32cb3809593450bc012f23
 
 rclonedebridlink:
   enabled: false
