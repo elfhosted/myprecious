@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:e2bd030212c3e6f38764069b1ba3dbf035304e1ab0f09260a606445b71ce0a4d
+    tag: 5.21.1.9799@sha256:331c286ba3ecded7495b55a3985c4537d3f8e4acba2c23598b628842d27e02a2
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2385,7 +2385,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:e2bd030212c3e6f38764069b1ba3dbf035304e1ab0f09260a606445b71ce0a4d
+    tag: 5.21.1.9799@sha256:331c286ba3ecded7495b55a3985c4537d3f8e4acba2c23598b628842d27e02a2
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8745,7 +8745,7 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: v1.0.19@sha256:1abf4591c9171008c9ba6a7885df09f74c6884d65f0d589e96d582411ef2101d
+    tag: v1.0.20@sha256:647f3780b959b23b0d7a168c0eb5aa4cd19309a4061a13e4b8b41429c3ed8476
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11201,7 +11201,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1685@sha256:d87f10eb3cefdfbee772d476ca503ccaa7d336c466009e8ed0b19720ca21deba
+    tag: 0.22.1691@sha256:4add70dc421fdc7e6161f23d3a1d7915b9778b8962ffc334777c9329480cb15f
   priorityClassName: tenant-normal
   controller:
     annotations:
