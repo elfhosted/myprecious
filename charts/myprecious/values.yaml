@@ -14667,8 +14667,15 @@ debridav: &app_debridav
           cpu: 500m
           memory: 8Gi
     fakearr:
-      image: ghcr.io/elfhosted/fakearr:rolling@sha256:891269ae77f1252f662cd7915e885877a6399afa28ade643c49861340491dae9
-
+      image: ghcr.io/elfhosted/fakearr:rolling@sha256:b3f366d0eb697e216c4146c9769b7b81b98cc1b466157cbaf8ed533ad9e73605
+      envFrom:
+      - configMapRef:
+          name: elfbot-debridav
+          optional: true  
+      volumeMounts:
+      - name: tmp
+        mountPath: /tmp    
+          
 rclonedebridlink:
   enabled: false
   image:

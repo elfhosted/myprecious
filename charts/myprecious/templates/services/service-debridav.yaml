@@ -16,10 +16,10 @@ spec:
     targetPort: 8080
     protocol: TCP
     name: http
-  - port: 8000
-    targetPort: 8000
+  - port: 5001
+    targetPort: 5001
     protocol: TCP
-    name: fake-torrent-server
+    name: fakearr
   selector:
     app.elfhosted.com/name: debridav
     app.kubernetes.io/instance: {{ .Release.Name }}
