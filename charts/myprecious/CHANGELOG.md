@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.316.0](https://github.com/elfhosted/myprecious/compare/v1.315.0...v1.316.0) (2025-03-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.110 ([55f44a2](https://github.com/elfhosted/myprecious/commit/55f44a2004f49e4372f83a478e2b1c95d16959f7))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.111 ([b239e77](https://github.com/elfhosted/myprecious/commit/b239e777372d1a3a7fa780eef242c6b9e7a65550))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1695 ([0d81c77](https://github.com/elfhosted/myprecious/commit/0d81c77533eff17b835a055dcbf54422f0924ab7))
+* **app:** update ghcr.io/elfhosted/overseerr docker tag to v1.34.0 ([233ac07](https://github.com/elfhosted/myprecious/commit/233ac079696576c48e1f088313e18b20b51efa5c))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/debridav:0.8.7 docker digest to c81d16c ([eeaef8d](https://github.com/elfhosted/myprecious/commit/eeaef8dfa8b6d318467444d7aa391343ffb1ba87))
+* **app:** update ghcr.io/elfhosted/debridav:0.8.7 docker digest to cc675c6 ([232bc20](https://github.com/elfhosted/myprecious/commit/232bc20a4e61db9638ef81899a7cdb3e24c7e202))
+* **app:** update ghcr.io/elfhosted/fakearr:rolling docker digest to cff50dc ([2ca16fa](https://github.com/elfhosted/myprecious/commit/2ca16fa36ceec8412cb2bb152ad556b6ceb333b1))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop:1.33.0.4994 docker digest to 0cb6ec8 ([079768b](https://github.com/elfhosted/myprecious/commit/079768bbda57cde6454bc4f097f3fdfac92bacc3))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to 3cb8c3c ([3cd02f1](https://github.com/elfhosted/myprecious/commit/3cd02f18258b305fdd53f1211f0bd37a6c6c0a59))
+* **app:** update quay.io/linuxserver.io/calibre:8.0.1 docker digest to 54eec64 ([282c48b](https://github.com/elfhosted/myprecious/commit/282c48b7e7a3188bcd52452f0aa2574e93daf8a7))
+
 ## [1.315.0](https://github.com/elfhosted/myprecious/compare/v1.314.0...v1.315.0) (2025-03-25)
 
 
