@@ -18,7 +18,15 @@ spec:
         - name: {{ .Release.Name }}-add-cors-for-homer
         - name: error-pages
           namespace: traefik          
-      {{ end }}  
+      {{ end }}
+    # Allow API tests without auth (necessary for ajax responses)
+    - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`) && PathRegexp(`^/api/(.+)/test`)
+      kind: Rule
+      services:
+        - name: prowlarr
+          kind: Service
+          port: 9696
+      {{ end }}
     - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
