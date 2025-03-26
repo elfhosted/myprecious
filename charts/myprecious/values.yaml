@@ -3854,7 +3854,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.0.1@sha256:d0ea14c64f7253ad91d94686d8622f8b69c9c755a8950f8b3eddffb431cfdd9b
+    tag: 8.0.1@sha256:54eec6464a59fd54e25331e194f54548fc259eb963948bb8ac7d818995661feb
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4417,7 +4417,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.33.0.4994@sha256:7042d4a620b6e842ed93c5d42ca49ad6f47429b365bffe48bb124fcaac12ee65
+    tag: 1.33.0.4994@sha256:0cb6ec8baaff70a0748e62a654ec06e80f85420cf180afd4b5135e9dd132f930
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6819,7 +6819,7 @@ overseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/overseerr
-    tag: 1.33.2@sha256:1242c55a35d79ee5ec5ab85543323e82746483ed7d7d02aab9b2c1829a76e16d
+    tag: 1.34.0@sha256:25915ea8bf16d0506e3c93f7ffdc7f2778ec6d7bd113fd69d683489617984519
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6903,7 +6903,7 @@ overseerr:
         mountPath: "/bootstrap/"
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/overseerr:1.33.2@sha256:1242c55a35d79ee5ec5ab85543323e82746483ed7d7d02aab9b2c1829a76e16d
+      image: ghcr.io/elfhosted/overseerr:1.34.0@sha256:25915ea8bf16d0506e3c93f7ffdc7f2778ec6d7bd113fd69d683489617984519
       command:
         - /bin/bash
         - -c
@@ -10680,7 +10680,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.109@sha256:d4a6b08c79460d31de8519a8dc6167178ded91245b71bff419db41ab7f256309
+    tag: 0.4.110@sha256:4a830ece896bb23ebb3e4214156f11519c632163bdd4f98db3f7a8138a70c303
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11201,7 +11201,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1691@sha256:4add70dc421fdc7e6161f23d3a1d7915b9778b8962ffc334777c9329480cb15f
+    tag: 0.22.1695@sha256:a8a048a02986d8476a0402309573c4359824a5fe89d8a32490513037dabcad20
   priorityClassName: tenant-normal
   controller:
     annotations:
