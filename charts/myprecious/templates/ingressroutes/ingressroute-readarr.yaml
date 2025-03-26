@@ -25,7 +25,6 @@ spec:
         - name: readarr
           kind: Service
           port: 8787
-      {{ end }}          
     {{ if .Values.readarrexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-readarr.{{ .Values.dns_domain }}`) && PathPrefix(`/api/`)
       kind: Rule

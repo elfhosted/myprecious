@@ -26,7 +26,6 @@ spec:
         - name: prowlarr
           kind: Service
           port: 9696
-      {{ end }}
     - match: Host(`{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}`)
       kind: Rule
       services:

@@ -25,7 +25,6 @@ spec:
         - name: radarr
           kind: Service
           port: 7878
-      {{ end }}
     {{ if .Values.radarrexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-radarr.{{ .Values.dns_domain }}`) && PathPrefix(`/api/`)
       kind: Rule

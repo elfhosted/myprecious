@@ -25,7 +25,6 @@ spec:
         - name: readarraudio
           kind: Service
           port: 8787
-      {{ end }}          
     {{ if .Values.readarraudioexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-readarraudio.{{ .Values.dns_domain }}`) && PathPrefix(`/api/`)
       kind: Rule

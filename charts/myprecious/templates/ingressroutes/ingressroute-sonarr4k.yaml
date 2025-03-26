@@ -25,7 +25,6 @@ spec:
         - name: sonarr4k
           kind: Service
           port: 8989
-      {{ end }}          
     {{ if .Values.sonarr4kexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-sonarr4k.{{ .Values.dns_domain }}`) && PathPrefix(`/api/`)
       kind: Rule

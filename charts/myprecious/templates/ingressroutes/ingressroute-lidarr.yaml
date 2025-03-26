@@ -25,7 +25,6 @@ spec:
         - name: lidarr
           kind: Service
           port: 8686
-      {{ end }}          
     {{- if not .Values.lidarrexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-lidarr.{{ .Values.dns_domain }}`) && PathPrefix(`/api/`)
       kind: Rule
