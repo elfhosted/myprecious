@@ -14538,10 +14538,10 @@ debridav: &app_debridav
   resources:
     requests:
       cpu: 0m
-      memory: 60Mi
+      memory: 512Mi
     limits:
       cpu: 1
-      memory: 512Mi
+      memory: 2Gi
   initContainers:
     bootstrap:
       <<: *bootstrap
