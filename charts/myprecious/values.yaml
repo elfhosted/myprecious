@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: true
+safeToRelease: false
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:e2bd030212c3e6f38764069b1ba3dbf035304e1ab0f09260a606445b71ce0a4d
+    tag: 5.21.1.9799@sha256:576e7eae354eddacee6e51806c9ddc9a43a651eeb1884206787b5409a80386a7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2385,7 +2385,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:e2bd030212c3e6f38764069b1ba3dbf035304e1ab0f09260a606445b71ce0a4d
+    tag: 5.21.1.9799@sha256:576e7eae354eddacee6e51806c9ddc9a43a651eeb1884206787b5409a80386a7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3943,7 +3943,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:704796199a884fe1931a36753443e748ee9a0a04a80271263b7607d9a161c959
+    tag: 4.0.14.2939@sha256:ad0e0c7c81caa307608c2928d39182ec1159d3205a4eb743c5a998d193819dc6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4138,7 +4138,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:704796199a884fe1931a36753443e748ee9a0a04a80271263b7607d9a161c959
+    tag: 4.0.14.2939@sha256:ad0e0c7c81caa307608c2928d39182ec1159d3205a4eb743c5a998d193819dc6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6716,7 +6716,7 @@ symlinkcleaner:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/symlink-cleaner
-    tag: rolling@sha256:ce6c5bff132c8ad369001a6e743ea076ed639a08846c07e0a107349aa07903d9
+    tag: rolling@sha256:bd92d981469e222f574a6ab9b88ab489d60771b560a6b06f907d017ad54c0fd3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15367,7 +15367,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.129.0@sha256:7122354defac839a7ecf541395907c21805f6a2b60b67ee476e66b162f1a355d
+    tag: v1.130.1@sha256:6c8b4ddf5fd5a25443078eef47d015c231b1ce092fe3b6f2d758b182f0066e26
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15455,7 +15455,7 @@ immich:
         name: tmp
   additionalContainers:
     ml:
-      image: ghcr.io/immich-app/immich-machine-learning:v1.129.0
+      image: ghcr.io/immich-app/immich-machine-learning:v1.130.1
       envFrom:
       - configMapRef:
           name: immich-env

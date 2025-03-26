@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.315.0](https://github.com/elfhosted/myprecious/compare/v1.314.0...v1.315.0) (2025-03-25)
+
+
+### Features
+
+* add magic multi-source import script for aars ([8d91b1d](https://github.com/elfhosted/myprecious/commit/8d91b1d96b39d02d982a573501e16be88ec594c4))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1691 ([257fd64](https://github.com/elfhosted/myprecious/commit/257fd642f15f0d6416545e11c356da81bea046aa))
+* **app:** update ghcr.io/elfhosted/suggestarr docker tag to v1.0.20 ([ef6d4f4](https://github.com/elfhosted/myprecious/commit/ef6d4f4fb8dc9870434145802a6573dba9f9287d))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.130.0 ([cce1bf6](https://github.com/elfhosted/myprecious/commit/cce1bf653c5c5f5b9eb0dffac3e2244c8271bc92))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.130.1 ([cc7c446](https://github.com/elfhosted/myprecious/commit/cc7c44652a5925bf91e46406e16c9595085c4351))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.130.0 ([6b8d5a4](https://github.com/elfhosted/myprecious/commit/6b8d5a48d8bb2592e970ee58b430a8532e678681))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.130.1 ([cf5af57](https://github.com/elfhosted/myprecious/commit/cf5af57bacca2d23343fa5b61061bf327791bb8e))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/fakearr:rolling docker digest to 318fae3 ([5008762](https://github.com/elfhosted/myprecious/commit/5008762e76d9a365596e372ef47841eda4f754cf))
+* **app:** update ghcr.io/elfhosted/radarr:5.21.1.9799 docker digest to 331c286 ([88bd019](https://github.com/elfhosted/myprecious/commit/88bd019b498d14ca110433a831a928bce0d63bca))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner:rolling docker digest to bd92d98 ([2e2bc0c](https://github.com/elfhosted/myprecious/commit/2e2bc0c5aaf33088d48dfac2615de1716ff34d6f))
+
 ## [1.314.0](https://github.com/elfhosted/myprecious/compare/v1.313.0...v1.314.0) (2025-03-24)
 
 
