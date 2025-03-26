@@ -18,6 +18,13 @@ spec:
         - name: {{ .Release.Name }}-add-cors-for-homer 
         - name: error-pages
           namespace: traefik
+    # Allow API tests without auth (necessary for ajax responses)
+    - match: Host(`{{ .Release.Name }}-lidarr.{{ .Values.dns_domain }}`) && PathRegexp(`^/api/(.+)/test`)
+      kind: Rule
+      services:
+        - name: lidarr
+          kind: Service
+          port: 8686
     {{- if not .Values.lidarrexposed.enabled }}
     - match: Host(`{{ .Release.Name }}-lidarr.{{ .Values.dns_domain }}`) && PathPrefix(`/api/`)
       kind: Rule
