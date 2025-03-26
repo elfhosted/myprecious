@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:f7561dde54407438426fdbacee09fddd41f7565bf70beb80debccf66f6ed0453
+    tag: 5.21.1.9799@sha256:0cfc0cac0bce338c36c7637c922930aee893b24536f02ce45cb8de87b9b637ef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2385,7 +2385,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:f7561dde54407438426fdbacee09fddd41f7565bf70beb80debccf66f6ed0453
+    tag: 5.21.1.9799@sha256:0cfc0cac0bce338c36c7637c922930aee893b24536f02ce45cb8de87b9b637ef
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3943,7 +3943,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:a679e787af15317efec58bd13dcf30f627927ef57f8a96d2f5fe65ebcf53051b
+    tag: 4.0.14.2939@sha256:4c4769ffc7f930127333bf4805d7a0550e705d105f9dba4bdf0f7f04196e34ab
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4138,7 +4138,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:a679e787af15317efec58bd13dcf30f627927ef57f8a96d2f5fe65ebcf53051b
+    tag: 4.0.14.2939@sha256:4c4769ffc7f930127333bf4805d7a0550e705d105f9dba4bdf0f7f04196e34ab
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -14667,7 +14667,7 @@ debridav: &app_debridav
           cpu: 500m
           memory: 8Gi
     fakearr:
-      image: ghcr.io/elfhosted/fakearr:rolling@sha256:06db412eefb9c1594f3dddcae60be39d9377a7253dd70091cf599bbfea1068e9
+      image: ghcr.io/elfhosted/fakearr:rolling@sha256:cff50dcdfc0c196c9ec2a14b0c4da20d64a975973d8acc783b72889fae9fb3c6
       envFrom:
       - configMapRef:
           name: elfbot-debridav
