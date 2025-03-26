@@ -13,7 +13,4 @@ data:
   SONARR_INTEGRATION_ENABLED: "false"
   RADARR_INTEGRATION_ENABLED: "false"
   EASYNEWS_ENABLEDFORTORRENTS: "true"
-
-  # We need a high database limit for concurrency (psql default is 100)
-  SPRING_DATASOURCE_HIKARI_MAXIMUMPOOLSIZE: "90"
 {{ end }}

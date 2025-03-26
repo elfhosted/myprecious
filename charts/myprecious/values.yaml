@@ -14446,7 +14446,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.7@sha256:c81d16c65ce4389a7dc6b381aa5f8b9ee8ab5a89affacf7af2fab00dad873e4a
+    tag: 0.8.7@sha256:a03ebbab5ae3792fb48cecca19059c81706e0f19c17c474cba9debcab4a6b483
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
@@ -14653,6 +14653,8 @@ debridav: &app_debridav
           value: debridav
         - name: POSTGRES_USER
           value: debridav
+        - name: POSTGRES_EXTRA_CONF
+          value: "max_connections=310"
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
