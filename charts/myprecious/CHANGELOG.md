@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.317.1](https://github.com/elfhosted/myprecious/compare/v1.317.0...v1.317.1) (2025-03-27)
+
+
+### Bug Fixes
+
+* last-minute symlink-cleaner update! 🎉 ([d307753](https://github.com/elfhosted/myprecious/commit/d307753f317c01f91085219b03a37ba4b1a0881d))
+
 ## [1.317.0](https://github.com/elfhosted/myprecious/compare/v1.316.0...v1.317.0) (2025-03-27)
 
 
