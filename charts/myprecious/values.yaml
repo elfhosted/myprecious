@@ -14646,6 +14646,8 @@ debridav: &app_debridav
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310
       env:
         - name: POSTGRES_PASSWORD
           value: debridav
@@ -14653,8 +14655,6 @@ debridav: &app_debridav
           value: debridav
         - name: POSTGRES_USER
           value: debridav
-        - name: POSTGRES_EXTRA_CONF
-          value: "max_connections=310"
       volumeMounts:
       - mountPath: /var/lib/postgresql/data
         name: config
