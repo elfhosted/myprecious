@@ -6761,6 +6761,14 @@ symlinkcleaner:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: symlink-cleaner
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs          
     elfbot:
       enabled: "true"
       type: "custom"
