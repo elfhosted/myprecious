@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.317.0](https://github.com/elfhosted/myprecious/compare/v1.316.0...v1.317.0) (2025-03-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.113 ([32fe727](https://github.com/elfhosted/myprecious/commit/32fe727466fda4ed81e49a9f6ffe26e69182d92d))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.12 ([0fd2f2f](https://github.com/elfhosted/myprecious/commit/0fd2f2f8c0b202d13047dcc7cb2cd65c722116cc))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1699 ([6bdf32a](https://github.com/elfhosted/myprecious/commit/6bdf32aa5a4fc2a71a0f4e591b8859fc87fbc244))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.130.3 ([cfb8011](https://github.com/elfhosted/myprecious/commit/cfb80117c756da5857e4837741f8f6e78c22160d))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.130.3 ([6a4bd67](https://github.com/elfhosted/myprecious/commit/6a4bd67a4c39253b493940872792a8b2d5c66356))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/pulsarr:v0.2.9 docker digest to 77d9fd7 ([457e5ba](https://github.com/elfhosted/myprecious/commit/457e5ba51938a92d123775aa0edc8f31ff043a1f))
+* **app:** update ghcr.io/elfhosted/resilio-sync:3.0.3.1065-1 docker digest to 544fe39 ([7bccea7](https://github.com/elfhosted/myprecious/commit/7bccea78b95ab5ea4e7b16145bfe31da045b41f3))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner:rolling docker digest to ad7a64b ([6bd9bb6](https://github.com/elfhosted/myprecious/commit/6bd9bb68d477cded68861903113be04371e11041))
+
 ## [1.316.0](https://github.com/elfhosted/myprecious/compare/v1.315.0...v1.316.0) (2025-03-26)
 
 
