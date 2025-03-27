@@ -10680,7 +10680,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.111@sha256:db823ec56cdd522c288db076f10fb71734c0ee289526bb0c8631cbc236a36c8c
+    tag: 0.4.113@sha256:c5629fc7a81d7d4ce2faceb3c5d2c8287d13161e763faa62cdf3583f15d7fa6f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11201,7 +11201,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1695@sha256:a8a048a02986d8476a0402309573c4359824a5fe89d8a32490513037dabcad20
+    tag: 0.22.1699@sha256:3a9d11f61cec6d4b908f4ef81d44e22271cb7c658c094f90d9b63b6d78db8590
   priorityClassName: tenant-normal
   controller:
     annotations:
