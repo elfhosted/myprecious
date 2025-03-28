@@ -5424,7 +5424,7 @@ jellyfin: &app_jellyfin
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin,jellyfin-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  persistence:
+  persistence: &app_jellyfin_persistence
     <<: *storagemounts
     config:
       enabled: true
@@ -5636,7 +5636,7 @@ emby: &app_emby
   - configMapRef:
       name: elfbot-emby
       optional: true      
-  persistence:
+  persistence: &app_emby_persistence
     <<: *storagemounts
     config:
       enabled: true
@@ -15681,11 +15681,31 @@ jellyfinhobbit:
   <<: *app_jellyfin
   podAnnotations: *hobbit_streamer_podAnnotations
   resources: *hobbit_streamer_resources
+  persistence:
+    <<: *app_jellyfin_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 embyhobbit:
   <<: *app_emby
   podAnnotations: *hobbit_streamer_podAnnotations
   resources: *hobbit_streamer_resources
+  persistence:
+    <<: *app_emby_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 plexranger:
   <<: *app_plex
@@ -15721,11 +15741,31 @@ jellyfinhalfling:
   <<: *app_jellyfin
   podAnnotations: *halfling_streamer_podAnnotations
   resources: *halfling_streamer_resources
+  persistence:
+    <<: *app_jellyfin_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: jellygfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 embyhalfling:
   <<: *app_emby
   podAnnotations: *halfling_streamer_podAnnotations
   resources: *halfling_streamer_resources
+  persistence:
+    <<: *app_emby_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 plexnazgul:
   <<: *app_plex
@@ -15746,11 +15786,31 @@ jellyfinnazgul:
   <<: *app_jellyfin
   podAnnotations: *nazgul_streamer_podAnnotations
   resources: *nazgul_streamer_resources
+  persistence:
+    <<: *app_jellyfin_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 embynazgul:
   <<: *app_emby
   podAnnotations: *nazgul_streamer_podAnnotations
   resources: *nazgul_streamer_resources
+  persistence:
+    <<: *app_emby_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 # We use these to set aside resources for dedicated bundles
 starter: &app_resource_reserver
