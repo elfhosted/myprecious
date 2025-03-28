@@ -13,4 +13,8 @@ spec:
         - name: audiobookrequest
           kind: Service
           port: 8000
+      middlewares:  
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik          
 {{ end }}

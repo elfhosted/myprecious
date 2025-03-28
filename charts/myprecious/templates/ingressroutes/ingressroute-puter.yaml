@@ -13,4 +13,8 @@ spec:
         - name: puter
           kind: Service
           port: 4100
+      middlewares:  
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik          
 {{ end }}

@@ -13,4 +13,8 @@ spec:
         - name: petio
           kind: Service
           port: 7777
+      middlewares:  
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
 {{ end }}

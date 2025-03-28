@@ -13,4 +13,8 @@ spec:
         - name: cwa-book-downloader
           kind: Service
           port: 8084
+      middlewares:  
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
 {{ end }}

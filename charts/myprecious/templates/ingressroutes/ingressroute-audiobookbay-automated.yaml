@@ -13,4 +13,8 @@ spec:
         - name: audiobookbay-automated
           kind: Service
           port: 5078
+      middlewares:  
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik          
 {{ end }}
