@@ -5103,11 +5103,14 @@ plex: &app_plex
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    transcode: # in case users use /tmp
+    transcode:
       enabled: true
       type: custom
       mountPath: /transcode
-      volumeSpec: *volumespec_ephemeral_volume_1g       
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-1g    
     phototranscoder:
       enabled: true
       mountPath: /phototranscoder
@@ -5439,11 +5442,14 @@ jellyfin: &app_jellyfin
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs             
-    transcode: # in case users use /tmp
+    transcode:
       enabled: true
       type: custom
       mountPath: /transcode
-      volumeSpec: *volumespec_ephemeral_volume_50g
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-1g  
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5648,11 +5654,14 @@ emby: &app_emby
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs                
-    transcode: # in case users use /tmp
+    transcode:
       enabled: true
       type: custom
       mountPath: /transcode
-      volumeSpec: *volumespec_ephemeral_volume_50g
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-1g  
     elfbot:
       enabled: "true"
       type: "custom"
@@ -15659,11 +15668,14 @@ plexhobbit:
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 jellyfinhobbit:
   <<: *app_jellyfin
@@ -15679,11 +15691,14 @@ plexranger:
   <<: *app_plex
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi 
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g
   podAnnotations: *ranger_streamer_podAnnotations
   resources: *ranger_streamer_resources
 
@@ -15691,11 +15706,14 @@ plexhalfling:
   <<: *app_plex
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
   podAnnotations: *halfling_streamer_podAnnotations
   resources: *halfling_streamer_resources
 
@@ -15713,11 +15731,14 @@ plexnazgul:
   <<: *app_plex
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
   podAnnotations: *nazgul_streamer_podAnnotations
   resources: *nazgul_streamer_resources
 
