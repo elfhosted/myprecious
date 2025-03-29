@@ -5501,11 +5501,6 @@ jellyfin: &app_jellyfin
         ln -sf /transcode /config/transcode
         ln -sf /transcode /config/transcoding-temp
 
-        # Also keep cache in /transcode
-        mkdir -p /transcode/cache
-        rm -rf /config/cache
-        ln -sf /transcode/cache /config/
-
       volumeMounts:
       - mountPath: /config
         name: config
