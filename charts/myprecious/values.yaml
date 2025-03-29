@@ -5592,7 +5592,16 @@ jellyfinranger:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-jellyfin,elfbot-all"
-
+  persistence:
+    <<: *app_jellyfin_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 emby: &app_emby
   hostname: elfhosted
@@ -5792,6 +5801,16 @@ embyranger:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-emby,elfbot-all"
+  persistence:
+    <<: *app_emby_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 homer:
   priorityClassName: tenant-normal
