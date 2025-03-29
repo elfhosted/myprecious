@@ -1,0 +1,13 @@
+{{ if or .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled .Values.embyranger.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled .Values.jellyfinranger.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: transcode-50g
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: topolvm-provisioner-thin
+{{ end }}

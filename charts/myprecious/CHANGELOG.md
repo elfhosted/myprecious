@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.318.0](https://github.com/elfhosted/myprecious/compare/v1.317.1...v1.318.0) (2025-03-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.114 ([48e4d29](https://github.com/elfhosted/myprecious/commit/48e4d2960f104b318e4e4045f907696e7a093aee))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.115 ([739fe88](https://github.com/elfhosted/myprecious/commit/739fe88e037d3d8ff2459910fd5d6ef4318285af))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.116 ([5f7c632](https://github.com/elfhosted/myprecious/commit/5f7c6324e5cdda4f056768197e3d5fcf9a9dd84e))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.13 ([7d81b36](https://github.com/elfhosted/myprecious/commit/7d81b365bd95685c7ac3df04bd161ca12d7edd08))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1702 ([ae5feb6](https://github.com/elfhosted/myprecious/commit/ae5feb6534396d64687be72625480f02b47bd99a))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.10 ([1e65294](https://github.com/elfhosted/myprecious/commit/1e652949c21c9147514908895f40900a27dec930))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v1.1.0 ([886fe1c](https://github.com/elfhosted/myprecious/commit/886fe1c3b19a9de725c403eef19f94c91af04a6c))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v1.1.1 ([4c2007b](https://github.com/elfhosted/myprecious/commit/4c2007b3554ae9fb03e254bec9d23f01c2937cc3))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.1.0 ([07145a9](https://github.com/elfhosted/myprecious/commit/07145a9c8090ade3cf350f45ab85abf938a4c4ee))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.1.1 ([2d1bbe5](https://github.com/elfhosted/myprecious/commit/2d1bbe568fc33e87acff335461164d3ff07923e2))
+
+
+### Bug Fixes
+
+* add health probes for symlink-cleaner ([267a629](https://github.com/elfhosted/myprecious/commit/267a629a13c772acd6c205b5b1b907f949e4bddc))
+* **app:** update ghcr.io/elfhosted/fakearr:rolling docker digest to f2f75b0 ([e7ef00f](https://github.com/elfhosted/myprecious/commit/e7ef00f7daf59b841038c233b24acb6511f107cf))
+* **app:** update ghcr.io/elfhosted/radarr:5.21.1.9799 docker digest to 42da25e ([e330e6a](https://github.com/elfhosted/myprecious/commit/e330e6ab53e746504fd1b2732d3e626fc5d0fe4d))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to a212dfd ([2b32a09](https://github.com/elfhosted/myprecious/commit/2b32a097bdfef9d14ec9200a7832628b29dc8508))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner:rolling docker digest to 4203a62 ([05731b2](https://github.com/elfhosted/myprecious/commit/05731b27a98c954b667a867563ba2a68892a6d2f))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner:v1.4.6 docker digest to 891f37b ([55d4e16](https://github.com/elfhosted/myprecious/commit/55d4e16bd87faeddb8d5176d13d504ca59b4ff8e))
+
 ## [1.317.1](https://github.com/elfhosted/myprecious/compare/v1.317.0...v1.317.1) (2025-03-27)
 
 

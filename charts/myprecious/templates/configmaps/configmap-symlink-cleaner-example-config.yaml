@@ -17,12 +17,17 @@ data:
         "/storage/symlinks/series-4k",
         "/storage/symlinks/series-anime",
         "/storage/symlinks/shows"
+        
       ],
       "mode": "repair",
-      "scan_interval": 0,
       "log_level": "INFO",
+      "scan_interval": 0,
       "dry_run": false,
-      "gunicorn_workers": 1,
-      "gunicorn_timeout": 600
+      "gunicorn_timeout": 600,
+      "clean_batch_size": 10,
+      "clean_delay": 0.5,
+      "webhook_url": "https://example.com/webhook",
+      "clean_new_file_threshold": 1800, 
+      "version": "1.4.7"
     }
 {{ end }}

@@ -1,0 +1,13 @@
+{{ if or .Values.plex.enabled .Values.emby.enabled .Values.jellyfin.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: transcode-1g
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: topolvm-provisioner-thin
+{{ end }}

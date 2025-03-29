@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:20cd29fc67b581179eacd7ccd43f2057845ff3025c9a7ad27dd2f3e333834dfc
+    tag: 5.21.1.9799@sha256:42da25e8bba9f144758bde5e0eaf2f1f92aaec66ccec4dd82afcc01e7da88c23
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2385,7 +2385,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:20cd29fc67b581179eacd7ccd43f2057845ff3025c9a7ad27dd2f3e333834dfc
+    tag: 5.21.1.9799@sha256:42da25e8bba9f144758bde5e0eaf2f1f92aaec66ccec4dd82afcc01e7da88c23
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3943,7 +3943,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:3cb8c3cc2d682638b9ff9c30a64e885e037bc24dfbe850a04a22d6c704387f73
+    tag: 4.0.14.2939@sha256:a212dfd480d06ed6a206a4ac3e4105406289515bdec20610982138989bcfa8d0
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4138,7 +4138,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:3cb8c3cc2d682638b9ff9c30a64e885e037bc24dfbe850a04a22d6c704387f73
+    tag: 4.0.14.2939@sha256:a212dfd480d06ed6a206a4ac3e4105406289515bdec20610982138989bcfa8d0
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5103,11 +5103,14 @@ plex: &app_plex
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
-    transcode: # in case users use /tmp
+    transcode:
       enabled: true
       type: custom
       mountPath: /transcode
-      volumeSpec: *volumespec_ephemeral_volume_1g       
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-1g    
     phototranscoder:
       enabled: true
       mountPath: /phototranscoder
@@ -5421,7 +5424,7 @@ jellyfin: &app_jellyfin
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin,jellyfin-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  persistence:
+  persistence: &app_jellyfin_persistence
     <<: *storagemounts
     config:
       enabled: true
@@ -5439,11 +5442,14 @@ jellyfin: &app_jellyfin
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs             
-    transcode: # in case users use /tmp
+    transcode:
       enabled: true
       type: custom
       mountPath: /transcode
-      volumeSpec: *volumespec_ephemeral_volume_50g
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-1g  
     elfbot:
       enabled: "true"
       type: "custom"
@@ -5625,7 +5631,7 @@ emby: &app_emby
   - configMapRef:
       name: elfbot-emby
       optional: true      
-  persistence:
+  persistence: &app_emby_persistence
     <<: *storagemounts
     config:
       enabled: true
@@ -5643,11 +5649,14 @@ emby: &app_emby
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs                
-    transcode: # in case users use /tmp
+    transcode:
       enabled: true
       type: custom
       mountPath: /transcode
-      volumeSpec: *volumespec_ephemeral_volume_50g
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-1g  
     elfbot:
       enabled: "true"
       type: "custom"
@@ -6711,7 +6720,7 @@ symlinkcleaner:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/symlink-cleaner
-    tag: v1.4.6@sha256:9be6cfc548b5384ff2e8d79d72fa904a5c86a2fcd5c23e48866813c64245938b
+    tag: v1.4.6@sha256:891f37be8f3e8e39af96cc351984ca653e1beebd5314e17ef84384cab886b32d
   imagePullSecrets:
   - name: ghcr-io-elfhosted
   priorityClassName: tenant-normal
@@ -10719,7 +10728,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.116@sha256:cd08008b9d2c1fb34cc3b5a8431aff5b5cbffb0ff46036c783b395c22992c7dc
+    tag: 0.4.117@sha256:757712403241e883e5ac39cc64225cb6e9ada9cebe3f7b5bf6ad4f8bb555a078
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13649,7 +13658,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.13@sha256:4376cdd850ce561eb3060e6a1727158eceb6b1d210b3469df464b620003edc4b
+    tag: v0.6.14@sha256:50a330a40a2f76bc7946ec3a0517d419be81a87b3d0f251f8d29f563d30b341b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14228,7 +14237,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.9@sha256:77d9fd755cb09642137248ab116efb134d5888674a2b675904e09c4ad2ae439b
+    tag: v0.2.10@sha256:3b1b45dac0556dfbb06501d096aaa3559b9210bb8e82e76a7cce7b0c298a9d80
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14313,7 +14322,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.9@sha256:77d9fd755cb09642137248ab116efb134d5888674a2b675904e09c4ad2ae439b
+      image: ghcr.io/elfhosted/pulsarr:v0.2.10@sha256:3b1b45dac0556dfbb06501d096aaa3559b9210bb8e82e76a7cce7b0c298a9d80
       command:
       - /bin/ash
       - -c
@@ -14712,7 +14721,7 @@ debridav: &app_debridav
           cpu: 500m
           memory: 8Gi
     fakearr:
-      image: ghcr.io/elfhosted/fakearr:rolling@sha256:cff50dcdfc0c196c9ec2a14b0c4da20d64a975973d8acc783b72889fae9fb3c6
+      image: ghcr.io/elfhosted/fakearr:rolling@sha256:f2f75b0ffc6e0dcb95582bd2c30db4d982c4c627034aabec51d13172fc337d0a
       envFrom:
       - configMapRef:
           name: elfbot-debridav
@@ -15654,31 +15663,57 @@ plexhobbit:
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 jellyfinhobbit:
   <<: *app_jellyfin
   podAnnotations: *hobbit_streamer_podAnnotations
   resources: *hobbit_streamer_resources
+  persistence:
+    <<: *app_jellyfin_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 embyhobbit:
   <<: *app_emby
   podAnnotations: *hobbit_streamer_podAnnotations
   resources: *hobbit_streamer_resources
+  persistence:
+    <<: *app_emby_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 plexranger:
   <<: *app_plex
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi 
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g
   podAnnotations: *ranger_streamer_podAnnotations
   resources: *ranger_streamer_resources
 
@@ -15686,11 +15721,14 @@ plexhalfling:
   <<: *app_plex
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
   podAnnotations: *halfling_streamer_podAnnotations
   resources: *halfling_streamer_resources
 
@@ -15698,21 +15736,44 @@ jellyfinhalfling:
   <<: *app_jellyfin
   podAnnotations: *halfling_streamer_podAnnotations
   resources: *halfling_streamer_resources
+  persistence:
+    <<: *app_jellyfin_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: jellygfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 embyhalfling:
   <<: *app_emby
   podAnnotations: *halfling_streamer_podAnnotations
   resources: *halfling_streamer_resources
+  persistence:
+    <<: *app_emby_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 plexnazgul:
   <<: *app_plex
   persistence:
     <<: *app_plex_persistence
-    transcode: # extra transcoding space
+    transcode:
       enabled: true
+      type: custom
       mountPath: /transcode
-      type: emptyDir
-      sizeLimit: 50Gi
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
   podAnnotations: *nazgul_streamer_podAnnotations
   resources: *nazgul_streamer_resources
 
@@ -15720,11 +15781,31 @@ jellyfinnazgul:
   <<: *app_jellyfin
   podAnnotations: *nazgul_streamer_podAnnotations
   resources: *nazgul_streamer_resources
+  persistence:
+    <<: *app_jellyfin_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: jellyfin
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 embynazgul:
   <<: *app_emby
   podAnnotations: *nazgul_streamer_podAnnotations
   resources: *nazgul_streamer_resources
+  persistence:
+    <<: *app_emby_persistence
+    transcode:
+      enabled: true
+      type: custom
+      mountPath: /transcode
+      subPath: emby
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: transcode-50g  
 
 # We use these to set aside resources for dedicated bundles
 starter: &app_resource_reserver
