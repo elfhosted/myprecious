@@ -6739,7 +6739,7 @@ symlinkcleaner:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/symlink-cleaner
-    tag: v1.4.6@sha256:891f37be8f3e8e39af96cc351984ca653e1beebd5314e17ef84384cab886b32d
+    tag: v1.4.7@sha256:9cdf8e20ca51ae9a7cca1334abb24fa8c7b46fbbf6e7b62e5ed952830e0f10f9
   imagePullSecrets:
   - name: ghcr-io-elfhosted
   priorityClassName: tenant-normal
@@ -11268,7 +11268,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1702@sha256:d56b66170ae4f63263bfd651004e4e21f6b0aefb9217f51fc97061e24c3b4f2f
+    tag: 0.22.1705@sha256:b78e85f3acd0f2dff5d080b1b7e6c045f14ba6fe323357df627cf8b02f91545d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13677,7 +13677,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.14@sha256:50a330a40a2f76bc7946ec3a0517d419be81a87b3d0f251f8d29f563d30b341b
+    tag: v0.6.16@sha256:07fd5c0bbe741ab9286f71a044e4e8d07d0826281dc28fc73ad56f4418e67da9
   priorityClassName: tenant-normal
   controller:
     annotations:
