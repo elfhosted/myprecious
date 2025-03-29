@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.319.0](https://github.com/elfhosted/myprecious/compare/v1.318.0...v1.319.0) (2025-03-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.117 ([feed925](https://github.com/elfhosted/myprecious/commit/feed925da5204e5fb3d127d9afdbab7c5148c8a9))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.14 ([e032f72](https://github.com/elfhosted/myprecious/commit/e032f728a34c180cc430ec5fdd2194cb9e3b4534))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.15 ([36aabac](https://github.com/elfhosted/myprecious/commit/36aabac0291c2e0599d87c9a855e6daa13704833))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.16 ([e27e6b9](https://github.com/elfhosted/myprecious/commit/e27e6b9f2e0977cf2402bd0e10b57a0c9ce57b09))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.17 ([6ac6bb5](https://github.com/elfhosted/myprecious/commit/6ac6bb50e3cdf7b6051a230fd9a5372a0304fc9d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1705 ([20ab1bc](https://github.com/elfhosted/myprecious/commit/20ab1bc5a427924a9a7619ecd13a59115fd59093))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner docker tag to v1.4.7 ([e52bebc](https://github.com/elfhosted/myprecious/commit/e52bebcc0781e85de555a80e19ea8999e6da8b52))
+
+
+### Bug Fixes
+
+* refactor transcoding volumes for plex ([6bb13b9](https://github.com/elfhosted/myprecious/commit/6bb13b90de697a748a556bb673ac5f769de63608))
+
 ## [1.318.0](https://github.com/elfhosted/myprecious/compare/v1.317.1...v1.318.0) (2025-03-28)
 
 
