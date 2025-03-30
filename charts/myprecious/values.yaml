@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -6739,7 +6739,7 @@ symlinkcleaner:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/symlink-cleaner
-    tag: v1.4.7@sha256:9cdf8e20ca51ae9a7cca1334abb24fa8c7b46fbbf6e7b62e5ed952830e0f10f9
+    tag: v1.4.7@sha256:2b980b95269aa534c46bc735a613efe1934af948d602e281958ac2891006acb6
   imagePullSecrets:
   - name: ghcr-io-elfhosted
   priorityClassName: tenant-normal
@@ -7909,7 +7909,7 @@ rpdb:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rpdb
-    tag: 0.2.7@sha256:b1addc56a7f166be3ca76f8f6ec3f036a479b8d49c1d288567af9ed4ccb52804
+    tag: 0.3.2@sha256:627f4c832bd9bf8b9b25ff5cf5457bb34f8a18847c8cac713d0283202a66c644
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rpdb"
@@ -8812,7 +8812,7 @@ suggestarr:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/suggestarr
-    tag: v1.0.20@sha256:647f3780b959b23b0d7a168c0eb5aa4cd19309a4061a13e4b8b41429c3ed8476
+    tag: v1.0.20@sha256:f567f7416f2e2092d54e68037e0886908ce583126281c9673c92bde0969bf1c5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8824,6 +8824,8 @@ suggestarr:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-suggestarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  env:
+    TZ: UTC
   persistence:
     tmp: *tmp
     backup: *backup
@@ -11537,7 +11539,7 @@ flixioapi:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/flixio-api
-    tag: rolling@sha256:b934680e51b830e25937fda6b9a2f8664307895d690585d2d4f9c272ad9d68a0
+    tag: rolling@sha256:7fa8715f64e65cccd352b1ce56c0b4d8c7f1ee4c730bc0e8f93e4cabb90e53ca
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: flixio-api
