@@ -14740,7 +14740,7 @@ debridav: &app_debridav
           cpu: 500m
           memory: 8Gi
     fakearr:
-      image: ghcr.io/elfhosted/fakearr:rolling@sha256:f2f75b0ffc6e0dcb95582bd2c30db4d982c4c627034aabec51d13172fc337d0a
+      image: ghcr.io/elfhosted/fakearr:rolling@sha256:db534345e7401c41310f2a1a333e72490e4afe8508a9b4df3b4916bb2c2bdced
       envFrom:
       - configMapRef:
           name: elfbot-debridav
