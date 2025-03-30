@@ -3496,7 +3496,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:c25680de9264b398e2935bab24fa70e5b57dfb11fc28fbac7910d0682c41a8c7
+    tag: rolling@sha256:1e19711a185d45db163f9bf9af9e756cb2cc5a8b3d5d3afa2bd59239ae7e8e88
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
