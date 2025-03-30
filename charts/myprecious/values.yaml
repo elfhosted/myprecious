@@ -8824,6 +8824,8 @@ suggestarr:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-suggestarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  env:
+    TZ: UTC
   persistence:
     tmp: *tmp
     backup: *backup
