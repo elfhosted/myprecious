@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.320.0](https://github.com/elfhosted/myprecious/compare/v1.319.0...v1.320.0) (2025-03-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.0 ([beee794](https://github.com/elfhosted/myprecious/commit/beee794b22101b522b73b5f40059d54a16168a30))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.18 ([6fb1bba](https://github.com/elfhosted/myprecious/commit/6fb1bba64ea6c75812695413d9b45e8ea6118943))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.4.2 ([86e6974](https://github.com/elfhosted/myprecious/commit/86e69749fb520648aec8cb0067409341812e36f9))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.4.3 ([991c95e](https://github.com/elfhosted/myprecious/commit/991c95ec7e46ba856d019987ac8a71976d275274))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1709 ([5bef537](https://github.com/elfhosted/myprecious/commit/5bef5377f8c52cc095f332c2952500393c13266f))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.11.0.4610 ([7fff3d6](https://github.com/elfhosted/myprecious/commit/7fff3d66405b710d4d336c0e91ea621f48b47585))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.33.1.4997 ([67fe367](https://github.com/elfhosted/myprecious/commit/67fe3678215c0093b774456d36eb66b397287db8))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.13.2760 ([52fafb0](https://github.com/elfhosted/myprecious/commit/52fafb0d5ef82e8e0782274fbd80166f40c195f0))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.14 ([0c95c34](https://github.com/elfhosted/myprecious/commit/0c95c349dd997988b917099d69014c5630016a2a))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.15 ([db280f6](https://github.com/elfhosted/myprecious/commit/db280f62f3b996b02a58a2bac07077837f309f35))
+* **app:** update ghcr.io/elfhosted/rpdb docker tag to v0.3.2 ([a8e46b7](https://github.com/elfhosted/myprecious/commit/a8e46b7c99ad70b29d14fbdcf1f4fe67d294aead))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 1e19711 ([3abee7b](https://github.com/elfhosted/myprecious/commit/3abee7b49fc22355c31e2eb27849b7b54d11cc56))
+* **app:** update ghcr.io/elfhosted/fakearr:rolling docker digest to db53434 ([d0b4ac4](https://github.com/elfhosted/myprecious/commit/d0b4ac45c11cea2b688ddf4e864276b8b5c2042f))
+* **app:** update ghcr.io/elfhosted/flixio-api:rolling docker digest to 7fa8715 ([d4721b2](https://github.com/elfhosted/myprecious/commit/d4721b2bc20ef19715eb90ebe67728a36e152e15))
+* **app:** update ghcr.io/elfhosted/suggestarr:v1.0.20 docker digest to f567f74 ([f154311](https://github.com/elfhosted/myprecious/commit/f15431157c2fb6e5b69191bb633268e8d4fa366c))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner:v1.4.7 docker digest to 2b980b9 ([fcb3522](https://github.com/elfhosted/myprecious/commit/fcb3522d369f115305586966b2fa0238f02ab05c))
+* Improve Jellyfin's RAM usage over time ([f03befe](https://github.com/elfhosted/myprecious/commit/f03befe47b907c37d307d8adc75e047b74ef3dd3))
+
 ## [1.319.0](https://github.com/elfhosted/myprecious/compare/v1.318.0...v1.319.0) (2025-03-29)
 
 
