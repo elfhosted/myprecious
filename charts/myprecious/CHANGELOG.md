@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.321.0](https://github.com/elfhosted/myprecious/compare/v1.320.0...v1.321.0) (2025-03-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cinesync docker tag to v2.4 ([5eeb985](https://github.com/elfhosted/myprecious/commit/5eeb98550245bcee1f21366477efdb5577d6a96e))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.43 ([4af2f60](https://github.com/elfhosted/myprecious/commit/4af2f60bd25a397f04b65920148126b1a9ad2fd8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1712 ([f660ce3](https://github.com/elfhosted/myprecious/commit/f660ce37b8059354026f174935fc50dabbf3ba41))
+* **app:** update ghcr.io/elfhosted/rpdb docker tag to v0.3.3 ([2c24dc9](https://github.com/elfhosted/myprecious/commit/2c24dc917af7289cdd3f340a54326b28e467a662))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.61.1 ([172e8fc](https://github.com/elfhosted/myprecious/commit/172e8fc37476e8d55f65814a2928258b41a3f712))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.131.0 ([ff9d8f3](https://github.com/elfhosted/myprecious/commit/ff9d8f34bba60f4ae05abbb2e2b639cd27d48cd4))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.131.0 ([1277e51](https://github.com/elfhosted/myprecious/commit/1277e5106a5666187a7b7fa3a5576a722f71c084))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/debridav:0.8.7 docker digest to e048774 ([43d234f](https://github.com/elfhosted/myprecious/commit/43d234f59716d8da72b1df7f817ff772e88ea065))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.1 docker digest to c89e34f ([92ada83](https://github.com/elfhosted/myprecious/commit/92ada83799ac22f9e39ce436fb702791f0d5cedc))
+* reduce dir-cache-timeout to 60s for zurg RD mounts ([e0bcce2](https://github.com/elfhosted/myprecious/commit/e0bcce2d132e018e39fade22064a47e8846e3e3d))
+
 ## [1.320.0](https://github.com/elfhosted/myprecious/compare/v1.319.0...v1.320.0) (2025-03-30)
 
 
