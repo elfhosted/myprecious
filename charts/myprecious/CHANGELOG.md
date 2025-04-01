@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.322.0](https://github.com/elfhosted/myprecious/compare/v1.321.0...v1.322.0) (2025-04-01)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.118 ([e0c496e](https://github.com/elfhosted/myprecious/commit/e0c496ea247c43a8ce35cf6fe334a897d29a84bf))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.19 ([5386b14](https://github.com/elfhosted/myprecious/commit/5386b14ccc1c15ff380b9ff6934120a57073eec4))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.20 ([7646a99](https://github.com/elfhosted/myprecious/commit/7646a9913340337c5055a0018d407bbc1b8d745d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1714 ([5f2a16e](https://github.com/elfhosted/myprecious/commit/5f2a16e1c9d16da76aab2104296f986dca35317b))
+* **app:** update ghcr.io/elfhosted/kometa docker tag to v2.2.0 ([6a10e92](https://github.com/elfhosted/myprecious/commit/6a10e922d7411e966ed49319cf49bbecd9e1267c))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.16 ([4b662e6](https://github.com/elfhosted/myprecious/commit/4b662e668211e83069291526d22ef6e377b922ed))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.17 ([ea7be44](https://github.com/elfhosted/myprecious/commit/ea7be44464065054c085412992ddab820aa7ab5e))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.131.1 ([ccb1462](https://github.com/elfhosted/myprecious/commit/ccb14621117c486a9abbc2fe5a4b78b93999c320))
+* **app:** update ghcr.io/immich-app/immich-machine-learning docker tag to v1.131.2 ([cf1df65](https://github.com/elfhosted/myprecious/commit/cf1df65f8445ac58aa952b7cfe2b644ba0ab788e))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.131.1 ([b3c42a9](https://github.com/elfhosted/myprecious/commit/b3c42a946a08343f403127d3d44f53d0ae8dc5df))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.131.2 ([292c9ef](https://github.com/elfhosted/myprecious/commit/292c9ef78b0dfa36f3ec82d4319e5a9baf48e06b))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/audiobookbay-automated:rolling docker digest to 3b25673 ([85e0b96](https://github.com/elfhosted/myprecious/commit/85e0b96801f638c407edc8e323f3fc718493ccfc))
+* **app:** update ghcr.io/elfhosted/cinesync:v2.4 docker digest to d5b295c ([b07973f](https://github.com/elfhosted/myprecious/commit/b07973fb018e23c1744c779cbab0f9fd3789ce20))
+
 ## [1.321.0](https://github.com/elfhosted/myprecious/compare/v1.320.0...v1.321.0) (2025-03-31)
 
 
