@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.323.1](https://github.com/elfhosted/myprecious/compare/v1.323.0...v1.323.1) (2025-04-02)
+
+
+### Bug Fixes
+
+* Add apprise URL to pulsarr ([4304307](https://github.com/elfhosted/myprecious/commit/430430772655e7b3a0769ff488056da6402e5611))
+
 ## [1.323.0](https://github.com/elfhosted/myprecious/compare/v1.322.0...v1.323.0) (2025-04-02)
 
 
