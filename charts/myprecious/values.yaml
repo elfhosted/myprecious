@@ -3332,7 +3332,7 @@ kapowarr:
       enabled: true
       type: emptyDir
       mountPath: /app/temp_downloads
-      sizeLimit: 10Gi
+      sizeLimit: 50Gi
     elfbot:
       enabled: "true"
       type: "custom"
@@ -14353,6 +14353,18 @@ pulsarr: &app_pulsarr
       volumeMounts:
       - mountPath: /tmp
         name: app
+  additionalContainers:
+    apprise-api:
+      image: ghcr.io/elfhosted/apprise-api:v1.2.0@sha256:ed6e963a2cdd1bdef63c51e82ca7b8bd2549f285f2e0510ea78d6f0adac40588
+      volumeMounts:
+      - name: config
+        mountPath: /config
+        subPath: pulsarr/apprise
+      env:
+        PUID: 568
+        PGID: 568
+        APPRISE_STATEFUL_MODE: simple
+        APPRISE_WORKER_COUNT: "1"
 
 movieroulette:
   enabled: false

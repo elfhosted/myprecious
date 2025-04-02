@@ -12,4 +12,5 @@ data:
   radarrApiKey: {{ .Values.radarr4kexposed.apikey }}
   NODE_ARGS: --log-both
   TZ: UTC
+  appriseUrl: http://localhost:8000
 {{ end }}
