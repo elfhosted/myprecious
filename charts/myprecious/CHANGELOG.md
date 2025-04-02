@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.323.0](https://github.com/elfhosted/myprecious/compare/v1.322.0...v1.323.0) (2025-04-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.119 ([3527963](https://github.com/elfhosted/myprecious/commit/3527963dae911ff78f28b512300dde56aaabcb7f))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.21 ([81b0bfd](https://github.com/elfhosted/myprecious/commit/81b0bfdeddabccd4d7ff5c408c65a46ad46f04f5))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.22 ([d229218](https://github.com/elfhosted/myprecious/commit/d22921830fbf987a9c629e04cf9ebe98e39566c6))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.8 ([3e7720a](https://github.com/elfhosted/myprecious/commit/3e7720a99a3df9c041e0188217238fdc29cd7f54))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1719 ([27b3b7d](https://github.com/elfhosted/myprecious/commit/27b3b7d9967695bc1cee3986435f447eb5dd792f))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.7 ([e9b370e](https://github.com/elfhosted/myprecious/commit/e9b370e0dae686238d279c480e0bf6cf51da53fd))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.6 ([122b35a](https://github.com/elfhosted/myprecious/commit/122b35aef8aae251bfcfc760eca6ee594316f419))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.11 ([187d8ec](https://github.com/elfhosted/myprecious/commit/187d8ec0264a7d48f849b21e1638a42014230d7a))
+* **app:** update ghcr.io/elfhosted/seerrbridge docker tag to v0.5.0 ([186c169](https://github.com/elfhosted/myprecious/commit/186c16917a4b32f8c792ab9cfb47133077cb4dde))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/radarr:5.21.1.9799 docker digest to 00ec064 ([42067e2](https://github.com/elfhosted/myprecious/commit/42067e221d0679dca6c020196efdd3693554c683))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to bd3c70a ([8491a47](https://github.com/elfhosted/myprecious/commit/8491a47a428d5da6fda998ca77330258c5b3a891))
+* **app:** update quay.io/linuxserver.io/calibre:8.1.1 docker digest to 4e1581c ([35bbbe6](https://github.com/elfhosted/myprecious/commit/35bbbe66c4f8a5fe2f10d65dce7523b205a8d85b))
+
 ## [1.322.0](https://github.com/elfhosted/myprecious/compare/v1.321.0...v1.322.0) (2025-04-01)
 
 
