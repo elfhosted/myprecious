@@ -5482,39 +5482,6 @@ jellyfin: &app_jellyfin
         subPath: jellyfin
       - mountPath: /tmp
         name: tmp
-    setup:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # Remove /config/transcode if it exists (could be old transcode data in there)
-        if [[ -f /config/transcode ]]; then
-          rm -rf /config/transcode
-        fi
-        if [[ -f /config/transcoding-temp ]]; then
-          rm -rf /config/transcoding-temp
-        fi
-        if [[ -f /config/transcodes ]]; then
-          rm -rf /config/transcodes
-        fi
-
-        # Make symlinks for various variations of transcode paths to /transcode
-        ln -sf /transcode /config/transcodes
-        ln -sf /transcode /config/transcode
-        ln -sf /transcode /config/transcoding-temp
-
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: jellyfin
-      - mountPath: /transcode
-        name: transcode
-      securityContext: *default_securitycontext
-      resources: *default_resources
   ingress:
     main:
       enabled: false
@@ -5698,44 +5665,6 @@ emby: &app_emby
         subPath: emby
       - mountPath: /tmp
         name: tmp
-    setup:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # Remove /config/transcode if it exists (could be old transcode data in there)
-        if [[ -f /config/transcode ]]; then
-          rm -rf /config/transcode
-        fi
-        if [[ -f /config/transcoding-temp ]]; then
-          rm -rf /config/transcoding-temp
-        fi
-        if [[ -f /config/transcodes ]]; then
-          rm -rf /config/transcodes
-        fi
-
-        # Make symlinks for various variations of transcode paths to /transcode
-        ln -sf /transcode /config/transcodes
-        ln -sf /transcode /config/transcode
-        ln -sf /transcode /config/transcoding-temp
-
-        # Also keep cache in /transcode
-        mkdir -p /transcode/cache
-        rm -rf /config/cache
-        ln -sf /transcode/cache /config/
-
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: emby
-      - mountPath: /transcode
-        name: transcode
-      securityContext: *default_securitycontext
-      resources: *default_resources
   additionalContainers:
     speedtest:
       image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
