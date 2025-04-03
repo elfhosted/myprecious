@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.324.0](https://github.com/elfhosted/myprecious/compare/v1.323.1...v1.324.0) (2025-04-03)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v9.2 ([e05b784](https://github.com/elfhosted/myprecious/commit/e05b7848fd83ccd3c022a59a09f6f2e7296825e7))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.120 ([1d689f7](https://github.com/elfhosted/myprecious/commit/1d689f797ddc017b7c9f1335457d37d2df0ab961))
+* **app:** update ghcr.io/elfhosted/decypharr docker tag to v0.5.2 ([06cbb49](https://github.com/elfhosted/myprecious/commit/06cbb49b4b019e07c16785a333b098d58bf4123d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1722 ([6a6a14b](https://github.com/elfhosted/myprecious/commit/6a6a14bffe879661045986657f8854ccb304f143))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.5.2 ([7398892](https://github.com/elfhosted/myprecious/commit/7398892d7dd3bafce110a628be7f5d2a296d96fb))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.7 ([73df9da](https://github.com/elfhosted/myprecious/commit/73df9da3ff258d37cb5b0090c3c47499d81698e3))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.18 ([76e2bd1](https://github.com/elfhosted/myprecious/commit/76e2bd19979de5c60ea4723cdc4f85a3da6f2f67))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.7.0 ([c2df203](https://github.com/elfhosted/myprecious/commit/c2df20363b9f9f3763a6e1f4cd09fab7b9050e2a))
+
+
+### Bug Fixes
+
+* Fix Emby catalogue ([4617d9d](https://github.com/elfhosted/myprecious/commit/4617d9d4869deb9478bab5fa7c17616a0e12f632))
+
 ## [1.323.1](https://github.com/elfhosted/myprecious/compare/v1.323.0...v1.323.1) (2025-04-02)
 
 
