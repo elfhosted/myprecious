@@ -15140,7 +15140,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr
-    tag: v0.5.1@sha256:be8889029c64a2c20987be8f3e9ce33998644cde54e050aac8c683ac3d9931fa
+    tag: v0.5.2@sha256:aabf43e851d55a387cb53e9861111d494428cc52de395a095cb602ff8c041e53
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
