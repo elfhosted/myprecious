@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:42da25e8bba9f144758bde5e0eaf2f1f92aaec66ccec4dd82afcc01e7da88c23
+    tag: 5.21.1.9799@sha256:00ec064a5ea20dfbde9d396c9213ee89a8bd9623da28798daec7d8b58135adb8
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2385,7 +2385,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:42da25e8bba9f144758bde5e0eaf2f1f92aaec66ccec4dd82afcc01e7da88c23
+    tag: 5.21.1.9799@sha256:00ec064a5ea20dfbde9d396c9213ee89a8bd9623da28798daec7d8b58135adb8
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3943,7 +3943,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:a212dfd480d06ed6a206a4ac3e4105406289515bdec20610982138989bcfa8d0
+    tag: 4.0.14.2939@sha256:bd3c70a3282c76d336599b6b17421b91b6d5f82d949235ad6842a806ff242d75
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4138,7 +4138,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:a212dfd480d06ed6a206a4ac3e4105406289515bdec20610982138989bcfa8d0
+    tag: 4.0.14.2939@sha256:bd3c70a3282c76d336599b6b17421b91b6d5f82d949235ad6842a806ff242d75
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8309,7 +8309,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.4.6@sha256:ef040ad21a9587ca5c42ff8190f4f5ddf01150d56443bc21de70e3d9a724be74
+    tag: v0.5.0@sha256:374dd4a509cfbdcf575b3ba4c052a33154eca4f0e6dcc3a332fe7a335c16426e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -13608,7 +13608,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.21@sha256:85793750df7d3062bb15e247bf66bce4f2f04ee8a4edc68694e9cbfeaa9d1048
+    tag: v0.6.22@sha256:31de51d3bb112a1203177e0048c5733e8470dc5c9c7358deb1af4ab9f2f8a196
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14187,7 +14187,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.10@sha256:3b1b45dac0556dfbb06501d096aaa3559b9210bb8e82e76a7cce7b0c298a9d80
+    tag: v0.2.11@sha256:e31ccb8f6bcdbd87b4df4385c72fad637558500b901a5f98ba13a941a6e1244d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14272,7 +14272,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.10@sha256:3b1b45dac0556dfbb06501d096aaa3559b9210bb8e82e76a7cce7b0c298a9d80
+      image: ghcr.io/elfhosted/pulsarr:v0.2.11@sha256:e31ccb8f6bcdbd87b4df4385c72fad637558500b901a5f98ba13a941a6e1244d
       command:
       - /bin/ash
       - -c
@@ -14458,7 +14458,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.7@sha256:e0487746118cad35332651318e1f23725aa122515975d40399e216f8b19bd769
+    tag: 0.8.8@sha256:4d6d241f55ae7ba67acd8f1118f6fc7a69333b742d4fd76546d8d242da77e905
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
