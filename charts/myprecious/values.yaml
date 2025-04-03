@@ -11785,7 +11785,7 @@ petio:
         name: tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:8.0.5-ubi8
+      image: mongodb/mongodb-community-server:8.0.6-ubi8
       volumeMounts:
         - name: config
           subPath: petio/mongodb
