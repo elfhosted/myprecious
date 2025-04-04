@@ -10994,7 +10994,7 @@ rivenfrontend: &app_rivenfrontend
     app.elfhosted.com/name: riven-frontend
   image:
     repository: ghcr.io/elfhosted/riven-frontend
-    tag: v0.19.0@sha256:bf4385c06e73b29f0dad4aa66d77056b08a1b5a38d0bde11cddd506e4926c1da
+    tag: v0.20.0@sha256:c4d792868a8113a2f57f504fe371cbcd8c52172d734c812c366bff352672998e
   priorityClassName: tenant-normal
   controller:
     annotations:
