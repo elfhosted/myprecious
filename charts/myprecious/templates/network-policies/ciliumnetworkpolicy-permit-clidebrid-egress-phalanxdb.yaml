@@ -1,4 +1,4 @@
-{{ if .Values.ciledebrid.enabled }}
+{{ if .Values.clidebrid.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
