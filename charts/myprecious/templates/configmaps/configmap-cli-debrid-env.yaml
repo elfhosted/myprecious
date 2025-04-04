@@ -11,4 +11,5 @@ data:
   DISABLE_ONBOARDING: "true"
   CLI_DEBRID_PHALANX_URL: http://elfhosted-internal.phalanxdb
   CLI_DEBRID_PHALANX_PORT: "80"
+  ENCRYPTION_KEY: phalanx_db_v1_32byte_key_20240312_01 # shared with all phalanxdb users
 {{ end }}
