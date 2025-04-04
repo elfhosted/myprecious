@@ -6945,7 +6945,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 2.5.1@sha256:6a451f89fe19740431d271462a2a59196a4ff2cc6f845cc432ed565fd503f9cd
+    tag: 2.5.2@sha256:f8bc515864f06a4eec9dfa09d1d63a41c687e2839654da35f6a96815717a9187
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7031,7 +7031,7 @@ jellyseerr:
         mountPath: "/bootstrap/"        
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:2.5.1@sha256:6a451f89fe19740431d271462a2a59196a4ff2cc6f845cc432ed565fd503f9cd
+      image: ghcr.io/elfhosted/jellyseerr:2.5.2@sha256:f8bc515864f06a4eec9dfa09d1d63a41c687e2839654da35f6a96815717a9187
       command:
         - /bin/ash
         - -c
@@ -8552,7 +8552,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.34.6@sha256:42fbed4ac50642241778037420ea9313ee02f4e2e87f52ae1be524b61c3dbee9
+    tag: 0.34.7@sha256:1d7ba3b1c330916cc7669e4a3c2bf000528851bc68b7f6f6f9d0395b6f8ddcf0
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9398,7 +9398,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.6.1@sha256:787b839dc79647b097ea292362f4a905291cafab1c8ddc8d784d23da537aa084
+    tag: 10.7.0@sha256:2fa1224d5ccaedd6d505f6e18f5fc207c68029489d18de951213b624abf43e23
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10678,7 +10678,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.119@sha256:e9107533a973622e714bba0a65e4c2ba575cb8daf10db648e8e9332ced94cb85
+    tag: 0.4.120@sha256:07b41635f418d40fc002a8e8002691e05c34f029e10110a9295911f9b4669529
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -10798,7 +10798,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.21.17@sha256:fcb573027fe2bb9e8bb77832add0cc9a34e804547f19c6e69415a743a42579ae
+    tag: v0.21.18@sha256:a3dc73edaf4f510de5d1f4b05ae5b19c798af957d007e7f93680aa161c9b26ba
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11199,7 +11199,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1719@sha256:c1788dda2f5700d033888adba59183dc05b012ccffa1ce3eb525778989a62777
+    tag: 0.22.1722@sha256:19faa270e4375c202d88035181eaaf77c82ad88d96bae8c6da4c07fb85835017
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11785,7 +11785,7 @@ petio:
         name: tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:8.0.5-ubi8
+      image: mongodb/mongodb-community-server:8.0.6-ubi8
       volumeMounts:
         - name: config
           subPath: petio/mongodb
@@ -11798,7 +11798,7 @@ pgadmin:
   enabled: false
   image:
     repository: dpage/pgadmin4
-    tag: "9.1"
+    tag: "9.2"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13608,7 +13608,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.22@sha256:31de51d3bb112a1203177e0048c5733e8470dc5c9c7358deb1af4ab9f2f8a196
+    tag: v0.6.23@sha256:ad8aa6edb41d731ef215c401398404548daae4e666f4533b334aecefc37c14a6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15069,7 +15069,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr
-    tag: v0.5.1@sha256:be8889029c64a2c20987be8f3e9ce33998644cde54e050aac8c683ac3d9931fa
+    tag: v0.5.2@sha256:aabf43e851d55a387cb53e9861111d494428cc52de395a095cb602ff8c041e53
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
