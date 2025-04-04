@@ -11785,7 +11785,7 @@ petio:
         name: tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:8.0.5-ubi8
+      image: mongodb/mongodb-community-server:8.0.6-ubi8
       volumeMounts:
         - name: config
           subPath: petio/mongodb
@@ -13608,7 +13608,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.22@sha256:31de51d3bb112a1203177e0048c5733e8470dc5c9c7358deb1af4ab9f2f8a196
+    tag: v0.6.23@sha256:ad8aa6edb41d731ef215c401398404548daae4e666f4533b334aecefc37c14a6
   priorityClassName: tenant-normal
   controller:
     annotations:
