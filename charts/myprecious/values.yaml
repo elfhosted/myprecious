@@ -13612,7 +13612,7 @@ clidebrid: &app_clidebrid
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cli-debrid"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cli-debrid,cli-debrid-env"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -13630,9 +13630,9 @@ clidebrid: &app_clidebrid
     PGID: 568
   envFrom:
   - configMapRef:
-      name: clidebrid-env
+      name: cli-debrid-env
   - configMapRef:
-      name: elfbot-clidebrid
+      name: elfbot-cli-debrid
       optional: true        
   resources:
     requests:
