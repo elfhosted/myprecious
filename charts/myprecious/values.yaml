@@ -3943,7 +3943,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:bd3c70a3282c76d336599b6b17421b91b6d5f82d949235ad6842a806ff242d75
+    tag: 4.0.14.2939@sha256:9f4250d85ba5e4e4f814f6a38325f01fc772b467c1fe7825d51887c12398c017
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4138,7 +4138,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:bd3c70a3282c76d336599b6b17421b91b6d5f82d949235ad6842a806ff242d75
+    tag: 4.0.14.2939@sha256:9f4250d85ba5e4e4f814f6a38325f01fc772b467c1fe7825d51887c12398c017
   securityContext:
     seccompProfile:
       type: RuntimeDefault
