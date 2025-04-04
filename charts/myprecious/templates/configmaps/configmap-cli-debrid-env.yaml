@@ -2,11 +2,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: clidebrid-env
+  name: cli-debrid-env
 data:
   PUID: "568"
   PGID: "568"
   DEFAULT_ADMIN_USER: admin
   DEFAULT_ADMIN_PASSWORD: changemeelfie
   DISABLE_ONBOARDING: "true"
+  CLI_DEBRID_PHALANX_URL: http://elfhosted-internal.phalanxdb
+  CLI_DEBRID_PHALANX_PORT: "80"
+  ENCRYPTION_KEY: phalanx_db_v1_32byte_key_20240312_01 # shared with all phalanxdb users
 {{ end }}
