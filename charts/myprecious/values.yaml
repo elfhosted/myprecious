@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:00ec064a5ea20dfbde9d396c9213ee89a8bd9623da28798daec7d8b58135adb8
+    tag: 5.21.1.9799@sha256:a606bef37901f85d8b715d4839f38027e0d0b29e7704818bdc9101e3eb1a9fac
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2385,7 +2385,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:00ec064a5ea20dfbde9d396c9213ee89a8bd9623da28798daec7d8b58135adb8
+    tag: 5.21.1.9799@sha256:a606bef37901f85d8b715d4839f38027e0d0b29e7704818bdc9101e3eb1a9fac
   securityContext:
     seccompProfile:
       type: RuntimeDefault
