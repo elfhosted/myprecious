@@ -1,0 +1,18 @@
+{{ if .Values.ciledebrid.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-clidebrid-egress-clidebrid"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: cli-debrid
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        k8s:io.kubernetes.pod.namespace: phalanxdb
+    toPorts:
+      - ports:
+        - port: '7888'
+          protocol: TCP
+{{ end }}

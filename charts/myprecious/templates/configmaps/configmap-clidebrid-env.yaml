@@ -9,4 +9,6 @@ data:
   DEFAULT_ADMIN_USER: admin
   DEFAULT_ADMIN_PASSWORD: changemeelfie
   DISABLE_ONBOARDING: "true"
+  CLI_DEBRID_PHALANX_URL: http://elfhosted-internal.phalanxdb
+  CLI_DEBRID_PHALANX_PORT: "80"
 {{ end }}
