@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.326.0](https://github.com/elfhosted/myprecious/compare/v1.325.0...v1.326.0) (2025-04-05)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.4.0 ([6b2e41a](https://github.com/elfhosted/myprecious/commit/6b2e41ab6a1cb7b628b6562967577dbd45e170f3))
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.1 ([fd5f7bb](https://github.com/elfhosted/myprecious/commit/fd5f7bb71810696041673baeebf49c47c54888b7))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.24 ([9b185aa](https://github.com/elfhosted/myprecious/commit/9b185aa3e7ec13779bded95f9d9f6f44ae91d41e))
+* **app:** update ghcr.io/elfhosted/homer docker tag to v25.04.1 ([03f9bfa](https://github.com/elfhosted/myprecious/commit/03f9bfa78f36ec27dae2de444c1aebc3cbedde81))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1730 ([37900b9](https://github.com/elfhosted/myprecious/commit/37900b9ba549cd079ac695c2b44755acea9faede))
+* **app:** update ghcr.io/elfhosted/jellyfin docker tag to v10.10.7 ([2bd2650](https://github.com/elfhosted/myprecious/commit/2bd265001709f2d4b6a002c5e18dbd96a6a938a0))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.55.2 ([d1f3328](https://github.com/elfhosted/myprecious/commit/d1f3328ad71b04d6ac63e691d0b10c6e67678718))
+
 ## [1.325.0](https://github.com/elfhosted/myprecious/compare/v1.324.0...v1.325.0) (2025-04-04)
 
 
