@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.327.0](https://github.com/elfhosted/myprecious/compare/v1.326.0...v1.327.0) (2025-04-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1733 ([fb16080](https://github.com/elfhosted/myprecious/commit/fb16080e49bea9713752693974319666ab3f0646))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.33.2.5002 ([ff79891](https://github.com/elfhosted/myprecious/commit/ff79891758f28e50146a1d6cd4b9db7d6a31b527))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 07a35ad ([e8310c3](https://github.com/elfhosted/myprecious/commit/e8310c380513077fe8c2777df4b1957cd8ad6177))
+
 ## [1.326.0](https://github.com/elfhosted/myprecious/compare/v1.325.0...v1.326.0) (2025-04-05)
 
 
