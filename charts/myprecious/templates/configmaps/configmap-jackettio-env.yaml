@@ -10,4 +10,9 @@ data:
   WELCOME_MESSAGE: |
     This is a private, hosted instance of Jackettio for {{ .Release.Name}}
   ADDON_ID: {{ .Release.Name}}-jackettio.{{ .Values.dns_domain }}
+  {{ if .Values.stremthru.enabled }}
+  STREMTHRU_URL: http://stremthru:8080
+  {{ else }}
+  STREMTHRU_URL: http://elfhosted-internal.stremthru
+  {{ end }}  
 {{ end }}

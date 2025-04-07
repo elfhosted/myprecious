@@ -1,0 +1,18 @@
+{{ if .Values.jackettio.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-jackettio-egress-stremthru"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: jackettio
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        k8s:io.kubernetes.pod.namespace: stremthru
+    toPorts:
+      - ports:
+        - port: '8080'
+          protocol: TCP
+{{ end }}
