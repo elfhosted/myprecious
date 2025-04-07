@@ -30,6 +30,8 @@ data:
   PLEX_PREFERENCE_22: "GenerateChapterThumbBehavior=never" # don't generate thumbnails
   PLEX_PREFERENCE_23: "GenerateIntroMarkerBehavior=never" # don't detect intros for skippage
   PLEX_PREFERENCE_24: "GenerateBIFBehavior=never" # don't generate video preview thumbnails
+  PLEX_PREFERENCE_25: "GenerateAdMarkerBehavior=never" # don't detect ads for skippage
+
   {{ else }}
   PLEX_PREFERENCE_15: "ButlerStartHour=7"
   {{ end }}
