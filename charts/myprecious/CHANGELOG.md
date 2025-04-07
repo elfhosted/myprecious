@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.328.0](https://github.com/elfhosted/myprecious/compare/v1.327.0...v1.328.0) (2025-04-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1740 ([0e06f58](https://github.com/elfhosted/myprecious/commit/0e06f580abae3d5d98828054a14e4e19f399a48f))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.32 ([1c9be3c](https://github.com/elfhosted/myprecious/commit/1c9be3c55b79da725dc68a994e6fda93acebd714))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to f200e52 ([addf3ff](https://github.com/elfhosted/myprecious/commit/addf3ff9533592a7afe4672675098ce75149732f))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.5.0 docker digest to ae8a04e ([939f2f2](https://github.com/elfhosted/myprecious/commit/939f2f21202719cd3012ce58f8e5f889343cd3e8))
+* Disable ad-detection in Plex preferences (wastes CPU and bandwidth) ([7ce1f0c](https://github.com/elfhosted/myprecious/commit/7ce1f0c73e5e17273ee125d14cc82c8cb0db1a80))
+* Update cinesync to v2.4.1 ([51689a3](https://github.com/elfhosted/myprecious/commit/51689a3b5c2fa1cd6ba1192034681e8fc52ae495))
+* Upgrade jackettio to new fork, support stremthru ([5923199](https://github.com/elfhosted/myprecious/commit/592319911a177dde5f3042f1b6b32adf559b23fa))
+
 ## [1.327.0](https://github.com/elfhosted/myprecious/compare/v1.326.0...v1.327.0) (2025-04-06)
 
 
