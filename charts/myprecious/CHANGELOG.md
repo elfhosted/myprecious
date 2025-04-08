@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.329.0](https://github.com/elfhosted/myprecious/compare/v1.328.0...v1.329.0) (2025-04-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.2 ([356c91a](https://github.com/elfhosted/myprecious/commit/356c91a4d7424205dfc1e38d5d9cd76d63d5028d))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.122 ([f08e361](https://github.com/elfhosted/myprecious/commit/f08e36134b6252a31f417f9d309f9c106a8fbea6))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.25 ([02359c8](https://github.com/elfhosted/myprecious/commit/02359c82fade1cb56ae9640432b58d3cb83dbab0))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.99.0 ([c4826b9](https://github.com/elfhosted/myprecious/commit/c4826b9e669f3e82fd4890f567d09243fd4b6c03))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.9 ([d1aa7e8](https://github.com/elfhosted/myprecious/commit/d1aa7e8f7e4f3351c43bd573bad9391eef35b961))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1744 ([e7a910b](https://github.com/elfhosted/myprecious/commit/e7a910b5aac2463e85ec4aeaa94886c9c394318f))
+* **app:** update ghcr.io/elfhosted/wallabag docker tag to v2.6.11 ([e566ac9](https://github.com/elfhosted/myprecious/commit/e566ac9d14403e27072a4f266d3efc332c1c0cbf))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to d8e15ae ([85c0bad](https://github.com/elfhosted/myprecious/commit/85c0badd62f2953b26f96520ec9108f8deb22900))
+
 ## [1.328.0](https://github.com/elfhosted/myprecious/compare/v1.327.0...v1.328.0) (2025-04-07)
 
 
