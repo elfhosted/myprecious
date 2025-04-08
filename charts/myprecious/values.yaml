@@ -15187,8 +15187,8 @@ blackhole: &app_blackhole
       cpu: 0m
       memory: 1Mi
     limits:
-      cpu: 1
-      memory: 1Gi
+      cpu: 100m
+      memory: 100Mi
   ingress:
     main:
       enabled: false
