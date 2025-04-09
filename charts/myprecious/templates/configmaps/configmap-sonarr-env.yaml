@@ -34,8 +34,8 @@ data:
   # Used for Huntarr-Sonarr
   API_KEY: "{{ .Values.sonarrexposed.apikey }}"
   API_URL: http://sonarr:8989
-  HUNT_MISSING_SHOWS: "0" # disabled by default for now
-  HUNT_UPGRADE_EPISODES: "0" # disabled by default for now
+  HUNT_MISSING_SHOWS: "1" # disabled by default for now
+  HUNT_UPGRADE_EPISODES: "1" # disabled by default for now
 
   # Enable ffprobe shim by default now
   USE_FFPROBE_SHIM: "true"
