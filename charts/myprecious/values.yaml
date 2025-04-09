@@ -4163,27 +4163,27 @@ sonarr: &app_sonarr
         limits:
           cpu: 500m
           memory: 8Gi         
-    # huntarr-sonarr:
-    #   image: ghcr.io/elfhosted/huntarr-sonarr:3.3.2@sha256:3a499a522605f326c3136785ac59de362c9f41b35c3f765365caee20877bbe7d
-    #   envFrom:
-    #   - configMapRef:
-    #       name: sonarr-env
-    #   - configMapRef:
-    #       name: elfbot-sonarr
-    #       optional: true
-    #   volumeMounts:
-    #   - name: tmp
-    #     mountPath: /tmp  
-    #   - name: config
-    #     mountPath: /config
-    #     subPath: sonarr4k/huntarr        
-    #   resources:
-    #     requests:
-    #       cpu: 0m
-    #       memory: 1Mi
-    #     limits:
-    #       cpu: 100m
-    #       memory: 256Mi 
+    huntarr-sonarr:
+      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.1@sha256:9f3f317c43a05aef541c729e5d64373d8ae5e7ef611618348bd22fa628e57afc
+      envFrom:
+      - configMapRef:
+          name: sonarr-env
+      - configMapRef:
+          name: elfbot-sonarr
+          optional: true
+      volumeMounts:
+      - name: tmp
+        mountPath: /tmp  
+      - name: config
+        mountPath: /config
+        subPath: sonarr4k/huntarr        
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi 
 
 sonarr4k: &app_sonarr4k
   enabled: false
@@ -4378,27 +4378,27 @@ sonarr4k: &app_sonarr4k
         limits:
           cpu: 500m
           memory: 8Gi 
-    # huntarr-sonarr:
-    #   image: ghcr.io/elfhosted/huntarr-sonarr:3.3.2@sha256:3a499a522605f326c3136785ac59de362c9f41b35c3f765365caee20877bbe7d
-    #   envFrom:
-    #   - configMapRef:
-    #       name: sonarr4k-env
-    #   - configMapRef:
-    #       name: elfbot-sonarr4k
-    #       optional: true
-    #   volumeMounts:
-    #   - name: tmp
-    #     mountPath: /tmp  
-    #   - name: config
-    #     mountPath: /config
-    #     subPath: sonarr4k/huntarr
-    #   resources:
-    #     requests:
-    #       cpu: 0m
-    #       memory: 1Mi
-    #     limits:
-    #       cpu: 100m
-    #       memory: 256Mi 
+    huntarr-sonarr:
+      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.1@sha256:9f3f317c43a05aef541c729e5d64373d8ae5e7ef611618348bd22fa628e57afc
+      envFrom:
+      - configMapRef:
+          name: sonarr4k-env
+      - configMapRef:
+          name: elfbot-sonarr4k
+          optional: true
+      volumeMounts:
+      - name: tmp
+        mountPath: /tmp  
+      - name: config
+        mountPath: /config
+        subPath: sonarr4k/huntarr
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi 
 
 resiliosync:
   service:
