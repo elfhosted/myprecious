@@ -32,6 +32,12 @@ data:
   RADARR__POSTGRES_MAIN_DB: radarr_main
   RADARR__POSTGRES_LOG_DB: radarr_logs
 
+  # Used for Huntarr-Radarr
+  API_KEY: "{{ .Values.radarrexposed.apikey }}"
+  API_URL: http://radarr:7878
+  HUNT_MISSING_MOVIES: "0" # disabled by default for now
+  HUNT_UPGRADE_MOVIES: "0" # disabled by default for now
+
 {{ end }}
 
 

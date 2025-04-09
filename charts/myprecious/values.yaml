@@ -2367,7 +2367,25 @@ radarr: &app_radarr
           memory: 1Mi
         limits:
           cpu: 500m
-          memory: 8Gi         
+          memory: 8Gi     
+    huntarr-radarr:
+      image: ghcr.io/elfhosted/huntarr-radarr:3.0@sha256:cff870f042d8487c83b747fd63d060d2d4a14b2ea9d3b56a47ccaf74c6e5d585
+      envFrom:
+      - configMapRef:
+          name: radarr-env
+      - configMapRef:
+          name: elfbot-radarr
+          optional: true
+      volumeMounts:
+      - name: tmp
+        mountPath: /tmp  
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi           
   resources:
     requests:
       cpu: 0m
@@ -2570,7 +2588,25 @@ radarr4k: &app_radarr4k
         limits:
           cpu: 500m
           memory: 8Gi   
-
+    huntarr-radarr:
+      image: ghcr.io/elfhosted/huntarr-radarr:3.0@sha256:cff870f042d8487c83b747fd63d060d2d4a14b2ea9d3b56a47ccaf74c6e5d585
+      envFrom:
+      - configMapRef:
+          name: radarr-env
+      - configMapRef:
+          name: elfbot-radarr
+          optional: true
+      volumeMounts:
+      - name: tmp
+        mountPath: /tmp  
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi  
+          
 ombi:
   enabled: false
   image:
