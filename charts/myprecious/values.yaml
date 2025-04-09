@@ -5128,7 +5128,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.5.9522-a96edc606@sha256:cddba553dbb15a6cc6be7bf756be19797d596805ad1c135a63dd0f742c1a5b36
+    tag: 1.41.5.9522-a96edc606@sha256:44bfd4d55810f450108ec1ad7577fea1d0b8644735d147d6e58667bdf75a3da9
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:
@@ -5432,7 +5432,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.7@sha256:a4b5cabb98269c67d4b760ba507e3a1bb5c4813eac6849a63227469ca290c1ce
+    tag: 10.10.7@sha256:8af88d5cb3b97765f4e1623190bcd4024b9189fcce24efefcf15d98f4b4cf1b0
   enabled: false
   podLabels:
     app.elfhosted.com/name: jellyfin
@@ -5611,7 +5611,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.43@sha256:59d1e172406b507c450d1da99116b64bb98f3a47c25f7e1fee8fa11fc981cb6a
+    tag: 4.9.0.43@sha256:745599667cb43a354f06f05b917ad8b20efc137e923a83ec814c11b36a576907
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -6438,7 +6438,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:f200e52e28b12cac8c3fb943f2b8a145e56c4b2580148849a41375c0ddf8ed98
+    tag: develop-vaapi@sha256:d8e15ae1d4d17f9703f692b76864c3715204354149de696409994351611b4304
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7333,7 +7333,7 @@ audiobookrequest:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookrequest
-    tag: 1.4.1@sha256:d78da15520aa4edbe1a620b3e1163486e38baf1221938f82f6915128ed0cc324
+    tag: 1.4.2@sha256:1730524d50db210bfcb33630e5bf299376be64a7ab67ae249480c4dace4e7b10
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -8588,7 +8588,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.34.7@sha256:1d7ba3b1c330916cc7669e4a3c2bf000528851bc68b7f6f6f9d0395b6f8ddcf0
+    tag: 0.34.7@sha256:db5dc64574a67e86e1ae8f9b0ef008b248e40970ccd9b62d9c7c90adc214d507
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10537,7 +10537,7 @@ wallabag:
       memory: 1Gi
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/wallabag:2.6.10@sha256:78cfe174511788a70087223ac3806e8c55b40bd844f4141ad770443a8d0bfbb7
+      image: ghcr.io/elfhosted/wallabag:2.6.11@sha256:157a81206cdcc50b5e235d01ca58205258c7efc973992f9e38beacdace2c7faa
       volumeMounts:
       - mountPath: /var/www/wallabag/data
         name: config
@@ -10714,7 +10714,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.121@sha256:2afdc74c85268a980a89a81922d41f0e23db09d8f072dd9b0167e334d811da7e
+    tag: 0.4.122@sha256:5a4799e7df7f2c45c66760ea20eff828891d535cf8d26a3d61308bc22deadc4c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11235,7 +11235,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1740@sha256:4fd086ad576c306f956f8053da2ca3cec280e6d620fe3346bd8b54d44000dd0f
+    tag: 0.22.1744@sha256:e4bc026c25b8cce8e4f8f49322533e2b245c73d076861b7abdaf2a1fa9cbdd22
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13986,7 +13986,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.99.0@sha256:b71824829f5aaaca885819a7c1a16f4897ac848192998def2df59ad630dd2889
+    tag: 4.99.1@sha256:0191d1a5dcc249626e7e301e5a6cac2e72ebd5a4de59b19d4ae4e9ad6a4b83b3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14494,7 +14494,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.8@sha256:4d6d241f55ae7ba67acd8f1118f6fc7a69333b742d4fd76546d8d242da77e905
+    tag: 0.8.9@sha256:2a1ea572c95ada40993ecad1787b879aa41149245a97b3f9eee18b817c9c6825
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
