@@ -2592,9 +2592,9 @@ radarr4k: &app_radarr4k
       image: ghcr.io/elfhosted/huntarr-radarr:3.0@sha256:cff870f042d8487c83b747fd63d060d2d4a14b2ea9d3b56a47ccaf74c6e5d585
       envFrom:
       - configMapRef:
-          name: radarr-env
+          name: radarr4k-env
       - configMapRef:
-          name: elfbot-radarr
+          name: elfbot-radarr4k
           optional: true
       volumeMounts:
       - name: tmp
@@ -4126,7 +4126,6 @@ sonarr: &app_sonarr
         subPath: sonarr
       resources: *default_resources
       securityContext: *default_securitycontext
-      
   resources:
     requests:
       cpu: 0m
@@ -4164,6 +4163,24 @@ sonarr: &app_sonarr
         limits:
           cpu: 500m
           memory: 8Gi         
+    huntarr-sonarr:
+      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.2@sha256:3a499a522605f326c3136785ac59de362c9f41b35c3f765365caee20877bbe7d
+      envFrom:
+      - configMapRef:
+          name: sonarr-env
+      - configMapRef:
+          name: elfbot-sonarr
+          optional: true
+      volumeMounts:
+      - name: tmp
+        mountPath: /tmp  
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi 
 
 sonarr4k: &app_sonarr4k
   enabled: false
@@ -4358,6 +4375,24 @@ sonarr4k: &app_sonarr4k
         limits:
           cpu: 500m
           memory: 8Gi 
+    huntarr-sonarr:
+      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.2@sha256:3a499a522605f326c3136785ac59de362c9f41b35c3f765365caee20877bbe7d
+      envFrom:
+      - configMapRef:
+          name: sonarr4k-env
+      - configMapRef:
+          name: elfbot-sonarr4k
+          optional: true
+      volumeMounts:
+      - name: tmp
+        mountPath: /tmp  
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi 
 
 resiliosync:
   service:

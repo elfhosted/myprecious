@@ -31,4 +31,10 @@ data:
   SONARR__POSTGRES_MAIN_DB: sonarr_main
   SONARR__POSTGRES_LOG_DB: sonarr_logs
 
+  # Used for Huntarr-Sonarr
+  API_KEY: "{{ .Values.sonarrexposed.apikey }}"
+  API_URL: http://sonarr:8989
+  HUNT_MISSING_SHOWS: "0" # disabled by default for now
+  HUNT_UPGRADE_EPISODES: "0" # disabled by default for now
+
 {{ end }}

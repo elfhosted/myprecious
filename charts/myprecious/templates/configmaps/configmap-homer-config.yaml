@@ -1471,6 +1471,26 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}              
 
+          {{ if .Values.sonarr.enabled }}
+          - name: "Huntarr Sonarr"
+            icon: "fas fa-bullseye"
+            subtitle: "Hunt Missing Series / Episodes"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-huntarr-sonarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
+          {{ if .Values.sonarr4k.enabled }}
+          - name: "Huntarr Sonarr 4k"
+            icon: "fas fa-bullseye"
+            subtitle: "Hunt Missing 4K Series / Episodes"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-huntarr-sonarr4k.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}       
+
       - name: "Tools"
         icon: "fas fa-toolbox"
         items:
@@ -1755,7 +1775,7 @@ data:
             tagstyle: "is-danger"
             url: "https://{{ .Release.Name }}-pairdrop.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                               
+          {{ end }}
 
       - name: "Rclone"
         icon: "fas fa-truck"
