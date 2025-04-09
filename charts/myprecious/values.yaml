@@ -4174,6 +4174,9 @@ sonarr: &app_sonarr
       volumeMounts:
       - name: tmp
         mountPath: /tmp  
+      - name: config
+        mountPath: /config
+        subPath: sonarr4k/huntarr        
       resources:
         requests:
           cpu: 0m
@@ -4386,6 +4389,9 @@ sonarr4k: &app_sonarr4k
       volumeMounts:
       - name: tmp
         mountPath: /tmp  
+      - name: config
+        mountPath: /config
+        subPath: sonarr4k/huntarr
       resources:
         requests:
           cpu: 0m
