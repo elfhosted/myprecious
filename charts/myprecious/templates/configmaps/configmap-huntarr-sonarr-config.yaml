@@ -1,0 +1,23 @@
+{{ if or .Values.sonarr.enabled .Values.sonarr4k.enabled }} 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: huntarr-sonarr-config
+data:
+  huntarr.json: |
+    {
+      "ui": {
+        "dark_mode": true
+      },
+      "huntarr": {
+        "sleep_duration": 3600,
+        "hunt_missing_shows": 0,
+        "hunt_upgrade_episodes": 0,
+        "state_reset_interval_hours": 168,
+        "monitored_only": true,
+        "random_selection": true,
+        "skip_future_episodes": true,
+        "skip_series_refresh": false
+      }
+    }  
+{{ end }}
