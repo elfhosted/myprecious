@@ -12,7 +12,7 @@ spec:
   type: ClusterIP
   ports:
   - port: 32400
-    targetPort: 32400
+    targetPort: 8888
     protocol: TCP
     name: http
   - port: 3002
