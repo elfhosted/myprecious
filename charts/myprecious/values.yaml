@@ -5575,7 +5575,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.43@sha256:59d1e172406b507c450d1da99116b64bb98f3a47c25f7e1fee8fa11fc981cb6a
+    tag: 4.9.0.43@sha256:745599667cb43a354f06f05b917ad8b20efc137e923a83ec814c11b36a576907
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
