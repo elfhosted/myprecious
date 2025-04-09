@@ -39,8 +39,8 @@ data:
   HUNT_UPGRADE_MOVIES: "0" # disabled by default for now
   SLEEP_DURATION: "3600"
   
-  # Enable ffprobe shim by default now
-  USE_FFPROBE_SHIM: "true"
+  # Enable ffprobe shim by default
+  # USE_FFPROBE_SHIM: "true"
 
 {{ end }}
 
