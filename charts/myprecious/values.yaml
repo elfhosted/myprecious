@@ -4191,7 +4191,7 @@ sonarr: &app_sonarr
           cpu: 500m
           memory: 8Gi         
     huntarr-sonarr:
-      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.2@sha256:3a499a522605f326c3136785ac59de362c9f41b35c3f765365caee20877bbe7d
+      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.1@sha256:9f3f317c43a05aef541c729e5d64373d8ae5e7ef611618348bd22fa628e57afc
       envFrom:
       - configMapRef:
           name: sonarr-env
@@ -4433,7 +4433,7 @@ sonarr4k: &app_sonarr4k
           cpu: 500m
           memory: 8Gi 
     huntarr-sonarr:
-      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.2@sha256:3a499a522605f326c3136785ac59de362c9f41b35c3f765365caee20877bbe7d
+      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.1@sha256:9f3f317c43a05aef541c729e5d64373d8ae5e7ef611618348bd22fa628e57afc
       envFrom:
       - configMapRef:
           name: sonarr4k-env
