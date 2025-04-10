@@ -7,8 +7,11 @@ data:
   tinyproxy.conf: |
     Port 8888
     Listen 0.0.0.0
+    # Allow all connections
+    Allow 0.0.0.0/0
     Timeout 600
     DisableViaHeader yes
-    ReverseMagic Yes
+    ReverseOnly Yes
+    # ReverseMagic Yes
     ReverseBaseURL "http://localhost:32400/"    
 {{ end }}
