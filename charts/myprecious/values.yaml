@@ -4141,15 +4141,15 @@ sonarr: &app_sonarr
       - |
         set -x
         set -e
-        # If we don't already have an example config, create one
-        if [ ! -f /config/huntarr.json ];
-        then
+        # for now, remove old defaults
+        # if [ ! -f /config/huntarr.json ];
+        # then
           cp /bootstrap/huntarr.json /config/
-        fi
+        # fi
       volumeMounts:
       - mountPath: /config/
         name: config
-        subPath: sonarr/huntarr
+        subPath: sonarr/huntarr/settings
       - name: huntarr-sonarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext        
@@ -4203,7 +4203,7 @@ sonarr: &app_sonarr
         mountPath: /tmp  
       - name: config
         mountPath: /config
-        subPath: sonarr4k/huntarr        
+        subPath: sonarr/huntarr        
       resources:
         requests:
           cpu: 0m
@@ -4361,11 +4361,6 @@ sonarr4k: &app_sonarr4k
 
         # for database to use 
         mkdir -p /config/postgresql/database        
-
-        # if /config/MediaCover exists (on the config volume), purge it, since this is now handled on a dedicated volume
-        if [ -d /config/MediaCover ]; then
-          rm -rf /config/MediaCover
-        fi
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
@@ -4384,14 +4379,14 @@ sonarr4k: &app_sonarr4k
         set -x
         set -e
         # If we don't already have an example config, create one
-        if [ ! -f /config/huntarr.json ];
-        then
+        # if [ ! -f /config/huntarr.json ];
+        # then
           cp /bootstrap/huntarr.json /config/
-        fi
+        # fi
       volumeMounts:
       - mountPath: /config/
         name: config
-        subPath: sonarr4k/huntarr
+        subPath: sonarr4k/huntarr/settings
       - name: huntarr-sonarr-config
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext         
