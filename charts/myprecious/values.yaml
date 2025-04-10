@@ -2385,7 +2385,7 @@ radarr: &app_radarr
           memory: 1Mi
         limits:
           cpu: 100m
-          memory: 256Mi           
+          memory: 512Mi           
   resources:
     requests:
       cpu: 0m
@@ -2605,7 +2605,7 @@ radarr4k: &app_radarr4k
           memory: 1Mi
         limits:
           cpu: 100m
-          memory: 256Mi  
+          memory: 512Mi  
           
 ombi:
   enabled: false
@@ -4210,7 +4210,7 @@ sonarr: &app_sonarr
           memory: 1Mi
         limits:
           cpu: 100m
-          memory: 256Mi 
+          memory: 512Mi 
 
 sonarr4k: &app_sonarr4k
   enabled: false
@@ -4452,7 +4452,7 @@ sonarr4k: &app_sonarr4k
           memory: 1Mi
         limits:
           cpu: 100m
-          memory: 256Mi 
+          memory: 512Mi 
 
 resiliosync:
   service:
