@@ -5260,12 +5260,12 @@ plex: &app_plex
       type: emptyDir
       volumeSpec:
         medium: Memory
-    tinyproxy-conf:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: plex-tinyproxy-conf         
+    # tinyproxy-conf:
+    #   enabled: "true"
+    #   type: "custom"
+    #   volumeSpec:
+    #     configMap:
+    #       name: plex-tinyproxy-conf         
   ingress:
     main:
       enabled: false
@@ -5373,12 +5373,12 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
-    tinyproxy:
-      image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:9370be1434e80f8ac7d3a24d9c19335742b2c74ba15129dcdc166bb0dd3c9098
-      volumeMounts:
-      - mountPath: /etc/tinyproxy/tinyproxy.conf
-        name: tinyproxy-conf
-        subPath: tinyproxy.conf
+    # tinyproxy:
+    #   image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:9370be1434e80f8ac7d3a24d9c19335742b2c74ba15129dcdc166bb0dd3c9098
+    #   volumeMounts:
+    #   - mountPath: /etc/tinyproxy/tinyproxy.conf
+    #     name: tinyproxy-conf
+    #     subPath: tinyproxy.conf
   addons:
     vpn:
       enabled: true # in case we ever need it
