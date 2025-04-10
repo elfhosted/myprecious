@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.331.0](https://github.com/elfhosted/myprecious/compare/v1.330.0...v1.331.0) (2025-04-10)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.10 ([19f6ed8](https://github.com/elfhosted/myprecious/commit/19f6ed8ffcec05e4c61678fdb8a368e4bd40d4e5))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.8.11 ([00c61fa](https://github.com/elfhosted/myprecious/commit/00c61fac45e9862a9f8f40031d97471ff9a726f1))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.45 ([f63c0b5](https://github.com/elfhosted/myprecious/commit/f63c0b5ce84450ac55ff08633134801550b9c1aa))
+* **app:** update ghcr.io/elfhosted/huntarr-sonarr docker tag to v3.3.3 ([bff9cd9](https://github.com/elfhosted/myprecious/commit/bff9cd99d26b55af2bce69d3523c939c3c0d72c3))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1756 ([b7991fc](https://github.com/elfhosted/myprecious/commit/b7991fce49b2562e668ed4c72630718ed5e00d4a))
+* **app:** update ghcr.io/elfhosted/plex docker tag to v1.41.6.9685-d301f511a ([3f4c3fe](https://github.com/elfhosted/myprecious/commit/3f4c3fe32ae081963c103d7e457f325b04ab85ed))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.12 ([bbb6a0c](https://github.com/elfhosted/myprecious/commit/bbb6a0c524abc0fdbe7ae156100e3517fd402f20))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.19 ([36bce10](https://github.com/elfhosted/myprecious/commit/36bce1042bf6fae0e18d778ea18f28d4a7357d85))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/radarr:5.21.1.9799 docker digest to 67bdf29 ([e17a036](https://github.com/elfhosted/myprecious/commit/e17a036ec2de82e98872e96b77b766d38a785510))
+* **app:** update ghcr.io/elfhosted/radarr:5.21.1.9799 docker digest to c9fea44 ([5761057](https://github.com/elfhosted/myprecious/commit/57610578739add5c66dbdcd9f504652e05737283))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to 540f353 ([23fd9ca](https://github.com/elfhosted/myprecious/commit/23fd9ca121a10580066df0b26419cda629a5c085))
+* Increase RAM limits for huntarrs ([e23fb3d](https://github.com/elfhosted/myprecious/commit/e23fb3dc37b84773bfb6b1d0fc65a8d325796977))
+
 ## [1.330.0](https://github.com/elfhosted/myprecious/compare/v1.329.0...v1.330.0) (2025-04-09)
 
 
