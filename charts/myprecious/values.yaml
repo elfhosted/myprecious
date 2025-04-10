@@ -5223,7 +5223,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.5.9522-a96edc606@sha256:44bfd4d55810f450108ec1ad7577fea1d0b8644735d147d6e58667bdf75a3da9
+    tag: 1.41.6.9685-d301f511a@sha256:5e2c94c186217da4a5983709466e471af3f742f6e0bbd0a0e013dd3b71f151bc
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:
@@ -10941,7 +10941,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   image:
     repository: ghcr.io/elfhosted/riven
-    tag: v0.21.18@sha256:a3dc73edaf4f510de5d1f4b05ae5b19c798af957d007e7f93680aa161c9b26ba
+    tag: v0.21.19@sha256:89b51038244790d5942dbb5fb81bcf99c9500869cec0b1ab8ac38c2f20af8a60
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14330,7 +14330,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.11@sha256:e31ccb8f6bcdbd87b4df4385c72fad637558500b901a5f98ba13a941a6e1244d
+    tag: v0.2.12@sha256:ec8971a623e15f09b5bc88f27eaa27d4f80a6944d242d40cbcc864bb52af3cea
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14415,7 +14415,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.11@sha256:e31ccb8f6bcdbd87b4df4385c72fad637558500b901a5f98ba13a941a6e1244d
+      image: ghcr.io/elfhosted/pulsarr:v0.2.12@sha256:ec8971a623e15f09b5bc88f27eaa27d4f80a6944d242d40cbcc864bb52af3cea
       command:
       - /bin/ash
       - -c
@@ -14601,7 +14601,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.9@sha256:2a1ea572c95ada40993ecad1787b879aa41149245a97b3f9eee18b817c9c6825
+    tag: 0.8.11@sha256:1682cc98f2780db123146b7a6d0e3ea9e0fde1ae4c7f7345c3a06e55a170d43d
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
