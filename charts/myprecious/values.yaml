@@ -3890,7 +3890,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.2.1@sha256:67deb24a6e55ad27bc672d00eeed6937310e63553952683d328c844a2bc84b21
+    tag: 8.2.100@sha256:0b4d127ec02999fac6c3c3fc34745510daa3d6537f3999c8ca56b6956a215879
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5218,7 +5218,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.6.9685-d301f511a@sha256:f57040912b6daa09db70d38356ffde769177ed54c7f9e454b2a6cbfa21de7f1f
+    tag: 1.41.6.9685-d301f511a@sha256:f226df3f670bc59828fb8cdd4ccbc6c57d3be93d8c0ceecb12c165da6b2450e6
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:
@@ -5534,7 +5534,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.7@sha256:8af88d5cb3b97765f4e1623190bcd4024b9189fcce24efefcf15d98f4b4cf1b0
+    tag: 10.10.7@sha256:6c991c2ee8b72dd1564216cd8c3163fa8200cb9c7d68a3c9cdf76d4fd33cae98
   enabled: false
   podLabels:
     app.elfhosted.com/name: jellyfin
@@ -11337,7 +11337,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1756@sha256:6063e2af507a652715afc876e0c41ccf4fd70e59063b9bcad9bbc728890ef1c3
+    tag: 0.22.1760@sha256:83101ef42d278db88feab4bd67c62fb24370697e269ece402f19662f383c5d98
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12380,7 +12380,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.61.1@sha256:b9adffc531a2e113255a4b0d54a5fcc0f9356faa63a7524b02b99b78249d943d
+    tag: 0.62.2@sha256:42a2368433353fc84ffe0fc1c07832a2d219c251b391b27945db4c6875ad53d0
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
