@@ -56,7 +56,7 @@ data:
     {{- if .Values.rclonepremiumize.enabled }}{{ $dirs = append $dirs "/storage/premiumize" }}{{- end }}
     {{- join "," $dirs }}
 
-  WAIT_FOR_URLs: {{ $urls := list }}
+  WAIT_FOR_URLS: {{ $urls := list }}
     {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ $urls = append $urls "http://zurg:9999/http/version.txt" }}{{- end }}
     {{- if .Values.rclonealldebrid.enabled }}{{ $urls = append $urls "http://alldebrid:9999" }}{{- end }}
     {{- if .Values.rclonetorbox.enabled }}{{ $urls = append $urls "http://torbox" }}{{- end }}
