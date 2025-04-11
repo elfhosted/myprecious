@@ -6870,7 +6870,7 @@ symlinkcleaner:
       custom: true
       enabled: true
       spec:
-        failureThreshold: 5
+        failureThreshold: 15
         httpGet:
           path: /health
           port: 5000
