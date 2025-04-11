@@ -14596,7 +14596,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.8.11@sha256:1682cc98f2780db123146b7a6d0e3ea9e0fde1ae4c7f7345c3a06e55a170d43d
+    tag: 0.9.0@sha256:407db0474433e23fbefadef1ba2ea5c5da0ad89874a0be9b61ac6992b16b27b5
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
