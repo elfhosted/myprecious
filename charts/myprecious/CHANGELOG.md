@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.332.0](https://github.com/elfhosted/myprecious/compare/v1.331.0...v1.332.0) (2025-04-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.123 ([e1084b8](https://github.com/elfhosted/myprecious/commit/e1084b834d561d21b7829345397f4ac296767013))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.99.2 ([8edff3c](https://github.com/elfhosted/myprecious/commit/8edff3c90523afe4992f5ffc1c6ec9a211a66d99))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.9.0 ([a7d1566](https://github.com/elfhosted/myprecious/commit/a7d15664121e755ed835072699cd6a1ec8f9093a))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.46 ([b257bb6](https://github.com/elfhosted/myprecious/commit/b257bb6c4b17a03b56adc270d989f4db0a2c01f8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1760 ([d9741ae](https://github.com/elfhosted/myprecious/commit/d9741aeadd28b83beb58132b271ff84e99defd44))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.62.2 ([6691569](https://github.com/elfhosted/myprecious/commit/669156948787fa3e328ee48d7042eeb9045e1dc6))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.62.5 ([ee32227](https://github.com/elfhosted/myprecious/commit/ee32227de54b290dab11c52da9d510c66bf1ed93))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.62.7 ([402cc3e](https://github.com/elfhosted/myprecious/commit/402cc3e72ea49074476efd0c7a4a98a63ff76b76))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.62.8 ([29297be](https://github.com/elfhosted/myprecious/commit/29297beb70b24b9109e42a490d27ad991dabfcd5))
+* **app:** update ghcr.io/elfhosted/wallabag docker tag to v2.6.12 ([e78db3b](https://github.com/elfhosted/myprecious/commit/e78db3b93a87d799f3e2c565f2cf47226fb7c756))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.2.100 ([86d875d](https://github.com/elfhosted/myprecious/commit/86d875d2901d9f930e23abd67f84095a1a6ad376))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/emby:4.9.0.45 docker digest to 45f8293 ([37a7356](https://github.com/elfhosted/myprecious/commit/37a7356376f839565759b8f4cd4a58a5b28ed561))
+* **app:** update ghcr.io/elfhosted/filebrowser:2.23.0 docker digest to 8d8b286 ([6461b79](https://github.com/elfhosted/myprecious/commit/6461b795643c8401231cdb1504905819c9fff4ce))
+* **app:** update ghcr.io/elfhosted/jellyfin:10.10.7 docker digest to 6c991c2 ([55db7ba](https://github.com/elfhosted/myprecious/commit/55db7ba24547fae071d77dfac9074603b40b0f4a))
+* **app:** update ghcr.io/elfhosted/kavita:0.8.5 docker digest to 644944d ([17ab196](https://github.com/elfhosted/myprecious/commit/17ab19645a5e141de7aa455de6be7a84c8b182f1))
+* **app:** update ghcr.io/elfhosted/nzbhydra2:7.12.3 docker digest to 8abc572 ([ff39fff](https://github.com/elfhosted/myprecious/commit/ff39fffed9ec673a64870b2f25e978aec1f7944f))
+* **app:** update ghcr.io/elfhosted/ombi:4.47.1 docker digest to 7396fd4 ([5672489](https://github.com/elfhosted/myprecious/commit/5672489ad25e1e7d0e86b62bb605382182e00383))
+* **app:** update ghcr.io/elfhosted/openbooks:4.5.0 docker digest to b9488d8 ([bba01c3](https://github.com/elfhosted/myprecious/commit/bba01c3e841a80c5df67947e85d45d0429604b5e))
+* **app:** update ghcr.io/elfhosted/plex:1.41.6.9685-d301f511a docker digest to f226df3 ([ba0ee69](https://github.com/elfhosted/myprecious/commit/ba0ee69026b43ea826c7a5c2763305a57b57252c))
+* **app:** update ghcr.io/elfhosted/plex:1.41.6.9685-d301f511a docker digest to f570409 ([72921b2](https://github.com/elfhosted/myprecious/commit/72921b2414215b7eaafbb57978768c0970ffbf94))
+* **app:** update ghcr.io/elfhosted/plextraktsync:0.34.7 docker digest to b86de00 ([312bf4e](https://github.com/elfhosted/myprecious/commit/312bf4ece99978d349bf69877f4465435ca576ae))
+* **app:** update ghcr.io/elfhosted/radarr:5.21.1.9799 docker digest to 892324b ([7684898](https://github.com/elfhosted/myprecious/commit/7684898dc862f1c416957f9b803006f77a24c7ef))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to 2e245fd ([8d7a38c](https://github.com/elfhosted/myprecious/commit/8d7a38c2f63d6c418c2243d92ae2b67d9fb0b18a))
+* further extend startup timeout for symlink-cleaner to 600s ([a383942](https://github.com/elfhosted/myprecious/commit/a383942f48d4610c682a4520645f357a2686882c))
+* Improve Emby / Plex / Jellyfin waiting for RD debrid mounts to be present ([b1c7a73](https://github.com/elfhosted/myprecious/commit/b1c7a73c14f66b63777a75e5251832a2f51e0500))
+* increase startup probe timeout for symlink-cleaner (big libraries!) ([5eab48b](https://github.com/elfhosted/myprecious/commit/5eab48b81483ae8f71edc0985a9a6d311982e403))
+
 ## [1.331.0](https://github.com/elfhosted/myprecious/compare/v1.330.0...v1.331.0) (2025-04-10)
 
 
