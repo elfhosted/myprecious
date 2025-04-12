@@ -6,7 +6,6 @@ metadata:
 spec:
   entryPoints:
   - websecure
-  - web
   routes:
     - match: Host(`{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}`)
       kind: Rule

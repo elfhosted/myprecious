@@ -5,7 +5,6 @@ metadata:
 spec:
   entryPoints:
   - websecure
-  - web
   routes:
     - match: Host(`{{ .Release.Name }}.{{ .Values.dns_domain }}`)
       kind: Rule
