@@ -2611,7 +2611,7 @@ ombi:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/ombi
-    tag: 4.47.1@sha256:6085811c38742b39e0f2a88f84cc34eb3e5bea0cfdf21125664106b11bfef7f0
+    tag: 4.47.1@sha256:7fbede0dd51482cad6216ca02c1391beda5520a1fd9ad299ad03bd46d8552fb9
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2918,7 +2918,7 @@ filebrowser:
     app.elfhosted.com/name: filebrowser
   image:
     repository: ghcr.io/elfhosted/filebrowser
-    tag: 2.23.0@sha256:ffdb9487614afbe59784fc5dbe863510badb05fe8d51c2421ae0ae869c985f47
+    tag: 2.23.0@sha256:296e3a3d08c5ca07a26350358fa2e58a597a41adb253a65bba27b557f36383e5
   podAnnotations:
     kubernetes.io/egress-bandwidth: "5M" # filebrowser is not for streaming
   # Always prefer to cohabit with zurg
@@ -3030,7 +3030,7 @@ filebrowser:
       enabled: false
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:ffdb9487614afbe59784fc5dbe863510badb05fe8d51c2421ae0ae869c985f47
+      image: ghcr.io/elfhosted/filebrowser:2.23.0@sha256:296e3a3d08c5ca07a26350358fa2e58a597a41adb253a65bba27b557f36383e5
       # 2.23.0@sha256:1db0f0114a169ea2a877d75c47903a6d01534340421948845d5e298c7ac7ceb4 is the last good version for TFA
       imagePullPolicy: IfNotPresent
       command:
@@ -3823,7 +3823,7 @@ kavita:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kavita
-    tag: 0.8.5@sha256:7dd2bb86efebfa4fcdb083515b25ca71e783fff983c76b8583dc6fdf3c0fe8a9
+    tag: 0.8.5@sha256:d4e3426c6541bab55fb85df18c33a030e661cdc95f948eb6d07cad8c4d75213e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4736,7 +4736,7 @@ nzbhydra:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
-    tag: 7.12.3@sha256:862641e03368c9104a8f02e1079457488d4802e01f88e35c9d2a59735f851f3f
+    tag: 7.12.3@sha256:14be589c72dfa1817888242dd0391b3c106b8cb34f6c1be0e39dfd96fb172ecb
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5218,7 +5218,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.6.9685-d301f511a@sha256:74e0093119863e4af95948f8e52f5f95b6605bac3dbb0aecdbfb661b84f8737f
+    tag: 1.41.6.9685-d301f511a@sha256:7df3cce637b870ec0291d998d0d094fe5c145fd61bc851c0e7cb77bfcf4a2f36
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:
@@ -5534,7 +5534,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.7@sha256:586beb503e1b4efd876ccec2ee7acaed06cdcdb357f8faa52ee6d10ed5facedc
+    tag: 10.10.7@sha256:27f605a206e149022214f282eabe08a9047ed6dac54cfd8c08a79de089e59edd
   enabled: false
   podLabels:
     app.elfhosted.com/name: jellyfin
@@ -5713,7 +5713,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.46@sha256:5bde30d120caf28d6b51e97b2f47c49371fa9ec17ce6a0af24d74f762600b458
+    tag: 4.9.0.46@sha256:3c46bfa770bb063682a2f17975cc9a719ab801f06d083738287138d7cc2beba1
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -7579,7 +7579,7 @@ openbooks:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/openbooks
-    tag: 4.5.0@sha256:64687d293a572b8394c8e5fa4096309c2a986d109338c200c131cc3766807036
+    tag: 4.5.0@sha256:c17d8e86d55e35cd1edb20fe1e1ff95a8e93cbef4c571ead2bfeb07276845477
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -8690,7 +8690,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.34.7@sha256:66c1ff883a82ce5fdd855669237f889b1a5099c3a6608502cbd522600e0b3f50
+    tag: 0.34.7@sha256:61c00dd218df3a895c93e728a5e60a815a7d7ce81fb6a554bb4232360abc71cb
   securityContext:
     seccompProfile:
       type: RuntimeDefault
