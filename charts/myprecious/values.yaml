@@ -2084,7 +2084,7 @@ tautulli:
   image:
     registry: ghcr.io
     repository: elfhosted/tautulli
-    tag: 2.15.1@sha256:8773a84fbdc3bdc8a48eef7f40567ad4ae87154c922f897db855d7dcc8291654
+    tag: 2.15.2@sha256:b84a2ec3c44fa60261869f264702f151822f1a62e4c5a5bd09822a736fd60e45
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:2386ed6fe1dd85bddc4eb7487f56d3e35041af18fc7d9161775ff62f697b118c
+    tag: 5.21.1.9799@sha256:f5b6a3413a41b957226da2525fcc9db711cc706e45d6f4ccae3794be939b29ab
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2403,7 +2403,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:2386ed6fe1dd85bddc4eb7487f56d3e35041af18fc7d9161775ff62f697b118c
+    tag: 5.21.1.9799@sha256:f5b6a3413a41b957226da2525fcc9db711cc706e45d6f4ccae3794be939b29ab
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3979,7 +3979,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:d7dd590e28280345ab4b29d53f86cc45149df4b5a156310702ddc563e686173c
+    tag: 4.0.14.2939@sha256:c479c77850bae1928f6530c48220cf0920c15a0d62dac0b57b51b8146a128819
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4221,7 +4221,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:d7dd590e28280345ab4b29d53f86cc45149df4b5a156310702ddc563e686173c
+    tag: 4.0.14.2939@sha256:c479c77850bae1928f6530c48220cf0920c15a0d62dac0b57b51b8146a128819
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5713,7 +5713,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.46@sha256:3c46bfa770bb063682a2f17975cc9a719ab801f06d083738287138d7cc2beba1
+    tag: 4.9.0.47@sha256:ea0ca4e09a7def34110d120ff321c9b0e89018e14b2358d09fec599cc2dba6b6
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -7435,7 +7435,7 @@ audiobookrequest:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookrequest
-    tag: 1.4.2@sha256:1730524d50db210bfcb33630e5bf299376be64a7ab67ae249480c4dace4e7b10
+    tag: 1.4.3@sha256:410b3cc42ff0a2dd9cd757d4648dbc2dd9cc301b53b1ab3ec97fefd8eb4f1f26
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -9933,7 +9933,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.102@sha256:f1347e4b87adace69bd72fc9d4ef71aa20836f68c585f5d29d233653ea681664
+    tag: v2.0.104@sha256:9afbceed635b3327add5526671989fe56ce04fdb94f23f951e8df9afe658244a
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -11337,7 +11337,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1760@sha256:83101ef42d278db88feab4bd67c62fb24370697e269ece402f19662f383c5d98
+    tag: 0.22.1767@sha256:709b59c8d7e82e6e5a6828cb4c7559748da057c266c5ded0ea9b5122a58efcd0
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14325,7 +14325,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.12@sha256:ec8971a623e15f09b5bc88f27eaa27d4f80a6944d242d40cbcc864bb52af3cea
+    tag: v0.2.13@sha256:38bf719c649f7062190c4cf1f835eb2786b8ee91656a041185dca3ff9a8f671f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14410,7 +14410,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.12@sha256:ec8971a623e15f09b5bc88f27eaa27d4f80a6944d242d40cbcc864bb52af3cea
+      image: ghcr.io/elfhosted/pulsarr:v0.2.13@sha256:38bf719c649f7062190c4cf1f835eb2786b8ee91656a041185dca3ff9a8f671f
       command:
       - /bin/ash
       - -c
