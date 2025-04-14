@@ -29,8 +29,8 @@ data:
     # Enable rar extraction if it's not already there
     grep rar_action /config/config.yml || echo 'rar_action: extract' >> /config/config.yml
 
-    # Check for changes every 10 sec
-    sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
+    # Check for changes every 10 sec - this is too aggressive on large libraries
+    # sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
 
     # Don't serve from rclone
     sed -i  "s/serve_from_rclone:.*/serve_from_rclone: false/" /config/config.yml
@@ -46,8 +46,6 @@ data:
       # we don't need the script
       sed -i  "s/on_library_update/#on_library_update/" /config/config.yml
     {{- end }}
-
-    sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
 
     # Enable repair everywhere
     # disabled on 13 nov 2024 to debug 
@@ -71,7 +69,7 @@ data:
     host: "[::]" # do not change this if you are running it inside a docker container
     port: 9999 # do not change this if you are running it inside a docker container
     concurrent_workers: 32
-    check_for_changes_every_secs: 10
+    check_for_changes_every_secs: 30
 
     # misc configs
     retain_folder_name_extension: true # if true, zurg won't modify the filenames from real-debrid
