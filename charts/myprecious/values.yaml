@@ -2368,9 +2368,9 @@ radarr: &app_radarr
         limits:
           cpu: 500m
           memory: 8Gi     
-    backup-database:
+    database-backup:
       image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
-      command: [ "/backup-database.sh" ]
+      command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
           name: radarr-env
@@ -2605,9 +2605,9 @@ radarr4k: &app_radarr4k
         limits:
           cpu: 500m
           memory: 8Gi   
-    backup-database:
+    database-backup:
       image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
-      command: [ "/backup-database.sh" ]
+      command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
           name: radarr4k-env
@@ -4224,9 +4224,9 @@ sonarr: &app_sonarr
         limits:
           cpu: 500m
           memory: 8Gi         
-    backup-database:
+    database-backup:
       image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
-      command: [ "/backup-database.sh" ]
+      command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
           name: sonarr-env
@@ -4478,9 +4478,9 @@ sonarr4k: &app_sonarr4k
         limits:
           cpu: 500m
           memory: 8Gi 
-    backup-database:
+    database-backup:
       image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
-      command: [ "/backup-database.sh" ]
+      command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
           name: sonarr4k-env
