@@ -4543,7 +4543,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.33.3.5008@sha256:3be5bcb44cc2d430c5f6e0f023b973efeee6e76caf68a9e9fcf89bf8f5164746
+    tag: 1.34.0.5016@sha256:3cf38fc18985e643a262fd7bfdd09fbb382791fb950094264aed921a5db6e2de
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4810,7 +4810,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.11.0.4610@sha256:a5d32a91fa0475d7bf09935a28c2f6d27181b0f6afd5cab6b5d063b05dba107d
+    tag: 2.11.1.4621@sha256:20a0b3b3c2366c529b584008fcd1117082ee669aa6223cb96e755155e8955d32
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4980,7 +4980,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.13.2760@sha256:b01506982cb8886aab5e0e0f2a2781d8ab5157b36ffd5791175e4a6bfedfb0cd
+    tag: 0.4.14.2782@sha256:62a45730b67f0f1751180f85dee7471d410864e43e58da985fbc33a4be5a70c6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5087,7 +5087,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.13.2760@sha256:b01506982cb8886aab5e0e0f2a2781d8ab5157b36ffd5791175e4a6bfedfb0cd
+    tag: 0.4.14.2782@sha256:62a45730b67f0f1751180f85dee7471d410864e43e58da985fbc33a4be5a70c6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7435,7 +7435,7 @@ audiobookrequest:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookrequest
-    tag: 1.4.3@sha256:410b3cc42ff0a2dd9cd757d4648dbc2dd9cc301b53b1ab3ec97fefd8eb4f1f26
+    tag: 1.4.4@sha256:79dc37cb19fdaaf22e94a0f8d8b0d36c7c647889b9bdd644a77a7c41f3d7a623
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -9933,7 +9933,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.104@sha256:9afbceed635b3327add5526671989fe56ce04fdb94f23f951e8df9afe658244a
+    tag: v2.0.108@sha256:3dc2d777e217a3293c4a00a83d34ccebd2068d56ff016668228020fe76f93356
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -11337,7 +11337,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1767@sha256:709b59c8d7e82e6e5a6828cb4c7559748da057c266c5ded0ea9b5122a58efcd0
+    tag: 0.22.1773@sha256:542640357c8ddf2df6422b66d1c1d59a6f0f07df1c65c0c1230bcba4fa834b1b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12380,7 +12380,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.62.8@sha256:6531ec5e67dcf2423ccb08c99a7352c4e5bce64530daebb88352a39e4d2b2b7a
+    tag: 0.63.0@sha256:8a8e5209426eacdaba4081e317bdb90259dcbc57a07ffce65fe8d006f9f6d753
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13746,7 +13746,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.25@sha256:c542c7e3595271d626d7a1bf97076e1bd3f9b571299104f0f57566466ebad9d7
+    tag: v0.6.27@sha256:c9be74e0b1123dae270a872fbc70f8906f77c2802ff5baba3c033ffca97d3c26
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14325,7 +14325,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.13@sha256:38bf719c649f7062190c4cf1f835eb2786b8ee91656a041185dca3ff9a8f671f
+    tag: v0.2.14@sha256:e2dd22fe0fda300c786b371adf37dc795abbcdddb10ac5d02a74af2e5fa7cd44
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14410,7 +14410,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.13@sha256:38bf719c649f7062190c4cf1f835eb2786b8ee91656a041185dca3ff9a8f671f
+      image: ghcr.io/elfhosted/pulsarr:v0.2.14@sha256:e2dd22fe0fda300c786b371adf37dc795abbcdddb10ac5d02a74af2e5fa7cd44
       command:
       - /bin/ash
       - -c
