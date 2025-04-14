@@ -2410,6 +2410,17 @@ radarr: &app_radarr
     limits:
       cpu: 1
       memory: 2Gi
+  probes: # need a long startup for database migrations
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 300
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 7878
+        timeoutSeconds: 1
 
 radarr4k: &app_radarr4k
   enabled: false
@@ -2640,7 +2651,18 @@ radarr4k: &app_radarr4k
         limits:
           cpu: 100m
           memory: 512Mi  
-          
+  probes: # need a long startup for database migrations
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 300
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 7878
+        timeoutSeconds: 1
+
 ombi:
   enabled: false
   image:
@@ -4262,6 +4284,17 @@ sonarr: &app_sonarr
         limits:
           cpu: 100m
           memory: 512Mi 
+  probes: # need a long startup for database migrations
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 300
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 8989
+        timeoutSeconds: 1
 
 sonarr4k: &app_sonarr4k
   enabled: false
@@ -4516,7 +4549,18 @@ sonarr4k: &app_sonarr4k
         limits:
           cpu: 100m
           memory: 512Mi 
-
+  probes: # need a long startup for database migrations
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 300
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 8989
+        timeoutSeconds: 1
+        
 resiliosync:
   service:
     main:
