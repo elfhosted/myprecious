@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:9017f33ba60c87514e1598971a92edc8b63a8360a150d20c556f9893219f1efe
+    tag: 5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2368,6 +2368,27 @@ radarr: &app_radarr
         limits:
           cpu: 500m
           memory: 8Gi     
+    backup-database:
+      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
+      command: /backup-database.sh
+      env:
+        - name: POSTGRES_PASSWORD
+          value: radarr
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: radarr
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: radarr/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi            
     huntarr-radarr:
       image: ghcr.io/elfhosted/huntarr-radarr:3.0@sha256:cff870f042d8487c83b747fd63d060d2d4a14b2ea9d3b56a47ccaf74c6e5d585
       envFrom:
@@ -2403,7 +2424,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:9017f33ba60c87514e1598971a92edc8b63a8360a150d20c556f9893219f1efe
+    tag: 5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2588,6 +2609,27 @@ radarr4k: &app_radarr4k
         limits:
           cpu: 500m
           memory: 8Gi   
+    backup-database:
+      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
+      command: /backup-database.sh
+      env:
+        - name: POSTGRES_PASSWORD
+          value: radarr
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: radarr
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: radarr4k/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi            
     huntarr-radarr:
       image: ghcr.io/elfhosted/huntarr-radarr:3.0@sha256:cff870f042d8487c83b747fd63d060d2d4a14b2ea9d3b56a47ccaf74c6e5d585
       envFrom:
@@ -4190,6 +4232,27 @@ sonarr: &app_sonarr
         limits:
           cpu: 500m
           memory: 8Gi         
+    backup-database:
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
+      command: /backup-database.sh
+      env:
+        - name: POSTGRES_PASSWORD
+          value: sonarr
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: sonarr
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: sonarr/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi            
     huntarr-sonarr:
       image: ghcr.io/elfhosted/huntarr-sonarr:3.3.3@sha256:bbdb691535dc0f2aba4f52fde8c0b8afa9a6f22b99dd731bcadd2ee18a56072b
       envFrom:
@@ -4427,6 +4490,27 @@ sonarr4k: &app_sonarr4k
         limits:
           cpu: 500m
           memory: 8Gi 
+    backup-database:
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
+      command: /backup-database.sh
+      env:
+        - name: POSTGRES_PASSWORD
+          value: sonarr
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: sonarr
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: sonarr4k/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi             
     huntarr-sonarr:
       image: ghcr.io/elfhosted/huntarr-sonarr:3.3.3@sha256:bbdb691535dc0f2aba4f52fde8c0b8afa9a6f22b99dd731bcadd2ee18a56072b
       envFrom:
