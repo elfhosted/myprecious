@@ -8887,7 +8887,7 @@ letterboxdtraktsync:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/letterbox-trakt-sync
+    repository: ghcr.io/elfhosted/letterboxd-trakt-sync
     tag: v1.0.1@sha256:368112e9ef5eda2934b67f676368da4e478265af1b37770343670a3d0c341e4c
   securityContext:
     seccompProfile:
