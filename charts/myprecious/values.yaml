@@ -2409,7 +2409,7 @@ radarr: &app_radarr
       memory: 500Mi
     limits:
       cpu: 1
-      memory: 4Gi # reduce once sqlite-to-db-migration is done
+      memory: 8Gi # reduce once sqlite-to-db-migration is done
   probes: # need a long startup for database migrations
     startup:
       custom: true
@@ -2585,7 +2585,7 @@ radarr4k: &app_radarr4k
       memory: 500Mi
     limits:
       cpu: 1
-      memory: 4Gi # reduce once sqlite-to-db-migration is done
+      memory: 8Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -4215,7 +4215,7 @@ sonarr: &app_sonarr
       memory: 600Mi
     limits:
       cpu: 1
-      memory: 4Gi # reduce once sqlite-to-db-migration is done
+      memory: 8Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -4480,7 +4480,7 @@ sonarr4k: &app_sonarr4k
       memory: 256Mi
     limits:
       cpu: 1
-      memory: 4Gi # reduce once sqlite-to-db-migration is done
+      memory: 8Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
