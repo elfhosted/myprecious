@@ -8847,7 +8847,7 @@ plextraktsync:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-kometa
+          name: elfbot-plextraktsync
           optional: true
     state: # plextraktsync needs this
       enabled: true
@@ -8912,50 +8912,42 @@ letterboxdtraktsync:
       ports:
         http:
           port: 3001
+  env:
+    RUN_ON_START: "true"
   envFrom:
   - configMapRef:
       name: elfbot-letterboxd-trakt-sync
       optional: true
-  # persistence:
-  #   <<: *storagemounts
-  #   config:
-  #     enabled: true
-  #     type: custom
-  #     mountPath: /home/elfie/.config/PlexTraktSync
-  #     subPath: letterboxd-trakt-sync
-  #     volumeSpec:
-  #       persistentVolumeClaim:
-  #         claimName: config
-  #   elfbot:
-  #     enabled: "true"
-  #     type: "custom"
-  #     volumeSpec:
-  #       configMap:
-  #         name: elfbot-kometa
-  #         optional: true
-  #   state: # plextraktsync needs this
-  #     enabled: true
-  #     type: emptyDir
-  #     sizeLimit: 1Gi
-  #     mountPath: /home/elfie/.local/state
-  #   cache: # plextraktsync needs this
-  #     enabled: true
-  #     type: emptyDir
-  #     sizeLimit: 1Gi
-  #     mountPath: /home/elfie/.cache      
-  # initContainers:
-  #   bootstrap:
-  #     <<: *bootstrap
-  #     volumeMounts:
-  #     - mountPath: /etc/elfbot
-  #       name: elfbot
-  #     - mountPath: /storage/backup
-  #       name: backup
-  #     - mountPath: /config
-  #       name: config
-  #       subPath: plextraktsync
-  #     - mountPath: /tmp
-  #       name: tmp
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: letterboxd-trakt-sync
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-letterboxd-trakt-sync
+          optional: true   
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: letterboxd-trakt-sync
+      - mountPath: /tmp
+        name: tmp
   ingress:
     main:
       enabled: false
