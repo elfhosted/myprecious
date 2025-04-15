@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.333.0](https://github.com/elfhosted/myprecious/compare/v1.332.0...v1.333.0) (2025-04-15)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.124 ([4e3af89](https://github.com/elfhosted/myprecious/commit/4e3af89ddaa36ecad8889e20cb4fb88dc9317840))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.29 ([9d64a84](https://github.com/elfhosted/myprecious/commit/9d64a8420fbff9e5bbb880bb5fda616b2c5f906a))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.48 ([988aa20](https://github.com/elfhosted/myprecious/commit/988aa20edd15d0378d25c0e0bdc9bd989fc25ffa))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1778 ([7617ec9](https://github.com/elfhosted/myprecious/commit/7617ec9b0f464c5162bf265ded05776d775003c4))
+* **app:** update ghcr.io/elfhosted/kavita docker tag to v0.8.6 ([58b5a6f](https://github.com/elfhosted/myprecious/commit/58b5a6f3a61a109b828500f875a9314164da4ece))
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.7 ([acd8f9a](https://github.com/elfhosted/myprecious/commit/acd8f9a5406eaa6762a12bb8ee8d452388e5b7f4))
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.8 ([06701ae](https://github.com/elfhosted/myprecious/commit/06701ae83700c5e3425cddf762574cfe9f7515bf))
+
+
+### Bug Fixes
+
+* Add letterboxd-trakt-sync ([4cb07f0](https://github.com/elfhosted/myprecious/commit/4cb07f0268d9c8f5a753709826e20cc5267ab126))
+* Extend startupProbe for aars doing database migrations ([010fa73](https://github.com/elfhosted/myprecious/commit/010fa73be241bc796805815fdd95c1b2a7069795))
+* Fix ingressroute for letterboxd-trakt-sync ([7ea8829](https://github.com/elfhosted/myprecious/commit/7ea8829b77b65f62b3dd93361b8364b69665dd85))
+* Increase RAM limit __again__ for bigboy library migrations ([f021b3c](https://github.com/elfhosted/myprecious/commit/f021b3c4ce5685a285e92cb7abcdd5e5219b68ad))
+* Increase RAM limit for Aars when running DB migrations ([c41977a](https://github.com/elfhosted/myprecious/commit/c41977a3bf6bcb77897d79e0e5001f5407953cc9))
+
 ## [1.332.0](https://github.com/elfhosted/myprecious/compare/v1.331.0...v1.332.0) (2025-04-14)
 
 
