@@ -2415,7 +2415,7 @@ radarr: &app_radarr
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
@@ -2656,7 +2656,7 @@ radarr4k: &app_radarr4k
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
@@ -4289,7 +4289,7 @@ sonarr: &app_sonarr
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
@@ -4554,7 +4554,7 @@ sonarr4k: &app_sonarr4k
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
@@ -8847,7 +8847,7 @@ plextraktsync:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-kometa
+          name: elfbot-plextraktsync
           optional: true
     state: # plextraktsync needs this
       enabled: true
@@ -8870,6 +8870,82 @@ plextraktsync:
       - mountPath: /config
         name: config
         subPath: plextraktsync
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 64Mi
+    limits:
+      cpu: 100m # no way this should be using so much resources
+      memory: 1Gi
+
+letterboxdtraktsync:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/letterboxd-trakt-sync
+    tag: v1.0.1@sha256:368112e9ef5eda2934b67f676368da4e478265af1b37770343670a3d0c341e4c
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-letterboxd-trakt-sync"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3001
+  env:
+    RUN_ON_START: "true"
+  envFrom:
+  - configMapRef:
+      name: elfbot-letterboxd-trakt-sync
+      optional: true
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: letterboxd-trakt-sync
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-letterboxd-trakt-sync
+          optional: true   
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: letterboxd-trakt-sync
       - mountPath: /tmp
         name: tmp
   ingress:
