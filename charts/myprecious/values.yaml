@@ -2415,7 +2415,7 @@ radarr: &app_radarr
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
@@ -2656,7 +2656,7 @@ radarr4k: &app_radarr4k
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
@@ -4289,7 +4289,7 @@ sonarr: &app_sonarr
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
@@ -4554,7 +4554,7 @@ sonarr4k: &app_sonarr4k
       custom: true
       enabled: true
       spec:
-        failureThreshold: 300
+        failureThreshold: 3000
         periodSeconds: 10
         successThreshold: 1
         tcpSocket:
