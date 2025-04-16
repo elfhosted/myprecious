@@ -6331,8 +6331,8 @@ flaresolverr: &app_flaresolverr
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    runAsUser: 1000
-    runAsGroup: 1000
+    # runAsUser: 1000
+    # runAsGroup: 1000
   automountServiceAccountToken: false
   resources:
     requests:
