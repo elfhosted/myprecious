@@ -5,4 +5,5 @@ metadata:
   name: nightscout-env
 data:
   MONGODB_URI: mongodb://localhost:27017
+  INSECURE_USE_HTTP: "true" # we use traefik with https
 {{ end }}
