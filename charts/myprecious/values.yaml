@@ -12134,13 +12134,7 @@ nightscout:
         http:
           port: 1337
   persistence:
-    elfbot: 
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-nightscout
-          optional: true
+    tmp: *tmp
     config:
       enabled: true
       type: custom
