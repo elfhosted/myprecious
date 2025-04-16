@@ -12099,7 +12099,7 @@ nightscout:
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nightscout"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nightscout,nightscout-env"
     strategy:
     rollingUpdate:
       unavailable: 1
