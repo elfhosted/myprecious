@@ -9,7 +9,7 @@ data:
   settings_radarr.json: |
     {
       "URL": "http://radarr:7878",
-      "Interval": 120,
+      "Interval": 1440,
       "ScanOnWake": true,
       "ScanOnInterval": true,
       "ScanOnStart": true,  
@@ -23,7 +23,7 @@ data:
   settings_sonarr.json: |
     {
       "URL": "http://sonarr:8989",
-      "Interval": 120,
+      "Interval": 1440,
       "ScanOnWake": true,
       "ScanOnInterval": true,
       "ScanOnStart": true,  
