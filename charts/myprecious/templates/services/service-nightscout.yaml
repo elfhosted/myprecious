@@ -1,0 +1,20 @@
+{{ if .Values.nightscout.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: nightscout
+  labels:
+    app.kubernetes.io/name: nightscout
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 1337
+    targetPort: 1337
+    protocol: TCP
+    name: nightscout
+  selector:
+    app.kubernetes.io/name: nightscout
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

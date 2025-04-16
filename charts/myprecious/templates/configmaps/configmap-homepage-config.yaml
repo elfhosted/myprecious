@@ -1223,7 +1223,23 @@ data:
             icon: mdi-lock
             href: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}"
             description: Configure your BYO VPN
-        {{ end }}                    
+        {{ end }}    
+
+        {{ if .Values.pairdrop.enabled }}
+        - PairDrop:
+            icon: pairdrop.png
+            href: https://{{ .Release.Name }}-pairdrop.{{ .Values.dns_domain }}
+            description: Simply share files
+            siteMonitor: http://pairdrop:3000
+        {{ end }}   
+
+        {{ if .Values.nightscout.enabled }}
+        - Nightscout:
+            icon: nightscout.png
+            href: https://{{ .Release.Name }}-nightscout.{{ .Values.dns_domain }}
+            description: Manage CGM data
+            siteMonitor: http://nightscout:1337
+        {{ end }}     
 
     - Migration Tools:
         - Rclone UI:

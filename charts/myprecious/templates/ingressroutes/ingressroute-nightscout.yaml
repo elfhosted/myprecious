@@ -1,0 +1,16 @@
+{{ if .Values.nightscout.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-nightscout.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-nightscout.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: nightscout
+          kind: Service
+          port: 1337
+{{ end }}
