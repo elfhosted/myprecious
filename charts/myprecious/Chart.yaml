@@ -15,7 +15,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.332.4-pre-07
+version: 1.332.4-pre-08
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -423,6 +423,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: cinesync.enabled
     alias: cinesync
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: nightscout.enabled
+    alias: nightscout    
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

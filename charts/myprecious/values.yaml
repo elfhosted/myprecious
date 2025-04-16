@@ -12091,6 +12091,73 @@ petio:
           mountPath: /tmp
       securityContext: *default_securitycontext
 
+nightscout:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/nightscout
+    tag: 15.0.2@sha256:8a770bc606a6db4fbce86298cf5d6606aa1c015b89b449f9d268a2e34b670efa
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nightscout"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 1337
+  persistence:
+    elfbot: 
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-nightscout
+          optional: true
+    config:
+      enabled: true
+      type: custom
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+  additionalContainers:
+    mongodb:
+      image: mongodb/mongodb-community-server:8.0.8-ubi8
+      volumeMounts:
+        - name: config
+          subPath: nightscout/mongodb
+          mountPath: /data/db/
+        - name: tmp
+          mountPath: /tmp
+      securityContext: *default_securitycontext
+
 pgadmin:
   enabled: false
   image:

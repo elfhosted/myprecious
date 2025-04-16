@@ -1548,4 +1548,15 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}            
+      {{ end }}  
+
+      {{ if .Values.nightscout.enabled }}
+      - name: nightscout
+        group: tools
+        url: "http://nightscout:1337"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}  
