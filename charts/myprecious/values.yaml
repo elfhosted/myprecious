@@ -2190,7 +2190,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
+    tag: 5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2369,7 +2369,7 @@ radarr: &app_radarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
+      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -2431,7 +2431,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
+    tag: 5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2617,7 +2617,7 @@ radarr4k: &app_radarr4k
           cpu: 500m
           memory: 8Gi   
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:f3c0f693dc1a3504ef35ff161e92446930ab7ab9c1ff9a0222322e140ad0191b
+      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -3946,7 +3946,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.2.100@sha256:0b4d127ec02999fac6c3c3fc34745510daa3d6537f3999c8ca56b6956a215879
+    tag: 8.2.100@sha256:e4ed9216f8fd4a518b22efd7e8a4466d3695fd2841d3f7e866c80e885ff3efb7
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4035,7 +4035,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
+    tag: 4.0.14.2939@sha256:aea4488bc9973ef14dc27f83c87ac3dcb860fcdadffb3cc814150bf7677952db
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4247,7 +4247,7 @@ sonarr: &app_sonarr
           cpu: 500m
           memory: 8Gi         
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:aea4488bc9973ef14dc27f83c87ac3dcb860fcdadffb3cc814150bf7677952db
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4305,7 +4305,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
+    tag: 4.0.14.2939@sha256:aea4488bc9973ef14dc27f83c87ac3dcb860fcdadffb3cc814150bf7677952db
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4512,7 +4512,7 @@ sonarr4k: &app_sonarr4k
           cpu: 500m
           memory: 8Gi 
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:c2f84e2066170fe8a84bdf00b5bdbb8d0ac2ceb049b195d5c9dd0500ed30879f
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:aea4488bc9973ef14dc27f83c87ac3dcb860fcdadffb3cc814150bf7677952db
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -10975,7 +10975,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.124@sha256:71df5a46b657d6c212b94acfd4ed34dc6af37570857ffa32cf5637d024f64ee1
+    tag: 0.4.125@sha256:83bccf338a6d4c45e234d62bdfb2b523936a1747fe41ae2921e98115f2705ff1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11496,7 +11496,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1778@sha256:15d65f5e9d1238d5e9ff78a135ee3cbca404635ca332e947dfda08b5d2513aba
+    tag: 0.22.1784@sha256:be6ad596bd81e77fb6a2769e03816eaf1c8b61e55087449584b3284a389d3b12
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12539,7 +12539,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.63.0@sha256:8a8e5209426eacdaba4081e317bdb90259dcbc57a07ffce65fe8d006f9f6d753
+    tag: 0.64.0@sha256:4a0e9fa3fac77b67bec263c8aa47c3c000ef992f2a9136060d6e5bfcf1e66838
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
