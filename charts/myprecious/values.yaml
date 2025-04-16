@@ -6315,19 +6315,14 @@ flaresolverr: &app_flaresolverr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
   # persistence:
-  #   elfbot:
-  #     enabled: "true"
-  #     type: "custom"
-  #     volumeSpec:
-  #       configMap:
-  #         name: elfbot-flaresolverr
-  #         optional: true
-  #   shared:
+  #   config:
   #     enabled: true
-  #     mountPath: /shared
-  #     type: emptyDir
+  #     type: custom
+  #     mountPath: /app/screenshots
   #     volumeSpec:
-  #       medium: Memory
+  #       persistentVolumeClaim:
+  #         claimName: config
+  #     subPath: byparr/sreenshots
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
