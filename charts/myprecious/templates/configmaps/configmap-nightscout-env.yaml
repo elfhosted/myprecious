@@ -1,0 +1,8 @@
+{{ if .Values.nightscout.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nightscout-env
+data:
+  MONGODB_URI: mongodb://localhost:27017
+{{ end }}

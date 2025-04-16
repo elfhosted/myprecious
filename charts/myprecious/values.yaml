@@ -12117,6 +12117,12 @@ nightscout:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: nightscout-env
+  - configMapRef:
+      name: elfbot-nightscout
+      optional: true  
   resources:
     requests:
       cpu: 0m
