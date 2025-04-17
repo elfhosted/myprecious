@@ -2196,7 +2196,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
+    tag: 5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2375,7 +2375,7 @@ radarr: &app_radarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
+      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -2437,7 +2437,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
+    tag: 5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2623,7 +2623,7 @@ radarr4k: &app_radarr4k
           cpu: 500m
           memory: 8Gi   
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:6515b8ad72d667a33afb20487fbae0e12f3d264df3215418ef09af16d7565b66
+      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4041,7 +4041,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:28362599a7f8806515e6b6a949baa8470eb1fabe6716855fd9a70898fe930d5b
+    tag: 4.0.14.2939@sha256:d1c66b625da1e73bc548b844643357701d4adcf911e2efa299c69dee29535db5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4253,7 +4253,7 @@ sonarr: &app_sonarr
           cpu: 500m
           memory: 8Gi         
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:28362599a7f8806515e6b6a949baa8470eb1fabe6716855fd9a70898fe930d5b
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:d1c66b625da1e73bc548b844643357701d4adcf911e2efa299c69dee29535db5
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4311,7 +4311,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:28362599a7f8806515e6b6a949baa8470eb1fabe6716855fd9a70898fe930d5b
+    tag: 4.0.14.2939@sha256:d1c66b625da1e73bc548b844643357701d4adcf911e2efa299c69dee29535db5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4518,7 +4518,7 @@ sonarr4k: &app_sonarr4k
           cpu: 500m
           memory: 8Gi 
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:28362599a7f8806515e6b6a949baa8470eb1fabe6716855fd9a70898fe930d5b
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:d1c66b625da1e73bc548b844643357701d4adcf911e2efa299c69dee29535db5
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -11513,7 +11513,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1784@sha256:be6ad596bd81e77fb6a2769e03816eaf1c8b61e55087449584b3284a389d3b12
+    tag: 0.22.1788@sha256:18990c25e37ccc4cee518aeacd0c707d84d0b35f229e0f7ec11495b7ee358cc2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12634,7 +12634,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.65.0@sha256:8a2108f5cac111911bdd90b1061b651b87e02a544adda4a631e736eae4e433a2
+    tag: 0.65.1@sha256:1de903aebf02e47a4a05382a19ff3cfc80f94439a04efa85ef22d28b377d4d05
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14342,7 +14342,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.99.2@sha256:e9f000835af34ba840960fa8212fdfd7d31b76e07162dc3edabb8bf77e08acd1
+    tag: 4.99.3@sha256:1a7e68453716dc8044aca687a447e6d544e66b079909f7c4ffead8d6d31fee96
   priorityClassName: tenant-normal
   controller:
     annotations:
