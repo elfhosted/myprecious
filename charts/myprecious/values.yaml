@@ -11422,7 +11422,18 @@ airdcpp: &app_airdcpp
           name: elfbot-airdcpp
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: airdcpp
+      - mountPath: /tmp
+        name: tmp
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -11551,7 +11562,18 @@ jackett:
           name: elfbot-jackett
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: jackett
+      - mountPath: /tmp
+        name: tmp
 
 stremioserver: &app_stremioserver
   enabled: false
@@ -15740,7 +15762,18 @@ channelsdvr:
           name: elfbot-channelsdvr
           optional: true
   initContainers:
-    bootstrap: *bootstrap
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: channelsdvr
+      - mountPath: /tmp
+        name: tmp
 
 
 immich:
