@@ -471,6 +471,12 @@ bootstrap: &bootstrap
         ;;
 
       "reset")
+
+        # Safety check - if /config/homer exists, we've not mounted /config properly and are about to wipe out EVERYTHING
+        if [ -e "/config/homer" ]; then
+            echo "The path /config/homer exists. Exiting."
+            exit 1
+        fi      
         echo "Recent reset command found, resetting"
         rm -rf /config/*
         ;;
