@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.336.0](https://github.com/elfhosted/myprecious/compare/v1.335.0...v1.336.0) (2025-04-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.128 ([03866c4](https://github.com/elfhosted/myprecious/commit/03866c4815fcfec3908732fa692dbe53f43ccd0b))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.129 ([042ab8f](https://github.com/elfhosted/myprecious/commit/042ab8f256033ddaa8755ba6a9098767d655bbed))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.131 ([690eeaf](https://github.com/elfhosted/myprecious/commit/690eeafacd98534cc57cdba1e6b76fa82e5c0d35))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.33 ([a2e79b1](https://github.com/elfhosted/myprecious/commit/a2e79b10bb8a6ca9ab28617d33eb1a813fa03c02))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.34 ([eb1b8d3](https://github.com/elfhosted/myprecious/commit/eb1b8d3a34644a210c8ad3bf9bd02ef5a52b9e33))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1791 ([4ded99e](https://github.com/elfhosted/myprecious/commit/4ded99ea2ac8024f1fe9454cda8bf9f9c6ab6552))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.66.2 ([aceb785](https://github.com/elfhosted/myprecious/commit/aceb7855163ae82363763df00c3f08f5910a41d0))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.66.3 ([e7524d0](https://github.com/elfhosted/myprecious/commit/e7524d063c704a96a176d02269d80d0f9ca032ee))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.67.0 ([fbee70a](https://github.com/elfhosted/myprecious/commit/fbee70a454991e3b4cec56e8b896c02cd442f82f))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.67.1 ([973ad32](https://github.com/elfhosted/myprecious/commit/973ad32fa011d7009190041833ff7e17993ba9ec))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.67.2 ([e459e13](https://github.com/elfhosted/myprecious/commit/e459e1393507686b7bed18bc0215889ca4fdf489))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.3.0 ([5146124](https://github.com/elfhosted/myprecious/commit/5146124c31f472171ecc1dd937b02ec3f7f1cf21))
+
 ## [1.335.0](https://github.com/elfhosted/myprecious/compare/v1.334.0...v1.335.0) (2025-04-17)
 
 
