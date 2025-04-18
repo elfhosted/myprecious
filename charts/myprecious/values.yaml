@@ -3952,7 +3952,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.2.100@sha256:e4ed9216f8fd4a518b22efd7e8a4466d3695fd2841d3f7e866c80e885ff3efb7
+    tag: 8.3.0@sha256:e37f35451c6f8ab2cec48c38dd332e86f6abf0935b1c720854eac7498b39cb69
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10978,7 +10978,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.126@sha256:467acbb48e4ade76a2c76aefb6a39106e6ce29a4eebc2a8200fdef1e81bb35cd
+    tag: 0.4.129@sha256:2ae09bf3cf063382fab5273028a449684898aa82d58efc07e36aadc0651d42b1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11510,7 +11510,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1788@sha256:18990c25e37ccc4cee518aeacd0c707d84d0b35f229e0f7ec11495b7ee358cc2
+    tag: 0.22.1791@sha256:3e667dfc365eb885c51ce161d704ab5c5583136e6ed06e007679cf7efb057f2c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12631,7 +12631,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.65.1@sha256:1de903aebf02e47a4a05382a19ff3cfc80f94439a04efa85ef22d28b377d4d05
+    tag: 0.67.1@sha256:fdf6ab52d5c1454b6f135ed6413c55542150e9234b058013a0eda8eda276b80c
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13997,7 +13997,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.31@sha256:b249799c07a46a6257cd8163e9e244f66d8424e9257ead87103108898913a5ac
+    tag: v0.6.34@sha256:6a3fe26abe8bdaa6ea4ac81390d5c39a2042b46c26655757348402f84f90ff85
   priorityClassName: tenant-normal
   controller:
     annotations:
