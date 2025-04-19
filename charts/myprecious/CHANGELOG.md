@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.337.0](https://github.com/elfhosted/myprecious/compare/v1.336.0...v1.337.0) (2025-04-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.132 ([bc2a0d2](https://github.com/elfhosted/myprecious/commit/bc2a0d2545c1d396a9d3adff91ed483341948eb2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1795 ([ad8d2ca](https://github.com/elfhosted/myprecious/commit/ad8d2cafdbea84accbd6b7237d14643113d5f1ae))
+
 ## [1.336.0](https://github.com/elfhosted/myprecious/compare/v1.335.0...v1.336.0) (2025-04-18)
 
 
