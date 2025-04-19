@@ -1801,7 +1801,6 @@ data:
         icon: "fas fa-truck"
         items:
 
-          {{ if not .Values.zurgling.enabled }}
           - name: "Rclone Remotes"
             logo: "assets/png/rclone.png"
             subtitle: "Rclone remotes"
@@ -1833,7 +1832,6 @@ data:
             url: https://store.{{ .Values.dns_domain }}/product/rclonefm
             {{ end }}
             target: "_blank" # optional html tag target attribute
-          {{ end }}
 
           {{ if .Values.webdav.enabled }}
           - name: "WebDAV"
