@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.338.0](https://github.com/elfhosted/myprecious/compare/v1.337.0...v1.338.0) (2025-04-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.49 ([9a52327](https://github.com/elfhosted/myprecious/commit/9a52327bfa4651fffdc930290fd5d31240b56a60))
+
 ## [1.337.0](https://github.com/elfhosted/myprecious/compare/v1.336.0...v1.337.0) (2025-04-19)
 
 
