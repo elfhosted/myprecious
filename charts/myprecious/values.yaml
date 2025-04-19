@@ -10978,7 +10978,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.129@sha256:2ae09bf3cf063382fab5273028a449684898aa82d58efc07e36aadc0651d42b1
+    tag: 0.4.132@sha256:4656f2bbc0e5a39c89b00fd00435ade7c11e1eb2d229c64487c19ff6c37a1e35
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12631,7 +12631,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.67.1@sha256:fdf6ab52d5c1454b6f135ed6413c55542150e9234b058013a0eda8eda276b80c
+    tag: 0.67.2@sha256:b98f778e3e7bbbc818d46344cb4affdd7fc28914349d2eb6d3c242c584cf61f2
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
