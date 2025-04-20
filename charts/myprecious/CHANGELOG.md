@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.338.0](https://github.com/elfhosted/myprecious/compare/v1.337.0...v1.338.0) (2025-04-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.49 ([9a52327](https://github.com/elfhosted/myprecious/commit/9a52327bfa4651fffdc930290fd5d31240b56a60))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.50 ([7029283](https://github.com/elfhosted/myprecious/commit/70292832a29b834c651fa28c049e4bc40aa32c65))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1797 ([4da6961](https://github.com/elfhosted/myprecious/commit/4da696139d47bb0e6cd16e8ac8664ae76ad98053))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.8 ([3490eb5](https://github.com/elfhosted/myprecious/commit/3490eb59ec3fe97d5b8c490c035d881244e0d02e))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.34.1.5021 ([16184a8](https://github.com/elfhosted/myprecious/commit/16184a8221c1848010f8b5aaf272a41662656556))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.15.2787 ([23799d3](https://github.com/elfhosted/myprecious/commit/23799d357d1ef5a30868ed5b5696ddfb41cbfdf5))
+
+## [1.337.0](https://github.com/elfhosted/myprecious/compare/v1.336.0...v1.337.0) (2025-04-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.132 ([bc2a0d2](https://github.com/elfhosted/myprecious/commit/bc2a0d2545c1d396a9d3adff91ed483341948eb2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1795 ([ad8d2ca](https://github.com/elfhosted/myprecious/commit/ad8d2cafdbea84accbd6b7237d14643113d5f1ae))
+
 ## [1.336.0](https://github.com/elfhosted/myprecious/compare/v1.335.0...v1.336.0) (2025-04-18)
 
 

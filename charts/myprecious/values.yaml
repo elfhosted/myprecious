@@ -4661,7 +4661,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.34.0.5016@sha256:3cf38fc18985e643a262fd7bfdd09fbb382791fb950094264aed921a5db6e2de
+    tag: 1.34.1.5021@sha256:f3773f68c7bdcd541bb98e4cdbe323817b4f030fed6ae6cac60f6f9ffe0ce30f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5095,7 +5095,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.14.2782@sha256:62a45730b67f0f1751180f85dee7471d410864e43e58da985fbc33a4be5a70c6
+    tag: 0.4.15.2787@sha256:e2da4611474274755d4ee9c272e579fa2e0b5596b4370bb3f4ccbe477bddec45
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5202,7 +5202,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.14.2782@sha256:62a45730b67f0f1751180f85dee7471d410864e43e58da985fbc33a4be5a70c6
+    tag: 0.4.15.2787@sha256:e2da4611474274755d4ee9c272e579fa2e0b5596b4370bb3f4ccbe477bddec45
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5828,7 +5828,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.48@sha256:9d4a530c650fbe632d642ce935d0735269601d25aea421ccf6284ddabfeca71a
+    tag: 4.9.0.50@sha256:0c2a66ec0ca8a9b817e3b2314c132d578b5dfc3c618b588d30454534ad254dbd
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -11510,7 +11510,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1791@sha256:3e667dfc365eb885c51ce161d704ab5c5583136e6ed06e007679cf7efb057f2c
+    tag: 0.22.1797@sha256:f5493a2ed16445fddb23c6f9a2c8233b199399c46ac1d16c866ddd03eef89e50
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13196,7 +13196,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.7@sha256:b1d0504fa02a248e44270ff8ef20e456a681c9a112610f15562898a014bc4beb
+    tag: 1.9.8@sha256:8bff8e366c109a62f40c0cdbf01e49a189a0ccea3170786f8be03d65d09ee419
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
