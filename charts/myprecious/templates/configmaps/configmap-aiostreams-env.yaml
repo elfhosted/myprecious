@@ -4,10 +4,13 @@ kind: ConfigMap
 metadata:
   name: aiostreams-env
 data:
+  FORCE_COMET_PROTOCOL: "https" 
   {{ if .Values.comet.enabled }}
   COMET_URL: http://comet:8000/
+  FORCE_COMET_HOSTNAME: {{ .Release.Name }}-comet.{{ .Values.dns_domain }}
   {{ else }}
   COMET_URL: http://elfhosted-internal.comet/
+  FORCE_COMET_HOSTNAME: "comet.elfhosted.com"
   {{ end }}
   {{ if .Values.mediafusion.enabled }}
   MEDIAFUSION_URL: http://mediafusion:8000/
