@@ -25,7 +25,7 @@ spec:
         - name: buffer-2gb
           namespace: traefik
     {{ if .Values.plexremotestreamworkaround.enabled }}
-    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (PathRegexp(`/(.*)/transcode`) || PathPrefix(`/library/parts`))
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (PathPrefix(`/video/:/transcode`) || PathPrefix(`/library/parts`) || PathPrefix(`/:/timeline`))
       kind: Rule
       services:
         - name: plex
