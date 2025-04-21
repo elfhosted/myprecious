@@ -13,10 +13,4 @@ spec:
         - name: plex-proxy
           kind: Service
           port: 8888
-    - match: Host(`{{ .Release.Name }}-plex-proxy.{{ .Values.dns_domain }}`) && PathPrefix(`/podinfo`)
-      kind: Rule
-      services:
-        - name: plex-proxy
-          kind: Service
-          port: 9898
 {{ end }}

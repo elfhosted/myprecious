@@ -24,4 +24,12 @@ spec:
           namespace: traefik        
         - name: buffer-2gb
           namespace: traefik
+    {{ if .Values.plexremotestreamworkaround.enabled }}
+    - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && (PathRegexp(`/(.*)/transcode`) || PathPrefix(`/library/parts`))
+      kind: Rule
+      services:
+        - name: plex
+          kind: Service
+          port: 8888
+    {{ end }}
 {{ end }}

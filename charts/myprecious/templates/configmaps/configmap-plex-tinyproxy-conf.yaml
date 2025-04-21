@@ -11,7 +11,9 @@ data:
     Allow 0.0.0.0/0
     Timeout 600
     DisableViaHeader yes
+    ReversePath "/" "http://localhost:32400/"
     ReverseOnly Yes
-    # ReverseMagic Yes
-    ReverseBaseURL "http://localhost:32400/"    
+    Anonymous "Host"
+    Anonymous "Authorization"
+    Anonymous "Cookie"    
 {{ end }}
