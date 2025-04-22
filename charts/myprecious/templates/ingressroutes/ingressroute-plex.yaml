@@ -32,6 +32,6 @@ spec:
           kind: Service
           port: 8888
       middlewares:
-        - name: add-cors-for-plex
+        - name: {{ .Release.Name }}-add-cors-for-plex
     {{ end }}
 {{ end }}
