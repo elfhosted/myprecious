@@ -11514,7 +11514,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1797@sha256:f5493a2ed16445fddb23c6f9a2c8233b199399c46ac1d16c866ddd03eef89e50
+    tag: 0.22.1809@sha256:05d4348640510aa76757b046139aa7e2b71e09a28e90fa780520e5b180dcab4a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12635,7 +12635,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.67.2@sha256:b98f778e3e7bbbc818d46344cb4affdd7fc28914349d2eb6d3c242c584cf61f2
+    tag: 0.68.0@sha256:f3b6f5ad712f9a3b9ed29bf746074a42e9452cdc25f19cb916e189993a5dfb25
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13315,7 +13315,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.14.2@sha256:ab0870d42225a1c4892d76e76cb9504ca060e80dd6a68b6ec56c7bc3ce61f498
+    tag: v1.14.4@sha256:93d5b4cdf2e317f97656a5fa42e3e732e23ac0422532e9b49c216308b75166f7
   priorityClassName: tenant-normal
   controller:
     annotations:

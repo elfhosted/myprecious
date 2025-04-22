@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.339.0](https://github.com/elfhosted/myprecious/compare/v1.338.0...v1.339.0) (2025-04-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.14.3 ([a7cc0cd](https://github.com/elfhosted/myprecious/commit/a7cc0cdfe9749d14f6a30c4c2924bd4a0e72a244))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.14.4 ([ea52fba](https://github.com/elfhosted/myprecious/commit/ea52fbab920a305482abd93de10da5a22c8dc7b8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1800 ([f847e57](https://github.com/elfhosted/myprecious/commit/f847e57b1785a3c5b793526b14762f93912b483c))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.68.0 ([e14f5e1](https://github.com/elfhosted/myprecious/commit/e14f5e1d4eeee2ca83e4751cfcfb720d3a8ef254))
+
 ## [1.338.0](https://github.com/elfhosted/myprecious/compare/v1.337.0...v1.338.0) (2025-04-20)
 
 
