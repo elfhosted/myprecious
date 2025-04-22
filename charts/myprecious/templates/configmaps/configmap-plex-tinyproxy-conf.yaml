@@ -17,5 +17,6 @@ data:
     ReverseOnly Yes
     Anonymous "Host"
     Anonymous "Authorization"
-    Anonymous "Cookie"    
+    Anonymous "Cookie"   
+    Anonymous "X-Forwarded-Proto" 
 {{ end }}
