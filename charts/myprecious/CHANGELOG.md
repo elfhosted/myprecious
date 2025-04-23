@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.340.0](https://github.com/elfhosted/myprecious/compare/v1.339.0...v1.340.0) (2025-04-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1809 ([6fda68c](https://github.com/elfhosted/myprecious/commit/6fda68c47a4c26f99116681df2569ec562d29568))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.68.1 ([297dc65](https://github.com/elfhosted/myprecious/commit/297dc65b534aaaaed4152c2ac853fea87d43a588))
+
 ## [1.339.0](https://github.com/elfhosted/myprecious/compare/v1.338.0...v1.339.0) (2025-04-21)
 
 
