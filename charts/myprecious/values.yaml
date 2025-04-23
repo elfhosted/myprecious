@@ -3954,7 +3954,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.3.0@sha256:e37f35451c6f8ab2cec48c38dd332e86f6abf0935b1c720854eac7498b39cb69
+    tag: 8.3.0@sha256:1aa40a56c82839f37e379f25f78984be571e3b024614b9eb26ac6b6f12a5db29
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -10408,7 +10408,7 @@ miniflux:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/miniflux
-    tag: 2.2.7
+    tag: 2.2.8
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
@@ -11514,7 +11514,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1809@sha256:05d4348640510aa76757b046139aa7e2b71e09a28e90fa780520e5b180dcab4a
+    tag: 0.22.1815@sha256:649537a0410b798eb67588af0a895c158db77b68a2fcad7b995b27b96c44a912
   priorityClassName: tenant-normal
   controller:
     annotations:
