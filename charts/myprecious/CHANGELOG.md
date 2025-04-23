@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.341.0](https://github.com/elfhosted/myprecious/compare/v1.340.0...v1.341.0) (2025-04-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.35 ([b19969b](https://github.com/elfhosted/myprecious/commit/b19969baa810cdb41bd57a17a4b3005e4b168146))
+* **app:** update ghcr.io/elfhosted/gotosocial docker tag to v0.19.0 ([ebb02f3](https://github.com/elfhosted/myprecious/commit/ebb02f3193dbbb01b578ca71d97846a209407923))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1815 ([d5662cb](https://github.com/elfhosted/myprecious/commit/d5662cb270f74e0f3a4671e5273a33b1fae2a7bd))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.9 ([2d0c691](https://github.com/elfhosted/myprecious/commit/2d0c691d11396e002bccd91f0f5a3adeb9c29a5a))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.8 ([1aec819](https://github.com/elfhosted/myprecious/commit/1aec8197206513991875004d9b8a78411e949cc8))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.22.4.9896 ([c03ef52](https://github.com/elfhosted/myprecious/commit/c03ef52aa36fe0e0e5c83f60a2203261ab71619f))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.69.0 ([467b3d8](https://github.com/elfhosted/myprecious/commit/467b3d860fe1f5d577bb25ce6b43fd9c8b01dd2a))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.132.0 ([10e4f0e](https://github.com/elfhosted/myprecious/commit/10e4f0e9e0a2d0de555913c0a2f09869639e709d))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.7.1 ([243aa52](https://github.com/elfhosted/myprecious/commit/243aa520ee52093f203b62550ddaccdc63e5898c))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 97e4d82 ([f60cdc4](https://github.com/elfhosted/myprecious/commit/f60cdc45092b8766f89739c0b043d7db9467130e))
+* **app:** update quay.io/linuxserver.io/calibre:8.3.0 docker digest to 1aa40a5 ([fe6bbb8](https://github.com/elfhosted/myprecious/commit/fe6bbb8d2cbfeb9fd2e7acd7b8a176053963b7ff))
+
 ## [1.340.0](https://github.com/elfhosted/myprecious/compare/v1.339.0...v1.340.0) (2025-04-22)
 
 
