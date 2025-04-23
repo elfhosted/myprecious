@@ -2198,7 +2198,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+    tag: 5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2377,7 +2377,7 @@ radarr: &app_radarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -2439,7 +2439,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+    tag: 5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2625,7 +2625,7 @@ radarr4k: &app_radarr4k
           cpu: 500m
           memory: 8Gi   
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
