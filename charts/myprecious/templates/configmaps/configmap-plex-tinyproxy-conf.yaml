@@ -15,8 +15,8 @@ data:
     # ReverseBaseURL "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}"
     # ReverseMagic Yes
     ReverseOnly Yes
-    Anonymous "Host"
-    Anonymous "Authorization"
-    Anonymous "Cookie"
-    Anonymous "X-Forwarded-Proto"
+    # Anonymous "Host"
+    # Anonymous "Authorization"
+    # Anonymous "Cookie"
+    # Anonymous "X-Forwarded-Proto"
 {{ end }}
