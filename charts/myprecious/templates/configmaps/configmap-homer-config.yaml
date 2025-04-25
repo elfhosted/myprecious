@@ -846,8 +846,8 @@ data:
           - name: "Jellystat"
             logo: "assets/png/jellystat.png"
             subtitle: "Jellyfin Statistics"
-            tag: "public"
-            tagstyle: "is-danger"
+            tag: "protected"
+            tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-jellystat.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
