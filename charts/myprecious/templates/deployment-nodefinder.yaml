@@ -37,7 +37,8 @@ spec:
                 values:
                 - "true"
         {{ if or .Values.hobbit.enabled .Values.ranger.enabled .Values.halfling.enabled .Values.nazgul.enabled }}
-        # fill up the gretels
+        # fill up the gretels, but only on elfhosted .com
+        {{ if eq .Values.dns_domain "elfhosted.com"}}
         podAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 1
@@ -50,6 +51,7 @@ spec:
                   - nodefinder
               topologyKey: "kubernetes.io/hostname"
               namespaceSelector: {}  # i.e., in the absense of any better signal, pick a node which already has zurg on it
+        {{ end }}
         {{ end }}
       containers:
       - name: "nodefinder"
