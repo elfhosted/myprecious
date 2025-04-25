@@ -3778,7 +3778,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:07a35adacd254ed89c0d5e26485e8b26c1573e450bb271f3bc9c7c8168515139
+    tag: rolling@sha256:db8366e71704e71fc10e0655771ac235d53622d665c95e241c7092a14e833be1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
@@ -7489,7 +7489,7 @@ jellystat:
     app.elfhosted.com/name: jellystat
   image:
     repository: ghcr.io/elfhosted/jellystat
-    tag: 1.1.3@sha256:b6dfb29c5e86eff839ebd7a10e8dd387e3fa9b3b739696efeb63ad63b5791238
+    tag: 1.1.5@sha256:5c105fd7e4a67ddc49e312f18ac99bb92d8f63e09d4bbee07ddf9315ed9f4521
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11696,7 +11696,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1822@sha256:3728258e6a877f769379f7a08412d5564ca4cff8867f16c80cb596de3f0a8c85
+    tag: 0.22.1823@sha256:83174c675edf8fbd6ac863dbddcda5fb6620633348397ad6ffe26179b18756fc
   priorityClassName: tenant-normal
   controller:
     annotations:
