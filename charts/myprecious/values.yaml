@@ -2894,12 +2894,12 @@ huntarr: &app_huntarr
 
         if ! find /config -maxdepth 1 -name '*.json' | grep -q .; then
           cp /bootstrap/*.json /config/
-          rm /config/credentials.json
+          # rm /config/credentials.json
         fi
-        if ! find /config/user -maxdepth 1 -name 'credentials.json' | grep -q .; then
-          mkdir -p /config/user
-          cp /bootstrap/credentials.json /config/user
-        fi
+        # if ! find /config/user -maxdepth 1 -name 'credentials.json' | grep -q .; then
+        #   mkdir -p /config/user
+        #   cp /bootstrap/credentials.json /config/user
+        # fi
       volumeMounts:
       - mountPath: /config/
         name: config
@@ -2982,12 +2982,12 @@ huntarr4k:
 
         if ! find /config -maxdepth 1 -name '*.json' | grep -q .; then
           cp /bootstrap/*.json /config/
-          rm /config/credentials.json
+          # rm /config/credentials.json
         fi
-        if ! find /config/user -maxdepth 1 -name 'credentials.json' | grep -q .; then
-          mkdir -p /config/user
-          cp /bootstrap/credentials.json /config/user
-        fi        
+        # if ! find /config/user -maxdepth 1 -name 'credentials.json' | grep -q .; then
+        #   mkdir -p /config/user
+        #   cp /bootstrap/credentials.json /config/user
+        # fi        
       volumeMounts:
       - mountPath: /config/
         name: config
