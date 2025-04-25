@@ -2851,6 +2851,7 @@ huntarr: &app_huntarr
   automountServiceAccountToken: false
   persistence:
     tmp: *tmp
+    backup: *backup
     config:
       enabled: true
       type: custom
@@ -2886,13 +2887,30 @@ huntarr: &app_huntarr
 
         if ! find /config -maxdepth 1 -name '*.json' | grep -q .; then
           cp /bootstrap/*.json /config/
+          rm /config/credentials.json
+        fi
+        if ! find /config/user -maxdepth 1 -name 'credentials.json' | grep -q .; then
+          mkdir -p /config/user
+          cp /bootstrap/credentials.json /config/user
         fi
       volumeMounts:
       - mountPath: /config/
         name: config
         subPath: huntarr
       - name: example-config
-        mountPath: "/bootstrap/"                      
+        mountPath: "/bootstrap/"  
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: huntarr
+      - mountPath: /tmp
+        name: tmp                         
   ingress:
     main:
       enabled: false
@@ -2914,6 +2932,7 @@ huntarr4k:
   tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
+    backup: *backup
     config:
       enabled: true
       type: custom
@@ -2949,13 +2968,30 @@ huntarr4k:
 
         if ! find /config -maxdepth 1 -name '*.json' | grep -q .; then
           cp /bootstrap/*.json /config/
+          rm /config/credentials.json
         fi
+        if ! find /config/user -maxdepth 1 -name 'credentials.json' | grep -q .; then
+          mkdir -p /config/user
+          cp /bootstrap/credentials.json /config/user
+        fi        
       volumeMounts:
       - mountPath: /config/
         name: config
         subPath: huntarr4k
       - name: example-config
         mountPath: "/bootstrap/"     
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: huntarr
+      - mountPath: /tmp
+        name: tmp    
 
 bazarr:
   enabled: false
