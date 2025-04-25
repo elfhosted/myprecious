@@ -2198,7 +2198,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+    tag: 5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2377,7 +2377,7 @@ radarr: &app_radarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -2439,7 +2439,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+    tag: 5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2625,7 +2625,7 @@ radarr4k: &app_radarr4k
           cpu: 500m
           memory: 8Gi   
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.21.1.9799@sha256:5959cebe8f0d8f52ccc8eb059cebcb08065db58b1ffe71121e102bf4831a23f3
+      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4086,7 +4086,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.3.0@sha256:e37f35451c6f8ab2cec48c38dd332e86f6abf0935b1c720854eac7498b39cb69
+    tag: 8.3.0@sha256:1aa40a56c82839f37e379f25f78984be571e3b024614b9eb26ac6b6f12a5db29
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6762,7 +6762,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:c5ff3c8e093bff18a185788c1c95f6d42dd6b5c0b70f1835d820f381a56c08f4
+    tag: develop-vaapi@sha256:97e4d828edaf643fbe24f0979ace61b2c15ee6575aa810e9fbb4d19c10777eb0
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7657,7 +7657,7 @@ audiobookrequest:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookrequest
-    tag: 1.4.5@sha256:f3a34c0899b7873b5af2057bdf1f2711859bfa4c7f445b7aeebd06cdff4982ab
+    tag: 1.4.6@sha256:e69ccd215378491821c7fa9721e53b7818eed21445991979405b6ea974b2ac25
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -9834,7 +9834,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.7.0@sha256:2fa1224d5ccaedd6d505f6e18f5fc207c68029489d18de951213b624abf43e23
+    tag: 10.7.1@sha256:4283f28e514ac7d1aca993a990a4291c14ea709a6d752482d704690f3109c2f7
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10231,7 +10231,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.108@sha256:3dc2d777e217a3293c4a00a83d34ccebd2068d56ff016668228020fe76f93356
+    tag: v2.0.110@sha256:bfb9fc7fada43ad0c12aaf092acefb1f907e308e751de6de8179edc587c42d19
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -10540,7 +10540,7 @@ miniflux:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/miniflux
-    tag: 2.2.7
+    tag: 2.2.8
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
@@ -10967,7 +10967,7 @@ gotosocial:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/gotosocial
-    tag: 0.18.3@sha256:2b961d3ba060a2254877f2a9f87187e1dafe35be331320f2bb9fa24bb1cc67ce
+    tag: 0.19.0@sha256:b260d48d1c98eb51d9ae50c2347d47a72406f1678cab6c622e42731e7b8d96b0
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11114,7 +11114,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.132@sha256:4656f2bbc0e5a39c89b00fd00435ade7c11e1eb2d229c64487c19ff6c37a1e35
+    tag: 0.4.134@sha256:6179e74120cf7ed9a41fb536b891044f759a25dc057fe764934fa2169bb0affa
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11646,7 +11646,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1809@sha256:05d4348640510aa76757b046139aa7e2b71e09a28e90fa780520e5b180dcab4a
+    tag: 0.22.1822@sha256:3728258e6a877f769379f7a08412d5564ca4cff8867f16c80cb596de3f0a8c85
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12767,7 +12767,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.68.1@sha256:e5a9e173024087e7357b7f3f9b2ecbc37162b07a8e14403d9b857160e3b75f58
+    tag: 0.69.0@sha256:a4a686cec1448c8740382df5c160e43325c43293cad810727020953a647c88e8
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13332,7 +13332,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 1.9.8@sha256:8bff8e366c109a62f40c0cdbf01e49a189a0ccea3170786f8be03d65d09ee419
+    tag: 1.9.9@sha256:e34c05c62bf42b4f83654b0ba6817f6189bf2846c087e812c15a59286eca0fd0
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
@@ -14133,7 +14133,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.34@sha256:6a3fe26abe8bdaa6ea4ac81390d5c39a2042b46c26655757348402f84f90ff85
+    tag: v0.6.35@sha256:4dd5b39ce09469d1b006446b2e2f89a70f3033ebe48b0c5308162baba47b2a9d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14983,7 +14983,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.9.0@sha256:407db0474433e23fbefadef1ba2ea5c5da0ad89874a0be9b61ac6992b16b27b5
+    tag: 0.9.1@sha256:aaa7d105c72514260f5c689f2c4530de6cd6fd3e383183ccd0820752e56ca313
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
@@ -15919,7 +15919,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.131.3@sha256:7e5b6729b12b5e5cc5d98bcc6f7c27f723fabae4ee77696855808ebd5200bbf8
+    tag: v1.132.1@sha256:71cb6d2a6587f6481ae22b1cd743c74f163acbf26ade4df890e4425bb1f2e891
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -16037,7 +16037,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:02419de7eddf55aa5bcf49efb74e88fa8d931b4d77c07eff8a6b2144472b6952
+      image: docker.io/redis:7.4-alpine@sha256:f773b35a95e170d92dd4214a3ec4859b1b7960bf56896ae687646d695f311187
       envFrom:
       - configMapRef:
           name: immich-env

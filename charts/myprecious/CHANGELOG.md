@@ -1,5 +1,46 @@
 # Changelog
 
+## [1.342.0](https://github.com/elfhosted/myprecious/compare/v1.341.0...v1.342.0) (2025-04-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.6 ([6afff81](https://github.com/elfhosted/myprecious/commit/6afff81bfb38b06227677e6b6bbf7adc9859bea2))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.133 ([d808bbd](https://github.com/elfhosted/myprecious/commit/d808bbd7a7cef339dc5e05bfca0f6e6944a112d7))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.134 ([4a1e7a9](https://github.com/elfhosted/myprecious/commit/4a1e7a94548827f00be9d970646c2a9f4e887063))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.9.1 ([c6bb215](https://github.com/elfhosted/myprecious/commit/c6bb215ecc729fbc3b07538b1a03d365ef897315))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1822 ([5367c19](https://github.com/elfhosted/myprecious/commit/5367c19a81d1a9d20c93944e3e7791e85bfc35b1))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.109 ([6fdce62](https://github.com/elfhosted/myprecious/commit/6fdce62ca45ade2175f7cc38b47bb73c7bd3886b))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.110 ([8aad7a4](https://github.com/elfhosted/myprecious/commit/8aad7a4b66eed7323a4ed0e67ec53b6c6de5c02b))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.132.1 ([0b16e4f](https://github.com/elfhosted/myprecious/commit/0b16e4f45dbb6ad8e50e954140b2b49571d88b84))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to f773b35 ([fd52a91](https://github.com/elfhosted/myprecious/commit/fd52a919a0d6889c19035f3248d25a97f394faa8))
+* Make it possible to edit listsync configmap directly in kubernetes-dashboard ([49497ab](https://github.com/elfhosted/myprecious/commit/49497ab9a7ee41531517d26ded9ae8fd8df8ab4f))
+
+## [1.341.0](https://github.com/elfhosted/myprecious/compare/v1.340.0...v1.341.0) (2025-04-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.35 ([b19969b](https://github.com/elfhosted/myprecious/commit/b19969baa810cdb41bd57a17a4b3005e4b168146))
+* **app:** update ghcr.io/elfhosted/gotosocial docker tag to v0.19.0 ([ebb02f3](https://github.com/elfhosted/myprecious/commit/ebb02f3193dbbb01b578ca71d97846a209407923))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1815 ([d5662cb](https://github.com/elfhosted/myprecious/commit/d5662cb270f74e0f3a4671e5273a33b1fae2a7bd))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v1.9.9 ([2d0c691](https://github.com/elfhosted/myprecious/commit/2d0c691d11396e002bccd91f0f5a3adeb9c29a5a))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.8 ([1aec819](https://github.com/elfhosted/myprecious/commit/1aec8197206513991875004d9b8a78411e949cc8))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.22.4.9896 ([c03ef52](https://github.com/elfhosted/myprecious/commit/c03ef52aa36fe0e0e5c83f60a2203261ab71619f))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.69.0 ([467b3d8](https://github.com/elfhosted/myprecious/commit/467b3d860fe1f5d577bb25ce6b43fd9c8b01dd2a))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.132.0 ([10e4f0e](https://github.com/elfhosted/myprecious/commit/10e4f0e9e0a2d0de555913c0a2f09869639e709d))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.7.1 ([243aa52](https://github.com/elfhosted/myprecious/commit/243aa520ee52093f203b62550ddaccdc63e5898c))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 97e4d82 ([f60cdc4](https://github.com/elfhosted/myprecious/commit/f60cdc45092b8766f89739c0b043d7db9467130e))
+* **app:** update quay.io/linuxserver.io/calibre:8.3.0 docker digest to 1aa40a5 ([fe6bbb8](https://github.com/elfhosted/myprecious/commit/fe6bbb8d2cbfeb9fd2e7acd7b8a176053963b7ff))
+
 ## [1.340.0](https://github.com/elfhosted/myprecious/compare/v1.339.0...v1.340.0) (2025-04-22)
 
 
