@@ -2873,7 +2873,14 @@ huntarr: &app_huntarr
       type: "custom"
       volumeSpec:
         configMap:
-          name: huntarr-config     
+          name: huntarr-config   
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-huntarr
+          optional: true            
   initContainers:  
     copy-example-config:
       image: *tooling_image
@@ -2954,7 +2961,14 @@ huntarr4k:
       type: "custom"
       volumeSpec:
         configMap:
-          name: huntarr4k-config        
+          name: huntarr4k-config   
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-huntarr4k
+          optional: true               
   initContainers:  
     copy-example-config:
       image: *tooling_image
