@@ -2866,7 +2866,33 @@ huntarr: &app_huntarr
       subPath: huntarr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: logs            
+          claimName: logs   
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: huntarr-config     
+  initContainers:  
+    copy-example-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        if ! find /config -maxdepth 1 -name '*.json' | grep -q .; then
+          cp /bootstrap/*.json /config/
+        fi
+      volumeMounts:
+      - mountPath: /config/
+        name: config
+        subPath: huntarr
+      - name: example-config
+        mountPath: "/bootstrap/"                      
   ingress:
     main:
       enabled: false
@@ -2903,7 +2929,34 @@ huntarr4k:
       subPath: huntarr4k
       volumeSpec:
         persistentVolumeClaim:
-          claimName: logs     
+          claimName: logs    
+    example-config:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: huntarr4k-config        
+  initContainers:  
+    copy-example-config:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        if ! find /config -maxdepth 1 -name '*.json' | grep -q .; then
+          cp /bootstrap/*.json /config/
+        fi
+      volumeMounts:
+      - mountPath: /config/
+        name: config
+        subPath: huntarr4k
+      - name: example-config
+        mountPath: "/bootstrap/"     
+
 bazarr:
   enabled: false
   image:

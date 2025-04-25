@@ -1,0 +1,88 @@
+{{ if .Values.huntarr.enabled }} 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: huntarr-config
+data:
+  sonarr.json: |
+    {
+      "api_url": "http://sonarr:8989",
+      "api_key": "{{ .Values.sonarrexposed.apikey }}",
+      "hunt_missing_shows": 5,
+      "hunt_upgrade_episodes": 0,
+      "sleep_duration": 900,
+      "state_reset_interval_hours": 168,
+      "monitored_only": true,
+      "skip_future_episodes": true,
+      "skip_series_refresh": true,
+      "random_missing": true,
+      "random_upgrades": true,
+      "debug_mode": false,
+      "api_timeout": 120,
+      "command_wait_delay": 1,
+      "command_wait_attempts": 600,
+      "minimum_download_queue_size": -1,
+      "log_refresh_interval_seconds": 30
+    
+  radarr.json: |
+    {
+      "api_url": "http://radarr:7878",
+      "api_key": "{{ .Values.radarrexposed.apikey }}",
+      "hunt_missing_movies": 1,
+      "hunt_upgrade_movies": 0,
+      "sleep_duration": 900,
+      "state_reset_interval_hours": 168,
+      "monitored_only": true,
+      "skip_future_releases": true,
+      "skip_movie_refresh": true,
+      "random_missing": true,
+      "random_upgrades": true,
+      "debug_mode": false,
+      "api_timeout": 120,
+      "command_wait_delay": 1,
+      "command_wait_attempts": 600,
+      "minimum_download_queue_size": -1,
+      "log_refresh_interval_seconds": 30
+    }
+  lidarr.json: |
+    {
+      "api_url": "http://lidarr:8686",
+      "api_key": "{{ .Values.lidarrexposed.apikey }}",
+      "hunt_missing_mode": "artist",
+      "hunt_missing_items": 1,
+      "hunt_upgrade_items": 0,
+      "sleep_duration": 900,
+      "state_reset_interval_hours": 168,
+      "monitored_only": true,
+      "skip_future_releases": true,
+      "skip_artist_refresh": true,
+      "random_missing": true,
+      "random_upgrades": true,
+      "debug_mode": false,
+      "api_timeout": 120,
+      "command_wait_delay": 1,
+      "command_wait_attempts": 600,
+      "minimum_download_queue_size": -1,
+      "log_refresh_interval_seconds": 30
+    }
+  readarr.json: |
+    {
+      "api_url": "http://readarr:8787",
+      "api_key": "{{ .Values.readarrexposed.apikey }}",
+      "hunt_missing_books": 1,
+      "hunt_upgrade_books": 0,
+      "sleep_duration": 900,
+      "state_reset_interval_hours": 168,
+      "monitored_only": true,
+      "skip_future_releases": true,
+      "skip_author_refresh": true,
+      "random_missing": true,
+      "random_upgrades": true,
+      "debug_mode": false,
+      "api_timeout": 120,
+      "command_wait_delay": 1,
+      "command_wait_attempts": 600,
+      "minimum_download_queue_size": -1,
+      "log_refresh_interval_seconds": 30
+    }
+{{ end }}
