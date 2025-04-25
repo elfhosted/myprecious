@@ -1,20 +1,20 @@
-{{ if .Values.sonarr4k.enabled }}
+{{ if .Values.huntarr.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: sonarr4k
+  name: huntarr
   labels:
-    app.elfhosted.com/name: sonarr4k
+    app.elfhosted.com/name: huntarr
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
   type: ClusterIP
   ports:
-  - port: 8989
-    targetPort: 8989
+  - port: 9705
+    targetPort: 9705
     protocol: TCP
     name: http
   selector:
-    app.elfhosted.com/name: sonarr4k
+    app.elfhosted.com/name: huntarr
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}

@@ -14,10 +14,6 @@ spec:
     targetPort: 8989
     protocol: TCP
     name: http
-  - port: 8988
-    targetPort: 8988
-    protocol: TCP
-    name: huntarr-sonarr
   selector:
     app.elfhosted.com/name: sonarr
     app.kubernetes.io/instance: {{ .Release.Name }}

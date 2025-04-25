@@ -2825,6 +2825,68 @@ scannarr4k:
         configMap:
           name: scannarr4k-config
 
+huntarr: &app_huntarr
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    registry: ghcr.io
+    repository: elfhosted/huntarr
+    tag: 5.1.0@sha256:a5cae7ef29cc518cd79817717699668c52cfb31949269ca8ff868344a360ddf0
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-huntarr"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  automountServiceAccountToken: false
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: huntarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config  
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true
+      ports:
+        http:
+          port: 9705
+  resources: *default_resources
+
+huntarr4k:
+  <<: *app_huntarr
+  enabled: false
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-huntarr4k"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: huntarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config    
+
 bazarr:
   enabled: false
   image:

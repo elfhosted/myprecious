@@ -362,7 +362,24 @@ data:
               type: readarr
               url: http://readarraudio:8787
               key: {{ .Values.readarraudioexposed.apikey }}     
-        {{ end }}      
+        {{ end }}
+
+        {{ if .Values.huntarr.enabled }}
+        - Huntarr:
+            icon: huntarr.png
+            href: https://{{ .Release.Name }}-huntarr.{{ .Values.dns_domain }}
+            description: Hunt for missing movies / episodes
+            siteMonitor: http://huntarr:9705
+        {{ end }}          
+
+        {{ if .Values.huntarr4k.enabled }}
+        - Huntarr:
+            icon: huntarr.png
+            href: https://{{ .Release.Name }}-huntarr4k.{{ .Values.dns_domain }}
+            description: Hunt for missing movies / episodes (4K)
+            siteMonitor: http://huntarr4k:9705
+        {{ end }}          
+
 
         {{ if .Values.lazylibrarian.enabled }}
         - Lazy Librarian:
