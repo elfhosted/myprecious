@@ -2850,6 +2850,7 @@ huntarr: &app_huntarr
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
   persistence:
+    tmp: *tmp
     config:
       enabled: true
       type: custom
@@ -2858,6 +2859,14 @@ huntarr: &app_huntarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config  
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: huntarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs            
   ingress:
     main:
       enabled: false
@@ -2878,6 +2887,7 @@ huntarr4k:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
+    tmp: *tmp
     config:
       enabled: true
       type: custom
@@ -2886,7 +2896,14 @@ huntarr4k:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config    
-
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/logs
+      subPath: huntarr4k
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs     
 bazarr:
   enabled: false
   image:
