@@ -3228,7 +3228,7 @@ filebrowser:
       enabled: true
       type: emptyDir
       sizeLimit: 1Gi
-      mouthPath: /home/elfie/.local/state
+      mountPath: /home/elfie/.local/state
     dummy-storage: # so auto-provisioning doesn't break
       enabled: true
       type: emptyDir
@@ -7279,7 +7279,11 @@ overseerr:
       volumeSpec:
         configMap:
           name: overseerr-config
-          optional: true          
+          optional: true 
+    run:
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi                   
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -7348,6 +7352,8 @@ overseerr:
         readOnly: true
       - mountPath: /tmp
         name: tmp
+      - mountPath: /run
+        name: run
       resources: *default_resources
       securityContext: *default_securitycontext
 
@@ -7408,7 +7414,11 @@ jellyseerr:
       volumeSpec:
         configMap:
           name: jellyseerr-config
-          optional: true              
+          optional: true
+    run:
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi            
   envFrom:
   - configMapRef:
       name: jellyseerr-env
@@ -7480,6 +7490,8 @@ jellyseerr:
         readOnly: true
       - mountPath: /tmp
         name: tmp
+      - mountPath: /run
+        name: run
       resources: *default_resources
       securityContext: *default_securitycontext
 
