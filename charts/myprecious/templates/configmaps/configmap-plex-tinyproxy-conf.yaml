@@ -15,8 +15,20 @@ data:
     # ReverseBaseURL "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}"
     # ReverseMagic Yes
     ReverseOnly Yes
+    # These are not necessary yet
     # Anonymous "Host"
     # Anonymous "Authorization"
     # Anonymous "Cookie"
     # Anonymous "X-Forwarded-Proto"
+    # Anonymous "X-Plex-Client-Identifier"
+    # Anonymous "X-Plex-Product"
+    # Anonymous "X-Plex-Version"
+    # Anonymous "X-Plex-Device"
+    # Anonymous "X-Plex-Platform"
+    # Anonymous "X-Plex-Platform-Version"
+    # Anonymous "X-Plex-Device-Name"
+    # Anonymous "X-Plex-Token"
+    # Anonymous "X-Plex-Language"
+    # Anonymous "X-Plex-Provides"
+    # Anonymous "X-Plex-Model"
 {{ end }}
