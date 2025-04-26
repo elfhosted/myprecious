@@ -2392,25 +2392,7 @@ radarr: &app_radarr
           memory: 1Mi
         limits:
           cpu: 100m
-          memory: 1Gi            
-    huntarr-radarr:
-      image: ghcr.io/elfhosted/huntarr-radarr:3.0@sha256:cff870f042d8487c83b747fd63d060d2d4a14b2ea9d3b56a47ccaf74c6e5d585
-      envFrom:
-      - configMapRef:
-          name: radarr-env
-      - configMapRef:
-          name: elfbot-radarr
-          optional: true
-      volumeMounts:
-      - name: tmp
-        mountPath: /tmp  
-      resources:
-        requests:
-          cpu: 0m
-          memory: 1Mi
-        limits:
-          cpu: 100m
-          memory: 512Mi           
+          memory: 1Gi
   resources:
     requests:
       cpu: 0m
@@ -2641,24 +2623,6 @@ radarr4k: &app_radarr4k
         limits:
           cpu: 100m
           memory: 1Gi            
-    huntarr-radarr:
-      image: ghcr.io/elfhosted/huntarr-radarr:3.0@sha256:cff870f042d8487c83b747fd63d060d2d4a14b2ea9d3b56a47ccaf74c6e5d585
-      envFrom:
-      - configMapRef:
-          name: radarr4k-env
-      - configMapRef:
-          name: elfbot-radarr4k
-          optional: true
-      volumeMounts:
-      - name: tmp
-        mountPath: /tmp  
-      resources:
-        requests:
-          cpu: 0m
-          memory: 1Mi
-        limits:
-          cpu: 100m
-          memory: 512Mi  
   probes: # need a long startup for database migrations
     startup:
       custom: true
@@ -4294,13 +4258,7 @@ sonarr: &app_sonarr
       enabled: "true"
       type: emptyDir
       volumeSpec:
-        medium: Memory
-    huntarr-sonarr-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: huntarr-sonarr-config          
+        medium: Memory      
   ingress:
     main:
       enabled: false
@@ -4377,28 +4335,7 @@ sonarr: &app_sonarr
         name: config
         subPath: sonarr
       resources: *default_resources
-      securityContext: *default_securitycontext
-    copy-example-config:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-        # for now, remove old defaults
-        # if [ ! -f /config/huntarr.json ];
-        # then
-          cp /bootstrap/huntarr.json /config/
-        # fi
-      volumeMounts:
-      - mountPath: /config/
-        name: config
-        subPath: sonarr/huntarr/settings
-      - name: huntarr-sonarr-config
-        mountPath: "/bootstrap/"
-      securityContext: *default_securitycontext        
+      securityContext: *default_securitycontext     
   resources:
     requests:
       cpu: 0m
@@ -4453,27 +4390,6 @@ sonarr: &app_sonarr
         limits:
           cpu: 100m
           memory: 1Gi            
-    huntarr-sonarr:
-      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.3@sha256:bbdb691535dc0f2aba4f52fde8c0b8afa9a6f22b99dd731bcadd2ee18a56072b
-      envFrom:
-      - configMapRef:
-          name: sonarr-env
-      - configMapRef:
-          name: elfbot-sonarr
-          optional: true
-      volumeMounts:
-      - name: tmp
-        mountPath: /tmp  
-      - name: config
-        mountPath: /config
-        subPath: sonarr/huntarr        
-      resources:
-        requests:
-          cpu: 0m
-          memory: 1Mi
-        limits:
-          cpu: 100m
-          memory: 512Mi 
   probes: # need a long startup for database migrations
     startup:
       custom: true
@@ -4564,13 +4480,7 @@ sonarr4k: &app_sonarr4k
       enabled: "true"
       type: emptyDir
       volumeSpec:
-        medium: Memory     
-    huntarr-sonarr-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: huntarr-sonarr-config             
+        medium: Memory               
   ingress:
     main:
       enabled: false
@@ -4642,28 +4552,7 @@ sonarr4k: &app_sonarr4k
         name: config
         subPath: sonarr4k     
       resources: *default_resources
-      securityContext: *default_securitycontext  
-    copy-example-config:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-        # If we don't already have an example config, create one
-        # if [ ! -f /config/huntarr.json ];
-        # then
-          cp /bootstrap/huntarr.json /config/
-        # fi
-      volumeMounts:
-      - mountPath: /config/
-        name: config
-        subPath: sonarr4k/huntarr/settings
-      - name: huntarr-sonarr-config
-        mountPath: "/bootstrap/"
-      securityContext: *default_securitycontext         
+      securityContext: *default_securitycontext       
   resources:
     requests:
       cpu: 0m
@@ -4718,27 +4607,6 @@ sonarr4k: &app_sonarr4k
         limits:
           cpu: 100m
           memory: 1Gi             
-    huntarr-sonarr:
-      image: ghcr.io/elfhosted/huntarr-sonarr:3.3.3@sha256:bbdb691535dc0f2aba4f52fde8c0b8afa9a6f22b99dd731bcadd2ee18a56072b
-      envFrom:
-      - configMapRef:
-          name: sonarr4k-env
-      - configMapRef:
-          name: elfbot-sonarr4k
-          optional: true
-      volumeMounts:
-      - name: tmp
-        mountPath: /tmp  
-      - name: config
-        mountPath: /config
-        subPath: sonarr4k/huntarr
-      resources:
-        requests:
-          cpu: 0m
-          memory: 1Mi
-        limits:
-          cpu: 100m
-          memory: 512Mi 
   probes: # need a long startup for database migrations
     startup:
       custom: true
