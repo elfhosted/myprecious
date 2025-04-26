@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.344.0](https://github.com/elfhosted/myprecious/compare/v1.343.0...v1.344.0) (2025-04-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.36 ([42578d4](https://github.com/elfhosted/myprecious/commit/42578d40cdc7dcfde733710675740024ab68f0b7))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v5.3.0 ([578f7a4](https://github.com/elfhosted/myprecious/commit/578f7a413a9e542e2841c19ab5b5535b37dd6762))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v5.3.1 ([84c0120](https://github.com/elfhosted/myprecious/commit/84c0120ac1954ee9b498b75c556a9ed8eb7386bf))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1826 ([3e67678](https://github.com/elfhosted/myprecious/commit/3e67678631e5f5d94c26028ba6591296fc454116))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.20 ([9bceac3](https://github.com/elfhosted/myprecious/commit/9bceac35aacd1ede4c199b6696282cad3809602b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.04.26.0030-nightly ([d7150c2](https://github.com/elfhosted/myprecious/commit/d7150c27675fa77f38347dc98659d5a1a93a79fc))
+
+
+### Bug Fixes
+
+* Fix overseerr branding issue ([0c1ce3a](https://github.com/elfhosted/myprecious/commit/0c1ce3ad86980a46333557377b3d6e2c07dced09))
+* Properly remove the old Huntarr v3 configs which were making trouble ([14cc184](https://github.com/elfhosted/myprecious/commit/14cc184415005a161037a52e054161316e259cf2))
+
 ## [1.343.0](https://github.com/elfhosted/myprecious/compare/v1.342.0...v1.343.0) (2025-04-25)
 
 
