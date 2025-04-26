@@ -22,19 +22,25 @@
   "ignoreTests": false,
   "packageRules": [
     {
-      "matchPackageNames": ["ghcr.io/elfhosted/plex","ghcr.io/elfhosted/zurg-rc"],
+      "matchPackageNames": ["ghcr.io/elfhosted/plex"],
       "versioning": "loose",
       "automerge": true
     },
     {
+      "matchPackageNames": ["ghcr.io/elfhosted/zurg-rc"],
+      "versioning": "loose",
+      "automerge": false
+    },    
+    {
       "matchUpdateTypes": ["digest"],
       "automerge": true,
       "excludePackagePatterns": ["alpine","zurg-rc"],
-      "extends": [":semanticCommitTypeAll(fix)"], // for release-please
+      "extends": [":semanticCommitTypeAll(fix)"] // for release-please
     },
     {
       "matchUpdateTypes": ["nightly"],
       "automerge": true,
+      "excludePackagePatterns": ["zurg-rc"]
     },
     {
       "matchUpdateTypes": ["patch"],
