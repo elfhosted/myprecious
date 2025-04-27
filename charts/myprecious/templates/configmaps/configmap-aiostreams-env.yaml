@@ -5,6 +5,7 @@ metadata:
   name: aiostreams-env
 data:
   FORCE_COMET_PROTOCOL: "https" 
+  FORCE_COMET_PORT: "443"
   {{ if .Values.comet.enabled }}
   COMET_URL: http://comet:8000/
   FORCE_COMET_HOSTNAME: {{ .Release.Name }}-comet.{{ .Values.dns_domain }}
@@ -17,7 +18,8 @@ data:
   {{ else }}
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion/
   {{ end }}
-  JACKETTIO_URL: http://elfhosted-internal.jackettio/
+  # JACKETTIO_URL: http://elfhosted-internal.jackettio/
+  JACKETTIO_URL: https://jackettio.elfhosted.com/
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
   ADDON_PROXY: http://vpnproxy:8888
   ADDON_PROXY_CONFIG: "*:false,torrentio.strem.fun:true"
