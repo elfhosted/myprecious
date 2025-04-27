@@ -3782,6 +3782,14 @@ cwabookdownloader:
         configMap:
           name: elfbot-cwa-book-downloader
           optional: true
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /var/log/cwa-book-downloader/
+      subPath: cwa-book-downloader
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs   
   ingress:
     main:
       enabled: false
