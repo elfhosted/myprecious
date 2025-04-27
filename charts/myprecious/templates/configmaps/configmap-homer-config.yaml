@@ -1465,8 +1465,8 @@ data:
           - name: "Pulsarr"
             icon: "fas fa-star"
             subtitle: "Add Plex watchlisted items to Aars"
-            tag: "public"
-            tagstyle: "is-danger"
+            tag: "protected"
+            tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-pulsarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}              
