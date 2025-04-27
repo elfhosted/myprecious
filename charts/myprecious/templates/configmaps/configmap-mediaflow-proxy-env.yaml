@@ -25,6 +25,9 @@ data:
       },
       "https://*.newkso.ru": {
           "proxy": true
-      }
+      },
+      "https://*.keylocking.ru": {
+          "proxy": true
+      }      
     }
 {{ end }}
