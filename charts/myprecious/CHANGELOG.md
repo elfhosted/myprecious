@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.345.0](https://github.com/elfhosted/myprecious/compare/v1.344.0...v1.345.0) (2025-04-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.15.0 ([8ef1d85](https://github.com/elfhosted/myprecious/commit/8ef1d85b3f4e3dbe36a42ee50e1b0877ad8bcb5f))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.15.2 ([49fa181](https://github.com/elfhosted/myprecious/commit/49fa181f44e228eaca2d5b25b50aafc1f5cd031c))
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.7 ([2062aed](https://github.com/elfhosted/myprecious/commit/2062aedf6f1de20c34868582cd121f13fac53332))
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.21.0 ([ffa1629](https://github.com/elfhosted/myprecious/commit/ffa1629e751a2c5020502802f18ca496e67c0d5e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1828 ([2c252e7](https://github.com/elfhosted/myprecious/commit/2c252e7df5cf81cee811653fbc398032f8cc814b))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v2 ([8de5cf1](https://github.com/elfhosted/myprecious/commit/8de5cf1a2742820c4b74f832b7b658ae453fe0ec))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.2.16 ([d90e2b2](https://github.com/elfhosted/myprecious/commit/d90e2b2cca651a616a4f399b1d93dc44386b52ec))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to c1ce4e4 ([6ddf0cf](https://github.com/elfhosted/myprecious/commit/6ddf0cf2ea59519e63ff2442b512d8f4f3784271))
+* Disable pulsarr auth, protect with SSO ([1da8462](https://github.com/elfhosted/myprecious/commit/1da84623f391c02d5a436169112795c635bca3d9))
+* Update mediaflowproxy routing to address DLHD issus ([db11b15](https://github.com/elfhosted/myprecious/commit/db11b1599c628c49bd70538cec01494e4c0c16b0))
+
 ## [1.344.0](https://github.com/elfhosted/myprecious/compare/v1.343.0...v1.344.0) (2025-04-26)
 
 
