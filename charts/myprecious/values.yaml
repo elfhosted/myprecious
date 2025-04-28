@@ -2795,7 +2795,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 5.3.1@sha256:36822643bf0eed422b8cb020455aa2a490df3796e0f7e039e5332a8cc6570b1b
+    tag: 6.0.0@sha256:124f2f37fa3059d2b0308cee79a2bd45081824e27fd997d385c5533bc9834a75
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3742,7 +3742,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:c1ce4e4c24ba49edc044d94b735f42b9872abe3d18703ddf5c6789f799065e03
+    tag: rolling@sha256:f3a70c200ccc9f614c23796a8cd8d026d59e3ef4f4a7558e09e0defb9fc26108
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
