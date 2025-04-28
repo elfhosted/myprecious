@@ -42,6 +42,9 @@ data:
   # Enable ffprobe shim by default
   USE_FFPROBE_SHIM: "true"
 
+  # Use postgresql by default
+  USE_POSTGRESQL: "true"
+
 {{ end }}
 
 
