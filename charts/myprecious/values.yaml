@@ -7427,6 +7427,14 @@ jellystat:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /app/backup-data
+      subPath: jellystat
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup          
     elfbot:
       enabled: "true"
       type: "custom"
