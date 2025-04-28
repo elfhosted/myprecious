@@ -49,7 +49,7 @@ data:
       "instances": [
         {
           "name": "Radarr HD",
-          "api_url": "http://radarr:8989",
+          "api_url": "http://radarr:7878",
           "api_key": "{{ .Values.radarrexposed.apikey }}",
           {{- if .Values.radarr.enabled }}
           "enabled": true
@@ -59,7 +59,7 @@ data:
         },
         {
           "name": "Radarr 4K",
-          "api_url": "http://radarr4k:8989",
+          "api_url": "http://radarr4k:7878",
           "api_key": "{{ .Values.radarr4kexposed.apikey }}",
           {{- if .Values.radarr4k.enabled }}
           "enabled": true
