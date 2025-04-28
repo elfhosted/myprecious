@@ -6,10 +6,30 @@ metadata:
 data:
   sonarr.json: |
     {
-      "api_url": "http://sonarr:8989",
-      "api_key": "{{ .Values.sonarrexposed.apikey }}",
-      "hunt_missing_shows": 5,
-      "hunt_upgrade_episodes": 0,
+      "instances": [
+        {
+          "name": "Sonarr HD",
+          "api_url": "http://sonarr:8989",
+          "api_key": "{{ .Values.sonarrexposed.apikey }}",
+          {{- if .Values.sonarr.enabled }}
+          "enabled": true
+          {{- else }}
+          "enabled": false
+          {{- end }}
+        },
+        {
+          "name": "Sonarr 4K",
+          "api_url": "http://sonarr4k:8989",
+          "api_key": "{{ .Values.sonarr4kexposed.apikey }}",
+          {{- if .Values.sonarr4k.enabled }}
+          "enabled": true
+          {{- else }}
+          "enabled": false
+          {{- end }}
+        }
+      ],    
+      "hunt_missing_shows": 1,
+      "hunt_upgrade_episodes": 5,
       "sleep_duration": 900,
       "state_reset_interval_hours": 168,
       "monitored_only": true,
@@ -26,10 +46,30 @@ data:
     }
   radarr.json: |
     {
-      "api_url": "http://radarr:7878",
-      "api_key": "{{ .Values.radarrexposed.apikey }}",
-      "hunt_missing_movies": 1,
-      "hunt_upgrade_movies": 0,
+      "instances": [
+        {
+          "name": "Radarr HD",
+          "api_url": "http://radarr:8989",
+          "api_key": "{{ .Values.radarrexposed.apikey }}",
+          {{- if .Values.radarr.enabled }}
+          "enabled": true
+          {{- else }}
+          "enabled": false
+          {{- end }}
+        },
+        {
+          "name": "Radarr 4K",
+          "api_url": "http://radarr4k:8989",
+          "api_key": "{{ .Values.radarr4kexposed.apikey }}",
+          {{- if .Values.radarr4k.enabled }}
+          "enabled": true
+          {{- else }}
+          "enabled": false
+          {{- end }}
+        }
+      ],    
+      "hunt_missing_movies": 5,
+      "hunt_upgrade_movies": 1,
       "sleep_duration": 900,
       "state_reset_interval_hours": 168,
       "monitored_only": true,
@@ -46,11 +86,21 @@ data:
     }
   lidarr.json: |
     {
-      "api_url": "http://lidarr:8686",
-      "api_key": "{{ .Values.lidarrexposed.apikey }}",
+      "instances": [
+        {
+          "name": "Lidarr",
+          "api_url": "http://lidarr:8686",
+          "api_key": "{{ .Values.lidarrexposed.apikey }}",
+          {{- if .Values.lidarr.enabled }}
+          "enabled": true
+          {{- else }}
+          "enabled": false
+          {{- end }}
+        }
+      ],       
       "hunt_missing_mode": "artist",
-      "hunt_missing_items": 1,
-      "hunt_upgrade_items": 0,
+      "hunt_missing_items": 10,
+      "hunt_upgrade_items": 10,
       "sleep_duration": 900,
       "state_reset_interval_hours": 168,
       "monitored_only": true,
@@ -67,8 +117,28 @@ data:
     }
   readarr.json: |
     {
-      "api_url": "http://readarr:8787",
-      "api_key": "{{ .Values.readarrexposed.apikey }}",
+      "instances": [
+        {
+          "name": "Readarr HD",
+          "api_url": "http://readarr:8787",
+          "api_key": "{{ .Values.readarrexposed.apikey }}",
+          {{- if .Values.readarr.enabled }}
+          "enabled": true
+          {{- else }}
+          "enabled": false
+          {{- end }}
+        },
+        {
+          "name": "Readarr Audio",
+          "api_url": "http://readarraaudio:8787",
+          "api_key": "{{ .Values.readarraudioexposed.apikey }}",
+          {{- if .Values.readarraudio.enabled }}
+          "enabled": true
+          {{- else }}
+          "enabled": false
+          {{- end }}
+        }
+      ],       
       "hunt_missing_books": 1,
       "hunt_upgrade_books": 0,
       "sleep_duration": 900,

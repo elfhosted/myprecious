@@ -399,18 +399,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}
-
-      {{ if .Values.huntarr4k.enabled }}
-      - name: huntarr4k
-        group: download-media
-        url: "http://huntarr4k:9705"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}      
+      {{ end }}    
 
       {{ if .Values.lidarr.enabled }}
       - name: lidarr
