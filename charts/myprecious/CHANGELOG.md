@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.346.0](https://github.com/elfhosted/myprecious/compare/v1.345.0...v1.346.0) (2025-04-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6 ([83c895d](https://github.com/elfhosted/myprecious/commit/83c895d6816ee9e77bf7c1672f938153ba4ab88e))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.0.1 ([fc96a4d](https://github.com/elfhosted/myprecious/commit/fc96a4d81b1575d370757bb7c6d410fe6d0ceec1))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.0.3 ([eb0146a](https://github.com/elfhosted/myprecious/commit/eb0146a19f0c5efd6be8e602fca65d4c0cf5162b))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.0.4 ([4ebb239](https://github.com/elfhosted/myprecious/commit/4ebb23914a733971ca1e9a51ca8e4fabf5f35016))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1830 ([fdaaafc](https://github.com/elfhosted/myprecious/commit/fdaaafcb6303870d65d0dc891f7aa9755058246b))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.11.2.4629 ([3d463ed](https://github.com/elfhosted/myprecious/commit/3d463edcf0abaef8182feffa7220a83e5859fb26))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.13.0 ([8f6ced6](https://github.com/elfhosted/myprecious/commit/8f6ced65bab2fccc2beeb935cf75676c8e010ec8))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.8 ([742f0e3](https://github.com/elfhosted/myprecious/commit/742f0e3d3d8c1900846b5e61a4c2e8d63f7c30b0))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.04.28.0031-nightly ([36b3f59](https://github.com/elfhosted/myprecious/commit/36b3f59bdc8362cde6b2f0852d2e987778183468))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v1.1.2 ([4e80710](https://github.com/elfhosted/myprecious/commit/4e807104c051d115d72096d92a73fafe873dc45f))
+* **app:** update ghcr.io/gethomepage/homepage docker tag to v1.2.0 ([433dc28](https://github.com/elfhosted/myprecious/commit/433dc28b4bebcca5215c6ac59cf177093f5eb285))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.132.3 ([a0fe643](https://github.com/elfhosted/myprecious/commit/a0fe643d0e601b56f4528ae552a2c8f5c7919898))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to b66bb25 ([80f7e21](https://github.com/elfhosted/myprecious/commit/80f7e2173f7d5b1935e40b694807915396220d45))
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to daac488 ([e196589](https://github.com/elfhosted/myprecious/commit/e196589286ed5576534dae6938b9bbdbe5624af0))
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to f3a70c2 ([de03da3](https://github.com/elfhosted/myprecious/commit/de03da3244d458f7e9bef1a4edaeda3ff5dfb58a))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop:1.34.1.5021 docker digest to bded537 ([9530735](https://github.com/elfhosted/myprecious/commit/9530735ae1eeb56761b0e5150eb27926f2896f2e))
+* Use postgresql with Radarr by default ([5c5ba02](https://github.com/elfhosted/myprecious/commit/5c5ba0253bcae5eb9978377d2e67a087e42223c2))
+
 ## [1.345.0](https://github.com/elfhosted/myprecious/compare/v1.344.0...v1.345.0) (2025-04-27)
 
 
