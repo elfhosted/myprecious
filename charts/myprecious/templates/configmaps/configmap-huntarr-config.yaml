@@ -28,9 +28,10 @@ data:
           {{- end }}
         }
       ],    
-      "hunt_missing_shows": 1,
-      "hunt_upgrade_episodes": 5,
-      "sleep_duration": 900,
+      "hunt_missing_mode": "seasons_packs",
+      "hunt_missing_items": 1,
+      "hunt_upgrade_items": 5,
+      "sleep_duration": 3600,
       "state_reset_interval_hours": 168,
       "monitored_only": true,
       "skip_future_episodes": true,
