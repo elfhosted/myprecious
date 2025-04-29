@@ -13718,7 +13718,7 @@ zurg: &app_zurg
   persistence:
     tmp: *tmp
     backup: *backup # to pin zurg to the node with the backup PVC
-    rclonemountrealdebridzurg: *rclonemountrealdebridzurg
+    # rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     config:
       enabled: true
       type: custom
