@@ -18,4 +18,5 @@ data:
   STREMTHRU_HTTP_PROXY: http://tinyproxy.stremthru:8888
   STREMTHRU_HTTPS_PROXY: http://tinyproxy.stremthru:8888
   {{ end }}
+  STREMTHRU_FEATURE: -dmm_hashlist # don't bother importing DMM hashlist on private instances, they're already on the public
 {{ end }}

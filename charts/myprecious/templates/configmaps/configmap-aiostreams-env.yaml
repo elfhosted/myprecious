@@ -4,8 +4,18 @@ kind: ConfigMap
 metadata:
   name: aiostreams-env
 data:
+
+  # Global options
   FORCE_COMET_PROTOCOL: "https" 
-  FORCE_COMET_PORT: "443"
+  FORCE_COMET_PORT: ""
+  FORCE_JACKETTIO_PROTOCOL: "https"
+  FORCE_JACKETTIO_PORT: ""
+  ADDON_NAME: AIOStreams | {{ .Release.Name }}
+  ADDON_PROXY: http://vpnproxy:8888
+  ADDON_PROXY_CONFIG: "*:false,torrentio.strem.fun:true"
+  MEDIAFUSION_API_PASSWORD: changemeelfie # default if unset
+
+  # For Comet
   {{ if .Values.comet.enabled }}
   COMET_URL: http://comet:8000/
   FORCE_COMET_HOSTNAME: {{ .Release.Name }}-comet.{{ .Values.dns_domain }}
@@ -13,15 +23,22 @@ data:
   COMET_URL: http://elfhosted-internal.comet/
   FORCE_COMET_HOSTNAME: "comet.elfhosted.com"
   {{ end }}
+
+  # For MediaFusion
   {{ if .Values.mediafusion.enabled }}
   MEDIAFUSION_URL: http://mediafusion:8000/
   {{ else }}
   MEDIAFUSION_URL: http://elfhosted-internal.mediafusion/
   {{ end }}
-  # JACKETTIO_URL: http://elfhosted-internal.jackettio/
-  JACKETTIO_URL: https://jackettio.elfhosted.com/
-  ADDON_NAME: AIOStreams | {{ .Release.Name }}
-  ADDON_PROXY: http://vpnproxy:8888
-  ADDON_PROXY_CONFIG: "*:false,torrentio.strem.fun:true"
-  MEDIAFUSION_API_PASSWORD: changemeelfie # default if unset
+
+  ## For Jackettio
+  {{ if .Values.jackettio.enabled }}
+  COMET_URL: http://jackettio:4000/
+  FORCE_COMET_HOSTNAME: {{ .Release.Name }}-jackettio.{{ .Values.dns_domain }}
+  {{ else }}
+  JACKETTIO_URL: http://elfhosted-internal.jackettio/
+  FORCE_JACKETIO_HOSTNAME: "jackettio.elfhosted.com"
+  {{ end }}
+
+
 {{ end }}

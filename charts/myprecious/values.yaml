@@ -2398,8 +2398,8 @@ radarr: &app_radarr
       cpu: 0m
       memory: 500Mi
     limits:
-      cpu: 1
-      memory: 8Gi # reduce once sqlite-to-db-migration is done
+      cpu: 2
+      memory: 16Gi # reduce once sqlite-to-db-migration is done
   probes: # need a long startup for database migrations
     startup:
       custom: true
@@ -2574,8 +2574,8 @@ radarr4k: &app_radarr4k
       cpu: 0m
       memory: 500Mi
     limits:
-      cpu: 1
-      memory: 8Gi # reduce once sqlite-to-db-migration is done
+      cpu: 2
+      memory: 16Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -2795,7 +2795,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 6.0.9@sha256:0cd9466ab5ed9b071e3a94300022d3e64fb30d0758462099953af6ad4d79cb0f
+    tag: 6.1.0@sha256:7a296c40dcb1fcfcff44440bc094d61d21746426b4fd00f0d0bf8a027e534c91
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4266,8 +4266,8 @@ sonarr: &app_sonarr
       cpu: 0m
       memory: 600Mi
     limits:
-      cpu: 1
-      memory: 8Gi # reduce once sqlite-to-db-migration is done
+      cpu: 2
+      memory: 16Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -4483,8 +4483,8 @@ sonarr4k: &app_sonarr4k
       cpu: 0m
       memory: 256Mi
     limits:
-      cpu: 1
-      memory: 8Gi # reduce once sqlite-to-db-migration is done
+      cpu: 2
+      memory: 16Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -6398,7 +6398,7 @@ seafile:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/seafile
-    tag: 10.0.1@sha256:58e423f05ed7a3ff84cb8a7cf1e5570a0c8b34218c348cbb28f5cff6210ddbc7
+    tag: 10.0.1@sha256:34a0156ce038de334e547d92f29ca49f9ead8886b6dfc87f321e4bf128451a77
   priorityClassName: tenant-bulk
   securityContext:
     seccompProfile:
@@ -11509,7 +11509,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1830@sha256:bf19153fbf70dc98f3c01b098964a4647d2d85bb9c7cc3ef23bfe540e0c50f38
+    tag: 0.22.1831@sha256:a3b4941d07f956e4dfa90365d5181dbd994a2019ee1b017c302deeccb185c667
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12630,7 +12630,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.69.0@sha256:a4a686cec1448c8740382df5c160e43325c43293cad810727020953a647c88e8
+    tag: 0.69.0@sha256:60352c6ae8e3dca43b4333d1600d929e502dad6f84c219fe256a0845bf5e09c2
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13195,7 +13195,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 2.0.2@sha256:343cae2fb5afcc32bf1e80f05330595e62e92518e75b807a8b7b1bafa5b77101
+    tag: 2.1.0@sha256:52e6da9fbd2eb2b70f6631e6d280c9ff7b860e3cc4ee531c6d362fd9e67f329b
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
@@ -13310,7 +13310,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.15.2@sha256:e3f8bb938dca07064e145b5cc20c780050379fffb80766c3b323fa1bb90ad1b6
+    tag: v1.16.1@sha256:5d5a769070e2c65a31639b60438762afc66c522e62825442db96dec4170e8a10
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13996,7 +13996,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.36@sha256:bf04fc2982107a713266dc3dff01d995179917f446cc4422e113047c5a5b7181
+    tag: v0.6.38@sha256:8464e4824673685ebb780df140d2482b41c54167ecfc6d94750a56e432274c4b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15457,7 +15457,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr
-    tag: v0.5.2@sha256:aabf43e851d55a387cb53e9861111d494428cc52de395a095cb602ff8c041e53
+    tag: v0.5.2@sha256:76ae78283631cb45182fa6ee55b1be1ee4f8041ad7d95e7fd015323aaa349e61
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -15515,8 +15515,27 @@ decypharr: &app_decypharr
       type: "custom"
       volumeSpec:
         configMap:
-          name: decypharr-example-config                
+          name: decypharr-example-config    
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-decypharr
+          optional: true                      
   initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: decypharr
+      - mountPath: /tmp
+        name: tmp  
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
