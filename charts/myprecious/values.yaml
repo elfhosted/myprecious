@@ -15524,19 +15524,7 @@ decypharr: &app_decypharr
           name: elfbot-decypharr
           optional: true                      
   initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: decypharr
-      - mountPath: /tmp
-        name: tmp  
-    copy-example-config:
+    a-copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -15550,13 +15538,27 @@ decypharr: &app_decypharr
         then
           cp /bootstrap/config.json /config/
         fi
+        touch /config/i-am-bootstrapped
       volumeMounts:
       - mountPath: /config/
         name: config
         subPath: decypharr
       - name: example-config
         mountPath: "/bootstrap/"
-      securityContext: *default_securitycontext       
+      securityContext: *default_securitycontext  
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: decypharr
+      - mountPath: /tmp
+        name: tmp  
+     
 
 blackhole: &app_blackhole
   enabled: false

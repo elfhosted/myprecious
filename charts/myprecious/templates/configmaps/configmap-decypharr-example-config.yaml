@@ -15,15 +15,6 @@ data:
           "rate_limit": "250/minute",
           "download_uncached": false,
           "check_cached": false
-        },
-        {
-          "name": "debridlink",
-          "host": "https://debrid-link.com/api/v2",
-          "api_key": "debridlink_key",
-          "folder": "/storage/debridlink/torrents/",
-          "rate_limit": "250/minute",
-          "download_uncached": false,
-          "check_cached": false
         }
       ],
       "proxy": {
