@@ -5388,6 +5388,7 @@ plex: &app_plex
       - -c
       - |
         echo "This pod only exists to cause plex to restart when zurg is updated"
+        echo "Also, to trigger arbritrary restarts when we need them"
     bootstrap:
       <<: *bootstrap
       volumeMounts:
