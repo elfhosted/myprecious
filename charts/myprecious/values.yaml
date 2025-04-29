@@ -2212,7 +2212,7 @@ radarr: &app_radarr
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr,radarr-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -2435,7 +2435,7 @@ radarr4k: &app_radarr4k
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr4k" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-radarr4k,radarr4k-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4128,7 +4128,7 @@ sonarr: &app_sonarr
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr,sonarr-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
@@ -4350,7 +4350,7 @@ sonarr4k: &app_sonarr4k
     fsGroupChangePolicy: "OnRootMismatch"
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr4k" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-sonarr4k,sonarr4k-env" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
