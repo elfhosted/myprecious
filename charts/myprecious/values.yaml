@@ -15515,8 +15515,27 @@ decypharr: &app_decypharr
       type: "custom"
       volumeSpec:
         configMap:
-          name: decypharr-example-config                
+          name: decypharr-example-config    
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-decypharr
+          optional: true                      
   initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: decypharr
+      - mountPath: /tmp
+        name: tmp  
     copy-example-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
