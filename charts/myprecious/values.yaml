@@ -15527,7 +15527,7 @@ decypharr: &app_decypharr
           name: elfbot-decypharr
           optional: true                      
   initContainers:
-    a-copy-example-config:
+    a-update-for-beta:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -15536,12 +15536,19 @@ decypharr: &app_decypharr
       - |
         set -x
         set -e
-        # If we don't already have an example config, create one
-        if [ ! -f /config/config.json ];
-        then
-          cp /bootstrap/config.json /config/
-        fi
-        touch /config/i-am-bootstrapped
+
+        # Turn on WebDAV
+        contents="$(jq '.debrids |= map(. + {use_webdav: true})' /config/settings.json)" && \
+          echo -E "${contents}" > /config/settings.json
+
+        # Set webdav to filename mode
+        contents="$(jq '.debrids |= map(. + {folder_naming: "filename"})' /config/settings.json)" && \
+          echo -E "${contents}" > /config/settings.json          
+
+        # Set repair to use webdav
+        contents="$(jq '.repair |= map(. + {use_webdav: true})' /config/settings.json)" && \
+          echo -E "${contents}" > /config/settings.json          
+
       volumeMounts:
       - mountPath: /config/
         name: config
