@@ -1,0 +1,19 @@
+{{ if .Values.decypharrreplacezurg.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-csi-nodeplugin-rclone-ingress-decypharr"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.elfhosted.com/name: decypharr
+  ingress:
+  # - fromEndpoints:
+  #   - matchLabels:
+  #       k8s:io.kubernetes.pod.namespace: csi-rclone
+  #       app: csi-nodeplugin-rclone
+  - toPorts:
+      - ports:
+        - port: '8282'
+          protocol: TCP
+{{ end }}
