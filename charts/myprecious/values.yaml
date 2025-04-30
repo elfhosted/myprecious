@@ -14565,7 +14565,7 @@ profilarr:
     setup:
       image: ghcr.io/elfhosted/profilarr-frontend:v1.0.1@sha256:d64425278edd8987c7745f05106e8479656e65c2d4ff3ef304a53bd528911c09
       command:
-      - /bin/ash
+      - /bin/bash
       - -c
       - |
         # copy the image's build-cache directory into the emptyDir
