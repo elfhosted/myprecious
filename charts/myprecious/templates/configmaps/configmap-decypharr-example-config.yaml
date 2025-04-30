@@ -13,8 +13,12 @@ data:
           "api_key": "realdebrid_key",
           "folder": "/storage/realdebrid-zurg/__all__/",
           "rate_limit": "250/minute",
-          "download_uncached": false,
-          "check_cached": false
+          "use_webdav": true,
+          "torrents_refresh_interval": "15s",
+          "download_links_refresh_interval": "40m",
+          "workers": 50,
+          "auto_expire_links_after": "3d",
+          "folder_naming": "filename"
         }
       ],
       "proxy": {
@@ -103,7 +107,7 @@ data:
         "enabled": false,
         "interval": "12h",
         "run_on_start": false,
-        "zurg_url": "http://zurg:9999",
+        "use_webdav": true,
         "auto_process": false
       },
       "log_level": "info",
