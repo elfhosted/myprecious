@@ -2797,7 +2797,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 6.1.0@sha256:fee7f0b363b6c8194453a69eb44cc90a68bdaaebab659354bd433fd8fe22b71d
+    tag: 6.1.2@sha256:50889748046264e218032be0b820ef27d664320514d917acbc13c5594db546ec
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12801,7 +12801,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.29@sha256:9525b038077e17c1460e6ce743855e10e1ca720ec7200219e91846ff3dbc0fa5
+    tag: 4.3.31@sha256:c55426f91608ee4527336edd778d4657f8757924c968e5b1920cb89390cf8fa8
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal

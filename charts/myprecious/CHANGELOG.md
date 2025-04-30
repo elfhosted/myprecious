@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.348.0](https://github.com/elfhosted/myprecious/compare/v1.347.0...v1.348.0) (2025-04-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.1.1 ([fc10568](https://github.com/elfhosted/myprecious/commit/fc105680df1beedd14bcecdb3e586772493fca4b))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.1.2 ([b0f42e9](https://github.com/elfhosted/myprecious/commit/b0f42e994ce6bcb8d94f45224950b696e852e6f9))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v2.1.1 ([754d21c](https://github.com/elfhosted/myprecious/commit/754d21c571cd0284e31aaa520e3dcda2c51de99d))
+* **app:** update ghcr.io/elfhosted/mediafusion docker tag to v4.3.31 ([59f626e](https://github.com/elfhosted/myprecious/commit/59f626e035a6de66a952352c1133b379d45b8abc))
+
 ## [1.347.0](https://github.com/elfhosted/myprecious/compare/v1.346.0...v1.347.0) (2025-04-29)
 
 
