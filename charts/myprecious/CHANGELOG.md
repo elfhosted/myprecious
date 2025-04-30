@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.349.0](https://github.com/elfhosted/myprecious/compare/v1.348.0...v1.349.0) (2025-04-30)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v9.3 ([480e7ad](https://github.com/elfhosted/myprecious/commit/480e7ad457499650eb0765c4f837e3aa1a1dc1d2))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.17.0 ([feb8651](https://github.com/elfhosted/myprecious/commit/feb8651a13553b207273d96ac4dddd130f25ca10))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.39 ([cdb3008](https://github.com/elfhosted/myprecious/commit/cdb300870b60fd2524341fbd7c27b827ac5fc46a))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.9.2 ([efa6ca3](https://github.com/elfhosted/myprecious/commit/efa6ca3230c432f001c8237efef8dcef30888dce))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.1.3 ([a5c0d19](https://github.com/elfhosted/myprecious/commit/a5c0d19c57a20a22d8b0c258a7417a6672f4f3ed))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.1.4 ([99960b7](https://github.com/elfhosted/myprecious/commit/99960b7adc334d4e1bce04b8e7eceecbfc0a972b))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.1.5 ([ef49437](https://github.com/elfhosted/myprecious/commit/ef49437d6f12667c0dce7f8d02650fdf24149662))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1836 ([54d1415](https://github.com/elfhosted/myprecious/commit/54d1415206c49f8dbd463a2b0b4d15d0e245bbc2))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.35.1.5034 ([1674f32](https://github.com/elfhosted/myprecious/commit/1674f32f01812bc61b6c330a7355f0b6de9c87c8))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to e04838a ([09d7887](https://github.com/elfhosted/myprecious/commit/09d7887fe24e1fcf6edd494df5f284047c309eff))
+* Improve decypharr defaults ([efbaec7](https://github.com/elfhosted/myprecious/commit/efbaec7b0340f3d663e63394671c61818be075ad))
+* increase RAM limit for decypharr ([9886a97](https://github.com/elfhosted/myprecious/commit/9886a9791ac6d165c09108b758fc4aa43fc901f0))
+* Update decypharr defaults for beta ([63d877e](https://github.com/elfhosted/myprecious/commit/63d877e05c34ce0b103397a43584155a27b3ae1c))
+
 ## [1.348.0](https://github.com/elfhosted/myprecious/compare/v1.347.0...v1.348.0) (2025-04-30)
 
 
