@@ -15484,7 +15484,7 @@ decypharr: &app_decypharr
       memory: 1Mi
     limits:
       cpu: 1
-      memory: 1Gi
+      memory: 4Gi
   ingress:
     main:
       enabled: false
