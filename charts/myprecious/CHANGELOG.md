@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.349.1](https://github.com/elfhosted/myprecious/compare/v1.349.0...v1.349.1) (2025-04-30)
+
+
+### Bug Fixes
+
+* Minor fix to decypharr bootstrap (json is hard!) ([88d6f26](https://github.com/elfhosted/myprecious/commit/88d6f265a0842badcd1e780c0e2adedff3113bbb))
+
 ## [1.349.0](https://github.com/elfhosted/myprecious/compare/v1.348.0...v1.349.0) (2025-04-30)
 
 
