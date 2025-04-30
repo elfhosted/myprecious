@@ -2400,8 +2400,8 @@ radarr: &app_radarr
       cpu: 0m
       memory: 500Mi
     limits:
-      cpu: 2
-      memory: 16Gi # reduce once sqlite-to-db-migration is done
+      cpu: 500m
+      memory: 2Gi # reduce once sqlite-to-db-migration is done
   probes: # need a long startup for database migrations
     startup:
       custom: true
