@@ -15457,8 +15457,8 @@ rclonetorbox:
 decypharr: &app_decypharr
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/decypharr
-    tag: v0.5.2@sha256:76ae78283631cb45182fa6ee55b1be1ee4f8041ad7d95e7fd015323aaa349e61
+    repository: ghcr.io/elfhosted/decypharr-beta
+    tag: v0.5.2@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
