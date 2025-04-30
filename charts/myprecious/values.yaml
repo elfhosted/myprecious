@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -15544,7 +15544,7 @@ decypharr: &app_decypharr
         touch /config/i-am-bootstrapped
 
         # Turn on WebDAV
-        contents="$(jq '.debrids |= map(. + {use_webdav: true})' /config/config.json)" && \
+        contents="$(jq '.debrids |= map(if type == "object" then . + {use_webdav: true} else . end)' /config/config.json)" && \
           echo -E "${contents}" > /config/config.json
 
         # Set webdav to filename mode
@@ -15552,7 +15552,7 @@ decypharr: &app_decypharr
           echo -E "${contents}" > /config/config.json          
 
         # Set repair to use webdav
-        contents="$(jq '.repair |= map(. + {use_webdav: true})' /config/config.json)" && \
+        contents="$(jq '.debrids |= map(if type == "object" then . + {use_webdav: true} else . end)' /config/config.json)" && \
           echo -E "${contents}" > /config/config.json      
 
       volumeMounts:
