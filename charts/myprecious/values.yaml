@@ -7576,7 +7576,7 @@ jellystat:
     app.elfhosted.com/name: jellystat
   image:
     repository: ghcr.io/elfhosted/jellystat
-    tag: 1.1.5@sha256:5c105fd7e4a67ddc49e312f18ac99bb92d8f63e09d4bbee07ddf9315ed9f4521
+    tag: 1.1.6@sha256:fe437858bad45b2cdd316dd693e63be3a6739221e3d2ce0f33cc67cff4c11cfd
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13593,7 +13593,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.17.0@sha256:f33af31610b4e37f350a962564e6da59a30db67800f4e18a56bd8d9bd2c8078b
+    tag: v1.18.0@sha256:e4e8694a8a99122d9c6cdfb746e16f83756d853653090b967ec1ac491c05938e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14279,7 +14279,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.39@sha256:81d2b39cc1f8627dfa037e489ac91f893ec40957b9f1f1391fdeb6594bf18bab
+    tag: v0.6.40@sha256:fe2bfcbd3826782899666b05d9a94b7e131931fa02370e5b282413aa2b214714
   priorityClassName: tenant-normal
   controller:
     annotations:
