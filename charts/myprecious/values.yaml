@@ -2400,18 +2400,7 @@ radarr: &app_radarr
       memory: 500Mi
     limits:
       cpu: 500m
-      memory: 2Gi # reduce once sqlite-to-db-migration is done
-  probes: # need a long startup for database migrations
-    startup:
-      custom: true
-      enabled: true
-      spec:
-        failureThreshold: 3000
-        periodSeconds: 10
-        successThreshold: 1
-        tcpSocket:
-          port: 7878
-        timeoutSeconds: 1
+      memory: 2Gi 
 
 radarr4k: &app_radarr4k
   enabled: false
@@ -4790,8 +4779,8 @@ prowlarr: &app_prowlarr
       cpu: 0m
       memory: 128Mi
     limits:
-      cpu: 1
-      memory: 1Gi
+      cpu: 2
+      memory: 16Gi  # reduce after sqlite-to-db-migration is done
   env:
     S6_READ_ONLY_ROOT: 1
   additionalContainers:
@@ -4841,6 +4830,18 @@ prowlarr: &app_prowlarr
         limits:
           cpu: 100m
           memory: 1Gi
+  probes: # need a long startup for database migrations
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 3000
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 9696
+        timeoutSeconds: 1
+
 
 nzbhydra:
   enabled: false
@@ -5360,7 +5361,18 @@ readarr:
       memory: 256Mi
     limits:
       cpu: 2
-      memory: 1Gi
+      memory: 16Gi
+  probes: # need a long startup for database migrations
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 3000
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 8787
+        timeoutSeconds: 1      
 
 readarraudio:
   enabled: false
@@ -5550,7 +5562,18 @@ readarraudio:
       memory: 128Mi
     limits:
       cpu: 2
-      memory: 1Gi
+      memory: 16Gi
+  probes: # need a long startup for database migrations
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 3000
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 8787
+        timeoutSeconds: 1      
 
 plex: &app_plex
   enabled: false
