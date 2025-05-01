@@ -2199,7 +2199,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
+    tag: 5.22.4.9896@sha256:ee58a2531e829cb01437a330b6f20abd6d7cbf49b1a9e2f06618297d4f42853b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2378,7 +2378,7 @@ radarr: &app_radarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
+      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:ee58a2531e829cb01437a330b6f20abd6d7cbf49b1a9e2f06618297d4f42853b
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -2422,7 +2422,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
+    tag: 5.22.4.9896@sha256:ee58a2531e829cb01437a330b6f20abd6d7cbf49b1a9e2f06618297d4f42853b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2608,7 +2608,7 @@ radarr4k: &app_radarr4k
           cpu: 500m
           memory: 8Gi   
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:4cc1a4414533187a134095021d40a97566319f7f6455803864c3ab879e8a3a58
+      image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:ee58a2531e829cb01437a330b6f20abd6d7cbf49b1a9e2f06618297d4f42853b
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4639,7 +4639,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.35.1.5034@sha256:1eb41e6236ac9ee0af55230441be026a9d846923ac3759d89ace3fe259c1d195 
+    tag: 1.35.1.5034@sha256:1eb41e6236ac9ee0af55230441be026a9d846923ac3759d89ace3fe259c1d195
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11783,7 +11783,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1836@sha256:cd54f74beb7bf9256dbc01507191d349729ab3384aa2589aaedcf35e5cc1a5fe
+    tag: 0.22.1837@sha256:5cd5caa06dfd2dc3776f091dc0a39914af3b1ac5f6a96a80190cefb0c763b5a9
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15120,7 +15120,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.9.2@sha256:ea5600724c27877ff4ece9d8c0deb8dcc6145ac38e3945bc3edbf9b2cf114ed6
+    tag: 0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
