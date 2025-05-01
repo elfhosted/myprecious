@@ -5031,6 +5031,9 @@ lidarr:
         set -x
         set -e
 
+        # for database to use 
+        mkdir -p /config/postgresql/database
+
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
         # Clean up wasteful temporary mediacover storage (Radarr will just re-download these)
@@ -5291,6 +5294,9 @@ readarr:
         set -x
         set -e
 
+        # for database to use 
+        mkdir -p /config/postgresql/database
+
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
         sed -i  "s|<AuthenticationMethod>Basic</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
@@ -5479,7 +5485,9 @@ readarraudio:
         set -x
         set -e
 
-        # Set auth to external
+        # for database to use 
+        mkdir -p /config/postgresql/database
+
         # Set auth to external
         sed -i  "s|<AuthenticationMethod>None</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
         sed -i  "s|<AuthenticationMethod>Basic</AuthenticationMethod>|<AuthenticationMethod>External</AuthenticationMethod>|" /config/config.xml
