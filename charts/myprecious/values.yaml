@@ -14868,6 +14868,11 @@ profilarr:
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
+    npm:
+      enabled: true
+      type: emptyDir
+      mountPath: /.npm
+      sizeLimit: 1Gi          
     backup: *backup
     config:
       enabled: true
