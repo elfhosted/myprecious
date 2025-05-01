@@ -14853,7 +14853,7 @@ profilarr:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 6868
+          port: 3000
   envFrom:
   - configMapRef:
       name: elfbot-profilarr
@@ -14868,6 +14868,11 @@ profilarr:
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
+    npm:
+      enabled: true
+      type: emptyDir
+      mountPath: /.npm
+      sizeLimit: 1Gi          
     backup: *backup
     config:
       enabled: true
