@@ -1,0 +1,28 @@
+{{ if .Values.lidarr.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lidarr-env
+data:
+  # Overwrite API key with default
+  LIDARR__API_KEY: "{{ .Values.lidarrexposed.apikey }}"
+  LIDARR_AUTHENTICATIONMETHOD: "External"
+
+  # Use for migration to postgres
+  PGPASSWORD: lidarr
+  PGDATABASE: postgres
+  PGUSER: lidarr
+  PGHOST: localhost
+  LIDARR__POSTGRES_USER: lidarr
+  LIDARR__POSTGRES_PASSWORD: lidarr
+  LIDARR__POSTGRES_PORT: "5432"
+  LIDARR__POSTGRES_HOST: localhost
+  LIDARR__POSTGRES_MAIN_DB: lidarr_main
+  LIDARR__POSTGRES_LOG_DB: lidarr_logs
+
+  # Use postgresql by default
+  USE_POSTGRESQL: "false"
+
+{{ end }}
+
+

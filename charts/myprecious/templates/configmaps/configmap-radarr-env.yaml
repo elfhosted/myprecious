@@ -7,18 +7,6 @@ data:
   # Overwrite API key with default
   RADARR__API_KEY: "{{ .Values.radarrexposed.apikey }}"
   RADARR_AUTHENTICATIONMETHOD: "External"
-  scannarr-settings_radarr.json: |
-    {
-      "URL": "http://localhost:7878",
-      "Interval": 120,
-      "ScanOnWake": true,
-      "ScanOnInterval": true,
-      "ScanOnStart": true,  
-      "ForceImport": false,
-      "ForceImportInterval": 1,
-      "ForceImportMode": "Copy",
-      "APIKey": "{{ .Values.radarrexposed.apikey }}"
-    }
 
   # Use for migration to postgres
   PGPASSWORD: radarr
@@ -31,13 +19,6 @@ data:
   RADARR__POSTGRES_HOST: localhost
   RADARR__POSTGRES_MAIN_DB: radarr_main
   RADARR__POSTGRES_LOG_DB: radarr_logs
-
-  # Used for Huntarr-Radarr
-  API_KEY: "{{ .Values.radarrexposed.apikey }}"
-  API_URL: http://radarr:7878
-  HUNT_MISSING_MOVIES: "0" # disabled by default for now
-  HUNT_UPGRADE_MOVIES: "0" # disabled by default for now
-  SLEEP_DURATION: "3600"
   
   # Enable ffprobe shim by default
   USE_FFPROBE_SHIM: "true"

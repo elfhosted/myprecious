@@ -2195,7 +2195,6 @@ radarr: &app_radarr
   enabled: false
   podLabels:
     app.elfhosted.com/name: radarr
-    app.elfhosted.com/class: debrid
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -4640,7 +4639,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.35.1.5034@sha256:7c6e6dfc2b585c1189178c1a9ec85583b36503b6d51708d89d786e9633a75d9a
+    tag: 1.35.1.5034@sha256:1eb41e6236ac9ee0af55230441be026a9d846923ac3759d89ace3fe259c1d195 
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4701,7 +4700,10 @@ prowlarr: &app_prowlarr
         medium: Memory      
   envFrom:
   - configMapRef:
-      name: prowlarr-env            
+      name: prowlarr-env  
+  - configMapRef:
+      name: elfbot-prowlarr
+      optional: true                   
   ingress:
     main:
       enabled: false
@@ -4822,6 +4824,23 @@ prowlarr: &app_prowlarr
         limits:
           cpu: 500m
           memory: 8Gi     
+    database-backup:
+      image: ghcr.io/elfhosted/prowlarr-develop:1.35.1.5034@sha256:1eb41e6236ac9ee0af55230441be026a9d846923ac3759d89ace3fe259c1d195 
+      command: [ "/database-backup.sh" ]
+      envFrom:
+      - configMapRef:
+          name: prowlarr-env
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: prowlarr/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi
 
 nzbhydra:
   enabled: false
@@ -4904,7 +4923,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.11.2.4629@sha256:9d692e8f520003651d6154aa84f01a43d222fb27c319fcba8b0c992d99e25d5f
+    tag: 2.11.2.4629@sha256:e36c981e5dc2b6a77a0fb95ac544b1e79ad6edec90d1ea1826441317872bebea
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4921,9 +4940,6 @@ lidarr:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
-  envFrom:
-  - configMapRef:
-      name: lidarr-config
   persistence:
     <<: *storagemounts
     config:
@@ -4946,6 +4962,11 @@ lidarr:
         configMap:
           name: elfbot-lidarr
           optional: true
+    dev-shm:
+      enabled: "true"
+      type: emptyDir
+      volumeSpec:
+        medium: Memory              
   ingress:
     main:
       enabled: false
@@ -4955,7 +4976,39 @@ lidarr:
       ports:
         http:
           port: 8686
+  envFrom:
+  - configMapRef:
+      name: lidarr-env
+  - configMapRef:
+      name: elfbot-lidarr
+      optional: true             
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: lidarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault     
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -4988,6 +5041,53 @@ lidarr:
         subPath: lidarr
       resources: *default_resources
       securityContext: *default_securitycontext
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: lidarr
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: lidarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: lidarr/postgresql/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi     
+    database-backup:
+      image: elfhosted/lidarr-develop:2.11.2.4629@sha256:e36c981e5dc2b6a77a0fb95ac544b1e79ad6edec90d1ea1826441317872bebea
+      command: [ "/database-backup.sh" ]
+      envFrom:
+      - configMapRef:
+          name: lidarr-env
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: lidarr/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi      
   resources:
     requests:
       cpu: 0m
@@ -5074,7 +5174,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.15.2787@sha256:e2da4611474274755d4ee9c272e579fa2e0b5596b4370bb3f4ccbe477bddec45
+    tag: 0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5092,9 +5192,6 @@ readarr:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   automountServiceAccountToken: false
-  envFrom:
-  - configMapRef:
-      name: readarr-config
   persistence:
     <<: *storagemounts
     config:
@@ -5125,6 +5222,11 @@ readarr:
         configMap:
           name: elfbot-readarr
           optional: true
+    dev-shm:
+      enabled: "true"
+      type: emptyDir
+      volumeSpec:
+        medium: Memory
   ingress:
     main:
       enabled: false
@@ -5134,7 +5236,39 @@ readarr:
       ports:
         http:
           port: 8787
+  envFrom:
+  - configMapRef:
+      name: readarr-env
+  - configMapRef:
+      name: elfbot-readarr
+      optional: true           
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: readarr
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault     
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5167,6 +5301,53 @@ readarr:
         subPath: readarr
       resources: *default_resources
       securityContext: *default_securitycontext
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: readarr
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: readarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: readarr/postgresql/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi     
+    database-backup:
+      image: elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+      command: [ "/database-backup.sh" ]
+      envFrom:
+      - configMapRef:
+          name: readarr-env
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: readarr/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi        
   resources:
     requests:
       cpu: 0m
@@ -5181,7 +5362,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.15.2787@sha256:e2da4611474274755d4ee9c272e579fa2e0b5596b4370bb3f4ccbe477bddec45
+    tag: 0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5198,7 +5379,10 @@ readarraudio:
   automountServiceAccountToken: false
   envFrom:
   - configMapRef:
-      name: readarraudio-config
+      name: readarr-env
+  - configMapRef:
+      name: elfbot-readarr
+      optional: true    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-readarraudio" # Reload the deployment every time the rclones change
@@ -5232,6 +5416,11 @@ readarraudio:
         configMap:
           name: elfbot-readarraudio
           optional: true
+    dev-shm:
+      enabled: "true"
+      type: emptyDir
+      volumeSpec:
+        medium: Memory          
   ingress:
     main:
       enabled: false
@@ -5242,6 +5431,32 @@ readarraudio:
         http:
           port: 8787
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config -R
+
+        # Wipe database if it's on postgresql 16
+        if [ -f /config/postgresql/database/PG_VERSION ]; then
+          if grep 16 /config/postgresql/database/PG_VERSION; then
+            rm -rf /config/postgresql/database/*
+          fi
+        fi
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: readarraudio
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault     
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5274,6 +5489,53 @@ readarraudio:
         subPath: readarraudio
       resources: *default_resources
       securityContext: *default_securitycontext
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      env:
+        - name: POSTGRES_PASSWORD
+          value: readarr
+        - name: POSTGRES_DB
+          value: postgres
+        - name: POSTGRES_USER
+          value: readarr
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: readarr/postgresql/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 8Gi     
+    database-backup:
+      image: elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+      command: [ "/database-backup.sh" ]
+      envFrom:
+      - configMapRef:
+          name: readarr-env
+      volumeMounts:
+      - mountPath: /backup
+        name: backup
+        subPath: readarr/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 100m
+          memory: 1Gi         
   resources:
     requests:
       cpu: 0m
@@ -8519,6 +8781,7 @@ arrtools:
         then
           cp /bootstrap/config4k.ini /config/
         fi        
+        cp /bootstrap/config-placeholder.ini /config/
       volumeMounts:
       - mountPath: /config
         name: config

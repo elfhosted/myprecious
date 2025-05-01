@@ -6,18 +6,6 @@ metadata:
 data:
   # Overwrite API key with default
   SONARR__API_KEY: "{{ .Values.sonarr4kexposed.apikey }}"
-  scannarr-settings_sonarr.json: |
-    {
-      "URL": "http://localhost:8989",
-      "Interval": 120,
-      "ScanOnWake": true,
-      "ScanOnInterval": false,
-      "ScanOnStart": true,  
-      "ForceImport": false,
-      "ForceImportInterval": 1,
-      "ForceImportMode": "Copy",
-      "APIKey": "{{ .Values.sonarr4kexposed.apikey }}"
-    }
 
   # Use for migration to postgres
   PGPASSWORD: sonarr
@@ -30,12 +18,6 @@ data:
   SONARR__POSTGRES_HOST: localhost
   SONARR__POSTGRES_MAIN_DB: sonarr_main
   SONARR__POSTGRES_LOG_DB: sonarr_logs
-
-  # Used for Huntarr-Sonarr
-  API_KEY: "{{ .Values.sonarr4kexposed.apikey }}"
-  API_URL: http://sonarr4k:8989
-  HUNT_MISSING_SHOWS: "0" # disabled by default for now
-  HUNT_UPGRADE_EPISODES: "0" # disabled by default for now
 
   # Enable ffprobe shim by default now
   USE_FFPROBE_SHIM: "true"

@@ -1,0 +1,28 @@
+{{ if .Values.readarraudio.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: readarraudio-env
+data:
+  # Overwrite API key with default
+  READARR__API_KEY: "{{ .Values.readarraudioexposed.apikey }}"
+  READARR_AUTHENTICATIONMETHOD: "External"
+
+  # Use for migration to postgres
+  PGPASSWORD: readarr
+  PGDATABASE: postgres
+  PGUSER: readarr
+  PGHOST: localhost
+  READARR__POSTGRES_USER: readarr
+  READARR__POSTGRES_PASSWORD: readarr
+  READARR__POSTGRES_PORT: "5432"
+  READARR__POSTGRES_HOST: localhost
+  READARR__POSTGRES_MAIN_DB: readarr_main
+  READARR__POSTGRES_LOG_DB: readarr_logs
+
+  # Use postgresql by default
+  USE_POSTGRESQL: "false"
+
+{{ end }}
+
+

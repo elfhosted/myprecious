@@ -1,9 +1,0 @@
-{{ if .Values.readarr.enabled }}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: readarr-config
-data:
-  # Overwrite API key with default
-  READARR__API_KEY: "{{ .Values.readarrexposed.apikey }}"
-{{ end }}
