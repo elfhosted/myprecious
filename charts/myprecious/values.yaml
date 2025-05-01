@@ -4287,7 +4287,7 @@ sonarr: &app_sonarr
           memory: 1Mi
         limits:
           cpu: 500m
-          memory: 8Gi         
+          memory: 2Gi         
     database-backup:
       image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:d1c66b625da1e73bc548b844643357701d4adcf911e2efa299c69dee29535db5
       command: [ "/database-backup.sh" ]
@@ -4305,17 +4305,6 @@ sonarr: &app_sonarr
         limits:
           cpu: 100m
           memory: 1Gi            
-  probes: # need a long startup for database migrations
-    startup:
-      custom: true
-      enabled: true
-      spec:
-        failureThreshold: 3000
-        periodSeconds: 10
-        successThreshold: 1
-        tcpSocket:
-          port: 8989
-        timeoutSeconds: 1
 
 sonarr4k: &app_sonarr4k
   enabled: false
