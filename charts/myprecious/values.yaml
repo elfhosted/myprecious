@@ -5663,7 +5663,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.04.28.0031-nightly@sha256:c1d0eb67f70ba80c2065289f438323a664bae6b4233ffe853410917df4c587db
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.01.0033-nightly@sha256:59eea565776b61195f70f2b3e4064bc40a2f407918e891ac7779646f99bfe47d
       command:
       - /bin/bash
       - -c
@@ -13931,7 +13931,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.04.28.0031-nightly@sha256:c1d0eb67f70ba80c2065289f438323a664bae6b4233ffe853410917df4c587db
+    tag: 2025.05.01.0033-nightly@sha256:59eea565776b61195f70f2b3e4064bc40a2f407918e891ac7779646f99bfe47d
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
