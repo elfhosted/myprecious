@@ -21,7 +21,7 @@ data:
   LIDARR__POSTGRES_LOG_DB: lidarr_logs
 
   # Use postgresql by default
-  USE_POSTGRESQL: "false"
+  USE_POSTGRESQL: "true"
 
 {{ end }}
 

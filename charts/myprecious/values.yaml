@@ -5338,7 +5338,7 @@ readarr:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+      image: ghcr.io/elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -5528,7 +5528,7 @@ readarraudio:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+      image: ghcr.io/elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
