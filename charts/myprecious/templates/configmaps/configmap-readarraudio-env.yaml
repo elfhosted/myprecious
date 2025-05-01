@@ -21,7 +21,7 @@ data:
   READARR__POSTGRES_LOG_DB: readarr_logs
 
   # Use postgresql by default
-  USE_POSTGRESQL: "true"
+  USE_POSTGRESQL: "false"
 
 {{ end }}
 
