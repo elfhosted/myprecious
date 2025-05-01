@@ -470,7 +470,7 @@ data:
       {{ if .Values.profilarr.enabled }}
       - name: profilarr
         group: manage-media
-        url: "http://profilarr:6868"
+        url: "http://profilarr:3000"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

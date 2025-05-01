@@ -662,7 +662,7 @@ data:
             icon: mdi-recycle
             href: https://{{ .Release.Name }}-profilarr.{{ .Values.dns_domain }}
             description: Manage Aar Profiles 
-            siteMonitor: http://profilarr:6868
+            siteMonitor: http://profilarr:3000
         {{ end }}            
 
         {{ if .Values.clidebrid.enabled  }}
