@@ -4830,17 +4830,14 @@ prowlarr: &app_prowlarr
         limits:
           cpu: 100m
           memory: 1Gi
-  probes: # need a long startup for database migrations
+  probes: # avoid while doing migrations
     startup:
-      custom: true
-      enabled: true
-      spec:
-        failureThreshold: 3000
-        periodSeconds: 10
-        successThreshold: 1
-        tcpSocket:
-          port: 9696
-        timeoutSeconds: 1
+      enabled: false
+    readiness:
+      enabled: false
+    liveness:
+      enabled: false
+
 
 
 nzbhydra:
