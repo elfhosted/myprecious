@@ -5668,8 +5668,21 @@ plex: &app_plex
       - /bin/bash
       - -c
       - |
-        echo "This pod only exists to cause plex to restart when zurg is updated"
-        echo "Also, to trigger arbritrary restarts when we need them"
+        echo "This pod only exists to cause a restart when zurg is updated"
+    restart-with-decypharr:
+      image: ghcr.io/elfhosted/decypharr-beta:v0.5.2@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when decypharr is updated"
+    restart-with-debridav:
+      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when debridav is updated"        
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -5984,6 +5997,27 @@ jellyfin: &app_jellyfin
           name: tooling-scripts
           defaultMode: 0755
   initContainers:
+    restart-with-zurg:
+      image: ghcr.io/elfhosted/zurg-rc:2025.04.28.0031-nightly@sha256:c1d0eb67f70ba80c2065289f438323a664bae6b4233ffe853410917df4c587db
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when zurg is updated"
+    restart-with-decypharr:
+      image: ghcr.io/elfhosted/decypharr-beta:v0.5.2@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when decypharr is updated"
+    restart-with-debridav:
+      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when debridav is updated"   
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -6167,6 +6201,28 @@ emby: &app_emby
           name: tooling-scripts
           defaultMode: 0755
   initContainers:
+  initContainers:
+    restart-with-zurg:
+      image: ghcr.io/elfhosted/zurg-rc:2025.04.28.0031-nightly@sha256:c1d0eb67f70ba80c2065289f438323a664bae6b4233ffe853410917df4c587db
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when zurg is updated"
+    restart-with-decypharr:
+      image: ghcr.io/elfhosted/decypharr-beta:v0.5.2@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when decypharr is updated"
+    restart-with-debridav:
+      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when debridav is updated"   
     bootstrap:
       <<: *bootstrap
       volumeMounts:
