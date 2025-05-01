@@ -5075,7 +5075,7 @@ lidarr:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: elfhosted/lidarr-develop:2.11.2.4629@sha256:e36c981e5dc2b6a77a0fb95ac544b1e79ad6edec90d1ea1826441317872bebea
+      image: ghcr.io/elfhosted/lidarr-develop:2.11.2.4629@sha256:e36c981e5dc2b6a77a0fb95ac544b1e79ad6edec90d1ea1826441317872bebea
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -5177,7 +5177,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+    tag: 0.4.15.2787@sha256:21319880278f524150fe1dbd4f7b04c94a94a3ea98c54a6befc19eb275a867ab
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5338,7 +5338,7 @@ readarr:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+      image: ghcr.io/elfhosted/readarr-develop:0.4.15.2787@sha256:21319880278f524150fe1dbd4f7b04c94a94a3ea98c54a6befc19eb275a867ab
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -5368,7 +5368,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+    tag: 0.4.15.2787@sha256:21319880278f524150fe1dbd4f7b04c94a94a3ea98c54a6befc19eb275a867ab
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5528,7 +5528,7 @@ readarraudio:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/readarr-develop:0.4.15.2787@sha256:4b20aef1b2e2918f37dcd5500c1108c742661b49a00e41922e10733008a674d7
+      image: ghcr.io/elfhosted/readarr-develop:0.4.15.2787@sha256:21319880278f524150fe1dbd4f7b04c94a94a3ea98c54a6befc19eb275a867ab
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
