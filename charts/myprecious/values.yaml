@@ -8511,9 +8511,9 @@ arrtools:
         set -e
 
         # If we don't already have an example config, create one
-        if [[ ! -f /config/config.ini ]];
+        if [[ ! -f /config/confighd.ini ]];
         then
-          cp /bootstrap/config.ini /config/
+          cp /bootstrap/confighd.ini /config/
         fi
         if [[ ! -f /config/config4k.ini ]];
         then
