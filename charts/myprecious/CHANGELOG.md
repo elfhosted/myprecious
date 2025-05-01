@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.350.0](https://github.com/elfhosted/myprecious/compare/v1.349.1...v1.350.0) (2025-05-01)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.18.0 ([f05b1c1](https://github.com/elfhosted/myprecious/commit/f05b1c154408b5ce691f2cec2079f159ddd14731))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.40 ([08e0bd2](https://github.com/elfhosted/myprecious/commit/08e0bd2fd975aad60d2ca3d9822c6a4c6e379a8a))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.9.3 ([b4420e6](https://github.com/elfhosted/myprecious/commit/b4420e696079d995b870d9b3172e0adb992b5f7c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1837 ([b33147a](https://github.com/elfhosted/myprecious/commit/b33147a5f22f675a314381e136b0007c5a74180f))
+* **app:** update ghcr.io/elfhosted/jellystat docker tag to v1.1.6 ([e4b203e](https://github.com/elfhosted/myprecious/commit/e4b203e48081f0790a14f8fd7601b96a62211367))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.05.01.0033-nightly ([4fe089a](https://github.com/elfhosted/myprecious/commit/4fe089a75bfcd85f9a1b67099d14258c76450c2e))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.05.01.0033-nightly ([fe37255](https://github.com/elfhosted/myprecious/commit/fe37255379bb4342a7e1a8b624ee0ab4c5cb1743))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to de9ea08 ([43a32d3](https://github.com/elfhosted/myprecious/commit/43a32d38e39fc44083aeb73413e1f0867bc45fbf))
+* **app:** update ghcr.io/elfhosted/lidarr-develop:2.11.2.4629 docker digest to e36c981 ([ce462a2](https://github.com/elfhosted/myprecious/commit/ce462a2ed30ac33da6046aaa283af8bc8940d90a))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop:1.35.1.5034 docker digest to 1eb41e6 ([3f0f721](https://github.com/elfhosted/myprecious/commit/3f0f721ab2f913b6990f82b197d1318490cbe864))
+* **app:** update ghcr.io/elfhosted/radarr:5.22.4.9896 docker digest to ee58a25 ([3f07745](https://github.com/elfhosted/myprecious/commit/3f07745770452001d9386afddccc9a60e0694d62))
+* **app:** update ghcr.io/elfhosted/readarr-develop:0.4.15.2787 docker digest to 4b20aef ([69b2c7f](https://github.com/elfhosted/myprecious/commit/69b2c7f58e763cd37fd0642f45810c1ce3704f17))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to 022dfe3 ([ec003a0](https://github.com/elfhosted/myprecious/commit/ec003a013f5b61c325ba3f4bdc26dc8deb8d2af9))
+* **app:** update quay.io/linuxserver.io/calibre:8.3.0 docker digest to bf331da ([a1c887e](https://github.com/elfhosted/myprecious/commit/a1c887e05a415ae874d26f3360b0a32bce45a950))
+* Migrate radarr4k to postgresql by default ([09a4d95](https://github.com/elfhosted/myprecious/commit/09a4d954ae09100caff47a6af6e9d82bb0ecf609))
+* Restart streamers when zurg, debridav, or decypharr get updated ([a121059](https://github.com/elfhosted/myprecious/commit/a121059f6fc559bf3863c91c28617baf821e9daa))
+
 ## [1.349.1](https://github.com/elfhosted/myprecious/compare/v1.349.0...v1.349.1) (2025-04-30)
 
 
