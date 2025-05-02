@@ -14918,6 +14918,7 @@ profilarr:
       volumeMounts:
       - mountPath: /tmp
         name: app
+        
 
 pulsarr: &app_pulsarr
   enabled: false
