@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.351.0](https://github.com/elfhosted/myprecious/compare/v1.350.0...v1.351.0) (2025-05-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.99.4 ([a8bf785](https://github.com/elfhosted/myprecious/commit/a8bf785c686cf0e23dfd8e8092da1364b1a28a1d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1846 ([a82da4d](https://github.com/elfhosted/myprecious/commit/a82da4d7cca0c97a7c4d5b37d0c08745235709af))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.0 ([651fccb](https://github.com/elfhosted/myprecious/commit/651fccb9f9572cbdae4c400a2312e1bb8c293cc9))
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.9 ([0130b5a](https://github.com/elfhosted/myprecious/commit/0130b5adab9c3735b471c9af7297b30788f1130d))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decypharr-beta:rolling docker digest to da2fbdb ([cb54cb5](https://github.com/elfhosted/myprecious/commit/cb54cb5a390794d146f15cbf5002e1b4bef46386))
+* Fix Profilarr ([a0a8683](https://github.com/elfhosted/myprecious/commit/a0a86833fd863d74f7af9619eb478a8ceef6c56a))
+* Update Profilarr ([b315ad8](https://github.com/elfhosted/myprecious/commit/b315ad8abe0e90d738b19dc0e66b552911330b70))
+
 ## [1.350.0](https://github.com/elfhosted/myprecious/compare/v1.349.1...v1.350.0) (2025-05-01)
 
 
