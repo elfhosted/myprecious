@@ -14819,6 +14819,10 @@ doplarr: &app_doplarr
 
 profilarr:
   enabled: false
+  hostAliases:
+  - ip: "127.0.0.1"
+    hostnames:  
+    - "backend" 
   image:
     repository: ghcr.io/elfhosted/profilarr-frontend
     tag: v1.0.1@sha256:d64425278edd8987c7745f05106e8479656e65c2d4ff3ef304a53bd528911c09
