@@ -12958,7 +12958,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.69.0@sha256:60352c6ae8e3dca43b4333d1600d929e502dad6f84c219fe256a0845bf5e09c2
+    tag: 0.70.0@sha256:bc1c532bde5420c3418f1ff781d64be77d5a992f16199ca661e28c78ac7d6872
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14666,7 +14666,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.99.3@sha256:1a7e68453716dc8044aca687a447e6d544e66b079909f7c4ffead8d6d31fee96
+    tag: 4.99.4@sha256:86e36a9474f5c70131e982f0988c01880eab6d4ebfa1c84c415a8a0d69e4aa29
   priorityClassName: tenant-normal
   controller:
     annotations:
