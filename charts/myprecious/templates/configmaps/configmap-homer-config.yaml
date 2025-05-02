@@ -1021,6 +1021,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.profilarr.enabled }}
+          - name: "Profilarr"
+            icon: "fas fa-user"
+            subtitle: "Manage Arr Profiles"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-profilarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.clidebrid.enabled }}
           - name: "cli-debrid (RealDebrid)"
             logo: "assets/png/real-debrid.png"
