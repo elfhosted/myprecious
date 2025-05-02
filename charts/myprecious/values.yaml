@@ -2564,8 +2564,8 @@ radarr4k: &app_radarr4k
       cpu: 0m
       memory: 500Mi
     limits:
-      cpu: 2
-      memory: 16Gi # reduce once sqlite-to-db-migration is done
+      cpu: 500m
+      memory: 2Gi
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -2613,17 +2613,6 @@ radarr4k: &app_radarr4k
         limits:
           cpu: 100m
           memory: 1Gi            
-  probes: # need a long startup for database migrations
-    startup:
-      custom: true
-      enabled: true
-      spec:
-        failureThreshold: 3000
-        periodSeconds: 10
-        successThreshold: 1
-        tcpSocket:
-          port: 7878
-        timeoutSeconds: 1
 
 ombi:
   enabled: false
@@ -4256,8 +4245,8 @@ sonarr: &app_sonarr
       cpu: 0m
       memory: 600Mi
     limits:
-      cpu: 2
-      memory: 16Gi # reduce once sqlite-to-db-migration is done
+      cpu: 500m
+      memory: 2Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -14918,7 +14907,7 @@ profilarr:
       volumeMounts:
       - mountPath: /tmp
         name: app
-        
+
 
 pulsarr: &app_pulsarr
   enabled: false
