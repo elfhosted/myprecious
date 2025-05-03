@@ -5659,7 +5659,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
       command:
       - /bin/bash
       - -c
@@ -5994,7 +5994,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
       command:
       - /bin/bash
       - -c
@@ -6199,7 +6199,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
       command:
       - /bin/bash
       - -c
@@ -12958,7 +12958,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.70.0@sha256:bc1c532bde5420c3418f1ff781d64be77d5a992f16199ca661e28c78ac7d6872
+    tag: 0.70.2@sha256:258fbdd5de1e6232d2bfebd40f6eeb9f3e254587e4674373da2774e740c0999b
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14324,7 +14324,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.40@sha256:fe2bfcbd3826782899666b05d9a94b7e131931fa02370e5b282413aa2b214714
+    tag: v0.6.41@sha256:ff99e368464a21bff8d7d1eb838dab95d768656cebde54a4779f263768d0f796
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14913,7 +14913,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.2.16@sha256:0ed26071c7f86e2d1ee3e1403bffce5501e7fc8aa6dc8ffc3b2078d0fb3bc548
+    tag: v0.3.1@sha256:fdf1c6cefc7b423209ab0cc14d0e4dc89bd3f35c8aaee98051a0e4fe6e2218ac
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14998,7 +14998,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.2.16@sha256:0ed26071c7f86e2d1ee3e1403bffce5501e7fc8aa6dc8ffc3b2078d0fb3bc548
+      image: ghcr.io/elfhosted/pulsarr:v0.3.1@sha256:fdf1c6cefc7b423209ab0cc14d0e4dc89bd3f35c8aaee98051a0e4fe6e2218ac
       command:
       - /bin/ash
       - -c
@@ -15795,7 +15795,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr-beta
-    tag: rolling@sha256:4363e2930f359cca494f59162a7641acc61306a945329c0379538893bc328072
+    tag: rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
