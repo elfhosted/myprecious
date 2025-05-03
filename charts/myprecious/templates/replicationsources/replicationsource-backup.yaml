@@ -34,7 +34,7 @@ spec:
                 values:
                 - zurg # .. but prefer zurg
             topologyKey: "kubernetes.io/hostname"       
-    cacheCapacity: 10Gi
+    cacheCapacity: 20Gi
     cacheStorageClassName: topolvm-provisioner-thin
     cacheAccessModes:
     - ReadWriteOnce

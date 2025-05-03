@@ -18,8 +18,8 @@ spec:
               values:
               - nodefinder
           topologyKey: "kubernetes.io/hostname"
-    cacheCapacity: 10Gi
-    capacity: 10Gi
+    cacheCapacity: 20Gi
+    capacity: 20Gi
     cacheStorageClassName: topolvm-provisioner-thin
     accessModes:
     - ReadWriteOnce
