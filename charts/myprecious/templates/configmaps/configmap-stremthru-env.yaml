@@ -19,5 +19,5 @@ data:
   STREMTHRU_HTTPS_PROXY: http://tinyproxy.stremthru:8888
   {{ end }}
   STREMTHRU_FEATURE: -dmm_hashlist # don't bother importing DMM hashlist on private instances, they're already on the public
-  STREMTHRU_DATA_DIR: /tmp # for git pulls of the DMM hashlists
+  STREMTHRU_DATA_DIR: /config # for imdb datasets
 {{ end }}
