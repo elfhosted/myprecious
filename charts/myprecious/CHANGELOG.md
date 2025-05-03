@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.352.0](https://github.com/elfhosted/myprecious/compare/v1.351.0...v1.352.0) (2025-05-03)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.41 ([cb292be](https://github.com/elfhosted/myprecious/commit/cb292be0c567790af7b0bf66cd93480212fd722d))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.1 ([918b303](https://github.com/elfhosted/myprecious/commit/918b303ad0ee31f71e49e8cd977b40c1d37c4439))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/stremthru:0.70.0 docker digest to 7ae7818 ([4ece164](https://github.com/elfhosted/myprecious/commit/4ece164e3e51709f34f7b7e91d08f8225f8a0bae))
+
 ## [1.351.0](https://github.com/elfhosted/myprecious/compare/v1.350.0...v1.351.0) (2025-05-02)
 
 
