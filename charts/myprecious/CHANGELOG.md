@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.353.0](https://github.com/elfhosted/myprecious/compare/v1.352.0...v1.353.0) (2025-05-03)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.1 ([74233aa](https://github.com/elfhosted/myprecious/commit/74233aa3566bedbb75bc10549c2621060145b237))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.2 ([3fedaff](https://github.com/elfhosted/myprecious/commit/3fedaff8cf6300fb52fb7387943eb95f7483e1da))
+
+
+### Bug Fixes
+
+* Increase backup volume to 20Gi, fix another stremthru issue ([c36ee3f](https://github.com/elfhosted/myprecious/commit/c36ee3f54cca96349710caaf0324f02804e642a0))
+
 ## [1.352.0](https://github.com/elfhosted/myprecious/compare/v1.351.0...v1.352.0) (2025-05-03)
 
 
