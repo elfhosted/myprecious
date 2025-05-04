@@ -2357,6 +2357,8 @@ radarr: &app_radarr
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: radarr
@@ -2576,6 +2578,8 @@ radarr4k: &app_radarr4k
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: radarr
@@ -4257,6 +4261,8 @@ sonarr: &app_sonarr
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: sonarr
@@ -4463,6 +4469,8 @@ sonarr4k: &app_sonarr4k
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: sonarr
@@ -4771,6 +4779,8 @@ prowlarr: &app_prowlarr
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: postgres
@@ -5030,6 +5040,8 @@ lidarr:
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: lidarr
@@ -5293,6 +5305,8 @@ readarr:
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: readarr
@@ -5494,6 +5508,8 @@ readarraudio:
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: readarr
@@ -7734,6 +7750,8 @@ jellystat:
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: jellystat
@@ -11562,6 +11580,8 @@ riven: &app_riven
       - work_mem=4MB
       - -c
       - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
       env:
         - name: POSTGRES_PASSWORD
           value: postgres
