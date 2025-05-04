@@ -20,6 +20,9 @@ data:
   RADARR__POSTGRES_MAIN_DB: radarr_main
   RADARR__POSTGRES_LOG_DB: radarr_logs
   
+  # For large libraries
+  RADARR__POSTGRESMAXPOOLSIZE: "200"
+
   # Enable ffprobe shim by default
   USE_FFPROBE_SHIM: "true"
 
