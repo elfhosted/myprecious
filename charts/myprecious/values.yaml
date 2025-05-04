@@ -4249,7 +4249,7 @@ sonarr: &app_sonarr
       cpu: 0m
       memory: 600Mi
     limits:
-      cpu: 500m
+      cpu: 600m
       memory: 2Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
