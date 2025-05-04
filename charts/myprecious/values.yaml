@@ -2774,7 +2774,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 6.2.2@sha256:c59a448137eb84c53ba6b21db3f2ec44a163e4ce4f70a12a88e9561a2a9050ae
+    tag: 6.2.4@sha256:6589da37b593ec016b571980a027f8e0764ffd49c7f363573eadf709c415e9e5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
