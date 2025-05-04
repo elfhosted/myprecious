@@ -5218,6 +5218,14 @@ readarr:
       type: emptyDir
       volumeSpec:
         medium: Memory
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /config/Backups
+      subPath: readarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup        
   ingress:
     main:
       enabled: false
@@ -5428,6 +5436,14 @@ readarraudio:
       type: emptyDir
       volumeSpec:
         medium: Memory          
+    backup:
+      enabled: true
+      type: custom
+      mountPath: /config/Backups
+      subPath: readarraudio
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup        
   ingress:
     main:
       enabled: false
