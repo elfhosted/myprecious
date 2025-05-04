@@ -19,6 +19,9 @@ data:
   SONARR__POSTGRES_MAIN_DB: sonarr_main
   SONARR__POSTGRES_LOG_DB: sonarr_logs
 
+  # For large libraries
+  SONARR__POSTGRESMAXPOOLSIZE: "200"
+
   # Enable ffprobe shim by default now
   USE_FFPROBE_SHIM: "true"
 

@@ -19,7 +19,12 @@ data:
   SONARR__POSTGRES_MAIN_DB: sonarr_main
   SONARR__POSTGRES_LOG_DB: sonarr_logs
 
-  # Enable ffprobe shim by default now
+  # For large libraries
+  RADARR__POSTGRESMAXPOOLSIZE: "200"
+
+  # Enable ffprobe shim by default
   USE_FFPROBE_SHIM: "true"
-  
+
+  # Use postgresql by default
+  USE_POSTGRESQL: "true"
 {{ end }}
