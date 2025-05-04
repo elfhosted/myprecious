@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.355.0](https://github.com/elfhosted/myprecious/compare/v1.354.0...v1.355.0) (2025-05-04)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.19.0 ([0dd161c](https://github.com/elfhosted/myprecious/commit/0dd161c1c0c67c82138933b41d4563232e519b1c))
+* **app:** update ghcr.io/elfhosted/homer docker tag to v25.05.1 ([1e7b1ee](https://github.com/elfhosted/myprecious/commit/1e7b1eef5dfd90607d4c4ebb90ba9bafd0107aea))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.4 ([0363388](https://github.com/elfhosted/myprecious/commit/036338882165fffe081627ab0ebea600835186d7))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.5 ([fa10b6c](https://github.com/elfhosted/myprecious/commit/fa10b6cc4ff3d1663d352b6f33c7b6b50b02a6a8))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.6 ([395fbb2](https://github.com/elfhosted/myprecious/commit/395fbb2adedff758c5d169a9f36ec6f2299e0273))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1863 ([d4b7b5d](https://github.com/elfhosted/myprecious/commit/d4b7b5d380a2115a1bde3001f96c86b7cc89d2f9))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.6 ([6fde71c](https://github.com/elfhosted/myprecious/commit/6fde71c143e9f8cc583e3126e2965d957232ade1))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.7 ([e13856b](https://github.com/elfhosted/myprecious/commit/e13856b0d94bbbe8cfba0db3c1a51a63ef58747a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.8 ([053a728](https://github.com/elfhosted/myprecious/commit/053a7289c72d3615b926df93ee6d12ccec475281))
+
+
+### Bug Fixes
+
+* Increase postgresql client concurrency for bigboi Aarr libraries ([b099485](https://github.com/elfhosted/myprecious/commit/b09948589cd25531c05ea758259380fdf926d1cb))
+
 ## [1.354.0](https://github.com/elfhosted/myprecious/compare/v1.353.0...v1.354.0) (2025-05-03)
 
 
