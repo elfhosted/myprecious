@@ -2401,8 +2401,8 @@ radarr: &app_radarr
       cpu: 0m
       memory: 500Mi
     limits:
-      cpu: 500m
-      memory: 2Gi 
+      cpu: 600m
+      memory: 6Gi
 
 radarr4k: &app_radarr4k
   enabled: false
@@ -2566,8 +2566,8 @@ radarr4k: &app_radarr4k
       cpu: 0m
       memory: 500Mi
     limits:
-      cpu: 500m
-      memory: 2Gi
+      cpu: 600m
+      memory: 6Gi
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -4250,7 +4250,7 @@ sonarr: &app_sonarr
       memory: 600Mi
     limits:
       cpu: 600m
-      memory: 2Gi # reduce once sqlite-to-db-migration is done
+      memory: 6Gi
   additionalContainers:
     database:
       image: postgres:17-alpine
