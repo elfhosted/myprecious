@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.357.0](https://github.com/elfhosted/myprecious/compare/v1.356.0...v1.357.0) (2025-05-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.135 ([25d7b24](https://github.com/elfhosted/myprecious/commit/25d7b2450a3954096f766a4117772b8a4cf7d8a9))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.14 ([9f56d1f](https://github.com/elfhosted/myprecious/commit/9f56d1f4568608bf5446566d94d2c7fd007fbde3))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.15 ([f5bc043](https://github.com/elfhosted/myprecious/commit/f5bc043f3f2c5eb01efb09816052d967cfc1bfcb))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.16 ([03a9cea](https://github.com/elfhosted/myprecious/commit/03a9ceac500f2fe6637a33f1006d2508069a2579))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1865 ([e419d94](https://github.com/elfhosted/myprecious/commit/e419d94a0dbe80090c0fcffa0226a21169a691dd))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.9 ([91055f7](https://github.com/elfhosted/myprecious/commit/91055f70ba430c0020a576028136fb33eaa5340a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.9 ([899aa9e](https://github.com/elfhosted/myprecious/commit/899aa9e231e9ee08fc9ff07922d4fc143d308865))
+
+
+### Bug Fixes
+
+* Increase kapowarr RAM limit for big libraries ([29b4ff5](https://github.com/elfhosted/myprecious/commit/29b4ff5cf273dee9ac53905fb110a006db24624c))
+* Migrate sonarr4k and prowlarr to postgresql ([61a4b9f](https://github.com/elfhosted/myprecious/commit/61a4b9f9c24bf56ae0b71bd88d770a9404448729))
+* Store readarr/readarraudio backups on backups volume ([892bdb4](https://github.com/elfhosted/myprecious/commit/892bdb4453e5a6bd333cc1fab54593020c768cc6))
+
 ## [1.356.0](https://github.com/elfhosted/myprecious/compare/v1.355.0...v1.356.0) (2025-05-04)
 
 
