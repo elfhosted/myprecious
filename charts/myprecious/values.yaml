@@ -4457,8 +4457,8 @@ sonarr4k: &app_sonarr4k
       cpu: 0m
       memory: 256Mi
     limits:
-      cpu: 2
-      memory: 16Gi # reduce once sqlite-to-db-migration is done
+      cpu: 600m
+      memory: 6Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
       image: postgres:17-alpine
@@ -4765,8 +4765,8 @@ prowlarr: &app_prowlarr
       cpu: 0m
       memory: 128Mi
     limits:
-      cpu: 2
-      memory: 16Gi  # reduce after sqlite-to-db-migration is done
+      cpu: 600m
+      memory: 6Gi
   env:
     S6_READ_ONLY_ROOT: 1
   additionalContainers:
@@ -4818,14 +4818,6 @@ prowlarr: &app_prowlarr
         limits:
           cpu: 100m
           memory: 1Gi
-  probes: # avoid while doing migrations
-    startup:
-      enabled: false
-    readiness:
-      enabled: false
-    liveness:
-      enabled: false
-
 
 
 nzbhydra:
