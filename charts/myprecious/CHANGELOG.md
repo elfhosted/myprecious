@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.358.0](https://github.com/elfhosted/myprecious/compare/v1.357.0...v1.358.0) (2025-05-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.20.0 ([9a8af38](https://github.com/elfhosted/myprecious/commit/9a8af386c540d4054993871884d32056e32a1418))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.43 ([c7c411d](https://github.com/elfhosted/myprecious/commit/c7c411d0fbc5eeb9856065a5c6f2ef6d37277c1c))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.44 ([0a3b8fd](https://github.com/elfhosted/myprecious/commit/0a3b8fd397294fe4d6111c2293713095d59f5919))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.17 ([749001c](https://github.com/elfhosted/myprecious/commit/749001c89d08b8d930f9f31f81e6d055ae6ab865))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.18 ([aeb5434](https://github.com/elfhosted/myprecious/commit/aeb5434d82d740572f668f32eb4e9cf21255bf9a))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.20 ([a9efaf6](https://github.com/elfhosted/myprecious/commit/a9efaf63da60071ce24cf68e5bb0e4c61b7d26a4))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.21 ([0e41cf1](https://github.com/elfhosted/myprecious/commit/0e41cf184cfdc1704c56f55830f42211e27581de))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.22 ([bf270fc](https://github.com/elfhosted/myprecious/commit/bf270fcacd6fcf977c2d4146fade80ad6af2436b))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.2.23 ([7a9eb39](https://github.com/elfhosted/myprecious/commit/7a9eb39963387f6137d523591a983ecf6f6b6f8e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1867 ([9961e8d](https://github.com/elfhosted/myprecious/commit/9961e8dc447894614bebdab8821e5866aeff844b))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.70.10 ([4f8a9b9](https://github.com/elfhosted/myprecious/commit/4f8a9b9813d03bbbf64a29ae86b73c0388733f11))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.8.0 ([07d8663](https://github.com/elfhosted/myprecious/commit/07d86635404706489d5c252cda2fb38fa3d78413))
+
 ## [1.357.0](https://github.com/elfhosted/myprecious/compare/v1.356.0...v1.357.0) (2025-05-05)
 
 
