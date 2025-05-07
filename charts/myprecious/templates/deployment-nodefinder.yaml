@@ -28,7 +28,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              {{- if or .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled .Values.embyhobbit.enabled .Values.embyranger.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinranger.enabled  .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled .Values.hobbit.enabled .Values.ranger.enabled .Values.halfling.enabled .Values.nazgul.enabled }}
+              {{- if or .Values.hobbit.enabled .Values.ranger.enabled .Values.halfling.enabled .Values.nazgul.enabled }}
               - key: node-role.elfhosted.com/dedicated
               {{- else }}
               - key: node-role.elfhosted.com/contended
@@ -56,39 +56,20 @@ spec:
         command: [ "/usr/bin/sleep" ]
         args: [ "infinity" ]
         image: ghcr.io/elfhosted/tooling:focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
-        {{- if .Values.zurghobbit.enabled  }}
-        resources: 
-          {{ .Values.zurghobbit.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.hobbit.enabled  }}
-        resources: 
-          {{ .Values.hobbit.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.zurgranger.enabled }}
-        resources: 
-          {{ .Values.zurgranger.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.ranger.enabled }}
-        resources: 
-          {{ .Values.ranger.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.zurghalfling.enabled }}
-        resources: 
-          {{ .Values.zurghalfling.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.halfling.enabled }}
-        resources: 
-          {{ .Values.halfling.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.zurgnazgul.enabled }}
-        resources: 
-          {{ .Values.zurgnazgul.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else if .Values.nazgul.enabled }}
-        resources: 
-          {{ .Values.nazgul.resources   | toYaml | indent 10  | trimPrefix "          " }}
-        {{- else }}
         resources:
-          requests:
-            cpu: "500m"
-            memory: 4Gi
-          limits:
-            cpu: "2"
-            memory: 4Gi        
-        {{- end }}
+          {{- $resources := dict }}
+          {{- if .Values.hobbit.enabled }}
+            {{- $resources = .Values.hobbit.resources }}
+          {{- else if .Values.ranger.enabled }}
+            {{- $resources = .Values.ranger.resources }}
+          {{- else if .Values.halfling.enabled }}
+            {{- $resources = .Values.halfling.resources }}
+          {{- else if .Values.nazgul.enabled }}
+            {{- $resources = .Values.nazgul.resources }}
+          {{- else }}
+            {{- $resources = dict "requests" (dict "cpu" "500m" "memory" "4Gi") "limits" (dict "cpu" "2" "memory" "4Gi") }}
+          {{- end }}
+          {{ $resources | toYaml | indent 10 | trimPrefix "          " }}
         volumeMounts:
         {{- if $pvc_config }}
         - mountPath: /config
