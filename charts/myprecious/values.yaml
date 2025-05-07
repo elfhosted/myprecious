@@ -3644,7 +3644,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:de9ea08210ba260da6adf75284c5e1826c8a33a75dffa5e90cb86b8f9ca71e30
+    tag: rolling@sha256:63ac734068db905b885b484e41f8e658c2e9322523712e99e1745ec2df880c1b
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
@@ -4099,7 +4099,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:022dfe3c1b9742d530933aeed03fe9cd2b88bb5e0a0372f1a8082e4d70d1a47a
+    tag: 4.0.14.2939@sha256:3a9dfa6fdfb736a1f510633a32cf22c862e7cddfd8bd7177244e260f45cf804d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4286,7 +4286,7 @@ sonarr: &app_sonarr
           cpu: 500m
           memory: 2Gi         
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:022dfe3c1b9742d530933aeed03fe9cd2b88bb5e0a0372f1a8082e4d70d1a47a
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:3a9dfa6fdfb736a1f510633a32cf22c862e7cddfd8bd7177244e260f45cf804d
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4312,7 +4312,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:022dfe3c1b9742d530933aeed03fe9cd2b88bb5e0a0372f1a8082e4d70d1a47a
+    tag: 4.0.14.2939@sha256:3a9dfa6fdfb736a1f510633a32cf22c862e7cddfd8bd7177244e260f45cf804d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4494,7 +4494,7 @@ sonarr4k: &app_sonarr4k
           cpu: 500m
           memory: 8Gi 
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:022dfe3c1b9742d530933aeed03fe9cd2b88bb5e0a0372f1a8082e4d70d1a47a
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:3a9dfa6fdfb736a1f510633a32cf22c862e7cddfd8bd7177244e260f45cf804d
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -5678,14 +5678,14 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.03.0030-nightly@sha256:19f2861958a05c4a4122f3270893cc6e730e9d5ae5269ca92b23369ca6e6fd53
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.07.0030-nightly@sha256:999856edf5624413cf111667c4d8aaf4017161e4562c8380f6ceb02985648b7b
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:a45e20857391e98b130cd935407939744631e72438c80a0f6259a7ddb5ef561e
       command:
       - /bin/bash
       - -c
@@ -6013,14 +6013,14 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.03.0030-nightly@sha256:19f2861958a05c4a4122f3270893cc6e730e9d5ae5269ca92b23369ca6e6fd53
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.07.0030-nightly@sha256:999856edf5624413cf111667c4d8aaf4017161e4562c8380f6ceb02985648b7b
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:a45e20857391e98b130cd935407939744631e72438c80a0f6259a7ddb5ef561e
       command:
       - /bin/bash
       - -c
@@ -6218,14 +6218,14 @@ emby: &app_emby
   initContainers:
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.03.0030-nightly@sha256:19f2861958a05c4a4122f3270893cc6e730e9d5ae5269ca92b23369ca6e6fd53
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.07.0030-nightly@sha256:999856edf5624413cf111667c4d8aaf4017161e4562c8380f6ceb02985648b7b
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:a45e20857391e98b130cd935407939744631e72438c80a0f6259a7ddb5ef561e
       command:
       - /bin/bash
       - -c
@@ -7875,7 +7875,7 @@ audiobookrequest:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookrequest
-    tag: 1.4.7@sha256:5cbebf19b213412ef1ca9f6476fe2225a73866d6a144a3f6421b540a6aad43d6
+    tag: 1.4.8@sha256:21043d365b7964b51c2e4017eae11c2998997cdc722f65ff82b4e6a761ab7d41
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -11867,7 +11867,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1867@sha256:1fa4c490b63efb16469ced33acf54fa818b9e750d5db3aee312b335f7b3573ee
+    tag: 0.22.1874@sha256:cbb25c38a2763b2c360a23ece48a45bce16d47bbc733a71506925a99e482911b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13668,7 +13668,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.20.0@sha256:795aff7fa29e16914bae0871a66b0141b253a9ebd3090a26da982f40309116ba
+    tag: v1.21.0@sha256:31199d79d3cfbfe6feb7f2ab4a2a357b8c41d8aee9b92a58807aa3122a980ef6
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14006,7 +14006,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.05.03.0030-nightly@sha256:19f2861958a05c4a4122f3270893cc6e730e9d5ae5269ca92b23369ca6e6fd53
+    tag: 2025.05.07.0030-nightly@sha256:999856edf5624413cf111667c4d8aaf4017161e4562c8380f6ceb02985648b7b
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
@@ -15825,7 +15825,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr-beta
-    tag: rolling@sha256:da2fbdb880d1f4d1f9991fbe76e0b2a98cdbb908beca321e4d42346fc07d6e6e
+    tag: rolling@sha256:a45e20857391e98b130cd935407939744631e72438c80a0f6259a7ddb5ef561e
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
