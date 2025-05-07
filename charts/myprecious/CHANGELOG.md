@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.359.0](https://github.com/elfhosted/myprecious/compare/v1.358.0...v1.359.0) (2025-05-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.21.0 ([fcaa1c0](https://github.com/elfhosted/myprecious/commit/fcaa1c0199f642b8b0e5c9c2a9abdf961bc92208))
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.8 ([dc1df4f](https://github.com/elfhosted/myprecious/commit/dc1df4f3fb94cfdcd16d25bf6bed92e218117a39))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1874 ([c61af97](https://github.com/elfhosted/myprecious/commit/c61af97559e0e17c98997b33f58fbe0e5c37a091))
+* **app:** update ghcr.io/elfhosted/jackettio docker tag to v1.7.1 ([6872c9a](https://github.com/elfhosted/myprecious/commit/6872c9a8a8735638a06d4ee730b3ddc621ed3d46))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.05.07.0030-nightly ([1b40ba8](https://github.com/elfhosted/myprecious/commit/1b40ba827fe259a8e886ff0c859a7b26ce6a44cb))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 63ac734 ([cadb7c4](https://github.com/elfhosted/myprecious/commit/cadb7c47ec850e9b2e39af9719137bb647670834))
+* **app:** update ghcr.io/elfhosted/decypharr-beta:rolling docker digest to a45e208 ([ebdb2b7](https://github.com/elfhosted/myprecious/commit/ebdb2b7fec54ce4b2c87f66d1960f80d043d74ac))
+* **app:** update ghcr.io/elfhosted/sonarr:4.0.14.2939 docker digest to 3a9dfa6 ([bafd46f](https://github.com/elfhosted/myprecious/commit/bafd46fff031660ceeb93d358fd137b8d88356cd))
+
 ## [1.358.0](https://github.com/elfhosted/myprecious/compare/v1.357.0...v1.358.0) (2025-05-06)
 
 
