@@ -12,7 +12,7 @@ data:
   IS_SCRAP_FROM_TORRENTIO: "true"
   TORRENTIO_URL: https://torrentio.strem.fun # we only do this on private instances
   REDIS_URL: redis://redis-master.mediafusion:6379
-  requests_proxy_url: http://piaproxy:8888
+  requests_proxy_url: http://vpnproxy:8888
   validate_m3u8_urls_liveness: "true"
   disable_all_scheduler: "true"
   poster_host_url: https://mediafusion.{{ .Values.dns_domain }}
