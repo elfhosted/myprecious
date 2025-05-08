@@ -1171,10 +1171,10 @@ rutorrentpia:
           tag: latest
       envFrom:
       - configMapRef:
-          name: rutorrent-pia-config
-      - configMapRef:
           name: elfbot-rutorrent
-          optional: true
+          optional: true      
+      - configMapRef:
+          name: rutorrent-pia-config
   initContainers:
     bootstrap:
       <<: *bootstrap
