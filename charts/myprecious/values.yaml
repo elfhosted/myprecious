@@ -1102,16 +1102,16 @@ rutorrentgluetun: &rutorrent
           echo "disconnected" > /shared/vpnstatus
   additionalContainers:
     # Use this to provied proxied access to arrs
-    dante:
-      image: ghcr.io/elfhosted/dante:v1.4.3
-      env: *bootstrap_env
-      securityContext: *default_securitycontext
-      volumeMounts:
-      - mountPath: /tmp
-        name: tmp
-      - mountPath: /etc/sockd.conf
-        name: dante-config
-        subPath: sockd.conf
+    # dante:
+    #   image: ghcr.io/elfhosted/dante:v1.4.3
+    #   env: *bootstrap_env
+    #   securityContext: *default_securitycontext
+    #   volumeMounts:
+    #   - mountPath: /tmp
+    #     name: tmp
+    #   - mountPath: /etc/sockd.conf
+    #     name: dante-config
+    #     subPath: sockd.conf
     mam-helper:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
