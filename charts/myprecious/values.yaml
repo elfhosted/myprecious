@@ -1169,12 +1169,12 @@ rutorrentpia:
         image:
           repository: thrnz/docker-wireguard-pia
           tag: latest
-      envFrom:
-      - configMapRef:
-          name: elfbot-rutorrent
-          optional: true      
+      envFrom:  
       - configMapRef:
           name: rutorrent-pia-config
+      - configMapRef:
+          name: elfbot-rutorrent
+          optional: true              
   initContainers:
     bootstrap:
       <<: *bootstrap
