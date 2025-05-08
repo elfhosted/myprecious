@@ -8,8 +8,8 @@ data:
   IPTABLES_BACKEND: nft
   KILLSWITCH: "true"
   LOCAL_NETWORK: 10.0.0.0/8
-  USER: "{{ .Values.rutorrentpia.USER | default }}"
-  PASS: "{{ .Values.rutorrentpia.PASS | default }}"
+  USER: "overridden-by-elfbot"
+  PASS: "overridden-by-elfbot"
   # LOC: nl_amsterdam
   LOC: de-frankfurt
   PORT_FORWARDING: "1"

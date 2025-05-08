@@ -885,8 +885,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.6-60@sha256:d26fa29c30bd2622137426dca451d0d670811096676e7a07b5d4d00bab275fd1
-  priorityClassName: tenant-bulk
+      tag: 5.1.7-7.2@sha256:63c4dbd1f596c3df9b71c95f8970de9ff3709299c50b3d9896dfa5f91c4d48cc
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
@@ -1173,6 +1172,9 @@ rutorrentpia:
       envFrom:
       - configMapRef:
           name: rutorrent-pia-config
+      - configMapRef:
+          name: elfbot-rutorrent
+          optional: true
   initContainers:
     bootstrap:
       <<: *bootstrap
