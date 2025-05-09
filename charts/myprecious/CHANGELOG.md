@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.361.0](https://github.com/elfhosted/myprecious/compare/v1.360.0...v1.361.0) (2025-05-09)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.21.1 ([34d9b10](https://github.com/elfhosted/myprecious/commit/34d9b1014c720b51c4f9a48170380bc117670fda))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.136 ([874d226](https://github.com/elfhosted/myprecious/commit/874d226ffd9cbf8acf43d111655f09dda4c11509))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.3.2 ([820282f](https://github.com/elfhosted/myprecious/commit/820282fcd72b876ad8f3018eb50308d991f5fde8))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.3.5 ([4766745](https://github.com/elfhosted/myprecious/commit/47667451574c767e59afce7a872ca3ccc6416fbe))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1884 ([809cb00](https://github.com/elfhosted/myprecious/commit/809cb004b059aa10e0f854cef3af5fb72954627c))
+* **app:** update ghcr.io/elfhosted/nightscout docker tag to v15.0.3 ([b30d831](https://github.com/elfhosted/myprecious/commit/b30d83109f0d30f76b6c6b725c43f57008624e30))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.2 ([4797dfa](https://github.com/elfhosted/myprecious/commit/4797dfa1aaa0b7718cae01a52ed7378cba7d825c))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.4.0 ([f541f9d](https://github.com/elfhosted/myprecious/commit/f541f9d96bb0286be61ea4a8261abef599547f5b))
+
 ## [1.360.0](https://github.com/elfhosted/myprecious/compare/v1.359.0...v1.360.0) (2025-05-08)
 
 
