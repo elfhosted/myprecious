@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: webstreamr-env
 data:
-  PORT: 51546
+  PORT: "51546"
   MANIFEST_NAME: WebStreamr | {{ .Release.Name }}
   MANIFEST_ID: {{ .Release.Name }}-webstreamr.{{ .Values.dns_domain }}
   MANIFEST_DESCRIPTION: |
