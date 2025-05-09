@@ -237,7 +237,15 @@ data:
             href: https://{{ .Release.Name }}-stremify.{{ .Values.dns_domain }}
             description: Watch HTTP streams in Stremio
             siteMonitor: http://stremify:3000
-        {{ end }}                        
+        {{ end }}  
+
+        {{ if .Values.webstreamr.enabled }}
+        - WebStreamr:
+            icon: mdi-tv
+            href: https://{{ .Release.Name }}-webstreamr.{{ .Values.dns_domain }}
+            description: Watch HTTP streams in Stremio
+            siteMonitor: http://webstreamr:51546
+        {{ end }}                                
 
         {{ if or .Values.stremioserver.enabled .Values.stremioserverpia.enabled .Values.stremioservergluetun.enabled }}
         - Stremio:

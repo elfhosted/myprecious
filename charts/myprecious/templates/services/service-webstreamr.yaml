@@ -1,0 +1,20 @@
+{{ if .Values.webstreamr.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: webstreamr
+  labels:
+    app.kubernetes.io/name: webstreamr
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 51546
+    targetPort: 51546
+    protocol: TCP
+    name: http
+  selector:
+    app.kubernetes.io/name: webstreamr
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

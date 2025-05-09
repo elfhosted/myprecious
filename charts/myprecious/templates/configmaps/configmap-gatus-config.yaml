@@ -259,6 +259,16 @@ data:
           - type: email
       {{ end }}
       
+      {{ if .Values.webstreamr.enabled }}
+      - name: webstreamr
+        group: consume-media
+        url: "http://webstreamr:51546"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
 
       {{ if .Values.mediafusion.enabled }}
       - name: mediafusion

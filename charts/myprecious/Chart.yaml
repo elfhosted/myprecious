@@ -720,6 +720,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: stremify
   - name: app-template
+    condition: webstreamr.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: webstreamr    
+  - name: app-template
     condition: mediafusion.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

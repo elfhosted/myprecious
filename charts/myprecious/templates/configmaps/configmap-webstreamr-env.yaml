@@ -1,0 +1,14 @@
+{{ if .Values.webstreamr.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webstreamr-env
+data:
+  PORT: "51546"
+  MANIFEST_NAME: WebStreamr | {{ .Release.Name }}
+  MANIFEST_ID: {{ .Release.Name }}-webstreamr.{{ .Values.dns_domain }}
+  CONFIGURATION_DESCRIPTION: |
+    <P>
+      Welcome, {{ .Release.Name }}, to your WebStreamr instance!
+    </P>
+{{ end }}

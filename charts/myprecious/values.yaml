@@ -885,8 +885,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 4.3.6-60@sha256:d26fa29c30bd2622137426dca451d0d670811096676e7a07b5d4d00bab275fd1
-  priorityClassName: tenant-bulk
+      tag: 5.1.7-7.2@sha256:63c4dbd1f596c3df9b71c95f8970de9ff3709299c50b3d9896dfa5f91c4d48cc
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
@@ -1103,16 +1102,16 @@ rutorrentgluetun: &rutorrent
           echo "disconnected" > /shared/vpnstatus
   additionalContainers:
     # Use this to provied proxied access to arrs
-    dante:
-      image: ghcr.io/elfhosted/dante:v1.4.3
-      env: *bootstrap_env
-      securityContext: *default_securitycontext
-      volumeMounts:
-      - mountPath: /tmp
-        name: tmp
-      - mountPath: /etc/sockd.conf
-        name: dante-config
-        subPath: sockd.conf
+    # dante:
+    #   image: ghcr.io/elfhosted/dante:v1.4.3
+    #   env: *bootstrap_env
+    #   securityContext: *default_securitycontext
+    #   volumeMounts:
+    #   - mountPath: /tmp
+    #     name: tmp
+    #   - mountPath: /etc/sockd.conf
+    #     name: dante-config
+    #     subPath: sockd.conf
     mam-helper:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -1170,9 +1169,12 @@ rutorrentpia:
         image:
           repository: thrnz/docker-wireguard-pia
           tag: latest
-      envFrom:
+      envFrom:  
       - configMapRef:
           name: rutorrent-pia-config
+      - configMapRef:
+          name: elfbot-rutorrent
+          optional: true              
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -2778,7 +2780,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 6.3.5@sha256:2227f1ca524abd6121160e89ab9229bbb8419280682ea3375f7a096e506e0cb3
+    tag: 6.3.6@sha256:6755e165952a8483aa05ab45a0a4a21bae66a6228d536aed5bdffda22fe725d4
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -13799,6 +13801,87 @@ stremify:
       envFrom:
       - secretRef:
           name: stremify-vpn
+      securityContext:
+        privileged: true
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+
+webstreamr:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/webstreamr
+    tag: v0.4.1@sha256:2b1c701382a4fe1cc0bb9a1912bc206ef43242ca254864ea5401783334a17004
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,webstreamr-env,elfbot-webstreamr"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    tmp:
+      enabled: true
+      type: emptyDir
+      mountPath: /tmp
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 51546
+  envFrom:
+  - configMapRef:
+      name: webstreamr-env
+  - configMapRef:
+      name: elfbot-webstreamr
+      optional: true
+  addons:
+    vpn:
+      enabled: true # in case we ever need it
+      gluetun:
+        image:
+          repository: thrnz/docker-wireguard-pia
+          tag: latest
+      env:
+        IPTABLES_BACKEND: nft
+        KILLSWITCH: "true"
+        LOCAL_NETWORK: 10.0.0.0/8
+        LOC: de-frankfurt
+        PORT_FORWARDING: "0"
+        PORT_PERSIST: "1"
+        NFTABLES: "1"
+        VPNDNS: "0"
+      envFrom:
+      - secretRef:
+          name: webstreamr-vpn
       securityContext:
         privileged: true
         runAsUser: 0
