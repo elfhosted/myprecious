@@ -13810,6 +13810,87 @@ stremify:
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
 
+webstreamr:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/webstreamr
+    tag: v0.2.1@sha256:8f66d1abd8ac4301c9e388320d89e6d8bc0df8aaae8192a5c4ecd09b318974ff
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,webstreamr-env,elfbot-webstreamr"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  persistence:
+    tmp:
+      enabled: true
+      type: emptyDir
+      mountPath: /tmp
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 51546
+  envFrom:
+  - configMapRef:
+      name: webstreamr-env
+  - configMapRef:
+      name: elfbot-webstreamr
+      optional: true
+  addons:
+    vpn:
+      enabled: true # in case we ever need it
+      gluetun:
+        image:
+          repository: thrnz/docker-wireguard-pia
+          tag: latest
+      env:
+        IPTABLES_BACKEND: nft
+        KILLSWITCH: "true"
+        LOCAL_NETWORK: 10.0.0.0/8
+        LOC: de-frankfurt
+        PORT_FORWARDING: "0"
+        PORT_PERSIST: "1"
+        NFTABLES: "1"
+        VPNDNS: "0"
+      envFrom:
+      - secretRef:
+          name: webstreamr-vpn
+      securityContext:
+        privileged: true
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+
 recyclarr:
   enabled: false
   image:

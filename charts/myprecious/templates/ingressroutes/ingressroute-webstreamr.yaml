@@ -1,0 +1,29 @@
+{{ if .Values.webstreamr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-webstreamr.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-webstreamr.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: webstreamr
+          kind: Service
+          port: 51546
+      middlewares:
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+    - match: Host(`{{ .Release.Name }}-webstreamr.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathPrefix(`/_oauth`))
+      kind: Rule
+      services:
+        - name: webstreamr
+          kind: Service
+          port: 51546
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: chain-hosted-stremio-addon
+          namespace: traefik
+{{ end }}
