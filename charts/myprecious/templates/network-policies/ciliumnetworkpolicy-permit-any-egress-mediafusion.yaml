@@ -7,7 +7,6 @@ spec:
   egress:
   - toEndpoints:
     - matchLabels:
-        app.kubernetes.io/name: mediafusion
         k8s:io.kubernetes.pod.namespace: mediafusion
     toPorts:
       - ports:
