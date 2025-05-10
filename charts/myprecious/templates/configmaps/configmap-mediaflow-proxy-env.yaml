@@ -5,7 +5,7 @@ metadata:
   name: mediaflow-proxy-env
 data:
   API_PASSWORD: "{{ .Values.mediaflowproxy.API_PASSWORD | default }}"
-  PROXY_URL: http://piaproxy:8888 # proxy via dedicated piaproxy instance
+  PROXY_URL: http://vpnproxy:8888 # proxy via dedicated piaproxy instance
   TRANSPORT_ROUTES: |
     {
       "https://torrentio.strem.fun": {
@@ -23,9 +23,6 @@ data:
       "https://*.mizhls.ru": {
           "proxy": true
       },
-      "https://*.r2.cloudflarestorage.com": {
-          "proxy": true
-      },      
       "https://*.newkso.ru": {
           "proxy": true,
           "proxy_url": "http://dlhd-proxy.mediafusion:8888"
