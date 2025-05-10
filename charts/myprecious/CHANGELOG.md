@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.362.0](https://github.com/elfhosted/myprecious/compare/v1.361.0...v1.362.0) (2025-05-10)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.53 ([31bdc91](https://github.com/elfhosted/myprecious/commit/31bdc91a705d1b9d79ba4ce34da05f89b1add2c0))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1887 ([a05ab37](https://github.com/elfhosted/myprecious/commit/a05ab37ad87981ef62d28be032f6bedd177955cb))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.10 ([aa85ced](https://github.com/elfhosted/myprecious/commit/aa85cedfff53746c9605b4e503fd2f95d66d2b8a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.71.0 ([7ea7ccd](https://github.com/elfhosted/myprecious/commit/7ea7ccd001df9efcd73a60635493aa3038118ba7))
+
 ## [1.361.0](https://github.com/elfhosted/myprecious/compare/v1.360.0...v1.361.0) (2025-05-09)
 
 
