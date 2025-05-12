@@ -15525,6 +15525,8 @@ debridav: &app_debridav
       image: ghcr.io/elfhosted/fakearr:rolling@sha256:db534345e7401c41310f2a1a333e72490e4afe8508a9b4df3b4916bb2c2bdced
       envFrom:
       - configMapRef:
+          name: debridav-env      
+      - configMapRef:      
           name: elfbot-debridav
           optional: true  
       volumeMounts:

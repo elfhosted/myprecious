@@ -13,4 +13,8 @@ data:
   SONARR_INTEGRATION_ENABLED: "false"
   RADARR_INTEGRATION_ENABLED: "false"
   EASYNEWS_ENABLEDFORTORRENTS: "true"
+
+  # For fakearr
+  EASYNEWS_VERSION: plus
+  EASYNEWS_ADDON_URL: http://elfhosted-internal.easynewsplus
 {{ end }}
