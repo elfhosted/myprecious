@@ -5680,7 +5680,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.08.0031-nightly@sha256:de0572b9aa665e4b1ad43bc66e21d87c0cfb2674ea6c3bb09d59ce6a0a8073c0
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.12.0032-nightly@sha256:e19fa3b82b85f550db82cdb39a1d33633d20ed0cdb3ce73af57756cb8fdfbc19
       command:
       - /bin/bash
       - -c
@@ -6015,7 +6015,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.08.0031-nightly@sha256:de0572b9aa665e4b1ad43bc66e21d87c0cfb2674ea6c3bb09d59ce6a0a8073c0
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.12.0032-nightly@sha256:e19fa3b82b85f550db82cdb39a1d33633d20ed0cdb3ce73af57756cb8fdfbc19
       command:
       - /bin/bash
       - -c
@@ -6220,7 +6220,7 @@ emby: &app_emby
   initContainers:
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.08.0031-nightly@sha256:de0572b9aa665e4b1ad43bc66e21d87c0cfb2674ea6c3bb09d59ce6a0a8073c0
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.12.0032-nightly@sha256:e19fa3b82b85f550db82cdb39a1d33633d20ed0cdb3ce73af57756cb8fdfbc19
       command:
       - /bin/bash
       - -c
@@ -14089,7 +14089,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.05.08.0031-nightly@sha256:de0572b9aa665e4b1ad43bc66e21d87c0cfb2674ea6c3bb09d59ce6a0a8073c0
+    tag: 2025.05.12.0032-nightly@sha256:e19fa3b82b85f550db82cdb39a1d33633d20ed0cdb3ce73af57756cb8fdfbc19
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
