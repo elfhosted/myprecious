@@ -5694,7 +5694,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      image: ghcr.io/elfhosted/debridav:0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
       command:
       - /bin/bash
       - -c
@@ -6029,7 +6029,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      image: ghcr.io/elfhosted/debridav:0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
       command:
       - /bin/bash
       - -c
@@ -6234,7 +6234,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      image: ghcr.io/elfhosted/debridav:0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
       command:
       - /bin/bash
       - -c
@@ -15297,7 +15297,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+    tag: 0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
