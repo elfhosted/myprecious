@@ -2780,7 +2780,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 6.4.4@sha256:6d425976655459d1783be6dbd846c826d2b77f2f9820785f28d439369e3b58f2
+    tag: 6.4.5@sha256:77abee160574fd3264bf631edd75ad016d0ca550d52b3220f3f68b0f1f091f4c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6140,7 +6140,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.0.53@sha256:bc6400952f366b3cd4ebc901ccf8ecd5e90d421f234bc886c62b6bccd033078a
+    tag: 4.9.0.54@sha256:d424fa665bd5cec90304ba846d2673549eab9a80ad428f067d4eb9e932e4020c
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -15026,7 +15026,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.2@sha256:3989a4430606a18f3206b4f8b3128ce9cf7bef3466f6ffedf65827fd2c593029
+    tag: v0.3.3@sha256:31a5468850e8147ac8ce7d7e1360e69f841d7fe117745e6f6b72da58ed6602f5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15111,7 +15111,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.2@sha256:3989a4430606a18f3206b4f8b3128ce9cf7bef3466f6ffedf65827fd2c593029
+      image: ghcr.io/elfhosted/pulsarr:v0.3.3@sha256:31a5468850e8147ac8ce7d7e1360e69f841d7fe117745e6f6b72da58ed6602f5
       command:
       - /bin/ash
       - -c

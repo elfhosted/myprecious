@@ -1,5 +1,54 @@
 # Changelog
 
+## [1.363.0](https://github.com/elfhosted/myprecious/compare/v1.362.0...v1.363.0) (2025-05-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.3 ([e2a7853](https://github.com/elfhosted/myprecious/commit/e2a7853eaa62f3f7a2032fdbc690fd51edf22cdb))
+
+## [1.362.0](https://github.com/elfhosted/myprecious/compare/v1.361.0...v1.362.0) (2025-05-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bazarr docker tag to v1.5.2 ([57c80f1](https://github.com/elfhosted/myprecious/commit/57c80f136e2df6c67678fa7cb6b253d6df5eb876))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.100.0 ([5a53201](https://github.com/elfhosted/myprecious/commit/5a53201118c1e5a9bba63d51d16d7c48fa5f9f09))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.0.53 ([31bdc91](https://github.com/elfhosted/myprecious/commit/31bdc91a705d1b9d79ba4ce34da05f89b1add2c0))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.4.0 ([1a2c811](https://github.com/elfhosted/myprecious/commit/1a2c811c2ef91b9c8b79d90b15aa31d68567dd55))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.4.1 ([e5cca45](https://github.com/elfhosted/myprecious/commit/e5cca45091f8afc1718d6ffc5d3ce3cdb98f0045))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.4.2 ([2492146](https://github.com/elfhosted/myprecious/commit/24921461b35f26f385ef1aaa81e0d0d0f6d3561e))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.4.3 ([f688187](https://github.com/elfhosted/myprecious/commit/f6881872431533068f63f1f5d75b1d0a939950b4))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.4.4 ([1308168](https://github.com/elfhosted/myprecious/commit/1308168c5fb52a0b2bc4124d2c96764a358a6e59))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1887 ([a05ab37](https://github.com/elfhosted/myprecious/commit/a05ab37ad87981ef62d28be032f6bedd177955cb))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1888 ([85db5fb](https://github.com/elfhosted/myprecious/commit/85db5fb64505da19c84d81f6bd6e23735b25f802))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1891 ([ea09047](https://github.com/elfhosted/myprecious/commit/ea090470139ce127c765897e30cf3cf01ca8b624))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.12.0.4633 ([9892925](https://github.com/elfhosted/myprecious/commit/989292572ad70bf0dd6155dfd84c0eab2a049b7d))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v25 ([1a53015](https://github.com/elfhosted/myprecious/commit/1a530150b9bdf7c6e02602df0d3c122a5bc2974a))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.10 ([aa85ced](https://github.com/elfhosted/myprecious/commit/aa85cedfff53746c9605b4e503fd2f95d66d2b8a))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.36.0.5044 ([46008d4](https://github.com/elfhosted/myprecious/commit/46008d4e46f2677aa50767a0833373227230c5a5))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v1.36.1.5049 ([3b29f9e](https://github.com/elfhosted/myprecious/commit/3b29f9e1d9595f43354da859177c724e9072ce54))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.16.2793 ([1b68d8f](https://github.com/elfhosted/myprecious/commit/1b68d8f0d23aa52ef82798130019169febf6de90))
+* **app:** update ghcr.io/elfhosted/riven docker tag to v0.21.21 ([12c3d12](https://github.com/elfhosted/myprecious/commit/12c3d122a64600e75206226fcb2fe4d47229d642))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.71.0 ([7ea7ccd](https://github.com/elfhosted/myprecious/commit/7ea7ccd001df9efcd73a60635493aa3038118ba7))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.10.1 ([52935dc](https://github.com/elfhosted/myprecious/commit/52935dc044854993f5b4c51e850d425bf1945479))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.5.0 ([4d2b3c6](https://github.com/elfhosted/myprecious/commit/4d2b3c67d51efcdb7287e0f19e0aace64ec6c414))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.6.0 ([1c39702](https://github.com/elfhosted/myprecious/commit/1c39702d9e38d7307a684c26cea0149a01fde8f0))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.7.0 ([a598bc1](https://github.com/elfhosted/myprecious/commit/a598bc17c77c630e7f7ac3cefb3ef53a7c57a10b))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.7.1 ([578771e](https://github.com/elfhosted/myprecious/commit/578771e4faeff6d37f42a80dae73f8fc116dcfd2))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.8.0 ([e944c91](https://github.com/elfhosted/myprecious/commit/e944c91c4c89a0fc73a5aa21b0ef9fdff68370ce))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.9.0 ([6ba12ae](https://github.com/elfhosted/myprecious/commit/6ba12ae1d8b248db1040d17d5d552e653b84752d))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.05.12.0032-nightly ([8c54245](https://github.com/elfhosted/myprecious/commit/8c54245c7c240632a2d3c22172474b44cbf4c6b5))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf:v2.21.0 docker digest to f188e8c ([8c72542](https://github.com/elfhosted/myprecious/commit/8c7254256caa8515a974ed1c5be23f91731d7593))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.6.45 docker digest to faeaeda ([92f762e](https://github.com/elfhosted/myprecious/commit/92f762ec9995235a0b7a5a4075aefc789171c7da))
+* **app:** update ghcr.io/elfhosted/fakearr:rolling docker digest to a0e5f97 ([820463e](https://github.com/elfhosted/myprecious/commit/820463ea33e0b23d93326517098344837cdd6faf))
+* **app:** update ghcr.io/elfhosted/ombi:4.47.1 docker digest to 7346137 ([ab57cb1](https://github.com/elfhosted/myprecious/commit/ab57cb103ef056651ee606cc84b6a7fe716aaff5))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.1 docker digest to 4bcb848 ([5614df5](https://github.com/elfhosted/myprecious/commit/5614df5bbfa6cf76303d5a41f73d1e28b069151b))
+
 ## [1.361.0](https://github.com/elfhosted/myprecious/compare/v1.360.0...v1.361.0) (2025-05-09)
 
 
