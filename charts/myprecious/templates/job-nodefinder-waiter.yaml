@@ -32,5 +32,5 @@ spec:
           # If deployment exists, then wait 5 min and exit
           if kubectl get deployment {{ .Release.Name }}-nodefinder
           then
-            sleep 5m          
+            sleep 2m          
           fi
