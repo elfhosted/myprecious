@@ -885,7 +885,7 @@ rutorrentgluetun: &rutorrent
   automountServiceAccountToken: false
   image:
       repository: ghcr.io/elfhosted/rutorrent
-      tag: 5.1.7-7.2@sha256:63c4dbd1f596c3df9b71c95f8970de9ff3709299c50b3d9896dfa5f91c4d48cc
+      tag: 5.1.7-7.2@sha256:c874b970bf1e2b3c9fd95879b7117a12c61d8a70136c66b280676021e322a0f4
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
@@ -2780,7 +2780,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 6.4.5@sha256:77abee160574fd3264bf631edd75ad016d0ca550d52b3220f3f68b0f1f091f4c
+    tag: 6.4.6@sha256:9bef716ce936778aa21b5e4dc12e8bf69e91a58da5b838739c96a3bec62b510d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4831,7 +4831,7 @@ nzbhydra:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
-    tag: 7.13.0@sha256:20a63c7eb8147927d8971d0ee5f444ee8ea3224b6b69a5695ed021f6ebab7c46
+    tag: 7.13.0@sha256:5a01b968d2c2e9e4d17694bf8f6902278be82bdfa0f06fd3f0763184b321c6d0
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5694,7 +5694,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      image: ghcr.io/elfhosted/debridav:0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
       command:
       - /bin/bash
       - -c
@@ -6029,7 +6029,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      image: ghcr.io/elfhosted/debridav:0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
       command:
       - /bin/bash
       - -c
@@ -6234,7 +6234,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+      image: ghcr.io/elfhosted/debridav:0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
       command:
       - /bin/bash
       - -c
@@ -11869,7 +11869,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1891@sha256:411ad254f7df1692f8660acfbf353607adeb6940fab6ad83e4684476502bfd83
+    tag: 0.22.1893@sha256:b352c247f5b5a4945b297210a637b1c66bf3ef2c2a86d626a4d1603905038108
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13814,7 +13814,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.10.1@sha256:a0d8023396a68eb7cafb06709813dcb13b005a3c82ea29d38717bdfce0ecc5ad
+    tag: v0.12.0@sha256:d6129b663b9cd1adbd6132ce1b3855f37461732cb8cebeef4e0d4b6a251b7fd9
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14437,7 +14437,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.45@sha256:faeaedaf5a0a37212216425d71c2f1973dc2f4805e847152cf0287767333432d
+    tag: v0.6.46@sha256:6566a9a4db807526cbef9a0f4fae0b1840ccc25ed352bb532795553cb34c2830
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15297,7 +15297,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.9.3@sha256:7bf14a8dea61a4251e17fb51042e9ce0ba2e82d53838ed4be25b9579eea22230
+    tag: 0.9.4@sha256:0b03385041261858d87b40a648a3726847611b3e930ebb7511792273016e4c95
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
