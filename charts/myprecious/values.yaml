@@ -4253,7 +4253,7 @@ sonarr: &app_sonarr
       cpu: 0m
       memory: 600Mi
     limits:
-      cpu: 600m
+      cpu: 800m
       memory: 6Gi
   additionalContainers:
     database:
@@ -4461,7 +4461,7 @@ sonarr4k: &app_sonarr4k
       cpu: 0m
       memory: 256Mi
     limits:
-      cpu: 600m
+      cpu: 800m
       memory: 6Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
@@ -7489,7 +7489,7 @@ overseerr:
       memory: 175Mi
     limits:
       cpu: 2
-      memory: 1Gi
+      memory: 2Gi
   additionalContainers:
     branding:
       image: nginxinc/nginx-unprivileged
