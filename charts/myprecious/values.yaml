@@ -2379,7 +2379,7 @@ radarr: &app_radarr
           cpu: 0m
           memory: 1Mi
         limits:
-          cpu: 500m
+          cpu: 2
           memory: 8Gi     
     database-backup:
       image: ghcr.io/elfhosted/radarr:5.22.4.9896@sha256:ee58a2531e829cb01437a330b6f20abd6d7cbf49b1a9e2f06618297d4f42853b
@@ -2568,7 +2568,7 @@ radarr4k: &app_radarr4k
       cpu: 0m
       memory: 500Mi
     limits:
-      cpu: 600m
+      cpu: 2
       memory: 6Gi
   additionalContainers:
     database:
@@ -4253,7 +4253,7 @@ sonarr: &app_sonarr
       cpu: 0m
       memory: 600Mi
     limits:
-      cpu: 800m
+      cpu: 2
       memory: 6Gi
   additionalContainers:
     database:
@@ -4461,7 +4461,7 @@ sonarr4k: &app_sonarr4k
       cpu: 0m
       memory: 256Mi
     limits:
-      cpu: 800m
+      cpu: 2
       memory: 6Gi # reduce once sqlite-to-db-migration is done
   additionalContainers:
     database:
@@ -4769,7 +4769,7 @@ prowlarr: &app_prowlarr
       cpu: 0m
       memory: 128Mi
     limits:
-      cpu: 600m
+      cpu: 2
       memory: 6Gi
   env:
     S6_READ_ONLY_ROOT: 1
