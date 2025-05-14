@@ -5778,7 +5778,7 @@ plex: &app_plex
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
     tinyproxy:
-      image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:483bbee099539dcfb6833df9b207e8c347fadf3981f6fcfe602160876468aba5
+      image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:cb0b28a1f3c8728967be9446ce9717d15c79e0de8f7a07066db897f8ed777587
       volumeMounts:
       - mountPath: /etc/tinyproxy/tinyproxy.conf
         name: tinyproxy-conf
@@ -13314,7 +13314,7 @@ piaproxy:
         timeoutSeconds: 10
   additionalContainers:
     tinyproxy:
-      image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:483bbee099539dcfb6833df9b207e8c347fadf3981f6fcfe602160876468aba5
+      image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:cb0b28a1f3c8728967be9446ce9717d15c79e0de8f7a07066db897f8ed777587
       volumeMounts:
       - mountPath: /etc/tinyproxy/tinyproxy.conf
         name: tinyproxy-conf
@@ -13432,7 +13432,7 @@ tinyproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/tinyproxy
-    tag: v1.4.3@sha256:483bbee099539dcfb6833df9b207e8c347fadf3981f6fcfe602160876468aba5
+    tag: v1.4.3@sha256:cb0b28a1f3c8728967be9446ce9717d15c79e0de8f7a07066db897f8ed777587
   podLabels:
       app.elfhosted.com/name: tinyproxy
   priorityClassName: tenant-normal
