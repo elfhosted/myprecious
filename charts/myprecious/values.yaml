@@ -6877,7 +6877,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.18.10-vaapi
+    tag: 0.19.3-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6941,6 +6941,11 @@ tunarr:
       mountPath: /streams
       type: emptyDir
       sizeLimit: 50Gi
+    cache: # in case users use /tmp
+      enabled: true
+      mountPath: /root/.cache/pkg
+      type: emptyDir
+      sizeLimit: 10Gi
   initContainers:
     bootstrap:
       <<: *bootstrap
