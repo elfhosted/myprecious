@@ -7373,7 +7373,7 @@ overseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/overseerr
-    tag: 1.34.0@sha256:f6240a3e35e7b588524dd6fb369cc60a0aae2b6b35f4362e797ea381643e03ca
+    tag: 1.34.0@sha256:d9cfaf805e8512684cec4b5c897e372d898eeff522cef0801f3245cb3d00caf6
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7461,7 +7461,7 @@ overseerr:
         mountPath: "/bootstrap/"
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/overseerr:1.34.0@sha256:f6240a3e35e7b588524dd6fb369cc60a0aae2b6b35f4362e797ea381643e03ca
+      image: ghcr.io/elfhosted/overseerr:1.34.0@sha256:d9cfaf805e8512684cec4b5c897e372d898eeff522cef0801f3245cb3d00caf6
       command:
         - /bin/bash
         - -c
