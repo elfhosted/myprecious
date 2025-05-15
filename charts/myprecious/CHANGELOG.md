@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.366.0](https://github.com/elfhosted/myprecious/compare/v1.365.0...v1.366.0) (2025-05-15)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.22.0 ([b88a238](https://github.com/elfhosted/myprecious/commit/b88a23824601b69d52cdf94f6e01c0f3879ab5c4))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.48 ([d44758f](https://github.com/elfhosted/myprecious/commit/d44758f28cd9f2a73aa3e0485d4b9cc418078ccc))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.12 ([5934543](https://github.com/elfhosted/myprecious/commit/5934543cd1ed67f85d2b4cc414f6c4611916f151))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.13 ([da2c103](https://github.com/elfhosted/myprecious/commit/da2c10306f754a4fb0d3ab168d0c3c08658749b5))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.14 ([b9f9bb5](https://github.com/elfhosted/myprecious/commit/b9f9bb5b18f5c3c21c54ca17c4c741aeb2005300))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.15 ([3d2ae6e](https://github.com/elfhosted/myprecious/commit/3d2ae6efd82541796409e9452ec94d3d4c71fc74))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.6 ([a0bd11a](https://github.com/elfhosted/myprecious/commit/a0bd11a570614e59ed9e49a0a677348a108c3c75))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.7 ([91fd62c](https://github.com/elfhosted/myprecious/commit/91fd62c10f1199e6fc54e724fe86b53e8a76abb7))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.8 ([2c8152e](https://github.com/elfhosted/myprecious/commit/2c8152e2f230997fa5887898bcefb946ec9aaac9))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.9 ([cd735bc](https://github.com/elfhosted/myprecious/commit/cd735bccc787c7341252b4fc10ae1ab218d5e66c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1900 ([51d59b6](https://github.com/elfhosted/myprecious/commit/51d59b68db425b0bdca72c23c9d075aad81a07e6))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v2.1.2 ([9175da0](https://github.com/elfhosted/myprecious/commit/9175da0a73ab54f61bc0a5a70b0a42dba848d971))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.4 ([de99696](https://github.com/elfhosted/myprecious/commit/de9969635ef2930c9c57a334c972759603b64182))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.72.0 ([f889ad9](https://github.com/elfhosted/myprecious/commit/f889ad9878c5284af93b48477a090c447094a180))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.14.1 ([14ce06f](https://github.com/elfhosted/myprecious/commit/14ce06f9c3268615e9a234e970539b4cb1901140))
+* **app:** update ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly docker digest to 0f4beab ([ea9c10b](https://github.com/elfhosted/myprecious/commit/ea9c10b730d8c7b364ed2da8b2ce8ff461663470))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/comet:v2.4.4 docker digest to 1cc3ae9 ([c78a327](https://github.com/elfhosted/myprecious/commit/c78a327980156cee86ab37d1b9f6e7baa4824b8b))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy:2.1.2 docker digest to 58f42ac ([c719b72](https://github.com/elfhosted/myprecious/commit/c719b72dff0a055645617303fc236fdd3a289eea))
+* **app:** update ghcr.io/elfhosted/rutorrent:5.1.7-7.2 docker digest to b513814 ([3d9ee39](https://github.com/elfhosted/myprecious/commit/3d9ee397bbae6a0102a565b09c5b47634ff1c880))
+
 ## [1.365.0](https://github.com/elfhosted/myprecious/compare/v1.364.0...v1.365.0) (2025-05-14)
 
 
