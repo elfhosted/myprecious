@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.367.0](https://github.com/elfhosted/myprecious/compare/v1.366.0...v1.367.0) (2025-05-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.137 ([585dd8d](https://github.com/elfhosted/myprecious/commit/585dd8d297758f60a3533ddedff96fdcfb89bdba))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.100.2 ([6ff9537](https://github.com/elfhosted/myprecious/commit/6ff95376200e91d2f309e23cadbcf542cfb0f164))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.16 ([db165c9](https://github.com/elfhosted/myprecious/commit/db165c9535d60326877ff99f8d56f06ee445d5e6))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v6.5.17 ([5f44d58](https://github.com/elfhosted/myprecious/commit/5f44d58e78ad5dd532b68e93750ace92f12023b8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1908 ([444b823](https://github.com/elfhosted/myprecious/commit/444b823d8c650d572efd1a3b4e6f0dda7d3a2aa8))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.21.3 ([32984b8](https://github.com/elfhosted/myprecious/commit/32984b882580515b29d688a99d58c1a8fe6b8e27))
+* **app:** update ghcr.io/elfhosted/movie-roulette docker tag to v4.1 ([c280e36](https://github.com/elfhosted/myprecious/commit/c280e365545db6a6d9cbb03da9634e2135ec4aec))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.5 ([ce3ef83](https://github.com/elfhosted/myprecious/commit/ce3ef83a6150efffd7de75a92456b1c525ac0506))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.72.2 ([21092b0](https://github.com/elfhosted/myprecious/commit/21092b0959770b66a116f1ecef00235431b5d269))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.15.2 ([10d8206](https://github.com/elfhosted/myprecious/commit/10d82067f89704a8822a9995dde084a20b3ea059))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/filebot-node:0.4.8 docker digest to 2f35281 ([46608cd](https://github.com/elfhosted/myprecious/commit/46608cd22d124c242cea6b5b9fee992fca6eeeef))
+* **app:** update ghcr.io/elfhosted/plextraktsync:0.34.10 docker digest to b23bedb ([2cf40b6](https://github.com/elfhosted/myprecious/commit/2cf40b6ee370d29c3c1373ba19b49c1e26c792c5))
+* **app:** update ghcr.io/elfhosted/rclone:1.69.2 docker digest to a0eaf65 ([4230890](https://github.com/elfhosted/myprecious/commit/423089043e206a8d473b6da93a79971edd615002))
+* Force CORS headers for stremthru ([a2cf0a7](https://github.com/elfhosted/myprecious/commit/a2cf0a7099bf539a6821d240020d37721a7c4f99))
+
 ## [1.366.0](https://github.com/elfhosted/myprecious/compare/v1.365.0...v1.366.0) (2025-05-15)
 
 
