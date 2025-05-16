@@ -13,6 +13,9 @@ spec:
         - name: stremthru
           kind: Service
           port: 8080
+      middlewares:
+        - name: headers-add-cors-for-stremio
+          namespace: traefik
     - match: Host(`{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}`) && (PathRegexp(`^/(.*)/configure`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:
