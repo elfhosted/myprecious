@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.369.0](https://github.com/elfhosted/myprecious/compare/v1.368.0...v1.369.0) (2025-05-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.18.0 ([2a28957](https://github.com/elfhosted/myprecious/commit/2a28957524479cb4ff7d6a8fc1ef10636f254bd3))
+
 ## [1.368.0](https://github.com/elfhosted/myprecious/compare/v1.367.0...v1.368.0) (2025-05-17)
 
 
