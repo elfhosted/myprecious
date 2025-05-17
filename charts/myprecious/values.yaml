@@ -6415,7 +6415,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v25.05.1@sha256:75d45c65acc9deda21fe30b9fee0ba48b86a9b0288c226b53c5cc926a18812c3
+      image: ghcr.io/elfhosted/homer:v25.05.2@sha256:d66787cf4280090b896050bc0b9b8111c86e7ab0082251a3463e46ef7e29e6cb
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
