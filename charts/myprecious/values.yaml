@@ -4822,6 +4822,37 @@ prowlarr: &app_prowlarr
         limits:
           cpu: 100m
           memory: 1Gi
+  probes: # need a long startup for database migrations, until we can bootstrap an entire database
+    startup:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 3000
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 9696
+        timeoutSeconds: 1  
+    liveness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 300
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 9696
+        timeoutSeconds: 1  
+    readiness:
+      custom: true
+      enabled: true
+      spec:
+        failureThreshold: 300
+        periodSeconds: 10
+        successThreshold: 1
+        tcpSocket:
+          port: 9696
+        timeoutSeconds: 1                      
 
 
 nzbhydra:
