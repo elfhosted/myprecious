@@ -2843,7 +2843,7 @@ huntarr: &app_huntarr
 
         mkdir -p /config/settings
         if ! find /config/settings -maxdepth 1 -name '*.json' | grep -q .; then
-          cp /bootstrap/*.json /config/setting
+          cp /bootstrap/*.json /config/settings/
         fi
       volumeMounts:
       - mountPath: /config/
