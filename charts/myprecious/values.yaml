@@ -2841,9 +2841,11 @@ huntarr: &app_huntarr
         set -x
         set -e
 
-        mkdir -p /config/settings
-        if ! find /config/settings -maxdepth 1 -name '*.json' | grep -q .; then
+        mkdir -p /config/settings/
+        if ! find /config/settings/ -maxdepth 1 -name '*.json' | grep -q .; then
           cp /bootstrap/*.json /config/settings/
+          mkdir -p /config/settings/user
+          mv /config/settings/credentials.json /config/settings/user/credentials.json
         fi
       volumeMounts:
       - mountPath: /config/
