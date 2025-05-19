@@ -161,11 +161,21 @@ data:
       "instances": [],
       "check_for_updates": true,
       "debug_mode": false,
+      "display_community_resources": true,
+      "stateful_management_hours": 168,
+      "auth_mode": "no_login",
+      "ssl_verify": true,
+      "api_timeout": 120,
+      "command_wait_delay": 1,
+      "command_wait_attempts": 600,
+      "minimum_download_queue_size": -1,
       "log_refresh_interval_seconds": 30,
-      "local_access_bypass": true,
+      "local_access_bypass": false,
+      "proxy_auth_bypass": true,
       "ui_theme": "dark",
       "enable_notifications": false,
-      "notification_level": "info"
+      "notification_level": "info",
+      "base_url": ""
     }
   # username elfie, password Changeme3lf!e
   credentials.json: |
