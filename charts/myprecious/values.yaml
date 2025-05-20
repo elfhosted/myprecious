@@ -14964,7 +14964,7 @@ profilarr:
     - "backend" 
   image:
     repository: ghcr.io/elfhosted/profilarr-frontend
-    tag: v1.0.1@sha256:d64425278edd8987c7745f05106e8479656e65c2d4ff3ef304a53bd528911c09
+    tag: v1.0.1@sha256:1f2165783bc2030da7ca84f8b2aa4d709a24d51f05cd1de33cb3b4a438d399d0
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15047,7 +15047,7 @@ profilarr:
         subPath: profilarr
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/profilarr-frontend:v1.0.1@sha256:d64425278edd8987c7745f05106e8479656e65c2d4ff3ef304a53bd528911c09
+      image: ghcr.io/elfhosted/profilarr-frontend:v1.0.1@sha256:1f2165783bc2030da7ca84f8b2aa4d709a24d51f05cd1de33cb3b4a438d399d0
       command:
       - /bin/bash
       - -c
