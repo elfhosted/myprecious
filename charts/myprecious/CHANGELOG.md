@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.372.0](https://github.com/elfhosted/myprecious/compare/v1.371.0...v1.372.0) (2025-05-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.138 ([9e6b536](https://github.com/elfhosted/myprecious/commit/9e6b536a711c451f378f419bfc980c2581263515))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decypharr-beta:rolling docker digest to 554c242 ([12b4748](https://github.com/elfhosted/myprecious/commit/12b4748c0207fd83f80dcc8f047b6c1f81368ab8))
+* Fix decypharr misconfiguration impacting config file location ([929d069](https://github.com/elfhosted/myprecious/commit/929d069364ae2abbc178dac01c15c96c4c4dfc7a))
+
 ## [1.371.0](https://github.com/elfhosted/myprecious/compare/v1.370.0...v1.371.0) (2025-05-20)
 
 
