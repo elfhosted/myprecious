@@ -4102,7 +4102,7 @@ sonarr: &app_sonarr
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:1f39d5b870f97b28060b93565c61ca7d69ac6fea7dde7341a8e12205196c2f56
+    tag: 4.0.14.2939@sha256:6605ff586ccd149b0f75b6a59999ccb81a3abadc48f4bf52f2db01cb92b0047d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4289,7 +4289,7 @@ sonarr: &app_sonarr
           cpu: 500m
           memory: 2Gi         
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:1f39d5b870f97b28060b93565c61ca7d69ac6fea7dde7341a8e12205196c2f56
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:6605ff586ccd149b0f75b6a59999ccb81a3abadc48f4bf52f2db01cb92b0047d
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4315,7 +4315,7 @@ sonarr4k: &app_sonarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/sonarr
-    tag: 4.0.14.2939@sha256:1f39d5b870f97b28060b93565c61ca7d69ac6fea7dde7341a8e12205196c2f56
+    tag: 4.0.14.2939@sha256:6605ff586ccd149b0f75b6a59999ccb81a3abadc48f4bf52f2db01cb92b0047d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4497,7 +4497,7 @@ sonarr4k: &app_sonarr4k
           cpu: 500m
           memory: 8Gi 
     database-backup:
-      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:1f39d5b870f97b28060b93565c61ca7d69ac6fea7dde7341a8e12205196c2f56
+      image: ghcr.io/elfhosted/sonarr:4.0.14.2939@sha256:6605ff586ccd149b0f75b6a59999ccb81a3abadc48f4bf52f2db01cb92b0047d
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
