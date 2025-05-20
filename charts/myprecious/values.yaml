@@ -5719,7 +5719,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:f7f6d673ee09f995d85ed1fcf9eeb7e65dc91f3fb4c5833da7ed4ea27f88ca81
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:554c24232c0c7f259a7e1115a493905c907fcc83a9683c3bc544aae2ee019cfc
       command:
       - /bin/bash
       - -c
@@ -6054,7 +6054,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:f7f6d673ee09f995d85ed1fcf9eeb7e65dc91f3fb4c5833da7ed4ea27f88ca81
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:554c24232c0c7f259a7e1115a493905c907fcc83a9683c3bc544aae2ee019cfc
       command:
       - /bin/bash
       - -c
@@ -6259,7 +6259,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:f7f6d673ee09f995d85ed1fcf9eeb7e65dc91f3fb4c5833da7ed4ea27f88ca81
+      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:554c24232c0c7f259a7e1115a493905c907fcc83a9683c3bc544aae2ee019cfc
       command:
       - /bin/bash
       - -c
@@ -15947,7 +15947,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr-beta
-    tag: rolling@sha256:f7f6d673ee09f995d85ed1fcf9eeb7e65dc91f3fb4c5833da7ed4ea27f88ca81
+    tag: rolling@sha256:554c24232c0c7f259a7e1115a493905c907fcc83a9683c3bc544aae2ee019cfc
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
