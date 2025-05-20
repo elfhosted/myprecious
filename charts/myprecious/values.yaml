@@ -11195,7 +11195,7 @@ wallabag:
       memory: 1Gi
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/wallabag:2.6.12@sha256:dfbdd2066ced71f7a6315b457e86caace27ecef44b88ba0c3a090aee386ff5b5
+      image: ghcr.io/elfhosted/wallabag:2.6.12@sha256:3398b2af57d0e51727ebaf2d674c71566718040c685e01a26db532bd4848ebcb
       volumeMounts:
       - mountPath: /var/www/wallabag/data
         name: config
