@@ -9329,7 +9329,7 @@ seerrbridge:
       - mountPath: /app/data
         name: config
         subPath: seerrbridge
-      - mountPath: /app/logs
+      - mountPath: /logs
         name: logs
         subPath: seerrbridge
       - mountPath: /.npm
