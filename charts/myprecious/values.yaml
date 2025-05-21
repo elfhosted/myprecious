@@ -16738,7 +16738,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     database:
-      image: ghcr.io/immich-app/postgres:14-vectorchord0.3.0-pgvectors0.2.0
+      image: ghcr.io/immich-app/postgres:16-vectorchord0.3.0-pgvectors0.2.0
       env:
         POSTGRES_INITDB_ARGS: '--data-checksums'
         POSTGRES_PASSWORD: immich
