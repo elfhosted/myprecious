@@ -18,6 +18,10 @@ spec:
     targetPort: 8777
     protocol: TCP
     name: seerrbridge
+  - port: 3777
+    targetPort: 3777
+    protocol: TCP
+    name: bridgeboard
   selector:
     app.kubernetes.io/name: seerrbridge
     app.kubernetes.io/instance: {{ .Release.Name }}

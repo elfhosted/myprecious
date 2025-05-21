@@ -334,6 +334,18 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.booklore.enabled }}
+          - name: "Booklore"
+            logo: "assets/png/booklore.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Manage PDFs / Books"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-booklore.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.audiobookshelf.enabled }}
           - name: "Audiobookshelf"
             logo: "assets/png/audiobookshelf.png"
@@ -1388,9 +1400,9 @@ data:
             url: "https://{{ .Release.Name }}-seerrbridge-backend.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute   
 
-          - name: "SeerrBridge"
+          - name: "SeerrBridge BridgeBoard"
             icon: "fas fa-bridge"
-            subtitle: "Use DMM from Overseerr (frontend)"
+            subtitle: "SeerrBridge BridgeBoard"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-seerrbridge.{{ .Values.dns_domain }}"
@@ -1776,6 +1788,16 @@ data:
             url: "https://{{ .Release.Name }}-codeserver.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}  
+
+          {{ if .Values.peertube.enabled }}
+          - name: "PeerTube"
+            logo: "assets/png/peertube.png"
+            subtitle: "PeerTube"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-peertube.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}            
 
           {{ if .Values.gluetun.enabled }}
           - name: "Gluetun"
