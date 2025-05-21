@@ -14,10 +14,10 @@ spec:
     targetPort: 3001
     protocol: TCP
     name: ttyd
-  - port: 8777
-    targetPort: 8777
+  - port: 3777
+    targetPort: 3777
     protocol: TCP
-    name: seerrbridge
+    name: bridgeboard
   selector:
     app.kubernetes.io/name: seerrbridge
     app.kubernetes.io/instance: {{ .Release.Name }}
