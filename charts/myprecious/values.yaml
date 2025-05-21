@@ -8018,7 +8018,7 @@ peertube:
       enabled: true
       type: custom
       mountPath: /config
-      subPath: peertube
+      subPath: peertube/app
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
