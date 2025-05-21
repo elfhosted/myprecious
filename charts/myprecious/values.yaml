@@ -7887,12 +7887,7 @@ booklore:
       volumeSpec:
         configMap:
           name: elfbot-booklore
-          optional: true
-    dev-shm:
-      enabled: "true"
-      type: emptyDir
-      volumeSpec:
-        medium: Memory      
+          optional: true    
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -7906,51 +7901,22 @@ booklore:
         subPath: booklore
       - mountPath: /tmp
         name: tmp
-    setup-postgres:
-      image: *tooling_image
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/database
-        chown elfie:elfie /config/database -R
-
+  additionalContainers:
+    database:
+      image: mariadb:11 
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: booklore
+        - name: MYSQL_DATABASE
+          value: booklore
+        - name: MYSQL_USER
+          value: booklore
+        - name: MYSQL_PASSWORD
+          value: booklore
       volumeMounts:
       - mountPath: /config
         name: config
-        subPath: booklore
-      securityContext:
-        runAsUser: 0
-        seccompProfile:
-          type: RuntimeDefault    
-  additionalContainers:
-    database:
-      image: postgres:17-alpine
-      args:
-      - -c
-      - shared_buffers=500MB
-      - -c
-      - work_mem=4MB
-      - -c
-      - effective_cache_size=1GB
-      - -c
-      - max_connections=310      
-      env:
-        - name: POSTGRES_PASSWORD
-          value: booklore
-        - name: POSTGRES_DB
-          value: booklore
-        - name: POSTGRES_USER
-          value: booklore
-      volumeMounts:
-      - mountPath: /var/lib/postgresql/data
-        name: config
         subPath: booklore/database
-      - mountPath: /dev/shm
-        name: dev-shm
       resources:
         requests:
           cpu: 0m
