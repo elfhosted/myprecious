@@ -7844,7 +7844,7 @@ booklore:
     runAsGroup: 568
     fsGroup: 568
     allowPrivilegeEscalation: false
-    runAsNonRoot: true
+    runAsNonRoot: false # because we need the permission-fixer to run as root
     capabilities:
       drop:
       - ALL        
