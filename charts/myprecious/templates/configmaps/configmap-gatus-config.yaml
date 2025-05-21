@@ -149,6 +149,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.booklore.enabled }}
+      - name: booklore
+        group: consume-media
+        url: "http://booklore:6060"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.audiobookshelf.enabled }}
       - name: audiobookshelf
         group: consume-media
@@ -1081,9 +1092,9 @@ data:
         url: "http://seerrbridge:8777"
         interval: 5m
         conditions:
-          - "[STATUS] == 200"
+          - "[STATUS] == 404"
         alerts:
-          - type: email
+          - type: email        
       {{ end }}   
 
       {{ if .Values.listsync.enabled }}
@@ -1558,7 +1569,19 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}    
+      {{ end }}   
+
+
+      {{ if .Values.peertube.enabled }}
+      - name: peertube
+        group: tools
+        url: "http://peertube:9000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}          
 
       {{ if .Values.pairdrop.enabled }}
       - name: pairdrop

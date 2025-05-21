@@ -7822,6 +7822,316 @@ jellystat:
           cpu: 500m
           memory: 1Gi
 
+booklore:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/booklore
+    tag: v0.10.1@sha256:8de4a6e051fb4e0bf57573c76523a6214f57cb0b177db8030cbab30fb361acca
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-booklore,booklore-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    allowPrivilegeEscalation: false
+    runAsNonRoot: false # because we need the permission-fixer to run as root
+    capabilities:
+      drop:
+      - ALL        
+  automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: booklore-env
+  - configMapRef:
+      name: elfbot-booklore
+      optional: true
+  resources:
+    requests:
+      cpu: 0m
+      memory: 20Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 6060    
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: booklore
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config        
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-booklore
+          optional: true    
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: booklore
+      - mountPath: /tmp
+        name: tmp
+    setup-mariadb:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: booklore
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault            
+  additionalContainers:
+    database:
+      image: mariadb:11 
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: booklore
+        - name: MYSQL_DATABASE
+          value: booklore
+        - name: MYSQL_USER
+          value: booklore
+        - name: MYSQL_PASSWORD
+          value: booklore
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: booklore/database
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
+
+peertube:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/peertube
+    tag: v7.1.1-bookworm@sha256:17d5e43a6825cdc739731d97d294a6d1df5e6e4ddbad17bef5db19f99a3f022d
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-peertube,peertube-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+    privileged: true # needed for transcoding
+    runAsNonRoot: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    supplementalGroups:
+    - 993      
+    allowPrivilegeEscalation: false
+    runAsNonRoot: false
+    capabilities:
+      drop:
+      - ALL        
+  automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: peertube-env
+  - configMapRef:
+      name: elfbot-peertube
+      optional: true
+  resources:
+    requests:
+      cpu: 0m
+      memory: 20Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 9000
+    probes:
+      liveness:
+        custom: true
+        enabled: true
+        spec:
+          failureThreshold: 5
+          httpGet:
+            path: /api/v1/ping
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 10
+      readiness:
+        custom: true
+        enabled: true
+        spec:
+          failureThreshold: 5
+          httpGet:
+            path: /api/v1/ping
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 10
+      startup:
+        custom: true
+        enabled: true
+        spec:
+          failureThreshold: 5
+          httpGet:
+            path: /api/v1/ping
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 10          
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: peertube/app
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    backup:
+      enabled: true
+      type: custom
+      subPath: peertube
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup          
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-peertube
+          optional: true
+    dev-shm:
+      enabled: "true"
+      type: emptyDir
+      volumeSpec:
+        medium: Memory
+    render-device:
+      enabled: "true"
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"         
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: peertube
+      - mountPath: /tmp
+        name: tmp
+    setup-postgres:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: peertube
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault    
+  additionalContainers:
+    database:
+      image: postgres:17-alpine
+      args:
+      - -c
+      - shared_buffers=500MB
+      - -c
+      - work_mem=4MB
+      - -c
+      - effective_cache_size=1GB
+      - -c
+      - max_connections=310      
+      env:
+        - name: POSTGRES_PASSWORD
+          value: peertube
+        - name: POSTGRES_DB
+          value: peertube
+        - name: POSTGRES_USER
+          value: peertube
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: config
+        subPath: peertube/database
+      - mountPath: /dev/shm
+        name: dev-shm
+      resources:
+        requests:
+          cpu: 0m
+          memory: 1Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
+
 audiobookshelf:
   enabled: false
   image:
@@ -8927,7 +9237,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.6.0@sha256:e426ce58d2a1cf59d1cebc3f5bb8875418462201d23080e3bdcbb52dc33c11a7
+    tag: v0.6.0@sha256:281e7af07c2a7d736f5aefee2fcc5135c916cee9338e6f2752593c66868d6dc5
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8970,7 +9280,11 @@ seerrbridge:
       subPath: seerrbridge
       volumeSpec:
         persistentVolumeClaim:
-          claimName: logs                           
+          claimName: logs     
+    npm: # for bridgeboard
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi                                
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9003,6 +9317,23 @@ seerrbridge:
     limits:
       cpu: 1
       memory: 2Gi  
+  additionalContainers:
+    bridgeboard:
+      image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.6.0@sha256:ceceaf3335e8d19d234e5da871ab44b8c049eab12c2ced19a1a58be0717c50b2
+      env:
+        - name: SEERRBRIDGE_URL
+          value: "http://localhost:8777"
+        - name: SEERRBRIDGE_LOG_PATH
+          value: /logs/seerbridge.log
+      volumeMounts:
+      - mountPath: /app/data
+        name: config
+        subPath: seerrbridge
+      - mountPath: /app/logs
+        name: logs
+        subPath: seerrbridge
+      - mountPath: /.npm
+        name: npm
   initContainers:
     setup-warp:
       image: *tooling_image

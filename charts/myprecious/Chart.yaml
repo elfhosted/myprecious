@@ -366,6 +366,16 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
+    condition: peertube.enabled
+    alias: peertube    
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: booklore.enabled
+    alias: booklore        
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
     condition: audiobookshelf.enabled
     alias: audiobookshelf
   - name: app-template
