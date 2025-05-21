@@ -1,0 +1,18 @@
+{{ if .Values.booklore.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-booklore.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-booklore.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: booklore
+          kind: Service
+          port: 6060
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+{{ end }}

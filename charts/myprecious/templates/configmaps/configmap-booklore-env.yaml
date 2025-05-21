@@ -1,0 +1,10 @@
+{{ if .Values.booklore.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: booklore-env
+data:
+  DATABASE_URL: jdbc:postgresql://postgres:5432/booklore
+  DATABASE_USERNAME: booklore 
+  DATABASE_PASSWORD: booklore
+{{ end }}

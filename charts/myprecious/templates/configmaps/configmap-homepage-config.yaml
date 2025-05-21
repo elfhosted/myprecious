@@ -137,7 +137,15 @@ data:
               url: http://kavita:5000
               username: {{`{{HOMEPAGE_FILE_KAVITA_USERNAME}}`}} 
               password: {{`{{HOMEPAGE_FILE_KAVITA_PASSWORD}}`}}            
-        {{ end }}     
+        {{ end }}   
+
+        {{ if .Values.booklore.enabled }}
+        - Booklore:
+            icon: booklore.png
+            href: https://{{ .Release.Name }}-booklore.{{ .Values.dns_domain }}
+            description: Manage PDFs / Books
+            siteMonitor: http://booklore:6060
+        {{ end }}             
 
         {{ if .Values.audiobookshelf.enabled }}
         - Audio Bookshelf:

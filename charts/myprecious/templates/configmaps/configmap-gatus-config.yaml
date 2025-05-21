@@ -149,6 +149,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.booklore.enabled }}
+      - name: booklore
+        group: consume-media
+        url: "http://booklore:6060"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.audiobookshelf.enabled }}
       - name: audiobookshelf
         group: consume-media
