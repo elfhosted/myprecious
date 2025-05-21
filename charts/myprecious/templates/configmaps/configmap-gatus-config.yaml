@@ -1558,7 +1558,19 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}    
+      {{ end }}   
+
+
+      {{ if .Values.peertube.enabled }}
+      - name: peertube
+        group: tools
+        url: "http://peertube:9000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}          
 
       {{ if .Values.pairdrop.enabled }}
       - name: pairdrop

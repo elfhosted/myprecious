@@ -1232,7 +1232,15 @@ data:
             href: https://{{ .Release.Name }}-codeserver.{{ .Values.dns_domain }}
             description: Code Server
             siteMonitor: http://code-server:8080
-        {{ end }}                               
+        {{ end }}  
+
+        {{ if .Values.peertube.enabled }}
+        - PeerTube:
+            icon: peertube.png
+            href: https://{{ .Release.Name }}-peertube.{{ .Values.dns_domain }}
+            description: PeerTube
+            siteMonitor: http://peertube:9000
+        {{ end }}                                       
 
         {{ if .Values.gluetun.enabled }}
         - Gluetun:
