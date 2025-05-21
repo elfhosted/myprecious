@@ -9326,7 +9326,7 @@ seerrbridge:
         - name: SEERRBRIDGE_LOG_PATH
           value: /logs/seerbridge.log
       volumeMounts:
-      - mountPath: /config
+      - mountPath: /app/data
         name: config
         subPath: seerrbridge
       - mountPath: /logs
