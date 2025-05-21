@@ -9276,7 +9276,7 @@ seerrbridge:
     logs:
       enabled: true
       type: custom
-      mountPath: /app/logs
+      mountPath: /logs
       subPath: seerrbridge
       volumeSpec:
         persistentVolumeClaim:
