@@ -9280,7 +9280,11 @@ seerrbridge:
       subPath: seerrbridge
       volumeSpec:
         persistentVolumeClaim:
-          claimName: logs                           
+          claimName: logs     
+    npm: # for bridgeboard
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi                                
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9322,12 +9326,14 @@ seerrbridge:
         - name: SEERRBRIDGE_LOG_PATH
           value: /logs/seerbridge.log
       volumeMounts:
-      - mountPath: /app
+      - mountPath: /config
         name: config
         subPath: seerrbridge
       - mountPath: /logs
         name: logs
         subPath: seerrbridge
+      - mountPath: /.npm
+        name: npm
   initContainers:
     setup-warp:
       image: *tooling_image
