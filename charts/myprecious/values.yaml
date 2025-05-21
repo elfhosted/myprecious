@@ -7901,6 +7901,26 @@ booklore:
         subPath: booklore
       - mountPath: /tmp
         name: tmp
+    setup-mariadb:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        mkdir -p /config/database
+        chown elfie:elfie /config/database -R
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: booklore
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault            
   additionalContainers:
     database:
       image: mariadb:11 
