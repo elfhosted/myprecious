@@ -1092,9 +1092,9 @@ data:
         url: "http://seerrbridge:8777"
         interval: 5m
         conditions:
-          - "[STATUS] == 200"
+          - "[STATUS] == 404"
         alerts:
-          - type: email
+          - type: email        
       {{ end }}   
 
       {{ if .Values.listsync.enabled }}

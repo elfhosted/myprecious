@@ -10,7 +10,7 @@ spec:
     - match: Host(`{{ .Release.Name }}-seerrbridge.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: seerrbridge
+        - name: bridgeboard
           kind: Service
           port: 3777
       middlewares:
