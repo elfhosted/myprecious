@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.374.0](https://github.com/elfhosted/myprecious/compare/v1.373.0...v1.374.0) (2025-05-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.50 ([8ae53bd](https://github.com/elfhosted/myprecious/commit/8ae53bdd74910d4e4c89c14a21296954ec8fdd66))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.51 ([ec0b692](https://github.com/elfhosted/myprecious/commit/ec0b692204ea765def7f17ee0ff92762a6c78925))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.1.1 ([119d977](https://github.com/elfhosted/myprecious/commit/119d97777f26162944ffb5f963a5e87e4a5192f3))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.1.2 ([dc2a994](https://github.com/elfhosted/myprecious/commit/dc2a994241d1641754a64c65c23ee2d07569d346))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.1.3 ([1e23259](https://github.com/elfhosted/myprecious/commit/1e2325922f03058e9ae2879af3906697ff21e4fe))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1938 ([103eb49](https://github.com/elfhosted/myprecious/commit/103eb49cca24ac283817b13c23d06519eb832998))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.69.3 ([72dae6b](https://github.com/elfhosted/myprecious/commit/72dae6bb2aa6e1aec93e69427cfeec555ca3fad1))
+* **app:** update ghcr.io/elfhosted/seerrbridge docker tag to v0.6.1 ([c8fc63e](https://github.com/elfhosted/myprecious/commit/c8fc63eecfc990e585329288c5b10bf5cdebc104))
+* **app:** update ghcr.io/elfhosted/seerrbridge-bridgeboard docker tag to v0.6.1 ([82d2643](https://github.com/elfhosted/myprecious/commit/82d2643cbd780812ac07969e559621f02c6b9424))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decypharr-beta:rolling docker digest to d82a9d0 ([2dd4508](https://github.com/elfhosted/myprecious/commit/2dd4508f2840274eeb7a7c09cab84ac7a19a537d))
+* **app:** update ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.6.1 docker digest to 53ddef7 ([ec3b8e2](https://github.com/elfhosted/myprecious/commit/ec3b8e274ca617b83996345264b48f7b5eccda11))
+* **app:** update ghcr.io/elfhosted/seerrbridge:v0.6.1 docker digest to f8a8925 ([f367a40](https://github.com/elfhosted/myprecious/commit/f367a402cea78f052cfa7c01694148b72253889a))
+
 ## [1.373.0](https://github.com/elfhosted/myprecious/compare/v1.372.0...v1.373.0) (2025-05-21)
 
 
