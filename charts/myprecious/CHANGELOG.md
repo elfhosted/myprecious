@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.375.0](https://github.com/elfhosted/myprecious/compare/v1.374.0...v1.375.0) (2025-05-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v1.22.0 ([7abed78](https://github.com/elfhosted/myprecious/commit/7abed7805a4837607f9651b072716c518208c712))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.1.4 ([3e1f355](https://github.com/elfhosted/myprecious/commit/3e1f3558b31ab66b2b38e42f9903c4f5e1e8817e))
+
+
+### Bug Fixes
+
+* Allow BridgeBoard through SeerrBridge VPN firewall ([49a2ad7](https://github.com/elfhosted/myprecious/commit/49a2ad7b6be49d22341de58f28a5520221d3b3d8))
+* **app:** update ghcr.io/elfhosted/decypharr-beta:rolling docker digest to b310afa ([ba1bd59](https://github.com/elfhosted/myprecious/commit/ba1bd59787afe8f6ad389f198ec86ad853634a17))
+
 ## [1.374.0](https://github.com/elfhosted/myprecious/compare/v1.373.0...v1.374.0) (2025-05-22)
 
 
