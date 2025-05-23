@@ -534,7 +534,7 @@ data:
 
         {{ if .Values.wizarr.enabled }}
         - Wizarr:
-            icon: mdi-account-group
+            icon: mdi-wizard-hat
             href: https://{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}
             description: Manage Plex / Emby / Jellyfin Accounts and Invites
             siteMonitor: http://wizarr:5690      
