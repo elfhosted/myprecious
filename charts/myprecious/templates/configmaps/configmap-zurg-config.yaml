@@ -32,6 +32,10 @@ data:
     # Check for changes every 10 sec - this is too aggressive on large libraries
     # sed -i  "s/check_for_changes_every_secs:.*/check_for_changes_every_secs: 10/" /config/config.yml
 
+    # don't repair uncached
+    grep restrict_repair_to_cached /config/config.yml \
+      || echo 'restrict_repair_to_cached: true' >> /config/config.yml
+
     # Don't serve from rclone
     sed -i  "s/serve_from_rclone:.*/serve_from_rclone: false/" /config/config.yml
 
