@@ -530,7 +530,15 @@ data:
             href: https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}
             description: Manage Jellyfin Accounts   
             siteMonitor: http://jfa:8056      
-        {{ end }}      
+        {{ end }}  
+
+        {{ if .Values.wizarr.enabled }}
+        - Wizarr:
+            icon: mdi-account-group
+            href: https://{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}
+            description: Manage Plex / Emby / Jellyfin Accounts and Invites
+            siteMonitor: http://wizarr:5690      
+        {{ end }}              
 
         {{ if .Values.tautulli.enabled }}
         - Tautulli:

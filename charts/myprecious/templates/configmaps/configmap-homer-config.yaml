@@ -845,12 +845,22 @@ data:
           {{ if .Values.jfa.enabled }}
           - name: "Jellyfin Accounts"
             icon: "fas fa-users"
-            subtitle: "Manage Requests"
+            subtitle: "Manage Jellyfin Accounts / Invites"
             tag: "public"
             tagstyle: "is-danger"
             url: "https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
+
+          {{ if .Values.wizarr.enabled }}
+          - name: "Wizarr"
+            icon: "fas fa-hat-wizard"
+            subtitle: "Manage Plex / Emby / Jellyfin Accounts / Invites"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
 
           {{ if .Values.tautulli.enabled }}
           - name: "Tautulli"

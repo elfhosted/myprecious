@@ -576,6 +576,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.wizarr.enabled }}
+      - name: wizarr
+        group: manage-media
+        url: "http://wizarr:5690"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.tautulli.enabled }}
       - name: tautulli
         group: manage-media
