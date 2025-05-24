@@ -9238,8 +9238,8 @@ seerrbridge:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/seerrbridge-dev
-    tag: rolling@sha256:55e76f13005e32f0c5025b4efd2818f52ab6521ca73a3a93b26d339d4841a32c
+    repository: ghcr.io/elfhosted/seerrbridge
+    tag: v0.7.0@sha256:df283852ca51c02cb728741cb3ed9d5cae3dd9acfde8bf9545b0804b31049066
   securityContext:
     seccompProfile:
       type: RuntimeDefault
