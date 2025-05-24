@@ -9238,12 +9238,12 @@ seerrbridge:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.6.1@sha256:952b8dcec42d525c8542e2f9e61bbc2b58f74bbbdbaaabfe815c67e9852ad394
+    repository: ghcr.io/elfhosted/seerrbridge-dev
+    tag: rolling@sha256:55e76f13005e32f0c5025b4efd2818f52ab6521ca73a3a93b26d339d4841a32c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false # needs to write to /app/seerrbridge.log, apparently
+    readOnlyRootFilesystem: true # needs to write to /app/seerrbridge.log, apparently
   podLabels:
     app.elfhosted.com/name: seerrbridge
   controller:
@@ -9278,7 +9278,7 @@ seerrbridge:
     logs:
       enabled: true
       type: custom
-      mountPath: /logs
+      mountPath: /app/logs
       subPath: seerrbridge
       volumeSpec:
         persistentVolumeClaim:
@@ -9286,7 +9286,12 @@ seerrbridge:
     npm: # for bridgeboard
       enabled: true
       type: emptyDir
-      sizeLimit: 1Gi                                
+      sizeLimit: 1Gi
+    chromedriver: # needs to download chromedriver on start
+      enabled: true
+      mountPath: /app/seerr/chromedriver
+      type: emptyDir
+      sizeLimit: 1Gi           
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
