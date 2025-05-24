@@ -7,7 +7,8 @@ spec:
   entryPoints:
   - websecure
   routes:
-    - match: Host(`{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}`)
+    # No auth required for public paths
+    - match: Host(`{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}`) && (PathPrefix(`/join/`) || PathPrefix(`/j/`) || PathPrefix(`/setup/`) || PathPrefix(`/static/`))
       kind: Rule
       services:
         - name: wizarr
@@ -16,4 +17,14 @@ spec:
       middlewares:  
         - name: error-pages
           namespace: traefik
+    - match: Host(`{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: wizarr
+          kind: Service
+          port: 5690
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik          
 {{ end }}

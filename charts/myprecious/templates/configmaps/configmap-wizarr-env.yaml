@@ -5,4 +5,5 @@ metadata:
   name: wizarr-env
 data:
   APP_URL: https://{{ .Release.Name}}-wizarr.{{ .Values.dns_domain }}
+  DISABLE_BUILTIN_AUTH: "true"
 {{ end }}
