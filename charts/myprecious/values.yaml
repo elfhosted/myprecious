@@ -12371,7 +12371,7 @@ wizarr:
     cache:
       enabled: true
       type: emptyDir
-      mountPath: /.cache          
+      mountPath: /home/elfie/.cache  
   initContainers:
     bootstrap:
       <<: *bootstrap
