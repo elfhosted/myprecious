@@ -12356,7 +12356,7 @@ wizarr:
     config:
       enabled: true
       type: custom
-      mountPath: /data/
+      mountPath: /data/database
       subPath: wizarr
       volumeSpec:
         persistentVolumeClaim:
