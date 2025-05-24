@@ -851,6 +851,8 @@ youriptvexposed:
   enabled: false
 threadfinexposed:
   enabled: false
+dispatcharrexposed:
+  enabled: false  
 zurgexposed:
   enabled: false
 elfassessment:
@@ -15663,6 +15665,88 @@ movieroulette:
       - mountPath: /config
         name: config
         subPath: movie-roulette
+      - mountPath: /tmp
+        name: tmp
+
+dispatcharr:
+  enabled: false
+  image:
+    repository: ghcr.io/dispatcharr/dispatcharr
+    tag: 0.5.0@sha256:c06d10cc04c4313620d56349206e2677e6d34f7c72fa8e57e782b4e5bf88f3e0
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-dispatcharr,dispatcharr-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups:
+    - 993      
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data
+      subPath: dispatcharr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-dispatcharr
+          optional: true
+    render-device:
+      enabled: "true"
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"          
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 9191
+  envFrom:
+  - configMapRef:
+      name: dispatcharr-env
+  - configMapRef:
+      name: elfbot-dispatcharr
+      optional: true      
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: dispatcharr
       - mountPath: /tmp
         name: tmp
 

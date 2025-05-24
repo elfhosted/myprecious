@@ -737,7 +737,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }}    
+
+      {{ if .Values.dispatcharr.enabled }}
+      - name: dispatcharr
+        group: consume-media
+        url: "http://dispatcharr:9191"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}            
 
       {{ if .Values.channelsdvr.enabled }}
       - name: channels-dvr

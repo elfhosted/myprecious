@@ -588,7 +588,15 @@ data:
               url: http://threadfin:34400
               username: {{`{{HOMEPAGE_FILE_THREADFIN_USERNAME}}`}} 
               password: {{`{{HOMEPAGE_FILE_THREADFIN_PASSWORD}}`}}                 
-        {{ end }}           
+        {{ end }}    
+
+        {{ if .Values.dispatcharr.enabled }}
+        - Dispatcharr:
+            icon: dispatcharr.png
+            href: https://{{ .Release.Name }}-dispatcharr.{{ .Values.dns_domain }}
+            description: Manage IPTV streams and EPG data
+            siteMonitor: http://dispatcharr:9191    
+        {{ end }}                   
 
         {{ if .Values.channelsdvr.enabled }}
         - Channels DVR:
