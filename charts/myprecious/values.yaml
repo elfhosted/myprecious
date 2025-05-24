@@ -12309,7 +12309,7 @@ wizarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wizarr
-    tag: 2025.5.d@sha256:2c953eefbe3f8c7113410d79d7dc91345008a0a9f075ff2debe80aaf3d369af7
+    tag: 2025.5.d@sha256:224630e3ead87f382f13c86ff6750c357f180e1001600ef4a07a6122d951d09a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12344,6 +12344,12 @@ wizarr:
       ports:
         http:
           port: 5690
+  envFrom:
+  - configMapRef:
+      name: wizarr-env
+  - configMapRef:
+      name: elfbot-wizarr
+      optional: true            
   persistence:
     tmp: *tmp
     backup: *backup
