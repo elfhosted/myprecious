@@ -7936,7 +7936,7 @@ booklore:
         - name: MYSQL_PASSWORD
           value: booklore
       volumeMounts:
-      - mountPath: /config
+      - mountPath: /var/lib/mysql
         name: config
         subPath: booklore/database
       resources:
