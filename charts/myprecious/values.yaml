@@ -9243,7 +9243,7 @@ seerrbridge:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true # needs to write to /app/seerrbridge.log, apparently
+    readOnlyRootFilesystem: false # needs for temporary files I think
   podLabels:
     app.elfhosted.com/name: seerrbridge
   controller:
