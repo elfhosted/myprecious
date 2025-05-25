@@ -7890,6 +7890,16 @@ booklore:
         configMap:
           name: elfbot-booklore
           optional: true    
+    var-lib-nginx-tmp:
+      enabled: true
+      type: emptyDir
+      mountPath: /var/lib/nginx/tmp/
+      sizeLimit: 1Gi      
+    var-lib-nginx-logs:
+      enabled: true
+      type: emptyDir
+      mountPath: /var/lib/nginx/logs/
+      sizeLimit: 1Gi                
   initContainers:
     bootstrap:
       <<: *bootstrap
