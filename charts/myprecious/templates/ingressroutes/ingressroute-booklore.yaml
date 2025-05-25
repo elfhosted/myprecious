@@ -12,7 +12,7 @@ spec:
       services:
         - name: booklore
           kind: Service
-          port: 8080
+          port: 6060
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
 {{ end }}
