@@ -341,6 +341,11 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
+    condition: dispatcharr.enabled
+    alias: dispatcharr    
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
     condition: requestrr.enabled
     alias: requestrr
   - name: app-template
@@ -625,6 +630,11 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: jackett
+  - name: app-template
+    condition: wizarr.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: wizarr    
   - name: app-template
     condition: stremiojackett.enabled
     version: ~0.2.1

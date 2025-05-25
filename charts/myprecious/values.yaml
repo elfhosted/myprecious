@@ -851,6 +851,8 @@ youriptvexposed:
   enabled: false
 threadfinexposed:
   enabled: false
+dispatcharrexposed:
+  enabled: false  
 zurgexposed:
   enabled: false
 elfassessment:
@@ -7934,7 +7936,7 @@ booklore:
         - name: MYSQL_PASSWORD
           value: booklore
       volumeMounts:
-      - mountPath: /config
+      - mountPath: /var/lib/mysql
         name: config
         subPath: booklore/database
       resources:
@@ -9241,7 +9243,7 @@ seerrbridge:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false # needs to write to /app/seerrbridge.log, apparently
+    readOnlyRootFilesystem: false # needs for temporary files I think
   podLabels:
     app.elfhosted.com/name: seerrbridge
   controller:
@@ -9276,7 +9278,7 @@ seerrbridge:
     logs:
       enabled: true
       type: custom
-      mountPath: /logs
+      mountPath: /app/logs
       subPath: seerrbridge
       volumeSpec:
         persistentVolumeClaim:
@@ -9284,7 +9286,12 @@ seerrbridge:
     npm: # for bridgeboard
       enabled: true
       type: emptyDir
-      sizeLimit: 1Gi                                
+      sizeLimit: 1Gi
+    chromedriver: # needs to download chromedriver on start
+      enabled: true
+      mountPath: /app/seerr/chromedriver
+      type: emptyDir
+      sizeLimit: 1Gi           
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9324,12 +9331,12 @@ seerrbridge:
         - name: SEERRBRIDGE_URL
           value: "http://localhost:8777"
         - name: SEERRBRIDGE_LOG_PATH
-          value: /logs/seerbridge.log
+          value: /app/logs/seerbridge.log
       volumeMounts:
       - mountPath: /app/data
         name: config
         subPath: seerrbridge
-      - mountPath: /logs
+      - mountPath: /app/logs
         name: logs
         subPath: seerrbridge
       - mountPath: /.npm
@@ -12304,6 +12311,87 @@ jackett:
         subPath: jackett
       - mountPath: /tmp
         name: tmp
+
+wizarr:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/wizarr
+    tag: 2025.5.d@sha256:224630e3ead87f382f13c86ff6750c357f180e1001600ef4a07a6122d951d09a
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wizarr"
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 1024Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5690
+  envFrom:
+  - configMapRef:
+      name: wizarr-env
+  - configMapRef:
+      name: elfbot-wizarr
+      optional: true            
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data/database
+      subPath: wizarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config        
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-wizarr
+          optional: true
+    cache:
+      enabled: true
+      type: emptyDir
+      mountPath: /home/elfie/.cache  
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: wizarr
+      - mountPath: /tmp
+        name: tmp        
 
 stremioserver: &app_stremioserver
   enabled: false
@@ -15582,6 +15670,88 @@ movieroulette:
       - mountPath: /config
         name: config
         subPath: movie-roulette
+      - mountPath: /tmp
+        name: tmp
+
+dispatcharr:
+  enabled: false
+  image:
+    repository: ghcr.io/dispatcharr/dispatcharr
+    tag: 0.5.0@sha256:c06d10cc04c4313620d56349206e2677e6d34f7c72fa8e57e782b4e5bf88f3e0
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-dispatcharr,dispatcharr-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+    supplementalGroups:
+    - 993      
+  automountServiceAccountToken: false
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data
+      subPath: dispatcharr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-dispatcharr
+          optional: true
+    render-device:
+      enabled: "true"
+      type: hostPath
+      hostPath: "/dev/dri/renderD128"
+      mountPath: "/dev/dri/renderD128"          
+  resources:
+    requests:
+      cpu: 0m
+      memory: 1Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 9191
+  envFrom:
+  - configMapRef:
+      name: dispatcharr-env
+  - configMapRef:
+      name: elfbot-dispatcharr
+      optional: true      
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: dispatcharr
       - mountPath: /tmp
         name: tmp
 

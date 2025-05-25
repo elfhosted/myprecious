@@ -845,12 +845,22 @@ data:
           {{ if .Values.jfa.enabled }}
           - name: "Jellyfin Accounts"
             icon: "fas fa-users"
-            subtitle: "Manage Requests"
+            subtitle: "Manage Jellyfin Accounts / Invites"
             tag: "public"
             tagstyle: "is-danger"
             url: "https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
+
+          {{ if .Values.wizarr.enabled }}
+          - name: "Wizarr"
+            icon: "fas fa-hat-wizard"
+            subtitle: "Manage Plex / Emby / Jellyfin Accounts / Invites"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
 
           {{ if .Values.tautulli.enabled }}
           - name: "Tautulli"
@@ -918,7 +928,23 @@ data:
             {{ end }}
             url: "https://{{ .Release.Name }}-threadfin.{{ .Values.dns_domain }}/web/"
             target: "_blank" # optional html tag target attribute
-          {{ end }}          
+          {{ end }}  
+
+          {{ if .Values.dispatcharr.enabled }}
+          - name: "Dispatcharr"
+            # Alternatively a fa icon can be provided:
+            logo: "assets/png/dispatcharr.png"
+            subtitle: "Manage IPTV streams and EPG data"
+            {{ if .Values.dispatcharrexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-dispatcharr.{{ .Values.dns_domain }}/web/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                              
 
           {{ if .Values.channelsdvr.enabled }}
           - name: "Channels DVR"

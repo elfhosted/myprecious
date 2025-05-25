@@ -1,0 +1,22 @@
+{{ if .Values.dispatcharr.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-dispatcharre.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-dispatcharre.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: dispatcharr
+          kind: Service
+          port: 9191
+      middlewares:
+        {{- if not .Values.dispatcharrexposed.enabled }}
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        {{ end }}      
+        - name: error-pages
+          namespace: traefik
+{{ end }}

@@ -64,7 +64,7 @@ spec:
             {{- $resources = .Values.halfling.resources }}
           {{- else if .Values.ranger.enabled }}
             {{- $resources = .Values.ranger.resources }}
-          {{- if .Values.hobbit.enabled }}
+          {{- else if .Values.hobbit.enabled }}
             {{- $resources = .Values.hobbit.resources }}
           {{- else }}
             {{- $resources = dict "requests" (dict "cpu" "500m" "memory" "4Gi") "limits" (dict "cpu" "2" "memory" "4Gi") }}

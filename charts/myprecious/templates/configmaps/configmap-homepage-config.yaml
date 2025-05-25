@@ -530,7 +530,15 @@ data:
             href: https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}
             description: Manage Jellyfin Accounts   
             siteMonitor: http://jfa:8056      
-        {{ end }}      
+        {{ end }}  
+
+        {{ if .Values.wizarr.enabled }}
+        - Wizarr:
+            icon: mdi-wizard-hat
+            href: https://{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}
+            description: Manage Plex / Emby / Jellyfin Accounts and Invites
+            siteMonitor: http://wizarr:5690      
+        {{ end }}              
 
         {{ if .Values.tautulli.enabled }}
         - Tautulli:
@@ -580,7 +588,15 @@ data:
               url: http://threadfin:34400
               username: {{`{{HOMEPAGE_FILE_THREADFIN_USERNAME}}`}} 
               password: {{`{{HOMEPAGE_FILE_THREADFIN_PASSWORD}}`}}                 
-        {{ end }}           
+        {{ end }}    
+
+        {{ if .Values.dispatcharr.enabled }}
+        - Dispatcharr:
+            icon: dispatcharr.png
+            href: https://{{ .Release.Name }}-dispatcharr.{{ .Values.dns_domain }}
+            description: Manage IPTV streams and EPG data
+            siteMonitor: http://dispatcharr:9191    
+        {{ end }}                   
 
         {{ if .Values.channelsdvr.enabled }}
         - Channels DVR:
