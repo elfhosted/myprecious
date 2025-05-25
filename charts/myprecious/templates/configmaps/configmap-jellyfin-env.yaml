@@ -14,6 +14,9 @@ data:
   # Supposedly to deal with RAM growth, per https://www.reddit.com/r/selfhosted/comments/1jnd2ow/psa_if_your_jellyfin_is_having_high_memory_usage/
   MALLOC_TRIM_THRESHOLD_: "100000"
 
+  # Improves search performance on larger libraries, per ipromknight
+  DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+
   # To check for mounts before starting
   WAIT_FOR_MOUNT_PATHS: {{ $dirs := list }}
     {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
