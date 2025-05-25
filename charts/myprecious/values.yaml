@@ -4939,7 +4939,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.12.0.4633@sha256:35b13cf9a46be557d0a68faf3da5e884bebfea2cb4fab8811bbcf9bfc296c6ea  
+    tag: 2.12.1.4636@sha256:9420b7dce0dd7fe797fca42dbab7fa28a2f54e27f9c37194c77b9dcc3cf1fc9a  
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5093,7 +5093,7 @@ lidarr:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/lidarr-develop:2.12.0.4633@sha256:35b13cf9a46be557d0a68faf3da5e884bebfea2cb4fab8811bbcf9bfc296c6ea  
+      image: ghcr.io/elfhosted/lidarr-develop:2.12.1.4636@sha256:9420b7dce0dd7fe797fca42dbab7fa28a2f54e27f9c37194c77b9dcc3cf1fc9a  
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
