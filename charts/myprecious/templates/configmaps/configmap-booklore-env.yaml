@@ -4,7 +4,10 @@ kind: ConfigMap
 metadata:
   name: booklore-env
 data:
-  DATABASE_URL: jdbc:mariadb://localhost:3306
+  DATABASE_URL: jdbc:mariadb://localhost:3306/booklore
   DATABASE_USERNAME: booklore 
   DATABASE_PASSWORD: booklore
+  PUID: 568
+  PGID: 568
+
 {{ end }}

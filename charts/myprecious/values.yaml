@@ -7872,7 +7872,7 @@ booklore:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 6060    
+          port: 8080    
   persistence:
     <<: *storagemounts
     config:
