@@ -9239,7 +9239,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.7.1@sha256:cc5c70c7ea763155e7de29330a4ebc555d4c5b599eeca4c825e889b1e0f4dd29
+    tag: v0.7.1@sha256:6d5e1c2a2bfda9220f18dbbcf3b662f871195bddf9b63bcf71f512c0740f5429
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9326,17 +9326,17 @@ seerrbridge:
       memory: 2Gi  
   additionalContainers:
     bridgeboard:
-      image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.6.1@sha256:0863d417b94f86d39722dd3176ed8cea4ad840a8cf5ec587442397aedd79bb55
+      image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.7.1@sha256:da92219655ad71d4361947865627744eb4aeac3b1c33a21690140b6b2300d965
       env:
         - name: SEERRBRIDGE_URL
           value: "http://localhost:8777"
         - name: SEERRBRIDGE_LOG_PATH
-          value: /logs/seerbridge.log
+          value: /app/logs/seerbridge.log
       volumeMounts:
       - mountPath: /app/data
         name: config
         subPath: seerrbridge
-      - mountPath: /logs
+      - mountPath: /app/logs
         name: logs
         subPath: seerrbridge
       - mountPath: /.npm
