@@ -9319,7 +9319,7 @@ seerrbridge:
       memory: 2Gi  
   additionalContainers:
     bridgeboard:
-      image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.7.1@sha256:a7638dc75e5c853f71a5af337f52e53edacfb5a24369e4cfd5f67ffe99ed587c
+      image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.7.1@sha256:153ebf79c3a09b4713d77f7e72d9311e169837bf3af2c2bd1baca99ee11f4aa0
       env:
         - name: SEERRBRIDGE_URL
           value: "http://localhost:8777"
