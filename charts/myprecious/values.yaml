@@ -2831,7 +2831,12 @@ huntarr: &app_huntarr
       volumeSpec:
         configMap:
           name: elfbot-huntarr
-          optional: true            
+          optional: true
+    app-frontend-static-data:
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi
+      mountPath: /app/frontend/static/data      
   initContainers:  
     copy-example-config:
       image: *tooling_image
