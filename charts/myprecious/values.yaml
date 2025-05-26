@@ -7889,17 +7889,11 @@ booklore:
       volumeSpec:
         configMap:
           name: elfbot-booklore
-          optional: true    
-    var-lib-nginx-tmp:
-      enabled: true
-      type: emptyDir
-      mountPath: /var/lib/nginx/tmp/
-      sizeLimit: 1Gi      
-    var-lib-nginx-logs:
-      enabled: true
-      type: emptyDir
-      mountPath: /var/lib/nginx/logs/
-      sizeLimit: 1Gi                
+          optional: true
+  command: 
+  - /usr/sbin/nginx 
+  - -g 
+  - "daemon off;"         
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -7934,6 +7928,12 @@ booklore:
         seccompProfile:
           type: RuntimeDefault            
   additionalContainers:
+    backend:
+      image: ghcr.io/elfhosted/booklore:v0.10.3@sha256:e35939711dd08701c0ae3a1a8ba4e166c390f5b0e8bcdaf16244c80edd58918a
+      command: 
+      - java 
+      - -jar 
+      - /app/app.jar
     database:
       image: mariadb:11 
       env:
