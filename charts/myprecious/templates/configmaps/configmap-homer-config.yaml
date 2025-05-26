@@ -335,7 +335,7 @@ data:
           {{ end }}
 
           {{ if .Values.booklore.enabled }}
-          - name: "Booklore"
+          - name: "BookLore"
             icon: "fab fa-book"
             subtitle: "Manage PDFs / Books"
             tag: "protected"
