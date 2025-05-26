@@ -26,11 +26,5 @@ spec:
         - /bin/bash
         - -c
         - |
-          set -x
-          set -e
-
-          # If deployment exists, then wait 5 min and exit
-          if kubectl get deployment {{ .Release.Name }}-nodefinder
-          then
-            sleep 5m          
-          fi
+          # wait up to 5 min for the nodefinder pod to be ready
+          kubectl wait --for=condition=Ready pod -l app.elfhosted.com/role=nodefinder --timeout=300s
