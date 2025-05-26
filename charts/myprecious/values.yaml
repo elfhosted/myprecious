@@ -12388,6 +12388,10 @@ wizarr:
         configMap:
           name: elfbot-wizarr
           optional: true
+    wizarr-steps:
+      enabled: true
+      type: emptyDir
+      mountPath: /home/wizard-steps          
     wizarr-steps-plex:
       enabled: "true"
       type: "custom"
