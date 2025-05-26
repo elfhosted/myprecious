@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.376.1](https://github.com/elfhosted/myprecious/compare/v1.376.0...v1.376.1) (2025-05-26)
+
+
+### Bug Fixes
+
+* Fix Huntarr static data error on latest version ([b745540](https://github.com/elfhosted/myprecious/commit/b74554087fe46e47d02e6b284d6d73466ab72fdc))
+
 ## [1.376.0](https://github.com/elfhosted/myprecious/compare/v1.375.0...v1.376.0) (2025-05-26)
 
 
