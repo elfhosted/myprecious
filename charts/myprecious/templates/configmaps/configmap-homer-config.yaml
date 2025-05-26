@@ -336,9 +336,7 @@ data:
 
           {{ if .Values.booklore.enabled }}
           - name: "Booklore"
-            logo: "assets/png/booklore.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
+            icon: "fab fa-book"
             subtitle: "Manage PDFs / Books"
             tag: "protected"
             tagstyle: "is-success"
