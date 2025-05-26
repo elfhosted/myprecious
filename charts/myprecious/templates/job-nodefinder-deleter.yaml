@@ -29,6 +29,6 @@ spec:
           # If deployment exists, then wait 4 min and delete it
           if kubectl get deployment {{ .Release.Name }}-nodefinder
           then
-            sleep 1m
+            sleep 4m
             kubectl delete deployment {{ .Release.Name }}-nodefinder
           fi
