@@ -10,25 +10,25 @@ data:
     require: true
     ---
 
-    ## {{ _("You're in! 🎉") }}
+    You're in! 🎉
 
-    {{ _("Great news! You've been granted access to {{ .Release.Name }}'s **ElfHosted Jellyfin Server**! 🥳") }}
+    Great news! You've been granted access to {{ .Release.Name }}'s **ElfHosted Jellyfin Server**! 🥳
 
   02_about.md: |
     ---
     title: "What is Jellyfin?"
     ---
 
-    ## ℹ️ {{ _("What's Jellyfin?") }}
+    ## ℹ️ What's Jellyfin?
 
-    {{ _("Jellyfin lets people share their film and TV libraries with friends. "
-          "You're here because {{ .Release.Name }}’s invited you to theirs! 📺") }}
+    Jellyfin lets people share their film and TV libraries with friends. "
+          "You're here because {{ .Release.Name }}’s invited you to theirs! 📺
 
-    ## 🍿 {{ _("How do I watch stuff?") }}
+    ## 🍿 How do I watch stuff?
 
-    Search your phone, tablet, computer or smart-TV's app store for "Jellyfin", or [{{ _("download on this device") }}](https://jellyfin.org/downloads){target=_blank .btn}.
+    Search your phone, tablet, computer or smart-TV's app store for "Jellyfin", or [download on this device](https://jellyfin.org/downloads){target=_blank .btn}.
 
-    {{ _("Sign in, search, push play. That’s it!") }}
+    Sign in, search, push play. That’s it!
 
   03_requests.md: |
     ---
@@ -36,11 +36,11 @@ data:
     requires: [overseerr_url]
     ---
 
-    ### {{ _("Request mooar content 🙋‍♀️") }}
+    #"Request mooar content 🙋‍♀️
 
-    {{ _("Can’t find what you want to watch? Make a request — robots will grab the film or episode automatically and add it to the library.") }}
+    Can't find what you want to watch? Make a request — robots will grab the film or episode automatically and add it to the library.
 
-    [{{ _("Make a request") }}]({{ overseerr_url }}){:target=_blank .btn}
+    [Make a request]({{ overseerr_url }}){:target=_blank .btn}
 
   04_discord.md: |
     ---
@@ -58,14 +58,14 @@ data:
     title: "Tips for the best experience"
     ---
 
-    ## 🎞 {{ _("Get the best quality") }}
+    ## 🎞 Get the best quality
 
-    {{ _("Plex sometimes defaults to low quality or shows its own adverts first. "
-          "Here’s how to fix that:") }}
+    Plex sometimes defaults to low quality or shows its own adverts first. "
+          "Here’s how to fix that:
 
-    1. **{{ _("Set streaming quality to original") }}** – Settings → Playback  
-    2. **{{ _("Enable hardware decoding") }}** if your device supports it for smoother 4K.  
-    3. **{{ _("Prefer Ethernet over Wi-Fi") }}** on smart-TVs.
+    1. **Set streaming quality to original** – Settings → Playback  
+    2. **Enable hardware decoding** if your device supports it for smoother 4K.  
+    3. **Prefer Ethernet over Wi-Fi** on smart-TVs.
 
     *Happy viewing!* 🍿
 
@@ -74,11 +74,11 @@ data:
     title: "Get ElfHosted!"
     ---
 
-    ## 🎞 {{ _("Want your **own** media library?") }}
+    ## 🎞 Want your **own** media library?
 
     Ready to take it to the next level?
 
-    Get your **own** Media Server with a [{{ _("ElfHosted bundle") }}](https://store.elfhosted.com/product-category/streaming-bundles/){target=_blank .btn}, $1 7-day trials available!
+    Get your **own** Media Server with a [ElfHosted bundle](https://store.elfhosted.com/product-category/streaming-bundles/){target=_blank .btn}, $1 7-day trials available!
 
     Rock on! 🤘  
 

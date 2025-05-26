@@ -10,25 +10,25 @@ data:
     require: true
     ---
 
-    ## {{ _("You're in! 🎉") }}
+    You're in! 🎉
 
-    {{ _("Great news! You've been granted access to {{ .Release.Name }}'s **ElfHosted Plex Server**! 🥳") }}
+    Great news! You've been granted access to {{ .Release.Name }}'s **ElfHosted Plex Server**! 🥳
 
   02_about.md: |
     ---
     title: "What is Plex?"
     ---
 
-    ## ℹ️ {{ _("What's Plex?") }}
+    ## ℹ️ What's Plex?
 
-    {{ _("Plex lets people share their film and TV libraries with friends. "
-          "You're here because {{ .Release.Name }}'s invited you to theirs! 📺") }}
+    Plex lets people share their film and TV libraries with friends. "
+          "You're here because {{ .Release.Name }}'s invited you to theirs! 📺
 
-    ## 🍿 {{ _("How do I watch stuff?") }}
+    ## 🍿 How do I watch stuff?
 
-    Search your phone, tablet, computer or smart-TV's app store for "Plex", or [{{ _("download on this device") }}](https://www.plex.tv/en-gb/media-server-downloads/#plex-app){target=_blank .btn}.
+    Search your phone, tablet, computer or smart-TV's app store for "Plex", or [download on this device](https://www.plex.tv/en-gb/media-server-downloads/#plex-app){target=_blank .btn}.
 
-    {{ _("Sign in, search, push play. That’s it!") }}
+    Sign in, search, push play. That’s it!
 
   03_requests.md: |
     ---
@@ -36,11 +36,11 @@ data:
     requires: [overseerr_url]
     ---
 
-    ### {{ _("Request mooar content 🙋‍♀️") }}
+    #"Request mooar content 🙋‍♀️
 
-    {{ _("Can’t find what you want to watch? Make a request — robots will grab the film or episode automatically and add it to the library.") }}
+    Can’t find what you want to watch? Make a request — robots will grab the film or episode automatically and add it to the library.
 
-    [{{ _("Make a request") }}]({{ overseerr_url }}){:target=_blank .btn}
+    [Make a request]({{ overseerr_url }}){:target=_blank .btn}
 
   04_discord.md: |
     ---
@@ -58,15 +58,15 @@ data:
     title: "Tips for the best experience"
     ---
 
-    ## 🎞 {{ _("Get the best quality") }}
+    ## 🎞 Get the best quality
 
-    {{ _("Plex sometimes defaults to low quality or shows its own adverts first. "
-          "Here’s how to fix that:") }}
+    Plex sometimes defaults to low quality or shows its own adverts first. "
+          "Here’s how to fix that:
 
-    1. **{{ _("Disable trailers & extras") }}** – Settings → Experience → untick *Show cinematic trailers*  
-    2. **{{ _("Force original quality") }}** – Settings → Playback → set *Automatic* to *Original*  
-    3. **{{ _("Use a wired connection") }}** if you’re on a smart-TV for stutter-free 4K.
-    4. **Read the [{{ _("Plex Guide") }}](https://plexguide.com/){target=_blank .btn}** to learn more
+    1. **Disable trailers & extras** – Settings → Experience → untick *Show cinematic trailers*  
+    2. **Force original quality** – Settings → Playback → set *Automatic* to *Original*  
+    3. **Use a wired connection** if you’re on a smart-TV for stutter-free 4K.
+    4. **Read the [Plex Guide](https://plexguide.com/){target=_blank .btn}** to learn more
 
     *Happy viewing!* 🍿
 
@@ -75,11 +75,11 @@ data:
     title: "Get ElfHosted!"
     ---
 
-    ## 🎞 {{ _("Want your **own** Plex?") }}
+    ## 🎞 Want your **own** Plex?
 
     Ready to take it to the next level?
 
-    Get your **own** Plex Server with a [{{ _("ElfHosted bundle") }}](https://store.elfhosted.com/product-category/streaming-bundles/){target=_blank .btn}, $1 7-day trials available!
+    Get your **own** Plex Server with a [ElfHosted bundle](https://store.elfhosted.com/product-category/streaming-bundles/){target=_blank .btn}, $1 7-day trials available!
 
     Rock on! 🤘  
 
