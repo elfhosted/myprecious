@@ -12388,6 +12388,24 @@ wizarr:
         configMap:
           name: elfbot-wizarr
           optional: true
+    wizarr-steps:
+      enabled: true
+      type: emptyDir
+      mountPath: /data/wizard_steps          
+    wizarr-steps-plex:
+      enabled: "true"
+      type: "custom"
+      mountPath: /opt/default_wizard_steps/plex
+      volumeSpec:
+        configMap:
+          name: wizarr-steps-plex
+    wizarr-steps-jellyfin:
+      enabled: "true"
+      type: "custom"
+      mountPath: /opt/default_wizard_steps/jellyfin
+      volumeSpec:
+        configMap:
+          name: wizarr-steps-jellyfin
     cache:
       enabled: true
       type: emptyDir

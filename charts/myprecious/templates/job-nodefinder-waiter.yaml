@@ -27,4 +27,6 @@ spec:
         - -c
         - |
           # wait up to 5 min for the nodefinder pod to be ready
+
+          sleep 10s
           kubectl wait --for=condition=Ready pod -l app.elfhosted.com/role=nodefinder --timeout=300s

@@ -1,0 +1,85 @@
+{{ if .Values.wizarr.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wizarr-steps-jellyfin
+data:
+  01_download.md: |
+    ---
+    title: "Join & download Jellyfin"
+    require: true
+    ---
+
+    You're in! 🎉
+
+    Great news! You've been granted access to {{ .Release.Name }}'s **ElfHosted Jellyfin Server**! 🥳
+
+  02_about.md: |
+    ---
+    title: "What is Jellyfin?"
+    ---
+
+    ## ℹ️ What's Jellyfin?
+
+    Jellyfin lets people share their film and TV libraries with friends. "
+          "You're here because {{ .Release.Name }}’s invited you to theirs! 📺
+
+    ## 🍿 How do I watch stuff?
+
+    Search your phone, tablet, computer or smart-TV's app store for "Jellyfin", or [download on this device](https://jellyfin.org/downloads){target=_blank .btn}.
+
+    Sign in, search, push play. That’s it!
+
+  03_requests.md: |
+    ---
+    title:  "Automatic requests"
+    requires: [overseerr_url]
+    ---
+
+    #"Request mooar content 🙋‍♀️
+
+    Can't find what you want to watch? Make a request — robots will grab the film or episode automatically and add it to the library.
+
+    [Make a request]({{"{{"}} overseerr_url }}){:target=_blank .btn}
+
+  04_discord.md: |
+    ---
+    title:  "Discord community"
+    requires: [discord_id]
+    ---
+
+    <iframe src="https://discord.com/widget?id={{"{{"}}discord_id }}&theme=dark"
+            width="350" height="500"
+            allowtransparency="true" frameborder="0"
+            sandbox="allow-popups allow-same-origin allow-scripts"></iframe>
+
+  05_tips.md: |
+    ---
+    title: "Tips for the best experience"
+    ---
+
+    ## 🎞 Get the best quality
+
+    Plex sometimes defaults to low quality or shows its own adverts first. "
+          "Here’s how to fix that:
+
+    1. **Set streaming quality to original** – Settings → Playback  
+    2. **Enable hardware decoding** if your device supports it for smoother 4K.  
+    3. **Prefer Ethernet over Wi-Fi** on smart-TVs.
+
+    *Happy viewing!* 🍿
+
+  06_elfhosted.md: |
+    ---
+    title: "Get ElfHosted!"
+    ---
+
+    ## 🎞 Want your **own** media library?
+
+    Ready to take it to the next level?
+
+    Get your **own** Media Server with a [ElfHosted bundle](https://store.elfhosted.com/product-category/streaming-bundles/){target=_blank .btn}, $1 7-day trials available!
+
+    Rock on! 🤘  
+
+{{ end }}

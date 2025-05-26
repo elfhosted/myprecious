@@ -11,3 +11,6 @@ rules:
   verbs: ["delete","get"]
   resourceNames:
   - {{ .Release.Name }}-nodefinder
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get","list","watch"]
