@@ -7891,9 +7891,9 @@ booklore:
           name: elfbot-booklore
           optional: true
   command: 
-  - /usr/sbin/nginx 
-  - -g 
-  - "daemon off;"         
+  - java 
+  - -jar 
+  - /app/app.jar     
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -7931,9 +7931,11 @@ booklore:
     backend:
       image: ghcr.io/elfhosted/booklore:v0.10.3@sha256:e35939711dd08701c0ae3a1a8ba4e166c390f5b0e8bcdaf16244c80edd58918a
       command: 
-      - java 
-      - -jar 
-      - /app/app.jar
+      - /usr/sbin/nginx 
+      - -g 
+      - "daemon off;"
+      securityContext:
+        readOnlyRootFilesystem: false
     database:
       image: mariadb:11 
       env:
