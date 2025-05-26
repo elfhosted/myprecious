@@ -15730,7 +15730,14 @@ dispatcharr:
       enabled: "true"
       type: hostPath
       hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"          
+      mountPath: "/dev/dri/renderD128"       
+  command:
+  - gunicorn 
+  - --workers=4
+  - --worker-class=gevent 
+  - --timeout=300 
+  - --bind 0.0.0.0:9191
+  - dispatcharr.wsgi:application   
   resources:
     requests:
       cpu: 0m
