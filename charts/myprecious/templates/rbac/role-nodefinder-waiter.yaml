@@ -13,4 +13,4 @@ rules:
   - {{ .Release.Name }}-nodefinder
 - apiGroups: [""]
   resources: ["pods"]
-  verbs: ["get","list"]
+  verbs: ["get","list","watch"]
