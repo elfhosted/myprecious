@@ -13,6 +13,4 @@ spec:
         - name: booklore
           kind: Service
           port: 6060
-      middlewares:
-        - name: {{ .Release.Name }}-traefik-forward-auth
 {{ end }}
