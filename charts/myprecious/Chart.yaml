@@ -15,7 +15,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.375.38-pre-02
+version: 1.376.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -342,7 +342,7 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     condition: dispatcharr.enabled
-    alias: dispatcharr    
+    alias: dispatcharr
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -634,7 +634,7 @@ dependencies:
     condition: wizarr.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    alias: wizarr    
+    alias: wizarr
   - name: app-template
     condition: stremiojackett.enabled
     version: ~0.2.1
