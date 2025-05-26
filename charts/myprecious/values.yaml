@@ -7878,7 +7878,7 @@ booklore:
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /app/data
       subPath: booklore
       volumeSpec:
         persistentVolumeClaim:
@@ -7928,7 +7928,7 @@ booklore:
         seccompProfile:
           type: RuntimeDefault            
   additionalContainers:
-    backend:
+    frontend:
       image: ghcr.io/elfhosted/booklore:v0.10.3@sha256:e35939711dd08701c0ae3a1a8ba4e166c390f5b0e8bcdaf16244c80edd58918a
       command: 
       - /usr/sbin/nginx 
@@ -7936,6 +7936,7 @@ booklore:
       - "daemon off;"
       securityContext:
         readOnlyRootFilesystem: false
+        runAsUser: 0 # nginx insists on running as root
     database:
       image: mariadb:11 
       env:
