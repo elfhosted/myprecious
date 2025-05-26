@@ -12391,7 +12391,7 @@ wizarr:
     wizarr-steps:
       enabled: true
       type: emptyDir
-      mountPath: /data/wizard-steps          
+      mountPath: /data/wizard_steps          
     wizarr-steps-plex:
       enabled: "true"
       type: "custom"
