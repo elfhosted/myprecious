@@ -1,0 +1,9 @@
+{{ if .Values.storyteller.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: storyteller-env
+data:
+  # Nothing here yet
+  {{ end }}
+{{ end }}
