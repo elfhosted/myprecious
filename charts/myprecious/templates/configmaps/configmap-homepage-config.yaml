@@ -261,31 +261,7 @@ data:
             href: https://{{ .Release.Name }}-webstreamr.{{ .Values.dns_domain }}
             description: Watch HTTP streams in Stremio
             siteMonitor: http://webstreamr:51546
-        {{ end }}                                
-
-        {{ if or .Values.stremioserver.enabled .Values.stremioserverpia.enabled .Values.stremioservergluetun.enabled }}
-        - Stremio:
-            icon: mdi-tv
-            {{ if .Values.flixio.enabled }}
-              {{ if .Values.stremioserver.enabled }}
-            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioserverpia.enabled }}
-            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioservergluetun.enabled }}
-            href: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ end }}            
-            {{ else }}
-              {{ if .Values.stremioserver.enabled }}
-            href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioserverpia.enabled }}
-            href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioservergluetun.enabled }}
-            href: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ end }}            
-            {{ end }}
-            description: Stremio Server
-            siteMonitor: http://stremio-server:11470
-        {{ end }}        
+        {{ end }}                                      
 
         {{ if .Values.flixio.enabled }}
         - Flixio:
