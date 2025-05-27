@@ -8296,6 +8296,10 @@ storyteller:
       enabled: true
       type: emptyDir
       mountPath: /app/.next/standalone/web/whisper-builds
+    home-elfie:
+      enabled: true
+      type: emptyDir
+      mountPath: /home/elfie
   envFrom:
   - configMapRef:
       name: storyteller-env
