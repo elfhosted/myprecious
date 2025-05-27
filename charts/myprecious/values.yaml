@@ -8952,7 +8952,7 @@ kometa: &app_kometa
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kometa
-    tag: v2.2.0@sha256:071dfb0cf5a7d7aa88d1bed63a6010cb4c65d58d3ad6e22e8170216030849782
+    tag: v2.2.0@sha256:d0d56d58de2ef623d7167e1dbf4901aa7bc2dc5ca4ec7206dbf1de5b2906d7d1
   securityContext:
     seccompProfile:
       type: RuntimeDefault
