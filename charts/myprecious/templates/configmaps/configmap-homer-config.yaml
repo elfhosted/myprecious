@@ -571,17 +571,7 @@ data:
             tagstyle: "is-danger"
             url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}   
-
-          {{ if .Values.movieroulette.enabled }}
-          - name: "Movie Roulette"
-            icon: "fas fa-question-circle"
-            subtitle: "Pick a movie to watch"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-movie-roulette.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                                
+          {{ end }}                              
 
       - name: "Manage Media"
         icon: "fas fa-photo-video"

@@ -295,14 +295,6 @@ data:
             siteMonitor: http://flixio:8080
         {{ end }}  
 
-        {{ if .Values.movieroulette.enabled }}
-        - Movie Roulette:
-            icon: mdi-chat-question
-            href: "https://{{ .Release.Name }}-movie-roulette.{{ .Values.dns_domain }}"
-            description: Pick a movie to watch
-            siteMonitor: http://movie-roulette:4000
-        {{ end }}  
-
     - Manage Media:
         {{ if .Values.radarr.enabled }}
         - Radarr:
