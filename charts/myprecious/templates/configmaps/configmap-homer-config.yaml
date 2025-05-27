@@ -358,7 +358,7 @@ data:
 
           {{ if .Values.storyteller.enabled }}
           - name: "StoryTeller"
-            icon: "fab fa-book"
+            icon: "fas fa-book-open"
             subtitle: "Listen/Read books"
             tag: "public"
             tagstyle: "is-danger"
