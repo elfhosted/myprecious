@@ -4626,7 +4626,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.36.3.5071@sha256:771cc72cab652336ecb02c208270542d7b1e701915854ed24c208832a738f5ee
+    tag: 1.36.3.5071@sha256:38638743d41be23f593aecd8c88bec14fcbc2a66b33d4fc3c55969a6d7cb8c68
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4814,7 +4814,7 @@ prowlarr: &app_prowlarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/prowlarr-develop:1.36.3.5071@sha256:771cc72cab652336ecb02c208270542d7b1e701915854ed24c208832a738f5ee 
+      image: ghcr.io/elfhosted/prowlarr-develop:1.36.3.5071@sha256:38638743d41be23f593aecd8c88bec14fcbc2a66b33d4fc3c55969a6d7cb8c68 
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
