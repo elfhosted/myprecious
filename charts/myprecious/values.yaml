@@ -8292,6 +8292,10 @@ storyteller:
       enabled: true
       type: emptyDir
       mountPath: /app/.next/standalone/web/.next/cache         
+    whisper-builds:
+      enabled: true
+      type: emptyDir
+      mountPath: /app/.next/standalone/web/whisper-builds
   envFrom:
   - configMapRef:
       name: storyteller-env
