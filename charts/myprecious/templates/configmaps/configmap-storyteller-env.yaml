@@ -4,5 +4,5 @@ kind: ConfigMap
 metadata:
   name: storyteller-env
 data:
-  # Nothing here yet
+  STORYTELLER_INITIAL_AUDIO_CODEC: opus
 {{ end }}

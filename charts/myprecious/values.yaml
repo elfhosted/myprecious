@@ -8288,10 +8288,10 @@ storyteller:
         configMap:
           name: tooling-scripts
           defaultMode: 0755
-      cache: 
-        enabled: true
-        type: emptyDir
-        mountPath: /app/.next/standalone/web/.next/cache         
+    cache: 
+      enabled: true
+      type: emptyDir
+      mountPath: /app/.next/standalone/web/.next/cache         
   envFrom:
   - configMapRef:
       name: storyteller-env
