@@ -8884,7 +8884,7 @@ rpdb:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rpdb
-    tag: 0.3.3@sha256:b87f9253ca86e184e83db6d67fcc12e9c06b05ab1c75c9aa06faee69e45540a6
+    tag: 0.3.3@sha256:fc651aeb123bedbcb92eeda3227b51005540b3c350bf15640c7928f5e8fd1d4b
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,storage-changed,elfbot-rpdb"
