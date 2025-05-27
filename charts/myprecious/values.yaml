@@ -15434,7 +15434,7 @@ profilarr:
         medium: Memory           
   additionalContainers:
     backend:
-      image: ghcr.io/elfhosted/profilarr-backend:v1.0.1@sha256:e0fd65b7f305ce7f197ad3caf5bf5d5a534de0dde6694292aaa0589df84abb24     
+      image: ghcr.io/elfhosted/profilarr-backend:v1.0.1@sha256:b1f776ae78836917d2808bd4ab3a0311be58c2627b109e529e052c678c74e8c3     
       volumeMounts:
       - name: config
         mountPath: /config
