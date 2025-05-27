@@ -356,6 +356,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.storyteller.enabled }}
+          - name: "StoryTeller"
+            icon: "fas fa-book-open"
+            subtitle: "Listen/Read books"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-storyteller.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.youriptv.enabled }}
           - name: "YourIPTV"
             icon: "fas fa-tv"
@@ -525,33 +535,7 @@ data:
             tagstyle: "is-success"
             url: https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
             target: "_blank" # optional html tag target attribute
-          {{ end }}                      
-
-          {{ if or .Values.stremioserver.enabled .Values.stremioserverpia.enabled .Values.stremioservergluetun.enabled }}
-          - name: "Stremio Server"
-            logo: "assets/png/stremio.png"
-            subtitle: "Stremio Server"
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ if not .Values.flixio.enabled }}
-              {{ if .Values.stremioserver.enabled }}
-            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioserverpia.enabled }}
-            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioservergluetun.enabled }}
-            url: "https://web.strem.io/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ end }}            
-            {{ else }}
-              {{ if .Values.stremioserver.enabled }}
-            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserver.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioserverpia.enabled }}
-            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioserverpia.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ else if .Values.stremioservergluetun.enabled }}
-            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}/?streamingServer=https%3A%2F%2F{{ .Release.Name }}-stremio-server-{{ .Values.stremioservergluetun.SECRET_STRING }}.{{ .Values.dns_domain }}#/"
-              {{ end }}            
-            {{ end }}
-            target: "_blank" # optional html tag target attribute
-          {{ end }}      
+          {{ end }}                       
 
           {{ if .Values.flixio.enabled }}
           - name: "Flixio"
@@ -561,17 +545,7 @@ data:
             tagstyle: "is-danger"
             url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}   
-
-          {{ if .Values.movieroulette.enabled }}
-          - name: "Movie Roulette"
-            icon: "fas fa-question-circle"
-            subtitle: "Pick a movie to watch"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-movie-roulette.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                                
+          {{ end }}                              
 
       - name: "Manage Media"
         icon: "fas fa-photo-video"

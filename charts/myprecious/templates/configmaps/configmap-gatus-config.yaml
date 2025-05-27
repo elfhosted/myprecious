@@ -171,6 +171,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.storyteller.enabled }}
+      - name: storyteller
+        group: consume-media
+        url: "http://storyteller:8001"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.youriptv.enabled }}
       - name: youriptv
         group: consume-media
@@ -333,17 +344,6 @@ data:
         alerts:
           - type: email          
       {{ end }}
-
-      {{ if or .Values.movieroulette.enabled }}
-      - name: movie-roulette
-        group: consume-media
-        url: "http://movie-roulette:4000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}   
 
       {{ if .Values.radarr.enabled }}
       - name: radarr

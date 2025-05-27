@@ -331,11 +331,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: movieroulette.enabled
-    alias: movieroulette
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: pulsarr.enabled
     alias: pulsarr
   - name: app-template
@@ -690,6 +685,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: comet
   - name: app-template
+    condition: storyteller.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: storyteller    
+  - name: app-template
     condition: blackhole.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -784,21 +784,6 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: suggestarr
-  - name: app-template
-    condition: stremioserver.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: stremioserver
-  - name: app-template
-    condition: stremioserverpia.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: stremioserverpia
-  - name: app-template
-    condition: stremioservergluetun.enabled
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: stremioservergluetun
   - name: app-template
     condition: flixio.enabled
     version: ~0.2.1
