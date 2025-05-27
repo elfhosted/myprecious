@@ -157,7 +157,15 @@ data:
               type: audiobookshelf
               url: http://audiobookshelf:8000
               key: {{`{{HOMEPAGE_FILE_AUDIOBOOKSHELF_KEY}}`}}            
-        {{ end }}                          
+        {{ end }}  
+
+        {{ if .Values.storyteller.enabled }}
+        - Story Teller:
+            icon: mdi-book
+            href: https://{{ .Release.Name }}-storyteller.{{ .Values.dns_domain }}
+            description: Listen to / Read books
+            siteMonitor: http://storyteller:8001
+        {{ end }}                                  
 
         {{ if .Values.stremiojackett.enabled }}
         - Stremio-Jackett:

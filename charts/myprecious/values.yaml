@@ -8240,6 +8240,85 @@ audiobookshelf:
       cpu: 2
       memory: 1Gi
 
+storyteller:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/storyteller
+    tag: v1.4.0-ctc.7@sha256:4a68c8174d02d2d6522f0b14076e5ad224e55e7c9184a9174dcf98ffbfa0ae3d
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    runAsNonRoot: true
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-storyteller,elfbot-all"
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /data/
+      subPath: storyteller
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    # never used, just satisfies startup scripts
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-storyteller
+          optional: true
+    tooling-scripts:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: tooling-scripts
+          defaultMode: 0755
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: storyteller
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8001
+  resources:
+    requests:
+      cpu: 0m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 12Gi
+
+
 audiobookrequest:
   enabled: false
   image:
