@@ -4870,7 +4870,7 @@ nzbhydra:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
-    tag: 7.13.0@sha256:e07f5ca99f3ddee0e4dd9561ee0aadf58caf28f6c90df1385b1028175137728c
+    tag: 7.13.2@sha256:8c2b2eb7203ca1e289a574265356e0551f060837c2d1fd75bb9d61a768b78182
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7833,7 +7833,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.11.1@sha256:cd76019a7f7f82a5856cccc121f0632bd5a53c46278f94566b589afe318b54b0
+    tag: v0.12.0@sha256:3688b5ba13beea77bdc6763f50e3c64d9b98db147fb670facd3e8d9f861271b4
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7934,7 +7934,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.11.1@sha256:cd76019a7f7f82a5856cccc121f0632bd5a53c46278f94566b589afe318b54b0
+      image: ghcr.io/elfhosted/booklore:v0.12.0@sha256:3688b5ba13beea77bdc6763f50e3c64d9b98db147fb670facd3e8d9f861271b4
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -12361,7 +12361,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1956@sha256:7e0b418ac39327f5a7c45311dc7c6e80f9dc909834b7430c3d20d6196a65ac5f
+    tag: 0.22.1960@sha256:e984fb3d5fab9718e23f3a4326d1341365a9cfbcaa3b64e3c77f8faaf8cc23dc
   priorityClassName: tenant-normal
   controller:
     annotations:
