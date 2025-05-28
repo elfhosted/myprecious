@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.378.1](https://github.com/elfhosted/myprecious/compare/v1.378.0...v1.378.1) (2025-05-28)
+
+
+### Bug Fixes
+
+* Revert blackhole scripts to previously-working version ([9c2a60c](https://github.com/elfhosted/myprecious/commit/9c2a60c237f722de8ef919ccec97e9b13662c7f6))
+
 ## [1.378.0](https://github.com/elfhosted/myprecious/compare/v1.377.0...v1.378.0) (2025-05-28)
 
 
