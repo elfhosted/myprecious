@@ -16348,7 +16348,7 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr
-    tag: v1.0.1@sha256:f33a515287fc60712edccd8464c12067eac8173b8b3b1898741041b8181b03f6
+    tag: v1.0.2@sha256:0103b9ac686eb7c84e5b5a7e88f2e0ce2a7ad0f3bf74ef686806e1beba0c191c
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
