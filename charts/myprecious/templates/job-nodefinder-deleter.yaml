@@ -3,6 +3,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ .Release.Name }}-nodefinder-deleter-v7
+  annotations:
+    helm.sh/hook: post-install # Run after the rollout is done 
   labels:
     app.elfhosted.com/name: nodefinder-deleter  
 spec:
