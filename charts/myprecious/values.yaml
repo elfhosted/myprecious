@@ -5892,7 +5892,7 @@ plexrequests:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:3f7a6e09de005b57fec75762422c0880286a8c4d93a9871b3df1e88866fc8dc1
+    tag: v1.5.1@sha256:71c8321c12ec2a643aca899c38f144fb31c4ba302612e139499ca966d633a316
   command: [ "/request.sh" ]
   controller:
     annotations:
@@ -16468,7 +16468,7 @@ blackhole: &app_blackhole
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:3f7a6e09de005b57fec75762422c0880286a8c4d93a9871b3df1e88866fc8dc1
+    tag: v1.5.1@sha256:71c8321c12ec2a643aca899c38f144fb31c4ba302612e139499ca966d633a316
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
