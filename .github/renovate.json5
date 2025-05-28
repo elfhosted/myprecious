@@ -34,7 +34,7 @@
     {
       "matchUpdateTypes": ["digest"],
       "automerge": true,
-      "excludePackagePatterns": ["alpine","zurg-rc"],
+      "excludePackagePatterns": ["alpine","zurg-rc","wests-blackhole-script"],
       "extends": [":semanticCommitTypeAll(fix)"] // for release-please
     },
     {
