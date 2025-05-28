@@ -22,6 +22,9 @@ data:
     {{ if or .Values.jellyfin.enabled .Values.jellyfinranger.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-jellyfin.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
+    {{ if or .Values.storyteller.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-storyteller.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}    
     {{ if .Values.aiostreams.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-aiostreams.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
@@ -84,6 +87,9 @@ data:
         {{ if .Values.aiostreams.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-aiostreams.$DNS_DOMAIN CNAME
         {{ end }}
+        {{ if .Values.storyteller.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-storyteller.$DNS_DOMAIN CNAME
+        {{ end }}        
         {{ if .Values.comet.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-comet.$DNS_DOMAIN CNAME
         {{ end }}
