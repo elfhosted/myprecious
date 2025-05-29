@@ -5,9 +5,9 @@ metadata:
   name: listsync-env
 data:
   {{ if .Values.jellyseerr.enabled }}
-  OVERSEERR_URL: http://jellyseerr:5055
+  OVERSEERR_URL: {{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}
   {{ else }}
-  OVERSEERR_URL: http://overseerr:5055
+  OVERSEERR_URL: {{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}
   {{ end }}
   AUTOMATED_MODE: "true"
   OVERSEERR_USER_ID: "1"
