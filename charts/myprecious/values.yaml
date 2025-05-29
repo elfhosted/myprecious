@@ -2782,7 +2782,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.4.3@sha256:dcdcff344d5fc3df3433b51ba2905b8024a0d3c23f3d5fe46da096c2842ecedd
+    tag: 7.4.6@sha256:6e8ef1caee0484a5c27e95af4ef6a93fe70988fae0ac2177b1385237adf7baa1
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5126,7 +5126,7 @@ navidrome:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/navidrome
-    tag: 0.55.2@sha256:b92b28e67e03ff8ed7850dbf6c3e589ccb070098b2794a937e3cb4a6e9d2c505
+    tag: 0.56.0@sha256:ed76f3336a082a95ecec49c00e4b76830d47a4ab937707f46664da32bd40be6d
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -10547,7 +10547,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.8.1@sha256:b335c73564a63220b7768901bdcfb9f09bf2b370925cd7fe9659e40b2060bd13
+    tag: 10.8.2@sha256:0e6018350256e59aed6dcc95684ae84b4ff440694f40173befc9eaf964e72e99
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -12361,7 +12361,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1960@sha256:e984fb3d5fab9718e23f3a4326d1341365a9cfbcaa3b64e3c77f8faaf8cc23dc
+    tag: 0.22.1967@sha256:2116ca3523e2f7df85d7b514153d6150b6bf48ea30525c297a933378167d934f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12977,7 +12977,7 @@ pgadmin:
   enabled: false
   image:
     repository: dpage/pgadmin4
-    tag: "9.3"
+    tag: "9.4"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15457,7 +15457,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.7@sha256:aa433d66f3a462076491e8767703d89fedb50c1da0ff5ca3d73c5912e0c8e42b
+    tag: v0.3.8@sha256:8b1f5b37c1d9ed8e26504cb482612e4b4857f3271f61066a63784f1a5ca85cb3
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15542,7 +15542,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.7@sha256:aa433d66f3a462076491e8767703d89fedb50c1da0ff5ca3d73c5912e0c8e42b
+      image: ghcr.io/elfhosted/pulsarr:v0.3.8@sha256:8b1f5b37c1d9ed8e26504cb482612e4b4857f3271f61066a63784f1a5ca85cb3
       command:
       - /bin/ash
       - -c
