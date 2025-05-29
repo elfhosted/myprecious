@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.379.0](https://github.com/elfhosted/myprecious/compare/v1.378.1...v1.379.0) (2025-05-29)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v9.4 ([2872c2b](https://github.com/elfhosted/myprecious/commit/2872c2b21216b5b5c25b463246a35b01a0000edf))
+* **app:** update ghcr.io/dispatcharr/dispatcharr docker tag to v0.5.1 ([f5ecf92](https://github.com/elfhosted/myprecious/commit/f5ecf920fdc94d152fac1aa3784c47b3c0de65d0))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.141 ([3ba0608](https://github.com/elfhosted/myprecious/commit/3ba0608d94c942d72c00bb6e55a84d8845e6b3e0))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.4.4 ([359428c](https://github.com/elfhosted/myprecious/commit/359428cf1127cc45873bd464b24739a187181df8))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.4.6 ([6268ae0](https://github.com/elfhosted/myprecious/commit/6268ae0704a6d33878c2b74b5874fa4affc0c1ca))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1967 ([0ceba55](https://github.com/elfhosted/myprecious/commit/0ceba55bc51a0a7c44e2a6a9a0fb4d023ba71359))
+* **app:** update ghcr.io/elfhosted/listsync docker tag to v0.5.9 ([a9f8abe](https://github.com/elfhosted/myprecious/commit/a9f8abe6386078dca80d936434f77d64300baed1))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.56.0 ([805cd36](https://github.com/elfhosted/myprecious/commit/805cd369d57d11923277fe53004602de9fd8d898))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.56.1 ([04fc1dc](https://github.com/elfhosted/myprecious/commit/04fc1dcef41422de78f9b50f4d3a6b77bad9a748))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.8 ([947184e](https://github.com/elfhosted/myprecious/commit/947184eed1c62e65cd8eff8607a21ce75eef1871))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.9 ([720abc9](https://github.com/elfhosted/myprecious/commit/720abc9e1a3879dffa644cc4cb554d2bf489bf55))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.22.0 ([f8831f3](https://github.com/elfhosted/myprecious/commit/f8831f3d74241625ef426a71051aec14be3e8e83))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.8.2 ([d0e9070](https://github.com/elfhosted/myprecious/commit/d0e9070cd587614bd5bf24918c196edc1bc6941d))
+
+
+### Bug Fixes
+
+* revert list-sync to previously-working version while we debug new code refactor ([a36bf26](https://github.com/elfhosted/myprecious/commit/a36bf26509ad04a5d370f69c92c745aa14bc3ec5))
+* Use external URLs for jellyseerr/overseerr in ListSync now ([ddc1bd1](https://github.com/elfhosted/myprecious/commit/ddc1bd18da7a6137069659f336894227fb498a01))
+
 ## [1.378.1](https://github.com/elfhosted/myprecious/compare/v1.378.0...v1.378.1) (2025-05-28)
 
 
