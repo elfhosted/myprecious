@@ -9616,7 +9616,7 @@ listsync:
         name: backup
       - mountPath: /config
         name: config
-        subPath: debridav
+        subPath: listsync
       - mountPath: /tmp
         name: tmp  
 
