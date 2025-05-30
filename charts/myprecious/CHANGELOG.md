@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.380.0](https://github.com/elfhosted/myprecious/compare/v1.379.0...v1.380.0) (2025-05-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.14.0 ([c44ded7](https://github.com/elfhosted/myprecious/commit/c44ded7412d2874b1cb21330697c82434b618162))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.14.1 ([c8903b6](https://github.com/elfhosted/myprecious/commit/c8903b653b24af8a7159a940f7a656f13fd3bc97))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.58 ([c8d7e7a](https://github.com/elfhosted/myprecious/commit/c8d7e7a218682b36d3ebafa3fa251166c9fee119))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1971 ([062efe7](https://github.com/elfhosted/myprecious/commit/062efe744b6ff122a39acea467ba1f486b275090))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.14.0 ([4a52da4](https://github.com/elfhosted/myprecious/commit/4a52da49cbebc73324fa19f3a7f18f1603d8731c))
+
+
+### Bug Fixes
+
+* Add user option to trigger Plex DB repair on pod start ([65e1a43](https://github.com/elfhosted/myprecious/commit/65e1a4369a84fc6ac3739a1ee38d98f07042d628))
+* Update Plex DBRepair script ([1a88327](https://github.com/elfhosted/myprecious/commit/1a8832775de9e152b96f01abbe9e0e093f421854))
+
 ## [1.379.0](https://github.com/elfhosted/myprecious/compare/v1.378.1...v1.379.0) (2025-05-29)
 
 
