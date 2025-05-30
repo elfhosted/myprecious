@@ -5777,7 +5777,7 @@ plex: &app_plex
       # resources: *default_resources
       securityContext: *default_securitycontext 
     dbrepair:
-      image: *tooling_image
+      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
