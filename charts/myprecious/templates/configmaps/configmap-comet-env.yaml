@@ -16,6 +16,7 @@ data:
   COMET_URL: http://elfhosted-internal.comet
   REMOVE_ADULT_CONTENT: "true"
   DOWNLOAD_TORRENTS: "false"
+  DEBRID_PROXY_URL: http://vpnproxy:8888
   {{ if .Values.stremthru.enabled }}
   STREMTHRU_URL: http://stremthru:8080
   {{ else }}
