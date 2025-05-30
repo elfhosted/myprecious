@@ -5776,6 +5776,40 @@ plex: &app_plex
       # can't use default resources because the ephemeral limit kicks out /phototranscoder later
       # resources: *default_resources
       securityContext: *default_securitycontext 
+    dbrepair:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        if [ $REPAIR_DB_ON_START == "true" ]; then
+          # Repair the database if it exists
+          if [ -f /config/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db ]; then
+            echo "Repairing Plex database"
+            /usr/local/bin/DBRepair.sh automatic
+          else
+            echo "No Plex database found, skipping repair"
+          fi
+        else
+          echo "REPAIR_DB_ON_START is not set to true, skipping database repair"
+        fi
+      envFrom:
+      - configMapRef:
+          name: elfbot-plex
+          optional: true        
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: plex
+      - mountPath: /phototranscoder
+        name: phototranscoder
+      # can't use default resources because the ephemeral limit kicks out /phototranscoder later
+      # resources: *default_resources
+      securityContext: *default_securitycontext       
     setup-warp:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
