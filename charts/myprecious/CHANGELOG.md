@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.383.0](https://github.com/elfhosted/myprecious/compare/v1.382.0...v1.383.0) (2025-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.18.0 ([e8e7f7d](https://github.com/elfhosted/myprecious/commit/e8e7f7d3f2d79cfde7ee68ac932ef47d865a7e28))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.4.11 ([bf44aa1](https://github.com/elfhosted/myprecious/commit/bf44aa1077354d851b2bcb6961188230f85906ee))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.4.9 ([748a27b](https://github.com/elfhosted/myprecious/commit/748a27bcedb6c7123e7f9f92299af0ccd0bcf5ee))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.22.1 ([546c473](https://github.com/elfhosted/myprecious/commit/546c473e224fb6e51214098ef4e832629f06386f))
+
 ## [1.382.0](https://github.com/elfhosted/myprecious/compare/v1.381.0...v1.382.0) (2025-05-31)
 
 
