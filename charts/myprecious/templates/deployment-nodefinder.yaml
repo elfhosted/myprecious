@@ -67,7 +67,7 @@ spec:
           {{- else if .Values.hobbit.enabled }}
             {{- $resources = .Values.hobbit.resources }}
           {{- else }}
-            {{- $resources = dict "requests" (dict "cpu" "1" "memory" "6Gi") "limits" (dict "cpu" "2" "memory" "4Gi") }}
+            {{- $resources = dict "requests" (dict "cpu" "1" "memory" "6Gi") "limits" (dict "cpu" "1" "memory" "6Gi") }}
           {{- end }}
           {{ $resources | toYaml | indent 10 | trimPrefix "          " }}
         volumeMounts:
