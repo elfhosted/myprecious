@@ -28,9 +28,9 @@ spec:
           set -x
           set -e
 
-          # If deployment exists, then wait 10 min and delete it
+          # If deployment exists, then wait 20 min and delete it
           if kubectl get deployment {{ .Release.Name }}-nodefinder
           then
-            sleep 10m
+            sleep 20m
             kubectl delete deployment {{ .Release.Name }}-nodefinder
           fi
