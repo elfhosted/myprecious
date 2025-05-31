@@ -17187,7 +17187,7 @@ starter: &app_resource_reserver
       enabled: false      
   resources:
     requests: 
-      cpu: 500m # reserve at least half a CPU for a starter
+      cpu: 250m
       memory: 1Gi
   initContainers:
     update-dns:  &update_dns_on_init
