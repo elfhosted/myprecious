@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.381.0](https://github.com/elfhosted/myprecious/compare/v1.380.0...v1.381.0) (2025-05-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.14.3 ([dfc6af0](https://github.com/elfhosted/myprecious/commit/dfc6af02e279d04a67868a58e85c2eb087d5dcb1))
+
+
+### Bug Fixes
+
+* Attempt to kill the sometimes-we-dont-provision-volumes-properly bug! ([ad10e31](https://github.com/elfhosted/myprecious/commit/ad10e31324bd3a1d23ecdbab9b6959d6ffbe5b9d))
+
 ## [1.380.0](https://github.com/elfhosted/myprecious/compare/v1.379.0...v1.380.0) (2025-05-30)
 
 
