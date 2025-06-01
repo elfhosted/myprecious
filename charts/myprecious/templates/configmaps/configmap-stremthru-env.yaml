@@ -20,4 +20,5 @@ data:
   {{ end }}
   STREMTHRU_FEATURE: -dmm_hashlist # don't bother importing DMM hashlist on private instances, they're already on the public
   STREMTHRU_DATA_DIR: /config # for imdb datasets
+  STREMTHRU_BASE_URL: https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}
 {{ end }}
