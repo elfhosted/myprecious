@@ -2782,7 +2782,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.4.11@sha256:07ba9fc400428328ea2a10173264346dfcc3d782c60c8f8be233e634339bf5c2
+    tag: 7.5.0@sha256:462a9b0468c4321f036d5ae3a9767c516489798989a62f0871192ff47149aab8
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7040,7 +7040,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:745c2796dc58a146ec89e512097d5e9d96e5d512f2f8771a225734a2a8419b1b
+    tag: develop-vaapi@sha256:719dd41877177eb70daf0e158c96b891f7800137bcd9f2785d5fda1d7db669a0
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9392,7 +9392,7 @@ seerrbridge:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/seerrbridge
-    tag: v0.7.2@sha256:cb1158de27c48e960f253141c0b5346d0ddf86305fb5d86187ba0e46b21dc89b
+    tag: v0.7.2@sha256:b9d57ea78a42d61b918901fb70317261b3830a887489230804353f199e62065e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9479,7 +9479,7 @@ seerrbridge:
       memory: 2Gi  
   additionalContainers:
     bridgeboard:
-      image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.7.2@sha256:b2db8a98f7f0f006e47b98979de8e2a390217f21987f6428d67791019da1c13d
+      image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.7.2@sha256:65956292cddb8ea3e57142c570cfb5de4bbb47fb62c8ba4adba7b4e293f16f59
       env:
         - name: SEERRBRIDGE_URL
           value: "http://localhost:8777"
@@ -11508,7 +11508,7 @@ homepage:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/gethomepage/homepage
-    tag: v1.3.0
+    tag: v1.3.1
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-homepage,homepage-config,homepage-env"
@@ -12397,7 +12397,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1974@sha256:35e2dd8fadc5f1930a882cd194e71b92c073951db1260450712e92e57ee27f91
+    tag: 0.22.1975@sha256:ae4f105dc113130f9a7a9d56610a530ea78a2a11ada12bac75f26b9412c5d6f1
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13457,7 +13457,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.77.0@sha256:1dfc3a0bedfd31d25937cd977a94769de0ab0db2fe6c8608931f343b5a1198bd
+    tag: 0.77.1@sha256:13c5a9582ccc03ed427fd867d06a35776d0b80198dc9511423870b810dea35d6
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13625,7 +13625,7 @@ mediafusion:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediafusion
-    tag: 4.3.31@sha256:71046c77757d3d883981c04fe5209dc9cd3682aaec7af2df62c111efaa921a31
+    tag: 4.3.32@sha256:c718eb9957433dd96138fb81ed34c1d79eaeee11fda299f91db08b08d4099183
   podLabels:
       app.elfhosted.com/name: mediafusion
   priorityClassName: tenant-normal
@@ -14281,7 +14281,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.22.1@sha256:043900748a9223af88ab00a568a5be5249fd5751e2344fd0570478da065dbdab
+    tag: v0.22.3@sha256:92fcd34dfec4553ad63d5bbec844d4eb7675633becd251893db7d5459e533104
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14904,7 +14904,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.59@sha256:d0a488b4696be8d3cd29b917877e505e38afb848781174e0d788bd7a3803e4f4
+    tag: v0.6.60@sha256:22b9c923a61bf91433036cfb912ba6d168030a248957eaeb10ca02e3397a07c2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -16882,7 +16882,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:f773b35a95e170d92dd4214a3ec4859b1b7960bf56896ae687646d695f311187
+      image: docker.io/redis:7.4-alpine@sha256:ee9e8748ace004102a267f7b8265dab2c618317df22507b89d16a8add7154273
       envFrom:
       - configMapRef:
           name: immich-env
