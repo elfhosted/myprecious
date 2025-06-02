@@ -246,7 +246,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}            
+      {{ end }}  
+
+      {{ if .Values.nuviostreams.enabled }}
+      - name: nuviostreams
+        group: consume-media
+        url: "http://nuviostreams:7777"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}  
 
       {{ if .Values.knightcrawler.enabled }}
       - name: knightcrawler

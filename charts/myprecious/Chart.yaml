@@ -735,6 +735,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: aiostreams
   - name: app-template
+    condition: nuviostreams.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: nuviostreams    
+  - name: app-template
     condition: stremify.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

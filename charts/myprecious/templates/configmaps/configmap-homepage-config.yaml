@@ -205,7 +205,15 @@ data:
             href: https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}
             description: Combine multiple Stremio addons for tidy results
             siteMonitor: http://aiostreams:3000
-        {{ end }}                  
+        {{ end }}   
+
+        {{ if .Values.nuviostreams.enabled }}
+        - Nuvio Streams:
+            icon: mdi-filmstrip-box-multiple
+            href: https://{{ .Release.Name }}-nuviostreams.{{ .Values.dns_domain }}
+            description: HTTP Streams in Stremio
+            siteMonitor: http://nuviostreams:7777
+        {{ end }}                          
 
         {{ if .Values.youriptv.enabled }}
         - YourIPTV:
