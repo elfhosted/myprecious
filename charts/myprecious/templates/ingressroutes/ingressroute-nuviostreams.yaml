@@ -23,9 +23,7 @@ spec:
           kind: Service
           port: 3000
       middlewares:
-      {{ if not .Values.nuviostreamsexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
-      {{ end }}
         - name: chain-hosted-stremio-addon
           namespace: traefik
 
