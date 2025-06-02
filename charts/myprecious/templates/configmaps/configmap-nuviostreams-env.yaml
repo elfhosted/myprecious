@@ -1,0 +1,10 @@
+{{ if .Values.nuviostreams.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nuviostreams-env
+data:
+
+
+
+{{ end }}
