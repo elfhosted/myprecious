@@ -14209,7 +14209,6 @@ nuviostreams:
     tmp: *tmp
     shared:
       enabled: true
-      mountPath: /shared
       type: emptyDir
       volumeSpec:
         medium: Memory     
@@ -14282,7 +14281,7 @@ nuviostreams:
         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
         VPN_TYPE: wireguard
         VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "3000"
+        FIREWALL_INPUT_PORTS: "7777"
         WIREGUARD_MTU: "1280"
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
