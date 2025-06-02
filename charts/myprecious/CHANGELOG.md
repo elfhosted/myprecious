@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.384.0](https://github.com/elfhosted/myprecious/compare/v1.383.0...v1.384.0) (2025-06-02)
+
+
+### Features
+
+* Add NuvioStreams! 🍿 ([a6e49e3](https://github.com/elfhosted/myprecious/commit/a6e49e3a1604639a11c4e4c94ac5fb41da84fd05))
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.24.0 ([7209b7c](https://github.com/elfhosted/myprecious/commit/7209b7c020b4432336b3d194dcc8d38a3a5bb9e5))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.2 ([21dce0e](https://github.com/elfhosted/myprecious/commit/21dce0e959749e51ae7f247802a73b1950b263fe))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.3 ([0b05932](https://github.com/elfhosted/myprecious/commit/0b059328840166373ea9c9e14264e6ab32d3dfc9))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.4 ([6b8d6b4](https://github.com/elfhosted/myprecious/commit/6b8d6b4384906cf1f2e2a6ea96d10af945ac8fd5))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1978 ([3056e8c](https://github.com/elfhosted/myprecious/commit/3056e8cb8110b9c7056f74d6741f5bd4c4b14f74))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.14.1 ([9ed782c](https://github.com/elfhosted/myprecious/commit/9ed782c9c443ee67ad80a1d0c33a118ada6f2428))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.77.2 ([6860f6c](https://github.com/elfhosted/myprecious/commit/6860f6c3e2300c1eb985a19e6a7906dbffd8643e))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.22.5 ([1e4b188](https://github.com/elfhosted/myprecious/commit/1e4b188f5b71235752c8c19b914149a9fda39911))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.22.6 ([953bd71](https://github.com/elfhosted/myprecious/commit/953bd71dcf3816c5b599479542965ebd2fb5b7c2))
+
 ## [1.383.0](https://github.com/elfhosted/myprecious/compare/v1.382.0...v1.383.0) (2025-06-01)
 
 
