@@ -459,7 +459,7 @@ data:
 
           {{ if .Values.nuviostreams.enabled }}
           - name: "Nuvio Streams"
-            icon: "fas fa-tools"
+            icon: "fas fa-film"
             subtitle: "HTTP Streams in Stremio"
             tag: "protected"
             tagstyle: "is-success"

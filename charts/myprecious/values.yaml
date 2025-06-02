@@ -14228,7 +14228,7 @@ nuviostreams:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 3000
+          port: 7777
   envFrom:
   - configMapRef:
       name: nuviostreams-env   

@@ -12,7 +12,7 @@ spec:
       services:
         - name: nuviostreams
           kind: Service
-          port: 3000
+          port: 7777
       middlewares:
         - name: headers-add-cors-for-stremio
           namespace: traefik
@@ -21,7 +21,7 @@ spec:
       services:
         - name: nuviostreams
           kind: Service
-          port: 3000
+          port: 7777
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
         - name: chain-hosted-stremio-addon

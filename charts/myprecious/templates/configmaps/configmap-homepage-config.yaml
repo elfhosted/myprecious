@@ -212,7 +212,7 @@ data:
             icon: mdi-filmstrip-box-multiple
             href: https://{{ .Release.Name }}-nuviostreams.{{ .Values.dns_domain }}
             description: HTTP Streams in Stremio
-            siteMonitor: http://nuviostreams:3000
+            siteMonitor: http://nuviostreams:7777
         {{ end }}                          
 
         {{ if .Values.youriptv.enabled }}
