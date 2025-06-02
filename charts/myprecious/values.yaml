@@ -14184,8 +14184,8 @@ aiostreams:
 nuviostreams:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/nuviostreams
-    tag: v1.22.0@sha256:21ea0e748e85b36c2b3687e0eba3938809bdd309844e99b46ca9ce3d28a845fd
+    repository: ghcr.io/elfhosted/nuviostreams-dev
+    tag: rolling@sha256:91e4fbb4a053a37eafcdde332276d1f8e6eaf109b3d9eec6d2a964cc4325ea25
   priorityClassName: tenant-normal
   controller:
     annotations:
