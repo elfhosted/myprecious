@@ -14274,7 +14274,7 @@ nuviostreams:
         readOnlyRootFilesystem: false
   addons:
     vpn:
-      enabled: true
+      enabled: false # may not be necessary since we have vpnprox
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun

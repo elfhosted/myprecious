@@ -4,4 +4,6 @@ kind: ConfigMap
 metadata:
   name: nuviostreams-env
 data:
+  XPRIME_PROXY_URL: http:://vpnproxy:8888
+  XPRIME_USE_PROXY: "true"
 {{ end }}
