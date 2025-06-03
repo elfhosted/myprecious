@@ -5643,7 +5643,7 @@ plex: &app_plex
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex,elfbot-imagemaid,plex-config,imagemaid-env,plex-tinyproxy-conf" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,elfbot-plex,elfbot-decypharr,elfbot-debridav,elfbot-imagemaid,plex-config,imagemaid-env,plex-tinyproxy-conf" # Reload the deployment every time the rclones change
   image:
     registry: ghcr.io
     repository: elfhosted/plex
@@ -6039,7 +6039,7 @@ jellyfin: &app_jellyfin
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin,jellyfin-env" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyfin,jellyfin-env,elfbot-zurg,elfbot-decypharr,elfbot-debridav" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence: &app_jellyfin_persistence
@@ -6237,7 +6237,7 @@ emby: &app_emby
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-emby,emby-env" # Reload the deployment every time the rclones change
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-emby,emby-env,elfbot-zurg,elfbot-decypharr,elfbot-debridav" # Reload the deployment every time the rclones change
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   envFrom:
@@ -6291,7 +6291,6 @@ emby: &app_emby
         configMap:
           name: tooling-scripts
           defaultMode: 0755
-  initContainers:
   initContainers:
     restart-with-zurg:
       image: ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
@@ -14683,7 +14682,7 @@ zurg: &app_zurg
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config,elfbot-plex,elfbot-emby,elfbot-jellyfin"
     strategy: Recreate
   affinity:
     nodeAffinity:
@@ -14854,6 +14853,27 @@ zurg: &app_zurg
         subPath: zurg
       - name: example-config
         mountPath: "/bootstrap/"
+    restart-with-plex:
+      image: ghcr.io/elfhosted/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when plex is updated"  
+    restart-with-jellyfin:
+      image: ghcr.io/elfhosted/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when jellyfin is updated"  
+    restart-with-emby:
+      image: ghcr.io/elfhosted/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when emby is updated"                        
   addons:
     vpn: &zurg_addons_vpn
       enabled: false # in case we ever need it
@@ -15917,7 +15937,7 @@ debridav: &app_debridav
   - name: ghcr-io-elfhosted    
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridav,debridav-env,elfbot-plex,elfbot-jellyfin,elfbot-emby"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -16043,7 +16063,28 @@ debridav: &app_debridav
       securityContext:
         runAsUser: 0
         seccompProfile:
-          type: RuntimeDefault                
+          type: RuntimeDefault
+    restart-with-plex:
+      image: ghcr.io/elfhosted/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when plex is updated"  
+    restart-with-jellyfin:
+      image: ghcr.io/elfhosted/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when jellyfin is updated"  
+    restart-with-emby:
+      image: ghcr.io/elfhosted/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when emby is updated"   
   additionalContainers:
     make-folders:
       image: *tooling_image
@@ -16532,7 +16573,7 @@ decypharr: &app_decypharr
   tolerations: *standard_tolerations
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr,decypharr-example-config"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr,decypharr-example-config,elfbot-plex,elfbot-emby,elfbot-jellyfin"
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -16640,7 +16681,27 @@ decypharr: &app_decypharr
         subPath: decypharr
       - mountPath: /tmp
         name: tmp  
-     
+    restart-with-plex:
+      image: ghcr.io/elfhosted/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when plex is updated"  
+    restart-with-jellyfin:
+      image: ghcr.io/elfhosted/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when jellyfin is updated"  
+    restart-with-emby:
+      image: ghcr.io/elfhosted/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      command:
+      - /bin/bash
+      - -c
+      - |
+        echo "This pod only exists to cause a restart when emby is updated"        
 
 blackhole: &app_blackhole
   enabled: false
