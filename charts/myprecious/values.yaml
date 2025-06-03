@@ -14854,21 +14854,21 @@ zurg: &app_zurg
       - name: example-config
         mountPath: "/bootstrap/"
     restart-with-plex:
-      image: ghcr.io/elfhosted/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when plex is updated"  
     restart-with-jellyfin:
-      image: ghcr.io/elfhosted/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+      image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      image: ghcr.io/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
       command:
       - /bin/bash
       - -c
@@ -16065,21 +16065,21 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when plex is updated"  
     restart-with-jellyfin:
-      image: ghcr.io/elfhosted/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+      image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      image: ghcr.io/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
       command:
       - /bin/bash
       - -c
@@ -16682,21 +16682,21 @@ decypharr: &app_decypharr
       - mountPath: /tmp
         name: tmp  
     restart-with-plex:
-      image: ghcr.io/elfhosted/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when plex is updated"  
     restart-with-jellyfin:
-      image: ghcr.io/elfhosted/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+      image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
       command:
       - /bin/bash
       - -c
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      image: ghcr.io/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
       command:
       - /bin/bash
       - -c
