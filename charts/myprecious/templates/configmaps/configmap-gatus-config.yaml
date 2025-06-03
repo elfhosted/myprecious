@@ -1056,7 +1056,7 @@ data:
       {{ if .Values.decypharr.enabled }}
       - name: decypharr
         group: download-media
-        url: "http://decypharr:8282/webdav/realdebrid/version.txt"
+        url: "http://decypharr:8282/logs"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
