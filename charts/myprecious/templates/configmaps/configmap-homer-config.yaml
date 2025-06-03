@@ -1923,19 +1923,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                                        
 
-
-      - name: "Grafana"
-        icon: "fas fa-globe"
-        items:
-
-          - name: "Cluster Resources"
-            logo: "assets/png/grafana.png"
-            subtitle: "Cluster Resources"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://fnky.nz/grafana-elfhosted"
-            target: "_blank" # optional html tag target attribute
-            
   custom.css: |
     @charset "UTF-8";
 
