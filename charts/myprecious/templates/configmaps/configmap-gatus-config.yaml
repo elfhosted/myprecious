@@ -1402,7 +1402,7 @@ data:
       {{ if .Values.blueskypds.enabled }}
       - name: bluesky-pds
         group: tools
-        url: "http://blueskypds:3000/xrpc/_health"
+        url: "http://bluesky-pds:3000/xrpc/_health"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
