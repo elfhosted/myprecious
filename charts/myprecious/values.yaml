@@ -7867,7 +7867,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.19.0@sha256:3b09fa25f7bb4dc990b93c1a9d5634e1094ddd4557af5dc6cb0598e36f33be60
+    tag: v0.19.1@sha256:9a6f3a2ee33024b7c4db92ba493a2e2f6c36a6df714a2932e5cace606a648e76
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7968,7 +7968,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.19.0@sha256:3b09fa25f7bb4dc990b93c1a9d5634e1094ddd4557af5dc6cb0598e36f33be60
+      image: ghcr.io/elfhosted/booklore:v0.19.1@sha256:9a6f3a2ee33024b7c4db92ba493a2e2f6c36a6df714a2932e5cace606a648e76
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -13455,7 +13455,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.77.2@sha256:3b765c609bbc22a257792496bcecb06068388d7cfd879f3b504831d5f726f689
+    tag: 0.77.3@sha256:452d90beb30c4f6261b2d81b984f5e0875459d1297b32a2ede00e33ca2936fcb
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14401,7 +14401,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.22.6@sha256:a041f34b1498b93d2a34e9932608700ff704797b7263909bfe15825ee681c9b7
+    tag: v0.22.7@sha256:d5d211664aa0b5956c64cc3108ea732358dc0a7888bb0b01c5f5caa1cdeecd4b
   priorityClassName: tenant-normal
   controller:
     annotations:
