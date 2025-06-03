@@ -594,6 +594,7 @@ data:
         interval: 5m
         conditions:
           - "[STATUS] == 200"
+          - "[STATUS] == 302"
         alerts:
           - type: email
       {{ end }}      
