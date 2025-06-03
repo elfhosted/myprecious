@@ -590,11 +590,10 @@ data:
       {{ if .Values.wizarr.enabled }}
       - name: wizarr
         group: manage-media
-        url: "http://wizarr:5690"
+        url: "http://wizarr:5690/wizard/"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
-          - "[STATUS] == 302"
         alerts:
           - type: email
       {{ end }}      
@@ -1057,7 +1056,7 @@ data:
       {{ if .Values.decypharr.enabled }}
       - name: decypharr
         group: download-media
-        url: "http://decypharr:8282"
+        url: "http://decypharr:8282/webdav/realdebrid/version.txt"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
