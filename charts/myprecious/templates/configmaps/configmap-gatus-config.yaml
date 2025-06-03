@@ -502,7 +502,7 @@ data:
       {{ if .Values.profilarr.enabled }}
       - name: profilarr
         group: manage-media
-        url: "http://profilarr:3000"
+        url: "http://profilarr:3000/regex.svg"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
@@ -1478,7 +1478,7 @@ data:
         url: "http://resilio-sync:8888"
         interval: 5m
         conditions:
-          - "[STATUS] == 401"
+          - "[STATUS] == 200"
         alerts:
           - type: email
       {{ end }}
