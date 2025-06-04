@@ -4031,7 +4031,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.4.0@sha256:f17b542ed5116513d6be65667f4e35826b99738d4f1ebccba6c85e81c011c2f7
+    tag: 8.4.0@sha256:dcfc52e135bac2c67c8aac5c6e6b479afc92adc4059c704fca344968b0032c3f
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4637,7 +4637,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.36.3.5071@sha256:38638743d41be23f593aecd8c88bec14fcbc2a66b33d4fc3c55969a6d7cb8c68
+    tag: 1.37.0.5076@sha256:3da9ecca65464bce63c5187477a73dc1f5b38711e9c09c92021f0e8e5110c348
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4825,7 +4825,7 @@ prowlarr: &app_prowlarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/prowlarr-develop:1.36.3.5071@sha256:38638743d41be23f593aecd8c88bec14fcbc2a66b33d4fc3c55969a6d7cb8c68 
+      image: ghcr.io/elfhosted/prowlarr-develop:1.37.0.5076@sha256:3da9ecca65464bce63c5187477a73dc1f5b38711e9c09c92021f0e8e5110c348 
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -5730,7 +5730,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.03.0032-nightly@sha256:ef26fa85a683b0310b13e55fb042b54ace5b476f5b263e23b1de63e7a4c97591
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
       command:
       - /bin/bash
       - -c
@@ -5744,7 +5744,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.5@sha256:1e596ddb97a7e6a4827b1dfc0718992b0c432416841a8a4c3dd3cd7491850c3c
+      image: ghcr.io/elfhosted/debridav:0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
       command:
       - /bin/bash
       - -c
@@ -6100,7 +6100,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.03.0032-nightly@sha256:ef26fa85a683b0310b13e55fb042b54ace5b476f5b263e23b1de63e7a4c97591
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
       command:
       - /bin/bash
       - -c
@@ -6114,7 +6114,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.5@sha256:1e596ddb97a7e6a4827b1dfc0718992b0c432416841a8a4c3dd3cd7491850c3c
+      image: ghcr.io/elfhosted/debridav:0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
       command:
       - /bin/bash
       - -c
@@ -6304,7 +6304,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.03.0032-nightly@sha256:ef26fa85a683b0310b13e55fb042b54ace5b476f5b263e23b1de63e7a4c97591
+      image: ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
       command:
       - /bin/bash
       - -c
@@ -6318,7 +6318,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.9.5@sha256:1e596ddb97a7e6a4827b1dfc0718992b0c432416841a8a4c3dd3cd7491850c3c
+      image: ghcr.io/elfhosted/debridav:0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
       command:
       - /bin/bash
       - -c
@@ -7878,7 +7878,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.19.1@sha256:9a6f3a2ee33024b7c4db92ba493a2e2f6c36a6df714a2932e5cace606a648e76
+    tag: v0.19.2@sha256:5afb2393eb414fd7bb3fe151a053313b286f89a42a39a708939260b6ec5ce487
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7979,7 +7979,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.19.1@sha256:9a6f3a2ee33024b7c4db92ba493a2e2f6c36a6df714a2932e5cace606a648e76
+      image: ghcr.io/elfhosted/booklore:v0.19.2@sha256:5afb2393eb414fd7bb3fe151a053313b286f89a42a39a708939260b6ec5ce487
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -8014,7 +8014,7 @@ peertube:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/peertube
-    tag: v7.1.1@sha256:262fa9d1ff366da8a7c14fe60435f782c5eda9de10d54ac42482c5cb2d6bb065
+    tag: v7.2.0@sha256:9b9b7b01f9a2015cd52d951918001d3bd65b63d4d68b29dc8381ac77a085b250
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -8459,7 +8459,7 @@ audiobookbayautomated:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookbay-automated
-    tag: rolling@sha256:207f581bd9afd84f6c7e845973b538c766daa1f07b875ab7b73fbe2089a62e42
+    tag: rolling@sha256:1c44d86d4f1b6bc93368bc3f5132ea1a061df2a6db8b013ba6cb4ab81377cd6b
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10592,7 +10592,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.8.2@sha256:0e6018350256e59aed6dcc95684ae84b4ff440694f40173befc9eaf964e72e99
+    tag: 10.9.0@sha256:91c160804fca5a6927adb3d8243cfed7ce3f03e850014fa035bedd00ea6ab001
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -11872,7 +11872,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.142@sha256:ba810b0a6093b10d508609269ac1723481e9dfdc6aa10ff87a42be6b333b9d6c
+    tag: 0.4.143@sha256:aecb335aff53679e27c8066d3f7ad4674a9a5a533189fa25ecbef5a85ca9fc35
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12406,7 +12406,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1984@sha256:1d64e113762484a57763d2fd29c131931ecdadeec11a702b4326c48058d2c188
+    tag: 0.22.1987@sha256:eb17d634de00dbf7a7c42bc96e898d757ef9fc29b5508aac9b9a848a6c598190
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12810,7 +12810,7 @@ actual:
   enabled: false
   image:
     repository: ghcr.io/actualbudget/actual-server
-    tag: 25.5.0-alpine
+    tag: 25.6.0-alpine
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: actual
@@ -13466,7 +13466,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.77.3@sha256:452d90beb30c4f6261b2d81b984f5e0875459d1297b32a2ede00e33ca2936fcb
+    tag: 0.77.4@sha256:c51031b7d41252da965d94a28ce4d91d3387218c2946fcb45549baf215359cd0
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14199,7 +14199,7 @@ nuviostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/nuviostreams-dev
-    tag: rolling@sha256:87ec3d0d01efa2847d74b946a56389d2a553c4f0174a0bec2c99dd3b56beebb2
+    tag: rolling@sha256:67d30f0ec86fa24cda7ebc3c8c04115fb87e38062242066a54beeedc5ce67bc8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14412,7 +14412,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.22.7@sha256:d5d211664aa0b5956c64cc3108ea732358dc0a7888bb0b01c5f5caa1cdeecd4b
+    tag: v0.23.2@sha256:2072dc497fb33e8a2ab15468830a7453eef3ef25f36dac31eda199b1a959619e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14687,7 +14687,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.03.0032-nightly@sha256:ef26fa85a683b0310b13e55fb042b54ace5b476f5b263e23b1de63e7a4c97591
+    tag: 2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
@@ -15056,7 +15056,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.60@sha256:22b9c923a61bf91433036cfb912ba6d168030a248957eaeb10ca02e3397a07c2
+    tag: v0.6.61@sha256:55e8fb70ba6696354bde137dd1fa611d4b4f7abfd706cede28dcbb6e6bf52239
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15419,7 +15419,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.100.2@sha256:37db4c4e2c38376d91ba2a8983bb64c81c6e01d00550dbe922c060c917db28a4
+    tag: 4.100.3@sha256:8b678f3c9fd2bb07d1592268e7011c7e25fc71d96b3ee3eada7cfc28c0491715
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15666,7 +15666,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.10@sha256:40c658a266de26f35f611e8259eb980d0a90e390a3b686f7465173d7b6d2f542
+    tag: v0.3.11@sha256:85a9e6fedf10a885bbfb13d02573609bd319bd9399e6f134a2080acc800a5213
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15751,7 +15751,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.10@sha256:40c658a266de26f35f611e8259eb980d0a90e390a3b686f7465173d7b6d2f542
+      image: ghcr.io/elfhosted/pulsarr:v0.3.11@sha256:85a9e6fedf10a885bbfb13d02573609bd319bd9399e6f134a2080acc800a5213
       command:
       - /bin/ash
       - -c
@@ -15778,7 +15778,7 @@ dispatcharr:
   enabled: false
   image:
     repository: ghcr.io/dispatcharr/dispatcharr
-    tag: 0.5.1@sha256:d8f803cba3b49853abdffca7eaf35993c14a1baa5a7887958d41f388b3cab44c
+    tag: 0.5.2@sha256:445a263db1b813df839de19fd58ee1298485d71ca47c6f2333b124d58e1ff1fc
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15943,7 +15943,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.9.5@sha256:1e596ddb97a7e6a4827b1dfc0718992b0c432416841a8a4c3dd3cd7491850c3c
+    tag: 0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
