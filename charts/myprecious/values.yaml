@@ -13666,11 +13666,11 @@ mediafusion:
           name: tinyproxy-conf 
   resources:
     requests:
-      cpu: 50m
-      memory: 100Mi
+      cpu: 1m
+      memory: 150Mi
     limits:
       cpu: 100m
-      memory: 1Gi
+      memory: 256Mi
   ingress:
     main:
       enabled: false
