@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.386.1](https://github.com/elfhosted/myprecious/compare/v1.386.0...v1.386.1) (2025-06-04)
+
+
+### Bug Fixes
+
+* Last-minute fix for AIOStreams/Mediafusion NAT issue ([583b55d](https://github.com/elfhosted/myprecious/commit/583b55d065b8365eb866f4dbcf52c3f22921071e))
+
 ## [1.386.0](https://github.com/elfhosted/myprecious/compare/v1.385.0...v1.386.0) (2025-06-04)
 
 
