@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.387.0](https://github.com/elfhosted/myprecious/compare/v1.386.1...v1.387.0) (2025-06-04)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.6.1 ([162faf3](https://github.com/elfhosted/myprecious/commit/162faf3929938a130784589527de7d1773c21e32))
+
+
+### Bug Fixes
+
+* Roll back cli-debrid to fix bug in latest version, reduce load on MediaFusion startup ([51e9891](https://github.com/elfhosted/myprecious/commit/51e9891c5a19e25bf18a362e5b5e5b3b3459f721))
+
 ## [1.386.1](https://github.com/elfhosted/myprecious/compare/v1.386.0...v1.386.1) (2025-06-04)
 
 
