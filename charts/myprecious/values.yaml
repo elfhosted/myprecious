@@ -13634,8 +13634,8 @@ mediafusion:
     strategy:
     rollingUpdate:
       unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations      
+  # affinity: *standard_affinity
+  # tolerations: *standard_tolerations      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -14157,8 +14157,8 @@ aiostreams:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
+  # affinity: *standard_affinity
+  # tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
   resources:
