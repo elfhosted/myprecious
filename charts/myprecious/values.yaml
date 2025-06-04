@@ -129,6 +129,17 @@ standard_affinity: &standard_affinity
           - nodefinder # use nodefinder in the absence of zurg...
       topologyKey: "kubernetes.io/hostname"
 
+standard_anti_affinity: &standard_anti_affinity
+  podAntiAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+    - labelSelector:
+        matchExpressions:
+        - key: app.elfhosted.com/role
+          operator: In
+          values:
+          - nodefinder
+      topologyKey: "kubernetes.io/hostname"
+
 dedicated_affinity: &dedicated_affinity
   podAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
@@ -13634,8 +13645,8 @@ mediafusion:
     strategy:
     rollingUpdate:
       unavailable: 1
-  # affinity: *standard_affinity
-  # tolerations: *standard_tolerations      
+  affinity: *standard_anti_affinity
+  tolerations: *standard_tolerations      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -14157,8 +14168,8 @@ aiostreams:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  # affinity: *standard_affinity
-  # tolerations: *standard_tolerations
+  affinity: *standard_anti_affinity
+  tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
   resources:
