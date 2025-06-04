@@ -13645,7 +13645,7 @@ mediafusion:
     strategy:
     rollingUpdate:
       unavailable: 1
-  affinity: *standard_anti_affinity
+  affinity: *standard_anti_affinity 
   tolerations: *standard_tolerations      
   securityContext:
     seccompProfile:
