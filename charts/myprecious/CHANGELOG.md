@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.388.0](https://github.com/elfhosted/myprecious/compare/v1.387.0...v1.388.0) (2025-06-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.144 ([15defd6](https://github.com/elfhosted/myprecious/commit/15defd6e47307b8af1cc3328ac0ace8539303a50))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.62 ([afd8e6d](https://github.com/elfhosted/myprecious/commit/afd8e6d54a10501f6e7e269053f247afa64b7558))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.7 ([87d410b](https://github.com/elfhosted/myprecious/commit/87d410bfc712fe7ca5dc4290877f08f5f7abd6e7))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1992 ([0dae0d5](https://github.com/elfhosted/myprecious/commit/0dae0d5b0150d863dedd588d497bf75721e34c89))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.12 ([1454dea](https://github.com/elfhosted/myprecious/commit/1454dea90bff395999ea62d30a18b03eb32214bb))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.23.3 ([77dc5f2](https://github.com/elfhosted/myprecious/commit/77dc5f2c85c0d41a4325f0d7cc7df33fae843815))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.23.4 ([7fb3163](https://github.com/elfhosted/myprecious/commit/7fb31637c95a9716d87705b922608707847af400))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.23.5 ([926303b](https://github.com/elfhosted/myprecious/commit/926303becaa3c59b6870f3417a6fed31838c08f2))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.05.0031-nightly ([18e4cb9](https://github.com/elfhosted/myprecious/commit/18e4cb9017987d3f159e496cd6d56b039b81cb88))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/nuviostreams-dev:rolling docker digest to 7ebc0e5 ([d1f8bcf](https://github.com/elfhosted/myprecious/commit/d1f8bcfb036c73c1f8ab3b6ac35fc5435ccb0942))
+
 ## [1.387.0](https://github.com/elfhosted/myprecious/compare/v1.386.1...v1.387.0) (2025-06-04)
 
 
