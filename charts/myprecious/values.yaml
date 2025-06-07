@@ -2793,7 +2793,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.5.7@sha256:bf9eca69a3d0a4728c2a73f771a5386a95458de65593612b25fa0008f4651a29
+    tag: 7.5.11@sha256:9535c86ee38930277b9c3feb32822a658f122dd0128feb24e0110f3d373c5168
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7878,7 +7878,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.19.2@sha256:5afb2393eb414fd7bb3fe151a053313b286f89a42a39a708939260b6ec5ce487
+    tag: v0.22.0@sha256:47a9907dcc7213273af78bac8b31c7ff75aa613757aa3a16447c7835d3dbcacc
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7979,7 +7979,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.19.2@sha256:5afb2393eb414fd7bb3fe151a053313b286f89a42a39a708939260b6ec5ce487
+      image: ghcr.io/elfhosted/booklore:v0.22.0@sha256:47a9907dcc7213273af78bac8b31c7ff75aa613757aa3a16447c7835d3dbcacc
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -11872,7 +11872,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.144@sha256:52009796880a52aefa64da196ae094de66f8a9f135ea3579b2e9b8e00ab36b7d
+    tag: 0.4.146@sha256:cc0959b2d80aff0a434f7ef34d1216ee41c555ed6f21a7e73f4b04fa9b95b20a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12406,7 +12406,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1992@sha256:b353a0159605ab48b53dd87844864425f2ec1fa8072f24ccaa035b4cb80a1128
+    tag: 0.22.1995@sha256:4f58f20526c59f0b3a35cad23db2b35e397873dc997b7294e6460d60186a95ca
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13181,7 +13181,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v2.4.4@sha256:ea4d87db35b74d44fd57a7f600249efa22339c5d96c19084b4239efc8b20fb20
+    tag: v2.5.0@sha256:a02574a5522211a61d81b38cd48887b3f4c4bb697a6329931b682b3765d1d51a
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -13466,7 +13466,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.77.4@sha256:c51031b7d41252da965d94a28ce4d91d3387218c2946fcb45549baf215359cd0
+    tag: 0.78.0@sha256:20fde35ca337ff5fb1f369ae20fe6a599abb1ebc055c02ed1375ec4ca970dd53
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14414,7 +14414,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.23.5@sha256:b6ae22ca29dea6615c7472dc53c97b9c0f86f94fad7b2e15f1d60f5cedf5ae91
+    tag: v0.24.1@sha256:a609af1484811c546a1951e70232a78d7c80781d285ff2de7f657e986ab14e6c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15060,7 +15060,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.62@sha256:f8de148e097fd38532cef97755647582719de7f5032fe0932d49cdfe95066b52 
+    tag: v0.6.65@sha256:50036a4dd61fe6b3458eeff7d7faa9f61f309c3979c552fba19bd9c43a8339c6 
   priorityClassName: tenant-normal
   controller:
     annotations:
