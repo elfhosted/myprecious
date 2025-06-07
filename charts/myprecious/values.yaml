@@ -14253,12 +14253,14 @@ nuviostreams:
   envFrom:
   - configMapRef:
       name: nuviostreams-env   
+  - secretRef:
+      name: nuviostreams-env         
   - configMapRef:
       name: elfbot-nuviostreams
       optional: true
   additionalContainers:
     proxy:
-      image: ghcr.io/elfhosted/simple-proxy@rolling@sha256:a2ea32012ca4a04fdb185a032ac95fd76133acafb8dc75a52fa18c9bbc6d703e
+      image: ghcr.io/elfhosted/simple-proxy:rolling@sha256:a2ea32012ca4a04fdb185a032ac95fd76133acafb8dc75a52fa18c9bbc6d703e
 
 stremify:
   enabled: false
