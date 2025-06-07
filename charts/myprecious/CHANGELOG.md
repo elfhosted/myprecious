@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.390.0](https://github.com/elfhosted/myprecious/compare/v1.389.0...v1.390.0) (2025-06-07)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.20.1 ([f4d3bf1](https://github.com/elfhosted/myprecious/commit/f4d3bf105983b13ed50ea3eb188ef4270277409c))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.146 ([0a61456](https://github.com/elfhosted/myprecious/commit/0a6145632207a101b1f6e27099036355135f1a56))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.65 ([50d4f59](https://github.com/elfhosted/myprecious/commit/50d4f598e9bf15175cfa61eb654a162964434895))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.5.1 ([7778018](https://github.com/elfhosted/myprecious/commit/77780188a0f3b23959d973c5596194cf11fed20e))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.10 ([0587a8e](https://github.com/elfhosted/myprecious/commit/0587a8eefe04825603cdbecc9158ba07fd401491))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.11 ([f0cc1c9](https://github.com/elfhosted/myprecious/commit/f0cc1c9d36d2ae266ead92ac33531018d5c651a0))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.12 ([8d63ac8](https://github.com/elfhosted/myprecious/commit/8d63ac8b040b2129560c29439485cb083140a977))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.6.0 ([4be2dde](https://github.com/elfhosted/myprecious/commit/4be2ddefc9c0c826b45de18d3b9e1254fddef029))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1997 ([6f86263](https://github.com/elfhosted/myprecious/commit/6f862635f56b93dab46cb46e23b70e93c932fc2a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.78.0 ([e067ab8](https://github.com/elfhosted/myprecious/commit/e067ab8a8a26cad70ce5644d1047e75369e6af8c))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.78.1 ([80f18cc](https://github.com/elfhosted/myprecious/commit/80f18cc4527c1760de57fadb10bba47a4e15271d))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.78.2 ([52e2770](https://github.com/elfhosted/myprecious/commit/52e27700feb318c97a3617e6ba7f3b878b9a8574))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.25.0 ([51afebd](https://github.com/elfhosted/myprecious/commit/51afebd695d71b80a57516218a81a0cce9231c8f))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/aiostreams:v1.22.0 docker digest to fa6612e ([6da0de4](https://github.com/elfhosted/myprecious/commit/6da0de4ffd1f0110a8fbfb4e50c83dc9e56eb32c))
+* **app:** update ghcr.io/elfhosted/cinesync:v2.4.1 docker digest to df290e6 ([2e0c23b](https://github.com/elfhosted/myprecious/commit/2e0c23b643727f9e4f0241bad76b34acd7d7446f))
+* Set default TMDB key for webstreamr ([e5e1845](https://github.com/elfhosted/myprecious/commit/e5e1845018f152ebad6fe723359a3e4731d760e6))
+
 ## [1.389.0](https://github.com/elfhosted/myprecious/compare/v1.388.0...v1.389.0) (2025-06-06)
 
 
