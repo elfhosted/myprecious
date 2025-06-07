@@ -4,9 +4,28 @@ kind: ConfigMap
 metadata:
   name: nuviostreams-env
 data:
-  XPRIME_PROXY_URL: http:://vpnproxy:8888
-  XPRIME_USE_PROXY: "true"
-  ENABLE_XPRIME_PROVIDER: "true"
+  DISABLE_CACHE: "false"
+  DISABLE_STREAM_CACHE: "false"
+  USE_REDIS_CACHE: "false"
+
+  SHOWBOX_PROXY_URL_VALUE: http://localhost:3000/?destination=
+  SHOWBOX_USE_ROTATING_PROXY: "false"
+
+  VIDSRC_PROXY_URL:
+  VIDZEE_PROXY_URL:
+  SOAPERTV_PROXY_URL: 
+  HOLLYMOVIEHD_PROXY_URL: 
+  XPRIME_PROXY_URL: 
+  CUEVANA_PROXY_URL: http://localhost:3000/?destination=
+  CUEVANA_M3U8_PROXY_URL: https://{{ .Release.Name }}-nuviostreams-proxy.{{ .Values.dns_domain }}/m3u8-proxy
+  XPRIME_USE_PROXY:
+
+  ENABLE_VIDZEE_PROVIDER: "true"
   ENABLE_HOLLYMOVIEHD_PROVIDER: "true"
+  ENABLE_XPRIME_PROVIDER: "true"
   ENABLE_CUEVANA_PROVIDER: "true"
+
+  USE_SCRAPER_API: "true"
+  HIANIME_SERVER: http://150.230.133.192:8082/fetch-hianime
+
 {{ end }}
