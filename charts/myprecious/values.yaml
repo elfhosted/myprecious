@@ -14460,6 +14460,8 @@ webstreamr:
   envFrom:
   - configMapRef:
       name: webstreamr-env
+  - secretRef:
+      name: webstreamr-env      
   - configMapRef:
       name: elfbot-webstreamr
       optional: true
