@@ -6961,7 +6961,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.19.3-vaapi
+    tag: 0.20.1-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9203,7 +9203,7 @@ cinesync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/cinesync
-    tag: v2.4.1@sha256:701497547924a2923e696d9ac38bec1ac6d58b9c23aa1c8a519c61ff541d5f85
+    tag: v2.4.1@sha256:df290e660ed55d54c910db0fac22984c86891e34fb09e9e9c256614c70a0c5d0
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -14152,7 +14152,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v1.22.0@sha256:21ea0e748e85b36c2b3687e0eba3938809bdd309844e99b46ca9ce3d28a845fd
+    tag: v1.22.0@sha256:fa6612e6e91448b72dbb2bed41194d65005183ff797fa6e892c8d1e83805eab2
   priorityClassName: tenant-normal
   controller:
     annotations:
