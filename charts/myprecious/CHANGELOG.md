@@ -1,5 +1,54 @@
 # Changelog
 
+## [1.389.0](https://github.com/elfhosted/myprecious/compare/v1.388.0...v1.389.0) (2025-06-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.145 ([a1d4520](https://github.com/elfhosted/myprecious/commit/a1d4520cbd9caf13dacb26b1677c73d42cf32b7a))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.20.0 ([632f475](https://github.com/elfhosted/myprecious/commit/632f47515a33f5f4930da5d8a2745272f4279ec0))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.21.0 ([eb10cdc](https://github.com/elfhosted/myprecious/commit/eb10cdc82aea01522155477c7ad5b76637c3a1f5))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.22.0 ([63119c9](https://github.com/elfhosted/myprecious/commit/63119c97f08b947d7f37d7b9c38b29d0d2c23b9b))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.63 ([1e83db8](https://github.com/elfhosted/myprecious/commit/1e83db830bce360f3eafceca18019f6833741c45))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.64 ([4ee5850](https://github.com/elfhosted/myprecious/commit/4ee58508aa7f1f3d53d984a5e38617e3f9b95029))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.5.0 ([35433f7](https://github.com/elfhosted/myprecious/commit/35433f7b4e9b5afb819dce21a3e0c337b1d8893a))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.8 ([337f34e](https://github.com/elfhosted/myprecious/commit/337f34e5e9cbe71aba0ee10aa6282aef58f308be))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1995 ([adc116e](https://github.com/elfhosted/myprecious/commit/adc116e2b50f3a081fd7a4989611c6519760f743))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.24.0 ([6e16950](https://github.com/elfhosted/myprecious/commit/6e16950410c90155e6a03573428966cd51908d5c))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.24.1 ([174eed2](https://github.com/elfhosted/myprecious/commit/174eed2db3ba36e96c1eef57a9caf5fe9d623fa9))
+
+## [1.388.0](https://github.com/elfhosted/myprecious/compare/v1.387.0...v1.388.0) (2025-06-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.144 ([15defd6](https://github.com/elfhosted/myprecious/commit/15defd6e47307b8af1cc3328ac0ace8539303a50))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.62 ([afd8e6d](https://github.com/elfhosted/myprecious/commit/afd8e6d54a10501f6e7e269053f247afa64b7558))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.5.7 ([87d410b](https://github.com/elfhosted/myprecious/commit/87d410bfc712fe7ca5dc4290877f08f5f7abd6e7))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.1992 ([0dae0d5](https://github.com/elfhosted/myprecious/commit/0dae0d5b0150d863dedd588d497bf75721e34c89))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.12 ([1454dea](https://github.com/elfhosted/myprecious/commit/1454dea90bff395999ea62d30a18b03eb32214bb))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.23.3 ([77dc5f2](https://github.com/elfhosted/myprecious/commit/77dc5f2c85c0d41a4325f0d7cc7df33fae843815))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.23.4 ([7fb3163](https://github.com/elfhosted/myprecious/commit/7fb31637c95a9716d87705b922608707847af400))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.23.5 ([926303b](https://github.com/elfhosted/myprecious/commit/926303becaa3c59b6870f3417a6fed31838c08f2))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.05.0031-nightly ([18e4cb9](https://github.com/elfhosted/myprecious/commit/18e4cb9017987d3f159e496cd6d56b039b81cb88))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/nuviostreams-dev:rolling docker digest to 7ebc0e5 ([d1f8bcf](https://github.com/elfhosted/myprecious/commit/d1f8bcfb036c73c1f8ab3b6ac35fc5435ccb0942))
+
+## [1.387.0](https://github.com/elfhosted/myprecious/compare/v1.386.1...v1.387.0) (2025-06-04)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.6.1 ([162faf3](https://github.com/elfhosted/myprecious/commit/162faf3929938a130784589527de7d1773c21e32))
+
+
+### Bug Fixes
+
+* Roll back cli-debrid to fix bug in latest version, reduce load on MediaFusion startup ([51e9891](https://github.com/elfhosted/myprecious/commit/51e9891c5a19e25bf18a362e5b5e5b3b3459f721))
+
 ## [1.386.1](https://github.com/elfhosted/myprecious/compare/v1.386.0...v1.386.1) (2025-06-04)
 
 

@@ -2793,7 +2793,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.5.6@sha256:833b71ffe306bb903f0dc5cfd5219df5469013033e2214686bf88a47bc52bf5a
+    tag: 7.6.0@sha256:d3e1d875ac64177fe7fb2dbb93a1cf9cf0e92712da3f178e9daf0f20ac16dbd6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5730,7 +5730,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.05.0031-nightly@sha256:262addd0d8564f946a3b6ed6b39ed7c287237f4b937ddc8c6e13b7d41c3e2a0d
       command:
       - /bin/bash
       - -c
@@ -6100,7 +6100,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.05.0031-nightly@sha256:262addd0d8564f946a3b6ed6b39ed7c287237f4b937ddc8c6e13b7d41c3e2a0d
       command:
       - /bin/bash
       - -c
@@ -6304,7 +6304,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.05.0031-nightly@sha256:262addd0d8564f946a3b6ed6b39ed7c287237f4b937ddc8c6e13b7d41c3e2a0d
       command:
       - /bin/bash
       - -c
@@ -7878,7 +7878,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.19.2@sha256:5afb2393eb414fd7bb3fe151a053313b286f89a42a39a708939260b6ec5ce487
+    tag: v0.22.0@sha256:47a9907dcc7213273af78bac8b31c7ff75aa613757aa3a16447c7835d3dbcacc
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7979,7 +7979,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.19.2@sha256:5afb2393eb414fd7bb3fe151a053313b286f89a42a39a708939260b6ec5ce487
+      image: ghcr.io/elfhosted/booklore:v0.22.0@sha256:47a9907dcc7213273af78bac8b31c7ff75aa613757aa3a16447c7835d3dbcacc
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -11872,7 +11872,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.143@sha256:aecb335aff53679e27c8066d3f7ad4674a9a5a533189fa25ecbef5a85ca9fc35
+    tag: 0.4.146@sha256:cc0959b2d80aff0a434f7ef34d1216ee41c555ed6f21a7e73f4b04fa9b95b20a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12406,7 +12406,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.1987@sha256:eb17d634de00dbf7a7c42bc96e898d757ef9fc29b5508aac9b9a848a6c598190
+    tag: 0.22.1997@sha256:92b217e745e832bf25fc17a78086d5fdbf82981254cf0550ad8743bce6536ef2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13181,7 +13181,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v2.4.4@sha256:ea4d87db35b74d44fd57a7f600249efa22339c5d96c19084b4239efc8b20fb20
+    tag: v2.5.1@sha256:710931848c0a05ba8f3560a834b104cda588af702dad8bc824d58abc10fd0b6f
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -13466,7 +13466,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.77.4@sha256:c51031b7d41252da965d94a28ce4d91d3387218c2946fcb45549baf215359cd0
+    tag: 0.78.2@sha256:bb3558af2b9741a5d501fb46a24a9f3c3820b88a38582a5c7db008c6976eaa27
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14360,7 +14360,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.23.2@sha256:2072dc497fb33e8a2ab15468830a7453eef3ef25f36dac31eda199b1a959619e
+    tag: v0.25.0@sha256:87599f7d24b6b9875656d44fb8b628843c201e1ef507dbb38b38ba99118450ee
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14406,6 +14406,8 @@ webstreamr:
   envFrom:
   - configMapRef:
       name: webstreamr-env
+  - secretRef:
+      name: webstreamr-env      
   - configMapRef:
       name: elfbot-webstreamr
       optional: true
@@ -14635,7 +14637,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.05.14.0031-nightly@sha256:513bcc2be2a9fb8b8df7fc458f76747bebcc884776bfbfd4393e16d61b2c1227
+    tag: 2025.06.05.0031-nightly@sha256:262addd0d8564f946a3b6ed6b39ed7c287237f4b937ddc8c6e13b7d41c3e2a0d
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
@@ -15004,7 +15006,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.60@sha256:22b9c923a61bf91433036cfb912ba6d168030a248957eaeb10ca02e3397a07c2
+    tag: v0.6.65@sha256:50036a4dd61fe6b3458eeff7d7faa9f61f309c3979c552fba19bd9c43a8339c6 
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15614,7 +15616,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.11@sha256:85a9e6fedf10a885bbfb13d02573609bd319bd9399e6f134a2080acc800a5213
+    tag: v0.3.12@sha256:acae4560777c81c9e113f4b0773d8350adaf0ed3a253e7b4ef258410506f9055
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15699,7 +15701,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.11@sha256:85a9e6fedf10a885bbfb13d02573609bd319bd9399e6f134a2080acc800a5213
+      image: ghcr.io/elfhosted/pulsarr:v0.3.12@sha256:acae4560777c81c9e113f4b0773d8350adaf0ed3a253e7b4ef258410506f9055
       command:
       - /bin/ash
       - -c
