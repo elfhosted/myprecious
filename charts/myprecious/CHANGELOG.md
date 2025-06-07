@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.391.0](https://github.com/elfhosted/myprecious/compare/v1.390.0...v1.391.0) (2025-06-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.13 ([858118a](https://github.com/elfhosted/myprecious/commit/858118ac8b36fc543f4de1340a75bbc165b57b9a))
+
 ## [1.390.0](https://github.com/elfhosted/myprecious/compare/v1.389.0...v1.390.0) (2025-06-07)
 
 
