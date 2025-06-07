@@ -14,6 +14,10 @@ spec:
     targetPort: 7777
     protocol: TCP
     name: http
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+    name: simple-proxy
   selector:
     app.kubernetes.io/name: nuviostreams
     app.kubernetes.io/instance: {{ .Release.Name }}
