@@ -8134,6 +8134,10 @@ peertube:
       type: emptyDir
       volumeSpec:
         medium: Memory
+    data-tmp:
+      enabled: "true"
+      mountPath: /data/tmp
+      type: emptyDir      
     render-device:
       enabled: "true"
       type: hostPath
