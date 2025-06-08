@@ -8099,6 +8099,14 @@ peertube:
           timeoutSeconds: 10          
   persistence:
     <<: *storagemounts
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /data/logs
+      subPath: peertube
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
     config:
       enabled: true
       type: custom
