@@ -4,14 +4,13 @@ kind: ConfigMap
 metadata:
   name: peertube-env
 data:
-  NODE_CONFIG_DIR: /config
   # Database / Postgres service configuration
 
   PEERTUBE_DB_USERNAME: peertube
   # PEERTUBE_DB_PASSWORD: set in secret
   PEERTUBE_DB_SSL: "false"
   # Default to Postgres service name "postgres" in docker-compose.yml
-  PEERTUBE_DB_HOSTNAME: peertube
+  PEERTUBE_DB_HOSTNAME: localhost
 
   # PeerTube server configuration
   # If you test PeerTube in local: use "peertube.localhost" and add this domain to your host file resolving on 127.0.0.1
@@ -27,4 +26,7 @@ data:
   PEERTUBE_SIGNUP_ENABLED: "false"
   PEERTUBE_TRANSCODING_ENABLED: "true"
   PEERTUBE_CONTACT_FORM_ENABLED: "true"
+
+
+  
 {{ end }}
