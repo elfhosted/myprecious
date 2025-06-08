@@ -22,12 +22,7 @@
   "ignoreTests": false,
   "packageRules": [
     {
-      "matchPackageNames": ["ghcr.io/elfhosted/plex"],
-      "versioning": "loose",
-      "automerge": true
-    },
-    {
-      "matchPackageNames": ["ghcr.io/elfhosted/zurg-rc"],
+      "matchPackageNames": ["ghcr.io/elfhosted/zurg-rc","ghcr.io/elfhosted/wizarr","ghcr.io/elfhosted/plex"],
       "versioning": "loose",
       "automerge": false
     },    
