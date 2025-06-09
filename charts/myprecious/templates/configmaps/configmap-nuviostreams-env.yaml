@@ -20,6 +20,11 @@ data:
   CUEVANA_M3U8_PROXY_URL: https://{{ .Release.Name }}-nuviostreams-proxy.{{ .Values.dns_domain }}/m3u8-proxy
   XPRIME_USE_PROXY:
 
+  SHOWBOX_PROXY_URL_VALUE: http://localhost:3000/?destination=
+  SOAPERTV_PROXY_URL: http://localhost:3000/?destination=
+  VIDSRC_PROXY_URL: http://localhost:3000/?destination=
+  SHOWBOX_USE_ROTATING_PROXY: "false"  
+
   ENABLE_VIDZEE_PROVIDER: "true"
   ENABLE_HOLLYMOVIEHD_PROVIDER: "true"
   ENABLE_XPRIME_PROVIDER: "true"
