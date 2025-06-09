@@ -598,87 +598,6 @@ bootstrap_elfbot: &bootstrap_elfbot
   resources: *default_resources
   securityContext: *default_securitycontext
 
-storagehub_bootstrap: &storagehub_bootstrap
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-    set -e
-
-    # Allows us to use app.elfhosted.com/name, but fall back to app.kubernetes.io/name if the former doesn't exist
-    if [[ -z "$ELF_APP_NAME" ]]; then
-      ELF_APP_NAME=$K8S_APP_NAME
-    fi
-
-    # look for commands - we match specific names in order of least-destructive
-    TIMESTAMP_NOW=$(date +%s)
-    if [[ -f /etc/elfbot/pause ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/pause)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=pause
-      fi
-    fi
-
-    # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=backup
-      fi
-    fi
-
-    # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/reset && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/reset)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=reset
-      fi
-    fi
-
-    case $COMMAND in
-
-      "pause")
-        echo "Recent pause command found, sleeping 5m.."
-        sleep 300
-        ;;
-
-      "reset")
-        echo "Recent reset command found, resetting"
-        rm -rf /config/${ELF_APP_NAME}/*
-        ;;
-
-      "backup")
-        echo "Recent backup command found, backing up to /storage/elfstorage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
-        mkdir -p /storage/elfstorage/backup
-        TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
-        cp -rfp /config/${ELF_APP_NAME} /storage/elfstorage/backup/$ELF_APP_NAME-$TIMESTAMP
-        ;;
-
-    esac
-
-    if [[ ! -f /config/${ELF_APP_NAME}/i-am-bootstrapped ]]
-    then
-      echo "Bootstrapping from goldilocks config..."
-      s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/${ELF_APP_NAME}/
-      touch /config/${ELF_APP_NAME}/i-am-bootstrapped
-    fi
-
-  volumeMounts:
-  - mountPath: /etc/elfbot
-    name: elfbot
-  - mountPath: /config
-    name: config
-  - mountPath: /tmp
-    name: tmp
-  env: *bootstrap_env
-  resources: *default_resources
-  securityContext: *default_securitycontext
-
 # Eventually we'll remove the old one, and rename this to bootstrap
 bootstrap_migration: &bootstrap_migration
   image: *tooling_image
@@ -820,8 +739,6 @@ bazarr4kexposed:
 qbittorrentexposed:
   enabled: false
 rdtclientexposed:
-  enabled: false
-rdtclientalldebridexposed:
   enabled: false
 delugeexposed:
   enabled: false
@@ -3416,11 +3333,9 @@ privatebin:
     requests:
       cpu: 0m
       memory: 64Mi
-      ephemeral-storage: 50Mi
     limits:
       cpu: 100m
       memory: 128Mi
-      ephemeral-storage: 100Mi # a safety net against node ephemeral space exhaustion
   config:
     main:
       discussion: false
@@ -10157,7 +10072,6 @@ rcloneui:
       enabled: true
       type: emptyDir
       mountPath: /home/elfie/.cache
-      # volumeSpec: *volumespec_ephemeral_volume_10g    
     mount:
       enabled: true
       type: emptyDir
@@ -10433,173 +10347,6 @@ webdav: &webdav
     limits:
       cpu: 150m
       memory: 512Mi
-
-storagehub:
-  enabled: false # down for now
-  podLabels:
-    app.elfhosted.com/name: storagehub
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "storagehub-scripts,storagehub-env"
-      secret.reloader.stakater.com/reload: ",storagehub-config,storagehub-env"
-  # affinity:
-  #   podAffinity:
-  #     # prefer to be located with zurg, if tolerations permit
-  #     preferredDuringSchedulingIgnoredDuringExecution:
-  #     - weight: 100
-  #       podAffinityTerm:
-  #         labelSelector:
-  #           matchExpressions:
-  #           - key: app.elfhosted.com/name
-  #             operator: In
-  #             values:
-  #             - zurg
-  #         topologyKey: "kubernetes.io/hostname"
-  # tolerations:
-  # - key: node-role.elfhosted.com/download-only
-  #   operator: Exists
-  # - key: node-role.elfhosted.com/dedicated
-  #   operator: Exists
-  priorityClassName: tenant-critical
-  image:
-    repository: itsthenetwork/nfs-server-alpine
-    tag: latest
-  env:
-    SHARED_DIRECTORY: /export
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    privileged: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    # # this is an ephemeral volume
-    # storage:
-    #   enabled: true
-    #   type: custom
-    #   mountPath: /storage
-    #   volumeSpec: *volumespec_ephemeral_volume_50g
-    # these are the persistent volumes we support currently
-    # needed for the migration
-
-    rclonemountrealdebridzurg: *rclonemountrealdebridzurg
-    # this is the old symlinks on HDD
-    # symlinks: *symlinks # these only get mounted on storagehub. Everything else accesses symlinks **through** storagehub
-    # samba config
-    # config:
-    #   enabled: "true"
-    #   subPath: "container.json"
-    #   mountPath: /etc/samba/container.json
-    #   type: "custom"
-    #   volumeSpec:
-    #     secret:
-    #       secretName: storagehub-config
-    # storagehub-scripts:
-    #   enabled: "true"
-    #   type: "custom"
-    #   volumeSpec:
-    #     configMap:
-    #       name: storagehub-scripts
-    #       defaultMode: 0755
-    tmp:
-      enabled: true
-      type: emptyDir
-      mountPath: /tmp
-      sizeLimit: 1Gi
-  service:
-    main:
-      enabled: false # necessary for probes
-      ports:
-        http:
-          port: 2049
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 0m
-      memory: 10Mi
-    limits:
-      cpu: 1
-      memory: 512Mi
-  # envFrom:
-  # - configMapRef:
-  #     name: storagehub-env
-  # - secretRef:
-  #     name: storagehub-env
-  # initContainers:
-    # setup:
-    #   image: *tooling_image
-    #   imagePullPolicy: IfNotPresent
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     # don't error on failure
-    #     # not doing this yet
-    #     # /storagehub-scripts/restore.sh
-
-    #     echo nothing
-    #     # if [[ ! -f /storage/symlinks/i-was-migrated-to-storagehub ]]
-    #     # then
-    #     #   if [[ ! -z "$(ls -A /migration)" ]]
-    #     #   then
-    #     #     echo "Tar-migrating from /migration/..."
-    #     #     tar -cf - -C /migration/ . | tar xvmf - -C /storage/symlinks/
-    #     #     touch /storage/symlinks/i-was-migrated-to-storagehub
-    #     #   fi
-    #     # fi
-
-    #   envFrom:
-    #   - configMapRef:
-    #       name: storagehub-env
-    #   - configMapRef:
-    #       name: elfhosted-user-config
-    #   - secretRef:
-    #       name: storagehub-env
-    #   volumeMounts:
-    #   - mountPath: /storagehub-scripts
-    #     name: storagehub-scripts
-    #   - mountPath: /home/elfie
-    #     name: tmp
-    #   - mountPath: /migration
-    #     name: migration
-    #   - mountPath: /storage/symlinks
-    #     name: symlinks
-    #   resources: *default_resources
-    #   securityContext: *default_securitycontext
-  # additionalContainers:
-  #   backup-on-termination:
-  #     image: *tooling_image
-  #     command:
-  #     - /usr/bin/dumb-init
-  #     - /bin/bash
-  #     - -c
-  #     - /storagehub-scripts/backup.sh
-  #     envFrom:
-  #     - configMapRef:
-  #         name: storagehub-env
-  #     - configMapRef:
-  #         name: elfhosted-user-config
-  #     - secretRef:
-  #         name: storagehub-env
-  #     volumeMounts:
-  #     - mountPath: /storagehub-scripts
-  #       name: storagehub-scripts
-  #     - mountPath: /home/elfie
-  #       name: tmp
-  #     - mountPath: /ephemeral
-  #       name: ephemeral
-  #     # need a folder here for each app. what a pita
-  #     - mountPath: /persistent/plex
-  #       name: persistent-plex
-  #     - mountPath: /symlinks
-  #       name: symlinks
-  # terminationGracePeriodSeconds: "3600" # take up to an hour to backup
 
 webdavplus:
   enabled: false
@@ -11157,163 +10904,6 @@ rdtclient: &app_rdtclient
         subPath: rdtclient
       - mountPath: /tmp
         name: tmp
-
-rdtclientpremiumize:
-  enabled: false
-  <<: *app_rdtclient
-  podLabels:
-    app.elfhosted.com/name: rdtclient-premiumize
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient-premiumize"  
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /data/db
-      subPath: rdtclient-premiumize
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-rdtclient-premiumize
-          optional: true
-    download: # in case users use /tmp
-      enabled: true
-      type: custom
-      mountPath: /data/downloads
-      volumeSpec: *volumespec_ephemeral_volume_1g  
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: rdtclient-premiumize
-      - mountPath: /tmp
-        name: tmp
-
-rdtclienttorbox:
-  enabled: false
-  <<: *app_rdtclient
-  podLabels:
-    app.elfhosted.com/name: rdtclient-torbox
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient-torbox"  
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /data/db
-      subPath: rdtclient-torbox
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-rdtclient-torbox
-          optional: true
-    download: # in case users use /tmp
-      enabled: true
-      type: custom
-      mountPath: /data/downloads
-      volumeSpec: *volumespec_ephemeral_volume_1g  
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: rdtclient-torbox
-      - mountPath: /tmp
-        name: tmp
-
-# RDTClient for AllDebrid
-rdtclientalldebrid:
-  enabled: false
-  <<: *app_rdtclient
-  podLabels:
-    app.elfhosted.com/name: rdtclient-alldebrid
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient-alldebrid"  
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /data/db
-      subPath: rdtclient-alldebrid
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-rdtclient-alldebrid
-          optional: true
-    download: # in case users use /tmp
-      enabled: true
-      type: custom
-      mountPath: /data/downloads
-      volumeSpec: *volumespec_ephemeral_volume_1g  
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: rdtclient-alldebrid
-      - mountPath: /tmp
-        name: tmp      
-  addons:
-    vpn:
-      enabled: true
-      gluetun:
-        image:
-          repository: ghcr.io/elfhosted/gluetun
-          tag: 3.40.0@sha256:59b0cc8a9412b9a4645d1f12dff0daba80b8be88acd1b5d1a0fb6dfa625eb9a5
-      envFrom:
-      - configMapRef:
-          name: gluetun-config
-      env:
-        DOT: "off"
-        FIREWALL_INPUT_PORTS: "6500"
-        HTTP_CONTROL_SERVER_PORT: "8000"
-        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
-        HEALTH_SERVER_ADDRESS: "127.0.0.1:9991"
-      securityContext:
-        privileged: true
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
 
 jdownloader:
   enabled: false
@@ -13704,9 +13294,10 @@ davio:
     tmp: *tmp
     config:
       enabled: true
-      type: custom
       mountPath: /config
-      volumeSpec: *volumespec_ephemeral_volume_1g
+      type: emptyDir
+      volumeSpec:
+        medium: Memory      
   resources:
     requests:
       cpu: 0m

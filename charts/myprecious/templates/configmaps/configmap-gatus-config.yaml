@@ -1020,39 +1020,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.rdtclientalldebrid.enabled }}
-      - name: rdtclient-alldebrid
-        group: download-media
-        url: "http://rdtclient-alldebrid:6500"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}      
-
-      {{ if .Values.rdtclienttorbox.enabled }}
-      - name: rdtclient-torbox
-        group: download-media
-        url: "http://rdtclient-torbox:6500"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.rdtclientpremiumize.enabled }}
-      - name: rdtclient-premiumize
-        group: download-media
-        url: "http://rdtclient-premiumize:6500"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.debridav.enabled }}
       - name: debridav
         group: download-media

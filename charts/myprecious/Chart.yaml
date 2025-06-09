@@ -15,7 +15,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.391.6-pre-02
+version: 1.391.6-pre-03
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -522,21 +522,6 @@ dependencies:
     version: ~0.0.1
     repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
-    version: ~0.2.1
-    condition: rdtclientalldebrid.enabled
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: rdtclientalldebrid
-  - name: app-template
-    version: ~0.2.1
-    condition: rdtclienttorbox.enabled
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: rdtclienttorbox
-  - name: app-template
-    version: ~0.2.1
-    condition: rdtclientpremiumize.enabled
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: rdtclientpremiumize
-  - name: app-template
     condition: debridav.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
@@ -665,10 +650,6 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: webdav
-  # - name: app-template
-  #   version: ~0.2.1
-  #   repository: oci://ghcr.io/elfhosted/charts
-  #   alias: storagehub
   - name: app-template
     condition: scannarr.enabled
     version: ~0.2.1
