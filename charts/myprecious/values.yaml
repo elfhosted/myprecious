@@ -9791,7 +9791,7 @@ plexytrack:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 8000
+          port: 5000
   envFrom:
   - configMapRef:
       name: elfbot-pleyxtrack
