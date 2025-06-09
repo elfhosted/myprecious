@@ -19,8 +19,8 @@ data:
   PEERTUBE_WEBSERVER_PORT: "443"
   PEERTUBE_WEBSERVER_HTTPS: "true"
 
-  # PEERTUBE_REDIS_HOSTNAME: redis-headless
-  # PEERTUBE_REDIS_PORT: "6379"
+  PEERTUBE_REDIS_HOSTNAME: localhost
+  PEERTUBE_REDIS_PORT: "6379"
 
   # /!\ Prefer to use the PeerTube admin interface to set the following configurations /!\
   PEERTUBE_SIGNUP_ENABLED: "false"

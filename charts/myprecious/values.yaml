@@ -8210,6 +8210,19 @@ peertube:
         limits:
           cpu: 500m
           memory: 1Gi
+    redis:
+      image: docker.io/redis:7.4-alpine@sha256:ee9e8748ace004102a267f7b8265dab2c618317df22507b89d16a8add7154273
+      envFrom:
+      - configMapRef:
+          name: peertube-env
+      resources:
+        requests:
+          cpu: 15m
+          memory: 200Mi
+        limits:
+          cpu: 500m
+          memory: 4Gi
+
 
 audiobookshelf:
   enabled: false
