@@ -3667,7 +3667,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:e0309a3197956ce4556edbfd6fc280d665ea88dcbb23bd9a5593cf29a9357fad
+    tag: rolling@sha256:9c20be0b878336c20969fc47b4e705b49030e2b5ba02c6ea5ebf2882c22522bc
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
@@ -4957,7 +4957,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.12.3.4654@sha256:dc353aa946047d93c1f2754940903551e48fc2eee74577e1a0647ca8697cf3bd  
+    tag: 2.12.4.4658@sha256:a7ce75779f27abd0502d05242e337ef0871370d349e32fac456e52ea108e90fe  
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5111,7 +5111,7 @@ lidarr:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/lidarr-develop:2.12.3.4654@sha256:dc353aa946047d93c1f2754940903551e48fc2eee74577e1a0647ca8697cf3bd  
+      image: ghcr.io/elfhosted/lidarr-develop:2.12.4.4658@sha256:a7ce75779f27abd0502d05242e337ef0871370d349e32fac456e52ea108e90fe  
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -5732,7 +5732,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.08.1425-nightly@sha256:3177091b1555c07c71d0e12996c2a6cc9d974c983ff3bcd83718c9efaaacff55
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
       command:
       - /bin/bash
       - -c
@@ -6102,7 +6102,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.08.1425-nightly@sha256:3177091b1555c07c71d0e12996c2a6cc9d974c983ff3bcd83718c9efaaacff55
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
       command:
       - /bin/bash
       - -c
@@ -6306,7 +6306,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.08.1425-nightly@sha256:3177091b1555c07c71d0e12996c2a6cc9d974c983ff3bcd83718c9efaaacff55
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
       command:
       - /bin/bash
       - -c
@@ -9696,7 +9696,7 @@ plextraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plextraktsync
-    tag: 0.34.10@sha256:b23bedb51450ca04346db71ae280718ea03e5eeb7f57cd3e3af894c61f3bca7e
+    tag: 0.34.11@sha256:c40ebc681d35655fb21bc477d6b8281875d0322afa9271446d9ca9e63e7fdcf7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -14525,7 +14525,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.25.2@sha256:d3d147043df19158b840942f1a30806323e2d493ac98f6014067189b7ec21c06
+    tag: v0.25.3@sha256:bc8cac176123627f40a5838daa14d26a9d2bd82b750f4b7be6bb11c8d37e3dd9
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14802,7 +14802,7 @@ zurg: &app_zurg
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.08.1425-nightly@sha256:3177091b1555c07c71d0e12996c2a6cc9d974c983ff3bcd83718c9efaaacff55
+    tag: 2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
