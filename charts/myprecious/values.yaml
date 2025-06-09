@@ -9794,6 +9794,8 @@ plexytrack:
           port: 5000
   envFrom:
   - configMapRef:
+      name: pleyxtrack-env 
+  - configMapRef:
       name: elfbot-pleyxtrack
       optional: true
   persistence:

@@ -1,0 +1,9 @@
+{{ if .Values.plexytrack.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: plexytrack-env
+data:
+  PLEX_BASEURL: http://plex:32400
+  TZ: UTC
+{{ end }}
