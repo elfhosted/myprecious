@@ -27,6 +27,6 @@ data:
   PEERTUBE_TRANSCODING_ENABLED: "true"
   PEERTUBE_CONTACT_FORM_ENABLED: "true"
 
-
+  PEERTUBE_ADMIN_EMAIL: {{ .Values.traefikforwardauth.whitelist }}
   
 {{ end }}
