@@ -1,0 +1,18 @@
+{{ if .Values.plexytrack.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-plexytrack.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-plexytrack.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: plexytrack
+          kind: Service
+          port: 5000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+{{ end }}

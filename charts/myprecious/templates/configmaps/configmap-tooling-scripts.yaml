@@ -65,6 +65,9 @@ data:
     {{- if .Values.webdav.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-webdav.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
+    {{- if .Values.peertube.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-peertube.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}    
 
   clean-up-dns-on-termination.sh: |
     #!/bin/bash
@@ -127,6 +130,9 @@ data:
         {{- if .Values.webdav.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-webdav.$DNS_DOMAIN CNAME
         {{ end }}
+        {{- if .Values.peertube.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-peertube.$DNS_DOMAIN CNAME
+        {{ end }}               
     }
 
     # When we terminate, delete the DNS record

@@ -620,7 +620,15 @@ data:
             href: https://{{ .Release.Name }}-plextraktsync.{{ .Values.dns_domain }}
             description: Sync Plex and Trakt 
             siteMonitor: http://plextraktsync:3001       
-        {{ end }}      
+        {{ end }}    
+
+        {{ if .Values.plexytrack.enabled }}
+        - PlexyTrack:
+            icon: mdi-sync
+            href: https://{{ .Release.Name }}-plexytrack.{{ .Values.dns_domain }}
+            description: Sync Plex and Trakt 
+            siteMonitor: http://plexytrack:5000       
+        {{ end }}              
 
         {{ if .Values.plextraktsync.enabled }}
         - Letterboxd Trakt Sync:

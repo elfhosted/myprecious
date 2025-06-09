@@ -847,7 +847,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}    
+      {{ end }} 
+
+      {{ if .Values.plexytrack.enabled }}
+      - name: plexytrack
+        group: manage-media
+        url: "http://plexytrack:5000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}          
 
       {{ if .Values.letterboxdtraktsync.enabled }}
       - name: letterboxd-trakt-sync

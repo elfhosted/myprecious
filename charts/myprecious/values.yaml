@@ -892,6 +892,8 @@ gotosocialcustomdomain:
   enabled: false  
 blueskypdscustomdomain:
   enabled: false    
+peertubecustomdomain:
+  enabled: false      
 
 rutorrentgluetun: &rutorrent
   enabled: false
@@ -9750,6 +9752,82 @@ plextraktsync:
       - mountPath: /config
         name: config
         subPath: plextraktsync
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 64Mi
+    limits:
+      cpu: 100m # no way this should be using so much resources
+      memory: 1Gi
+
+plexytrack:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/plexytrack
+    tag: v0.2.2@sha256:c31c1be6de6a993a723c45cd8eca921f7c5cae6ac91bbc47c6a0d38b73df2477
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plexytrack"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5000
+  envFrom:
+  - configMapRef:
+      name: plexytrack-env 
+  - configMapRef:
+      name: elfbot-pleyxtrack
+      optional: true
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config
+      subPath: plexytrack
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-plexytrack
+          optional: true    
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: plexytrack
       - mountPath: /tmp
         name: tmp
   ingress:
