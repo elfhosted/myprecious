@@ -471,6 +471,11 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
+    condition: plexytrack.enabled
+    alias: plexytrack
+  - name: app-template
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
     condition: letterboxdtraktsync.enabled
     alias: letterboxdtraktsync
   - name: app-template
