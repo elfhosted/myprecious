@@ -125,5 +125,8 @@ rules:
 {{ if .Values.listsync.enabled }}
   - elfbot-listsync
 {{ end }}
+{{ if .Values.peertube.enabled }}
+  - elfbot-peertube
+{{ end }}
 
 
