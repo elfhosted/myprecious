@@ -5575,7 +5575,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+    tag: 1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:
@@ -5705,7 +5705,7 @@ plex: &app_plex
       # resources: *default_resources
       securityContext: *default_securitycontext 
     dbrepair:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -14573,7 +14573,7 @@ zurg: &app_zurg
       - name: example-config
         mountPath: "/bootstrap/"
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       command:
       - /bin/bash
       - -c
@@ -15784,7 +15784,7 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       command:
       - /bin/bash
       - -c
@@ -16401,7 +16401,7 @@ decypharr: &app_decypharr
       - mountPath: /tmp
         name: tmp  
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       command:
       - /bin/bash
       - -c
