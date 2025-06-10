@@ -8137,7 +8137,7 @@ peertube:
       volumeMounts:
       - mountPath: /data
         name: config
-        subPath: peertube/redis          
+        subPath: peertube/redis
 
 audiobookshelf:
   enabled: false
