@@ -9,7 +9,6 @@ metadata:
     zilean.elfhosted.com/scrape: "true"
   annotations:
 spec:
-  internalTrafficPolicy: Local # only available to other pods on this node
   type: ClusterIP
   ports:
   - port: 8080
