@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.393.0](https://github.com/elfhosted/myprecious/compare/v1.392.0...v1.393.0) (2025-06-10)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.7.0 ([474de26](https://github.com/elfhosted/myprecious/commit/474de260fdc238ee19ff78997740cb1876cefa29))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.7.0 ([22f393c](https://github.com/elfhosted/myprecious/commit/22f393cbc79b2f175625c8ce56f6c5d64ac6d2d9))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2004 ([521cb3e](https://github.com/elfhosted/myprecious/commit/521cb3eb240f27275ec7e8aa37c56a369ba63343))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.6.0 ([ed2f0b7](https://github.com/elfhosted/myprecious/commit/ed2f0b79e7f19ab34ff26ba485e23a3182803c81))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.14.3 ([eee6a52](https://github.com/elfhosted/myprecious/commit/eee6a52e6df3ab7af5e0d740699fcb5192509502))
+* **app:** update ghcr.io/elfhosted/plex docker tag to v1.41.8.9834-071366d65 ([97913cc](https://github.com/elfhosted/myprecious/commit/97913cc348f4e077030ee194afa33f0cedf46ce5))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.26.1 ([1645626](https://github.com/elfhosted/myprecious/commit/1645626c8827a62c846026f4438e084fb9f83975))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.27.0 ([e71f8c4](https://github.com/elfhosted/myprecious/commit/e71f8c4ceeb971f0565e5ee51f54948dc3ddc269))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.27.1 ([98cd058](https://github.com/elfhosted/myprecious/commit/98cd058fe4a279e662ea42b88296de727ebea975))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/peertube-nonroot:v7.2.0 docker digest to 0481217 ([b497be4](https://github.com/elfhosted/myprecious/commit/b497be472751a76b0d48768e10d0763d2c9138a6))
+* **app:** update ghcr.io/elfhosted/wizarr:rolling docker digest to 74e669f ([6459dbb](https://github.com/elfhosted/myprecious/commit/6459dbbc98473cbfa2bba4a939e8b796b9de812a))
+* Persist redis data for PeerTube ([b64409f](https://github.com/elfhosted/myprecious/commit/b64409f8918f9ef1c0fb8fefbb81b6b708147e38))
+
 ## [1.392.0](https://github.com/elfhosted/myprecious/compare/v1.391.0...v1.392.0) (2025-06-09)
 
 
