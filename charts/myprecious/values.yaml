@@ -8132,7 +8132,7 @@ peertube:
           cpu: 15m
           memory: 200Mi
         limits:
-          cpu: 500m
+          cpu: 100m
           memory: 4Gi
       volumeMounts:
       - mountPath: /data
