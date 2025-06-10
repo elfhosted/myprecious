@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.393.1](https://github.com/elfhosted/myprecious/compare/v1.393.0...v1.393.1) (2025-06-10)
+
+
+### Bug Fixes
+
+* Improve Zilean ingestion of Zurg RD hashes ([dc6a8c8](https://github.com/elfhosted/myprecious/commit/dc6a8c8b829b8697eaec4efa0a2647e4dfba9a6a))
+
 ## [1.393.0](https://github.com/elfhosted/myprecious/compare/v1.392.0...v1.393.0) (2025-06-10)
 
 
