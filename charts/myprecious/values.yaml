@@ -14402,37 +14402,8 @@ zurg: &app_zurg
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-zurg,zurg-env,gluetun-config,elfbot-plex,elfbot-emby,elfbot-jellyfin"
     strategy: Recreate
-  affinity:
-    nodeAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 1
-        preference:
-          matchExpressions:
-          - key: node-role.elfhosted.com/contended
-            operator: In
-            values:
-            - "true"         
-    podAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 1
-        podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/role
-              operator: In
-              values:
-              - nodefinder # use nodefinder in the absense of zurg...
-          topologyKey: "kubernetes.io/hostname"
-      - weight: 2
-        podAffinityTerm:
-          labelSelector:
-            matchExpressions:
-            - key: app.elfhosted.com/name
-              operator: In
-              values:
-              - zurg # .. but prefer zurg
-          topologyKey: "kubernetes.io/hostname"
-          namespaceSelector: {}  # i.e., in the absense of any better signal, pick a node which already has zurg on it
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -14463,8 +14434,6 @@ zurg: &app_zurg
           port: 9999
   persistence:
     tmp: *tmp
-    backup: *backup # to pin zurg to the node with the backup PVC
-    # rclonemountrealdebridzurg: *rclonemountrealdebridzurg
     config:
       enabled: true
       type: custom
