@@ -14389,13 +14389,10 @@ knightcrawler: &app_knightcrawler
 zurg: &app_zurg
   enabled: false
   podLabels:
-    app.elfhosted.com/class: debrid
     app.elfhosted.com/name: zurg
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
+    tag: 2025.06.09.0033-nightly@sha256:1e6fda2180263383ec7fb777abe01eb5e7c6c8e5aac9b7107bcd4178bd567717
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
@@ -14435,6 +14432,7 @@ zurg: &app_zurg
           port: 9999
   persistence:
     tmp: *tmp
+    backup: *backup
     config:
       enabled: true
       type: custom
@@ -16847,28 +16845,6 @@ mediafusionproxystreaming:
   enabled: false
 elfassesment:
   enabled: false
-
-# The hobbit apps
-zurghobbit:
-  <<: *app_zurg
-  podAnnotations: *hobbit_streamer_podAnnotations
-  # zurg is the "anchor" which keeps all the other apps on the same node
-  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
-  resources: *hobbit_zurg_resources
-
-zurghalfling:
-  <<: *app_zurg
-  podAnnotations: *halfling_streamer_podAnnotations
-  # zurg is the "anchor" which keeps all the other apps on the same node
-  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
-  resources: *halfling_zurg_resources
-
-zurgnazgul:
-  <<: *app_zurg
-  podAnnotations: *nazgul_streamer_podAnnotations
-  # zurg is the "anchor" which keeps all the other apps on the same node
-  affinity: *dedicated_affinity # force zurg to go onto the dedicated nodes
-  resources: *nazgul_zurg_resources
 
 plexhobbit:
   <<: *app_plex
