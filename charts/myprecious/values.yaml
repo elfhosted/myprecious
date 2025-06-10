@@ -7968,9 +7968,10 @@ peertube:
     requests:
       cpu: 0m
       memory: 20Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
+    # no limits (this is only usable with a nazgul)
+    # limits:
+    #   cpu: 1
+    #   memory: 1Gi
   ingress:
     main:
       enabled: false
