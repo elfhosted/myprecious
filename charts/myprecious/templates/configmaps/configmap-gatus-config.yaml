@@ -1119,6 +1119,7 @@ data:
           - type: email
       {{ end }}                                
 
+      {{ if not .Values.decypharrreplacezurg.enabled }}
       {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
       - name: zurg
         group: download-media
@@ -1128,6 +1129,7 @@ data:
         - "[STATUS] == 200"
         alerts:
           - type: email
+      {{ end }}
       {{ end }}
 
       {{ if .Values.openbooks.enabled }}
