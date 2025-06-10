@@ -2712,7 +2712,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.6.9@sha256:25dc47677916d1209d836721fc72551ddfaef3ea8a2b1f37b7245506e2160c5c
+    tag: 7.7.0@sha256:5496024cbbf5652409c0b169f51d3e385d1c6dbe021d1dda1ef5a49616cc71c1
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4798,7 +4798,7 @@ nzbhydra:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
-    tag: 7.14.2@sha256:742e74a12d7c0e88e69c51a853d934f7340df66b6554dcad775cb19f2cbb95f4
+    tag: 7.14.3@sha256:3bce1ae2b0dabaf3631c91ca45668aa671f2c6661097dfb7790c165502e37afa
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5575,7 +5575,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+    tag: 1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
   persistence: &app_plex_persistence
     <<: *storagemounts
     config:
@@ -5705,7 +5705,7 @@ plex: &app_plex
       # resources: *default_resources
       securityContext: *default_securitycontext 
     dbrepair:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -7515,7 +7515,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 2.5.2@sha256:f8bc515864f06a4eec9dfa09d1d63a41c687e2839654da35f6a96815717a9187
+    tag: 2.6.0@sha256:3eab8cf0b344b3aa7e7e02c64f00ff9746607340e7f8cb3dcf4280a0ce28d5db
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7605,7 +7605,7 @@ jellyseerr:
         mountPath: "/bootstrap/"        
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:2.5.2@sha256:f8bc515864f06a4eec9dfa09d1d63a41c687e2839654da35f6a96815717a9187
+      image: ghcr.io/elfhosted/jellyseerr:2.6.0@sha256:3eab8cf0b344b3aa7e7e02c64f00ff9746607340e7f8cb3dcf4280a0ce28d5db
       command:
         - /bin/ash
         - -c
@@ -7931,7 +7931,7 @@ peertube:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/peertube-nonroot
-    tag: v7.2.0@sha256:554a575df09fe69ef06eece4b301271d3938196a07f2ca8312cebaa706988a92
+    tag: v7.2.0@sha256:0481217569bde2c5939179d349104cfadc1ae18dd42c4ec2d16bbadfb3ee0607
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7968,9 +7968,10 @@ peertube:
     requests:
       cpu: 0m
       memory: 20Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
+    # no limits (this is only usable with a nazgul)
+    # limits:
+    #   cpu: 1
+    #   memory: 1Gi
   ingress:
     main:
       enabled: false
@@ -8027,7 +8028,7 @@ peertube:
     config:
       enabled: true
       type: custom
-      mountPath: /config
+      mountPath: /data
       subPath: peertube/app
       volumeSpec:
         persistentVolumeClaim:
@@ -8132,12 +8133,12 @@ peertube:
           cpu: 15m
           memory: 200Mi
         limits:
-          cpu: 500m
+          cpu: 100m
           memory: 4Gi
       volumeMounts:
       - mountPath: /data
         name: config
-        subPath: peertube/redis          
+        subPath: peertube/redis
 
 audiobookshelf:
   enabled: false
@@ -12099,7 +12100,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2002@sha256:f3188378e79d74c9b2ae31e2b948eb3a152e991160722c1b0c9413baf4ce34e7
+    tag: 0.22.2004@sha256:d2346bba8d46b3a3ce1a74f5abaf9da5dabfd996fcc287f352f588e9e52673ad
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12171,7 +12172,7 @@ wizarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wizarr
-    tag: rolling@sha256:d3dd7ef5abb567c1cd46fe917b1641f779924b622dda03e0791cb6d83eed7e05
+    tag: rolling@sha256:74e669f586bd709c9266edd52426cf985664287e896a6ba6c2fb14daabb53a29
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12874,7 +12875,7 @@ comet:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/comet
-    tag: v2.6.1@sha256:ae0f31347b95a30f9c9f7104983f6f9b5e9db1b90cc90ec99176b28db7611170
+    tag: v2.7.0@sha256:a4deb47b71cc2414f4382f3cd299e28e71f8bcc41675614ed1f60def5c9d4bf3
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
@@ -14117,7 +14118,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.26.0@sha256:8747a248660a49667a35057ab0cdeb33baab121e16e1f804964dafaa1cfcd3d6
+    tag: v0.27.0@sha256:991a349af9b73b6264a3b16f26ed30f1f42456bbc0c89c077567406ac81baff8
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14541,7 +14542,7 @@ zurg: &app_zurg
       - name: example-config
         mountPath: "/bootstrap/"
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       command:
       - /bin/bash
       - -c
@@ -15752,7 +15753,7 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       command:
       - /bin/bash
       - -c
@@ -16369,7 +16370,7 @@ decypharr: &app_decypharr
       - mountPath: /tmp
         name: tmp  
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.7.9823-59f304c16@sha256:04b14748f9a3e5d23e1431ab2d4c5c07aca14a1fe5541b62481f0064eea8420e
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:25aa78b54fa76c5c1572ce930761a2e0d1b602084e6fa9ad969d46c9f3675136
       command:
       - /bin/bash
       - -c
