@@ -5,4 +5,7 @@ metadata:
   name: zurg-env
 data:
   LOG_LEVEL: debug
+  {{ if .Values.decypharrreplacezurg.enabled }}
+  DECYPHARR_REPLACE_ZURG: "true"
+  {{ end }}
 {{ end }}

@@ -1783,7 +1783,11 @@ data:
             subtitle: "PeerTube"
             tag: "public"
             tagstyle: "is-danger"
+            {{ if .Values.peertubecustomdomain.enabled }}
+            url: https://{{ .Values.peertubecustomdomain.cname | lower }}
+            {{ else }}
             url: "https://{{ .Release.Name }}-peertube.{{ .Values.dns_domain }}"
+            {{ end }}
             target: "_blank" # optional html tag target attribute
           {{ end }}            
 
