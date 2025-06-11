@@ -1120,7 +1120,7 @@ data:
       {{ end }}                                
 
       {{ if not .Values.decypharrreplacezurg.enabled }}
-      {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+      {{ if .Values.zurg.enabled }}
       - name: zurg
         group: download-media
         url: "http://zurg:9999/http/version.txt"

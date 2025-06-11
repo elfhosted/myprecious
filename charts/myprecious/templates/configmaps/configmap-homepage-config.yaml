@@ -955,7 +955,7 @@ data:
             siteMonitor: http://listsync:3001
         {{ end }}                       
 
-        {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+        {{ if .Values.zurg.enabled }}
         - Zurg:
             icon: https://debridmediamanager.com/apple-touch-icon.png
             href: https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/

@@ -22,7 +22,7 @@ data:
   ELF_STREAMER_URL: emby:8096
   {{ end }}
 
-  {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+  {{ if .Values.zurg.enabled }}
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
   {{ else if .Values.rclonealldebrid.enabled }}
   # So we're using AllDebrid

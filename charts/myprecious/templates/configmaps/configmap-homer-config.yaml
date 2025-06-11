@@ -17,7 +17,7 @@ data:
       curl -s 'https://unsplash.com/photos/kO1G3neRA2o/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fGxpZ2h0JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3MjExNzAzMzd8MA&force=true&w=640' -L --output /www/assets/backgrounds/background-light.jpg
     fi
     
-    {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+    {{ if .Values.zurg.enabled }}
     # until zurg is up, continue producing this error message every minute
     DAYSREMAINING=$(curl -s http://zurg:9999/stats | jq .user_infos[0].premium)
     while [[ ! "$DAYSREMAINING" -gt 0 ]]; do
@@ -89,7 +89,7 @@ data:
       #   MESSAGE="Gigabytes everywhere! 🥳"
       # fi
 
-      {{ if or .Values.zurg.enabled .Values.zurghobbit.enabled .Values.zurgranger.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+      {{ if .Values.zurg.enabled }}
       RD_DAYS_REMAINING=$(curl -s http://zurg:9999/stats | jq -r '[.user_infos[] | "\(.username) expires in \(.premium) days"] | join(", ")')
       RD_LIBRARY_SIZE=$(curl -s http://zurg:9999/stats | jq .library_size) # items
       ZURG_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, $RD_DAYS_REMAINING"
@@ -1411,7 +1411,7 @@ data:
             target: "_blank" # optional html tag target attribute                        
           {{ end }}            
 
-          {{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+          {{ if .Values.zurg.enabled }}
           - name: "Zurg"
             logo: "assets/png/real-debrid.png"
             subtitle: "Manage RealDebrid Mount"

@@ -1,4 +1,4 @@
-{{ if or .Values.zurg.enabled .Values.zurggluetun.enabled .Values.zurgranger.enabled .Values.zurghobbit.enabled .Values.zurghalfling.enabled .Values.zurgnazgul.enabled }}
+{{ if .Values.zurg.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
