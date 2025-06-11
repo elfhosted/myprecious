@@ -6142,7 +6142,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+    tag: 4.9.1.1@sha256:e81f21831c751bc9365ab9544d6500c0dc132b3cb5b2dc96e05e837ada470863
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -14560,7 +14560,7 @@ zurg: &app_zurg
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      image: ghcr.io/elfhosted/emby:4.9.1.1@sha256:e81f21831c751bc9365ab9544d6500c0dc132b3cb5b2dc96e05e837ada470863
       command:
       - /bin/bash
       - -c
@@ -15771,7 +15771,7 @@ debridav: &app_debridav
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      image: ghcr.io/elfhosted/emby:4.9.1.1@sha256:e81f21831c751bc9365ab9544d6500c0dc132b3cb5b2dc96e05e837ada470863
       command:
       - /bin/bash
       - -c
@@ -16388,7 +16388,7 @@ decypharr: &app_decypharr
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/emby:4.9.1.0@sha256:3317fbd2715e0f0cb8620eebe669d8145a96a00589b0cf7a96448d41b7a628ca
+      image: ghcr.io/elfhosted/emby:4.9.1.1@sha256:e81f21831c751bc9365ab9544d6500c0dc132b3cb5b2dc96e05e837ada470863
       command:
       - /bin/bash
       - -c
