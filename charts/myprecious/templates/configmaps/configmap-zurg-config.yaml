@@ -36,8 +36,8 @@ data:
     grep restrict_repair_to_cached /config/config.yml \
       || echo 'restrict_repair_to_cached: true' >> /config/config.yml
 
-    # Don't serve from rclone
-    sed -i  "s/serve_from_rclone:.*/serve_from_rclone: false/" /config/config.yml
+    # # Don't serve from rclone - leave this up to the user now
+    # sed -i  "s/serve_from_rclone:.*/serve_from_rclone: false/" /config/config.yml
 
     # Disable plex_update.sh unless user uses plexdebrid
     {{- if or .Values.plexdebrid.enabled .Values.zurgling.enabled .Values.sidekick.enabled }}
