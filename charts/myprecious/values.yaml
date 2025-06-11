@@ -12178,7 +12178,7 @@ wizarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wizarr
-    tag: rolling@sha256:74e669f586bd709c9266edd52426cf985664287e896a6ba6c2fb14daabb53a29
+    tag: rolling@sha256:1152e9ac7b1eb41c18e08755fea358d55ef7eef5d3d94b63a8f6e3fda7f74cad
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15347,7 +15347,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.13@sha256:3790069888b38dbcbfeb566b596f89f100e8fcb346448f702027b3871bf4601e
+    tag: v0.3.14@sha256:32cb6671d892f23b0eba1a43c05c43b8453dd7e80e5f9c132b9c96702b0b2492
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15432,7 +15432,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.13@sha256:3790069888b38dbcbfeb566b596f89f100e8fcb346448f702027b3871bf4601e
+      image: ghcr.io/elfhosted/pulsarr:v0.3.14@sha256:32cb6671d892f23b0eba1a43c05c43b8453dd7e80e5f9c132b9c96702b0b2492
       command:
       - /bin/ash
       - -c
