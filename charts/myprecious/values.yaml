@@ -7931,7 +7931,7 @@ peertube:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/peertube-nonroot
-    tag: v7.2.0@sha256:0481217569bde2c5939179d349104cfadc1ae18dd42c4ec2d16bbadfb3ee0607
+    tag: v7.2.0@sha256:be1614d6296ab66cd5a62ca662ece3932720cfc3dddca97bcf4903a9d526842e
   priorityClassName: tenant-normal
   controller:
     annotations:
