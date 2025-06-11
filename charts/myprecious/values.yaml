@@ -8139,6 +8139,12 @@ peertube:
       - mountPath: /data
         name: config
         subPath: peertube/redis
+    cli:
+      image: ghcr.io/elfhosted/peertube-cli:v7.2.0@sha256:e0148f7a4a15d279de1268986eedf26734b190da2f013106e41e68ca2e4d2bae
+      volumeMounts:
+      - mountPath: /home/elfie
+        name: config
+        subPath: peertube/cli
 
 audiobookshelf:
   enabled: false
