@@ -9705,7 +9705,7 @@ plexytrack:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plexytrack-dev
-    tag: rolling@sha256:d918bb7099e79dbf1636619ee2c558f064a4e566ec0e97ad5786fd16e1bf4149
+    tag: rolling@sha256:5ba9df2a28b8d24fe5a82a57f23ea4279c701814219999f78c91137836a6b7b8
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9728,7 +9728,7 @@ plexytrack:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 5000
+          port: 5030
   envFrom:
   - configMapRef:
       name: plexytrack-env 
@@ -14398,7 +14398,7 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.09.0033-nightly@sha256:1e6fda2180263383ec7fb777abe01eb5e7c6c8e5aac9b7107bcd4178bd567717
+    tag: 2025.06.09.0033-nightly@sha256:24656c67e2d55a793ea3ad04d7e0bed86d2f06394e1cbdb009d4cb56baa0247b
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
