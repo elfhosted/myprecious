@@ -14394,6 +14394,11 @@ knightcrawler: &app_knightcrawler
 
 zurg: &app_zurg
   enabled: false
+  # Avoid search expansion DNS queries against coredns for every RD API request
+  dnsConfig:
+    options:
+      - name: ndots
+        value: "3"
   podLabels:
     app.elfhosted.com/name: zurg
   image:
@@ -16263,6 +16268,11 @@ decypharr: &app_decypharr
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  # Avoid search expansion DNS queries against coredns for every RD API request
+  dnsConfig:
+    options:
+      - name: ndots
+        value: "3"  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr,decypharr-example-config,elfbot-plex,elfbot-emby,elfbot-jellyfin"
