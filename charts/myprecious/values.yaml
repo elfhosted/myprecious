@@ -455,7 +455,7 @@ bootstrap: &bootstrap
     if [[ -f /etc/elfbot/pause ]]; then
       TIMESTAMP_COMMAND=$(cat /etc/elfbot/pause)
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
+      if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=pause
       fi
     fi
@@ -464,7 +464,7 @@ bootstrap: &bootstrap
     if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
       TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
+      if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=backup
       fi
     fi
@@ -473,7 +473,7 @@ bootstrap: &bootstrap
     if [[ -f /etc/elfbot/reset && -z "$COMMAND" ]]; then
       TIMESTAMP_COMMAND=$(cat /etc/elfbot/reset)
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
+      if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=reset
       fi
     fi
