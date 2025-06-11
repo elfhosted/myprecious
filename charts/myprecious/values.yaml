@@ -14398,7 +14398,7 @@ zurg: &app_zurg
   dnsConfig:
     options:
       - name: ndots
-        value: "3"
+        value: "2"
   podLabels:
     app.elfhosted.com/name: zurg
   image:
@@ -16272,7 +16272,7 @@ decypharr: &app_decypharr
   dnsConfig:
     options:
       - name: ndots
-        value: "3"  
+        value: "2"  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decypharr,decypharr-example-config,elfbot-plex,elfbot-emby,elfbot-jellyfin"
