@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.394.0](https://github.com/elfhosted/myprecious/compare/v1.393.1...v1.394.0) (2025-06-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.8.0 ([100269a](https://github.com/elfhosted/myprecious/commit/100269a7eedb869b8ff5b7fc97334ca45e59b879))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.7.1 ([5cd6402](https://github.com/elfhosted/myprecious/commit/5cd6402dea5c85ded4dd89f7c9a1eeb9a241419e))
+
+
+### Bug Fixes
+
+* Fix syntax error preventing rollouts completing ([c89a4c8](https://github.com/elfhosted/myprecious/commit/c89a4c87624a63e12a46b151df2cf3848d295c7d))
+
 ## [1.393.1](https://github.com/elfhosted/myprecious/compare/v1.393.0...v1.393.1) (2025-06-10)
 
 
