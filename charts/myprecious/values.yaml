@@ -2712,7 +2712,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.7.1@sha256:feeb5d378582db9f54f69f6e76776f8e9dbde50c70126527c89c175c5cdef62d
+    tag: 7.7.4@sha256:c63c2e9da3b068de4d9342749f7ebe8c572a67d7fe6ad07a118db88e3ba8603a
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7931,7 +7931,7 @@ peertube:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/peertube-nonroot
-    tag: v7.2.0@sha256:0481217569bde2c5939179d349104cfadc1ae18dd42c4ec2d16bbadfb3ee0607
+    tag: v7.2.0@sha256:be1614d6296ab66cd5a62ca662ece3932720cfc3dddca97bcf4903a9d526842e
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12106,7 +12106,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2004@sha256:d2346bba8d46b3a3ce1a74f5abaf9da5dabfd996fcc287f352f588e9e52673ad
+    tag: 0.22.2008@sha256:b842e69dbbe520bf524c256def327ee18bfa9c193971a94bde50b45446be6f24
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13166,7 +13166,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.78.2@sha256:bb3558af2b9741a5d501fb46a24a9f3c3820b88a38582a5c7db008c6976eaa27
+    tag: 0.78.3@sha256:bc303f485ab4d8964990506c5589714854e7b1151f38591db42c103b33011031
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -14124,7 +14124,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.27.1@sha256:439922117312c9ec6efbc298e0ec09c48b30ac6496c10bc2461ad5b508998def
+    tag: v0.27.2@sha256:7dfd835d7e7e84124c34b278d7baee423629b4344141d19422b0eb722def6a9f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15347,7 +15347,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.14@sha256:32cb6671d892f23b0eba1a43c05c43b8453dd7e80e5f9c132b9c96702b0b2492
+    tag: v0.3.16@sha256:a52fa2aebcb817ef76b0127ae49b9f60eb189e56a50f16def1177c66c4319baf
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15432,7 +15432,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.14@sha256:32cb6671d892f23b0eba1a43c05c43b8453dd7e80e5f9c132b9c96702b0b2492
+      image: ghcr.io/elfhosted/pulsarr:v0.3.16@sha256:a52fa2aebcb817ef76b0127ae49b9f60eb189e56a50f16def1177c66c4319baf
       command:
       - /bin/ash
       - -c
