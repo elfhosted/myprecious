@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.397.0](https://github.com/elfhosted/myprecious/compare/v1.396.0...v1.397.0) (2025-06-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.28.0 ([86f25ff](https://github.com/elfhosted/myprecious/commit/86f25ff94a64d0e535a3472a35e3ffb9417fd6f9))
+
+
+### Bug Fixes
+
+* fix permissions bug in Wizarr mount ([eca08a6](https://github.com/elfhosted/myprecious/commit/eca08a6acb7ca9945d454ac27e578b3388f7a7a9))
+
 ## [1.396.0](https://github.com/elfhosted/myprecious/compare/v1.395.0...v1.396.0) (2025-06-11)
 
 
