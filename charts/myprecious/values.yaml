@@ -9704,8 +9704,8 @@ plexytrack:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/plexytrack-dev
-    tag: rolling@sha256:5ba9df2a28b8d24fe5a82a57f23ea4279c701814219999f78c91137836a6b7b8
+    repository: ghcr.io/elfhosted/plexytrack
+    tag: v0.2.3@sha256:b6110ccb1890bff8aecf7145ab9de84b18e195ddd03e6dea2d7841b9136e0601
   securityContext:
     seccompProfile:
       type: RuntimeDefault
