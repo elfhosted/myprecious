@@ -14403,7 +14403,7 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.09.0033-nightly@sha256:3b35d409e09ad7ff408a9d3b175ad5514fcbb2a11db8f75565eea7f5e523a443
+    tag: 2025.06.11.2347-nightly@sha256:d0907ae3ff34e4c5a0c9e43ac391d7dfeba07eb25c9bb4782f64785c17a525cf
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
