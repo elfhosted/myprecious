@@ -2712,7 +2712,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.7.5@sha256:da761606bdd5274856d048bc4e5cde587522d23b83c342acf592922d3068d7e3
+    tag: 7.8.0@sha256:a4173f45ea86624ca00daf514daf8542eb6c47459e313670ca315466409ec812
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5647,7 +5647,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.12.0253-nightly@sha256:d80f3410000c22216dda0104d87582a57d09e091253c88debfebe4566877103d
       command:
       - /bin/bash
       - -c
@@ -5661,7 +5661,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
+      image: ghcr.io/elfhosted/debridav:0.10.1@sha256:67748eff91c1c318827284bb31a9f39c2ce10b22e29e58ec4f65659152fd8cfe
       command:
       - /bin/bash
       - -c
@@ -6017,7 +6017,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.12.0253-nightly@sha256:d80f3410000c22216dda0104d87582a57d09e091253c88debfebe4566877103d
       command:
       - /bin/bash
       - -c
@@ -6031,7 +6031,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
+      image: ghcr.io/elfhosted/debridav:0.10.1@sha256:67748eff91c1c318827284bb31a9f39c2ce10b22e29e58ec4f65659152fd8cfe
       command:
       - /bin/bash
       - -c
@@ -6221,7 +6221,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.09.0033-nightly@sha256:826de207239ac91221f7117acc3cac291bcfcc04703a3a8c013cea14cbb96b65
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.12.0253-nightly@sha256:d80f3410000c22216dda0104d87582a57d09e091253c88debfebe4566877103d
       command:
       - /bin/bash
       - -c
@@ -6235,7 +6235,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when decypharr is updated"
     restart-with-debridav:
-      image: ghcr.io/elfhosted/debridav:0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
+      image: ghcr.io/elfhosted/debridav:0.10.1@sha256:67748eff91c1c318827284bb31a9f39c2ce10b22e29e58ec4f65659152fd8cfe
       command:
       - /bin/bash
       - -c
@@ -6966,7 +6966,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:5b69d3f9a4b0befc2d532c15764e86a86bfa91da5bf1ceac72d5f98c10a9dfae
+    tag: develop-vaapi@sha256:827e0662711f1778f71f6d9033b0aaa11df48618197856019e275791a0d76e47
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7795,7 +7795,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.23.0@sha256:f15b9f674fb5faa3c6900c34297c389fe85c84391c779f57529726603c1dec8a
+    tag: v0.24.0@sha256:d6cb500d641ff726c0d294be849e895c7fe54f78b5b8e79cbf407af807c46417
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7896,7 +7896,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.23.0@sha256:f15b9f674fb5faa3c6900c34297c389fe85c84391c779f57529726603c1dec8a
+      image: ghcr.io/elfhosted/booklore:v0.24.0@sha256:d6cb500d641ff726c0d294be849e895c7fe54f78b5b8e79cbf407af807c46417
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -9705,7 +9705,7 @@ plexytrack:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plexytrack
-    tag: v0.2.3@sha256:b6110ccb1890bff8aecf7145ab9de84b18e195ddd03e6dea2d7841b9136e0601
+    tag: v0.2.5@sha256:309cf8a2c5a5f4f4ffb7cc01df9c5b9437448412769712b27852c767a29a3bd8
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -15629,7 +15629,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   image:
     repository: ghcr.io/elfhosted/debridav
-    tag: 0.10.0@sha256:d8f687c222fcc1d670105a4d07432dee9f351ba7d4222bc931738f4a29829706
+    tag: 0.10.1@sha256:67748eff91c1c318827284bb31a9f39c2ce10b22e29e58ec4f65659152fd8cfe
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   controller:
