@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.398.0](https://github.com/elfhosted/myprecious/compare/v1.397.0...v1.398.0) (2025-06-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.147 ([93a80cb](https://github.com/elfhosted/myprecious/commit/93a80cba8ee9af591bebc963ac35df48c058c800))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.24.0 ([79f9e60](https://github.com/elfhosted/myprecious/commit/79f9e60b2ca569b246c876e86264d70480725bdf))
+* **app:** update ghcr.io/elfhosted/comet docker tag to v2.10.0 ([3cbb4ae](https://github.com/elfhosted/myprecious/commit/3cbb4ae9f6cec2885e71e7d1715a9b4e4aa869e0))
+* **app:** update ghcr.io/elfhosted/debridav docker tag to v0.10.1 ([a84c848](https://github.com/elfhosted/myprecious/commit/a84c8487b4d89e48b697c1dc4056d3eb1bd2fe9f))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.8.0 ([53d1f59](https://github.com/elfhosted/myprecious/commit/53d1f594e5a2bab73f22588443c8a99857785d03))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2011 ([e5b0a15](https://github.com/elfhosted/myprecious/commit/e5b0a1557c84b86da4a4c407921e6e201f570489))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.2.5 ([eacd3c6](https://github.com/elfhosted/myprecious/commit/eacd3c660b787251e807cbfddea18f7beed572ce))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.12.0253-nightly ([0d5cd33](https://github.com/elfhosted/myprecious/commit/0d5cd33c38f96d57528ebbe5f3531b1f30c84dd0))
+
+
+### Bug Fixes
+
+* Add latest Zurg vs RD workaround ([26ec929](https://github.com/elfhosted/myprecious/commit/26ec92929191c3d6625dd48828fc4f9a391d9037))
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 827e066 ([5f74d3e](https://github.com/elfhosted/myprecious/commit/5f74d3e3927263af537ad5143c991f54494bcbe9))
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to 695ac4a ([d38a04c](https://github.com/elfhosted/myprecious/commit/d38a04c3d80c4a1bd7c99f5b39e5a8cd61173186))
+* Attempt to fail faster on RD issues to avoid blocking Plx ([8ebb719](https://github.com/elfhosted/myprecious/commit/8ebb7192306ee1aeaf0bbbc09611e35ca1af6d4d))
+* Disable readinessProbe on Plex to avoid unnecessary restarts when DB is busy ([022cd4e](https://github.com/elfhosted/myprecious/commit/022cd4e8fc3be1a4129a3ab26907734a85938a7c))
+* Second upstream Zurg attempted fix ([3a9f5e9](https://github.com/elfhosted/myprecious/commit/3a9f5e9bd224d7f2617bdc2008ce3380b1267def))
+
 ## [1.397.0](https://github.com/elfhosted/myprecious/compare/v1.396.0...v1.397.0) (2025-06-11)
 
 
