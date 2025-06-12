@@ -14394,7 +14394,7 @@ knightcrawler: &app_knightcrawler
 
 zurg: &app_zurg
   enabled: false
-  # Avoid search expansion DNS queries against coredns for every RD API request
+  # Avoid search expansion DNS queries against coredns for every RD API request 
   dnsConfig:
     options:
       - name: ndots
