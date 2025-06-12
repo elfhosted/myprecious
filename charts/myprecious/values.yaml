@@ -5829,7 +5829,7 @@ plex: &app_plex
         timeoutSeconds: 10
     readiness:
       custom: true
-      enabled: true
+      enabled: false
       spec:
         failureThreshold: 5
         httpGet:
