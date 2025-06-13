@@ -155,11 +155,6 @@ data:
 
     # Download Client Configs (below) are used for dashboard state and service checks.
 
-    [[deluge]]
-    name     = "Deluge | ElfHosted"  # Set a name to enable checks of your service.
-    url      = "http://deluge:8112/"
-    password = "deluge" 
-
     [[qbit]]
     name     = "Qbittorrent | ElfHosted"  # Set a name to enable checks of your service.
     url      = "http://qbittorrent:8080/"

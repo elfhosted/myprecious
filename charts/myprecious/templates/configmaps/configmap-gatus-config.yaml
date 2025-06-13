@@ -541,7 +541,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }} 
+
+      {{ if .Values.discovarr.enabled }}
+      - name: discovarr
+        group: manage-media
+        url: "http://discovarr:8000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}            
 
       {{ if .Values.overseerr.enabled }}
       - name: overseerr
@@ -976,17 +987,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
-      - name: deluge
-        group: download-media
-        url: "http://deluge:8112"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
       - name: qbittorrent
         group: download-media
@@ -1158,17 +1158,6 @@ data:
       - name: audiobookbay-automated
         group: download-media
         url: "http://audiobookbay-automated:5078"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}      
-
-      {{ if .Values.jdownloader.enabled }}
-      - name: jdownloader
-        group: download-media
-        url: "http://jdownloader:9898"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

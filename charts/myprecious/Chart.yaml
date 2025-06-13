@@ -238,16 +238,6 @@ dependencies:
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
-    condition: delugepia.enabled
-    alias: delugepia
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: delugegluetun.enabled
-    alias: delugegluetun
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
     condition: qbittorrentgluetun.enabled
     alias: qbittorrentgluetun
   # Specifically for PIA's port-forwarding requirements (a separate image)
@@ -493,11 +483,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: rdtclient.enabled
     alias: rdtclient
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: jdownloader.enabled
-    alias: jdownloader
   - name: mattermost-team-edition
     alias: mattermost
     condition: mattermost.enabled
@@ -830,6 +815,11 @@ dependencies:
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
     alias: petio
+  - name: app-template
+    condition: discovarr.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: discovarr    
   - name: app-template
     condition: symlinkcleaner.enabled
     version: ~0.2.1

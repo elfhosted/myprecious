@@ -458,7 +458,15 @@ data:
             href: https://{{ .Release.Name }}-suggestarr.{{ .Values.dns_domain }}
             description: Automate suggestions
             siteMonitor: http://suggestarr:5000  
-        {{ end }}            
+        {{ end }} 
+
+        {{ if .Values.discovarr.enabled }}
+        - Discovarr:
+            icon: mylar.png
+            href: https://{{ .Release.Name }}-discovarr.{{ .Values.dns_domain }}
+            description: AI-based suggestions
+            siteMonitor: http://discovarr:8000  
+        {{ end }}                    
 
         {{ if .Values.overseerr.enabled }}
         - Overseerr:
@@ -835,18 +843,6 @@ data:
               url: http://jackett:9117          
         {{ end }}                                            
 
-        {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
-        - Deluge:
-            icon: deluge.png
-            href: https://{{ .Release.Name }}-deluge.{{ .Values.dns_domain }}
-            description: Bittorrent Client
-            siteMonitor: http://deluge:8112
-            widget:
-              type: deluge
-              url: http://deluge:8112
-              password: deluge  
-        {{ end }}   
-
         {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
         - qBittorrent:
             icon: qbittorrent.png
@@ -1004,20 +1000,7 @@ data:
             href: https://{{ .Release.Name }}-audiobookbay-automated.{{ .Values.dns_domain }}
             description: Manage AudioBookBay Downloads
             siteMonitor: http://audiobookbay-automated:5078
-        {{ end }}                      
-
-        {{ if .Values.jdownloader.enabled }}
-        - jDownloader:
-            icon: jdownloader.png
-            href: https://{{ .Release.Name }}-jdownloader.{{ .Values.dns_domain }}
-            description: Manage Downloads
-            siteMonitor: http://jdownloader:9898
-            widget:
-              type: jdownloader
-              username: {{ .Values.jdownloader.MYJDOWNLOADER_EMAIL | default }}
-              password: {{ .Values.jdownloader.MYJDOWNLOADER_PASSWORD | default }}
-              client: {{ .Release.Name }}.{{ .Values.dns_domain }}
-        {{ end }}         
+        {{ end }}                        
 
         {{ if or .Values.airdcpppia.enabled .Values.airdcppgluetun.enabled }}
         - AirDC++:
