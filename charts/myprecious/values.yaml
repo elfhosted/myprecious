@@ -6857,7 +6857,7 @@ discovarr:
         # This path is inside the Docker container.
         STATIC_ASSETS_DIR="/static"
 
-        cp /app/server/static/* /static/-R
+        cp /app/server/static/* /static/ -rf
         echo "INFO: Replacing placeholder '${PLACEHOLDER}' with '${VITE_DISCOVARR_URL}' in JS and HTML files..."
 
         # Find all .js and .html files in the static assets directory and its subdirectories
