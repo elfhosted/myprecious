@@ -6855,8 +6855,9 @@ discovarr:
 
         # Directory where your built frontend assets are located (copied from client/dist)
         # This path is inside the Docker container.
-        STATIC_ASSETS_DIR="/app/server/static"
+        STATIC_ASSETS_DIR="/static"
 
+        cp /app/server/static/* /static/-R
         echo "INFO: Replacing placeholder '${PLACEHOLDER}' with '${VITE_DISCOVARR_URL}' in JS and HTML files..."
 
         # Find all .js and .html files in the static assets directory and its subdirectories
@@ -6866,7 +6867,7 @@ discovarr:
         find "${STATIC_ASSETS_DIR}" -type f \( -name "*.js" -o -name "*.html" \) -print0 | \
           xargs -0 sed -i "s#__API_ENDPOINT__#${VITE_DISCOVARR_URL}#g"
       volumeMounts:
-      - mountPath: /app/server/static
+      - mountPath: /static
         name: static
       envFrom:
       - configMapRef:
