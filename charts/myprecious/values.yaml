@@ -152,16 +152,8 @@ dedicated_affinity: &dedicated_affinity
       topologyKey: "kubernetes.io/hostname"
 
 standard_tolerations: &standard_tolerations
-# not using tolerations anymore
-# - key: node-role.elfhosted.com/dedicated
-#   operator: Exists
-# - key: node-role.elfhosted.com/hobbit
-#   operator: Exists
 
 hobbit_tolerations: &hobbit_tolerations
-# not using tolerations anymore
-# - key: node-role.elfhosted.com/hobbit
-#   operator: Exists
 
 # Set minimal requests so that pods can co-exist with streamers
 hobbit_resources: &hobbit_resources
@@ -180,19 +172,6 @@ ranger_resources: &ranger_resources
     cpu: "2"
     memory: 8Gi
 
-volumespec_ephemeral_volume_1000g: &volumespec_ephemeral_volume_1000g
-  ephemeral:
-    volumeClaimTemplate:
-      metadata:
-        labels:
-          velero.io/exclude-from-backup: "true"
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "topolvm-provisioner-thin"
-        resources:
-          requests:
-            storage: 1000Gi
-
 volumespec_ephemeral_volume_100g: &volumespec_ephemeral_volume_100g
   ephemeral:
     volumeClaimTemplate:
@@ -206,32 +185,6 @@ volumespec_ephemeral_volume_100g: &volumespec_ephemeral_volume_100g
           requests:
             storage: 100Gi
 
-volumespec_ephemeral_volume_1g: &volumespec_ephemeral_volume_1g
-  ephemeral:
-    volumeClaimTemplate:
-      metadata:
-        labels:
-          velero.io/exclude-from-backup: "true"
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "topolvm-provisioner-thin"
-        resources:
-          requests:
-            storage: 1Gi
-
-volumespec_ephemeral_volume_10g: &volumespec_ephemeral_volume_10g
-  ephemeral:
-    volumeClaimTemplate:
-      metadata:
-        labels:
-          velero.io/exclude-from-backup: "true"
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "topolvm-provisioner-thin"
-        resources:
-          requests:
-            storage: 10Gi
-
 volumespec_ephemeral_volume_50g: &volumespec_ephemeral_volume_50g
   ephemeral:
     volumeClaimTemplate:
@@ -244,32 +197,6 @@ volumespec_ephemeral_volume_50g: &volumespec_ephemeral_volume_50g
         resources:
           requests:
             storage: 50Gi
-
-volumespec_ephemeral_volume_200g: &volumespec_ephemeral_volume_200g
-  ephemeral:
-    volumeClaimTemplate:
-      metadata:
-        labels:
-          velero.io/exclude-from-backup: "true"
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "topolvm-provisioner-thin"
-        resources:
-          requests:
-            storage: 200Gi
-
-volumespec_ephemeral_volume_500g: &volumespec_ephemeral_volume_500g
-  ephemeral:
-    volumeClaimTemplate:
-      metadata:
-        labels:
-          velero.io/exclude-from-backup: "true"
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "topolvm-provisioner-thin"
-        resources:
-          requests:
-            storage: 500Gi
 
 # And this makes the media / rclone mounts tidier.
 rclonemountrealdebridzurg: &rclonemountrealdebridzurg
@@ -524,179 +451,6 @@ bootstrap: &bootstrap
   resources: *default_resources
   securityContext: *default_securitycontext
 
-bootstrap_elfbot: &bootstrap_elfbot
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-    set -e
-
-    # Allows us to use app.elfhosted.com/name, but fall back to app.kubernetes.io/name if the former doesn't exist
-    if [[ -z "$ELF_APP_NAME" ]]; then
-      ELF_APP_NAME=$K8S_APP_NAME
-    fi
-
-    # look for commands - we match specific names in order of least-destructive
-    TIMESTAMP_NOW=$(date +%s)
-    if [[ -f /etc/elfbot/pause ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/pause)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=pause
-      fi
-    fi
-
-
-    # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=backup
-      fi
-    fi
-
-    # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/reset && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/reset)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=reset
-      fi
-    fi
-
-    case $COMMAND in
-
-      "pause")
-        echo "Recent pause command found, sleeping 5m.."
-        sleep 300
-        ;;
-
-      "reset")
-        echo "Recent reset command found, resetting"
-        rm -rf /config/*
-        ;;
-
-      "backup")
-        echo "Recent backup command found, backing up to /storage/elfstorage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
-        mkdir -p /storage/elfstorage/backup
-        TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
-        cp -rfp /config /storage/elfstorage/backup/$ELF_APP_NAME-$TIMESTAMP
-        ;;
-
-    esac
-  volumeMounts:
-  - mountPath: /etc/elfbot
-    name: elfbot
-  - mountPath: /config
-    name: config
-  - mountPath: /tmp
-    name: tmp
-  env: *bootstrap_env
-  resources: *default_resources
-  securityContext: *default_securitycontext
-
-# Eventually we'll remove the old one, and rename this to bootstrap
-bootstrap_migration: &bootstrap_migration
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-    set -e
-
-    # Allows us to use app.elfhosted.com/name, but fall back to app.kubernetes.io/name if the former doesn't exist
-    if [[ -z "$ELF_APP_NAME" ]]; then
-      ELF_APP_NAME=$K8S_APP_NAME
-    fi
-
-    # look for commands - we match specific names in order of least-destructive
-    TIMESTAMP_NOW=$(date +%s)
-    if [[ -f /etc/elfbot/pause ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/pause)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=pause
-      fi
-    fi
-
-    # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=backup
-      fi
-    fi
-
-    # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/reset && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/reset)
-      TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
-      if [[ $TIMESTAMP_DIFF -lt 600 ]]; then
-        COMMAND=reset
-      fi
-    fi
-
-    case $COMMAND in
-
-      "pause")
-        echo "Recent pause command found, sleeping 5m.."
-        sleep 300
-        ;;
-
-      "reset")
-        echo "Recent reset command found, resetting"
-        rm -rfv /config/*
-        ;;
-
-      "backup")
-        echo "Recent backup command found, backing up to /storage/elfstorage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
-        mkdir -p /storage/elfstorage/backup
-        TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
-        cp -rfp /config /storage/elfstorage/backup/$ELF_APP_NAME-$TIMESTAMP
-        ;;
-
-    esac
-
-    if [[ ! -f /config/i-am-migrated ]]
-    then
-      if [[ ! -z "$(ls -A /config-hdd)" ]]
-      then
-        echo "Migrating from /config-hdd/..."
-        time cp /config-hdd/* /config/ -rfpv
-        touch /config/i-am-migrated
-      fi
-    fi
-
-
-    if [[ ! -f /config/i-am-bootstrapped ]]
-    then
-      echo "Bootstrapping from goldilocks config..."
-      s5cmd sync s3://elfhosted-config/goldilocks/$ELF_APP_NAME/* /config/
-      touch /config/i-am-bootstrapped
-    fi
-  volumeMounts:
-  - mountPath: /etc/elfbot
-    name: elfbot
-  - mountPath: /config
-    name: config
-  - mountPath: /migation
-    name: confighdd
-  env: *bootstrap_env
-  resources: *default_resources
-  securityContext: *default_securitycontext
-
-# This lets users buy blocks of 1TB storage, and add it to their 100Gi
-elfstoragetb:
-  quantity: 0
-# And this lets a user buy a bundle (different SKU), and then still add more elfstorage later
-elfstoragetbbundled:
-  quantity: 0
-
 # provide a default
 userId: 1
 
@@ -739,8 +493,6 @@ bazarr4kexposed:
 qbittorrentexposed:
   enabled: false
 rdtclientexposed:
-  enabled: false
-delugeexposed:
   enabled: false
 rutorrentexposed:
   enabled: false
@@ -922,12 +674,6 @@ rutorrentgluetun: &rutorrent
         configMap:
           name: rutorrent-config
           defaultMode: 0755
-    dante-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: dante-config
     tooling-scripts:
       enabled: "true"
       type: "custom"
@@ -1034,16 +780,6 @@ rutorrentgluetun: &rutorrent
           echo "disconnected" > /shared/vpnstatus
   additionalContainers:
     # Use this to provied proxied access to arrs
-    # dante:
-    #   image: ghcr.io/elfhosted/dante:v1.4.3
-    #   env: *bootstrap_env
-    #   securityContext: *default_securitycontext
-    #   volumeMounts:
-    #   - mountPath: /tmp
-    #     name: tmp
-    #   - mountPath: /etc/sockd.conf
-    #     name: dante-config
-    #     subPath: sockd.conf
     mam-helper:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -1093,7 +829,7 @@ rutorrentpia:
   <<: *rutorrent
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,rutorrent-config,rutorrent-pia-config,elfbot-rutorrent,dante-config" # Reload the deployment every time the yaml config changes
+      configmap.reloader.stakater.com/reload: "elfbot-all,rutorrent-config,rutorrent-pia-config,elfbot-rutorrent" # Reload the deployment every time the yaml config changes
   addons:
     vpn:
       <<: *rutorrent_addons_vpn
@@ -1118,322 +854,6 @@ rutorrentpia:
       - mountPath: /config
         name: config
         subPath: rutorrent
-      - mountPath: /tmp
-        name: tmp
-
-delugegluetun: &deluge
-  enabled: false
-  podLabels:
-    app.elfhosted.com/name: deluge
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M"
-  automountServiceAccountToken: false
-  image:
-    repository: ghcr.io/geek-cookbook/deluge
-    tag: 2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
-  priorityClassName: tenant-bulk
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  # we need the injected initcontainer to run as root, so we can't change the pod-level uid/gid
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-deluge,deluge-gluetun-config"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  persistence:
-    <<: *storagemounts
-    tmp:
-      enabled: true
-      type: custom
-      mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_100g
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      subPath: deluge
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    shared:
-      enabled: true
-      mountPath: /shared
-      type: emptyDir
-      volumeSpec:
-        medium: Memory
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-deluge
-          optional: true
-    elfscripts:
-      enabled: "true"
-      mountPath: "/elfscripts/"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: deluge-elfscripts
-          defaultMode: 0755
-    dante-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: dante-config
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      ports:
-        http:
-          port: 8112
-  env:
-    # -- Set the container timezone
-    TZ: UTC
-    PUID: 568
-    PGID: 568
-    DELUGE_LOGLEVEL: "info"
-  envFrom:
-  - configMapRef:
-      name: elfbot-deluge
-      optional: true
-  extraEnvVars:
-  - name: PORT_FILE
-    valueFrom:
-      configMapKeyRef:
-        name: deluge-gluetun-config
-        key: PORT_FILE
-    optional: true
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: deluge
-      - mountPath: /tmp
-        name: tmp
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/deluge/torrent_files
-
-        JQ_FILTER=".listen_random_port=false"
-        JQ_FILTER="${JQ_FILTER} | .pre_allocate_storage=false"
-        JQ_FILTER="${JQ_FILTER} | .stop_seed_ratio=2"
-        JQ_FILTER="${JQ_FILTER} | .cache_size=52428"
-        JQ_FILTER="${JQ_FILTER} | .share_ratio_limit=2"
-        JQ_FILTER="${JQ_FILTER} | .stop_seed_at_ratio=true"
-
-        jq "${JQ_FILTER}" /config/core.conf > /config/core-new.conf
-        cp /config/core-new.conf /config/core.conf
-
-        # # Avoid session timeouts
-        # sed -i  "s/session_timeout:\".*/session_timeout\": 99999,/" /config/web.conf
-
-        # If the VPN_ENDPOINT_IP is set, but is not an IP address, then convert it to one
-        if [[ ! -z "$VPN_ENDPOINT_IP" ]]
-          then
-          if echo "$VPN_ENDPOINT_IP" | egrep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
-          then
-              echo "No changes, VPN_ENDPOINT_IP is an IP"
-          else
-              # only create the file if DNS lookup succeeds
-              dig +short $VPN_ENDPOINT_IP && dig +short $VPN_ENDPOINT_IP | tail -n1 > /shared/VPN_ENDPOINT_IP
-          fi
-        fi
-
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: deluge
-      - mountPath: /shared
-        name: shared
-      env: *bootstrap_env
-      securityContext: *default_securitycontext
-      envFrom:
-      - configMapRef:
-          name: deluge-gluetun-config
-  resources:
-    requests:
-      cpu: 100m
-      memory: 512Mi
-    limits:
-      cpu: 500m
-      memory: 1500Mi
-  addons:
-    vpn: &deluge_addons_vpn
-      enabled: true
-      type: gluetun
-      gluetun:
-        image:
-          repository: ghcr.io/elfhosted/gluetun
-          tag: 3.40.0@sha256:59b0cc8a9412b9a4645d1f12dff0daba80b8be88acd1b5d1a0fb6dfa625eb9a5
-      securityContext:
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      envFrom:
-      - configMapRef:
-          name: deluge-gluetun-config
-      additionalVolumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: deluge
-      config: # We have to set this to null so that we can override with our own config
-
-      # The scripts that get run when the VPN connection opens/closes are defined here.
-      # The default scripts will write a string to represent the current connection state to a file.
-      # Our qBittorrent image has a feature that can wait for this file to contain the word 'connected' before actually starting the application.
-      scripts:
-        up: |-
-          #!/bin/ash
-          echo "connected" > /shared/vpnstatus
-
-        down: |-
-          #!/bin/ash
-          echo "disconnected" > /shared/vpnstatus
-  additionalContainers:
-    deluge-web:
-      image: ghcr.io/geek-cookbook/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
-      command:
-      - /usr/bin/deluge-web
-      - -L
-      - info
-      - -d
-      - -c
-      - /config
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: deluge
-      - mountPath: /tmp
-        name: tmp
-      env:
-        PYTHON_EGG_CACHE: /tmp/.cache
-
-delugepia:
-  <<: *deluge
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,deluge-config,deluge-pia-config,elfbot-deluge" # Reload the deployment every time the yaml config changes
-  addons:
-    vpn:
-      <<: *deluge_addons_vpn
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      envFrom:
-      - configMapRef:
-          name: deluge-pia-config
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: deluge
-      - mountPath: /tmp
-        name: tmp
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        mkdir -p /config/deluge/torrent_files
-
-        JQ_FILTER=".listen_random_port=false"
-        JQ_FILTER="${JQ_FILTER} | .pre_allocate_storage=false"
-        JQ_FILTER="${JQ_FILTER} | .stop_seed_ratio=2"
-        JQ_FILTER="${JQ_FILTER} | .cache_size=52428"
-        JQ_FILTER="${JQ_FILTER} | .share_ratio_limit=2"
-        JQ_FILTER="${JQ_FILTER} | .stop_seed_at_ratio=true"
-
-        jq "${JQ_FILTER}" /config/core.conf > /config/core-new.conf
-        cp /config/core-new.conf /config/core.conf
-
-        # # Avoid session timeouts
-        # sed -i  "s/session_timeout:\".*/session_timeout\": 99999,/" /config/web.conf
-
-        # If the VPN_ENDPOINT_IP is set, but is not an IP address, then convert it to one
-        if [[ ! -z "$VPN_ENDPOINT_IP" ]]
-          then
-          if echo "$VPN_ENDPOINT_IP" | egrep -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
-          then
-              echo "No changes, VPN_ENDPOINT_IP is an IP"
-          else
-              # only create the file if DNS lookup succeeds
-              dig +short $VPN_ENDPOINT_IP && dig +short $VPN_ENDPOINT_IP | tail -n1 > /shared/VPN_ENDPOINT_IP
-          fi
-        fi
-
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: deluge
-      - mountPath: /shared
-        name: shared
-      env: *bootstrap_env
-      securityContext: *default_securitycontext
-  additionalContainers:
-    deluge-web:
-      image: ghcr.io/geek-cookbook/deluge:2.1.1@sha256:448324e342c47020e4e9fbc236282ceb80ebebd7934a486a6f1e487a7e4034bf
-      command:
-      - /usr/bin/deluge-web
-      - -L
-      - info
-      - -d
-      - -c
-      - /config
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: deluge
-      - mountPath: /tmp
-        name: tmp
-      env:
-        PYTHON_EGG_CACHE: /tmp/.cache
-    # Use this to provied proxied access to arrs
-    dante:
-      image: ghcr.io/elfhosted/dante:v1.4.3
-      env: *bootstrap_env
-      securityContext: *default_securitycontext
-      volumeMounts:
       - mountPath: /tmp
         name: tmp
 
@@ -1503,12 +923,6 @@ qbittorrentgluetun: &qbittorrent
         configMap:
           name: qbittorrent-elfscripts
           defaultMode: 0755
-    dante-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: dante-config
   ingress:
     main:
       enabled: false
@@ -1605,16 +1019,6 @@ qbittorrentgluetun: &qbittorrent
           name: qbittorrent-gluetun-config
   additionalContainers:
     # Use this to provied proxied access to arrs
-    dante:
-      image: ghcr.io/elfhosted/dante:v1.4.3
-      env: *bootstrap_env
-      securityContext: *default_securitycontext
-      volumeMounts:
-      - mountPath: /tmp
-        name: tmp
-      - mountPath: /etc/sockd.conf
-        name: dante-config
-        subPath: sockd.conf
     mam-helper:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -1723,15 +1127,6 @@ qbittorrentpia:
       envFrom:
       - configMapRef:
           name: qbittorrent-pia-config
-  additionalContainers:
-    # Use this to provied proxied access to arrs
-    dante:
-      image: ghcr.io/elfhosted/dante:v1.4.3
-      env: *bootstrap_env
-      securityContext: *default_securitycontext
-      volumeMounts:
-      - mountPath: /tmp
-        name: tmp
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -1833,7 +1228,7 @@ nzbget:
       enabled: true
       type: custom
       mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_500g
+      volumeSpec: *volumespec_ephemeral_volume_100g
     elfbot:
       enabled: "true"
       type: "custom"
@@ -1910,7 +1305,7 @@ sabnzbd:
       enabled: true
       type: custom
       mountPath: /tmp
-      volumeSpec: *volumespec_ephemeral_volume_500g
+      volumeSpec: *volumespec_ephemeral_volume_100g
     elfbot:
       enabled: "true"
       type: "custom"

@@ -15,7 +15,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.398.0
+version: 1.398.1-pre-01
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -235,16 +235,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: kavita.enabled
     alias: kavita
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: delugepia.enabled
-    alias: delugepia
-  - name: app-template
-    version: ~0.2.1
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: delugegluetun.enabled
-    alias: delugegluetun
   - name: app-template
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts

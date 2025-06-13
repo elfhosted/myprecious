@@ -843,18 +843,6 @@ data:
               url: http://jackett:9117          
         {{ end }}                                            
 
-        {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
-        - Deluge:
-            icon: deluge.png
-            href: https://{{ .Release.Name }}-deluge.{{ .Values.dns_domain }}
-            description: Bittorrent Client
-            siteMonitor: http://deluge:8112
-            widget:
-              type: deluge
-              url: http://deluge:8112
-              password: deluge  
-        {{ end }}   
-
         {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
         - qBittorrent:
             icon: qbittorrent.png

@@ -987,17 +987,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
-      - name: deluge
-        group: download-media
-        url: "http://deluge:8112"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
       - name: qbittorrent
         group: download-media

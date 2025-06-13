@@ -1259,21 +1259,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                             
 
-          {{ if or .Values.delugepia.enabled .Values.delugegluetun.enabled }}
-          - name: "Deluge"
-            logo: "assets/png/deluge.png"
-            subtitle: "Bittorrent client"
-            {{ if .Values.delugeexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-deluge.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
           - name: "Qbittorrent"
             logo: "assets/png/qbittorrent.png"
