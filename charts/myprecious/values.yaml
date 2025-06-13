@@ -6868,6 +6868,12 @@ discovarr:
       volumeMounts:
       - mountPath: /app/server/static
         name: static
+      envFrom:
+      - configMapRef:
+          name: discovarr-env
+      - configMapRef:
+          name: elfbot-discovarr
+          optional: true          
   ingress:
     main:
       enabled: false
