@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.400.0](https://github.com/elfhosted/myprecious/compare/v1.399.0...v1.400.0) (2025-06-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.2.6 ([37aa588](https://github.com/elfhosted/myprecious/commit/37aa5888652385242b4498f4c1e96c30b4caa933))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev:v0.6.66 docker digest to 8f6badb ([7ee0ab7](https://github.com/elfhosted/myprecious/commit/7ee0ab759afb0ec464208235a9f5bbd9941844c8))
+
 ## [1.399.0](https://github.com/elfhosted/myprecious/compare/v1.398.0...v1.399.0) (2025-06-13)
 
 
