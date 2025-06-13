@@ -458,7 +458,15 @@ data:
             href: https://{{ .Release.Name }}-suggestarr.{{ .Values.dns_domain }}
             description: Automate suggestions
             siteMonitor: http://suggestarr:5000  
-        {{ end }}            
+        {{ end }} 
+
+        {{ if .Values.discovarr.enabled }}
+        - Discovarr:
+            icon: mylar.png
+            href: https://{{ .Release.Name }}-discovarr.{{ .Values.dns_domain }}
+            description: AI-based suggestions
+            siteMonitor: http://discovarr:8000  
+        {{ end }}                    
 
         {{ if .Values.overseerr.enabled }}
         - Overseerr:

@@ -7375,6 +7375,92 @@ symlinkcleaner:
         mountPath: "/bootstrap/"
       securityContext: *default_securitycontext  
 
+discovarr:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/discovarr
+    tag: v1.0.0@sha256:51ac91d86b3bab213a810d94e89d1f7756954c183aa61d979b7c88d402fa2889
+  priorityClassName: tenant-normal
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podLabels:
+    app.elfhosted.com/name: discovarr
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-discovarr,discovarr-config"
+  # Always prefer to cohabit with zurg
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    runAsNonRoot: true
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: discovarr-env
+  - configMapRef:
+      name: elfbot-discovarr
+      optional: true  
+  persistence:
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: discovarr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-discovarr
+          optional: true
+    tmp: *tmp
+    backup: *backup
+    cache:
+      mountPath: /cache
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi    
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: discovarr
+      - mountPath: /tmp
+        name: tmp
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8000
+  resources:
+    requests:
+      cpu: 0m
+      memory: 175Mi
+    limits:
+      cpu: 500m
+      memory: 2Gi
+
 overseerr:
   enabled: false
   image:

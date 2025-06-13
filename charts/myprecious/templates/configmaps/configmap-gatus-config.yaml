@@ -541,7 +541,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}      
+      {{ end }} 
+
+      {{ if .Values.discovarr.enabled }}
+      - name: discovarr
+        group: manage-media
+        url: "http://discovarr:8000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}            
 
       {{ if .Values.overseerr.enabled }}
       - name: overseerr

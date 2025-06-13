@@ -1,0 +1,20 @@
+{{ if .Values.discovarr.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: discovarr
+  labels:
+    app.kubernetes.io/name: discovarr
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app.elfhosted.com/name: discovarr
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

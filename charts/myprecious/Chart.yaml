@@ -831,6 +831,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: petio
   - name: app-template
+    condition: discovarr.enabled
+    version: ~0.2.1
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: discovarr    
+  - name: app-template
     condition: symlinkcleaner.enabled
     version: ~0.2.1
     repository: oci://ghcr.io/elfhosted/charts
