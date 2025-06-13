@@ -6774,7 +6774,7 @@ discovarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/discovarr
-    tag: v1.0.0@sha256:51ac91d86b3bab213a810d94e89d1f7756954c183aa61d979b7c88d402fa2889
+    tag: v1.0.0@sha256:f317c8b6e2b5dcb6a151cbc5e1982efacc3f6ad6b04f36975d76d9bce69b6af4
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6825,7 +6825,12 @@ discovarr:
       mountPath: /cache
       enabled: true
       type: emptyDir
-      sizeLimit: 1Gi    
+      sizeLimit: 1Gi 
+    static:
+      mountPath: /app/server/static
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi          
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -6839,6 +6844,30 @@ discovarr:
         subPath: discovarr
       - mountPath: /tmp
         name: tmp
+    setup:
+      image:  ghcr.io/elfhosted/discovarr:v1.0.0@sha256:f317c8b6e2b5dcb6a151cbc5e1982efacc3f6ad6b04f36975d76d9bce69b6af4
+      command:
+      - /bin/sh
+      - -c
+      - |
+        set -x
+        set -e
+
+        # Directory where your built frontend assets are located (copied from client/dist)
+        # This path is inside the Docker container.
+        STATIC_ASSETS_DIR="/app/server/static"
+
+        echo "INFO: Replacing placeholder '${PLACEHOLDER}' with '${VITE_DISCOVARR_URL}' in JS and HTML files..."
+
+        # Find all .js and .html files in the static assets directory and its subdirectories
+        # and replace the placeholder.
+        # Using '#' as a delimiter for sed to avoid issues with slashes ('/') in the URL.
+        # The -print0 and xargs -0 pattern handles filenames with spaces or special characters.
+        find "${STATIC_ASSETS_DIR}" -type f \( -name "*.js" -o -name "*.html" \) -print0 | \
+          xargs -0 sed -i "s#${PLACEHOLDER}#${VITE_DISCOVARR_URL}#g"
+      volumeMounts:
+      - mountPath: /app/server/static
+        name: static
   ingress:
     main:
       enabled: false
@@ -10393,86 +10422,6 @@ rdtclient: &app_rdtclient
         subPath: rdtclient
       - mountPath: /tmp
         name: tmp
-
-jdownloader:
-  enabled: false
-  hostname: elfhosted
-  # runtimeClassName: kata
-  priorityClassName: tenant-bulk
-  image:
-    repository: jlesage/jdownloader-2
-    tag: v25.02.1
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jdownloader"
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: false
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    # runAsUser: 568
-    # runAsGroup: 568
-    fsGroup: 568 # need this so that the bootstrap can run
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  env:
-    JDOWNLOADER_HEADLESS: 1
-    APP_NICENESS: 19
-  envFrom:
-  - configMapRef:
-      name: jdownloader-config
-  persistence:
-    tmp: *tmp
-    backup: *backup
-    config:
-      enabled: true
-      type: custom
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-      mountPath: /output
-      subPath: jdownloader/downloads/completed/jdownloader
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-jdownloader
-          optional: true
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 9898
-  resources:
-    requests:
-      cpu: 0m
-      memory: 10Mi
-    limits:
-      cpu: 0.5
-      memory: 1Gi
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: jdownloader
-      - mountPath: /tmp
-        name: tmp
-  additionalContainers:
-    podinfo:
-      image: stefanprodan/podinfo # used to run probes from gatus
 
 miniflux:
   enabled: false
