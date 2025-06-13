@@ -6864,7 +6864,7 @@ discovarr:
         # Using '#' as a delimiter for sed to avoid issues with slashes ('/') in the URL.
         # The -print0 and xargs -0 pattern handles filenames with spaces or special characters.
         find "${STATIC_ASSETS_DIR}" -type f \( -name "*.js" -o -name "*.html" \) -print0 | \
-          xargs -0 sed -i "s#${PLACEHOLDER}#${VITE_DISCOVARR_URL}#g"
+          xargs -0 sed -i "s#__API_ENDPOINT__#${VITE_DISCOVARR_URL}#g"
       volumeMounts:
       - mountPath: /app/server/static
         name: static
