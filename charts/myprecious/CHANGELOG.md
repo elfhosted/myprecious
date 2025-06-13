@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.399.0](https://github.com/elfhosted/myprecious/compare/v1.398.0...v1.399.0) (2025-06-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.148 ([92b5bf0](https://github.com/elfhosted/myprecious/commit/92b5bf029afd6fd45fbee5dda404d250dce550f8))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.24.1 ([1494a0a](https://github.com/elfhosted/myprecious/commit/1494a0a3a0e41640979703bf4e946b55d7c4ebb8))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.66 ([52b9aa7](https://github.com/elfhosted/myprecious/commit/52b9aa70ee75e7fd6f1122dd2b9c9d6e1859ae4f))
+* **app:** update ghcr.io/elfhosted/discovarr docker tag to v1.0.1 ([a3fd8f1](https://github.com/elfhosted/myprecious/commit/a3fd8f1e52617ed79c92a726216008d8701c5616))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v7.8.2 ([ca5e265](https://github.com/elfhosted/myprecious/commit/ca5e26572e3b2f6a4a0851289ec54cac775e2172))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2015 ([9cb423f](https://github.com/elfhosted/myprecious/commit/9cb423f7ef34c5b37e19a1d3c873d3a2ecd977c6))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.78.4 ([da1b8a7](https://github.com/elfhosted/myprecious/commit/da1b8a73054c0c8b0cac9f709be5e65eef11510b))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.28.1 ([b859342](https://github.com/elfhosted/myprecious/commit/b859342a2271773a48501cd04b07ac4d4e4e8a9e))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.13.0032-nightly ([3773eb4](https://github.com/elfhosted/myprecious/commit/3773eb462e213fb40e4f3f781afb3c09ea6ddd3c))
+
 ## [1.398.0](https://github.com/elfhosted/myprecious/compare/v1.397.0...v1.398.0) (2025-06-12)
 
 
