@@ -815,7 +815,7 @@ data:
           {{ end }}  
 
           {{ if .Values.discovarr.enabled }}
-          - name: "discovarr"
+          - name: "Discovarr"
             icon: "fas fa-infinity"
             subtitle: "AI Content Discovery"
             tag: "protected"
