@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.401.0](https://github.com/elfhosted/myprecious/compare/v1.400.0...v1.401.0) (2025-06-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/discovarr docker tag to v1.0.2 ([9258936](https://github.com/elfhosted/myprecious/commit/92589362857806183969949198264c900eb9060e))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2016 ([0d425f0](https://github.com/elfhosted/myprecious/commit/0d425f0332390e6dc40cd4d484e6a00a3650e2b7))
+* **app:** update ghcr.io/elfhosted/mediaflow-proxy docker tag to v2.1.6 ([3555461](https://github.com/elfhosted/myprecious/commit/35554611c58804908ce44ffdf1d21b3a64fdd545))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.15.0 ([8239ed1](https://github.com/elfhosted/myprecious/commit/8239ed1394a59dc9573a5ae31d577493b5dd1947))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.79.0 ([02effac](https://github.com/elfhosted/myprecious/commit/02effacfcd70e2369ff247841742dd7d63859774))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.79.1 ([9f702c2](https://github.com/elfhosted/myprecious/commit/9f702c216272a049a8b9c3ff71c2968e257ec09b))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.28.3 ([a8a7b65](https://github.com/elfhosted/myprecious/commit/a8a7b6549f8b36ae916042e1d9fcd91a1f3c1163))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/huntarr:7.8.2 docker digest to 65bf396 ([c7e6310](https://github.com/elfhosted/myprecious/commit/c7e631077ecc27ac9926242f3f183b2a06c14658))
+
 ## [1.400.0](https://github.com/elfhosted/myprecious/compare/v1.399.0...v1.400.0) (2025-06-13)
 
 
