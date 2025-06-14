@@ -6774,7 +6774,7 @@ discovarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/discovarr
-    tag: v1.0.1@sha256:9a34ce62af409db82a7fe1dcaafde2601cce077433285cf15edd7ca1b9a9cb9a
+    tag: v1.0.2@sha256:d6db6a8deedef9e741d11407ed8f7d9b602559b59800569b788891f54ead094a
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6845,7 +6845,7 @@ discovarr:
       - mountPath: /tmp
         name: tmp
     setup:
-      image:  ghcr.io/elfhosted/discovarr:v1.0.1@sha256:9a34ce62af409db82a7fe1dcaafde2601cce077433285cf15edd7ca1b9a9cb9a
+      image:  ghcr.io/elfhosted/discovarr:v1.0.2@sha256:d6db6a8deedef9e741d11407ed8f7d9b602559b59800569b788891f54ead094a
       command:
       - /bin/sh
       - -c
