@@ -4981,6 +4981,14 @@ plex: &app_plex
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/Library/Application Support/Plex Media Server/Logs
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
     transcode:
       enabled: true
       type: custom
