@@ -11,4 +11,5 @@ data:
   {{ end }}
   AUTOMATED_MODE: "true"
   OVERSEERR_USER_ID: "1"
+  NEXT_PUBLIC_API_URL: https://{{ .Release.Name }}-listsync-backend.{{ .Values.dns_domain }}/api
 {{ end }}

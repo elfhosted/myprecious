@@ -1403,7 +1403,19 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-listsync.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute                        
+            target: "_blank" # optional html tag target attribute  
+
+          - name: "ListSync CLI"
+            icon: "fas fa-terminal"
+            {{ if .Values.jellyseerr.enabled }}
+            subtitle: "Sync Jellyseer with Lists (CLI)"
+            {{ else }}
+            subtitle: "Sync Overseerr with Lists (CLI)"
+            {{ end }}
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-listsync-cli.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute                                    
           {{ end }}            
 
           {{ if .Values.zurg.enabled }}

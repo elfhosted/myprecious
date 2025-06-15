@@ -14,6 +14,14 @@ spec:
     targetPort: 3001
     protocol: TCP
     name: ttyd
+  - port: 3222
+    targetPort: 3222
+    protocol: TCP
+    name: frontend
+  - port: 4222
+    targetPort: 4222
+    protocol: TCP
+    name: backend
   selector:
     app.kubernetes.io/name: listsync
     app.kubernetes.io/instance: {{ .Release.Name }}
