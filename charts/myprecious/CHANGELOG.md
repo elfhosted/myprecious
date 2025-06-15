@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.403.0](https://github.com/elfhosted/myprecious/compare/v1.402.0...v1.403.0) (2025-06-15)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.0.3 ([cfc3136](https://github.com/elfhosted/myprecious/commit/cfc313656fad516f3f1516144f0c471955069c63))
+
 ## [1.402.0](https://github.com/elfhosted/myprecious/compare/v1.401.0...v1.402.0) (2025-06-15)
 
 
