@@ -1528,7 +1528,7 @@ radarr: &app_radarr
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.25.0.10024@sha256:1ec946cdd3a748cde3678d3970925a9e1b399ccfdf32278a4eb0b0f8a22686c3
+    tag: 5.26.2.10099@sha256:64c278e344051ea00998b2968a653c23c0f6d8ba6c4e72c6e22728d321af3f0a
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -1709,7 +1709,7 @@ radarr: &app_radarr
           cpu: 2
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.25.0.10024@sha256:1ec946cdd3a748cde3678d3970925a9e1b399ccfdf32278a4eb0b0f8a22686c3
+      image: ghcr.io/elfhosted/radarr:5.26.2.10099@sha256:64c278e344051ea00998b2968a653c23c0f6d8ba6c4e72c6e22728d321af3f0a
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -1742,7 +1742,7 @@ radarr4k: &app_radarr4k
   image:
     registry: ghcr.io
     repository: elfhosted/radarr
-    tag: 5.25.0.10024@sha256:1ec946cdd3a748cde3678d3970925a9e1b399ccfdf32278a4eb0b0f8a22686c3
+    tag: 5.26.2.10099@sha256:64c278e344051ea00998b2968a653c23c0f6d8ba6c4e72c6e22728d321af3f0a
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -1930,7 +1930,7 @@ radarr4k: &app_radarr4k
           cpu: 500m
           memory: 8Gi   
     database-backup:
-      image: ghcr.io/elfhosted/radarr:5.25.0.10024@sha256:1ec946cdd3a748cde3678d3970925a9e1b399ccfdf32278a4eb0b0f8a22686c3
+      image: ghcr.io/elfhosted/radarr:5.26.2.10099@sha256:64c278e344051ea00998b2968a653c23c0f6d8ba6c4e72c6e22728d321af3f0a
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -2107,7 +2107,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 8.0.2@sha256:67eb26377b55d4699f338d80a07eec57a1ba8f0fb2e72db74dbd83980b449a21
+    tag: 7.8.2@sha256:65bf3964e1f17132beb9c3e91affe9f608ce4dfa8f6b3eb6066caadaa1049381
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2969,7 +2969,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:9c20be0b878336c20969fc47b4e705b49030e2b5ba02c6ea5ebf2882c22522bc
+    tag: rolling@sha256:e9af79cc4d95f0fc1a02afe3e48c772fc6763cee25206e3bd55e85972521b390
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
@@ -3941,7 +3941,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.37.0.5076@sha256:3da9ecca65464bce63c5187477a73dc1f5b38711e9c09c92021f0e8e5110c348
+    tag: 2.0.0.5094@sha256:a84a164ab157071d756ebf6736a7e3185e2dfac121fed99ae157921c5c382b02
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4129,7 +4129,7 @@ prowlarr: &app_prowlarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/prowlarr-develop:1.37.0.5076@sha256:3da9ecca65464bce63c5187477a73dc1f5b38711e9c09c92021f0e8e5110c348 
+      image: ghcr.io/elfhosted/prowlarr-develop:2.0.0.5094@sha256:a84a164ab157071d756ebf6736a7e3185e2dfac121fed99ae157921c5c382b02 
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4185,7 +4185,7 @@ nzbhydra:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
-    tag: 7.14.3@sha256:3bce1ae2b0dabaf3631c91ca45668aa671f2c6661097dfb7790c165502e37afa
+    tag: 7.15.0@sha256:a9b7cc4fb15c5b2bece15cffbecf33c91502a12b25b3e6d954e993ce2c946e33
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4259,7 +4259,7 @@ lidarr:
   image:
     registry: ghcr.io
     repository: elfhosted/lidarr-develop
-    tag: 2.12.4.4658@sha256:a7ce75779f27abd0502d05242e337ef0871370d349e32fac456e52ea108e90fe  
+    tag: 2.13.0.4664@sha256:f35f078ba42887de525392bc08cc413bd158d743b3ac0164c1c6c0c094166cc5  
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -4413,7 +4413,7 @@ lidarr:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/lidarr-develop:2.12.4.4658@sha256:a7ce75779f27abd0502d05242e337ef0871370d349e32fac456e52ea108e90fe  
+      image: ghcr.io/elfhosted/lidarr-develop:2.13.0.4664@sha256:f35f078ba42887de525392bc08cc413bd158d743b3ac0164c1c6c0c094166cc5  
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -5042,7 +5042,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.12.0253-nightly@sha256:d80f3410000c22216dda0104d87582a57d09e091253c88debfebe4566877103d
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.13.0032-nightly@sha256:14ca9e38506190513fa360853bf24086ccde4ef03155038bd1dfef60adfe211f
       command:
       - /bin/bash
       - -c
@@ -5412,7 +5412,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.12.0253-nightly@sha256:d80f3410000c22216dda0104d87582a57d09e091253c88debfebe4566877103d
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.13.0032-nightly@sha256:14ca9e38506190513fa360853bf24086ccde4ef03155038bd1dfef60adfe211f
       command:
       - /bin/bash
       - -c
@@ -5616,7 +5616,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.12.0253-nightly@sha256:d80f3410000c22216dda0104d87582a57d09e091253c88debfebe4566877103d
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.13.0032-nightly@sha256:14ca9e38506190513fa360853bf24086ccde4ef03155038bd1dfef60adfe211f
       command:
       - /bin/bash
       - -c
@@ -6774,7 +6774,7 @@ discovarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/discovarr
-    tag: v1.0.0@sha256:f317c8b6e2b5dcb6a151cbc5e1982efacc3f6ad6b04f36975d76d9bce69b6af4
+    tag: v1.0.2@sha256:d6db6a8deedef9e741d11407ed8f7d9b602559b59800569b788891f54ead094a
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6845,7 +6845,7 @@ discovarr:
       - mountPath: /tmp
         name: tmp
     setup:
-      image:  ghcr.io/elfhosted/discovarr:v1.0.0@sha256:f317c8b6e2b5dcb6a151cbc5e1982efacc3f6ad6b04f36975d76d9bce69b6af4
+      image:  ghcr.io/elfhosted/discovarr:v1.0.2@sha256:d6db6a8deedef9e741d11407ed8f7d9b602559b59800569b788891f54ead094a
       command:
       - /bin/sh
       - -c
@@ -7312,7 +7312,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.24.0@sha256:d6cb500d641ff726c0d294be849e895c7fe54f78b5b8e79cbf407af807c46417
+    tag: v0.24.1@sha256:718d74c23dbe00b5c96209a5e3b0c63b817b0f8ff67df672e3e6447c05189e4a
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7413,7 +7413,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.24.0@sha256:d6cb500d641ff726c0d294be849e895c7fe54f78b5b8e79cbf407af807c46417
+      image: ghcr.io/elfhosted/booklore:v0.24.1@sha256:718d74c23dbe00b5c96209a5e3b0c63b817b0f8ff67df672e3e6447c05189e4a
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -7667,7 +7667,7 @@ audiobookshelf:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookshelf
-    tag: v2.24.0@sha256:cc8a1215dfc7f6636a6cc4ce408c4a265931dad805cf8c8381fa7ae4e6cfd09d
+    tag: v2.25.1@sha256:c3ee892604484658fdbd3c6a37972a7d41a0566e4f97ea058b6b66587a2c7242
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -9222,7 +9222,7 @@ plexytrack:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plexytrack
-    tag: v0.2.5@sha256:309cf8a2c5a5f4f4ffb7cc01df9c5b9437448412769712b27852c767a29a3bd8
+    tag: v0.2.6@sha256:eb837462fd1fa4fca319e718076de497d9fc92670173b1afb5f3a5a08e169653
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11009,7 +11009,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.147@sha256:0355d55bd5cfda1be448ec3a0e57b7c309bdd2ce632012c0f5d751ce678af72b
+    tag: 0.4.148@sha256:ed0ca2172e6403e641599b185c4dd7615e0e8764c60c22e58f75dab7d63f92d2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11543,7 +11543,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2011@sha256:ac7a4b86925fd14d3b6c7ce525f9184a6084b8217791c35625382925003cf49f
+    tag: 0.22.2017@sha256:470753c33cc61dd3d0e8f85acba5e026c265a847b18f6845cd39bc723128f84c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12603,7 +12603,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.78.3@sha256:bc303f485ab4d8964990506c5589714854e7b1151f38591db42c103b33011031
+    tag: 0.79.1@sha256:1629a15285257ec197d3c47498e66f449faac233aecfcc1f365682008fdd691f
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13175,7 +13175,7 @@ mediaflowproxy:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/mediaflow-proxy
-    tag: 2.1.5@sha256:41da957b076eee1523c772781c3c7e8f217d7635b336c5624a63e6dfac8efa12
+    tag: 2.1.6@sha256:69dcbcb26a09e88ebccaa93c6e167ef5a76d28019da0ac2243122fcd3582b0d8
   podLabels:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
@@ -13561,7 +13561,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.28.0@sha256:ba4cbc80036152e1cce40539bc2768c825257a9d97ff9bbc4dae78770e8236d9
+    tag: v0.28.4@sha256:e255e2511e56327fb63476bec6e8c45433202109eab4c18788d8c48428ade019
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13840,7 +13840,7 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.12.0253-nightly@sha256:d80f3410000c22216dda0104d87582a57d09e091253c88debfebe4566877103d
+    tag: 2025.06.13.0032-nightly@sha256:14ca9e38506190513fa360853bf24086ccde4ef03155038bd1dfef60adfe211f
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
@@ -14179,7 +14179,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.65@sha256:50036a4dd61fe6b3458eeff7d7faa9f61f309c3979c552fba19bd9c43a8339c6 
+    tag: v0.6.66@sha256:8f6badba6832f560270d1b7f90f05f8c4e6514be137de2ec43814e311927aee9 
   priorityClassName: tenant-normal
   controller:
     annotations:
