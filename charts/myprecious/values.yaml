@@ -2136,14 +2136,6 @@ huntarr: &app_huntarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config  
-    logs:
-      enabled: true
-      type: custom
-      mountPath: /config/logs
-      subPath: huntarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs   
     example-config:
       enabled: "true"
       type: "custom"
@@ -2163,7 +2155,7 @@ huntarr: &app_huntarr
       sizeLimit: 1Gi
       mountPath: /app/frontend/static/data      
   initContainers:  
-    copy-example-config:
+    aa-remove-json-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -2173,11 +2165,11 @@ huntarr: &app_huntarr
         set -x
         set -e
 
-        mkdir -p /config/settings/
-        if ! find /config/settings/ -maxdepth 1 -name '*.json' | grep -q .; then
-          cp /bootstrap/*.json /config/settings/
-          mkdir -p /config/user
-          mv /config/settings/credentials.json /config/user/credentials.json
+        # Since v8, we don't use .json files anymore.
+        # Search for .json files in /config/settings and reset if they're found
+        if find /config/settings -type f -name "*.json" | grep -q .; then
+            # If any .json files are found, delete everything in /config
+            rm -rf /config/*
         fi
       volumeMounts:
       - mountPath: /config/
@@ -4981,6 +4973,14 @@ plex: &app_plex
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /config/Library/Application Support/Plex Media Server/Logs
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
     transcode:
       enabled: true
       type: custom
