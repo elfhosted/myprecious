@@ -2107,7 +2107,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.8.0@sha256:a4173f45ea86624ca00daf514daf8542eb6c47459e313670ca315466409ec812
+    tag: 8.0.2@sha256:67eb26377b55d4699f338d80a07eec57a1ba8f0fb2e72db74dbd83980b449a21
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -2163,7 +2163,7 @@ huntarr: &app_huntarr
       sizeLimit: 1Gi
       mountPath: /app/frontend/static/data      
   initContainers:  
-    copy-example-config:
+    remove-json-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -2173,11 +2173,11 @@ huntarr: &app_huntarr
         set -x
         set -e
 
-        mkdir -p /config/settings/
-        if ! find /config/settings/ -maxdepth 1 -name '*.json' | grep -q .; then
-          cp /bootstrap/*.json /config/settings/
-          mkdir -p /config/user
-          mv /config/settings/credentials.json /config/user/credentials.json
+        # Since v8, we don't use .json files anymore.
+        # Search for .json files in /config/settings and reset if they're found
+        if find /config/settings -type f -name "*.json" | grep -q .; then
+            # If any .json files are found, delete everything in /config
+            rm -rf /config/*
         fi
       volumeMounts:
       - mountPath: /config/
