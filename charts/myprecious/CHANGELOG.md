@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.402.0](https://github.com/elfhosted/myprecious/compare/v1.401.0...v1.402.0) (2025-06-15)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.25.1 ([ba1fcae](https://github.com/elfhosted/myprecious/commit/ba1fcae76daa291d71b2ca77e349935ba3c9d3b1))
+
 ## [1.401.0](https://github.com/elfhosted/myprecious/compare/v1.400.0...v1.401.0) (2025-06-14)
 
 
