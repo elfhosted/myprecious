@@ -2136,14 +2136,6 @@ huntarr: &app_huntarr
       volumeSpec:
         persistentVolumeClaim:
           claimName: config  
-    logs:
-      enabled: true
-      type: custom
-      mountPath: /config/logs
-      subPath: huntarr
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs   
     example-config:
       enabled: "true"
       type: "custom"
@@ -2163,7 +2155,7 @@ huntarr: &app_huntarr
       sizeLimit: 1Gi
       mountPath: /app/frontend/static/data      
   initContainers:  
-    remove-json-config:
+    aa-remove-json-config:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
