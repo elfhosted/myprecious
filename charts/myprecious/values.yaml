@@ -2969,7 +2969,7 @@ cwabookdownloader:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
-    tag: rolling@sha256:9c20be0b878336c20969fc47b4e705b49030e2b5ba02c6ea5ebf2882c22522bc
+    tag: rolling@sha256:e9af79cc4d95f0fc1a02afe3e48c772fc6763cee25206e3bd55e85972521b390
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cwa-book-downloader"
@@ -3941,7 +3941,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 1.37.0.5076@sha256:3da9ecca65464bce63c5187477a73dc1f5b38711e9c09c92021f0e8e5110c348
+    tag: 2.0.0.5094@sha256:a84a164ab157071d756ebf6736a7e3185e2dfac121fed99ae157921c5c382b02
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4129,7 +4129,7 @@ prowlarr: &app_prowlarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/prowlarr-develop:1.37.0.5076@sha256:3da9ecca65464bce63c5187477a73dc1f5b38711e9c09c92021f0e8e5110c348 
+      image: ghcr.io/elfhosted/prowlarr-develop:2.0.0.5094@sha256:a84a164ab157071d756ebf6736a7e3185e2dfac121fed99ae157921c5c382b02 
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
