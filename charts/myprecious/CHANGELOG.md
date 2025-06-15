@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.402.0](https://github.com/elfhosted/myprecious/compare/v1.401.0...v1.402.0) (2025-06-15)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.20.3 ([982a451](https://github.com/elfhosted/myprecious/commit/982a45135d918e9e8afed90d05a6b2b7f2dc8139))
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.25.1 ([ba1fcae](https://github.com/elfhosted/myprecious/commit/ba1fcae76daa291d71b2ca77e349935ba3c9d3b1))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8 ([2cb8821](https://github.com/elfhosted/myprecious/commit/2cb8821172d4ae322d4e1532a1b9afd20d1ac057))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2017 ([0fc6b7f](https://github.com/elfhosted/myprecious/commit/0fc6b7f955537783cfaf578f31ccccc7542b97cf))
+* **app:** update ghcr.io/elfhosted/lidarr-develop docker tag to v2.13.0.4664 ([960924c](https://github.com/elfhosted/myprecious/commit/960924cb3ba787998b57a7a3e858d3568b4b1336))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v2 ([eac8c37](https://github.com/elfhosted/myprecious/commit/eac8c3785cea4d3ea61d754e1e4383836f472a4a))
+* **app:** update ghcr.io/elfhosted/radarr docker tag to v5.26.2.10099 ([e31f3a8](https://github.com/elfhosted/myprecious/commit/e31f3a8b9256c3df2deda0edf0c7eef7994b9faa))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.28.4 ([f5b5d38](https://github.com/elfhosted/myprecious/commit/f5b5d384a1375297fd516b845746f14d587c40e7))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 4084421 ([42f43c9](https://github.com/elfhosted/myprecious/commit/42f43c9d1dd4f12bf6b4ccda75ab44b0ecb55eb0))
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to e9af79c ([a15b674](https://github.com/elfhosted/myprecious/commit/a15b67413caa817071b1bf829d26b03050a393ce))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 54d348f ([d49ec14](https://github.com/elfhosted/myprecious/commit/d49ec14377e1132a6e6623cd238b5fb00778e26d))
+
 ## [1.401.0](https://github.com/elfhosted/myprecious/compare/v1.400.0...v1.401.0) (2025-06-14)
 
 
