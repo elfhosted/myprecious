@@ -1,4 +1,4 @@
-{{ if .Values.decypharrreplacezurg.enabled }}
+{{ if .Values.decypharr.enabled }}
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:

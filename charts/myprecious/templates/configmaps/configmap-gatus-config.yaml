@@ -1119,7 +1119,6 @@ data:
           - type: email
       {{ end }}                                
 
-      {{ if not .Values.decypharrreplacezurg.enabled }}
       {{ if .Values.zurg.enabled }}
       - name: zurg
         group: download-media
@@ -1129,7 +1128,6 @@ data:
         - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}
       {{ end }}
 
       {{ if .Values.openbooks.enabled }}

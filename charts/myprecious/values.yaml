@@ -429,6 +429,7 @@ bootstrap: &bootstrap
         cp -rfp /config /storage/backup/$ELF_APP_NAME-$TIMESTAMP
         ;;
 
+
     esac
 
     if [[ ! -f /config/i-am-bootstrapped ]]
