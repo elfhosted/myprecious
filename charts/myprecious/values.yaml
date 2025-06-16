@@ -5173,11 +5173,7 @@ plex: &app_plex
       - /bin/bash
       - -c
       - |
-        set -x
-        set -e
-
-        python3 /scripts/transcode-killer.py
-        
+        python3 /scripts/transcode-killer.py        
       volumeMounts:
       - mountPath: /var/log/
         name: logs
