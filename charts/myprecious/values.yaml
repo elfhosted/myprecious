@@ -15791,8 +15791,6 @@ decypharr: &app_decypharr
           fi
         fi
 
-        sleep 1h # debugging
-
       volumeMounts:
       - mountPath: /config/
         name: config
