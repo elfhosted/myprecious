@@ -15783,7 +15783,7 @@ decypharr: &app_decypharr
             # If decypharr is NOT configured (DOES contain the placeholder)
             if grep -q YOUR_RD_KEY_HERE /config/decypharr/config.json; then
               # Extract the token value from zurg config
-              RD_KEY=$(awk -F': *' '$1 ~ /^token$/ { if (match($2, /^[[:space:]]*["'\''"]?([A-Za-z0-9]+)["'\''"]?/, m)) print m[1] }' /config/zurg/config.yml)
+              RD_KEY=$(awk -F': *' '$1 ~ /^token$/ { gsub(/#.*/, "", $2); gsub(/["'\''[:space:]]/, "", $2); print $2 }' /config/zurg/config.yml)
               # Insert the RD key into decypharr config
               jq --arg RD_KEY "$RD_KEY" \
                 '.debrids |= map(if .name == "realdebrid" then . + {api_key: $RD_KEY} else . end)' \
@@ -15792,8 +15792,6 @@ decypharr: &app_decypharr
             fi
           fi
         fi
-
-        sleep 1h # debug
 
       volumeMounts:
       - mountPath: /config/
