@@ -15778,16 +15778,18 @@ decypharr: &app_decypharr
         set -x
 
         # If zurg is configured (does NOT contain the placeholder)
-        if ! grep -q REPLACE-ME-WITH-YOUR-RD-TOKEN /config/zurg/config.yml; then
-          # If decypharr is NOT configured (DOES contain the placeholder)
-          if grep -q YOUR_RD_KEY_HERE /config/decypharr/config.json; then
-            # Extract the token value from zurg config
-            RD_KEY=$(awk -F': *' '$1 ~ /token/ {gsub(/[^A-Za-z0-9]/, "", $2); print $2}' /config/zurg/config.yml)
-            # Insert the RD key into decypharr config
-            jq --arg RD_KEY "$RD_KEY" \
-              '.debrids |= map(if .name == "realdebrid" then . + {api_key: $RD_KEY} else . end)' \
-              /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
-            mv /config/decypharr/config.json.tmp /config/decypharr/config.json          
+        if [ -f /config/zurg/config.yml ]; then
+          if ! grep -q REPLACE-ME-WITH-YOUR-RD-TOKEN /config/zurg/config.yml; then
+            # If decypharr is NOT configured (DOES contain the placeholder)
+            if grep -q YOUR_RD_KEY_HERE /config/decypharr/config.json; then
+              # Extract the token value from zurg config
+              RD_KEY=$(awk -F': *' '$1 ~ /token/ {gsub(/[^A-Za-z0-9]/, "", $2); print $2}' /config/zurg/config.yml)
+              # Insert the RD key into decypharr config
+              jq --arg RD_KEY "$RD_KEY" \
+                '.debrids |= map(if .name == "realdebrid" then . + {api_key: $RD_KEY} else . end)' \
+                /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
+              mv /config/decypharr/config.json.tmp /config/decypharr/config.json          
+            fi
           fi
         fi
 
