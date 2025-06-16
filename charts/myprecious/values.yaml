@@ -2108,7 +2108,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 7.8.2@sha256:65bf3964e1f17132beb9c3e91affe9f608ce4dfa8f6b3eb6066caadaa1049381
+    tag: 8.0.3@sha256:dd3c7b7a9ece2b8e0aa6dd5a76989cdf72b90d8e70bf328cd5a42b42bd0ae33d
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6274,7 +6274,7 @@ tunarr:
   image:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
-    tag: 0.20.1-vaapi
+    tag: 0.20.3-vaapi
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6362,7 +6362,7 @@ ersatztv:
   image:
     registry: docker.io
     repository: jasongdove/ersatztv
-    tag: develop-vaapi@sha256:d39c2ed8749100419a771cda5231ca4287b2b68fbd3970f797f1b6dbd4f38a66
+    tag: develop-vaapi@sha256:4084421bee8a4d7519f584825ca4e553b89aa80d12b9f70421a296a67028a2b5
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7449,7 +7449,7 @@ peertube:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/peertube-nonroot
-    tag: v7.2.0@sha256:be1614d6296ab66cd5a62ca662ece3932720cfc3dddca97bcf4903a9d526842e
+    tag: v7.2.1@sha256:b45910962b0ad4f829e54032bb3ae08f2ba560af4c1af61c0311d55eda0934fb
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7658,7 +7658,7 @@ peertube:
         name: config
         subPath: peertube/redis
     cli:
-      image: ghcr.io/elfhosted/peertube-cli:v7.2.0@sha256:e0148f7a4a15d279de1268986eedf26734b190da2f013106e41e68ca2e4d2bae
+      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:6ff27d93e67362a55181d1081935b8b795a8b96168527dc4e71d724410e3e779
       volumeMounts:
       - mountPath: /home/elfie
         name: config
@@ -9223,7 +9223,7 @@ plexytrack:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plexytrack
-    tag: v0.2.6@sha256:eb837462fd1fa4fca319e718076de497d9fc92670173b1afb5f3a5a08e169653
+    tag: v0.2.7@sha256:726d05fc016730a2652950e9163e4c8056842781c158c853e436e0f1f6d1d68c
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9375,7 +9375,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:647bb99019dd571b5cd91fa8e32d65bcfb7e0b933dca4d28aa27b5689e14fdf3
+    tag: rolling@sha256:54d348fbef4d71cfd43ea8fb6f493af0ef51535f604b2c8445f2eeec9c0c9575
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11544,7 +11544,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2017@sha256:470753c33cc61dd3d0e8f85acba5e026c265a847b18f6845cd39bc723128f84c
+    tag: 0.22.2020@sha256:e11c20782f793543a2c73354a5929634d9857ce46c4b2af9250023448db27817
   priorityClassName: tenant-normal
   controller:
     annotations:
