@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.403.0](https://github.com/elfhosted/myprecious/compare/v1.402.0...v1.403.0) (2025-06-16)
+
+
+### Features
+
+* **app:** update ghcr.io/chrisbenincasa/tunarr docker tag to v0.20.4 ([7810614](https://github.com/elfhosted/myprecious/commit/7810614ee58ffca7f7695d4b1dab447a145ead8c))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.67 ([20ed805](https://github.com/elfhosted/myprecious/commit/20ed80572ffe937f609798c0b8a8ea67452c4112))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.0.3 ([cfc3136](https://github.com/elfhosted/myprecious/commit/cfc313656fad516f3f1516144f0c471955069c63))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.0.4 ([0e9e202](https://github.com/elfhosted/myprecious/commit/0e9e2027583a8fce71f0787c2850fefdf02a36a7))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2020 ([bcc172c](https://github.com/elfhosted/myprecious/commit/bcc172cc95f4294bbebdcbbb9322ce4b570bad79))
+* **app:** update ghcr.io/elfhosted/peertube-cli docker tag to v7.2.1 ([3032498](https://github.com/elfhosted/myprecious/commit/303249895d82eeb054ba9aedb75515374989a60b))
+* **app:** update ghcr.io/elfhosted/peertube-nonroot docker tag to v7.2.1 ([bfd6cf0](https://github.com/elfhosted/myprecious/commit/bfd6cf0134a4f18a38acf2e9096327d5fe5dd297))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.2.7 ([6aa569e](https://github.com/elfhosted/myprecious/commit/6aa569e99a75a6a747d89a16bf7f2ee23a78f4f3))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.79.2 ([9b3fe6f](https://github.com/elfhosted/myprecious/commit/9b3fe6fb0e2f92980903dfea0b653f5e2da6f943))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.29.0 ([206bba3](https://github.com/elfhosted/myprecious/commit/206bba318d97fd10bc37e2dce18a24fc3feef1e8))
+
+
+### Bug Fixes
+
+* Disable Plex scanning entire libraries when folder changes are detected 🤦 ([c35235e](https://github.com/elfhosted/myprecious/commit/c35235ea67fbf7e2873e3a91245c282c686b18c0))
+* Update Plex default preferences to reduce scanning load ([a946346](https://github.com/elfhosted/myprecious/commit/a946346bb082ad6818d7c8a9de3b9673fcc62330))
+
 ## [1.402.0](https://github.com/elfhosted/myprecious/compare/v1.401.0...v1.402.0) (2025-06-15)
 
 
