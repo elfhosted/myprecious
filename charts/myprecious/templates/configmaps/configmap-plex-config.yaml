@@ -8,8 +8,8 @@ data:
   PLEX_PREFERENCE_2: "FSEventLibraryPartialScanEnabled=1"
   PLEX_PREFERENCE_3: "FSEventLibraryUpdatesEnabled=0"
   PLEX_PREFERENCE_4: "TranscoderPhotoFileSizeLimitMiB=5"
-  # PLEX_PREFERENCE_5: "ScannerLowPriority=1"
   # PLEX_PREFERENCE_6: "TranscodeCountLimit=3"
+
   PLEX_PREFERENCE_7: "autoEmptyTrash=0"
   PLEX_PREFERENCE_8: "BackgroundTranscodeLowPriority=1"
   PLEX_PREFERENCE_9: "LongRunningJobThreads=1"
@@ -21,22 +21,25 @@ data:
   PLEX_PREFERENCE_17: "ButlerTaskDeepMediaAnalysis=0" # this wrecks remote mounts
   PLEX_PREFERENCE_18: "ButlerTaskUpgradeMediaAnalysis=0" # suspect this does too
 
-  {{ if not .Values.plexnazgul.enabled }}
   PLEX_PREFERENCE_15: "ButlerStartHour=9"
   PLEX_PREFERENCE_10: "TranscoderH264BackgroundPreset=ultrafast"
   PLEX_PREFERENCE_19: "MarkerSource=cloud" # get credit markers from online DBs only
   PLEX_PREFERENCE_20: "GenerateCreditsMarkerBehavior=never" # don't scan for credits
   PLEX_PREFERENCE_21: "GenerateChapterThumbBehavior=never" # don't generate thumbnails
-  PLEX_PREFERENCE_22: "GenerateChapterThumbBehavior=never" # don't generate thumbnails
   PLEX_PREFERENCE_23: "GenerateIntroMarkerBehavior=never" # don't detect intros for skippage
   PLEX_PREFERENCE_24: "GenerateBIFBehavior=never" # don't generate video preview thumbnails
   PLEX_PREFERENCE_25: "GenerateAdMarkerBehavior=never" # don't detect ads for skippage
-
-  {{ else }}
-  PLEX_PREFERENCE_15: "ButlerStartHour=7"
-  {{ end }}
   
-    
+  PLEX_PREFERENCE_26: "LoudnessAnalysisBehavior=never"
+  PLEX_PREFERENCE_27: "MusicAnalysisBehavior=never"
+  PLEX_PREFERENCE_28: "GenerateVADBehavior=never"
+  PLEX_PREFERENCE_29: "ScannerLowPriority=1"
+  PLEX_PREFERENCE_30: "ButlerTaskRefreshLibraries=0"
+  PLEX_PREFERENCE_31: "ButlerTaskRefreshLocalMedia=0"
+  PLEX_PREFERENCE_32: "ButlerDatabaseBackupPath="/backup/"
+  PLEX_PREFERENCE_33: "ScheduledTasksEnabled=0"
+
+
   # For custom domains
   {{- if .Values.plexcustomdomain.enabled }}
   ADVERTISE_IP: "https://{{ .Values.plexcustomdomain.cname | lower }}:443"

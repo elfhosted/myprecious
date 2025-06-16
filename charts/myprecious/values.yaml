@@ -4966,6 +4966,14 @@ plex: &app_plex
     tag: 1.41.8.9834-071366d65@sha256:695ac4a1b79b82c2907e3c112a6bd8b1208a0b1b2e63ca4e9b7e06270651b13f
   persistence: &app_plex_persistence
     <<: *storagemounts
+    backup: &backup
+      enabled: true
+      type: custom
+      mountPath: /backup
+      subPath: plex
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: backup
     config:
       enabled: true
       type: custom
