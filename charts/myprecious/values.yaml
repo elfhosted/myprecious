@@ -15758,13 +15758,7 @@ decypharr: &app_decypharr
       subPath: decypharr
       volumeSpec:
         persistentVolumeClaim:
-          claimName: logs    
-    example-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: decypharr-example-config    
+          claimName: logs     
     elfbot:
       enabled: "true"
       type: "custom"
@@ -15773,7 +15767,7 @@ decypharr: &app_decypharr
           name: elfbot-decypharr
           optional: true                      
   initContainers:
-    a-copy-example-config:
+    setup:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
       command:
@@ -15781,32 +15775,23 @@ decypharr: &app_decypharr
       - -c
       - |
         set -x
-        # set -e
-        # If we don't already have an example config, create one
-        if [ ! -f /config/config.json ];
-        then
-          cp /bootstrap/config.json /config/
+
+        # If zurg is configured (does NOT contain the placeholder)
+        if ! grep -q REPLACE-ME-WITH-YOUR-RD-TOKEN /config/zurg/config.yml; then
+          # If decypharr is NOT configured (DOES contain the placeholder)
+          if grep -q YOUR_RD_KEY_HERE /config/decypharr/config.json; then
+            # Extract the token value from zurg config
+            RD_KEY=$(awk -F': ' '/token:/ {print $2}' /config/zurg/config.yml | tr -d '"')
+            # Insert the RD key into decypharr config
+            jq --arg RD_KEY "$RD_KEY" \
+              '.debrids |= map(if .name == "realdebrid" then . + {api_key: $RD_KEY} else . end)' \
+              /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
+            mv /config/decypharr/config.json.tmp /config/decypharr/config.json          fi
         fi
-        touch /config/i-am-bootstrapped
-
-        # Turn on WebDAV
-        contents="$(jq '.debrids |= map(if type == "object" then . + {use_webdav: true} else . end)' /config/config.json)" && \
-          echo -E "${contents}" > /config/config.json
-
-        # Set webdav to filename mode
-        contents="$(jq '.debrids |= map(. + {folder_naming: "filename"})' /config/config.json)" && \
-          echo -E "${contents}" > /config/config.json          
-
-        # Set repair to use webdav
-        contents="$(jq '.debrids |= map(if type == "object" then . + {use_webdav: true} else . end)' /config/config.json)" && \
-          echo -E "${contents}" > /config/config.json      
 
       volumeMounts:
       - mountPath: /config/
         name: config
-        subPath: decypharr
-      - name: example-config
-        mountPath: "/bootstrap/"
       securityContext: *default_securitycontext  
     bootstrap:
       <<: *bootstrap
