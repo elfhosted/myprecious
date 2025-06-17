@@ -115,7 +115,7 @@ nazgul_streamer_resources: &nazgul_streamer_resources
 # sets the user's base dns domain
 dns_domain: elfhosted.com
 
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20250404@sha256:a97fdd4e05324f48bc7ac5838c4f3063234ad187d576d4b95b13a723e9828e91
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20250404@sha256:3c025d7249842aa79b3d37f9612fa220066083299622e380737b1f2ea757946d
 
 # all RD pods have to exist with zurg - make this soft for now
 standard_affinity: &standard_affinity
