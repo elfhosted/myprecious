@@ -4943,7 +4943,7 @@ plex: &app_plex
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  sharedProcessNamespace: true
+  shareProcessNamespace: true
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -5098,7 +5098,7 @@ plex: &app_plex
           # Repair the database if it exists
           if [ -f /config/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db ]; then
             echo "Repairing Plex database"
-            /usr/local/bin/DBRepair.sh automatic
+            /usr/local/bin/DBRepair.sh --databases /config/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/ --sqlite "/usr/lib/plexmediaserver/Plex SQLite" automatic
           else
             echo "No Plex database found, skipping repair"
           fi
