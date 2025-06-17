@@ -15793,6 +15793,22 @@ decypharr: &app_decypharr
                 /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
               mv /config/decypharr/config.json.tmp /config/decypharr/config.json                        
             fi
+
+           # alternative placholder "realdebrid_key" 
+            if grep -q realdebrid_key /config/decypharr/config.json; then
+              # Extract the token value from zurg config
+              RD_KEY=$(awk -F': *' '$1 ~ /^token$/ { gsub(/#.*/, "", $2); gsub(/["'\''[:space:]]/, "", $2); print $2 }' /config/zurg/config.yml)
+              # Insert the RD key into decypharr config
+              jq --arg RD_KEY "$RD_KEY" \
+                '.debrids |= map(if .name == "realdebrid" then . + {api_key: $RD_KEY} else . end)' \
+                /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
+              mv /config/decypharr/config.json.tmp /config/decypharr/config.json  
+              # Insert it again, into the download_api_keys list
+              jq --arg RD_KEY "$RD_KEY" \
+                '.debrids |= map(if .name == "realdebrid" then . + {download_api_keys: [ $RD_KEY] } else . end)' \
+                /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
+              mv /config/decypharr/config.json.tmp /config/decypharr/config.json                        
+            fi           
           fi
         fi
 
