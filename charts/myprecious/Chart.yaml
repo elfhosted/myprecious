@@ -30,127 +30,127 @@ maintainers:
 
 dependencies:
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexrequests.enabled
     alias: plexrequests
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plex.enabled
     alias: plex
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexranger.enabled
     alias: plexranger
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexhalfling.enabled
     alias: plexhalfling
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexnazgul.enabled
     alias: plexnazgul
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexhobbit.enabled
     alias: plexhobbit
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: emby.enabled
     alias: emby
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: embyranger.enabled
     alias: embyranger
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: embyhobbit.enabled
     alias: embyhobbit
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: embyhalfling.enabled
     alias: embyhalfling
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: embynazgul.enabled
     alias: embynazgul
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfinranger.enabled
     alias: jellyfinranger
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfinhobbit.enabled
     alias: jellyfinhobbit
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfin.enabled
     alias: jellyfin
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfinhalfling.enabled
     alias: jellyfinhalfling
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyfinnazgul.enabled
     alias: jellyfinnazgul
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: nzbget.enabled
     alias: nzbget
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: nzbhydra.enabled
     alias: nzbhydra
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: sabnzbd.enabled
     alias: sabnzbd
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: radarr.enabled
     alias: radarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: radarr4k.enabled
     alias: radarr4k
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: sonarr.enabled
     alias: sonarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: sonarr4k.enabled
     alias: sonarr4k
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: bazarr.enabled
     alias: bazarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: bazarr4k.enabled
     alias: bazarr4k
@@ -158,7 +158,7 @@ dependencies:
     version: ~8.0.0
     repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: ombi.enabled
     alias: ombi
@@ -167,82 +167,82 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: traefikforwardauth
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: prowlarr.enabled
     alias: prowlarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: tautulli.enabled
     alias: tautulli
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: lidarr.enabled
     alias: lidarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: readarr.enabled
     alias: readarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: readarraudio.enabled
     alias: readarraudio
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: calibreweb.enabled
     alias: calibreweb
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: cwabookdownloader.enabled
     alias: cwabookdownloader
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: calibre.enabled
     alias: calibre
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: navidrome
     condition: navidrome.enabled
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: lazylibrarian.enabled
     alias: lazylibrarian
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: mylar.enabled
     alias: mylar
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: komga.enabled
     alias: komga
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: gatus
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: kavita.enabled
     alias: kavita
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: qbittorrentgluetun.enabled
     alias: qbittorrentgluetun
   # Specifically for PIA's port-forwarding requirements (a separate image)
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: qbittorrentpia.enabled
     alias: qbittorrentpia
@@ -250,22 +250,22 @@ dependencies:
     version: ~1.4.0
     repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: privatebin.enabled
     alias: privatebin
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: uptimekuma.enabled
     alias: uptimekuma
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: gotify.enabled
     alias: gotify
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: flaresolverr.enabled
     alias: flaresolverr
@@ -289,197 +289,197 @@ dependencies:
     condition: resiliosync.enabled
     alias: resiliosync
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: tunarr.enabled
     alias: tunarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: decluttarr.enabled
     alias: decluttarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: decluttarr.enabled
     alias: decluttarr4k
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: ersatztv.enabled
     alias: ersatztv
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: threadfin.enabled
     alias: threadfin
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: doplarr.enabled
     alias: doplarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: pulsarr.enabled
     alias: pulsarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: dispatcharr.enabled
     alias: dispatcharr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: requestrr.enabled
     alias: requestrr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: thelounge.enabled
     alias: thelounge
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: overseerr.enabled
     alias: overseerr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellyseerr.enabled
     alias: jellyseerr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jellystat.enabled
     alias: jellystat
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: peertube.enabled
     alias: peertube
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: booklore.enabled
     alias: booklore
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: audiobookshelf.enabled
     alias: audiobookshelf
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: audiobookrequest.enabled
     alias: audiobookrequest
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: audiobookbayautomated.enabled
     alias: audiobookbayautomated
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: openbooks.enabled
     alias: openbooks
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: vaultwarden.enabled
     alias: vaultwarden
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: notifiarr.enabled
     alias: notifiarr
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: jfa.enabled
     alias: jfa
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: shoko.enabled
     alias: shoko
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: kometa.enabled
     alias: kometa
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: rpdb.enabled
     alias: rpdb
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: kometa.enabled
     alias: imagemaid
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: cinesync.enabled
     alias: cinesync
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: nightscout.enabled
     alias: nightscout
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: arrtools.enabled
     alias: arrtools
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: puter.enabled
     alias: puter
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: seerrbridge.enabled
     alias: seerrbridge
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: listsync.enabled
     alias: listsync
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: rdebridui.enabled
     alias: rdebridui
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plextraktsync.enabled
     alias: plextraktsync
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: plexytrack.enabled
     alias: plexytrack
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: letterboxdtraktsync.enabled
     alias: letterboxdtraktsync
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: filebot.enabled
     alias: filebot
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: syncthing.enabled
     alias: syncthing
   - name: app-template
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     condition: rdtclient.enabled
     alias: rdtclient
@@ -494,12 +494,12 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
     condition: gotosocial.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: gotosocial
   - name: app-template
     condition: blueskypds.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: blueskypds
   - name: joplinserver
@@ -508,27 +508,27 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
     condition: debridav.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: debridav
   - name: app-template
     condition: rclonealldebrid.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rclonealldebrid
   - name: app-template
     condition: rclonedebridlink.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rclonedebridlink
   - name: app-template
     condition: rclonepremiumize.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rclonepremiumize
   - name: app-template
     condition: homepage.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: homepage
   - name: wallabag
@@ -537,302 +537,302 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
     condition: zurg.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: zurg
   - name: app-template
     condition: zurggluetun.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: zurggluetun
   - name: app-template
     condition: plexdebrid.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebrid
   - name: app-template
     condition: clidebrid.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: clidebrid
   - name: app-template
     condition: plexdebridalldebrid.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebridalldebrid
   - name: app-template
     condition: plexdebriddebridlink.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebriddebridlink
   - name: app-template
     condition: plexdebridpremiumize.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebridpremiumize
   - name: app-template
     condition: plexdebridtorbox.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: plexdebridtorbox
   - name: app-template
     condition: riven.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: riven
   - name: app-template
     condition: riven.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rivenfrontend
   - name: app-template
     condition: airdcpppia.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: airdcpppia
   - name: app-template
     condition: airdcppgluetun.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: airdcppgluetun
   - name: app-template
     condition: jackett.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: jackett
   - name: app-template
     condition: wizarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: wizarr
   - name: app-template
     condition: stremiojackett.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: stremiojackett
   - name: app-template
     condition: knightcrawler.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: knightcrawler
   - name: app-template
     condition: webdavplus.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: webdavplus
   - name: app-template
     condition: rcloneui.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rcloneui
   - name: app-template
     condition: rclonefm.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rclonefm
   - name: app-template
     condition: webdav.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: webdav
   - name: app-template
     condition: scannarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: scannarr
   - name: app-template
     condition: scannarr4k.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: scannarr4k
   - name: app-template
     condition: huntarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: huntarr
   - name: app-template
     condition: comet.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: comet
   - name: app-template
     condition: storyteller.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: storyteller
   - name: app-template
     condition: blackhole.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackhole
   - name: app-template
     condition: decypharr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: decypharr
   - name: app-template
     condition: blackhole.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackhole4k
   - name: app-template
     condition: rclonetorbox.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rclonetorbox
   - name: app-template
     condition: blackholetorbox.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackholetorbox
   - name: app-template
     condition: blackholetorbox.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: blackholetorbox4k
   - name: app-template
     condition: channelsdvr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: channelsdvr
   - name: app-template
     condition: youriptv.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: youriptv
   - name: app-template
     condition: aiostreams.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: aiostreams
   - name: app-template
     condition: nuviostreams.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: nuviostreams
   - name: app-template
     condition: stremify.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: stremify
   - name: app-template
     condition: webstreamr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: webstreamr
   - name: app-template
     condition: mediafusion.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: mediafusion
   - name: app-template
     condition: stremthru.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: stremthru
   - name: app-template
     condition: mediaflowproxy.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: mediaflowproxy
   - name: app-template
     condition: vpnproxy.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: vpnproxy
   - name: app-template
     condition: piaproxy.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: piaproxy
   - name: app-template
     condition: jackettio.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: jackettio
   - name: app-template
     condition: davio.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: davio
   - name: app-template
     condition: suggestarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: suggestarr
   - name: app-template
     condition: flixio.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: flixio
   - name: app-template
     condition: flixio.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: flixioapi
   - name: app-template
     condition: pgadmin.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: pgadmin
   - name: app-template
     condition: redisinsight.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: redisinsight
   - name: app-template
     condition: mongoexpress.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: mongoexpress
   - name: app-template
     condition: codeserver.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: codeserver
   - name: app-template
     condition: recyclarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: recyclarr
   - name: app-template
     condition: profilarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: profilarr
   - name: app-template
     condition: pairdrop.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: pairdrop
   - name: app-template
     condition: kapowarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: kapowarr
   - name: app-template
     condition: petio.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: petio
   - name: app-template
     condition: discovarr.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: discovarr
   - name: app-template
     condition: symlinkcleaner.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: symlinkcleaner
   - name: app-template
     condition: actual.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: actual
   - name: app-template
     condition: immich.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: immich
   - name: kubernetes-dashboard
@@ -841,31 +841,31 @@ dependencies:
     version: 5.x
   - name: app-template
     condition: starter.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: starter
   - name: app-template
     condition: streamer.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: streamer
   - name: app-template
     condition: hobbit.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: hobbit
   - name: app-template
     condition: ranger.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: ranger
   - name: app-template
     condition: halfling.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: halfling
   - name: app-template
     condition: nazgul.enabled
-    version: ~0.2.1
+    version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: nazgul

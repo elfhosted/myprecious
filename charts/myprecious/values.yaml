@@ -4943,6 +4943,7 @@ plex: &app_plex
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  shareProcessNamespace: true
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -5000,7 +5001,7 @@ plex: &app_plex
           claimName: transcode-1g    
     phototranscoder:
       enabled: true
-      mountPath: /phototranscoder
+      mountPath: /config/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder
       type: emptyDir
       sizeLimit: 50Gi
     elfbot:
@@ -5083,31 +5084,6 @@ plex: &app_plex
         subPath: plex
       - mountPath: /tmp
         name: tmp
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # Clean up wasteful temporary media storage (Plex will just re-download these)
-        if [ -d "/config/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder" ]; then
-          rm -rf "/config/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder"
-          ln -s /phototranscoder '/config/Library/Application Support/Plex Media Server/Cache/PhotoTranscoder'
-        fi
-        
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: plex
-      - mountPath: /phototranscoder
-        name: phototranscoder
-      # can't use default resources because the ephemeral limit kicks out /phototranscoder later
-      # resources: *default_resources
-      securityContext: *default_securitycontext 
     dbrepair:
       image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:695ac4a1b79b82c2907e3c112a6bd8b1208a0b1b2e63ca4e9b7e06270651b13f
       imagePullPolicy: IfNotPresent
@@ -5122,7 +5098,7 @@ plex: &app_plex
           # Repair the database if it exists
           if [ -f /config/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/com.plexapp.plugins.library.db ]; then
             echo "Repairing Plex database"
-            /usr/local/bin/DBRepair.sh automatic
+            /usr/local/bin/DBRepair.sh --databases /config/Library/Application\ Support/Plex\ Media\ Server/Plug-in\ Support/Databases/ --sqlite "/usr/lib/plexmediaserver/Plex SQLite" automatic
           else
             echo "No Plex database found, skipping repair"
           fi
@@ -5189,7 +5165,21 @@ plex: &app_plex
         name: tinyproxy-conf
         subPath: tinyproxy.conf
     podinfo:
-      image: stefanprodan/podinfo # used to test plex proxying      
+      image: stefanprodan/podinfo # used to test plex proxying
+    transcode-killer:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        python3 /scripts/transcode-killer.py        
+      volumeMounts:
+      - mountPath: /var/log/
+        name: logs
+        subPath: plex/transcode-killer
+      resources: *default_resources
+      securityContext: *default_securitycontext       
   addons:
     vpn:
       enabled: true # in case we ever need it
@@ -15796,7 +15786,12 @@ decypharr: &app_decypharr
               jq --arg RD_KEY "$RD_KEY" \
                 '.debrids |= map(if .name == "realdebrid" then . + {api_key: $RD_KEY} else . end)' \
                 /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
-              mv /config/decypharr/config.json.tmp /config/decypharr/config.json          
+              mv /config/decypharr/config.json.tmp /config/decypharr/config.json  
+              # Insert it again, into the download_api_keys list
+              jq --arg RD_KEY "$RD_KEY" \
+                '.debrids |= map(if .name == "realdebrid" then . + {download_api_keys: [ $RD_KEY] } else . end)' \
+                /config/decypharr/config.json > /config/decypharr/config.json.tmp && \
+              mv /config/decypharr/config.json.tmp /config/decypharr/config.json                        
             fi
           fi
         fi
