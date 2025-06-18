@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.406.0](https://github.com/elfhosted/myprecious/compare/v1.405.0...v1.406.0) (2025-06-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.19 ([9ccd544](https://github.com/elfhosted/myprecious/commit/9ccd5441c20ad1124fda4b19d16e01e178a8f80f))
+
+## [1.405.0](https://github.com/elfhosted/myprecious/compare/v1.404.1...v1.405.0) (2025-06-18)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.150 ([99a896a](https://github.com/elfhosted/myprecious/commit/99a896a262da7237246231cb7473501dc688a008))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.25.2 ([526cd2c](https://github.com/elfhosted/myprecious/commit/526cd2c393f94b7693ec905e78df38ba82fc43d7))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.0.7 ([7afc4cf](https://github.com/elfhosted/myprecious/commit/7afc4cfd792bc560c0c3e548b0f2849f060f58a3))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.0.8 ([386726f](https://github.com/elfhosted/myprecious/commit/386726f13871a1b5119f3867bb005f827dc783ba))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.0.9 ([a1b510e](https://github.com/elfhosted/myprecious/commit/a1b510e42a9bec02ef768fc033525dcc5076a23a))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2026 ([6f19c85](https://github.com/elfhosted/myprecious/commit/6f19c8586c742da39a48701622384232e0fb5354))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.17 ([280aadd](https://github.com/elfhosted/myprecious/commit/280aadd4b200d0cfe1622e8a60b5b046674cc45b))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.18 ([18875d6](https://github.com/elfhosted/myprecious/commit/18875d681f58468dd3f93c74cd6ede6371f546af))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.70.0 ([61ddc3a](https://github.com/elfhosted/myprecious/commit/61ddc3a91ada1d0abef6b4bd538db27416ef8cbe))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.29.2 ([6b02009](https://github.com/elfhosted/myprecious/commit/6b02009a61437bf5ba98de201df4a28ffdc5418d))
+
+
+### Bug Fixes
+
+* Improve Wizarr health monitoring ([f7b4803](https://github.com/elfhosted/myprecious/commit/f7b4803a054385947d63172ec008e7764e452bcf))
+
 ## [1.404.1](https://github.com/elfhosted/myprecious/compare/v1.404.0...v1.404.1) (2025-06-17)
 
 
