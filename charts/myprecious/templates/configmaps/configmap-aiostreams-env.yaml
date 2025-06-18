@@ -11,9 +11,22 @@ data:
   FORCE_JACKETTIO_PROTOCOL: "https"
   FORCE_JACKETTIO_PORT: ""
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
+  ADDON_ID: "{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}"
+  BASE_URL: "https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}"
+  DATABASE_URI: sqlite:///config/db.sqlite
   ADDON_PROXY: http://vpnproxy:8888
   ADDON_PROXY_CONFIG: "*:false,torrentio.strem.fun:true"
   MEDIAFUSION_API_PASSWORD: changemeelfie # default if unset
+  CUSTOM_HTML: Welcome, {{ .Release.Name }}, to your ElfHosted AIOStreams instance!
+  REGEX_FILTER_ACCESS: all
+  PRUNE_MAX_DAYS: "365" # Only prune inactive accounts after a year
+  
+  # Pre-fill the proxy URL
+  {{ if .Values.mediaflowproxy.enabled }}
+  DEFAULT_PROXY_URL: "https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}"
+  {{ else if .Values.stremthru.enabled }}
+  DEFAULT_PROXY_URL: "https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
+  {{ end }}
 
   # For Comet
   {{ if .Values.comet.enabled }}

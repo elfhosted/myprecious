@@ -13313,6 +13313,14 @@ aiostreams:
   tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: aiostreams
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config    
   resources:
     requests:
       cpu: 0m
@@ -13335,6 +13343,19 @@ aiostreams:
   - configMapRef:
       name: elfbot-aiostreams
       optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: aiostreams
+      - mountPath: /tmp
+        name: tmp
 
 nuviostreams:
   enabled: false
