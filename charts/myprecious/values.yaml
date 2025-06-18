@@ -2108,7 +2108,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 8.0.4@sha256:4c533b12c8cd395e69265821276129126d66f7347fc7533e46c5b95c5eaaa8ac
+    tag: 8.0.8@sha256:daef9df3a2d8ff0bd8572446fd218176178e3729c95d05bff8981c66571952f7
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7311,7 +7311,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.25.1@sha256:3b4fef32c133e4de18f1abf0887b086a57adda2a5215ac1a04e0eca355bedb28
+    tag: v0.25.2@sha256:22d524dc5d826ee265a4385e79308b77b47fd9bad64cbc5ebfaa77ea0df8987c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7412,7 +7412,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.25.1@sha256:3b4fef32c133e4de18f1abf0887b086a57adda2a5215ac1a04e0eca355bedb28
+      image: ghcr.io/elfhosted/booklore:v0.25.2@sha256:22d524dc5d826ee265a4385e79308b77b47fd9bad64cbc5ebfaa77ea0df8987c
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -14788,7 +14788,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.16@sha256:a52fa2aebcb817ef76b0127ae49b9f60eb189e56a50f16def1177c66c4319baf
+    tag: v0.3.17@sha256:f642de26dba4341b7c53cd16e9d28132dde7c04e7b56f7e7bc12bb67bea80e95
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14873,7 +14873,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.16@sha256:a52fa2aebcb817ef76b0127ae49b9f60eb189e56a50f16def1177c66c4319baf
+      image: ghcr.io/elfhosted/pulsarr:v0.3.17@sha256:f642de26dba4341b7c53cd16e9d28132dde7c04e7b56f7e7bc12bb67bea80e95
       command:
       - /bin/ash
       - -c

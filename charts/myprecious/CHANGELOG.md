@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.404.1](https://github.com/elfhosted/myprecious/compare/v1.404.0...v1.404.1) (2025-06-17)
+
+
+### Bug Fixes
+
+* Bugfix on zurg -&gt; decypharr migration ([f569249](https://github.com/elfhosted/myprecious/commit/f5692490bc467ca054736076a71cf61911858efb))
+
 ## [1.404.0](https://github.com/elfhosted/myprecious/compare/v1.403.0...v1.404.0) (2025-06-17)
 
 
