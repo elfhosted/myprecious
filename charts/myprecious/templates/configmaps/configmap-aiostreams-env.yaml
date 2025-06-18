@@ -53,5 +53,12 @@ data:
   FORCE_JACKETIO_HOSTNAME: "jackettio.elfhosted.com"
   {{ end }}
 
+  {{ if .Values.nuviostreams.enabled }}
+  NUVIOSTREAMS_URL: http://nuviostreams:7777/
+  {{ else }}
+
+  {{ if .Values.webstreamr.enabled }}
+  WEBSTREAMR_URL: http://webstreamr:51546/
+  {{ else }}
 
 {{ end }}
