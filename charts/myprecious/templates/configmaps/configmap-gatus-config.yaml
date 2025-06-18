@@ -601,7 +601,7 @@ data:
       {{ if .Values.wizarr.enabled }}
       - name: wizarr
         group: manage-media
-        url: "http://wizarr:5690/wizard/"
+        url: "http://wizarr:5690/static/wizarr-logo.png"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
