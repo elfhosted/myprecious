@@ -13315,7 +13315,7 @@ aiostreams:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  affinity: *standard_anti_affinity
+  affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
