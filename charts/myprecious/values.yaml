@@ -7656,7 +7656,7 @@ peertube:
         name: config
         subPath: peertube/redis
     cli:
-      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:6ff27d93e67362a55181d1081935b8b795a8b96168527dc4e71d724410e3e779
+      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:6b0bafef1936c8de9c5b56884783444627aebc8b83380c977a111ee2da181822
       volumeMounts:
       - mountPath: /home/elfie
         name: config
