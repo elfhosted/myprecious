@@ -55,10 +55,10 @@ data:
 
   {{ if .Values.nuviostreams.enabled }}
   NUVIOSTREAMS_URL: http://nuviostreams:7777/
-  {{ else }}
+  {{ end }}
 
   {{ if .Values.webstreamr.enabled }}
   WEBSTREAMR_URL: http://webstreamr:51546/
-  {{ else }}
+  {{ end }}
 
 {{ end }}
