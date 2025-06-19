@@ -13319,6 +13319,7 @@ aiostreams:
   tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
+    backup: *backup    
     config:
       enabled: true
       type: custom
