@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.407.0](https://github.com/elfhosted/myprecious/compare/v1.406.0...v1.407.0) (2025-06-19)
+
+
+### Features
+
+* **app:** update ghcr.io/dispatcharr/dispatcharr docker tag to v0.6.0 ([2a0f460](https://github.com/elfhosted/myprecious/commit/2a0f4602d927cbd68e6e3af1a56007681eab6905))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2 ([073570f](https://github.com/elfhosted/myprecious/commit/073570f69b411724a7e33889f859faa9727f9d22))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.0.1 ([66b419b](https://github.com/elfhosted/myprecious/commit/66b419b74a80835246ab2fa03bf117fd385400c3))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.151 ([26c7cb4](https://github.com/elfhosted/myprecious/commit/26c7cb4b5e86f77c5119d2dfc3a8ffa8d75e571a))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.26.0 ([eb1b4c1](https://github.com/elfhosted/myprecious/commit/eb1b4c1c08c588899c1ecefc2d7409fa69e92f27))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.69 ([ec1ee32](https://github.com/elfhosted/myprecious/commit/ec1ee3224a5dfad0fed27688793411b740075119))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.70 ([f27cb44](https://github.com/elfhosted/myprecious/commit/f27cb44316556ad14d035c8cd48b305243e3c6fd))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.71 ([369c207](https://github.com/elfhosted/myprecious/commit/369c207b5e4218548d77b36c20cd1337b232fdfd))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.0 ([edfdcde](https://github.com/elfhosted/myprecious/commit/edfdcded17203375f92cef3b75528fc9d49f4b38))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.1 ([6a416cf](https://github.com/elfhosted/myprecious/commit/6a416cf5ad9fe6bc3fdb89a8022eb957210e08ef))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2029 ([98e7178](https://github.com/elfhosted/myprecious/commit/98e717828b7f9b8247d1732cce414c86cc1b11fa))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.3.1 ([398056b](https://github.com/elfhosted/myprecious/commit/398056b8638a25c0bc7b099f6bc2bf0fae7202b3))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.3.19 ([32a60e1](https://github.com/elfhosted/myprecious/commit/32a60e17a5d6b4c491fb97533805a264687a1ade))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.29.3 ([d7f7615](https://github.com/elfhosted/myprecious/commit/d7f7615901e48b695251b789335b1b3d8715106f))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.9.2 ([568448d](https://github.com/elfhosted/myprecious/commit/568448d5dde9e6185b8398fada32261c7b19cda3))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/peertube-cli:v7.2.1 docker digest to 6b0bafe ([3485862](https://github.com/elfhosted/myprecious/commit/3485862c6c9ca8b631c567bd4202fe00e60d1cf4))
+* **app:** update ghcr.io/elfhosted/peertube-cli:v7.2.1 docker digest to c331f0c ([1713aef](https://github.com/elfhosted/myprecious/commit/1713aefff1124484a8a4de7b6a9f1ba147febaff))
+* **app:** update ghcr.io/elfhosted/peertube-nonroot:v7.2.1 docker digest to a46b7da ([96352b2](https://github.com/elfhosted/myprecious/commit/96352b2608e5a8159a8f107ec719c99e13e940f0))
+* Prepare for aiostreams v2 ([291bf73](https://github.com/elfhosted/myprecious/commit/291bf7371eed93697b633856dae21d205fe16651))
+
 ## [1.406.0](https://github.com/elfhosted/myprecious/compare/v1.405.0...v1.406.0) (2025-06-18)
 
 
