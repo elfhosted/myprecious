@@ -1,0 +1,24 @@
+{{ if .Values.autopulse.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: autopulse
+  labels:
+    app.kubernetes.io/name: autopulse
+    app.kubernetes.io/instance: {{ .Release.Name }}
+  annotations:
+spec:
+  type: ClusterIP
+  ports:
+  - port: 2880
+    targetPort: 2880
+    protocol: TCP
+    name: ui
+  - port: 2875
+    targetPort: 2875
+    protocol: TCP
+    name: api
+  selector:
+    app.kubernetes.io/name: autopulse
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{ end }}

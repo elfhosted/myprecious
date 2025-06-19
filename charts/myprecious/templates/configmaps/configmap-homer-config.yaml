@@ -481,21 +481,6 @@ data:
             url: "https://{{ .Release.Name }}-knightcrawler.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}     
-
-          {{ if .Values.stremify.enabled }}
-          - name: "Stremify"
-            icon: "fas fa-tv"
-            subtitle: "Watch HTTP streams with Stremio"
-            {{ if .Values.stremifyexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-stremify.elfhosted.com"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
           
           {{ if .Values.webstreamr.enabled }}
           - name: "WebStreamr"
@@ -1506,7 +1491,17 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-huntarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                        
+          {{ end }}    
+
+          {{ if .Values.autopulse.enabled }}
+          - name: "Autopulse"
+            icon: "fas fa-bullseye"
+            subtitle: "Trigger Streamer Scans"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                                  
 
       - name: "Tools"
         icon: "fas fa-toolbox"

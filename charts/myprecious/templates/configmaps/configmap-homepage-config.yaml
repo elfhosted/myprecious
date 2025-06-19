@@ -255,14 +255,6 @@ data:
             siteMonitor: http://mediaflow-proxy:8888
         {{ end }}            
 
-        {{ if .Values.stremify.enabled }}
-        - Stremify:
-            icon: mdi-tv
-            href: https://{{ .Release.Name }}-stremify.{{ .Values.dns_domain }}
-            description: Watch HTTP streams in Stremio
-            siteMonitor: http://stremify:3000
-        {{ end }}  
-
         {{ if .Values.webstreamr.enabled }}
         - WebStreamr:
             icon: mdi-tv
@@ -370,7 +362,15 @@ data:
             href: https://{{ .Release.Name }}-huntarr.{{ .Values.dns_domain }}
             description: Hunt for missing movies / episodes
             siteMonitor: http://huntarr:9705
-        {{ end }}          
+        {{ end }}   
+
+        {{ if .Values.autopulse.enabled }}
+        - Autopulse:
+            icon: huntarr.png
+            href: https://{{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}
+            description: Hunt for missing movies / episodes
+            siteMonitor: http://autopulse:2880            
+        {{ end }}                  
 
         {{ if .Values.lazylibrarian.enabled }}
         - Lazy Librarian:

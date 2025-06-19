@@ -1,0 +1,14 @@
+{{ if .Values.autopulse.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: autopulse-env
+data:
+  TZ: UTC
+  AUTOPULSE__APP__DATABASE_URL: sqlite:///config/autopulse.db
+
+  FORCE_AUTH: "false"
+  FORCE_SERVER_URL: https://{{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}
+  FORCE_USERNAME: admin
+  FORCE_PASSWORD: password
+{{ end }}

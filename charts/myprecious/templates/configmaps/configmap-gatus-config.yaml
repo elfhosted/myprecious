@@ -280,17 +280,6 @@ data:
         alerts:
           - type: email
       {{ end }}
-
-      {{ if .Values.stremify.enabled }}
-      - name: stremify
-        group: consume-media
-        url: "http://stremify:3000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
       
       {{ if .Values.webstreamr.enabled }}
       - name: webstreamr
@@ -431,7 +420,27 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}    
+      {{ end }} 
+
+      {{ if .Values.autopulse.enabled }}
+      - name: autopulse-ui
+        group: download-media
+        url: "http://autopulse:2880"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+
+      - name: autopulse-api
+        group: download-media
+        url: "http://autopulse:2880"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email          
+      {{ end }}          
 
       {{ if .Values.lidarr.enabled }}
       - name: lidarr

@@ -523,8 +523,6 @@ knightcrawlerexposed:
 mediafusionexposed:
   enabled: false
 stremthruexposed:
-  enabled: false  
-stremifyexposed:
   enabled: false    
 stremiojackettexposed:
   enabled: false  
@@ -13375,11 +13373,11 @@ autopulse:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/autopulse
-    tag: v1.22.0@sha256:fa6612e6e91448b72dbb2bed41194d65005183ff797fa6e892c8d1e83805eab2
+    tag: v1.3.2@sha256:2f6e2e0ea0648a33b9a26688853851a2963c8c3b7f1b325e896b46333e2e8fc2
   priorityClassName: tenant-normal
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams,aiostreams-env"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-autopulse,autopulse-env"
     strategy:
     rollingUpdate:
       unavailable: 1
@@ -13404,7 +13402,7 @@ autopulse:
       enabled: true
       type: custom
       mountPath: /config/
-      subPath: aiostreams
+      subPath: autopulse
       volumeSpec:
         persistentVolumeClaim:
           claimName: config  
@@ -13413,7 +13411,7 @@ autopulse:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-aiostreams
+          name: elfbot-autopulse
           optional: true            
   resources:
     requests:
@@ -13430,12 +13428,12 @@ autopulse:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 3000
+          port: 2875
   envFrom:
   - configMapRef:
-      name: aiostreams-env   
+      name: autopulse-env   
   - configMapRef:
-      name: elfbot-aiostreams
+      name: elfbot-autopulse
       optional: true
   initContainers:
     bootstrap:
@@ -13447,9 +13445,15 @@ autopulse:
         name: backup
       - mountPath: /config
         name: config
-        subPath: aiostreams
+        subPath: autopulse
       - mountPath: /tmp
         name: tmp
+  additionalContainers:
+    ui:
+      image: ghcr.io/elfhosted/autopulse-ui:v1.3.2@sha256:53a1f11001f0eab374c65f08c19a917e3f9ac4bd480561aab91efbd83ef99f6f
+    envFrom:
+    - configMapRef:
+        name: autopulse-env
 
 nuviostreams:
   enabled: false
@@ -13575,101 +13579,6 @@ nuviostreams:
       volumeMounts:
       - mountPath: /shared
         name: shared
-
-stremify:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/stremify
-    tag: rolling@sha256:dccb712ee19e8e16512175a4ca87471e24cd50a05c5c1aed18f4a6f8b25b208c
-  priorityClassName: tenant-normal
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-stremify"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    tmp:
-      enabled: true
-      type: emptyDir
-      mountPath: /tmp
-    nuxt-node-modules:
-      enabled: true
-      type: emptyDir
-      mountPath: /nuxt/node_modules
-    nuxt:
-      enabled: true
-      type: emptyDir
-      mountPath: /nuxt/.nuxt
-    nitro:
-      enabled: true
-      type: emptyDir
-      mountPath: /home/node/app/.nitro
-  resources:
-    requests:
-      cpu: 10m
-      memory: 100Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3000
-  envFrom:
-  - configMapRef:
-      name: stremify-env
-  - configMapRef:
-      name: elfbot-stremify
-      optional: true
-  - secretRef:
-      name: stremify-env
-  addons:
-    vpn:
-      enabled: true # in case we ever need it
-      gluetun:
-        image:
-          repository: thrnz/docker-wireguard-pia
-          tag: latest
-      env:
-        IPTABLES_BACKEND: nft
-        KILLSWITCH: "true"
-        LOCAL_NETWORK: 10.0.0.0/8
-        LOC: de-frankfurt
-        PORT_FORWARDING: "0"
-        PORT_PERSIST: "1"
-        NFTABLES: "1"
-        VPNDNS: "0"
-      envFrom:
-      - secretRef:
-          name: stremify-vpn
-      securityContext:
-        privileged: true
-        runAsUser: 0
-        capabilities:
-          add:
-            - NET_ADMIN
-            - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
 
 webstreamr:
   enabled: false

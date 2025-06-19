@@ -1,0 +1,20 @@
+{{ if .Values.autopulse.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: autopulse
+          kind: Service
+          port: 2880
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}
