@@ -7660,7 +7660,7 @@ peertube:
         name: config
         subPath: peertube/redis
     cli:
-      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:344f17e5b98c1b8f03cba3f5a0f578baf38d6aa5b0360b737472ce2b1bdcc599
+      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:6b0bafef1936c8de9c5b56884783444627aebc8b83380c977a111ee2da181822
       volumeMounts:
       - mountPath: /home/elfie
         name: config
@@ -9225,7 +9225,7 @@ plexytrack:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plexytrack
-    tag: v0.2.7@sha256:726d05fc016730a2652950e9163e4c8056842781c158c853e436e0f1f6d1d68c
+    tag: v0.3.1@sha256:2a0b19a6c7d7685caaf3c973bb8a2e2e10cb862a40b80bec1ee91aca3e7ebd6e
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9969,7 +9969,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.9.1@sha256:445ef98396678f3d4e269e05e11738e7a808e54c414db24625a855c37b5f978b
+    tag: 10.9.2@sha256:673342e3ca774d74c4fe1fbaf41212c49707c363e5e42ad7018935ec02d484bb
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -11546,7 +11546,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2026@sha256:3213a4472e146a85df3d8e8e60b0d57092fdb0ec9131ed8db299278f816a514b
+    tag: 0.22.2029@sha256:4308d36caa3ca3bb69cc86a4c8b71d5554e8652152508ca5ebff2d0754cbe8fd
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14202,7 +14202,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.68@sha256:fcaabd256c06ac410622553ba25ae4d1b0c66ada61ce204dcca4caca49d40884 
+    tag: v0.6.69@sha256:ce5ecb76504750afc8727e6bb107b6bae71ba921c5a29d8e95d8767c32bb4d82 
   priorityClassName: tenant-normal
   controller:
     annotations:
