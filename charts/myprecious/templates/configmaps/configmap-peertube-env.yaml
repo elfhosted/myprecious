@@ -14,7 +14,7 @@ data:
 
   # PeerTube server configuration
   # If you test PeerTube in local: use "peertube.localhost" and add this domain to your host file resolving on 127.0.0.1
-  PEERTUBE_WEBSERVER_HOSTNAME: {{- if .Values.peertubecustomdomain.enabled }}{{ .Values.peertubecustomdomain.cname | lower }}{{- else }}{{ .Release.Name }}-peertube.{{ .Values.dns_domain }}{{- end }}
+  PEERTUBE_WEBSERVER_HOSTNAME: {{ if .Values.peertubecustomdomain.enabled }}{{ .Values.peertubecustomdomain.cname | lower }}{{ else }}{{ .Release.Name }}-peertube.{{ .Values.dns_domain }}{{ end }}
   # If you just want to test PeerTube on local
   PEERTUBE_WEBSERVER_PORT: "443"
   PEERTUBE_WEBSERVER_HTTPS: "true"
