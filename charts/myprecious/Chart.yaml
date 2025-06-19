@@ -15,7 +15,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.406.12-pre-01
+version: 1.407.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -709,7 +709,7 @@ dependencies:
     condition: aiostreamsv1.enabled
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
-    alias: aiostreamsv1    
+    alias: aiostreamsv1
   - name: app-template
     condition: nuviostreams.enabled
     version: ~0.2.2
