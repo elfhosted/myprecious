@@ -25,11 +25,11 @@ data:
   
   # Pre-fill the proxy URL
   {{ if .Values.mediaflowproxy.enabled }}
-  DEFAULT_PROXY_URL: mediaflow-proxy:8888"
+  DEFAULT_PROXY_URL: mediaflow-proxy:8888
   FORCE_PUBLIC_PROXY_HOST: "{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}"
   {{ else if .Values.stremthru.enabled }}
   FORCE_PUBLIC_PROXY_HOST: "{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
-  DEFAULT_PROXY_URL: stremthru:8080"
+  DEFAULT_PROXY_URL: stremthru:8080
   {{ end }}
 
   # For Comet
