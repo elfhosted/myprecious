@@ -11012,7 +11012,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.150@sha256:d3f691a8d8d139e34221dd6551ff854ab3cdb11d8e6fa3924a7a18ca1eb1341e
+    tag: 0.4.151@sha256:b8ba2db5c96395dbaf90a79d1722ef64fe19612b515eeed3e68d6552d9465153
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14973,7 +14973,7 @@ dispatcharr:
   enabled: false
   image:
     repository: ghcr.io/dispatcharr/dispatcharr
-    tag: 0.5.2@sha256:445a263db1b813df839de19fd58ee1298485d71ca47c6f2333b124d58e1ff1fc
+    tag: 0.6.0@sha256:1902842f73deecf6958bf1b408f72f99ca08f1b0a9bdfdedc5e4194d5ee2a2be
   priorityClassName: tenant-normal
   controller:
     annotations:
