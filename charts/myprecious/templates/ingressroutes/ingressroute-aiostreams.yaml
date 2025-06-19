@@ -16,7 +16,7 @@ spec:
       middlewares:
         - name: headers-add-cors-for-stremio
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`))
+    - match: Host(`{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}`) && (PathPrefix(`/stremio/configure`) || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`))
       kind: Rule
       services:
         - name: aiostreams
