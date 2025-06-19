@@ -7453,7 +7453,7 @@ peertube:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/peertube-nonroot
-    tag: v7.2.1@sha256:b45910962b0ad4f829e54032bb3ae08f2ba560af4c1af61c0311d55eda0934fb
+    tag: v7.2.1@sha256:a46b7da39faed804e7ba7e3e253eec133967336da0c91fcde372d76ef9aa29e2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13326,7 +13326,14 @@ aiostreams:
       subPath: aiostreams
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config    
+          claimName: config  
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-aiostreams
+          optional: true            
   resources:
     requests:
       cpu: 0m
