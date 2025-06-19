@@ -15,7 +15,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.406.1-pre-07
+version: 1.406.1-pre-08
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -830,6 +830,11 @@ dependencies:
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: actual
+  - name: app-template
+    condition: autopulse.enabled
+    version: ~0.2.2
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: autopulse
   - name: app-template
     condition: immich.enabled
     version: ~0.2.2

@@ -7662,7 +7662,7 @@ peertube:
         name: config
         subPath: peertube/redis
     cli:
-      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:6ff27d93e67362a55181d1081935b8b795a8b96168527dc4e71d724410e3e779
+      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:344f17e5b98c1b8f03cba3f5a0f578baf38d6aa5b0360b737472ce2b1bdcc599
       volumeMounts:
       - mountPath: /home/elfie
         name: config
@@ -13295,6 +13295,86 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
+    tag: v1.22.0@sha256:fa6612e6e91448b72dbb2bed41194d65005183ff797fa6e892c8d1e83805eab2
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams,aiostreams-env"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  persistence:
+    tmp: *tmp
+    backup: *backup    
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: aiostreams
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config  
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-aiostreams
+          optional: true            
+  resources:
+    requests:
+      cpu: 0m
+      memory: 50Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000
+  envFrom:
+  - configMapRef:
+      name: aiostreams-env   
+  - configMapRef:
+      name: elfbot-aiostreams
+      optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: aiostreams
+      - mountPath: /tmp
+        name: tmp
+
+autopulse:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/autopulse
     tag: v1.22.0@sha256:fa6612e6e91448b72dbb2bed41194d65005183ff797fa6e892c8d1e83805eab2
   priorityClassName: tenant-normal
   controller:
