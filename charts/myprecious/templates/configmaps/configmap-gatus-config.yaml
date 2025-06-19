@@ -246,7 +246,18 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}  
+      {{ end }} 
+
+      {{ if .Values.aiostreamsv1.enabled }}
+      - name: aiostreamsv1
+        group: consume-media
+        url: "http://aiostreamsv1:3000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}        
 
       {{ if .Values.nuviostreams.enabled }}
       - name: nuviostreams

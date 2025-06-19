@@ -13369,6 +13369,55 @@ aiostreams:
       - mountPath: /tmp
         name: tmp
 
+aiostreamsv1:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/aiostreams-v1
+    tag: rolling
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreamsv1,aiostreamsv1-env"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations     
+  resources:
+    requests:
+      cpu: 0m
+      memory: 50Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000
+  envFrom:
+  - configMapRef:
+      name: aiostreams-env   
+  - configMapRef:
+      name: elfbot-aiostreams
+      optional: true
+
 autopulse:
   enabled: false
   image:
