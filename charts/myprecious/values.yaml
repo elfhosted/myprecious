@@ -13451,9 +13451,9 @@ autopulse:
   additionalContainers:
     ui:
       image: ghcr.io/elfhosted/autopulse-ui:v1.3.2@sha256:53a1f11001f0eab374c65f08c19a917e3f9ac4bd480561aab91efbd83ef99f6f
-    envFrom:
-    - configMapRef:
-        name: autopulse-env
+      envFrom:
+      - configMapRef:
+          name: autopulse-env
 
 nuviostreams:
   enabled: false
