@@ -19,7 +19,7 @@ spec:
         - name: error-pages
           namespace: traefik
     # Allow API tests without auth (necessary for ajax responses)
-    - match: Host(`{{ .Release.Name }}-sonarr.{{ .Values.dns_domain }}`) && PathRegexp(`^/api/(.+)/test`)
+    - match: Host(`{{ .Release.Name }}-sonarr4k.{{ .Values.dns_domain }}`) && PathRegexp(`^/api/(.+)/test`)
       kind: Rule
       services:
         - name: sonarr4k
