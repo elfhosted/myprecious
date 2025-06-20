@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.409.0](https://github.com/elfhosted/myprecious/compare/v1.408.0...v1.409.0) (2025-06-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.1.0 ([2bf8a5e](https://github.com/elfhosted/myprecious/commit/2bf8a5e3ba3b6d17dee8c51a4e6af6974cb935fb))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.101.0 ([d1f8447](https://github.com/elfhosted/myprecious/commit/d1f8447ae07453d8e0f1579a33cd028cd12d69cb))
+
 ## [1.408.0](https://github.com/elfhosted/myprecious/compare/v1.407.0...v1.408.0) (2025-06-20)
 
 
