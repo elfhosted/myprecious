@@ -39,7 +39,6 @@ data:
   PLEX_PREFERENCE_32: "ButlerDatabaseBackupPath=/backup/"
   PLEX_PREFERENCE_33: "ScheduledTasksEnabled=0"
 
-
   # For custom domains
   {{- if .Values.plexcustomdomain.enabled }}
   ADVERTISE_IP: "https://{{ .Values.plexcustomdomain.cname | lower }}:443"
