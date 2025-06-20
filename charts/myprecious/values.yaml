@@ -5216,7 +5216,7 @@ plex: &app_plex
   probes:
     liveness:
       custom: true
-      enabled: false # never kill plex when it's cpu-starved
+      enabled: true
       spec:
         failureThreshold: 5
         httpGet:
@@ -5227,7 +5227,7 @@ plex: &app_plex
         timeoutSeconds: 10
     readiness:
       custom: true
-      enabled: false
+      enabled: true
       spec:
         failureThreshold: 5
         httpGet:
