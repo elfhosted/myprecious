@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.408.0](https://github.com/elfhosted/myprecious/compare/v1.407.0...v1.408.0) (2025-06-20)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.27.0 ([788c27b](https://github.com/elfhosted/myprecious/commit/788c27b5c6074fb1be1a86342f3103b5c527ce7d))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.72 ([66ef4b5](https://github.com/elfhosted/myprecious/commit/66ef4b5831e12846a01915c62024aae962918fc0))
+* **app:** update ghcr.io/elfhosted/discovarr docker tag to v1.1.0 ([e8f85de](https://github.com/elfhosted/myprecious/commit/e8f85de97d9044f6b9612d82fc7e37cf56cada2e))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.2 ([468a577](https://github.com/elfhosted/myprecious/commit/468a5778fc4241ec9b425563cbf102b50da918d7))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.3 ([2b977ab](https://github.com/elfhosted/myprecious/commit/2b977ab1c5a80f9968b7a50a5dc2b8a334a79121))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.4 ([5418ce5](https://github.com/elfhosted/myprecious/commit/5418ce5892011341af5dfa76b0fa49d9d9f0b4e1))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.5 ([ed868b9](https://github.com/elfhosted/myprecious/commit/ed868b9f7484da29d4588147b52d7589251f25ec))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.6 ([5a85796](https://github.com/elfhosted/myprecious/commit/5a8579615a186c5553eb88a79c2f85e38943c1b4))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2032 ([a43abf6](https://github.com/elfhosted/myprecious/commit/a43abf6f902a6535f1b78d1c66acee199f233f81))
+* **app:** update ghcr.io/elfhosted/jellyseerr docker tag to v2.7.0 ([c1cfc05](https://github.com/elfhosted/myprecious/commit/c1cfc05a5b6ae06424d3bce72dcfcc50ac649e07))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.70.1 ([7c9d20e](https://github.com/elfhosted/myprecious/commit/7c9d20e47bc1f11ac85154b39cf1bba4036ccdce))
+* **app:** update ghcr.io/elfhosted/sonarr docker tag to v4.0.15.2941 ([c441479](https://github.com/elfhosted/myprecious/commit/c4414795b977bf9ad1dcf14a758ac1ed88085c80))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.5.0 ([de5b079](https://github.com/elfhosted/myprecious/commit/de5b0794c05dbb9b28051e1228977f8b4ad7954f))
+
+
+### Bug Fixes
+
+* Bugfix on Sonarr Plex connection ([05414b9](https://github.com/elfhosted/myprecious/commit/05414b9f72078149757a3f5668fa9a2b9be665e0))
+* Default AIOStreams to stremthru over mediaflowproxy ([059cb94](https://github.com/elfhosted/myprecious/commit/059cb944085ab6b7f510c891e55b48b38e1b61a0))
+* Reduce liklihood of plex hanging on analysis ([858e38f](https://github.com/elfhosted/myprecious/commit/858e38fb22efafaf248b31f70bc69bab4ba00f81))
+* Restore Plex health probes (having no probes is worse than killing a busy Plex) ([cc29d19](https://github.com/elfhosted/myprecious/commit/cc29d19160cd4ce1aa0accbbaf14a5377ec6fb5a))
+
 ## [1.407.0](https://github.com/elfhosted/myprecious/compare/v1.406.0...v1.407.0) (2025-06-19)
 
 
