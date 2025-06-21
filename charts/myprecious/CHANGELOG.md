@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.410.0](https://github.com/elfhosted/myprecious/compare/v1.409.0...v1.410.0) (2025-06-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.101.1 ([6df3d15](https://github.com/elfhosted/myprecious/commit/6df3d1571f4335089c6952a83306866b0b22a4e4))
+* **app:** update ghcr.io/elfhosted/discovarr docker tag to v1.1.1 ([a9fd6de](https://github.com/elfhosted/myprecious/commit/a9fd6deee541bd4ae8d1b749d979bef4a56eff91))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2035 ([0c6b0ec](https://github.com/elfhosted/myprecious/commit/0c6b0ec4962ff35d9d484051d77e35fe8661e714))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.3.2 ([1d9b702](https://github.com/elfhosted/myprecious/commit/1d9b7025a683b3853a7f79d545ecb6c1660bfa70))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.114 ([6aa0453](https://github.com/elfhosted/myprecious/commit/6aa04539bfa131cacb9d88b70368fff318b2011d))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.79.3 ([123d7d0](https://github.com/elfhosted/myprecious/commit/123d7d06681c228b0e0e1d4a855238c148486723))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/wizarr:rolling docker digest to ee82d1f ([0619079](https://github.com/elfhosted/myprecious/commit/0619079322d8372cd5312da0f01c9785edaf570d))
+* Route AIOStreams to stremthru internally (bypassing rate-limits for torz and store) ([434a734](https://github.com/elfhosted/myprecious/commit/434a7341be0af7ea0330e28efd04b7db70940417))
+
 ## [1.409.0](https://github.com/elfhosted/myprecious/compare/v1.408.0...v1.409.0) (2025-06-20)
 
 
