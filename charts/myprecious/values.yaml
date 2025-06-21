@@ -10366,7 +10366,7 @@ rdtclient: &app_rdtclient
     app.elfhosted.com/class: debrid
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.113@sha256:e274c86872f823296d063cc04eaec10410bf5ea4590ccb1660ebe51339803464
+    tag: v2.0.114@sha256:a13a11e43cd3e966bd0a28f3c82014001f794593801a9ee0f26f6c255eb60619
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
