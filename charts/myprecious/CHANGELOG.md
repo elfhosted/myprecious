@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.411.0](https://github.com/elfhosted/myprecious/compare/v1.410.0...v1.411.0) (2025-06-21)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/discovarr docker tag to v1.1.2 ([a138b08](https://github.com/elfhosted/myprecious/commit/a138b08871fccfdb1285239c310456f5bd7d2860))
+
+
+### Bug Fixes
+
+* Revert RDTClient to v2.0.113 ([e5f626d](https://github.com/elfhosted/myprecious/commit/e5f626d26065994735bdbf6eb50fa4e7f8e80b00))
+
 ## [1.410.0](https://github.com/elfhosted/myprecious/compare/v1.409.0...v1.410.0) (2025-06-21)
 
 
