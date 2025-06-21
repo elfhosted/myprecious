@@ -1,0 +1,18 @@
+{{ if .Values.aiostreams.enabled }}
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: "permit-aiostreams-egress-stremthru"
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: aiostreams
+  egress:
+  - toEndpoints:
+    - matchLabels:
+        k8s:io.kubernetes.pod.namespace: stremthru
+    toPorts:
+      - ports:
+        - port: '8080'
+          protocol: TCP
+{{ end }}
