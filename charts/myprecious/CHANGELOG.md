@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.411.0](https://github.com/elfhosted/myprecious/compare/v1.410.0...v1.411.0) (2025-06-22)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.2.0 ([fe8a72d](https://github.com/elfhosted/myprecious/commit/fe8a72ddc3051926c88882423619007b98e33738))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.2.1 ([dda6191](https://github.com/elfhosted/myprecious/commit/dda6191b8c43a6a679307797c6a82102f55bf5dc))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.28.0 ([8b9c427](https://github.com/elfhosted/myprecious/commit/8b9c4272db1b3cc8248d9d30b613475f27b2eb3d))
+* **app:** update ghcr.io/elfhosted/discovarr docker tag to v1.1.2 ([a138b08](https://github.com/elfhosted/myprecious/commit/a138b08871fccfdb1285239c310456f5bd7d2860))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.7 ([8b3e62d](https://github.com/elfhosted/myprecious/commit/8b3e62d052a05785e062f2afa160716e5a2d6538))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2037 ([5992a95](https://github.com/elfhosted/myprecious/commit/5992a953351381fc08107580e5abff8363314fa0))
+* **app:** update ghcr.io/elfhosted/readarr-develop docker tag to v0.4.18.2805 ([4b66879](https://github.com/elfhosted/myprecious/commit/4b668790f416625e8c4b11d0d1d00d06e3c2b9e1))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.135.3 ([2e302a1](https://github.com/elfhosted/myprecious/commit/2e302a1092e3d54a9dafce6c281fceb5c8777a41))
+
+
+### Bug Fixes
+
+* AIOStreams: properly fix StremThru Store/Torz internal routing ([9aa8708](https://github.com/elfhosted/myprecious/commit/9aa87086b3d75b6fff0c357aef7ef3077ab0d17b))
+* Revert RDTClient to v2.0.113 ([e5f626d](https://github.com/elfhosted/myprecious/commit/e5f626d26065994735bdbf6eb50fa4e7f8e80b00))
+
 ## [1.410.0](https://github.com/elfhosted/myprecious/compare/v1.409.0...v1.410.0) (2025-06-21)
 
 
