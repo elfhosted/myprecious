@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: zurg
     app.kubernetes.io/instance: {{ .Release.Name }}
-    zilean.elfhosted.com/scrape: "true"
+    zilean.elfhosted.com/scrape: "zurg"
   annotations:
 spec:
   type: ClusterIP

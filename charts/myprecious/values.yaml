@@ -561,7 +561,9 @@ gotosocialcustomdomain:
 blueskypdscustomdomain:
   enabled: false    
 peertubecustomdomain:
-  enabled: false      
+  enabled: false     
+actualcustomdomain:
+  enabled: false        
 
 rutorrentgluetun: &rutorrent
   enabled: false
@@ -5063,7 +5065,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:b310afa9976f950ab62d7ec20801b46cb9a28176121d1c275424d780825ca4ee
+      image: ghcr.io/elfhosted/decypharr:v1.0.3@sha256:9416e78afd0f86927557f0f1657422d674314e75d4ae6fc7252b04b45d5d3d92
       command:
       - /bin/bash
       - -c
@@ -5422,7 +5424,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:b310afa9976f950ab62d7ec20801b46cb9a28176121d1c275424d780825ca4ee
+      image: ghcr.io/elfhosted/decypharr:v1.0.3@sha256:9416e78afd0f86927557f0f1657422d674314e75d4ae6fc7252b04b45d5d3d92
       command:
       - /bin/bash
       - -c
@@ -5626,7 +5628,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr-beta:rolling@sha256:b310afa9976f950ab62d7ec20801b46cb9a28176121d1c275424d780825ca4ee
+      image: ghcr.io/elfhosted/decypharr:v1.0.3@sha256:9416e78afd0f86927557f0f1657422d674314e75d4ae6fc7252b04b45d5d3d92
       command:
       - /bin/bash
       - -c

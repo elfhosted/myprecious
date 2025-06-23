@@ -6,6 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: decypharr
     app.kubernetes.io/instance: {{ .Release.Name }}
+    zilean.elfhosted.com/scrape: "decypharr"
   annotations:
 spec:
   type: ClusterIP
