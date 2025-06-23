@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.412.0](https://github.com/elfhosted/myprecious/compare/v1.411.0...v1.412.0) (2025-06-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.8 ([d94a950](https://github.com/elfhosted/myprecious/commit/d94a950f2629df237b8cc67317aaa8b2cbc722d3))
+
+
+### Bug Fixes
+
+* Fix peertube admin email ENV var interpolation ([76bbed3](https://github.com/elfhosted/myprecious/commit/76bbed3979924427bbb32dc79a873ad52a115289))
+
 ## [1.411.0](https://github.com/elfhosted/myprecious/compare/v1.410.0...v1.411.0) (2025-06-22)
 
 
