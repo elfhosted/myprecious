@@ -28,16 +28,16 @@ data:
     done    
     {{ end }}
 
-    {{ if .Values.decypharr.enabled }}
-    # until decypharr is up, continue producing this error message every minute
-    DAYSREMAINING=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .premium / 86400 | floor')
-    while [[ ! "$DAYSREMAINING" -gt 0 ]]; do
-      echo "Decypharr not up yet, waiting...."
-      echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Decypharr is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-decypharr.{{ .Values.dns_domain }}/config>here</A> (refreshes every 5min)","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
-      sleep 60s  
-      DAYSREMAINING=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .premium / 86400 | floor')
-    done    
-    {{ end }}    
+    # {{ if .Values.decypharr.enabled }}
+    # # until decypharr is up, continue producing this error message every minute
+    # DAYSREMAINING=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .premium / 86400 | floor')
+    # while [[ ! "$DAYSREMAINING" -gt 0 ]]; do
+    #   echo "Decypharr not up yet, waiting...."
+    #   echo '{"title": "Warning, {{ .Release.Name }}, your setup is incomplete 😱!","content": "⚠️ Decypharr is not running, likely you key is not setup, invalid, or expired - Add it <A HREF=https://{{ .Release.Name }}-decypharr.{{ .Values.dns_domain }}/config>here</A> (refreshes every 5min)","style": "is-danger","icon": "fas fa-exclamation-triangle"}' > /www/assets/message/message.json
+    #   sleep 60s  
+    #   DAYSREMAINING=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .premium / 86400 | floor')
+    # done    
+    # {{ end }}    
 
     rm /www/assets/message/message.json
     while true
@@ -106,14 +106,14 @@ data:
       RD_MESSAGE="👽 Zurg reports $RD_LIBRARY_SIZE items, $RD_DAYS_REMAINING"
       {{ end }}
 
-      {{ if .Values.decypharr.enabled }}
-      RD_USERNAME=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .username')
-      RD_POINTS=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .points')
-      RD_DAYS_REMAINING=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .premium / 86400 | floor')
-      RD_LIBRARY_SIZE=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .library_size')
-      RD_BAD_TORRENTS=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .bad_torrents')
-      RD_MESSAGE="🤖 Decypharr reports $RD_LIBRARY_SIZE items ($RD_BAD_TORRENTS bad) on $RD_USERNAME, with $RD_DAYS_REMAINING days remaining, and $RD_POINTS points!"
-      {{ end }}      
+      # {{ if .Values.decypharr.enabled }}
+      # RD_USERNAME=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .username')
+      # RD_POINTS=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .points')
+      # RD_DAYS_REMAINING=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .premium / 86400 | floor')
+      # RD_LIBRARY_SIZE=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .library_size')
+      # RD_BAD_TORRENTS=$(curl -s http://decypharr:8282/debug/stats | jq '.debrids[] | select(.name == "realdebrid") | .bad_torrents')
+      # RD_MESSAGE="🤖 Decypharr reports $RD_LIBRARY_SIZE items ($RD_BAD_TORRENTS bad) on $RD_USERNAME, with $RD_DAYS_REMAINING days remaining, and $RD_POINTS points!"
+      # {{ end }}      
 
       {{ if .Values.riven.enabled }}
       RIVEN_TOTAL_ITEMS=$(curl -s -H "Authorization: Bearer {{ .Values.rivenexposed.apikey }}" http://riven:8080/api/v1/stats | jq .total_items) # items
