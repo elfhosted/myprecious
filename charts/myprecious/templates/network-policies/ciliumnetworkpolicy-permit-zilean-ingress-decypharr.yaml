@@ -1,24 +1,24 @@
-{{ if .Values.zurg.enabled }}
+{{ if .Values.decypharr.enabled }}
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: permit-zilean-ingress-zurg
+  name: permit-zilean-ingress-decypharr
 spec:
   endpointSelector:
     matchLabels:
-      app.elfhosted.com/name: zurg
+      app.elfhosted.com/name: decypharr
   ingress:
     - fromEndpoints:
         - {}
       toPorts:
         - ports:
-          - port: '9999'
+          - port: '8282'
             protocol: TCP
     - fromEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: zilean
       toPorts:
         - ports:
-          - port: '9999'
+          - port: '8282'
             protocol: TCP
 {{ end }}
