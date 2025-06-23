@@ -7478,12 +7478,6 @@ peertube:
       drop:
       - ALL        
   automountServiceAccountToken: false
-  envFrom:
-  - configMapRef:
-      name: peertube-env
-  - configMapRef:
-      name: elfbot-peertube
-      optional: true
   resources:
     requests:
       cpu: 0m
@@ -7667,6 +7661,12 @@ peertube:
         name: data-tmp
       - mountPath: /dev/dri/renderD128
         name: render-device
+      envFrom:
+      - configMapRef:
+          name: peertube-env
+      - configMapRef:
+          name: elfbot-peertube
+          optional: true        
 
 audiobookshelf:
   enabled: false
