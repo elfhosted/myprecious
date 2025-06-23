@@ -1,0 +1,18 @@
+{{- if .Values.actualcustomdomain.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.actualcustomdomain.cname | lower }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Values.actualcustomdomain.cname | lower }}`)
+      kind: Rule
+      services:
+        - name: actual
+          kind: Service
+          port: 5006
+  tls:
+    secretName: cert-{{ .Values.actualcustomdomain.cname | lower }}
+{{ end }}
