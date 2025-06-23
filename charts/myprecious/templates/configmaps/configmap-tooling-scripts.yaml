@@ -66,7 +66,8 @@ data:
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-webdav.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}
     {{- if .Values.peertube.enabled }}
-    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-peertube.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    ## until the NAT issue is fixed, we use traefik-lb-ingress
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-peertube.$DNS_DOMAIN CNAME traefik-lb-ingress.$DNS_DOMAIN
     {{ end }}    
 
   clean-up-dns-on-termination.sh: |

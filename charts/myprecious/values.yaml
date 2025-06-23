@@ -7450,8 +7450,8 @@ booklore:
 peertube:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/peertube-nonroot
-    tag: v7.2.1@sha256:a46b7da39faed804e7ba7e3e253eec133967336da0c91fcde372d76ef9aa29e2
+    repository: ghcr.io/elfhosted/peertube-cli
+    tag: v7.2.1@sha256:c331f0c3945217c51e907b0f2ce5e1ee23522bfb06f854cddfcd3b2a32854b5b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7540,23 +7540,20 @@ peertube:
     logs:
       enabled: true
       type: custom
-      mountPath: /data/logs
-      subPath: peertube
       volumeSpec:
         persistentVolumeClaim:
           claimName: logs
     config:
       enabled: true
       type: custom
-      mountPath: /data
-      subPath: peertube/app
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
+      mountPath: /home/elfie
+      subPath: peertube/cli
     backup:
       enabled: true
       type: custom
-      subPath: peertube
       volumeSpec:
         persistentVolumeClaim:
           claimName: backup          
@@ -7574,13 +7571,11 @@ peertube:
         medium: Memory
     data-tmp:
       enabled: "true"
-      mountPath: /data/tmp
       type: emptyDir      
     render-device:
       enabled: "true"
       type: hostPath
       hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"         
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -7659,12 +7654,19 @@ peertube:
       - mountPath: /data
         name: config
         subPath: peertube/redis
-    cli:
-      image: ghcr.io/elfhosted/peertube-cli:v7.2.1@sha256:c331f0c3945217c51e907b0f2ce5e1ee23522bfb06f854cddfcd3b2a32854b5b
+    ui:
+      image: ghcr.io/elfhosted/peertube-nonroot:v7.2.1@sha256:a46b7da39faed804e7ba7e3e253eec133967336da0c91fcde372d76ef9aa29e2
       volumeMounts:
-      - mountPath: /home/elfie
+      - mountPath: /data
         name: config
-        subPath: peertube/cli
+        subPath: peertube/app
+      - mountPath: /data/logs
+        name: logs
+        subPath: peertube
+      - mountPath: /data/tmp
+        name: data-tmp
+      - mountPath: /dev/dri/renderD128
+        name: render-device
 
 audiobookshelf:
   enabled: false
