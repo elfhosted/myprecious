@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.413.0](https://github.com/elfhosted/myprecious/compare/v1.412.0...v1.413.0) (2025-06-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/decypharr docker tag to v1.0.3 ([a773ba5](https://github.com/elfhosted/myprecious/commit/a773ba56bfa62418b4e271911ad1acd07c423283))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2042 ([9079b5e](https://github.com/elfhosted/myprecious/commit/9079b5eb8a940ec7d96324769e6131b5b8276895))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.22.0 ([5297adf](https://github.com/elfhosted/myprecious/commit/5297adff77bee672963ab578d5e017fc006f5116))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.30.0 ([5273848](https://github.com/elfhosted/myprecious/commit/527384821cb11d151e315da21dfea7269bf9c5e9))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.30.1 ([346317e](https://github.com/elfhosted/myprecious/commit/346317ebc065c309ae1f0a98032e50149fca90bb))
+
+
+### Bug Fixes
+
+* Support custom CNAMEs for Actual Budget ([f45d2d3](https://github.com/elfhosted/myprecious/commit/f45d2d37244e78953d32f04371b85340de861017))
+
 ## [1.412.0](https://github.com/elfhosted/myprecious/compare/v1.411.0...v1.412.0) (2025-06-23)
 
 
