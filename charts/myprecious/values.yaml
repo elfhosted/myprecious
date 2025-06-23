@@ -7667,7 +7667,13 @@ peertube:
       - configMapRef:
           name: elfbot-peertube
           optional: true        
-
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        readOnlyRootFilesystem: true
+        privileged: true # needed for transcoding
+        runAsNonRoot: true
+        
 audiobookshelf:
   enabled: false
   image:
