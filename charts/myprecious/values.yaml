@@ -4942,13 +4942,11 @@ readarraudio:
 plex: &app_plex
   enabled: false
   priorityClassName: tenant-streaming
-  fullnameOverride: plex
   podLabels:
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: debrid
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
-    container.apparmor.security.beta.kubernetes.io/plex: unconfined  
     container.apparmor.security.beta.kubernetes.io/transcode-killer: unconfined    
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -5043,7 +5041,7 @@ plex: &app_plex
       enabled: false
   service:
     main:
-      enabled: false # necessary for probes
+      enabled: true # necessary for probes
       ports:
         http:
           port: 32400
