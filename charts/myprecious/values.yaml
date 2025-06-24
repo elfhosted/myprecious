@@ -5021,8 +5021,8 @@ plex: &app_plex
     render-device: &streamer_render_device
       enabled: "true"
       type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+      hostPath: "/dev/dri"
+      mountPath: "/dev/dri"
     shared:
       enabled: true
       mountPath: /shared
@@ -5185,8 +5185,16 @@ plex: &app_plex
       - mountPath: /var/log/
         name: logs
         subPath: plex/transcode-killer
+      - mountPath: /dev/dri
+        name: render-device
       resources: *default_resources
-      securityContext: *default_securitycontext       
+      securityContext:
+        capabilities:
+          add:
+            - SYS_ADMIN
+            - SYS_PTRACE
+        seccompProfile:
+          type: Unconfined       
   addons:
     vpn:
       enabled: true # in case we ever need it

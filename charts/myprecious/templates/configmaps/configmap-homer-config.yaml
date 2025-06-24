@@ -1583,7 +1583,7 @@ data:
 
           {{ if .Values.actual.enabled }}
           - name: "Actual Server"
-            logo: "assets/png/actual.png"
+            logo: "assets/png/actual-budget.png"
             subtitle: "Actual Budget"
             tag: "public"
             tagstyle: "is-danger"
