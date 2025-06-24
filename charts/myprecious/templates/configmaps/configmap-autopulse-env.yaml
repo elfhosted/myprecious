@@ -6,8 +6,8 @@ metadata:
 data:
   TZ: UTC
   AUTOPULSE__APP__DATABASE_URL: sqlite:///config/autopulse.db
-  PUID: 568
-  PGID: 568
+  PUID: "568"
+  PGID: "568"
   FORCE_AUTH: "false"
   FORCE_SERVER_URL: https://{{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}
   FORCE_USERNAME: admin
