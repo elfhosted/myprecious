@@ -33,11 +33,12 @@ data:
   PLEX_PREFERENCE_26: "LoudnessAnalysisBehavior=never"
   PLEX_PREFERENCE_27: "MusicAnalysisBehavior=never"
   PLEX_PREFERENCE_28: "GenerateVADBehavior=never"
-  PLEX_PREFERENCE_29: "ScannerLowPriority=1"
+  PLEX_PREFERENCE_29: "ScannerLowPriority=0"
   PLEX_PREFERENCE_30: "ButlerTaskRefreshLibraries=0"
   PLEX_PREFERENCE_31: "ButlerTaskRefreshLocalMedia=0"
   PLEX_PREFERENCE_32: "ButlerDatabaseBackupPath=/backup/"
-  PLEX_PREFERENCE_33: "ScheduledTasksEnabled=0"
+  PLEX_PREFERENCE_33: "DatabaseCacheSize=1024"
+
 
   # For custom domains
   {{- if .Values.plexcustomdomain.enabled }}
