@@ -5186,7 +5186,13 @@ plex: &app_plex
         name: logs
         subPath: plex/transcode-killer
       resources: *default_resources
-      securityContext: *default_securitycontext       
+      securityContext:
+        capabilities:
+          add:
+            - SYS_ADMIN
+            - SYS_PTRACE
+        seccompProfile:
+          type: Unconfined       
   addons:
     vpn:
       enabled: true # in case we ever need it
