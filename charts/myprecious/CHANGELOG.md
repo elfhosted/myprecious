@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.414.0](https://github.com/elfhosted/myprecious/compare/v1.413.0...v1.414.0) (2025-06-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.3.1 ([d4c0f64](https://github.com/elfhosted/myprecious/commit/d4c0f6472b4e77f67c6335f00729c4d89479c660))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.152 ([a867146](https://github.com/elfhosted/myprecious/commit/a867146abe31dff90ca6396096f9ff4c8445ac90))
+* **app:** update ghcr.io/elfhosted/discovarr docker tag to v1.2.0 ([6d96a82](https://github.com/elfhosted/myprecious/commit/6d96a82b536a127755d6beed40a4b19602e47c96))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2052 ([4d75f6b](https://github.com/elfhosted/myprecious/commit/4d75f6bb6a0fdee74f9f14839bdb35fc3a84caf5))
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.10 ([2ba58e9](https://github.com/elfhosted/myprecious/commit/2ba58e970a8de3cc9a62a77805f1fc0b8e9b9464))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.30.2 ([9032f39](https://github.com/elfhosted/myprecious/commit/9032f39a7a2f258da4ebfed6e1323d34d0e25780))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.31.0 ([498fa08](https://github.com/elfhosted/myprecious/commit/498fa08c8fe54b0e60b4c971cce210a10ab369ef))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.31.1 ([6bb2ab2](https://github.com/elfhosted/myprecious/commit/6bb2ab27c1697bceec366fc4d6cc23d34cab218a))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/jasongdove/ersatztv:develop-vaapi docker digest to 04bfca8 ([72e229e](https://github.com/elfhosted/myprecious/commit/72e229ee4edb4e0f329c9b7a676faf04e44c54b2))
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 98b9098 ([11e2c24](https://github.com/elfhosted/myprecious/commit/11e2c249c3f467dd91de849aec28fd8be31b619c))
+* **app:** update ghcr.io/elfhosted/listsync:0.5.9 docker digest to 13a18a1 ([16533f9](https://github.com/elfhosted/myprecious/commit/16533f97888ad2b908e248f037d391b6f5011a99))
+* **app:** update ghcr.io/elfhosted/tooling:focal-20250404 docker digest to b22cfee ([42d69ae](https://github.com/elfhosted/myprecious/commit/42d69ae3999810509d3f5c92c3b1251614876275))
+* Avoid cloudflare cross-user issue on Actual Budget custom CNAMEs ([ab8b63e](https://github.com/elfhosted/myprecious/commit/ab8b63e32fb431badd2b587f56bf6088bce6c8b9))
+* Increase default plex DB memory cache from 40MB to 1Gi ([e0b5bea](https://github.com/elfhosted/myprecious/commit/e0b5beae7b87673bcb425aba2e91c8c3997844c0))
+
 ## [1.413.0](https://github.com/elfhosted/myprecious/compare/v1.412.0...v1.413.0) (2025-06-23)
 
 
