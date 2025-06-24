@@ -25,16 +25,15 @@ spec:
       middlewares:
         - name: chain-hosted-stremio-addon
           namespace: traefik
-    - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`))
+    # SSO-protected routes
+    - match: Host(`{{ .Release.Name }}-mediafusion.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`) || PathPrefix(`/metrics`)) || PathPrefix(`/scraper`))
       kind: Rule
       services:
         - name: mediafusion
           kind: Service
           port: 8000
       middlewares:
-      {{ if not .Values.mediafusionexposed.enabled }}
         - name: {{ .Release.Name }}-traefik-forward-auth
-      {{ end }}
         - name: chain-hosted-stremio-addon
           namespace: traefik          
     # Block URLs we don't want public access to
