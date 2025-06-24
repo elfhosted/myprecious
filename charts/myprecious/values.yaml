@@ -13480,7 +13480,12 @@ autopulse:
       volumeSpec:
         configMap:
           name: elfbot-autopulse
-          optional: true            
+          optional: true     
+    run: # used for s6-init with non-root
+      enabled: true
+      type: emptyDir
+      mountPath: /run
+      sizeLimit: 1Gi                 
   resources:
     requests:
       cpu: 0m
