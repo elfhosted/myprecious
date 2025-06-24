@@ -5020,7 +5020,7 @@ plex: &app_plex
           optional: true
     render-device: &streamer_render_device
       enabled: "true"
-      type: Directory
+      type: hostPath
       hostPath: "/dev/dri"
       mountPath: "/dev/dri"
     shared:
