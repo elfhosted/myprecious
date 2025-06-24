@@ -11568,7 +11568,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2042@sha256:1327c3e93e58667603c16eedcabfa4a625207a205b7278ebc724621d6ef15b4d
+    tag: 0.22.2052@sha256:417e1e7623833afd30e6e46691210262e2d18d9eceb07a72c8fe5a510a033d70
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13660,7 +13660,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.30.1@sha256:40cbf120d2618156facbfded4a82476fae8ae259311b9318a35f722affffce5b
+    tag: v0.30.2@sha256:ef74dcae95e599701d0bd5ce0359206aacdff02804ac07ee0a9dbea853c84f79
   priorityClassName: tenant-normal
   controller:
     annotations:
