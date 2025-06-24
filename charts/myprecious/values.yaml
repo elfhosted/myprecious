@@ -4942,11 +4942,13 @@ readarraudio:
 plex: &app_plex
   enabled: false
   priorityClassName: tenant-streaming
+  fullnameOverride: plex
   podLabels:
     app.elfhosted.com/name: plex
     app.elfhosted.com/class: debrid
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
+    container.apparmor.security.beta.kubernetes.io/plex: unconfined  
     container.apparmor.security.beta.kubernetes.io/transcode-killer: unconfined    
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -4961,9 +4963,10 @@ plex: &app_plex
     runAsGroup: 568    
     # fsGroupChangePolicy: "Always"
     seccompProfile:
-      type: RuntimeDefault
+      type: unconfined
     supplementalGroups:
     - 993
+    - 44
   automountServiceAccountToken: false
   controller:
     annotations:
@@ -13452,14 +13455,14 @@ autopulse:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # s6
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
+    # runAsUser: 568
+    # runAsGroup: 568
+    # fsGroup: 568
+    # fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
   affinity: *standard_affinity
   tolerations: *standard_tolerations
