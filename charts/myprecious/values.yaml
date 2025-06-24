@@ -4963,7 +4963,7 @@ plex: &app_plex
     runAsGroup: 568    
     # fsGroupChangePolicy: "Always"
     seccompProfile:
-      type: unconfined
+      type: Unconfined
     supplementalGroups:
     - 993
     - 44
