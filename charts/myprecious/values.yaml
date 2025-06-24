@@ -5020,9 +5020,9 @@ plex: &app_plex
           optional: true
     render-device: &streamer_render_device
       enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+      type: Directory
+      hostPath: "/dev/dri"
+      mountPath: "/dev/dri"
     shared:
       enabled: true
       mountPath: /shared
@@ -5185,6 +5185,8 @@ plex: &app_plex
       - mountPath: /var/log/
         name: logs
         subPath: plex/transcode-killer
+      - mountPath: /dev/dri
+        name: render-device
       resources: *default_resources
       securityContext:
         capabilities:
