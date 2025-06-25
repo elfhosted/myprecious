@@ -53,7 +53,6 @@ data:
   EMAIL_TO: {{ .Values.email }}
   SMTP_PORT: "587"
   SMTP_FROM: 'transcode-killer@elfhosted.com'
-  SMTP_PORT: 587
 
   # To check for mounts before starting
   WAIT_FOR_MOUNT_PATHS: {{ $dirs := list }}
