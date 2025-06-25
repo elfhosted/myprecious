@@ -113,7 +113,7 @@ nazgul_streamer_resources: &nazgul_streamer_resources
 # sets the user's base dns domain
 dns_domain: elfhosted.com
 
-tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20250404@sha256:b22cfee9ffc4ee46d8278237924b438c1905f434b7d4058d9ee193f5395ae5ca
+tooling_image: &tooling_image ghcr.io/elfhosted/tooling:focal-20250404@sha256:72afc01e33e762b560f8846909b1e91ec222259e6749898175e9b2772a6cc3ff
 
 # all RD pods have to exist with zurg - make this soft for now
 standard_affinity: &standard_affinity
@@ -4948,7 +4948,6 @@ plex: &app_plex
     container.apparmor.security.beta.kubernetes.io/transcode-killer: unconfined    
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  shareProcessNamespace: true
   securityContext:
     runAsUser: 568
     runAsGroup: 568
@@ -13359,7 +13358,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.32.0@sha256:5f03e984b060cf3628ac5eed2994337e88fdfaa0ec96a3f8b959a201380e58b2
+    tag: v0.32.2@sha256:0aa44a6da761f560e48cf6fca4deb839bdf6ad600d92295d9afb83cb18b0770c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14340,7 +14339,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.101.1@sha256:e68bd1f55e9424e6102ecf417324af95361b723913263a400bf0d4919e015a8a
+    tag: 4.101.2@sha256:b98aea58266285ac8fcd1e86182b4a9962a34109f343dba4c2251da7c01a6c0f
   priorityClassName: tenant-normal
   controller:
     annotations:
