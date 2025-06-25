@@ -4970,7 +4970,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.8.9834-071366d65@sha256:695ac4a1b79b82c2907e3c112a6bd8b1208a0b1b2e63ca4e9b7e06270651b13f
+    tag: 1.41.8.9834-071366d65@sha256:b04b5ab60b9b28090b116cb6511d1827a1d35e9f1f4853ac7d35960c0a72bc75
   persistence: &app_plex_persistence
     <<: *storagemounts
     backup: &backup
@@ -5040,6 +5040,8 @@ plex: &app_plex
   envFrom:
   - configMapRef:
       name: plex-config
+  - secretRef:
+      name: gatus-smtp-config      
   - configMapRef:
       name: elfbot-plex
       optional: true
