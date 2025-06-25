@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.415.0](https://github.com/elfhosted/myprecious/compare/v1.414.0...v1.415.0) (2025-06-25)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.3.2 ([5b42921](https://github.com/elfhosted/myprecious/commit/5b42921e6d8dc70835492784cceffccc549d8468))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.28.2 ([28ea6e0](https://github.com/elfhosted/myprecious/commit/28ea6e039a6fc3360e7681bd458f14686c45d161))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.73 ([3dc4a0b](https://github.com/elfhosted/myprecious/commit/3dc4a0b21162975a4f4b2523046e0a1974f2573d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2054 ([5ee79c0](https://github.com/elfhosted/myprecious/commit/5ee79c018df961e2efca0a02d86b981de53afee7))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.31.2 ([12a1f23](https://github.com/elfhosted/myprecious/commit/12a1f23c10db95c2088bdf3b142d6484f44a4813))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.32.0 ([3590544](https://github.com/elfhosted/myprecious/commit/35905447898026e150a06a9b888502921a6f9649))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.32.2 ([0c04196](https://github.com/elfhosted/myprecious/commit/0c04196b870eaf55a9590a2ee9929ba9175a6fe3))
+
+
+### Bug Fixes
+
+* Also protect mediafusion /scraper and /metrics endpoints with SSO ([c7c416f](https://github.com/elfhosted/myprecious/commit/c7c416f74943e7a2c5c13947e6a84511a42b7cc1))
+* **app:** update ghcr.io/elfhosted/tooling:focal-20250404 docker digest to 72afc01 ([b262ca3](https://github.com/elfhosted/myprecious/commit/b262ca3212fcc211bce1de4f1e6c4ab0845d9552))
+* **app:** update quay.io/linuxserver.io/calibre:8.5.0 docker digest to 2ff7fbc ([aa1b8ef](https://github.com/elfhosted/myprecious/commit/aa1b8ef34ff4062b4c3d0d9b868590a61e99273c))
+* Force a release to pre-test the rclone fixes ([e214328](https://github.com/elfhosted/myprecious/commit/e2143286a6fc2a543ce919b6248354d0b954810d))
+* Optimize rclone mount values for RD ([13fef05](https://github.com/elfhosted/myprecious/commit/13fef051009ede5c4686699f6935386d868994a8))
+
 ## [1.414.0](https://github.com/elfhosted/myprecious/compare/v1.413.0...v1.414.0) (2025-06-24)
 
 
