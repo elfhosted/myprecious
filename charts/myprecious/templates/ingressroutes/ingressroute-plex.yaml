@@ -12,15 +12,7 @@ spec:
       services:
         - name: plex
           kind: Service
-          {{ if .Values.plexremotestreamworkaround.enabled }}
-          port: 8888
-          {{ else }}
           port: 32400
-          {{ end }}
-    {{ if .Values.plexremotestreamworkaround.enabled }}
-      # middlewares:
-      #   - name: {{ .Release.Name }}-replacepathregex-for-plex
-    {{ end }}
     - match: Host(`{{ .Release.Name }}-plex.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
       kind: Rule
       services:
