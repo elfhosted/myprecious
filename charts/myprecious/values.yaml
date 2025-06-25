@@ -10,8 +10,6 @@ debridling:
   enabled: false
 sidekick:
   enabled: false
-plexremotestreamworkaround:
-  enabled: false
 decypharrreplacezurg:
   enabled: false
 
@@ -5029,13 +5027,7 @@ plex: &app_plex
       mountPath: /shared
       type: emptyDir
       volumeSpec:
-        medium: Memory
-    tinyproxy-conf:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: plex-tinyproxy-conf         
+        medium: Memory     
   ingress:
     main:
       enabled: false
@@ -5166,14 +5158,6 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
-    tinyproxy:
-      image: ghcr.io/elfhosted/tinyproxy:v1.4.3@sha256:262bbdc0e468ee97c049203becc52b9ad7bf4c21405d58c82766d1aebb2e27e5
-      volumeMounts:
-      - mountPath: /etc/tinyproxy/tinyproxy.conf
-        name: tinyproxy-conf
-        subPath: tinyproxy.conf
-    podinfo:
-      image: stefanprodan/podinfo # used to test plex proxying
     transcode-killer:
       image: *tooling_image
       imagePullPolicy: IfNotPresent
@@ -5195,7 +5179,7 @@ plex: &app_plex
             - SYS_ADMIN
             - SYS_PTRACE
         seccompProfile:
-          type: Unconfined       
+          type: Unconfined
   addons:
     vpn:
       enabled: true # in case we ever need it
