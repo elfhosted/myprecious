@@ -4948,7 +4948,6 @@ plex: &app_plex
     container.apparmor.security.beta.kubernetes.io/transcode-killer: unconfined    
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  shareProcessNamespace: true
   securityContext:
     runAsUser: 568
     runAsGroup: 568
