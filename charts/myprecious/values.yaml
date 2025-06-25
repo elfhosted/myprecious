@@ -3340,7 +3340,7 @@ calibre:
   # runtimeClassName: kata
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.5.0@sha256:07d1efcf732954d5cc62cad8540d2b434e3efe0f97b6b2b826ca6881b58a2aa0
+    tag: 8.5.0@sha256:2ff7fbcc54a352b878751be23f1fe651c61ad7548e7e0d3c7b61d117f663b3fc
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7245,7 +7245,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.28.0@sha256:9e4dc03cf46e0f7bdd1d707c162712710f1e779fe5e2744a66e997d924da6eec
+    tag: v0.28.2@sha256:729b7597ce7c44de742a1d88203759e5eee6470f7d6d29f55495c911402fc8d4
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7346,7 +7346,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.28.0@sha256:9e4dc03cf46e0f7bdd1d707c162712710f1e779fe5e2744a66e997d924da6eec
+      image: ghcr.io/elfhosted/booklore:v0.28.2@sha256:729b7597ce7c44de742a1d88203759e5eee6470f7d6d29f55495c911402fc8d4
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -11453,7 +11453,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2052@sha256:417e1e7623833afd30e6e46691210262e2d18d9eceb07a72c8fe5a510a033d70
+    tag: 0.22.2054@sha256:a5c31d5d2053bcd39e931240c5c3ff4edb55d8dd2205046b7ff7cbc38438d92d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13043,7 +13043,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v2.3.1@sha256:c3a58436a81312e4d30e43ab28b98e0f352a8d723192c4eaf44cb4f925be1c43
+    tag: v2.3.2@sha256:f25b50e92f6a55c66992b5eabef9d94930e8eabee828886dd62e7b635fc95986
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13357,7 +13357,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.31.1@sha256:5cf6897d8bad01e14ecc6449ae637d7a10e9be265bd519f8bb03c7a3b6c3a9f7
+    tag: v0.32.0@sha256:5f03e984b060cf3628ac5eed2994337e88fdfaa0ec96a3f8b959a201380e58b2
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13975,7 +13975,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.72@sha256:d986b3a761db79fc4bd39d29bbcee9ee9ef7fa2805a16806449a9b8d3b397f0a 
+    tag: v0.6.73@sha256:725c5404f98641b3bdc0a5e744d6549735de08a53dc21ddb69fc8cd310d9eee2 
   priorityClassName: tenant-normal
   controller:
     annotations:
