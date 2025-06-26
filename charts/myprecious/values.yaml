@@ -15398,6 +15398,7 @@ decypharr: &app_decypharr
   persistence:
     # <<: *storagemounts
     tmp: *tmp
+    backup: *backup
     symlinks: *symlinks
     config:
       enabled: true
