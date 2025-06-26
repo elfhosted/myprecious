@@ -5053,7 +5053,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.17.0032-nightly@sha256:05f0ae3222182485cad893f6bc0e965517342c60e85e93ba9d6b5a4a8ef4a289
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
       command:
       - /bin/bash
       - -c
@@ -5412,7 +5412,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.17.0032-nightly@sha256:05f0ae3222182485cad893f6bc0e965517342c60e85e93ba9d6b5a4a8ef4a289
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
       command:
       - /bin/bash
       - -c
@@ -5616,7 +5616,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.17.0032-nightly@sha256:05f0ae3222182485cad893f6bc0e965517342c60e85e93ba9d6b5a4a8ef4a289
+      image: ghcr.io/elfhosted/zurg-rc:2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
       command:
       - /bin/bash
       - -c
@@ -10920,7 +10920,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.152@sha256:959807746cb3e40218f8e11a48f092dbcdb285e09701758cf3ec21c3eb1f01ca
+    tag: 0.4.153@sha256:25361440814f3ac2eaee95bc18873263ccfb0454b860c62d9efb2d7c6d530387
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11454,7 +11454,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2054@sha256:a5c31d5d2053bcd39e931240c5c3ff4edb55d8dd2205046b7ff7cbc38438d92d
+    tag: 0.22.2056@sha256:541138f9bd96a751aada55344cce7f693342c5479c1cde3cfecafaad3f235152
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13358,7 +13358,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.32.2@sha256:0aa44a6da761f560e48cf6fca4deb839bdf6ad600d92295d9afb83cb18b0770c
+    tag: v0.32.3@sha256:6284fd6f990f9e7067da1af90b2a46c52c61dc543b6176397b78d2c00897f67c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13637,7 +13637,7 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.17.0032-nightly@sha256:05f0ae3222182485cad893f6bc0e965517342c60e85e93ba9d6b5a4a8ef4a289
+    tag: 2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
