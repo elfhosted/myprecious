@@ -721,38 +721,6 @@ data:
             siteMonitor: http://plex-debrid:3001            
         {{ end }}  
 
-        {{ if .Values.plexdebridtorbox.enabled  }}
-        - plex-debrid-torbox:
-            icon: real-debrid.png
-            href: https://{{ .Release.Name }}-plex-debrid-torbox.{{ .Values.dns_domain }}
-            description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://plex-debrid-torbox:3001            
-        {{ end }}             
-
-        {{ if .Values.plexdebridalldebrid.enabled  }}
-        - plex-debrid-alldebrid:
-            icon: real-debrid.png
-            href: https://{{ .Release.Name }}-plex-debrid-alldebrid.{{ .Values.dns_domain }}
-            description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://plex-debrid-alldebrid:3001            
-        {{ end }}      
-
-        {{ if .Values.plexdebriddebridlink.enabled  }}
-        - plex-debrid-debridlink:
-            icon: real-debrid.png
-            href: https://{{ .Release.Name }}-plex-debrid-debridlink.{{ .Values.dns_domain }}
-            description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://plex-debrid-debridlink:3001            
-        {{ end }}              
-
-        {{ if .Values.plexdebridpremiumize.enabled  }}
-        - plex-debrid-premiumize:
-            icon: real-debrid.png
-            href: https://{{ .Release.Name }}-plex-debrid-premiumize.{{ .Values.dns_domain }}
-            description: Sync Plex/Jellyfin with Debrid services
-            siteMonitor: http://plex-debrid-premiumize:3001            
-        {{ end }}          
-
         {{ if .Values.riven.enabled }}
         - Riven:
             icon: https://avatars.githubusercontent.com/u/172203452?s=200&v=4
