@@ -15396,10 +15396,7 @@ decypharr: &app_decypharr
         http:
           port: 8282
   persistence:
-    # <<: *storagemounts
-    tmp: *tmp
-    backup: *backup
-    symlinks: *symlinks
+    <<: *storagemounts
     config:
       enabled: true
       type: custom
