@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.416.0](https://github.com/elfhosted/myprecious/compare/v1.415.0...v1.416.0) (2025-06-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.153 ([c78c5bf](https://github.com/elfhosted/myprecious/commit/c78c5bf9b6348795c1ef8cda87da3af658ff1ba0))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.75 ([475c980](https://github.com/elfhosted/myprecious/commit/475c9806f94561a3492f23dc7c1405b9c3c08778))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.101.2 ([7f58b14](https://github.com/elfhosted/myprecious/commit/7f58b14bea1c3fa94414c57b317983113d11cb86))
+* **app:** update ghcr.io/elfhosted/decypharr docker tag to v1.0.4 ([742b5e4](https://github.com/elfhosted/myprecious/commit/742b5e44f3a54f9278df5e1e73b198b150d4a741))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.9 ([7f8e063](https://github.com/elfhosted/myprecious/commit/7f8e0631e1ce1c1fd03cf1c96256fbe03903bba6))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2056 ([8030db8](https://github.com/elfhosted/myprecious/commit/8030db85c2451f958fde2c1777ca621b0f2a12f3))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.32.3 ([bddc3bd](https://github.com/elfhosted/myprecious/commit/bddc3bd0ddb944511b7c482e7afb48ab5d8c10e1))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.32.4 ([a0b142e](https://github.com/elfhosted/myprecious/commit/a0b142ea18c31580cc7dc494b00a354d03f3e010))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.6.5 ([1f1cee5](https://github.com/elfhosted/myprecious/commit/1f1cee5ce08a2a10bc4643db3d6cba13fba24cdb))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.26.0032-nightly ([a2e3bc2](https://github.com/elfhosted/myprecious/commit/a2e3bc2f8006b902f2b0dfa6cf1f7e7bbbab73b3))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to dfaa43d ([9c84969](https://github.com/elfhosted/myprecious/commit/9c84969c70320651905cbd26fc5121392745cbaf))
+* **app:** update ghcr.io/elfhosted/readarr-develop:0.4.18.2805 docker digest to ed51f75 ([bd4dad9](https://github.com/elfhosted/myprecious/commit/bd4dad9b020b0df9ce934a0e9a709ceaadb5ec66))
+* **app:** update ghcr.io/elfhosted/webstreamr:v0.32.3 docker digest to 6284fd6 ([f62b62b](https://github.com/elfhosted/myprecious/commit/f62b62be5655466fca833e05c96d7cdff4cf33ae))
+* Mount backup and symlinks to decypharr pod without requiring decypharr's volumes themselves ([bc37060](https://github.com/elfhosted/myprecious/commit/bc37060a2229b547c57586e55c0472dd9de4b0f7))
+* Remove shareProcessNamespace from Plex pods (failed attempt to expose transcode-killer logs to user) ([7c48a60](https://github.com/elfhosted/myprecious/commit/7c48a60c4e506ecb37bc4429d01746b76f95c50d))
+* Restore decypharr rclone mount to itself (required for repairs) ([e0c84ea](https://github.com/elfhosted/myprecious/commit/e0c84ea6d0c544213e660abd6b2c6e8bcbf78253))
+* Update env vars for Nuvio Streams, add Gemini API key (secret) ([942e179](https://github.com/elfhosted/myprecious/commit/942e179fdffd342275aae8bbab42af48c976171c))
+
 ## [1.415.0](https://github.com/elfhosted/myprecious/compare/v1.414.0...v1.415.0) (2025-06-25)
 
 
