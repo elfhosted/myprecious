@@ -2107,7 +2107,7 @@ huntarr: &app_huntarr
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
-    tag: 8.1.8@sha256:72d2bf9821f9d84e1dd2b90318040e5a54681f2a865b0e6fc72e0a96695e5d42
+    tag: 8.1.9@sha256:c0c30f43162fcfd42d06f2acc5229380c7219bc1676d1dba87321ed0e13447fc
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -13359,7 +13359,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.32.3@sha256:6284fd6f990f9e7067da1af90b2a46c52c61dc543b6176397b78d2c00897f67c
+    tag: v0.32.4@sha256:adf052f4ad25e309c240461cb0e2f31e338928bdc78137d1dd792a27ebafdc6f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13977,7 +13977,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.73@sha256:725c5404f98641b3bdc0a5e744d6549735de08a53dc21ddb69fc8cd310d9eee2 
+    tag: v0.6.75@sha256:0530e66e4aaf7669b9e53d66abceb1bab1fb6b6e7e28edfa1fcb17a6c7bf3115 
   priorityClassName: tenant-normal
   controller:
     annotations:
