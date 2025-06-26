@@ -1010,7 +1010,7 @@ data:
       {{ if .Values.decypharr.enabled }}
       - name: decypharr
         group: download-media
-        url: "http://decypharr:8282/logs"
+        url: "http://decypharr:8282/debug/stats"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
