@@ -11535,7 +11535,7 @@ wizarr:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false # now wizarr wants to write data to /data/.venv
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -11607,7 +11607,7 @@ wizarr:
     cache:
       enabled: true
       type: emptyDir
-      mountPath: /.cache  
+      mountPath: /.cache     
   initContainers:
     bootstrap:
       <<: *bootstrap
