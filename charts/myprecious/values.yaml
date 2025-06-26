@@ -5086,7 +5086,7 @@ plex: &app_plex
       - mountPath: /tmp
         name: tmp
     dbrepair:
-      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:695ac4a1b79b82c2907e3c112a6bd8b1208a0b1b2e63ca4e9b7e06270651b13f
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:dfaa43dc80599b36032386821517627b42e914b5716ca10e79d994dd3a534872
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -14853,7 +14853,7 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:695ac4a1b79b82c2907e3c112a6bd8b1208a0b1b2e63ca4e9b7e06270651b13f
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:dfaa43dc80599b36032386821517627b42e914b5716ca10e79d994dd3a534872
       command:
       - /bin/bash
       - -c
