@@ -4521,7 +4521,7 @@ readarr:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.18.2805@sha256:d24601e7fbcb3781693d4c2acd638d900883e9f070ba55c803f5432ecf8812ac    
+    tag: 0.4.18.2805@sha256:ed51f754b6baeb58d86b4fae4872dbcc8e9799c01788a9023c3d7704ae549333    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4692,7 +4692,7 @@ readarr:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/readarr-develop:0.4.18.2805@sha256:d24601e7fbcb3781693d4c2acd638d900883e9f070ba55c803f5432ecf8812ac   
+      image: ghcr.io/elfhosted/readarr-develop:0.4.18.2805@sha256:ed51f754b6baeb58d86b4fae4872dbcc8e9799c01788a9023c3d7704ae549333   
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -4733,7 +4733,7 @@ readarraudio:
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
-    tag: 0.4.18.2805@sha256:d24601e7fbcb3781693d4c2acd638d900883e9f070ba55c803f5432ecf8812ac   
+    tag: 0.4.18.2805@sha256:ed51f754b6baeb58d86b4fae4872dbcc8e9799c01788a9023c3d7704ae549333   
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4903,7 +4903,7 @@ readarraudio:
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/readarr-develop:0.4.18.2805@sha256:d24601e7fbcb3781693d4c2acd638d900883e9f070ba55c803f5432ecf8812ac   
+      image: ghcr.io/elfhosted/readarr-develop:0.4.18.2805@sha256:ed51f754b6baeb58d86b4fae4872dbcc8e9799c01788a9023c3d7704ae549333   
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
