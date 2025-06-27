@@ -8725,7 +8725,7 @@ cinesync:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
   podLabels:
     app.elfhosted.com/name: cinesync
   controller:
