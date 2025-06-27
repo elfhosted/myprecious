@@ -1195,7 +1195,7 @@ nzbget:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/nzbget
-    tag: 25.0@sha256:fbccdb14e86fdcae05aa0d6f38a3b7e188a1caed40f07f94a141eb936ce149c3
+    tag: 25.1@sha256:77e020a307dc76853929e7ed2c47993bfc3a070d5b2205562d1dcb9510c6fedc
   priorityClassName: tenant-bulk
   securityContext:
     seccompProfile:
@@ -10923,7 +10923,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.153@sha256:25361440814f3ac2eaee95bc18873263ccfb0454b860c62d9efb2d7c6d530387
+    tag: 0.4.154@sha256:a42a32014499d44e9a4050e95cf7bfd80ab5fc6063ed69a07434bdd8dffd33e5
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11457,7 +11457,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2056@sha256:541138f9bd96a751aada55344cce7f693342c5479c1cde3cfecafaad3f235152
+    tag: 0.22.2064@sha256:6c1151a527c82eb3e9bba4b60f008d56bda8632c8a74041b1aaa363beafd426b
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13047,7 +13047,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v2.3.2@sha256:f25b50e92f6a55c66992b5eabef9d94930e8eabee828886dd62e7b635fc95986
+    tag: v2.4.1@sha256:1121f96ab05d24a622707c91f9aa6a2ca9095e3242d8c4c84aaaa0479c7fc282
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13267,7 +13267,7 @@ nuviostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/nuviostreams-private
-    tag: rolling@sha256:aa531d8824e05fe1f3f65f7397f950c2185e71d165e611f9dd9e7c65533c8275
+    tag: rolling@sha256:b41dfd2c1e211917dd6cf72daf9df0b65c4d6f9aa1eebee0bf16c2a29bcd30ad
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M" 
