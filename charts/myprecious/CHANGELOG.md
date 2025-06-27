@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.417.0](https://github.com/elfhosted/myprecious/compare/v1.416.0...v1.417.0) (2025-06-27)
+
+
+### Features
+
+* **app:** update ghcr.io/dispatcharr/dispatcharr docker tag to v0.6.1 ([fdc0b80](https://github.com/elfhosted/myprecious/commit/fdc0b80f9d6ca776c2749d2193331a537af76c94))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.4.1 ([e2654c8](https://github.com/elfhosted/myprecious/commit/e2654c8ee8c18a3e4cddc9bf30e11d83aed9f46b))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.154 ([238736a](https://github.com/elfhosted/myprecious/commit/238736ae0b740018d3be658e8caaf146c8137057))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.29.0 ([89ee842](https://github.com/elfhosted/myprecious/commit/89ee84237d399093909a676d543ae60fa5a100e5))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.3 ([d1f5587](https://github.com/elfhosted/myprecious/commit/d1f5587491da53b4b024ed723f5e00332a123d24))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2064 ([5baab4b](https://github.com/elfhosted/myprecious/commit/5baab4be246311b1da80dbf6c4355e63100762cd))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v25.1 ([658a1ba](https://github.com/elfhosted/myprecious/commit/658a1ba0fc2a623b7433ec6de5e2aaed8ecfe042))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/nuviostreams-private:rolling docker digest to 3b9a385 ([cefabce](https://github.com/elfhosted/myprecious/commit/cefabce14be768b5acec37d40215dcbbd0b25def))
+* **app:** update ghcr.io/elfhosted/nuviostreams-private:rolling docker digest to b41dfd2 ([6ce46d1](https://github.com/elfhosted/myprecious/commit/6ce46d1fd4cfcb07fda2fc0e65fbc00a49df3715))
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to f717359 ([9cba2fc](https://github.com/elfhosted/myprecious/commit/9cba2fcbcafd5b316c548409f158949f109433fb))
+* Make ElfBot resets work with Profilarr (previously omitted) ([3637a19](https://github.com/elfhosted/myprecious/commit/3637a199ce0b7c722eaa4e0d1d744f68aab8e586))
+* Prevent decypharr mount from changing modtimes ([b074f46](https://github.com/elfhosted/myprecious/commit/b074f46d45722e4ee0163496bc13c9d5b598387c))
+* Update showbox proxy for Nuvio Streams ([d4bfd7b](https://github.com/elfhosted/myprecious/commit/d4bfd7b0f495e1227021c512c97f80a6bb78837b))
+
 ## [1.416.0](https://github.com/elfhosted/myprecious/compare/v1.415.0...v1.416.0) (2025-06-26)
 
 
