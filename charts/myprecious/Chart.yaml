@@ -820,6 +820,11 @@ dependencies:
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: immich
+  - name: app-template
+    condition: wger.enabled
+    version: ~0.2.2
+    repository: oci://ghcr.io/elfhosted/charts
+    alias: wger    
   - name: kubernetes-dashboard
     repository: oci://ghcr.io/elfhosted/charts
     alias: kubernetesdashboard

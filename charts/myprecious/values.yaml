@@ -8716,6 +8716,8 @@ cinesync:
       cpu: 1
       memory: 2Gi 
 
+
+
 arrtools:
   enabled: false
   priorityClassName: tenant-normal
@@ -14438,7 +14440,18 @@ profilarr:
       volumeMounts:
       - mountPath: /tmp
         name: app
-
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: profilarr
+      - mountPath: /tmp
+        name: tmp
 
 pulsarr: &app_pulsarr
   enabled: false
@@ -15693,6 +15706,154 @@ channelsdvr:
       - mountPath: /tmp
         name: tmp
 
+wger:
+  enabled: false
+  image:
+    repository: wger/server
+    tag: latest@sha256:e477eb556bac4dc6715fefd1aaab0e297ecd15b4913d585436e808bb1ea5f3a0
+  priorityClassName: tenant-normal
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wger,wger-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    privileged: true
+  podSecurityContext:
+    fsGroup: 568
+    fsGroupChangePolicy: "Always"
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 15m
+      memory: 200Mi
+    limits:
+      cpu: 1
+      memory: 4Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8000
+  persistence:
+    tmp: *tmp
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      subPath: immich
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-immich
+          optional: true
+  envFrom:
+  - configMapRef:
+      name: wger-env
+  - configMapRef:
+      name: elfbot-wger
+      optional: true
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: wger
+      - mountPath: /tmp
+        name: tmp
+  additionalContainers:
+    # ml:
+    #   image: ghcr.io/immich-app/immich-machine-learning:v1.131.2
+    #   envFrom:
+    #   - configMapRef:
+    #       name: immich-env
+    #   resources:
+    #     requests:
+    #       cpu: 15m
+    #       memory: 200Mi
+    #     limits:
+    #       cpu: 500m
+    #       memory: 4Gi
+    # ngnix:
+    #   image: nginxinc/nginx-unprivileged
+    #   volumeMounts:
+    #   - mountPath: /usr/share/nginx/html
+    #     name: config
+    #     subPath: overseerr/branding
+    #     readOnly: true
+    #   - mountPath: /tmp
+    #     name: tmp
+    #   - mountPath: /run
+    #     name: run
+    #   resources: *default_resources
+    #   securityContext: *default_securitycontext    
+    database:
+      image: postgres:17-alpine
+      env:
+        POSTGRES_PASSWORD: wger
+        POSTGRES_USER: wger
+        POSTGRES_DB: wger
+      volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: config
+          subPath: wger/postgresql/database
+      resources:
+        requests:
+          cpu: 15m
+          memory: 200Mi
+        limits:
+          cpu: 500m
+          memory: 4Gi
+    redis:
+      image: docker.io/redis:7.4-alpine@sha256:ee9e8748ace004102a267f7b8265dab2c618317df22507b89d16a8add7154273
+      envFrom:
+      - configMapRef:
+          name: wger-env
+      volumeMounts:
+        - name: config
+          subPath: wger/redis
+          mountPath: /data         
+      resources:
+        requests:
+          cpu: 15m
+          memory: 200Mi
+        limits:
+          cpu: 500m
+          memory: 4Gi
+    celery-worker:
+      image: wger/server:latest@sha256:e477eb556bac4dc6715fefd1aaab0e297ecd15b4913d585436e808bb1ea5f3a0
+      command:
+      - /start-worker
+      volumeMounts:
+        - name: config
+          subPath: wger/media
+          mountPath: /home/wger/media
+    celery-beat:
+      image: wger/server:latest@sha256:e477eb556bac4dc6715fefd1aaab0e297ecd15b4913d585436e808bb1ea5f3a0
+      command:
+      - /start-beat      
+      volumeMounts:
+        - name: config
+          subPath: wger/beat
+          mountPath: /home/wger/beat
 
 immich:
   enabled: false
