@@ -14440,7 +14440,18 @@ profilarr:
       volumeMounts:
       - mountPath: /tmp
         name: app
-
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: profilarr
+      - mountPath: /tmp
+        name: tmp
 
 pulsarr: &app_pulsarr
   enabled: false
