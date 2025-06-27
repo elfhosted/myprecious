@@ -15733,6 +15733,8 @@ wger:
         http:
           port: 8000
   persistence:
+    tmp: *tmp
+    backup: *backup
     config:
       enabled: true
       type: custom
