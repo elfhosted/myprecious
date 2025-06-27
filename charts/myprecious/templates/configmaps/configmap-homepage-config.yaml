@@ -863,35 +863,7 @@ data:
             href: https://{{ .Release.Name }}-decypharr.{{ .Values.dns_domain }}
             description: Decypharr
             siteMonitor: http://decypharr:8282
-        {{ end }}           
-
-        {{ if .Values.blackhole.enabled }}
-        - Blackhole:
-            icon: mdi-cirle
-            href: https://{{ .Release.Name }}-blackhole.{{ .Values.dns_domain }}
-            description: West's blackhole script
-            siteMonitor: http://blackhole:3001
-
-        - Blackhole (4K):
-            icon: mdi-cirle
-            href: https://{{ .Release.Name }}-blackhole4k.{{ .Values.dns_domain }}
-            description: West's blackhole script (4K)
-            siteMonitor: http://blackhole4k:3001
-        {{ end }}    
-
-        {{ if .Values.blackholetorbox.enabled }}
-        - Blackhole Torbox:
-            icon: mdi-cirle
-            href: https://{{ .Release.Name }}-blackholetorbox.{{ .Values.dns_domain }}
-            description: West's blackhole script (Torbox)
-            siteMonitor: http://blackholetorbox:3001
-
-        - Blackhole Torbox (4K):
-            icon: mdi-cirle
-            href: https://{{ .Release.Name }}-blackholetorbox4k.{{ .Values.dns_domain }}
-            description: West's blackhole script Torbox (4K)
-            siteMonitor: http://blackholetorbox4k:3001
-        {{ end }}                                 
+        {{ end }}                                     
 
         {{ if .Values.cinesync.enabled }}
         - CineSync:
