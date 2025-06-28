@@ -641,35 +641,15 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: storyteller
   - name: app-template
-    condition: blackhole.enabled
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: blackhole
-  - name: app-template
     condition: decypharr.enabled
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: decypharr
   - name: app-template
-    condition: blackhole.enabled
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: blackhole4k
-  - name: app-template
     condition: rclonetorbox.enabled
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: rclonetorbox
-  - name: app-template
-    condition: blackholetorbox.enabled
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: blackholetorbox
-  - name: app-template
-    condition: blackholetorbox.enabled
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: blackholetorbox4k
   - name: app-template
     condition: channelsdvr.enabled
     version: ~0.2.2

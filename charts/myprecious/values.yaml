@@ -4970,7 +4970,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.8.9834-071366d65@sha256:f717359abb250b9b8502c7fb9bca2b2c5f4dbbf168dbab0b7f1d0cf739cc9eb7
+    tag: 1.41.8.9834-071366d65sha256:d0e16356d8bd79729922be82b9fbe6c93e4a6d50c0ae31f5e09a3e3b3fc09366
   persistence: &app_plex_persistence
     <<: *storagemounts
     backup: &backup
@@ -12317,14 +12317,37 @@ comet:
   - configMapRef:
       name: elfbot-comet
       optional: true
-  additionalContainers:
-    speedtest:
-      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
+  initContainers:
+    setup-warp: *setup_warp
+  addons:
+    vpn:
+      enabled: true
+      gluetun:
+        image:
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.40.0@sha256:59b0cc8a9412b9a4645d1f12dff0daba80b8be88acd1b5d1a0fb6dfa625eb9a5
       env:
-        CHANGE_CONTAINER_PORTS: "True"
-        HTTP_PORT: "3002"
-        HTTPS_PORT: "3003"        
-      securityContext: *speedtest_securitycontext
+        FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
+        DNS_KEEP_NAMESERVER: "on"
+        HTTP_CONTROL_SERVER_PORT: "8000"
+        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+        VPN_TYPE: wireguard
+        VPN_SERVICE_PROVIDER: custom
+        FIREWALL_INPUT_PORTS: "8000,3000"
+        WIREGUARD_MTU: "1280"
+        VPN_ENDPOINT_PORT: "2408"
+        DOT: "off"
+      securityContext:
+        privileged: true
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+      volumeMounts:
+      - mountPath: /shared
+        name: shared  
 
 jackettio:
   enabled: false
@@ -13086,7 +13109,12 @@ aiostreams:
       volumeSpec:
         configMap:
           name: elfbot-aiostreams
-          optional: true            
+          optional: true     
+    shared:
+      enabled: true
+      type: emptyDir
+      volumeSpec:
+        medium: Memory                 
   resources:
     requests:
       cpu: 0m
@@ -13122,6 +13150,36 @@ aiostreams:
         subPath: aiostreams
       - mountPath: /tmp
         name: tmp
+    setup-warp: *setup_warp
+  addons:
+    vpn:
+      enabled: true
+      gluetun:
+        image:
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.40.0@sha256:59b0cc8a9412b9a4645d1f12dff0daba80b8be88acd1b5d1a0fb6dfa625eb9a5
+      env:
+        FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
+        DNS_KEEP_NAMESERVER: "on"
+        HTTP_CONTROL_SERVER_PORT: "8000"
+        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+        VPN_TYPE: wireguard
+        VPN_SERVICE_PROVIDER: custom
+        FIREWALL_INPUT_PORTS: "3000"
+        WIREGUARD_MTU: "1280"
+        VPN_ENDPOINT_PORT: "2408"
+        DOT: "off"
+      securityContext:
+        privileged: true
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+      volumeMounts:
+      - mountPath: /shared
+        name: shared        
 
 aiostreamsv1:
   enabled: false
@@ -15467,166 +15525,6 @@ decypharr: &app_decypharr
     #   - -c
     #   - |
     #     echo "This pod only exists to cause a restart when emby is updated"        
-
-blackhole: &app_blackhole
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:3f7a6e09de005b57fec75762422c0880286a8c4d93a9871b3df1e88866fc8dc1
-  priorityClassName: tenant-normal
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackhole,blackhole-env"
-  securityContext:
-    runAsUser: 568
-    runAsGroup: 568
-    privileged: false
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    fsGroup: 568
-    fsGroupChangePolicy: "Always"
-    seccompProfile:
-      type: RuntimeDefault
-  automountServiceAccountToken: false
-  env:
-    BLACKHOLE_RADARR_PATH: "radarr"
-    BLACKHOLE_SONARR_PATH: "sonarr"
-  envFrom:
-  - configMapRef:
-      name: blackhole-env
-  - configMapRef:
-      name: elfbot-blackhole
-      optional: true
-  resources:
-    requests:
-      cpu: 0m
-      memory: 1Mi
-    limits:
-      cpu: 100m
-      memory: 100Mi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3001
-  persistence:
-    <<: *storagemounts
-    tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/logs
-      subPath: blackhole
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs
-
-blackhole4k:
-  <<: *app_blackhole
-  persistence:
-    <<: *storagemounts
-    tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/logs
-      subPath: blackhole4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs
-  env:
-    BLACKHOLE_RADARR_PATH: "radarr4k"
-    BLACKHOLE_SONARR_PATH: "sonarr4k"
-  envFrom:
-  - configMapRef:
-      name: blackhole-env
-  - configMapRef:
-      name: elfbot-blackhole
-      optional: true   
-  - configMapRef:
-      name: elfbot-blackhole4k
-      optional: true    
-
-blackholetorbox:
-  <<: *app_blackhole
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackholetorbox,blackholetorbox-env"
-  persistence:
-    <<: *storagemounts
-    tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/logs
-      subPath: blackholetorbox
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs
-  env:
-    BLACKHOLE_RADARR_PATH: "radarr"
-    BLACKHOLE_SONARR_PATH: "sonarr"
-  envFrom:
-  - configMapRef:
-      name: blackholetorbox-env
-  - configMapRef:
-      name: elfbot-blackholetorbox
-      optional: true
-  initContainers:
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-
-        # Create directory structure
-        mkdir -p /storage/symlinks/blackholetorbox/radarr/completed
-        mkdir -p /storage/symlinks/blackholetorbox/radarr/processing
-        mkdir -p /storage/symlinks/blackholetorbox/sonarr/completed
-        mkdir -p /storage/symlinks/blackholetorbox/sonarr/processing
-      volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks
-      resources: *default_resources
-      securityContext: *default_securitycontext
-
-blackholetorbox4k:
-  <<: *app_blackhole
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-blackholetorbox,blackholetorbox-env"
-  persistence:
-    <<: *storagemounts
-    tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/logs
-      subPath: blackholetorbox4k
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs
-  env:
-    BLACKHOLE_RADARR_PATH: "radarr4k"
-    BLACKHOLE_SONARR_PATH: "sonarr4k"
-  envFrom:
-  - configMapRef:
-      name: blackholetorbox-env
-  - configMapRef:
-      name: elfbot-blackholetorbox
-      optional: true
-  - configMapRef:
-      name: elfbot-blackholetorbox4k
-      optional: true      
 
 channelsdvr:
   enabled: false
