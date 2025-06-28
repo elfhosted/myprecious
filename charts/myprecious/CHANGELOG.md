@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.418.0](https://github.com/elfhosted/myprecious/compare/v1.417.0...v1.418.0) (2025-06-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.4.2 ([6568cd4](https://github.com/elfhosted/myprecious/commit/6568cd483f51259bd09551513b0c55955eed5b7a))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.10 ([0123961](https://github.com/elfhosted/myprecious/commit/012396135d580432e2a5b40909b4a098d1188e8b))
+* **app:** update ghcr.io/elfhosted/huntarr docker tag to v8.1.11 ([0d5d654](https://github.com/elfhosted/myprecious/commit/0d5d65483b14bd2d59bea3b849b01d3a957e3b78))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2072 ([24da6a1](https://github.com/elfhosted/myprecious/commit/24da6a17b441257de1baff953ec8b5a2a5d3201f))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2075 ([b14d372](https://github.com/elfhosted/myprecious/commit/b14d372827c1a49bae22e65e1f1edf8234146614))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.32.5 ([6b8684a](https://github.com/elfhosted/myprecious/commit/6b8684a4987104c9f1c066d9fee8acd62332e25c))
+* **app:** update mongodb/mongodb-community-server docker tag to v8.0.11 ([a00266e](https://github.com/elfhosted/myprecious/commit/a00266eca0645bd538cab46f732e78b5390eebab))
+* **app:** update privatebin/fs docker tag to v1.7.7 ([e4ffb14](https://github.com/elfhosted/myprecious/commit/e4ffb149a717f2c585d67977648f4d45a405d18a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to 142c6cb ([a4214f3](https://github.com/elfhosted/myprecious/commit/a4214f3b98b3b2c22a0c5f4da0b967906a51c60c))
+* **app:** update wger/server:latest docker digest to 444f20a ([1cc11fe](https://github.com/elfhosted/myprecious/commit/1cc11fe8968d5f46728874bd9d54ebfe62d32d77))
+* Fix Plex image format ([74bd0ea](https://github.com/elfhosted/myprecious/commit/74bd0ea5913ebd8e8f19a419e0ba20d26622b98c))
+* Make Plex library scans smarter - skip already-analyzed media ([97c83e5](https://github.com/elfhosted/myprecious/commit/97c83e5d64a3be96b48279d7d4f55ecddc665470))
+
 ## [1.417.0](https://github.com/elfhosted/myprecious/compare/v1.416.0...v1.417.0) (2025-06-27)
 
 
