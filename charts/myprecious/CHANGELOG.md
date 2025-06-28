@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.418.1](https://github.com/elfhosted/myprecious/compare/v1.418.0...v1.418.1) (2025-06-28)
+
+
+### Bug Fixes
+
+* Fix comet post-VPN addition ([b905dbc](https://github.com/elfhosted/myprecious/commit/b905dbcd36aa95b5ca92609f698fd868f879321b))
+
 ## [1.418.0](https://github.com/elfhosted/myprecious/compare/v1.417.0...v1.418.0) (2025-06-28)
 
 
