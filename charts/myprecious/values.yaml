@@ -12344,7 +12344,7 @@ comet:
           add:
             - NET_ADMIN
             - SYS_MODULE
-      config: # We have to set this to null so that we can override with our own config
+      config: # We have to set this to null so that we can override with our own confi
       volumeMounts:
       - mountPath: /shared
         name: shared  
