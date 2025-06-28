@@ -15608,7 +15608,7 @@ wger:
   enabled: false
   image:
     repository: wger/server
-    tag: latest@sha256:e477eb556bac4dc6715fefd1aaab0e297ecd15b4913d585436e808bb1ea5f3a0
+    tag: latest@sha256:444f20aa36195a8a27ebd81c68d7c170b317c6544861acbc45131cb1dcde691d
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15737,7 +15737,7 @@ wger:
           cpu: 500m
           memory: 4Gi
     celery-worker:
-      image: wger/server:latest@sha256:e477eb556bac4dc6715fefd1aaab0e297ecd15b4913d585436e808bb1ea5f3a0
+      image: wger/server:latest@sha256:444f20aa36195a8a27ebd81c68d7c170b317c6544861acbc45131cb1dcde691d
       command:
       - /start-worker
       volumeMounts:
@@ -15745,7 +15745,7 @@ wger:
           subPath: wger/media
           mountPath: /home/wger/media
     celery-beat:
-      image: wger/server:latest@sha256:e477eb556bac4dc6715fefd1aaab0e297ecd15b4913d585436e808bb1ea5f3a0
+      image: wger/server:latest@sha256:444f20aa36195a8a27ebd81c68d7c170b317c6544861acbc45131cb1dcde691d
       command:
       - /start-beat      
       volumeMounts:
