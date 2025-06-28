@@ -11993,7 +11993,7 @@ petio:
         name: tmp
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:8.0.10-ubi8
+      image: mongodb/mongodb-community-server:8.0.11-ubi8
       volumeMounts:
         - name: config
           subPath: petio/mongodb
@@ -12060,7 +12060,7 @@ nightscout:
           claimName: config
   additionalContainers:
     mongodb:
-      image: mongodb/mongodb-community-server:8.0.10-ubi8
+      image: mongodb/mongodb-community-server:8.0.11-ubi8
       volumeMounts:
         - name: config
           subPath: nightscout/mongodb
