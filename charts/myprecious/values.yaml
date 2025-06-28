@@ -4970,7 +4970,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.8.9834-071366d65sha256:d0e16356d8bd79729922be82b9fbe6c93e4a6d50c0ae31f5e09a3e3b3fc09366
+    tag: 1.41.8.9834-071366d65@sha256:d0e16356d8bd79729922be82b9fbe6c93e4a6d50c0ae31f5e09a3e3b3fc09366
   persistence: &app_plex_persistence
     <<: *storagemounts
     backup: &backup
