@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.419.0](https://github.com/elfhosted/myprecious/compare/v1.418.1...v1.419.0) (2025-06-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.0 ([9961861](https://github.com/elfhosted/myprecious/commit/99618613cc0ebad9d5179d7ebed9a3ae4845332c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2084 ([6e2ca35](https://github.com/elfhosted/myprecious/commit/6e2ca35e17384f05f8e2c359aa8d39eb8179649e))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 122813a ([6b0ad6e](https://github.com/elfhosted/myprecious/commit/6b0ad6e96638e17fe1cf3cbae1be1c0c435ead12))
+* Restore "classic" ElfZilean Prowlarr indexer ([6745ddc](https://github.com/elfhosted/myprecious/commit/6745ddce56210185aa161b9e57eab489bd130117))
+
 ## [1.418.1](https://github.com/elfhosted/myprecious/compare/v1.418.0...v1.418.1) (2025-06-28)
 
 
