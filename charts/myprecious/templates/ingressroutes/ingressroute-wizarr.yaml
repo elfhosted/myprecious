@@ -8,7 +8,7 @@ spec:
   - websecure
   routes:
     # No auth required for public paths
-    - match: Host(`{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}`) && (PathPrefix(`/join/`) || PathPrefix(`/j/`) || PathPrefix(`/setup/`) || PathPrefix(`/static/`))
+    - match: Host(`{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}`) && (PathPrefix(`/join`) || PathPrefix(`/j`) || PathPrefix(`/setup`) || PathPrefix(`/static`))
       kind: Rule
       services:
         - name: wizarr
