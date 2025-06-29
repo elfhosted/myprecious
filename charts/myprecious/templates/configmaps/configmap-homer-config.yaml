@@ -1066,14 +1066,7 @@ data:
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-decluttarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          - name: "Decluttarr 4K"
-            icon: "fas fa-broom"
-            subtitle: "Clean Aarr 4K queues"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-decluttarr4k.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute            
+            target: "_blank" # optional html tag target attribute          
           {{ end }}      
 
           {{ if .Values.recyclarr.enabled }}

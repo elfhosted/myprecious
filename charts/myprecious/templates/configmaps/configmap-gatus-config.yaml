@@ -897,15 +897,7 @@ data:
         conditions:
           - "[STATUS] == 200"
         alerts:
-          - type: email
-      - name: decluttarr4k
-        group: manage-media
-        url: "http://decluttarr4k:3001"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email          
+          - type: email    
       {{ end }}
 
       {{ if .Values.nzbget.enabled }}

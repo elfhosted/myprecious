@@ -96,7 +96,6 @@ rules:
 {{ end }}
 {{ if .Values.decluttarr.enabled }}
   - elfbot-decluttarr
-  - elfbot-decluttarr4k
 {{ end }}
 {{ if .Values.cinesync.enabled }}
   - elfbot-cinesync

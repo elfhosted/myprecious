@@ -9297,7 +9297,7 @@ decluttarr: &app_decluttarr
     app.elfhosted.com/name: decluttarr
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decluttarr"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decluttarr,env-decluttarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -9321,8 +9321,8 @@ decluttarr: &app_decluttarr
       name: elfbot-decluttarr
       optional: true
   - configMapRef:
-      name: zenv-decluttarr
-      optional: true      
+      name: env-decluttarr
+      optional: true
   ingress:
     main:
       enabled: false
@@ -9465,20 +9465,6 @@ suggestarr:
         subPath: suggestarr
       - mountPath: /tmp
         name: tmp      
-
-decluttarr4k: 
-  <<: *app_decluttarr
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decluttarr4k"  
-  envFrom:
-  - configMapRef:
-      name: elfbot-decluttarr4k
-      optional: true
-  - configMapRef:
-      name: zenv-decluttarr4k
-      optional: true      
-
 
 rcloneui:
   enabled: true

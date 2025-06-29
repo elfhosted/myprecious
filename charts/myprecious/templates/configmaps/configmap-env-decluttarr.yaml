@@ -1,0 +1,39 @@
+{{ if .Values.decluttarr.enabled }} 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-decluttarr
+data:
+
+  # Sensible defaults
+  REMOVE_FAILED: "true"
+  REMOVE_ORPHANS: "true" # Orphan downloads are those that do not belong to any requested media anymore (Since the media was removed from radarr/sonarr/lidarr/readarr/whisparr after the download started)
+
+  ## Radarr
+  RADARR: >
+    - base_url: "http://radarr:7878"
+      api_key: "{{ .Values.radarrexposed.apikey }}"
+    - base_url: "http://radarr4k:7878"
+      api_key: "{{ .Values.radarr4kexposed.apikey }}"      
+  ## Radarr
+  SONARR: >
+    - base_url: "http://sonarr:8989"
+      api_key: "{{ .Values.sonarrexposed.apikey }}"
+    - base_url: "http://sonarr4k:8989"
+      api_key: "{{ .Values.sonarr4kexposed.apikey }}"      
+
+  {{- if .Values.lidarr.enabled }}
+  ## Lidarr
+  LIDARR: >
+    - base_url: "http://lidarr:8686"
+      api_key: "{{ .Values.lidarrexposed.apikey }}"
+  {{- end }}
+
+  {{- if .Values.readarr.enabled }}
+  ## Lidarr
+  READARR: >
+    - base_url: "http://readarr:8787"
+      api_key: "{{ .Values.readarrexposed.apikey }}"
+  {{- end }}
+
+{{ end }}
