@@ -8746,7 +8746,7 @@ cinesync:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 5175
+          port: 5173
   envFrom:
   - configMapRef:
       name: cinesync-env
@@ -15744,7 +15744,7 @@ wger:
     config:
       enabled: true
       type: custom
-      subPath: immich
+      subPath: wger
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -15840,7 +15840,10 @@ wger:
       volumeMounts:
         - name: config
           subPath: wger/media
-          mountPath: /home/wger/media
+          mountPath: /home/wger/media    
+        - name: config
+          subPath: wger/static
+          mountPath: /home/wger/static
       envFrom:
       - configMapRef:
           name: wger-env
