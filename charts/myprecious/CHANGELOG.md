@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.420.0](https://github.com/elfhosted/myprecious/compare/v1.419.0...v1.420.0) (2025-06-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.1 ([d453133](https://github.com/elfhosted/myprecious/commit/d45313317403c2628585a8c8f8300c71366fd615))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2097 ([91b858e](https://github.com/elfhosted/myprecious/commit/91b858e1aa91e5f11962e9776fbde17d62c56ba8))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.30.0033-nightly ([d3ad74c](https://github.com/elfhosted/myprecious/commit/d3ad74cdfc08e93f3b698dc375ad8648affb83ea))
+
+
+### Bug Fixes
+
+* Remove SSO on Wizarr's /wizard endpoint ([6a9e882](https://github.com/elfhosted/myprecious/commit/6a9e882b21105ea0f5a1e363e6eca8b364f71baa))
+
 ## [1.419.0](https://github.com/elfhosted/myprecious/compare/v1.418.1...v1.419.0) (2025-06-29)
 
 
