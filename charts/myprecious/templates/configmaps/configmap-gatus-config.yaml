@@ -1462,6 +1462,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.wger.enabled }}
+      - name: wger
+        group: tools
+        url: "http://wger:8000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.pgadmin.enabled }}
       - name: pgadmin
         group: tools

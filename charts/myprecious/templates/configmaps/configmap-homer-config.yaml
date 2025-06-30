@@ -1686,6 +1686,16 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
+          {{ if .Values.wger.enabled }}
+          - name: "Wger"
+            logo: "assets/png/wger.png"
+            subtitle: "Track fitness and nutrition"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
           {{ if .Values.pgadmin.enabled }}
           - name: "PGAdmin"
             logo: "assets/png/pgadmin.png"
