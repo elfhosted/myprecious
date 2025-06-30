@@ -8725,7 +8725,7 @@ cinesync:
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: true
+    readOnlyRootFilesystem: false
   podLabels:
     app.elfhosted.com/name: cinesync
   controller:
@@ -8779,7 +8779,11 @@ cinesync:
       subPath: cinesync
       volumeSpec:
         persistentVolumeClaim:
-          claimName: logs              
+          claimName: logs
+    cache: # in case users use /tmp
+      enabled: true
+      mountPath: /cache
+      type: emptyDir       
   initContainers:
     bootstrap:
       <<: *bootstrap
