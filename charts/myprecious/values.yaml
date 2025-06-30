@@ -15593,8 +15593,8 @@ channelsdvr:
 wger:
   enabled: false
   image:
-    repository: wger/server
-    tag: latest@sha256:444f20aa36195a8a27ebd81c68d7c170b317c6544861acbc45131cb1dcde691d
+    repository: ghcr.io/elfhosted/wger
+    tag: 2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
   priorityClassName: tenant-normal
   controller:
     annotations:
