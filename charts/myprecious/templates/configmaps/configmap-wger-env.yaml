@@ -4,6 +4,34 @@ kind: ConfigMap
 metadata:
   name: wger-env
 data:
-  # Empty for now
+  CELERY_BROKER: redis://localhost:6379/2
+  CELERY_BACKEND: redis://localhost:6379/2
+  CELERY_FLOWER_PASSWORD: changemeelfie
+
+  DJANGO_CACHE_BACKEND: django_redis.cache.RedisCache
+  DJANGO_CACHE_LOCATION: redis://localhost:6379/1
+  DJANGO_CACHE_TIMEOUT: "1296000" # in seconds - 60*60*24*15, 15 Days
+  DJANGO_CACHE_CLIENT_CLASS: django_redis.client.DefaultClient
+
+  SITE_URL: https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}
+  # Database
+  DJANGO_DB_ENGINE: django.db.backends.postgresql
+  DJANGO_DB_DATABASE: wger
+  DJANGO_DB_USER: wger
+  DJANGO_DB_PASSWORD: wger
+  DJANGO_DB_HOST: localhost
+  DJANGO_DB_PORT: "5432"
+  DJANGO_PERFORM_MIGRATIONS: "true" # Perform any new database migrations on startup
+
+  TZ: UTC
+
+  # Users should override these
+  SECRET_KEY: wger-docker-supersecret-key-1234567890!@#$%^&*(-_)
+  SIGNING_KEY: wger-docker-secret-jwtkey-1234567890!@#$%^&*(-_=+)
+  ALLOW_REGISTRATION: "false"
+  ALLOW_GUEST_USERS: "false"
+
+  SYNC_EXERCISES_ON_STARTUP: "true"
+  DOWNLOAD_EXERCISE_IMAGES_ON_STARTUP: "true"
 
 {{ end }}
