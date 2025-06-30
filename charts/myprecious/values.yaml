@@ -7886,7 +7886,7 @@ audiobookbayautomated:
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookbay-automated"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookbay-automated,audiobookbay-automated-env"
   persistence:
     <<: *storagemounts
     config:
