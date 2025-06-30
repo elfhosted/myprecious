@@ -15837,6 +15837,12 @@ wger:
         - name: config
           subPath: wger/media
           mountPath: /home/wger/media
+      envFrom:
+      - configMapRef:
+          name: wger-env
+      - configMapRef:
+          name: elfbot-wger
+          optional: true          
     celery-beat:
       image: ghcr.io/elfhosted/wger:2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
       command:
@@ -15845,6 +15851,12 @@ wger:
         - name: config
           subPath: wger/beat
           mountPath: /home/wger/beat
+      envFrom:
+      - configMapRef:
+          name: wger-env
+      - configMapRef:
+          name: elfbot-wger
+          optional: true          
 
 immich:
   enabled: false
