@@ -15715,9 +15715,9 @@ wger:
   securityContext:
     runAsUser: 568
     runAsGroup: 568
-    privileged: true
   podSecurityContext:
     fsGroup: 568
+    runAsUser: 568
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
