@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.420.0](https://github.com/elfhosted/myprecious/compare/v1.419.0...v1.420.0) (2025-06-30)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v9.5 ([ad25963](https://github.com/elfhosted/myprecious/commit/ad2596337167f2340d0a5bfda9672715d49ffcb4))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.155 ([0903fde](https://github.com/elfhosted/myprecious/commit/0903fde635d4c4042b6712de7b232fb95878fc60))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.1 ([d453133](https://github.com/elfhosted/myprecious/commit/d45313317403c2628585a8c8f8300c71366fd615))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.2 ([cb0bfa1](https://github.com/elfhosted/myprecious/commit/cb0bfa1ba1ace6c47327c530817b786bc6d193d4))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2097 ([91b858e](https://github.com/elfhosted/myprecious/commit/91b858e1aa91e5f11962e9776fbde17d62c56ba8))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.30.0033-nightly ([d3ad74c](https://github.com/elfhosted/myprecious/commit/d3ad74cdfc08e93f3b698dc375ad8648affb83ea))
+* **app:** update privatebin/fs docker tag to v1.7.8 ([f75cdd0](https://github.com/elfhosted/myprecious/commit/f75cdd0cff192de69474dfd4325c8a610a076acd))
+
+
+### Bug Fixes
+
+* Configure AudioBookBay-Automate to use Decypharr ([947fe82](https://github.com/elfhosted/myprecious/commit/947fe82924ef9d5601bc2a3d70ba0d8837ae50a6))
+* Remove SSO on Wizarr's /wizard endpoint ([6a9e882](https://github.com/elfhosted/myprecious/commit/6a9e882b21105ea0f5a1e363e6eca8b364f71baa))
+
 ## [1.419.0](https://github.com/elfhosted/myprecious/compare/v1.418.1...v1.419.0) (2025-06-29)
 
 
