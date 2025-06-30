@@ -10,8 +10,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 3001
-    targetPort: 3001
+  - port: 5175
+    targetPort: 5175
     protocol: TCP
     name: cinesync
   selector:
