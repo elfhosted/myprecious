@@ -8825,7 +8825,10 @@ cinesync:
       - MediaHub/main.py 
       - --id-refresh
       resources: *default_resources
-      securityContext: *default_securitycontext        
+      securityContext: *default_securitycontext  
+      volumeMounts:
+      - mountPath: /app/logs
+        name: tmp      
   ingress:
     main:
       enabled: false
