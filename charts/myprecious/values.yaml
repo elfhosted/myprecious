@@ -8825,14 +8825,21 @@ cinesync:
       - MediaHub/main.py 
       - --id-refresh
       resources: *default_resources
-      securityContext: *default_securitycontext  
       volumeMounts:
       - mountPath: /app/logs
         name: logs
         subPath: cinesync   
       - mountPath: /app/db
         subPath: cinesync
-        name: config              
+        name: config    
+      envFrom:
+      - configMapRef:
+          name: cinesync-env
+      - secretRef:
+          name: cinesync-env      
+      - configMapRef:
+          name: elfbot-cinesync
+          optional: true                  
   ingress:
     main:
       enabled: false
