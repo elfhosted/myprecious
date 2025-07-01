@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.421.0](https://github.com/elfhosted/myprecious/compare/v1.420.0...v1.421.0) (2025-07-01)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.7.0 ([819110c](https://github.com/elfhosted/myprecious/commit/819110cac7a4f4b9a68c3c74964d2205b9ee9030))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.156 ([9de838f](https://github.com/elfhosted/myprecious/commit/9de838fe472b51d5cd972c9eff88b7036479f488))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2101 ([7982b17](https://github.com/elfhosted/myprecious/commit/7982b17451636f901ddc935686db3c4fa42e8845))
+* **app:** update ghcr.io/elfhosted/letterboxd-trakt-sync docker tag to v1.1.0 ([cf8e554](https://github.com/elfhosted/myprecious/commit/cf8e554f50f967ac5d32cbab981b063c220aee7d))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.57.0 ([c702d29](https://github.com/elfhosted/myprecious/commit/c702d29bdaa7eb2aa3716fdaaac0a9b0475cc3be))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.33.0 ([22cf11e](https://github.com/elfhosted/myprecious/commit/22cf11e01a865fa7cfc0b40c5e538f86cee09f86))
+
 ## [1.420.0](https://github.com/elfhosted/myprecious/compare/v1.419.0...v1.420.0) (2025-06-30)
 
 
