@@ -8828,7 +8828,11 @@ cinesync:
       securityContext: *default_securitycontext  
       volumeMounts:
       - mountPath: /app/logs
-        name: tmp      
+        name: logs
+        subPath: cinesync   
+      - mountPath: /app/db
+        subPath: cinesync
+        name: config              
   ingress:
     main:
       enabled: false
