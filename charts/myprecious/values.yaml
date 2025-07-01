@@ -16108,7 +16108,7 @@ embynazgul:
           claimName: transcode-50g  
 
 # We use these to set aside resources for dedicated bundles
-starter: &app_resource_reserver
+streamer: &app_resource_reserver
   enabled: false
   image:
     repository: ghcr.io/elfhosted/tooling
@@ -16165,8 +16165,8 @@ starter: &app_resource_reserver
       enabled: false      
   resources:
     requests: 
-      cpu: 250m
-      memory: 1Gi
+      cpu: 100m
+      memory: 500Mi
   initContainers:
     update-dns:  &update_dns_on_init
       image: *tooling_image
@@ -16204,9 +16204,13 @@ starter: &app_resource_reserver
       - -c
       - /tooling-scripts/clean-up-dns-on-termination.sh      
 
-streamer:
+starter:
   enabled: false
   <<: *app_resource_reserver
+  resources:
+    requests: 
+      cpu: 250m
+      memory: 1Gi  
 
 hobbit:
   enabled: false
