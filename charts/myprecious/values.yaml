@@ -8820,6 +8820,7 @@ cinesync:
       securityContext: *default_securitycontext     
     id-refresh:
       image: ghcr.io/elfhosted/cinesync-dev@rolling@sha256:529bb61fe9afc4094bea2bd0439140e5d027fc30c296eaf1934cbd524ba75574
+      command:
       - python3 
       - MediaHub/main.py 
       - --id-refresh
