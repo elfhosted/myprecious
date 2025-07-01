@@ -5898,7 +5898,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.18.1@sha256:67487d56837e84b2ef5fea3ab91ec06f923341e2edd07f3a18e815cb8bc4524b
+    tag: 5.19.0@sha256:4d65ff595eb849f790d698cdfd53be508e39052da5e9152dd80a1e8d74013c91
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
