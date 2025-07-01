@@ -8721,7 +8721,7 @@ cinesync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/cinesync-dev
-    tag: rolling@sha256:8dbc727c2e7061878bf63f3dc7170d0993166008fecc5929c6be7ade3004bbf4
+    tag: rolling@sha256:529bb61fe9afc4094bea2bd0439140e5d027fc30c296eaf1934cbd524ba75574
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8816,6 +8816,13 @@ cinesync:
       volumeMounts:
       - mountPath: /storage/symlinks
         name: symlinks
+      resources: *default_resources
+      securityContext: *default_securitycontext     
+    id-refresh:
+      image: ghcr.io/elfhosted/cinesync-dev@rolling@sha256:529bb61fe9afc4094bea2bd0439140e5d027fc30c296eaf1934cbd524ba75574
+      - python3 
+      - MediaHub/main.py 
+      - --id-refresh
       resources: *default_resources
       securityContext: *default_securitycontext        
   ingress:
