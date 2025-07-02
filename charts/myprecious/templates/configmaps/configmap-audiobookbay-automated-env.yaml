@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: audiobookbay-automated-env
 data:
-  ABB_HOSTNAME: audiobookbay.is
+  ABB_HOSTNAME: audiobookbay.lu
   DOWNLOAD_CLIENT: qbittorrent
   DL_HOST: decypharr
   DL_PORT: "8282"

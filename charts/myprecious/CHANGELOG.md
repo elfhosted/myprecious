@@ -1,5 +1,61 @@
 # Changelog
 
+## [1.422.0](https://github.com/elfhosted/myprecious/compare/v1.421.0...v1.422.0) (2025-07-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.19.0 ([5ba3832](https://github.com/elfhosted/myprecious/commit/5ba38325dd306a8609883dfe76dc42e06d1bc9b2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2107 ([b6529bd](https://github.com/elfhosted/myprecious/commit/b6529bd8d4ccb898d81aa33093af5429e778a519))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.35 ([456c2d1](https://github.com/elfhosted/myprecious/commit/456c2d169192b4bf76da8bf623271bb88f3fc129))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.34.0 ([f070051](https://github.com/elfhosted/myprecious/commit/f0700513e0997f75cf95430700afa532e4304b7b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.07.02.0032-nightly ([d981ad9](https://github.com/elfhosted/myprecious/commit/d981ad9f5387be1f88fdf4fb1f7eebdbb31e536a))
+
+## [1.421.0](https://github.com/elfhosted/myprecious/compare/v1.420.0...v1.421.0) (2025-07-01)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.7.0 ([819110c](https://github.com/elfhosted/myprecious/commit/819110cac7a4f4b9a68c3c74964d2205b9ee9030))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.156 ([9de838f](https://github.com/elfhosted/myprecious/commit/9de838fe472b51d5cd972c9eff88b7036479f488))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2101 ([7982b17](https://github.com/elfhosted/myprecious/commit/7982b17451636f901ddc935686db3c4fa42e8845))
+* **app:** update ghcr.io/elfhosted/letterboxd-trakt-sync docker tag to v1.1.0 ([cf8e554](https://github.com/elfhosted/myprecious/commit/cf8e554f50f967ac5d32cbab981b063c220aee7d))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.57.0 ([c702d29](https://github.com/elfhosted/myprecious/commit/c702d29bdaa7eb2aa3716fdaaac0a9b0475cc3be))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.33.0 ([22cf11e](https://github.com/elfhosted/myprecious/commit/22cf11e01a865fa7cfc0b40c5e538f86cee09f86))
+
+## [1.420.0](https://github.com/elfhosted/myprecious/compare/v1.419.0...v1.420.0) (2025-06-30)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v9.5 ([ad25963](https://github.com/elfhosted/myprecious/commit/ad2596337167f2340d0a5bfda9672715d49ffcb4))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.155 ([0903fde](https://github.com/elfhosted/myprecious/commit/0903fde635d4c4042b6712de7b232fb95878fc60))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.1 ([d453133](https://github.com/elfhosted/myprecious/commit/d45313317403c2628585a8c8f8300c71366fd615))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.2 ([cb0bfa1](https://github.com/elfhosted/myprecious/commit/cb0bfa1ba1ace6c47327c530817b786bc6d193d4))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2097 ([91b858e](https://github.com/elfhosted/myprecious/commit/91b858e1aa91e5f11962e9776fbde17d62c56ba8))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.06.30.0033-nightly ([d3ad74c](https://github.com/elfhosted/myprecious/commit/d3ad74cdfc08e93f3b698dc375ad8648affb83ea))
+* **app:** update privatebin/fs docker tag to v1.7.8 ([f75cdd0](https://github.com/elfhosted/myprecious/commit/f75cdd0cff192de69474dfd4325c8a610a076acd))
+
+
+### Bug Fixes
+
+* Configure AudioBookBay-Automate to use Decypharr ([947fe82](https://github.com/elfhosted/myprecious/commit/947fe82924ef9d5601bc2a3d70ba0d8837ae50a6))
+* Remove SSO on Wizarr's /wizard endpoint ([6a9e882](https://github.com/elfhosted/myprecious/commit/6a9e882b21105ea0f5a1e363e6eca8b364f71baa))
+
+## [1.419.0](https://github.com/elfhosted/myprecious/compare/v1.418.1...v1.419.0) (2025-06-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.0 ([9961861](https://github.com/elfhosted/myprecious/commit/99618613cc0ebad9d5179d7ebed9a3ae4845332c))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2084 ([6e2ca35](https://github.com/elfhosted/myprecious/commit/6e2ca35e17384f05f8e2c359aa8d39eb8179649e))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/decluttarr:rolling docker digest to 122813a ([6b0ad6e](https://github.com/elfhosted/myprecious/commit/6b0ad6e96638e17fe1cf3cbae1be1c0c435ead12))
+* Restore "classic" ElfZilean Prowlarr indexer ([6745ddc](https://github.com/elfhosted/myprecious/commit/6745ddce56210185aa161b9e57eab489bd130117))
+
 ## [1.418.1](https://github.com/elfhosted/myprecious/compare/v1.418.0...v1.418.1) (2025-06-28)
 
 

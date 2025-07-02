@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -2672,7 +2672,7 @@ privatebin:
   enabled: false
   image:
     repository: privatebin/fs
-    tag: 1.7.7
+    tag: 1.7.8
   priorityClassName:
   controller:
     annotations:
@@ -4447,7 +4447,7 @@ navidrome:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/navidrome
-    tag: 0.56.1@sha256:02a73ab42d64b5b5b29f5f0b05ce6d15149f4e6c162661d3b33958e821046019
+    tag: 0.57.0@sha256:a821a6f6b793f60b90559538ab058e634b3f7bfebe14d270f2e11745f8ee0839
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -5054,7 +5054,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
+      image: ghcr.io/elfhosted/zurg-rc:2025.07.02.0032-nightly@sha256:0099eaf99ba2650e7992aedd9f4704821bcc72db887e042ffaa823a135d9d448
       command:
       - /bin/bash
       - -c
@@ -5413,7 +5413,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
+      image: ghcr.io/elfhosted/zurg-rc:2025.07.02.0032-nightly@sha256:0099eaf99ba2650e7992aedd9f4704821bcc72db887e042ffaa823a135d9d448
       command:
       - /bin/bash
       - -c
@@ -5617,7 +5617,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
+      image: ghcr.io/elfhosted/zurg-rc:2025.07.02.0032-nightly@sha256:0099eaf99ba2650e7992aedd9f4704821bcc72db887e042ffaa823a135d9d448
       command:
       - /bin/bash
       - -c
@@ -5898,7 +5898,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.18.1@sha256:67487d56837e84b2ef5fea3ab91ec06f923341e2edd07f3a18e815cb8bc4524b
+    tag: 5.19.0@sha256:4d65ff595eb849f790d698cdfd53be508e39052da5e9152dd80a1e8d74013c91
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6377,7 +6377,7 @@ threadfin:
   image:
     registry: ghcr.io
     repository: elfhosted/threadfin
-    tag: 1.2.34@sha256:945c7ccdbc0a56473d4f8d31c41e81c96a693b09cd15fd9cb984704fdafe8b49
+    tag: 1.2.35@sha256:0e056fd818094e1cc07cc9d64065e85fb6a40a06a6f7eba60cab8cc3f1785b34
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -7247,7 +7247,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.30.0@sha256:2d1a47e76e60af0734a778c43bad3186df53e695d3a2fe2d34b183bcccebe005
+    tag: v0.30.3@sha256:1378dd3b9b90c630b3e2f41ba158b0bff45853f936e40da55a28a69c71edb628
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7348,7 +7348,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.30.0@sha256:2d1a47e76e60af0734a778c43bad3186df53e695d3a2fe2d34b183bcccebe005
+      image: ghcr.io/elfhosted/booklore:v0.30.3@sha256:1378dd3b9b90c630b3e2f41ba158b0bff45853f936e40da55a28a69c71edb628
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -9347,7 +9347,7 @@ letterboxdtraktsync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/letterboxd-trakt-sync
-    tag: v1.0.1@sha256:368112e9ef5eda2934b67f676368da4e478265af1b37770343670a3d0c341e4c
+    tag: v1.1.0@sha256:c0c8ebee2f51163f5cee41ec8d309ff45f2801a7e19fcf6399f628da7a60d755
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9423,7 +9423,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:98b9098333e02d89874c53a303e2c353982fab2df9315464950fc81401dd2f96
+    tag: rolling@sha256:122813a18f3ad13aa043084451f806fe7524b664a55172c2efa7732bd7513e90
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11044,7 +11044,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.154@sha256:a42a32014499d44e9a4050e95cf7bfd80ab5fc6063ed69a07434bdd8dffd33e5
+    tag: 0.4.156@sha256:63c12bd764e1b339a703b28697ab44275131d0d817e425201bfd997d7f459caa
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11578,7 +11578,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2084@sha256:619b6bb88ee8c70ddcf32371ebd1d0f3f2fed36fa446ad37bd1f42a18763df22
+    tag: 0.22.2107@sha256:39a6335f0035411e357f809380cf8ec9987daf25375a242ca91c501314c5e9e0
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -11982,7 +11982,7 @@ actual:
   enabled: false
   image:
     repository: ghcr.io/actualbudget/actual-server
-    tag: 25.6.1-alpine
+    tag: 25.7.0-alpine
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: actual
@@ -12194,7 +12194,7 @@ pgadmin:
   enabled: false
   image:
     repository: dpage/pgadmin4
-    tag: "9.4"
+    tag: "9.5"
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13540,7 +13540,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.32.5@sha256:32e50049c7a2056f6b488a6e9627fae31f91abaffed4bba8a28217aa0367be9f
+    tag: v0.34.0@sha256:473968ee1229201e9915683b0576d467b71d9728ec16a870f72dde712004282c
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13819,7 +13819,7 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.06.26.0032-nightly@sha256:31877ca1e4195918cfbedcfb62c5e6e06d499b532e6a2414b3b316d3d072e8d5
+    tag: 2025.07.02.0032-nightly@sha256:0099eaf99ba2650e7992aedd9f4704821bcc72db887e042ffaa823a135d9d448
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
@@ -14158,7 +14158,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.75@sha256:0530e66e4aaf7669b9e53d66abceb1bab1fb6b6e7e28edfa1fcb17a6c7bf3115 
+    tag: v0.6.76@sha256:e00a6c4ff4bb45c5884535c361f50de2f16feb0ec656333a8623b4fdee444cd0 
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14636,7 +14636,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.3.19@sha256:f797dded59648ecae1e1e333e7c09a5c6a700953f034e654695b3bb219d27168
+    tag: v0.4.2@sha256:75c7ea5aa6792d6aef0ad0faa48e1b5285ff7c4f553c21484796455d0b83a148
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14721,7 +14721,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.3.19@sha256:f797dded59648ecae1e1e333e7c09a5c6a700953f034e654695b3bb219d27168
+      image: ghcr.io/elfhosted/pulsarr:v0.4.2@sha256:75c7ea5aa6792d6aef0ad0faa48e1b5285ff7c4f553c21484796455d0b83a148
       command:
       - /bin/ash
       - -c
@@ -15728,8 +15728,8 @@ channelsdvr:
 wger:
   enabled: false
   image:
-    repository: ghcr.io/elfhosted/wger
-    tag: 2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
+    repository: wger/server
+    tag: latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15858,7 +15858,7 @@ wger:
           cpu: 500m
           memory: 4Gi
     celery-worker:
-      image: ghcr.io/elfhosted/wger:2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
+      image: wger/server:latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
       command:
       - /start-worker
       volumeMounts:
@@ -15875,7 +15875,7 @@ wger:
           name: elfbot-wger
           optional: true          
     celery-beat:
-      image: ghcr.io/elfhosted/wger:2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
+      image: wger/server:latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
       command:
       - /start-beat      
       volumeMounts:
@@ -16258,7 +16258,7 @@ embynazgul:
           claimName: transcode-50g  
 
 # We use these to set aside resources for dedicated bundles
-starter: &app_resource_reserver
+streamer: &app_resource_reserver
   enabled: false
   image:
     repository: ghcr.io/elfhosted/tooling
@@ -16354,9 +16354,13 @@ starter: &app_resource_reserver
       - -c
       - /tooling-scripts/clean-up-dns-on-termination.sh      
 
-streamer:
+starter:
   enabled: false
   <<: *app_resource_reserver
+  resources:
+    requests: 
+      cpu: 250m
+      memory: 1Gi  
 
 hobbit:
   enabled: false
