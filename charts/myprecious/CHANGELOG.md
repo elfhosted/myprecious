@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.422.0](https://github.com/elfhosted/myprecious/compare/v1.421.0...v1.422.0) (2025-07-02)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.19.0 ([5ba3832](https://github.com/elfhosted/myprecious/commit/5ba38325dd306a8609883dfe76dc42e06d1bc9b2))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2107 ([b6529bd](https://github.com/elfhosted/myprecious/commit/b6529bd8d4ccb898d81aa33093af5429e778a519))
+* **app:** update ghcr.io/elfhosted/threadfin docker tag to v1.2.35 ([456c2d1](https://github.com/elfhosted/myprecious/commit/456c2d169192b4bf76da8bf623271bb88f3fc129))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.34.0 ([f070051](https://github.com/elfhosted/myprecious/commit/f0700513e0997f75cf95430700afa532e4304b7b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.07.02.0032-nightly ([d981ad9](https://github.com/elfhosted/myprecious/commit/d981ad9f5387be1f88fdf4fb1f7eebdbb31e536a))
+
 ## [1.421.0](https://github.com/elfhosted/myprecious/compare/v1.420.0...v1.421.0) (2025-07-01)
 
 
