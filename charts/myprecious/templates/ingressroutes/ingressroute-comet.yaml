@@ -27,16 +27,5 @@ spec:
         - name: {{ .Release.Name }}-traefik-forward-auth
       {{ end }}
         - name: chain-hosted-stremio-addon
-          namespace: traefik                    
-    - match: Host(`{{ .Release.Name }}-comet.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
-      kind: Rule
-      services:
-        - name: comet
-          kind: Service
-          port: 3002 # openspeedtest
-      middlewares:
-        - name: stripprefix-speed
-          namespace: traefik            
-        - name: buffer-2gb
           namespace: traefik
 {{ end }}
