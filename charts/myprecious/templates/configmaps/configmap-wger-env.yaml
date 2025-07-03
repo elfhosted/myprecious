@@ -4,6 +4,117 @@ kind: ConfigMap
 metadata:
   name: wger-env
 data:
-  # Empty for now
+  CELERY_BROKER: redis://localhost:6379/2
+  CELERY_BACKEND: redis://localhost:6379/2
+  CELERY_FLOWER_PASSWORD: changemeelfie
+
+  DJANGO_CACHE_BACKEND: django_redis.cache.RedisCache
+  DJANGO_CACHE_LOCATION: redis://localhost:6379/1
+  DJANGO_CACHE_TIMEOUT: "1296000" # in seconds - 60*60*24*15, 15 Days
+  DJANGO_CACHE_CLIENT_CLASS: django_redis.client.DefaultClient
+
+  {{ if .Values.wgercustomdomain.enabled }}
+  SITE_URL: https://{{ .Values.wgercustomdomain.cname | lower }}
+  {{ else }}
+  SITE_URL: "https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}"
+  {{ end }}  
+  # Database
+  DJANGO_DB_ENGINE: django.db.backends.postgresql
+  DJANGO_DB_DATABASE: wger
+  DJANGO_DB_USER: wger
+  DJANGO_DB_PASSWORD: wger
+  DJANGO_DB_HOST: localhost
+  DJANGO_DB_PORT: "5432"
+  DJANGO_PERFORM_MIGRATIONS: "True" # Perform any new database migrations on startup
+
+  TZ: UTC
+
+  # Users should override these
+  SECRET_KEY: wger-docker-supersecret-key-1234567890!@#$%^&*(-_)
+  SIGNING_KEY: wger-docker-secret-jwtkey-1234567890!@#$%^&*(-_=+)
+  ALLOW_REGISTRATION: "False"
+  ALLOW_GUEST_USERS: "False"
+
+  SYNC_EXERCISES_ON_STARTUP: "True"
+  DOWNLOAD_EXERCISE_IMAGES_ON_STARTUP: "True"
+
+  SYNC_EXERCISES_CELERY: "True"
+  SYNC_EXERCISE_IMAGES_CELERY: "True"
+  SYNC_EXERCISE_VIDEOS_CELERY: "True"
+  SYNC_INGREDIENTS_CELERY: "True"
+
+  DOWNLOAD_INGREDIENTS_FROM: WGER
+
+  USE_CELERY: "True"
+
+  # Brute force login attacks
+  # https://django-axes.readthedocs.io/en/latest/index.html
+  AXES_ENABLED: "True"
+  AXES_FAILURE_LIMIT: "10"
+  AXES_COOLOFF_TIME: "30" # in minutes
+  AXES_HANDLER: axes.handlers.cache.AxesCacheHandler
+  AXES_LOCKOUT_PARAMETERS: ip_address
+  AXES_IPWARE_PROXY_COUNT: "1"
+  AXES_IPWARE_META_PRECEDENCE_ORDER: HTTP_X_FORWARDED_FOR,REMOTE_ADDR
+  #
+  # Others
+  DJANGO_DEBUG: "False"
+  WGER_USE_GUNICORN: "True"
+  EXERCISE_CACHE_TTL: "18000" # in seconds - 5*60*60, 5 hours
+
+  #
+  # JWT auth
+  ACCESS_TOKEN_LIFETIME: "10" # The lifetime duration of the access token, in minutes
+  REFRESH_TOKEN_LIFETIME: "24" # The lifetime duration of the refresh token, in hours
+
+  # #
+  # # Auth Proxy Authentication
+  # #
+  # # Please read the documentation before enabling this feature:
+  # # https://wger.readthedocs.io/en/latest/administration/auth_proxy.html
+  # AUTH_PROXY_HEADER=''
+  # AUTH_PROXY_TRUSTED_IPS=''
+  # AUTH_PROXY_CREATE_UNKNOWN_USER=False
+  # AUTH_PROXY_USER_EMAIL_HEADER=''
+  # AUTH_PROXY_USER_NAME_HEADER=''
+
+  DJANGO_CLEAR_STATIC_FIRST: "True"
+
+  #
+  # Email
+  # https://docs.djangoproject.com/en/4.1/topics/email/#smtp-backend
+  # ENABLE_EMAIL=False
+  # EMAIL_HOST=email.example.com
+  # EMAIL_PORT=587
+  # EMAIL_HOST_USER=username
+  # EMAIL_HOST_PASSWORD=password
+  # EMAIL_USE_TLS=True
+  # EMAIL_USE_SSL=False
+  FROM_EMAIL: 'wger Workout Manager <wger@example.com>'
+
+  # Set your name and email to be notified if an internal server error occurs.
+  # Needs a working email configuration
+  # DJANGO_ADMINS=your name,email@example.com
+
+  # Whether to compress css and js files into one (of each)
+  # COMPRESS_ENABLED=True
+
+  #
+  # Django Rest Framework
+  # The number of proxies in front of the application. In the default configuration
+  # only nginx is. Change as approtriate if your setup differs. Also note that this
+  # is only used when throttling API requests.
+  NUMBER_OF_PROXIES: "1"
+
+  #
+  # Gunicorn
+  #
+  # Additional gunicorn options, change as needed.
+  # For the number of workers to spawn, a usually recommended value is (2 x $num_cores) + 1
+  # see:
+  #   - https://docs.gunicorn.org/en/stable/settings.html
+  #   - https://github.com/wger-project/wger/blob/master/extras/docker/production/entrypoint.sh#L95
+  GUNICORN_CMD_ARGS: "--workers 3 --threads 2 --worker-class gthread --proxy-protocol True --timeout 240"
+
 
 {{ end }}

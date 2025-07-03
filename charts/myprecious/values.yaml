@@ -562,7 +562,9 @@ blueskypdscustomdomain:
 peertubecustomdomain:
   enabled: false     
 actualcustomdomain:
-  enabled: false        
+  enabled: false   
+wgercustomdomain:
+  enabled: false
 
 rutorrentgluetun: &rutorrent
   enabled: false
@@ -3852,93 +3854,6 @@ sonarr4k: &app_sonarr4k
           port: 8989
         timeoutSeconds: 1
 
-resiliosync:
-  service:
-    main:
-      enabled: false
-  command:
-  - rslsync
-  - --config
-  - /sync.conf
-  - --nodaemon
-  enabled: false
-  priorityClassName: tenant-bulk
-  image:
-    repository: ghcr.io/elfhosted/resilio-sync
-    tag: 3.0.3.1065-1@sha256:544fe39e56b2beef67a0266f155a144ddcce20d5742a71b6113c7f1e4d9b6c28
-  env:
-    PUID: 568
-    GUID: 568
-    S6_READ_ONLY_ROOT: 1
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: false # another s6 containeir!
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-resiliosync"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config/
-      subPath: resiliosync
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    setup-config:
-      enabled: "true"
-      mountPath: "/sync.conf"
-      subPath: "sync.conf"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: resiliosync-config
-    run: # used for s6-init with non-root
-      enabled: true
-      type: emptyDir
-      mountPath: /run
-      sizeLimit: 1Gi
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-resiliosync
-          optional: true
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: resiliosync
-      - mountPath: /tmp
-        name: tmp
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 0m
-      memory: 100Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-
 prowlarr: &app_prowlarr
   enabled: false
   podLabels:
@@ -6079,129 +5994,6 @@ flaresolverr: &app_flaresolverr
         http:
           port: 8191
 
-seafile:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/seafile
-    tag: 10.0.1@sha256:810be7e7c5a6ae2c73cf21d2ec48226cbb1afbc86ead3a59738c3eef593cb9f6
-  priorityClassName: tenant-bulk
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: false # doesn't seem to work with seafile, no output from container either
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    # runAsUser: 568 # has to run as root, see https://github.com/haiwen/seafile-docker/issues/86
-    # runAsGroup: 568
-  automountServiceAccountToken: false
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seafile"
-  resources:
-    requests:
-      cpu: 0m
-      memory: 128Mi
-    limits:
-      cpu: 1024m
-      memory: 512Mi
-  env:
-    # -- Set the container timezone
-    TIME_ZONE: Etc/UTC
-    # -- The hostname of your database
-    DB_HOST: "{{ .Release.Name }}-seafile-mysql"
-    # -- The root password for mysql (used for initial setup)
-    DB_ROOT_PASSWD: wLu5UUuT@3Zu33eT
-    # -- The initial admin user's password
-    SEAFILE_ADMIN_PASSWORD: changeme
-    # -- The hostname for the server (set to your ingress hostname)
-    SEAFILE_SERVER_HOSTNAME: "{{ .Release.Name }}-seafile.elfhosted.com"
-    SEAFILE_SERVER_LETSENCRYPT: false
-    FORCE_HTTPS_IN_CONF: true
-    NON_ROOT: true # yes, and with our custom image, this runs the seafile/seahub components as user 568
-  envFrom:
-  - configMapRef:
-      name: seafile-config
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # debug whether this gets us probes
-  memcached:
-    nameOverride: seafile-memcached
-    enabled: true
-  mysql:
-    nameOverride: seafile-mysql
-    enabled: true
-    architecture: standalone
-    commonAnnotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seafile"
-
-    auth:
-      rootPassword: "wLu5UUuT@3Zu33eT"
-      database: "seafile"
-      username: "seafile"
-      password: "nXCXSmqU4TMk3okD"
-
-    primary:
-      readinessProbe:
-        enabled: false # probes can make helm fail/restart under some conditions. Either do or do not, there is no try
-      livenessProbe:
-        enabled: false # probes can make helm fail/restart under some conditions. Either do or do not, there is no try
-      startupProbe:
-        enabled: false # probes can make helm fail/restart under some conditions. Either do or do not, there is no try
-      persistence:
-        enabled: true
-        existingClaim: config
-        subPath: seafile/database
-      resources:
-        requests:
-          cpu: 5m
-          memory: 1Gi
-        limits:
-          cpu: 2
-          memory: 1024Mi
-      containerSecurityContext:
-        enabled: true
-        seccompProfile:
-          type: RuntimeDefault
-        runAsUser: 568
-        runAsGroup: 568
-      podSecurityContext:
-        enabled: true
-        runAsUser: 568
-        runAsGroup: 568
-        fsGroup: 568
-      extraVolumeMounts:
-      - mountPath: /opt/bitnami/mysql/tmp/
-        name: tmp
-      extraVolumes:
-      - name: tmp
-        emptyDir:
-          sizeLimit: 1Gi
-      - name: backup-database-script
-        configMap:
-          name: seafile-backup
-
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /shared/seafile
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-      subPath: seafile/data
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-seafile
-          optional: true
-
 tunarr:
   enabled: false
   image:
@@ -7885,7 +7677,7 @@ audiobookbayautomated:
   automountServiceAccountToken: false
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookbay-automated"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-audiobookbay-automated,audiobookbay-automated-env"
   persistence:
     <<: *storagemounts
     config:
@@ -8715,7 +8507,142 @@ cinesync:
       cpu: 1
       memory: 2Gi 
 
+# cinesync:
+#   enabled: false
+#   priorityClassName: tenant-normal
+#   image:
+#     repository: ghcr.io/elfhosted/cinesync-dev
+#     tag: rolling@sha256:529bb61fe9afc4094bea2bd0439140e5d027fc30c296eaf1934cbd524ba75574
+#   securityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     readOnlyRootFilesystem: false
+#   podLabels:
+#     app.elfhosted.com/name: cinesync
+#   controller:
+#     annotations:
+#       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync,cinesync-env"
+#   affinity: *standard_affinity
+#   tolerations: *standard_tolerations
+#   podSecurityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     runAsUser: 568
+#     runAsGroup: 568
+#     fsGroup: 568
+#     fsGroupChangePolicy: "OnRootMismatch"
+#   automountServiceAccountToken: false
+#   service:
+#     main:
+#       enabled: true # necessary for probes
+#       ports:
+#         http:
+#           port: 5173
+#   envFrom:
+#   - configMapRef:
+#       name: cinesync-env
+#   - secretRef:
+#       name: cinesync-env      
+#   - configMapRef:
+#       name: elfbot-cinesync
+#       optional: true
+#   persistence:
+#     <<: *storagemounts
+#     config:
+#       enabled: true
+#       type: custom
+#       mountPath: /app/db
+#       subPath: cinesync
+#       volumeSpec:
+#         persistentVolumeClaim:
+#           claimName: config
+#     elfbot:
+#       enabled: "true"
+#       type: "custom"
+#       volumeSpec:
+#         configMap:
+#           name: elfbot-cinesync
+#           optional: true  
+#     logs:
+#       enabled: true
+#       type: custom
+#       mountPath: /app/logs
+#       subPath: cinesync
+#       volumeSpec:
+#         persistentVolumeClaim:
+#           claimName: logs
+#     cache: # in case users use /tmp
+#       enabled: true
+#       mountPath: /cache
+#       type: emptyDir       
+#   initContainers:
+#     bootstrap:
+#       <<: *bootstrap
+#       volumeMounts:
+#       - mountPath: /etc/elfbot
+#         name: elfbot
+#       - mountPath: /storage/backup
+#         name: backup
+#       - mountPath: /config
+#         name: config
+#         subPath: cinesync
+#       - mountPath: /tmp
+#         name: tmp
+#     setup:
+#       image: *tooling_image
+#       imagePullPolicy: IfNotPresent
+#       command:
+#       - /bin/bash
+#       - -c
+#       - |
+#         set -x
 
+#         # Create directory structure if it doesn't exist yet
+#         mkdir -p /storage/symlinks/movies
+#         mkdir -p /storage/symlinks/movies-4k
+#         mkdir -p /storage/symlinks/movies-anime
+#         mkdir -p /storage/symlinks/series
+#         mkdir -p /storage/symlinks/series-4k
+#         mkdir -p /storage/symlinks/series-anime
+#       volumeMounts:
+#       - mountPath: /storage/symlinks
+#         name: symlinks
+#       resources: *default_resources
+#       securityContext: *default_securitycontext     
+#     id-refresh:
+#       image: ghcr.io/elfhosted/cinesync-dev:rolling@sha256:529bb61fe9afc4094bea2bd0439140e5d027fc30c296eaf1934cbd524ba75574
+#       command:
+#       - python3 
+#       - MediaHub/main.py 
+#       - --id-refresh
+#       resources: *default_resources
+#       volumeMounts:
+#       - mountPath: /app/logs
+#         name: logs
+#         subPath: cinesync   
+#       - mountPath: /app/db
+#         subPath: cinesync
+#         name: config    
+#       - mountPath: /storage/symlinks
+#         name: symlinks
+#       envFrom:
+#       - configMapRef:
+#           name: cinesync-env
+#       - secretRef:
+#           name: cinesync-env      
+#       - configMapRef:
+#           name: elfbot-cinesync
+#           optional: true                  
+#   ingress:
+#     main:
+#       enabled: false
+#   resources:
+#     requests:
+#       cpu: 0m
+#       memory: 64Mi
+#     limits:
+#       cpu: 1
+#       memory: 2Gi 
 
 arrtools:
   enabled: false
@@ -10142,117 +10069,6 @@ mattermost:
   ## You can add any config here, but need to respect the format: MM_<GROUPSECTION>_<SETTING>. ie: MM_SERVICESETTINGS_ENABLECOMMANDS: false
   config:
     MM_PLUGINSETTINGS_CLIENTDIRECTORY: "./client/plugins"
-
-syncthing:
-  enabled: false
-  hostname: elfhosted
-  priorityClassName: tenant-bulk
-  image:
-    repository: ghcr.io/elfhosted/syncthing
-    tag: 1.29.6@sha256:d7d222a79ebec9b60eb7ae01a0ac3099db5ae41bac00b79abe13ac803c44f15e
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-syncthing"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: syncthing
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-syncthing
-          optional: true
-
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8384
-  resources:
-    requests:
-      cpu: 0m
-      memory: 70Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: syncthing
-      - mountPath: /tmp
-        name: tmp
-    setup:
-      image: ghcr.io/elfhosted/syncthing:1.29.6@sha256:d7d222a79ebec9b60eb7ae01a0ac3099db5ae41bac00b79abe13ac803c44f15e
-      imagePullPolicy: IfNotPresent
-      envFrom:
-      - configMapRef:
-          name: elfhosted-user-config
-      command:
-      - /bin/ash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # Generate a new config if necessary
-        if [ ! -f /config/config.xml ]
-        then
-          # We are generating a new config
-          syncthing generate --config=/config
-        fi
-
-        # Apply the port every time (incase the user changes it and reboots)
-        # sed -i  "s/<listenAddress>tcp.*/<listenAddress>tcp:\/\/0.0.0.0:${PORT_SYNCTHING}<\/listenAddress>/" /config/config.xml
-        # sed -i  "s/<listenAddress>quic.*/<listenAddress>quic:\/\/0.0.0.0:${PORT_SYNCTHING}<\/listenAddress>/" /config/config.xml
-
-        # # And if it's defaulted...
-        # sed -i  "s/<<listenAddress>default<\/listenAddress>/<listenAddress>tcp:\/\/0.0.0.0:${PORT_SYNCTHING}<\/listenAddress>\n\t<listenAddress>quic:\/\/0.0.0.0:${PORT_SYNCTHING}<\/listenAddress>/" /config/config.xml
-
-        # Ignore the fact that we have no password set
-        # grep '<insecureAdminAccess>true</insecureAdminAccess>' /config/config.xml || sed -i  "s/<\/gui>/<insecureAdminAccess>true<\/insecureAdminAccess>\n\t<\/gui>/" /config/config.xml
-
-        # Avoid foolish use of capital letters in default sync folder
-        # sed -i  "s/\/storage\/elfstorage\/Sync/\/storage\/elfstorage\/syncthing/" /config/config.xml
-
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: syncthing
-      resources: *default_resources
-      securityContext: *default_securitycontext
 
 rdtclient: &app_rdtclient
   enabled: false
@@ -15592,8 +15408,8 @@ channelsdvr:
 wger:
   enabled: false
   image:
-    repository: wger/server
-    tag: latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
+    repository: ghcr.io/elfhosted/wger
+    tag: 2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15603,9 +15419,9 @@ wger:
   securityContext:
     runAsUser: 568
     runAsGroup: 568
-    privileged: true
   podSecurityContext:
     fsGroup: 568
+    runAsUser: 568
     fsGroupChangePolicy: "Always"
     seccompProfile:
       type: RuntimeDefault
@@ -15632,7 +15448,7 @@ wger:
     config:
       enabled: true
       type: custom
-      subPath: immich
+      subPath: wger
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
@@ -15641,8 +15457,13 @@ wger:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-immich
+          name: elfbot-wger
           optional: true
+    run: # may be necessary for nginx
+      enabled: true
+      type: emptyDir
+      mountPath: /run
+      sizeLimit: 1Gi          
   envFrom:
   - configMapRef:
       name: wger-env
@@ -15650,6 +15471,25 @@ wger:
       name: elfbot-wger
       optional: true
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config -R
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: wger
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault    
     bootstrap:
       <<: *bootstrap
       volumeMounts:
@@ -15675,19 +15515,21 @@ wger:
     #     limits:
     #       cpu: 500m
     #       memory: 4Gi
-    # ngnix:
-    #   image: nginxinc/nginx-unprivileged
-    #   volumeMounts:
-    #   - mountPath: /usr/share/nginx/html
-    #     name: config
-    #     subPath: overseerr/branding
-    #     readOnly: true
-    #   - mountPath: /tmp
-    #     name: tmp
-    #   - mountPath: /run
-    #     name: run
-    #   resources: *default_resources
-    #   securityContext: *default_securitycontext    
+    ngnix:
+      image: nginxinc/nginx-unprivileged
+      volumeMounts:
+        - name: config
+          subPath: wger/media
+          mountPath: /usr/share/nginx/html/media    
+        - name: config
+          subPath: wger/static
+          mountPath: /usr/share/nginx/html/static      
+        - mountPath: /tmp
+          name: tmp
+        - mountPath: /run
+          name: run
+      resources: *default_resources
+      securityContext: *default_securitycontext    
     database:
       image: postgres:17-alpine
       env:
@@ -15722,21 +15564,36 @@ wger:
           cpu: 500m
           memory: 4Gi
     celery-worker:
-      image: wger/server:latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
+      image: ghcr.io/elfhosted/wger:2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
       command:
       - /start-worker
       volumeMounts:
         - name: config
           subPath: wger/media
-          mountPath: /home/wger/media
+          mountPath: /home/wger/media    
+        - name: config
+          subPath: wger/static
+          mountPath: /home/wger/static
+      envFrom:
+      - configMapRef:
+          name: wger-env
+      - configMapRef:
+          name: elfbot-wger
+          optional: true          
     celery-beat:
-      image: wger/server:latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
+      image: ghcr.io/elfhosted/wger:2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
       command:
       - /start-beat      
       volumeMounts:
         - name: config
           subPath: wger/beat
           mountPath: /home/wger/beat
+      envFrom:
+      - configMapRef:
+          name: wger-env
+      - configMapRef:
+          name: elfbot-wger
+          optional: true          
 
 immich:
   enabled: false
@@ -16109,6 +15966,7 @@ embynazgul:
 # We use these to set aside resources for dedicated bundles
 streamer: &app_resource_reserver
   enabled: false
+  priorityClassName: tenant-low # allow kubernetes to evict these pods first
   image:
     repository: ghcr.io/elfhosted/tooling
     tag: focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de

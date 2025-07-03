@@ -279,15 +279,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: rutorrentgluetun.enabled
     alias: rutorrentgluetun
-  - name: seafile
-    version: 3.1.x
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: seafile.enabled
-  - name: resilio-sync
-    version: 5.4.x
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: resiliosync.enabled
-    alias: resiliosync
   - name: app-template
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
@@ -468,11 +459,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: filebot.enabled
     alias: filebot
-  - name: app-template
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: syncthing.enabled
-    alias: syncthing
   - name: app-template
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts

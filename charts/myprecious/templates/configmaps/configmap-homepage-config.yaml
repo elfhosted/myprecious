@@ -1078,31 +1078,7 @@ data:
               type: gotify
               url: http://gotify:8080
               key: {{`{{HOMEPAGE_FILE_GOTIFY_KEY}}`}} 
-        {{ end }}              
-
-        {{ if .Values.seafile.enabled }}
-        - Seafile:
-            icon: seafile.png
-            href: https://{{ .Release.Name }}-seafile.{{ .Values.dns_domain }}
-            description: Securely Sync your Stuff
-            siteMonitor: http://seafile:80
-        {{ end }}
-
-        {{ if .Values.syncthing.enabled }}
-        - Syncthing:
-            icon: syncthing.png
-            href: https://{{ .Release.Name }}-syncthing.{{ .Values.dns_domain }}
-            description: Securely Sync your Stuff
-            siteMonitor: http://syncthing:8384
-        {{ end }}        
-
-        {{ if .Values.resiliosync.enabled }}
-        - Resilio Sync:
-            icon: resiliosync.png
-            href: https://{{ .Release.Name }}-resiliosync.{{ .Values.dns_domain }}
-            description: Securely Sync your Stuff
-            siteMonitor: http://resilio-sync:8888
-        {{ end }}   
+        {{ end }}     
 
         {{ if .Values.thelounge.enabled }}
         - TheLounge:
@@ -1150,7 +1126,15 @@ data:
             href: https://{{ .Release.Name }}-wallabag.{{ .Values.dns_domain }}
             description: Read it Later
             siteMonitor: http://wallabag:8000
-        {{ end }}   
+        {{ end }} 
+
+        {{ if .Values.wger.enabled }}
+        - Wger:
+            icon: wger.png
+            href: https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}
+            description: Track fitness and nutrition
+            siteMonitor: http://wger:8000
+        {{ end }}           
 
         {{ if .Values.pgadmin.enabled }}
         - PGAdmin:
