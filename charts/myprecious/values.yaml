@@ -15509,19 +15509,21 @@ wger:
     #     limits:
     #       cpu: 500m
     #       memory: 4Gi
-    # ngnix:
-    #   image: nginxinc/nginx-unprivileged
-    #   volumeMounts:
-    #   - mountPath: /usr/share/nginx/html
-    #     name: config
-    #     subPath: overseerr/branding
-    #     readOnly: true
-    #   - mountPath: /tmp
-    #     name: tmp
-    #   - mountPath: /run
-    #     name: run
-    #   resources: *default_resources
-    #   securityContext: *default_securitycontext    
+    ngnix:
+      image: nginxinc/nginx-unprivileged
+      volumeMounts:
+        - name: config
+          subPath: wger/media
+          mountPath: /usr/share/nginx/html/media    
+        - name: config
+          subPath: wger/static
+          mountPath: /usr/share/nginx/html/static      
+        - mountPath: /tmp
+          name: tmp
+        - mountPath: /run
+          name: run
+      resources: *default_resources
+      securityContext: *default_securitycontext    
     database:
       image: postgres:17-alpine
       env:

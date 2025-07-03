@@ -21,31 +21,31 @@ data:
   DJANGO_DB_PASSWORD: wger
   DJANGO_DB_HOST: localhost
   DJANGO_DB_PORT: "5432"
-  DJANGO_PERFORM_MIGRATIONS: "true" # Perform any new database migrations on startup
+  DJANGO_PERFORM_MIGRATIONS: "True" # Perform any new database migrations on startup
 
   TZ: UTC
 
   # Users should override these
   SECRET_KEY: wger-docker-supersecret-key-1234567890!@#$%^&*(-_)
   SIGNING_KEY: wger-docker-secret-jwtkey-1234567890!@#$%^&*(-_=+)
-  ALLOW_REGISTRATION: "false"
-  ALLOW_GUEST_USERS: "false"
+  ALLOW_REGISTRATION: "False"
+  ALLOW_GUEST_USERS: "False"
 
-  SYNC_EXERCISES_ON_STARTUP: "true"
-  DOWNLOAD_EXERCISE_IMAGES_ON_STARTUP: "true"
+  SYNC_EXERCISES_ON_STARTUP: "True"
+  DOWNLOAD_EXERCISE_IMAGES_ON_STARTUP: "True"
 
-  SYNC_EXERCISES_CELERY: "true"
-  SYNC_EXERCISE_IMAGES_CELERY: "true"
-  SYNC_EXERCISE_VIDEOS_CELERY: "true"
-  SYNC_INGREDIENTS_CELERY: "true"
+  SYNC_EXERCISES_CELERY: "True"
+  SYNC_EXERCISE_IMAGES_CELERY: "True"
+  SYNC_EXERCISE_VIDEOS_CELERY: "True"
+  SYNC_INGREDIENTS_CELERY: "True"
 
   DOWNLOAD_INGREDIENTS_FROM: WGER
 
-  USE_CELERY: "true"
+  USE_CELERY: "True"
 
   # Brute force login attacks
   # https://django-axes.readthedocs.io/en/latest/index.html
-  AXES_ENABLED: "true"
+  AXES_ENABLED: "True"
   AXES_FAILURE_LIMIT: "10"
   AXES_COOLOFF_TIME: "30" # in minutes
   AXES_HANDLER: axes.handlers.cache.AxesCacheHandler
@@ -54,8 +54,8 @@ data:
   AXES_IPWARE_META_PRECEDENCE_ORDER: HTTP_X_FORWARDED_FOR,REMOTE_ADDR
   #
   # Others
-  DJANGO_DEBUG: "false"
-  WGER_USE_GUNICORN: "true"
+  DJANGO_DEBUG: "False"
+  WGER_USE_GUNICORN: "True"
   EXERCISE_CACHE_TTL: "18000" # in seconds - 5*60*60, 5 hours
 
   #
@@ -74,7 +74,7 @@ data:
   # AUTH_PROXY_USER_EMAIL_HEADER=''
   # AUTH_PROXY_USER_NAME_HEADER=''
 
-  DJANGO_CLEAR_STATIC_FIRST: "true"
+  DJANGO_CLEAR_STATIC_FIRST: "True"
 
   #
   # Email
