@@ -15728,8 +15728,8 @@ channelsdvr:
 wger:
   enabled: false
   image:
-    repository: wger/server
-    tag: latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
+    repository: ghcr.io/elfhosted/wger
+    tag: 2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -15858,7 +15858,7 @@ wger:
           cpu: 500m
           memory: 4Gi
     celery-worker:
-      image: wger/server:latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
+      image: ghcr.io/elfhosted/wger:2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
       command:
       - /start-worker
       volumeMounts:
@@ -15875,7 +15875,7 @@ wger:
           name: elfbot-wger
           optional: true          
     celery-beat:
-      image: wger/server:latest@sha256:8adc609647871e206ed4fcbc90d13f69e36c1793dbdc047db9b1961471a764ad
+      image: ghcr.io/elfhosted/wger:2.3@sha256:97a0b4dcfc025af146bf0d6c75d01814a4be033b1e93f66e8c7054b479165b34
       command:
       - /start-beat      
       volumeMounts:
