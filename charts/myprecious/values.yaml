@@ -15939,10 +15939,10 @@ embynazgul:
 # We use these to set aside resources for dedicated bundles
 streamer: &app_resource_reserver
   enabled: false
+  priorityClassName: tenant-low # allow kubernetes to evict these pods first
   image:
     repository: ghcr.io/elfhosted/tooling
     tag: focal-20240530@sha256:458d1f3b54e9455b5cdad3c341d6853a6fdd75ac3f1120931ca3c09ac4b588de
-  priorityClassName: tenant-normal
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "tooling-scripts" # Reload the deployment every time the yaml config changes
