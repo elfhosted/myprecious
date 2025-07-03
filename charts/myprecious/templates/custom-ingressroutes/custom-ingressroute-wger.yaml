@@ -1,0 +1,28 @@
+{{ if .Values.wgercustomdomain.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-wger.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Values.wgercustomdomain.cname | lower }}`)
+      kind: Rule
+      services:
+        - name: wger
+          kind: Service
+          port: 8000
+      middlewares:  
+        - name: error-pages
+          namespace: traefik
+    - match: Host(`{{ .Values.wgercustomdomain.cname | lower }}`) && (PathPrefix(`/static/`) || PathPrefix(`/media/`))
+      kind: Rule
+      services:
+        - name: wger
+          kind: Service
+          port: 8080
+      middlewares:  
+        - name: error-pages
+          namespace: traefik
+{{ end }}

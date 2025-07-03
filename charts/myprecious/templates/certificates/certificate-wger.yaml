@@ -1,0 +1,14 @@
+{{- if .Values.wgercustomdomain.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: custom-domain-pairdrop-{{ .Values.wgercustomdomain.cname | lower }}
+spec:
+  secretName: cert-{{ .Values.wgercustomdomain.cname | lower }}
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: {{ .Values.wgercustomdomain.cname | lower }}
+  dnsNames:
+  - {{ .Values.wgercustomdomain.cname | lower }}
+{{ end }}  
