@@ -1504,7 +1504,11 @@ data:
             subtitle: "Actual Budget"
             tag: "public"
             tagstyle: "is-danger"
+            {{ if .Values.actualcustomdomain.enabled }}
+            url: https://{{ .Values.actualcustomdomain.cname | lower }}
+            {{ else }}
             url: "https://{{ .Release.Name }}-actual.{{ .Values.dns_domain }}"
+            {{ end }}            
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
@@ -1662,7 +1666,11 @@ data:
             subtitle: "Track fitness and nutrition"
             tag: "public"
             tagstyle: "is-danger"
+            {{ if .Values.wgercustomdomain.enabled }}
+            url: https://{{ .Values.wgercustomdomain.cname | lower }}
+            {{ else }}
             url: "https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}"
+            {{ end }}
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 

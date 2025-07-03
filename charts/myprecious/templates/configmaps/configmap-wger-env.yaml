@@ -13,7 +13,11 @@ data:
   DJANGO_CACHE_TIMEOUT: "1296000" # in seconds - 60*60*24*15, 15 Days
   DJANGO_CACHE_CLIENT_CLASS: django_redis.client.DefaultClient
 
-  SITE_URL: https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}
+  {{ if .Values.wgercustomdomain.enabled }}
+  SITE_URL: https://{{ .Values.wgercustomdomain.cname | lower }}
+  {{ else }}
+  SITE_URL: "https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}"
+  {{ end }}  
   # Database
   DJANGO_DB_ENGINE: django.db.backends.postgresql
   DJANGO_DB_DATABASE: wger

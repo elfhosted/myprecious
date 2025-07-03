@@ -15460,6 +15460,11 @@ wger:
         configMap:
           name: elfbot-wger
           optional: true
+    run: # may be necessary for nginx
+      enabled: true
+      type: emptyDir
+      mountPath: /run
+      sizeLimit: 1Gi          
   envFrom:
   - configMapRef:
       name: wger-env
