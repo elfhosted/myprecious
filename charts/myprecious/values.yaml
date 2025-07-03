@@ -15449,6 +15449,7 @@ wger:
       enabled: true
       type: custom
       subPath: wger
+      mountPath: /config
       volumeSpec:
         persistentVolumeClaim:
           claimName: config
