@@ -34,4 +34,84 @@ data:
   SYNC_EXERCISES_ON_STARTUP: "true"
   DOWNLOAD_EXERCISE_IMAGES_ON_STARTUP: "true"
 
+  SYNC_EXERCISES_CELERY: "true"
+  SYNC_EXERCISE_IMAGES_CELERY: "true"
+  SYNC_EXERCISE_VIDEOS_CELERY: "true"
+  SYNC_INGREDIENTS_CELERY: "true"
+
+  DOWNLOAD_INGREDIENTS_FROM: WGER
+
+  USE_CELERY: "true"
+
+  # Brute force login attacks
+  # https://django-axes.readthedocs.io/en/latest/index.html
+  AXES_ENABLED: "true"
+  AXES_FAILURE_LIMIT: "10"
+  AXES_COOLOFF_TIME: "30" # in minutes
+  AXES_HANDLER: axes.handlers.cache.AxesCacheHandler
+  AXES_LOCKOUT_PARAMETERS: ip_address
+  AXES_IPWARE_PROXY_COUNT: "1"
+  AXES_IPWARE_META_PRECEDENCE_ORDER: HTTP_X_FORWARDED_FOR,REMOTE_ADDR
+  #
+  # Others
+  DJANGO_DEBUG: "false"
+  WGER_USE_GUNICORN: "true"
+  EXERCISE_CACHE_TTL: "18000" # in seconds - 5*60*60, 5 hours
+  SITE_URL=http://localhost
+
+  #
+  # JWT auth
+  ACCESS_TOKEN_LIFETIME: "10" # The lifetime duration of the access token, in minutes
+  REFRESH_TOKEN_LIFETIME: "24" # The lifetime duration of the refresh token, in hours
+
+  # #
+  # # Auth Proxy Authentication
+  # #
+  # # Please read the documentation before enabling this feature:
+  # # https://wger.readthedocs.io/en/latest/administration/auth_proxy.html
+  # AUTH_PROXY_HEADER=''
+  # AUTH_PROXY_TRUSTED_IPS=''
+  # AUTH_PROXY_CREATE_UNKNOWN_USER=False
+  # AUTH_PROXY_USER_EMAIL_HEADER=''
+  # AUTH_PROXY_USER_NAME_HEADER=''
+
+  DJANGO_CLEAR_STATIC_FIRST: "true"
+
+  #
+  # Email
+  # https://docs.djangoproject.com/en/4.1/topics/email/#smtp-backend
+  # ENABLE_EMAIL=False
+  # EMAIL_HOST=email.example.com
+  # EMAIL_PORT=587
+  # EMAIL_HOST_USER=username
+  # EMAIL_HOST_PASSWORD=password
+  # EMAIL_USE_TLS=True
+  # EMAIL_USE_SSL=False
+  FROM_EMAIL: 'wger Workout Manager <wger@example.com>'
+
+  # Set your name and email to be notified if an internal server error occurs.
+  # Needs a working email configuration
+  # DJANGO_ADMINS=your name,email@example.com
+
+  # Whether to compress css and js files into one (of each)
+  # COMPRESS_ENABLED=True
+
+  #
+  # Django Rest Framework
+  # The number of proxies in front of the application. In the default configuration
+  # only nginx is. Change as approtriate if your setup differs. Also note that this
+  # is only used when throttling API requests.
+  NUMBER_OF_PROXIES: "1"
+
+  #
+  # Gunicorn
+  #
+  # Additional gunicorn options, change as needed.
+  # For the number of workers to spawn, a usually recommended value is (2 x $num_cores) + 1
+  # see:
+  #   - https://docs.gunicorn.org/en/stable/settings.html
+  #   - https://github.com/wger-project/wger/blob/master/extras/docker/production/entrypoint.sh#L95
+  GUNICORN_CMD_ARGS: "--workers 3 --threads 2 --worker-class gthread --proxy-protocol True --timeout 240"
+
+
 {{ end }}
