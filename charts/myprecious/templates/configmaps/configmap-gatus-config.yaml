@@ -1343,48 +1343,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.seafile.enabled }}
-      - name: seafile
-        group: tools
-        url: "http://seafile:80"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-
-      - name: seafile-mysql
-        group: tools
-        url: "tcp://{{ .Release.Name }}-seafile-mysql:3306"
-        interval: 5m
-        conditions:
-          - "[CONNECTED] == true"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.resiliosync.enabled }}
-      - name: resiliosync
-        group: tools
-        url: "http://resilio-sync:8888"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.syncthing.enabled }}
-      - name: syncthing
-        group: tools
-        url: "http://syncthing:8384"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.thelounge.enabled }}
       - name: thelounge
         group: tools

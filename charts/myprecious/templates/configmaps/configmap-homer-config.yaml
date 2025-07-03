@@ -1586,36 +1586,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.seafile.enabled }}
-          - name: "Seafile"
-            logo: "assets/png/seafile.png"
-            subtitle: "Securely sync data"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-seafile.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.resiliosync.enabled }}
-          - name: "Resilio Sync"
-            logo: "assets/png/resiliosync.png"
-            subtitle: "Securely sync data"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-resilio-sync.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.syncthing.enabled }}
-          - name: "Sync Thing"
-            logo: "assets/png/syncthing.png"
-            subtitle: "Securely sync data"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-syncthing.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.thelounge.enabled }}
           - name: "The Lounge"
             logo: "assets/png/thelounge.png"
