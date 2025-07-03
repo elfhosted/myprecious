@@ -16,4 +16,13 @@ spec:
       middlewares:  
         - name: error-pages
           namespace: traefik
+    - match: Host(`{{ .Release.Name }}-wger.{{ .Values.dns_domain }}`) && (PathPrefix(`/static/`) || PathPrefix(`/media/`))
+      kind: Rule
+      services:
+        - name: wger
+          kind: Service
+          port: 8080
+      middlewares:  
+        - name: error-pages
+          namespace: traefik
 {{ end }}
