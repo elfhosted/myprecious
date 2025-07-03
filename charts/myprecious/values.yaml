@@ -15465,6 +15465,25 @@ wger:
       name: elfbot-wger
       optional: true
   initContainers:
+    a-fix-permissions:
+      image: *tooling_image
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        chown elfie:elfie /config -R
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: wger
+      securityContext:
+        runAsUser: 0
+        seccompProfile:
+          type: RuntimeDefault    
     bootstrap:
       <<: *bootstrap
       volumeMounts:
