@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.423.0](https://github.com/elfhosted/myprecious/compare/v1.422.0...v1.423.0) (2025-07-03)
+
+
+### Features
+
+* **app:** update ghcr.io/actualbudget/actual-server docker tag to v25.7.1 ([fb3ac55](https://github.com/elfhosted/myprecious/commit/fb3ac552de68e85d004417e204392fbd292789c5))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.5.0 ([84dc23f](https://github.com/elfhosted/myprecious/commit/84dc23f7f6c44efe964a51e2210038fbcb61bf46))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.157 ([f044953](https://github.com/elfhosted/myprecious/commit/f04495370d19d76ac463f79d5b24433f6ddccaf2))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.158 ([07ea8eb](https://github.com/elfhosted/myprecious/commit/07ea8eb824785bf5eb772e8ab178d489ae2699af))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.30.3 ([061ec2e](https://github.com/elfhosted/myprecious/commit/061ec2e8253492da7a0494d9d4b298a10521abc3))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.76 ([4de31fc](https://github.com/elfhosted/myprecious/commit/4de31fcabc100e9dc76cfc23957ef387596db957))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.77 ([08563f7](https://github.com/elfhosted/myprecious/commit/08563f70f36c10ee2c20da80363cd1085b843ea8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2111 ([f75c948](https://github.com/elfhosted/myprecious/commit/f75c948d3bb39c1125a4793d60e03d49e37c35ac))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.2 ([1149fa4](https://github.com/elfhosted/myprecious/commit/1149fa4387a0dee5c0ede8d051acc08132a37cd4))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.3 ([b8697af](https://github.com/elfhosted/myprecious/commit/b8697afc7db9ab848e7b8182792d71248d59765b))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.07.03.0032-nightly ([9fe73d3](https://github.com/elfhosted/myprecious/commit/9fe73d33bcd1aa26b71d87031c00f899eb676c44))
+
+
+### Bug Fixes
+
+* **app:** update wger/server:latest docker digest to 8adc609 ([a6c7646](https://github.com/elfhosted/myprecious/commit/a6c7646dfc0b6e1d1c4bd9b26b379969e3676f7e))
+* lower podpriorityclass for resource-reserver pods ([82cde7b](https://github.com/elfhosted/myprecious/commit/82cde7b2af27027e0a738b06272686ffda6f6348))
+
 ## [1.422.0](https://github.com/elfhosted/myprecious/compare/v1.421.0...v1.422.0) (2025-07-02)
 
 
