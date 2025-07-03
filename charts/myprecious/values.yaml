@@ -15456,7 +15456,7 @@ wger:
       type: "custom"
       volumeSpec:
         configMap:
-          name: elfbot-immich
+          name: elfbot-wger
           optional: true
   envFrom:
   - configMapRef:
