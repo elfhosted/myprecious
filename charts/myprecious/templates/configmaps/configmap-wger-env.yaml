@@ -15,8 +15,10 @@ data:
 
   {{ if .Values.wgercustomdomain.enabled }}
   SITE_URL: https://{{ .Values.wgercustomdomain.cname | lower }}
+  CSRF_TRUSTED_ORIGINS: https://{{ .Values.wgercustomdomain.cname | lower }}
   {{ else }}
   SITE_URL: "https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}"
+  CSRF_TRUSTED_ORIGINS: "https://{{ .Release.Name }}-wger.{{ .Values.dns_domain }}"
   {{ end }}  
   # Database
   DJANGO_DB_ENGINE: django.db.backends.postgresql
