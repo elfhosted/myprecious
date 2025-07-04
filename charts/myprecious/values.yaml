@@ -5074,28 +5074,6 @@ plex: &app_plex
         HTTP_PORT: "3002"
         HTTPS_PORT: "3003"
       securityContext: *speedtest_securitycontext
-    transcode-killer:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        python3 /scripts/transcode-killer.py        
-      volumeMounts:
-      - mountPath: /var/log/
-        name: logs
-        subPath: plex/transcode-killer
-      - mountPath: /dev/dri
-        name: render-device
-      resources: *default_resources
-      securityContext:
-        capabilities:
-          add:
-            - SYS_ADMIN
-            - SYS_PTRACE
-        seccompProfile:
-          type: Unconfined
   addons:
     vpn:
       enabled: true # in case we ever need it
