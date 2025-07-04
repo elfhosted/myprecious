@@ -4968,7 +4968,7 @@ plex: &app_plex
       memory: 4Gi
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.07.03.0032-nightly@sha256:cabc358333612c01879e049d4b4b4fbedca289c658b91d8f383eac971081dad4
+      image: ghcr.io/elfhosted/zurg-rc:2025.07.04.0032-nightly@sha256:522cbc550f52ac732d7f7076603ca81439752b639453ce0f57f5a509e46d4ee9
       command:
       - /bin/bash
       - -c
@@ -5327,7 +5327,7 @@ jellyfin: &app_jellyfin
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.07.03.0032-nightly@sha256:cabc358333612c01879e049d4b4b4fbedca289c658b91d8f383eac971081dad4
+      image: ghcr.io/elfhosted/zurg-rc:2025.07.04.0032-nightly@sha256:522cbc550f52ac732d7f7076603ca81439752b639453ce0f57f5a509e46d4ee9
       command:
       - /bin/bash
       - -c
@@ -5531,7 +5531,7 @@ emby: &app_emby
           defaultMode: 0755
   initContainers:
     restart-with-zurg:
-      image: ghcr.io/elfhosted/zurg-rc:2025.07.03.0032-nightly@sha256:cabc358333612c01879e049d4b4b4fbedca289c658b91d8f383eac971081dad4
+      image: ghcr.io/elfhosted/zurg-rc:2025.07.04.0032-nightly@sha256:522cbc550f52ac732d7f7076603ca81439752b639453ce0f57f5a509e46d4ee9
       command:
       - /bin/bash
       - -c
@@ -13499,7 +13499,7 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   image:
     repository: ghcr.io/elfhosted/zurg-rc
-    tag: 2025.07.03.0032-nightly@sha256:cabc358333612c01879e049d4b4b4fbedca289c658b91d8f383eac971081dad4
+    tag: 2025.07.04.0032-nightly@sha256:522cbc550f52ac732d7f7076603ca81439752b639453ce0f57f5a509e46d4ee9
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   priorityClassName: tenant-normal
