@@ -4860,7 +4860,6 @@ plex: &app_plex
     app.elfhosted.com/class: debrid
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
-    container.apparmor.security.beta.kubernetes.io/transcode-killer: unconfined    
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
