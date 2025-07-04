@@ -15595,6 +15595,7 @@ wger:
       volumeMounts:
       - mountPath: /backup
         name: backup
+        subPath: wger
       command:
       - /usr/bin/dumb-init
       - /bin/bash
