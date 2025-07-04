@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.424.0](https://github.com/elfhosted/myprecious/compare/v1.423.0...v1.424.0) (2025-07-04)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.5.1 ([a2b1864](https://github.com/elfhosted/myprecious/commit/a2b1864eb0c990e26754ba4b2806e047caf7cef8))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.31.0 ([8585750](https://github.com/elfhosted/myprecious/commit/8585750ff7209c3c8271daec65393ec50c87398d))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2117 ([3d95813](https://github.com/elfhosted/myprecious/commit/3d9581373191329a725c0e0deff0439d29b5c839))
+* **app:** update ghcr.io/elfhosted/nzbget docker tag to v25.2 ([6dceadc](https://github.com/elfhosted/myprecious/commit/6dceadc4c7577fdb1769c3c7d1914b4489e9802e))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.15.3 ([70d0d13](https://github.com/elfhosted/myprecious/commit/70d0d13aedce0ab2d236abee2b40eed0ea579cfc))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.4 ([5f349a6](https://github.com/elfhosted/myprecious/commit/5f349a666540ba788da3de204e530d9333a0a78b))
+* **app:** update ghcr.io/elfhosted/wger docker tag to v2.4 ([a9fb64f](https://github.com/elfhosted/myprecious/commit/a9fb64fb5d37bb4533923883606dd6981045a9c6))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.7.1 ([1c069e0](https://github.com/elfhosted/myprecious/commit/1c069e08b025609995229421e83979032060d856))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.07.04.0032-nightly ([ed5cd1a](https://github.com/elfhosted/myprecious/commit/ed5cd1aa95f6cb12c580bdf6374167407508b468))
+* **app:** update mattermost/mattermost-team-edition docker tag to v10.10.0 ([dd7b27e](https://github.com/elfhosted/myprecious/commit/dd7b27e6d94dd1535eed10626bebe358e41800a4))
+
+
+### Bug Fixes
+
+* Add option for custom domain with wger ([0a0feb6](https://github.com/elfhosted/myprecious/commit/0a0feb649bedb5e3ba1f09ddcd5954ddb6334f58))
+* Enable daily postgresql backup for wger ([6789be9](https://github.com/elfhosted/myprecious/commit/6789be97ea47a1b4949720721fb7343eaf889b7a))
+* Refactor plex pod ([30a812f](https://github.com/elfhosted/myprecious/commit/30a812fd11da77952b1346514640c64f70bf17fc))
+
 ## [1.423.0](https://github.com/elfhosted/myprecious/compare/v1.422.0...v1.423.0) (2025-07-03)
 
 
