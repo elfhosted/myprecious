@@ -69,9 +69,12 @@ data:
     ## until the NAT issue is fixed, we use traefik-lb-ingress
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-peertube.$DNS_DOMAIN CNAME traefik-lb-ingress.$DNS_DOMAIN
     {{ end }}    
-    {{- if .Values.actual.enabled }}
+    {{- if .Values.actualcustomdomain.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-actual.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
-    {{ end }}    
+    {{ end }}  
+    {{- if .Values.wgercustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-wger.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}        
 
   clean-up-dns-on-termination.sh: |
     #!/bin/bash
@@ -137,9 +140,12 @@ data:
         {{- if .Values.peertube.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-peertube.$DNS_DOMAIN CNAME
         {{ end }}   
-        {{- if .Values.actual.enabled }}
+        {{- if .Values.actualcustomdomain.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-actual.$DNS_DOMAIN CNAME
-        {{ end }}                       
+        {{ end }}  
+        {{- if .Values.wgercustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-wger.$DNS_DOMAIN CNAME
+        {{ end }}                               
     }
 
     # When we terminate, delete the DNS record
