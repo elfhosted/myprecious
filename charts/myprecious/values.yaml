@@ -4883,7 +4883,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.8.9834-071366d65@sha256:142c6cbfbd446723c5c69fc66f99a7d41f72c53a9af79b4203eb64216ff875f9
+    tag: 1.41.8.9834-071366d65@sha256:0d9ec66971aa60baef2d4783cca8ccfd760b3b1069fa6cf4179dd1e18e2be775
   persistence: &app_plex_persistence
     <<: *storagemounts
     backup: &backup
@@ -5000,7 +5000,7 @@ plex: &app_plex
       - mountPath: /tmp
         name: tmp
     dbrepair:
-      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:142c6cbfbd446723c5c69fc66f99a7d41f72c53a9af79b4203eb64216ff875f9
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:0d9ec66971aa60baef2d4783cca8ccfd760b3b1069fa6cf4179dd1e18e2be775
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -14703,7 +14703,7 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:142c6cbfbd446723c5c69fc66f99a7d41f72c53a9af79b4203eb64216ff875f9
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:0d9ec66971aa60baef2d4783cca8ccfd760b3b1069fa6cf4179dd1e18e2be775
       command:
       - /bin/bash
       - -c
