@@ -7015,7 +7015,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.31.0@sha256:67c7be26162ea2555a56ccae8e2c2aed8d9c8eeb8d6828a64685b1c29908302a
+    tag: v0.32.0@sha256:357763a66461adc3a95ce71893a574acd53ff53755c1cbbf293bc38dd536dc2f
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -7116,7 +7116,7 @@ booklore:
           type: RuntimeDefault            
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.31.0@sha256:67c7be26162ea2555a56ccae8e2c2aed8d9c8eeb8d6828a64685b1c29908302a
+      image: ghcr.io/elfhosted/booklore:v0.32.0@sha256:357763a66461adc3a95ce71893a574acd53ff53755c1cbbf293bc38dd536dc2f
       command: 
       - /usr/sbin/nginx 
       - -g 
