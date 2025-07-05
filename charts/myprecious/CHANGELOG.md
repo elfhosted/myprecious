@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.425.0](https://github.com/elfhosted/myprecious/compare/v1.424.0...v1.425.0) (2025-07-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.9 ([23491a0](https://github.com/elfhosted/myprecious/commit/23491a0f44efd13ee5717ee64bef98910031a03c))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.32.0 ([e9fb5ab](https://github.com/elfhosted/myprecious/commit/e9fb5ab5645c1b65cccc4261603e5121fcf24ce0))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2120 ([d0cef48](https://github.com/elfhosted/myprecious/commit/d0cef481ea6f5a7ff2cae6ac0d52703d6c221050))
+* **app:** update ghcr.io/elfhosted/kavita docker tag to v0.8.7 ([c2945c1](https://github.com/elfhosted/myprecious/commit/c2945c1258e3f4b039e39000699f2c140ead3cf7))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.0 ([0315cc9](https://github.com/elfhosted/myprecious/commit/0315cc9de196e1072f2d3c130c7883770c81d185))
+
+
+### Bug Fixes
+
+* Avoid duplication in wger custom domain ([d6a33a3](https://github.com/elfhosted/myprecious/commit/d6a33a38966fce172c956975b428294d1e6b8031))
+* Re-update wger custom domain ([3214178](https://github.com/elfhosted/myprecious/commit/32141787521aed36558250f48c3354797d8d4e8a))
+
 ## [1.424.0](https://github.com/elfhosted/myprecious/compare/v1.423.0...v1.424.0) (2025-07-04)
 
 
