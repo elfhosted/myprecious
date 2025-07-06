@@ -3275,7 +3275,7 @@ kavita:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/kavita
-    tag: 0.8.6@sha256:98e9dc90caae289c1b7afc4a35ffeaf8eb57acd0bf5684244223443e9f7a6b5c
+    tag: 0.8.7@sha256:2d3eccdb29f294049b5c081ffcc20eea8e84f28eb6480db873dd83ea21e7fbb9
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11235,7 +11235,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2120@sha256:54e7b57ebfeaf851d0ea54c0cf37d92a08d63a290aa91cd1d33b2ead2c533c31
+    tag: 0.22.2123@sha256:e7509ef503912ab458224d4f6622c829cad10c125a97fbf557af47ae303b0204
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12225,7 +12225,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.79.3@sha256:6bc9e4e075e574d1311e7ef2e4daddd9cf7128cebd8850399d740184e8b4fe43
+    tag: 0.80.2@sha256:dc6b8a86cc43f01004301a57c56e01bf9d779be65760a7d1a612902b84887866
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13815,7 +13815,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.77@sha256:d5cbee5e47c9986a808a3a4331144f65dcb2be49c6f04378be7c13a152281468 
+    tag: v0.6.78@sha256:a030fff43df86c7920e7b7e70b92eea251ae9460216453dfb84362680abb7887 
   priorityClassName: tenant-normal
   controller:
     annotations:
