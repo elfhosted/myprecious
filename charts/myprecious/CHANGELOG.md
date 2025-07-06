@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.426.0](https://github.com/elfhosted/myprecious/compare/v1.425.0...v1.426.0) (2025-07-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.78 ([61a1316](https://github.com/elfhosted/myprecious/commit/61a131615e2251f13e70ec9d63588423aa11f406))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2123 ([72378cf](https://github.com/elfhosted/myprecious/commit/72378cff0020a71c11d07c6632b13ddc97558b06))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.1 ([96496f8](https://github.com/elfhosted/myprecious/commit/96496f88ea0f5467a3f50ac5428b799e09380f8a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.2 ([8af05ef](https://github.com/elfhosted/myprecious/commit/8af05efaa5259e3cfcf54a6f8296e689e45bd0c8))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.07.05.0031-nightly ([f42bc31](https://github.com/elfhosted/myprecious/commit/f42bc31c4c712664963cf6ecb28c71d5d9ebb81b))
+
 ## [1.425.0](https://github.com/elfhosted/myprecious/compare/v1.424.0...v1.425.0) (2025-07-05)
 
 
