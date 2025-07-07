@@ -11663,6 +11663,10 @@ actual:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: elfbot-actual
+      optional: true    
   resources:
     requests:
       cpu: 0m
