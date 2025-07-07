@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.427.0](https://github.com/elfhosted/myprecious/compare/v1.426.0...v1.427.0) (2025-07-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.79 ([27fe932](https://github.com/elfhosted/myprecious/commit/27fe932484b130540d777892e66da267631ca15c))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.80 ([2e31bb8](https://github.com/elfhosted/myprecious/commit/2e31bb81466fe88ceeafcbb9d163b98e75367c9d))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.81 ([bcd29d9](https://github.com/elfhosted/myprecious/commit/bcd29d9e7b7c8d430e8aa62828b5d17aac82ab2b))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.4 ([8988900](https://github.com/elfhosted/myprecious/commit/8988900312ef40ea4f098c1543cdcc7a0c04b7b7))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2125 ([94dd872](https://github.com/elfhosted/myprecious/commit/94dd872ec51e839b2e1384e9504c6567fc503b43))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.5 ([7793b6d](https://github.com/elfhosted/myprecious/commit/7793b6db63f7cf869d17a085aef4737813109c73))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.3 ([d29e3fb](https://github.com/elfhosted/myprecious/commit/d29e3fb4f803c7ec11727a3fbf028b689f9a9dc5))
+
+
+### Bug Fixes
+
+* Add ability to override ENV vars for Actual with ElfBot ([e264f1f](https://github.com/elfhosted/myprecious/commit/e264f1fa78968a6445571f8e31aabd4dd453f011))
+* **app:** update docker.io/redis:7.4-alpine docker digest to 0c0142c ([6e20ff1](https://github.com/elfhosted/myprecious/commit/6e20ff1a965db4921ec5884f1f578caf5e3d3534))
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to 850f005 ([9341005](https://github.com/elfhosted/myprecious/commit/93410059f77e787280734c3bc8b90a2b5093c489))
+* Fix TLS cert for custom wger ingressroute ([dc7a749](https://github.com/elfhosted/myprecious/commit/dc7a749fc39a9fd6fb4ceee7ccd9aa2fa976d116))
+
 ## [1.426.0](https://github.com/elfhosted/myprecious/compare/v1.425.0...v1.426.0) (2025-07-06)
 
 
