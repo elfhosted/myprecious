@@ -8,6 +8,7 @@ data:
      {"description": "Welcome, {{ .Release.Name }}, to your StremThru instance!", "sections": []}
   STREMTHRU_DATABASE_URI: sqlite:///config/stremthru.db
   STREMTHRU_STORE_TUNNEL: '*:false,realdebrid:api,alldebrid:true'
+  STREMTHRU_TUNNEL: 'torrentio.strem.fun:true'
   {{ if .Values.vpnproxy.enabled }}  
   STREMTHRU_HTTP_PROXY: http://vpnproxy:8888
   STREMTHRU_HTTPS_PROXY: http://vpnproxy:8888
