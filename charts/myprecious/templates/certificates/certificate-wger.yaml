@@ -2,7 +2,7 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: custom-domain-pairdrop-{{ .Values.wgercustomdomain.cname | lower }}
+  name: custom-domain-wger-{{ .Values.wgercustomdomain.cname | lower }}
 spec:
   secretName: cert-{{ .Values.wgercustomdomain.cname | lower }}
   issuerRef:
