@@ -8491,7 +8491,7 @@ cinesync:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/cinesync-dev
-    tag: rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
+    tag: rolling@sha256:b245a23fda2ba1ce29e81344ef6686b0e061444cd110e4473bc642c620a5f6a6
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8589,7 +8589,7 @@ cinesync:
       resources: *default_resources
       securityContext: *default_securitycontext     
     id-refresh:
-      image: ghcr.io/elfhosted/cinesync-dev:rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
+      image: ghcr.io/elfhosted/cinesync-dev:rolling@sha256:b245a23fda2ba1ce29e81344ef6686b0e061444cd110e4473bc642c620a5f6a6
       command:
       - python3 
       - MediaHub/main.py 
