@@ -5789,7 +5789,7 @@ traefikforwardauth:
 gatus:
   image:
     repository: ghcr.io/elfhosted/gatus
-    tag: 5.19.0@sha256:4d65ff595eb849f790d698cdfd53be508e39052da5e9152dd80a1e8d74013c91
+    tag: 5.20.0@sha256:1115118413eec3db379d4993c67e37ed92b19b7b111185695e5ea5eda76d3332
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -9041,7 +9041,7 @@ plexytrack:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plexytrack
-    tag: v0.3.2@sha256:ee05371a8f374efba9627adfcd80a23be98ad4feb08d3bedaa9d84b5139458d8
+    tag: v0.3.3@sha256:e77c9d7c8f36337f11b03b879177db7ccf031185e9efba0d796e154835ce97df
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -12231,7 +12231,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.80.3@sha256:296a0ca8fc9b57a876771e3bc99b8c9c7e4d8ba266e58638c079b12f24f98624
+    tag: 0.80.4@sha256:f0811f5231db96ac010e7596dc85d2125502ba2db6d356267213b1f544580368
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
