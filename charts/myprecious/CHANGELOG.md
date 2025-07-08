@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.428.0](https://github.com/elfhosted/myprecious/compare/v1.427.0...v1.428.0) (2025-07-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.32.1 ([511523c](https://github.com/elfhosted/myprecious/commit/511523c7b6afc56edf2de11ca08424703450c802))
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.20.0 ([55fc938](https://github.com/elfhosted/myprecious/commit/55fc938df60f6799892b49535170c19dd1eca173))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2132 ([2012c1f](https://github.com/elfhosted/myprecious/commit/2012c1f0cf5097bd7827df692cdd792714c0bdba))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.3.3 ([9c568fd](https://github.com/elfhosted/myprecious/commit/9c568fd72334cf6a232145b13140590e780ea599))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.4 ([6f63f99](https://github.com/elfhosted/myprecious/commit/6f63f9971f643390369d4f054272d743d7a2da33))
+
+
+### Bug Fixes
+
+* Add cache dir for peertube ([fb5e46f](https://github.com/elfhosted/myprecious/commit/fb5e46f6c50eeaae7db910818d6054cf59ab8bee))
+* Add persistence for plexytrack ([a8bf507](https://github.com/elfhosted/myprecious/commit/a8bf50735fbcb0b9e3d5375c6cf9f4a4febdb942))
+* **app:** update ghcr.io/elfhosted/cinesync-dev:rolling docker digest to b245a23 ([4c2aecb](https://github.com/elfhosted/myprecious/commit/4c2aecb91804d21f50d78390c51909e562dd7d5c))
+* Improve UX on AIOStreams by forcing proxy streaming URL (can be overridden in env vars) ([f06c8fe](https://github.com/elfhosted/myprecious/commit/f06c8fece435f6c91ba362ddb5c24f008d2b31cf))
+
 ## [1.427.0](https://github.com/elfhosted/myprecious/compare/v1.426.0...v1.427.0) (2025-07-07)
 
 
