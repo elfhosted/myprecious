@@ -7359,6 +7359,8 @@ peertube:
         subPath: peertube
       - mountPath: /data/tmp
         name: data-tmp
+      - mountPath: /home/peertube/.cache
+        name: tmp   
       - mountPath: /dev/dri/renderD128
         name: render-device
       envFrom:
