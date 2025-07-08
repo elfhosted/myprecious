@@ -8377,125 +8377,16 @@ imagemaid:
       cpu: 1
       memory: 4Gi  
 
-# cinesync:
-#   enabled: false
-#   priorityClassName: tenant-normal
-#   image:
-#     repository: ghcr.io/elfhosted/cinesync
-#     tag: v2.4.1@sha256:2357ef1feb815962b21cd993931757d483ea12b8a274155b5dfb90a59772db58
-#   securityContext:
-#     seccompProfile:
-#       type: RuntimeDefault
-#     readOnlyRootFilesystem: true
-#   podLabels:
-#     app.elfhosted.com/name: cinesync
-#   controller:
-#     annotations:
-#       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync,cinesync-env"
-#   affinity: *standard_affinity
-#   tolerations: *standard_tolerations
-#   podSecurityContext:
-#     seccompProfile:
-#       type: RuntimeDefault
-#     runAsUser: 568
-#     runAsGroup: 568
-#     fsGroup: 568
-#     fsGroupChangePolicy: "OnRootMismatch"
-#   automountServiceAccountToken: false
-#   service:
-#     main:
-#       enabled: true # necessary for probes
-#       ports:
-#         http:
-#           port: 3001
-#   envFrom:
-#   - configMapRef:
-#       name: cinesync-env
-#   - secretRef:
-#       name: cinesync-env      
-#   - configMapRef:
-#       name: elfbot-cinesync
-#       optional: true
-#   persistence:
-#     <<: *storagemounts
-#     config:
-#       enabled: true
-#       type: custom
-#       mountPath: /app/db
-#       subPath: cinesync
-#       volumeSpec:
-#         persistentVolumeClaim:
-#           claimName: config
-#     elfbot:
-#       enabled: "true"
-#       type: "custom"
-#       volumeSpec:
-#         configMap:
-#           name: elfbot-cinesync
-#           optional: true  
-#     logs:
-#       enabled: true
-#       type: custom
-#       mountPath: /app/logs
-#       subPath: cinesync
-#       volumeSpec:
-#         persistentVolumeClaim:
-#           claimName: logs              
-#   initContainers:
-#     bootstrap:
-#       <<: *bootstrap
-#       volumeMounts:
-#       - mountPath: /etc/elfbot
-#         name: elfbot
-#       - mountPath: /storage/backup
-#         name: backup
-#       - mountPath: /config
-#         name: config
-#         subPath: cinesync
-#       - mountPath: /tmp
-#         name: tmp
-#     setup:
-#       image: *tooling_image
-#       imagePullPolicy: IfNotPresent
-#       command:
-#       - /bin/bash
-#       - -c
-#       - |
-#         set -x
-
-#         # Create directory structure if it doesn't exist yet
-#         mkdir -p /storage/symlinks/movies
-#         mkdir -p /storage/symlinks/movies-4k
-#         mkdir -p /storage/symlinks/movies-anime
-#         mkdir -p /storage/symlinks/series
-#         mkdir -p /storage/symlinks/series-4k
-#         mkdir -p /storage/symlinks/series-anime
-#       volumeMounts:
-#       - mountPath: /storage/symlinks
-#         name: symlinks
-#       resources: *default_resources
-#       securityContext: *default_securitycontext        
-#   ingress:
-#     main:
-#       enabled: false
-#   resources:
-#     requests:
-#       cpu: 0m
-#       memory: 64Mi
-#     limits:
-#       cpu: 1
-#       memory: 2Gi 
-
 cinesync:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/cinesync-dev
-    tag: rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
+    repository: ghcr.io/elfhosted/cinesync
+    tag: v2.4.1@sha256:2357ef1feb815962b21cd993931757d483ea12b8a274155b5dfb90a59772db58
   securityContext:
     seccompProfile:
       type: RuntimeDefault
-    readOnlyRootFilesystem: false
+    readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: cinesync
   controller:
@@ -8516,7 +8407,7 @@ cinesync:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 5173
+          port: 3001
   envFrom:
   - configMapRef:
       name: cinesync-env
@@ -8549,11 +8440,7 @@ cinesync:
       subPath: cinesync
       volumeSpec:
         persistentVolumeClaim:
-          claimName: logs
-    cache: # in case users use /tmp
-      enabled: true
-      mountPath: /cache
-      type: emptyDir       
+          claimName: logs              
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -8587,31 +8474,7 @@ cinesync:
       - mountPath: /storage/symlinks
         name: symlinks
       resources: *default_resources
-      securityContext: *default_securitycontext     
-    id-refresh:
-      image: ghcr.io/elfhosted/cinesync-dev:rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
-      command:
-      - python3 
-      - MediaHub/main.py 
-      - --id-refresh
-      resources: *default_resources
-      volumeMounts:
-      - mountPath: /app/logs
-        name: logs
-        subPath: cinesync   
-      - mountPath: /app/db
-        subPath: cinesync
-        name: config    
-      - mountPath: /storage/symlinks
-        name: symlinks
-      envFrom:
-      - configMapRef:
-          name: cinesync-env
-      - secretRef:
-          name: cinesync-env      
-      - configMapRef:
-          name: elfbot-cinesync
-          optional: true                  
+      securityContext: *default_securitycontext        
   ingress:
     main:
       enabled: false
@@ -8622,6 +8485,143 @@ cinesync:
     limits:
       cpu: 1
       memory: 2Gi 
+
+# cinesync:
+#   enabled: false
+#   priorityClassName: tenant-normal
+#   image:
+#     repository: ghcr.io/elfhosted/cinesync-dev
+#     tag: rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
+#   securityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     readOnlyRootFilesystem: false
+#   podLabels:
+#     app.elfhosted.com/name: cinesync
+#   controller:
+#     annotations:
+#       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync,cinesync-env"
+#   affinity: *standard_affinity
+#   tolerations: *standard_tolerations
+#   podSecurityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     runAsUser: 568
+#     runAsGroup: 568
+#     fsGroup: 568
+#     fsGroupChangePolicy: "OnRootMismatch"
+#   automountServiceAccountToken: false
+#   service:
+#     main:
+#       enabled: true # necessary for probes
+#       ports:
+#         http:
+#           port: 5173
+#   envFrom:
+#   - configMapRef:
+#       name: cinesync-env
+#   - secretRef:
+#       name: cinesync-env      
+#   - configMapRef:
+#       name: elfbot-cinesync
+#       optional: true
+#   persistence:
+#     <<: *storagemounts
+#     config:
+#       enabled: true
+#       type: custom
+#       mountPath: /app/db
+#       subPath: cinesync
+#       volumeSpec:
+#         persistentVolumeClaim:
+#           claimName: config
+#     elfbot:
+#       enabled: "true"
+#       type: "custom"
+#       volumeSpec:
+#         configMap:
+#           name: elfbot-cinesync
+#           optional: true  
+#     logs:
+#       enabled: true
+#       type: custom
+#       mountPath: /app/logs
+#       subPath: cinesync
+#       volumeSpec:
+#         persistentVolumeClaim:
+#           claimName: logs
+#     cache: # in case users use /tmp
+#       enabled: true
+#       mountPath: /cache
+#       type: emptyDir       
+#   initContainers:
+#     bootstrap:
+#       <<: *bootstrap
+#       volumeMounts:
+#       - mountPath: /etc/elfbot
+#         name: elfbot
+#       - mountPath: /storage/backup
+#         name: backup
+#       - mountPath: /config
+#         name: config
+#         subPath: cinesync
+#       - mountPath: /tmp
+#         name: tmp
+#     setup:
+#       image: *tooling_image
+#       imagePullPolicy: IfNotPresent
+#       command:
+#       - /bin/bash
+#       - -c
+#       - |
+#         set -x
+
+#         # Create directory structure if it doesn't exist yet
+#         mkdir -p /storage/symlinks/movies
+#         mkdir -p /storage/symlinks/movies-4k
+#         mkdir -p /storage/symlinks/movies-anime
+#         mkdir -p /storage/symlinks/series
+#         mkdir -p /storage/symlinks/series-4k
+#         mkdir -p /storage/symlinks/series-anime
+#       volumeMounts:
+#       - mountPath: /storage/symlinks
+#         name: symlinks
+#       resources: *default_resources
+#       securityContext: *default_securitycontext     
+#     id-refresh:
+#       image: ghcr.io/elfhosted/cinesync-dev:rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
+#       command:
+#       - python3 
+#       - MediaHub/main.py 
+#       - --id-refresh
+#       resources: *default_resources
+#       volumeMounts:
+#       - mountPath: /app/logs
+#         name: logs
+#         subPath: cinesync   
+#       - mountPath: /app/db
+#         subPath: cinesync
+#         name: config    
+#       - mountPath: /storage/symlinks
+#         name: symlinks
+#       envFrom:
+#       - configMapRef:
+#           name: cinesync-env
+#       - secretRef:
+#           name: cinesync-env      
+#       - configMapRef:
+#           name: elfbot-cinesync
+#           optional: true                  
+#   ingress:
+#     main:
+#       enabled: false
+#   resources:
+#     requests:
+#       cpu: 0m
+#       memory: 64Mi
+#     limits:
+#       cpu: 1
+#       memory: 2Gi 
 
 arrtools:
   enabled: false
