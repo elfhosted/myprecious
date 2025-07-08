@@ -8474,31 +8474,7 @@ cinesync:
       - mountPath: /storage/symlinks
         name: symlinks
       resources: *default_resources
-      securityContext: *default_securitycontext     
-    id-refresh:
-      image: ghcr.io/elfhosted/cinesync-dev:rolling@sha256:b245a23fda2ba1ce29e81344ef6686b0e061444cd110e4473bc642c620a5f6a6
-      command:
-      - python3 
-      - MediaHub/main.py 
-      - --id-refresh
-      resources: *default_resources
-      volumeMounts:
-      - mountPath: /app/logs
-        name: logs
-        subPath: cinesync   
-      - mountPath: /app/db
-        subPath: cinesync
-        name: config    
-      - mountPath: /storage/symlinks
-        name: symlinks
-      envFrom:
-      - configMapRef:
-          name: cinesync-env
-      - secretRef:
-          name: cinesync-env      
-      - configMapRef:
-          name: elfbot-cinesync
-          optional: true                  
+      securityContext: *default_securitycontext        
   ingress:
     main:
       enabled: false
