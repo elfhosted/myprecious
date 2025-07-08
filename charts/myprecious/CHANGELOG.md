@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.428.1](https://github.com/elfhosted/myprecious/compare/v1.428.0...v1.428.1) (2025-07-08)
+
+
+### Bug Fixes
+
+* Another CineSync reversion ([ee6caf8](https://github.com/elfhosted/myprecious/commit/ee6caf800cdb5af3b31a8d2b5589fa25aa0df015))
+* Improve stremthru VPN timeout issue ([92bae29](https://github.com/elfhosted/myprecious/commit/92bae29f0450565a17b2c9c7994d1e88d4170fc1))
+* Revert CineSync to v2.4.1 (not ready for v3 yet!) ([e6373e3](https://github.com/elfhosted/myprecious/commit/e6373e36775ab005c64fc6413a81a0f4c85c0af8))
+
 ## [1.428.0](https://github.com/elfhosted/myprecious/compare/v1.427.0...v1.428.0) (2025-07-08)
 
 
