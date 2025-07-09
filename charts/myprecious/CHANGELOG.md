@@ -1,5 +1,82 @@
 # Changelog
 
+## [1.428.1](https://github.com/elfhosted/myprecious/compare/v1.428.0...v1.428.1) (2025-07-08)
+
+
+### Bug Fixes
+
+* Another CineSync reversion ([ee6caf8](https://github.com/elfhosted/myprecious/commit/ee6caf800cdb5af3b31a8d2b5589fa25aa0df015))
+* Improve stremthru VPN timeout issue ([92bae29](https://github.com/elfhosted/myprecious/commit/92bae29f0450565a17b2c9c7994d1e88d4170fc1))
+* Revert CineSync to v2.4.1 (not ready for v3 yet!) ([e6373e3](https://github.com/elfhosted/myprecious/commit/e6373e36775ab005c64fc6413a81a0f4c85c0af8))
+
+## [1.428.0](https://github.com/elfhosted/myprecious/compare/v1.427.0...v1.428.0) (2025-07-08)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.32.1 ([511523c](https://github.com/elfhosted/myprecious/commit/511523c7b6afc56edf2de11ca08424703450c802))
+* **app:** update ghcr.io/elfhosted/gatus docker tag to v5.20.0 ([55fc938](https://github.com/elfhosted/myprecious/commit/55fc938df60f6799892b49535170c19dd1eca173))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2132 ([2012c1f](https://github.com/elfhosted/myprecious/commit/2012c1f0cf5097bd7827df692cdd792714c0bdba))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.3.3 ([9c568fd](https://github.com/elfhosted/myprecious/commit/9c568fd72334cf6a232145b13140590e780ea599))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.4 ([6f63f99](https://github.com/elfhosted/myprecious/commit/6f63f9971f643390369d4f054272d743d7a2da33))
+
+
+### Bug Fixes
+
+* Add cache dir for peertube ([fb5e46f](https://github.com/elfhosted/myprecious/commit/fb5e46f6c50eeaae7db910818d6054cf59ab8bee))
+* Add persistence for plexytrack ([a8bf507](https://github.com/elfhosted/myprecious/commit/a8bf50735fbcb0b9e3d5375c6cf9f4a4febdb942))
+* **app:** update ghcr.io/elfhosted/cinesync-dev:rolling docker digest to b245a23 ([4c2aecb](https://github.com/elfhosted/myprecious/commit/4c2aecb91804d21f50d78390c51909e562dd7d5c))
+* Improve UX on AIOStreams by forcing proxy streaming URL (can be overridden in env vars) ([f06c8fe](https://github.com/elfhosted/myprecious/commit/f06c8fece435f6c91ba362ddb5c24f008d2b31cf))
+
+## [1.427.0](https://github.com/elfhosted/myprecious/compare/v1.426.0...v1.427.0) (2025-07-07)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.79 ([27fe932](https://github.com/elfhosted/myprecious/commit/27fe932484b130540d777892e66da267631ca15c))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.80 ([2e31bb8](https://github.com/elfhosted/myprecious/commit/2e31bb81466fe88ceeafcbb9d163b98e75367c9d))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.81 ([bcd29d9](https://github.com/elfhosted/myprecious/commit/bcd29d9e7b7c8d430e8aa62828b5d17aac82ab2b))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.4 ([8988900](https://github.com/elfhosted/myprecious/commit/8988900312ef40ea4f098c1543cdcc7a0c04b7b7))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2125 ([94dd872](https://github.com/elfhosted/myprecious/commit/94dd872ec51e839b2e1384e9504c6567fc503b43))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.5 ([7793b6d](https://github.com/elfhosted/myprecious/commit/7793b6db63f7cf869d17a085aef4737813109c73))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.3 ([d29e3fb](https://github.com/elfhosted/myprecious/commit/d29e3fb4f803c7ec11727a3fbf028b689f9a9dc5))
+
+
+### Bug Fixes
+
+* Add ability to override ENV vars for Actual with ElfBot ([e264f1f](https://github.com/elfhosted/myprecious/commit/e264f1fa78968a6445571f8e31aabd4dd453f011))
+* **app:** update docker.io/redis:7.4-alpine docker digest to 0c0142c ([6e20ff1](https://github.com/elfhosted/myprecious/commit/6e20ff1a965db4921ec5884f1f578caf5e3d3534))
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to 850f005 ([9341005](https://github.com/elfhosted/myprecious/commit/93410059f77e787280734c3bc8b90a2b5093c489))
+* Fix TLS cert for custom wger ingressroute ([dc7a749](https://github.com/elfhosted/myprecious/commit/dc7a749fc39a9fd6fb4ceee7ccd9aa2fa976d116))
+
+## [1.426.0](https://github.com/elfhosted/myprecious/compare/v1.425.0...v1.426.0) (2025-07-06)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.78 ([61a1316](https://github.com/elfhosted/myprecious/commit/61a131615e2251f13e70ec9d63588423aa11f406))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2123 ([72378cf](https://github.com/elfhosted/myprecious/commit/72378cff0020a71c11d07c6632b13ddc97558b06))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.1 ([96496f8](https://github.com/elfhosted/myprecious/commit/96496f88ea0f5467a3f50ac5428b799e09380f8a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.2 ([8af05ef](https://github.com/elfhosted/myprecious/commit/8af05efaa5259e3cfcf54a6f8296e689e45bd0c8))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.07.05.0031-nightly ([f42bc31](https://github.com/elfhosted/myprecious/commit/f42bc31c4c712664963cf6ecb28c71d5d9ebb81b))
+
+## [1.425.0](https://github.com/elfhosted/myprecious/compare/v1.424.0...v1.425.0) (2025-07-05)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookrequest docker tag to v1.4.9 ([23491a0](https://github.com/elfhosted/myprecious/commit/23491a0f44efd13ee5717ee64bef98910031a03c))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.32.0 ([e9fb5ab](https://github.com/elfhosted/myprecious/commit/e9fb5ab5645c1b65cccc4261603e5121fcf24ce0))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2120 ([d0cef48](https://github.com/elfhosted/myprecious/commit/d0cef481ea6f5a7ff2cae6ac0d52703d6c221050))
+* **app:** update ghcr.io/elfhosted/kavita docker tag to v0.8.7 ([c2945c1](https://github.com/elfhosted/myprecious/commit/c2945c1258e3f4b039e39000699f2c140ead3cf7))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.0 ([0315cc9](https://github.com/elfhosted/myprecious/commit/0315cc9de196e1072f2d3c130c7883770c81d185))
+
+
+### Bug Fixes
+
+* Avoid duplication in wger custom domain ([d6a33a3](https://github.com/elfhosted/myprecious/commit/d6a33a38966fce172c956975b428294d1e6b8031))
+* Re-update wger custom domain ([3214178](https://github.com/elfhosted/myprecious/commit/32141787521aed36558250f48c3354797d8d4e8a))
+
 ## [1.424.0](https://github.com/elfhosted/myprecious/compare/v1.423.0...v1.424.0) (2025-07-04)
 
 

@@ -841,7 +841,7 @@ data:
             icon: mdi-cirle
             href: https://{{ .Release.Name }}-cinesync.{{ .Values.dns_domain }}
             description: Sync / sort Debrid media
-            siteMonitor: http://cinesync:5173
+            siteMonitor: http://cinesync:3001
         {{ end }}  
 
         {{ if .Values.seerrbridge.enabled }}

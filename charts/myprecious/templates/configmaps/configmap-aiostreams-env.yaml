@@ -27,10 +27,10 @@ data:
   {{ if .Values.stremthru.enabled }}
   FORCE_PROXY_ID: stremthru
   FORCE_PUBLIC_PROXY_HOST: "{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
-  DEFAULT_PROXY_URL: http://stremthru:8080
+  FORCE_PROXY_URL: http://stremthru:8080
   {{ else if .Values.mediaflowproxy.enabled }}
   FORCE_PROXY_ID: mediaflow
-  DEFAULT_PROXY_URL: http://mediaflow-proxy:8888
+  FORCE_PROXY_URL: http://mediaflow-proxy:8888
   FORCE_PUBLIC_PROXY_HOST: "{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}"
   {{ end }}
 
