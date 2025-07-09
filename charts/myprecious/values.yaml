@@ -14299,7 +14299,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.5@sha256:dbd86c005bee448aadf5f27d859478ff58b292e482816cf128363b785302ba73
+    tag: v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14384,7 +14384,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.5@sha256:dbd86c005bee448aadf5f27d859478ff58b292e482816cf128363b785302ba73
+      image: ghcr.io/elfhosted/pulsarr:v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
       command:
       - /bin/ash
       - -c
