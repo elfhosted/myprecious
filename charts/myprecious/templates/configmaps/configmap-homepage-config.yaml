@@ -167,14 +167,6 @@ data:
             siteMonitor: http://storyteller:8001
         {{ end }}                                  
 
-        {{ if .Values.stremiojackett.enabled }}
-        - Stremio-Jackett:
-            icon: jackett.png
-            href: https://{{ .Release.Name }}-stremio-jackett.{{ .Values.dns_domain }}
-            description: Use Jackett in Stremio
-            siteMonitor: http://stremio-jackett:3000
-        {{ end }}  
-
         {{ if .Values.jackettio.enabled }}
         - Jackettio:
             icon: jackett.png
@@ -205,15 +197,7 @@ data:
             href: https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}
             description: Combine multiple Stremio addons for tidy results
             siteMonitor: http://aiostreams:3000
-        {{ end }}  
-
-        {{ if .Values.aiostreamsv1.enabled }}
-        - AIOStreams V1:
-            icon: mdi-filmstrip-box-multiple
-            href: https://{{ .Release.Name }}-aiostreamsv1.{{ .Values.dns_domain }}
-            description: Combine multiple Stremio addons for tidy results
-            siteMonitor: http://aiostreamsv1:3000
-        {{ end }}           
+        {{ end }}        
 
         {{ if .Values.nuviostreams.enabled }}
         - Nuvio Streams:
@@ -229,15 +213,7 @@ data:
             href: https://{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}
             description: Watch your IPTV in Stremio
             siteMonitor: http://youriptv:3649
-        {{ end }}                           
-
-        {{ if .Values.knightcrawler.enabled }}
-        - Knightcrawler:
-            icon: mdi-chess-knight
-            href: https://{{ .Release.Name }}-knightcrawler.{{ .Values.dns_domain }}
-            description: Torrent indexer for Stremio
-            siteMonitor: http://knightcrawler:7000
-        {{ end }}      
+        {{ end }}                                
 
         {{ if .Values.stremthru.enabled }}
         - StremThru:

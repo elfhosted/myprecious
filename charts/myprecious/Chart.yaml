@@ -32,11 +32,6 @@ dependencies:
   - name: app-template
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
-    condition: plexrequests.enabled
-    alias: plexrequests
-  - name: app-template
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
     condition: plex.enabled
     alias: plex
   - name: app-template
@@ -567,16 +562,6 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     alias: wizarr
   - name: app-template
-    condition: stremiojackett.enabled
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: stremiojackett
-  - name: app-template
-    condition: knightcrawler.enabled
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: knightcrawler
-  - name: app-template
     condition: webdavplus.enabled
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
@@ -646,11 +631,6 @@ dependencies:
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: aiostreams
-  - name: app-template
-    condition: aiostreamsv1.enabled
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
-    alias: aiostreamsv1
   - name: app-template
     condition: nuviostreams.enabled
     version: ~0.2.2
