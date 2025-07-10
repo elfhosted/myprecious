@@ -13109,7 +13109,7 @@ nuviostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/nuviostreams-dev
-    tag: rolling@sha256:163f35d0b0653a9c89a9fb590a9124910a4ab4ddb863808bc41394acd1db2e3d
+    tag: rolling@sha256:5e3fe8bae4815ca00fdb1da74e3464781ce91e58c6f34c65b2696b7079c1c05d
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M" 
