@@ -1,0 +1,18 @@
+{{ if .Values.elfbot.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-elfbot.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-elfbot.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: elfbot
+          kind: Service
+          port: 3000
+      middlewares:  
+        - name: {{ .Release.Name }}-traefik-forward-auth
+{{ end }}

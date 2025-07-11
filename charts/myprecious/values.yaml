@@ -4825,7 +4825,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.8.9834-071366d65@sha256:ae3a73f66144a5f420276dd2864a5d2683daabd5094a61de42c871b407c89a2c
+    tag: 1.41.8.9834-071366d65@sha256:b64edd5faeb62f294777574c194cda4f6815ec1f895a6ce55968421019cae957
   persistence: &app_plex_persistence
     <<: *storagemounts
     backup: &backup
@@ -4942,7 +4942,7 @@ plex: &app_plex
       - mountPath: /tmp
         name: tmp
     dbrepair:
-      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:00880278e8bc503d2858f2a1dcab47091a21f0815f96e0ca1fc565cbd9e8d1ad
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:b64edd5faeb62f294777574c194cda4f6815ec1f895a6ce55968421019cae957
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -10596,7 +10596,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.158@sha256:6776094ba06f0d20f1e0fedb4c0da391c95e7ac5208dbfd4af21ace306ec293d
+    tag: 0.4.159@sha256:bf8308cfdbeaef010487693877d40d347961c7bcafe956edb46509f6808588b7
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: bluesky-pds  
@@ -11132,7 +11132,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2132@sha256:3358e848fe9cb936b87550ec3c4bc15fed86d743a21f0df61729fb69fb6f9247
+    tag: 0.22.2145@sha256:8a84af9cfc343178282beb22c177fd4e81630dd63ad19c455e904d6c561ca8a7
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -11537,7 +11537,55 @@ actual:
       subPath: actual
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config          
+          claimName: config     
+
+elfbot:
+  enabled: false
+  image:
+    repository: ghcr.io/elfhosted/elfbot
+    tag: rolling@sha256:93e6982e84d086ae5848609d2f5ad5d9f6d86d8c501a00ccb7672180df587246
+  priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: elfbot
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-actual"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  envFrom:
+  - configMapRef:
+      name: elfbot-env
+  resources:
+    requests:
+      cpu: 0m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000   
 
 petio:
   enabled: false
@@ -12709,7 +12757,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v2.5.1@sha256:da1569ddbffd1ef517d8e2f1985d0e1086c8511959acea50a0b4378e0c74b2e2
+    tag: v2.5.2@sha256:688847a8c2cd19c7790f5d6741f1d7782922ca7921040f78a70eca46a38cfcb3
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: aiostreams  
@@ -13015,7 +13063,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.34.0@sha256:473968ee1229201e9915683b0576d467b71d9728ec16a870f72dde712004282c
+    tag: v0.34.1@sha256:a0dd60b56e57118075e8f299a1983cbdf82ad05f9eb8f5f8351cc5dce5142fe7
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: webstreamr  
@@ -14472,7 +14520,7 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:00880278e8bc503d2858f2a1dcab47091a21f0815f96e0ca1fc565cbd9e8d1ad
+      image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:b64edd5faeb62f294777574c194cda4f6815ec1f895a6ce55968421019cae957
       command:
       - /bin/bash
       - -c

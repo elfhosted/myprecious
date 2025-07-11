@@ -1,0 +1,8 @@
+{{ if .Values.elfbot.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elfbot-env
+data:
+  K8S_MOCK_MODE: "true"
+{{ end }}
