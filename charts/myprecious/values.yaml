@@ -11545,6 +11545,9 @@ elfbot:
     repository: ghcr.io/elfhosted/elfbot
     tag: rolling@sha256:93e6982e84d086ae5848609d2f5ad5d9f6d86d8c501a00ccb7672180df587246
   priorityClassName: tenant-normal
+  serviceAccount:
+    name: kubernetes-dashboard
+  automountServiceAccountToken: true  
   podLabels:
     app.elfhosted.com/name: elfbot
   controller:
