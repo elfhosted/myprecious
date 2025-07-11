@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.431.0](https://github.com/elfhosted/myprecious/compare/v1.430.0...v1.431.0) (2025-07-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.5.2 ([2702f6c](https://github.com/elfhosted/myprecious/commit/2702f6c04ee5b222340bba1662c1290d21490c42))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.159 ([67ae1e0](https://github.com/elfhosted/myprecious/commit/67ae1e00c0f883e2d9d38c044a9d232d7d2ece16))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2145 ([c2bd2d5](https://github.com/elfhosted/myprecious/commit/c2bd2d56de14bec7fc45317c1b998fa5d131782c))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.34.1 ([201dca7](https://github.com/elfhosted/myprecious/commit/201dca765b87d34ae4ae042b7df1d2854ddd3aeb))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.6.0 ([df1b1c9](https://github.com/elfhosted/myprecious/commit/df1b1c9bb3921039fbfdc65614dcf37edbbe2a0a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to 0088027 ([a236792](https://github.com/elfhosted/myprecious/commit/a23679284e960c994026b6e916bf0205b223350d))
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to b64edd5 ([8f9cdab](https://github.com/elfhosted/myprecious/commit/8f9cdab67f0453478c3ea3b46027e31e2d16e1d3))
+
 ## [1.430.0](https://github.com/elfhosted/myprecious/compare/v1.429.0...v1.430.0) (2025-07-10)
 
 
