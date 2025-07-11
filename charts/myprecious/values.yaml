@@ -11569,7 +11569,6 @@ elfbot:
     runAsGroup: 568
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
   envFrom:
   - configMapRef:
       name: elfbot-env
