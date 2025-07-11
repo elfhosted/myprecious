@@ -11549,7 +11549,7 @@ elfbot:
     app.elfhosted.com/name: elfbot
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-actual"
+      configmap.reloader.stakater.com/reload: "elfbot-env"
     strategy:
     rollingUpdate:
       unavailable: 1

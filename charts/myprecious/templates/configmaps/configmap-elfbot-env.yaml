@@ -4,5 +4,5 @@ kind: ConfigMap
 metadata:
   name: elfbot-env
 data:
-  K8S_MOCK_MODE: "true"
+  K8S_MOCK_MODE: "false"
 {{ end }}
