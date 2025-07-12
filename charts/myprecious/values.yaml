@@ -11543,7 +11543,7 @@ elfbot:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:93e6982e84d086ae5848609d2f5ad5d9f6d86d8c501a00ccb7672180df587246
+    tag: rolling@sha256:b420ac05200b24167c0386a4776ae85f7152c6f5ae9e7d9337fc24e0f78cfcbe
   priorityClassName: tenant-normal
   serviceAccount:
     name: kubernetes-dashboard
