@@ -11543,10 +11543,10 @@ elfbot:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:b420ac05200b24167c0386a4776ae85f7152c6f5ae9e7d9337fc24e0f78cfcbe
+    tag: rolling@sha256:5ed804d9ae1c21be06dbc51e8737fcd8983448d9f752681ce0e0573f2d89d0bf
   priorityClassName: tenant-normal
   serviceAccount:
-    name: kubernetes-dashboard
+    name: elfbot
   automountServiceAccountToken: true  
   podLabels:
     app.elfhosted.com/name: elfbot
@@ -11922,6 +11922,9 @@ comet:
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
+    elfbot.elfhosted.com/name: "Comet"
+    elfbot.elfhosted.com/description: "Comet (Stremio Addon)"
+    elfbot.elfhosted.com/icon: "fontawesome-comet-icon-tbc"
   podLabels:
       app.elfhosted.com/name: comet
   controller:
