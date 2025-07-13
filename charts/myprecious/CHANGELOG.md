@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.433.0](https://github.com/elfhosted/myprecious/compare/v1.432.0...v1.433.0) (2025-07-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.7 ([bde144a](https://github.com/elfhosted/myprecious/commit/bde144a7bbe8ac2a3a5da230304871c39de23623))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2153 ([3e1649f](https://github.com/elfhosted/myprecious/commit/3e1649f77abc3855ad8d0931705e554cc4c24535))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.36.0 ([b559e75](https://github.com/elfhosted/myprecious/commit/b559e75163406d46f79a988c71b7f2a5f45d9a18))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.36.1 ([5d65c9d](https://github.com/elfhosted/myprecious/commit/5d65c9d124139d67292ae3fa44f2a07adc0458a2))
+
 ## [1.432.0](https://github.com/elfhosted/myprecious/compare/v1.431.0...v1.432.0) (2025-07-12)
 
 
