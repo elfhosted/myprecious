@@ -8,8 +8,8 @@ rules:
   verbs: ["*"]
 # Used for force-deletion
 - apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["delete","list"]
+  resources: ["pods","pods/log"]
+  verbs: ["delete","list","get","watch"]
 # Used to trigger backups
 - apiGroups: ["volsync.backube"]
   resources: ["replicationsources"]

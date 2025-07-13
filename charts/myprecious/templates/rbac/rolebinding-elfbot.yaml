@@ -5,6 +5,8 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: filebrowser
+- kind: ServiceAccount
+  name: elfbot  
 roleRef:
   kind: Role
   name: elfbot
