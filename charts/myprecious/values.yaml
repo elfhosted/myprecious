@@ -11547,6 +11547,7 @@ elfbot:
   priorityClassName: tenant-normal
   serviceAccount:
     name: elfbot
+    create: true
   automountServiceAccountToken: true  
   podLabels:
     app.elfhosted.com/name: elfbot
