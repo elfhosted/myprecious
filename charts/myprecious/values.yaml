@@ -4805,6 +4805,8 @@ plex: &app_plex
     app.elfhosted.com/name: plex
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
+    elfbot.elfhosted.com/name: "Plex"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -11929,8 +11931,7 @@ comet:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
     elfbot.elfhosted.com/name: "Comet"
-    elfbot.elfhosted.com/description: "Comet (Stremio Addon)"
-    elfbot.elfhosted.com/icon: "fontawesome-comet-icon-tbc"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/comet.png"
   podLabels:
       app.elfhosted.com/name: comet
   controller:
@@ -15649,7 +15650,10 @@ elfassesment:
 
 plexhobbit:
   <<: *app_plex
-  podAnnotations: *hobbit_streamer_podAnnotations
+  podAnnotations: 
+    <<: *hobbit_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
+    elfbot.elfhosted.com/name: "Plex"
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_plex_persistence
