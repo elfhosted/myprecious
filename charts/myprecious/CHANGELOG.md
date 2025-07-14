@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.434.0](https://github.com/elfhosted/myprecious/compare/v1.433.0...v1.434.0) (2025-07-14)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.33.0 ([9436477](https://github.com/elfhosted/myprecious/commit/94364774db98af98ae8a6c80aa1487dcee542823))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2154 ([5856b3f](https://github.com/elfhosted/myprecious/commit/5856b3f53a3524740acefa8a160e6d19f4b6b0a7))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.5 ([0a09dc1](https://github.com/elfhosted/myprecious/commit/0a09dc199ae41657e98f8dc7da91d5ff35d762f4))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.36.2 ([6126701](https://github.com/elfhosted/myprecious/commit/6126701da580d0fc6cd9e08f7c8a666d6d3687da))
+
 ## [1.433.0](https://github.com/elfhosted/myprecious/compare/v1.432.0...v1.433.0) (2025-07-13)
 
 
