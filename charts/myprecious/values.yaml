@@ -573,6 +573,9 @@ rutorrentgluetun: &rutorrent
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
+    elfbot.elfhosted.com/name: ruTorrent
+    elfbot.elfhosted.com/icon: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/blob/main/png/rutorrent.png
+
     kubernetes.io/egress-bandwidth: "150M"
   controller:
     annotations:
@@ -5282,7 +5285,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.1.4@sha256:dc10649eeea1d646cd7038b4c176987f71ed263cbe2e744032053ff50a06c9b7
+    tag: 4.9.1.7@sha256:c17a9df505c9c0cfd5b1232b9b337e7aa7f05f41238f469c7a38a9e1790de8bc
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -7249,8 +7252,8 @@ audiobookshelf:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookshelf
-    tag: v2.25.1@sha256:c3ee892604484658fdbd3c6a37972a7d41a0566e4f97ea058b6b66587a2c7242
-  priorityClassName: tenant-streaming  
+    tag: v2.26.0@sha256:ab696c9ad68ec0f0ca0c671554b1ccba4dbba2956eb967ff6be91447696ccd70
+  priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8668,7 +8671,7 @@ seerrbridge:
       memory: 64Mi
     limits:
       cpu: 1
-      memory: 2Gi  
+      memory: 1Gi  
   additionalContainers:
     bridgeboard:
       image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.7.2@sha256:65956292cddb8ea3e57142c570cfb5de4bbb47fb62c8ba4adba7b4e293f16f59
@@ -10596,7 +10599,7 @@ blueskypds:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/bluesky-pds
-    tag: 0.4.159@sha256:bf8308cfdbeaef010487693877d40d347961c7bcafe956edb46509f6808588b7
+    tag: 0.4.160@sha256:2fe3d9e33183c4154e6b9e7f8e565340d39e43d05dda2f0905f4bf6a40bb37b9
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: bluesky-pds  
@@ -11132,7 +11135,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2145@sha256:8a84af9cfc343178282beb22c177fd4e81630dd63ad19c455e904d6c561ca8a7
+    tag: 0.22.2154@sha256:0a17c5377345653b3a12e4e71570e44fba3ae2d76b5be19f3aa4648434496af4
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -11206,7 +11209,7 @@ wizarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wizarr
-    tag: 2025.7.1@sha256:fced0bc61a844075fce9a95697fab8caa0688d1a089a6298e016c2b89656349a
+    tag: 2025.7.4@sha256:4af34c822907ec72bf6e4fbbf540fdb3cdd1c7a62b36b644d4e9b2eabf293d9a
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: wizarr  
@@ -12139,7 +12142,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.80.4@sha256:f0811f5231db96ac010e7596dc85d2125502ba2db6d356267213b1f544580368
+    tag: 0.80.5@sha256:de4ac48c0f31d6e1d40c5a83ce54e2ae29a3d3768b4274b8e09aed21996a07d4
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: stremthru  
@@ -12768,7 +12771,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v2.5.2@sha256:688847a8c2cd19c7790f5d6741f1d7782922ca7921040f78a70eca46a38cfcb3
+    tag: v2.5.4@sha256:2ff8f4d3c9c7495a3fadc87a48b80608cabb1401a595d11e2d18f60e7fbb38ee
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: aiostreams  
@@ -13074,7 +13077,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.34.1@sha256:a0dd60b56e57118075e8f299a1983cbdf82ad05f9eb8f5f8351cc5dce5142fe7
+    tag: v0.36.2@sha256:01a9b3a37832f8aa565d8d94fc430200787b59d5d4bb7f76adb39f5a17f97703
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: webstreamr  
@@ -13629,7 +13632,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.81@sha256:b0780cea6a47d81d2356d3ded4cab50c6999085ade685d0602fb2f1b19263a52 
+    tag: v0.6.86@sha256:298c842d1ede58052504699552c1ee8ab4195710b8aac2012beceb5b622e5dbb 
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14545,7 +14548,7 @@ debridav: &app_debridav
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/emby:4.9.1.4@sha256:dc10649eeea1d646cd7038b4c176987f71ed263cbe2e744032053ff50a06c9b7
+      image: ghcr.io/elfhosted/emby:4.9.1.7@sha256:c17a9df505c9c0cfd5b1232b9b337e7aa7f05f41238f469c7a38a9e1790de8bc
       command:
       - /bin/bash
       - -c

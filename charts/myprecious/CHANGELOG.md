@@ -1,5 +1,48 @@
 # Changelog
 
+## [1.433.0](https://github.com/elfhosted/myprecious/compare/v1.432.0...v1.433.0) (2025-07-13)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.7 ([bde144a](https://github.com/elfhosted/myprecious/commit/bde144a7bbe8ac2a3a5da230304871c39de23623))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2153 ([3e1649f](https://github.com/elfhosted/myprecious/commit/3e1649f77abc3855ad8d0931705e554cc4c24535))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.36.0 ([b559e75](https://github.com/elfhosted/myprecious/commit/b559e75163406d46f79a988c71b7f2a5f45d9a18))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.36.1 ([5d65c9d](https://github.com/elfhosted/myprecious/commit/5d65c9d124139d67292ae3fa44f2a07adc0458a2))
+
+## [1.432.0](https://github.com/elfhosted/myprecious/compare/v1.431.0...v1.432.0) (2025-07-12)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.5.3 ([1970763](https://github.com/elfhosted/myprecious/commit/197076323bc72aebf34667ce0bbd101c14df06a8))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.5.4 ([c75b00c](https://github.com/elfhosted/myprecious/commit/c75b00c5d676f2cd80dc222c143eb4f25a34c10d))
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.26.0 ([1d06ace](https://github.com/elfhosted/myprecious/commit/1d06acebee7e6eaab3d88eb78e0ade83f98f0a1e))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.160 ([70e8573](https://github.com/elfhosted/myprecious/commit/70e857343726e58d473b54f28d06ba89b0fce134))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.85 ([df86cab](https://github.com/elfhosted/myprecious/commit/df86cab28478d90a0750be9eced77a6cdb72ad46))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.86 ([68cfd81](https://github.com/elfhosted/myprecious/commit/68cfd81d46006aa26f868f0e725c523583ec19a3))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.6 ([e3db489](https://github.com/elfhosted/myprecious/commit/e3db48947c3b50e20c246a6c333d937ac8cb5f9a))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2151 ([0423a1b](https://github.com/elfhosted/myprecious/commit/0423a1ba0a8a00ff8348a503c588453afa88b588))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.7.3 ([a3589f9](https://github.com/elfhosted/myprecious/commit/a3589f9a4ef9a2b31fbdee23f22598d95c7679b2))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.7.4 ([198e068](https://github.com/elfhosted/myprecious/commit/198e068fd64c0a90159f30ce2a701d5f4c9afc49))
+
+## [1.431.0](https://github.com/elfhosted/myprecious/compare/v1.430.0...v1.431.0) (2025-07-11)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.5.2 ([2702f6c](https://github.com/elfhosted/myprecious/commit/2702f6c04ee5b222340bba1662c1290d21490c42))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.159 ([67ae1e0](https://github.com/elfhosted/myprecious/commit/67ae1e00c0f883e2d9d38c044a9d232d7d2ece16))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2145 ([c2bd2d5](https://github.com/elfhosted/myprecious/commit/c2bd2d56de14bec7fc45317c1b998fa5d131782c))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.34.1 ([201dca7](https://github.com/elfhosted/myprecious/commit/201dca765b87d34ae4ae042b7df1d2854ddd3aeb))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.6.0 ([df1b1c9](https://github.com/elfhosted/myprecious/commit/df1b1c9bb3921039fbfdc65614dcf37edbbe2a0a))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to 0088027 ([a236792](https://github.com/elfhosted/myprecious/commit/a23679284e960c994026b6e916bf0205b223350d))
+* **app:** update ghcr.io/elfhosted/plex:1.41.8.9834-071366d65 docker digest to b64edd5 ([8f9cdab](https://github.com/elfhosted/myprecious/commit/8f9cdab67f0453478c3ea3b46027e31e2d16e1d3))
+
 ## [1.430.0](https://github.com/elfhosted/myprecious/compare/v1.429.0...v1.430.0) (2025-07-10)
 
 
