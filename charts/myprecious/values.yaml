@@ -11546,7 +11546,7 @@ elfbot:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:5ed804d9ae1c21be06dbc51e8737fcd8983448d9f752681ce0e0573f2d89d0bf
+    tag: rolling@sha256:9f0cb3226b078745e69572da6df3faaa7677a3af533ae68c841d4d6f280e1d40
   priorityClassName: tenant-normal
   serviceAccount:
     name: elfbot
@@ -11554,6 +11554,8 @@ elfbot:
   automountServiceAccountToken: true  
   podLabels:
     app.elfhosted.com/name: elfbot
+  persistence:
+    <<: *storagemounts    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-env"
