@@ -11240,7 +11240,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2153@sha256:fae3fb1fcf1e6093f4e8eb684a877c4d838decf934a8b4bd8696ceb26efb98b2
+    tag: 0.22.2154@sha256:0a17c5377345653b3a12e4e71570e44fba3ae2d76b5be19f3aa4648434496af4
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12234,7 +12234,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.80.4@sha256:f0811f5231db96ac010e7596dc85d2125502ba2db6d356267213b1f544580368
+    tag: 0.80.5@sha256:de4ac48c0f31d6e1d40c5a83ce54e2ae29a3d3768b4274b8e09aed21996a07d4
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"  
@@ -13206,7 +13206,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.36.1@sha256:76a2e19a9437fa937927c2d5c9836396cba9a5c3711dfe4c72a36eba41821e11
+    tag: v0.36.2@sha256:01a9b3a37832f8aa565d8d94fc430200787b59d5d4bb7f76adb39f5a17f97703
   priorityClassName: tenant-normal
   controller:
     annotations:
