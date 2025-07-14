@@ -575,6 +575,9 @@ rutorrentgluetun: &rutorrent
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
+    elfbot.elfhosted.com/name: ruTorrent
+    elfbot.elfhosted.com/icon: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/blob/main/png/rutorrent.png
+
     kubernetes.io/egress-bandwidth: "150M"
   controller:
     annotations:
@@ -8801,7 +8804,7 @@ seerrbridge:
       memory: 64Mi
     limits:
       cpu: 1
-      memory: 2Gi  
+      memory: 1Gi  
   additionalContainers:
     bridgeboard:
       image: ghcr.io/elfhosted/seerrbridge-bridgeboard:v0.7.2@sha256:65956292cddb8ea3e57142c570cfb5de4bbb47fb62c8ba4adba7b4e293f16f59
