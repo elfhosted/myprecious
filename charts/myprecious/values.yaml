@@ -2731,7 +2731,7 @@ kapowarr:
     app.elfhosted.com/name: kapowarr
   podAnnotations:    
     elfbot.elfhosted.com/name: "Kapowarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kapowarr.png"      
+    elfbot.elfhosted.com/icon: "fas fa-comments"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kapowarr"
@@ -7483,7 +7483,7 @@ storyteller:
       app.elfhosted.com/name: storyteller    
   podAnnotations:
     elfbot.elfhosted.com/name: "Storyteller"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/storyteller.png"        
+    elfbot.elfhosted.com/icon: "fas fa-book-open"        
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -8669,7 +8669,7 @@ arrtools:
       app.elfhosted.com/name: arrtools
   podAnnotations:
     elfbot.elfhosted.com/name: "ArrTools"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/arrtools.png"        
+    elfbot.elfhosted.com/icon: "fas fa-tools"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11668,7 +11668,7 @@ pairdrop:
     app.elfhosted.com/name: pairdrop
   podAnnotations:
     elfbot.elfhosted.com/name: "PairDrop"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/pairdrop.png"      
+    elfbot.elfhosted.com/icon: "fas fa-lock"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pairdrop"
@@ -12420,7 +12420,7 @@ stremthru:
       app.elfhosted.com/name: stremthru  
   podAnnotations:
     elfbot.elfhosted.com/name: "StremThru"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/stremthru.png"        
+    elfbot.elfhosted.com/icon: "fas fa-tools"        
     kubernetes.io/egress-bandwidth: "64M"  
   controller:
     annotations:
@@ -12597,7 +12597,7 @@ mediafusion:
       app.elfhosted.com/name: mediafusion
   podAnnotations:
     elfbot.elfhosted.com/name: "MediaFusion"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/mediafusion.png"        
+    elfbot.elfhosted.com/icon: "fas fa-atom"        
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13013,7 +13013,7 @@ youriptv:
       app.elfhosted.com/name: youriptv  
   podAnnotations:
     elfbot.elfhosted.com/name: "YourIPTV"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/youriptv.png"        
+    elfbot.elfhosted.com/icon: "fas fa-tv"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-youriptv"
@@ -13281,7 +13281,7 @@ nuviostreams:
       app.elfhosted.com/name: nuviostreams        
   podAnnotations:
     elfbot.elfhosted.com/name: "NuvioStreams"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nuviostreams.png"    
+    elfbot.elfhosted.com/icon: "fas fa-film"    
     kubernetes.io/egress-bandwidth: "64M" 
   controller:
     annotations:
@@ -14137,8 +14137,8 @@ codeserver:
   podLabels:
       app.elfhosted.com/name: codeserver  
   podAnnotations:
-    elfbot.elfhosted.com/name: "CodeServer"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/codeserver.png"        
+    elfbot.elfhosted.com/name: "Code Server"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/code-server.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-codeserver"
@@ -15452,8 +15452,7 @@ channelsdvr:
       app.elfhosted.com/name: channelsdvr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Channels DVR"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/channels-dvr.png"        
-  podAnnotations:
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/channels-dvr.png"
     kubernetes.io/egress-bandwidth: "125M"
   controller:
     annotations:
