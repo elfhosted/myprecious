@@ -5,4 +5,5 @@ metadata:
   name: elfbot-env
 data:
   USERNAME: {{ .Release.Name }}
+  DOMAIN_SUFFIX: {{ .Values.dns_domain | default "elfhosted.com" }}
 {{ end }}

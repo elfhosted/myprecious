@@ -11807,6 +11807,13 @@ elfbot:
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/elfbot.png"      
   persistence:
     <<: *storagemounts    
+    config:
+      enabled: true
+      type: custom
+      mountPath: /storage/config/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-env"
