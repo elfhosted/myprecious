@@ -377,8 +377,13 @@ bootstrap: &bootstrap
 
     # look for commands - we match specific names in order of least-destructive
     TIMESTAMP_NOW=$(date +%s)
-    if [[ -f /etc/elfbot/pause ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/pause)
+    if [[ -f /etc/elfbot/elfbot_pause ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/elfbot_pause)
+      if [[ -f /etc/elfbot/elfbot_pause_duration ]]; then
+        PAUSE_DURATION=$(cat /etc/elfbot/elfbot_pause_duration)
+      else
+        PAUSE_DURATION=5 # default to 5 minutes
+      fi
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
       if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=pause
@@ -386,8 +391,8 @@ bootstrap: &bootstrap
     fi
 
     # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
+    if [[ -f /etc/elfbot/elfbot_backup && -z "$COMMAND" ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/elfbot_backup)
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
       if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=backup
@@ -396,8 +401,8 @@ bootstrap: &bootstrap
 
 
     # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/reset && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/reset)
+    if [[ -f /etc/elfbot/elfbot_reset && -z "$COMMAND" ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/elfbot_reset)
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
       if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=reset
@@ -407,8 +412,8 @@ bootstrap: &bootstrap
     case $COMMAND in
 
       "pause")
-        echo "Recent pause command found, sleeping 5m.."
-        sleep 300
+        echo "Recent pause command found, sleeping ${PAUSE_DURATION}m.."
+        sleep ${PAUSE_DURATION}m
         ;;
 
       "reset")
@@ -2503,7 +2508,7 @@ filebrowser:
           | while read APP
             do
               # if we are force-killing the pod, then don't bother with the configmap
-              if (cat /elfbot/$APP | grep -q forcerestart); then
+              if (cat /elfbot/$APP | grep -q elfbot_forcerestart); then
                 echo "forcerestart requested, deleting $APP pod with --force.."
                 kubectl delete pod -l app.kubernetes.io/name=$APP --force
                 kubectl delete pod -l app.elfhosted.com/name=$APP --force
@@ -2563,7 +2568,7 @@ uptimekuma:
     app.elfhosted.com/name: uptimekuma  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Uptime Kuma"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/uptimekuma.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/uptime-kuma.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-uptimekuma"
@@ -5937,7 +5942,7 @@ tunarr:
       app.elfhosted.com/name: tunarr    
   podAnnotations:
     elfbot.elfhosted.com/name: "Tunarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/tunarr.png"        
+    elfbot.elfhosted.com/icon: "fas fa-tv"        
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6468,7 +6473,7 @@ discovarr:
     app.elfhosted.com/name: discovarr
   podAnnotations:
     elfbot.elfhosted.com/name: "Discovarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/discovarr.png"      
+    elfbot.elfhosted.com/icon: "fas fa-sitemap"  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-discovarr,discovarr-config"
@@ -7014,7 +7019,7 @@ booklore:
       app.elfhosted.com/name: booklore  
   podAnnotations:
     elfbot.elfhosted.com/name: "Booklore"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/booklore.png"        
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-booklore,booklore-env"
@@ -7659,7 +7664,7 @@ audiobookbayautomated:
       app.elfhosted.com/name: audiobookbay-automated    
   podAnnotations:
     elfbot.elfhosted.com/name: "AudioBookBay Automated"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/audiobookbay-automated.png"        
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7738,7 +7743,7 @@ openbooks:
       app.elfhosted.com/name: openbooks  
   podAnnotations:
     elfbot.elfhosted.com/name: "OpenBooks"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/openbooks.png"        
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8357,7 +8362,7 @@ imagemaid:
       app.elfhosted.com/name: imagemaid 
   podAnnotations:
     elfbot.elfhosted.com/name: "ImageMaid"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/imagemaid.png"           
+    elfbot.elfhosted.com/icon: "fas fa-image"           
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8761,7 +8766,7 @@ seerrbridge:
       app.elfhosted.com/name: seerrbridge  
   podAnnotations:
     elfbot.elfhosted.com/name: "SeerrBridge"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/seerrbridge.png"          
+    elfbot.elfhosted.com/icon: "fas fa-bridge"          
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8919,7 +8924,7 @@ listsync:
     app.elfhosted.com/name: listsync
   podAnnotations:
     elfbot.elfhosted.com/name: "ListSync"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/listsync.png"      
+    elfbot.elfhosted.com/icon: "fas fa-list"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-listsync,listsync-env"
@@ -9009,7 +9014,7 @@ plextraktsync:
     app.elfhosted.com/name: plextraktsync
   podAnnotations:
     elfbot.elfhosted.com/name: "PlexTraktSync"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plextraktsync.png"      
+    elfbot.elfhosted.com/icon: "fas fa-sync"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plextraktsync"
@@ -9175,7 +9180,7 @@ letterboxdtraktsync:
       app.elfhosted.com/name: letterboxd-trakt-sync    
   podAnnotations:
     elfbot.elfhosted.com/name: "Letterboxd Trakt Sync"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/letterboxdtraktsync.png"        
+    elfbot.elfhosted.com/icon: "fas fa-film"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9256,7 +9261,7 @@ decluttarr: &app_decluttarr
       app.elfhosted.com/name: decluttarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Decluttarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/decluttarr.png"          
+    elfbot.elfhosted.com/icon: "fas fa-trash-alt"          
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9365,7 +9370,7 @@ suggestarr:
       app.elfhosted.com/name: suggestarr    
   podAnnotations:
     elfbot.elfhosted.com/name: "Suggestarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/suggestarr.png"        
+    elfbot.elfhosted.com/icon: "fas fa-lightbulb"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9448,10 +9453,11 @@ rcloneui:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
   podLabels:
-      app.elfhosted.com/name: rcloneui      
+    app.elfhosted.com/name: rcloneui      
   podAnnotations:
     elfbot.elfhosted.com/name: "Rclone UI"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"     
+    kubernetes.io/egress-bandwidth: "40M"   
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9571,7 +9577,6 @@ rclonefm:
   podAnnotations:
     elfbot.elfhosted.com/name: "Rclone FM"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"        
-  podAnnotations:
     kubernetes.io/egress-bandwidth: "40M"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
@@ -9787,7 +9792,7 @@ jfa:
       app.elfhosted.com/name: jfa      
   podAnnotations:
     elfbot.elfhosted.com/name: "Jellyfin Accounts"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin-accounts.png"        
+    elfbot.elfhosted.com/icon: "fas fa-user"        
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -10937,7 +10942,7 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   podAnnotations:
     elfbot.elfhosted.com/name: "Riven"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/riven.png"      
+    elfbot.elfhosted.com/icon: "fas fa-mountain"      
   image:
     repository: ghcr.io/elfhosted/riven
     tag: v0.21.21@sha256:bf1a9cab579d5eaac0ed72e20584b139547db7c38753a03b3756151af5e0ac13
@@ -11138,7 +11143,7 @@ rivenfrontend: &app_rivenfrontend
     app.elfhosted.com/name: riven-frontend
   podAnnotations:
     elfbot.elfhosted.com/name: "Riven Frontend"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/riven.png"      
+    elfbot.elfhosted.com/icon: "fas fa-mountain"       
   image:
     repository: ghcr.io/elfhosted/riven-frontend
     tag: v0.20.0@sha256:c4d792868a8113a2f57f504fe371cbcd8c52172d734c812c366bff352672998e
@@ -11547,7 +11552,7 @@ flixio:
     app.elfhosted.com/name: flixio
   podAnnotations:
     elfbot.elfhosted.com/name: "Flixio"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/flixio.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/stremio.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flixio"
@@ -11598,7 +11603,7 @@ flixioapi:
     app.elfhosted.com/name: flixio-api
   podAnnotations:
     elfbot.elfhosted.com/name: "Flixio API"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/flixio-api.png"      
+    elfbot.elfhosted.com/icon: "fas fa-code"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flixio-api"
@@ -12321,7 +12326,7 @@ jackettio:
       app.elfhosted.com/name: jackettio  
   podAnnotations:
     elfbot.elfhosted.com/name: "Jackettio"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jackettio.png"        
+    elfbot.elfhosted.com/icon: "fas fa-search      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jackettio,jackettio-env"
@@ -12944,7 +12949,7 @@ mediaflowproxy:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
     elfbot.elfhosted.com/name: "MediaFlow Proxy"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/mediaflow-proxy.png"      
+    elfbot.elfhosted.com/icon: "fas fa-cloud 
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
@@ -13185,7 +13190,7 @@ autopulse:
       app.elfhosted.com/name: autopulse  
   podAnnotations:
     elfbot.elfhosted.com/name: "AutoPulse"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/autopulse.png"        
+    elfbot.elfhosted.com/icon: "fas fa-heartbeat"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-autopulse,autopulse-env"
@@ -13868,7 +13873,7 @@ plexdebrid: &app_plexdebrid
     app.elfhosted.com/name: plex-debrid    
   podAnnotations:
     elfbot.elfhosted.com/name: "plex_debrid"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex-debrid.png"      
+    elfbot.elfhosted.com/icon: "fas fa-film"      
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13945,7 +13950,7 @@ clidebrid: &app_clidebrid
     app.elfhosted.com/name: cli-debrid
   podAnnotations:
     elfbot.elfhosted.com/name: "CLI Debrid"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/cli-debrig.png"      
+    elfbot.elfhosted.com/icon: "fas fa-terminal"      
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
     tag: v0.6.87@sha256:99da3dc971e612fea736fda08c0bf1360f634c3130ee4a4c9fd739342bf7f17b 
@@ -14411,7 +14416,7 @@ pulsarr: &app_pulsarr
       app.elfhosted.com/name: pulsarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Pulsarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/pulsarr.png"        
+    elfbot.elfhosted.com/icon: "fas fa-broadcast-tower"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pulsarr,pulsarr-env"
@@ -14528,7 +14533,7 @@ dispatcharr:
       app.elfhosted.com/name: dispatcharr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Dispatcharr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/dispatcharr.png"        
+    elfbot.elfhosted.com/icon: "fas fa-tv"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-dispatcharr,dispatcharr-env"
@@ -14697,7 +14702,7 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   podAnnotations:
     elfbot.elfhosted.com/name: "DebriDav"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/debridav.png"      
+    elfbot.elfhosted.com/icon: "fas fa-cloud"      
   image:
     repository: ghcr.io/elfhosted/debridav
     tag: 0.10.1@sha256:67748eff91c1c318827284bb31a9f39c2ce10b22e29e58ec4f65659152fd8cfe
@@ -14969,7 +14974,7 @@ rclonedebridlink:
     app.elfhosted.com/name: debridlink
   podAnnotations:
     elfbot.elfhosted.com/name: "DebridLink"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/debridlink.png"      
+    elfbot.elfhosted.com/icon: "fas fa-link"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
@@ -15346,7 +15351,7 @@ decypharr: &app_decypharr
       app.elfhosted.com/name: decypharr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Decypharr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/decypharr.png"        
+    elfbot.elfhosted.com/icon: "fas fa-robot"        
   # Avoid search expansion DNS queries against coredns for every RD API request
   dnsConfig:
     options:
