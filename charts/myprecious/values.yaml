@@ -573,9 +573,8 @@ rutorrentgluetun: &rutorrent
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
-    elfbot.elfhosted.com/name: ruTorrent
-    elfbot.elfhosted.com/icon: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/blob/main/png/rutorrent.png
-
+    elfbot.elfhosted.com/name: "ruTorrent"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rutorrent.png"
     kubernetes.io/egress-bandwidth: "150M"
   controller:
     annotations:
@@ -863,6 +862,8 @@ rutorrentpia:
 qbittorrentgluetun: &qbittorrent
   podLabels:
     app.elfhosted.com/name: qbittorrent
+    elfbot.elfhosted.com/name: "qBittorrent"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/qbittorrent.png"    
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M"
   enabled: false
@@ -1429,7 +1430,9 @@ tautulli:
     tag: 2.15.2@sha256:214a0ef60363bf81722612732eb62830366fc2cbdbd75e39c4acca61aaae6f20
   priorityClassName: tenant-normal
   podLabels:
-      app.elfhosted.com/name: tautulli  
+    app.elfhosted.com/name: tautulli  
+    elfbot.elfhosted.com/name: "Tautulli"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/tautulli.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tautulli"
@@ -1529,6 +1532,8 @@ radarr: &app_radarr
   enabled: false
   podLabels:
     app.elfhosted.com/name: radarr
+    elfbot.elfhosted.com/name: "Radarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"    
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -1742,6 +1747,8 @@ radarr4k: &app_radarr4k
   enabled: false
   podLabels:
     app.elfhosted.com/name: radarr4k
+    elfbot.elfhosted.com/name: "Radarr (4K)"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"    
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -1957,7 +1964,9 @@ ombi:
     repository: ghcr.io/elfhosted/ombi
     tag: 4.47.1@sha256:7346137897633f5cb3cd7d26922782f68791201e317bb3051d3f79d25242c54e
   podLabels:
-      app.elfhosted.com/name: ombi
+    app.elfhosted.com/name: ombi
+    elfbot.elfhosted.com/name: "Ombi"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/ombi.png"      
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2028,7 +2037,9 @@ huntarr: &app_huntarr
   enabled: false
   priorityClassName: tenant-normal
   podLabels:
-      app.elfhosted.com/name: huntarr  
+    app.elfhosted.com/name: huntarr  
+    elfbot.elfhosted.com/name: "Huntarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/huntarr.png"      
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
@@ -2133,7 +2144,9 @@ bazarr:
     tag: 1.5.2@sha256:c44714dd7504d72e32d4937ebae0d616738574423b3e319a74dddbeb67755c5a
   priorityClassName: tenant-normal
   podLabels:
-      app.elfhosted.com/name: bazarr  
+    app.elfhosted.com/name: bazarr  
+    elfbot.elfhosted.com/name: "Bazarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr"
@@ -2210,7 +2223,9 @@ bazarr4k:
     tag: 1.5.2@sha256:c44714dd7504d72e32d4937ebae0d616738574423b3e319a74dddbeb67755c5a
   priorityClassName: tenant-normal
   podLabels:
-      app.elfhosted.com/name: bazarr4k  
+    app.elfhosted.com/name: bazarr4k  
+    elfbot.elfhosted.com/name: "Bazarr (4K)"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr4k"
@@ -2284,6 +2299,8 @@ filebrowser:
   enabled: true
   podLabels:
     app.elfhosted.com/name: filebrowser
+    elfbot.elfhosted.com/name: "FileBrowser"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/filebrowser.png"    
   image:
     repository: ghcr.io/elfhosted/filebrowser
     tag: 2.23.0@sha256:296e3a3d08c5ca07a26350358fa2e58a597a41adb253a65bba27b557f36383e5
@@ -2535,7 +2552,9 @@ uptimekuma:
     tag: 1.23.16@sha256:a8f477d080a481ddb08f66d3b9021ef2842bda942aedeed59ee1839713b63876
   priorityClassName: tenant-normal
   podLabels:
-      app.elfhosted.com/name: uptimekuma  
+    app.elfhosted.com/name: uptimekuma  
+    elfbot.elfhosted.com/name: "Uptime Kuma"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/uptimekuma.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-uptimekuma"
@@ -2604,7 +2623,9 @@ privatebin:
     repository: privatebin/fs
     tag: 1.7.8
   podLabels:
-      app.elfhosted.com/name: privatebin
+    app.elfhosted.com/name: privatebin
+    elfbot.elfhosted.com/name: "PriveteBin"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/privatebin.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-privatebin"
@@ -2697,7 +2718,9 @@ kapowarr:
     repository: elfhosted/kapowarr
     tag: 1.2.0@sha256:469ef44ffbd9514f0fa22facfbc5b35d4ff47713f98ce3a77e6988ab11984858
   podLabels:
-      app.elfhosted.com/name: kapowarr
+    app.elfhosted.com/name: kapowarr
+    elfbot.elfhosted.com/name: "Kapowarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kapowarr.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kapowarr"
@@ -2800,6 +2823,8 @@ calibreweb:
   enabled: false
   podLabels:
     app.elfhosted.com/name: calibre-web
+    elfbot.elfhosted.com/name: "Calibre Web Automated"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre-web.png"    
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/calibre-web-automated
@@ -2898,6 +2923,8 @@ cwabookdownloader:
   enabled: false
   podLabels:
     app.elfhosted.com/name: cwa-book-downloader
+    elfbot.elfhosted.com/name: "CWA Book Downloader"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibrain.png"    
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
@@ -11548,7 +11575,7 @@ elfbot:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:9f0cb3226b078745e69572da6df3faaa7677a3af533ae68c841d4d6f280e1d40
+    tag: rolling@sha256:c5079c5696012c15f135519def9e832ea9f0676f6c12b8b98a7da90bbdffb359
   priorityClassName: tenant-normal
   serviceAccount:
     name: elfbot
