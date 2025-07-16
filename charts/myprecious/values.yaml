@@ -5901,7 +5901,6 @@ flaresolverr: &app_flaresolverr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
   persistence:
-    tmp: *tmp
     shared:
       enabled: true
       mountPath: /shared
@@ -5931,19 +5930,7 @@ flaresolverr: &app_flaresolverr
         http:
           port: 8191
   initContainers:
-    setup-warp: *setup_warp
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: seerrbridge
-      - mountPath: /tmp
-        name: tmp          
+    setup-warp: *setup_warp     
   addons:
     vpn:
       enabled: true # in case we ever need it
