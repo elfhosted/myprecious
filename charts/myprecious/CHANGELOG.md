@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.437.0](https://github.com/elfhosted/myprecious/compare/v1.436.0...v1.437.0) (2025-07-16)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.6.1 ([c3ce94a](https://github.com/elfhosted/myprecious/commit/c3ce94a720d47e46ac54ba055d50a3ffae5cb122))
+* **app:** update ghcr.io/elfhosted/plextraktsync docker tag to v0.34.12 ([81ac4c2](https://github.com/elfhosted/myprecious/commit/81ac4c26c8848c4fc58dcaef0be1c9bb73158216))
+
+
+### Bug Fixes
+
+* fooling typo ([c5f94f8](https://github.com/elfhosted/myprecious/commit/c5f94f81024dc4d1314758e4a517773168052226))
+
 ## [1.436.0](https://github.com/elfhosted/myprecious/compare/v1.435.0...v1.436.0) (2025-07-16)
 
 
