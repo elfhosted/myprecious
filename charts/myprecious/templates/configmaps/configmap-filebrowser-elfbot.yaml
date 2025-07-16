@@ -7,6 +7,9 @@ data:
     #!/bin/bash
 
     if [[ $# -lt 2 ]]; then 
+        {{ if .Values.elfbot.enabled }}
+        echo "CLI ELFBOT IS DEPRECATED! Use https://{{ .Release.Name }}-elfbot.{{ .Values.dns_domain }} instead!"
+        {{ fi }}
         echo "usage: elfbot <command> <app> <optional>"
         echo
         echo '<app> must match an app found in /config'

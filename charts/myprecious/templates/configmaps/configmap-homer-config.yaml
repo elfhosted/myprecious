@@ -469,7 +469,7 @@ data:
 
           {{ if .Values.nuviostreams.enabled }}
           - name: "Nuvio Streams"
-            icon: "fas fa-film"
+            logo: "assets/png/nuviostreams.png"
             subtitle: "HTTP Streams in Stremio"
             tag: "protected"
             tagstyle: "is-success"
@@ -1263,7 +1263,6 @@ data:
 
           {{ if .Values.cinesync.enabled }}
           - name: "CineSync"
-            # icon: "fas fa-sync"
             logo: "assets/png/cinesync.png"
             subtitle: "Symlink / sort debrid media"
             tag: "protected"

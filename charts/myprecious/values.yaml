@@ -2221,7 +2221,7 @@ bazarr:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -2301,7 +2301,7 @@ bazarr4k:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -2797,7 +2797,7 @@ kapowarr:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 2Gi
@@ -2931,7 +2931,7 @@ calibreweb:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -3027,7 +3027,7 @@ cwabookdownloader:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -3179,7 +3179,7 @@ mylar:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -4017,7 +4017,7 @@ prowlarr: &app_prowlarr
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 2
       memory: 6Gi
@@ -4179,7 +4179,7 @@ nzbhydra:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -4367,7 +4367,7 @@ lidarr:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 2
       memory: 1Gi
@@ -4866,7 +4866,7 @@ readarraudio:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 2
       memory: 16Gi
@@ -8509,121 +8509,12 @@ imagemaid:
       cpu: 1
       memory: 4Gi  
 
-# cinesync:
-#   enabled: false
-#   priorityClassName: tenant-normal
-#   image:
-#     repository: ghcr.io/elfhosted/cinesync
-#     tag: v2.4.1@sha256:2357ef1feb815962b21cd993931757d483ea12b8a274155b5dfb90a59772db58
-#   securityContext:
-#     seccompProfile:
-#       type: RuntimeDefault
-#     readOnlyRootFilesystem: true
-#   podLabels:
-#     app.elfhosted.com/name: cinesync
-#   controller:
-#     annotations:
-#       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync,cinesync-env"
-#   affinity: *standard_affinity
-#   tolerations: *standard_tolerations
-#   podSecurityContext:
-#     seccompProfile:
-#       type: RuntimeDefault
-#     runAsUser: 568
-#     runAsGroup: 568
-#     fsGroup: 568
-#     fsGroupChangePolicy: "OnRootMismatch"
-#   automountServiceAccountToken: false
-#   service:
-#     main:
-#       enabled: true # necessary for probes
-#       ports:
-#         http:
-#           port: 3001
-#   envFrom:
-#   - configMapRef:
-#       name: cinesync-env
-#   - secretRef:
-#       name: cinesync-env      
-#   - configMapRef:
-#       name: elfbot-cinesync
-#       optional: true
-#   persistence:
-#     <<: *storagemounts
-#     config:
-#       enabled: true
-#       type: custom
-#       mountPath: /app/db
-#       subPath: cinesync
-#       volumeSpec:
-#         persistentVolumeClaim:
-#           claimName: config
-#     elfbot:
-#       enabled: "true"
-#       type: "custom"
-#       volumeSpec:
-#         configMap:
-#           name: elfbot-cinesync
-#           optional: true  
-#     logs:
-#       enabled: true
-#       type: custom
-#       mountPath: /app/logs
-#       subPath: cinesync
-#       volumeSpec:
-#         persistentVolumeClaim:
-#           claimName: logs              
-#   initContainers:
-#     bootstrap:
-#       <<: *bootstrap
-#       volumeMounts:
-#       - mountPath: /etc/elfbot
-#         name: elfbot
-#       - mountPath: /storage/backup
-#         name: backup
-#       - mountPath: /config
-#         name: config
-#         subPath: cinesync
-#       - mountPath: /tmp
-#         name: tmp
-#     setup:
-#       image: *tooling_image
-#       imagePullPolicy: IfNotPresent
-#       command:
-#       - /bin/bash
-#       - -c
-#       - |
-#         set -x
-
-#         # Create directory structure if it doesn't exist yet
-#         mkdir -p /storage/symlinks/movies
-#         mkdir -p /storage/symlinks/movies-4k
-#         mkdir -p /storage/symlinks/movies-anime
-#         mkdir -p /storage/symlinks/series
-#         mkdir -p /storage/symlinks/series-4k
-#         mkdir -p /storage/symlinks/series-anime
-#       volumeMounts:
-#       - mountPath: /storage/symlinks
-#         name: symlinks
-#       resources: *default_resources
-#       securityContext: *default_securitycontext        
-#   ingress:
-#     main:
-#       enabled: false
-#   resources:
-#     requests:
-#       cpu: 0m
-#       memory: 64Mi
-#     limits:
-#       cpu: 1
-#       memory: 2Gi 
-
 cinesync:
   enabled: false
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/cinesync
-    tag: CineSync-v3.0@sha256:51c59ecb17879e57347a480c8e4ae3538f881de2f2798debd8bbef79f319545f
+    tag: v3.0@sha256:26439a138e43b88bfff1c286a98f49cde90921254334133f3ce21de8688e3355
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -10268,7 +10159,7 @@ rdtclient: &app_rdtclient
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
       ephemeral-storage: 50Mi
     limits:
       cpu: 100m
@@ -10588,7 +10479,7 @@ homepage:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 250m # deliberately hobble the CPU in favor of GPU transcoding
       memory: 1Gi
@@ -11463,7 +11354,7 @@ jackett:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1024Mi
@@ -11539,7 +11430,7 @@ wizarr:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1024Mi
@@ -11649,7 +11540,7 @@ flixio:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 2
       memory: 2Gi
@@ -11719,7 +11610,7 @@ flixioapi:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 1Gi
@@ -11770,7 +11661,7 @@ pairdrop:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 256Mi
@@ -11830,7 +11721,7 @@ actual:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 256Mi
@@ -11861,7 +11752,7 @@ actual:
           claimName: config     
 
 elfbot:
-  enabled: true # everyone gets elfbot
+  enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
     tag: rolling@sha256:7d03478bab0c274dc9c76d734f48882912256f5db09ffdb3facd62cae2f769ed
@@ -11914,10 +11805,10 @@ elfbot:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 1Mi
     limits:
       cpu: 1
-      memory: 256Mi
+      memory: 100Mi
   ingress:
     main:
       enabled: false
@@ -11962,7 +11853,7 @@ petio:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 256Mi
@@ -12057,7 +11948,7 @@ nightscout:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 256Mi
@@ -12129,7 +12020,7 @@ pgadmin:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 256Mi
@@ -12190,7 +12081,7 @@ redisinsight:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 256Mi
@@ -12245,7 +12136,7 @@ mongoexpress:
   resources:
     requests:
       cpu: 0m
-      memory: 128Mi
+      memory: 64Mi
     limits:
       cpu: 1
       memory: 256Mi
@@ -13356,7 +13247,7 @@ nuviostreams:
       app.elfhosted.com/name: nuviostreams        
   podAnnotations:
     elfbot.elfhosted.com/name: "NuvioStreams"
-    elfbot.elfhosted.com/icon: "fas fa-film"    
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nuviostreams.png"    
     kubernetes.io/egress-bandwidth: "64M" 
   controller:
     annotations:
