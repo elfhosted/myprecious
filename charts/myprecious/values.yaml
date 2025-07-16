@@ -2562,7 +2562,7 @@ uptimekuma:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/uptime-kuma
-    tag: 1.23.16@sha256:a8f477d080a481ddb08f66d3b9021ef2842bda942aedeed59ee1839713b63876
+    tag: 1.23.16@sha256:2a4046d05f269551606c4eb2f1f0d9c3e95fbc705fd98531471f495238068bfa
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: uptimekuma  
