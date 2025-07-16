@@ -1076,6 +1076,15 @@ data:
           - type: email
       {{ end }}            
 
+      - name: elfbot
+        group: tools
+        url: "http://elfbot:3000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+
       - name: filebrowser
         group: tools
         url: "http://filebrowser:8080"

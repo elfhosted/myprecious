@@ -1420,6 +1420,14 @@ data:
         icon: "fas fa-toolbox"
         items:
 
+          - name: "ElfBot"
+            icon: "fas fa-robot"
+            subtitle: "Manage Apps"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-elfbot.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+
           - name: "FileBrowser"
             logo: "assets/png/filebrowser.png"
             subtitle: "Manage Files"

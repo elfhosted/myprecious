@@ -428,8 +428,8 @@ bootstrap: &bootstrap
         ;;
 
       "backup")
-        echo "Recent backup command found, backing up to /storage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
         TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
+        echo "Recent backup command found, backing up to /storage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
         cp -rfp /config /storage/backup/$ELF_APP_NAME-$TIMESTAMP
         ;;
 
@@ -8622,8 +8622,8 @@ cinesync:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/cinesync-dev
-    tag: rolling@sha256:c8d7fc4c3d0360f208265d3f1a1220c2f3cc42a4fc5c7d2a305afb3532102e9c
+    repository: ghcr.io/elfhosted/cinesync
+    tag: CineSync-v3.0@sha256:51c59ecb17879e57347a480c8e4ae3538f881de2f2798debd8bbef79f319545f
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11861,10 +11861,10 @@ actual:
           claimName: config     
 
 elfbot:
-  enabled: false
+  enabled: true # everyone gets elfbot
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:3b6a2544acbca5a3bad86f300fe8f3579512a363daf5b087e733b74071a47781
+    tag: rolling@sha256:7d03478bab0c274dc9c76d734f48882912256f5db09ffdb3facd62cae2f769ed
   priorityClassName: tenant-normal
   serviceAccount:
     name: elfbot
