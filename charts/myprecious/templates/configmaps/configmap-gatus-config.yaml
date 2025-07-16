@@ -193,17 +193,6 @@ data:
           - type: email
       {{ end }}
 
-      {{ if .Values.stremiojackett.enabled }}
-      - name: stremio-jackett
-        group: consume-media
-        url: "http://stremio-jackett:3000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.jackettio.enabled }}
       - name: jackettio
         group: consume-media
@@ -246,18 +235,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }} 
-
-      {{ if .Values.aiostreamsv1.enabled }}
-      - name: aiostreamsv1
-        group: consume-media
-        url: "http://aiostreamsv1:3000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}        
+      {{ end }}    
 
       {{ if .Values.nuviostreams.enabled }}
       - name: nuviostreams
@@ -269,17 +247,6 @@ data:
         alerts:
           - type: email
       {{ end }}  
-
-      {{ if .Values.knightcrawler.enabled }}
-      - name: knightcrawler
-        group: consume-media
-        url: "http://knightcrawler:7000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
 
       {{ if .Values.stremthru.enabled }}
       - name: stremthru
@@ -393,28 +360,6 @@ data:
       - name: sonarr4K
         group: manage-media
         url: "http://sonarr4k:8989"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.scannarr.enabled }}
-      - name: scannarr
-        group: download-media
-        url: "http://scannarr:9898"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
-      {{ if .Values.scannarr4k.enabled }}
-      - name: scannarr4k
-        group: download-media
-        url: "http://scannarr4k:9898"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
@@ -1013,7 +958,7 @@ data:
       {{ if .Values.cinesync.enabled }}
       - name: cinesync
         group: download-media
-        url: "http://cinesync:3001"
+        url: "http://cinesync:5173"
         interval: 5m
         conditions:
           - "[STATUS] == 200"
@@ -1130,6 +1075,15 @@ data:
         alerts:
           - type: email
       {{ end }}            
+
+      - name: elfbot
+        group: tools
+        url: "http://elfbot:3000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
 
       - name: filebrowser
         group: tools

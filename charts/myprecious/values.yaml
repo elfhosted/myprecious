@@ -377,8 +377,13 @@ bootstrap: &bootstrap
 
     # look for commands - we match specific names in order of least-destructive
     TIMESTAMP_NOW=$(date +%s)
-    if [[ -f /etc/elfbot/pause ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/pause)
+    if [[ -f /etc/elfbot/elfbot_pause ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/elfbot_pause)
+      if [[ -f /etc/elfbot/elfbot_pause_duration ]]; then
+        PAUSE_DURATION=$(cat /etc/elfbot/elfbot_pause_duration)
+      else
+        PAUSE_DURATION=5 # default to 5 minutes
+      fi
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
       if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=pause
@@ -386,8 +391,8 @@ bootstrap: &bootstrap
     fi
 
     # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/backup && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/backup)
+    if [[ -f /etc/elfbot/elfbot_backup && -z "$COMMAND" ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/elfbot_backup)
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
       if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=backup
@@ -396,8 +401,8 @@ bootstrap: &bootstrap
 
 
     # If no command is set, then move onto the next possibility
-    if [[ -f /etc/elfbot/reset && -z "$COMMAND" ]]; then
-      TIMESTAMP_COMMAND=$(cat /etc/elfbot/reset)
+    if [[ -f /etc/elfbot/elfbot_reset && -z "$COMMAND" ]]; then
+      TIMESTAMP_COMMAND=$(cat /etc/elfbot/elfbot_reset)
       TIMESTAMP_DIFF=$((TIMESTAMP_NOW-TIMESTAMP_COMMAND))
       if [[ $TIMESTAMP_DIFF -lt 300 ]]; then
         COMMAND=reset
@@ -407,8 +412,8 @@ bootstrap: &bootstrap
     case $COMMAND in
 
       "pause")
-        echo "Recent pause command found, sleeping 5m.."
-        sleep 300
+        echo "Recent pause command found, sleeping ${PAUSE_DURATION}m.."
+        sleep ${PAUSE_DURATION}m
         ;;
 
       "reset")
@@ -423,8 +428,8 @@ bootstrap: &bootstrap
         ;;
 
       "backup")
-        echo "Recent backup command found, backing up to /storage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
         TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
+        echo "Recent backup command found, backing up to /storage/backup/${ELF_APP_NAME}-${TIMESTAMP}"
         cp -rfp /config /storage/backup/$ELF_APP_NAME-$TIMESTAMP
         ;;
 
@@ -523,8 +528,6 @@ mediafusionexposed:
   enabled: false
 stremthruexposed:
   enabled: false    
-stremiojackettexposed:
-  enabled: false  
 youriptvexposed:
   enabled: false
 threadfinexposed:
@@ -575,9 +578,8 @@ rutorrentgluetun: &rutorrent
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
-    elfbot.elfhosted.com/name: ruTorrent
-    elfbot.elfhosted.com/icon: https://raw.githubusercontent.com/homarr-labs/dashboard-icons/blob/main/png/rutorrent.png
-
+    elfbot.elfhosted.com/name: "ruTorrent"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rutorrent.png"
     kubernetes.io/egress-bandwidth: "150M"
   controller:
     annotations:
@@ -866,6 +868,8 @@ qbittorrentgluetun: &qbittorrent
   podLabels:
     app.elfhosted.com/name: qbittorrent
   podAnnotations:
+    elfbot.elfhosted.com/name: "qBittorrent"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/qbittorrent.png"
     kubernetes.io/egress-bandwidth: "150M"
   enabled: false
   automountServiceAccountToken: false
@@ -1430,6 +1434,11 @@ tautulli:
     repository: elfhosted/tautulli
     tag: 2.15.2@sha256:214a0ef60363bf81722612732eb62830366fc2cbdbd75e39c4acca61aaae6f20
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: tautulli  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Tautulli"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/tautulli.png"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tautulli"
@@ -1529,6 +1538,9 @@ radarr: &app_radarr
   enabled: false
   podLabels:
     app.elfhosted.com/name: radarr
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Radarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"      
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -1742,7 +1754,9 @@ radarr4k: &app_radarr4k
   enabled: false
   podLabels:
     app.elfhosted.com/name: radarr4k
-    app.elfhosted.com/class: debrid
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Radarr (4K)"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"    
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -1957,6 +1971,11 @@ ombi:
   image:
     repository: ghcr.io/elfhosted/ombi
     tag: 4.47.1@sha256:7346137897633f5cb3cd7d26922782f68791201e317bb3051d3f79d25242c54e
+  podLabels:
+    app.elfhosted.com/name: ombi
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Ombi"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/ombi.png"      
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2023,92 +2042,14 @@ ombi:
       cpu: 2
       memory: 1Gi
 
-scannarr: &app_scannarr
-  enabled: false
-  priorityClassName: tenant-normal
-  image:
-    registry: ghcr.io
-    repository: elfhosted/scannarr
-    tag: rolling@sha256:a0d7e6f755ef8f9f3cc61d2cd7f540acd81acb39c0431e6cae91030a02a3c7ff
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-scannarr"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  automountServiceAccountToken: false
-  persistence:
-    tmp: *tmp
-    sonarr-settings:
-      enabled: "true"
-      mountPath: "/app/settings_sonarr.json"
-      subPath: "settings_sonarr.json"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: scannarr-config
-    radarr-settings:
-      enabled: "true"
-      mountPath: "/app/settings_radarr.json"
-      subPath: "settings_radarr.json"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: scannarr-config
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true
-      ports:
-        http:
-          port: 9898 # doesn't matter this doesn,t actually use ports
-  additionalContainers:
-    podinfo:
-      image: stefanprodan/podinfo # used to run probes from gatus
-  resources: *default_resources
-
-scannarr4k:
-  <<: *app_scannarr
-  enabled: false
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-scannarr4k"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  persistence:
-    tmp: *tmp
-    sonarr-settings:
-      enabled: "true"
-      mountPath: "/app/settings_sonarr.json"
-      subPath: "settings_sonarr.json"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: scannarr4k-config
-    radarr-settings:
-      enabled: "true"
-      mountPath: "/app/settings_radarr.json"
-      subPath: "settings_radarr.json"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: scannarr4k-config
-
 huntarr: &app_huntarr
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: huntarr  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Huntarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/huntarr.png"      
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
@@ -2212,6 +2153,11 @@ bazarr:
     repository: elfhosted/bazarr
     tag: 1.5.2@sha256:c44714dd7504d72e32d4937ebae0d616738574423b3e319a74dddbeb67755c5a
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: bazarr  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Bazarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr"
@@ -2287,6 +2233,11 @@ bazarr4k:
     repository: elfhosted/bazarr
     tag: 1.5.2@sha256:c44714dd7504d72e32d4937ebae0d616738574423b3e319a74dddbeb67755c5a
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: bazarr4k  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Bazarr (4K)"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr4k"
@@ -2360,6 +2311,9 @@ filebrowser:
   enabled: true
   podLabels:
     app.elfhosted.com/name: filebrowser
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "FileBrowser"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/filebrowser.png"    
   image:
     repository: ghcr.io/elfhosted/filebrowser
     tag: 2.23.0@sha256:296e3a3d08c5ca07a26350358fa2e58a597a41adb253a65bba27b557f36383e5
@@ -2554,7 +2508,7 @@ filebrowser:
           | while read APP
             do
               # if we are force-killing the pod, then don't bother with the configmap
-              if (cat /elfbot/$APP | grep -q forcerestart); then
+              if (cat /elfbot/$APP | grep -q elfbot_forcerestart); then
                 echo "forcerestart requested, deleting $APP pod with --force.."
                 kubectl delete pod -l app.kubernetes.io/name=$APP --force
                 kubectl delete pod -l app.elfhosted.com/name=$APP --force
@@ -2610,6 +2564,11 @@ uptimekuma:
     repository: ghcr.io/elfhosted/uptime-kuma
     tag: 1.23.16@sha256:a8f477d080a481ddb08f66d3b9021ef2842bda942aedeed59ee1839713b63876
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: uptimekuma  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Uptime Kuma"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/uptime-kuma.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-uptimekuma"
@@ -2677,7 +2636,11 @@ privatebin:
   image:
     repository: privatebin/fs
     tag: 1.7.8
-  priorityClassName:
+  podLabels:
+    app.elfhosted.com/name: privatebin
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "PriveteBin"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/privatebin.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-privatebin"
@@ -2769,7 +2732,11 @@ kapowarr:
     registry: ghcr.io
     repository: elfhosted/kapowarr
     tag: 1.2.0@sha256:469ef44ffbd9514f0fa22facfbc5b35d4ff47713f98ce3a77e6988ab11984858
-  priorityClassName:
+  podLabels:
+    app.elfhosted.com/name: kapowarr
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Kapowarr"
+    elfbot.elfhosted.com/icon: "fas fa-comments"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kapowarr"
@@ -2872,6 +2839,9 @@ calibreweb:
   enabled: false
   podLabels:
     app.elfhosted.com/name: calibre-web
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Calibre Web Automated"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre-web.png"    
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/calibre-web-automated
@@ -2970,6 +2940,9 @@ cwabookdownloader:
   enabled: false
   podLabels:
     app.elfhosted.com/name: cwa-book-downloader
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "CWA Book Downloader"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibrain.png"    
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
@@ -3065,6 +3038,11 @@ lazylibrarian:
     repository: ghcr.io/elfhosted/lazylibrarian
     tag: rolling@sha256:5095b4270cd7132983e6b6b1088a552d20051c2cf0f1f7e265c733c2af899e00
   enabled: false
+  podLabels:
+    app.elfhosted.com/name: lazylibrarian  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Lazy Librarian"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/lazylibrarian.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-lazylibrarian"
@@ -3131,6 +3109,11 @@ lazylibrarian:
 mylar:
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: mylar  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Mylar"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/mylar.png"      
   image:
     registry: ghcr.io
     repository: elfhosted/mylar3
@@ -3204,6 +3187,11 @@ mylar:
 komga:
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: komga  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Komga"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/komga.png"      
   image:
     repository: ghcr.io/elfhosted/komga
     tag: 1.22.1@sha256:1be95e0e478113542c88468310d82b708b1ddf1cd2b6b0b7ce7b214ad85c5578
@@ -3276,6 +3264,11 @@ komga:
 kavita:
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: kavita  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Kavita"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kavita.png"      
   image:
     repository: ghcr.io/elfhosted/kavita
     tag: 0.8.7@sha256:2d3eccdb29f294049b5c081ffcc20eea8e84f28eb6480db873dd83ea21e7fbb9
@@ -3342,7 +3335,11 @@ kavita:
 
 calibre:
   enabled: false
-  # runtimeClassName: kata
+  podLabels:
+    app.elfhosted.com/name: calibre
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Calibre"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre.png"      
   image:
     repository: quay.io/linuxserver.io/calibre
     tag: 8.6.0@sha256:ea59a40f5a068b5944da32c2b0ced168ededd8b0f5cc333c576dab69dc45c737
@@ -3429,7 +3426,9 @@ sonarr: &app_sonarr
   enabled: false
   podLabels:
     app.elfhosted.com/name: sonarr
-    app.elfhosted.com/class: debrid
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Sonarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/sonarr.png"    
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -3642,7 +3641,9 @@ sonarr4k: &app_sonarr4k
   enabled: false
   podLabels:
     app.elfhosted.com/name: sonarr4k
-    app.elfhosted.com/class: debrid
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Sonarr (4K)"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/sonarr.png"    
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -3861,6 +3862,9 @@ prowlarr: &app_prowlarr
   enabled: false
   podLabels:
     app.elfhosted.com/name: prowlarr
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Prowlarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/prowlarr.png"    
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
@@ -4105,6 +4109,9 @@ nzbhydra:
   enabled: false
   podLabels:
     app.elfhosted.com/name: nzbhydra
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "NZBHydra"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nzbhydra.png"    
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
@@ -4184,6 +4191,11 @@ lidarr:
     repository: elfhosted/lidarr-develop
     tag: 2.13.0.4664@sha256:f35f078ba42887de525392bc08cc413bd158d743b3ac0164c1c6c0c094166cc5  
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: lidarr  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Lidarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/lidarr.png"      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4366,6 +4378,11 @@ navidrome:
     repository: ghcr.io/elfhosted/navidrome
     tag: 0.57.0@sha256:a821a6f6b793f60b90559538ab058e634b3f7bfebe14d270f2e11745f8ee0839
   priorityClassName: tenant-streaming
+  podLabels:
+    app.elfhosted.com/name: navidrome  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Navidrome"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/navidrome.png"    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4435,6 +4452,11 @@ navidrome:
 readarr:
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: readarr  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Readarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/readarr.png"    
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
@@ -4647,6 +4669,11 @@ readarr:
 readarraudio:
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+    app.elfhosted.com/name: readarraudio  
+  podAnnotations:    
+    elfbot.elfhosted.com/name: "Readarr (Audio)"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/readarr.png"      
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
@@ -4859,10 +4886,11 @@ plex: &app_plex
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
-    app.elfhosted.com/name: plex
-    app.elfhosted.com/class: debrid
+    app.elfhosted.com/name: plex    
   podAnnotations:
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
+    elfbot.elfhosted.com/name: "Plex"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -4977,7 +5005,7 @@ plex: &app_plex
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr:v1.0.5@sha256:b0d539fe2217cce88979e65f6982afd872579a5fbc72140c06c36bfe0e2fdf3d
+      image: ghcr.io/elfhosted/decypharr:v1.0.4@sha256:907e38dcc531f75976dfb2840651897a84da27091414eca91fd5bac011ed1e55
       command:
       - /bin/bash
       - -c
@@ -5138,95 +5166,7 @@ plex: &app_plex
           port: 32400
         initialDelaySeconds: 30
         periodSeconds: 10
-        timeoutSeconds: 10
-
-
-plexrequests:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/wests-blackhole-script
-    tag: v1.5.1@sha256:3f7a6e09de005b57fec75762422c0880286a8c4d93a9871b3df1e88866fc8dc1
-  command: [ "/request.sh" ]
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plexrequests,plexrequests-env"
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568 # need this so that the bootstrap can run
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  envFrom:
-  - configMapRef:
-      name: plexrequests-env
-  - configMapRef:
-      name: elfbot-plexrequests
-      optional: true    
-  persistence:
-    tmp: *tmp
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: plexrequests
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    app-cache:
-      mountPath: /app/cache
-      enabled: true
-      type: emptyDir
-      volumeSpec:
-        medium: Memory                      
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 32501
-  resources:
-    requests:
-      cpu: 0m
-      memory: 10Mi
-    limits:
-      cpu: 0.5
-      memory: 1Gi
-  additionalContainers:
-    auth:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:71c8321c12ec2a643aca899c38f144fb31c4ba302612e139499ca966d633a316
-      command: [ "/auth.sh" ]
-      envFrom:
-      - configMapRef:
-          name: plexrequests-env
-      - configMapRef:
-          name: elfbot-plexrequests
-          optional: true    
-      volumeMounts:
-      - name: config
-        mountPath: /config
-        subPath: plexrequests     
-    watchlist:
-      image: ghcr.io/elfhosted/wests-blackhole-script:v1.5.1@sha256:71c8321c12ec2a643aca899c38f144fb31c4ba302612e139499ca966d633a316
-      command: [ "/watchlist.sh" ]
-      envFrom:
-      - configMapRef:
-          name: plexrequests-env
-      - configMapRef:
-          name: elfbot-plexrequests
-          optional: true
-      volumeMounts:
-      - name: config
-        mountPath: /config
-        subPath: plexrequests             
+        timeoutSeconds: 10          
 
 jellyfin: &app_jellyfin
   hostname: elfhosted
@@ -5237,6 +5177,8 @@ jellyfin: &app_jellyfin
   podLabels:
     app.elfhosted.com/name: jellyfin
   podAnnotations:
+    elfbot.elfhosted.com/name: "Jellyfin"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"  
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   priorityClassName: tenant-streaming
   securityContext:
@@ -5314,7 +5256,7 @@ jellyfin: &app_jellyfin
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr:v1.0.5@sha256:b0d539fe2217cce88979e65f6982afd872579a5fbc72140c06c36bfe0e2fdf3d
+      image: ghcr.io/elfhosted/decypharr:v1.0.4@sha256:907e38dcc531f75976dfb2840651897a84da27091414eca91fd5bac011ed1e55
       command:
       - /bin/bash
       - -c
@@ -5407,8 +5349,9 @@ jellyfinranger:
   <<: *app_jellyfin
   podLabels:
     app.elfhosted.com/name: jellyfin
-    app.elfhosted.com/class: dedicated
   podAnnotations:
+    elfbot.elfhosted.com/name: "Jellyfin"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"  
     kubernetes.io/egress-bandwidth: "500M"
   enabled: false
   automountServiceAccountToken: false
@@ -5436,9 +5379,10 @@ emby: &app_emby
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
-    app.elfhosted.com/class: debrid
     app.elfhosted.com/name: emby
   podAnnotations:
+    elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   securityContext:
     seccompProfile:
@@ -5518,7 +5462,7 @@ emby: &app_emby
       - |
         echo "This pod only exists to cause a restart when zurg is updated"
     restart-with-decypharr:
-      image: ghcr.io/elfhosted/decypharr:v1.0.5@sha256:b0d539fe2217cce88979e65f6982afd872579a5fbc72140c06c36bfe0e2fdf3d
+      image: ghcr.io/elfhosted/decypharr:v1.0.4@sha256:907e38dcc531f75976dfb2840651897a84da27091414eca91fd5bac011ed1e55
       command:
       - /bin/bash
       - -c
@@ -5599,8 +5543,9 @@ embyranger:
   <<: *app_emby
   podLabels:
     app.elfhosted.com/name: emby
-    app.elfhosted.com/class: dedicated
   podAnnotations:
+    elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
     kubernetes.io/egress-bandwidth: "500M"
   enabled: false
   automountServiceAccountToken: false
@@ -5628,6 +5573,11 @@ homer:
     runAsNonRoot: false
     runAsUser: 568
     runAsGroup: 568
+  podLabels:
+      app.elfhosted.com/name: homer    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Homer"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/homer.png"      
   podSecurityContext:
     runAsNonRoot: false
     seccompProfile:
@@ -5859,6 +5809,11 @@ gotify:
     repository: ghcr.io/elfhosted/gotify
     tag: 2.5.0@sha256:f5c89bb3ccbf857bca816e4550b46c442cfb6c0eae0f081975ba5c5099779c3f
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: gotify  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Gotify"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/gotify.png"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5924,10 +5879,95 @@ gotify:
       - mountPath: /tmp
         name: tmp
 
-flaresolverr: &app_flaresolverr
+# flaresolverr: &app_flaresolverr
+#   enabled: false
+#   podLabels:
+#     app.elfhosted.com/name: flaresolverr
+#   podAnnotations:
+#     elfbot.elfhosted.com/name: "Flaresolverr"
+#     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/flaresolverr.png"      
+#   image:
+#     registry: ghcr.io
+#     repository: elfhosted/flaresolverr
+#     tag: 3.3.25@sha256:542df3605a7e999969d61bdbbcf5d5a25ea53f3b9f23b38d93253f8fb3e679a3
+#   priorityClassName: tenant-normal
+#   securityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     readOnlyRootFilesystem: false # makes node unhappy
+#   affinity: *standard_affinity
+#   tolerations: *standard_tolerations
+#   controller:
+#     annotations:
+#       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
+#   persistence:
+#     shared:
+#       enabled: true
+#       mountPath: /shared
+#       type: emptyDir
+#       volumeSpec:
+#         medium: Memory  
+#   podSecurityContext:
+#     seccompProfile:
+#       type: RuntimeDefault
+#     # runAsUser: 1000
+#     # runAsGroup: 1000
+#   automountServiceAccountToken: false
+#   resources:
+#     requests:
+#       cpu: 0m
+#       memory: 64Mi
+#     limits:
+#       cpu: 600m
+#       memory: 1Gi
+#   ingress:
+#     main:
+#       enabled: false
+#   service:
+#     main:
+#       enabled: true # necessary for probes
+#       ports:
+#         http:
+#           port: 8191
+#   initContainers:
+#     setup-warp: *setup_warp     
+#   addons:
+#     vpn:
+#       enabled: true # in case we ever need it
+#       gluetun:
+#         image:
+#           repository: ghcr.io/elfhosted/gluetun
+#           tag: 3.40.0@sha256:59b0cc8a9412b9a4645d1f12dff0daba80b8be88acd1b5d1a0fb6dfa625eb9a5
+#       env:
+#         FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
+#         DNS_KEEP_NAMESERVER: "on"
+#         HTTP_CONTROL_SERVER_PORT: "8000"
+#         HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+#         VPN_TYPE: wireguard
+#         VPN_SERVICE_PROVIDER: custom
+#         FIREWALL_INPUT_PORTS: "8191"
+#         WIREGUARD_MTU: "1280"
+#         VPN_ENDPOINT_PORT: "2408"
+#         DOT: "off"
+#       securityContext:
+#         privileged: true
+#         runAsUser: 0
+#         capabilities:
+#           add:
+#             - NET_ADMIN
+#             - SYS_MODULE
+#       config: # We have to set this to null so that we can override with our own config
+#       volumeMounts:
+#       - mountPath: /shared
+#         name: shared     
+
+flaresolverr:
   enabled: false
   podLabels:
     app.elfhosted.com/name: flaresolverr
+  podAnnotations:
+    elfbot.elfhosted.com/name: "FlareSolverr"
+    elfbot.elfhosted.com/icon: "fas fa-cloud"
   image:
     registry: ghcr.io
     repository: elfhosted/byparr
@@ -5942,20 +5982,9 @@ flaresolverr: &app_flaresolverr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
-  # persistence:
-  #   config:
-  #     enabled: true
-  #     type: custom
-  #     mountPath: /app/screenshots
-  #     volumeSpec:
-  #       persistentVolumeClaim:
-  #         claimName: config
-  #     subPath: byparr/sreenshots
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
-    # runAsUser: 1000
-    # runAsGroup: 1000
   automountServiceAccountToken: false
   resources:
     requests:
@@ -5972,7 +6001,7 @@ flaresolverr: &app_flaresolverr
       enabled: true # necessary for probes
       ports:
         http:
-          port: 8191
+          port: 8191          
 
 tunarr:
   enabled: false
@@ -5980,6 +6009,12 @@ tunarr:
     registry: ghcr.io
     repository: chrisbenincasa/tunarr
     tag: 0.20.4-vaapi
+  podLabels:
+      app.elfhosted.com/name: tunarr    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Tunarr"
+    elfbot.elfhosted.com/icon: "fas fa-tv"  
+    kubernetes.io/egress-bandwidth: "128M"            
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5991,8 +6026,6 @@ tunarr:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tunarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "128M"  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6069,6 +6102,11 @@ ersatztv:
     repository: jasongdove/ersatztv
     tag: develop-vaapi@sha256:04bfca875a7da7c7ba15bca1e9c79a3b6b26d4ead20a5d0ae22ad037700b03d5
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: ersatztv  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "ErsatzTV"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/ersatztv.png"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6150,6 +6188,11 @@ threadfin:
     repository: elfhosted/threadfin
     tag: 1.2.35@sha256:0e056fd818094e1cc07cc9d64065e85fb6a40a06a6f7eba60cab8cc3f1785b34
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: threadfin  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Threadfin"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/threadfin.png"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6220,6 +6263,11 @@ thelounge:
     repository: ghcr.io/elfhosted/thelounge
     tag: "4.4.3@sha256:74ae8d9fc36d5a8396bb70cfaa58d222730fa69d2f71c3e2ec3ae010f2a0b264"
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: thelounge  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "TheLounge"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/thelounge.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-thelounge"
@@ -6337,6 +6385,11 @@ symlinkcleaner:
   imagePullSecrets:
   - name: ghcr-io-elfhosted
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: symlinkcleaner  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Symlink Cleaner"
+    elfbot.elfhosted.com/icon: "fas fa-broom"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-symlink-cleaner,symlink-cleaner-example-config"
@@ -6488,6 +6541,9 @@ discovarr:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: discovarr
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Discovarr"
+    elfbot.elfhosted.com/icon: "fas fa-sitemap"  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-discovarr,discovarr-config"
@@ -6610,6 +6666,9 @@ overseerr:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: overseerr
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Overseerr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/overseerr.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-overseerr,overseerr-config"
@@ -6746,6 +6805,9 @@ jellyseerr:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: jellyseerr
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Jellyseerr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyseerr.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyseerr"
@@ -6876,6 +6938,9 @@ jellystat:
   enabled: false
   podLabels:
     app.elfhosted.com/name: jellystat
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Jellystat"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellystat.png"      
   image:
     repository: ghcr.io/elfhosted/jellystat
     tag: 1.1.6@sha256:39bb3980570b6dd56fac1becbb52cde40f821d6ac73eaef97dd9c3d9ec9d97bd
@@ -7020,6 +7085,11 @@ booklore:
     repository: ghcr.io/elfhosted/booklore
     tag: v0.33.0@sha256:b564ebd2755fcdf51c0077a16c84c7725d57744108b29dae979993e192cc8f19
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: booklore  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Booklore"
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-booklore,booklore-env"
@@ -7156,6 +7226,11 @@ peertube:
     repository: ghcr.io/elfhosted/peertube-cli
     tag: v7.2.2@sha256:b6ef0097a6c18d59a3e0e6f2f7570554bded2920f3f4409e7202378579338f31
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: peertube  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "PeerTube"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/peertube.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-peertube,peertube-env"
@@ -7391,6 +7466,9 @@ audiobookshelf:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: audiobookshelf
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Audiobookshelf"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/audiobookshelf.png"      
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -7476,6 +7554,11 @@ storyteller:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
+  podLabels:
+      app.elfhosted.com/name: storyteller    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Storyteller"
+    elfbot.elfhosted.com/icon: "fas fa-book-open"        
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -7572,6 +7655,11 @@ audiobookrequest:
     repository: ghcr.io/elfhosted/audiobookrequest
     tag: 1.4.9@sha256:521fdad8e952c386c05d061330976bd631cdcdc02946cc254c753d20445686e6
   priorityClassName: tenant-streaming
+  podLabels:
+      app.elfhosted.com/name: audiobookrequest  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "AudioBookRequest"
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7642,6 +7730,11 @@ audiobookbayautomated:
   image:
     repository: ghcr.io/elfhosted/audiobookbay-automated
     tag: rolling@sha256:1c44d86d4f1b6bc93368bc3f5132ea1a061df2a6db8b013ba6cb4ab81377cd6b
+  podLabels:
+      app.elfhosted.com/name: audiobookbay-automated    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "AudioBookBay Automated"
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7716,6 +7809,11 @@ openbooks:
     repository: ghcr.io/elfhosted/openbooks
     tag: 4.5.0@sha256:c17d8e86d55e35cd1edb20fe1e1ff95a8e93cbef4c571ead2bfeb07276845477
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: openbooks  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "OpenBooks"
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7780,6 +7878,11 @@ vaultwarden:
     repository: ghcr.io/elfhosted/vaultwarden
     tag: 1.34.1@sha256:1637be9c0a684e74c890dfba9c5d4243e123f7127536a299d62bb2a6c0e105c3
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: vaultwarden  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "VaultWarden"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/vaultwarden.png"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7858,6 +7961,11 @@ notifiarr:
     repository: ghcr.io/elfhosted/notifiarr
     tag: 0.8.3@sha256:16d9f57524a249fd6181b9282a0c2c66e24caf417b692199d4dec2681784fc4c
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: notifiarr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Notifiarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/notifiarr.png"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7960,6 +8068,11 @@ shoko:
   image:
     repository: ghcr.io/elfhosted/shokoserver
     tag: v5.1.0@sha256:a386f39bcfd7c1e8f9c38b4171c8e59162e3e1b2c579728465fd4ea52978a69e
+  podLabels:
+      app.elfhosted.com/name: shoko    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Shoko"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/shoko.png"        
   env:
     PUID: 568
     PGID: 568
@@ -8033,6 +8146,11 @@ filebot:
   image:
     repository: ghcr.io/elfhosted/filebot-node
     tag: 0.4.8@sha256:2f35281e7f6d4a1566dfe6427dae83480c76d1cebe1e5d6d2379064db1846ba7
+  podLabels:
+      app.elfhosted.com/name: filebot    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "FileBot"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/filebot.png"        
   env:
     PUID: 568
     PGID: 568
@@ -8109,6 +8227,11 @@ filebot:
 rpdb:
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: rpdb  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "RPDB"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rpdb.png"        
   image:
     repository: ghcr.io/elfhosted/rpdb
     tag: 0.3.3@sha256:fc651aeb123bedbcb92eeda3227b51005540b3c350bf15640c7928f5e8fd1d4b
@@ -8177,6 +8300,11 @@ rpdb:
 kometa: &app_kometa
   enabled: false
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: kometa  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Kometa"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kometa.png"        
   image:
     repository: ghcr.io/elfhosted/kometa
     tag: v2.2.0@sha256:d0d56d58de2ef623d7167e1dbf4901aa7bc2dc5ca4ec7206dbf1de5b2906d7d1
@@ -8184,8 +8312,6 @@ kometa: &app_kometa
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  podLabels:
-    app.elfhosted.com/name: kometa
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kometa"
@@ -8302,12 +8428,15 @@ imagemaid:
   image:
     repository: ghcr.io/elfhosted/imagemaid
     tag: v1.1.1@sha256:574796393e4366e19b602f530d61d22835b15d3367253c9225587a692e3e060b
+  podLabels:
+      app.elfhosted.com/name: imagemaid 
+  podAnnotations:
+    elfbot.elfhosted.com/name: "ImageMaid"
+    elfbot.elfhosted.com/icon: "fas fa-image"           
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  podLabels:
-    app.elfhosted.com/name: imagemaid
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-imagemaid"
@@ -8380,125 +8509,16 @@ imagemaid:
       cpu: 1
       memory: 4Gi  
 
-cinesync:
-  enabled: false
-  priorityClassName: tenant-normal
-  image:
-    repository: ghcr.io/elfhosted/cinesync
-    tag: v2.4.1@sha256:2357ef1feb815962b21cd993931757d483ea12b8a274155b5dfb90a59772db58
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podLabels:
-    app.elfhosted.com/name: cinesync
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync,cinesync-env"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3001
-  envFrom:
-  - configMapRef:
-      name: cinesync-env
-  - secretRef:
-      name: cinesync-env      
-  - configMapRef:
-      name: elfbot-cinesync
-      optional: true
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /app/db
-      subPath: cinesync
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-cinesync
-          optional: true  
-    logs:
-      enabled: true
-      type: custom
-      mountPath: /app/logs
-      subPath: cinesync
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: logs              
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: cinesync
-      - mountPath: /tmp
-        name: tmp
-    setup:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-
-        # Create directory structure if it doesn't exist yet
-        mkdir -p /storage/symlinks/movies
-        mkdir -p /storage/symlinks/movies-4k
-        mkdir -p /storage/symlinks/movies-anime
-        mkdir -p /storage/symlinks/series
-        mkdir -p /storage/symlinks/series-4k
-        mkdir -p /storage/symlinks/series-anime
-      volumeMounts:
-      - mountPath: /storage/symlinks
-        name: symlinks
-      resources: *default_resources
-      securityContext: *default_securitycontext        
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 0m
-      memory: 64Mi
-    limits:
-      cpu: 1
-      memory: 2Gi 
-
 # cinesync:
 #   enabled: false
 #   priorityClassName: tenant-normal
 #   image:
-#     repository: ghcr.io/elfhosted/cinesync-dev
-#     tag: rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
+#     repository: ghcr.io/elfhosted/cinesync
+#     tag: v2.4.1@sha256:2357ef1feb815962b21cd993931757d483ea12b8a274155b5dfb90a59772db58
 #   securityContext:
 #     seccompProfile:
 #       type: RuntimeDefault
-#     readOnlyRootFilesystem: false
+#     readOnlyRootFilesystem: true
 #   podLabels:
 #     app.elfhosted.com/name: cinesync
 #   controller:
@@ -8519,7 +8539,7 @@ cinesync:
 #       enabled: true # necessary for probes
 #       ports:
 #         http:
-#           port: 5173
+#           port: 3001
 #   envFrom:
 #   - configMapRef:
 #       name: cinesync-env
@@ -8552,11 +8572,7 @@ cinesync:
 #       subPath: cinesync
 #       volumeSpec:
 #         persistentVolumeClaim:
-#           claimName: logs
-#     cache: # in case users use /tmp
-#       enabled: true
-#       mountPath: /cache
-#       type: emptyDir       
+#           claimName: logs              
 #   initContainers:
 #     bootstrap:
 #       <<: *bootstrap
@@ -8590,31 +8606,7 @@ cinesync:
 #       - mountPath: /storage/symlinks
 #         name: symlinks
 #       resources: *default_resources
-#       securityContext: *default_securitycontext     
-#     id-refresh:
-#       image: ghcr.io/elfhosted/cinesync-dev:rolling@sha256:924eaa3ed6f74b2eec0d729d21501e3971cc466216557524650a4b439dedd48c
-#       command:
-#       - python3 
-#       - MediaHub/main.py 
-#       - --id-refresh
-#       resources: *default_resources
-#       volumeMounts:
-#       - mountPath: /app/logs
-#         name: logs
-#         subPath: cinesync   
-#       - mountPath: /app/db
-#         subPath: cinesync
-#         name: config    
-#       - mountPath: /storage/symlinks
-#         name: symlinks
-#       envFrom:
-#       - configMapRef:
-#           name: cinesync-env
-#       - secretRef:
-#           name: cinesync-env      
-#       - configMapRef:
-#           name: elfbot-cinesync
-#           optional: true                  
+#       securityContext: *default_securitycontext        
 #   ingress:
 #     main:
 #       enabled: false
@@ -8626,18 +8618,137 @@ cinesync:
 #       cpu: 1
 #       memory: 2Gi 
 
+cinesync:
+  enabled: false
+  priorityClassName: tenant-normal
+  image:
+    repository: ghcr.io/elfhosted/cinesync
+    tag: CineSync-v3.0@sha256:51c59ecb17879e57347a480c8e4ae3538f881de2f2798debd8bbef79f319545f
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: false
+  podLabels:
+    app.elfhosted.com/name: cinesync
+  podAnnotations:
+    elfbot.elfhosted.com/name: "CineSync"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/cinesync.png"      
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync,cinesync-env"
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  automountServiceAccountToken: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 5173
+  envFrom:
+  - configMapRef:
+      name: cinesync-env
+  - secretRef:
+      name: cinesync-env      
+  - configMapRef:
+      name: elfbot-cinesync
+      optional: true
+  persistence:
+    <<: *storagemounts
+    config:
+      enabled: true
+      type: custom
+      mountPath: /app/db
+      subPath: cinesync
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-cinesync
+          optional: true  
+    logs:
+      enabled: true
+      type: custom
+      mountPath: /app/logs
+      subPath: cinesync
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: logs
+    cache: # in case users use /tmp
+      enabled: true
+      mountPath: /cache
+      type: emptyDir       
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: cinesync
+      - mountPath: /tmp
+        name: tmp
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+
+        # Create directory structure if it doesn't exist yet
+        mkdir -p /storage/symlinks/movies
+        mkdir -p /storage/symlinks/movies-4k
+        mkdir -p /storage/symlinks/movies-anime
+        mkdir -p /storage/symlinks/series
+        mkdir -p /storage/symlinks/series-4k
+        mkdir -p /storage/symlinks/series-anime
+      volumeMounts:
+      - mountPath: /storage/symlinks
+        name: symlinks
+      resources: *default_resources
+      securityContext: *default_securitycontext              
+  ingress:
+    main:
+      enabled: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 64Mi
+    limits:
+      cpu: 1
+      memory: 2Gi 
+
 arrtools:
   enabled: false
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/arrtools
     tag: rolling@sha256:91a4b1133de4212f86fe3f3b2a5deaf2f622cf4216d70aeb735aa1c562133c46
+  podLabels:
+      app.elfhosted.com/name: arrtools
+  podAnnotations:
+    elfbot.elfhosted.com/name: "ArrTools"
+    elfbot.elfhosted.com/icon: "fas fa-tools"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: false
-  podLabels:
-    app.elfhosted.com/name: arrtools
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-arrtools"
@@ -8721,12 +8832,15 @@ seerrbridge:
   image:
     repository: ghcr.io/elfhosted/seerrbridge
     tag: v0.7.2@sha256:4d13d92bb342d4fbdf68177e76aa14dca4841863465dd7875a82ba5c096fd44a
+  podLabels:
+      app.elfhosted.com/name: seerrbridge  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "SeerrBridge"
+    elfbot.elfhosted.com/icon: "fas fa-bridge"          
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: false # needs for temporary files I think
-  podLabels:
-    app.elfhosted.com/name: seerrbridge
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-seerrbridge,seerrbridge-env"
@@ -8878,6 +8992,9 @@ listsync:
     readOnlyRootFilesystem: false # needs to create its own .venv
   podLabels:
     app.elfhosted.com/name: listsync
+  podAnnotations:
+    elfbot.elfhosted.com/name: "ListSync"
+    elfbot.elfhosted.com/icon: "fas fa-list"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-listsync,listsync-env"
@@ -8965,6 +9082,9 @@ plextraktsync:
     readOnlyRootFilesystem: true
   podLabels:
     app.elfhosted.com/name: plextraktsync
+  podAnnotations:
+    elfbot.elfhosted.com/name: "PlexTraktSync"
+    elfbot.elfhosted.com/icon: "fas fa-sync"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plextraktsync"
@@ -9045,6 +9165,11 @@ plexytrack:
   image:
     repository: ghcr.io/elfhosted/plexytrack
     tag: v0.3.3@sha256:e77c9d7c8f36337f11b03b879177db7ccf031185e9efba0d796e154835ce97df
+  podLabels:
+      app.elfhosted.com/name: plexytrack    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "PlexyTrack"
+    elfbot.elfhosted.com/icon: "fas fa-clipboard-list"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9121,6 +9246,11 @@ letterboxdtraktsync:
   image:
     repository: ghcr.io/elfhosted/letterboxd-trakt-sync
     tag: v1.1.0@sha256:c0c8ebee2f51163f5cee41ec8d309ff45f2801a7e19fcf6399f628da7a60d755
+  podLabels:
+      app.elfhosted.com/name: letterboxd-trakt-sync    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Letterboxd Trakt Sync"
+    elfbot.elfhosted.com/icon: "fas fa-film"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9197,12 +9327,15 @@ decluttarr: &app_decluttarr
   image:
     repository: ghcr.io/elfhosted/decluttarr
     tag: rolling@sha256:122813a18f3ad13aa043084451f806fe7524b664a55172c2efa7732bd7513e90
+  podLabels:
+      app.elfhosted.com/name: decluttarr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Decluttarr"
+    elfbot.elfhosted.com/icon: "fas fa-trash-alt"          
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  podLabels:
-    app.elfhosted.com/name: decluttarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-decluttarr,env-decluttarr"
@@ -9248,12 +9381,15 @@ rdebridui:
   image:
     repository: ghcr.io/elfhosted/rdebrid-ui
     tag: rolling@sha256:2c9885f1918097d8b762e0e60fcee5e12f147c10d79f13decbe4f3b73d24e4ad
+  podLabels:
+      app.elfhosted.com/name: rdebrid-ui 
+  podAnnotations:
+    elfbot.elfhosted.com/name: "RdebridUI"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rdebridui.png"           
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
-  podLabels:
-    app.elfhosted.com/name: rdebrid-ui
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdebrid-ui"
@@ -9300,12 +9436,15 @@ suggestarr:
   image:
     repository: ghcr.io/elfhosted/suggestarr
     tag: v1.0.20@sha256:f567f7416f2e2092d54e68037e0886908ce583126281c9673c92bde0969bf1c5
+  podLabels:
+      app.elfhosted.com/name: suggestarr    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Suggestarr"
+    elfbot.elfhosted.com/icon: "fas fa-lightbulb"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: false # doesn't work with app :(
-  podLabels:
-    app.elfhosted.com/name: suggestarr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-suggestarr"
@@ -9383,6 +9522,12 @@ rcloneui:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
+  podLabels:
+    app.elfhosted.com/name: rcloneui      
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Rclone UI"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"     
+    kubernetes.io/egress-bandwidth: "40M"   
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -9497,7 +9642,11 @@ rclonefm:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rclonefm,rclonefm-config"
+  podLabels:
+      app.elfhosted.com/name: rclonefm      
   podAnnotations:
+    elfbot.elfhosted.com/name: "Rclone FM"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"        
     kubernetes.io/egress-bandwidth: "40M"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
@@ -9611,6 +9760,8 @@ webdav: &webdav
   podLabels:
     app.elfhosted.com/name: webdav
   podAnnotations:
+    elfbot.elfhosted.com/name: "WebDAV"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/webdav.png"    
     kubernetes.io/egress-bandwidth: "40M"
   priorityClassName: tenant-normal
   affinity: *standard_affinity
@@ -9687,6 +9838,8 @@ webdavplus:
   podLabels:
     app.elfhosted.com/name: webdav-plus
   podAnnotations:
+    elfbot.elfhosted.com/name: "WebDAV Plus"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/webdav.png"    
     kubernetes.io/egress-bandwidth: "150M"
   envFrom:
   - configMapRef:
@@ -9705,6 +9858,11 @@ jfa:
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jfa"
+  podLabels:
+      app.elfhosted.com/name: jfa      
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Jellyfin Accounts"
+    elfbot.elfhosted.com/icon: "fas fa-user"        
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -9774,7 +9932,7 @@ mattermost:
   # Declare variables to be passed into your templates.
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 10.10.1@sha256:714be7be92339433c4f9c5ff9de6ebe6540247c6e2154889503a734f9bc9a100
+    tag: 10.10.0@sha256:f35b2f8d320c6dc739b18d203423b49416fb262aca2f6dd1e4b0b465a149b399
     imagePullPolicy: IfNotPresent
   controller:
     annotations:
@@ -10057,7 +10215,10 @@ rdtclient: &app_rdtclient
   hostname: elfhosted
   priorityClassName: tenant-bulk
   podLabels:
-    app.elfhosted.com/class: debrid
+      app.elfhosted.com/name: rdtclient
+  podAnnotations:
+    elfbot.elfhosted.com/name: "RDTClient"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rdtclient.png"        
   image:
     repository: ghcr.io/elfhosted/rdtclient
     tag: v2.0.113@sha256:e274c86872f823296d063cc04eaec10410bf5ea4590ccb1660ebe51339803464
@@ -10133,6 +10294,11 @@ miniflux:
   image:
     repository: ghcr.io/elfhosted/miniflux
     tag: 2.2.10
+  podLabels:
+      app.elfhosted.com/name: miniflux    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Miniflux"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/miniflux.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
@@ -10238,6 +10404,11 @@ joplinserver:
   image:
     repository: ghcr.io/geek-cookbook/joplin-server
     tag: v2.14.2@sha256:b4f52bffce08541dd54e823b78bbfa18e091d53064ed507f69fe9e1ca92b719b
+  podLabels:
+      app.elfhosted.com/name: joplinserver    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Joplin Server"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/joplin.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-joplinserver,joplinserver-config"
@@ -10491,7 +10662,12 @@ wallabag:
   image:
     repository: stefanprodan/podinfo
     tag: latest
-  controller:
+  podLabels:
+      app.elfhosted.com/name: wallabag    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Wallabag"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wallabag.png"        
+  controller:  
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wallabag,wallabag-config"
   securityContext:
@@ -10561,6 +10737,11 @@ gotosocial:
     repository: ghcr.io/elfhosted/gotosocial
     tag: 0.19.0@sha256:538111e5b96b5dd7bf6142bcaf1de1aa86180d5d3d09e20d76425cc38036cb9e
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: gotosocial  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "GoToSocial"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/gotosocial.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-gotosocial"
@@ -10708,6 +10889,11 @@ blueskypds:
     repository: ghcr.io/elfhosted/bluesky-pds
     tag: 0.4.161@sha256:aaf76db2f4d998a0f24477e5ff1d7bf159d62cf9492c104b63f708c9c7dbb8aa
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: bluesky-pds  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Bluesky PDS"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bluesky.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bluesky-pds"
@@ -10824,6 +11010,9 @@ riven: &app_riven
   enabled: false
   podLabels:
     app.elfhosted.com/name: riven
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Riven"
+    elfbot.elfhosted.com/icon: "fas fa-mountain"      
   image:
     repository: ghcr.io/elfhosted/riven
     tag: v0.21.21@sha256:bf1a9cab579d5eaac0ed72e20584b139547db7c38753a03b3756151af5e0ac13
@@ -11022,6 +11211,9 @@ rivenvpn:
 rivenfrontend: &app_rivenfrontend
   podLabels:
     app.elfhosted.com/name: riven-frontend
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Riven Frontend"
+    elfbot.elfhosted.com/icon: "fas fa-mountain"       
   image:
     repository: ghcr.io/elfhosted/riven-frontend
     tag: v0.20.0@sha256:c4d792868a8113a2f57f504fe371cbcd8c52172d734c812c366bff352672998e
@@ -11088,6 +11280,9 @@ airdcpp: &app_airdcpp
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: airdcpp
+  podAnnotations:
+    elfbot.elfhosted.com/name: "AirDC++"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/airdcpp.png"      
   podAnnotations:
     kubernetes.io/egress-bandwidth: "100M"
   controller:
@@ -11242,6 +11437,11 @@ jackett:
     repository: ghcr.io/elfhosted/jackett
     tag: 0.22.2161@sha256:4ac644fcc8795c11e16fb3dd243bfa2650e8a736bde1f5bdb82eee8af8d33982
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: jackett  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Jackett"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jackett.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jackett"
@@ -11314,6 +11514,11 @@ wizarr:
     repository: ghcr.io/elfhosted/wizarr
     tag: 2025.7.4@sha256:4af34c822907ec72bf6e4fbbf540fdb3cdd1c7a62b36b644d4e9b2eabf293d9a
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: wizarr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Wizarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wizarr.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wizarr"
@@ -11415,6 +11620,9 @@ flixio:
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: flixio
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Flixio"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/stremio.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flixio"
@@ -11463,6 +11671,9 @@ flixioapi:
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: flixio-api
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Flixio API"
+    elfbot.elfhosted.com/icon: "fas fa-code"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flixio-api"
@@ -11522,68 +11733,6 @@ flixioapi:
         http:
           port: 8080
 
-stremiojackett:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/stremio-jackett
-    tag: v4.2.6@sha256:e835d4a2579a474394dce8d19175d3e4a89bbdbd307422b9ce6d3452950ee1b2
-  priorityClassName: tenant-normal
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-stremio-jackett"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  envFrom:
-  - configMapRef:
-      name: stremio-jackett-env
-  resources:
-    requests:
-      cpu: 10m
-      memory: 128Mi
-    limits:
-      cpu: 1
-      memory: 256Mi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3000
-  persistence:
-    pm2:
-      enabled: true
-      type: emptyDir
-      mountPath: /.pm2
-      sizeLimit: 1Gi
-    npm:
-      enabled: true
-      type: emptyDir
-      mountPath: /.npm
-      sizeLimit: 1Gi
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-stremio-jackett
-          optional: true
-
 pairdrop:
   enabled: false
   image:
@@ -11592,6 +11741,9 @@ pairdrop:
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: pairdrop
+  podAnnotations:
+    elfbot.elfhosted.com/name: "PairDrop"
+    elfbot.elfhosted.com/icon: "fas fa-lock"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pairdrop"
@@ -11648,6 +11800,9 @@ actual:
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: actual
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Actual Budget"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/actual-budget.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-actual"
@@ -11703,7 +11858,75 @@ actual:
       subPath: actual
       volumeSpec:
         persistentVolumeClaim:
-          claimName: config          
+          claimName: config     
+
+elfbot:
+  enabled: true # everyone gets elfbot
+  image:
+    repository: ghcr.io/elfhosted/elfbot
+    tag: rolling@sha256:7d03478bab0c274dc9c76d734f48882912256f5db09ffdb3facd62cae2f769ed
+  priorityClassName: tenant-normal
+  serviceAccount:
+    name: elfbot
+    create: true
+  automountServiceAccountToken: true  
+  podLabels:
+    app.elfhosted.com/name: elfbot
+  podAnnotations:
+    elfbot.elfhosted.com/name: "ElfBot (me!)"
+    elfbot.elfhosted.com/icon: "fas fa-robot"      
+  persistence:
+    <<: *storagemounts    
+    config:
+      enabled: true
+      type: custom
+      mountPath: /storage/config/
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config    
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-env"
+    strategy:
+    rollingUpdate:
+      unavailable: 1
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: true
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
+  envFrom:
+  - configMapRef:
+      name: elfbot-env
+  env:
+  - name: POD_NAMESPACE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.namespace      
+  resources:
+    requests:
+      cpu: 0m
+      memory: 128Mi
+    limits:
+      cpu: 1
+      memory: 256Mi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 3000   
 
 petio:
   enabled: false
@@ -11711,6 +11934,11 @@ petio:
     repository: ghcr.io/elfhosted/petio
     tag: v0.5.5@sha256:a28b7ffb5b1b04a8ad798112604c410a9a09f8882e9bf98b9f24e8f41571f505
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: petio  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Petio"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/petio.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-petio"
@@ -11795,6 +12023,11 @@ nightscout:
     repository: ghcr.io/elfhosted/nightscout
     tag: 15.0.3@sha256:9fb5de043a782232738fc7fc185a0f4d9655de7ae3177fed5b3c13fe51840ee3
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: nightscout  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "NightScout"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nightscout.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nightscout,nightscout-env"
@@ -11862,6 +12095,11 @@ pgadmin:
     repository: dpage/pgadmin4
     tag: "9.5"
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: pgadmin  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "PGAdmin"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/pgaddmin.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pgadmin"
@@ -11921,6 +12159,11 @@ redisinsight:
     repository: redislabs/redisinsight
     tag: v2@sha256:7fef8b7ecf2e8597037f906fc69863345dd846d36577210569396f7917333355
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: redisinsight  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "RedisInsight"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/redis.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-redisinsight"
@@ -11976,6 +12219,11 @@ mongoexpress:
     repository: mongo-express
     tag: 1.0.2-18
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: mongoexpress  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Mongo Express"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/mongo.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mongoexpress"
@@ -12023,6 +12271,8 @@ comet:
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
+    elfbot.elfhosted.com/name: "Comet"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/comet.png"
   podLabels:
       app.elfhosted.com/name: comet
   controller:
@@ -12142,6 +12392,11 @@ jackettio:
     repository: ghcr.io/elfhosted/jackettio
     tag: v1.7.1@sha256:6bff317e8c7eb286cf53a8e1740a9b06092e2d3536f80168c728bfeb04a54289
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: jackettio  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Jackettio"
+    elfbot.elfhosted.com/icon: "fas fa-search"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jackettio,jackettio-env"
@@ -12236,7 +12491,11 @@ stremthru:
     repository: ghcr.io/elfhosted/stremthru
     tag: 0.80.6@sha256:7a5636988cfe3f18f8dac01c91cc5dc2c6045cc83605309c0e37cde2613c0689
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: stremthru  
   podAnnotations:
+    elfbot.elfhosted.com/name: "StremThru"
+    elfbot.elfhosted.com/icon: "fas fa-tools"        
     kubernetes.io/egress-bandwidth: "64M"  
   controller:
     annotations:
@@ -12347,6 +12606,11 @@ davio:
     repository: ghcr.io/elfhosted/davio
     tag: v1.0.4@sha256:3508249d413b6b55bb2860358bbb92dd8ccd760969fadb0473540ddb74218523
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: davio  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Davio"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/davio.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-davio,davio-env"
@@ -12406,6 +12670,9 @@ mediafusion:
     tag: 4.3.33@sha256:f29a06e3ce4649fa26f8573ae1f7a3da0ba1fecc4604d5186df8a49576a83869
   podLabels:
       app.elfhosted.com/name: mediafusion
+  podAnnotations:
+    elfbot.elfhosted.com/name: "MediaFusion"
+    elfbot.elfhosted.com/icon: "fas fa-atom"        
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12653,6 +12920,9 @@ tinyproxy:
     tag: v1.4.3@sha256:262bbdc0e468ee97c049203becc52b9ad7bf4c21405d58c82766d1aebb2e27e5
   podLabels:
       app.elfhosted.com/name: tinyproxy
+  podAnnotations:
+    elfbot.elfhosted.com/name: "TinyProxy"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/tinyproxy.png"        
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -12748,6 +13018,8 @@ mediaflowproxy:
   priorityClassName: tenant-normal
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
+    elfbot.elfhosted.com/name: "MediaFlow Proxy"
+    elfbot.elfhosted.com/icon: "fas fa-cloud"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
@@ -12812,6 +13084,11 @@ youriptv:
     repository: ghcr.io/elfhosted/youriptv-nobranding
     tag: rolling@sha256:b5b7cb9858e5d6b2edd636f6167ef1e78198deb0badea677256a50613b43211e
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: youriptv  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "YourIPTV"
+    elfbot.elfhosted.com/icon: "fas fa-tv"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-youriptv"
@@ -12859,6 +13136,11 @@ aiostreams:
     repository: ghcr.io/elfhosted/aiostreams
     tag: v2.5.4@sha256:2ff8f4d3c9c7495a3fadc87a48b80608cabb1401a595d11e2d18f60e7fbb38ee
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: aiostreams  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "AIOStreams"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/aiostreams.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams,aiostreams-env"
@@ -12968,61 +13250,17 @@ aiostreams:
       - mountPath: /shared
         name: shared        
 
-aiostreamsv1:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/aiostreams-v1
-    tag: rolling
-  priorityClassName: tenant-normal
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreamsv1,aiostreamsv1-env"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations     
-  resources:
-    requests:
-      cpu: 0m
-      memory: 50Mi
-    limits:
-      cpu: 1
-      memory: 1Gi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3000
-  envFrom:
-  - configMapRef:
-      name: aiostreams-env   
-  - configMapRef:
-      name: elfbot-aiostreams
-      optional: true
-
 autopulse:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/autopulse
     tag: v1.3.2@sha256:2f6e2e0ea0648a33b9a26688853851a2963c8c3b7f1b325e896b46333e2e8fc2
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: autopulse  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "AutoPulse"
+    elfbot.elfhosted.com/icon: "fas fa-heartbeat"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-autopulse,autopulse-env"
@@ -13112,9 +13350,13 @@ nuviostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/nuviostreams-dev
-    tag: rolling@sha256:edf9df305dc92f884c22347bab107e8c22c6430cf53850395e6b1de787f62b22
+    tag: rolling@sha256:163f35d0b0653a9c89a9fb590a9124910a4ab4ddb863808bc41394acd1db2e3d
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: nuviostreams        
   podAnnotations:
+    elfbot.elfhosted.com/name: "NuvioStreams"
+    elfbot.elfhosted.com/icon: "fas fa-film"    
     kubernetes.io/egress-bandwidth: "64M" 
   controller:
     annotations:
@@ -13208,6 +13450,11 @@ webstreamr:
     repository: ghcr.io/elfhosted/webstreamr
     tag: v0.37.0@sha256:f553ab699ffb73119316f9c8a004e16abbe7a14d82a33b30c976e7e42988e8ea
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: webstreamr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Webstreamr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/webstreamr.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,webstreamr-env,elfbot-webstreamr"
@@ -13291,6 +13538,11 @@ recyclarr:
     repository: ghcr.io/recyclarr/recyclarr
     tag: latest@sha256:759540877f95453eca8a26c1a93593e783a7a824c324fbd57523deffb67f48e1
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: recyclarr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Recyclarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/recyclarr.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-recyclarr"
@@ -13407,73 +13659,6 @@ recyclarr:
       - configMapRef:
           name: recyclarr-env
 
-knightcrawler: &app_knightcrawler
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/knightcrawler-addon
-    tag: v2.0.28@sha256:0985eb3036a940fc751d78eb224f6791a78d1bd64b2e921983a503b60cd9fcc0
-  priorityClassName: tenant-normal
-  podLabels:
-    app.elfhosted.com/name: knightcrawler
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-knightcrawler,elfbot-torrentio,knightcrawler-env"
-      secret.reloader.stakater.com/reload: "knightcrawler-env"
-    strategy:
-    rollingUpdate:
-      unavailable: 1
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  resources:
-    requests:
-      cpu: 0m
-      memory: 128Mi
-    limits:
-      cpu: 100m
-      memory: 256Mi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 7000
-  persistence:
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-knightcrawler
-          optional: true
-    npm:
-      enabled: true
-      type: emptyDir
-      mountPath: /.npm
-    pm2:
-      enabled: true
-      mountPath: /.pm2
-      type: emptyDir
-  envFrom:
-  - configMapRef:
-      name: knightcrawler-env
-  - secretRef:
-      name: knightcrawler-env
-
 zurg: &app_zurg
   enabled: false
   # Avoid search expansion DNS queries against coredns for every RD API request 
@@ -13483,6 +13668,9 @@ zurg: &app_zurg
         value: "2"
   podLabels:
     app.elfhosted.com/name: zurg
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Zurg"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"      
   image:
     repository: ghcr.io/elfhosted/zurg-rc
     tag: 2025.07.05.0031-nightly@sha256:a8529a04142066ba2e071f268f3e05984487657c0ecbec1f9a4352a91da9a4ad
@@ -13703,6 +13891,9 @@ zurggluetun:
   podLabels:
     app.elfhosted.com/name: zurg
     app.elfhosted.com/class: debrid
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Zurg"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-zurg,zurg-gluetun-config,zurg-env"
@@ -13730,6 +13921,8 @@ zurgranger:
     app.elfhosted.com/name: zurg
     app.elfhosted.com/class: dedicated
   podAnnotations:
+    elfbot.elfhosted.com/name: "Zurg"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"    
     kubernetes.io/egress-bandwidth: "500M"
   enabled: false
   automountServiceAccountToken: false
@@ -13748,6 +13941,9 @@ plexdebrid: &app_plexdebrid
     tag: rolling@sha256:0c0251d2aef532ba62660b719b7e37e72b4eb262ca18e21d68b9509d305e12a1
   podLabels:
     app.elfhosted.com/name: plex-debrid    
+  podAnnotations:
+    elfbot.elfhosted.com/name: "plex_debrid"
+    elfbot.elfhosted.com/icon: "fas fa-film"      
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13822,6 +14018,9 @@ clidebrid: &app_clidebrid
   enabled: false
   podLabels:
     app.elfhosted.com/name: cli-debrid
+  podAnnotations:
+    elfbot.elfhosted.com/name: "CLI Debrid"
+    elfbot.elfhosted.com/icon: "fas fa-terminal"      
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
     tag: v0.6.88@sha256:e22cdf72efd2c5b0c518b068b9e4dd19a4ab59893c8f9c1d1333dd0d6fff95fd 
@@ -13930,6 +14129,9 @@ puter:
   enabled: false
   podLabels:
     app.elfhosted.com/name: puter
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Puter"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/puter.png"      
   image:
     repository: ghcr.io/elfhosted/puter
     tag: v2.5.1@sha256:4566493190067df16091134e9fa845ffa21f6e517874eb146cb4bca9c4177ca9
@@ -14000,45 +14202,6 @@ puter:
       - mountPath: /tmp
         name: tmp
 
-plexdebriddebridlink: 
-  <<: *app_plexdebrid  
-  enabled: false
-  podLabels:
-    app.elfhosted.com/name: plex-debrid-debridlink  
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plex-debrid-debridlink"  
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: plex-debrid-debridlink
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-plex-debrid-debridlink
-          optional: true          
-  initContainers:
-    bootstrap:
-      <<: *bootstrap
-      volumeMounts:
-      - mountPath: /etc/elfbot
-        name: elfbot
-      - mountPath: /storage/backup
-        name: backup
-      - mountPath: /config
-        name: config
-        subPath: plex-debrid-debridlink
-      - mountPath: /tmp
-        name: tmp
-
 codeserver:
   enabled: false
   # runtimeClassName: kata
@@ -14046,6 +14209,11 @@ codeserver:
     repository: ghcr.io/elfhosted/codeserver
     tag: 4.101.2@sha256:b98aea58266285ac8fcd1e86182b4a9962a34109f343dba4c2251da7c01a6c0f
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: codeserver  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Code Server"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/code-server.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-codeserver"
@@ -14148,6 +14316,11 @@ doplarr: &app_doplarr
     repository: ghcr.io/elfhosted/doplarr
     tag: v3.6.3@sha256:7703328fc7f9f4190606ba9f95e867a64db79bd06c19e923a83ad6f939f89097
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: doplarr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Doplarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/doplarr.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-doplarr,doplarr-env"
@@ -14194,6 +14367,11 @@ profilarr:
     repository: ghcr.io/elfhosted/profilarr-frontend
     tag: v1.0.1@sha256:1f2165783bc2030da7ca84f8b2aa4d709a24d51f05cd1de33cb3b4a438d399d0
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: profilarr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Profilarr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/profilarr.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-profilarr,profilarr-env"
@@ -14302,8 +14480,13 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
+    tag: v0.4.5@sha256:dbd86c005bee448aadf5f27d859478ff58b292e482816cf128363b785302ba73
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: pulsarr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Pulsarr"
+    elfbot.elfhosted.com/icon: "fas fa-broadcast-tower"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pulsarr,pulsarr-env"
@@ -14387,7 +14570,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
+      image: ghcr.io/elfhosted/pulsarr:v0.4.5@sha256:dbd86c005bee448aadf5f27d859478ff58b292e482816cf128363b785302ba73
       command:
       - /bin/ash
       - -c
@@ -14414,8 +14597,13 @@ dispatcharr:
   enabled: false
   image:
     repository: ghcr.io/dispatcharr/dispatcharr
-    tag: 0.6.2@sha256:bf422ea7032989c825e00fa457051005d7470e2c61bf304c384864f05e04121b
+    tag: 0.6.1@sha256:ed6bd8881e8b1b0616d9b133933ebd21d3086dcf9b0cc5bf0e32b6b8d07e449c
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: dispatcharr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Dispatcharr"
+    elfbot.elfhosted.com/icon: "fas fa-tv"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-dispatcharr,dispatcharr-env"
@@ -14505,6 +14693,11 @@ requestrr:
     repository: ghcr.io/elfhosted/requestrr
     tag: v2.1.6@sha256:d9daf341af2608f8351ae4cfdb6f685c1ea675e18b88860d0bfbc6343202402b
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: requestrr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Requestrr"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/requestrr.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-requestrr,requestrr-env"
@@ -14577,6 +14770,9 @@ debridav: &app_debridav
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: debridav  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "DebriDav"
+    elfbot.elfhosted.com/icon: "fas fa-cloud"      
   image:
     repository: ghcr.io/elfhosted/debridav
     tag: 0.10.1@sha256:67748eff91c1c318827284bb31a9f39c2ce10b22e29e58ec4f65659152fd8cfe
@@ -14846,6 +15042,9 @@ rclonedebridlink:
   tolerations: *standard_tolerations
   podLabels:
     app.elfhosted.com/name: debridlink
+  podAnnotations:
+    elfbot.elfhosted.com/name: "DebridLink"
+    elfbot.elfhosted.com/icon: "fas fa-link"      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
@@ -15214,10 +15413,15 @@ decypharr: &app_decypharr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/decypharr
-    tag: v1.0.5@sha256:b0d539fe2217cce88979e65f6982afd872579a5fbc72140c06c36bfe0e2fdf3d
+    tag: v1.0.4@sha256:907e38dcc531f75976dfb2840651897a84da27091414eca91fd5bac011ed1e55
   priorityClassName: tenant-normal
   affinity: *standard_affinity
   tolerations: *standard_tolerations
+  podLabels:
+      app.elfhosted.com/name: decypharr  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Decypharr"
+    elfbot.elfhosted.com/icon: "fas fa-robot"        
   # Avoid search expansion DNS queries against coredns for every RD API request
   dnsConfig:
     options:
@@ -15319,7 +15523,11 @@ channelsdvr:
     repository: fancybits/channels-dvr
     tag: latest@sha256:284fed6f4ee5150d41d9a7f247a63e190f6f1c3a4e4bc740f029df6d36955d29
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: channelsdvr  
   podAnnotations:
+    elfbot.elfhosted.com/name: "Channels DVR"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/channels-dvr.png"
     kubernetes.io/egress-bandwidth: "125M"
   controller:
     annotations:
@@ -15397,6 +15605,11 @@ wger:
     repository: ghcr.io/elfhosted/wger
     tag: 2.4@sha256:9e02ff11353c20f801bdabc2c1058b8c890418841db491c6f87e420034dfd38c
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: wger  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Wger"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wger.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wger,wger-env"
@@ -15603,6 +15816,11 @@ immich:
     repository: ghcr.io/immich-app/immich-server
     tag: v1.135.3@sha256:df5bbf4e29eff4688063a005708f8b96f13073200b4a7378f7661568459b31e9
   priorityClassName: tenant-normal
+  podLabels:
+      app.elfhosted.com/name: immich  
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Immich"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/immich.png"        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-immich,immich-env"
@@ -15817,7 +16035,10 @@ elfassesment:
 
 plexhobbit:
   <<: *app_plex
-  podAnnotations: *hobbit_streamer_podAnnotations
+  podAnnotations: 
+    <<: *hobbit_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
+    elfbot.elfhosted.com/name: "Plex"
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_plex_persistence
