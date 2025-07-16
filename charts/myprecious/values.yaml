@@ -5889,7 +5889,7 @@ flaresolverr: &app_flaresolverr
   image:
     registry: ghcr.io
     repository: elfhosted/byparr
-    tag: v1.2.1@sha256:38f47cca6a8300afbb0f704e7574188e8b836b59a9359ecb9820c4b2366954e1
+    tag: 3.3.25@sha256:542df3605a7e999969d61bdbbcf5d5a25ea53f3b9f23b38d93253f8fb3e679a3
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5900,15 +5900,13 @@ flaresolverr: &app_flaresolverr
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
-  # persistence:
-  #   config:
-  #     enabled: true
-  #     type: custom
-  #     mountPath: /app/screenshots
-  #     volumeSpec:
-  #       persistentVolumeClaim:
-  #         claimName: config
-  #     subPath: byparr/sreenshots
+  persistence:
+    shared:
+      enabled: true
+      mountPath: /shared
+      type: emptyDir
+      volumeSpec:
+        medium: Memory  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5931,6 +5929,91 @@ flaresolverr: &app_flaresolverr
       ports:
         http:
           port: 8191
+  initContainers:
+    setup-warp: *setup_warp
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: seerrbridge
+      - mountPath: /tmp
+        name: tmp          
+  addons:
+    vpn:
+      enabled: true # in case we ever need it
+      gluetun:
+        image:
+          repository: ghcr.io/elfhosted/gluetun
+          tag: 3.40.0@sha256:59b0cc8a9412b9a4645d1f12dff0daba80b8be88acd1b5d1a0fb6dfa625eb9a5
+      env:
+        FIREWALL_OUTBOUND_SUBNETS: 10.0.0.0/8
+        DNS_KEEP_NAMESERVER: "on"
+        HTTP_CONTROL_SERVER_PORT: "8000"
+        HTTP_CONTROL_SERVER_ADDRESS: ":8000"
+        VPN_TYPE: wireguard
+        VPN_SERVICE_PROVIDER: custom
+        FIREWALL_INPUT_PORTS: "8191"
+        WIREGUARD_MTU: "1280"
+        VPN_ENDPOINT_PORT: "2408"
+        DOT: "off"
+      securityContext:
+        privileged: true
+        runAsUser: 0
+        capabilities:
+          add:
+            - NET_ADMIN
+            - SYS_MODULE
+      config: # We have to set this to null so that we can override with our own config
+      volumeMounts:
+      - mountPath: /shared
+        name: shared     
+
+byparr:
+  enabled: false
+  podLabels:
+    app.elfhosted.com/name: byparr
+  podAnnotations:
+    elfbot.elfhosted.com/name: "Byparr"
+    elfbot.elfhosted.com/icon: "fas fa-cloud"
+  image:
+    registry: ghcr.io
+    repository: elfhosted/byparr
+    tag: v1.2.1@sha256:38f47cca6a8300afbb0f704e7574188e8b836b59a9359ecb9820c4b2366954e1
+  priorityClassName: tenant-normal
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    readOnlyRootFilesystem: false # makes node unhappy
+  affinity: *standard_affinity
+  tolerations: *standard_tolerations
+  controller:
+    annotations:
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  automountServiceAccountToken: false
+  resources:
+    requests:
+      cpu: 0m
+      memory: 64Mi
+    limits:
+      cpu: 600m
+      memory: 1Gi
+  ingress:
+    main:
+      enabled: false
+  service:
+    main:
+      enabled: true # necessary for probes
+      ports:
+        http:
+          port: 8191          
 
 tunarr:
   enabled: false
@@ -11794,7 +11877,7 @@ elfbot:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:30ec777a426d97f7792fde1c8a158a244ae3e10d557f3d3ea8c00de04f1fdf40
+    tag: rolling@sha256:22209507687d4529c44d193e075667ac10c79c10c26af096eb821164ff6fec66
   priorityClassName: tenant-normal
   serviceAccount:
     name: elfbot
@@ -12326,7 +12409,7 @@ jackettio:
       app.elfhosted.com/name: jackettio  
   podAnnotations:
     elfbot.elfhosted.com/name: "Jackettio"
-    elfbot.elfhosted.com/icon: "fas fa-search      
+    elfbot.elfhosted.com/icon: "fas fa-search"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jackettio,jackettio-env"
@@ -12949,7 +13032,7 @@ mediaflowproxy:
   podAnnotations:
     kubernetes.io/egress-bandwidth: "64M"
     elfbot.elfhosted.com/name: "MediaFlow Proxy"
-    elfbot.elfhosted.com/icon: "fas fa-cloud 
+    elfbot.elfhosted.com/icon: "fas fa-cloud"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
