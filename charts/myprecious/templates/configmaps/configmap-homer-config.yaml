@@ -356,7 +356,7 @@ data:
 
           {{ if .Values.booklore.enabled }}
           - name: "BookLore"
-            icon: "fab fa-book"
+            logo: "assets/png/booklore.png"
             subtitle: "Manage PDFs / Books"
             tag: "protected"
             tagstyle: "is-success"
@@ -1263,7 +1263,8 @@ data:
 
           {{ if .Values.cinesync.enabled }}
           - name: "CineSync"
-            icon: "fas fa-sync"
+            # icon: "fas fa-sync"
+            logo: "assets/png/cinesync.png"
             subtitle: "Symlink / sort debrid media"
             tag: "protected"
             tagstyle: "is-success"
@@ -1407,7 +1408,7 @@ data:
 
           {{ if .Values.autopulse.enabled }}
           - name: "Autopulse"
-            icon: "fas fa-bullseye"
+            logo: "assets/png/autopulse.png"            
             subtitle: "Trigger Streamer Scans"
             tag: "protected"
             tagstyle: "is-success"

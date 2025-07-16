@@ -37,17 +37,17 @@ data:
                 exit 1
             elif [[ "$3" == "--force" ]]; then
                 echo "force-restarting $2, data loss may occur (but sometimes there's no other way)..."
-                echo forcerestart > /elfbot/$2
+                echo elfbot_forcerestart > /elfbot/$2
             else             
                 echo "restarting $2..."
-                echo restart > /elfbot/$2
+                echo elfbot_restart > /elfbot/$2
             fi
             ;;
 
         "pause")
 
             echo "pausing $2 for 5 min..."
-            echo pause > /elfbot/$2
+            echo elfbot_pause > /elfbot/$2
             ;;     
 
         "env")
@@ -163,7 +163,7 @@ data:
                         echo "Error - not enough free space for backup. We need $NEEDED_SPACE bytes, but we only have $FREE_SPACE remaining :("
                     else
                         TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
-                        echo backup > /elfbot/$APP
+                        echo elfbot_backup > /elfbot/$APP
                         echo "restarting $APP, backup will be saved as /storage/backup/$APP-$TIMESTAMP ..."
                         sleep $SLEEP
                     fi
@@ -239,21 +239,7 @@ data:
 
             echo "Done! 🎉"
 
-            ;;
-
-        "elfstorage")
-
-            if [[ "$2" == "report" ]]; then
-                TIMESTAMP=$(printf '%(%Y-%m-%d--%H-%M)T\n' -1)
-                echo "Generating elfstorage report, this may take ~5 min..."
-
-                tree --du -hF -s  /storage/elfstorage/ -H https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/elfstorage -T "🧝 ElfHosted [/storage/elfstorage] usage for {{ .Release.Name }}"> /storage/elfstorage/disk-usage-report-$TIMESTAMP.html
-                echo "Done! 🎉"
-                echo "Report generated at /elfstorage/disk-usage-report-$TIMESTAMP.html"
-                exit 0
-            fi
-
-            ;;            
+            ;;       
 
         "symlink")
 
