@@ -6013,7 +6013,8 @@ tunarr:
       app.elfhosted.com/name: tunarr    
   podAnnotations:
     elfbot.elfhosted.com/name: "Tunarr"
-    elfbot.elfhosted.com/icon: "fas fa-tv"        
+    elfbot.elfhosted.com/icon: "fas fa-tv"  
+    kubernetes.io/egress-bandwidth: "128M"            
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6025,8 +6026,6 @@ tunarr:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tunarr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "128M"  
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7660,7 +7659,7 @@ audiobookrequest:
       app.elfhosted.com/name: audiobookrequest  
   podAnnotations:
     elfbot.elfhosted.com/name: "AudioBookRequest"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/audiobookrequest.png"        
+    elfbot.elfhosted.com/icon: "fas fa-book"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9170,7 +9169,7 @@ plexytrack:
       app.elfhosted.com/name: plexytrack    
   podAnnotations:
     elfbot.elfhosted.com/name: "PlexyTrack"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plexytrack.png"        
+    elfbot.elfhosted.com/icon: "fas fa-clipboard-list"        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -11865,7 +11864,7 @@ elfbot:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:22209507687d4529c44d193e075667ac10c79c10c26af096eb821164ff6fec66
+    tag: rolling@sha256:3b6a2544acbca5a3bad86f300fe8f3579512a363daf5b087e733b74071a47781
   priorityClassName: tenant-normal
   serviceAccount:
     name: elfbot
@@ -11875,7 +11874,7 @@ elfbot:
     app.elfhosted.com/name: elfbot
   podAnnotations:
     elfbot.elfhosted.com/name: "ElfBot (me!)"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/elfbot.png"      
+    elfbot.elfhosted.com/icon: "fas fa-robot"      
   persistence:
     <<: *storagemounts    
     config:
