@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.437.1](https://github.com/elfhosted/myprecious/compare/v1.437.0...v1.437.1) (2025-07-16)
+
+
+### Bug Fixes
+
+* Don't alert on elfbot status if the user hasn't opted into the trial (yet) ([bad8b34](https://github.com/elfhosted/myprecious/commit/bad8b345fe521a88ec36fb4081708bc937045dbc))
+
 ## [1.437.0](https://github.com/elfhosted/myprecious/compare/v1.436.0...v1.437.0) (2025-07-16)
 
 
