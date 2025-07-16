@@ -7224,7 +7224,7 @@ peertube:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/peertube-cli
-    tag: v7.2.2@sha256:b6ef0097a6c18d59a3e0e6f2f7570554bded2920f3f4409e7202378579338f31
+    tag: v7.2.2@sha256:a998b8549d5298c44d1a249b9818c2593bcf45e322625cae7d5f29a9c00d2367
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: peertube  
