@@ -5901,6 +5901,7 @@ flaresolverr: &app_flaresolverr
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flaresolverr"
   persistence:
+    tmp: *tmp
     shared:
       enabled: true
       mountPath: /shared
