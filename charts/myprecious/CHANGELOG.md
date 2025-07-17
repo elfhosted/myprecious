@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.438.0](https://github.com/elfhosted/myprecious/compare/v1.437.1...v1.438.0) (2025-07-17)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.26.1 ([132dd19](https://github.com/elfhosted/myprecious/commit/132dd196710a08292e2df7c9b02aaf6ff79c721f))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.89 ([abd5f39](https://github.com/elfhosted/myprecious/commit/abd5f390b38cbab5c4997775c83662e9713d8ef4))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.102.0 ([340f504](https://github.com/elfhosted/myprecious/commit/340f50402a1c70bcafcfff440eb9b5e7cdd23452))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2162 ([f095abc](https://github.com/elfhosted/myprecious/commit/f095abc6f109762545b5f124cef603e2be33584b))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.37.2 ([01fb18d](https://github.com/elfhosted/myprecious/commit/01fb18de15e766251997694f8e1b4938281a32be))
+
+
+### Bug Fixes
+
+* **app:** update docker.io/redis:7.4-alpine docker digest to bb186d0 ([ac44d99](https://github.com/elfhosted/myprecious/commit/ac44d99c741bc56f7c237c2a9ed898d7f2bb41ef))
+* **app:** update ghcr.io/elfhosted/elfbot:rolling docker digest to 4b9f130 ([7ed7501](https://github.com/elfhosted/myprecious/commit/7ed7501fd05132223c8e051ae2fd705d984358a7))
+
 ## [1.437.1](https://github.com/elfhosted/myprecious/compare/v1.437.0...v1.437.1) (2025-07-16)
 
 
