@@ -11783,7 +11783,7 @@ elfbot:
     app.elfhosted.com/name: elfbot
   podAnnotations:
     elfbot.elfhosted.com/name: "ElfBot (me!)"
-    elfbot.elfhosted.com/icon: "fas fa-robot"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/elfbot.png"      
   persistence:
     <<: *storagemounts    
     config:

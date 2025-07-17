@@ -1421,7 +1421,8 @@ data:
 
           {{ if .Values.elfbot.enabled }}
           - name: "ElfBot"
-            icon: "fas fa-robot"
+            # icon: "fas fa-robot"
+            logo: "assets/png/elfbot.png"
             subtitle: "Manage Apps"
             tag: "protected"
             tagstyle: "is-success"
