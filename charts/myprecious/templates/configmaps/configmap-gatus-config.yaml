@@ -1076,6 +1076,7 @@ data:
           - type: email
       {{ end }}            
 
+      {{ if or .Values.elfbot.enabled }}
       - name: elfbot
         group: tools
         url: "http://elfbot:3000"
@@ -1084,6 +1085,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
+      {{ end }}
 
       - name: filebrowser
         group: tools
