@@ -11755,7 +11755,7 @@ elfbot:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
-    tag: rolling@sha256:4b9f130dc048d8531f3639394cf74bdede9667d1d57d2de69ea504672fa6b56c
+    tag: rolling@sha256:f1aeda551b9e624208ea639c3441c001e1146a2c59961b0be21bd0ef37544af5
   priorityClassName: tenant-normal
   serviceAccount:
     name: elfbot
