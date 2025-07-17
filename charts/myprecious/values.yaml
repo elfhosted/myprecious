@@ -7430,7 +7430,7 @@ peertube:
           cpu: 500m
           memory: 1Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:af1d0fc3f63b02b13ff7906c9baf7c5b390b8881ca08119cd570677fe2f60b55
+      image: docker.io/redis:7.4-alpine@sha256:bb186d083732f669da90be8b0f975a37812b15e913465bb14d845db72a4e3e08
       resources:
         requests:
           cpu: 15m
@@ -14116,7 +14116,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.102.0@sha256:7964408c9c33d714a972bc9c8e2706c2302943fefb5c41a2301902f0571af24c
+    tag: 4.102.1@sha256:500afe6e1d3ee06534422ccf960374b38da77a7d6058af8dfcb84285cb1ebabd
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: codeserver  
@@ -15645,7 +15645,7 @@ wger:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:af1d0fc3f63b02b13ff7906c9baf7c5b390b8881ca08119cd570677fe2f60b55
+      image: docker.io/redis:7.4-alpine@sha256:bb186d083732f669da90be8b0f975a37812b15e913465bb14d845db72a4e3e08
       envFrom:
       - configMapRef:
           name: wger-env
@@ -15846,7 +15846,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:af1d0fc3f63b02b13ff7906c9baf7c5b390b8881ca08119cd570677fe2f60b55
+      image: docker.io/redis:7.4-alpine@sha256:bb186d083732f669da90be8b0f975a37812b15e913465bb14d845db72a4e3e08
       envFrom:
       - configMapRef:
           name: immich-env
