@@ -1419,6 +1419,7 @@ data:
         icon: "fas fa-toolbox"
         items:
 
+          {{ if .Values.elfbot.enabled }}
           - name: "ElfBot"
             icon: "fas fa-robot"
             subtitle: "Manage Apps"
@@ -1426,6 +1427,7 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-elfbot.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
+          {{ end }}
 
           - name: "FileBrowser"
             logo: "assets/png/filebrowser.png"
