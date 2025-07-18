@@ -1,0 +1,175 @@
+{{ if .Values.mediamanager.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mediamanager-example-config
+data:
+  config.toml: |
+    # MediaManager Complete Configuration File
+    # This file contains all available configuration options for MediaManager
+    # Documentation: https://maxdorninger.github.io/MediaManager/introduction.html
+
+    [misc]
+    # it's very likely that you need to change this for MediaManager to work
+    frontend_url = "https://{{ .Release.name }}-media-manager.{{ .Values.dns_domain }}
+    # cors_urls = ["http://localhost:3000", "http://localhost:8000"] # note the lack of a trailing slash
+
+    # you probaly don't need to change this
+    development = false
+
+    # Custom Media Libraries
+    [[misc.tv_libraries]]
+    name = "series"
+    path = "/storage/symlinks/series"
+
+    [[misc.tv_libraries]]
+    name = "series-4k"
+    path = "/storage/symlinks/series-4k"    
+
+    [[misc.movie_libraries]]
+    name = "movies"
+    path = "/storage/symlinks/movies"
+
+    [[misc.movie_libraries]]
+    name = "movies-4k"
+    path = "/storage/symlinks/movies-4k"    
+
+    [database]
+    host = "localhost"
+    port = 5432
+    user = "media-manager"
+    password = "media-manager"
+    dbname = "media-manager"
+
+    [auth]
+    email_password_resets = false # if true, you also need to set up SMTP (notifications.smtp_config)
+
+    token_secret = "" # generate a random string with "openssl rand -hex 32", e.g. here https://www.cryptool.org/en/cto/openssl/
+    session_lifetime = 86400  # this is how long you will be logged in after loggin in, in seconds
+    admin_emails = ["{ .Values.email }"]
+
+        # OpenID Connect settings
+        [auth.openid_connect]
+        enabled = false
+        client_id = ""
+        client_secret = ""
+        configuration_endpoint = "https://openid.example.com/.well-known/openid-configuration"
+        name = "OpenID"
+
+    [notifications]
+        # SMTP settings for email notifications and email password resets
+        [notifications.smtp_config]
+        smtp_host = "smtp.example.com"
+        smtp_port = 587
+        smtp_user = "admin"
+        smtp_password = "admin"
+        from_email = "mediamanager@example.com"
+        use_tls = true
+
+        # Email notification settings
+        [notifications.email_notifications]
+        enabled = false
+        emails = ["admin@example.com", "admin2@example.com"]  # List of email addresses to send notifications to
+
+        # Gotify notification settings
+        [notifications.gotify]
+        enabled = false
+        api_key = ""
+        url = "https://gotify.example.com"
+
+        # Ntfy notification settings
+        [notifications.ntfy]
+        enabled = false
+        url = "https://ntfy.sh/your-topic"
+
+        # Pushover notification settings
+        [notifications.pushover]
+        enabled = false
+        api_key = ""
+        user = ""
+
+    [torrents]
+        # qBittorrent settings
+        [torrents.qbittorrent]
+        enabled = true
+        host = "http://decypharr"
+        port = 8282
+        username = "admin"
+        password = "admin"
+
+        # Transmission settings
+        [torrents.transmission]
+        enabled = false
+        username = "admin"
+        password = "admin"
+        https_enabled = true
+        host = "localhost"
+        port = 9091
+        path = "/transmission/rpc" # RPC request path target, usually "/transmission/rpc"
+
+        # SABnzbd settings
+        [torrents.sabnzbd]
+        enabled = false
+        host = "localhost"
+        port = 8080
+        api_key = ""
+
+    [indexers]
+        # Prowlarr settings
+        [indexers.prowlarr]
+        enabled = true
+        url = "http://prowlarr:9696"
+        api_key = "{{ .Values.prowlarrext.api_key }}"
+
+        # Jackett settings
+        [indexers.jackett]
+        enabled = false
+        url = "http://jackett:9117"
+        api_key = ""
+        indexers = ["1337x","torrentleech"]  # List of indexer names to use
+
+        # Title-based scoring rules
+        [[indexers.title_scoring_rules]]
+        name = "prefer_h265"
+        keywords = ["h265", "hevc", "x265", "h.265","x.265"]
+        score_modifier = 100
+        negate = false
+
+        [[indexers.title_scoring_rules]]
+        name = "avoid_cam"
+        keywords = ["cam", "ts"]
+        score_modifier = -10000
+        negate = false
+
+        # Indexer flag-based scoring rules
+        [[indexers.indexer_flag_scoring_rules]]
+        name = "reject_non_freeleech"
+        flags = ["freeleech", "freeleech75"]
+        score_modifier = -10000
+        negate = true
+
+        [[indexers.indexer_flag_scoring_rules]]
+        name = "reject_nuked"
+        flags = ["nuked"]
+        score_modifier = -10000
+        negate = false
+
+        # Scoring rulesets
+        [[indexers.scoring_rule_sets]]
+        name = "default"
+        libraries = ["ALL_TV", "ALL_MOVIES"]
+        rule_names = ["prefer_h265", "avoid_cam", "reject_nuked"]
+
+        [[indexers.scoring_rule_sets]]
+        name = "strict_quality"
+        libraries = ["ALL_MOVIES"]
+        rule_names = ["prefer_h265", "avoid_cam","reject_non_freeleech"]
+
+    # its very unlikely that you need to change this
+    [metadata]
+        [metadata.tmdb]
+        tmdb_relay_url = "https://metadata-relay.maxid.me/tmdb"
+
+        [metadata.tvdb]
+        tvdb_relay_url = "https://metadata-relay.maxid.me/tvdb"
+{{ end }}

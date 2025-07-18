@@ -1,0 +1,20 @@
+{{ if .Values.mediamanager.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Release.Name }}-media-manager.{{ .Values.dns_domain }}
+spec:
+  entryPoints:
+  - websecure
+  routes:
+    - match: Host(`{{ .Release.Name }}-media-manager.{{ .Values.dns_domain }}`)
+      kind: Rule
+      services:
+        - name: media-manager
+          kind: Service
+          port: 8000
+      middlewares:
+        - name: {{ .Release.Name }}-traefik-forward-auth
+        - name: error-pages
+          namespace: traefik
+{{ end }}
