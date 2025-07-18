@@ -11590,7 +11590,7 @@ wizarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wizarr
-    tag: 2025.7.4@sha256:4af34c822907ec72bf6e4fbbf540fdb3cdd1c7a62b36b644d4e9b2eabf293d9a
+    tag: 2025.7.5@sha256:f57fcc010fe702217582b74202771296b63f6a7c53db5184cdf009ddd04629e9
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: wizarr  
@@ -12569,7 +12569,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.80.6@sha256:7a5636988cfe3f18f8dac01c91cc5dc2c6045cc83605309c0e37cde2613c0689
+    tag: 0.80.7@sha256:e4dd9e3eeec73e45dbba52f4cba920afaa5142c4d3b950a7328301317ae109b7
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: stremthru  
@@ -13528,7 +13528,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.38.0@sha256:979408793a648de9788d3ec8e1787001ae9864aaf3703ac03f830c493d7a50b2
+    tag: v0.39.0@sha256:707ce90af54e91c3e41cbe801a67b53ab5760a719c4c4cd835b940108b89b3fd
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: webstreamr  
