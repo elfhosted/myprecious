@@ -11326,7 +11326,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2161@sha256:4ac644fcc8795c11e16fb3dd243bfa2650e8a736bde1f5bdb82eee8af8d33982
+    tag: 0.22.2162@sha256:222feb87a36d7eb98437538dda59bffc372a926c147c2977c91228d90de6620a
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -13341,7 +13341,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.37.1@sha256:b67931434ba210c419475a387fc4bdeb84f03e36bf5dc3b2812d5052de449c6a
+    tag: v0.37.2@sha256:7b0f18c93c0e8b66630c4f60c5e9af1ed8c9f0a80316209cf7d5c6444a093d73
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: webstreamr  
@@ -13916,7 +13916,7 @@ clidebrid: &app_clidebrid
     elfbot.elfhosted.com/icon: "fas fa-terminal"      
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.88@sha256:e22cdf72efd2c5b0c518b068b9e4dd19a4ab59893c8f9c1d1333dd0d6fff95fd 
+    tag: v0.6.89@sha256:da5efdec9be669a34cc0b7f7bf4a9d01b2e04521339e2ae36ef194b76bbf6f56 
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14100,7 +14100,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.101.2@sha256:b98aea58266285ac8fcd1e86182b4a9962a34109f343dba4c2251da7c01a6c0f
+    tag: 4.102.0@sha256:7964408c9c33d714a972bc9c8e2706c2302943fefb5c41a2301902f0571af24c
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: codeserver  
