@@ -3348,7 +3348,7 @@ calibre:
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre.png"      
   image:
     repository: quay.io/linuxserver.io/calibre
-    tag: 8.6.0@sha256:ea59a40f5a068b5944da32c2b0ced168ededd8b0f5cc333c576dab69dc45c737
+    tag: 8.7.0@sha256:4abf3cf68f875fef86ca3388e98f2abb2d7eb647d66e64c3a90638aa7ff9e6e2
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -5043,7 +5043,7 @@ plex: &app_plex
       - mountPath: /tmp
         name: tmp
     dbrepair:
-      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:75af672be6b46a0c776f38830a6caaa821459d4986a8c1372bf315803e505c89
+      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:42e871da0dd1c25c04c91a6599f75544a58c79bcba3db71cdd6e548f13b2b9ce
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -11513,7 +11513,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2162@sha256:222feb87a36d7eb98437538dda59bffc372a926c147c2977c91228d90de6620a
+    tag: 0.22.2163@sha256:a9906f062008f038d10f278f75374d68113ce19f9bc57d19043f25c4ad9c882c
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -13528,7 +13528,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.37.2@sha256:7b0f18c93c0e8b66630c4f60c5e9af1ed8c9f0a80316209cf7d5c6444a093d73
+    tag: v0.38.0@sha256:979408793a648de9788d3ec8e1787001ae9864aaf3703ac03f830c493d7a50b2
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: webstreamr  
@@ -14988,7 +14988,7 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:75af672be6b46a0c776f38830a6caaa821459d4986a8c1372bf315803e505c89
+      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:42e871da0dd1c25c04c91a6599f75544a58c79bcba3db71cdd6e548f13b2b9ce
       command:
       - /bin/bash
       - -c
