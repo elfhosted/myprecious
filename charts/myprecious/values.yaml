@@ -11110,12 +11110,8 @@ mediamanager:
     fsGroup: 568
     fsGroupChangePolicy: "OnRootMismatch"
   automountServiceAccountToken: false
-  envFrom:
-  - configMapRef:
-      name: media-manager-env
-  - configMapRef:
-      name: elfbot-media-manager
-      optional: true
+  env:
+    CONFIG_FILE: /config/config.toml
   resources:
     requests:
       cpu: 0m
