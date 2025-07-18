@@ -575,6 +575,8 @@ rutorrentgluetun: &rutorrent
   image:
       repository: ghcr.io/elfhosted/rutorrent
       tag: 5.1.7-7.2@sha256:b5138140095c158f72e386fd7284add7e3b5349a251a5594666bd7a62b9a75a8
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted      
   podLabels:
     app.elfhosted.com/name: rutorrent
   podAnnotations:
@@ -1546,6 +1548,8 @@ radarr: &app_radarr
     registry: ghcr.io
     repository: elfhosted/radarr
     tag: 5.26.2.10099@sha256:64c278e344051ea00998b2968a653c23c0f6d8ba6c4e72c6e22728d321af3f0a
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -1762,6 +1766,8 @@ radarr4k: &app_radarr4k
     registry: ghcr.io
     repository: elfhosted/radarr
     tag: 5.26.2.10099@sha256:64c278e344051ea00998b2968a653c23c0f6d8ba6c4e72c6e22728d321af3f0a
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3434,6 +3440,8 @@ sonarr: &app_sonarr
     registry: ghcr.io
     repository: elfhosted/sonarr
     tag: 4.0.15.2941@sha256:7a6a5969468d002816964ef101a459b53a461e516ff262094c72de3e73f1fff1
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted        
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3649,6 +3657,8 @@ sonarr4k: &app_sonarr4k
     registry: ghcr.io
     repository: elfhosted/sonarr
     tag: 4.0.15.2941@sha256:7a6a5969468d002816964ef101a459b53a461e516ff262094c72de3e73f1fff1
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -3869,6 +3879,8 @@ prowlarr: &app_prowlarr
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
     tag: 2.0.1.5101@sha256:44a6f10ee896f03a9b1f6899e588265d2cdc0d48e4a6d87dc43128e9801b66d5
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -5173,6 +5185,8 @@ jellyfin: &app_jellyfin
   image:
     repository: ghcr.io/elfhosted/jellyfin-dev
     tag: 10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted    
   enabled: false
   podLabels:
     app.elfhosted.com/name: jellyfin
@@ -5376,6 +5390,8 @@ emby: &app_emby
     registry: ghcr.io
     repository: elfhosted/emby
     tag: 4.9.1.7@sha256:dff699f9e475e40eaa8e856fafc4fd3a64285640660836b77ecb66e777be5220
+  imagePullSecrets:
+  - name: ghcr-io-elfhosted    
   enabled: false
   priorityClassName: tenant-streaming
   podLabels:
@@ -7414,7 +7430,7 @@ peertube:
           cpu: 500m
           memory: 1Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:af1d0fc3f63b02b13ff7906c9baf7c5b390b8881ca08119cd570677fe2f60b55
+      image: docker.io/redis:7.4-alpine@sha256:bb186d083732f669da90be8b0f975a37812b15e913465bb14d845db72a4e3e08
       resources:
         requests:
           cpu: 15m
@@ -11810,7 +11826,7 @@ elfbot:
       memory: 1Mi
     limits:
       cpu: 1
-      memory: 100Mi
+      memory: 256Mi
   ingress:
     main:
       enabled: false
@@ -14100,7 +14116,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.102.0@sha256:7964408c9c33d714a972bc9c8e2706c2302943fefb5c41a2301902f0571af24c
+    tag: 4.102.1@sha256:500afe6e1d3ee06534422ccf960374b38da77a7d6058af8dfcb84285cb1ebabd
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: codeserver  
@@ -15629,7 +15645,7 @@ wger:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:af1d0fc3f63b02b13ff7906c9baf7c5b390b8881ca08119cd570677fe2f60b55
+      image: docker.io/redis:7.4-alpine@sha256:bb186d083732f669da90be8b0f975a37812b15e913465bb14d845db72a4e3e08
       envFrom:
       - configMapRef:
           name: wger-env
@@ -15830,7 +15846,7 @@ immich:
           cpu: 500m
           memory: 4Gi
     redis:
-      image: docker.io/redis:7.4-alpine@sha256:af1d0fc3f63b02b13ff7906c9baf7c5b390b8881ca08119cd570677fe2f60b55
+      image: docker.io/redis:7.4-alpine@sha256:bb186d083732f669da90be8b0f975a37812b15e913465bb14d845db72a4e3e08
       envFrom:
       - configMapRef:
           name: immich-env
