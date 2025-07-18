@@ -11155,7 +11155,12 @@ mediamanager:
       type: "custom"
       volumeSpec:
         configMap:
-          name: media-manager-config       
+          name: media-manager-config    
+    cache:
+      enabled: true
+      type: emptyDir
+      sizeLimit: 1Gi
+      mountPath: /.cache               
   initContainers:
     bootstrap:
       <<: *bootstrap
