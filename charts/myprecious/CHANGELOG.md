@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.439.0](https://github.com/elfhosted/myprecious/compare/v1.438.0...v1.439.0) (2025-07-19)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.102.1 ([fe8ce57](https://github.com/elfhosted/myprecious/commit/fe8ce57e4c041fc07cb08204dc9b7b0093c8e9fc))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2163 ([7e85bfe](https://github.com/elfhosted/myprecious/commit/7e85bfe3c09fbc88059ee29ee6a398c58b6a4944))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2165 ([658c8b9](https://github.com/elfhosted/myprecious/commit/658c8b9dce7ef308d49c0cacd25893aff52e6d61))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.80.7 ([09df06a](https://github.com/elfhosted/myprecious/commit/09df06a590772c8bc1b3698cc65184301e72a569))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.38.0 ([8dc45a0](https://github.com/elfhosted/myprecious/commit/8dc45a02a6a9edb4d128061f2aee9154ed31ebf8))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.38.1 ([c99ffb0](https://github.com/elfhosted/myprecious/commit/c99ffb00e64daa832741ed48fadae6571c8a75ed))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.39.0 ([0f7a34a](https://github.com/elfhosted/myprecious/commit/0f7a34aa52ce6ab2c1a51f8251602a2a81069c49))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.7.5 ([893ac29](https://github.com/elfhosted/myprecious/commit/893ac2913691d6c2b316972f10ac138d15c0bc78))
+* **app:** update quay.io/linuxserver.io/calibre docker tag to v8.7.0 ([37a6c16](https://github.com/elfhosted/myprecious/commit/37a6c166424c064381a688a1c5edaaae72d59a97))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/plex:1.41.9.9961-46083195d docker digest to 42e871d ([c2a28f1](https://github.com/elfhosted/myprecious/commit/c2a28f17bf79763e33150a02d797223e4baf6773))
+* unbreak elfbot reset function via CLI ([d339bfe](https://github.com/elfhosted/myprecious/commit/d339bfe835aa952fbd29c57a90fe5dd4b69e828d))
+* Update healthcheck for webstreamr to keep VPN alive ([efe3b9f](https://github.com/elfhosted/myprecious/commit/efe3b9ff696c0aa80034a4f723f74fe543af5bb6))
+
 ## [1.438.0](https://github.com/elfhosted/myprecious/compare/v1.437.1...v1.438.0) (2025-07-17)
 
 
