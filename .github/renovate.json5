@@ -21,11 +21,16 @@
   "platformAutomerge": true,
   "ignoreTests": false,
   "packageRules": [
+  "packageRules": [
     {
-      "matchPackageNames": ["ghcr.io/elfhosted/zurg-rc","ghcr.io/elfhosted/wizarr","ghcr.io/elfhosted/plex"],
-      "versioning": "loose",
+      "matchPackageNames": [
+        "ghcr.io/elfhosted/zurg-rc",
+        "ghcr.io/elfhosted/wizarr",
+        "ghcr.io/elfhosted/plex"
+      ],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<build>\\d+))?(?:[-.]?(?<suffix>[0-9A-Za-z-]+))?$",
       "automerge": false
-    },    
+    },
     {
       "matchUpdateTypes": ["digest"],
       "automerge": true,
