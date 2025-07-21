@@ -741,7 +741,7 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-kometa.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-
+          {{ end }}
 
           {{ if .Values.lazylibrarian.enabled }}
           - name: "LazyLibrarian"
@@ -1111,21 +1111,57 @@ data:
 
       - name: "Download Media"
         icon: "fas fa-cloud-arrow-down"
-        items:
-          {{ if .Values.nzbget.enabled }}
-          - name: "NZBGet"
-            logo: "assets/png/nzbget.png"
-            subtitle: "Usenet client"
-            {{ if .Values.nzbgetexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
+        items:           
+
+          {{ if .Values.audiobookbayautomated.enabled }}
+          - name: "AudioBookBay Automated"
+            icon: "fas fa-book-open-reader"
+            subtitle: "Manage AudioBookBay Downloads"
             tag: "protected"
             tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-nzbget.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-audiobookbay-automated.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+
+          {{ if .Values.audiobookrequest.enabled }}
+          - name: "AudioBookRequest"
+            icon: "fas fa-book-open-reader"
+            subtitle: "Manage AudioBook Downloads"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-audiobookrequest.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
+
+          {{ if .Values.autopulse.enabled }}
+          - name: "Autopulse"
+            logo: "assets/png/autopulse.png"            
+            subtitle: "Trigger Streamer Scans"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}    
+
+          {{ if or .Values.airdcpppia.enabled  .Values.airdcppgluetun.enabled }}
+          - name: "AirDC++"
+            icon: "fas fa-wind"
+            subtitle: "Manage DC++ Sharing"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-airdcpp.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}    
+
+          {{ if .Values.cinesync.enabled }}
+          - name: "CineSync"
+            logo: "assets/png/cinesync.png"
+            subtitle: "Symlink / sort debrid media"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-cinesync.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute            
+          {{ end }}  
 
           {{ if .Values.clidebrid.enabled }}
           - name: "cli-debrid (RealDebrid)"
@@ -1136,117 +1172,6 @@ data:
             url: "https://{{ .Release.Name }}-cli-debrid.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}            
-
-          {{ if .Values.sabnzbd.enabled }}
-          - name: "SABnzbd"
-            logo: "assets/png/sabnzbd.png"
-            subtitle: "Usenet client"
-            {{ if .Values.sabnzbdexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-sabnzbd.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            type: "SABnzbd"
-            apikey: "{{ .Values.sabnzbdexposed.apikey }}"
-            downloadInterval: 60000 # (Optional) Interval (in ms) for updating the download count - so this would be 1m
-            useCredentials: true
-          {{ end }}
-
-          {{ if .Values.prowlarr.enabled }}
-          - name: "Prowlarr"
-            logo: "assets/png/prowlarr.png"
-            subtitle: "Manage Indexers"
-            {{ if .Values.prowlarrexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            type: "Prowlarr"
-            apikey: "{{ .Values.prowlarrexposed.apikey }}"
-            useCredentials: true
-          {{ end }}
-
-          {{ if .Values.nzbhydra.enabled }}
-          - name: "NZBHydra"
-            logo: "assets/png/nzbhydra.png"
-            subtitle: "Manage NZB Indexers"
-            {{ if .Values.nzbhydra.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.jackett.enabled }}
-          - name: "Jackett"
-            logo: "assets/png/jackett.png"
-            subtitle: "Manage Indexers / Trackers"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-jackett.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                             
-
-          {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
-          - name: "Qbittorrent"
-            logo: "assets/png/qbittorrent.png"
-            subtitle: "Bittorrent client"
-            {{ if .Values.qbittorrentexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-qbittorrent.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            type: "qBittorrent"
-            rateInterval: 30000 # Interval for updating the download and upload rates.
-            torrentInterval: 60000 # Interval for updating the torrent count.
-            useCredentials: true
-            {{ end }}
-
-          {{ if or .Values.rutorrentpia.enabled .Values.rutorrentgluetun.enabled }}
-          - name: "ruTorrent"
-            logo: "assets/png/rutorrent.png"
-            subtitle: "Bittorrent client"
-            {{ if .Values.rutorrentexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            # xmlrpc: "https://{{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}" # Homer will automatically suffix /RPC2 to this, which we catch in our ingressroute.
-            # type: "Rtorrent"
-            # rateInterval: 30000 # Interval for updating the download and upload rates.
-            # torrentInterval: 60000 # Interval for updating the torrent count.
-            # useCredentials: true
-            {{ end }}
-
-          {{ if .Values.rdtclient.enabled }}
-          - name: "RDT Client (RealDebrid)"
-            logo: "assets/png/real-debrid.png"
-            subtitle: "Manage Debrid Downloads"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rdtclient.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                             
 
           {{ if .Values.debridav.enabled }}
           - name: "DebriDav"
@@ -1266,35 +1191,37 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-decypharr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                 
+          {{ end }}      
 
-          {{ if .Values.cinesync.enabled }}
-          - name: "CineSync"
-            logo: "assets/png/cinesync.png"
-            subtitle: "Symlink / sort debrid media"
+          {{ if or .Values.doplarr.enabled }}
+          - name: "Doplarr"
+            icon: "fas fa-comments"
+            subtitle: "Manage media requests via Discord"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-cinesync.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute            
-          {{ end }}  
+            url: "https://{{ .Release.Name }}-doplarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
 
-          {{ if .Values.seerrbridge.enabled }}
-          - name: "SeerrBridge (backend)"
-            icon: "fas fa-bridge"
-            subtitle: "Use DMM from Overseerr (backend)"
+          {{ if .Values.huntarr.enabled }}
+          - name: "Huntarr"
+            icon: "fas fa-bullseye"
+            subtitle: "Hunt Missing Movies / Episodes"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-seerrbridge-backend.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute   
+            url: "https://{{ .Release.Name }}-huntarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}   
 
-          - name: "SeerrBridge BridgeBoard"
-            icon: "fas fa-bridge"
-            subtitle: "SeerrBridge BridgeBoard"
+          {{ if .Values.jackett.enabled }}
+          - name: "Jackett"
+            logo: "assets/png/jackett.png"
+            subtitle: "Manage Indexers / Trackers"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-seerrbridge.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute                        
-          {{ end }}
+            url: "https://{{ .Release.Name }}-jackett.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}    
 
           {{ if .Values.listsync.enabled }}
           # - name: "ListSync"
@@ -1320,17 +1247,37 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-listsync-cli.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute                                    
-          {{ end }}            
+          {{ end }}      
 
-          {{ if .Values.zurg.enabled }}
-          - name: "Zurg"
-            logo: "assets/png/real-debrid.png"
-            subtitle: "Manage RealDebrid Mount"
+          {{ if .Values.nzbget.enabled }}
+          - name: "NZBGet"
+            logo: "assets/png/nzbget.png"
+            subtitle: "Usenet client"
+            {{ if .Values.nzbgetexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-nzbget.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                      
+          {{ end }}
+
+          {{ if .Values.nzbhydra.enabled }}
+          - name: "NZBHydra"
+            logo: "assets/png/nzbhydra.png"
+            subtitle: "Manage NZB Indexers"
+            {{ if .Values.nzbhydra.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-nzbhydra.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
 
           {{ if .Values.openbooks.enabled }}
           - name: "Openbooks"
@@ -1342,45 +1289,23 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }} 
 
-          {{ if .Values.audiobookrequest.enabled }}
-          - name: "AudioBookRequest"
-            icon: "fas fa-book-open-reader"
-            subtitle: "Manage AudioBook Downloads"
+          {{ if .Values.prowlarr.enabled }}
+          - name: "Prowlarr"
+            logo: "assets/png/prowlarr.png"
+            subtitle: "Manage Indexers"
+            {{ if .Values.prowlarrexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-audiobookrequest.{{ .Values.dns_domain }}"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-prowlarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.audiobookbayautomated.enabled }}
-          - name: "AudioBookBay Automated"
-            icon: "fas fa-book-open-reader"
-            subtitle: "Manage AudioBookBay Downloads"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-audiobookbay-automated.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}             
-
-          {{ if or .Values.airdcpppia.enabled  .Values.airdcppgluetun.enabled }}
-          - name: "AirDC++"
-            icon: "fas fa-wind"
-            subtitle: "Manage DC++ Sharing"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-airdcpp.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}    
-
-          {{ if or .Values.doplarr.enabled }}
-          - name: "Doplarr"
-            icon: "fas fa-comments"
-            subtitle: "Manage media requests via Discord"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-doplarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}   
+            type: "Prowlarr"
+            apikey: "{{ .Values.prowlarrexposed.apikey }}"
+            useCredentials: true
+          {{ end }}     
 
           {{ if or .Values.pulsarr.enabled }}
           - name: "Pulsarr"
@@ -1390,7 +1315,36 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-pulsarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}              
+          {{ end }}                                 
+
+          {{ if or .Values.qbittorrentpia.enabled .Values.qbittorrentgluetun.enabled }}
+          - name: "Qbittorrent"
+            logo: "assets/png/qbittorrent.png"
+            subtitle: "Bittorrent client"
+            {{ if .Values.qbittorrentexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-qbittorrent.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+            type: "qBittorrent"
+            rateInterval: 30000 # Interval for updating the download and upload rates.
+            torrentInterval: 60000 # Interval for updating the torrent count.
+            useCredentials: true
+            {{ end }}
+
+          {{ if .Values.rdtclient.enabled }}
+          - name: "RDT Client (RealDebrid)"
+            logo: "assets/png/real-debrid.png"
+            subtitle: "Manage Debrid Downloads"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-rdtclient.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
 
           {{ if or .Values.requestrr.enabled }}
           - name: "Requestrr"
@@ -1400,86 +1354,78 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-requestrr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                        
+          {{ end }}             
 
-          {{ if .Values.huntarr.enabled }}
-          - name: "Huntarr"
-            icon: "fas fa-bullseye"
-            subtitle: "Hunt Missing Movies / Episodes"
+          {{ if or .Values.rutorrentpia.enabled .Values.rutorrentgluetun.enabled }}
+          - name: "ruTorrent"
+            logo: "assets/png/rutorrent.png"
+            subtitle: "Bittorrent client"
+            {{ if .Values.rutorrentexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-huntarr.{{ .Values.dns_domain }}"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}    
+            # xmlrpc: "https://{{ .Release.Name }}-rutorrent.{{ .Values.dns_domain }}" # Homer will automatically suffix /RPC2 to this, which we catch in our ingressroute.
+            # type: "Rtorrent"
+            # rateInterval: 30000 # Interval for updating the download and upload rates.
+            # torrentInterval: 60000 # Interval for updating the torrent count.
+            # useCredentials: true
+            {{ end }}
 
-          {{ if .Values.autopulse.enabled }}
-          - name: "Autopulse"
-            logo: "assets/png/autopulse.png"            
-            subtitle: "Trigger Streamer Scans"
+          {{ if .Values.sabnzbd.enabled }}
+          - name: "SABnzbd"
+            logo: "assets/png/sabnzbd.png"
+            subtitle: "Usenet client"
+            {{ if .Values.sabnzbdexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-autopulse.{{ .Values.dns_domain }}"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-sabnzbd.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                                  
+            type: "SABnzbd"
+            apikey: "{{ .Values.sabnzbdexposed.apikey }}"
+            downloadInterval: 60000 # (Optional) Interval (in ms) for updating the download count - so this would be 1m
+            useCredentials: true
+          {{ end }}
+
+          {{ if .Values.seerrbridge.enabled }}
+          - name: "SeerrBridge (backend)"
+            icon: "fas fa-bridge"
+            subtitle: "Use DMM from Overseerr (backend)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-seerrbridge-backend.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute   
+
+          - name: "SeerrBridge BridgeBoard"
+            icon: "fas fa-bridge"
+            subtitle: "SeerrBridge BridgeBoard"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-seerrbridge.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute                        
+          {{ end }}
+
+          {{ if .Values.zurg.enabled }}
+          - name: "Zurg"
+            logo: "assets/png/real-debrid.png"
+            subtitle: "Manage RealDebrid Mount"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-zurg.{{ .Values.dns_domain }}/http/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                                      
 
       - name: "Tools"
         icon: "fas fa-toolbox"
         items:
-
-          {{ if .Values.elfbot.enabled }}
-          - name: "ElfBot"
-            # icon: "fas fa-robot"
-            logo: "assets/png/elfbot.png"
-            subtitle: "Manage Apps"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-elfbot.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          - name: "FileBrowser"
-            logo: "assets/png/filebrowser.png"
-            subtitle: "Manage Files"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-
-          - name: "ElfTerm"
-            icon: "fas fa-terminal"
-            subtitle: "Enter the ElfTerm.. 🪄"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-elfterm.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute            
-
-          - name: "Kubernetes Dashboard"
-            logo: "assets/png/kubernetes.png"
-            subtitle: "Kubernetes Resources"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-
-          {{ if .Values.rdebridui.enabled }}
-          - name: "Rdebrid UI"
-            logo: "assets/png/real-debrid.png"
-            subtitle: "Manage RealDebrid account"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}  
-
-          {{ if .Values.privatebin.enabled }}
-          - name: "Privatebin"
-            logo: "assets/png/privatebin.png"
-            subtitle: "Minimalistic pastebin"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-privatebin.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
 
           {{ if .Values.actual.enabled }}
           - name: "Actual Server"
@@ -1493,15 +1439,84 @@ data:
             url: "https://{{ .Release.Name }}-actual.{{ .Values.dns_domain }}"
             {{ end }}            
             target: "_blank" # optional html tag target attribute
-          {{ end }}          
+          {{ end }}   
 
-          {{ if .Values.miniflux.enabled }}
-          - name: "Miniflux"
-            logo: "assets/png/miniflux.png"
-            subtitle: "Minimalistic RSS reader"
+          {{ if .Values.blueskypds.enabled }}
+          - name: "Bluesky PDS"
+            icon: "fas fa-sun"
+            subtitle: "Bluesky Personal Data Server"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-miniflux.{{ .Values.dns_domain }}"
+            {{- if .Values.blueskypdscustomdomain.enabled }}
+            url: "https://{{ .Values.blueskypdscustomdomain.cname | lower }}"
+            {{- else }}
+            url: "https://{{ .Release.Name }}-bluesky-pds.{{ .Values.dns_domain }}"
+            {{- end }}
+            target: "_blank" # optional html tag target attribute
+
+          - name: "BlueSky PDS CLI"
+            icon: "fas fa-sun"
+            subtitle: "Bluesky PDS CLI Admin"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-bluesky-pds-cli.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }} 
+
+          {{ if .Values.codeserver.enabled }}
+          - name: "Code Server"
+            logo: "assets/png/code-server.png"
+            subtitle: "Code Server"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-codeserver.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
+          {{ if .Values.elfbot.enabled }}
+          - name: "ElfBot"
+            # icon: "fas fa-robot"
+            logo: "assets/png/elfbot.png"
+            subtitle: "Manage Apps"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-elfbot.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          - name: "ElfTerm"
+            icon: "fas fa-terminal"
+            subtitle: "Enter the ElfTerm.. 🪄"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-elfterm.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute            
+
+          - name: "FileBrowser"
+            logo: "assets/png/filebrowser.png"
+            subtitle: "Manage Files"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+
+          {{ if .Values.gluetun.enabled }}
+          - name: "Gluetun"
+            icon: "fas fa-lock"
+            subtitle: "Configure your BYO VPN"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }} 
+
+          {{ if .Values.gotify.enabled }}
+          - name: "Gotify"
+            logo: "assets/png/gotify.png"
+            subtitle: "Gotify"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-gotify.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
@@ -1525,29 +1540,157 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-gotosocial-cli.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}          
+          {{ end }}     
 
-          {{ if .Values.blueskypds.enabled }}
-          - name: "Bluesky PDS"
-            icon: "fas fa-sun"
-            subtitle: "Bluesky Personal Data Server"
-            tag: "public"
-            tagstyle: "is-danger"
-            {{- if .Values.blueskypdscustomdomain.enabled }}
-            url: "https://{{ .Values.blueskypdscustomdomain.cname | lower }}"
-            {{- else }}
-            url: "https://{{ .Release.Name }}-bluesky-pds.{{ .Values.dns_domain }}"
-            {{- end }}
-            target: "_blank" # optional html tag target attribute
-
-          - name: "BlueSky PDS CLI"
-            icon: "fas fa-sun"
-            subtitle: "Bluesky PDS CLI Admin"
+          {{ if .Values.homepage.enabled }}
+          - name: "Homepage"
+            logo: "assets/png/homepage.png"
+            subtitle: "Beautiful Homepage"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-bluesky-pds-cli.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-homepage.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}        
+          {{ end }}
+
+          {{ if .Values.joplinserver.enabled }}
+          - name: "Joplin Server"
+            logo: "assets/png/joplin.png"
+            subtitle: "Manage Joplin Sync"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
+          - name: "Kubernetes Dashboard"
+            logo: "assets/png/kubernetes.png"
+            subtitle: "Kubernetes Resources"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+
+          {{ if .Values.mattermost.enabled }}
+          - name: "Mattermost"
+            logo: "assets/png/mattermost.png"
+            subtitle: "Team group chat"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-mattermost.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.miniflux.enabled }}
+          - name: "Miniflux"
+            logo: "assets/png/miniflux.png"
+            subtitle: "Minimalistic RSS reader"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-miniflux.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.nightscout.enabled }}
+          - name: "Nightscout"
+            logo: "assets/png/nightscout.png"
+            subtitle: "Manage CGM Data"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-nightscout.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}              
+
+          {{ if .Values.pairdrop.enabled }}
+          - name: "Pairdrop"
+            icon: "fas fa-lock"
+            subtitle: "Private Airdrop"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-pairdrop.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.peertube.enabled }}
+          - name: "PeerTube"
+            logo: "assets/png/peertube.png"
+            subtitle: "PeerTube"
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ if .Values.peertubecustomdomain.enabled }}
+            url: https://{{ .Values.peertubecustomdomain.cname | lower }}
+            {{ else }}
+            url: "https://{{ .Release.Name }}-peertube.{{ .Values.dns_domain }}"
+            {{ end }}
+            target: "_blank" # optional html tag target attribute
+
+          - name: "PeerTube CLI"
+            icon: "fas fa-terminal"
+            subtitle: "PeerTube CLI"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-peertube-cli.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute            
+          {{ end }}           
+
+          {{ if .Values.pgadmin.enabled }}
+          - name: "PGAdmin"
+            logo: "assets/png/pgadmin.png"
+            subtitle: "PostgreSQL Admin"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-pgadmin.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}   
+
+          {{ if .Values.privatebin.enabled }}
+          - name: "Privatebin"
+            logo: "assets/png/privatebin.png"
+            subtitle: "Minimalistic pastebin"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-privatebin.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.puter.enabled }}
+          - name: "Puter"
+            logo: "assets/png/puter.png"
+            subtitle: "Remotely compute"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-puter.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}   
+
+          {{ if .Values.redisinsight.enabled }}
+          - name: "RedisInsight"
+            logo: "assets/png/redisinsight.png"
+            subtitle: "Redis UI"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-redisinsight.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+
+          {{ if .Values.rdebridui.enabled }}
+          - name: "Rdebrid UI"
+            logo: "assets/png/real-debrid.png"
+            subtitle: "Manage RealDebrid account"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
+          {{ if .Values.thelounge.enabled }}
+          - name: "The Lounge"
+            logo: "assets/png/thelounge.png"
+            subtitle: "IRC client"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-thelounge.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
 
           {{ if .Values.uptimekuma.enabled }}
           - name: "Uptime Kuma"
@@ -1563,26 +1706,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.gotify.enabled }}
-          - name: "Gotify"
-            logo: "assets/png/gotify.png"
-            subtitle: "Gotify"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-gotify.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.thelounge.enabled }}
-          - name: "The Lounge"
-            logo: "assets/png/thelounge.png"
-            subtitle: "IRC client"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-thelounge.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.vaultwarden.enabled }}
           - name: "Vaultwarden"
             logo: "assets/png/vaultwarden.png"
@@ -1592,47 +1715,7 @@ data:
             url: "https://{{ .Release.Name }}-vaultwarden.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
-
-          {{ if .Values.puter.enabled }}
-          - name: "Puter"
-            logo: "assets/png/puter.png"
-            subtitle: "Remotely compute"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-puter.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.mattermost.enabled }}
-          - name: "Mattermost"
-            logo: "assets/png/mattermost.png"
-            subtitle: "Team group chat"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-mattermost.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.joplinserver.enabled }}
-          - name: "Joplin Server"
-            logo: "assets/png/joplin.png"
-            subtitle: "Manage Joplin Sync"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.homepage.enabled }}
-          - name: "Homepage"
-            logo: "assets/png/homepage.png"
-            subtitle: "Beautiful Homepage"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-homepage.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
+       
           {{ if .Values.wallabag.enabled }}
           - name: "Wallabag"
             logo: "assets/png/wallabag.png"
@@ -1657,91 +1740,52 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
-          {{ if .Values.pgadmin.enabled }}
-          - name: "PGAdmin"
-            logo: "assets/png/pgadmin.png"
-            subtitle: "PostgreSQL Admin"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-pgadmin.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}   
-
-          {{ if .Values.redisinsight.enabled }}
-          - name: "RedisInsight"
-            logo: "assets/png/redisinsight.png"
-            subtitle: "Redis UI"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-redisinsight.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}   
-
-          {{ if .Values.codeserver.enabled }}
-          - name: "Code Server"
-            logo: "assets/png/code-server.png"
-            subtitle: "Code Server"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-codeserver.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}  
-
-          {{ if .Values.peertube.enabled }}
-          - name: "PeerTube"
-            logo: "assets/png/peertube.png"
-            subtitle: "PeerTube"
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ if .Values.peertubecustomdomain.enabled }}
-            url: https://{{ .Values.peertubecustomdomain.cname | lower }}
-            {{ else }}
-            url: "https://{{ .Release.Name }}-peertube.{{ .Values.dns_domain }}"
-            {{ end }}
-            target: "_blank" # optional html tag target attribute
-
-          - name: "PeerTube CLI"
-            icon: "fas fa-terminal"
-            subtitle: "PeerTube CLI"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-peertube-cli.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute            
-          {{ end }}            
-
-          {{ if .Values.gluetun.enabled }}
-          - name: "Gluetun"
-            icon: "fas fa-lock"
-            subtitle: "Configure your BYO VPN"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}/#/configmap/aa-{{ .Release.Name }}/gluetun-config?namespace=aa-{{ .Release.Name }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }} 
-
-          {{ if .Values.pairdrop.enabled }}
-          - name: "Pairdrop"
-            icon: "fas fa-lock"
-            subtitle: "Private Airdrop"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-pairdrop.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.nightscout.enabled }}
-          - name: "Nightscout"
-            logo: "assets/png/nightscout.png"
-            subtitle: "Manage CGM Data"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-nightscout.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
 
       - name: "Rclone"
         icon: "fas fa-truck"
         items:
+
+          {{ if .Values.rclonealldebrid.enabled }}
+          - name: "AllDebrid"
+            logo: "assets/png/rclone.png"
+            subtitle: "AllDebrid (WebDAV)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
+          {{ if .Values.rclonedebridlink.enabled }}
+          - name: "Debrid-Link"
+            logo: "assets/png/rclone.png"
+            subtitle: "Debrid-Link (WebDAV)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-debridlink.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }} 
+
+          {{ if .Values.rclonepremiumize.enabled }}
+          - name: "Premiumize"
+            logo: "assets/png/rclone.png"
+            subtitle: "Premiumize (WebDAV)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-premiumize.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+
+          - name: "Rclone FM"
+            logo: "assets/png/rclone.png"
+            subtitle: "Rclone File Manager"
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ if .Values.rclonefm.enabled }}
+            url: "https://{{ .Release.Name }}-rclonefm.{{ .Values.dns_domain }}"
+            {{ else }}
+            url: https://store.{{ .Values.dns_domain }}/product/rclonefm
+            {{ end }}
+            target: "_blank" # optional html tag target attribute
 
           - name: "Rclone Remotes"
             logo: "assets/png/rclone.png"
@@ -1763,17 +1807,15 @@ data:
             {{ end }}
             target: "_blank" # optional html tag target attribute
 
-          - name: "Rclone FM"
+          {{ if .Values.rclonetorbox.enabled }}
+          - name: "TorBox"
             logo: "assets/png/rclone.png"
-            subtitle: "Rclone File Manager"
+            subtitle: "TorBox (WebDAV)"
             tag: "protected"
             tagstyle: "is-success"
-            {{ if .Values.rclonefm.enabled }}
-            url: "https://{{ .Release.Name }}-rclonefm.{{ .Values.dns_domain }}"
-            {{ else }}
-            url: https://store.{{ .Values.dns_domain }}/product/rclonefm
-            {{ end }}
+            url: "https://{{ .Release.Name }}-torbox.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
+          {{ end }}  
 
           {{ if .Values.webdav.enabled }}
           - name: "WebDAV"
@@ -1784,46 +1826,7 @@ data:
             url: "https://{{ .Release.Name }}-webdav.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
-
-          {{ if .Values.rclonealldebrid.enabled }}
-          - name: "AllDebrid"
-            logo: "assets/png/rclone.png"
-            subtitle: "AllDebrid (WebDAV)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}  
-
-          {{ if .Values.rclonetorbox.enabled }}
-          - name: "TorBox"
-            logo: "assets/png/rclone.png"
-            subtitle: "TorBox (WebDAV)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-torbox.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}    
-
-          {{ if .Values.rclonedebridlink.enabled }}
-          - name: "Debrid-Link"
-            logo: "assets/png/rclone.png"
-            subtitle: "Debrid-Link (WebDAV)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-debridlink.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }} 
-
-          {{ if .Values.rclonepremiumize.enabled }}
-          - name: "Premiumize"
-            logo: "assets/png/rclone.png"
-            subtitle: "Premiumize (WebDAV)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-premiumize.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                                        
+                                     
 
   custom.css: |
     @charset "UTF-8";
