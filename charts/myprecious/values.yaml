@@ -5184,7 +5184,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin-dev
-    tag: 10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+    tag: 10.10.7@sha256:142d72610fabb7a9ecdf98ffaf035c3cd52236eeab1671d9441f055e4cfc8799
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   enabled: false
@@ -15029,7 +15029,7 @@ debridav: &app_debridav
       - |
         echo "This pod only exists to cause a restart when plex is updated"  
     restart-with-jellyfin:
-      image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
+      image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:142d72610fabb7a9ecdf98ffaf035c3cd52236eeab1671d9441f055e4cfc8799
       command:
       - /bin/bash
       - -c
