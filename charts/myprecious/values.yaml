@@ -5629,7 +5629,8 @@ homer:
       app.elfhosted.com/name: homer    
   podAnnotations:
     elfbot.elfhosted.com/name: "Homer"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/homer.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/homer.png"
+    elfbot.elfhosted.com/category: Tools
   podSecurityContext:
     runAsNonRoot: false
     seccompProfile:
@@ -5865,7 +5866,8 @@ gotify:
       app.elfhosted.com/name: gotify  
   podAnnotations:
     elfbot.elfhosted.com/name: "Gotify"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/gotify.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/gotify.png"  
+    elfbot.elfhosted.com/category: Tools     
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6020,6 +6022,7 @@ flaresolverr:
   podAnnotations:
     elfbot.elfhosted.com/name: "FlareSolverr"
     elfbot.elfhosted.com/icon: "fas fa-cloud"
+    elfbot.elfhosted.com/category: Download Media
   image:
     registry: ghcr.io
     repository: elfhosted/byparr
@@ -6066,7 +6069,8 @@ tunarr:
   podAnnotations:
     elfbot.elfhosted.com/name: "Tunarr"
     elfbot.elfhosted.com/icon: "fas fa-tv"  
-    kubernetes.io/egress-bandwidth: "128M"            
+    kubernetes.io/egress-bandwidth: "128M"      
+    elfbot.elfhosted.com/category: Consume Media      
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6158,7 +6162,8 @@ ersatztv:
       app.elfhosted.com/name: ersatztv  
   podAnnotations:
     elfbot.elfhosted.com/name: "ErsatzTV"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/ersatztv.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/ersatztv.png"   
+    elfbot.elfhosted.com/category: Consume Media     
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6244,7 +6249,8 @@ threadfin:
       app.elfhosted.com/name: threadfin  
   podAnnotations:
     elfbot.elfhosted.com/name: "Threadfin"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/threadfin.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/threadfin.png"    
+    elfbot.elfhosted.com/category: Consume Media    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -6320,6 +6326,7 @@ thelounge:
   podAnnotations:
     elfbot.elfhosted.com/name: "TheLounge"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/thelounge.png"        
+    elfbot.elfhosted.com/category: Tools
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-thelounge"
@@ -6441,7 +6448,8 @@ symlinkcleaner:
       app.elfhosted.com/name: symlinkcleaner  
   podAnnotations:
     elfbot.elfhosted.com/name: "Symlink Cleaner"
-    elfbot.elfhosted.com/icon: "fas fa-broom"        
+    elfbot.elfhosted.com/icon: "fas fa-broom" 
+    elfbot.elfhosted.com/category: Tools       
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-symlink-cleaner,symlink-cleaner-example-config"
@@ -6596,6 +6604,7 @@ discovarr:
   podAnnotations:
     elfbot.elfhosted.com/name: "Discovarr"
     elfbot.elfhosted.com/icon: "fas fa-sitemap"  
+    elfbot.elfhosted.com/category: Manage Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-discovarr,discovarr-config"
@@ -6721,6 +6730,7 @@ overseerr:
   podAnnotations:
     elfbot.elfhosted.com/name: "Overseerr"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/overseerr.png"      
+    elfbot.elfhosted.com/category: Manage Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-overseerr,overseerr-config"
@@ -6859,7 +6869,8 @@ jellyseerr:
     app.elfhosted.com/name: jellyseerr
   podAnnotations:
     elfbot.elfhosted.com/name: "Jellyseerr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyseerr.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyseerr.png"
+    elfbot.elfhosted.com/category: Manage Media      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jellyseerr"
@@ -6992,7 +7003,8 @@ jellystat:
     app.elfhosted.com/name: jellystat
   podAnnotations:
     elfbot.elfhosted.com/name: "Jellystat"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellystat.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellystat.png"  
+    elfbot.elfhosted.com/category: Manage Media    
   image:
     repository: ghcr.io/elfhosted/jellystat
     tag: 1.1.6@sha256:39bb3980570b6dd56fac1becbb52cde40f821d6ac73eaef97dd9c3d9ec9d97bd
@@ -7141,7 +7153,8 @@ booklore:
       app.elfhosted.com/name: booklore  
   podAnnotations:
     elfbot.elfhosted.com/name: "Booklore"
-    elfbot.elfhosted.com/icon: "fas fa-book"        
+    elfbot.elfhosted.com/icon: "fas fa-book"     
+    elfbot.elfhosted.com/category: Consume Media   
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-booklore,booklore-env"
@@ -7282,7 +7295,8 @@ peertube:
       app.elfhosted.com/name: peertube  
   podAnnotations:
     elfbot.elfhosted.com/name: "PeerTube"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/peertube.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/peertube.png"   
+    elfbot.elfhosted.com/category: Tools     
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-peertube,peertube-env"
@@ -7520,7 +7534,8 @@ audiobookshelf:
     app.elfhosted.com/name: audiobookshelf
   podAnnotations:
     elfbot.elfhosted.com/name: "Audiobookshelf"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/audiobookshelf.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/audiobookshelf.png"    
+    elfbot.elfhosted.com/category: Consume Media  
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -7611,6 +7626,7 @@ storyteller:
   podAnnotations:
     elfbot.elfhosted.com/name: "Storyteller"
     elfbot.elfhosted.com/icon: "fas fa-book-open"        
+    elfbot.elfhosted.com/category: Consume Media
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -7711,7 +7727,8 @@ audiobookrequest:
       app.elfhosted.com/name: audiobookrequest  
   podAnnotations:
     elfbot.elfhosted.com/name: "AudioBookRequest"
-    elfbot.elfhosted.com/icon: "fas fa-book"        
+    elfbot.elfhosted.com/icon: "fas fa-book"    
+    elfbot.elfhosted.com/category: Manage Downloads    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7786,7 +7803,8 @@ audiobookbayautomated:
       app.elfhosted.com/name: audiobookbay-automated    
   podAnnotations:
     elfbot.elfhosted.com/name: "AudioBookBay Automated"
-    elfbot.elfhosted.com/icon: "fas fa-book"        
+    elfbot.elfhosted.com/icon: "fas fa-book"       
+elfbot.elfhosted.com/category: Manage Downloads     
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7865,7 +7883,8 @@ openbooks:
       app.elfhosted.com/name: openbooks  
   podAnnotations:
     elfbot.elfhosted.com/name: "OpenBooks"
-    elfbot.elfhosted.com/icon: "fas fa-book"        
+    elfbot.elfhosted.com/icon: "fas fa-book"   
+    elfbot.elfhosted.com/category: Manage Downloads     
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -7934,7 +7953,8 @@ vaultwarden:
       app.elfhosted.com/name: vaultwarden  
   podAnnotations:
     elfbot.elfhosted.com/name: "VaultWarden"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/vaultwarden.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/vaultwarden.png"  
+    elfbot.elfhosted.com/category: Tools      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8017,7 +8037,8 @@ notifiarr:
       app.elfhosted.com/name: notifiarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Notifiarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/notifiarr.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/notifiarr.png"      
+    elfbot.elfhosted.com/category: Tools  
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8124,7 +8145,8 @@ shoko:
       app.elfhosted.com/name: shoko    
   podAnnotations:
     elfbot.elfhosted.com/name: "Shoko"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/shoko.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/shoko.png"  
+    elfbot.elfhosted.com/category: Manage Media      
   env:
     PUID: 568
     PGID: 568
@@ -8202,7 +8224,8 @@ filebot:
       app.elfhosted.com/name: filebot    
   podAnnotations:
     elfbot.elfhosted.com/name: "FileBot"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/filebot.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/filebot.png"    
+    elfbot.elfhosted.com/category: Tools    
   env:
     PUID: 568
     PGID: 568
@@ -8283,7 +8306,8 @@ rpdb:
       app.elfhosted.com/name: rpdb  
   podAnnotations:
     elfbot.elfhosted.com/name: "RPDB"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rpdb.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rpdb.png"  
+    elfbot.elfhosted.com/category: Manage Media      
   image:
     repository: ghcr.io/elfhosted/rpdb
     tag: 0.3.3@sha256:fc651aeb123bedbcb92eeda3227b51005540b3c350bf15640c7928f5e8fd1d4b
@@ -8356,7 +8380,8 @@ kometa: &app_kometa
       app.elfhosted.com/name: kometa  
   podAnnotations:
     elfbot.elfhosted.com/name: "Kometa"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kometa.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kometa.png"     
+    elfbot.elfhosted.com/category: Manage Media   
   image:
     repository: ghcr.io/elfhosted/kometa
     tag: v2.2.0@sha256:d0d56d58de2ef623d7167e1dbf4901aa7bc2dc5ca4ec7206dbf1de5b2906d7d1
@@ -8484,7 +8509,8 @@ imagemaid:
       app.elfhosted.com/name: imagemaid 
   podAnnotations:
     elfbot.elfhosted.com/name: "ImageMaid"
-    elfbot.elfhosted.com/icon: "fas fa-image"           
+    elfbot.elfhosted.com/icon: "fas fa-image"      
+    elfbot.elfhosted.com/category: Manage Media
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8575,7 +8601,8 @@ cinesync:
     app.elfhosted.com/name: cinesync
   podAnnotations:
     elfbot.elfhosted.com/name: "CineSync"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/cinesync.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/cinesync.png"     
+    elfbot.elfhosted.com/category: Manage Media 
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cinesync,cinesync-env"
@@ -8687,7 +8714,8 @@ arrtools:
       app.elfhosted.com/name: arrtools
   podAnnotations:
     elfbot.elfhosted.com/name: "ArrTools"
-    elfbot.elfhosted.com/icon: "fas fa-tools"        
+    elfbot.elfhosted.com/icon: "fas fa-tools"   
+    elfbot.elfhosted.com/category: Tools     
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8779,7 +8807,8 @@ seerrbridge:
       app.elfhosted.com/name: seerrbridge  
   podAnnotations:
     elfbot.elfhosted.com/name: "SeerrBridge"
-    elfbot.elfhosted.com/icon: "fas fa-bridge"          
+    elfbot.elfhosted.com/icon: "fas fa-bridge"       
+    elfbot.elfhosted.com/category: Manage Downloads
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -8938,6 +8967,7 @@ listsync:
   podAnnotations:
     elfbot.elfhosted.com/name: "ListSync"
     elfbot.elfhosted.com/icon: "fas fa-list"      
+    elfbot.elfhosted.com/category: Manage Downloads
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-listsync,listsync-env"
@@ -9028,6 +9058,7 @@ plextraktsync:
   podAnnotations:
     elfbot.elfhosted.com/name: "PlexTraktSync"
     elfbot.elfhosted.com/icon: "fas fa-sync"      
+    elfbot.elfhosted.com/category: Manage Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-plextraktsync"
@@ -9112,7 +9143,8 @@ plexytrack:
       app.elfhosted.com/name: plexytrack    
   podAnnotations:
     elfbot.elfhosted.com/name: "PlexyTrack"
-    elfbot.elfhosted.com/icon: "fas fa-clipboard-list"        
+    elfbot.elfhosted.com/icon: "fas fa-clipboard-list"    
+    elfbot.elfhosted.com/category: Manage Media    
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9193,7 +9225,8 @@ letterboxdtraktsync:
       app.elfhosted.com/name: letterboxd-trakt-sync    
   podAnnotations:
     elfbot.elfhosted.com/name: "Letterboxd Trakt Sync"
-    elfbot.elfhosted.com/icon: "fas fa-film"        
+    elfbot.elfhosted.com/icon: "fas fa-film"  
+    elfbot.elfhosted.com/category: Manage Media      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9274,7 +9307,8 @@ decluttarr: &app_decluttarr
       app.elfhosted.com/name: decluttarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Decluttarr"
-    elfbot.elfhosted.com/icon: "fas fa-trash-alt"          
+    elfbot.elfhosted.com/icon: "fas fa-trash-alt"     
+    elfbot.elfhosted.com/category: Manage Media     
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9328,7 +9362,8 @@ rdebridui:
       app.elfhosted.com/name: rdebrid-ui 
   podAnnotations:
     elfbot.elfhosted.com/name: "RdebridUI"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rdebridui.png"           
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rdebridui.png"  
+    elfbot.elfhosted.com/category: Tools         
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9383,7 +9418,8 @@ suggestarr:
       app.elfhosted.com/name: suggestarr    
   podAnnotations:
     elfbot.elfhosted.com/name: "Suggestarr"
-    elfbot.elfhosted.com/icon: "fas fa-lightbulb"        
+    elfbot.elfhosted.com/icon: "fas fa-lightbulb"  
+    elfbot.elfhosted.com/category: Manage Downloads      
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9469,7 +9505,8 @@ rcloneui:
     app.elfhosted.com/name: rcloneui      
   podAnnotations:
     elfbot.elfhosted.com/name: "Rclone UI"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"     
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"  
+    elfbot.elfhosted.com/category: Tools   
     kubernetes.io/egress-bandwidth: "40M"   
   affinity: *standard_affinity
   tolerations: *standard_tolerations
@@ -9589,7 +9626,8 @@ rclonefm:
       app.elfhosted.com/name: rclonefm      
   podAnnotations:
     elfbot.elfhosted.com/name: "Rclone FM"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rclone.png"   
+    elfbot.elfhosted.com/category: Tools     
     kubernetes.io/egress-bandwidth: "40M"
   # Always prefer to cohabit with zurg
   affinity: *standard_affinity
@@ -9705,6 +9743,7 @@ webdav: &webdav
   podAnnotations:
     elfbot.elfhosted.com/name: "WebDAV"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/webdav.png"    
+    elfbot.elfhosted.com/category: Tools
     kubernetes.io/egress-bandwidth: "40M"
   priorityClassName: tenant-normal
   affinity: *standard_affinity
@@ -9782,7 +9821,8 @@ webdavplus:
     app.elfhosted.com/name: webdav-plus
   podAnnotations:
     elfbot.elfhosted.com/name: "WebDAV Plus"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/webdav.png"    
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/webdav.png" 
+    elfbot.elfhosted.com/category: Tools   
     kubernetes.io/egress-bandwidth: "150M"
   envFrom:
   - configMapRef:
@@ -9805,7 +9845,8 @@ jfa:
       app.elfhosted.com/name: jfa      
   podAnnotations:
     elfbot.elfhosted.com/name: "Jellyfin Accounts"
-    elfbot.elfhosted.com/icon: "fas fa-user"        
+    elfbot.elfhosted.com/icon: "fas fa-user"     
+    elfbot.elfhosted.com/category: Manage Media   
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   podSecurityContext:
@@ -10161,7 +10202,8 @@ rdtclient: &app_rdtclient
       app.elfhosted.com/name: rdtclient
   podAnnotations:
     elfbot.elfhosted.com/name: "RDTClient"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rdtclient.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rdtclient.png"   
+    elfbot.elfhosted.com/category: Manage Downloads     
   image:
     repository: ghcr.io/elfhosted/rdtclient
     tag: v2.0.113@sha256:e274c86872f823296d063cc04eaec10410bf5ea4590ccb1660ebe51339803464
@@ -10241,7 +10283,8 @@ miniflux:
       app.elfhosted.com/name: miniflux    
   podAnnotations:
     elfbot.elfhosted.com/name: "Miniflux"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/miniflux.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/miniflux.png"  
+    elfbot.elfhosted.com/category: Tools      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-miniflux,miniflux-config"
@@ -10351,7 +10394,8 @@ joplinserver:
       app.elfhosted.com/name: joplinserver    
   podAnnotations:
     elfbot.elfhosted.com/name: "Joplin Server"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/joplin.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/joplin.png"  
+    elfbot.elfhosted.com/category: Tools      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-joplinserver,joplinserver-config"
@@ -10609,7 +10653,8 @@ wallabag:
       app.elfhosted.com/name: wallabag    
   podAnnotations:
     elfbot.elfhosted.com/name: "Wallabag"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wallabag.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wallabag.png"   
+    elfbot.elfhosted.com/category: Tools     
   controller:  
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wallabag,wallabag-config"
@@ -10684,7 +10729,8 @@ gotosocial:
       app.elfhosted.com/name: gotosocial  
   podAnnotations:
     elfbot.elfhosted.com/name: "GoToSocial"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/gotosocial.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/gotosocial.png"   
+    elfbot.elfhosted.com/category: Tools     
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-gotosocial"
@@ -10836,7 +10882,8 @@ blueskypds:
       app.elfhosted.com/name: bluesky-pds  
   podAnnotations:
     elfbot.elfhosted.com/name: "Bluesky PDS"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bluesky.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bluesky.png"  
+    elfbot.elfhosted.com/category: Tools      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bluesky-pds"
@@ -10955,7 +11002,8 @@ riven: &app_riven
     app.elfhosted.com/name: riven
   podAnnotations:
     elfbot.elfhosted.com/name: "Riven"
-    elfbot.elfhosted.com/icon: "fas fa-mountain"      
+    elfbot.elfhosted.com/icon: "fas fa-mountain"    
+    elfbot.elfhosted.com/category: Manage Downloads  
   image:
     repository: ghcr.io/elfhosted/riven
     tag: v0.21.21@sha256:bf1a9cab579d5eaac0ed72e20584b139547db7c38753a03b3756151af5e0ac13
@@ -11125,6 +11173,7 @@ mediamanager:
   podAnnotations:
     elfbot.elfhosted.com/name: "Media Manager"
     elfbot.elfhosted.com/icon: "fas fa-film"      
+    elfbot.elfhosted.com/category: Manage Media
   image:
     repository: ghcr.io/elfhosted/media-manager
     tag: v1.7.0@sha256:110ada55cd019a6456e36d915c36119fcf26b323d0841d3839c90a8f8360716b
@@ -11327,7 +11376,8 @@ rivenfrontend: &app_rivenfrontend
     app.elfhosted.com/name: riven-frontend
   podAnnotations:
     elfbot.elfhosted.com/name: "Riven Frontend"
-    elfbot.elfhosted.com/icon: "fas fa-mountain"       
+    elfbot.elfhosted.com/icon: "fas fa-mountain"   
+    elfbot.elfhosted.com/category: Manage Downloads    
   image:
     repository: ghcr.io/elfhosted/riven-frontend
     tag: v0.20.0@sha256:c4d792868a8113a2f57f504fe371cbcd8c52172d734c812c366bff352672998e
@@ -11396,7 +11446,8 @@ airdcpp: &app_airdcpp
     app.elfhosted.com/name: airdcpp
   podAnnotations:
     elfbot.elfhosted.com/name: "AirDC++"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/airdcpp.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/airdcpp.png" 
+    elfbot.elfhosted.com/category: Manage Downloads     
   podAnnotations:
     kubernetes.io/egress-bandwidth: "100M"
   controller:
@@ -11555,7 +11606,8 @@ jackett:
       app.elfhosted.com/name: jackett  
   podAnnotations:
     elfbot.elfhosted.com/name: "Jackett"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jackett.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jackett.png"     
+    elfbot.elfhosted.com/category: Manage Downloads   
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jackett"
@@ -11632,7 +11684,8 @@ wizarr:
       app.elfhosted.com/name: wizarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Wizarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wizarr.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wizarr.png"   
+    elfbot.elfhosted.com/category: Tools     
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wizarr"
@@ -11736,7 +11789,8 @@ flixio:
     app.elfhosted.com/name: flixio
   podAnnotations:
     elfbot.elfhosted.com/name: "Flixio"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/stremio.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/stremio.png"  
+    elfbot.elfhosted.com/category: Consume Media    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flixio"
@@ -11787,7 +11841,8 @@ flixioapi:
     app.elfhosted.com/name: flixio-api
   podAnnotations:
     elfbot.elfhosted.com/name: "Flixio API"
-    elfbot.elfhosted.com/icon: "fas fa-code"      
+    elfbot.elfhosted.com/icon: "fas fa-code" 
+    elfbot.elfhosted.com/category: Consume Media     
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-flixio-api"
@@ -11857,7 +11912,8 @@ pairdrop:
     app.elfhosted.com/name: pairdrop
   podAnnotations:
     elfbot.elfhosted.com/name: "PairDrop"
-    elfbot.elfhosted.com/icon: "fas fa-lock"      
+    elfbot.elfhosted.com/icon: "fas fa-lock" 
+    elfbot.elfhosted.com/category: Tools     
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pairdrop"
@@ -11916,7 +11972,8 @@ actual:
     app.elfhosted.com/name: actual
   podAnnotations:
     elfbot.elfhosted.com/name: "Actual Budget"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/actual-budget.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/actual-budget.png"  
+    elfbot.elfhosted.com/category: Tools    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-actual"
@@ -11990,7 +12047,8 @@ elfbot:
     app.elfhosted.com/name: elfbot
   podAnnotations:
     elfbot.elfhosted.com/name: "ElfBot (me!)"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/elfbot.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/elfbot.png"   
+    elfbot.elfhosted.com/category: Tools   
   persistence:
     <<: *storagemounts    
     config:
@@ -12054,7 +12112,8 @@ petio:
       app.elfhosted.com/name: petio  
   podAnnotations:
     elfbot.elfhosted.com/name: "Petio"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/petio.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/petio.png"    
+    elfbot.elfhosted.com/category: Manage Media    
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-petio"
@@ -12143,7 +12202,8 @@ nightscout:
       app.elfhosted.com/name: nightscout  
   podAnnotations:
     elfbot.elfhosted.com/name: "NightScout"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nightscout.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nightscout.png" 
+    elfbot.elfhosted.com/category: Tools       
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nightscout,nightscout-env"
@@ -12215,7 +12275,8 @@ pgadmin:
       app.elfhosted.com/name: pgadmin  
   podAnnotations:
     elfbot.elfhosted.com/name: "PGAdmin"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/pgaddmin.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/pgaddmin.png"   
+    elfbot.elfhosted.com/category: Tools     
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pgadmin"
@@ -12279,7 +12340,8 @@ redisinsight:
       app.elfhosted.com/name: redisinsight  
   podAnnotations:
     elfbot.elfhosted.com/name: "RedisInsight"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/redis.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/redis.png"  
+    elfbot.elfhosted.com/category: Tools      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-redisinsight"
@@ -12339,7 +12401,8 @@ mongoexpress:
       app.elfhosted.com/name: mongoexpress  
   podAnnotations:
     elfbot.elfhosted.com/name: "Mongo Express"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/mongo.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/mongo.png"
+    elfbot.elfhosted.com/category: Tools        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mongoexpress"
@@ -12389,6 +12452,7 @@ comet:
     kubernetes.io/egress-bandwidth: "64M"
     elfbot.elfhosted.com/name: "Comet"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/comet.png"
+    elfbot.elfhosted.com/category: Consume Media
   podLabels:
       app.elfhosted.com/name: comet
   controller:
@@ -12513,6 +12577,7 @@ jackettio:
   podAnnotations:
     elfbot.elfhosted.com/name: "Jackettio"
     elfbot.elfhosted.com/icon: "fas fa-search"
+    elfbot.elfhosted.com/category: Consume Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-jackettio,jackettio-env"
@@ -12611,7 +12676,8 @@ stremthru:
       app.elfhosted.com/name: stremthru  
   podAnnotations:
     elfbot.elfhosted.com/name: "StremThru"
-    elfbot.elfhosted.com/icon: "fas fa-tools"        
+    elfbot.elfhosted.com/icon: "fas fa-tools"
+    elfbot.elfhosted.com/category: Consume Media        
     kubernetes.io/egress-bandwidth: "64M"  
   controller:
     annotations:
@@ -12727,7 +12793,8 @@ davio:
       app.elfhosted.com/name: davio  
   podAnnotations:
     elfbot.elfhosted.com/name: "Davio"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/davio.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/davio.png"  
+    elfbot.elfhosted.com/category: Consume Media      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-davio,davio-env"
@@ -12790,6 +12857,7 @@ mediafusion:
   podAnnotations:
     elfbot.elfhosted.com/name: "MediaFusion"
     elfbot.elfhosted.com/icon: "fas fa-atom"        
+    elfbot.elfhosted.com/category: Consume Media
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13039,7 +13107,8 @@ tinyproxy:
       app.elfhosted.com/name: tinyproxy
   podAnnotations:
     elfbot.elfhosted.com/name: "TinyProxy"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/tinyproxy.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/tinyproxy.png"  
+    elfbot.elfhosted.com/category: Tools      
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -13137,6 +13206,7 @@ mediaflowproxy:
     kubernetes.io/egress-bandwidth: "64M"
     elfbot.elfhosted.com/name: "MediaFlow Proxy"
     elfbot.elfhosted.com/icon: "fas fa-cloud"
+    elfbot.elfhosted.com/category: Consume Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-mediaflow-proxy,mediaflow-proxy-env"
@@ -13206,7 +13276,8 @@ youriptv:
       app.elfhosted.com/name: youriptv  
   podAnnotations:
     elfbot.elfhosted.com/name: "YourIPTV"
-    elfbot.elfhosted.com/icon: "fas fa-tv"        
+    elfbot.elfhosted.com/icon: "fas fa-tv"
+    elfbot.elfhosted.com/category: Consume Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-youriptv"
@@ -13258,7 +13329,8 @@ aiostreams:
       app.elfhosted.com/name: aiostreams  
   podAnnotations:
     elfbot.elfhosted.com/name: "AIOStreams"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/aiostreams.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/aiostreams.png" 
+    elfbot.elfhosted.com/category: Consume Media       
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-aiostreams,aiostreams-env"
@@ -13379,6 +13451,7 @@ autopulse:
   podAnnotations:
     elfbot.elfhosted.com/name: "AutoPulse"
     elfbot.elfhosted.com/icon: "fas fa-heartbeat"
+    elfbot.elfhosted.com/category: Manage Downloads
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-autopulse,autopulse-env"
@@ -13475,6 +13548,7 @@ nuviostreams:
   podAnnotations:
     elfbot.elfhosted.com/name: "NuvioStreams"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nuviostreams.png"    
+    elfbot.elfhosted.com/category: Consume Media
     kubernetes.io/egress-bandwidth: "64M" 
   controller:
     annotations:
@@ -13573,6 +13647,7 @@ webstreamr:
   podAnnotations:
     elfbot.elfhosted.com/name: "Webstreamr"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/webstreamr.png"        
+    elfbot.elfhosted.com/category: Consume Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,webstreamr-env,elfbot-webstreamr"
@@ -13695,6 +13770,7 @@ recyclarr:
   podAnnotations:
     elfbot.elfhosted.com/name: "Recyclarr"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/recyclarr.png"        
+    elfbot.elfhosted.com/category: Tools
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-recyclarr"
@@ -13822,7 +13898,8 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   podAnnotations:
     elfbot.elfhosted.com/name: "Zurg"
-    elfbot.elfhosted.com/icon: "fas fa-robot"      
+    elfbot.elfhosted.com/icon: "fas fa-robot"  
+    elfbot.elfhosted.com/category: Manage Media    
   image:
     repository: ghcr.io/elfhosted/zurg-rc
     tag: 2025.07.16.0044-nightly@sha256:fff8501691f74bd25cc96355b089c6e236cf6358df9332f808e250c1f6eebb21
@@ -14045,7 +14122,8 @@ zurggluetun:
     app.elfhosted.com/class: debrid
   podAnnotations:
     elfbot.elfhosted.com/name: "Zurg"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"     
+    elfbot.elfhosted.com/category: Manage Media 
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-zurg,zurg-gluetun-config,zurg-env"
@@ -14074,7 +14152,8 @@ zurgranger:
     app.elfhosted.com/class: dedicated
   podAnnotations:
     elfbot.elfhosted.com/name: "Zurg"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"    
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"   
+    elfbot.elfhosted.com/category: Manage Media 
     kubernetes.io/egress-bandwidth: "500M"
   enabled: false
   automountServiceAccountToken: false
@@ -14095,7 +14174,8 @@ plexdebrid: &app_plexdebrid
     app.elfhosted.com/name: plex-debrid    
   podAnnotations:
     elfbot.elfhosted.com/name: "plex_debrid"
-    elfbot.elfhosted.com/icon: "fas fa-film"      
+    elfbot.elfhosted.com/icon: "fas fa-film" 
+    elfbot.elfhosted.com/category: Manage Downloads     
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14173,6 +14253,7 @@ clidebrid: &app_clidebrid
   podAnnotations:
     elfbot.elfhosted.com/name: "CLI Debrid"
     elfbot.elfhosted.com/icon: "fas fa-terminal"      
+    elfbot.elfhosted.com/category: Manage Downloads
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
     tag: v0.6.89@sha256:da5efdec9be669a34cc0b7f7bf4a9d01b2e04521339e2ae36ef194b76bbf6f56 
@@ -14283,7 +14364,8 @@ puter:
     app.elfhosted.com/name: puter
   podAnnotations:
     elfbot.elfhosted.com/name: "Puter"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/puter.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/puter.png"    
+    elfbot.elfhosted.com/category: Tools  
   image:
     repository: ghcr.io/elfhosted/puter
     tag: v2.5.1@sha256:4566493190067df16091134e9fa845ffa21f6e517874eb146cb4bca9c4177ca9
@@ -14365,7 +14447,8 @@ codeserver:
       app.elfhosted.com/name: codeserver  
   podAnnotations:
     elfbot.elfhosted.com/name: "Code Server"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/code-server.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/code-server.png"
+    elfbot.elfhosted.com/category: Tools        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-codeserver"
@@ -14472,7 +14555,8 @@ doplarr: &app_doplarr
       app.elfhosted.com/name: doplarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Doplarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/doplarr.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/doplarr.png"  
+    elfbot.elfhosted.com/category: Manage Downloads      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-doplarr,doplarr-env"
@@ -14523,7 +14607,8 @@ profilarr:
       app.elfhosted.com/name: profilarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Profilarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/profilarr.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/profilarr.png" 
+    elfbot.elfhosted.com/category: Manage Downloads       
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-profilarr,profilarr-env"
@@ -14638,7 +14723,8 @@ pulsarr: &app_pulsarr
       app.elfhosted.com/name: pulsarr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Pulsarr"
-    elfbot.elfhosted.com/icon: "fas fa-broadcast-tower"        
+    elfbot.elfhosted.com/icon: "fas fa-broadcast-tower"      
+    elfbot.elfhosted.com/category: Manage Downloads  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-pulsarr,pulsarr-env"
@@ -14755,7 +14841,8 @@ dispatcharr:
       app.elfhosted.com/name: dispatcharr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Dispatcharr"
-    elfbot.elfhosted.com/icon: "fas fa-tv"        
+    elfbot.elfhosted.com/icon: "fas fa-tv" 
+    elfbot.elfhosted.com/category: Consume Media       
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-dispatcharr,dispatcharr-env"
@@ -14849,7 +14936,8 @@ requestrr:
       app.elfhosted.com/name: requestrr  
   podAnnotations:
     elfbot.elfhosted.com/name: "Requestrr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/requestrr.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/requestrr.png"  
+    elfbot.elfhosted.com/category: Manage Downloads      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-requestrr,requestrr-env"
@@ -14924,7 +15012,8 @@ debridav: &app_debridav
     app.elfhosted.com/name: debridav  
   podAnnotations:
     elfbot.elfhosted.com/name: "DebriDav"
-    elfbot.elfhosted.com/icon: "fas fa-cloud"      
+    elfbot.elfhosted.com/icon: "fas fa-cloud"
+    elfbot.elfhosted.com/category: Manage Downloads      
   image:
     repository: ghcr.io/elfhosted/debridav
     tag: 0.10.1@sha256:67748eff91c1c318827284bb31a9f39c2ce10b22e29e58ec4f65659152fd8cfe
@@ -15196,7 +15285,8 @@ rclonedebridlink:
     app.elfhosted.com/name: debridlink
   podAnnotations:
     elfbot.elfhosted.com/name: "DebridLink"
-    elfbot.elfhosted.com/icon: "fas fa-link"      
+    elfbot.elfhosted.com/icon: "fas fa-link" 
+    elfbot.elfhosted.com/category: Manage Downloads     
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
@@ -15574,6 +15664,7 @@ decypharr: &app_decypharr
   podAnnotations:
     elfbot.elfhosted.com/name: "Decypharr"
     elfbot.elfhosted.com/icon: "fas fa-robot"        
+    elfbot.elfhosted.com/category: Manage Downloads
   # Avoid search expansion DNS queries against coredns for every RD API request
   dnsConfig:
     options:
@@ -15680,6 +15771,7 @@ channelsdvr:
   podAnnotations:
     elfbot.elfhosted.com/name: "Channels DVR"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/channels-dvr.png"
+    elfbot.elfhosted.com/category: Consume Media
     kubernetes.io/egress-bandwidth: "125M"
   controller:
     annotations:
@@ -15762,6 +15854,7 @@ wger:
   podAnnotations:
     elfbot.elfhosted.com/name: "Wger"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/wger.png"        
+    elfbot.elfhosted.com/category: Tools
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-wger,wger-env"
@@ -15972,7 +16065,8 @@ immich:
       app.elfhosted.com/name: immich  
   podAnnotations:
     elfbot.elfhosted.com/name: "Immich"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/immich.png"        
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/immich.png" 
+    elfbot.elfhosted.com/category: Consume Media       
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-immich,immich-env"
