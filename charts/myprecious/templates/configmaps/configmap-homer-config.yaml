@@ -667,6 +667,7 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
+          {{ if .Values.imagemaid.enabled }}
           - name: "ImageMaid"
             icon: "fas fa-broom"
             subtitle: "Clean images in Plex"
