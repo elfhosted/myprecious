@@ -596,17 +596,6 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.clidebrid.enabled }}
-      - name: cli-debrid
-        group: manage-media
-        url: "http://cli-debrid:5000"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.plexdebrid.enabled }}
       - name: plex-debrid
         group: manage-media
@@ -844,6 +833,17 @@ data:
         alerts:
           - type: email    
       {{ end }}
+
+      {{ if .Values.clidebrid.enabled }}
+      - name: cli-debrid
+        group: download-media
+        url: "http://cli-debrid:5000"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
 
       {{ if .Values.nzbget.enabled }}
       - name: nzbget

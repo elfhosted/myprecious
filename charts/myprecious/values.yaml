@@ -4953,7 +4953,7 @@ plex: &app_plex
   image:
     registry: ghcr.io
     repository: elfhosted/plex
-    tag: 1.41.9.9961-46083195d@sha256:17ed4875daace5688777b5aa4d8856ee39a798b9781ccd6d5d287bc9e6ff52bf
+    tag: 1.41.9.9961-46083195d@sha256:ad98ab8de655490f295ce3b69d3cd39b8689a66967db25802cdc0a9057e72c01
   imagePullSecrets:
   - name: ghcr-io-elfhosted      
   persistence: &app_plex_persistence
@@ -5072,7 +5072,7 @@ plex: &app_plex
       - mountPath: /tmp
         name: tmp
     dbrepair:
-      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:17ed4875daace5688777b5aa4d8856ee39a798b9781ccd6d5d287bc9e6ff52bf
+      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:ad98ab8de655490f295ce3b69d3cd39b8689a66967db25802cdc0a9057e72c01
       imagePullPolicy: IfNotPresent
       command:
       - /bin/bash
@@ -5214,7 +5214,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.7@sha256:abb387cda485f4fb370af14b05bdd1e5ee16faf3a6e655ee5024f092a243cccb
+    tag: 10.10.7@sha256:fff97e89dbc80246b267a2af2464f968039a5e40f884778446ddddf850005ab0
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   enabled: false
@@ -6859,7 +6859,7 @@ jellyseerr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jellyseerr
-    tag: 2.7.1@sha256:d4bdef01596c74aee1134381a9ce2f0ae79062639166748a8838d9fc2f281c9d
+    tag: 2.7.2@sha256:8a50b2aa7b77d92efa6bcb177a7b093d00ae52fddf8801ac1bc094c48f8d2801
   priorityClassName: tenant-normal
   securityContext:
     seccompProfile:
@@ -6953,7 +6953,7 @@ jellyseerr:
         mountPath: "/bootstrap/"        
     # We do this so that we can override the /app/jellyseer/public path with our own, allowing the user to customize the branding
     copy-branding:
-      image: ghcr.io/elfhosted/jellyseerr:2.7.1@sha256:d4bdef01596c74aee1134381a9ce2f0ae79062639166748a8838d9fc2f281c9d
+      image: ghcr.io/elfhosted/jellyseerr:2.7.2@sha256:8a50b2aa7b77d92efa6bcb177a7b093d00ae52fddf8801ac1bc094c48f8d2801
       command:
         - /bin/ash
         - -c
@@ -12689,7 +12689,7 @@ stremthru:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/stremthru
-    tag: 0.80.7@sha256:e4dd9e3eeec73e45dbba52f4cba920afaa5142c4d3b950a7328301317ae109b7
+    tag: 0.81.0@sha256:cd66e3276581e02519d69e2f459c8703c7d9b746e3431c27ac2d2d4fd396d4a0
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: stremthru  
@@ -13659,7 +13659,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.39.2@sha256:ce7a678b258db7bbe36e39934f187f602f11901b66c80602d9aa56e9318ab847
+    tag: v0.40.0@sha256:43d0377a59b8ba8f6fdb2143d3b07db9e40aa842cf41626a4c59aaff960a0c35
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: webstreamr  
@@ -15168,7 +15168,7 @@ debridav: &app_debridav
         seccompProfile:
           type: RuntimeDefault
     restart-with-plex:
-      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:17ed4875daace5688777b5aa4d8856ee39a798b9781ccd6d5d287bc9e6ff52bf
+      image: ghcr.io/elfhosted/plex:1.41.9.9961-46083195d@sha256:ad98ab8de655490f295ce3b69d3cd39b8689a66967db25802cdc0a9057e72c01
       command:
       - /bin/bash
       - -c
