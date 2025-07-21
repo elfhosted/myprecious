@@ -7147,7 +7147,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.34.0@sha256:7db3cc39254cde1e30eae951af96e24347c7a4ee0cd4ba51572e764804a834ce
+    tag: v0.34.0@sha256:89495332b0bb76ca0e678338f6bc2ba886201f71da23fb8e0d02bb89a392af6e
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: booklore  
@@ -7273,7 +7273,7 @@ booklore:
       securityContext: *default_securitycontext                     
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.34.0sha256:89495332b0bb76ca0e678338f6bc2ba886201f71da23fb8e0d02bb89a392af6e
+      image: ghcr.io/elfhosted/booklore:v0.34.0@sha256:89495332b0bb76ca0e678338f6bc2ba886201f71da23fb8e0d02bb89a392af6e
       command: 
       - /usr/sbin/nginx 
       - -g 

@@ -453,7 +453,7 @@ data:
             url: https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
             target: "_blank" # optional html tag target attribute
           {{ end }}        
-          
+
           {{ if .Values.navidrome.enabled }}
           - name: "Navidrome"
             logo: "assets/png/navidrome.png"
@@ -488,8 +488,6 @@ data:
             url: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
-
-
 
           {{ if .Values.storyteller.enabled }}
           - name: "StoryTeller"
@@ -541,13 +539,343 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}               
 
-               
-
-                           
-
+                        
       - name: "Manage Media"
         icon: "fas fa-photo-video"
         items:
+
+          {{ if .Values.arrtools.enabled }}
+          - name: "Arr Tools"
+            icon: "fas fa-tools"
+            subtitle: "Tools to manage Aars"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-arrtools.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute            
+          {{ end }}  
+
+          {{ if .Values.bazarr.enabled }}
+          - name: "Bazarr"
+            logo: "assets/png/bazarr.png"
+            subtitle: "Manage Subtitles"
+            {{ if .Values.bazarrexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-bazarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.bazarr4k.enabled }}
+          - name: "Bazarr 4K"
+            logo: "assets/png/bazarr.png"
+            subtitle: "Manage Subtitles (4K)"
+            {{ if .Values.bazarr4kexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-bazarr4k.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.channelsdvr.enabled }}
+          - name: "Channels DVR"
+            logo: "assets/png/channels-dvr.png"
+            subtitle: "Watch TV your way"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}   
+
+          {{ if or .Values.zurgling.enabled .Values.debridling.enabled .Values.seerrbridge.enabled .Values.cinesync.enabled }}
+          - name: "DebridMediaManager"
+            logo: "assets/png/debridmediamanager.png"
+            subtitle: "Manage Debrid Media"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://debridmediamanager.com"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
+          {{ if .Values.decluttarr.enabled }}
+          - name: "Decluttarr"
+            icon: "fas fa-broom"
+            subtitle: "Clean Aarr queues"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-decluttarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute          
+          {{ end }}              
+
+          {{ if .Values.discovarr.enabled }}
+          - name: "Discovarr"
+            icon: "fas fa-infinity"
+            subtitle: "AI Content Discovery"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-discovarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}     
+
+          {{ if .Values.dispatcharr.enabled }}
+          - name: "Dispatcharr"
+            # Alternatively a fa icon can be provided:
+            logo: "assets/png/dispatcharr.png"
+            subtitle: "Manage IPTV streams and EPG data"
+            {{ if .Values.dispatcharrexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-dispatcharr.{{ .Values.dns_domain }}/web/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                              
+
+          {{ if .Values.ersatztv.enabled }}
+          - name: "ersatztv"
+            icon: "fas fa-tv"
+            subtitle: "Live TV Proxy for Plex/Emby"
+            {{ if .Values.tunarrexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-ersatztv.{{ .Values.dns_domain }}/web/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}    
+
+          {{ if .Values.filebot.enabled }}
+          - name: "FileBot"
+            logo: "assets/png/filebot.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Automate Media Management"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-filebot.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
+          - name: "ImageMaid"
+            icon: "fas fa-broom"
+            subtitle: "Clean images in Plex"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+
+          {{ if .Values.immich.enabled }}
+          - name: "Immich"
+            logo: "assets/png/immich.png"
+            subtitle: "Manage Photos"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-immich.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
+          {{ if .Values.jellyseerr.enabled }}
+          - name: "Jellyseerr"
+            logo: "assets/png/jellyseerr.png"
+            subtitle: "Manage Requests"
+            tag: "public"
+            tagstyle: "is-danger"
+            {{- if .Values.jellyseerrcustomdomain.enabled }}
+            url: "https://{{ .Values.jellyseerrcustomdomain.cname | lower }}"
+            {{- else }}
+            url: "https://{{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}"
+            {{- end }}
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.jellystat.enabled }}
+          - name: "Jellystat"
+            logo: "assets/png/jellystat.png"
+            subtitle: "Jellyfin Statistics"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-jellystat.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}               
+
+          {{ if .Values.jfa.enabled }}
+          - name: "Jellyfin Accounts"
+            icon: "fas fa-users"
+            subtitle: "Manage Jellyfin Accounts / Invites"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.kapowarr.enabled }}
+          - name: "Kapowarr"
+            icon: "fas fa-comments"
+            subtitle: "Manage Comics"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-kapowarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}         
+
+          {{ if .Values.kometa.enabled }}
+          - name: "Kometa"
+            icon: "fas fa-meteor"
+            # Alternatively a fa icon can be provided:
+            # icon: "fas fa-photo-film"
+            subtitle: "Manage Plex Metadata"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-kometa.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+
+
+          {{ if .Values.lazylibrarian.enabled }}
+          - name: "LazyLibrarian"
+            logo: "assets/png/lazylibrarian.png"
+            subtitle: "Manage Books"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-lazylibrarian.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+            {{ end }}
+
+          {{ if .Values.letterboxdtraktsync.enabled }}
+          - name: "Letterboxd Trakt Sync"
+            icon: "fas fa-sync"
+            subtitle: "Sync Letterboxd and Trakt"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-letterboxd-trakt-sync.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                  
+
+          {{ if .Values.lidarr.enabled }}
+          - name: "Lidarr"
+            logo: "assets/png/lidarr.png"
+            subtitle: "Manage Music"
+            {{ if .Values.lidarrexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-lidarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+            type: "Lidarr"
+            apikey: "{{ .Values.lidarrexposed.apikey }}"
+            useCredentials: true
+          {{ end }}
+
+          {{ if .Values.mylar.enabled }}
+          - name: "Mylar"
+            logo: "assets/png/mylar.png"
+            subtitle: "Manage Comics"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-mylar.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}       
+
+          {{ if .Values.notifiarr.enabled }}
+          - name: "Notifiarr"
+            logo: "assets/png/notifiarr.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Discord-based notifications"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+
+          {{ if .Values.ombi.enabled }}
+          - name: "Ombi"
+            logo: "assets/png/ombi.png"
+            subtitle: "Manage Requests"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-ombi.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.overseerr.enabled }}
+          - name: "Overseerr"
+            logo: "assets/png/overseerr.png"
+            subtitle: "Manage Requests"
+            tag: "public"
+            tagstyle: "is-danger"
+            {{- if .Values.overseerrcustomdomain.enabled }}
+            url: "https://{{ .Values.overseerrcustomdomain.cname | lower }}"
+            {{- else }}
+            url: "https://{{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}"
+            {{- end }}
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.petio.enabled }}
+          - name: "Petio"
+            logo: "assets/png/petio.png"
+            subtitle: "Manage Requests"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-petio.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}      
+
+          {{ if .Values.plexdebrid.enabled }}
+          - name: "plex-debrid (RealDebrid)"
+            logo: "assets/png/real-debrid.png"
+            subtitle: "Sync Plex / Jellyfin with RealDebrid"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}   
+
+          {{ if .Values.plextraktsync.enabled }}
+          - name: "PlexTraktSync"
+            icon: "fas fa-sync"
+            subtitle: "Sync Plex and Trakt (watch mode)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-plextraktsync.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.plexytrack.enabled }}
+          - name: "PlexyTrack"
+            icon: "fas fa-sync"
+            subtitle: "Sync Plex and Trakt"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-plexytrack.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                         
+
+          {{ if .Values.profilarr.enabled }}
+          - name: "Profilarr"
+            icon: "fas fa-user"
+            subtitle: "Manage Arr Profiles"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-profilarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}     
+
           {{ if .Values.radarr.enabled }}
           - name: "Radarr"
             logo: "assets/png/radarr.png"
@@ -582,6 +910,92 @@ data:
             type: "Radarr"
             apikey: "{{ .Values.radarr4kexposed.apikey }}"
             useCredentials: true
+          {{ end }}
+
+          {{ if .Values.readarr.enabled }}
+          - name: "Readarr"
+            logo: "assets/png/readarr.png"
+            subtitle: "Manage Books"
+            {{ if .Values.readarrexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-readarr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+            type: "Readarr"
+            apikey: "{{ .Values.readarrexposed.apikey }}"
+            useCredentials: true
+          {{ end }}
+
+          {{ if .Values.readarraudio.enabled }}
+          - name: "Readarr (Audio)"
+            logo: "assets/png/readarr.png"
+            subtitle: "Manage Audio Books"
+            {{ if .Values.readarraudioexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-readarraudio.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+            type: "Readarr"
+            apikey: "{{ .Values.readarraudioexposed.apikey }}"
+            useCredentials: true
+          {{ end }}          
+
+          {{ if .Values.recyclarr.enabled }}
+          - name: "Recyclarr"
+            icon: "fas fa-recycle"
+            subtitle: "Configure Recyclarr"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/recyclarr/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.riven.enabled }}
+          - name: "Riven"
+            icon: "fas fa-mountain"
+            subtitle: "All-in-one Debrid Media Management"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+
+          - name: "Riven (backend)"
+            icon: "fas fa-mountain"
+            subtitle: "Geek out over Riven's backend"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-riven-backend.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+
+          {{ if .Values.rpdb.enabled }}
+          - name: "RPDB"
+            icon: "fas fa-star"
+            subtitle: "Manage Media Ratings Posters"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-rpdb.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.shoko.enabled }}
+          - name: "Shoko"
+            logo: "assets/png/shoko.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Manage Anime"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-shoko.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
           {{ end }}
 
           {{ if .Values.sonarr.enabled }}
@@ -620,178 +1034,6 @@ data:
             useCredentials: true
           {{ end }}
 
-          {{ if .Values.lidarr.enabled }}
-          - name: "Lidarr"
-            logo: "assets/png/lidarr.png"
-            subtitle: "Manage Music"
-            {{ if .Values.lidarrexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-lidarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            type: "Lidarr"
-            apikey: "{{ .Values.lidarrexposed.apikey }}"
-            useCredentials: true
-          {{ end }}
-
-          {{ if .Values.readarr.enabled }}
-          - name: "Readarr"
-            logo: "assets/png/readarr.png"
-            subtitle: "Manage Books"
-            {{ if .Values.readarrexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-readarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            type: "Readarr"
-            apikey: "{{ .Values.readarrexposed.apikey }}"
-            useCredentials: true
-          {{ end }}
-
-          {{ if .Values.readarraudio.enabled }}
-          - name: "Readarr (Audio)"
-            logo: "assets/png/readarr.png"
-            subtitle: "Manage Audio Books"
-            {{ if .Values.readarraudioexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-readarraudio.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            type: "Readarr"
-            apikey: "{{ .Values.readarraudioexposed.apikey }}"
-            useCredentials: true
-          {{ end }}
-
-          {{ if .Values.lazylibrarian.enabled }}
-          - name: "LazyLibrarian"
-            logo: "assets/png/lazylibrarian.png"
-            subtitle: "Manage Books"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-lazylibrarian.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-            {{ end }}
-
-          {{ if .Values.bazarr.enabled }}
-          - name: "Bazarr"
-            logo: "assets/png/bazarr.png"
-            subtitle: "Manage Subtitles"
-            {{ if .Values.bazarrexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-bazarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.bazarr4k.enabled }}
-          - name: "Bazarr 4K"
-            logo: "assets/png/bazarr.png"
-            subtitle: "Manage Subtitles (4K)"
-            {{ if .Values.bazarr4kexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-bazarr4k.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.arrtools.enabled }}
-          - name: "Arr Tools"
-            icon: "fas fa-tools"
-            subtitle: "Tools to manage Aars"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-arrtools.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute            
-          {{ end }}  
-
-          {{ if .Values.mylar.enabled }}
-          - name: "Mylar"
-            logo: "assets/png/mylar.png"
-            subtitle: "Manage Comics"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-mylar.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.kapowarr.enabled }}
-          - name: "Kapowarr"
-            icon: "fas fa-comments"
-            subtitle: "Manage Comics"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kapowarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.rpdb.enabled }}
-          - name: "RPDB"
-            icon: "fas fa-star"
-            subtitle: "Manage Media Ratings Posters"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rpdb.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-          
-          {{ if .Values.ombi.enabled }}
-          - name: "Ombi"
-            logo: "assets/png/ombi.png"
-            subtitle: "Manage Requests"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-ombi.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.overseerr.enabled }}
-          - name: "Overseerr"
-            logo: "assets/png/overseerr.png"
-            subtitle: "Manage Requests"
-            tag: "public"
-            tagstyle: "is-danger"
-            {{- if .Values.overseerrcustomdomain.enabled }}
-            url: "https://{{ .Values.overseerrcustomdomain.cname | lower }}"
-            {{- else }}
-            url: "https://{{ .Release.Name }}-overseerr.{{ .Values.dns_domain }}"
-            {{- end }}
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.jellyseerr.enabled }}
-          - name: "Jellyseerr"
-            logo: "assets/png/jellyseerr.png"
-            subtitle: "Manage Requests"
-            tag: "public"
-            tagstyle: "is-danger"
-            {{- if .Values.jellyseerrcustomdomain.enabled }}
-            url: "https://{{ .Values.jellyseerrcustomdomain.cname | lower }}"
-            {{- else }}
-            url: "https://{{ .Release.Name }}-jellyseerr.{{ .Values.dns_domain }}"
-            {{- end }}
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.suggestarr.enabled }}
           - name: "suggestarr"
             icon: "fas fa-infinity"
@@ -802,45 +1044,15 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
-          {{ if .Values.discovarr.enabled }}
-          - name: "Discovarr"
-            icon: "fas fa-infinity"
-            subtitle: "AI Content Discovery"
+          {{ if .Values.symlinkcleaner.enabled }}
+          - name: "Symlink Cleaner"
+            icon: "fas fa-broom"
+            subtitle: "Manage Symlinks"
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-discovarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                    
-
-          {{ if .Values.petio.enabled }}
-          - name: "Petio"
-            logo: "assets/png/petio.png"
-            subtitle: "Manage Requests"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-petio.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.jfa.enabled }}
-          - name: "Jellyfin Accounts"
-            icon: "fas fa-users"
-            subtitle: "Manage Jellyfin Accounts / Invites"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-jfa.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-symlink-cleaner.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
-
-          {{ if .Values.wizarr.enabled }}
-          - name: "Wizarr"
-            icon: "fas fa-hat-wizard"
-            subtitle: "Manage Plex / Emby / Jellyfin Accounts / Invites"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
 
           {{ if .Values.tautulli.enabled }}
           - name: "Tautulli"
@@ -853,46 +1065,6 @@ data:
             url: "https://{{ .Release.Name }}-tautulli.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
-
-          {{ if .Values.jellystat.enabled }}
-          - name: "Jellystat"
-            logo: "assets/png/jellystat.png"
-            subtitle: "Jellyfin Statistics"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-jellystat.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.tunarr.enabled }}
-          - name: "tunarr"
-            icon: "fas fa-tv"
-            subtitle: "Live TV Proxy for Plex/Emby"
-            {{ if .Values.tunarrexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-tunarr.{{ .Values.dns_domain }}/web/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.ersatztv.enabled }}
-          - name: "ersatztv"
-            icon: "fas fa-tv"
-            subtitle: "Live TV Proxy for Plex/Emby"
-            {{ if .Values.tunarrexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-ersatztv.{{ .Values.dns_domain }}/web/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
 
           {{ if .Values.threadfin.enabled }}
           - name: "Threadfin"
@@ -910,215 +1082,31 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}  
 
-          {{ if .Values.dispatcharr.enabled }}
-          - name: "Dispatcharr"
-            # Alternatively a fa icon can be provided:
-            logo: "assets/png/dispatcharr.png"
-            subtitle: "Manage IPTV streams and EPG data"
-            {{ if .Values.dispatcharrexposed.enabled }}
+          {{ if .Values.tunarr.enabled }}
+          - name: "tunarr"
+            icon: "fas fa-tv"
+            subtitle: "Live TV Proxy for Plex/Emby"
+            {{ if .Values.tunarrexposed.enabled }}
             tag: "public"
             tagstyle: "is-danger"
             {{ else }}
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-dispatcharr.{{ .Values.dns_domain }}/web/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                              
-
-          {{ if .Values.channelsdvr.enabled }}
-          - name: "Channels DVR"
-            logo: "assets/png/channels-dvr.png"
-            subtitle: "Watch TV your way"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.notifiarr.enabled }}
-          - name: "Notifiarr"
-            logo: "assets/png/notifiarr.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Discord-based notifications"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-notifiarr.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-tunarr.{{ .Values.dns_domain }}/web/"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.shoko.enabled }}
-          - name: "Shoko"
-            logo: "assets/png/shoko.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Manage Anime"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-shoko.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
 
-          {{ if .Values.filebot.enabled }}
-          - name: "FileBot"
-            logo: "assets/png/filebot.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Automate Media Management"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebot.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.plextraktsync.enabled }}
-          - name: "PlexTraktSync"
-            icon: "fas fa-sync"
-            subtitle: "Sync Plex and Trakt (watch mode)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-plextraktsync.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.plexytrack.enabled }}
-          - name: "PlexyTrack"
-            icon: "fas fa-sync"
-            subtitle: "Sync Plex and Trakt"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-plexytrack.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.letterboxdtraktsync.enabled }}
-          - name: "Letterboxd Trakt Sync"
-            icon: "fas fa-sync"
-            subtitle: "Sync Letterboxd and Trakt"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-letterboxd-trakt-sync.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-          
-          {{ if .Values.kometa.enabled }}
-          - name: "Kometa"
-            icon: "fas fa-meteor"
-            # Alternatively a fa icon can be provided:
-            # icon: "fas fa-photo-film"
-            subtitle: "Manage Plex Metadata"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-kometa.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-
-          - name: "ImageMaid"
-            icon: "fas fa-broom"
-            subtitle: "Clean images in Plex"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-imagemaid.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}   
-
-          {{ if .Values.symlinkcleaner.enabled }}
-          - name: "Symlink Cleaner"
-            icon: "fas fa-broom"
-            subtitle: "Manage Symlinks"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-symlink-cleaner.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.decluttarr.enabled }}
-          - name: "Decluttarr"
-            icon: "fas fa-broom"
-            subtitle: "Clean Aarr queues"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-decluttarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute          
-          {{ end }}      
-
-          {{ if .Values.recyclarr.enabled }}
-          - name: "Recyclarr"
-            icon: "fas fa-recycle"
-            subtitle: "Configure Recyclarr"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-filebrowser.{{ .Values.dns_domain }}/files/config/recyclarr/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.profilarr.enabled }}
-          - name: "Profilarr"
-            icon: "fas fa-user"
-            subtitle: "Manage Arr Profiles"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-profilarr.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.clidebrid.enabled }}
-          - name: "cli-debrid (RealDebrid)"
-            logo: "assets/png/real-debrid.png"
-            subtitle: "Sync Plex with RealDebrid (with a UI)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-cli-debrid.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}  
-
-          {{ if .Values.plexdebrid.enabled }}
-          - name: "plex-debrid (RealDebrid)"
-            logo: "assets/png/real-debrid.png"
-            subtitle: "Sync Plex / Jellyfin with RealDebrid"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-plex-debrid.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}   
-
-          {{ if .Values.riven.enabled }}
-          - name: "Riven"
-            icon: "fas fa-mountain"
-            subtitle: "All-in-one Debrid Media Management"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-riven.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-
-          - name: "Riven (backend)"
-            icon: "fas fa-mountain"
-            subtitle: "Geek out over Riven's backend"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-riven-backend.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                           
-
-          {{ if .Values.immich.enabled }}
-          - name: "Immich"
-            logo: "assets/png/immich.png"
-            subtitle: "Manage Photos"
+          {{ if .Values.wizarr.enabled }}
+          - name: "Wizarr"
+            icon: "fas fa-hat-wizard"
+            subtitle: "Manage Plex / Emby / Jellyfin Accounts / Invites"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-immich.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-wizarr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}        
-
-          {{ if or .Values.zurgling.enabled .Values.debridling.enabled .Values.seerrbridge.enabled .Values.cinesync.enabled }}
-          - name: "DebridMediaManager"
-            logo: "assets/png/debridmediamanager.png"
-            subtitle: "Manage Debrid Media"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://debridmediamanager.com"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
+          {{ end }}          
 
       - name: "Download Media"
         icon: "fas fa-cloud-arrow-down"
@@ -1137,6 +1125,16 @@ data:
             url: "https://{{ .Release.Name }}-nzbget.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
+
+          {{ if .Values.clidebrid.enabled }}
+          - name: "cli-debrid (RealDebrid)"
+            logo: "assets/png/real-debrid.png"
+            subtitle: "Sync Plex with RealDebrid (with a UI)"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-cli-debrid.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}            
 
           {{ if .Values.sabnzbd.enabled }}
           - name: "SABnzbd"
