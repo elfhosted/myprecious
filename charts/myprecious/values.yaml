@@ -15036,7 +15036,7 @@ debridav: &app_debridav
       - |
         echo "This pod only exists to cause a restart when plex is updated"  
     restart-with-jellyfin:
-      image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:142d72610fabb7a9ecdf98ffaf035c3cd52236eeab1671d9441f055e4cfc8799
+      image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:d0ff083b3320bf2dda0b1dc2f023c88ae04372a62bed3df7beebb3d2d5ad02a6
       command:
       - /bin/bash
       - -c
