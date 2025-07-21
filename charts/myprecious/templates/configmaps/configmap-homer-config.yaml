@@ -249,73 +249,41 @@ data:
         # A path to an image can also be provided. Note that icon take precedence if both icon and logo are set.
         # logo: "path/to/logo"
         items:
-          {{ if or .Values.jellyfin.enabled .Values.jellyfinranger.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled  }}
-          - name: "Jellyfin"
-            logo: "assets/png/jellyfin.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Watch Movies/TV"
+
+          {{ if .Values.aiostreams.enabled }}
+          - name: "AIOStreams"
+            icon: "fas fa-tools"
+            subtitle: "Combine and format multiple Stremio addons"
+            {{ if .Values.aiostreamsexposed.enabled }}
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
-          - name: "Plex"
-            logo: "assets/png/plex.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Watch Movies/TV"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if or .Values.emby.enabled .Values.embyranger.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
-          - name: "Emby"
-            logo: "assets/png/emby.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Watch Movies/TV"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-emby.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.navidrome.enabled }}
-          - name: "Navidrome"
-            logo: "assets/png/navidrome.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Listen to Music"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-navidrome.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.calibreweb.enabled }}
-          - name: "Calibre Web"
-            logo: "assets/png/calibre-web.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Read Books"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-calibre-web.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.cwabookdownloader.enabled }}
-          - name: "CWA Book Downloadoer"
-            logo: "assets/png/calibrain.png"
-            subtitle: "Download Books"
+            {{ else }}
             tag: "protected"
             tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-cwa-book-downloader.{{ .Values.dns_domain }}"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.audiobookshelf.enabled }}
+          - name: "Audiobookshelf"
+            logo: "assets/png/audiobookshelf.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Listen to Books/Podcasts"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-audiobookshelf.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.booklore.enabled }}
+          - name: "BookLore"
+            logo: "assets/png/booklore.png"
+            subtitle: "Manage PDFs / Books"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-booklore.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}          
 
@@ -330,106 +298,17 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.komga.enabled }}
-          - name: "Komga"
-            logo: "assets/png/komga.png"
+          {{ if .Values.calibreweb.enabled }}
+          - name: "Calibre Web"
+            logo: "assets/png/calibre-web.png"
             # Alternatively a fa icon can be provided:
             # icon: "fab fa-photo-video"
-            subtitle: "Read Comics / Books"
+            subtitle: "Read Books"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-komga.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-calibre-web.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
-
-          {{ if .Values.kavita.enabled }}
-          - name: "Kavita"
-            logo: "assets/png/kavita.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Read Comics / Books"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-kavita.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.booklore.enabled }}
-          - name: "BookLore"
-            logo: "assets/png/booklore.png"
-            subtitle: "Manage PDFs / Books"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-booklore.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.audiobookshelf.enabled }}
-          - name: "Audiobookshelf"
-            logo: "assets/png/audiobookshelf.png"
-            # Alternatively a fa icon can be provided:
-            # icon: "fab fa-photo-video"
-            subtitle: "Listen to Books/Podcasts"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-audiobookshelf.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.storyteller.enabled }}
-          - name: "StoryTeller"
-            icon: "fas fa-book-open"
-            subtitle: "Listen/Read books"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-storyteller.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
-
-          {{ if .Values.youriptv.enabled }}
-          - name: "YourIPTV"
-            icon: "fas fa-tv"
-            subtitle: "Watch your IPTV in Stremio"
-            {{ if .Values.youriptvexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}               
-
-          {{ if .Values.jackettio.enabled }}
-          - name: "Jackettio"
-            logo: "assets/png/jackett.png"
-            subtitle: "Stremio Addon supporting private trackers"
-            {{ if .Values.jackettioexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-jackettio.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                     
-
-          {{ if .Values.davio.enabled }}
-          - name: "Davio"
-            logo: "assets/png/webdav.png"
-            subtitle: "Stremio Addon to stream your WebDAV content"
-            {{ if .Values.davioexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-davio.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                     
 
           {{ if .Values.comet.enabled }}
           - name: "Comet"
@@ -452,55 +331,103 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}                     
 
-          {{ if .Values.aiostreams.enabled }}
-          - name: "AIOStreams"
-            icon: "fas fa-tools"
-            subtitle: "Combine and format multiple Stremio addons"
-            {{ if .Values.aiostreamsexposed.enabled }}
+          {{ if .Values.cwabookdownloader.enabled }}
+          - name: "CWA Book Downloadoer"
+            logo: "assets/png/calibrain.png"
+            subtitle: "Download Books"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-cwa-book-downloader.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}         
+
+          {{ if .Values.davio.enabled }}
+          - name: "Davio"
+            logo: "assets/png/webdav.png"
+            subtitle: "Stremio Addon to stream your WebDAV content"
+            {{ if .Values.davioexposed.enabled }}
             tag: "public"
             tagstyle: "is-danger"
             {{ else }}
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-davio.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}       
+
+          {{ if or .Values.emby.enabled .Values.embyranger.enabled .Values.embyhobbit.enabled .Values.embyhalfling.enabled .Values.embynazgul.enabled }}
+          - name: "Emby"
+            logo: "assets/png/emby.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Watch Movies/TV"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-emby.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}
 
-          {{ if .Values.nuviostreams.enabled }}
-          - name: "Nuvio Streams"
-            logo: "assets/png/nuviostreams.png"
-            subtitle: "HTTP Streams in Stremio"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-nuviostreams.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}             
-          
-          {{ if .Values.webstreamr.enabled }}
-          - name: "WebStreamr"
-            icon: "fas fa-tv"
-            subtitle: "Watch HTTP streams with Stremio"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-webstreamr.elfhosted.com"
+          {{ if .Values.flixio.enabled }}
+          - name: "Flixio"
+            logo: "assets/png/stremio.png"
+            subtitle: "Stremio (Anonymous)"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}             
 
-          {{ if .Values.stremthru.enabled }}
-          - name: "StremThru"
-            icon: "fas fa-tools"
-            subtitle: "Stremio / Debrid Swiss-Army Knife"
-            {{ if .Values.stremthruexposed.enabled }}
+          {{ if .Values.jackettio.enabled }}
+          - name: "Jackettio"
+            logo: "assets/png/jackett.png"
+            subtitle: "Stremio Addon supporting private trackers"
+            {{ if .Values.jackettioexposed.enabled }}
             tag: "public"
             tagstyle: "is-danger"
             {{ else }}
             tag: "protected"
             tagstyle: "is-success"
             {{ end }}
-            url: "https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-jackettio.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}  
+          {{ end }}      
+
+          {{ if or .Values.jellyfin.enabled .Values.jellyfinranger.enabled .Values.jellyfinhobbit.enabled .Values.jellyfinhalfling.enabled .Values.jellyfinnazgul.enabled  }}
+          - name: "Jellyfin"
+            logo: "assets/png/jellyfin.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Watch Movies/TV"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.kavita.enabled }}
+          - name: "Kavita"
+            logo: "assets/png/kavita.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Read Comics / Books"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-kavita.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.komga.enabled }}
+          - name: "Komga"
+            logo: "assets/png/komga.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Read Comics / Books"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-komga.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
 
           {{ if .Values.mediafusion.enabled }}
           - name: "MediaFusion"
@@ -525,17 +452,98 @@ data:
             tagstyle: "is-success"
             url: https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}
             target: "_blank" # optional html tag target attribute
-          {{ end }}                       
-
-          {{ if .Values.flixio.enabled }}
-          - name: "Flixio"
-            logo: "assets/png/stremio.png"
-            subtitle: "Stremio (Anonymous)"
+          {{ end }}        
+          
+          {{ if .Values.navidrome.enabled }}
+          - name: "Navidrome"
+            logo: "assets/png/navidrome.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Listen to Music"
             tag: "public"
             tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-flixio.{{ .Values.dns_domain }}"
+            url: "https://{{ .Release.Name }}-navidrome.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}                              
+          {{ end }}
+
+          {{ if .Values.nuviostreams.enabled }}
+          - name: "Nuvio Streams"
+            logo: "assets/png/nuviostreams.png"
+            subtitle: "HTTP Streams in Stremio"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-nuviostreams.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+                    
+
+          {{ if or .Values.plex.enabled .Values.plexranger.enabled .Values.plexhobbit.enabled .Values.plexhalfling.enabled .Values.plexnazgul.enabled }}
+          - name: "Plex"
+            logo: "assets/png/plex.png"
+            # Alternatively a fa icon can be provided:
+            # icon: "fab fa-photo-video"
+            subtitle: "Watch Movies/TV"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
+
+
+          {{ if .Values.storyteller.enabled }}
+          - name: "StoryTeller"
+            icon: "fas fa-book-open"
+            subtitle: "Listen/Read books"
+            tag: "public"
+            tagstyle: "is-danger"
+            url: "https://{{ .Release.Name }}-storyteller.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}      
+            
+          {{ if .Values.stremthru.enabled }}
+          - name: "StremThru"
+            icon: "fas fa-tools"
+            subtitle: "Stremio / Debrid Swiss-Army Knife"
+            {{ if .Values.stremthruexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                
+
+          {{ if .Values.webstreamr.enabled }}
+          - name: "WebStreamr"
+            icon: "fas fa-tv"
+            subtitle: "Watch HTTP streams with Stremio"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-webstreamr.elfhosted.com"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}   
+
+          {{ if .Values.youriptv.enabled }}
+          - name: "YourIPTV"
+            icon: "fas fa-tv"
+            subtitle: "Watch your IPTV in Stremio"
+            {{ if .Values.youriptvexposed.enabled }}
+            tag: "public"
+            tagstyle: "is-danger"
+            {{ else }}
+            tag: "protected"
+            tagstyle: "is-success"
+            {{ end }}
+            url: "https://{{ .Release.Name }}-youriptv.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}               
+
+               
+
+                           
 
       - name: "Manage Media"
         icon: "fas fa-photo-video"
