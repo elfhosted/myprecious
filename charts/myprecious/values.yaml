@@ -7251,10 +7251,29 @@ booklore:
       securityContext:
         runAsUser: 0
         seccompProfile:
-          type: RuntimeDefault            
+          type: RuntimeDefault   
+    setup:
+      image: *tooling_image
+      imagePullPolicy: IfNotPresent
+      command:
+      - /bin/bash
+      - -c
+      - |
+        set -x
+        set -e
+
+        # There are symlinks pre-prepared for these
+        mkdir -p /config/bookdrop
+
+      volumeMounts:
+      - mountPath: /config
+        name: config
+        subPath: booklore
+      resources: *default_resources
+      securityContext: *default_securitycontext                     
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.34.0@sha256:7db3cc39254cde1e30eae951af96e24347c7a4ee0cd4ba51572e764804a834ce
+      image: ghcr.io/elfhosted/booklore:v0.34.0@sha256:7cb5871c3e12703b8663f586ff8cb588c48fe1ab90ba29dcbb9e1d08722fb713
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -12032,7 +12051,7 @@ actual:
           claimName: config     
 
 elfbot:
-  enabled: true
+  enabled: false
   image:
     repository: ghcr.io/elfhosted/elfbot
     tag: v1.0.4@sha256:acc0e0b82eea23d6324dffbb90fe20dfaed313df658929186081bc23e63871a2
