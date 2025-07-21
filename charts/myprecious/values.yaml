@@ -5186,8 +5186,8 @@ plex: &app_plex
 jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
-    repository: ghcr.io/elfhosted/jellyfin-dev
-    tag: 10.10.7@sha256:011884a86625db5a23ba0a05489751a1f418bbb7cd2ae9f46a5e7d8cf44e98eb
+    repository: ghcr.io/elfhosted/jellyfin
+    tag: 10.10.7@sha256:abb387cda485f4fb370af14b05bdd1e5ee16faf3a6e655ee5024f092a243cccb
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   enabled: false
@@ -5367,10 +5367,10 @@ jellyfinranger:
   <<: *app_jellyfin
   podLabels:
     app.elfhosted.com/name: jellyfin
-  podAnnotations:
-    elfbot.elfhosted.com/name: "Jellyfin"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"  
-    kubernetes.io/egress-bandwidth: "500M"
+  podAnnotations: 
+    <<: *ranger_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
+    elfbot.elfhosted.com/name: "Jellyfin"   
   enabled: false
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources
@@ -5393,7 +5393,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.1.7@sha256:fc1795de7de10fd1569f2028232625fb5ed011ca0cd1107f3bd3a7011b6025cf
+    tag: 4.9.1.7@sha256:11841f574581eeed96baf1cbc13c9dd89aeb1bdae613c98159e687ff5afae75c
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   enabled: false
@@ -5564,10 +5564,10 @@ embyranger:
   <<: *app_emby
   podLabels:
     app.elfhosted.com/name: emby
-  podAnnotations:
-    elfbot.elfhosted.com/name: "Emby"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
-    kubernetes.io/egress-bandwidth: "500M"
+  podAnnotations: 
+    <<: *ranger_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"
+    elfbot.elfhosted.com/name: "Emby"   
   enabled: false
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources
@@ -13791,7 +13791,7 @@ zurg: &app_zurg
     app.elfhosted.com/name: zurg
   podAnnotations:
     elfbot.elfhosted.com/name: "Zurg"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/zurg.png"      
+    elfbot.elfhosted.com/icon: "fas fa-robot"      
   image:
     repository: ghcr.io/elfhosted/zurg-rc
     tag: 2025.07.16.0044-nightly@sha256:fff8501691f74bd25cc96355b089c6e236cf6358df9332f808e250c1f6eebb21
@@ -16174,7 +16174,10 @@ plexhobbit:
 
 jellyfinhobbit:
   <<: *app_jellyfin
-  podAnnotations: *hobbit_streamer_podAnnotations
+  podAnnotations: 
+    <<: *hobbit_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
+    elfbot.elfhosted.com/name: "Jellyfin"      
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_jellyfin_persistence
@@ -16189,7 +16192,10 @@ jellyfinhobbit:
 
 embyhobbit:
   <<: *app_emby
-  podAnnotations: *hobbit_streamer_podAnnotations
+  podAnnotations: 
+    <<: *hobbit_streamer_podAnnotations
+    elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_emby_persistence
@@ -16214,7 +16220,10 @@ plexranger:
       volumeSpec:
         persistentVolumeClaim:
           claimName: transcode-50g
-  podAnnotations: *ranger_streamer_podAnnotations
+  podAnnotations: 
+    <<: *ranger_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
+    elfbot.elfhosted.com/name: "Plex"    
   resources: *ranger_streamer_resources
 
 plexhalfling:
@@ -16229,12 +16238,18 @@ plexhalfling:
       volumeSpec:
         persistentVolumeClaim:
           claimName: transcode-50g  
-  podAnnotations: *halfling_streamer_podAnnotations
+  podAnnotations: 
+    <<: *halfling_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
+    elfbot.elfhosted.com/name: "Plex"     
   resources: *halfling_streamer_resources
 
 jellyfinhalfling:
   <<: *app_jellyfin
-  podAnnotations: *halfling_streamer_podAnnotations
+  podAnnotations: 
+    <<: *halfling_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
+    elfbot.elfhosted.com/name: "Jellyfin"      
   resources: *halfling_streamer_resources
   persistence:
     <<: *app_jellyfin_persistence
@@ -16249,7 +16264,10 @@ jellyfinhalfling:
 
 embyhalfling:
   <<: *app_emby
-  podAnnotations: *halfling_streamer_podAnnotations
+  podAnnotations: 
+    <<: *halfling_streamer_podAnnotations
+    elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"    
   resources: *halfling_streamer_resources
   persistence:
     <<: *app_emby_persistence
@@ -16279,7 +16297,10 @@ plexnazgul:
 
 jellyfinnazgul:
   <<: *app_jellyfin
-  podAnnotations: *nazgul_streamer_podAnnotations
+  podAnnotations: 
+    <<: *nazgul_streamer_podAnnotations
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
+    elfbot.elfhosted.com/name: "Jellyfin"      
   resources: *nazgul_streamer_resources
   persistence:
     <<: *app_jellyfin_persistence
@@ -16294,7 +16315,10 @@ jellyfinnazgul:
 
 embynazgul:
   <<: *app_emby
-  podAnnotations: *nazgul_streamer_podAnnotations
+  podAnnotations: 
+    <<: *nazgul_streamer_podAnnotations
+    elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
   resources: *nazgul_streamer_resources
   persistence:
     <<: *app_emby_persistence
