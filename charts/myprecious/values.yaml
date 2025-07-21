@@ -5393,7 +5393,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.1.7@sha256:11841f574581eeed96baf1cbc13c9dd89aeb1bdae613c98159e687ff5afae75c
+    tag: 4.9.1.8@sha256:11841f574581eeed96baf1cbc13c9dd89aeb1bdae613c98159e687ff5afae75c
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   enabled: false
