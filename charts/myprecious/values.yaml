@@ -1441,6 +1441,7 @@ tautulli:
   podAnnotations:
     elfbot.elfhosted.com/name: "Tautulli"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/tautulli.png"
+    elfbot.elfhosted.com/category: Manage Media
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-tautulli"
@@ -1542,7 +1543,8 @@ radarr: &app_radarr
     app.elfhosted.com/name: radarr
   podAnnotations:
     elfbot.elfhosted.com/name: "Radarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"    
+    elfbot.elfhosted.com/category: Manage Downloads  
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -1760,7 +1762,8 @@ radarr4k: &app_radarr4k
     app.elfhosted.com/name: radarr4k
   podAnnotations:    
     elfbot.elfhosted.com/name: "Radarr (4K)"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"    
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/radarr.png"
+    elfbot.elfhosted.com/category: Manage Downloads    
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -1981,7 +1984,8 @@ ombi:
     app.elfhosted.com/name: ombi
   podAnnotations:    
     elfbot.elfhosted.com/name: "Ombi"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/ombi.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/ombi.png"  
+    elfbot.elfhosted.com/category: Manage Media    
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -2055,7 +2059,8 @@ huntarr: &app_huntarr
     app.elfhosted.com/name: huntarr  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Huntarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/huntarr.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/huntarr.png"    
+    elfbot.elfhosted.com/category: Manage Downloads  
   image:
     registry: ghcr.io
     repository: elfhosted/huntarr
@@ -2163,7 +2168,8 @@ bazarr:
     app.elfhosted.com/name: bazarr  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Bazarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"   
+    elfbot.elfhosted.com/category: Manage Downloads   
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr"
@@ -2243,7 +2249,8 @@ bazarr4k:
     app.elfhosted.com/name: bazarr4k  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Bazarr (4K)"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/bazarr.png"  
+    elfbot.elfhosted.com/category: Manage Downloads      
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-bazarr4k"
@@ -2320,6 +2327,7 @@ filebrowser:
   podAnnotations:    
     elfbot.elfhosted.com/name: "FileBrowser"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/filebrowser.png"    
+    elfbot.elfhosted.com/category: Tools
   image:
     repository: ghcr.io/elfhosted/filebrowser
     tag: 2.23.0@sha256:296e3a3d08c5ca07a26350358fa2e58a597a41adb253a65bba27b557f36383e5
@@ -2574,7 +2582,8 @@ uptimekuma:
     app.elfhosted.com/name: uptimekuma  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Uptime Kuma"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/uptime-kuma.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/uptime-kuma.png"  
+    elfbot.elfhosted.com/category: Tools
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-uptimekuma"
@@ -2646,7 +2655,8 @@ privatebin:
     app.elfhosted.com/name: privatebin
   podAnnotations:    
     elfbot.elfhosted.com/name: "PriveteBin"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/privatebin.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/privatebin.png" 
+    elfbot.elfhosted.com/category: Tools   
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-privatebin"
@@ -2742,7 +2752,8 @@ kapowarr:
     app.elfhosted.com/name: kapowarr
   podAnnotations:    
     elfbot.elfhosted.com/name: "Kapowarr"
-    elfbot.elfhosted.com/icon: "fas fa-comments"      
+    elfbot.elfhosted.com/icon: "fas fa-comments"   
+    elfbot.elfhosted.com/category: Consume Media   
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-kapowarr"
@@ -2848,6 +2859,7 @@ calibreweb:
   podAnnotations:    
     elfbot.elfhosted.com/name: "Calibre Web Automated"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre-web.png"    
+    elfbot.elfhosted.com/category: Consume Media 
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/calibre-web-automated
@@ -2949,6 +2961,7 @@ cwabookdownloader:
   podAnnotations:    
     elfbot.elfhosted.com/name: "CWA Book Downloader"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibrain.png"    
+    elfbot.elfhosted.com/category: Manage Downloads  
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/cwa-downloader
@@ -3048,7 +3061,8 @@ lazylibrarian:
     app.elfhosted.com/name: lazylibrarian  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Lazy Librarian"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/lazylibrarian.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/lazylibrarian.png"
+    elfbot.elfhosted.com/category: Manage Downloads        
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-lazylibrarian"
@@ -3120,6 +3134,7 @@ mylar:
   podAnnotations:    
     elfbot.elfhosted.com/name: "Mylar"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/mylar.png"      
+    elfbot.elfhosted.com/category: Manage Downloads  
   image:
     registry: ghcr.io
     repository: elfhosted/mylar3
@@ -3198,6 +3213,7 @@ komga:
   podAnnotations:    
     elfbot.elfhosted.com/name: "Komga"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/komga.png"      
+    elfbot.elfhosted.com/category: Consume Media
   image:
     repository: ghcr.io/elfhosted/komga
     tag: 1.22.1@sha256:1be95e0e478113542c88468310d82b708b1ddf1cd2b6b0b7ce7b214ad85c5578
@@ -3274,7 +3290,8 @@ kavita:
     app.elfhosted.com/name: kavita  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Kavita"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kavita.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/kavita.png"     
+    elfbot.elfhosted.com/category: Consume Media
   image:
     repository: ghcr.io/elfhosted/kavita
     tag: 0.8.7@sha256:2d3eccdb29f294049b5c081ffcc20eea8e84f28eb6480db873dd83ea21e7fbb9
@@ -3345,7 +3362,8 @@ calibre:
     app.elfhosted.com/name: calibre
   podAnnotations:    
     elfbot.elfhosted.com/name: "Calibre"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre.png"      
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre.png"   
+    elfbot.elfhosted.com/category: Consume Media   
   image:
     repository: quay.io/linuxserver.io/calibre
     tag: 8.7.0@sha256:4abf3cf68f875fef86ca3388e98f2abb2d7eb647d66e64c3a90638aa7ff9e6e2
@@ -3434,7 +3452,8 @@ sonarr: &app_sonarr
     app.elfhosted.com/name: sonarr
   podAnnotations:    
     elfbot.elfhosted.com/name: "Sonarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/sonarr.png"    
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/sonarr.png"   
+    elfbot.elfhosted.com/category: Manage Downloads   
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -3652,6 +3671,7 @@ sonarr4k: &app_sonarr4k
   podAnnotations:    
     elfbot.elfhosted.com/name: "Sonarr (4K)"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/sonarr.png"    
+    elfbot.elfhosted.com/category: Manage Downloads  
   priorityClassName: tenant-normal
   image:
     registry: ghcr.io
@@ -3875,6 +3895,7 @@ prowlarr: &app_prowlarr
   podAnnotations:    
     elfbot.elfhosted.com/name: "Prowlarr"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/prowlarr.png"    
+    elfbot.elfhosted.com/category: Manage Downloads  
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
@@ -4124,6 +4145,7 @@ nzbhydra:
   podAnnotations:    
     elfbot.elfhosted.com/name: "NZBHydra"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nzbhydra.png"    
+    elfbot.elfhosted.com/category: Manage Downloads  
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/nzbhydra2
@@ -4208,6 +4230,7 @@ lidarr:
   podAnnotations:    
     elfbot.elfhosted.com/name: "Lidarr"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/lidarr.png"      
+    elfbot.elfhosted.com/category: Manage Downloads  
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4395,6 +4418,7 @@ navidrome:
   podAnnotations:    
     elfbot.elfhosted.com/name: "Navidrome"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/navidrome.png"    
+    elfbot.elfhosted.com/category: Consume Media
   securityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -4468,7 +4492,8 @@ readarr:
     app.elfhosted.com/name: readarr  
   podAnnotations:    
     elfbot.elfhosted.com/name: "Readarr"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/readarr.png"    
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/readarr.png" 
+    elfbot.elfhosted.com/category: Manage Downloads     
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
@@ -4686,6 +4711,7 @@ readarraudio:
   podAnnotations:    
     elfbot.elfhosted.com/name: "Readarr (Audio)"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/readarr.png"      
+    elfbot.elfhosted.com/category: Manage Downloads  
   image:
     registry: ghcr.io
     repository: elfhosted/readarr-develop
@@ -4903,6 +4929,7 @@ plex: &app_plex
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
     elfbot.elfhosted.com/name: "Plex"
+    elfbot.elfhosted.com/category: Consume Media
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -5195,6 +5222,7 @@ jellyfin: &app_jellyfin
     app.elfhosted.com/name: jellyfin
   podAnnotations:
     elfbot.elfhosted.com/name: "Jellyfin"
+    elfbot.elfhosted.com/category: Consume Media
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"  
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   priorityClassName: tenant-streaming
@@ -5370,7 +5398,8 @@ jellyfinranger:
   podAnnotations: 
     <<: *ranger_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
-    elfbot.elfhosted.com/name: "Jellyfin"   
+    elfbot.elfhosted.com/name: "Jellyfin"
+    elfbot.elfhosted.com/category: Consume Media   
   enabled: false
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources
@@ -5402,6 +5431,7 @@ emby: &app_emby
     app.elfhosted.com/name: emby
   podAnnotations:
     elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/category: Consume Media
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
     kubernetes.io/egress-bandwidth: "150M" # tested with _kilos in Discord on a 97Mbit remux
   securityContext:
@@ -5567,7 +5597,8 @@ embyranger:
   podAnnotations: 
     <<: *ranger_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"
-    elfbot.elfhosted.com/name: "Emby"   
+    elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/category: Consume Media   
   enabled: false
   automountServiceAccountToken: false
   resources: *ranger_streamer_resources
@@ -16160,6 +16191,7 @@ plexhobbit:
     <<: *hobbit_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
     elfbot.elfhosted.com/name: "Plex"
+    elfbot.elfhosted.com/category: Consume Media
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_plex_persistence
@@ -16177,7 +16209,8 @@ jellyfinhobbit:
   podAnnotations: 
     <<: *hobbit_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
-    elfbot.elfhosted.com/name: "Jellyfin"      
+    elfbot.elfhosted.com/name: "Jellyfin"
+    elfbot.elfhosted.com/category: Consume Media      
   resources: *hobbit_streamer_resources
   persistence:
     <<: *app_jellyfin_persistence
@@ -16195,6 +16228,7 @@ embyhobbit:
   podAnnotations: 
     <<: *hobbit_streamer_podAnnotations
     elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/category: Consume Media
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
   resources: *hobbit_streamer_resources
   persistence:
@@ -16223,7 +16257,8 @@ plexranger:
   podAnnotations: 
     <<: *ranger_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
-    elfbot.elfhosted.com/name: "Plex"    
+    elfbot.elfhosted.com/name: "Plex"
+    elfbot.elfhosted.com/category: Consume Media    
   resources: *ranger_streamer_resources
 
 plexhalfling:
@@ -16241,7 +16276,8 @@ plexhalfling:
   podAnnotations: 
     <<: *halfling_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/plex.png"
-    elfbot.elfhosted.com/name: "Plex"     
+    elfbot.elfhosted.com/name: "Plex"
+    elfbot.elfhosted.com/category: Consume Media     
   resources: *halfling_streamer_resources
 
 jellyfinhalfling:
@@ -16249,7 +16285,8 @@ jellyfinhalfling:
   podAnnotations: 
     <<: *halfling_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
-    elfbot.elfhosted.com/name: "Jellyfin"      
+    elfbot.elfhosted.com/name: "Jellyfin"
+    elfbot.elfhosted.com/category: Consume Media      
   resources: *halfling_streamer_resources
   persistence:
     <<: *app_jellyfin_persistence
@@ -16267,6 +16304,7 @@ embyhalfling:
   podAnnotations: 
     <<: *halfling_streamer_podAnnotations
     elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/category: Consume Media
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"    
   resources: *halfling_streamer_resources
   persistence:
@@ -16300,7 +16338,8 @@ jellyfinnazgul:
   podAnnotations: 
     <<: *nazgul_streamer_podAnnotations
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/jellyfin.png"
-    elfbot.elfhosted.com/name: "Jellyfin"      
+    elfbot.elfhosted.com/name: "Jellyfin"
+    elfbot.elfhosted.com/category: Consume Media      
   resources: *nazgul_streamer_resources
   persistence:
     <<: *app_jellyfin_persistence
@@ -16318,6 +16357,7 @@ embynazgul:
   podAnnotations: 
     <<: *nazgul_streamer_podAnnotations
     elfbot.elfhosted.com/name: "Emby"
+    elfbot.elfhosted.com/category: Consume Media
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/emby.png"  
   resources: *nazgul_streamer_resources
   persistence:
