@@ -5214,7 +5214,7 @@ jellyfin: &app_jellyfin
   hostname: elfhosted
   image:
     repository: ghcr.io/elfhosted/jellyfin
-    tag: 10.10.7@sha256:abb387cda485f4fb370af14b05bdd1e5ee16faf3a6e655ee5024f092a243cccb
+    tag: 10.10.7@sha256:fff97e89dbc80246b267a2af2464f968039a5e40f884778446ddddf850005ab0
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   enabled: false
