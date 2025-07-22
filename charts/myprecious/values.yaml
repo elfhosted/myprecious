@@ -7512,7 +7512,7 @@ peertube:
         name: config
         subPath: peertube/redis
     ui:
-      image: ghcr.io/elfhosted/peertube-nonroot:v7.2.2@sha256:48c93e9ed26c32af63137afb0eaa46fc1ed15633b39f89026ccff128efecf7f0
+      image: ghcr.io/elfhosted/peertube-nonroot:v7.2.3@sha256:2dc6861559d4b5587e143e685b5390f31fb0818ad74036b226183b338145ef2f
       volumeMounts:
       - mountPath: /data
         name: config
