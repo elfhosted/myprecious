@@ -1,4 +1,4 @@
-{{ if .Values.flaresolverr.enabled }}
+{{ if or .Values.flaresolverr.enabled .Values.byparr.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -15,6 +15,10 @@ spec:
     protocol: TCP
     name: http
   selector:
+    {{- if and (not .Values.flaresolverr.enabled) .Values.byparr.enabled }}
+    app.kubernetes.io/name: byparr
+    {{- else }}
     app.kubernetes.io/name: flaresolverr
+    {{- end }}
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}
