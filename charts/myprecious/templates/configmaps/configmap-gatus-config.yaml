@@ -1299,6 +1299,17 @@ data:
           - type: email
       {{ end }}
 
+      {{ if .Values.byparr.enabled }}
+      - name: byparr
+        group: tools
+        url: "http://byparr:8191"
+        interval: 5m
+        conditions:
+          - "[STATUS] == 200"
+        alerts:
+          - type: email
+      {{ end }}      
+
       {{ if .Values.thelounge.enabled }}
       - name: thelounge
         group: tools
