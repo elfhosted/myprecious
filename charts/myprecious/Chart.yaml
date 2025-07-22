@@ -264,6 +264,11 @@ dependencies:
     repository: oci://ghcr.io/elfhosted/charts
     condition: flaresolverr.enabled
     alias: flaresolverr
+  - name: app-template
+    version: ~0.2.2
+    repository: oci://ghcr.io/elfhosted/charts
+    condition: byparr.enabled
+    alias: byparr    
   - name: rtorrent-rutorrent
     version: 1.1.x
     repository: oci://ghcr.io/elfhosted/charts
