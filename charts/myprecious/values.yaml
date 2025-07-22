@@ -5987,7 +5987,7 @@ flaresolverr: &app_flaresolverr
     setup-warp: *setup_warp     
   addons:
     vpn:
-      enabled: true # in case we ever need it
+      enabled: false # in case we ever need it
       gluetun:
         image:
           repository: ghcr.io/elfhosted/gluetun
