@@ -14,7 +14,7 @@ spec:
           kind: Service
           port: 8000
       middlewares:
-        - name: headers-add-cors-for-stremio
+        - name: headers-add-cors-origin-any
           namespace: traefik
     - match: Host(`{{ .Release.Name }}-comet.{{ .Values.dns_domain }}`) && (PathPrefix(`/configure`) || PathRegexp(`^/(.*)configure`) || PathPrefix(`/_oauth`))
       kind: Rule
