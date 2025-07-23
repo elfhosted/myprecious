@@ -9516,7 +9516,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -9635,7 +9635,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /rclonefm.sh
   controller:
@@ -9769,7 +9769,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -15358,7 +15358,7 @@ rclonealldebrid:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /debrid-provider.sh
   controller:
@@ -15412,7 +15412,7 @@ rclonealldebrid:
         subPath: tinyproxy.conf                      
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
       command:
       - /bin/ash
       - -c
@@ -15485,7 +15485,7 @@ rclonepremiumize:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /debrid-provider.sh
   controller:
@@ -15525,7 +15525,7 @@ rclonepremiumize:
           name: premiumize-config
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
       command:
       - /bin/ash
       - -c
@@ -15572,7 +15572,7 @@ rclonetorbox:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /debrid-provider.sh
   controller:
@@ -15620,7 +15620,7 @@ rclonetorbox:
           optional: true          
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
       command:
       - /bin/ash
       - -c
