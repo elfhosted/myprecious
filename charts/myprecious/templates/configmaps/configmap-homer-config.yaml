@@ -544,16 +544,6 @@ data:
         icon: "fas fa-photo-video"
         items:
 
-          {{ if .Values.arrtools.enabled }}
-          - name: "Arr Tools"
-            icon: "fas fa-tools"
-            subtitle: "Tools to manage Aars"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-arrtools.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute            
-          {{ end }}  
-
           {{ if .Values.bazarr.enabled }}
           - name: "Bazarr"
             logo: "assets/png/bazarr.png"

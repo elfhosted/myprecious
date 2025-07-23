@@ -417,11 +417,6 @@ dependencies:
   - name: app-template
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
-    condition: arrtools.enabled
-    alias: arrtools
-  - name: app-template
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
     condition: puter.enabled
     alias: puter
   - name: app-template

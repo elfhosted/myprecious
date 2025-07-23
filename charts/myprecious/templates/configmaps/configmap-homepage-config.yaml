@@ -386,15 +386,7 @@ data:
               type: bazarr
               url: http://bazarr4k:6767
               key: {{ .Values.bazarr4kexposed.apikey }}         
-        {{ end }}   
-
-        {{ if .Values.arrtools.enabled }}
-        - Arr Tools:
-            icon: mdi-cirle
-            href: https://{{ .Release.Name }}-arrtools.{{ .Values.dns_domain }}
-            description: Tools to manage Aars
-            siteMonitor: http://aartools:3001
-        {{ end }}          
+        {{ end }}         
 
         {{ if .Values.mylar.enabled }}
         - Mylar:

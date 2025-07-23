@@ -331,36 +331,6 @@ bootstrap_env: &bootstrap_env
     fieldRef:
       fieldPath: metadata.labels['app.elfhosted.com/name']
 
-migrate_data: &migrate_data
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-
-    if [[ ! -f /config/.migrated-20241007 ]]
-    then
-      if [[ ! -z "$(ls -A /migration)" ]]
-      then
-        echo "Migrating from /migration/..."
-        cp -rfpv /migration/* /config/
-        touch /config/.migrated-20241007
-      fi
-    else
-      echo "No migration necessary"
-    fi
-
-  volumeMounts:
-  - mountPath: /config
-    name: config
-  - mountPath: /migration
-    name: migration
-
-  env: *bootstrap_env
-  resources: *default_resources
-  securityContext: *default_securitycontext
-
 bootstrap: &bootstrap
   image: *tooling_image
   imagePullPolicy: IfNotPresent
@@ -8721,100 +8691,7 @@ cinesync:
       memory: 64Mi
     limits:
       cpu: 1
-      memory: 2Gi 
-
-arrtools:
-  enabled: false
-  priorityClassName: tenant-normal
-  image:
-    repository: ghcr.io/elfhosted/arrtools
-    tag: rolling@sha256:91a4b1133de4212f86fe3f3b2a5deaf2f622cf4216d70aeb735aa1c562133c46
-  podLabels:
-      app.elfhosted.com/name: arrtools
-  podAnnotations:
-    elfbot.elfhosted.com/name: "ArrTools"
-    elfbot.elfhosted.com/icon: "fas fa-tools"   
-    elfbot.elfhosted.com/category: Tools     
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: false
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-arrtools"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 3001
-  persistence:
-    <<: *storagemounts
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: arrtools
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-    example-config:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: arrtools-config          
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 0m
-      memory: 64Mi
-    limits:
-      cpu: 1
-      memory: 2Gi 
-  initContainers:
-    copy-example-config:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /bin/bash
-      - -c
-      - |
-        set -x
-        set -e
-
-        # If we don't already have an example config, create one
-        if [[ ! -f /config/confighd.ini ]];
-        then
-          cp /bootstrap/confighd.ini /config/
-        fi
-        if [[ ! -f /config/config4k.ini ]];
-        then
-          cp /bootstrap/config4k.ini /config/
-        fi        
-        cp /bootstrap/config-placeholder.ini /config/
-      volumeMounts:
-      - mountPath: /config
-        name: config
-        subPath: arrtools
-      - name: example-config
-        mountPath: "/bootstrap/"
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
-        readOnlyRootFilesystem: true      
+      memory: 2Gi  
 
 seerrbridge:
   enabled: false
@@ -14067,28 +13944,7 @@ zurg: &app_zurg
         name: config
         subPath: zurg
       - name: example-config
-        mountPath: "/bootstrap/"
-    # restart-with-plex:
-    #   image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:695ac4a1b79b82c2907e3c112a6bd8b1208a0b1b2e63ca4e9b7e06270651b13f
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     echo "This pod only exists to cause a restart when plex is updated"  
-    # restart-with-jellyfin:
-    #   image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     echo "This pod only exists to cause a restart when jellyfin is updated"  
-    # restart-with-emby:
-    #   image: ghcr.io/elfhosted/emby:4.9.1.1@sha256:e81f21831c751bc9365ab9544d6500c0dc132b3cb5b2dc96e05e837ada470863
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     echo "This pod only exists to cause a restart when emby is updated"                        
+        mountPath: "/bootstrap/"                     
   addons:
     vpn: &zurg_addons_vpn
       enabled: false # in case we ever need it
@@ -15189,66 +15045,6 @@ debridav: &app_debridav
       - |
         echo "This pod only exists to cause a restart when emby is updated"   
   additionalContainers:
-    make-folders:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-
-        # Define the folders to check/create
-        FOLDERS=("/storage/debridav/movies" "/storage/debridav/movies-4k" "/storage/debridav/series" "/storage/debridav/series-4k")
-
-        # Function to check and create folders
-        create_folders() {
-          local all_created=true
-          
-          for folder in "${FOLDERS[@]}"; do
-            if [ ! -d "$folder" ]; then
-              echo "Folder $folder does not exist. Creating..."
-              
-              # sleep so that we have time to avoid a race on local vs dbfolders
-              sleep 20s
-              mkdir -p "$folder"
-              
-              # Check if creation was successful
-              if [ ! -d "$folder" ]; then
-                echo "Error creating $folder. Will retry in 10 seconds."
-                all_created=false
-              else
-                echo "Successfully created $folder."
-              fi
-            else
-              echo "Folder $folder already exists."
-            fi
-          done
-          
-          return $([ "$all_created" = true ] && echo 0 || echo 1)
-        }
-
-        # Main loop to create folders
-        while true; do
-          if create_folders; then
-            echo "All required folders exist or were successfully created."
-            break
-          else
-            echo "Waiting 10 seconds before retrying..."
-            sleep 10
-          fi
-        done
-
-        echo "Success! All required folders are now available."
-        echo "Script will now sleep indefinitely."
-
-        # Sleep forever
-        while true; do
-          sleep 3600  # Sleep for an hour at a time (to be a bit nicer to the system than an infinite tight loop)
-        done
-      volumeMounts:
-      - name: rclonemountdebridav
-        mountPath: /storage/debridav
     database:
       image: postgres:17-alpine
       args:
@@ -15756,28 +15552,7 @@ decypharr: &app_decypharr
         name: config
         subPath: decypharr
       - mountPath: /tmp
-        name: tmp  
-    # restart-with-plex:
-    #   image: ghcr.io/elfhosted/plex:1.41.8.9834-071366d65@sha256:695ac4a1b79b82c2907e3c112a6bd8b1208a0b1b2e63ca4e9b7e06270651b13f
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     echo "This pod only exists to cause a restart when plex is updated"  
-    # restart-with-jellyfin:
-    #   image: ghcr.io/elfhosted/jellyfin-dev:10.10.7@sha256:7ad104992e7908aa85b27cb4360886858caf406bc54abdc452b5b69dcce99b17
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     echo "This pod only exists to cause a restart when jellyfin is updated"  
-    # restart-with-emby:
-    #   image: ghcr.io/elfhosted/emby:4.9.1.1@sha256:e81f21831c751bc9365ab9544d6500c0dc132b3cb5b2dc96e05e837ada470863
-    #   command:
-    #   - /bin/bash
-    #   - -c
-    #   - |
-    #     echo "This pod only exists to cause a restart when emby is updated"        
+        name: tmp         
 
 channelsdvr:
   enabled: false
