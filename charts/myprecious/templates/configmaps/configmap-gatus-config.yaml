@@ -1332,17 +1332,6 @@ data:
           - type: email
       {{ end }}      
 
-      {{ if .Values.mattermost.enabled }}
-      - name: mattermost
-        group: tools
-        url: "http://mattermost:8065"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
       {{ if .Values.joplinserver.enabled }}
       - name: joplinserver
         group: tools

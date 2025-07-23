@@ -1560,16 +1560,6 @@ data:
             url: "https://{{ .Release.Name }}-kubernetes.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
 
-          {{ if .Values.mattermost.enabled }}
-          - name: "Mattermost"
-            logo: "assets/png/mattermost.png"
-            subtitle: "Team group chat"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-mattermost.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}
-
           {{ if .Values.miniflux.enabled }}
           - name: "Miniflux"
             logo: "assets/png/miniflux.png"
