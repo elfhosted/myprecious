@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.441.0](https://github.com/elfhosted/myprecious/compare/v1.440.0...v1.441.0) (2025-07-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2185 ([46b0d83](https://github.com/elfhosted/myprecious/commit/46b0d83bc996eb44de667ae87051f17819e88d15))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.3.4 ([ce51914](https://github.com/elfhosted/myprecious/commit/ce519149cff41756f1c34ae8c910300efb2af58a))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v2.0.2.5116 ([725808c](https://github.com/elfhosted/myprecious/commit/725808cc8b04b25316a9960cf4c50db9e5174ccf))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.7 ([cca3bfd](https://github.com/elfhosted/myprecious/commit/cca3bfdc2812058384c9e2b32f54886c1136c3a4))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.70.3 ([d038605](https://github.com/elfhosted/myprecious/commit/d038605442cf095105eea796f6359577ccd54bd2))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.40.2 ([fc33e3b](https://github.com/elfhosted/myprecious/commit/fc33e3be251405e7c09a4bb6f5a0e5a6f4edcf8e))
+
+
+### Bug Fixes
+
+* Fix health check endpoint for webstreamr ([d2d0e5b](https://github.com/elfhosted/myprecious/commit/d2d0e5b89bff0c35a2735b5377fc6827a8593400))
+
 ## [1.440.0](https://github.com/elfhosted/myprecious/compare/v1.439.0...v1.440.0) (2025-07-22)
 
 
