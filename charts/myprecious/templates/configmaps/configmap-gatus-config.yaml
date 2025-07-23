@@ -451,7 +451,7 @@ data:
           - "[STATUS] == 200"
         alerts:
           - type: email
-      {{ end }}     
+      {{ end }} 
 
       {{ if .Values.profilarr.enabled }}
       - name: profilarr

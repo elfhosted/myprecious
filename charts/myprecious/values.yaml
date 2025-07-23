@@ -1,5 +1,5 @@
 # This controls whether our automation will auto-release this to stable during the daily maint window
-safeToRelease: false
+safeToRelease: true
 
 # false by default means the FSN cluster (so no migrations)
 location:
@@ -330,36 +330,6 @@ bootstrap_env: &bootstrap_env
   valueFrom:
     fieldRef:
       fieldPath: metadata.labels['app.elfhosted.com/name']
-
-migrate_data: &migrate_data
-  image: *tooling_image
-  imagePullPolicy: IfNotPresent
-  command:
-  - /bin/bash
-  - -c
-  - |
-
-    if [[ ! -f /config/.migrated-20241007 ]]
-    then
-      if [[ ! -z "$(ls -A /migration)" ]]
-      then
-        echo "Migrating from /migration/..."
-        cp -rfpv /migration/* /config/
-        touch /config/.migrated-20241007
-      fi
-    else
-      echo "No migration necessary"
-    fi
-
-  volumeMounts:
-  - mountPath: /config
-    name: config
-  - mountPath: /migration
-    name: migration
-
-  env: *bootstrap_env
-  resources: *default_resources
-  securityContext: *default_securitycontext
 
 bootstrap: &bootstrap
   image: *tooling_image
@@ -3899,7 +3869,7 @@ prowlarr: &app_prowlarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/prowlarr-develop
-    tag: 2.0.1.5101@sha256:44a6f10ee896f03a9b1f6899e588265d2cdc0d48e4a6d87dc43128e9801b66d5
+    tag: 2.0.2.5116@sha256:e48ea91c46301c686bae7e2d6625ece0d89fd6a2853d34ac65d0624897ac0761
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   securityContext:
@@ -4089,7 +4059,7 @@ prowlarr: &app_prowlarr
           cpu: 500m
           memory: 8Gi     
     database-backup:
-      image: ghcr.io/elfhosted/prowlarr-develop:2.0.1.5101@sha256:44a6f10ee896f03a9b1f6899e588265d2cdc0d48e4a6d87dc43128e9801b66d5 
+      image: ghcr.io/elfhosted/prowlarr-develop:2.0.2.5116@sha256:e48ea91c46301c686bae7e2d6625ece0d89fd6a2853d34ac65d0624897ac0761 
       command: [ "/database-backup.sh" ]
       envFrom:
       - configMapRef:
@@ -8721,7 +8691,7 @@ cinesync:
       memory: 64Mi
     limits:
       cpu: 1
-      memory: 2Gi 
+      memory: 2Gi  
 
 seerrbridge:
   enabled: false
@@ -9064,7 +9034,7 @@ plexytrack:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/plexytrack
-    tag: v0.3.3@sha256:e77c9d7c8f36337f11b03b879177db7ccf031185e9efba0d796e154835ce97df
+    tag: v0.3.4@sha256:906a69afe2eaedbbe79fda5f403f8d2029c83cc4d3193c44b61a106b75dc67de
   podLabels:
       app.elfhosted.com/name: plexytrack    
   podAnnotations:
@@ -9423,7 +9393,7 @@ rcloneui:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rcloneui,elfhosted-user-config"
@@ -9542,7 +9512,7 @@ rclonefm:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /rclonefm.sh
   controller:
@@ -9676,7 +9646,7 @@ webdav: &webdav
   tolerations: *standard_tolerations
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-webdav-plus,elfbot-webdav"
@@ -11526,7 +11496,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2182@sha256:7a71d32e4436dbc42fb34bc38313480d0525389fc102124e79d234d151f75413
+    tag: 0.22.2185@sha256:e33245cfe3c863cdd8dadbc69fcdcd61e76980c662e3dfd745f5c47946bce23b
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -13566,7 +13536,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.40.1@sha256:66536040243b417675ef56160a4f8707b0eef130778168d8b2fe3a72edbff5a3
+    tag: v0.40.2@sha256:1dc762b54b47b3ef358c783b195bd7e6309ff96f7aa8c9da9c70f5a5fd10192f
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: webstreamr  
@@ -13623,7 +13593,7 @@ webstreamr:
         failureThreshold: 5
         httpGet:
           path: /health
-          port: 8000
+          port: 51546
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
@@ -13634,7 +13604,7 @@ webstreamr:
         failureThreshold: 5
         httpGet:
           path: /health
-          port: 8000
+          port: 51546
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
@@ -13645,7 +13615,7 @@ webstreamr:
         failureThreshold: 30
         httpGet:
           path: /health
-          port: 8000
+          port: 51546
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10             
@@ -13975,7 +13945,6 @@ zurg: &app_zurg
         subPath: zurg
       - name: example-config
         mountPath: "/bootstrap/"
-                      
   addons:
     vpn: &zurg_addons_vpn
       enabled: false # in case we ever need it
@@ -15076,66 +15045,6 @@ debridav: &app_debridav
       - |
         echo "This pod only exists to cause a restart when emby is updated"   
   additionalContainers:
-    make-folders:
-      image: *tooling_image
-      imagePullPolicy: IfNotPresent
-      command:
-      - /usr/bin/dumb-init
-      - /bin/bash
-      - -c
-      - |
-
-        # Define the folders to check/create
-        FOLDERS=("/storage/debridav/movies" "/storage/debridav/movies-4k" "/storage/debridav/series" "/storage/debridav/series-4k")
-
-        # Function to check and create folders
-        create_folders() {
-          local all_created=true
-          
-          for folder in "${FOLDERS[@]}"; do
-            if [ ! -d "$folder" ]; then
-              echo "Folder $folder does not exist. Creating..."
-              
-              # sleep so that we have time to avoid a race on local vs dbfolders
-              sleep 20s
-              mkdir -p "$folder"
-              
-              # Check if creation was successful
-              if [ ! -d "$folder" ]; then
-                echo "Error creating $folder. Will retry in 10 seconds."
-                all_created=false
-              else
-                echo "Successfully created $folder."
-              fi
-            else
-              echo "Folder $folder already exists."
-            fi
-          done
-          
-          return $([ "$all_created" = true ] && echo 0 || echo 1)
-        }
-
-        # Main loop to create folders
-        while true; do
-          if create_folders; then
-            echo "All required folders exist or were successfully created."
-            break
-          else
-            echo "Waiting 10 seconds before retrying..."
-            sleep 10
-          fi
-        done
-
-        echo "Success! All required folders are now available."
-        echo "Script will now sleep indefinitely."
-
-        # Sleep forever
-        while true; do
-          sleep 3600  # Sleep for an hour at a time (to be a bit nicer to the system than an infinite tight loop)
-        done
-      volumeMounts:
-      - name: rclonemountdebridav
-        mountPath: /storage/debridav
     database:
       image: postgres:17-alpine
       args:
@@ -15245,7 +15154,7 @@ rclonealldebrid:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /debrid-provider.sh
   controller:
@@ -15299,7 +15208,7 @@ rclonealldebrid:
         subPath: tinyproxy.conf                      
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
       command:
       - /bin/ash
       - -c
@@ -15372,7 +15281,7 @@ rclonepremiumize:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /debrid-provider.sh
   controller:
@@ -15412,7 +15321,7 @@ rclonepremiumize:
           name: premiumize-config
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
       command:
       - /bin/ash
       - -c
@@ -15459,7 +15368,7 @@ rclonetorbox:
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
   command:
   - /debrid-provider.sh
   controller:
@@ -15507,7 +15416,7 @@ rclonetorbox:
           optional: true          
   initContainers:
     setup:
-      image: ghcr.io/elfhosted/rclone:1.70.1@sha256:fbcf3cf63feb8fa57e407546d2756ba670739d4108ec2978d97177b10be7f5f4
+      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
       command:
       - /bin/ash
       - -c

@@ -386,7 +386,7 @@ data:
               type: bazarr
               url: http://bazarr4k:6767
               key: {{ .Values.bazarr4kexposed.apikey }}         
-        {{ end }}            
+        {{ end }}         
 
         {{ if .Values.mylar.enabled }}
         - Mylar:
