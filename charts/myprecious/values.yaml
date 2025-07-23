@@ -13716,7 +13716,7 @@ webstreamr:
         failureThreshold: 5
         httpGet:
           path: /health
-          port: 8000
+          port: 51546
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
@@ -13727,7 +13727,7 @@ webstreamr:
         failureThreshold: 5
         httpGet:
           path: /health
-          port: 8000
+          port: 51546
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10
@@ -13738,7 +13738,7 @@ webstreamr:
         failureThreshold: 30
         httpGet:
           path: /health
-          port: 8000
+          port: 51546
         initialDelaySeconds: 30
         periodSeconds: 10
         timeoutSeconds: 10             
