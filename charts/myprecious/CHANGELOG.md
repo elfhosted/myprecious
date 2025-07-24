@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.442.0](https://github.com/elfhosted/myprecious/compare/v1.441.0...v1.442.0) (2025-07-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.26.3 ([cace1ef](https://github.com/elfhosted/myprecious/commit/cace1efbfaeac18d476e9643a9d0096284caa501))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2187 ([aa21c92](https://github.com/elfhosted/myprecious/commit/aa21c922e2a1e28d0e40f012eacb4691a2431b67))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.40.3 ([3ad768b](https://github.com/elfhosted/myprecious/commit/3ad768b7a4b873a0f023b16e6e3ac2df1fa8da34))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.7.7 ([4d88c10](https://github.com/elfhosted/myprecious/commit/4d88c10988d7ccfdca81f61c5cc7511405ab0e97))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.136.0 ([f649896](https://github.com/elfhosted/myprecious/commit/f649896922b4ce6165047acc842788cd37f03543))
+
+
+### Bug Fixes
+
+* Add ephemeral /tmp folder for peertube uploads-in-transit ([ec33418](https://github.com/elfhosted/myprecious/commit/ec33418323f86e9d32bec6a916486038ec6e0b94))
+
 ## [1.441.0](https://github.com/elfhosted/myprecious/compare/v1.440.0...v1.441.0) (2025-07-23)
 
 
