@@ -183,6 +183,19 @@ volumespec_ephemeral_volume_100g: &volumespec_ephemeral_volume_100g
           requests:
             storage: 100Gi
 
+volumespec_ephemeral_volume_500g: &volumespec_ephemeral_volume_500g
+  ephemeral:
+    volumeClaimTemplate:
+      metadata:
+        labels:
+          velero.io/exclude-from-backup: "true"
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "topolvm-provisioner-thin"
+        resources:
+          requests:
+            storage: 500Gi
+
 volumespec_ephemeral_volume_50g: &volumespec_ephemeral_volume_50g
   ephemeral:
     volumeClaimTemplate:
@@ -7378,6 +7391,12 @@ peertube:
           claimName: config
       mountPath: /home/elfie
       subPath: peertube/cli
+    # the idea is to use this for temporary uploads
+    tmp:
+      enabled: true
+      type: custom
+      mountPath: /tmp
+      volumeSpec: *volumespec_ephemeral_volume_500g      
     backup:
       enabled: true
       type: custom
