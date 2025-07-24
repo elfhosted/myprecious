@@ -7532,7 +7532,7 @@ audiobookshelf:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookshelf
-    tag: v2.26.2@sha256:f9c44f13100907b504fe73921d2cae8551f2ad824db2afd01d951a3050f764ed
+    tag: v2.26.3@sha256:5d55bc91288d7deb05d32e98b19be020c586fb872801680e7e2d220bd1a7b66d
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -11230,7 +11230,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2185@sha256:e33245cfe3c863cdd8dadbc69fcdcd61e76980c662e3dfd745f5c47946bce23b
+    tag: 0.22.2187@sha256:71fbe73b108e74fc73b0cb49bbd9ec9a6d7c30fb90f01fc2fb77cbc1bc8813df
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -11308,7 +11308,7 @@ wizarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wizarr
-    tag: 2025.7.6@sha256:31bb2f06baee373cc36cd51a1a3c3d2151ae17bcc5bf6bb8b18d4d76dd7e4888
+    tag: 2025.7.7@sha256:da4c5738e77bcda2b03edbbf436307cec37be8ab3cc03c0edcec6986f828a243
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: wizarr  
@@ -13270,7 +13270,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.40.2@sha256:1dc762b54b47b3ef358c783b195bd7e6309ff96f7aa8c9da9c70f5a5fd10192f
+    tag: v0.40.3@sha256:ee21ab9ff9003ffee56df47865dcb06b757e1f499f77e11ede853de264816107
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: webstreamr  
@@ -14326,7 +14326,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
+    tag: v0.4.7@sha256:7f3da6ffd906065e5a3697a00e20e8ea2d582715fa0dd1f5acb6441baea83bad
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: pulsarr  
@@ -14417,7 +14417,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
+      image: ghcr.io/elfhosted/pulsarr:v0.4.7@sha256:7f3da6ffd906065e5a3697a00e20e8ea2d582715fa0dd1f5acb6441baea83bad
       command:
       - /bin/ash
       - -c
