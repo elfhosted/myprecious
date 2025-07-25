@@ -252,7 +252,7 @@ data:
 
           {{ if .Values.aiostreams.enabled }}
           - name: "AIOStreams"
-            icon: "fas fa-tools"
+            logo: "assets/png/aiostreams.png"
             subtitle: "Combine and format multiple Stremio addons"
             {{ if .Values.aiostreamsexposed.enabled }}
             tag: "public"
@@ -1091,7 +1091,7 @@ data:
 
           {{ if .Values.wizarr.enabled }}
           - name: "Wizarr"
-            icon: "fas fa-hat-wizard"
+            logo: "assets/png/wizarr.png"
             subtitle: "Manage Plex / Emby / Jellyfin Accounts / Invites"
             tag: "public"
             tagstyle: "is-danger"
