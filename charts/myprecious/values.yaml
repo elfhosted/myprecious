@@ -5250,11 +5250,7 @@ jellyfin: &app_jellyfin
         configMap:
           name: elfbot-jellyfin
           optional: true
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+    render-device: *streamer_render_device
     tooling-scripts:
       enabled: "true"
       type: "custom"
@@ -5461,11 +5457,7 @@ emby: &app_emby
         configMap:
           name: elfbot-emby
           optional: true
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+    render-device: *streamer_render_device
     tooling-scripts:
       enabled: "true"
       type: "custom"
@@ -6092,11 +6084,7 @@ tunarr:
         configMap:
           name: elfbot-tunarr
           optional: true
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+    render-device: *streamer_render_device
     media: # in case users use /tmp
       enabled: true
       mountPath: /streams
@@ -6189,11 +6177,7 @@ ersatztv:
         configMap:
           name: elfbot-tunarr
           optional: true
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+    render-device: *streamer_render_device
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -7399,10 +7383,7 @@ peertube:
     data-tmp:
       enabled: "true"
       type: emptyDir      
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
+    render-device: *streamer_render_device
   initContainers:
     bootstrap:
       <<: *bootstrap
@@ -7494,7 +7475,7 @@ peertube:
         name: data-tmp
       - mountPath: /home/peertube/.cache
         name: tmp   
-      - mountPath: /dev/dri/renderD128
+      - mountPath: /dev/dri
         name: render-device
       envFrom:
       - configMapRef:
@@ -14468,11 +14449,7 @@ dispatcharr:
         configMap:
           name: elfbot-dispatcharr
           optional: true
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"       
+    render-device: *streamer_render_device     
   command:
   - gunicorn 
   - --workers=4
@@ -15317,11 +15294,7 @@ channelsdvr:
           port: 8089
   persistence:
     <<: *storagemounts
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+    render-device: *streamer_render_device
     tmp: *tmp
     config:
       enabled: true
@@ -15611,11 +15584,7 @@ immich:
           port: 2283
   persistence:
     <<: *storagemounts
-    render-device:
-      enabled: "true"
-      type: hostPath
-      hostPath: "/dev/dri/renderD128"
-      mountPath: "/dev/dri/renderD128"
+    render-device: *streamer_render_device
     tmp: *tmp
     config:
       enabled: true
