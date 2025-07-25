@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.443.0](https://github.com/elfhosted/myprecious/compare/v1.442.0...v1.443.0) (2025-07-25)
+
+
+### Features
+
+* **app:** update dpage/pgadmin4 docker tag to v9.6 ([0281196](https://github.com/elfhosted/myprecious/commit/02811964c1b3d94a1859a6dcc58ca8e81e87f12b))
+* **app:** update ghcr.io/elfhosted/codeserver docker tag to v4.102.2 ([6d4c6a5](https://github.com/elfhosted/myprecious/commit/6d4c6a5f49bbfaefc4c51d673c5f2d750c61e0da))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.10 ([937109a](https://github.com/elfhosted/myprecious/commit/937109a1a87e652d3013ca96c00ef6a5c2ee2f63))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2193 ([17ab5c2](https://github.com/elfhosted/myprecious/commit/17ab5c207641e0aafea36e597cacda7c83409a17))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.8 ([107c1e3](https://github.com/elfhosted/myprecious/commit/107c1e3a569cb2eb69036238d572c4da204efe98))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.81.3 ([64fe586](https://github.com/elfhosted/myprecious/commit/64fe586a72e4d5c920f9f81b33b09bdecf9bd0d6))
+* Upgrade ElfBot to v1.0.7 (minor bug fixes) ([5693677](https://github.com/elfhosted/myprecious/commit/569367777ff3e69d1b1757c656103278465e6ce8))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/homer:v25.05.2 docker digest to 2a62024 ([735de35](https://github.com/elfhosted/myprecious/commit/735de35b76d221e9a463154378724d5581912226))
+* **app:** update ghcr.io/elfhosted/kapowarr-dev:rolling docker digest to d0d7b51 ([03f8a38](https://github.com/elfhosted/myprecious/commit/03f8a380968579a2725ab3d0d8be63908a03a7cf))
+* **app:** update ghcr.io/immich-app/immich-server:v1.136.0 docker digest to 8c9633b ([6dce603](https://github.com/elfhosted/myprecious/commit/6dce603d9dbb242e940929412748e2b163be477a))
+* Fix typo preventing ENV vars working in PlexyTrack ([0b56ac1](https://github.com/elfhosted/myprecious/commit/0b56ac11f3ef72b24e0815a6669de997e806535d))
+
 ## [1.442.0](https://github.com/elfhosted/myprecious/compare/v1.441.0...v1.442.0) (2025-07-24)
 
 
