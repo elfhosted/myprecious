@@ -14439,8 +14439,8 @@ dispatcharr:
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
-    runAsUser: 568
-    runAsGroup: 568
+    # runAsUser: 568
+    # runAsGroup: 568
     privileged: true
   podSecurityContext:
     fsGroup: 568
