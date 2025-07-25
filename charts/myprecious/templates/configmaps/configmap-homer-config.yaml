@@ -849,8 +849,8 @@ data:
 
           {{ if .Values.plexytrack.enabled }}
           - name: "PlexyTrack"
-            icon: "fas fa-sync"
-            subtitle: "Sync Plex and Trakt"
+            logo: "assets/png/plexytrack.png"
+            subtitle: "Sync Plex and Trakt/Simkl"
             tag: "protected"
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-plexytrack.{{ .Values.dns_domain }}"
