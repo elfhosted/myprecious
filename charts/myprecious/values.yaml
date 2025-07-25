@@ -14050,7 +14050,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.102.1@sha256:500afe6e1d3ee06534422ccf960374b38da77a7d6058af8dfcb84285cb1ebabd
+    tag: 4.102.2@sha256:66c50a8f234818dd64d0365165ba64b0d6e6608c93a9aa746d0b96431315b5be
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: codeserver  
