@@ -1331,18 +1331,7 @@ data:
         alerts:
           - type: email
       {{ end }}      
-
-      {{ if .Values.joplinserver.enabled }}
-      - name: joplinserver
-        group: tools
-        url: "https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}
-
+      
       {{ if .Values.homepage.enabled }}
       - name: homepage
         group: tools

@@ -1540,17 +1540,7 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-homepage.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}
-
-          {{ if .Values.joplinserver.enabled }}
-          - name: "Joplin Server"
-            logo: "assets/png/joplin.png"
-            subtitle: "Manage Joplin Sync"
-            tag: "public"
-            tagstyle: "is-danger"
-            url: "https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}          
+          {{ end }}        
 
           - name: "Kubernetes Dashboard"
             logo: "assets/png/kubernetes.png"

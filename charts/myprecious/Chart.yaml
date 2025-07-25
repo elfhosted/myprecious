@@ -15,7 +15,7 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 
-version: 1.442.2-pre-03
+version: 1.442.2-pre-04
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -473,10 +473,6 @@ dependencies:
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
     alias: blueskypds
-  - name: joplinserver
-    condition: joplinserver.enabled
-    version: ~0.0.1
-    repository: oci://ghcr.io/elfhosted/charts
   - name: app-template
     condition: debridav.enabled
     version: ~0.2.2

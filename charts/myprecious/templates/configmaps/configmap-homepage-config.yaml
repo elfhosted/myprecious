@@ -1070,15 +1070,7 @@ data:
             href: https://{{ .Release.Name }}-puter.{{ .Values.dns_domain }}
             description: Remotely compute
             siteMonitor: http://puter:4100
-        {{ end }}             
-
-        {{ if .Values.joplinserver.enabled }}
-        - Joplin Server:
-            icon: joplin.png
-            href: https://{{ .Release.Name }}-joplin-server.{{ .Values.dns_domain }}
-            description: Manage Joplin Sync
-            siteMonitor: http://joplinserver:22300
-        {{ end }}                    
+        {{ end }}                                
 
         {{ if .Values.wallabag.enabled }}
         - Wallabag:
