@@ -9068,7 +9068,7 @@ plexytrack:
   - configMapRef:
       name: plexytrack-env 
   - configMapRef:
-      name: elfbot-pleyxtrack
+      name: elfbot-plexytrack
       optional: true
   persistence:
     <<: *storagemounts
