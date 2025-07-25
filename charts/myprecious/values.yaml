@@ -183,6 +183,19 @@ volumespec_ephemeral_volume_100g: &volumespec_ephemeral_volume_100g
           requests:
             storage: 100Gi
 
+volumespec_ephemeral_volume_500g: &volumespec_ephemeral_volume_500g
+  ephemeral:
+    volumeClaimTemplate:
+      metadata:
+        labels:
+          velero.io/exclude-from-backup: "true"
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "topolvm-provisioner-thin"
+        resources:
+          requests:
+            storage: 500Gi
+
 volumespec_ephemeral_volume_50g: &volumespec_ephemeral_volume_50g
   ephemeral:
     volumeClaimTemplate:
@@ -5388,7 +5401,7 @@ emby: &app_emby
   image:
     registry: ghcr.io
     repository: elfhosted/emby
-    tag: 4.9.1.9@sha256:3863776db22a84b429b9b0b142a8ed67e8e89e0b5358a5675d5d617b6ca7e8ab
+    tag: 4.9.1.10@sha256:cf10721f7a445c9548f449c9c5db842c5b009775ba2672af8497c01dade339c6
   imagePullSecrets:
   - name: ghcr-io-elfhosted    
   enabled: false
@@ -7362,6 +7375,12 @@ peertube:
           claimName: config
       mountPath: /home/elfie
       subPath: peertube/cli
+    # the idea is to use this for temporary uploads
+    tmp:
+      enabled: true
+      type: custom
+      mountPath: /tmp
+      volumeSpec: *volumespec_ephemeral_volume_500g      
     backup:
       enabled: true
       type: custom
@@ -7494,7 +7513,7 @@ audiobookshelf:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/audiobookshelf
-    tag: v2.26.2@sha256:f9c44f13100907b504fe73921d2cae8551f2ad824db2afd01d951a3050f764ed
+    tag: v2.26.3@sha256:5d55bc91288d7deb05d32e98b19be020c586fb872801680e7e2d220bd1a7b66d
   priorityClassName: tenant-streaming
   securityContext:
     seccompProfile:
@@ -11192,7 +11211,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2185@sha256:e33245cfe3c863cdd8dadbc69fcdcd61e76980c662e3dfd745f5c47946bce23b
+    tag: 0.22.2187@sha256:71fbe73b108e74fc73b0cb49bbd9ec9a6d7c30fb90f01fc2fb77cbc1bc8813df
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -11270,7 +11289,7 @@ wizarr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/wizarr
-    tag: 2025.7.6@sha256:31bb2f06baee373cc36cd51a1a3c3d2151ae17bcc5bf6bb8b18d4d76dd7e4888
+    tag: 2025.7.7@sha256:da4c5738e77bcda2b03edbbf436307cec37be8ab3cc03c0edcec6986f828a243
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: wizarr  
@@ -13232,7 +13251,7 @@ webstreamr:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/webstreamr
-    tag: v0.40.2@sha256:1dc762b54b47b3ef358c783b195bd7e6309ff96f7aa8c9da9c70f5a5fd10192f
+    tag: v0.40.3@sha256:ee21ab9ff9003ffee56df47865dcb06b757e1f499f77e11ede853de264816107
   priorityClassName: tenant-normal
   podLabels:
     app.elfhosted.com/name: webstreamr  
@@ -14012,7 +14031,7 @@ codeserver:
   # runtimeClassName: kata
   image:
     repository: ghcr.io/elfhosted/codeserver
-    tag: 4.102.1@sha256:500afe6e1d3ee06534422ccf960374b38da77a7d6058af8dfcb84285cb1ebabd
+    tag: 4.102.2@sha256:66c50a8f234818dd64d0365165ba64b0d6e6608c93a9aa746d0b96431315b5be
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: codeserver  
@@ -14288,7 +14307,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
+    tag: v0.4.7@sha256:7f3da6ffd906065e5a3697a00e20e8ea2d582715fa0dd1f5acb6441baea83bad
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: pulsarr  
@@ -14379,7 +14398,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.6@sha256:0b9f1f262491bf7c1f5d09d821df778d6ec9f6f60a3f1e12d6eaf52dc9f2fd38
+      image: ghcr.io/elfhosted/pulsarr:v0.4.7@sha256:7f3da6ffd906065e5a3697a00e20e8ea2d582715fa0dd1f5acb6441baea83bad
       command:
       - /bin/ash
       - -c
@@ -14730,7 +14749,7 @@ debridav: &app_debridav
       - |
         echo "This pod only exists to cause a restart when jellyfin is updated"  
     restart-with-emby:
-      image: ghcr.io/elfhosted/emby:4.9.1.9@sha256:3863776db22a84b429b9b0b142a8ed67e8e89e0b5358a5675d5d617b6ca7e8ab
+      image: ghcr.io/elfhosted/emby:4.9.1.10@sha256:cf10721f7a445c9548f449c9c5db842c5b009775ba2672af8497c01dade339c6
       command:
       - /bin/bash
       - -c
@@ -15541,7 +15560,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.135.3@sha256:df5bbf4e29eff4688063a005708f8b96f13073200b4a7378f7661568459b31e9
+    tag: v1.136.0@sha256:4bfc6985eca8290bc56c4ef89a138b0ead985be31aa11f8c49ed07868b23a46c
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: immich  

@@ -22,6 +22,8 @@ data:
   PEERTUBE_REDIS_HOSTNAME: localhost
   PEERTUBE_REDIS_PORT: "6379"
 
+  PEERTUBE_TMP_DIR: /tmp
+  
   # /!\ Prefer to use the PeerTube admin interface to set the following configurations /!\
   PEERTUBE_SIGNUP_ENABLED: "false"
   PEERTUBE_TRANSCODING_ENABLED: "true"

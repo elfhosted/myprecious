@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.442.0](https://github.com/elfhosted/myprecious/compare/v1.441.0...v1.442.0) (2025-07-24)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/audiobookshelf docker tag to v2.26.3 ([cace1ef](https://github.com/elfhosted/myprecious/commit/cace1efbfaeac18d476e9643a9d0096284caa501))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2187 ([aa21c92](https://github.com/elfhosted/myprecious/commit/aa21c922e2a1e28d0e40f012eacb4691a2431b67))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.40.3 ([3ad768b](https://github.com/elfhosted/myprecious/commit/3ad768b7a4b873a0f023b16e6e3ac2df1fa8da34))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.7.7 ([4d88c10](https://github.com/elfhosted/myprecious/commit/4d88c10988d7ccfdca81f61c5cc7511405ab0e97))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.136.0 ([f649896](https://github.com/elfhosted/myprecious/commit/f649896922b4ce6165047acc842788cd37f03543))
+
+
+### Bug Fixes
+
+* Add ephemeral /tmp folder for peertube uploads-in-transit ([ec33418](https://github.com/elfhosted/myprecious/commit/ec33418323f86e9d32bec6a916486038ec6e0b94))
+
+## [1.441.0](https://github.com/elfhosted/myprecious/compare/v1.440.0...v1.441.0) (2025-07-23)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2185 ([46b0d83](https://github.com/elfhosted/myprecious/commit/46b0d83bc996eb44de667ae87051f17819e88d15))
+* **app:** update ghcr.io/elfhosted/plexytrack docker tag to v0.3.4 ([ce51914](https://github.com/elfhosted/myprecious/commit/ce519149cff41756f1c34ae8c910300efb2af58a))
+* **app:** update ghcr.io/elfhosted/prowlarr-develop docker tag to v2.0.2.5116 ([725808c](https://github.com/elfhosted/myprecious/commit/725808cc8b04b25316a9960cf4c50db9e5174ccf))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.7 ([cca3bfd](https://github.com/elfhosted/myprecious/commit/cca3bfdc2812058384c9e2b32f54886c1136c3a4))
+* **app:** update ghcr.io/elfhosted/rclone docker tag to v1.70.3 ([d038605](https://github.com/elfhosted/myprecious/commit/d038605442cf095105eea796f6359577ccd54bd2))
+* **app:** update ghcr.io/elfhosted/webstreamr docker tag to v0.40.2 ([fc33e3b](https://github.com/elfhosted/myprecious/commit/fc33e3be251405e7c09a4bb6f5a0e5a6f4edcf8e))
+
+
+### Bug Fixes
+
+* Fix health check endpoint for webstreamr ([d2d0e5b](https://github.com/elfhosted/myprecious/commit/d2d0e5b89bff0c35a2735b5377fc6827a8593400))
+
 ## [1.440.0](https://github.com/elfhosted/myprecious/compare/v1.439.0...v1.440.0) (2025-07-22)
 
 
