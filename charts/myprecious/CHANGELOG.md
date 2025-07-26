@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.444.0](https://github.com/elfhosted/myprecious/compare/v1.443.0...v1.444.0) (2025-07-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.11 ([2e57f69](https://github.com/elfhosted/myprecious/commit/2e57f6971eb5057dbb5713f039918012985712aa))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2196 ([0b46b35](https://github.com/elfhosted/myprecious/commit/0b46b35dcb562fcc9b00815077947389364e7c68))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/homer:v25.05.2 docker digest to af039ca ([df2f940](https://github.com/elfhosted/myprecious/commit/df2f9400404c4b0bf19623dc8191b606852de0c7))
+* **app:** update quay.io/linuxserver.io/calibre:8.7.0 docker digest to 88c476d ([a62973e](https://github.com/elfhosted/myprecious/commit/a62973eadaf4ea36c64a089889eb291d637f77b3))
+* Update radarr/sonarr with 4k icons ([8673774](https://github.com/elfhosted/myprecious/commit/8673774c135a7bb0ed42a37bebfc32be76d6cf0e))
+
 ## [1.443.0](https://github.com/elfhosted/myprecious/compare/v1.442.0...v1.443.0) (2025-07-25)
 
 
