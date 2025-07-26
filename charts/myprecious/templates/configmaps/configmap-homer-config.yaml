@@ -897,7 +897,7 @@ data:
 
           {{ if .Values.radarr4k.enabled }}
           - name: "Radarr 4K"
-            logo: "assets/png/radarr.png"
+            logo: "assets/png/radarr-4k.png"
             subtitle: "Manage Movies (4K)"
             {{ if .Values.radarr4kexposed.enabled }}
             tag: "public"
@@ -1019,7 +1019,7 @@ data:
 
           {{ if .Values.sonarr4k.enabled }}
           - name: "Sonarr 4K"
-            logo: "assets/png/sonarr.png"
+            logo: "assets/png/sonarr-4k.png"
             subtitle: "Manage Series (4K)"
             {{ if .Values.sonarr4kexposed.enabled }}
             tag: "public"
