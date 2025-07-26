@@ -9198,7 +9198,7 @@ decluttarr: &app_decluttarr
   priorityClassName: tenant-normal
   image:
     repository: ghcr.io/elfhosted/decluttarr
-    tag: rolling@sha256:122813a18f3ad13aa043084451f806fe7524b664a55172c2efa7732bd7513e90
+    tag: rolling@sha256:90d2077e32fb32050c166547a298f0fd38ddc900910200f0a575c368bbe39b4b
   podLabels:
       app.elfhosted.com/name: decluttarr  
   podAnnotations:
