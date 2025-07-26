@@ -1,18 +1,18 @@
-{{ if .Values.rdebridui.enabled }}
+{{ if .Values.cleanuparr.enabled }}
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: {{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}
+  name: {{ .Release.Name }}-cleanuparr.{{ .Values.dns_domain }}
 spec:
   entryPoints:
   - websecure
   routes:
-    - match: Host(`{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}`)
+    - match: Host(`{{ .Release.Name }}-cleanuparr.{{ .Values.dns_domain }}`)
       kind: Rule
       services:
-        - name: rdebrid-ui
+        - name: cleanuparr
           kind: Service
-          port: 8080
+          port: 11011
       middlewares:
         - name: {{ .Release.Name }}-traefik-forward-auth
 {{ end }}

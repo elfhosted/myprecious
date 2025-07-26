@@ -1,20 +1,20 @@
-{{ if .Values.rdebridui.enabled }}
+{{ if .Values.cleanuparr.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: rdebrid-ui
+  name: cleanuparr
   labels:
-    app.kubernetes.io/name: rdebrid-ui
+    app.kubernetes.io/name: rcleanuparr
     app.kubernetes.io/instance: {{ .Release.Name }}
   annotations:
 spec:
   type: ClusterIP
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 11011
+    targetPort: 11011
     protocol: TCP
     name: http
   selector:
-    app.kubernetes.io/name: rdebridui
+    app.kubernetes.io/name: cleanuparr
     app.kubernetes.io/instance: {{ .Release.Name }}
 {{ end }}

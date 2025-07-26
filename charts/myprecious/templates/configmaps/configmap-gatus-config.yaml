@@ -1094,10 +1094,10 @@ data:
         alerts:
           - type: email
 
-      {{ if .Values.rdebridui.enabled }}
+      {{ if .Values.cleanuparr.enabled }}
       - name: rdebrid-ui
         group: tools
-        url: "http://rdebrid-ui:8080"
+        url: "http://cleanuparr:11011"
         interval: 5m
         conditions:
           - "[STATUS] == 200"

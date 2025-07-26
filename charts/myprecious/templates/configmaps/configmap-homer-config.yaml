@@ -333,7 +333,7 @@ data:
 
           {{ if .Values.cwabookdownloader.enabled }}
           - name: "CWA Book Downloadoer"
-            logo: "assets/png/calibrain.png"
+            logo: "assets/png/calibre-web-automated-book-downloader.png"
             subtitle: "Download Books"
             tag: "protected"
             tagstyle: "is-success"
@@ -583,6 +583,16 @@ data:
             url: "https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}   
+
+          {{ if .Values.cleanuparr.enabled }}
+          - name: "Cleanuparr"
+            icon: "fas fa-broom"
+            subtitle: "Clean Aarr queues"
+            tag: "protected"
+            tagstyle: "is-success"
+            url: "https://{{ .Release.Name }}-cleanuparr.{{ .Values.dns_domain }}"
+            target: "_blank" # optional html tag target attribute          
+          {{ end }}            
 
           {{ if or .Values.zurgling.enabled .Values.debridling.enabled .Values.seerrbridge.enabled .Values.cinesync.enabled }}
           - name: "DebridMediaManager"
@@ -1641,16 +1651,6 @@ data:
             url: "https://{{ .Release.Name }}-redisinsight.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
           {{ end }}             
-
-          {{ if .Values.rdebridui.enabled }}
-          - name: "Rdebrid UI"
-            logo: "assets/png/real-debrid.png"
-            subtitle: "Manage RealDebrid account"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}  
 
           {{ if .Values.thelounge.enabled }}
           - name: "The Lounge"

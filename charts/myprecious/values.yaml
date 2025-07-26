@@ -2943,7 +2943,7 @@ cwabookdownloader:
     app.elfhosted.com/name: cwa-book-downloader
   podAnnotations:    
     elfbot.elfhosted.com/name: "CWA Book Downloader"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibrain.png"    
+    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/calibre-web-automated-book-downloader.png"    
     elfbot.elfhosted.com/category: Manage Downloads  
   priorityClassName: tenant-normal  
   image:
@@ -9248,25 +9248,25 @@ decluttarr: &app_decluttarr
       cpu: 1
       memory: 1Gi
 
-rdebridui:
+cleanuparr:
   enabled: false
   priorityClassName: tenant-normal
   image:
-    repository: ghcr.io/elfhosted/rdebrid-ui
-    tag: rolling@sha256:2c9885f1918097d8b762e0e60fcee5e12f147c10d79f13decbe4f3b73d24e4ad
+    repository: ghcr.io/elfhosted/cleanuparr
+    tag: 2.0.16@sha256:70621efe2a2f2d94da3b3f4257efab791d661fbc3edb6bf25554f37928c14d74
   podLabels:
-      app.elfhosted.com/name: rdebrid-ui 
+      app.elfhosted.com/name: cleanuparr
   podAnnotations:
-    elfbot.elfhosted.com/name: "RdebridUI"
-    elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/rdebridui.png"  
-    elfbot.elfhosted.com/category: Tools         
+    elfbot.elfhosted.com/name: "Cleanuparr"
+    elfbot.elfhosted.com/icon: "fas fa-broom"  
+    elfbot.elfhosted.com/category: Tools
   securityContext:
     seccompProfile:
       type: RuntimeDefault
     readOnlyRootFilesystem: true
   controller:
     annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdebrid-ui"
+      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-cleanuparr"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   persistence:
@@ -9284,15 +9284,13 @@ rdebridui:
       enabled: true # necessary for probes
       ports:
         http:
-          port: 8080
+          port: 11011
   envFrom:
   - configMapRef:
-      name: elfbot-rdebrid-ui
+      name: elfbot-cleanuparr
       optional: true  
   - configMapRef:
-      name: zenv-rdebrid-ui
-  - secretRef:
-      name: zenv-rdebrid-ui      
+      name: cleanuparr-env
   ingress:
     main:
       enabled: false
