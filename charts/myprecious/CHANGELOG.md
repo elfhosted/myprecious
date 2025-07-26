@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.445.0](https://github.com/elfhosted/myprecious/compare/v1.444.0...v1.445.0) (2025-07-26)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.11 ([975aee0](https://github.com/elfhosted/myprecious/commit/975aee0a96649167599d01e783de634e30922bb3))
+
 ## [1.444.0](https://github.com/elfhosted/myprecious/compare/v1.443.0...v1.444.0) (2025-07-26)
 
 
