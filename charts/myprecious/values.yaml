@@ -2730,7 +2730,7 @@ kapowarr:
   image:
     registry: ghcr.io
     repository: elfhosted/kapowarr-dev
-    tag: rolling@sha256:7f40a915118cbb4e73198e6e7b712d146daace9bf1871f902d1cd52788c21069
+    tag: rolling@sha256:d0d7b51b8cf2dd114e7f64d8b343a0e8b9b83ea1ae58dfe05523ab2a061c30b0
   podLabels:
     app.elfhosted.com/name: kapowarr
   podAnnotations:    
@@ -5684,7 +5684,7 @@ homer:
   - /usr/local/bin/disk_usage.sh
   additionalContainers:
     ui:
-      image: ghcr.io/elfhosted/homer:v25.05.2@sha256:fdb24a0fec31ccfa6fd7ba99d4f786642aca9e21901bbede2c38b615110769a1
+      image: ghcr.io/elfhosted/homer:v25.05.2@sha256:2a62024f1f40611ddbd8aa75796cf7f3d01a885a5c365c35dd6accceaad5754e
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /www/assets/config.yml
@@ -14187,7 +14187,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.7@sha256:7f3da6ffd906065e5a3697a00e20e8ea2d582715fa0dd1f5acb6441baea83bad
+    tag: v0.4.8@sha256:19fc46e878431113ce4cc4dfd1bbd7f8736d29549518334c45767721cf7007ad
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: pulsarr  
@@ -14278,7 +14278,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.7@sha256:7f3da6ffd906065e5a3697a00e20e8ea2d582715fa0dd1f5acb6441baea83bad
+      image: ghcr.io/elfhosted/pulsarr:v0.4.8@sha256:19fc46e878431113ce4cc4dfd1bbd7f8736d29549518334c45767721cf7007ad
       command:
       - /bin/ash
       - -c
