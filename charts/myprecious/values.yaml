@@ -9275,7 +9275,7 @@ cleanuparr:
     config:
       enabled: true
       type: custom
-      mountPath: /app/config/
+      mountPath: /config/
       subPath: cleanuparr
       volumeSpec:
         persistentVolumeClaim:
