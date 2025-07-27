@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.446.0](https://github.com/elfhosted/myprecious/compare/v1.445.0...v1.446.0) (2025-07-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cleanuparr docker tag to v2.0.17 ([2c13799](https://github.com/elfhosted/myprecious/commit/2c1379916eebb697a545d2e944f8b54c43b53659))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2200 ([c2fd50d](https://github.com/elfhosted/myprecious/commit/c2fd50d8f2e3e38599887fac775023bf3d72a5ff))
+* **app:** update ghcr.io/elfhosted/nzbhydra2 docker tag to v7.16.0 ([0c12548](https://github.com/elfhosted/myprecious/commit/0c12548f6763a9a93e840b6d02cb0acbc70e5e75))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.10 ([b755423](https://github.com/elfhosted/myprecious/commit/b7554239424a2638e83d33084433145e10afc189))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.11 ([b3e6036](https://github.com/elfhosted/myprecious/commit/b3e60369e98e9c712353d8042016511c25e858f0))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.12 ([fa17b84](https://github.com/elfhosted/myprecious/commit/fa17b8464a7069bbf38e0fcfa32095d2141d4e90))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.9 ([b7b55c9](https://github.com/elfhosted/myprecious/commit/b7b55c92365229be65ae2e8bd0605bec99cbb3c6))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.34.2 ([8dc1295](https://github.com/elfhosted/myprecious/commit/8dc1295153b8439e59dba865a3b938267b6db0b4))
+
+
+### Bug Fixes
+
+* Fixed Pulsarr migration bug (wasn't really a bug, was penguin-error) ([69bddd5](https://github.com/elfhosted/myprecious/commit/69bddd54be6f46594a02299fc8899c6e7cd1daa2))
+* Revert Pulsarr to v0.4.8 until migration bug is solved ([f614724](https://github.com/elfhosted/myprecious/commit/f614724e6a35842f70edfae333aea7461021efc7))
+* Update ElfBot to v1.0.9 ([6bf5e62](https://github.com/elfhosted/myprecious/commit/6bf5e62470e6e47dfc9c68544d789e0bfc694b14))
+
 ## [1.445.0](https://github.com/elfhosted/myprecious/compare/v1.444.0...v1.445.0) (2025-07-27)
 
 
