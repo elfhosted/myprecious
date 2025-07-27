@@ -44,12 +44,12 @@
     {
       "matchUpdateTypes": ["patch"],
       "automerge": true,
-      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","zurg-rc","decypharr","debridav","rdtclient"]
+      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","zurg-rc","decypharr","debridav","rdtclient","pulsarr"]
     },
     {
       "matchUpdateTypes": ["minor"],
       "automerge": true,
-      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","zurg-rc","decypharr","debridav","rdtclient"]
+      "excludePackagePatterns": ["filebrowser","immich-machine-learning","immich-server","zurg-rc","decypharr","debridav","rdtclient","pulsarr"]
     }     
   ],
   // since we version by bumping, each PR needs to be rebased every time we merge
