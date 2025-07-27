@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.445.0](https://github.com/elfhosted/myprecious/compare/v1.444.0...v1.445.0) (2025-07-27)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/miniflux docker tag to v2.2.11 ([975aee0](https://github.com/elfhosted/myprecious/commit/975aee0a96649167599d01e783de634e30922bb3))
+
+
+### Bug Fixes
+
+* Fix merge issue preventing last glowup from fully rolling out ([9fe1de1](https://github.com/elfhosted/myprecious/commit/9fe1de197ec5a61579c8713f23b0e60ca49780a7))
+
 ## [1.444.0](https://github.com/elfhosted/myprecious/compare/v1.443.0...v1.444.0) (2025-07-26)
 
 
