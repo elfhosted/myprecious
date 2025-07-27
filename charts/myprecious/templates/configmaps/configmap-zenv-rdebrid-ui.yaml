@@ -1,8 +1,0 @@
-{{ if .Values.rdebridui.enabled }} 
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: zenv-rdebrid-ui
-data:
-  AUTH_URL: "https://{{ .Release.Name }}-rdebrid-ui.{{ .Values.dns_domain }}"
-{{ end }}

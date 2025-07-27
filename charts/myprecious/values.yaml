@@ -9271,6 +9271,22 @@ cleanuparr:
   tolerations: *standard_tolerations
   persistence:
     tmp: *tmp
+    backup: *backup
+    config:
+      enabled: true
+      type: custom
+      mountPath: /config/
+      subPath: cleanuparr
+      volumeSpec:
+        persistentVolumeClaim:
+          claimName: config   
+    elfbot:
+      enabled: "true"
+      type: "custom"
+      volumeSpec:
+        configMap:
+          name: elfbot-cleanuparr
+          optional: true               
   podSecurityContext:
     seccompProfile:
       type: RuntimeDefault
@@ -9289,8 +9305,6 @@ cleanuparr:
   - configMapRef:
       name: elfbot-cleanuparr
       optional: true  
-  - configMapRef:
-      name: cleanuparr-env
   ingress:
     main:
       enabled: false
@@ -9301,6 +9315,19 @@ cleanuparr:
     limits:
       cpu: 1
       memory: 1Gi
+  initContainers:
+    bootstrap:
+      <<: *bootstrap
+      volumeMounts:
+      - mountPath: /etc/elfbot
+        name: elfbot
+      - mountPath: /storage/backup
+        name: backup
+      - mountPath: /config
+        name: config
+        subPath: cleanuparr
+      - mountPath: /tmp
+        name: tmp         
 
 suggestarr:
   enabled: false
