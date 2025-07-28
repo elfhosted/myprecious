@@ -11548,6 +11548,9 @@ actual:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config     
+    api-data:
+      enabled: true
+      type: emptyDir     
   additionalContainers:
     api:
       image: ghcr.io/elfhosted/actual-http-api:25.7.1@sha256:39a75e02129af32cb8d4b7a54c41e3e8403ba4b3cb7a9cc482ab30dd91295745
@@ -11555,7 +11558,10 @@ actual:
       envFrom:
       - configMapRef:
           name: elfbot-actual
-          optional: true    
+          optional: true   
+      volumeMounts:
+      - mountPath: /data
+        name: api-data
           
 elfbot:
   enabled: true
