@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.447.0](https://github.com/elfhosted/myprecious/compare/v1.446.0...v1.447.0) (2025-07-28)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.7.0 ([c161b8b](https://github.com/elfhosted/myprecious/commit/c161b8bfab4958e6c8a86f330d1153c1d629da2b))
+* **app:** update ghcr.io/elfhosted/booklore docker tag to v0.35.0 ([a593565](https://github.com/elfhosted/myprecious/commit/a5935652f0ecd4d973de0f18fda8636b130e8477))
+* **app:** update ghcr.io/elfhosted/cleanuparr docker tag to v2.0.18 ([abf21c2](https://github.com/elfhosted/myprecious/commit/abf21c21913b744dbf0480c57f22fbd2089e50b1))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2202 ([ed9790b](https://github.com/elfhosted/myprecious/commit/ed9790b81a16228eec5801917d313f5aa69c794f))
+* **app:** update ghcr.io/elfhosted/komga docker tag to v1.23.0 ([1b07e21](https://github.com/elfhosted/myprecious/commit/1b07e213691c090257c1e0cb0190409783a80c6c))
+* **app:** update ghcr.io/elfhosted/navidrome docker tag to v0.58.0 ([60e7e2d](https://github.com/elfhosted/myprecious/commit/60e7e2dea950263356188307d596321c7108a4df))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.13 ([3d3e80d](https://github.com/elfhosted/myprecious/commit/3d3e80d53ef367a6e694ddfe967425246e099a4e))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.14 ([892cfde](https://github.com/elfhosted/myprecious/commit/892cfdeddd737216e7243d1d74fe2226d162dfa0))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/actual-http-api:25.7.1 docker digest to 39a75e0 ([1106c2f](https://github.com/elfhosted/myprecious/commit/1106c2ffe7a58e0894c0a3c4d1947333327d59ad))
+* **app:** update ghcr.io/elfhosted/kapowarr-dev:rolling docker digest to 1805834 ([adf3fae](https://github.com/elfhosted/myprecious/commit/adf3faeab47e8f26c310da5162efe898cfd70c14))
+* **app:** update ghcr.io/elfhosted/kapowarr-dev:rolling docker digest to 62cda04 ([6bf8a4c](https://github.com/elfhosted/myprecious/commit/6bf8a4cb98e584a3cbc5ba5a16da4c7a03712334))
+* Update ElfBot to v1.0.10 ([fec73f9](https://github.com/elfhosted/myprecious/commit/fec73f938bdffbd33fba6fb49a4d89b05174a351))
+
 ## [1.446.0](https://github.com/elfhosted/myprecious/compare/v1.445.0...v1.446.0) (2025-07-27)
 
 
