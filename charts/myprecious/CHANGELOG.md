@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.447.1](https://github.com/elfhosted/myprecious/compare/v1.447.0...v1.447.1) (2025-07-28)
+
+
+### Bug Fixes
+
+* Roll back AIOStreams to v2.6.1 until the invalid URL error is understood ([d29e382](https://github.com/elfhosted/myprecious/commit/d29e3828af39bb95ede56040e993fd05f5188500))
+
 ## [1.447.0](https://github.com/elfhosted/myprecious/compare/v1.446.0...v1.447.0) (2025-07-28)
 
 
