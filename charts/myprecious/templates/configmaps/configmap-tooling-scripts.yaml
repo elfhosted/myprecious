@@ -72,6 +72,9 @@ data:
     {{- if .Values.actualcustomdomain.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-actual.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}  
+    {{- if .Values.actualapicustomdomain.enabled }}
+    manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-actual-api.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
+    {{ end }}      
     {{- if .Values.wgercustomdomain.enabled }}
     manage_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-wger.$DNS_DOMAIN CNAME $MY_NODE_NAME.$DNS_DOMAIN
     {{ end }}        
@@ -143,6 +146,9 @@ data:
         {{- if .Values.actualcustomdomain.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-actual.$DNS_DOMAIN CNAME
         {{ end }}  
+        {{- if .Values.actualapicustomdomain.enabled }}
+        delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-actual-api.$DNS_DOMAIN CNAME
+        {{ end }}          
         {{- if .Values.wgercustomdomain.enabled }}
         delete_cloudflare_record $DNS_DOMAIN $ELF_TENANT_NAME-wger.$DNS_DOMAIN CNAME
         {{ end }}                               
