@@ -1,0 +1,14 @@
+{{- if .Values.actualapicustomdomain.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: custom-domain-actual-api-{{ .Values.actualapicustomdomain.cname | lower }}
+spec:
+  secretName: cert-{{ .Values.actualapicustomdomain.cname | lower }}
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: {{ .Values.actualapicustomdomain.cname | lower }}
+  dnsNames:
+  - {{ .Values.actualapicustomdomain.cname | lower }}
+{{ end }}  

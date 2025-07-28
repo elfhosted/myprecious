@@ -549,6 +549,8 @@ peertubecustomdomain:
   enabled: false     
 actualcustomdomain:
   enabled: false   
+actualapicustomdomain:
+  enabled: false  
 wgercustomdomain:
   enabled: false
 
@@ -11546,7 +11548,15 @@ actual:
       volumeSpec:
         persistentVolumeClaim:
           claimName: config     
-
+  additionalContainers:
+    api:
+      image: ghcr.io/elfhosted/actual-http-api:25.7.1@sha256:6c0acc343eaffc0efc0ff8eff4f776ff469b961b44fc9976066dc1204778907a
+      securityContext: *default_securitycontext
+      envFrom:
+      - configMapRef:
+          name: elfbot-actual
+          optional: true    
+          
 elfbot:
   enabled: true
   image:
