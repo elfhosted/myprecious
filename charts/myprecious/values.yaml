@@ -11550,7 +11550,7 @@ actual:
           claimName: config     
   additionalContainers:
     api:
-      image: ghcr.io/elfhosted/actual-http-api:25.7.1@sha256:6c0acc343eaffc0efc0ff8eff4f776ff469b961b44fc9976066dc1204778907a
+      image: ghcr.io/elfhosted/actual-http-api:25.7.1@sha256:39a75e02129af32cb8d4b7a54c41e3e8403ba4b3cb7a9cc482ab30dd91295745
       securityContext: *default_securitycontext
       envFrom:
       - configMapRef:
