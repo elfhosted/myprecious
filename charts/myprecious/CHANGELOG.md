@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.448.0](https://github.com/elfhosted/myprecious/compare/v1.447.1...v1.448.0) (2025-07-29)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.8.0 ([2cd5dd7](https://github.com/elfhosted/myprecious/commit/2cd5dd7dd53e3dfa88fbbd4e33479e016c47f799))
+* **app:** update ghcr.io/elfhosted/bluesky-pds docker tag to v0.4.163 ([b18f2a3](https://github.com/elfhosted/myprecious/commit/b18f2a3b62b51fe0e6ebd621501034850ca12455))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.92 ([2c42e34](https://github.com/elfhosted/myprecious/commit/2c42e340b038c13e9972d239fd9506abd407e5f8))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.93 ([31c143b](https://github.com/elfhosted/myprecious/commit/31c143b303d786c333ae776f94fabd381444bf14))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.94 ([e87b3b3](https://github.com/elfhosted/myprecious/commit/e87b3b3de3710db058a899f24bceb24e608034b8))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.95 ([f313b1e](https://github.com/elfhosted/myprecious/commit/f313b1e82f6bdea9ed89588c92d6b5636cd1b3ba))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2207 ([2ceb1b2](https://github.com/elfhosted/myprecious/commit/2ceb1b21376ca5b0ad2f07796b6ad647cba2f624))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.16 ([1d1768d](https://github.com/elfhosted/myprecious/commit/1d1768d84b65236eca2438e38de237091117084a))
+* **app:** update ghcr.io/elfhosted/rdtclient docker tag to v2.0.115 ([f916459](https://github.com/elfhosted/myprecious/commit/f916459cc097a3bdf1e67973e290f23125d8b18a))
+* **app:** update ghcr.io/elfhosted/stremthru docker tag to v0.82.0 ([4230a85](https://github.com/elfhosted/myprecious/commit/4230a85a364e47b0e8e770596ca05fbae51c1834))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/kapowarr-dev:rolling docker digest to 47feb5f ([a291a22](https://github.com/elfhosted/myprecious/commit/a291a2205f7de6cc31488cdb911ef8024da4fc68))
+* **app:** update ghcr.io/elfhosted/plex:1.41.9.9961-46083195d docker digest to f273e34 ([e9ac466](https://github.com/elfhosted/myprecious/commit/e9ac46635794c5194ffb0ba6fae4f7db001e2e37))
+
 ## [1.447.1](https://github.com/elfhosted/myprecious/compare/v1.447.0...v1.447.1) (2025-07-28)
 
 
