@@ -6046,7 +6046,7 @@ tunarr:
   podAnnotations:
     elfbot.elfhosted.com/name: "Tunarr"
     elfbot.elfhosted.com/icon: "fas fa-tv"  
-    kubernetes.io/egress-bandwidth: "128M"      
+    kubernetes.io/egress-bandwidth: "150M"      
     elfbot.elfhosted.com/category: Consume Media      
   priorityClassName: tenant-normal
   securityContext:
@@ -11981,7 +11981,7 @@ comet:
     tag: v2.10.0@sha256:e59c6edf6a8a33313a8b785505b5caf3d516f573346a9bfd3d95a966eb8c3086
   priorityClassName: tenant-normal
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "64M"
+    kubernetes.io/egress-bandwidth: "150M"
     elfbot.elfhosted.com/name: "Comet"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/comet.png"
     elfbot.elfhosted.com/category: Consume Media
@@ -12210,7 +12210,7 @@ stremthru:
     elfbot.elfhosted.com/name: "StremThru"
     elfbot.elfhosted.com/icon: "fas fa-tools"
     elfbot.elfhosted.com/category: Consume Media        
-    kubernetes.io/egress-bandwidth: "64M"  
+    kubernetes.io/egress-bandwidth: "150M"  
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-stremthru,stremthru-env"
@@ -12735,7 +12735,7 @@ mediaflowproxy:
       app.elfhosted.com/name: mediaflow-proxy
   priorityClassName: tenant-normal
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "64M"
+    kubernetes.io/egress-bandwidth: "150M"
     elfbot.elfhosted.com/name: "MediaFlow Proxy"
     elfbot.elfhosted.com/icon: "fas fa-cloud"
     elfbot.elfhosted.com/category: Consume Media
@@ -13081,7 +13081,7 @@ nuviostreams:
     elfbot.elfhosted.com/name: "NuvioStreams"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/nuviostreams.png"    
     elfbot.elfhosted.com/category: Consume Media
-    kubernetes.io/egress-bandwidth: "64M" 
+    kubernetes.io/egress-bandwidth: "150M" 
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-nuviostreams,nuviostreams-env"
@@ -14702,7 +14702,7 @@ rclonealldebrid:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-alldebrid,alldebrid-config,gluetun-config"
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "128M"
+    kubernetes.io/egress-bandwidth: "150M"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -14829,7 +14829,7 @@ rclonepremiumize:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-premiumize,premiumize-config"
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "128M"
+    kubernetes.io/egress-bandwidth: "150M"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -14916,7 +14916,7 @@ rclonetorbox:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-torbox,torbox-config"
   podAnnotations:
-    kubernetes.io/egress-bandwidth: "128M"
+    kubernetes.io/egress-bandwidth: "150M"
   affinity: *standard_affinity
   tolerations: *standard_tolerations
   securityContext:
@@ -15107,7 +15107,7 @@ channelsdvr:
     elfbot.elfhosted.com/name: "Channels DVR"
     elfbot.elfhosted.com/icon: "https://icons.elfhosted.com/channels-dvr.png"
     elfbot.elfhosted.com/category: Consume Media
-    kubernetes.io/egress-bandwidth: "125M"
+    kubernetes.io/egress-bandwidth: "150M"
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-channelsdvr"
