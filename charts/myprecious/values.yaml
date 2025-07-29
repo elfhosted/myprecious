@@ -2732,7 +2732,7 @@ kapowarr:
   image:
     registry: ghcr.io
     repository: elfhosted/kapowarr-dev
-    tag: rolling@sha256:62cda04b199e5a2f9af716d9f84059feb139873016ebe81135601d4b5f10db73
+    tag: rolling@sha256:47feb5f7925ace15e880a08417b03172fad66aa5364c2ed9c8c83217a8e2df82
   podLabels:
     app.elfhosted.com/name: kapowarr
   podAnnotations:    
@@ -9844,7 +9844,7 @@ rdtclient: &app_rdtclient
     elfbot.elfhosted.com/category: Manage Downloads     
   image:
     repository: ghcr.io/elfhosted/rdtclient
-    tag: v2.0.113@sha256:e274c86872f823296d063cc04eaec10410bf5ea4590ccb1660ebe51339803464
+    tag: v2.0.115@sha256:e2d6018595d5a74a447cb267f8240a7aa9f04f4e92d7ff008b6e8f1be02f3dba
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-rdtclient"
@@ -12855,7 +12855,7 @@ aiostreams:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/aiostreams
-    tag: v2.6.1@sha256:1be80f312d2e8943379dea6ae01db3f69fd83ecd91f91ea65d60c0a3452bf545
+    tag: v2.8.0@sha256:95671f83b52533aa7f00b5750d1811595241bdb78cba76d4c8ed9e1894f47ced
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: aiostreams  
@@ -14228,7 +14228,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.14@sha256:fa540fb5a823701601a9c5acf478fa3ed1bf3f036315509826df980880fcbbd8
+    tag: v0.4.16@sha256:fc540ec9481bff0d9fbe07f405a4c45b11522436d42af3f3d40f5c0be6930588
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: pulsarr  
@@ -14319,7 +14319,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.14@sha256:fa540fb5a823701601a9c5acf478fa3ed1bf3f036315509826df980880fcbbd8
+      image: ghcr.io/elfhosted/pulsarr:v0.4.16@sha256:fc540ec9481bff0d9fbe07f405a4c45b11522436d42af3f3d40f5c0be6930588
       command:
       - /bin/ash
       - -c
