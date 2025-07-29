@@ -312,11 +312,6 @@ dependencies:
   - name: app-template
     version: ~0.2.2
     repository: oci://ghcr.io/elfhosted/charts
-    condition: dispatcharr.enabled
-    alias: dispatcharr
-  - name: app-template
-    version: ~0.2.2
-    repository: oci://ghcr.io/elfhosted/charts
     condition: requestrr.enabled
     alias: requestrr
   - name: app-template

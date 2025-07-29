@@ -624,22 +624,6 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}     
 
-          {{ if .Values.dispatcharr.enabled }}
-          - name: "Dispatcharr"
-            # Alternatively a fa icon can be provided:
-            logo: "assets/png/dispatcharr.png"
-            subtitle: "Manage IPTV streams and EPG data"
-            {{ if .Values.dispatcharrexposed.enabled }}
-            tag: "public"
-            tagstyle: "is-danger"
-            {{ else }}
-            tag: "protected"
-            tagstyle: "is-success"
-            {{ end }}
-            url: "https://{{ .Release.Name }}-dispatcharr.{{ .Values.dns_domain }}/web/"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}                              
-
           {{ if .Values.ersatztv.enabled }}
           - name: "ersatztv"
             icon: "fas fa-tv"
