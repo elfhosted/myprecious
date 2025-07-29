@@ -10,8 +10,6 @@ data:
   FORCE_COMET_PORT: ""
   FORCE_JACKETTIO_PROTOCOL: "https"
   FORCE_JACKETTIO_PORT: ""
-  FORCE_PUBLIC_PROXY_PROTOCOL: "https"
-  FORCE_PUBLIC_PROXY_PORT: ""
   ADDON_NAME: AIOStreams | {{ .Release.Name }}
   ADDON_ID: "{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}"
   BASE_URL: "https://{{ .Release.Name }}-aiostreams.{{ .Values.dns_domain }}"
@@ -26,12 +24,12 @@ data:
   # Pre-fill the proxy URL
   {{ if .Values.stremthru.enabled }}
   FORCE_PROXY_ID: stremthru
-  FORCE_PUBLIC_PROXY_HOST: "{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
+  FORCE_PROXY_PUBLIC_URL: "https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}"
   FORCE_PROXY_URL: http://stremthru:8080
   {{ else if .Values.mediaflowproxy.enabled }}
   FORCE_PROXY_ID: mediaflow
   FORCE_PROXY_URL: http://mediaflow-proxy:8888
-  FORCE_PUBLIC_PROXY_HOST: "{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}"
+  FORCE_PROXY_PUBLIC_URL: "https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}"
   {{ end }}
 
   # For Comet
