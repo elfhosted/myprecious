@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.449.0](https://github.com/elfhosted/myprecious/compare/v1.448.0...v1.449.0) (2025-07-30)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.8.1 ([8786c0d](https://github.com/elfhosted/myprecious/commit/8786c0ddf389341baad44ec32929a29cf7bb5e92))
+* **app:** update ghcr.io/elfhosted/aiostreams docker tag to v2.8.2 ([dc62871](https://github.com/elfhosted/myprecious/commit/dc62871dfebb0ea55dfbca2f130e07fc40706e56))
+* **app:** update ghcr.io/elfhosted/cli_debrid-dev docker tag to v0.6.96 ([563842b](https://github.com/elfhosted/myprecious/commit/563842b8c054da31fecb445c237808bfaea50c8b))
+* **app:** update ghcr.io/elfhosted/emby docker tag to v4.9.1.12 ([808b834](https://github.com/elfhosted/myprecious/commit/808b834924f31da73c5634f603252803e55bfda8))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2208 ([4827c11](https://github.com/elfhosted/myprecious/commit/4827c119197de31869694759872797b22e39a6be))
+* **app:** update ghcr.io/elfhosted/vaultwarden docker tag to v1.34.3 ([3bd0235](https://github.com/elfhosted/myprecious/commit/3bd0235b45b990b416d34706a80830268876d69a))
+* **app:** update ghcr.io/elfhosted/wizarr docker tag to v2025.7.8 ([0bebce9](https://github.com/elfhosted/myprecious/commit/0bebce9278277f0e37f18d3490f6a40ca7124789))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/cwa-downloader:rolling docker digest to 582c302 ([6aa77cb](https://github.com/elfhosted/myprecious/commit/6aa77cb75eacf98ca318849993c0510c2f4358e1))
+* **app:** update ghcr.io/elfhosted/kapowarr-dev:rolling docker digest to 1a7b469 ([2cb2904](https://github.com/elfhosted/myprecious/commit/2cb2904b1187346f5fad29065a4e9e52c300ca3e))
+
 ## [1.448.0](https://github.com/elfhosted/myprecious/compare/v1.447.1...v1.448.0) (2025-07-29)
 
 
