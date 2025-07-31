@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.450.0](https://github.com/elfhosted/myprecious/compare/v1.449.0...v1.450.0) (2025-07-31)
+
+
+### Features
+
+* **app:** update ghcr.io/elfhosted/cleanuparr docker tag to v2.0.19 ([72cc36e](https://github.com/elfhosted/myprecious/commit/72cc36e35f6e02c7d2aa5acd8cec1e51b9cd7080))
+* **app:** update ghcr.io/elfhosted/jackett docker tag to v0.22.2213 ([689765f](https://github.com/elfhosted/myprecious/commit/689765fb1976418159dce1a201d3d67461895f05))
+* **app:** update ghcr.io/elfhosted/pulsarr docker tag to v0.4.17 ([40cb795](https://github.com/elfhosted/myprecious/commit/40cb7953c57f7348160579c79fefe34d15a2547d))
+* **app:** update ghcr.io/elfhosted/zurg-rc docker tag to v2025.07.29.0047-nightly ([1dc7d05](https://github.com/elfhosted/myprecious/commit/1dc7d0501389e574f7efb01d9f20a46328f3cd3d))
+* **app:** update ghcr.io/immich-app/immich-server docker tag to v1.137.0 ([3908c6a](https://github.com/elfhosted/myprecious/commit/3908c6a8385f60cb34c75354e98358c1f69e9f66))
+
+
+### Bug Fixes
+
+* **app:** update ghcr.io/elfhosted/kapowarr-dev:rolling docker digest to 555e0e8 ([509413d](https://github.com/elfhosted/myprecious/commit/509413d0882de9c04ae12d2b69a74967ee8660ad))
+* **app:** update ghcr.io/elfhosted/symlink-cleaner:v1.4.7 docker digest to 48583e3 ([2769263](https://github.com/elfhosted/myprecious/commit/2769263bdb0c398df11e1226625fab8d9e470eeb))
+* Update CORS for .party fixing homer status icons ([63d7215](https://github.com/elfhosted/myprecious/commit/63d7215557bcd5a2e863d8647d034c8675fe7e71))
+* Upgrade ElfBot to v1.0.11 ([4cde37f](https://github.com/elfhosted/myprecious/commit/4cde37f3640aeee6531b1641071f9db3ce1e0a6d))
+
 ## [1.449.0](https://github.com/elfhosted/myprecious/compare/v1.448.0...v1.449.0) (2025-07-30)
 
 
