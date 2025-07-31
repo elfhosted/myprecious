@@ -6409,7 +6409,7 @@ symlinkcleaner:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/symlink-cleaner
-    tag: v1.4.7@sha256:2b980b95269aa534c46bc735a613efe1934af948d602e281958ac2891006acb6
+    tag: v1.4.7@sha256:48583e349c118af8e9ba607241d7495ade44ffad3a14d771653f7aa739c0a632
   imagePullSecrets:
   - name: ghcr-io-elfhosted
   priorityClassName: tenant-normal
