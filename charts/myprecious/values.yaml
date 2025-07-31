@@ -11118,7 +11118,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2208@sha256:9f8ec45464fc3b0a597e8b56bd59b729922a6c7098ab3ed12218ccceaf347c53
+    tag: 0.22.2213@sha256:412708e5f24dc8cf66a3bb37dd492ab83881167e1fb6da12c10323b0de2d0dc4
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
