@@ -10,7 +10,7 @@ data:
   LOGOUT_REDIRECT: 'https://store.elfhosted.com/my-account/customer-logout/'
   SCOPE: openid email
   {{- if .Values.elfassessment.enabled }}
-  WHITELIST: "{{ .Values.traefikforwardauth.whitelist }},layezee@elfhosted.com,legolas@elfhosted.com,bsm@elfhosted.com,bsmusvenger@gmail.com,seapound@elfhosted.com"
+  WHITELIST: "{{ .Values.traefikforwardauth.whitelist }},layezee@elfhosted.com,legolas@elfhosted.com,bsm@elfhosted.com,bsmusvenger@gmail.com.com,seapound@elfhosted.com,bsmpavenger@gmail.com"
   {{- else }}
   WHITELIST: "{{ .Values.traefikforwardauth.whitelist }}"
   {{- end }}
