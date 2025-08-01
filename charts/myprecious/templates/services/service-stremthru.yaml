@@ -14,6 +14,10 @@ spec:
     targetPort: 8080
     protocol: TCP
     name: http
+  - port: 3002
+    targetPort: 3002
+    protocol: TCP
+    name: speedtest
   selector:
     app.kubernetes.io/name: stremthru
     app.kubernetes.io/instance: {{ .Release.Name }}

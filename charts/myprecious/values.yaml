@@ -12082,7 +12082,7 @@ comet:
         HTTP_CONTROL_SERVER_ADDRESS: ":8001"
         VPN_TYPE: wireguard
         VPN_SERVICE_PROVIDER: custom
-        FIREWALL_INPUT_PORTS: "8000"
+        FIREWALL_INPUT_PORTS: "8000,3002"
         WIREGUARD_MTU: "1280"
         VPN_ENDPOINT_PORT: "2408"
         DOT: "off"
@@ -12097,6 +12097,15 @@ comet:
       volumeMounts:
       - mountPath: /shared
         name: shared  
+  additionalContainers:
+    speedtest:
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
+      imagePullPolicy: IfNotPresent
+      env:
+        CHANGE_CONTAINER_PORTS: "True"
+        HTTP_PORT: "3002"
+        HTTPS_PORT: "3003"    
+      securityContext: *speedtest_securitycontext  
 
 jackettio:
   enabled: false
@@ -15173,6 +15182,15 @@ channelsdvr:
         subPath: channelsdvr
       - mountPath: /tmp
         name: tmp
+  additionalContainers:
+    speedtest:
+      image: openspeedtest/latest:latest@sha256:1745e913f596fe98882b286a67751efdae74774e9caa742a4934bb056e8748d2
+      imagePullPolicy: IfNotPresent
+      env:
+        CHANGE_CONTAINER_PORTS: "True"
+        HTTP_PORT: "3002"
+        HTTPS_PORT: "3003"    
+      securityContext: *speedtest_securitycontext  
 
 wger:
   enabled: false

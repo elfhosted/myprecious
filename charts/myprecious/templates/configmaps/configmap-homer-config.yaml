@@ -1781,6 +1781,88 @@ data:
             target: "_blank" # optional html tag target attribute
           {{ end }}
                                      
+      - name: "Speed Tests"
+        icon: "fas fa-bolt"
+        items:
+
+          {{ if .Values.channelsdvr.enabled }}
+          - name: "Channels DVR"
+            icon: "fas fa-bolt"
+            subtitle: "Test ChannelsDVR Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://{{ .Release.Name }}-channelsdvr.{{ .Values.dns_domain }}/speed/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}
+
+          {{ if .Values.comet.enabled }}
+          - name: "Comet"
+            icon: "fas fa-bolt"
+            subtitle: "Test Comet Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://{{ .Release.Name }}-comet.{{ .Values.dns_domain }}/speed/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}             
+
+          - name: "ElfHosted Datacenter"
+            icon: "fas fa-bolt"
+            subtitle: "Test ElfHosted Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://speed.elfhosted.com"
+            target: "_blank" # optional html tag target attribute
+
+          {{ if .Values.emby.enabled }}
+          - name: "Emby"
+            icon: "fas fa-bolt"
+            subtitle: "Test Emby Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://{{ .Release.Name }}-emby.{{ .Values.dns_domain }}/speed/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }} 
+
+          {{ if .Values.jellyfin.enabled }}
+          - name: "Jellyfin"
+            icon: "fas fa-bolt"
+            subtitle: "Test Jellyfin Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://{{ .Release.Name }}-jellyfin.{{ .Values.dns_domain }}/speed/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}    
+
+          {{ if .Values.mediaflowproxy.enabled }}
+          - name: "MediaFlow Proxy"
+            icon: "fas fa-bolt"
+            subtitle: "Test MediaFlow Proxy Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://{{ .Release.Name }}-mediaflow-proxy.{{ .Values.dns_domain }}/speed/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}                       
+
+          {{ if .Values.plex.enabled }}
+          - name: "Plex"
+            icon: "fas fa-bolt"
+            subtitle: "Test Plex Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://{{ .Release.Name }}-plex.{{ .Values.dns_domain }}/speed/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}  
+
+          {{ if .Values.stremthru.enabled }}
+          - name: "StremThru"
+            icon: "fas fa-bolt"
+            subtitle: "Test StremThru Speed"
+            tag: "public"
+            tagstyle: "is-warning"
+            url: "https://{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}/speed/"
+            target: "_blank" # optional html tag target attribute
+          {{ end }}          
+
 
   custom.css: |
     @charset "UTF-8";

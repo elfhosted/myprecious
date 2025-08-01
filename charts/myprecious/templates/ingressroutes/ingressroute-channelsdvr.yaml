@@ -15,4 +15,16 @@ spec:
           port: 8089
       middlewares:  
         - name: {{ .Release.Name }}-add-x-dvr-forceauth
+    # Allow speedtest on /speed
+    - match: Host(`{{ .Release.Name }}-channeldvr.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
+      kind: Rule
+      services:
+        - name: channelsdvr
+          kind: Service
+          port: 3002 # openspeedtest
+      middlewares:
+        - name: stripprefix-speed
+          namespace: traefik
+        - name: buffer-2gb
+          namespace: traefik
 {{ end }}

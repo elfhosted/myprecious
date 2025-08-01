@@ -38,4 +38,16 @@ spec:
       middlewares:  
         - name: ipallowlist-localhost-only
           namespace: traefik
+    # Allow speedtest on /speed
+    - match: Host(`{{ .Release.Name }}-stremthru.{{ .Values.dns_domain }}`) && PathPrefix(`/speed`)
+      kind: Rule
+      services:
+        - name: stremthru
+          kind: Service
+          port: 3002 # openspeedtest
+      middlewares:
+        - name: stripprefix-speed
+          namespace: traefik
+        - name: buffer-2gb
+          namespace: traefik
 {{ end }}
