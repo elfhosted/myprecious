@@ -2732,7 +2732,7 @@ kapowarr:
   image:
     registry: ghcr.io
     repository: elfhosted/kapowarr-dev
-    tag: rolling@sha256:555e0e885af30b8ecebbb29738e91ce6fa38809ab07b9738cf6a05a5278a5305
+    tag: rolling@sha256:21142f341572dd12f614283d138499cc2030fc0d9b4dcf83c2cebd93ad216b37
   podLabels:
     app.elfhosted.com/name: kapowarr
   podAnnotations:    
@@ -2848,7 +2848,7 @@ calibreweb:
   priorityClassName: tenant-normal  
   image:
     repository: ghcr.io/elfhosted/calibre-web-automated
-    tag: v3.0.4@sha256:5b81a6f32f2947c7ed82b47afda8289e92158f9d19c9ea739fa30de98cecfa8a
+    tag: 3.1.1@sha256:f3accfce85fdea9c2cc5d4703efb132d32bdba7fe7150b33d1bceea509cdca19
   controller:
     annotations:
       configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-calibre-web"
@@ -3201,7 +3201,7 @@ komga:
     elfbot.elfhosted.com/category: Consume Media
   image:
     repository: ghcr.io/elfhosted/komga
-    tag: 1.23.0@sha256:1c267fd997d5ae4a35a3de9a4f1b2d4d6a76f839697a8750cd4158c46a57fb4c
+    tag: 1.23.1@sha256:c1bdc658f72063b92b8ce917e26a1f6dac1c27a24b2eb49daf3b286b32648857
   env:
     KOMGA_CONFIGDIR: /config
     KOMGA_REMEMBERME_KEY: yesplease
@@ -7116,7 +7116,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.35.0@sha256:ba4abf88aa8fa7d50bc2d6d7bcb492b17c29d670f3889fab1052ecbe1f89ae0f
+    tag: v0.35.0@sha256:92d8d481557a649f99490c6195756e98dc01718b06ce3571e93544e691cd99bc
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: booklore  
@@ -7242,7 +7242,7 @@ booklore:
       securityContext: *default_securitycontext                     
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.35.0@sha256:ba4abf88aa8fa7d50bc2d6d7bcb492b17c29d670f3889fab1052ecbe1f89ae0f
+      image: ghcr.io/elfhosted/booklore:v0.35.0@sha256:92d8d481557a649f99490c6195756e98dc01718b06ce3571e93544e691cd99bc
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -11118,7 +11118,7 @@ jackett:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/jackett
-    tag: 0.22.2213@sha256:412708e5f24dc8cf66a3bb37dd492ab83881167e1fb6da12c10323b0de2d0dc4
+    tag: 0.22.2217@sha256:afde5e316ac100fe94096c408a89b16cf59ef163f30703101394458ff2c6a282
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: jackett  
@@ -13776,7 +13776,7 @@ clidebrid: &app_clidebrid
     elfbot.elfhosted.com/category: Manage Downloads
   image:
     repository: ghcr.io/elfhosted/cli_debrid-dev
-    tag: v0.6.96@sha256:ed27a8cff0f2bb0b4f67ea9b78ae55e6380427813c1b22fc640617c336ba45d4 
+    tag: v0.6.98@sha256:e4448c72c4571bc4512ccda8b83e02d4bfa1e1aa7051f6ea919f5b872bfcd4e2 
   priorityClassName: tenant-normal
   controller:
     annotations:
@@ -14237,7 +14237,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.17@sha256:419911bf6e8f84f8209a770db206e95973ba1c54da5f1cbea5fbd42707520017
+    tag: v0.4.17@sha256:c84cb49b7e990f3c832576b4cfb219660e5c2d37b9719e1fd0324f4607fcde08
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: pulsarr  
@@ -14328,7 +14328,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.17@sha256:419911bf6e8f84f8209a770db206e95973ba1c54da5f1cbea5fbd42707520017
+      image: ghcr.io/elfhosted/pulsarr:v0.4.17@sha256:c84cb49b7e990f3c832576b4cfb219660e5c2d37b9719e1fd0324f4607fcde08
       command:
       - /bin/ash
       - -c
@@ -15408,7 +15408,7 @@ immich:
   enabled: false
   image:
     repository: ghcr.io/immich-app/immich-server
-    tag: v1.137.0@sha256:dd81bc99d0243bc0a7e89478fdbb30e55399f2e25d694f7f0c34a041d89a3297
+    tag: v1.137.3@sha256:e517f806457057d44695152a0af2dfa094225a7d85eb37f518925e68864c658d
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: immich  
