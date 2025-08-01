@@ -1176,23 +1176,7 @@ data:
             href: https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}
             description: Your AllDebrid library
             siteMonitor: http://alldebrid:9999
-        {{ end }}
-
-        {{ if .Values.rclonedebridlink.enabled }}
-        - Debrid-Link:
-            icon: webdav.png
-            href: https://{{ .Release.Name }}-debridlink.{{ .Values.dns_domain }}
-            description: Your Debrid-Link library
-            siteMonitor: http://debridlink:9999
-        {{ end }}     
-
-        {{ if .Values.rclonepremiumize.enabled }}
-        - Premiumize:
-            icon: webdav.png
-            href: https://{{ .Release.Name }}-premiumize.{{ .Values.dns_domain }}
-            description: Your Premiumize library
-            siteMonitor: http://premiumize:9999
-        {{ end }}                
+        {{ end }}             
 
         {{ if .Values.webdavplus.enabled }}
         - WebDAV Plus:

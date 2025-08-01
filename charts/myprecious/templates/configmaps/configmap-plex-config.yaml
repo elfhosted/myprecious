@@ -59,17 +59,11 @@ data:
   WAIT_FOR_MOUNT_PATHS: {{ $dirs := list }}
     {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
     {{- if .Values.rclonealldebrid.enabled }}{{ $dirs = append $dirs "/storage/alldebrid/magnets" }}{{- end }}
-    {{- if .Values.rclonetorbox.enabled }}{{ $dirs = append $dirs "/storage/torbox" }}{{- end }}
-    {{- if .Values.rclonedebridlink.enabled }}{{ $dirs = append $dirs "/storage/debridlink" }}{{- end }}
-    {{- if .Values.rclonepremiumize.enabled }}{{ $dirs = append $dirs "/storage/premiumize" }}{{- end }}
     {{- join "," $dirs }}
 
   WAIT_FOR_URLS: {{ $urls := list }}
     {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ if .Values.decypharr.enabled }}{{ $urls = append $urls "http://decypharr:8282/webdav/realdebrid/version.txt" }}{{- else }}{{ $urls = append $urls "http://zurg:9999/http/version.txt" }}{{- end }}{{- end }}
     {{- if .Values.rclonealldebrid.enabled }}{{ $urls = append $urls "http://alldebrid:9999" }}{{- end }}
-    {{- if .Values.rclonetorbox.enabled }}{{ $urls = append $urls "http://torbox:9999" }}{{- end }}
-    {{- if .Values.rclonedebridlink.enabled }}{{ $urls = append $urls "http://debridlink:8080" }}{{- end }}
-    {{- if .Values.rclonepremiumize.enabled }}{{ $urls = append $urls "http://debridav:8080" }}{{- end }}
     {{- join "," $urls }}
 
 {{ end }}

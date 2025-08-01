@@ -1138,28 +1138,6 @@ data:
           - type: email
       {{ end }}   
 
-      {{ if .Values.rclonedebridlink.enabled }}
-      - name: debridlink
-        group: tools
-        url: "http://debridlink:9999"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}       
-
-      {{ if .Values.rclonepremiumize.enabled }}
-      - name: premiumize
-        group: tools
-        url: "http://premiumize:9999"
-        interval: 5m
-        conditions:
-          - "[STATUS] == 200"
-        alerts:
-          - type: email
-      {{ end }}   
-
       {{ if .Values.webdavplus.enabled }}
       - name: webdav-plus
         group: tools

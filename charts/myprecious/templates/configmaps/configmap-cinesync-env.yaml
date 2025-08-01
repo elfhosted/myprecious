@@ -7,9 +7,6 @@ data:
   SOURCE_DIR: {{ $dirs := list }}
     {{ if .Values.rclonemountrealdebridzurg.enabled }}{{ $dirs = append $dirs "/storage/realdebrid-zurg/__all__" }}{{- end }}
     {{- if .Values.rclonealldebrid.enabled }}{{ $dirs = append $dirs "/storage/alldebrid/magnets" }}{{- end }}
-    {{- if .Values.rclonetorbox.enabled }}{{ $dirs = append $dirs "/storage/torbox" }}{{- end }}
-    {{- if .Values.rclonedebridlink.enabled }}{{ $dirs = append $dirs "/storage/debridlink" }}{{- end }}
-    {{- if .Values.rclonepremiumize.enabled }}{{ $dirs = append $dirs "/storage/premiumize" }}{{- end }}
     {{- join "," $dirs }}
   DESTINATION_DIR: /storage/symlinks
   RCLONE_MOUNT: "true"

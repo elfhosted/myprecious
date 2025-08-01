@@ -217,13 +217,6 @@ rclonemountrealdebridzurg: &rclonemountrealdebridzurg
     persistentVolumeClaim:
       claimName: realdebrid-zurg
   mountPath: /storage/realdebrid-zurg
-rclonemountdebridlink: &rclonemountdebridlink
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: debridlink
-  mountPath: /storage/debridlink
 rclonemountalldebrid: &rclonemountalldebrid
   enabled: false
   type: custom
@@ -231,20 +224,6 @@ rclonemountalldebrid: &rclonemountalldebrid
     persistentVolumeClaim:
       claimName: alldebrid
   mountPath: /storage/alldebrid
-rclonemountpremiumize: &rclonemountpremiumize
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: premiumize
-  mountPath: /storage/premiumize
-rclonemounttorbox: &rclonemounttorbox
-  enabled: false
-  type: custom
-  volumeSpec:
-    persistentVolumeClaim:
-      claimName: torbox
-  mountPath: /storage/torbox
 rclonemountdebridav: &rclonemountdebridav
   enabled: false 
   type: custom
@@ -264,10 +243,7 @@ rclone: &rclone
 storagemounts: &storagemounts
   rclone: *rclone
   rclonemountrealdebridzurg: *rclonemountrealdebridzurg
-  rclonemountdebridlink: *rclonemountdebridlink
   rclonemountalldebrid: *rclonemountalldebrid
-  rclonemountpremiumize: *rclonemountpremiumize
-  rclonemounttorbox: *rclonemounttorbox
   rclonemountdebridav: *rclonemountdebridav
   tmp: &tmp
     enabled: true
@@ -14638,67 +14614,6 @@ debridav: &app_debridav
       - name: tmp
         mountPath: /tmp    
           
-rclonedebridlink:
-  enabled: false
-  image:
-    repository: ghcr.io/elfhosted/davdebrid
-    tag: v1.2.2@sha256:6571776a022a36889d1cc8392440ad58fa2654535e82b9741f1c287e045c7fd0
-  priorityClassName: tenant-normal
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  podLabels:
-    app.elfhosted.com/name: debridlink
-  podAnnotations:
-    elfbot.elfhosted.com/name: "DebridLink"
-    elfbot.elfhosted.com/icon: "fas fa-link" 
-    elfbot.elfhosted.com/category: Manage Downloads     
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-debridlink,debridlink-env"
-  securityContext:
-    runAsUser: 568
-    runAsGroup: 568
-    privileged: false
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    fsGroup: 568
-    fsGroupChangePolicy: "Always"
-    seccompProfile:
-      type: RuntimeDefault
-  automountServiceAccountToken: false
-  persistence:
-    config:
-      enabled: true
-      type: custom
-      mountPath: /config
-      subPath: debridlink
-      volumeSpec:
-        persistentVolumeClaim:
-          claimName: config
-  envFrom:
-  - configMapRef:
-      name: debridlink-env
-  - configMapRef:
-      name: elfbot-debridlink
-      optional: true
-  resources:
-    requests:
-      cpu: 0m
-      memory: 1Mi
-    limits:
-      cpu: 100m
-      memory: 100Mi
-  ingress:
-    main:
-      enabled: false
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 8080
-
-
 rclonealldebrid:
   enabled: false
   priorityClassName: tenant-normal
@@ -14825,196 +14740,6 @@ rclonealldebrid:
             - NET_ADMIN
             - SYS_MODULE
       config: # We have to set this to null so that we can override with our own config
-
-rclonepremiumize:
-  enabled: false
-  priorityClassName: tenant-normal
-  image:
-    repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
-  command:
-  - /debrid-provider.sh
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-premiumize,premiumize-config"
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    cache:
-      enabled: true
-      type: emptyDir
-      mountPath: /home/elfie/.cache
-      sizeLimit: 1Gi
-    config: 
-      enabled: "true"
-      type: emptyDir
-      mountPath: /config
-    bootstrap:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: premiumize-config
-  initContainers:
-    setup:
-      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
-      command:
-      - /bin/ash
-      - -c
-      - |
-        set -x
-
-        # Create directory structure
-
-        OBSCURED_PASS=$(rclone obscure "$PASS")
-        cp /bootstrap/rclone-debrid-provider.conf /config/
-        sed -i "s/REPLACEUSER/$USER/" /config/rclone-debrid-provider.conf
-        sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rclone-debrid-provider.conf
-        
-      volumeMounts:
-      - mountPath: /config
-        name: config
-      - mountPath: /bootstrap
-        name: bootstrap
-      resources: *default_resources
-      securityContext: *default_securitycontext
-      envFrom:
-      - configMapRef:
-          name: elfbot-premiumize
-          optional: true
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 9999      
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 0m
-      memory: 60Mi
-    limits:
-      cpu: 150m
-      memory: 512Mi
-
-rclonetorbox:
-  enabled: false
-  priorityClassName: tenant-normal
-  image:
-    repository: ghcr.io/elfhosted/rclone
-    tag: 1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
-  command:
-  - /debrid-provider.sh
-  controller:
-    annotations:
-      configmap.reloader.stakater.com/reload: "elfbot-all,elfbot-torbox,torbox-config"
-  podAnnotations:
-    kubernetes.io/egress-bandwidth: "150M"
-  affinity: *standard_affinity
-  tolerations: *standard_tolerations
-  securityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    readOnlyRootFilesystem: true
-  podSecurityContext:
-    seccompProfile:
-      type: RuntimeDefault
-    runAsUser: 568
-    runAsGroup: 568
-    fsGroup: 568
-    fsGroupChangePolicy: "OnRootMismatch"
-  automountServiceAccountToken: false
-  persistence:
-    cache:
-      enabled: true
-      type: emptyDir
-      mountPath: /home/elfie/.cache
-      sizeLimit: 1Gi
-    # we'll run the obscure command and copy the config into here
-    config: 
-      enabled: "true"
-      type: emptyDir
-      mountPath: /config
-    bootstrap:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: torbox-config
-    elfbot:
-      enabled: "true"
-      type: "custom"
-      volumeSpec:
-        configMap:
-          name: elfbot-torbox
-          optional: true          
-  initContainers:
-    setup:
-      image: ghcr.io/elfhosted/rclone:1.70.3@sha256:6f9fab07ff82e308c1152f119ace42d7fce3476ace0ee2631e123463ccaf22fd
-      command:
-      - /bin/ash
-      - -c
-      - |
-        set -x
-
-        # Create directory structure
-
-        OBSCURED_PASS=$(rclone obscure "$PASS")
-        cp /bootstrap/rclone-debrid-provider.conf /config/
-        sed -i "s/REPLACEUSER/$USER/" /config/rclone-debrid-provider.conf
-        sed -i "s/REPLACEPASS/$OBSCURED_PASS/" /config/rclone-debrid-provider.conf
-        
-      volumeMounts:
-      - mountPath: /config
-        name: config
-      - mountPath: /bootstrap
-        name: bootstrap
-      - mountPath: /elfbot
-        name: elfbot
-      resources: *default_resources
-      securityContext: *default_securitycontext
-      envFrom:
-      - configMapRef:
-          name: elfbot-torbox
-          optional: true
-
-  service:
-    main:
-      enabled: true # necessary for probes
-      ports:
-        http:
-          port: 9999
-  envFrom:
-  - configMapRef:
-      name: elfbot-torbox
-      optional: true              
-  ingress:
-    main:
-      enabled: false
-  resources:
-    requests:
-      cpu: 0m
-      memory: 60Mi
-    limits:
-      cpu: 150m
-      memory: 512Mi
-
 
 decypharr: &app_decypharr
   enabled: false

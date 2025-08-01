@@ -1707,27 +1707,7 @@ data:
             tagstyle: "is-success"
             url: "https://{{ .Release.Name }}-alldebrid.{{ .Values.dns_domain }}"
             target: "_blank" # optional html tag target attribute
-          {{ end }}  
-
-          {{ if .Values.rclonedebridlink.enabled }}
-          - name: "Debrid-Link"
-            logo: "assets/png/rclone.png"
-            subtitle: "Debrid-Link (WebDAV)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-debridlink.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }} 
-
-          {{ if .Values.rclonepremiumize.enabled }}
-          - name: "Premiumize"
-            logo: "assets/png/rclone.png"
-            subtitle: "Premiumize (WebDAV)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-premiumize.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}             
+          {{ end }}         
 
           - name: "Rclone FM"
             logo: "assets/png/rclone.png"
@@ -1760,16 +1740,6 @@ data:
             url: https://store.{{ .Values.dns_domain }}/product/rcloneui
             {{ end }}
             target: "_blank" # optional html tag target attribute
-
-          {{ if .Values.rclonetorbox.enabled }}
-          - name: "TorBox"
-            logo: "assets/png/rclone.png"
-            subtitle: "TorBox (WebDAV)"
-            tag: "protected"
-            tagstyle: "is-success"
-            url: "https://{{ .Release.Name }}-torbox.{{ .Values.dns_domain }}"
-            target: "_blank" # optional html tag target attribute
-          {{ end }}  
 
           {{ if .Values.webdav.enabled }}
           - name: "WebDAV"

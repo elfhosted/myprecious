@@ -22,28 +22,14 @@ data:
   ELF_STREAMER_URL: emby:8096
   {{ end }}
 
-  {{ if .Values.zurg.enabled }}
   RIVEN_SYMLINK_RCLONE_PATH: /storage/realdebrid-zurg/__all__
-  {{ else if .Values.rclonealldebrid.enabled }}
-  # So we're using AllDebrid
-  ALL_DEBRID_ENABLED: "true"
-  REAL_DEBRID_ENABLED: "false"
-  RIVEN_SYMLINK_RCLONE_PATH: /storage/alldebrid/magnets
-  RIVEN_DOWNLOADERS_PROXY_URL: http://alldebrid:8888
-  {{ else }}
-  # If not AD or RD, then we're using torbox
-  RIVEN_SYMLINK_RCLONE_PATH: /storage/torbox
-  REAL_DEBRID_ENABLED: "false"
-  TORBOX_ENABLED: "true"
-  {{ end }}
-
   RIVEN_SYMLINK_LIBRARY_PATH: /storage/symlinks
   RIVEN_UPDATERS_PLEX_URL: http://plex:32400
   RIVEN_UPDATERS_JELLYFIN_URL: http://jellyfin:8096
   RIVEN_UPDATERS_EMBY_URL: http://emby:8096
   RIVEN_CONTENT_OVERSEERR_URL: http://overseerr:5055
 
-  RIVEN_SCRAPING_KNIGHTCRAWLER_ENABLED: "true"
+  RIVEN_SCRAPING_KNIGHTCRAWLER_ENABLED: "false"
   RIVEN_SCRAPING_KNIGHTCRAWLER_URL: http://elfhosted-internal.knightcrawler
   # no longer enabled by default, per Spoked, it's low-value vs the way Riven works
   # RIVEN_SCRAPING_COMET_ENABLED: "true"
