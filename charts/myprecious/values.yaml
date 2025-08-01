@@ -7116,7 +7116,7 @@ booklore:
   enabled: false
   image:
     repository: ghcr.io/elfhosted/booklore
-    tag: v0.35.0@sha256:ba4abf88aa8fa7d50bc2d6d7bcb492b17c29d670f3889fab1052ecbe1f89ae0f
+    tag: v0.35.0@sha256:92d8d481557a649f99490c6195756e98dc01718b06ce3571e93544e691cd99bc
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: booklore  
@@ -7242,7 +7242,7 @@ booklore:
       securityContext: *default_securitycontext                     
   additionalContainers:
     frontend:
-      image: ghcr.io/elfhosted/booklore:v0.35.0@sha256:ba4abf88aa8fa7d50bc2d6d7bcb492b17c29d670f3889fab1052ecbe1f89ae0f
+      image: ghcr.io/elfhosted/booklore:v0.35.0@sha256:92d8d481557a649f99490c6195756e98dc01718b06ce3571e93544e691cd99bc
       command: 
       - /usr/sbin/nginx 
       - -g 
@@ -14228,7 +14228,7 @@ pulsarr: &app_pulsarr
   enabled: false
   image:
     repository: ghcr.io/elfhosted/pulsarr
-    tag: v0.4.17@sha256:419911bf6e8f84f8209a770db206e95973ba1c54da5f1cbea5fbd42707520017
+    tag: v0.4.17@sha256:c84cb49b7e990f3c832576b4cfb219660e5c2d37b9719e1fd0324f4607fcde08
   priorityClassName: tenant-normal
   podLabels:
       app.elfhosted.com/name: pulsarr  
@@ -14319,7 +14319,7 @@ pulsarr: &app_pulsarr
       - mountPath: /tmp
         name: tmp
     setup:
-      image: ghcr.io/elfhosted/pulsarr:v0.4.17@sha256:419911bf6e8f84f8209a770db206e95973ba1c54da5f1cbea5fbd42707520017
+      image: ghcr.io/elfhosted/pulsarr:v0.4.17@sha256:c84cb49b7e990f3c832576b4cfb219660e5c2d37b9719e1fd0324f4607fcde08
       command:
       - /bin/ash
       - -c
